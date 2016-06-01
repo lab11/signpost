@@ -1,0 +1,3 @@
+[submodule "solar_panel_test/software/nrf5x-base"]
+	path = solar_panel_test/software/nrf5x-base
+	url = git@github.com:lab11/nrf5x-base.git
