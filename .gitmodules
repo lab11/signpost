@@ -1,0 +1,3 @@
+[submodule "solar_panel_test/nucleum"]
+	path = solar_panel_test/nucleum
+	url = git@github.com:lab11/nucleum.git
