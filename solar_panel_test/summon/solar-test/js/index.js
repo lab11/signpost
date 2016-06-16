@@ -90,9 +90,9 @@ var app = {
 			if (mandata[0] == 224) {
 
 				var data = new DataView(new Uint8Array(advertisement.manufacturerData.subarray(3)).buffer);
-				var volt = data.getFloat32(1)
-				var curr = data.getFloat32(5)
-				var pow = data.getFloat32(9)
+				var volt = data.getFloat32(0)
+				var curr = data.getFloat32(4)
+				var pow = data.getFloat32(8)
 				app.log("My Voltage: " + volt.toString());
         		document.getElementById("vVal").innerHTML = volt.toString();
         		document.getElementById("cVal").innerHTML = curr.toString();
