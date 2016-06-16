@@ -75,12 +75,13 @@ var app = {
         //Parse Advertised Data
         var advertisement = device.advertisement;
 
-		app.log("Local Name: " + advertisement.localName);
 
         // Check this is something we can parse
         if (advertisement.localName == 'Solar' &&
                 advertisement.manufacturerData) { 
 
+			var mandata = advertisement.manufacturerData;
+			
             // Save when we got this.
             last_update = Date.now();
 			
