@@ -75,6 +75,8 @@ var app = {
         //Parse Advertised Data
         var advertisement = device.advertisement;
 
+		app.log("Local Name: " + advertisement.localName);
+
         // Check this is something we can parse
         if (advertisement.localName == 'Solar' &&
                 advertisement.manufacturerData) { 
@@ -90,6 +92,7 @@ var app = {
 				volt = data.getFloat32(1)
 				curr = data.getFloat32(5)
 				pow = data.getFloat32(9)
+				app.log("My Voltage: " + volt.readFloatLE().toString());
         		document.getElementById("vVal").innerHTML = volt.readFloatLE().toString();
         		document.getElementById("cVal").innerHTML = curr.readFloatLE().toString();
         		document.getElementById("pVal").innerHTML = pow.readFloatLE().toString();
