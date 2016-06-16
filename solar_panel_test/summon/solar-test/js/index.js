@@ -89,7 +89,7 @@ var app = {
 			app.log(mandata);
 			if (mandata[0] == 224) {
 
-				var data = new DataView(new Uint8Array(adv.manufacturerData.subarray(3)).buffer);
+				var data = new DataView(new Uint8Array(advertisement.manufacturerData.subarray(3)).buffer);
 				var volt = data.getFloat32(1)
 				var curr = data.getFloat32(5)
 				var pow = data.getFloat32(9)
