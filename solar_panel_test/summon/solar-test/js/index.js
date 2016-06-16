@@ -92,13 +92,10 @@ var app = {
 				var data = new DataView(new Uint8Array(advertisement.manufacturerData.subarray(3)).buffer);
 				var volt = data.getFloat32(0,true)
 				var curr = data.getFloat32(4,true)
-				var curr2 = data.getFloat32(4,false)
 				var pow = data.getFloat32(8,true)
-				app.log("little endian true: " + curr);
-				app.log("little endian false: " + curr2);
-        		document.getElementById("vVal").innerHTML = volt.toString();
-        		document.getElementById("cVal").innerHTML = curr.toString();
-        		document.getElementById("pVal").innerHTML = pow.toString();
+        		document.getElementById("vVal").innerHTML = volt.toFixed(2);
+        		document.getElementById("cVal").innerHTML = curr.toFixed(2);
+        		document.getElementById("pVal").innerHTML = pow.toFixed(2);
 			}
 
 
