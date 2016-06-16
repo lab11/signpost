@@ -93,10 +93,10 @@ var app = {
 				var volt = data.getFloat32(1)
 				var curr = data.getFloat32(5)
 				var pow = data.getFloat32(9)
-				app.log("My Voltage: " + volt.readFloatLE().toString());
-        		document.getElementById("vVal").innerHTML = volt.readFloatLE().toString();
-        		document.getElementById("cVal").innerHTML = curr.readFloatLE().toString();
-        		document.getElementById("pVal").innerHTML = pow.readFloatLE().toString();
+				app.log("My Voltage: " + volt.toString());
+        		document.getElementById("vVal").innerHTML = volt.toString();
+        		document.getElementById("cVal").innerHTML = curr.toString();
+        		document.getElementById("pVal").innerHTML = pow.toString();
 			}
 
 
