@@ -20,28 +20,20 @@ set nokey
 
 set datafile separator ","
 
-blowstop = 16
-xshift = 172 # align blow start to 10
-yshift = 97710
-
-set title "Solar Panel Test, South Facing, 16 Degree below Horizontal (optimal), 0.055m^2, 19% Efficiency"
-
-#set xrange auto
-#set yrange auto
+set title tit
 
 set ylabel "Estimated Max Power (W)" 
 set xlabel "Time"
 
 set datafile separator ","
 
-every(cCol,lCol,N) = ((int(column(cCol)) % N == 0) ? stringcolumn(lCol):"");
 
 set xdata time
 set timefmt "%m/%d %H:%M:%S"
 
-set xrange["6/13 00:00:00":"6/15 00:00:00"]
+set xrange[start:end]
 
-set arrow 1 from "6/13 00:00:00",1.78 to "6/15 00:00:00", 1.78 nohead
-set label "Average = 1.78 W" at "6/14 00:00:00", 2 
+set label "Average = ".meanstring." W" at start,mean+0.2
+set arrow 1 from start,mean to end,mean nohead
 
 plot in using 1:4 with points linestyle 4

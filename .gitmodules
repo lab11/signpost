@@ -1,6 +1,7 @@
 [submodule "solar_panel_test/nucleum"]
 	path = solar_panel_test/nucleum
 	url = git@github.com:lab11/nucleum.git
+	branch = master
 
 [submodule "testbed/module/nrf51822/nrf5x-base"]
 	path = testbed/module/nrf51822/nrf5x-base
