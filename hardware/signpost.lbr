@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.3215" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -70,6 +70,24 @@
 </layers>
 <library>
 <packages>
+<package name="MODULE_OUTLINE">
+<wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="20"/>
+<wire x1="25.8191" y1="35.2171" x2="25.8191" y2="23.69069375" width="0.127" layer="20"/>
+<wire x1="25.8191" y1="23.69069375" x2="32.68229375" y2="16.8275" width="0.127" layer="20" curve="90"/>
+<wire x1="32.68229375" y1="16.8275" x2="35.2171" y2="16.8275" width="0.127" layer="20"/>
+<wire x1="35.2171" y1="16.8275" x2="35.2171" y2="-16.8275" width="0.127" layer="20"/>
+<wire x1="35.2171" y1="-16.8275" x2="32.68229375" y2="-16.8275" width="0.127" layer="20"/>
+<wire x1="32.68229375" y1="-16.8275" x2="25.8191" y2="-23.69069375" width="0.127" layer="21" curve="90"/>
+<wire x1="25.8191" y1="-23.69069375" x2="25.8191" y2="-35.2171" width="0.127" layer="20"/>
+<wire x1="25.8191" y1="-35.2171" x2="-25.8191" y2="-35.2171" width="0.127" layer="20"/>
+<wire x1="-25.8191" y1="-35.2171" x2="-25.8191" y2="-24.611178125" width="0.127" layer="20"/>
+<wire x1="-25.8191" y1="-24.611178125" x2="-33.602778125" y2="-16.8275" width="0.127" layer="20" curve="90"/>
+<wire x1="-33.602778125" y1="-16.8275" x2="-35.2171" y2="-16.8275" width="0.127" layer="20"/>
+<wire x1="-35.2171" y1="-16.8275" x2="-35.2171" y2="16.8275" width="0.127" layer="20"/>
+<wire x1="-35.2171" y1="16.8275" x2="-33.602778125" y2="16.8275" width="0.127" layer="20"/>
+<wire x1="-33.602778125" y1="16.8275" x2="-25.8191" y2="24.611178125" width="0.127" layer="20" curve="90"/>
+<wire x1="-25.8191" y1="24.611178125" x2="-25.8191" y2="35.2171" width="0.127" layer="20"/>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
