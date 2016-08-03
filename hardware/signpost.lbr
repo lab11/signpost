@@ -416,7 +416,7 @@
 <pin name="SCL" x="5.08" y="-2.54" length="middle" rot="R180"/>
 <pin name="USB_D+" x="5.08" y="-5.08" length="middle" rot="R180"/>
 <pin name="USB_D-" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="SYNC" x="5.08" y="2.54" length="middle" rot="R180"/>
+<pin name="PPS" x="5.08" y="2.54" length="middle" rot="R180"/>
 <pin name="RESERVED0" x="5.08" y="-10.16" length="middle" rot="R180"/>
 <pin name="RESERVED1" x="5.08" y="-12.7" length="middle" rot="R180"/>
 <wire x1="0" y1="12.7" x2="0" y2="-20.32" width="0.254" layer="94"/>
@@ -430,6 +430,32 @@
 </symbol>
 </symbols>
 <devicesets>
+<deviceset name="BACKPLANE_GENERIC_MODULE" prefix="J">
+<gates>
+<gate name="G$1" symbol="HEADER_MODULE" x="7.62" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="BACKPLANE_MODULE_INSTANCE">
+<connects>
+<connect gate="G$1" pin="!INTERRUPT" pad="8"/>
+<connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="PPS" pad="7"/>
+<connect gate="G$1" pin="RESERVED0" pad="3"/>
+<connect gate="G$1" pin="RESERVED1" pad="4"/>
+<connect gate="G$1" pin="RESERVED2" pad="9"/>
+<connect gate="G$1" pin="RESERVED3" pad="10"/>
+<connect gate="G$1" pin="SCL" pad="5"/>
+<connect gate="G$1" pin="SDA" pad="6"/>
+<connect gate="G$1" pin="USB_D+" pad="11"/>
+<connect gate="G$1" pin="USB_D-" pad="12"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </drawing>
