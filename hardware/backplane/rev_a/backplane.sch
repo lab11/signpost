@@ -1851,7 +1851,15 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <hole x="-19.4691" y="-28.8671" drill="3.175"/>
 <circle x="0" y="26.67" radius="0.254" width="0" layer="49"/>
 <text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
+<text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
+<wire x1="37.8206" y1="33.26090625" x2="37.8206" y2="-33.26090625" width="1.905" layer="21"/>
+<wire x1="37.8206" y1="-33.26090625" x2="33.32440625" y2="-37.7571" width="1.905" layer="21" curve="-90"/>
+<wire x1="33.32440625" y1="-37.7571" x2="-33.32440625" y2="-37.7571" width="1.905" layer="21"/>
+<wire x1="-33.32440625" y1="-37.7571" x2="-37.8206" y2="-33.26090625" width="1.905" layer="21" curve="-90"/>
+<wire x1="-37.8206" y1="-33.26090625" x2="-37.8206" y2="33.26090625" width="1.905" layer="21"/>
+<wire x1="-37.8206" y1="33.26090625" x2="-33.32440625" y2="37.7571" width="1.905" layer="21" curve="-90"/>
+<wire x1="-33.32440625" y1="37.7571" x2="33.32440625" y2="37.7571" width="1.905" layer="21"/>
+<wire x1="33.32440625" y1="37.7571" x2="37.8206" y2="33.26090625" width="1.905" layer="21" curve="-90"/>
 </package>
 <package name="BACKPLANE_MODULE_24PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
@@ -1969,6 +1977,16 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pad name="22" x="-11.43" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="24" x="-13.97" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="23" x="-13.97" y="27.94" drill="0.9906" shape="octagon"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
+<wire x1="37.8206" y1="33.26090625" x2="37.8206" y2="-33.26090625" width="1.905" layer="21"/>
+<wire x1="37.8206" y1="-33.26090625" x2="33.32440625" y2="-37.7571" width="1.905" layer="21" curve="-90"/>
+<wire x1="33.32440625" y1="-37.7571" x2="-33.32440625" y2="-37.7571" width="1.905" layer="21"/>
+<wire x1="-33.32440625" y1="-37.7571" x2="-37.8206" y2="-33.26090625" width="1.905" layer="21" curve="-90"/>
+<wire x1="-37.8206" y1="-33.26090625" x2="-37.8206" y2="33.26090625" width="1.905" layer="21"/>
+<wire x1="-37.8206" y1="33.26090625" x2="-33.32440625" y2="37.7571" width="1.905" layer="21" curve="-90"/>
+<wire x1="-33.32440625" y1="37.7571" x2="33.32440625" y2="37.7571" width="1.905" layer="21"/>
+<wire x1="33.32440625" y1="37.7571" x2="37.8206" y2="33.26090625" width="1.905" layer="21" curve="-90"/>
 </package>
 </packages>
 <symbols>
