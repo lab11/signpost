@@ -1,56 +1,10 @@
-/* Get data from edimax smart plugs when we get an advertisement from
+/* Get data from battery gauge when we get an advertisement from
  * it.
  */
 
-var http = require('http');
-
-function postRequest (command, options, cb) {
-    options.timeout = 20000;
-    options.port = 10000;
-    options.path = 'smartplug.cgi';
-    options.method = 'POST';
-    options.headers = {
-            'Content-Type': 'application/xml',
-            'Content-Length': command.length
-        };
-    options.username = 'admin';
-
-    options.headers['Authorization'] =
-        "Basic " + new Buffer(options.username + ":" + options.password).toString("base64");
-
-    var data = '';
-    var postReq = http.request(options, function (response) {
-        var error;
-        if (response.statusCode >= 300) {
-            cb(undefined);
-            return;
-        }
-        var contentLength = response.headers['content-length'];
-        if (contentLength === undefined || parseInt(contentLength) === 0) {
-            cb(undefined);
-            return;
-        }
-
-        response.setEncoding('utf8');
-        response.on('data', function (result) {
-            data += result;
-        });
-        response.on('end', function () {
-            cb(data);
-        });
-    }).on('error', function (error) {
-        cb(undefined);
-    }).on('timeout', function () {
-        cb(undefined);
-    });
-    postReq.setTimeout(options.timeout);
-    postReq.write(command);
-    postReq.end();
-}
-
 var parse_advertisement = function (advertisement, cb) {
 
-    if (advertisement.localName === 'sp2101w') {
+    if (advertisement.localName === 'bgauge') {
         if (advertisement.manufacturerData) {
             // Need at least 3 bytes. Two for manufacturer identifier and
             // one for the service ID.
