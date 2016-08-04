@@ -56,9 +56,9 @@
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -155,7 +155,7 @@
 <libraries>
 <library name="signpost">
 <packages>
-<package name="BACKPLANE_MODULE_INSTANCE">
+<package name="BACKPLANE_MODULE_12PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
 <wire x1="25.8191" y1="35.2171" x2="25.8191" y2="23.69069375" width="0.127" layer="49"/>
 <wire x1="25.8191" y1="23.69069375" x2="32.68229375" y2="16.8275" width="0.127" layer="49" curve="90"/>
@@ -259,6 +259,8 @@
 <hole x="19.4691" y="-28.8671" drill="3.175"/>
 <hole x="-19.4691" y="-28.8671" drill="3.175"/>
 <circle x="0" y="26.67" radius="0.254" width="0" layer="49"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 </package>
 <package name="BACKPLANE_MODULE_24PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
@@ -565,12 +567,12 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="J0" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="335.8134"/>
-<element name="J2" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="238.9378"/>
-<element name="J6" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="45.1866"/>
-<element name="J1" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="335.8134"/>
-<element name="J5" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="142.0622"/>
-<element name="J7" library="signpost" package="BACKPLANE_MODULE_INSTANCE" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="45.1866"/>
+<element name="J0" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="335.8134"/>
+<element name="J2" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="238.9378"/>
+<element name="J6" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="45.1866"/>
+<element name="J1" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="335.8134"/>
+<element name="J5" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="142.0622"/>
+<element name="J7" library="signpost" package="BACKPLANE_MODULE_12PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="45.1866"/>
 <element name="J3" library="signpost" package="BACKPLANE_MODULE_24PIN" value="BACKPLANE_CONTROLLER_MODULE" x="207.7974" y="238.9378"/>
 <element name="J4" library="signpost" package="BACKPLANE_MODULE_24PIN" value="BACKPLANE_POWER_MODULE" x="46.2026" y="142.0622"/>
 </elements>

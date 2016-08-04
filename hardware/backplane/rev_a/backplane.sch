@@ -1746,7 +1746,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </library>
 <library name="signpost">
 <packages>
-<package name="BACKPLANE_MODULE_INSTANCE">
+<package name="BACKPLANE_MODULE_12PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
 <wire x1="25.8191" y1="35.2171" x2="25.8191" y2="23.69069375" width="0.127" layer="49"/>
 <wire x1="25.8191" y1="23.69069375" x2="32.68229375" y2="16.8275" width="0.127" layer="49" curve="90"/>
@@ -1850,6 +1850,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <hole x="19.4691" y="-28.8671" drill="3.175"/>
 <hole x="-19.4691" y="-28.8671" drill="3.175"/>
 <circle x="0" y="26.67" radius="0.254" width="0" layer="49"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 </package>
 <package name="BACKPLANE_MODULE_24PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
@@ -2067,7 +2069,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <gate name="G$1" symbol="HEADER_MODULE" x="7.62" y="2.54"/>
 </gates>
 <devices>
-<device name="" package="BACKPLANE_MODULE_INSTANCE">
+<device name="" package="BACKPLANE_MODULE_12PIN">
 <connects>
 <connect gate="G$1" pin="!INTERRUPT" pad="8"/>
 <connect gate="G$1" pin="5V" pad="2"/>

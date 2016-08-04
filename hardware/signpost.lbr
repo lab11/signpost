@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -622,6 +622,8 @@
 <hole x="19.4691" y="-28.8671" drill="3.175"/>
 <hole x="-19.4691" y="-28.8671" drill="3.175"/>
 <circle x="0" y="26.67" radius="0.254" width="0" layer="49"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
@@ -735,6 +737,8 @@
 <pad name="18" x="-8.89" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="20" x="-11.43" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="19" x="-11.43" y="27.94" drill="0.9906" shape="octagon"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 </package>
 <package name="BACKPLANE_MODULE_24PIN">
 <wire x1="-25.8191" y1="35.2171" x2="25.8191" y2="35.2171" width="0.127" layer="49"/>
@@ -852,6 +856,8 @@
 <pad name="22" x="-11.43" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="24" x="-13.97" y="25.4" drill="0.9906" shape="octagon"/>
 <pad name="23" x="-13.97" y="27.94" drill="0.9906" shape="octagon"/>
+<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="0" y="-36.83" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
