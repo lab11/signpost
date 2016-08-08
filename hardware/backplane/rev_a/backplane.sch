@@ -3693,7 +3693,12 @@ EECLK must be NC</text>
 <segment>
 <label x="233.68" y="81.28" size="1.27" layer="95" xref="yes"/>
 <pinref part="USB-S6" gate="G$1" pin="OUT"/>
-<wire x1="215.9" y1="81.28" x2="233.68" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="81.28" x2="231.14" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="231.14" y1="81.28" x2="233.68" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="76.2" x2="231.14" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="76.2" x2="231.14" y2="81.28" width="0.1524" layer="91"/>
+<junction x="231.14" y="81.28"/>
 </segment>
 </net>
 <net name="MOD7_D+" class="0">
