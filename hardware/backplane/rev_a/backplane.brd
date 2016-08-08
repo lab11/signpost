@@ -531,6 +531,39 @@
 </package>
 </packages>
 </library>
+<library name="crystals">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Crystals of various frequencies.</description>
+<packages>
+<package name="ABMM">
+<smd name="NC1" x="-3.1496" y="1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="3" x="3.1496" y="1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="1" x="-3.16738125" y="-1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="NC2" x="3.1496" y="-1.27" dx="2.2098" dy="1.397" layer="1"/>
+<wire x1="-3.556" y1="2.54" x2="3.556" y2="2.54" width="0.127" layer="21"/>
+<wire x1="3.556" y1="2.54" x2="3.556" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="3.556" y1="-2.54" x2="-3.556" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-3.556" y1="-2.54" x2="-3.556" y2="2.54" width="0.127" layer="21"/>
+<wire x1="-0.254" y1="0.762" x2="0.254" y2="0.762" width="0.127" layer="21"/>
+<wire x1="0.254" y1="0.762" x2="0.254" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="0.254" y1="-0.762" x2="-0.254" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="-0.254" y1="-0.762" x2="-0.254" y2="0.762" width="0.127" layer="21"/>
+<wire x1="-0.508" y1="0.762" x2="-0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="-0.508" y1="0" x2="-0.508" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0.762" x2="0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0" x2="0.508" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="-2.032" y1="-1.27" x2="-1.524" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-1.524" y1="-1.27" x2="-1.524" y2="0" width="0.127" layer="21"/>
+<wire x1="-1.524" y1="0" x2="-0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0" x2="1.524" y2="0" width="0.127" layer="21"/>
+<wire x1="1.524" y1="0" x2="1.524" y2="1.27" width="0.127" layer="21"/>
+<wire x1="1.524" y1="1.27" x2="2.032" y2="1.27" width="0.127" layer="21"/>
+<text x="-3.81" y="3.81" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-3.81" y="-5.08" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-1.524" y="1.778" size="0.254" layer="49" font="vector" ratio="12">.051 / 1.3 high</text>
+<text x="-2.794" y="-2.286" size="0.254" layer="49" font="vector" ratio="12">NC pads shorted to metal lid</text>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -805,6 +838,12 @@ design rules under a new name.</description>
 <element name="R25" library="passives" package="0603-RES" value="27Ω" x="-80.01" y="-177.8"/>
 <element name="R26" library="passives" package="0603-RES" value="27Ω" x="-80.01" y="-181.61"/>
 <element name="R27" library="passives" package="0603-RES" value="1.5kΩ" x="-80.01" y="-185.42"/>
+<element name="Y1" library="crystals" package="ABMM" value="ABMM" x="-87.63" y="-180.34">
+<attribute name="DIGIKEY" value="535-10156-1-ND" x="-87.63" y="-180.34" size="1.778" layer="27" display="off"/>
+</element>
+<element name="C21" library="passives" package="0603_CAP" value="22pF, 5% tol" x="-88.9" y="-189.23"/>
+<element name="C22" library="passives" package="0603_CAP" value="22pF, 5% tol" x="-88.9" y="-193.04"/>
+<element name="R28" library="passives" package="0603-RES" value="1.5kΩ" x="-88.9" y="-196.85"/>
 </elements>
 <signals>
 <signal name="MOD1_5V">
@@ -877,6 +916,9 @@ design rules under a new name.</description>
 <contactref element="U1" pad="5"/>
 <contactref element="U1" pad="24"/>
 <contactref element="U1" pad="43"/>
+<contactref element="U1" pad="48"/>
+<contactref element="C22" pad="1"/>
+<contactref element="C21" pad="1"/>
 <wire x1="-80.66" y1="-170.18" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-166.37" x2="-80.66" y2="-170.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-162.56" x2="-80.66" y2="-166.37" width="0" layer="19" extent="1-1"/>
@@ -936,9 +978,12 @@ design rules under a new name.</description>
 <wire x1="6.71" y1="-3.485" x2="6.71" y2="-4.785" width="0" layer="19" extent="1-1"/>
 <wire x1="0.91" y1="-4.135" x2="6.71" y2="-4.785" width="0" layer="19" extent="1-1"/>
 <wire x1="0.91" y1="-2.835" x2="0.91" y2="-4.135" width="0" layer="19" extent="1-1"/>
+<wire x1="-89.55" y1="-189.23" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
+<wire x1="-89.55" y1="-193.04" x2="-89.55" y2="-189.23" width="0" layer="19" extent="1-1"/>
 <wire x1="52.5526" y1="266.8778" x2="6.71" y2="-3.485" width="0" layer="19" extent="1-1"/>
 <wire x1="121.43" y1="251.21" x2="52.5526" y2="266.8778" width="0" layer="19" extent="1-1"/>
-<wire x1="124.98" y1="247.16" x2="121.43" y2="251.21" width="0" layer="19" extent="1-1"/>
+<wire x1="121.43" y1="248.71" x2="121.43" y2="251.21" width="0" layer="19" extent="1-1"/>
+<wire x1="124.98" y1="247.16" x2="121.43" y2="248.71" width="0" layer="19" extent="1-1"/>
 <wire x1="127.48" y1="247.16" x2="124.98" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="130.03" y1="254.21" x2="127.48" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="52.5526" y1="363.7534" x2="52.5526" y2="266.8778" width="0" layer="19" extent="1-1"/>
@@ -1489,8 +1534,27 @@ design rules under a new name.</description>
 <signal name="USB_!RESET">
 <contactref element="U1" pad="6"/>
 </signal>
-<signal name="USB_SUSPEND">
+<signal name="USB_SUSPEND_STATUS">
 <contactref element="U1" pad="1"/>
+</signal>
+<signal name="N$14">
+<contactref element="C22" pad="2"/>
+<contactref element="Y1" pad="1"/>
+<contactref element="R28" pad="1"/>
+<wire x1="-88.25" y1="-193.04" x2="-89.55" y2="-196.85" width="0" layer="19" extent="1-1"/>
+<wire x1="-90.79738125" y1="-181.61" x2="-88.25" y2="-193.04" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$73">
+<contactref element="C21" pad="2"/>
+<contactref element="Y1" pad="3"/>
+<contactref element="U1" pad="45"/>
+<wire x1="-84.4804" y1="-179.07" x2="121.43" y2="250.21" width="0" layer="19" extent="1-1"/>
+<wire x1="-88.25" y1="-189.23" x2="-84.4804" y2="-179.07" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$74">
+<contactref element="R28" pad="2"/>
+<contactref element="U1" pad="44"/>
+<wire x1="-88.25" y1="-196.85" x2="121.43" y2="250.71" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>

@@ -2177,10 +2177,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-27.94" y="-5.08" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
 </symbol>
 <symbol name="TUSB2077A">
-<pin name="XTAL1" x="-17.78" y="-15.24" length="middle"/>
-<pin name="XTAL2" x="-17.78" y="-17.78" length="middle"/>
+<pin name="XTAL1" x="-17.78" y="-10.16" length="middle"/>
+<pin name="XTAL2" x="-17.78" y="-20.32" length="middle"/>
 <pin name="!RESET" x="-17.78" y="5.08" length="middle"/>
-<pin name="MODE" x="-17.78" y="-10.16" length="middle"/>
+<pin name="MODE" x="-17.78" y="-5.08" length="middle"/>
 <pin name="!EXTMEM" x="-17.78" y="17.78" length="middle"/>
 <pin name="EEDATA/!GANGED" x="-17.78" y="15.24" length="middle"/>
 <pin name="GND" x="-17.78" y="-30.48" length="middle"/>
@@ -2750,6 +2750,74 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </deviceset>
 </devicesets>
 </library>
+<library name="crystals">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Crystals of various frequencies.</description>
+<packages>
+<package name="ABMM">
+<smd name="NC1" x="-3.1496" y="1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="3" x="3.1496" y="1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="1" x="-3.16738125" y="-1.27" dx="2.2098" dy="1.397" layer="1"/>
+<smd name="NC2" x="3.1496" y="-1.27" dx="2.2098" dy="1.397" layer="1"/>
+<wire x1="-3.556" y1="2.54" x2="3.556" y2="2.54" width="0.127" layer="21"/>
+<wire x1="3.556" y1="2.54" x2="3.556" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="3.556" y1="-2.54" x2="-3.556" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-3.556" y1="-2.54" x2="-3.556" y2="2.54" width="0.127" layer="21"/>
+<wire x1="-0.254" y1="0.762" x2="0.254" y2="0.762" width="0.127" layer="21"/>
+<wire x1="0.254" y1="0.762" x2="0.254" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="0.254" y1="-0.762" x2="-0.254" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="-0.254" y1="-0.762" x2="-0.254" y2="0.762" width="0.127" layer="21"/>
+<wire x1="-0.508" y1="0.762" x2="-0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="-0.508" y1="0" x2="-0.508" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0.762" x2="0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0" x2="0.508" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="-2.032" y1="-1.27" x2="-1.524" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-1.524" y1="-1.27" x2="-1.524" y2="0" width="0.127" layer="21"/>
+<wire x1="-1.524" y1="0" x2="-0.508" y2="0" width="0.127" layer="21"/>
+<wire x1="0.508" y1="0" x2="1.524" y2="0" width="0.127" layer="21"/>
+<wire x1="1.524" y1="0" x2="1.524" y2="1.27" width="0.127" layer="21"/>
+<wire x1="1.524" y1="1.27" x2="2.032" y2="1.27" width="0.127" layer="21"/>
+<text x="-3.81" y="3.81" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-3.81" y="-5.08" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-1.524" y="1.778" size="0.254" layer="49" font="vector" ratio="12">.051 / 1.3 high</text>
+<text x="-2.794" y="-2.286" size="0.254" layer="49" font="vector" ratio="12">NC pads shorted to metal lid</text>
+</package>
+</packages>
+<symbols>
+<symbol name="CRYSTAL">
+<pin name="1" x="-5.08" y="0" visible="pad" length="short"/>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" rot="R180"/>
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="3.81" x2="-1.27" y2="-3.81" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-3.81" x2="1.27" y2="-3.81" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-3.81" x2="1.27" y2="3.81" width="0.254" layer="94"/>
+<wire x1="1.27" y1="3.81" x2="-1.27" y2="3.81" width="0.254" layer="94"/>
+<text x="-2.54" y="7.62" size="1.27" layer="95">&gt;NAME</text>
+<text x="-2.54" y="5.08" size="1.27" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="ABMM" prefix="Y">
+<description>Low-Profile SMD crystal</description>
+<gates>
+<gate name="G$1" symbol="CRYSTAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="ABMM">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="3"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="535-10156-1-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Pat Pannuto"/>
@@ -2847,6 +2915,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="R27" library="passives" deviceset="RESISTOR" device="" value="1.5kΩ"/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
+<part name="Y1" library="crystals" deviceset="ABMM" device=""/>
+<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol"/>
+<part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol"/>
+<part name="GND16" library="umich" deviceset="GND" device=""/>
+<part name="R28" library="passives" deviceset="RESISTOR" device="" value="1.5kΩ"/>
 </parts>
 <sheets>
 <sheet>
@@ -3403,6 +3476,8 @@ VBUS from the "cable"</text>
 <text x="5.08" y="129.54" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
 !GANGED -&gt; high, OVR per port
 EECLK must be NC</text>
+<text x="17.78" y="118.618" size="1.27" layer="98">MODE -&gt; low
+6 mhz xtal</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
@@ -3480,6 +3555,11 @@ EECLK must be NC</text>
 <instance part="R27" gate="G$1" x="25.4" y="165.1" rot="R90"/>
 <instance part="GND14" gate="1" x="5.08" y="144.78"/>
 <instance part="GND15" gate="1" x="27.94" y="86.36"/>
+<instance part="Y1" gate="G$1" x="17.78" y="106.68" rot="R90"/>
+<instance part="C21" gate="G$1" x="7.62" y="111.76" rot="R90"/>
+<instance part="C22" gate="G$1" x="7.62" y="101.6" rot="R90"/>
+<instance part="GND16" gate="1" x="2.54" y="96.52"/>
+<instance part="R28" gate="G$1" x="25.4" y="101.6"/>
 </instances>
 <busses>
 </busses>
@@ -3951,6 +4031,21 @@ EECLK must be NC</text>
 <wire x1="30.48" y1="91.44" x2="27.94" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="91.44" x2="27.94" y2="88.9" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="MODE"/>
+<wire x1="30.48" y1="116.84" x2="27.94" y2="116.84" width="0.1524" layer="91"/>
+<label x="27.94" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="GND16" gate="1" pin="GND"/>
+<wire x1="2.54" y1="99.06" x2="2.54" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="C22" gate="G$1" pin="1"/>
+<wire x1="2.54" y1="101.6" x2="5.08" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="C21" gate="G$1" pin="1"/>
+<wire x1="5.08" y1="111.76" x2="2.54" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="111.76" x2="2.54" y2="101.6" width="0.1524" layer="91"/>
+<junction x="2.54" y="101.6"/>
+</segment>
 </net>
 <net name="CONT_D+" class="0">
 <segment>
@@ -4379,11 +4474,38 @@ EECLK must be NC</text>
 <label x="27.94" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="USB_SUSPEND" class="0">
+<net name="USB_SUSPEND_STATUS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="SUSPND"/>
 <wire x1="30.48" y1="124.46" x2="27.94" y2="124.46" width="0.1524" layer="91"/>
 <label x="27.94" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="C22" gate="G$1" pin="2"/>
+<pinref part="Y1" gate="G$1" pin="1"/>
+<wire x1="12.7" y1="101.6" x2="17.78" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="R28" gate="G$1" pin="1"/>
+<wire x1="20.32" y1="101.6" x2="17.78" y2="101.6" width="0.1524" layer="91"/>
+<junction x="17.78" y="101.6"/>
+</segment>
+</net>
+<net name="N$73" class="0">
+<segment>
+<pinref part="C21" gate="G$1" pin="2"/>
+<pinref part="Y1" gate="G$1" pin="2"/>
+<wire x1="12.7" y1="111.76" x2="17.78" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="XTAL1"/>
+<wire x1="30.48" y1="111.76" x2="17.78" y2="111.76" width="0.1524" layer="91"/>
+<junction x="17.78" y="111.76"/>
+</segment>
+</net>
+<net name="N$74" class="0">
+<segment>
+<pinref part="R28" gate="G$1" pin="2"/>
+<pinref part="U1" gate="G$1" pin="XTAL2"/>
+<wire x1="27.94" y1="101.6" x2="30.48" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

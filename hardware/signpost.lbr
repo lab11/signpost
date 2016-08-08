@@ -1124,10 +1124,10 @@
 <text x="7.62" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 <symbol name="TUSB2077A">
-<pin name="XTAL1" x="-17.78" y="-15.24" length="middle"/>
-<pin name="XTAL2" x="-17.78" y="-17.78" length="middle"/>
+<pin name="XTAL1" x="-17.78" y="-10.16" length="middle"/>
+<pin name="XTAL2" x="-17.78" y="-20.32" length="middle"/>
 <pin name="!RESET" x="-17.78" y="5.08" length="middle"/>
-<pin name="MODE" x="-17.78" y="-10.16" length="middle"/>
+<pin name="MODE" x="-17.78" y="-5.08" length="middle"/>
 <pin name="!EXTMEM" x="-17.78" y="17.78" length="middle"/>
 <pin name="EEDATA/!GANGED" x="-17.78" y="15.24" length="middle"/>
 <pin name="GND" x="-17.78" y="-30.48" length="middle"/>
