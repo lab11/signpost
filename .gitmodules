@@ -9,3 +9,9 @@
 [submodule "bgauge_test/nucleum"]
 	path = bgauge_test/nucleum
 	url = https://github.com/lab11/nucleum
+[submodule "modules/spectrum154/contiki/contiki"]
+	path = modules/spectrum154/contiki/contiki
+	url = https://github.com/contiki-os/contiki
+[submodule "modules/spectrum154/contiki/atum"]
+	path = modules/spectrum154/contiki/atum
+	url = https://github.com/lab11/atum
