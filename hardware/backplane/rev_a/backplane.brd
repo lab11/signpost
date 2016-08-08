@@ -1032,6 +1032,10 @@ design rules under a new name.</description>
 <contactref element="C14" pad="2"/>
 <contactref element="R15" pad="1"/>
 <contactref element="R16" pad="1"/>
+<contactref element="C17" pad="2"/>
+<contactref element="C18" pad="2"/>
+<contactref element="R23" pad="1"/>
+<contactref element="R24" pad="1"/>
 <contactref element="C11" pad="2"/>
 <contactref element="C12" pad="2"/>
 <contactref element="R11" pad="1"/>
@@ -1065,10 +1069,6 @@ design rules under a new name.</description>
 <contactref element="J2" pad="14"/>
 <contactref element="J2" pad="1"/>
 <contactref element="U$1" pad="8"/>
-<contactref element="C17" pad="2"/>
-<contactref element="C18" pad="2"/>
-<contactref element="R23" pad="1"/>
-<contactref element="R24" pad="1"/>
 <wire x1="-80.66" y1="-170.18" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-166.37" x2="-80.66" y2="-170.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-162.56" x2="-80.66" y2="-166.37" width="0" layer="19" extent="1-1"/>
@@ -1245,6 +1245,8 @@ design rules under a new name.</description>
 <signal name="MOD0_VCC_METERED">
 <contactref element="USB-S0" pad="2"/>
 <contactref element="USB-S0" pad="3"/>
+<contactref element="R29" pad="2"/>
+<wire x1="-5.405" y1="-26.105" x2="-95.87" y2="-200.66" width="0" layer="19" extent="1-1"/>
 <wire x1="-4.755" y1="-26.105" x2="-5.405" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD0_USB_!PWR">
@@ -1437,27 +1439,37 @@ design rules under a new name.</description>
 <signal name="MOD1_VCC_METERED">
 <contactref element="USB-S1" pad="2"/>
 <contactref element="USB-S1" pad="3"/>
+<contactref element="R30" pad="2"/>
+<wire x1="-14.295" y1="-26.105" x2="-95.87" y2="-204.47" width="0" layer="19" extent="1-1"/>
 <wire x1="-13.645" y1="-26.105" x2="-14.295" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD2_VCC_METERED">
 <contactref element="USB-S2" pad="2"/>
 <contactref element="USB-S2" pad="3"/>
+<contactref element="R31" pad="2"/>
 <wire x1="-22.535" y1="-26.105" x2="-23.185" y2="-26.105" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-208.28" x2="-23.185" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD5_VCC_METERED">
 <contactref element="USB-S5" pad="2"/>
 <contactref element="USB-S5" pad="3"/>
+<contactref element="R32" pad="2"/>
 <wire x1="-31.425" y1="-26.105" x2="-32.075" y2="-26.105" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-212.09" x2="-32.075" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD6_VCC_METERED">
 <contactref element="USB-S6" pad="2"/>
 <contactref element="USB-S6" pad="3"/>
+<contactref element="R33" pad="2"/>
 <wire x1="-40.315" y1="-26.105" x2="-40.965" y2="-26.105" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-215.9" x2="-40.965" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD7_VCC_METERED">
 <contactref element="USB-S7" pad="2"/>
 <contactref element="USB-S7" pad="3"/>
+<contactref element="R34" pad="2"/>
 <wire x1="-49.205" y1="-26.105" x2="-49.855" y2="-26.105" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-219.71" x2="-49.855" y2="-26.105" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$7">
 <contactref element="U1" pad="3"/>
@@ -1487,23 +1499,11 @@ design rules under a new name.</description>
 <contactref element="U1" pad="8"/>
 <contactref element="U$1" pad="1"/>
 <contactref element="U$1" pad="16"/>
-<contactref element="R29" pad="2"/>
-<contactref element="R30" pad="2"/>
-<contactref element="R31" pad="2"/>
-<contactref element="R32" pad="2"/>
-<contactref element="R33" pad="2"/>
-<contactref element="R34" pad="2"/>
 <wire x1="126.48" y1="247.16" x2="126.98" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="121.43" y1="249.21" x2="126.48" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="121.43" y1="249.71" x2="121.43" y2="249.21" width="0" layer="19" extent="1-1"/>
 <wire x1="-98.795" y1="-189.47" x2="121.43" y2="249.21" width="0" layer="19" extent="1-1"/>
 <wire x1="-98.795" y1="-194.07" x2="-98.795" y2="-189.47" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-200.66" x2="-98.795" y2="-194.07" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-204.47" x2="-95.87" y2="-200.66" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-208.28" x2="-95.87" y2="-204.47" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-212.09" x2="-95.87" y2="-208.28" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-215.9" x2="-95.87" y2="-212.09" width="0" layer="19" extent="1-1"/>
-<wire x1="-95.87" y1="-219.71" x2="-95.87" y2="-215.9" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="USB_!RESET">
 <contactref element="U1" pad="6"/>
