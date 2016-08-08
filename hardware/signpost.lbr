@@ -70,6 +70,53 @@
 </layers>
 <library>
 <packages>
+<package name="HEADER_14PIN">
+<circle x="0" y="0" radius="0.254" width="0" layer="49"/>
+<pad name="1" x="7.62" y="1.27" drill="0.9906" shape="square" rot="R180"/>
+<pad name="2" x="7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="4" x="5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="5" x="2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="6" x="2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="7" x="0" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="8" x="0" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="9" x="-2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="10" x="-2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="11" x="-5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="12" x="-5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="13" x="-7.62" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="14" x="-7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<text x="7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">1</text>
+<text x="7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">2</text>
+<text x="5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">3</text>
+<text x="5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">4</text>
+<text x="2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">5</text>
+<text x="2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">6</text>
+<text x="0" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">7</text>
+<text x="0" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">8</text>
+<text x="-2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">9</text>
+<text x="-2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">10</text>
+<text x="-5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">11</text>
+<text x="-5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">12</text>
+<text x="-7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">13</text>
+<text x="-7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">14</text>
+<text x="-0.635" y="6.35" size="0.6096" layer="49" rot="R180">0.358 / 9.10 Below PCB</text>
+<text x="0.635" y="6.35" size="0.6096" layer="49" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<wire x1="11.43" y1="-2.9972" x2="11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="11.43" y1="2.9972" x2="1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="2.9972" x2="1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="4.0132" x2="-1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="4.0132" x2="-1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="2.9972" x2="-11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="2.9972" x2="-11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="-2.9972" x2="11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-2.2479" y1="4.3942" x2="-12.6365" y2="4.3942" width="0.127" layer="21"/>
+<wire x1="-12.6365" y1="4.3942" x2="-12.6365" y2="-4.3942" width="0.127" layer="21"/>
+<wire x1="-12.6365" y1="-4.3942" x2="12.6365" y2="-4.3942" width="0.127" layer="21"/>
+<wire x1="12.6365" y1="-4.3942" x2="12.6365" y2="4.3942" width="0.127" layer="21"/>
+<wire x1="12.6365" y1="4.3942" x2="2.2479" y2="4.3942" width="0.127" layer="21"/>
+<text x="1.27" y="0" size="0.3048" layer="49" align="center-left">Place center at (0, 1.1) inch</text>
+</package>
 <package name="MODULE_GENERIC">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
 <wire x1="-26.8351" y1="33.9852" x2="-25.6032" y2="35.2171" width="0.127" layer="49" curve="-90"/>
@@ -1198,6 +1245,33 @@
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-14240-1-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="MODULE_HEADER" prefix="J">
+<description>Header for signpost modules</description>
+<gates>
+<gate name="G$1" symbol="HEADER_MODULE" x="7.62" y="0"/>
+</gates>
+<devices>
+<device name="" package="HEADER_14PIN">
+<connects>
+<connect gate="G$1" pin="!INTERRUPT" pad="8"/>
+<connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1 14"/>
+<connect gate="G$1" pin="PPS" pad="7"/>
+<connect gate="G$1" pin="SCL" pad="5"/>
+<connect gate="G$1" pin="SDA" pad="6"/>
+<connect gate="G$1" pin="USB_D+" pad="11"/>
+<connect gate="G$1" pin="USB_D-" pad="12"/>
+<connect gate="G$1" pin="USB_VBUS" pad="13"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="S9170-ND
+" constant="no"/>
 </technology>
 </technologies>
 </device>
