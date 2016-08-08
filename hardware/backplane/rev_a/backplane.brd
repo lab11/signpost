@@ -988,6 +988,12 @@ design rules under a new name.</description>
 <element name="U$1" library="signpost" package="TSSOP-16" value="CD4009UBPWR" x="-96.52" y="-191.77">
 <attribute name="DIGIKEY" value="296-14240-1-ND" x="-96.52" y="-191.77" size="1.778" layer="27" display="off"/>
 </element>
+<element name="R29" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-200.66"/>
+<element name="R30" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-204.47"/>
+<element name="R31" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-208.28"/>
+<element name="R32" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-212.09"/>
+<element name="R33" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-215.9"/>
+<element name="R34" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-219.71"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1026,10 +1032,6 @@ design rules under a new name.</description>
 <contactref element="C14" pad="2"/>
 <contactref element="R15" pad="1"/>
 <contactref element="R16" pad="1"/>
-<contactref element="C17" pad="2"/>
-<contactref element="C18" pad="2"/>
-<contactref element="R23" pad="1"/>
-<contactref element="R24" pad="1"/>
 <contactref element="C11" pad="2"/>
 <contactref element="C12" pad="2"/>
 <contactref element="R11" pad="1"/>
@@ -1063,6 +1065,10 @@ design rules under a new name.</description>
 <contactref element="J2" pad="14"/>
 <contactref element="J2" pad="1"/>
 <contactref element="U$1" pad="8"/>
+<contactref element="C17" pad="2"/>
+<contactref element="C18" pad="2"/>
+<contactref element="R23" pad="1"/>
+<contactref element="R24" pad="1"/>
 <wire x1="-80.66" y1="-170.18" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-166.37" x2="-80.66" y2="-170.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-162.56" x2="-80.66" y2="-166.37" width="0" layer="19" extent="1-1"/>
@@ -1274,32 +1280,44 @@ design rules under a new name.</description>
 <signal name="MOD0_USB_!OVR">
 <contactref element="U1" pad="12"/>
 <contactref element="USB-S0" pad="5"/>
+<contactref element="R29" pad="1"/>
 <wire x1="-4.105" y1="-22.155" x2="128.48" y2="247.16" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-200.66" x2="-4.105" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD1_USB_!OVR">
 <contactref element="U1" pad="16"/>
 <contactref element="USB-S1" pad="5"/>
+<contactref element="R30" pad="1"/>
 <wire x1="-12.995" y1="-22.155" x2="130.03" y2="250.21" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-204.47" x2="-12.995" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD2_USB_!OVR">
 <contactref element="U1" pad="20"/>
 <contactref element="USB-S2" pad="5"/>
+<contactref element="R31" pad="1"/>
 <wire x1="-21.885" y1="-22.155" x2="130.03" y2="252.21" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-208.28" x2="-21.885" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD5_USB_!OVR">
 <contactref element="U1" pad="25"/>
 <contactref element="USB-S5" pad="5"/>
+<contactref element="R32" pad="1"/>
 <wire x1="-30.775" y1="-22.155" x2="128.48" y2="255.76" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-212.09" x2="-30.775" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD6_USB_!OVR">
 <contactref element="U1" pad="29"/>
 <contactref element="USB-S6" pad="5"/>
+<contactref element="R33" pad="1"/>
 <wire x1="-39.665" y1="-22.155" x2="126.48" y2="255.76" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-215.9" x2="-39.665" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD7_USB_!OVR">
 <contactref element="U1" pad="33"/>
 <contactref element="USB-S7" pad="5"/>
+<contactref element="R34" pad="1"/>
 <wire x1="-48.555" y1="-22.155" x2="124.48" y2="255.76" width="0" layer="19" extent="1-1"/>
+<wire x1="-97.17" y1="-219.71" x2="-48.555" y2="-22.155" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$1">
 <contactref element="U1" pad="14"/>
@@ -1469,11 +1487,23 @@ design rules under a new name.</description>
 <contactref element="U1" pad="8"/>
 <contactref element="U$1" pad="1"/>
 <contactref element="U$1" pad="16"/>
+<contactref element="R29" pad="2"/>
+<contactref element="R30" pad="2"/>
+<contactref element="R31" pad="2"/>
+<contactref element="R32" pad="2"/>
+<contactref element="R33" pad="2"/>
+<contactref element="R34" pad="2"/>
 <wire x1="126.48" y1="247.16" x2="126.98" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="121.43" y1="249.21" x2="126.48" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="121.43" y1="249.71" x2="121.43" y2="249.21" width="0" layer="19" extent="1-1"/>
 <wire x1="-98.795" y1="-189.47" x2="121.43" y2="249.21" width="0" layer="19" extent="1-1"/>
 <wire x1="-98.795" y1="-194.07" x2="-98.795" y2="-189.47" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-200.66" x2="-98.795" y2="-194.07" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-204.47" x2="-95.87" y2="-200.66" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-208.28" x2="-95.87" y2="-204.47" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-212.09" x2="-95.87" y2="-208.28" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-215.9" x2="-95.87" y2="-212.09" width="0" layer="19" extent="1-1"/>
+<wire x1="-95.87" y1="-219.71" x2="-95.87" y2="-215.9" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="USB_!RESET">
 <contactref element="U1" pad="6"/>
