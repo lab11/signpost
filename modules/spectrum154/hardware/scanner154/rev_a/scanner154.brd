@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -160,6 +160,14 @@
 <hole x="54.991" y="62.23" drill="3.2639"/>
 <hole x="13.081" y="3.81" drill="3.2639"/>
 <hole x="54.991" y="3.81" drill="3.2639"/>
+<text x="35.56" y="8.255" size="1.778" layer="21" font="vector" ratio="12">Scanner15.4</text>
+<text x="35.56" y="4.572" size="1.27" layer="21" font="vector" ratio="12">Brad Campbell</text>
+<text x="35.56" y="2.54" size="1.27" layer="21" font="vector" ratio="12">2016/08/08</text>
+<text x="64.77" y="21.59" size="1.778" layer="21" font="vector" ratio="12" align="center">A</text>
+<wire x1="63.5" y1="20.32" x2="63.5" y2="22.86" width="0.254" layer="21"/>
+<wire x1="63.5" y1="22.86" x2="66.04" y2="22.86" width="0.254" layer="21"/>
+<wire x1="66.04" y1="22.86" x2="66.04" y2="20.32" width="0.254" layer="21"/>
+<wire x1="66.04" y1="20.32" x2="63.5" y2="20.32" width="0.254" layer="21"/>
 </plain>
 <libraries>
 <library name="atum">
@@ -378,6 +386,32 @@
 </package>
 </packages>
 </library>
+<library name="logos">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Logos for PCBs.</description>
+<packages>
+<package name="UMICH_SOLID_500MIL">
+<description>University of Michigan - Solid block M 0.500 in tall.</description>
+<rectangle x1="0" y1="0" x2="6.7056" y2="3.6068" layer="21"/>
+<rectangle x1="1.2954" y1="3.6068" x2="5.2578" y2="9.0932" layer="21"/>
+<rectangle x1="0" y1="9.0932" x2="5.334" y2="12.7" layer="21"/>
+<polygon width="0.0254" layer="21">
+<vertex x="5.334" y="12.6873"/>
+<vertex x="8.8519" y="7.8613"/>
+<vertex x="12.3444" y="12.6873"/>
+<vertex x="12.5603" y="12.6873"/>
+<vertex x="12.5603" y="6.9723"/>
+<vertex x="12.4587" y="6.9723"/>
+<vertex x="8.8392" y="2.1463"/>
+<vertex x="5.2705" y="6.9723"/>
+<vertex x="5.0419" y="6.9723"/>
+<vertex x="5.0546" y="12.6873"/>
+</polygon>
+<rectangle x1="12.573" y1="9.0932" x2="17.7292" y2="12.7" layer="21"/>
+<rectangle x1="12.4714" y1="3.6068" x2="16.4338" y2="9.0932" layer="21"/>
+<rectangle x1="11.0236" y1="0" x2="17.7292" y2="3.6068" layer="21"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -565,7 +599,7 @@ design rules under a new name.</description>
 </autorouter>
 <elements>
 <element name="U1" library="atum" package="ATUM" value="ATUM" x="34.036" y="40.64" rot="R90"/>
-<element name="U4" library="chips" package="SOT-23-5" value="MAX8887EZK33+T" x="41.91" y="49.53" rot="R180">
+<element name="U2" library="chips" package="SOT-23-5" value="MAX8887EZK33+T" x="41.91" y="49.53" rot="R180">
 <attribute name="DIGIKEY" value="MAX8887EZK33+TCT-ND" x="41.91" y="58.42" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="J1" library="connector" package="TC2030-IDC" value="TC2030-CC2538-BL" x="14.478" y="35.306" rot="R90"/>
@@ -581,10 +615,11 @@ design rules under a new name.</description>
 <element name="C3" library="passives" package="0603_CAP" value="4.7uF" x="46.355" y="48.514" smashed="yes">
 <attribute name="NAME" x="46.355" y="47.879" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
+<element name="LOGO2" library="logos" package="UMICH_SOLID_500MIL" value="UMICH_SOLID_HUGE" x="16.51" y="2.54"/>
 </elements>
 <signals>
 <signal name="GND">
-<contactref element="U4" pad="2"/>
+<contactref element="U2" pad="2"/>
 <contactref element="U1" pad="32"/>
 <contactref element="J1" pad="2"/>
 <wire x1="13.843" y1="34.036" x2="13.462" y2="33.655" width="0.254" layer="1"/>
@@ -620,7 +655,7 @@ design rules under a new name.</description>
 <wire x1="23.26" y1="29.464" x2="24.9571" y2="31.1611" width="0.254" layer="1"/>
 </signal>
 <signal name="VCC">
-<contactref element="U4" pad="5"/>
+<contactref element="U2" pad="5"/>
 <contactref element="U1" pad="1"/>
 <contactref element="J1" pad="1"/>
 <wire x1="15.113" y1="34.036" x2="15.494" y2="33.655" width="0.254" layer="1"/>
@@ -640,8 +675,8 @@ design rules under a new name.</description>
 <via x="46.99" y="33.147" extent="1-16" drill="0.4064"/>
 </signal>
 <signal name="VBAT">
-<contactref element="U4" pad="1"/>
-<contactref element="U4" pad="3"/>
+<contactref element="U2" pad="1"/>
+<contactref element="U2" pad="3"/>
 <contactref element="J2" pad="2"/>
 <contactref element="C2" pad="1"/>
 <wire x1="41.656" y1="59.69" x2="40.96" y2="58.994" width="0.6096" layer="1"/>
@@ -658,7 +693,7 @@ design rules under a new name.</description>
 <wire x1="40.833" y1="52.07" x2="40.96" y2="52.197" width="0.6096" layer="1"/>
 </signal>
 <signal name="N$11">
-<contactref element="U4" pad="4"/>
+<contactref element="U2" pad="4"/>
 <contactref element="C1" pad="1"/>
 <wire x1="40.96" y1="48.43" x2="40.917" y2="48.387" width="0.6096" layer="1"/>
 <wire x1="40.917" y1="48.387" x2="38.623" y2="48.387" width="0.6096" layer="1"/>
