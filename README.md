@@ -1,6 +1,11 @@
 Signpost
 ========
 
+Architecture
+------------
+
+<img src="http://www.gliffy.com/go/publish/image/10989855/L.png" />
+
 
 TODO
 ----
