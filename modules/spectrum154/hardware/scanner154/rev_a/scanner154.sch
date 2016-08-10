@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.4">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2325,8 +2325,8 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <text x="-5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">12</text>
 <text x="-7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">13</text>
 <text x="-7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">14</text>
-<text x="-0.635" y="6.35" size="0.6096" layer="49" rot="R180">0.358 / 9.10 Below PCB</text>
-<text x="0.635" y="6.35" size="0.6096" layer="49" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<text x="-0.635" y="6.35" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
+<text x="0.635" y="6.35" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
 <wire x1="11.43" y1="-2.9972" x2="11.43" y2="2.9972" width="0.127" layer="51"/>
 <wire x1="11.43" y1="2.9972" x2="1.8542" y2="2.9972" width="0.127" layer="51"/>
 <wire x1="1.8542" y1="2.9972" x2="1.8542" y2="4.0132" width="0.127" layer="51"/>
@@ -2345,21 +2345,22 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 </packages>
 <symbols>
 <symbol name="HEADER_MODULE">
-<pin name="5V" x="5.08" y="10.16" length="middle" rot="R180"/>
-<pin name="GND" x="5.08" y="7.62" length="middle" rot="R180"/>
-<pin name="!INTERRUPT" x="5.08" y="5.08" length="middle" rot="R180"/>
-<pin name="SDA" x="5.08" y="0" length="middle" rot="R180"/>
-<pin name="SCL" x="5.08" y="-2.54" length="middle" rot="R180"/>
-<pin name="USB_D+" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="USB_D-" x="5.08" y="-10.16" length="middle" rot="R180"/>
-<pin name="PPS" x="5.08" y="2.54" length="middle" rot="R180"/>
-<wire x1="0" y1="12.7" x2="0" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="0" y1="-12.7" x2="-17.78" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="-12.7" x2="-17.78" y2="12.7" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="12.7" x2="0" y2="12.7" width="0.254" layer="94"/>
-<text x="-17.78" y="15.24" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-<text x="-17.78" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="USB_VBUS" x="5.08" y="-5.08" length="middle" rot="R180"/>
+<pin name="5V" x="5.08" y="20.32" length="middle" rot="R180"/>
+<pin name="GND" x="5.08" y="-12.7" length="middle" rot="R180"/>
+<pin name="!INTERRUPT" x="5.08" y="12.7" length="middle" rot="R180"/>
+<pin name="SDA" x="5.08" y="5.08" length="middle" rot="R180"/>
+<pin name="SCL" x="5.08" y="2.54" length="middle" rot="R180"/>
+<pin name="USB_D+" x="5.08" y="-5.08" length="middle" rot="R180"/>
+<pin name="USB_D-" x="5.08" y="-7.62" length="middle" rot="R180"/>
+<pin name="PPS" x="5.08" y="10.16" length="middle" rot="R180"/>
+<wire x1="0" y1="22.86" x2="0" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="0" y1="-15.24" x2="-17.78" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-15.24" x2="-17.78" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="22.86" x2="0" y2="22.86" width="0.254" layer="94"/>
+<text x="-17.78" y="25.4" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-17.78" y="-17.78" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="USB_VBUS" x="5.08" y="-2.54" length="middle" rot="R180"/>
+<pin name="VCCIO" x="5.08" y="17.78" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2380,6 +2381,7 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <connect gate="G$1" pin="USB_D+" pad="11"/>
 <connect gate="G$1" pin="USB_D-" pad="12"/>
 <connect gate="G$1" pin="USB_VBUS" pad="13"/>
+<connect gate="G$1" pin="VCCIO" pad="4"/>
 </connects>
 <technologies>
 <technology name="">
@@ -2633,6 +2635,7 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="LOGO2" library="logos" deviceset="UMICH_SOLID" device="_HUGE"/>
+<part name="P+4" library="supply1" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2654,11 +2657,12 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <instance part="SUPPLY2" gate="1" x="43.18" y="134.62"/>
 <instance part="P+3" gate="VCC" x="43.18" y="152.4"/>
 <instance part="J2" gate="G$1" x="134.62" y="137.16"/>
-<instance part="SUPPLY3" gate="1" x="152.4" y="114.3"/>
+<instance part="SUPPLY3" gate="1" x="142.24" y="119.38"/>
 <instance part="C1" gate="G$1" x="205.74" y="137.16"/>
 <instance part="C2" gate="G$1" x="172.72" y="137.16"/>
 <instance part="C3" gate="G$1" x="215.9" y="137.16"/>
 <instance part="LOGO2" gate="G$1" x="231.14" y="25.4"/>
+<instance part="P+4" gate="VCC" x="142.24" y="165.1"/>
 </instances>
 <busses>
 </busses>
@@ -2699,8 +2703,8 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 </segment>
 <segment>
 <pinref part="J2" gate="G$1" pin="GND"/>
-<wire x1="139.7" y1="144.78" x2="152.4" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="144.78" x2="152.4" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="124.46" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="124.46" x2="142.24" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="1" pin="GND"/>
 </segment>
 </net>
@@ -2727,6 +2731,12 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <wire x1="43.18" y1="147.32" x2="43.18" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="P+3" gate="VCC" pin="VCC"/>
 </segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="VCCIO"/>
+<pinref part="P+4" gate="VCC" pin="VCC"/>
+<wire x1="139.7" y1="154.94" x2="142.24" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="154.94" x2="142.24" y2="162.56" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VBAT" class="0">
 <segment>
@@ -2739,7 +2749,8 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <wire x1="177.8" y1="142.24" x2="172.72" y2="142.24" width="0.1524" layer="91"/>
 <junction x="172.72" y="142.24"/>
 <pinref part="J2" gate="G$1" pin="5V"/>
-<wire x1="172.72" y1="147.32" x2="139.7" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="147.32" x2="172.72" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="157.48" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -2792,10 +2803,10 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <net name="N$2" class="0">
 <segment>
 <pinref part="J2" gate="G$1" pin="SDA"/>
-<wire x1="139.7" y1="137.16" x2="142.24" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="137.16" x2="142.24" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="119.38" x2="109.22" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="119.38" x2="109.22" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="142.24" x2="149.86" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="142.24" x2="149.86" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="101.6" x2="109.22" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="I2C_SDA"/>
 <wire x1="109.22" y1="91.44" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
 </segment>
@@ -2803,10 +2814,10 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <net name="N$3" class="0">
 <segment>
 <pinref part="J2" gate="G$1" pin="SCL"/>
-<wire x1="139.7" y1="134.62" x2="144.78" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="134.62" x2="144.78" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="116.84" x2="111.76" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="116.84" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="139.7" x2="152.4" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="139.7" x2="152.4" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="99.06" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="99.06" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="I2C_SCL"/>
 <wire x1="111.76" y1="88.9" x2="81.28" y2="88.9" width="0.1524" layer="91"/>
 </segment>
