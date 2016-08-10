@@ -3045,12 +3045,24 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="USB-S5" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="USB-S6" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="USB-S7" library="signpost" deviceset="AP2401MP" device=""/>
-<part name="C1" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
-<part name="C2" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
-<part name="C4" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
-<part name="C5" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF"/>
+<part name="C1" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
+<part name="C2" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
+<part name="C3" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
+<part name="C4" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
+<part name="C5" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
+</part>
 <part name="GND1" library="umich" deviceset="GND" device=""/>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
@@ -3552,12 +3564,24 @@ EECLK must be NC</text>
 <instance part="USB-S5" gate="G$1" x="198.12" y="101.6"/>
 <instance part="USB-S6" gate="G$1" x="198.12" y="78.74"/>
 <instance part="USB-S7" gate="G$1" x="198.12" y="60.96"/>
-<instance part="C1" gate="G$1" x="226.06" y="167.64" rot="R270"/>
-<instance part="C2" gate="G$1" x="226.06" y="144.78" rot="R270"/>
-<instance part="C3" gate="G$1" x="226.06" y="124.46" rot="R270"/>
-<instance part="C4" gate="G$1" x="226.06" y="99.06" rot="R270"/>
-<instance part="C5" gate="G$1" x="226.06" y="76.2" rot="R270"/>
-<instance part="C6" gate="G$1" x="226.06" y="58.42" rot="R270"/>
+<instance part="C1" gate="G$1" x="226.06" y="167.64" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="167.64" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C2" gate="G$1" x="226.06" y="144.78" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="144.78" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C3" gate="G$1" x="226.06" y="124.46" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="124.46" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C4" gate="G$1" x="226.06" y="99.06" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="99.06" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C5" gate="G$1" x="226.06" y="76.2" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="76.2" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C6" gate="G$1" x="226.06" y="58.42" rot="R270">
+<attribute name="DIGIKEY" x="226.06" y="58.42" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
 <instance part="GND1" gate="1" x="218.44" y="162.56"/>
 <instance part="GND2" gate="1" x="78.74" y="160.02"/>
 <instance part="GND3" gate="1" x="17.78" y="5.08"/>
