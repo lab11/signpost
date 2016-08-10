@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2804,22 +2804,18 @@ The RX/TX switch happens on the programmer board, so when using this connect the
 <segment>
 <pinref part="J2" gate="G$1" pin="SDA"/>
 <wire x1="139.7" y1="142.24" x2="149.86" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="142.24" x2="149.86" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="101.6" x2="109.22" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="142.24" x2="149.86" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="91.44" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="I2C_SDA"/>
-<wire x1="109.22" y1="91.44" x2="81.28" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="J2" gate="G$1" pin="SCL"/>
 <wire x1="139.7" y1="139.7" x2="152.4" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="139.7" x2="152.4" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="99.06" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="99.06" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="139.7" x2="152.4" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="88.9" x2="81.28" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="I2C_SCL"/>
-<wire x1="111.76" y1="88.9" x2="81.28" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

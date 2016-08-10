@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -160,7 +160,7 @@
 <hole x="54.991" y="62.23" drill="3.2639"/>
 <hole x="13.081" y="3.81" drill="3.2639"/>
 <hole x="54.991" y="3.81" drill="3.2639"/>
-<text x="35.56" y="8.255" size="1.778" layer="21" font="vector" ratio="12">Scanner15.4</text>
+<text x="35.56" y="6.985" size="1.778" layer="21" font="vector" ratio="12">Scanner15.4</text>
 <text x="35.56" y="4.572" size="1.27" layer="21" font="vector" ratio="12">Brad Campbell</text>
 <text x="35.56" y="2.54" size="1.27" layer="21" font="vector" ratio="12">2016/08/08</text>
 <text x="64.77" y="21.59" size="1.778" layer="21" font="vector" ratio="12" align="center">A</text>
@@ -168,6 +168,7 @@
 <wire x1="63.5" y1="22.86" x2="66.04" y2="22.86" width="0.254" layer="21"/>
 <wire x1="66.04" y1="22.86" x2="66.04" y2="20.32" width="0.254" layer="21"/>
 <wire x1="66.04" y1="20.32" x2="63.5" y2="20.32" width="0.254" layer="21"/>
+<text x="34.036" y="15.875" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">2.4 GHz Spectrum Sensing</text>
 </plain>
 <libraries>
 <library name="atum">
@@ -667,17 +668,16 @@ design rules under a new name.</description>
 <wire x1="45.8931" y1="31.1611" x2="46.99" y2="32.258" width="0.6096" layer="1"/>
 <wire x1="46.99" y1="32.258" x2="46.99" y2="33.147" width="0.6096" layer="1"/>
 <wire x1="46.99" y1="33.147" x2="46.99" y2="44.3" width="0.6096" layer="1"/>
-<wire x1="46.99" y1="44.3" x2="44.375" y2="46.915" width="0.6096" layer="1"/>
 <via x="15.494" y="30.861" extent="1-16" drill="0.4064"/>
 <wire x1="15.494" y1="30.861" x2="21.463" y2="30.861" width="0.254" layer="16"/>
 <wire x1="21.463" y1="30.861" x2="23.749" y2="33.147" width="0.254" layer="16"/>
 <wire x1="23.749" y1="33.147" x2="46.99" y2="33.147" width="0.254" layer="16"/>
 <via x="46.99" y="33.147" extent="1-16" drill="0.4064"/>
 <contactref element="J2" pad="4"/>
-<wire x1="39.116" y1="59.69" x2="39.116" y2="52.174" width="0.6096" layer="16"/>
-<wire x1="39.116" y1="52.174" x2="44.375" y2="46.915" width="0.6096" layer="16"/>
-<via x="44.375" y="46.915" extent="1-16" drill="0.6"/>
-<wire x1="44.375" y1="46.915" x2="42.86" y2="48.43" width="0.6096" layer="1"/>
+<wire x1="46.99" y1="44.3" x2="42.86" y2="48.43" width="0.6096" layer="1"/>
+<via x="46.99" y="44.3" extent="1-16" drill="0.4064"/>
+<wire x1="46.99" y1="44.3" x2="46.99" y2="51.816" width="0.6096" layer="16"/>
+<wire x1="46.99" y1="51.816" x2="39.116" y2="59.69" width="0.6096" layer="16"/>
 </signal>
 <signal name="VBAT">
 <contactref element="U2" pad="1"/>
