@@ -54,7 +54,7 @@
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="10" fill="1" visible="yes" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
@@ -100,8 +100,8 @@
 <text x="-5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">12</text>
 <text x="-7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">13</text>
 <text x="-7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">14</text>
-<text x="-0.635" y="6.35" size="0.6096" layer="49" rot="R180">0.358 / 9.10 Below PCB</text>
-<text x="0.635" y="6.35" size="0.6096" layer="49" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<text x="-0.635" y="6.35" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
+<text x="0.635" y="6.35" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
 <wire x1="11.43" y1="-2.9972" x2="11.43" y2="2.9972" width="0.127" layer="51"/>
 <wire x1="11.43" y1="2.9972" x2="1.8542" y2="2.9972" width="0.127" layer="51"/>
 <wire x1="1.8542" y1="2.9972" x2="1.8542" y2="4.0132" width="0.127" layer="51"/>
@@ -187,8 +187,8 @@
 <text x="-5.08" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">12</text>
 <text x="-7.62" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">13</text>
 <text x="-7.62" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">14</text>
-<text x="-0.635" y="34.29" size="0.6096" layer="49" rot="R180">0.358 / 9.10 Below PCB</text>
-<text x="0.635" y="34.29" size="0.6096" layer="49" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
+<text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
 <wire x1="11.43" y1="24.9428" x2="11.43" y2="30.9372" width="0.127" layer="51"/>
 <wire x1="11.43" y1="30.9372" x2="1.8542" y2="30.9372" width="0.127" layer="51"/>
 <wire x1="1.8542" y1="30.9372" x2="1.8542" y2="31.9532" width="0.127" layer="51"/>
@@ -304,8 +304,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -416,8 +416,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="BACKPLANE_MODULE_20PIN_10PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -528,8 +528,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 <circle x="0" y="-27.94" radius="0.254" width="0" layer="49"/>
 <pad name="21" x="5.08" y="-26.67" drill="1.016" shape="square" rot="R180"/>
 <pad name="22" x="5.08" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
@@ -592,6 +592,7 @@
 <circle x="-5.715" y="-2.54" radius="0.508" width="0" layer="21"/>
 <text x="-5.08" y="3.81" size="1.27" layer="25" font="vector" ratio="11">&gt;NAME</text>
 <text x="-5.08" y="-5.08" size="1.27" layer="27" font="vector" ratio="11">&gt;VALUE</text>
+<text x="-3.81" y="0" size="0.3048" layer="47" font="vector" ratio="11">0.069 / 1.75 high</text>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -653,6 +654,7 @@
 <circle x="-4" y="-4" radius="0.2687" width="0" layer="21"/>
 <text x="-3.81" y="5.08" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-3.81" y="-6.35" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="2.54" size="0.3048" layer="47" font="vector" ratio="11">.055 / 1.4 high</text>
 </package>
 <package name="TSSOP-8">
 <smd name="2" x="-2.9" y="0.325" dx="1.5" dy="0.45" layer="1" roundness="10"/>
@@ -670,6 +672,7 @@
 <circle x="-2.8" y="1.7" radius="0.14141875" width="0.127" layer="21"/>
 <text x="-2.2" y="1.8" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.2" y="-3" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="0" size="0.3048" layer="47" align="bottom-center">0.043 / 1.1 height</text>
 </package>
 <package name="MSOP-8EP">
 <smd name="8" x="-0.975" y="1.975" dx="0.45" dy="1.35" layer="1" roundness="10"/>
@@ -688,6 +691,7 @@
 <circle x="-1.8" y="-1.7" radius="0.2" width="0" layer="21"/>
 <text x="-2.5" y="3" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.5" y="-4.5" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="-2.54" size="0.3048" layer="47" font="vector" ratio="11" rot="R90">0.043 / 1.1 height</text>
 </package>
 <package name="TSSOP-16">
 <smd name="13" x="-0.325" y="2.3" dx="0.3" dy="1.55" layer="1"/>
@@ -713,6 +717,22 @@
 <circle x="-3.175" y="-2.54" radius="0.25" width="0" layer="21"/>
 <text x="-2.54" y="3.81" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.54" y="-5.08" size="1.016" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="0" size="0.3048" layer="47" align="bottom-center">0.043 / 1.1 height</text>
+</package>
+<package name="TDFN4">
+<text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-1.27" y="-2.54" size="1.016" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<smd name="1" x="-0.25" y="-0.725" dx="0.3" dy="0.55" layer="1"/>
+<smd name="2" x="0.25" y="-0.725" dx="0.3" dy="0.55" layer="1"/>
+<smd name="3" x="0.25" y="0.725" dx="0.3" dy="0.55" layer="1"/>
+<smd name="4" x="-0.25" y="0.725" dx="0.3" dy="0.55" layer="1"/>
+<smd name="PAD" x="0" y="0" dx="0.86" dy="0.5" layer="1"/>
+<wire x1="-0.6" y1="0.8" x2="0.6" y2="0.8" width="0.127" layer="21"/>
+<wire x1="0.6" y1="0.8" x2="0.6" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="0.6" y1="-0.8" x2="-0.6" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="-0.6" y1="-0.8" x2="-0.6" y2="0.8" width="0.127" layer="21"/>
+<circle x="-0.8" y="-1" radius="0.1" width="0.127" layer="21"/>
+<text x="0.635" y="-1.27" size="0.3048" layer="47" font="vector" ratio="11">.02 / .55 high</text>
 </package>
 </packages>
 <symbols>
@@ -751,21 +771,22 @@
 <text x="-25.4" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
 </symbol>
 <symbol name="HEADER_MODULE">
-<pin name="5V" x="5.08" y="10.16" length="middle" rot="R180"/>
-<pin name="GND" x="5.08" y="7.62" length="middle" rot="R180"/>
-<pin name="!INTERRUPT" x="5.08" y="5.08" length="middle" rot="R180"/>
-<pin name="SDA" x="5.08" y="0" length="middle" rot="R180"/>
-<pin name="SCL" x="5.08" y="-2.54" length="middle" rot="R180"/>
-<pin name="USB_D+" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="USB_D-" x="5.08" y="-10.16" length="middle" rot="R180"/>
-<pin name="PPS" x="5.08" y="2.54" length="middle" rot="R180"/>
-<wire x1="0" y1="12.7" x2="0" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="0" y1="-12.7" x2="-17.78" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="-12.7" x2="-17.78" y2="12.7" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="12.7" x2="0" y2="12.7" width="0.254" layer="94"/>
-<text x="-17.78" y="15.24" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-<text x="-17.78" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="USB_VBUS" x="5.08" y="-5.08" length="middle" rot="R180"/>
+<pin name="5V" x="5.08" y="20.32" length="middle" rot="R180"/>
+<pin name="GND" x="5.08" y="-12.7" length="middle" rot="R180"/>
+<pin name="!INTERRUPT" x="5.08" y="12.7" length="middle" rot="R180"/>
+<pin name="SDA" x="5.08" y="5.08" length="middle" rot="R180"/>
+<pin name="SCL" x="5.08" y="2.54" length="middle" rot="R180"/>
+<pin name="USB_D+" x="5.08" y="-5.08" length="middle" rot="R180"/>
+<pin name="USB_D-" x="5.08" y="-7.62" length="middle" rot="R180"/>
+<pin name="PPS" x="5.08" y="10.16" length="middle" rot="R180"/>
+<wire x1="0" y1="22.86" x2="0" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="0" y1="-15.24" x2="-17.78" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-15.24" x2="-17.78" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="22.86" x2="0" y2="22.86" width="0.254" layer="94"/>
+<text x="-17.78" y="25.4" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-17.78" y="-17.78" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="USB_VBUS" x="5.08" y="-2.54" length="middle" rot="R180"/>
+<pin name="VCCIO" x="5.08" y="17.78" length="middle" rot="R180"/>
 </symbol>
 <symbol name="HEADER_POWER">
 <pin name="VSOL+" x="5.08" y="27.94" length="middle" rot="R180"/>
@@ -987,6 +1008,47 @@
 <text x="-5.08" y="15.748" size="1.778" layer="95">&gt;NAME</text>
 <text x="-5.08" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
+<symbol name="I2C_REDRIVER">
+<pin name="VCC_A" x="-17.78" y="5.08" length="middle"/>
+<pin name="SCL_A" x="-17.78" y="2.54" length="middle"/>
+<pin name="SDA_A" x="-17.78" y="0" length="middle"/>
+<pin name="GND" x="-17.78" y="-2.54" length="middle"/>
+<pin name="EN" x="12.7" y="-2.54" length="middle" rot="R180"/>
+<pin name="SDA_B" x="12.7" y="0" length="middle" rot="R180"/>
+<pin name="SCL_B" x="12.7" y="2.54" length="middle" rot="R180"/>
+<pin name="VCC_B" x="12.7" y="5.08" length="middle" rot="R180"/>
+<wire x1="-12.7" y1="7.62" x2="-12.7" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="7.62" x2="-12.7" y2="7.62" width="0.254" layer="94"/>
+<text x="-2.032" y="-3.556" size="0.8128" layer="98" align="center-left">EN Ref
+to VCC_B</text>
+<text x="-12.7" y="10.16" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-12.7" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="SWITCH_HIGH_SIDE">
+<pin name="VSUPPLY" x="-12.7" y="2.54" length="middle"/>
+<pin name="EN" x="-12.7" y="0" length="middle"/>
+<pin name="VLOAD" x="12.7" y="5.08" length="middle" rot="R180"/>
+<pin name="GND" x="12.7" y="0" length="middle" rot="R180"/>
+<wire x1="5.08" y1="2.54" x2="6.35" y2="5.08" width="0.127" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="6.096" y2="0" width="0.127" layer="94" style="shortdash"/>
+<wire x1="-7.62" y1="7.62" x2="7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="7.62" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="0" width="0.254" layer="94"/>
+<wire x1="7.62" y1="0" x2="7.62" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-2.54" x2="-7.62" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-2.54" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
+<circle x="5.08" y="2.54" radius="0.254" width="0" layer="94"/>
+<circle x="6.35" y="5.08" radius="0.254" width="0" layer="94"/>
+<circle x="6.35" y="0" radius="0.254" width="0.127" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="5.08" y2="2.54" width="0.127" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="6.35" y2="5.08" width="0.127" layer="94"/>
+<wire x1="7.62" y1="0" x2="6.604" y2="0" width="0.127" layer="94"/>
+<text x="-7.62" y="8.128" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-4.826" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="BACKPLANE_GENERIC_MODULE" prefix="J">
@@ -1006,6 +1068,7 @@
 <connect gate="G$1" pin="USB_D+" pad="11"/>
 <connect gate="G$1" pin="USB_D-" pad="12"/>
 <connect gate="G$1" pin="USB_VBUS" pad="13"/>
+<connect gate="G$1" pin="VCCIO" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1267,12 +1330,54 @@
 <connect gate="G$1" pin="USB_D+" pad="11"/>
 <connect gate="G$1" pin="USB_D-" pad="12"/>
 <connect gate="G$1" pin="USB_VBUS" pad="13"/>
+<connect gate="G$1" pin="VCCIO" pad="4"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9170-ND
-" constant="no"/>
+<attribute name="DIGIKEY" value="S9170-ND " constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PI6ULS5V9617A" prefix="U">
+<description>I2C Redriver (isolation + level shift)</description>
+<gates>
+<gate name="G$1" symbol="I2C_REDRIVER" x="2.54" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="TSSOP-8">
+<connects>
+<connect gate="G$1" pin="EN" pad="5"/>
+<connect gate="G$1" pin="GND" pad="4"/>
+<connect gate="G$1" pin="SCL_A" pad="2"/>
+<connect gate="G$1" pin="SCL_B" pad="7"/>
+<connect gate="G$1" pin="SDA_A" pad="3"/>
+<connect gate="G$1" pin="SDA_B" pad="6"/>
+<connect gate="G$1" pin="VCC_A" pad="1"/>
+<connect gate="G$1" pin="VCC_B" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SIP3240X" prefix="S">
+<description>High power (2.4 A) high-side switch</description>
+<gates>
+<gate name="G$1" symbol="SWITCH_HIGH_SIDE" x="0" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="TDFN4">
+<connects>
+<connect gate="G$1" pin="EN" pad="4"/>
+<connect gate="G$1" pin="GND" pad="2 PAD"/>
+<connect gate="G$1" pin="VLOAD" pad="1"/>
+<connect gate="G$1" pin="VSUPPLY" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -1280,4 +1385,10 @@
 </devicesets>
 </library>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
