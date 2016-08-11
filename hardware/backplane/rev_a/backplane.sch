@@ -2270,33 +2270,33 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-25.4" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
 </symbol>
 <symbol name="HEADER_POWER">
-<pin name="VSOL+" x="5.08" y="27.94" length="middle" rot="R180"/>
-<pin name="VSOL-" x="5.08" y="25.4" length="middle" rot="R180"/>
-<pin name="VBATT+" x="5.08" y="22.86" length="middle" rot="R180"/>
-<pin name="VBATT-" x="5.08" y="20.32" length="middle" rot="R180"/>
-<pin name="GND" x="5.08" y="15.24" length="middle" rot="R180"/>
-<pin name="VCC_CONTROLLER" x="5.08" y="12.7" length="middle" rot="R180"/>
-<pin name="VCC_LINUX" x="5.08" y="10.16" length="middle" rot="R180"/>
-<pin name="VCC_BACKPLANE" x="5.08" y="7.62" length="middle" rot="R180"/>
-<pin name="SMBDATA" x="5.08" y="2.54" length="middle" rot="R180"/>
-<pin name="SMBCLK" x="5.08" y="0" length="middle" rot="R180"/>
-<pin name="!SMBALERT" x="5.08" y="-2.54" length="middle" rot="R180"/>
-<pin name="VCC_MOD0" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="VCC_MOD1" x="5.08" y="-10.16" length="middle" rot="R180"/>
-<pin name="VCC_MOD2" x="5.08" y="-12.7" length="middle" rot="R180"/>
-<pin name="VCC_MOD5" x="5.08" y="-15.24" length="middle" rot="R180"/>
-<pin name="VCC_MOD6" x="5.08" y="-17.78" length="middle" rot="R180"/>
-<pin name="VCC_MOD7" x="5.08" y="-20.32" length="middle" rot="R180"/>
-<wire x1="0" y1="30.48" x2="0" y2="-22.86" width="0.254" layer="94"/>
-<wire x1="0" y1="-22.86" x2="-25.4" y2="-22.86" width="0.254" layer="94"/>
-<wire x1="-25.4" y1="-22.86" x2="-30.48" y2="-22.86" width="0.254" layer="94"/>
-<wire x1="-30.48" y1="-22.86" x2="-30.48" y2="30.48" width="0.254" layer="94"/>
-<wire x1="-30.48" y1="30.48" x2="-25.4" y2="30.48" width="0.254" layer="94"/>
-<text x="-25.4" y="33.02" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
-<text x="-25.4" y="-25.4" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
-<wire x1="-25.4" y1="30.48" x2="0" y2="30.48" width="0.254" layer="94"/>
-<wire x1="-25.4" y1="30.48" x2="-25.4" y2="-22.86" width="0.254" layer="94" style="shortdash"/>
-<text x="-27.94" y="5.08" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
+<pin name="VSOL+" x="20.32" y="25.4" length="middle" direction="pwr" rot="R180"/>
+<pin name="VSOL-" x="20.32" y="22.86" length="middle" direction="pwr" rot="R180"/>
+<pin name="VBATT+" x="20.32" y="20.32" length="middle" direction="pwr" rot="R180"/>
+<pin name="VBATT-" x="20.32" y="17.78" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND" x="20.32" y="-25.4" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_CONTROLLER" x="20.32" y="12.7" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_LINUX" x="20.32" y="10.16" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_BACKPLANE" x="20.32" y="7.62" length="middle" direction="pwr" rot="R180"/>
+<pin name="SMBDATA" x="20.32" y="2.54" length="middle" direction="oc" rot="R180"/>
+<pin name="SMBCLK" x="20.32" y="0" length="middle" direction="oc" rot="R180"/>
+<pin name="!SMBALERT" x="20.32" y="-2.54" length="middle" rot="R180"/>
+<pin name="VCC_MOD0" x="20.32" y="-7.62" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_MOD1" x="20.32" y="-10.16" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_MOD2" x="20.32" y="-12.7" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_MOD5" x="20.32" y="-15.24" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_MOD6" x="20.32" y="-17.78" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCC_MOD7" x="20.32" y="-20.32" length="middle" direction="pwr" rot="R180"/>
+<wire x1="15.24" y1="27.94" x2="15.24" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-27.94" x2="-15.24" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-27.94" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="27.94" x2="-10.16" y2="27.94" width="0.254" layer="94"/>
+<text x="-10.16" y="30.48" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
+<text x="-10.16" y="-30.48" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
+<wire x1="-10.16" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
+<text x="-12.7" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
 </symbol>
 <symbol name="TUSB2077A">
 <pin name="XTAL1" x="-17.78" y="-10.16" length="middle"/>
@@ -2568,6 +2568,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <devices>
 <device name="" package="BACKPLANE_MODULE_20PIN_10PIN">
 <connects>
+<connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
 <connect gate="G$1" pin="MOD0_OUT" pad="10"/>
@@ -2584,7 +2585,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <connect gate="G$1" pin="MODULES_SCL" pad="24"/>
 <connect gate="G$1" pin="MODULES_SDA" pad="23"/>
 <connect gate="G$1" pin="PPS" pad="25"/>
-<connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDAT" pad="3"/>
 <connect gate="G$1" pin="USB_D+" pad="27"/>
@@ -2606,8 +2606,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <devices>
 <device name="" package="BACKPLANE_MODULE_20PIN">
 <connects>
-<connect gate="G$1" pin="GND" pad="1"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
+<connect gate="G$1" pin="GND" pad="1"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDATA" pad="3"/>
 <connect gate="G$1" pin="VBATT+" pad="17"/>
