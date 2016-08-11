@@ -363,7 +363,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="VCC_BACKPLANE" x="20.32" y="7.62" length="middle" direction="pwr" rot="R180"/>
 <pin name="SMBDATA" x="20.32" y="2.54" length="middle" direction="oc" rot="R180"/>
 <pin name="SMBCLK" x="20.32" y="0" length="middle" direction="oc" rot="R180"/>
-<pin name="!SMBALERT#" x="20.32" y="-2.54" length="middle" rot="R180"/>
+<pin name="!SMBALERT" x="20.32" y="-2.54" length="middle" rot="R180"/>
 <pin name="VCC_MOD0" x="20.32" y="-7.62" length="middle" direction="pwr" rot="R180"/>
 <pin name="VCC_MOD1" x="20.32" y="-10.16" length="middle" direction="pwr" rot="R180"/>
 <pin name="VCC_MOD2" x="20.32" y="-12.7" length="middle" direction="pwr" rot="R180"/>
@@ -390,7 +390,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <devices>
 <device name="" package="MODULE_POWER">
 <connects>
-<connect gate="G$1" pin="!SMBALERT#" pad="6"/>
+<connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDATA" pad="3"/>

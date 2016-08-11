@@ -2265,7 +2265,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-27.94" y1="40.64" x2="0" y2="40.64" width="0.254" layer="94"/>
 <text x="-22.86" y="43.18" size="1.778" layer="95" align="top-left">&gt;NAME</text>
 <text x="-22.86" y="-40.64" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="SMBALERT#" x="5.08" y="25.4" length="middle" rot="R180"/>
+<pin name="!SMBALERT" x="5.08" y="25.4" length="middle" rot="R180"/>
 <wire x1="-22.86" y1="40.64" x2="-22.86" y2="-38.1" width="0.254" layer="94" style="shortdash"/>
 <text x="-25.4" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
 </symbol>
@@ -2280,7 +2280,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="VCC_BACKPLANE" x="5.08" y="7.62" length="middle" rot="R180"/>
 <pin name="SMBDATA" x="5.08" y="2.54" length="middle" rot="R180"/>
 <pin name="SMBCLK" x="5.08" y="0" length="middle" rot="R180"/>
-<pin name="SMBALERT#" x="5.08" y="-2.54" length="middle" rot="R180"/>
+<pin name="!SMBALERT" x="5.08" y="-2.54" length="middle" rot="R180"/>
 <pin name="VCC_MOD0" x="5.08" y="-7.62" length="middle" rot="R180"/>
 <pin name="VCC_MOD1" x="5.08" y="-10.16" length="middle" rot="R180"/>
 <pin name="VCC_MOD2" x="5.08" y="-12.7" length="middle" rot="R180"/>
@@ -2584,7 +2584,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <connect gate="G$1" pin="MODULES_SCL" pad="24"/>
 <connect gate="G$1" pin="MODULES_SDA" pad="23"/>
 <connect gate="G$1" pin="PPS" pad="25"/>
-<connect gate="G$1" pin="SMBALERT#" pad="6"/>
+<connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDAT" pad="3"/>
 <connect gate="G$1" pin="USB_D+" pad="27"/>
@@ -2607,7 +2607,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <device name="" package="BACKPLANE_MODULE_20PIN">
 <connects>
 <connect gate="G$1" pin="GND" pad="1"/>
-<connect gate="G$1" pin="SMBALERT#" pad="6"/>
+<connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDATA" pad="3"/>
 <connect gate="G$1" pin="VBATT+" pad="17"/>
