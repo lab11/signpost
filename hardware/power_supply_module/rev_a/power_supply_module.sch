@@ -420,7 +420,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <attributes>
 <attribute name="AUTHOR" value="&lt;Your Name&gt;"/>
 <attribute name="REV" value="A"/>
-<attribute name="TITLE" value="&lt;Module Title&gt;"/>
+<attribute name="TITLE" value="Power Supply Module"/>
 </attributes>
 <variantdefs>
 </variantdefs>
