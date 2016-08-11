@@ -1855,8 +1855,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 <circle x="0" y="-27.94" radius="0.254" width="0" layer="49"/>
 <pad name="21" x="5.08" y="-26.67" drill="1.016" shape="square" rot="R180"/>
 <pad name="22" x="5.08" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
@@ -2001,8 +2001,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -2064,6 +2064,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="-4" y="-4" radius="0.2687" width="0" layer="21"/>
 <text x="-3.81" y="5.08" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-3.81" y="-6.35" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="2.54" size="0.3048" layer="47" font="vector" ratio="11">.055 / 1.4 high</text>
 </package>
 <package name="TSSOP-8">
 <smd name="2" x="-2.9" y="0.325" dx="1.5" dy="0.45" layer="1" roundness="10"/>
@@ -2081,6 +2082,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="-2.8" y="1.7" radius="0.14141875" width="0.127" layer="21"/>
 <text x="-2.2" y="1.8" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.2" y="-3" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="0" size="0.3048" layer="47" align="bottom-center">0.043 / 1.1 height</text>
 </package>
 <package name="MSOP-8EP">
 <smd name="8" x="-0.975" y="1.975" dx="0.45" dy="1.35" layer="1" roundness="10"/>
@@ -2099,6 +2101,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="-1.8" y="-1.7" radius="0.2" width="0" layer="21"/>
 <text x="-2.5" y="3" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.5" y="-4.5" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="-2.54" size="0.3048" layer="47" font="vector" ratio="11" rot="R90">0.043 / 1.1 height</text>
 </package>
 <package name="BACKPLANE_MODULE_14PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -2197,8 +2200,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="TDFN4">
 <text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
@@ -2213,40 +2216,40 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0.6" y1="-0.8" x2="-0.6" y2="-0.8" width="0.127" layer="21"/>
 <wire x1="-0.6" y1="-0.8" x2="-0.6" y2="0.8" width="0.127" layer="21"/>
 <circle x="-0.8" y="-1" radius="0.1" width="0.127" layer="21"/>
+<text x="0.635" y="-1.27" size="0.3048" layer="47" font="vector" ratio="11">.02 / .55 high</text>
 </package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
 <pin name="VCC_CONTROLLER" x="5.08" y="38.1" length="middle" rot="R180"/>
 <pin name="VCC_LINUX" x="5.08" y="35.56" length="middle" rot="R180"/>
-<pin name="GND" x="5.08" y="33.02" length="middle" rot="R180"/>
-<pin name="SMBDAT" x="5.08" y="27.94" length="middle" rot="R180"/>
-<pin name="SMBCLK" x="5.08" y="25.4" length="middle" rot="R180"/>
-<pin name="MOD0_EN" x="5.08" y="-5.08" length="middle" rot="R180"/>
-<pin name="MOD1_EN" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="MOD2_EN" x="5.08" y="-10.16" length="middle" rot="R180"/>
-<pin name="MOD5_EN" x="5.08" y="-12.7" length="middle" rot="R180"/>
-<pin name="MOD6_EN" x="5.08" y="-15.24" length="middle" rot="R180"/>
-<pin name="MOD7_EN" x="5.08" y="-17.78" length="middle" rot="R180"/>
-<pin name="USB_SUSPND_ST" x="5.08" y="12.7" length="middle" rot="R180"/>
-<pin name="MOD0_!INT" x="5.08" y="-22.86" length="middle" rot="R180"/>
-<pin name="MOD1_!INT" x="5.08" y="-25.4" length="middle" rot="R180"/>
-<pin name="MOD2_!INT" x="5.08" y="-27.94" length="middle" rot="R180"/>
-<pin name="MOD5_!INT" x="5.08" y="-30.48" length="middle" rot="R180"/>
-<pin name="MOD6_!INT" x="5.08" y="-33.02" length="middle" rot="R180"/>
-<pin name="MOD7_!INT" x="5.08" y="-35.56" length="middle" rot="R180"/>
-<pin name="MODULES_SDA" x="5.08" y="2.54" length="middle" rot="R180"/>
-<pin name="MODULES_SCL" x="5.08" y="0" length="middle" rot="R180"/>
-<pin name="USB_D+" x="5.08" y="10.16" length="middle" rot="R180"/>
-<pin name="USB_D-" x="5.08" y="7.62" length="middle" rot="R180"/>
-<pin name="PPS" x="5.08" y="17.78" length="middle" rot="R180"/>
+<pin name="GND" x="5.08" y="-35.56" length="middle" rot="R180"/>
+<pin name="SMBDAT" x="5.08" y="30.48" length="middle" rot="R180"/>
+<pin name="SMBCLK" x="5.08" y="27.94" length="middle" rot="R180"/>
+<pin name="MOD0_IN" x="5.08" y="0" length="middle" rot="R180"/>
+<pin name="MOD1_IN" x="5.08" y="-2.54" length="middle" rot="R180"/>
+<pin name="MOD2_IN" x="5.08" y="-5.08" length="middle" rot="R180"/>
+<pin name="MOD5_IN" x="5.08" y="-7.62" length="middle" rot="R180"/>
+<pin name="MOD6_IN" x="5.08" y="-10.16" length="middle" rot="R180"/>
+<pin name="MOD7_IN" x="5.08" y="-12.7" length="middle" rot="R180"/>
+<pin name="MOD0_!INT" x="5.08" y="-17.78" length="middle" rot="R180"/>
+<pin name="MOD1_!INT" x="5.08" y="-20.32" length="middle" rot="R180"/>
+<pin name="MOD2_!INT" x="5.08" y="-22.86" length="middle" rot="R180"/>
+<pin name="MOD5_!INT" x="5.08" y="-25.4" length="middle" rot="R180"/>
+<pin name="MOD6_!INT" x="5.08" y="-27.94" length="middle" rot="R180"/>
+<pin name="MOD7_!INT" x="5.08" y="-30.48" length="middle" rot="R180"/>
+<pin name="MODULES_SDA" x="5.08" y="7.62" length="middle" rot="R180"/>
+<pin name="MODULES_SCL" x="5.08" y="5.08" length="middle" rot="R180"/>
+<pin name="USB_D+" x="5.08" y="15.24" length="middle" rot="R180"/>
+<pin name="USB_D-" x="5.08" y="12.7" length="middle" rot="R180"/>
+<pin name="PPS" x="5.08" y="20.32" length="middle" rot="R180"/>
 <wire x1="0" y1="40.64" x2="0" y2="-38.1" width="0.254" layer="94"/>
 <wire x1="0" y1="-38.1" x2="-27.94" y2="-38.1" width="0.254" layer="94"/>
 <wire x1="-27.94" y1="-38.1" x2="-27.94" y2="40.64" width="0.254" layer="94"/>
 <wire x1="-27.94" y1="40.64" x2="0" y2="40.64" width="0.254" layer="94"/>
 <text x="-22.86" y="43.18" size="1.778" layer="95" align="top-left">&gt;NAME</text>
 <text x="-22.86" y="-40.64" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="SMBALERT#" x="5.08" y="22.86" length="middle" rot="R180"/>
+<pin name="SMBALERT#" x="5.08" y="25.4" length="middle" rot="R180"/>
 <wire x1="-22.86" y1="40.64" x2="-22.86" y2="-38.1" width="0.254" layer="94" style="shortdash"/>
 <text x="-25.4" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
 </symbol>
@@ -2488,18 +2491,18 @@ to VCC_B</text>
 <device name="" package="BACKPLANE_MODULE_20PIN_10PIN">
 <connects>
 <connect gate="G$1" pin="GND" pad="1 21"/>
-<connect gate="G$1" pin="MOD0_!INT" pad="8"/>
-<connect gate="G$1" pin="MOD0_EN" pad="7"/>
-<connect gate="G$1" pin="MOD1_!INT" pad="10"/>
-<connect gate="G$1" pin="MOD1_EN" pad="9"/>
-<connect gate="G$1" pin="MOD2_!INT" pad="12"/>
-<connect gate="G$1" pin="MOD2_EN" pad="11"/>
-<connect gate="G$1" pin="MOD5_!INT" pad="14"/>
-<connect gate="G$1" pin="MOD5_EN" pad="13"/>
-<connect gate="G$1" pin="MOD6_!INT" pad="16"/>
-<connect gate="G$1" pin="MOD6_EN" pad="15"/>
-<connect gate="G$1" pin="MOD7_!INT" pad="18"/>
-<connect gate="G$1" pin="MOD7_EN" pad="17"/>
+<connect gate="G$1" pin="MOD0_!INT" pad="10"/>
+<connect gate="G$1" pin="MOD0_IN" pad="9"/>
+<connect gate="G$1" pin="MOD1_!INT" pad="12"/>
+<connect gate="G$1" pin="MOD1_IN" pad="11"/>
+<connect gate="G$1" pin="MOD2_!INT" pad="14"/>
+<connect gate="G$1" pin="MOD2_IN" pad="13"/>
+<connect gate="G$1" pin="MOD5_!INT" pad="16"/>
+<connect gate="G$1" pin="MOD5_IN" pad="15"/>
+<connect gate="G$1" pin="MOD6_!INT" pad="18"/>
+<connect gate="G$1" pin="MOD6_IN" pad="17"/>
+<connect gate="G$1" pin="MOD7_!INT" pad="20"/>
+<connect gate="G$1" pin="MOD7_IN" pad="19"/>
 <connect gate="G$1" pin="MODULES_SCL" pad="24"/>
 <connect gate="G$1" pin="MODULES_SDA" pad="23"/>
 <connect gate="G$1" pin="PPS" pad="25"/>
@@ -2508,7 +2511,6 @@ to VCC_B</text>
 <connect gate="G$1" pin="SMBDAT" pad="3"/>
 <connect gate="G$1" pin="USB_D+" pad="27"/>
 <connect gate="G$1" pin="USB_D-" pad="28"/>
-<connect gate="G$1" pin="USB_SUSPND_ST" pad="26"/>
 <connect gate="G$1" pin="VCC_CONTROLLER" pad="2"/>
 <connect gate="G$1" pin="VCC_LINUX" pad="4"/>
 </connects>

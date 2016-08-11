@@ -264,8 +264,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 <circle x="0" y="-27.94" radius="0.254" width="0" layer="49"/>
 <pad name="21" x="5.08" y="-26.67" drill="1.016" shape="square" rot="R180"/>
 <pad name="22" x="5.08" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
@@ -410,8 +410,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -473,6 +473,7 @@
 <circle x="-4" y="-4" radius="0.2687" width="0" layer="21"/>
 <text x="-3.81" y="5.08" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-3.81" y="-6.35" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="2.54" size="0.3048" layer="47" font="vector" ratio="11">.055 / 1.4 high</text>
 </package>
 <package name="TSSOP-8">
 <smd name="2" x="-2.9" y="0.325" dx="1.5" dy="0.45" layer="1" roundness="10"/>
@@ -490,6 +491,7 @@
 <circle x="-2.8" y="1.7" radius="0.14141875" width="0.127" layer="21"/>
 <text x="-2.2" y="1.8" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.2" y="-3" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="0" size="0.3048" layer="47" align="bottom-center">0.043 / 1.1 height</text>
 </package>
 <package name="MSOP-8EP">
 <smd name="8" x="-0.975" y="1.975" dx="0.45" dy="1.35" layer="1" roundness="10"/>
@@ -508,6 +510,7 @@
 <circle x="-1.8" y="-1.7" radius="0.2" width="0" layer="21"/>
 <text x="-2.5" y="3" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-2.5" y="-4.5" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="-2.54" y="-2.54" size="0.3048" layer="47" font="vector" ratio="11" rot="R90">0.043 / 1.1 height</text>
 </package>
 <package name="BACKPLANE_MODULE_14PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -606,8 +609,8 @@
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
 <text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
-<text x="-0.635" y="33.655" size="0.8128" layer="49" align="bottom-right">0.126 / 3.20 below PCB</text>
-<text x="0.635" y="33.655" size="0.8128" layer="49">0.335 / 8.50 above PCB</text>
+<text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
+<text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="TDFN4">
 <text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
@@ -622,6 +625,7 @@
 <wire x1="0.6" y1="-0.8" x2="-0.6" y2="-0.8" width="0.127" layer="21"/>
 <wire x1="-0.6" y1="-0.8" x2="-0.6" y2="0.8" width="0.127" layer="21"/>
 <circle x="-0.8" y="-1" radius="0.1" width="0.127" layer="21"/>
+<text x="0.635" y="-1.27" size="0.3048" layer="47" font="vector" ratio="11">.02 / .55 high</text>
 </package>
 </packages>
 </library>
