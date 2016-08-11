@@ -1,6 +1,11 @@
 Signpost
 ========
 
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/solar_panel_on_signpost6_cropped.jpg" alt="Signpost" width="10%" align="left" />
+
+Modular city-scale sensing platform.
+
+
 Architecture
 ------------
 
