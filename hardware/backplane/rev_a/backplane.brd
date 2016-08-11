@@ -1982,6 +1982,42 @@ design rules under a new name.</description>
 <signal name="MOD5_5V">
 <contactref element="J5" pad="2"/>
 </signal>
+<signal name="MOD0_IN">
+<contactref element="J0" pad="10"/>
+</signal>
+<signal name="MOD0_OUT">
+<contactref element="J0" pad="8"/>
+</signal>
+<signal name="MOD1_IN">
+<contactref element="J1" pad="10"/>
+</signal>
+<signal name="MOD1_OUT">
+<contactref element="J1" pad="8"/>
+</signal>
+<signal name="MOD2_IN">
+<contactref element="J2" pad="10"/>
+</signal>
+<signal name="MOD2_OUT">
+<contactref element="J2" pad="8"/>
+</signal>
+<signal name="MOD6_IN">
+<contactref element="J6" pad="10"/>
+</signal>
+<signal name="MOD6_OUT">
+<contactref element="J6" pad="8"/>
+</signal>
+<signal name="MOD7_IN">
+<contactref element="J7" pad="10"/>
+</signal>
+<signal name="MOD7_OUT">
+<contactref element="J7" pad="8"/>
+</signal>
+<signal name="MOD5_IN">
+<contactref element="J5" pad="10"/>
+</signal>
+<signal name="MOD5_OUT">
+<contactref element="J5" pad="8"/>
+</signal>
 </signals>
 </board>
 </drawing>
