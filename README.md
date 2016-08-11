@@ -25,6 +25,17 @@ All in inches.
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/module_pcb_dimensions.png" width="50%" />
 </a>
 
+### Header Signals
+
+| Description                                 | Signal   | Pin |   | Pin | Signal   | Description                                                                         |
+|---------------------------------------------|----------|-----|---|-----|----------|-------------------------------------------------------------------------------------|
+|                                             | GND      | 1   |   | 2   | 5V       |                                                                                     |
+|                                             | Reserved | 3   |   | 4   | VCCIO    | I/O voltage the module uses. This must be fed by the module to set the I/O voltage. |
+| I²C clock line.                             | SCL      | 5   |   | 6   | SDA      | I²C data line.                                                                      |
+| Pulse per second. TODO: how is this driven? | PPS      | 7   |   | 8   | INT      | Interrupt line to the controller. Allows modules to signal the controller.          |
+|                                             | Reserved | 9   |   | 10  | Reserved |                                                                                     |
+| USB Data+ signal.                           | USB_D+   | 11  |   | 12  | USB_D-   | USB Data- signal.                                                                   |
+| USB bus voltage (5 V).                      | USB_VBUS | 13  |   | 14  | GND      | USB GND.                                                                            |
 
 TODO
 ----
