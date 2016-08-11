@@ -2,6 +2,7 @@ Signpost
 ========
 
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/solar_panel_on_signpost6_cropped.jpg" alt="Signpost" width="10%" align="left" />
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_in_ann_arbor.jpg" align="left" width="75%" />
 
 Modular city-scale sensing platform.
 
@@ -10,6 +11,7 @@ Architecture
 ------------
 
 <img src="http://www.gliffy.com/go/publish/image/10989855/L.png" />
+
 
 
 Creating a Module
