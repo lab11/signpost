@@ -12,6 +12,20 @@ Architecture
 <img src="http://www.gliffy.com/go/publish/image/10989855/L.png" />
 
 
+Creating a Module
+-----------------
+
+To create a module for the signpost, it must conform to the module specification.
+
+### Physical Dimensions
+
+All in inches.
+
+<a href="https://raw.githubusercontent.com/lab11/signpost/master/media/module_pcb_dimensions.png">
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/module_pcb_dimensions.png" width="50%" />
+</a>
+
+
 TODO
 ----
 
