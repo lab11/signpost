@@ -1708,7 +1708,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCCIO" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9195-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -1746,7 +1748,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC_LINUX" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9197-ND , S9194-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -1778,7 +1782,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VSOL-" pad="20"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -2076,7 +2082,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC_LINUX" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9172-ND , S9169-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -2118,6 +2126,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="MODULE_POWER" prefix="J">
+<description>Header for power module for signpost</description>
 <gates>
 <gate name="G$1" symbol="HEADER_POWER" x="0" y="0"/>
 </gates>
@@ -2143,7 +2152,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VSOL-" pad="20"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9172-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
