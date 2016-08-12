@@ -4093,27 +4093,42 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 **Supplied by module**</text>
 </symbol>
 <symbol name="SWITCH_HIGH_SIDE">
-<pin name="VSUPPLY" x="-12.7" y="2.54" length="middle"/>
+<pin name="VSUPP" x="-12.7" y="2.54" length="middle"/>
 <pin name="EN" x="-12.7" y="0" length="middle"/>
 <pin name="VLOAD" x="12.7" y="5.08" length="middle" rot="R180"/>
 <pin name="GND" x="12.7" y="0" length="middle" rot="R180"/>
-<wire x1="5.08" y1="2.54" x2="6.35" y2="5.08" width="0.127" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="6.096" y2="0" width="0.127" layer="94" style="shortdash"/>
 <wire x1="-7.62" y1="7.62" x2="7.62" y2="7.62" width="0.254" layer="94"/>
 <wire x1="7.62" y1="7.62" x2="7.62" y2="5.08" width="0.254" layer="94"/>
 <wire x1="7.62" y1="5.08" x2="7.62" y2="0" width="0.254" layer="94"/>
 <wire x1="7.62" y1="0" x2="7.62" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="7.62" y1="-2.54" x2="-7.62" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-2.54" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
-<circle x="5.08" y="2.54" radius="0.254" width="0" layer="94"/>
-<circle x="6.35" y="5.08" radius="0.254" width="0" layer="94"/>
-<circle x="6.35" y="0" radius="0.254" width="0.127" layer="94"/>
-<wire x1="-7.62" y1="2.54" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="2.54" x2="5.08" y2="2.54" width="0.127" layer="94"/>
-<wire x1="7.62" y1="5.08" x2="6.35" y2="5.08" width="0.127" layer="94"/>
-<wire x1="7.62" y1="0" x2="6.604" y2="0" width="0.127" layer="94"/>
+<circle x="6.35" y="1.27" radius="0.254" width="0" layer="94"/>
+<circle x="6.35" y="3.81" radius="0.254" width="0" layer="94"/>
+<circle x="4.318" y="2.54" radius="0.254" width="0.127" layer="94"/>
+<wire x1="-7.62" y1="-2.54" x2="-7.62" y2="0" width="0.254" layer="94"/>
 <text x="-7.62" y="8.128" size="1.778" layer="95">&gt;NAME</text>
 <text x="-7.62" y="-4.826" size="1.778" layer="96">&gt;VALUE</text>
+<wire x1="-7.62" y1="0" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="6.35" y1="3.81" x2="6.35" y2="1.524" width="0.127" layer="94"/>
+<wire x1="6.35" y1="3.81" x2="4.572" y2="2.794" width="0.127" layer="94" style="shortdash"/>
+<wire x1="6.35" y1="3.81" x2="6.35" y2="5.08" width="0.127" layer="94"/>
+<wire x1="6.35" y1="5.08" x2="7.62" y2="5.08" width="0.127" layer="94"/>
+<wire x1="6.35" y1="1.016" x2="6.35" y2="0" width="0.127" layer="94"/>
+<wire x1="6.35" y1="0" x2="7.62" y2="0" width="0.127" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-6.096" y2="2.54" width="0.127" layer="94"/>
+<wire x1="-6.096" y1="2.54" x2="-6.096" y2="3.556" width="0.127" layer="94"/>
+<wire x1="-6.096" y1="3.556" x2="3.302" y2="3.556" width="0.127" layer="94"/>
+<wire x1="3.302" y1="3.556" x2="4.064" y2="2.794" width="0.127" layer="94"/>
+<wire x1="6.096" y1="2.032" x2="5.08" y2="2.794" width="0.127" layer="94" curve="-32.680555"/>
+<wire x1="5.08" y1="2.794" x2="5.08" y2="2.286" width="0.127" layer="94"/>
+<wire x1="5.08" y1="2.794" x2="5.588" y2="2.794" width="0.127" layer="94"/>
+<wire x1="-7.62" y1="0" x2="-6.096" y2="0" width="0.127" layer="94"/>
+<wire x1="-6.096" y1="0" x2="-6.096" y2="1.016" width="0.127" layer="94"/>
+<wire x1="-6.096" y1="1.016" x2="4.318" y2="1.016" width="0.127" layer="94"/>
+<wire x1="4.318" y1="1.016" x2="5.08" y2="1.778" width="0.127" layer="94"/>
+<wire x1="5.08" y1="1.778" x2="4.572" y2="1.778" width="0.127" layer="94"/>
+<wire x1="5.08" y1="1.778" x2="5.08" y2="1.27" width="0.127" layer="94"/>
 </symbol>
 <symbol name="OPEN_DRAIN_BUFFER_REPEATER-2">
 <pin name="VCC_A" x="-7.62" y="7.62" length="short"/>
@@ -4480,13 +4495,15 @@ Low A &lt;- B</text>
 <devices>
 <device name="" package="TDFN4">
 <connects>
-<connect gate="G$1" pin="EN" pad="4"/>
+<connect gate="G$1" pin="EN" pad="3"/>
 <connect gate="G$1" pin="GND" pad="2 PAD"/>
-<connect gate="G$1" pin="VLOAD" pad="1"/>
-<connect gate="G$1" pin="VSUPPLY" pad="3"/>
+<connect gate="G$1" pin="VLOAD" pad="4"/>
+<connect gate="G$1" pin="VSUPP" pad="1"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="SIP32402ADNP-T1GE4CT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -5052,6 +5069,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="GND44" library="umich" deviceset="GND" device=""/>
 <part name="GND45" library="umich" deviceset="GND" device=""/>
 <part name="GND46" library="umich" deviceset="GND" device=""/>
+<part name="GND47" library="umich" deviceset="GND" device=""/>
+<part name="GND48" library="umich" deviceset="GND" device=""/>
+<part name="GND49" library="umich" deviceset="GND" device=""/>
+<part name="GND50" library="umich" deviceset="GND" device=""/>
+<part name="GND51" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5565,11 +5587,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="R35" gate="G$1" x="45.72" y="177.8" rot="R180"/>
 <instance part="R36" gate="G$1" x="45.72" y="162.56" rot="R180"/>
 <instance part="S1" gate="G$1" x="210.82" y="154.94"/>
-<instance part="S2" gate="G$1" x="210.82" y="114.3"/>
-<instance part="S3" gate="G$1" x="210.82" y="96.52"/>
-<instance part="S4" gate="G$1" x="210.82" y="76.2"/>
-<instance part="S5" gate="G$1" x="210.82" y="53.34"/>
-<instance part="S6" gate="G$1" x="210.82" y="35.56"/>
+<instance part="S2" gate="G$1" x="210.82" y="134.62"/>
+<instance part="S3" gate="G$1" x="210.82" y="116.84"/>
+<instance part="S4" gate="G$1" x="210.82" y="99.06"/>
+<instance part="S5" gate="G$1" x="210.82" y="81.28"/>
+<instance part="S6" gate="G$1" x="210.82" y="63.5"/>
 <instance part="GND18" gate="1" x="226.06" y="149.86"/>
 <instance part="R37" gate="G$1" x="45.72" y="147.32" rot="R180"/>
 <instance part="R38" gate="G$1" x="45.72" y="132.08" rot="R180"/>
@@ -5599,6 +5621,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="GND21" gate="1" x="40.64" y="66.04"/>
 <instance part="GND22" gate="1" x="40.64" y="35.56"/>
 <instance part="GND23" gate="1" x="40.64" y="5.08"/>
+<instance part="GND47" gate="1" x="226.06" y="129.54"/>
+<instance part="GND48" gate="1" x="226.06" y="111.76"/>
+<instance part="GND49" gate="1" x="226.06" y="93.98"/>
+<instance part="GND50" gate="1" x="226.06" y="76.2"/>
+<instance part="GND51" gate="1" x="226.06" y="58.42"/>
 </instances>
 <busses>
 </busses>
@@ -5646,10 +5673,40 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="38.1" y1="162.56" x2="40.64" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="162.56" x2="40.64" y2="160.02" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="S6" gate="G$1" pin="GND"/>
+<pinref part="GND51" gate="1" pin="GND"/>
+<wire x1="223.52" y1="63.5" x2="226.06" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="63.5" x2="226.06" y2="60.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="S5" gate="G$1" pin="GND"/>
+<pinref part="GND50" gate="1" pin="GND"/>
+<wire x1="223.52" y1="81.28" x2="226.06" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="81.28" x2="226.06" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="S4" gate="G$1" pin="GND"/>
+<pinref part="GND49" gate="1" pin="GND"/>
+<wire x1="223.52" y1="99.06" x2="226.06" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="99.06" x2="226.06" y2="96.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="S3" gate="G$1" pin="GND"/>
+<pinref part="GND48" gate="1" pin="GND"/>
+<wire x1="223.52" y1="116.84" x2="226.06" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="116.84" x2="226.06" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="S2" gate="G$1" pin="GND"/>
+<wire x1="226.06" y1="134.62" x2="223.52" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="GND47" gate="1" pin="GND"/>
+<wire x1="226.06" y1="134.62" x2="226.06" y2="132.08" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="MOD0_5V_METERED" class="0">
 <segment>
-<pinref part="S1" gate="G$1" pin="VSUPPLY"/>
+<pinref part="S1" gate="G$1" pin="VSUPP"/>
 <wire x1="198.12" y1="157.48" x2="195.58" y2="157.48" width="0.1524" layer="91"/>
 <label x="195.58" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -6029,6 +6086,111 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="U$6" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="22.86" y1="22.86" x2="17.78" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="22.86" x2="17.78" y2="25.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="MOD1_5V" class="0">
+<segment>
+<pinref part="S2" gate="G$1" pin="VLOAD"/>
+<wire x1="226.06" y1="139.7" x2="223.52" y2="139.7" width="0.1524" layer="91"/>
+<label x="226.06" y="139.7" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_5V_METERED" class="0">
+<segment>
+<pinref part="S2" gate="G$1" pin="VSUPP"/>
+<wire x1="195.58" y1="137.16" x2="198.12" y2="137.16" width="0.1524" layer="91"/>
+<label x="195.58" y="137.16" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_ISO_POWER" class="0">
+<segment>
+<pinref part="S2" gate="G$1" pin="EN"/>
+<wire x1="195.58" y1="134.62" x2="198.12" y2="134.62" width="0.1524" layer="91"/>
+<label x="195.58" y="134.62" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD2_5V_METERED" class="0">
+<segment>
+<pinref part="S3" gate="G$1" pin="VSUPP"/>
+<wire x1="195.58" y1="119.38" x2="198.12" y2="119.38" width="0.1524" layer="91"/>
+<label x="195.58" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD2_ISO_POWER" class="0">
+<segment>
+<pinref part="S3" gate="G$1" pin="EN"/>
+<wire x1="195.58" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
+<label x="195.58" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD5_5V_METERED" class="0">
+<segment>
+<pinref part="S4" gate="G$1" pin="VSUPP"/>
+<wire x1="195.58" y1="101.6" x2="198.12" y2="101.6" width="0.1524" layer="91"/>
+<label x="195.58" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD5_ISO_POWER" class="0">
+<segment>
+<pinref part="S4" gate="G$1" pin="EN"/>
+<wire x1="195.58" y1="99.06" x2="198.12" y2="99.06" width="0.1524" layer="91"/>
+<label x="195.58" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD6_5V_METERED" class="0">
+<segment>
+<pinref part="S5" gate="G$1" pin="VSUPP"/>
+<wire x1="195.58" y1="83.82" x2="198.12" y2="83.82" width="0.1524" layer="91"/>
+<label x="195.58" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD6_ISO_POWER" class="0">
+<segment>
+<pinref part="S5" gate="G$1" pin="EN"/>
+<wire x1="195.58" y1="81.28" x2="198.12" y2="81.28" width="0.1524" layer="91"/>
+<label x="195.58" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD7_5V_METERED" class="0">
+<segment>
+<pinref part="S6" gate="G$1" pin="VSUPP"/>
+<wire x1="195.58" y1="66.04" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
+<label x="195.58" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD7_ISO_POWER" class="0">
+<segment>
+<pinref part="S6" gate="G$1" pin="EN"/>
+<wire x1="195.58" y1="63.5" x2="198.12" y2="63.5" width="0.1524" layer="91"/>
+<label x="195.58" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD2_5V" class="0">
+<segment>
+<pinref part="S3" gate="G$1" pin="VLOAD"/>
+<wire x1="226.06" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
+<label x="226.06" y="121.92" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD5_5V" class="0">
+<segment>
+<pinref part="S4" gate="G$1" pin="VLOAD"/>
+<wire x1="226.06" y1="104.14" x2="223.52" y2="104.14" width="0.1524" layer="91"/>
+<label x="226.06" y="104.14" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD6_5V" class="0">
+<segment>
+<pinref part="S5" gate="G$1" pin="VLOAD"/>
+<wire x1="226.06" y1="86.36" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
+<label x="226.06" y="86.36" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD7_5V" class="0">
+<segment>
+<pinref part="S6" gate="G$1" pin="VLOAD"/>
+<wire x1="226.06" y1="68.58" x2="223.52" y2="68.58" width="0.1524" layer="91"/>
+<label x="226.06" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
