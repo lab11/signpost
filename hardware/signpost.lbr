@@ -1121,7 +1121,7 @@
 <pin name="VCC_CONTROLLER" x="17.78" y="35.56" length="middle" rot="R180"/>
 <pin name="VCC_LINUX" x="17.78" y="33.02" length="middle" rot="R180"/>
 <pin name="GND" x="17.78" y="-38.1" length="middle" rot="R180"/>
-<pin name="SMBDAT" x="17.78" y="27.94" length="middle" rot="R180"/>
+<pin name="SMBDATA" x="17.78" y="27.94" length="middle" rot="R180"/>
 <pin name="SMBCLK" x="17.78" y="25.4" length="middle" rot="R180"/>
 <pin name="MOD0_IN" x="17.78" y="-2.54" length="middle" rot="R180"/>
 <pin name="MOD1_IN" x="17.78" y="-5.08" length="middle" rot="R180"/>
@@ -1811,7 +1811,7 @@ S high: D = D2</text>
 <connect gate="G$1" pin="MODULES_SDA" pad="23"/>
 <connect gate="G$1" pin="PPS" pad="25"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
-<connect gate="G$1" pin="SMBDAT" pad="3"/>
+<connect gate="G$1" pin="SMBDATA" pad="3"/>
 <connect gate="G$1" pin="USB_D+" pad="27"/>
 <connect gate="G$1" pin="USB_D-" pad="28"/>
 <connect gate="G$1" pin="VCC_CONTROLLER" pad="2"/>
@@ -2145,7 +2145,7 @@ S high: D = D2</text>
 <connect gate="G$1" pin="MODULES_SDA" pad="23"/>
 <connect gate="G$1" pin="PPS" pad="25"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
-<connect gate="G$1" pin="SMBDAT" pad="3"/>
+<connect gate="G$1" pin="SMBDATA" pad="3"/>
 <connect gate="G$1" pin="USB_D+" pad="27"/>
 <connect gate="G$1" pin="USB_D-" pad="28"/>
 <connect gate="G$1" pin="VCC_CONTROLLER" pad="2"/>
