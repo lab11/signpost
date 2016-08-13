@@ -3994,15 +3994,15 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="VCC_MOD6" x="20.32" y="-17.78" length="middle" direction="pwr" rot="R180"/>
 <pin name="VCC_MOD7" x="20.32" y="-20.32" length="middle" direction="pwr" rot="R180"/>
 <wire x1="15.24" y1="27.94" x2="15.24" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-27.94" x2="-15.24" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-27.94" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="27.94" x2="-10.16" y2="27.94" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-27.94" x2="-12.7" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-27.94" x2="-12.7" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="27.94" x2="-7.62" y2="27.94" width="0.254" layer="94"/>
 <text x="-10.16" y="30.48" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-30.48" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
-<wire x1="-10.16" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
-<text x="-12.7" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
+<wire x1="-7.62" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
+<text x="-10.16" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
 </symbol>
 <symbol name="TUSB2077A">
 <pin name="XTAL1" x="-17.78" y="-10.16" length="middle"/>
