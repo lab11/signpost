@@ -1221,6 +1221,7 @@ design rules under a new name.</description>
 <element name="R74" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-685.8"/>
 <element name="R75" library="passives" package="0603-RES" value="10MΩ" x="-219.71" y="-685.8"/>
 <element name="R76" library="passives" package="0603-RES" value="10MΩ" x="-215.9" y="-685.8"/>
+<element name="R77" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-689.61"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1405,6 +1406,7 @@ design rules under a new name.</description>
 <contactref element="J4" pad="1"/>
 <contactref element="J3" pad="21"/>
 <contactref element="J3" pad="1"/>
+<contactref element="R77" pad="1"/>
 <wire x1="-80.66" y1="-170.18" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-166.37" x2="-80.66" y2="-170.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-162.56" x2="-80.66" y2="-166.37" width="0" layer="19" extent="1-1"/>
@@ -1584,6 +1586,7 @@ design rules under a new name.</description>
 <wire x1="-216.55" y1="-685.8" x2="-213.36" y2="-679.2722" width="0" layer="19" extent="1-1"/>
 <wire x1="-220.36" y1="-685.8" x2="-216.55" y2="-685.8" width="0" layer="19" extent="1-1"/>
 <wire x1="-224.17" y1="-685.8" x2="-220.36" y2="-685.8" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-689.61" x2="-224.17" y2="-685.8" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD6_D-_HUB-SW">
 <contactref element="D3" pad="6"/>
@@ -2863,11 +2866,15 @@ design rules under a new name.</description>
 <contactref element="U29" pad="6"/>
 <contactref element="U30" pad="6"/>
 <contactref element="U31" pad="6"/>
+<contactref element="J3" pad="22"/>
+<contactref element="R77" pad="2"/>
 <wire x1="-217.17" y1="-618.3122" x2="-217.17" y2="-538.3022" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-633.5522" x2="-217.17" y2="-618.3122" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-648.7922" x2="-217.17" y2="-633.5522" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-664.0322" x2="-217.17" y2="-648.7922" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-679.2722" x2="-217.17" y2="-664.0322" width="0" layer="19" extent="1-1"/>
+<wire x1="-222.87" y1="-689.61" x2="-217.17" y2="-679.2722" width="0" layer="19" extent="1-1"/>
+<wire x1="212.8774" y1="209.7278" x2="-217.17" y2="-538.3022" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="!SMBALERT">
 <contactref element="J3" pad="6"/>

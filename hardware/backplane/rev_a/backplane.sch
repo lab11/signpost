@@ -3943,8 +3943,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
-<pin name="VCC_CONTROLLER" x="17.78" y="35.56" length="middle" rot="R180"/>
-<pin name="VCC_LINUX" x="17.78" y="33.02" length="middle" rot="R180"/>
+<pin name="VCC_CONTROLLER" x="17.78" y="38.1" length="middle" rot="R180"/>
+<pin name="VCC_LINUX" x="17.78" y="35.56" length="middle" rot="R180"/>
 <pin name="GND" x="17.78" y="-38.1" length="middle" rot="R180"/>
 <pin name="SMBDATA" x="17.78" y="27.94" length="middle" rot="R180"/>
 <pin name="SMBCLK" x="17.78" y="25.4" length="middle" rot="R180"/>
@@ -3965,15 +3965,18 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="USB_D+" x="17.78" y="12.7" length="middle" rot="R180"/>
 <pin name="USB_D-" x="17.78" y="10.16" length="middle" rot="R180"/>
 <pin name="PPS" x="17.78" y="17.78" length="middle" rot="R180"/>
-<wire x1="12.7" y1="38.1" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-40.64" x2="-15.24" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-40.64" x2="-15.24" y2="38.1" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="38.1" x2="12.7" y2="38.1" width="0.254" layer="94"/>
-<text x="-10.16" y="40.64" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<wire x1="12.7" y1="40.64" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-40.64" x2="-17.78" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-40.64" x2="-17.78" y2="40.64" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="40.64" x2="-12.7" y2="40.64" width="0.254" layer="94"/>
+<text x="-10.16" y="43.18" size="1.778" layer="95" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-43.18" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="!SMBALERT" x="17.78" y="22.86" length="middle" rot="R180"/>
-<wire x1="-10.16" y1="38.1" x2="-10.16" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
-<text x="-12.7" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<wire x1="-12.7" y1="40.64" x2="12.7" y2="40.64" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
+<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<pin name="!BACKPLANE_RESET" x="17.78" y="33.02" length="middle" rot="R180"/>
 </symbol>
 <symbol name="HEADER_POWER">
 <pin name="VSOL+" x="20.32" y="25.4" length="middle" direction="pwr" rot="R180"/>
@@ -3994,15 +3997,15 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="VCC_MOD6" x="20.32" y="-17.78" length="middle" direction="pwr" rot="R180"/>
 <pin name="VCC_MOD7" x="20.32" y="-20.32" length="middle" direction="pwr" rot="R180"/>
 <wire x1="15.24" y1="27.94" x2="15.24" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-27.94" x2="-12.7" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-27.94" x2="-12.7" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="27.94" x2="-7.62" y2="27.94" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-27.94" x2="-15.24" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-27.94" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="27.94" x2="-10.16" y2="27.94" width="0.254" layer="94"/>
 <text x="-10.16" y="30.48" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-30.48" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
-<wire x1="-7.62" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
-<text x="-10.16" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
+<wire x1="-10.16" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
+<text x="-12.7" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
 </symbol>
 <symbol name="TUSB2077A">
 <pin name="XTAL1" x="-17.78" y="-10.16" length="middle"/>
@@ -4435,6 +4438,7 @@ S high: D = D2</text>
 <devices>
 <device name="" package="BACKPLANE_MODULE_20PIN_10PIN">
 <connects>
+<connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
@@ -5417,6 +5421,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="U$40" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U$41" library="signpost" deviceset="VCC_LINUX" device=""/>
 <part name="U$42" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="R77" library="passives" deviceset="RESISTOR" device="" value="10MΩ"/>
+<part name="GND72" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5428,13 +5434,15 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
 <instance part="J3" gate="G$1" x="50.8" y="137.16"/>
 <instance part="J4" gate="G$1" x="48.26" y="58.42"/>
-<instance part="U$38" gate="G$1" x="71.12" y="175.26"/>
-<instance part="U$39" gate="G$1" x="78.74" y="175.26"/>
+<instance part="U$38" gate="G$1" x="71.12" y="177.8"/>
+<instance part="U$39" gate="G$1" x="78.74" y="177.8"/>
 <instance part="GND70" gate="1" x="88.9" y="91.44"/>
 <instance part="GND71" gate="1" x="78.74" y="25.4"/>
 <instance part="U$40" gate="G$1" x="86.36" y="73.66"/>
 <instance part="U$41" gate="G$1" x="93.98" y="73.66"/>
 <instance part="U$42" gate="G$1" x="101.6" y="73.66"/>
+<instance part="R77" gate="G$1" x="96.52" y="165.1" rot="R90"/>
+<instance part="GND72" gate="1" x="96.52" y="154.94"/>
 </instances>
 <busses>
 </busses>
@@ -5443,8 +5451,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <segment>
 <pinref part="J3" gate="G$1" pin="VCC_CONTROLLER"/>
 <pinref part="U$38" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="68.58" y1="172.72" x2="71.12" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="172.72" x2="71.12" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="175.26" x2="71.12" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="175.26" x2="71.12" y2="177.8" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_CONTROLLER"/>
@@ -5457,8 +5465,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <segment>
 <pinref part="J3" gate="G$1" pin="VCC_LINUX"/>
 <pinref part="U$39" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="68.58" y1="170.18" x2="78.74" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="170.18" x2="78.74" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="172.72" x2="78.74" y2="172.72" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="172.72" x2="78.74" y2="177.8" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_LINUX"/>
@@ -5635,6 +5643,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="68.58" y1="99.06" x2="88.9" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="99.06" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND72" gate="1" pin="GND"/>
+<pinref part="R77" gate="G$1" pin="1"/>
+<wire x1="96.52" y1="157.48" x2="96.52" y2="160.02" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VSOL+" class="0">
 <segment>
@@ -5712,6 +5725,17 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="J4" gate="G$1" pin="VCC_MOD7"/>
 <wire x1="71.12" y1="38.1" x2="68.58" y2="38.1" width="0.1524" layer="91"/>
 <label x="71.12" y="38.1" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="!BACKPLANE_RESET" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="!BACKPLANE_RESET"/>
+<wire x1="68.58" y1="170.18" x2="96.52" y2="170.18" width="0.1524" layer="91"/>
+<label x="104.14" y="170.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="R77" gate="G$1" pin="2"/>
+<wire x1="96.52" y1="170.18" x2="104.14" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="167.64" x2="96.52" y2="170.18" width="0.1524" layer="91"/>
+<junction x="96.52" y="170.18"/>
 </segment>
 </net>
 </nets>

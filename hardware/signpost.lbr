@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -1118,8 +1118,8 @@
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
-<pin name="VCC_CONTROLLER" x="17.78" y="35.56" length="middle" rot="R180"/>
-<pin name="VCC_LINUX" x="17.78" y="33.02" length="middle" rot="R180"/>
+<pin name="VCC_CONTROLLER" x="17.78" y="38.1" length="middle" rot="R180"/>
+<pin name="VCC_LINUX" x="17.78" y="35.56" length="middle" rot="R180"/>
 <pin name="GND" x="17.78" y="-38.1" length="middle" rot="R180"/>
 <pin name="SMBDATA" x="17.78" y="27.94" length="middle" rot="R180"/>
 <pin name="SMBCLK" x="17.78" y="25.4" length="middle" rot="R180"/>
@@ -1140,15 +1140,18 @@
 <pin name="USB_D+" x="17.78" y="12.7" length="middle" rot="R180"/>
 <pin name="USB_D-" x="17.78" y="10.16" length="middle" rot="R180"/>
 <pin name="PPS" x="17.78" y="17.78" length="middle" rot="R180"/>
-<wire x1="12.7" y1="38.1" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-40.64" x2="-15.24" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-40.64" x2="-15.24" y2="38.1" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="38.1" x2="12.7" y2="38.1" width="0.254" layer="94"/>
-<text x="-10.16" y="40.64" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<wire x1="12.7" y1="40.64" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-40.64" x2="-17.78" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-40.64" x2="-17.78" y2="40.64" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="40.64" x2="-12.7" y2="40.64" width="0.254" layer="94"/>
+<text x="-10.16" y="43.18" size="1.778" layer="95" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-43.18" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="!SMBALERT" x="17.78" y="22.86" length="middle" rot="R180"/>
-<wire x1="-10.16" y1="38.1" x2="-10.16" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
-<text x="-12.7" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<wire x1="-12.7" y1="40.64" x2="12.7" y2="40.64" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
+<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<pin name="!BACKPLANE_RESET" x="17.78" y="33.02" length="middle" rot="R180"/>
 </symbol>
 <symbol name="HEADER_MODULE">
 <pin name="5V" x="12.7" y="20.32" length="middle" rot="R180"/>
@@ -1190,15 +1193,15 @@
 <pin name="VCC_MOD6" x="20.32" y="-17.78" length="middle" direction="pwr" rot="R180"/>
 <pin name="VCC_MOD7" x="20.32" y="-20.32" length="middle" direction="pwr" rot="R180"/>
 <wire x1="15.24" y1="27.94" x2="15.24" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-27.94" x2="-12.7" y2="-27.94" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-27.94" x2="-12.7" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="27.94" x2="-7.62" y2="27.94" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-27.94" x2="-15.24" y2="-27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-27.94" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="27.94" x2="-10.16" y2="27.94" width="0.254" layer="94"/>
 <text x="-10.16" y="30.48" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-30.48" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
-<wire x1="-7.62" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="27.94" x2="-7.62" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
-<text x="-10.16" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
+<wire x1="-10.16" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
+<text x="-12.7" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
 </symbol>
 <symbol name="LM3544-L">
 <pin name="GND1" x="2.54" y="-17.78" length="middle" rot="R90"/>
@@ -1793,6 +1796,7 @@ S high: D = D2</text>
 <devices>
 <device name="" package="BACKPLANE_MODULE_20PIN_10PIN">
 <connects>
+<connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
@@ -2127,6 +2131,7 @@ S high: D = D2</text>
 <devices>
 <device name="" package="MODULE_CONTROLLER">
 <connects>
+<connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
