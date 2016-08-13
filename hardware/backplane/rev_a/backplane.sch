@@ -5423,11 +5423,19 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="U$42" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="R77" library="passives" deviceset="RESISTOR" device="" value="10MΩ"/>
 <part name="GND72" library="umich" deviceset="GND" device=""/>
+<part name="R78" library="passives" deviceset="RESISTOR" device="" value="10kΩ"/>
+<part name="R79" library="passives" deviceset="RESISTOR" device="" value="10kΩ"/>
+<part name="R80" library="passives" deviceset="RESISTOR" device="" value="10kΩ"/>
+<part name="U$43" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="U$44" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="R81" library="passives" deviceset="RESISTOR" device="" value="10kΩ"/>
+<part name="R82" library="passives" deviceset="RESISTOR" device="" value="10kΩ"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Special Modules</text>
+<text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -5441,8 +5449,15 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="U$40" gate="G$1" x="86.36" y="73.66"/>
 <instance part="U$41" gate="G$1" x="93.98" y="73.66"/>
 <instance part="U$42" gate="G$1" x="101.6" y="73.66"/>
-<instance part="R77" gate="G$1" x="96.52" y="165.1" rot="R90"/>
-<instance part="GND72" gate="1" x="96.52" y="154.94"/>
+<instance part="R77" gate="G$1" x="162.56" y="160.02" rot="R90"/>
+<instance part="GND72" gate="1" x="162.56" y="149.86"/>
+<instance part="R78" gate="G$1" x="147.32" y="129.54" rot="R90"/>
+<instance part="R79" gate="G$1" x="154.94" y="127" rot="R90"/>
+<instance part="R80" gate="G$1" x="162.56" y="124.46" rot="R90"/>
+<instance part="U$43" gate="G$1" x="162.56" y="137.16"/>
+<instance part="U$44" gate="G$1" x="162.56" y="106.68"/>
+<instance part="R81" gate="G$1" x="154.94" y="99.06" rot="R90"/>
+<instance part="R82" gate="G$1" x="162.56" y="96.52" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -5486,6 +5501,12 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="71.12" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
 <label x="71.12" y="60.96" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R78" gate="G$1" pin="1"/>
+<wire x1="147.32" y1="124.46" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="121.92" x2="144.78" y2="121.92" width="0.1524" layer="91"/>
+<label x="144.78" y="121.92" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="SMBCLK" class="0">
 <segment>
@@ -5498,6 +5519,12 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="71.12" y1="58.42" x2="68.58" y2="58.42" width="0.1524" layer="91"/>
 <label x="71.12" y="58.42" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R79" gate="G$1" pin="1"/>
+<wire x1="144.78" y1="119.38" x2="154.94" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="119.38" x2="154.94" y2="121.92" width="0.1524" layer="91"/>
+<label x="144.78" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="!SMBALERT" class="0">
 <segment>
@@ -5509,6 +5536,12 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="J4" gate="G$1" pin="!SMBALERT"/>
 <wire x1="71.12" y1="55.88" x2="68.58" y2="55.88" width="0.1524" layer="91"/>
 <label x="71.12" y="55.88" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R80" gate="G$1" pin="1"/>
+<wire x1="144.78" y1="116.84" x2="162.56" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="116.84" x2="162.56" y2="119.38" width="0.1524" layer="91"/>
+<label x="144.78" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PPS" class="0">
@@ -5538,12 +5571,24 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="71.12" y1="142.24" x2="68.58" y2="142.24" width="0.1524" layer="91"/>
 <label x="71.12" y="142.24" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R81" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="93.98" x2="154.94" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="91.44" x2="152.4" y2="91.44" width="0.1524" layer="91"/>
+<label x="152.4" y="91.44" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="MOD_SCL" class="0">
 <segment>
 <pinref part="J3" gate="G$1" pin="MODULES_SCL"/>
 <wire x1="71.12" y1="139.7" x2="68.58" y2="139.7" width="0.1524" layer="91"/>
 <label x="71.12" y="139.7" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R82" gate="G$1" pin="1"/>
+<wire x1="162.56" y1="91.44" x2="162.56" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="88.9" x2="152.4" y2="88.9" width="0.1524" layer="91"/>
+<label x="152.4" y="88.9" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="CONT_MOD0_IN" class="0">
@@ -5646,7 +5691,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <segment>
 <pinref part="GND72" gate="1" pin="GND"/>
 <pinref part="R77" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="157.48" x2="96.52" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="152.4" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
@@ -5683,6 +5728,30 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="U$42" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="68.58" y1="66.04" x2="101.6" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="66.04" x2="101.6" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R80" gate="G$1" pin="2"/>
+<pinref part="U$43" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="162.56" y1="127" x2="162.56" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R79" gate="G$1" pin="2"/>
+<wire x1="162.56" y1="134.62" x2="162.56" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="129.54" x2="154.94" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="134.62" x2="162.56" y2="134.62" width="0.1524" layer="91"/>
+<junction x="162.56" y="134.62"/>
+<pinref part="R78" gate="G$1" pin="2"/>
+<wire x1="154.94" y1="134.62" x2="147.32" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="134.62" x2="147.32" y2="132.08" width="0.1524" layer="91"/>
+<junction x="154.94" y="134.62"/>
+</segment>
+<segment>
+<pinref part="R82" gate="G$1" pin="2"/>
+<pinref part="U$44" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="162.56" y1="99.06" x2="162.56" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="R81" gate="G$1" pin="2"/>
+<wire x1="162.56" y1="104.14" x2="162.56" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="104.14" x2="154.94" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="104.14" x2="154.94" y2="101.6" width="0.1524" layer="91"/>
+<junction x="162.56" y="104.14"/>
 </segment>
 </net>
 <net name="MOD0_5V_METERED" class="0">
@@ -5730,12 +5799,14 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
 <pinref part="J3" gate="G$1" pin="!BACKPLANE_RESET"/>
-<wire x1="68.58" y1="170.18" x2="96.52" y2="170.18" width="0.1524" layer="91"/>
-<label x="104.14" y="170.18" size="1.27" layer="95" xref="yes"/>
+<wire x1="68.58" y1="170.18" x2="71.12" y2="170.18" width="0.1524" layer="91"/>
+<label x="71.12" y="170.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
 <pinref part="R77" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="170.18" x2="104.14" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="167.64" x2="96.52" y2="170.18" width="0.1524" layer="91"/>
-<junction x="96.52" y="170.18"/>
+<wire x1="162.56" y1="162.56" x2="162.56" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="165.1" x2="160.02" y2="165.1" width="0.1524" layer="91"/>
+<label x="160.02" y="165.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
