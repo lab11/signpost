@@ -8672,10 +8672,11 @@ Backplane &lt;-- Module</text>
 </segment>
 <segment>
 <pinref part="U18" gate="G$1" pin="VCC_B"/>
-<wire x1="157.48" y1="60.96" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
 <label x="157.48" y="60.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="157.48" y1="60.96" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="C63" gate="G$1" pin="1"/>
 <wire x1="154.94" y1="60.96" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="60.96" x2="154.94" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="58.42" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
 <junction x="154.94" y="60.96"/>
 </segment>
 </net>
@@ -9882,7 +9883,7 @@ EECLK must be NC</text>
 <wire x1="2.54" y1="139.7" x2="2.54" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="USB_!RESET" class="0">
+<net name="!BACKPLANE_RESET" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!RESET"/>
 <wire x1="38.1" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
@@ -10273,98 +10274,94 @@ EECLK must be NC</text>
 <busses>
 </busses>
 <nets>
-<net name="MOD0_VBUS" class="0">
+<net name="MOD0_USB_VBUS" class="0">
 <segment>
 <wire x1="180.34" y1="167.64" x2="190.5" y2="167.64" width="0.1524" layer="91"/>
 <label x="200.66" y="167.64" size="1.27" layer="95" xref="yes"/>
-<pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="167.64" x2="198.12" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="167.64" x2="200.66" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="165.1" x2="198.12" y2="167.64" width="0.1524" layer="91"/>
-<junction x="198.12" y="167.64"/>
 <pinref part="S13" gate="G$1" pin="OUT"/>
 <pinref part="C65" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="167.64" x2="200.66" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="165.1" x2="190.5" y2="167.64" width="0.1524" layer="91"/>
 <junction x="190.5" y="167.64"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="167.64" x2="198.12" y2="165.1" width="0.1524" layer="91"/>
+<junction x="198.12" y="167.64"/>
 </segment>
 </net>
-<net name="MOD1_VBUS" class="0">
+<net name="MOD1_USB_VBUS" class="0">
 <segment>
 <label x="200.66" y="142.24" size="1.27" layer="95" xref="yes"/>
 <wire x1="180.34" y1="142.24" x2="190.5" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="142.24" x2="198.12" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="142.24" x2="200.66" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="139.7" x2="198.12" y2="142.24" width="0.1524" layer="91"/>
-<junction x="198.12" y="142.24"/>
 <pinref part="S14" gate="G$1" pin="OUT"/>
 <pinref part="C66" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="142.24" x2="200.66" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="139.7" x2="190.5" y2="142.24" width="0.1524" layer="91"/>
 <junction x="190.5" y="142.24"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="139.7" x2="198.12" y2="142.24" width="0.1524" layer="91"/>
+<junction x="198.12" y="142.24"/>
 </segment>
 </net>
-<net name="MOD2_VBUS" class="0">
+<net name="MOD2_USB_VBUS" class="0">
 <segment>
 <label x="200.66" y="116.84" size="1.27" layer="95" xref="yes"/>
 <wire x1="180.34" y1="116.84" x2="190.5" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="114.3" x2="198.12" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="114.3" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
-<junction x="198.12" y="116.84"/>
 <pinref part="S15" gate="G$1" pin="OUT"/>
 <pinref part="C67" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="114.3" x2="190.5" y2="116.84" width="0.1524" layer="91"/>
 <junction x="190.5" y="116.84"/>
+<pinref part="C3" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="114.3" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
+<junction x="198.12" y="116.84"/>
 </segment>
 </net>
-<net name="MOD5_VBUS" class="0">
+<net name="MOD5_USB_VBUS" class="0">
 <segment>
 <label x="200.66" y="91.44" size="1.27" layer="95" xref="yes"/>
 <wire x1="180.34" y1="91.44" x2="190.5" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="91.44" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="91.44" x2="200.66" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="88.9" x2="198.12" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="88.9" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
-<junction x="198.12" y="91.44"/>
 <pinref part="S16" gate="G$1" pin="OUT"/>
 <pinref part="C68" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="91.44" x2="200.66" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="88.9" x2="190.5" y2="91.44" width="0.1524" layer="91"/>
 <junction x="190.5" y="91.44"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="88.9" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
+<junction x="198.12" y="91.44"/>
 </segment>
 </net>
-<net name="MOD6_VBUS" class="0">
+<net name="MOD6_USB_VBUS" class="0">
 <segment>
 <label x="200.66" y="66.04" size="1.27" layer="95" xref="yes"/>
 <wire x1="180.34" y1="66.04" x2="190.5" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="66.04" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="66.04" x2="200.66" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="63.5" x2="198.12" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="63.5" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
-<junction x="198.12" y="66.04"/>
 <pinref part="S17" gate="G$1" pin="OUT"/>
 <pinref part="C69" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="66.04" x2="200.66" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="63.5" x2="190.5" y2="66.04" width="0.1524" layer="91"/>
 <junction x="190.5" y="66.04"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="63.5" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
+<junction x="198.12" y="66.04"/>
 </segment>
 </net>
-<net name="MOD7_VBUS" class="0">
+<net name="MOD7_USB_VBUS" class="0">
 <segment>
 <label x="200.66" y="40.64" size="1.27" layer="95" xref="yes"/>
 <wire x1="180.34" y1="40.64" x2="190.5" y2="40.64" width="0.1524" layer="91"/>
-<pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="40.64" x2="198.12" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="40.64" x2="200.66" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="38.1" x2="198.12" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="38.1" x2="198.12" y2="40.64" width="0.1524" layer="91"/>
-<junction x="198.12" y="40.64"/>
 <pinref part="S18" gate="G$1" pin="OUT"/>
 <pinref part="C70" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="40.64" x2="200.66" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="38.1" x2="190.5" y2="40.64" width="0.1524" layer="91"/>
 <junction x="190.5" y="40.64"/>
+<pinref part="C6" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="38.1" x2="198.12" y2="40.64" width="0.1524" layer="91"/>
+<junction x="198.12" y="40.64"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -10950,6 +10947,15 @@ EECLK must be NC</text>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="115,1,124.356,92.606,FRAME1,,,,,"/>
+<approved hash="115,2,124.356,92.606,FRAME2,,,,,"/>
+<approved hash="115,6,124.356,92.606,FRAME3,,,,,"/>
+<approved hash="115,4,124.356,92.606,FRAME4,,,,,"/>
+<approved hash="115,5,124.356,92.606,FRAME5,,,,,"/>
+<approved hash="115,7,124.356,92.606,FRAME6,,,,,"/>
+<approved hash="115,3,124.356,92.606,FRAME7,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

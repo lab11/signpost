@@ -1955,15 +1955,6 @@ design rules under a new name.</description>
 <wire x1="0.91" y1="-27.645" x2="-79.36" y2="-67.31" width="0" layer="19" extent="1-1"/>
 <wire x1="-190.87" y1="-455.53" x2="-79.36" y2="-74.93" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="MOD0_VBUS">
-<contactref element="C1" pad="1"/>
-<contactref element="S13" pad="6"/>
-<contactref element="S13" pad="7"/>
-<contactref element="C65" pad="1"/>
-<wire x1="-230.195" y1="-884.485" x2="-275.59" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-229.545" y1="-884.485" x2="-230.195" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-55.88" y1="-25.12" x2="-275.59" y2="-887.45" width="0" layer="19" extent="1-1"/>
-</signal>
 <signal name="MOD0_USB_!PWR">
 <contactref element="U1" pad="11"/>
 <contactref element="S7" pad="1"/>
@@ -2119,51 +2110,6 @@ design rules under a new name.</description>
 <contactref element="U1" pad="22"/>
 <wire x1="-80.66" y1="-78.74" x2="-80.66" y2="-86.36" width="0" layer="19" extent="1-1"/>
 <wire x1="130.03" y1="253.21" x2="-80.66" y2="-78.74" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOD1_VBUS">
-<contactref element="C2" pad="1"/>
-<contactref element="S14" pad="6"/>
-<contactref element="S14" pad="7"/>
-<contactref element="C66" pad="1"/>
-<wire x1="-237.815" y1="-884.485" x2="-280.67" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-237.165" y1="-884.485" x2="-237.815" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-60.96" y1="-25.12" x2="-280.67" y2="-887.45" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOD2_VBUS">
-<contactref element="C3" pad="1"/>
-<contactref element="S15" pad="6"/>
-<contactref element="S15" pad="7"/>
-<contactref element="C67" pad="1"/>
-<wire x1="-245.435" y1="-884.485" x2="-285.75" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-244.785" y1="-884.485" x2="-245.435" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-66.04" y1="-25.12" x2="-285.75" y2="-887.45" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOD5_VBUS">
-<contactref element="C4" pad="1"/>
-<contactref element="S16" pad="6"/>
-<contactref element="S16" pad="7"/>
-<contactref element="C68" pad="1"/>
-<wire x1="-253.055" y1="-884.485" x2="-290.83" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-252.405" y1="-884.485" x2="-253.055" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-71.12" y1="-25.12" x2="-290.83" y2="-887.45" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOD6_VBUS">
-<contactref element="C5" pad="1"/>
-<contactref element="S17" pad="6"/>
-<contactref element="S17" pad="7"/>
-<contactref element="C69" pad="1"/>
-<wire x1="-260.675" y1="-884.485" x2="-295.91" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-260.025" y1="-884.485" x2="-260.675" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-76.2" y1="-25.12" x2="-295.91" y2="-887.45" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOD7_VBUS">
-<contactref element="C6" pad="1"/>
-<contactref element="S18" pad="6"/>
-<contactref element="S18" pad="7"/>
-<contactref element="C70" pad="1"/>
-<wire x1="-268.295" y1="-884.485" x2="-300.99" y2="-887.45" width="0" layer="19" extent="1-1"/>
-<wire x1="-267.645" y1="-884.485" x2="-268.295" y2="-884.485" width="0" layer="19" extent="1-1"/>
-<wire x1="-81.28" y1="-25.12" x2="-300.99" y2="-887.45" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$7">
 <contactref element="U1" pad="3"/>
@@ -2398,9 +2344,6 @@ design rules under a new name.</description>
 <wire x1="126.48" y1="247.16" x2="121.43" y2="249.21" width="0" layer="19" extent="1-1"/>
 <wire x1="126.98" y1="247.16" x2="126.48" y2="247.16" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="USB_!RESET">
-<contactref element="U1" pad="6"/>
-</signal>
 <signal name="USB_SUSPEND_STATUS">
 <contactref element="U1" pad="1"/>
 </signal>
@@ -2461,6 +2404,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD1_USB_VBUS">
 <contactref element="J1" pad="13"/>
+<contactref element="S14" pad="6"/>
+<contactref element="S14" pad="7"/>
+<contactref element="C66" pad="1"/>
+<contactref element="C2" pad="1"/>
+<wire x1="-237.815" y1="-884.485" x2="-280.67" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-237.165" y1="-884.485" x2="-237.815" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="38.5826" y1="365.0234" x2="-280.67" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-60.96" y1="-25.12" x2="38.5826" y2="365.0234" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD2_5V">
 <contactref element="J2" pad="2"/>
@@ -2500,6 +2451,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD2_USB_VBUS">
 <contactref element="J2" pad="13"/>
+<contactref element="S15" pad="6"/>
+<contactref element="S15" pad="7"/>
+<contactref element="C67" pad="1"/>
+<contactref element="C3" pad="1"/>
+<wire x1="-245.435" y1="-884.485" x2="-285.75" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-244.785" y1="-884.485" x2="-245.435" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="-66.04" y1="-25.12" x2="-285.75" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="38.5826" y1="268.1478" x2="-66.04" y2="-25.12" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD0_VCCIO">
 <contactref element="J0" pad="4"/>
@@ -2594,6 +2553,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD0_USB_VBUS">
 <contactref element="J0" pad="13"/>
+<contactref element="S13" pad="6"/>
+<contactref element="S13" pad="7"/>
+<contactref element="C65" pad="1"/>
+<contactref element="C1" pad="1"/>
+<wire x1="-230.195" y1="-884.485" x2="-275.59" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-229.545" y1="-884.485" x2="-230.195" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="-55.88" y1="-25.12" x2="-275.59" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="200.1774" y1="365.0234" x2="-55.88" y2="-25.12" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD0_USB+">
 <contactref element="J0" pad="11"/>
@@ -2620,11 +2587,13 @@ design rules under a new name.</description>
 <contactref element="U18" pad="8"/>
 <contactref element="U6" pad="8"/>
 <contactref element="C57" pad="1"/>
+<contactref element="C63" pad="1"/>
 <wire x1="-94.63" y1="-383.54" x2="-102.25" y2="-389.89" width="0" layer="19" extent="1-1"/>
 <wire x1="-100.73" y1="-436.255" x2="-102.25" y2="-389.89" width="0" layer="19" extent="1-1"/>
 <wire x1="-140.45" y1="-440.41" x2="-100.73" y2="-436.255" width="0" layer="19" extent="1-1"/>
 <wire x1="-186.17" y1="-440.41" x2="-140.45" y2="-440.41" width="0" layer="19" extent="1-1"/>
 <wire x1="-224.17" y1="-864.87" x2="-186.17" y2="-440.41" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-887.73" x2="-224.17" y2="-864.87" width="0" layer="19" extent="1-1"/>
 <wire x1="51.2826" y1="71.8566" x2="-94.63" y2="-383.54" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD6_PPS">
@@ -2648,6 +2617,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD6_USB_VBUS">
 <contactref element="J6" pad="13"/>
+<contactref element="S17" pad="6"/>
+<contactref element="S17" pad="7"/>
+<contactref element="C69" pad="1"/>
+<contactref element="C5" pad="1"/>
+<wire x1="-260.675" y1="-884.485" x2="-295.91" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-260.025" y1="-884.485" x2="-260.675" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="38.5826" y1="74.3966" x2="-295.91" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-76.2" y1="-25.12" x2="38.5826" y2="74.3966" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD6_USB+">
 <contactref element="J6" pad="11"/>
@@ -2671,6 +2648,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD7_USB_VBUS">
 <contactref element="J7" pad="13"/>
+<contactref element="S18" pad="6"/>
+<contactref element="S18" pad="7"/>
+<contactref element="C70" pad="1"/>
+<contactref element="C6" pad="1"/>
+<wire x1="-268.295" y1="-884.485" x2="-300.99" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-267.645" y1="-884.485" x2="-268.295" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="-81.28" y1="-25.12" x2="-300.99" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="200.1774" y1="74.3966" x2="-81.28" y2="-25.12" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD7_SCL">
 <contactref element="J7" pad="5"/>
@@ -2727,6 +2712,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD5_USB_VBUS">
 <contactref element="J5" pad="13"/>
+<contactref element="S16" pad="6"/>
+<contactref element="S16" pad="7"/>
+<contactref element="C68" pad="1"/>
+<contactref element="C4" pad="1"/>
+<wire x1="-253.055" y1="-884.485" x2="-290.83" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-252.405" y1="-884.485" x2="-253.055" y2="-884.485" width="0" layer="19" extent="1-1"/>
+<wire x1="200.1774" y1="171.2722" x2="-290.83" y2="-887.45" width="0" layer="19" extent="1-1"/>
+<wire x1="-71.12" y1="-25.12" x2="200.1774" y2="171.2722" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD5_SCL">
 <contactref element="J5" pad="5"/>
@@ -3255,6 +3248,7 @@ design rules under a new name.</description>
 <contactref element="U31" pad="6"/>
 <contactref element="J3" pad="22"/>
 <contactref element="R77" pad="2"/>
+<contactref element="U1" pad="6"/>
 <wire x1="-217.17" y1="-618.3122" x2="-217.17" y2="-538.3022" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-633.5522" x2="-217.17" y2="-618.3122" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.17" y1="-648.7922" x2="-217.17" y2="-633.5522" width="0" layer="19" extent="1-1"/>
@@ -3262,6 +3256,7 @@ design rules under a new name.</description>
 <wire x1="-217.17" y1="-679.2722" x2="-217.17" y2="-664.0322" width="0" layer="19" extent="1-1"/>
 <wire x1="-222.87" y1="-689.61" x2="-217.17" y2="-679.2722" width="0" layer="19" extent="1-1"/>
 <wire x1="212.8774" y1="209.7278" x2="-217.17" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+<wire x1="125.48" y1="247.16" x2="212.8774" y2="209.7278" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="!SMBALERT">
 <contactref element="J3" pad="6"/>
