@@ -471,8 +471,8 @@
 <wire x1="-3" y1="-3.5" x2="-3.5" y2="-3" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="-3" x2="-3.5" y2="3" width="0.127" layer="21"/>
 <circle x="-4" y="-4" radius="0.2687" width="0" layer="21"/>
-<text x="-3.81" y="5.08" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-3.81" y="-6.35" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="5.08" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-6.35" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="-2.54" y="2.54" size="0.3048" layer="47" font="vector" ratio="11">.055 / 1.4 high</text>
 </package>
 <package name="TSSOP-8">
@@ -489,8 +489,8 @@
 <wire x1="2.2" y1="-1.5" x2="-2.2" y2="-1.5" width="0.127" layer="21"/>
 <wire x1="-2.2" y1="-1.5" x2="-2.2" y2="1.5" width="0.127" layer="21"/>
 <circle x="-2.8" y="1.7" radius="0.14141875" width="0.127" layer="21"/>
-<text x="-2.2" y="1.8" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-2.2" y="-3" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.81" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="0" y="0" size="0.3048" layer="47" align="bottom-center">0.043 / 1.1 height</text>
 </package>
 <package name="MSOP-8EP">
@@ -508,8 +508,8 @@
 <wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.127" layer="21"/>
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.8" y="-1.7" radius="0.2" width="0" layer="21"/>
-<text x="-2.5" y="3" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-2.5" y="-4.5" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0.04" y="3" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0.04" y="-4.5" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="-2.54" y="-2.54" size="0.3048" layer="47" font="vector" ratio="11" rot="R90">0.043 / 1.1 height</text>
 </package>
 <package name="BACKPLANE_MODULE_14PIN">
@@ -613,8 +613,8 @@
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
 </package>
 <package name="TDFN4">
-<text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-1.27" y="-2.54" size="1.016" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <smd name="1" x="-0.25" y="-0.725" dx="0.3" dy="0.55" layer="1"/>
 <smd name="2" x="0.25" y="-0.725" dx="0.3" dy="0.55" layer="1"/>
 <smd name="3" x="0.25" y="0.725" dx="0.3" dy="0.55" layer="1"/>
@@ -646,8 +646,8 @@
 <vertex x="-0.37" y="0"/>
 <vertex x="-0.5" y="0.13"/>
 </polygon>
-<text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-1.27" y="-2.54" size="1.016" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="-1.27" y="-1.27" size="0.254" layer="47" font="vector" ratio="12" rot="R90">.02 / .5 high</text>
 </package>
 <package name="VFSOP-8">
@@ -664,8 +664,8 @@
 <wire x1="1" y1="-1.15" x2="-1" y2="-1.15" width="0.127" layer="21"/>
 <wire x1="-1" y1="-1.15" x2="-1" y2="1.15" width="0.127" layer="21"/>
 <circle x="-1.5" y="-1" radius="0.2" width="0" layer="21"/>
-<text x="-1.27" y="2.54" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-1.27" y="-3.81" size="1.016" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.81" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="-1.27" y="-2.54" size="0.4064" layer="47" font="vector" ratio="12" rot="R90">.03 / .75 high</text>
 </package>
 <package name="UQFN-10">
@@ -706,8 +706,39 @@
 <wire x1="1" y1="0.625" x2="-1" y2="0.625" width="0.127" layer="21"/>
 <circle x="-1.5" y="-1" radius="0.2" width="0" layer="21"/>
 <text x="-0.762" y="0" size="0.2" layer="47" ratio="12">.39 / 1.0 high</text>
-<text x="-1" y="1.5" size="0.4" layer="25" font="vector" ratio="12">&gt;NAME</text>
-<text x="-1" y="-2" size="0.4" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+</package>
+<package name="SOIC-18">
+<smd name="15" x="-1.27" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="16" x="-2.54" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="17" x="-3.81" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="18" x="-5.08" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="1" x="-5.08" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="2" x="-3.81" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="3" x="-2.54" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="4" x="-1.27" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="5" x="0" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="6" x="1.27" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="7" x="2.54" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="8" x="3.81" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="11" x="3.81" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="12" x="2.54" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="13" x="1.27" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="14" x="0" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<wire x1="-5.775" y1="1.9558" x2="-5.775" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-1.27" x2="-5.775" y2="-1.9558" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-1.9558" x2="5.775" y2="-1.9558" width="0.127" layer="21"/>
+<wire x1="5.775" y1="-1.9558" x2="5.775" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="5.775" y1="-1.27" x2="5.775" y2="1.9558" width="0.127" layer="21"/>
+<wire x1="5.775" y1="1.9558" x2="-5.775" y2="1.9558" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-1.27" x2="5.775" y2="-1.27" width="0.127" layer="21" style="shortdash"/>
+<circle x="-6.35" y="-2.54" radius="0.508" width="0" layer="21"/>
+<text x="0" y="3.81" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-5.08" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<text x="-4.445" y="0" size="0.3048" layer="47" font="vector" ratio="11">0.104 / 2.65 high</text>
+<smd name="10" x="5.08" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="9" x="5.08" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
 </package>
 </packages>
 </library>
@@ -966,8 +997,12 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="J3" library="signpost" package="BACKPLANE_MODULE_20PIN_10PIN" value="BACKPLANE_CONTROLLER_MODULE" x="207.7974" y="238.9378"/>
-<element name="J4" library="signpost" package="BACKPLANE_MODULE_20PIN" value="BACKPLANE_POWER_MODULE" x="46.2026" y="142.0622"/>
+<element name="J3" library="signpost" package="BACKPLANE_MODULE_20PIN_10PIN" value="BACKPLANE_CONTROLLER_MODULE" x="207.7974" y="238.9378">
+<attribute name="DIGIKEY" value="S9197-ND , S9194-ND" x="207.7974" y="238.9378" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J4" library="signpost" package="BACKPLANE_MODULE_20PIN" value="BACKPLANE_POWER_MODULE" x="46.2026" y="142.0622">
+<attribute name="DIGIKEY" value="S9197-ND" x="46.2026" y="142.0622" size="1.778" layer="27" display="off"/>
+</element>
 <element name="U1" library="signpost" package="LQFP-48" value="TUSB2077A" x="125.73" y="251.46">
 <attribute name="DIGIKEY" value="296-37871-1-ND" x="125.73" y="251.46" size="1.778" layer="27" display="off"/>
 </element>
@@ -1066,12 +1101,24 @@ design rules under a new name.</description>
 <element name="C21" library="passives" package="0603_CAP" value="22pF, 5% tol" x="-88.9" y="-189.23"/>
 <element name="C22" library="passives" package="0603_CAP" value="22pF, 5% tol" x="-88.9" y="-193.04"/>
 <element name="R28" library="passives" package="0603-RES" value="1.5kΩ" x="-88.9" y="-196.85"/>
-<element name="J1" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="335.8134"/>
-<element name="J2" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="238.9378"/>
-<element name="J0" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="335.8134"/>
-<element name="J6" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="45.1866"/>
-<element name="J7" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="45.1866"/>
-<element name="J5" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="142.0622"/>
+<element name="J1" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="335.8134">
+<attribute name="DIGIKEY" value="S9195-ND" x="46.2026" y="335.8134" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J2" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="238.9378">
+<attribute name="DIGIKEY" value="S9195-ND" x="46.2026" y="238.9378" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J0" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="335.8134">
+<attribute name="DIGIKEY" value="S9195-ND" x="207.7974" y="335.8134" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J6" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="46.2026" y="45.1866">
+<attribute name="DIGIKEY" value="S9195-ND" x="46.2026" y="45.1866" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J7" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="45.1866">
+<attribute name="DIGIKEY" value="S9195-ND" x="207.7974" y="45.1866" size="1.778" layer="27" display="off"/>
+</element>
+<element name="J5" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="142.0622">
+<attribute name="DIGIKEY" value="S9195-ND" x="207.7974" y="142.0622" size="1.778" layer="27" display="off"/>
+</element>
 <element name="R29" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-200.66"/>
 <element name="R30" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-204.47"/>
 <element name="R31" library="passives" package="0603-RES" value="10kΩ" x="-96.52" y="-208.28"/>
@@ -1150,6 +1197,14 @@ design rules under a new name.</description>
 <element name="S10" library="signpost" package="SC70-6" value="NC7SZ157" x="-214.63" y="-527.05"/>
 <element name="S11" library="signpost" package="SC70-6" value="NC7SZ157" x="-218.44" y="-527.05"/>
 <element name="S12" library="signpost" package="SC70-6" value="NC7SZ157" x="-222.25" y="-527.05"/>
+<element name="U26" library="signpost" package="SOIC-18" value="MCP23008" x="-218.44" y="-535.94"/>
+<element name="R59" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-601.98"/>
+<element name="R60" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-605.79"/>
+<element name="R61" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-609.6"/>
+<element name="U27" library="signpost" package="SOIC-18" value="MCP23008" x="-218.44" y="-615.95"/>
+<element name="R62" library="passives" package="0603-RES" value="10MΩ" x="-223.52" y="-624.84"/>
+<element name="R63" library="passives" package="0603-RES" value="10MΩ" x="-219.71" y="-624.84"/>
+<element name="R64" library="passives" package="0603-RES" value="10MΩ" x="-215.9" y="-624.84"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1234,7 +1289,6 @@ design rules under a new name.</description>
 <contactref element="J7" pad="1"/>
 <contactref element="J5" pad="14"/>
 <contactref element="J5" pad="1"/>
-<contactref element="J4" pad="1"/>
 <contactref element="U7" pad="4"/>
 <contactref element="U6" pad="4"/>
 <contactref element="U5" pad="4"/>
@@ -1298,6 +1352,21 @@ design rules under a new name.</description>
 <contactref element="S10" pad="2"/>
 <contactref element="S11" pad="2"/>
 <contactref element="S12" pad="2"/>
+<contactref element="J4" pad="1"/>
+<contactref element="U26" pad="3"/>
+<contactref element="U26" pad="4"/>
+<contactref element="U26" pad="5"/>
+<contactref element="U26" pad="9"/>
+<contactref element="R59" pad="1"/>
+<contactref element="R60" pad="1"/>
+<contactref element="R61" pad="1"/>
+<contactref element="U27" pad="3"/>
+<contactref element="U27" pad="4"/>
+<contactref element="U27" pad="5"/>
+<contactref element="U27" pad="9"/>
+<contactref element="R62" pad="1"/>
+<contactref element="R63" pad="1"/>
+<contactref element="R64" pad="1"/>
 <wire x1="-80.66" y1="-170.18" x2="-80.66" y2="-173.99" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-166.37" x2="-80.66" y2="-170.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.66" y1="-162.56" x2="-80.66" y2="-166.37" width="0" layer="19" extent="1-1"/>
@@ -1436,6 +1505,20 @@ design rules under a new name.</description>
 <wire x1="-214.63" y1="-528" x2="-210.82" y2="-528" width="0" layer="19" extent="1-1"/>
 <wire x1="-218.44" y1="-528" x2="-214.63" y2="-528" width="0" layer="19" extent="1-1"/>
 <wire x1="-222.25" y1="-528" x2="-218.44" y2="-528" width="0" layer="19" extent="1-1"/>
+<wire x1="-218.44" y1="-538.3022" x2="-218.44" y2="-528" width="0" layer="19" extent="1-1"/>
+<wire x1="-219.71" y1="-538.3022" x2="-218.44" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+<wire x1="-220.98" y1="-538.3022" x2="-219.71" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+<wire x1="-213.36" y1="-538.3022" x2="-218.44" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-601.98" x2="-220.98" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-605.79" x2="-224.17" y2="-601.98" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-609.6" x2="-224.17" y2="-605.79" width="0" layer="19" extent="1-1"/>
+<wire x1="-220.98" y1="-618.3122" x2="-224.17" y2="-609.6" width="0" layer="19" extent="1-1"/>
+<wire x1="-219.71" y1="-618.3122" x2="-220.98" y2="-618.3122" width="0" layer="19" extent="1-1"/>
+<wire x1="-218.44" y1="-618.3122" x2="-219.71" y2="-618.3122" width="0" layer="19" extent="1-1"/>
+<wire x1="-213.36" y1="-618.3122" x2="-218.44" y2="-618.3122" width="0" layer="19" extent="1-1"/>
+<wire x1="-220.36" y1="-624.84" x2="-220.98" y2="-618.3122" width="0" layer="19" extent="1-1"/>
+<wire x1="-224.17" y1="-624.84" x2="-220.36" y2="-624.84" width="0" layer="19" extent="1-1"/>
+<wire x1="-216.55" y1="-624.84" x2="-220.36" y2="-624.84" width="0" layer="19" extent="1-1"/>
 <wire x1="200.1774" y1="168.7322" x2="127.48" y2="247.16" width="0" layer="19" extent="1-1"/>
 <wire x1="215.4174" y1="171.2722" x2="200.1774" y2="168.7322" width="0" layer="19" extent="1-1"/>
 <wire x1="215.4174" y1="74.3966" x2="200.1774" y2="168.7322" width="0" layer="19" extent="1-1"/>
@@ -1819,7 +1902,6 @@ design rules under a new name.</description>
 <contactref element="R32" pad="2"/>
 <contactref element="R33" pad="2"/>
 <contactref element="R34" pad="2"/>
-<contactref element="J4" pad="13"/>
 <contactref element="U2" pad="1"/>
 <contactref element="U3" pad="1"/>
 <contactref element="U4" pad="1"/>
@@ -1862,7 +1944,11 @@ design rules under a new name.</description>
 <contactref element="S10" pad="3"/>
 <contactref element="S11" pad="3"/>
 <contactref element="S12" pad="3"/>
-<wire x1="-221.6" y1="-528" x2="-222.25" y2="-526.1" width="0" layer="19" extent="1-1"/>
+<contactref element="J4" pad="13"/>
+<contactref element="U26" pad="18"/>
+<contactref element="U27" pad="18"/>
+<wire x1="-221.6" y1="-528" x2="-223.52" y2="-533.5778" width="0" layer="19" extent="1-1"/>
+<wire x1="-222.25" y1="-526.1" x2="-221.6" y2="-528" width="0" layer="19" extent="1-1"/>
 <wire x1="-218.44" y1="-526.1" x2="-221.6" y2="-528" width="0" layer="19" extent="1-1"/>
 <wire x1="-217.79" y1="-528" x2="-218.44" y2="-526.1" width="0" layer="19" extent="1-1"/>
 <wire x1="-214.63" y1="-526.1" x2="-217.79" y2="-528" width="0" layer="19" extent="1-1"/>
@@ -1903,6 +1989,7 @@ design rules under a new name.</description>
 <wire x1="-100.88" y1="-424.18" x2="-100.88" y2="-430.53" width="0" layer="19" extent="1-1"/>
 <wire x1="-100.88" y1="-417.83" x2="-100.88" y2="-424.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-100.88" y1="-411.48" x2="-100.88" y2="-417.83" width="0" layer="19" extent="1-1"/>
+<wire x1="-223.52" y1="-613.5878" x2="-223.52" y2="-533.5778" width="0" layer="19" extent="1-1"/>
 <wire x1="-95.87" y1="-219.71" x2="-100.88" y2="-411.48" width="0" layer="19" extent="1-1"/>
 <wire x1="-95.87" y1="-215.9" x2="-95.87" y2="-219.71" width="0" layer="19" extent="1-1"/>
 <wire x1="-95.87" y1="-212.09" x2="-95.87" y2="-215.9" width="0" layer="19" extent="1-1"/>
@@ -2060,6 +2147,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD0_ISO_POWER">
 <contactref element="S1" pad="3"/>
+<contactref element="R59" pad="2"/>
+<contactref element="U26" pad="10"/>
+<contactref element="R62" pad="2"/>
+<contactref element="U27" pad="10"/>
+<wire x1="-222.87" y1="-601.98" x2="-213.36" y2="-533.5778" width="0" layer="19" extent="1-1"/>
+<wire x1="-213.36" y1="-613.5878" x2="-222.87" y2="-601.98" width="0" layer="19" extent="1-1"/>
+<wire x1="-222.87" y1="-624.84" x2="-213.36" y2="-613.5878" width="0" layer="19" extent="1-1"/>
+<wire x1="-96.27" y1="-276.135" x2="-213.36" y2="-533.5778" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD0_5V">
 <contactref element="S1" pad="4"/>
@@ -2314,6 +2409,14 @@ design rules under a new name.</description>
 </signal>
 <signal name="MOD0_ISO_I2C">
 <contactref element="U2" pad="5"/>
+<contactref element="R60" pad="2"/>
+<contactref element="U26" pad="11"/>
+<contactref element="R63" pad="2"/>
+<contactref element="U27" pad="11"/>
+<wire x1="-222.87" y1="-605.79" x2="-214.63" y2="-533.5778" width="0" layer="19" extent="1-1"/>
+<wire x1="-214.63" y1="-613.5878" x2="-222.87" y2="-605.79" width="0" layer="19" extent="1-1"/>
+<wire x1="-219.06" y1="-624.84" x2="-214.63" y2="-613.5878" width="0" layer="19" extent="1-1"/>
+<wire x1="-99.78" y1="-411.48" x2="-214.63" y2="-533.5778" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD_SCL">
 <contactref element="U2" pad="3"/>
@@ -2498,6 +2601,14 @@ design rules under a new name.</description>
 <signal name="MOD0_ISO_USB">
 <contactref element="U20" pad="8"/>
 <contactref element="S7" pad="6"/>
+<contactref element="U26" pad="12"/>
+<contactref element="R61" pad="2"/>
+<contactref element="U27" pad="12"/>
+<contactref element="R64" pad="2"/>
+<wire x1="-203.85" y1="-526.1" x2="-215.9" y2="-533.5778" width="0" layer="19" extent="1-1"/>
+<wire x1="-222.87" y1="-609.6" x2="-215.9" y2="-533.5778" width="0" layer="19" extent="1-1"/>
+<wire x1="-215.9" y1="-613.5878" x2="-222.87" y2="-609.6" width="0" layer="19" extent="1-1"/>
+<wire x1="-215.25" y1="-624.84" x2="-215.9" y2="-613.5878" width="0" layer="19" extent="1-1"/>
 <wire x1="-191.4" y1="-449.18" x2="-203.85" y2="-526.1" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD1_ISO_USB">
@@ -2554,6 +2665,21 @@ design rules under a new name.</description>
 <contactref element="USB-S1" pad="4"/>
 <contactref element="S8" pad="4"/>
 <wire x1="-12.995" y1="-26.105" x2="-206.36" y2="-526.1" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="SMBDAT">
+<contactref element="U26" pad="2"/>
+<contactref element="U27" pad="2"/>
+<wire x1="-222.25" y1="-618.3122" x2="-222.25" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="SMBCLK">
+<contactref element="U26" pad="1"/>
+<contactref element="U27" pad="1"/>
+<wire x1="-223.52" y1="-618.3122" x2="-223.52" y2="-538.3022" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="!BACKPLANE_RESET">
+<contactref element="U26" pad="6"/>
+<contactref element="U27" pad="6"/>
+<wire x1="-217.17" y1="-618.3122" x2="-217.17" y2="-538.3022" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>
