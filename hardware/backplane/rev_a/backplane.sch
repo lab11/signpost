@@ -3788,7 +3788,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-33.0581" y1="-37.7571" x2="-38.7731" y2="-32.0421" width="1.905" layer="21" curve="-90"/>
 <wire x1="-38.7731" y1="-32.0421" x2="-38.7731" y2="32.0421" width="1.905" layer="21"/>
 <wire x1="-38.7731" y1="32.0421" x2="-33.0581" y2="37.7571" width="1.905" layer="21" curve="-90"/>
-<text x="-16.51" y="-30.48" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-35.56" y="-31.75" size="2.54" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 <text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
@@ -4801,6 +4801,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="AP2401MP" prefix="S">
+<description>USB Power Switch</description>
 <gates>
 <gate name="G$1" symbol="USB_POWER_SWITCH" x="-2.54" y="0"/>
 </gates>
@@ -5136,10 +5137,10 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="J4" library="signpost" deviceset="BACKPLANE_POWER_MODULE" device=""/>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L" device=""/>
 <part name="U1" library="signpost" deviceset="TUSB2077A" device=""/>
-<part name="D1" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D2" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D3" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D4" library="signpost" deviceset="SN75240-TSSOP" device=""/>
+<part name="D1" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
 <attribute name="DIGIKEY" value="1276-3367-1-ND"/>
 </part>
@@ -5497,45 +5498,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="S16" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="S17" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="S18" library="signpost" deviceset="AP2401MP" device=""/>
-<part name="C65" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C66" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C67" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C68" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C69" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C70" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C71" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
 <part name="GND97" library="umich" deviceset="GND" device=""/>
-<part name="C72" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
 <part name="GND98" library="umich" deviceset="GND" device=""/>
 <part name="GND99" library="umich" deviceset="GND" device=""/>
-<part name="C73" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C74" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C75" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C76" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
 <part name="GND100" library="umich" deviceset="GND" device=""/>
 <part name="GND101" library="umich" deviceset="GND" device=""/>
 <part name="GND102" library="umich" deviceset="GND" device=""/>
@@ -5550,24 +5515,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="GND106" library="umich" deviceset="GND" device=""/>
 <part name="GND107" library="umich" deviceset="GND" device=""/>
 <part name="GND108" library="umich" deviceset="GND" device=""/>
-<part name="C77" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C78" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C79" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C80" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C81" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
-<part name="C82" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100nF">
-<attribute name="DIGIKEY" value="1276-3367-1-ND"/>
-</part>
 <part name="U$50" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND109" library="umich" deviceset="GND" device=""/>
 <part name="C83" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
@@ -5584,6 +5531,24 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="C89" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C90" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="GND115" library="umich" deviceset="GND" device=""/>
+<part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C66" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C67" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C77" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C78" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C79" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C80" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C81" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C82" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C71" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C72" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C73" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C74" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C75" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C76" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 </parts>
 <sheets>
 <sheet>
@@ -8864,10 +8829,10 @@ EECLK must be NC</text>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
 <instance part="FRAME3" gate="G$2" x="147.32" y="0"/>
 <instance part="U1" gate="G$1" x="55.88" y="116.84"/>
-<instance part="D1" gate="G$1" x="33.02" y="17.78" rot="R270"/>
-<instance part="D2" gate="G$1" x="55.88" y="17.78" rot="R270"/>
-<instance part="D3" gate="G$1" x="78.74" y="17.78" rot="R270"/>
-<instance part="D4" gate="G$1" x="10.16" y="17.78" rot="R270"/>
+<instance part="D2" gate="G$1" x="33.02" y="17.78" rot="R270"/>
+<instance part="D3" gate="G$1" x="55.88" y="17.78" rot="R270"/>
+<instance part="D4" gate="G$1" x="78.74" y="17.78" rot="R270"/>
+<instance part="D1" gate="G$1" x="10.16" y="17.78" rot="R270"/>
 <instance part="GND2" gate="1" x="82.55" y="154.94"/>
 <instance part="GND3" gate="1" x="12.7" y="2.54"/>
 <instance part="C7" gate="G$1" x="82.55" y="167.64"/>
@@ -9014,7 +8979,7 @@ EECLK must be NC</text>
 <wire x1="172.72" y1="170.18" x2="190.5" y2="170.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D4" gate="G$1" pin="A"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="17.78" y1="17.78" x2="20.32" y2="17.78" width="0.1524" layer="91"/>
 <label x="20.32" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9033,7 +8998,7 @@ EECLK must be NC</text>
 <wire x1="171.45" y1="165.1" x2="190.5" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D4" gate="G$1" pin="B"/>
+<pinref part="D1" gate="G$1" pin="B"/>
 <wire x1="7.62" y1="17.78" x2="5.08" y2="17.78" width="0.1524" layer="91"/>
 <label x="5.08" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9052,7 +9017,7 @@ EECLK must be NC</text>
 <wire x1="170.18" y1="144.78" x2="190.5" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D4" gate="G$1" pin="C"/>
+<pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="17.78" y1="15.24" x2="22.86" y2="15.24" width="0.1524" layer="91"/>
 <label x="22.86" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9071,7 +9036,7 @@ EECLK must be NC</text>
 <wire x1="168.91" y1="139.7" x2="190.5" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D4" gate="G$1" pin="D"/>
+<pinref part="D1" gate="G$1" pin="D"/>
 <wire x1="7.62" y1="15.24" x2="2.54" y2="15.24" width="0.1524" layer="91"/>
 <label x="2.54" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9090,7 +9055,7 @@ EECLK must be NC</text>
 <wire x1="167.64" y1="119.38" x2="190.5" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D1" gate="G$1" pin="A"/>
+<pinref part="D2" gate="G$1" pin="A"/>
 <wire x1="40.64" y1="17.78" x2="43.18" y2="17.78" width="0.1524" layer="91"/>
 <label x="43.18" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9109,7 +9074,7 @@ EECLK must be NC</text>
 <wire x1="166.37" y1="114.3" x2="190.5" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D1" gate="G$1" pin="B"/>
+<pinref part="D2" gate="G$1" pin="B"/>
 <wire x1="30.48" y1="17.78" x2="27.94" y2="17.78" width="0.1524" layer="91"/>
 <label x="27.94" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9128,7 +9093,7 @@ EECLK must be NC</text>
 <wire x1="165.1" y1="93.98" x2="190.5" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D2" gate="G$1" pin="C"/>
+<pinref part="D3" gate="G$1" pin="C"/>
 <wire x1="63.5" y1="15.24" x2="68.58" y2="15.24" width="0.1524" layer="91"/>
 <label x="68.58" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9147,7 +9112,7 @@ EECLK must be NC</text>
 <wire x1="163.83" y1="88.9" x2="190.5" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D2" gate="G$1" pin="D"/>
+<pinref part="D3" gate="G$1" pin="D"/>
 <wire x1="53.34" y1="15.24" x2="48.26" y2="15.24" width="0.1524" layer="91"/>
 <label x="48.26" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9166,7 +9131,7 @@ EECLK must be NC</text>
 <wire x1="162.56" y1="68.58" x2="190.5" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D3" gate="G$1" pin="A"/>
+<pinref part="D4" gate="G$1" pin="A"/>
 <wire x1="86.36" y1="17.78" x2="88.9" y2="17.78" width="0.1524" layer="91"/>
 <label x="88.9" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9185,7 +9150,7 @@ EECLK must be NC</text>
 <wire x1="161.29" y1="93.98" x2="147.32" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D3" gate="G$1" pin="B"/>
+<pinref part="D4" gate="G$1" pin="B"/>
 <wire x1="76.2" y1="17.78" x2="73.66" y2="17.78" width="0.1524" layer="91"/>
 <label x="73.66" y="17.78" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9204,7 +9169,7 @@ EECLK must be NC</text>
 <wire x1="160.02" y1="43.18" x2="160.02" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D3" gate="G$1" pin="C"/>
+<pinref part="D4" gate="G$1" pin="C"/>
 <wire x1="86.36" y1="15.24" x2="91.44" y2="15.24" width="0.1524" layer="91"/>
 <label x="91.44" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9223,23 +9188,23 @@ EECLK must be NC</text>
 <wire x1="158.75" y1="38.1" x2="190.5" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="D3" gate="G$1" pin="D"/>
+<pinref part="D4" gate="G$1" pin="D"/>
 <wire x1="76.2" y1="15.24" x2="71.12" y2="15.24" width="0.1524" layer="91"/>
 <label x="71.12" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="D4" gate="G$1" pin="GND"/>
-<wire x1="12.7" y1="10.16" x2="12.7" y2="7.62" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="GND"/>
+<wire x1="12.7" y1="10.16" x2="12.7" y2="7.62" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="GND"/>
 <wire x1="12.7" y1="7.62" x2="35.56" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="7.62" x2="35.56" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="GND"/>
+<pinref part="D3" gate="G$1" pin="GND"/>
 <wire x1="35.56" y1="7.62" x2="58.42" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="7.62" x2="58.42" y2="10.16" width="0.1524" layer="91"/>
 <junction x="35.56" y="7.62"/>
-<pinref part="D3" gate="G$1" pin="GND"/>
+<pinref part="D4" gate="G$1" pin="GND"/>
 <wire x1="58.42" y1="7.62" x2="81.28" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="7.62" x2="81.28" y2="10.16" width="0.1524" layer="91"/>
 <junction x="58.42" y="7.62"/>
@@ -9519,7 +9484,7 @@ EECLK must be NC</text>
 </net>
 <net name="CONT_USB+" class="0">
 <segment>
-<pinref part="D1" gate="G$1" pin="C"/>
+<pinref part="D2" gate="G$1" pin="C"/>
 <wire x1="40.64" y1="15.24" x2="45.72" y2="15.24" width="0.1524" layer="91"/>
 <label x="45.72" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -9531,7 +9496,7 @@ EECLK must be NC</text>
 </net>
 <net name="CONT_USB-" class="0">
 <segment>
-<pinref part="D1" gate="G$1" pin="D"/>
+<pinref part="D2" gate="G$1" pin="D"/>
 <wire x1="30.48" y1="15.24" x2="25.4" y2="15.24" width="0.1524" layer="91"/>
 <label x="25.4" y="15.24" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -10199,45 +10164,9 @@ EECLK must be NC</text>
 <instance part="R33" gate="G$1" x="116.84" y="71.12" rot="R90"/>
 <instance part="R34" gate="G$1" x="116.84" y="45.72" rot="R90"/>
 <instance part="U$25" gate="G$1" x="116.84" y="177.8"/>
-<instance part="C65" gate="G$1" x="190.5" y="162.56">
-<attribute name="DIGIKEY" x="190.5" y="162.56" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C66" gate="G$1" x="190.5" y="137.16">
-<attribute name="DIGIKEY" x="190.5" y="137.16" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C67" gate="G$1" x="190.5" y="111.76">
-<attribute name="DIGIKEY" x="190.5" y="111.76" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C68" gate="G$1" x="190.5" y="86.36">
-<attribute name="DIGIKEY" x="190.5" y="86.36" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C69" gate="G$1" x="190.5" y="60.96">
-<attribute name="DIGIKEY" x="190.5" y="60.96" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C70" gate="G$1" x="190.5" y="35.56">
-<attribute name="DIGIKEY" x="190.5" y="35.56" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C71" gate="G$1" x="147.32" y="177.8">
-<attribute name="DIGIKEY" x="147.32" y="177.8" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="GND97" gate="1" x="147.32" y="167.64"/>
-<instance part="C72" gate="G$1" x="147.32" y="152.4">
-<attribute name="DIGIKEY" x="147.32" y="152.4" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="GND98" gate="1" x="147.32" y="142.24"/>
 <instance part="GND99" gate="1" x="147.32" y="116.84"/>
-<instance part="C73" gate="G$1" x="147.32" y="127">
-<attribute name="DIGIKEY" x="147.32" y="127" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C74" gate="G$1" x="147.32" y="101.6">
-<attribute name="DIGIKEY" x="147.32" y="101.6" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C75" gate="G$1" x="147.32" y="76.2">
-<attribute name="DIGIKEY" x="147.32" y="76.2" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="C76" gate="G$1" x="147.32" y="50.8">
-<attribute name="DIGIKEY" x="147.32" y="50.8" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="GND100" gate="1" x="147.32" y="91.44"/>
 <instance part="GND101" gate="1" x="147.32" y="66.04"/>
 <instance part="GND102" gate="1" x="147.32" y="40.64"/>
@@ -10252,24 +10181,24 @@ EECLK must be NC</text>
 <instance part="GND106" gate="1" x="30.48" y="86.36"/>
 <instance part="GND107" gate="1" x="30.48" y="60.96"/>
 <instance part="GND108" gate="1" x="30.48" y="35.56"/>
-<instance part="C77" gate="G$1" x="40.64" y="170.18" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="170.18" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="C78" gate="G$1" x="40.64" y="144.78" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="144.78" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="C79" gate="G$1" x="40.64" y="119.38" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="119.38" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="C80" gate="G$1" x="40.64" y="93.98" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="C81" gate="G$1" x="40.64" y="68.58" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="68.58" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="C82" gate="G$1" x="40.64" y="43.18" rot="R270">
-<attribute name="DIGIKEY" x="40.64" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
-</instance>
+<instance part="C65" gate="G$1" x="190.5" y="162.56"/>
+<instance part="C66" gate="G$1" x="190.5" y="137.16"/>
+<instance part="C67" gate="G$1" x="190.5" y="111.76"/>
+<instance part="C68" gate="G$1" x="190.5" y="86.36"/>
+<instance part="C69" gate="G$1" x="190.5" y="60.96"/>
+<instance part="C70" gate="G$1" x="190.5" y="35.56"/>
+<instance part="C77" gate="G$1" x="40.64" y="170.18" rot="R270"/>
+<instance part="C78" gate="G$1" x="40.64" y="144.78" rot="R270"/>
+<instance part="C79" gate="G$1" x="40.64" y="119.38" rot="R270"/>
+<instance part="C80" gate="G$1" x="40.64" y="93.98" rot="R270"/>
+<instance part="C81" gate="G$1" x="40.64" y="68.58" rot="R270"/>
+<instance part="C82" gate="G$1" x="40.64" y="43.18" rot="R270"/>
+<instance part="C71" gate="G$1" x="147.32" y="177.8"/>
+<instance part="C72" gate="G$1" x="147.32" y="152.4"/>
+<instance part="C73" gate="G$1" x="147.32" y="127"/>
+<instance part="C74" gate="G$1" x="147.32" y="101.6"/>
+<instance part="C75" gate="G$1" x="147.32" y="76.2"/>
+<instance part="C76" gate="G$1" x="147.32" y="50.8"/>
 </instances>
 <busses>
 </busses>
@@ -10280,13 +10209,13 @@ EECLK must be NC</text>
 <label x="200.66" y="167.64" size="1.27" layer="95" xref="yes"/>
 <wire x1="190.5" y1="167.64" x2="198.12" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="S13" gate="G$1" pin="OUT"/>
-<pinref part="C65" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="167.64" x2="200.66" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="165.1" x2="190.5" y2="167.64" width="0.1524" layer="91"/>
 <junction x="190.5" y="167.64"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="167.64" x2="198.12" y2="165.1" width="0.1524" layer="91"/>
 <junction x="198.12" y="167.64"/>
+<pinref part="C65" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD1_USB_VBUS" class="0">
@@ -10295,13 +10224,13 @@ EECLK must be NC</text>
 <wire x1="180.34" y1="142.24" x2="190.5" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="142.24" x2="198.12" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="S14" gate="G$1" pin="OUT"/>
-<pinref part="C66" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="142.24" x2="200.66" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="139.7" x2="190.5" y2="142.24" width="0.1524" layer="91"/>
 <junction x="190.5" y="142.24"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="139.7" x2="198.12" y2="142.24" width="0.1524" layer="91"/>
 <junction x="198.12" y="142.24"/>
+<pinref part="C66" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD2_USB_VBUS" class="0">
@@ -10310,13 +10239,13 @@ EECLK must be NC</text>
 <wire x1="180.34" y1="116.84" x2="190.5" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="S15" gate="G$1" pin="OUT"/>
-<pinref part="C67" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="114.3" x2="190.5" y2="116.84" width="0.1524" layer="91"/>
 <junction x="190.5" y="116.84"/>
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="114.3" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
 <junction x="198.12" y="116.84"/>
+<pinref part="C67" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD5_USB_VBUS" class="0">
@@ -10325,13 +10254,13 @@ EECLK must be NC</text>
 <wire x1="180.34" y1="91.44" x2="190.5" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="91.44" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="S16" gate="G$1" pin="OUT"/>
-<pinref part="C68" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="91.44" x2="200.66" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="88.9" x2="190.5" y2="91.44" width="0.1524" layer="91"/>
 <junction x="190.5" y="91.44"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="88.9" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
 <junction x="198.12" y="91.44"/>
+<pinref part="C68" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD6_USB_VBUS" class="0">
@@ -10340,13 +10269,13 @@ EECLK must be NC</text>
 <wire x1="180.34" y1="66.04" x2="190.5" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="66.04" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="S17" gate="G$1" pin="OUT"/>
-<pinref part="C69" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="66.04" x2="200.66" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="63.5" x2="190.5" y2="66.04" width="0.1524" layer="91"/>
 <junction x="190.5" y="66.04"/>
 <pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="63.5" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
 <junction x="198.12" y="66.04"/>
+<pinref part="C69" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD7_USB_VBUS" class="0">
@@ -10355,13 +10284,13 @@ EECLK must be NC</text>
 <wire x1="180.34" y1="40.64" x2="190.5" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="40.64" x2="198.12" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="S18" gate="G$1" pin="OUT"/>
-<pinref part="C70" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="40.64" x2="200.66" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="38.1" x2="190.5" y2="40.64" width="0.1524" layer="91"/>
 <junction x="190.5" y="40.64"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="38.1" x2="198.12" y2="40.64" width="0.1524" layer="91"/>
 <junction x="198.12" y="40.64"/>
+<pinref part="C70" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -10376,9 +10305,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="152.4" x2="198.12" y2="154.94" width="0.1524" layer="91"/>
 <junction x="198.12" y="154.94"/>
 <pinref part="S13" gate="G$1" pin="GND"/>
-<pinref part="C65" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="157.48" x2="190.5" y2="154.94" width="0.1524" layer="91"/>
 <junction x="190.5" y="154.94"/>
+<pinref part="C65" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C6" gate="G$1" pin="2"/>
@@ -10391,9 +10320,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="25.4" x2="198.12" y2="27.94" width="0.1524" layer="91"/>
 <junction x="198.12" y="27.94"/>
 <pinref part="S18" gate="G$1" pin="GND"/>
-<pinref part="C70" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="30.48" x2="190.5" y2="27.94" width="0.1524" layer="91"/>
 <junction x="190.5" y="27.94"/>
+<pinref part="C70" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C5" gate="G$1" pin="2"/>
@@ -10406,9 +10335,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="50.8" x2="198.12" y2="53.34" width="0.1524" layer="91"/>
 <junction x="198.12" y="53.34"/>
 <pinref part="S17" gate="G$1" pin="GND"/>
-<pinref part="C69" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="53.34" x2="190.5" y2="55.88" width="0.1524" layer="91"/>
 <junction x="190.5" y="53.34"/>
+<pinref part="C69" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C4" gate="G$1" pin="2"/>
@@ -10421,9 +10350,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="76.2" x2="198.12" y2="78.74" width="0.1524" layer="91"/>
 <junction x="198.12" y="78.74"/>
 <pinref part="S16" gate="G$1" pin="GND"/>
-<pinref part="C68" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="78.74" x2="190.5" y2="81.28" width="0.1524" layer="91"/>
 <junction x="190.5" y="78.74"/>
+<pinref part="C68" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
@@ -10436,9 +10365,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="101.6" x2="198.12" y2="104.14" width="0.1524" layer="91"/>
 <junction x="198.12" y="104.14"/>
 <pinref part="S15" gate="G$1" pin="GND"/>
-<pinref part="C67" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="104.14" x2="190.5" y2="106.68" width="0.1524" layer="91"/>
 <junction x="190.5" y="104.14"/>
+<pinref part="C67" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
@@ -10451,9 +10380,9 @@ EECLK must be NC</text>
 <wire x1="198.12" y1="127" x2="198.12" y2="129.54" width="0.1524" layer="91"/>
 <junction x="198.12" y="129.54"/>
 <pinref part="S14" gate="G$1" pin="GND"/>
-<pinref part="C66" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="129.54" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
 <junction x="190.5" y="129.54"/>
+<pinref part="C66" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="S7" gate="G$1" pin="GND"/>
@@ -10493,69 +10422,69 @@ EECLK must be NC</text>
 </segment>
 <segment>
 <pinref part="GND97" gate="1" pin="GND"/>
-<pinref part="C71" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="170.18" x2="147.32" y2="172.72" width="0.1524" layer="91"/>
+<pinref part="C71" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND101" gate="1" pin="GND"/>
-<pinref part="C75" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="68.58" x2="147.32" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="C75" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND102" gate="1" pin="GND"/>
-<pinref part="C76" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="43.18" x2="147.32" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="C76" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND100" gate="1" pin="GND"/>
-<pinref part="C74" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="93.98" x2="147.32" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="C74" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND99" gate="1" pin="GND"/>
-<pinref part="C73" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="119.38" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="C73" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND98" gate="1" pin="GND"/>
-<pinref part="C72" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="144.78" x2="147.32" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="C72" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C82" gate="G$1" pin="2"/>
 <pinref part="GND108" gate="1" pin="GND"/>
 <wire x1="35.56" y1="43.18" x2="30.48" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="43.18" x2="30.48" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="C82" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C81" gate="G$1" pin="2"/>
 <pinref part="GND107" gate="1" pin="GND"/>
 <wire x1="35.56" y1="68.58" x2="30.48" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="68.58" x2="30.48" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="C81" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C80" gate="G$1" pin="2"/>
 <pinref part="GND106" gate="1" pin="GND"/>
 <wire x1="35.56" y1="93.98" x2="30.48" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="93.98" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="C80" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C79" gate="G$1" pin="2"/>
 <pinref part="GND105" gate="1" pin="GND"/>
 <wire x1="35.56" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="119.38" x2="30.48" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="C79" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C78" gate="G$1" pin="2"/>
 <pinref part="GND104" gate="1" pin="GND"/>
 <wire x1="35.56" y1="144.78" x2="30.48" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="144.78" x2="30.48" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="C78" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C77" gate="G$1" pin="2"/>
 <pinref part="GND103" gate="1" pin="GND"/>
 <wire x1="35.56" y1="170.18" x2="30.48" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="170.18" x2="30.48" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="C77" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="MOD0_VCC_METERED" class="0">
@@ -10565,10 +10494,10 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="182.88" x2="147.32" y2="182.88" width="0.1524" layer="91"/>
 <label x="144.78" y="182.88" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S13" gate="G$1" pin="IN"/>
-<pinref part="C71" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="182.88" x2="144.78" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="180.34" x2="147.32" y2="182.88" width="0.1524" layer="91"/>
 <junction x="147.32" y="182.88"/>
+<pinref part="C71" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD0_USB_!OVR" class="0">
@@ -10644,10 +10573,10 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="157.48" x2="147.32" y2="157.48" width="0.1524" layer="91"/>
 <label x="144.78" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S14" gate="G$1" pin="IN"/>
-<pinref part="C72" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="157.48" x2="144.78" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="154.94" x2="147.32" y2="157.48" width="0.1524" layer="91"/>
 <junction x="147.32" y="157.48"/>
+<pinref part="C72" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD2_VCC_METERED" class="0">
@@ -10658,9 +10587,9 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="116.84" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
 <label x="144.78" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S15" gate="G$1" pin="IN"/>
-<pinref part="C73" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="129.54" x2="147.32" y2="132.08" width="0.1524" layer="91"/>
 <junction x="147.32" y="132.08"/>
+<pinref part="C73" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD5_VCC_METERED" class="0">
@@ -10670,10 +10599,10 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="106.68" x2="147.32" y2="106.68" width="0.1524" layer="91"/>
 <label x="144.78" y="106.68" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S16" gate="G$1" pin="IN"/>
-<pinref part="C74" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="106.68" x2="144.78" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="104.14" x2="147.32" y2="106.68" width="0.1524" layer="91"/>
 <junction x="147.32" y="106.68"/>
+<pinref part="C74" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD6_VCC_METERED" class="0">
@@ -10684,9 +10613,9 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="66.04" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
 <label x="144.78" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S17" gate="G$1" pin="IN"/>
-<pinref part="C75" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="78.74" x2="147.32" y2="81.28" width="0.1524" layer="91"/>
 <junction x="147.32" y="81.28"/>
+<pinref part="C75" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD7_VCC_METERED" class="0">
@@ -10696,10 +10625,10 @@ EECLK must be NC</text>
 <wire x1="152.4" y1="55.88" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <label x="144.78" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="S18" gate="G$1" pin="IN"/>
-<pinref part="C76" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="55.88" x2="144.78" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="53.34" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <junction x="147.32" y="55.88"/>
+<pinref part="C76" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -10713,9 +10642,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="160.02" x2="58.42" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="160.02" x2="58.42" y2="167.64" width="0.1524" layer="91"/>
 <junction x="58.42" y="167.64"/>
-<pinref part="C77" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="170.18" x2="58.42" y2="170.18" width="0.1524" layer="91"/>
 <junction x="58.42" y="170.18"/>
+<pinref part="C77" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S8" gate="G$1" pin="VCC"/>
@@ -10727,9 +10656,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="134.62" x2="58.42" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="134.62" x2="58.42" y2="142.24" width="0.1524" layer="91"/>
 <junction x="58.42" y="142.24"/>
-<pinref part="C78" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="144.78" x2="58.42" y2="144.78" width="0.1524" layer="91"/>
 <junction x="58.42" y="144.78"/>
+<pinref part="C78" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S9" gate="G$1" pin="VCC"/>
@@ -10741,9 +10670,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="109.22" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="109.22" x2="58.42" y2="116.84" width="0.1524" layer="91"/>
 <junction x="58.42" y="116.84"/>
-<pinref part="C79" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="119.38" x2="58.42" y2="119.38" width="0.1524" layer="91"/>
 <junction x="58.42" y="119.38"/>
+<pinref part="C79" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S10" gate="G$1" pin="VCC"/>
@@ -10755,9 +10684,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="83.82" x2="58.42" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="83.82" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
 <junction x="58.42" y="91.44"/>
-<pinref part="C80" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="93.98" x2="58.42" y2="93.98" width="0.1524" layer="91"/>
 <junction x="58.42" y="93.98"/>
+<pinref part="C80" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S11" gate="G$1" pin="VCC"/>
@@ -10769,9 +10698,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="58.42" x2="58.42" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="58.42" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
 <junction x="58.42" y="66.04"/>
-<pinref part="C81" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="68.58" x2="58.42" y2="68.58" width="0.1524" layer="91"/>
 <junction x="58.42" y="68.58"/>
+<pinref part="C81" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S12" gate="G$1" pin="VCC"/>
@@ -10783,9 +10712,9 @@ EECLK must be NC</text>
 <wire x1="60.96" y1="33.02" x2="58.42" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="33.02" x2="58.42" y2="40.64" width="0.1524" layer="91"/>
 <junction x="58.42" y="40.64"/>
-<pinref part="C82" gate="G$1" pin="1"/>
 <wire x1="58.42" y1="43.18" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
 <junction x="58.42" y="43.18"/>
+<pinref part="C82" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="U$25" gate="G$1" pin="VCC_BACKPLANE"/>
