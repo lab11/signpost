@@ -4716,7 +4716,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC" pad="9"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="296-24684-1-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -4831,7 +4833,6 @@ S high: D = D2</text>
 <smd name="2" x="0.43306875" y="0" dx="0.535940625" dy="0.5461" layer="1"/>
 <smd name="1" x="-0.43306875" y="0" dx="0.535940625" dy="0.5461" layer="1"/>
 <text x="0" y="0.381" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-1.397" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <circle x="0" y="0" radius="0.127" width="0" layer="21"/>
 </package>
 <package name="0603_CAP">
@@ -9886,7 +9887,7 @@ EECLK must be NC</text>
 <pinref part="C13" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="N$10" class="0">
+<net name="HUB_DM3" class="0">
 <segment>
 <wire x1="53.34" y1="114.3" x2="53.34" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="114.3" x2="53.34" y2="114.3" width="0.1524" layer="91"/>
@@ -9897,7 +9898,7 @@ EECLK must be NC</text>
 <pinref part="C12" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="HUB_DP3" class="0">
 <segment>
 <wire x1="43.18" y1="119.38" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="119.38" x2="40.64" y2="119.38" width="0.1524" layer="91"/>
