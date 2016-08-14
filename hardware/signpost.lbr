@@ -2360,7 +2360,9 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="VCC" pad="9"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="296-24684-1-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
