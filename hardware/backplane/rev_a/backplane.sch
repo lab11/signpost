@@ -3524,6 +3524,11 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
 <wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
+<text x="3.81" y="29.21" size="1.27" layer="49" align="center">X</text>
+<text x="3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="0" y="-29.21" size="1.27" layer="49" align="center">X</text>
+<text x="-5.08" y="-26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-5.08" y="-29.21" size="1.27" layer="49" align="center">X</text>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -3644,6 +3649,9 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
 <wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
+<text x="-3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="29.21" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="26.67" size="1.27" layer="49" align="center">X</text>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -3832,6 +3840,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
 <wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
+<text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
+<text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
 </package>
 <package name="TDFN4">
 <text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
