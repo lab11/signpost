@@ -3516,6 +3516,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-2.54" y="-29.21" size="0.6096" layer="51" rot="R180" align="center">28</text>
 <text x="-5.08" y="-26.67" size="0.6096" layer="51" rot="R180" align="center">29</text>
 <text x="-5.08" y="-29.21" size="0.6096" layer="51" rot="R180" align="center">30</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -3628,6 +3636,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 <text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -3808,6 +3824,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 <text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="TDFN4">
 <text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>

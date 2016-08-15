@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -442,6 +442,14 @@
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 <text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -554,6 +562,14 @@
 <text x="0" y="-33.655" size="2.54" layer="51" font="vector" ratio="12" align="top-center">&gt;VALUE</text>
 <text x="-0.635" y="33.655" size="0.8128" layer="47" align="bottom-right">0.126 / 3.20 below PCB</text>
 <text x="0.635" y="33.655" size="0.8128" layer="47">0.335 / 8.50 above PCB</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="BACKPLANE_MODULE_20PIN_10PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -700,6 +716,14 @@
 <text x="-2.54" y="-29.21" size="0.6096" layer="51" rot="R180" align="center">28</text>
 <text x="-5.08" y="-26.67" size="0.6096" layer="51" rot="R180" align="center">29</text>
 <text x="-5.08" y="-29.21" size="0.6096" layer="51" rot="R180" align="center">30</text>
+<wire x1="-33.99669375" y1="40.386" x2="33.99669375" y2="40.386" width="0.127" layer="49"/>
+<wire x1="33.99669375" y1="40.386" x2="41.402" y2="32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="41.402" y1="32.98069375" x2="41.402" y2="-32.98069375" width="0.127" layer="49"/>
+<wire x1="41.402" y1="-32.98069375" x2="33.99669375" y2="-40.386" width="0.127" layer="49" curve="-90"/>
+<wire x1="33.99669375" y1="-40.386" x2="-33.99669375" y2="-40.386" width="0.127" layer="49"/>
+<wire x1="-33.99669375" y1="-40.386" x2="-41.402" y2="-32.98069375" width="0.127" layer="49" curve="-90"/>
+<wire x1="-41.402" y1="-32.98069375" x2="-41.402" y2="32.98069375" width="0.127" layer="49"/>
+<wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 </package>
 <package name="SOIC-16">
 <smd name="13" x="-0.635" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
