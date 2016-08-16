@@ -11102,21 +11102,21 @@ EECLK must be NC</text>
 <label x="55.88" y="139.7" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="HUB_!PWRON6" class="0">
 <segment>
 <pinref part="S12" gate="G$1" pin="I1"/>
 <wire x1="60.96" y1="38.1" x2="55.88" y2="38.1" width="0.1524" layer="91"/>
 <label x="55.88" y="38.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$2" class="0">
+<net name="HUB_!PWRON4" class="0">
 <segment>
 <pinref part="S11" gate="G$1" pin="I1"/>
 <wire x1="60.96" y1="63.5" x2="55.88" y2="63.5" width="0.1524" layer="91"/>
 <label x="55.88" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="HUB_!PWRON7" class="0">
 <segment>
 <pinref part="S10" gate="G$1" pin="I1"/>
 <wire x1="55.88" y1="88.9" x2="60.96" y2="88.9" width="0.1524" layer="91"/>
