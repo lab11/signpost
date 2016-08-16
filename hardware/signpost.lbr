@@ -2363,7 +2363,9 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="VCC_B" pad="8"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="FXMA2102UMXCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
