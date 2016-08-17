@@ -4467,11 +4467,11 @@ S high: D = D2</text>
 <text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">LINUX</text>
 </symbol>
 <symbol name="USB_POWER_SWITCH">
-<pin name="IN" x="-7.62" y="2.54" visible="pin" length="middle"/>
-<pin name="!FLG" x="-7.62" y="0" visible="pin" length="middle"/>
-<pin name="!EN" x="-7.62" y="-2.54" visible="pin" length="middle"/>
-<pin name="OUT" x="17.78" y="2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="GND" x="17.78" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="IN" x="-7.62" y="2.54" length="middle"/>
+<pin name="!FLG" x="-7.62" y="0" length="middle"/>
+<pin name="!EN" x="-7.62" y="-2.54" length="middle"/>
+<pin name="OUT" x="17.78" y="2.54" length="middle" rot="R180"/>
+<pin name="GND" x="17.78" y="-2.54" length="middle" rot="R180"/>
 <wire x1="-2.54" y1="5.08" x2="12.7" y2="5.08" width="0.254" layer="94"/>
 <wire x1="12.7" y1="5.08" x2="12.7" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-5.08" x2="-2.54" y2="-5.08" width="0.254" layer="94"/>
@@ -9674,36 +9674,36 @@ EECLK must be NC</text>
 </net>
 <net name="MOD7_D+_HUB-SW" class="0">
 <segment>
-<pinref part="D4" gate="G$1" pin="C"/>
-<wire x1="134.62" y1="55.88" x2="139.7" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="43.18" x2="139.7" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="43.18" x2="119.38" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="R23" gate="G$1" pin="2"/>
-<wire x1="139.7" y1="43.18" x2="190.5" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="43.18" x2="190.5" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="43.18" x2="66.04" y2="35.56" width="0.1524" layer="91"/>
 <label x="68.58" y="43.18" size="1.27" layer="95"/>
 <pinref part="U25" gate="G$1" pin="D+"/>
-<wire x1="139.7" y1="55.88" x2="139.7" y2="43.18" width="0.1524" layer="91"/>
-<junction x="139.7" y="43.18"/>
 <pinref part="R21" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="43.18" x2="53.34" y2="43.18" width="0.1524" layer="91"/>
 <junction x="66.04" y="43.18"/>
+<pinref part="D4" gate="G$1" pin="D"/>
+<wire x1="124.46" y1="55.88" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="55.88" x2="119.38" y2="43.18" width="0.1524" layer="91"/>
+<junction x="119.38" y="43.18"/>
 </segment>
 </net>
 <net name="MOD7_D-_HUB-SW" class="0">
 <segment>
-<pinref part="D4" gate="G$1" pin="D"/>
-<wire x1="124.46" y1="55.88" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R24" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="38.1" x2="119.38" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="38.1" x2="190.5" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="38.1" x2="137.16" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="38.1" x2="190.5" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="35.56" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
 <label x="68.58" y="38.1" size="1.27" layer="95"/>
 <pinref part="U25" gate="G$1" pin="D-"/>
-<wire x1="119.38" y1="55.88" x2="119.38" y2="38.1" width="0.1524" layer="91"/>
-<junction x="119.38" y="38.1"/>
 <pinref part="R22" gate="G$1" pin="2"/>
 <wire x1="63.5" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
 <junction x="73.66" y="38.1"/>
+<pinref part="D4" gate="G$1" pin="C"/>
+<wire x1="134.62" y1="55.88" x2="137.16" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="55.88" x2="137.16" y2="38.1" width="0.1524" layer="91"/>
+<junction x="137.16" y="38.1"/>
 </segment>
 </net>
 <net name="GND" class="0">
