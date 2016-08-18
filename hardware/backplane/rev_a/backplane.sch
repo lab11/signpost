@@ -4676,10 +4676,10 @@ S high: D = D2</text>
 <devices>
 <device name="" package="TDFN4">
 <connects>
-<connect gate="G$1" pin="EN" pad="3"/>
+<connect gate="G$1" pin="EN" pad="4"/>
 <connect gate="G$1" pin="GND" pad="2 PAD"/>
-<connect gate="G$1" pin="VLOAD" pad="4"/>
-<connect gate="G$1" pin="VSUPP" pad="1"/>
+<connect gate="G$1" pin="VLOAD" pad="1"/>
+<connect gate="G$1" pin="VSUPP" pad="3"/>
 </connects>
 <technologies>
 <technology name="">
