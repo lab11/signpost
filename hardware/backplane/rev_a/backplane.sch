@@ -4464,7 +4464,7 @@ S high: D = D2</text>
 <wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
 <text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
-<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">LINUX</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">LINUX (5V)</text>
 </symbol>
 <symbol name="USB_POWER_SWITCH">
 <pin name="IN" x="-7.62" y="2.54" length="middle"/>
@@ -4557,6 +4557,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="TUSB2077A" prefix="U">
+<description>Full Speed USB Hub - 7 Port</description>
 <gates>
 <gate name="G$1" symbol="TUSB2077A" x="0" y="-2.54"/>
 </gates>
@@ -4618,6 +4619,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="SN75240-TSSOP" prefix="D">
+<description>TVS Diodes [suggested for TI USB Hub] (2 array)</description>
 <gates>
 <gate name="G$1" symbol="TVS-2" x="-5.08" y="0"/>
 </gates>
@@ -4743,7 +4745,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC_B" pad="8"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="296-17014-1-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -4791,7 +4795,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="Z" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -4823,7 +4829,9 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC" pad="18"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -5496,8 +5504,12 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="R25" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
 <part name="Y1" library="crystals" deviceset="ABMM" device=""/>
-<part name="C1" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol"/>
-<part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol"/>
+<part name="C1" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol">
+<attribute name="DIGIKEY" value="1276-1023-1-ND"/>
+</part>
+<part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF, 5% tol">
+<attribute name="DIGIKEY" value="1276-1023-1-ND"/>
+</part>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
 <part name="R26" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="J1" library="signpost" deviceset="BACKPLANE_GENERIC_MODULE" device=""/>
@@ -9226,8 +9238,12 @@ EECLK must be NC</text>
 <instance part="R25" gate="G$1" x="55.88" y="139.7" rot="R90"/>
 <instance part="GND15" gate="1" x="58.42" y="60.96"/>
 <instance part="Y1" gate="G$1" x="48.26" y="81.28" rot="R90"/>
-<instance part="C1" gate="G$1" x="38.1" y="86.36" rot="R90"/>
-<instance part="C2" gate="G$1" x="38.1" y="76.2" rot="R90"/>
+<instance part="C1" gate="G$1" x="38.1" y="86.36" rot="R90">
+<attribute name="DIGIKEY" x="38.1" y="86.36" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C2" gate="G$1" x="38.1" y="76.2" rot="R90">
+<attribute name="DIGIKEY" x="38.1" y="76.2" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="GND16" gate="1" x="33.02" y="71.12"/>
 <instance part="R26" gate="G$1" x="55.88" y="76.2"/>
 <instance part="U$50" gate="G$1" x="55.88" y="121.92"/>

@@ -1594,8 +1594,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="Y1" library="crystals" package="ABMM" value="ABMM" x="118.11" y="178.816">
 <attribute name="DIGIKEY" value="535-10156-1-ND" x="118.11" y="178.816" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C1" library="passives" package="0603_CAP" value="22pF, 5% tol" x="119.38" y="182.372" rot="R180"/>
-<element name="C2" library="passives" package="0603_CAP" value="22pF, 5% tol" x="115.316" y="182.372"/>
+<element name="C1" library="passives" package="0603_CAP" value="22pF, 5% tol" x="119.38" y="182.372" rot="R180">
+<attribute name="DIGIKEY" value="1276-1023-1-ND" x="119.38" y="182.372" size="1.778" layer="27" rot="R180" display="off"/>
+</element>
+<element name="C2" library="passives" package="0603_CAP" value="22pF, 5% tol" x="115.316" y="182.372">
+<attribute name="DIGIKEY" value="1276-1023-1-ND" x="115.316" y="182.372" size="1.778" layer="27" display="off"/>
+</element>
 <element name="R26" library="passives" package="0603-RES" value="1.5kΩ" x="116.84" y="184.15" rot="R90"/>
 <element name="J1" library="signpost" package="BACKPLANE_MODULE_14PIN" value="BACKPLANE_GENERIC_MODULE" x="207.7974" y="335.8134">
 <attribute name="DIGIKEY" value="S9195-ND" x="207.7974" y="335.8134" size="1.778" layer="27" display="off"/>
@@ -1669,18 +1673,42 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="U7" library="signpost" package="UMLP-8" value="FXMA2102" x="155.194" y="50.292" rot="R270">
 <attribute name="DIGIKEY" value="FXMA2102UMXCT-ND" x="155.194" y="50.292" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="U8" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="96.266" y="336.804" rot="R90"/>
-<element name="U9" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="160.02" y="351.282" rot="R270"/>
-<element name="U10" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="102.616" y="239.268" rot="R90"/>
-<element name="U11" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="143.51" rot="R270"/>
-<element name="U12" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="97.79" y="48.26" rot="R90"/>
-<element name="U13" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="57.15" rot="R270"/>
-<element name="U14" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="96.266" y="343.662" rot="R90"/>
-<element name="U15" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="160.02" y="345.44" rot="R270"/>
-<element name="U16" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="102.616" y="249.428" rot="R90"/>
-<element name="U17" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="150.368" rot="R270"/>
-<element name="U18" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="97.79" y="55.88" rot="R90"/>
-<element name="U19" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="64.008" rot="R270"/>
+<element name="U8" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="96.266" y="336.804" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="96.266" y="336.804" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U9" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="160.02" y="351.282" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="160.02" y="351.282" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="U10" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="102.616" y="239.268" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="102.616" y="239.268" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U11" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="143.51" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="155.194" y="143.51" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="U12" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="97.79" y="48.26" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="97.79" y="48.26" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U13" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="57.15" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="155.194" y="57.15" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="U14" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="96.266" y="343.662" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="96.266" y="343.662" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U15" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="160.02" y="345.44" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="160.02" y="345.44" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="U16" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="102.616" y="249.428" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="102.616" y="249.428" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U17" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="150.368" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="155.194" y="150.368" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="U18" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="97.79" y="55.88" rot="R90">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="97.79" y="55.88" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U19" library="signpost" package="VFSOP-8" value="SN74LVC2T45" x="155.194" y="64.008" rot="R270">
+<attribute name="DIGIKEY" value="296-17014-1-ND" x="155.194" y="64.008" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
 <element name="U20" library="signpost" package="UQFN-10" value="TS3USB30E" x="107.442" y="361.696">
 <attribute name="DIGIKEY" value="296-24684-1-ND" x="107.442" y="361.696" size="1.778" layer="27" display="off"/>
 </element>
@@ -1711,33 +1739,57 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R22" library="passives" package="0603-RES" value="50Ω" x="96.012" y="92.202" rot="R90"/>
 <element name="R23" library="passives" package="0603-RES" value="50Ω" x="147.32" y="92.202" rot="R180"/>
 <element name="R24" library="passives" package="0603-RES" value="50Ω" x="147.32" y="86.36" rot="R180"/>
-<element name="S7" library="signpost" package="SC70-6" value="NC7SZ157" x="104.14" y="305.562" rot="R90"/>
-<element name="S8" library="signpost" package="SC70-6" value="NC7SZ157" x="150.368" y="352.552" rot="R90"/>
-<element name="S9" library="signpost" package="SC70-6" value="NC7SZ157" x="62.992" y="285.496" rot="R90"/>
-<element name="S10" library="signpost" package="SC70-6" value="NC7SZ157" x="153.67" y="156.972" rot="R270"/>
-<element name="S11" library="signpost" package="SC70-6" value="NC7SZ157" x="49.022" y="96.012" rot="R90"/>
-<element name="S12" library="signpost" package="SC70-6" value="NC7SZ157" x="151.892" y="67.818" rot="R90"/>
-<element name="U26" library="signpost" package="SOIC-18" value="MCP23008" x="103.124" y="298.958"/>
+<element name="S7" library="signpost" package="SC70-6" value="NC7SZ157" x="104.14" y="305.562" rot="R90">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="104.14" y="305.562" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="S8" library="signpost" package="SC70-6" value="NC7SZ157" x="150.368" y="352.552" rot="R90">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="150.368" y="352.552" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="S9" library="signpost" package="SC70-6" value="NC7SZ157" x="62.992" y="285.496" rot="R90">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="62.992" y="285.496" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="S10" library="signpost" package="SC70-6" value="NC7SZ157" x="153.67" y="156.972" rot="R270">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="153.67" y="156.972" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="S11" library="signpost" package="SC70-6" value="NC7SZ157" x="49.022" y="96.012" rot="R90">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="49.022" y="96.012" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="S12" library="signpost" package="SC70-6" value="NC7SZ157" x="151.892" y="67.818" rot="R90">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" x="151.892" y="67.818" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
+<element name="U26" library="signpost" package="SOIC-18" value="MCP23008" x="103.124" y="298.958">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="103.124" y="298.958" size="1.778" layer="27" display="off"/>
+</element>
 <element name="R62" library="passives" package="0603-RES" value="10MΩ" x="108.458" y="314.452"/>
 <element name="R63" library="passives" package="0603-RES" value="10MΩ" x="96.266" y="352.806" rot="R270"/>
 <element name="R64" library="passives" package="0603-RES" value="10MΩ" x="100.838" y="304.292"/>
-<element name="U27" library="signpost" package="SOIC-18" value="MCP23008" x="157.48" y="319.278"/>
+<element name="U27" library="signpost" package="SOIC-18" value="MCP23008" x="157.48" y="319.278">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="157.48" y="319.278" size="1.778" layer="27" display="off"/>
+</element>
 <element name="R65" library="passives" package="0603-RES" value="10MΩ" x="160.782" y="328.93" rot="R90"/>
 <element name="R66" library="passives" package="0603-RES" value="10MΩ" x="159.004" y="336.296" rot="R90"/>
 <element name="R67" library="passives" package="0603-RES" value="10MΩ" x="127.508" y="356.616" rot="R180"/>
-<element name="U28" library="signpost" package="SOIC-18" value="MCP23008" x="103.378" y="278.384" rot="R180"/>
+<element name="U28" library="signpost" package="SOIC-18" value="MCP23008" x="103.378" y="278.384" rot="R180">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="103.378" y="278.384" size="1.778" layer="27" rot="R180" display="off"/>
+</element>
 <element name="R68" library="passives" package="0603-RES" value="10MΩ" x="98.806" y="268.732" rot="R90"/>
 <element name="R69" library="passives" package="0603-RES" value="10MΩ" x="103.632" y="262.382" rot="R180"/>
 <element name="R70" library="passives" package="0603-RES" value="10MΩ" x="98.552" y="262.89" rot="R180"/>
-<element name="U29" library="signpost" package="SOIC-18" value="MCP23008" x="141.224" y="150.114" rot="R270"/>
+<element name="U29" library="signpost" package="SOIC-18" value="MCP23008" x="141.224" y="150.114" rot="R270">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="141.224" y="150.114" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
 <element name="R71" library="passives" package="0603-RES" value="10MΩ" x="155.702" y="132.334" rot="R180"/>
 <element name="R72" library="passives" package="0603-RES" value="10MΩ" x="155.194" y="134.62" rot="R90"/>
 <element name="R73" library="passives" package="0603-RES" value="10MΩ" x="156.972" y="156.972" rot="R90"/>
-<element name="U30" library="signpost" package="SOIC-18" value="MCP23008" x="107.442" y="71.374" rot="R90"/>
+<element name="U30" library="signpost" package="SOIC-18" value="MCP23008" x="107.442" y="71.374" rot="R90">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="107.442" y="71.374" size="1.778" layer="27" rot="R90" display="off"/>
+</element>
 <element name="R74" library="passives" package="0603-RES" value="10MΩ" x="26.162" y="92.202"/>
 <element name="R75" library="passives" package="0603-RES" value="10MΩ" x="97.79" y="65.532" rot="R270"/>
 <element name="R76" library="passives" package="0603-RES" value="10MΩ" x="52.832" y="95.25" rot="R270"/>
-<element name="U31" library="signpost" package="SOIC-18" value="MCP23008" x="140.97" y="70.104" rot="R270"/>
+<element name="U31" library="signpost" package="SOIC-18" value="MCP23008" x="140.97" y="70.104" rot="R270">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" x="140.97" y="70.104" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
 <element name="R77" library="passives" package="0603-RES" value="10MΩ" x="152.654" y="41.402" rot="R90"/>
 <element name="R78" library="passives" package="0603-RES" value="10MΩ" x="155.956" y="47.752" rot="R180"/>
 <element name="R79" library="passives" package="0603-RES" value="10MΩ" x="152.146" y="84.074" rot="R180"/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.4">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -1955,6 +1955,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="TUSB2077A" prefix="U">
+<description>Full Speed USB Hub - 7 Port</description>
 <gates>
 <gate name="G$1" symbol="TUSB2077A" x="0" y="-2.54"/>
 </gates>
@@ -2016,6 +2017,7 @@ S high: D = D2</text>
 </devices>
 </deviceset>
 <deviceset name="SN75240-TSSOP" prefix="D">
+<description>TVS Diodes [suggested for TI USB Hub] (2 array)</description>
 <gates>
 <gate name="G$1" symbol="TVS-2" x="-5.08" y="0"/>
 </gates>
@@ -2388,7 +2390,9 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="VCC_B" pad="8"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="296-17014-1-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -2436,7 +2440,9 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="Z" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="NC7SZ157P6XCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -2468,7 +2474,9 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="VCC" pad="18"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
