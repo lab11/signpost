@@ -64,6 +64,8 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -96,6 +98,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
@@ -131,6 +134,9 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="no" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="no" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -5436,6 +5442,45 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </deviceset>
 </devicesets>
 </library>
+<library name="headers">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Headers for pins and wires.</description>
+<packages>
+<package name="TESTPOINT_0.040IN">
+<pad name="TESTPOINT" x="0" y="0" drill="1.016"/>
+<text x="0" y="1.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="0" y="0" radius="1.27" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TEST_POINT">
+<description>Test point.</description>
+<pin name="TESTPOINT" x="2.54" y="0" visible="off" length="short" rot="R180"/>
+<circle x="-1.27" y="0" radius="1.27" width="0.254" layer="94"/>
+<text x="-3.175" y="0" size="1.016" layer="95" ratio="12" align="center-right">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TEST_POINT_0.040IN" prefix="TP">
+<description>0.040in Test Point</description>
+<gates>
+<gate name="G$1" symbol="TEST_POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPOINT_0.040IN">
+<connects>
+<connect gate="G$1" pin="TESTPOINT" pad="TESTPOINT"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="5001K-ND"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Pat Pannuto"/>
@@ -5891,6 +5936,17 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="LOGO1" library="logos" deviceset="UMICH_SOLID" device="_GIANT"/>
+<part name="FRAME9" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
+<part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP5" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP6" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP8" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9216,11 +9272,11 @@ Backplane &lt;-- Module</text>
 </sheet>
 <sheet>
 <plain>
-<text x="53.848" y="52.07" size="1.27" layer="98">Status
+<text x="36.068" y="52.07" size="1.27" layer="98">Status
 LEDs</text>
-<wire x1="63.5" y1="58.42" x2="50.8" y2="58.42" width="0.1524" layer="98"/>
-<wire x1="50.8" y1="58.42" x2="50.8" y2="48.26" width="0.1524" layer="98"/>
-<wire x1="50.8" y1="48.26" x2="63.5" y2="48.26" width="0.1524" layer="98"/>
+<wire x1="53.34" y1="58.42" x2="33.02" y2="58.42" width="0.1524" layer="98"/>
+<wire x1="33.02" y1="58.42" x2="33.02" y2="48.26" width="0.1524" layer="98"/>
+<wire x1="33.02" y1="48.26" x2="53.34" y2="48.26" width="0.1524" layer="98"/>
 <text x="78.74" y="152.4" size="1.27" layer="98">Downstream ports draw
 VBUS from the "cable"</text>
 <text x="38.1" y="104.14" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
@@ -9585,6 +9641,27 @@ EECLK must be NC</text>
 <pinref part="U1" gate="G$1" pin="!OVRCUR7"/>
 <wire x1="99.06" y1="50.8" x2="96.52" y2="50.8" width="0.1524" layer="91"/>
 <label x="99.06" y="50.8" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_CFG" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="HUBCFG"/>
+<wire x1="58.42" y1="55.88" x2="60.96" y2="55.88" width="0.1524" layer="91"/>
+<label x="58.42" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_PORTPWR" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="PORTPWR"/>
+<wire x1="58.42" y1="53.34" x2="60.96" y2="53.34" width="0.1524" layer="91"/>
+<label x="58.42" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_PORTDIS" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="PORTDIS"/>
+<wire x1="58.42" y1="50.8" x2="60.96" y2="50.8" width="0.1524" layer="91"/>
+<label x="58.42" y="50.8" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -10636,8 +10713,8 @@ EECLK must be NC</text>
 </sheet>
 <sheet>
 <plain>
-<text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">USB</text>
 <text x="246.38" y="176.53" size="1.778" layer="98" align="top-right">Power switches &amp; Iso Power Override</text>
+<text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">USB</text>
 </plain>
 <instances>
 <instance part="FRAME6" gate="G$1" x="0" y="0"/>
@@ -11410,6 +11487,62 @@ EECLK must be NC</text>
 <pinref part="S12" gate="G$1" pin="S"/>
 <wire x1="55.88" y1="30.48" x2="60.96" y2="30.48" width="0.1524" layer="91"/>
 <label x="55.88" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+</nets>
+</sheet>
+<sheet>
+<plain>
+<text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Debugging</text>
+</plain>
+<instances>
+<instance part="FRAME9" gate="G$1" x="0" y="0"/>
+<instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
+<instance part="TP1" gate="G$1" x="20.32" y="170.18"/>
+<instance part="TP2" gate="G$1" x="20.32" y="167.64"/>
+<instance part="TP3" gate="G$1" x="20.32" y="165.1"/>
+<instance part="TP4" gate="G$1" x="20.32" y="149.86"/>
+<instance part="TP5" gate="G$1" x="20.32" y="147.32"/>
+<instance part="TP6" gate="G$1" x="20.32" y="144.78"/>
+<instance part="TP7" gate="G$1" x="20.32" y="144.78"/>
+<instance part="TP8" gate="G$1" x="20.32" y="142.24"/>
+<instance part="TP9" gate="G$1" x="20.32" y="142.24"/>
+<instance part="TP10" gate="G$1" x="20.32" y="139.7"/>
+</instances>
+<busses>
+</busses>
+<nets>
+<net name="N$3" class="0">
+<segment>
+<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="TP8" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP9" gate="G$1" pin="TESTPOINT"/>
+</segment>
+</net>
+<net name="HUB_CFG" class="0">
+<segment>
+<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
+<wire x1="25.4" y1="170.18" x2="22.86" y2="170.18" width="0.1524" layer="91"/>
+<label x="25.4" y="170.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_PORTPWR" class="0">
+<segment>
+<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
+<wire x1="25.4" y1="167.64" x2="22.86" y2="167.64" width="0.1524" layer="91"/>
+<label x="25.4" y="167.64" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_PORTDIS" class="0">
+<segment>
+<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
+<wire x1="25.4" y1="165.1" x2="22.86" y2="165.1" width="0.1524" layer="91"/>
+<label x="25.4" y="165.1" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
