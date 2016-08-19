@@ -5992,9 +5992,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="LOGO1" library="logos" deviceset="UMICH_SOLID" device="_GIANT"/>
 <part name="FRAME9" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
-<part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP27" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP28" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP29" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1001" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1002" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1003" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -6067,23 +6067,32 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="LED1016" library="leds" deviceset="LED" device="0603"/>
 <part name="LED1017" library="leds" deviceset="LED" device="0603"/>
 <part name="LED1018" library="leds" deviceset="LED" device="0603"/>
-<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP16" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP17" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP18" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP19" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP20" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP13" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP14" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP21" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP23" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP22" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP24" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP25" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP26" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP5" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP6" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP8" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP17" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP16" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP18" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP19" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP20" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11635,9 +11644,9 @@ EECLK must be NC</text>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
-<instance part="TP1" gate="G$1" x="17.78" y="175.26"/>
-<instance part="TP2" gate="G$1" x="17.78" y="172.72"/>
-<instance part="TP3" gate="G$1" x="17.78" y="170.18"/>
+<instance part="TP27" gate="G$1" x="17.78" y="81.28"/>
+<instance part="TP28" gate="G$1" x="17.78" y="78.74"/>
+<instance part="TP29" gate="G$1" x="17.78" y="76.2"/>
 <instance part="TP1001" gate="G$1" x="71.12" y="175.26"/>
 <instance part="TP1002" gate="G$1" x="71.12" y="172.72"/>
 <instance part="TP1003" gate="G$1" x="71.12" y="170.18"/>
@@ -11710,46 +11719,55 @@ EECLK must be NC</text>
 <instance part="LED1016" gate="G$1" x="139.7" y="78.74" rot="R270"/>
 <instance part="LED1017" gate="G$1" x="147.32" y="78.74" rot="R270"/>
 <instance part="LED1018" gate="G$1" x="154.94" y="78.74" rot="R270"/>
-<instance part="TP4" gate="G$1" x="17.78" y="160.02"/>
-<instance part="TP9" gate="G$1" x="17.78" y="137.16"/>
-<instance part="TP10" gate="G$1" x="17.78" y="134.62"/>
-<instance part="TP11" gate="G$1" x="17.78" y="132.08"/>
-<instance part="TP12" gate="G$1" x="17.78" y="129.54"/>
-<instance part="TP13" gate="G$1" x="17.78" y="127"/>
-<instance part="TP14" gate="G$1" x="17.78" y="124.46"/>
-<instance part="TP5" gate="G$1" x="17.78" y="152.4"/>
-<instance part="TP6" gate="G$1" x="17.78" y="149.86"/>
-<instance part="TP7" gate="G$1" x="17.78" y="147.32"/>
-<instance part="TP8" gate="G$1" x="17.78" y="144.78"/>
-<instance part="TP15" gate="G$1" x="17.78" y="116.84"/>
-<instance part="TP17" gate="G$1" x="17.78" y="109.22"/>
-<instance part="TP16" gate="G$1" x="17.78" y="114.3"/>
-<instance part="TP18" gate="G$1" x="17.78" y="104.14"/>
-<instance part="TP19" gate="G$1" x="17.78" y="101.6"/>
-<instance part="TP20" gate="G$1" x="17.78" y="99.06"/>
+<instance part="TP9" gate="G$1" x="17.78" y="149.86"/>
+<instance part="TP15" gate="G$1" x="17.78" y="127"/>
+<instance part="TP16" gate="G$1" x="17.78" y="124.46"/>
+<instance part="TP17" gate="G$1" x="17.78" y="121.92"/>
+<instance part="TP18" gate="G$1" x="17.78" y="119.38"/>
+<instance part="TP19" gate="G$1" x="17.78" y="116.84"/>
+<instance part="TP20" gate="G$1" x="17.78" y="114.3"/>
+<instance part="TP11" gate="G$1" x="17.78" y="142.24"/>
+<instance part="TP12" gate="G$1" x="17.78" y="139.7"/>
+<instance part="TP13" gate="G$1" x="17.78" y="137.16"/>
+<instance part="TP14" gate="G$1" x="17.78" y="134.62"/>
+<instance part="TP21" gate="G$1" x="17.78" y="106.68"/>
+<instance part="TP23" gate="G$1" x="17.78" y="99.06"/>
+<instance part="TP22" gate="G$1" x="17.78" y="104.14"/>
+<instance part="TP24" gate="G$1" x="17.78" y="93.98"/>
+<instance part="TP25" gate="G$1" x="17.78" y="91.44"/>
+<instance part="TP26" gate="G$1" x="17.78" y="88.9"/>
+<instance part="TP1" gate="G$1" x="17.78" y="175.26"/>
+<instance part="TP2" gate="G$1" x="17.78" y="172.72"/>
+<instance part="TP3" gate="G$1" x="17.78" y="170.18"/>
+<instance part="TP4" gate="G$1" x="17.78" y="167.64"/>
+<instance part="TP5" gate="G$1" x="17.78" y="162.56"/>
+<instance part="TP6" gate="G$1" x="17.78" y="160.02"/>
+<instance part="TP7" gate="G$1" x="17.78" y="157.48"/>
+<instance part="TP8" gate="G$1" x="17.78" y="152.4"/>
+<instance part="TP10" gate="G$1" x="17.78" y="147.32"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="HUB_CFG" class="0">
 <segment>
-<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="175.26" x2="20.32" y2="175.26" width="0.1524" layer="91"/>
-<label x="22.86" y="175.26" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="81.28" x2="20.32" y2="81.28" width="0.1524" layer="91"/>
+<label x="22.86" y="81.28" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_PORTPWR" class="0">
 <segment>
-<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="172.72" x2="20.32" y2="172.72" width="0.1524" layer="91"/>
-<label x="22.86" y="172.72" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP28" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="78.74" x2="20.32" y2="78.74" width="0.1524" layer="91"/>
+<label x="22.86" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_PORTDIS" class="0">
 <segment>
-<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="170.18" x2="20.32" y2="170.18" width="0.1524" layer="91"/>
-<label x="22.86" y="170.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP29" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="76.2" x2="20.32" y2="76.2" width="0.1524" layer="91"/>
+<label x="22.86" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_ISO_POWER" class="0">
@@ -11898,13 +11916,30 @@ EECLK must be NC</text>
 <wire x1="139.7" y1="63.5" x2="139.7" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="TP18" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="104.14" x2="20.32" y2="104.14" width="0.1524" layer="91"/>
-<label x="22.86" y="104.14" size="1.27" layer="95" xref="yes"/>
-<wire x1="22.86" y1="101.6" x2="20.32" y2="101.6" width="0.1524" layer="91"/>
-<label x="22.86" y="101.6" size="1.27" layer="95" xref="yes"/>
-<wire x1="22.86" y1="99.06" x2="20.32" y2="99.06" width="0.1524" layer="91"/>
-<label x="22.86" y="99.06" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP24" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="93.98" x2="20.32" y2="93.98" width="0.1524" layer="91"/>
+<label x="22.86" y="93.98" size="1.27" layer="95" xref="yes"/>
+<wire x1="22.86" y1="91.44" x2="20.32" y2="91.44" width="0.1524" layer="91"/>
+<label x="22.86" y="91.44" size="1.27" layer="95" xref="yes"/>
+<wire x1="22.86" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
+<label x="22.86" y="88.9" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP26" gate="G$1" pin="TESTPOINT"/>
+</segment>
+<segment>
+<pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="167.64" x2="20.32" y2="167.64" width="0.1524" layer="91"/>
+<label x="22.86" y="167.64" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="157.48" x2="20.32" y2="157.48" width="0.1524" layer="91"/>
+<label x="22.86" y="157.48" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="147.32" x2="20.32" y2="147.32" width="0.1524" layer="91"/>
+<label x="22.86" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -12179,100 +12214,140 @@ EECLK must be NC</text>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
-<pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="160.02" x2="20.32" y2="160.02" width="0.1524" layer="91"/>
-<label x="22.86" y="160.02" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD0_5V_METERED" class="0">
-<segment>
 <pinref part="TP9" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="137.16" x2="20.32" y2="137.16" width="0.1524" layer="91"/>
-<label x="22.86" y="137.16" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD1_5V_METERED" class="0">
-<segment>
-<pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="134.62" x2="20.32" y2="134.62" width="0.1524" layer="91"/>
-<label x="22.86" y="134.62" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD2_5V_METERED" class="0">
-<segment>
-<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="132.08" x2="20.32" y2="132.08" width="0.1524" layer="91"/>
-<label x="22.86" y="132.08" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD5_5V_METERED" class="0">
-<segment>
-<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="129.54" x2="20.32" y2="129.54" width="0.1524" layer="91"/>
-<label x="22.86" y="129.54" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD6_5V_METERED" class="0">
-<segment>
-<pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="127" x2="20.32" y2="127" width="0.1524" layer="91"/>
-<label x="22.86" y="127" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD7_5V_METERED" class="0">
-<segment>
-<pinref part="TP14" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
-<label x="22.86" y="124.46" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="VSOL+" class="0">
-<segment>
-<pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="152.4" x2="20.32" y2="152.4" width="0.1524" layer="91"/>
-<label x="22.86" y="152.4" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="VSOL-" class="0">
-<segment>
-<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="149.86" x2="20.32" y2="149.86" width="0.1524" layer="91"/>
 <label x="22.86" y="149.86" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="VBATT+" class="0">
-<segment>
-<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="147.32" x2="20.32" y2="147.32" width="0.1524" layer="91"/>
-<label x="22.86" y="147.32" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="VBATT-" class="0">
-<segment>
-<pinref part="TP8" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="144.78" x2="20.32" y2="144.78" width="0.1524" layer="91"/>
-<label x="22.86" y="144.78" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="VCC_CONTROLLER" class="0">
+<net name="MOD0_5V_METERED" class="0">
 <segment>
 <pinref part="TP15" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="127" x2="20.32" y2="127" width="0.1524" layer="91"/>
+<label x="22.86" y="127" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_5V_METERED" class="0">
+<segment>
+<pinref part="TP16" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
+<label x="22.86" y="124.46" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD2_5V_METERED" class="0">
+<segment>
+<pinref part="TP17" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
+<label x="22.86" y="121.92" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD5_5V_METERED" class="0">
+<segment>
+<pinref part="TP18" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="119.38" x2="20.32" y2="119.38" width="0.1524" layer="91"/>
+<label x="22.86" y="119.38" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD6_5V_METERED" class="0">
+<segment>
+<pinref part="TP19" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="116.84" x2="20.32" y2="116.84" width="0.1524" layer="91"/>
 <label x="22.86" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
+<net name="MOD7_5V_METERED" class="0">
+<segment>
+<pinref part="TP20" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="114.3" x2="20.32" y2="114.3" width="0.1524" layer="91"/>
+<label x="22.86" y="114.3" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VSOL+" class="0">
+<segment>
+<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="142.24" x2="20.32" y2="142.24" width="0.1524" layer="91"/>
+<label x="22.86" y="142.24" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VSOL-" class="0">
+<segment>
+<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="139.7" x2="20.32" y2="139.7" width="0.1524" layer="91"/>
+<label x="22.86" y="139.7" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VBATT+" class="0">
+<segment>
+<pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="137.16" x2="20.32" y2="137.16" width="0.1524" layer="91"/>
+<label x="22.86" y="137.16" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VBATT-" class="0">
+<segment>
+<pinref part="TP14" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="134.62" x2="20.32" y2="134.62" width="0.1524" layer="91"/>
+<label x="22.86" y="134.62" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VCC_CONTROLLER" class="0">
+<segment>
+<pinref part="TP21" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="106.68" x2="20.32" y2="106.68" width="0.1524" layer="91"/>
+<label x="22.86" y="106.68" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
-<pinref part="TP17" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="109.22" x2="20.32" y2="109.22" width="0.1524" layer="91"/>
-<label x="22.86" y="109.22" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="99.06" x2="20.32" y2="99.06" width="0.1524" layer="91"/>
+<label x="22.86" y="99.06" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP8" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="152.4" x2="20.32" y2="152.4" width="0.1524" layer="91"/>
+<label x="22.86" y="152.4" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_LINUX" class="0">
 <segment>
-<pinref part="TP16" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="114.3" x2="20.32" y2="114.3" width="0.1524" layer="91"/>
-<label x="22.86" y="114.3" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP22" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="104.14" x2="20.32" y2="104.14" width="0.1524" layer="91"/>
+<label x="22.86" y="104.14" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SMBDATA" class="0">
+<segment>
+<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="175.26" x2="20.32" y2="175.26" width="0.1524" layer="91"/>
+<label x="22.86" y="175.26" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SMBCLK" class="0">
+<segment>
+<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="172.72" x2="20.32" y2="172.72" width="0.1524" layer="91"/>
+<label x="22.86" y="172.72" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="!SMBALERT" class="0">
+<segment>
+<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="170.18" x2="20.32" y2="170.18" width="0.1524" layer="91"/>
+<label x="22.86" y="170.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD_SCL" class="0">
+<segment>
+<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="160.02" x2="20.32" y2="160.02" width="0.1524" layer="91"/>
+<label x="22.86" y="160.02" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD_SDA" class="0">
+<segment>
+<pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="162.56" x2="20.32" y2="162.56" width="0.1524" layer="91"/>
+<label x="22.86" y="162.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
