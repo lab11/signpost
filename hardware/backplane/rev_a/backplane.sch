@@ -6093,6 +6093,18 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP8" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP30" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP31" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP32" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP33" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP34" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP35" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP36" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP37" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP38" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP39" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP40" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP41" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11640,6 +11652,7 @@ EECLK must be NC</text>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Debugging</text>
+<text x="10.16" y="43.18" size="1.27" layer="98" rot="R90" align="bottom-center">n.b. Hub Port 5 is not used</text>
 </plain>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
@@ -11745,6 +11758,18 @@ EECLK must be NC</text>
 <instance part="TP7" gate="G$1" x="17.78" y="157.48"/>
 <instance part="TP8" gate="G$1" x="17.78" y="152.4"/>
 <instance part="TP10" gate="G$1" x="17.78" y="147.32"/>
+<instance part="TP30" gate="G$1" x="17.78" y="71.12"/>
+<instance part="TP31" gate="G$1" x="17.78" y="68.58"/>
+<instance part="TP32" gate="G$1" x="17.78" y="63.5"/>
+<instance part="TP33" gate="G$1" x="17.78" y="60.96"/>
+<instance part="TP34" gate="G$1" x="17.78" y="55.88"/>
+<instance part="TP35" gate="G$1" x="17.78" y="53.34"/>
+<instance part="TP36" gate="G$1" x="17.78" y="48.26"/>
+<instance part="TP37" gate="G$1" x="17.78" y="45.72"/>
+<instance part="TP38" gate="G$1" x="17.78" y="40.64"/>
+<instance part="TP39" gate="G$1" x="17.78" y="38.1"/>
+<instance part="TP40" gate="G$1" x="17.78" y="33.02"/>
+<instance part="TP41" gate="G$1" x="17.78" y="30.48"/>
 </instances>
 <busses>
 </busses>
@@ -12348,6 +12373,90 @@ EECLK must be NC</text>
 <pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="162.56" x2="20.32" y2="162.56" width="0.1524" layer="91"/>
 <label x="22.86" y="162.56" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON1" class="0">
+<segment>
+<pinref part="TP30" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="71.12" x2="20.32" y2="71.12" width="0.1524" layer="91"/>
+<label x="22.86" y="71.12" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR1" class="0">
+<segment>
+<pinref part="TP31" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="68.58" x2="20.32" y2="68.58" width="0.1524" layer="91"/>
+<label x="22.86" y="68.58" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON2" class="0">
+<segment>
+<pinref part="TP32" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="63.5" x2="20.32" y2="63.5" width="0.1524" layer="91"/>
+<label x="22.86" y="63.5" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR2" class="0">
+<segment>
+<pinref part="TP33" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="60.96" x2="20.32" y2="60.96" width="0.1524" layer="91"/>
+<label x="22.86" y="60.96" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON3" class="0">
+<segment>
+<pinref part="TP34" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="55.88" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
+<label x="22.86" y="55.88" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR3" class="0">
+<segment>
+<pinref part="TP35" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="53.34" x2="20.32" y2="53.34" width="0.1524" layer="91"/>
+<label x="22.86" y="53.34" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON4" class="0">
+<segment>
+<pinref part="TP36" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="48.26" x2="20.32" y2="48.26" width="0.1524" layer="91"/>
+<label x="22.86" y="48.26" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR4" class="0">
+<segment>
+<pinref part="TP37" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
+<label x="22.86" y="45.72" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON6" class="0">
+<segment>
+<pinref part="TP38" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="40.64" x2="20.32" y2="40.64" width="0.1524" layer="91"/>
+<label x="22.86" y="40.64" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR6" class="0">
+<segment>
+<pinref part="TP39" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
+<label x="22.86" y="38.1" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!PWRON7" class="0">
+<segment>
+<pinref part="TP40" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
+<label x="22.86" y="33.02" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="HUB_!OVRCUR7" class="0">
+<segment>
+<pinref part="TP41" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
+<label x="22.86" y="30.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
