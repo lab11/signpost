@@ -64,6 +64,8 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -96,6 +98,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
@@ -131,6 +134,9 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -2058,7 +2064,7 @@ S high: D = D2</text>
 <wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
 <text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
-<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">CONTROLLER</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">CONTROLLER (3V3)</text>
 </symbol>
 <symbol name="VCC_LINUX_1V8">
 <pin name="VCC_LINUX_1V8" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
@@ -2170,10 +2176,10 @@ S high: D = D2</text>
 <devices>
 <device name="" package="TDFN4">
 <connects>
-<connect gate="G$1" pin="EN" pad="3"/>
+<connect gate="G$1" pin="EN" pad="4"/>
 <connect gate="G$1" pin="GND" pad="2 PAD"/>
-<connect gate="G$1" pin="VLOAD" pad="4"/>
-<connect gate="G$1" pin="VSUPP" pad="1"/>
+<connect gate="G$1" pin="VLOAD" pad="1"/>
+<connect gate="G$1" pin="VSUPP" pad="3"/>
 </connects>
 <technologies>
 <technology name="">
@@ -3390,6 +3396,96 @@ Positioning System receiver</description>
 <wire x1="-5.08" y1="0" x2="5.08" y2="0" width="0" layer="107"/>
 <wire x1="-5.08" y1="0" x2="5.08" y2="0" width="0" layer="46"/>
 </package>
+<package name="TC2030-IDC">
+<description>Tag Connect TC2030-IDC</description>
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="2.54" drill="2.3749"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="0.635" y="2.54" drill="2.3749"/>
+<hole x="0.635" y="-2.54" drill="2.3749"/>
+<hole x="-2.54" y="-2.54" drill="2.3749"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="42">
+<vertex x="-3.175" y="-3.81"/>
+<vertex x="-1.905" y="-3.81"/>
+<vertex x="-1.905" y="-4.7625"/>
+<vertex x="-3.175" y="-4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="0" y="-3.81"/>
+<vertex x="1.27" y="-3.81"/>
+<vertex x="1.27" y="-4.7625"/>
+<vertex x="0" y="-4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="0" y="3.81"/>
+<vertex x="1.27" y="3.81"/>
+<vertex x="1.27" y="4.7625"/>
+<vertex x="0" y="4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="-1.905" y="3.81"/>
+<vertex x="-3.175" y="3.81"/>
+<vertex x="-3.175" y="4.7625"/>
+<vertex x="-1.905" y="4.7625"/>
+</polygon>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<text x="0" y="5.08" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-6.0325" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<wire x1="-2.54" y1="3.81" x2="2.54" y2="3.81" width="0.127" layer="25"/>
+<wire x1="4.2545" y1="2.0955" x2="4.2545" y2="-2.0955" width="0.127" layer="25"/>
+<wire x1="2.54" y1="-3.81" x2="-2.54" y2="-3.81" width="0.127" layer="25"/>
+<wire x1="-4.2545" y1="-2.0955" x2="-4.2545" y2="2.0955" width="0.127" layer="25"/>
+<wire x1="-2.54" y1="3.81" x2="-4.2545" y2="2.0955" width="0.127" layer="25" curve="90"/>
+<wire x1="4.2545" y1="2.0955" x2="2.54" y2="3.81" width="0.127" layer="25" curve="90"/>
+<wire x1="-4.2545" y1="-2.0955" x2="-2.54" y2="-3.81" width="0.127" layer="25" curve="90"/>
+<wire x1="2.54" y1="-3.81" x2="4.2545" y2="-2.0955" width="0.127" layer="25" curve="90"/>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+</package>
+<package name="TC2030-IDC-NL">
+<description>The TC2030-IDC-NL is our "No Legs" 6-pin Plug-of-Nails Cable</description>
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.4925" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+<wire x1="2.286" y1="-2.0447" x2="-0.979178125" y2="-2.0447" width="0.127" layer="21"/>
+<wire x1="-0.979178125" y1="-2.0447" x2="-1.531840625" y2="-1.91814375" width="0.127" layer="21" curve="-25.795946"/>
+<wire x1="-1.531840625" y1="-1.91814375" x2="-3.19733125" y2="-1.11315625" width="0.127" layer="21"/>
+<wire x1="-3.19733125" y1="-1.11315625" x2="-3.556" y2="-0.541434375" width="0.127" layer="21" curve="-64.204213"/>
+<wire x1="-3.556" y1="-0.541434375" x2="-3.556" y2="0.541434375" width="0.127" layer="21"/>
+<wire x1="-3.556" y1="0.541434375" x2="-3.19733125" y2="1.11315625" width="0.127" layer="21" curve="-64.204054"/>
+<wire x1="-3.19733125" y1="1.11315625" x2="-1.531840625" y2="1.91814375" width="0.127" layer="21"/>
+<wire x1="-1.531840625" y1="1.91814375" x2="-0.979178125" y2="2.0447" width="0.127" layer="21" curve="-25.795871"/>
+<wire x1="-0.979178125" y1="2.0447" x2="2.286" y2="2.0447" width="0.127" layer="21"/>
+<wire x1="2.286" y1="2.0447" x2="3.556" y2="0.7747" width="0.127" layer="21" curve="-90"/>
+<wire x1="3.556" y1="0.7747" x2="3.556" y2="-0.7747" width="0.127" layer="21"/>
+<wire x1="3.556" y1="-0.7747" x2="2.286" y2="-2.0447" width="0.127" layer="21" curve="-90"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SD-CARD_WITH-CARD-DETECT">
@@ -3435,6 +3531,20 @@ Positioning System receiver</description>
 <pin name="D+" x="-7.62" y="0" visible="pin" length="middle" function="dot"/>
 <pin name="ID" x="-7.62" y="-2.54" visible="pin" length="middle" function="dot"/>
 <pin name="GND" x="-7.62" y="-5.08" visible="pin" length="middle" function="dot"/>
+</symbol>
+<symbol name="JLINK-SWD-TC">
+<pin name="SWDIO" x="12.7" y="5.08" visible="pin" length="short" rot="R180"/>
+<pin name="SWDCLK" x="12.7" y="2.54" visible="pin" length="short" rot="R180"/>
+<pin name="SWO" x="12.7" y="-2.54" visible="pin" length="short" rot="R180"/>
+<pin name="!RESET" x="12.7" y="-5.08" visible="pin" length="short" rot="R180"/>
+<pin name="VCC" x="-12.7" y="5.08" visible="pin" length="short"/>
+<pin name="GND" x="-12.7" y="-5.08" visible="pin" length="short"/>
+<wire x1="-10.16" y1="7.62" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
+<text x="-10.16" y="7.874" size="1.778" layer="95" ratio="12">&gt;NAME</text>
+<text x="-10.16" y="-9.906" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -3505,6 +3615,39 @@ Bottom Mount</description>
 <attribute name="MOUSER" value="798-ZX62-B-5PA11" constant="no"/>
 <attribute name="NEWARK" value="86P8793" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TC2030-JLINK" prefix="J">
+<gates>
+<gate name="G$1" symbol="JLINK-SWD-TC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-L" package="TC2030-IDC">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="SWDCLK" pad="4"/>
+<connect gate="G$1" pin="SWDIO" pad="2"/>
+<connect gate="G$1" pin="SWO" pad="6"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-NL" package="TC2030-IDC-NL">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="SWDCLK" pad="4"/>
+<connect gate="G$1" pin="SWDIO" pad="2"/>
+<connect gate="G$1" pin="SWO" pad="6"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -4364,8 +4507,6 @@ High-power, low thermal resistance package.</description>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
-<part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
 <part name="U$1" library="signpost" deviceset="VCC_LINUX" device=""/>
 <part name="U$2" library="signpost" deviceset="VCC_LINUX" device=""/>
@@ -4437,6 +4578,18 @@ High-power, low thermal resistance package.</description>
 <part name="GND22" library="umich" deviceset="GND" device=""/>
 <part name="U$15" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
 <part name="GND23" library="umich" deviceset="GND" device=""/>
+<part name="J6" library="connector" deviceset="TC2030-JLINK" device="-L"/>
+<part name="J7" library="connector" deviceset="TC2030-JLINK" device="-L"/>
+<part name="U$4" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="U$7" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="U$9" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="U$10" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="U$16" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="U$17" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="GND19" library="umich" deviceset="GND" device=""/>
+<part name="GND20" library="umich" deviceset="GND" device=""/>
+<part name="GND24" library="umich" deviceset="GND" device=""/>
+<part name="GND25" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4449,7 +4602,7 @@ High-power, low thermal resistance package.</description>
 <instance part="J1" gate="G$1" x="43.18" y="96.52"/>
 <instance part="GND5" gate="1" x="68.58" y="53.34"/>
 <instance part="U$1" gate="G$1" x="71.12" y="139.7"/>
-<instance part="U$8" gate="G$1" x="63.5" y="139.7"/>
+<instance part="U$8" gate="G$1" x="60.96" y="139.7"/>
 </instances>
 <busses>
 </busses>
@@ -4590,9 +4743,8 @@ High-power, low thermal resistance package.</description>
 <net name="VCC_CONTROLLER" class="0">
 <segment>
 <pinref part="U$8" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="63.5" y1="139.7" x2="63.5" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="139.7" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="63.5" y1="134.62" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -4604,7 +4756,7 @@ High-power, low thermal resistance package.</description>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
 <instance part="FRAME3" gate="G$2" x="147.32" y="0"/>
-<instance part="U1" gate="U1" x="40.64" y="109.22"/>
+<instance part="U1" gate="U1" x="55.88" y="111.76"/>
 <instance part="U3" gate="G$1" x="170.18" y="111.76" rot="MR0"/>
 <instance part="U4" gate="U1" x="152.4" y="60.96" rot="MR0">
 <attribute name="DIGIKEY" x="152.4" y="60.96" size="1.778" layer="96" font="vector" rot="MR0" display="off"/>
@@ -4616,9 +4768,14 @@ High-power, low thermal resistance package.</description>
 <instance part="GND1" gate="1" x="132.08" y="114.3" rot="MR0"/>
 <instance part="GND2" gate="1" x="187.96" y="101.6"/>
 <instance part="GND3" gate="1" x="165.1" y="50.8" rot="MR0"/>
-<instance part="+3V2" gate="G$1" x="187.96" y="127" rot="MR0"/>
-<instance part="+3V3" gate="G$1" x="165.1" y="73.66" rot="MR0"/>
 <instance part="+3V4" gate="G$1" x="132.08" y="58.42"/>
+<instance part="J7" gate="G$1" x="48.26" y="38.1"/>
+<instance part="U$4" gate="G$1" x="187.96" y="124.46"/>
+<instance part="U$7" gate="G$1" x="165.1" y="71.12"/>
+<instance part="U$9" gate="G$1" x="22.86" y="116.84"/>
+<instance part="U$10" gate="G$1" x="33.02" y="45.72"/>
+<instance part="GND19" gate="1" x="25.4" y="68.58"/>
+<instance part="GND20" gate="1" x="33.02" y="27.94"/>
 </instances>
 <busses>
 </busses>
@@ -4667,6 +4824,12 @@ High-power, low thermal resistance package.</description>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="165.1" y1="55.88" x2="165.1" y2="53.34" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="J7" gate="G$1" pin="GND"/>
+<pinref part="GND20" gate="1" pin="GND"/>
+<wire x1="35.56" y1="33.02" x2="33.02" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="33.02" x2="33.02" y2="30.48" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GPS_OUT_TX" class="0">
 <segment>
@@ -4684,21 +4847,6 @@ High-power, low thermal resistance package.</description>
 </net>
 <net name="+3V3" class="0">
 <segment>
-<pinref part="U3" gate="G$1" pin="VBACKUP"/>
-<wire x1="185.42" y1="116.84" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="116.84" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="U3" gate="G$1" pin="VCC"/>
-<wire x1="185.42" y1="121.92" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<wire x1="187.96" y1="121.92" x2="187.96" y2="124.46" width="0.1524" layer="91"/>
-<junction x="187.96" y="121.92"/>
-</segment>
-<segment>
-<pinref part="U4" gate="U1" pin="VDD"/>
-<pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<wire x1="165.1" y1="68.58" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U4" gate="U1" pin="!WP"/>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
 <wire x1="139.7" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
@@ -4707,6 +4855,85 @@ High-power, low thermal resistance package.</description>
 <wire x1="132.08" y1="53.34" x2="132.08" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="53.34" x2="132.08" y2="53.34" width="0.1524" layer="91"/>
 <junction x="132.08" y="53.34"/>
+</segment>
+</net>
+<net name="VCC_CONTROLLER" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="VBACKUP"/>
+<wire x1="185.42" y1="116.84" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="116.84" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="VCC"/>
+<wire x1="185.42" y1="121.92" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="121.92" x2="187.96" y2="124.46" width="0.1524" layer="91"/>
+<junction x="187.96" y="121.92"/>
+<pinref part="U$4" gate="G$1" pin="VCC_CONTROLLER"/>
+</segment>
+<segment>
+<pinref part="U4" gate="U1" pin="VDD"/>
+<wire x1="165.1" y1="68.58" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="U$7" gate="G$1" pin="VCC_CONTROLLER"/>
+</segment>
+<segment>
+<pinref part="J7" gate="G$1" pin="VCC"/>
+<pinref part="U$10" gate="G$1" pin="VCC_CONTROLLER"/>
+<wire x1="35.56" y1="43.18" x2="33.02" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="43.18" x2="33.02" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="!RESET" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="!RESET"/>
+<wire x1="60.96" y1="33.02" x2="63.5" y2="33.02" width="0.1524" layer="91"/>
+<label x="63.5" y="33.02" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U1" gate="U1" pin="!RESET"/>
+<wire x1="76.2" y1="149.86" x2="78.74" y2="149.86" width="0.1524" layer="91"/>
+<label x="78.74" y="149.86" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SWO" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="SWO"/>
+<wire x1="60.96" y1="35.56" x2="63.5" y2="35.56" width="0.1524" layer="91"/>
+<label x="63.5" y="35.56" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SWDCLK" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="SWDCLK"/>
+<wire x1="60.96" y1="40.64" x2="63.5" y2="40.64" width="0.1524" layer="91"/>
+<label x="63.5" y="40.64" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U1" gate="U1" pin="TCK"/>
+<wire x1="76.2" y1="147.32" x2="78.74" y2="147.32" width="0.1524" layer="91"/>
+<label x="78.74" y="147.32" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SWDIO" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="SWDIO"/>
+<wire x1="60.96" y1="43.18" x2="63.5" y2="43.18" width="0.1524" layer="91"/>
+<label x="63.5" y="43.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$29" class="0">
+<segment>
+<pinref part="U1" gate="U1" pin="PA03"/>
+<wire x1="76.2" y1="129.54" x2="78.74" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="U1" gate="U1" pin="PA23"/>
+<wire x1="76.2" y1="78.74" x2="78.74" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$44" class="0">
+<segment>
+<pinref part="U1" gate="U1" pin="PA24"/>
+<wire x1="76.2" y1="76.2" x2="78.74" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -4721,6 +4948,11 @@ High-power, low thermal resistance package.</description>
 <instance part="U2" gate="U1" x="66.04" y="109.22"/>
 <instance part="J2" gate="G$1" x="157.48" y="93.98" rot="MR0"/>
 <instance part="GND4" gate="1" x="137.16" y="81.28"/>
+<instance part="J6" gate="G$1" x="76.2" y="35.56"/>
+<instance part="U$16" gate="G$1" x="33.02" y="119.38"/>
+<instance part="U$17" gate="G$1" x="58.42" y="45.72"/>
+<instance part="GND24" gate="1" x="40.64" y="66.04"/>
+<instance part="GND25" gate="1" x="58.42" y="27.94"/>
 </instances>
 <busses>
 </busses>
