@@ -5992,9 +5992,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="LOGO1" library="logos" deviceset="UMICH_SOLID" device="_GIANT"/>
 <part name="FRAME9" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
-<part name="TP27" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP28" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP29" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP30" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1001" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1002" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1003" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -6068,22 +6068,22 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="LED1017" library="leds" deviceset="LED" device="0603"/>
 <part name="LED1018" library="leds" deviceset="LED" device="0603"/>
 <part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP16" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP17" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP18" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP19" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP20" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP21" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP13" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP14" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP21" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP23" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP22" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP24" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP23" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP25" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP26" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP27" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -6092,9 +6092,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="TP6" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP8" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP30" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="TP31" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP32" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP33" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP34" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -6107,6 +6105,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="TP41" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP42" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP43" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP31" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11659,9 +11659,9 @@ EECLK must be NC</text>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
-<instance part="TP27" gate="G$1" x="17.78" y="78.74"/>
-<instance part="TP28" gate="G$1" x="17.78" y="76.2"/>
-<instance part="TP29" gate="G$1" x="17.78" y="73.66"/>
+<instance part="TP28" gate="G$1" x="17.78" y="78.74"/>
+<instance part="TP29" gate="G$1" x="17.78" y="76.2"/>
+<instance part="TP30" gate="G$1" x="17.78" y="73.66"/>
 <instance part="TP1001" gate="G$1" x="71.12" y="175.26"/>
 <instance part="TP1002" gate="G$1" x="71.12" y="172.72"/>
 <instance part="TP1003" gate="G$1" x="71.12" y="170.18"/>
@@ -11735,22 +11735,22 @@ EECLK must be NC</text>
 <instance part="LED1017" gate="G$1" x="147.32" y="78.74" rot="R270"/>
 <instance part="LED1018" gate="G$1" x="154.94" y="78.74" rot="R270"/>
 <instance part="TP9" gate="G$1" x="17.78" y="149.86"/>
-<instance part="TP15" gate="G$1" x="17.78" y="124.46"/>
-<instance part="TP16" gate="G$1" x="17.78" y="121.92"/>
-<instance part="TP17" gate="G$1" x="17.78" y="119.38"/>
-<instance part="TP18" gate="G$1" x="17.78" y="116.84"/>
-<instance part="TP19" gate="G$1" x="17.78" y="114.3"/>
-<instance part="TP20" gate="G$1" x="17.78" y="111.76"/>
-<instance part="TP11" gate="G$1" x="17.78" y="139.7"/>
-<instance part="TP12" gate="G$1" x="17.78" y="137.16"/>
-<instance part="TP13" gate="G$1" x="17.78" y="134.62"/>
-<instance part="TP14" gate="G$1" x="17.78" y="132.08"/>
-<instance part="TP21" gate="G$1" x="17.78" y="104.14"/>
-<instance part="TP23" gate="G$1" x="17.78" y="96.52"/>
-<instance part="TP22" gate="G$1" x="17.78" y="101.6"/>
-<instance part="TP24" gate="G$1" x="17.78" y="91.44"/>
-<instance part="TP25" gate="G$1" x="17.78" y="88.9"/>
-<instance part="TP26" gate="G$1" x="17.78" y="86.36"/>
+<instance part="TP16" gate="G$1" x="17.78" y="124.46"/>
+<instance part="TP17" gate="G$1" x="17.78" y="121.92"/>
+<instance part="TP18" gate="G$1" x="17.78" y="119.38"/>
+<instance part="TP19" gate="G$1" x="17.78" y="116.84"/>
+<instance part="TP20" gate="G$1" x="17.78" y="114.3"/>
+<instance part="TP21" gate="G$1" x="17.78" y="111.76"/>
+<instance part="TP12" gate="G$1" x="17.78" y="139.7"/>
+<instance part="TP13" gate="G$1" x="17.78" y="137.16"/>
+<instance part="TP14" gate="G$1" x="17.78" y="134.62"/>
+<instance part="TP15" gate="G$1" x="17.78" y="132.08"/>
+<instance part="TP22" gate="G$1" x="17.78" y="104.14"/>
+<instance part="TP24" gate="G$1" x="17.78" y="96.52"/>
+<instance part="TP23" gate="G$1" x="17.78" y="101.6"/>
+<instance part="TP25" gate="G$1" x="17.78" y="91.44"/>
+<instance part="TP26" gate="G$1" x="17.78" y="88.9"/>
+<instance part="TP27" gate="G$1" x="17.78" y="86.36"/>
 <instance part="TP1" gate="G$1" x="17.78" y="175.26"/>
 <instance part="TP2" gate="G$1" x="17.78" y="172.72"/>
 <instance part="TP3" gate="G$1" x="17.78" y="170.18"/>
@@ -11759,42 +11759,42 @@ EECLK must be NC</text>
 <instance part="TP6" gate="G$1" x="17.78" y="160.02"/>
 <instance part="TP7" gate="G$1" x="17.78" y="157.48"/>
 <instance part="TP8" gate="G$1" x="17.78" y="152.4"/>
-<instance part="TP10" gate="G$1" x="17.78" y="144.78"/>
-<instance part="TP30" gate="G$1" x="17.78" y="60.96"/>
-<instance part="TP31" gate="G$1" x="17.78" y="58.42"/>
-<instance part="TP32" gate="G$1" x="17.78" y="53.34"/>
-<instance part="TP33" gate="G$1" x="17.78" y="50.8"/>
-<instance part="TP34" gate="G$1" x="17.78" y="45.72"/>
-<instance part="TP35" gate="G$1" x="17.78" y="43.18"/>
-<instance part="TP36" gate="G$1" x="17.78" y="38.1"/>
-<instance part="TP37" gate="G$1" x="17.78" y="35.56"/>
-<instance part="TP38" gate="G$1" x="17.78" y="30.48"/>
-<instance part="TP39" gate="G$1" x="17.78" y="27.94"/>
-<instance part="TP40" gate="G$1" x="17.78" y="22.86"/>
-<instance part="TP41" gate="G$1" x="17.78" y="20.32"/>
-<instance part="TP42" gate="G$1" x="17.78" y="68.58"/>
-<instance part="TP43" gate="G$1" x="17.78" y="147.32"/>
+<instance part="TP11" gate="G$1" x="17.78" y="144.78"/>
+<instance part="TP32" gate="G$1" x="17.78" y="60.96"/>
+<instance part="TP33" gate="G$1" x="17.78" y="58.42"/>
+<instance part="TP34" gate="G$1" x="17.78" y="53.34"/>
+<instance part="TP35" gate="G$1" x="17.78" y="50.8"/>
+<instance part="TP36" gate="G$1" x="17.78" y="45.72"/>
+<instance part="TP37" gate="G$1" x="17.78" y="43.18"/>
+<instance part="TP38" gate="G$1" x="17.78" y="38.1"/>
+<instance part="TP39" gate="G$1" x="17.78" y="35.56"/>
+<instance part="TP40" gate="G$1" x="17.78" y="30.48"/>
+<instance part="TP41" gate="G$1" x="17.78" y="27.94"/>
+<instance part="TP42" gate="G$1" x="17.78" y="22.86"/>
+<instance part="TP43" gate="G$1" x="17.78" y="20.32"/>
+<instance part="TP31" gate="G$1" x="17.78" y="68.58"/>
+<instance part="TP10" gate="G$1" x="17.78" y="147.32"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="HUB_CFG" class="0">
 <segment>
-<pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP28" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="78.74" x2="20.32" y2="78.74" width="0.1524" layer="91"/>
 <label x="22.86" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_PORTPWR" class="0">
 <segment>
-<pinref part="TP28" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP29" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="76.2" x2="20.32" y2="76.2" width="0.1524" layer="91"/>
 <label x="22.86" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_PORTDIS" class="0">
 <segment>
-<pinref part="TP29" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP30" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="73.66" x2="20.32" y2="73.66" width="0.1524" layer="91"/>
 <label x="22.86" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -11945,15 +11945,15 @@ EECLK must be NC</text>
 <wire x1="139.7" y1="63.5" x2="139.7" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="TP24" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="91.44" x2="20.32" y2="91.44" width="0.1524" layer="91"/>
 <label x="22.86" y="91.44" size="1.27" layer="95" xref="yes"/>
 <wire x1="22.86" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
 <label x="22.86" y="88.9" size="1.27" layer="95" xref="yes"/>
 <wire x1="22.86" y1="86.36" x2="20.32" y2="86.36" width="0.1524" layer="91"/>
 <label x="22.86" y="86.36" size="1.27" layer="95" xref="yes"/>
-<pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
 <pinref part="TP26" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
 </segment>
 <segment>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
@@ -11966,7 +11966,7 @@ EECLK must be NC</text>
 <label x="22.86" y="157.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="144.78" x2="20.32" y2="144.78" width="0.1524" layer="91"/>
 <label x="22.86" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12250,84 +12250,84 @@ EECLK must be NC</text>
 </net>
 <net name="MOD0_5V_METERED" class="0">
 <segment>
-<pinref part="TP15" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP16" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
 <label x="22.86" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_5V_METERED" class="0">
 <segment>
-<pinref part="TP16" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP17" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
 <label x="22.86" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD2_5V_METERED" class="0">
 <segment>
-<pinref part="TP17" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP18" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="119.38" x2="20.32" y2="119.38" width="0.1524" layer="91"/>
 <label x="22.86" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD5_5V_METERED" class="0">
 <segment>
-<pinref part="TP18" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP19" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="116.84" x2="20.32" y2="116.84" width="0.1524" layer="91"/>
 <label x="22.86" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD6_5V_METERED" class="0">
 <segment>
-<pinref part="TP19" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP20" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="114.3" x2="20.32" y2="114.3" width="0.1524" layer="91"/>
 <label x="22.86" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD7_5V_METERED" class="0">
 <segment>
-<pinref part="TP20" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP21" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="111.76" x2="20.32" y2="111.76" width="0.1524" layer="91"/>
 <label x="22.86" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
 <segment>
-<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="139.7" x2="20.32" y2="139.7" width="0.1524" layer="91"/>
 <label x="22.86" y="139.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL-" class="0">
 <segment>
-<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="137.16" x2="20.32" y2="137.16" width="0.1524" layer="91"/>
 <label x="22.86" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VBATT+" class="0">
 <segment>
-<pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP14" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="134.62" x2="20.32" y2="134.62" width="0.1524" layer="91"/>
 <label x="22.86" y="134.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VBATT-" class="0">
 <segment>
-<pinref part="TP14" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP15" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="132.08" x2="20.32" y2="132.08" width="0.1524" layer="91"/>
 <label x="22.86" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_CONTROLLER" class="0">
 <segment>
-<pinref part="TP21" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP22" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="104.14" x2="20.32" y2="104.14" width="0.1524" layer="91"/>
 <label x="22.86" y="104.14" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
-<pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP24" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="96.52" x2="20.32" y2="96.52" width="0.1524" layer="91"/>
 <label x="22.86" y="96.52" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12339,7 +12339,7 @@ EECLK must be NC</text>
 </net>
 <net name="VCC_LINUX" class="0">
 <segment>
-<pinref part="TP22" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="101.6" x2="20.32" y2="101.6" width="0.1524" layer="91"/>
 <label x="22.86" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12381,98 +12381,98 @@ EECLK must be NC</text>
 </net>
 <net name="HUB_!PWRON1" class="0">
 <segment>
-<pinref part="TP30" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP32" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="60.96" x2="20.32" y2="60.96" width="0.1524" layer="91"/>
 <label x="22.86" y="60.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR1" class="0">
 <segment>
-<pinref part="TP31" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP33" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="58.42" x2="20.32" y2="58.42" width="0.1524" layer="91"/>
 <label x="22.86" y="58.42" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON2" class="0">
 <segment>
-<pinref part="TP32" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP34" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="53.34" x2="20.32" y2="53.34" width="0.1524" layer="91"/>
 <label x="22.86" y="53.34" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR2" class="0">
 <segment>
-<pinref part="TP33" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP35" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="50.8" x2="20.32" y2="50.8" width="0.1524" layer="91"/>
 <label x="22.86" y="50.8" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON3" class="0">
 <segment>
-<pinref part="TP34" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP36" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
 <label x="22.86" y="45.72" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR3" class="0">
 <segment>
-<pinref part="TP35" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP37" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
 <label x="22.86" y="43.18" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON4" class="0">
 <segment>
-<pinref part="TP36" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP38" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
 <label x="22.86" y="38.1" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR4" class="0">
 <segment>
-<pinref part="TP37" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP39" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
 <label x="22.86" y="35.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON6" class="0">
 <segment>
-<pinref part="TP38" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP40" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
 <label x="22.86" y="30.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR6" class="0">
 <segment>
-<pinref part="TP39" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP41" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="27.94" x2="20.32" y2="27.94" width="0.1524" layer="91"/>
 <label x="22.86" y="27.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON7" class="0">
 <segment>
-<pinref part="TP40" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP42" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="22.86" x2="20.32" y2="22.86" width="0.1524" layer="91"/>
 <label x="22.86" y="22.86" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR7" class="0">
 <segment>
-<pinref part="TP41" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP43" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="20.32" x2="20.32" y2="20.32" width="0.1524" layer="91"/>
 <label x="22.86" y="20.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="USB_SUSPEND_STATUS" class="0">
 <segment>
-<pinref part="TP42" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP31" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="68.58" x2="20.32" y2="68.58" width="0.1524" layer="91"/>
 <label x="22.86" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="PPS" class="0">
 <segment>
-<pinref part="TP43" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
 <wire x1="20.32" y1="147.32" x2="22.86" y2="147.32" width="0.1524" layer="91"/>
 <label x="22.86" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
