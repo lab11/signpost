@@ -647,6 +647,7 @@ Back</text>
 CLK</text>
 <text x="208.28" y="187.96" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">SMB
 DATA</text>
+<text x="136.398" y="276.352" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">PPS</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -2496,6 +2497,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="TP42" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="131.318" y="186.436">
 <attribute name="DIGIKEY" value="5001K-ND" x="131.318" y="186.436" size="1.778" layer="27" display="off"/>
+</element>
+<element name="TP43" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="136.398" y="273.304">
+<attribute name="DIGIKEY" value="5001K-ND" x="136.398" y="273.304" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>
@@ -6163,7 +6167,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="146.431" y1="257.937" x2="146.05" y2="258.318" width="0.254" layer="1"/>
 <wire x1="146.05" y1="258.318" x2="146.05" y2="261.112" width="0.254" layer="1"/>
 <wire x1="146.05" y1="261.112" x2="139.192" y2="267.97" width="0.254" layer="1"/>
-<wire x1="139.192" y1="267.97" x2="139.192" y2="329.184" width="0.254" layer="1"/>
+<wire x1="139.192" y1="267.97" x2="139.192" y2="272.796" width="0.254" layer="1"/>
+<wire x1="139.192" y1="272.796" x2="139.192" y2="273.812" width="0.254" layer="1"/>
+<wire x1="139.192" y1="273.812" x2="139.192" y2="329.184" width="0.254" layer="1"/>
 <wire x1="139.192" y1="329.184" x2="139.192" y2="340.868" width="0.254" layer="1"/>
 <wire x1="139.192" y1="340.868" x2="143.256" y2="344.932" width="0.254" layer="1"/>
 <wire x1="143.256" y1="344.932" x2="143.383" y2="344.932" width="0.254" layer="1"/>
@@ -6283,6 +6289,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="120.015" y1="337.439" x2="120.396" y2="337.058" width="0.254" layer="1"/>
 <wire x1="120.396" y1="337.058" x2="131.318" y2="337.058" width="0.254" layer="1"/>
 <wire x1="131.318" y1="337.058" x2="139.192" y2="329.184" width="0.254" layer="1"/>
+<contactref element="TP43" pad="TESTPOINT"/>
+<wire x1="136.398" y1="273.304" x2="138.684" y2="273.304" width="0.254" layer="1"/>
+<wire x1="138.684" y1="273.304" x2="139.192" y2="273.812" width="0.254" layer="1"/>
+<wire x1="138.684" y1="273.304" x2="139.192" y2="272.796" width="0.254" layer="1"/>
+<wire x1="139.192" y1="272.796" x2="138.684" y2="273.304" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="CONT_MOD0_IN">
 <contactref element="U8" pad="2"/>
