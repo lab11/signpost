@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.4">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -336,6 +336,9 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="-20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
 <text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
 <text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<text x="-3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="29.21" size="1.27" layer="49" align="center">X</text>
 </package>
 </packages>
 <symbols>
@@ -371,6 +374,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </symbols>
 <devicesets>
 <deviceset name="MODULE_POWER" prefix="J">
+<description>Header for power module for signpost</description>
 <gates>
 <gate name="G$1" symbol="HEADER_POWER" x="0" y="0"/>
 </gates>
@@ -396,7 +400,9 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <connect gate="G$1" pin="VSOL-" pad="20"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="S9172-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>

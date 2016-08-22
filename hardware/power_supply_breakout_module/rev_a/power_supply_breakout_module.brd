@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.4">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -338,6 +338,9 @@
 <circle x="-20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
 <text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
 <text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
+<text x="-3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="26.67" size="1.27" layer="49" align="center">X</text>
+<text x="-6.35" y="29.21" size="1.27" layer="49" align="center">X</text>
 </package>
 </packages>
 </library>
@@ -883,7 +886,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </pass>
 </autorouter>
 <elements>
-<element name="J1" library="signpost" package="MODULE_POWER" value="MODULE_POWER" x="34.036" y="33.02"/>
+<element name="J1" library="signpost" package="MODULE_POWER" value="MODULE_POWER" x="34.036" y="33.02">
+<attribute name="DIGIKEY" value="S9172-ND" x="34.036" y="33.02" size="1.778" layer="27" display="off"/>
+</element>
 <element name="JP1" library="SparkFun-Passives" package="1X02" value="" x="47.625" y="45.72" smashed="yes" rot="R180">
 <attribute name="VALUE" x="48.895" y="48.895" size="1.27" layer="27" rot="R180"/>
 </element>
