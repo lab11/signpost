@@ -1815,6 +1815,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="U3" library="atmel" package="QFN32" value="ATMEGA8U2-MU" x="19.05" y="34.925" smashed="yes" rot="R90">
 <attribute name="NAME" x="18.044" y="35" size="1.27" layer="49" font="vector" ratio="10"/>
 <attribute name="VALUE" x="23.4" y="30.875" size="1.27" layer="27" rot="R90"/>
+<attribute name="DIGIKEY" value="ATMEGA8U2-MURCT-ND" x="19.05" y="34.925" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C5" library="SmartPrj" package="C0603-ROUND" value="100n" x="27.94" y="30.48" smashed="yes">
 <attribute name="NAME" x="26.543" y="31.496" size="1.27" layer="49" ratio="10"/>
@@ -1894,7 +1895,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="18.796" y="27.813" size="1.27" layer="27"/>
 </element>
 <element name="JP2" library="pinhead" package="2X02" value="" x="19.558" y="41.148" rot="R90"/>
-<element name="IC5" library="idii" package="MLF32" value="ATMEGA328P-20MU" x="46.355" y="16.51" rot="R270"/>
+<element name="IC5" library="idii" package="MLF32" value="ATMEGA328P-20MU" x="46.355" y="16.51" rot="R270">
+<attribute name="DIGIKEY" value="ATMEGA328P-MU-ND" x="46.355" y="16.51" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
 <element name="J1" library="signpost" package="MODULE_GENERIC" value="MODULE_GENERIC" x="34.29" y="26.67" rot="R90">
 <attribute name="DIGIKEY" value="S9170-ND" x="34.29" y="26.67" size="1.778" layer="27" rot="R90" display="off"/>
 </element>

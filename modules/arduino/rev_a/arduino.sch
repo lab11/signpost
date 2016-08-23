@@ -13835,7 +13835,9 @@ http://www.nidec-copal-electronics.com/e/catalog/switch/mfs.pdf</description>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="L" library="led" deviceset="LED" device="CHIP-LED0805" value="YELLOW"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
-<part name="U3" library="atmel" deviceset="ATMEGA8U2-MU" device=""/>
+<part name="U3" library="atmel" deviceset="ATMEGA8U2-MU" device="">
+<attribute name="DIGIKEY" value="ATMEGA8U2-MURCT-ND"/>
+</part>
 <part name="C5" library="SmartPrj" deviceset="C-EU" device="0603-RND" value="100n"/>
 <part name="ICSP1" library="pinhead" deviceset="PINHD-2X3" device="" value="ICSP"/>
 <part name="P+11" library="supply1" deviceset="+5V" device=""/>
@@ -13869,7 +13871,9 @@ http://www.nidec-copal-electronics.com/e/catalog/switch/mfs.pdf</description>
 <part name="C11" library="SmartPrj" deviceset="C-EU" device="0603-RND" value="22p"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="JP2" library="pinhead" deviceset="PINHD-2X2" device=""/>
-<part name="IC5" library="idii" deviceset="MEGA8" device="-MI" value="ATMEGA328P-20MU"/>
+<part name="IC5" library="idii" deviceset="MEGA8" device="-MI" value="ATMEGA328P-20MU">
+<attribute name="DIGIKEY" value="ATMEGA328P-MU-ND"/>
+</part>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="J1" library="signpost" deviceset="MODULE_GENERIC" device=""/>
@@ -14048,7 +14052,9 @@ identical smd</text>
 <instance part="GND16" gate="1" x="45.72" y="22.86"/>
 <instance part="L" gate="G$1" x="287.02" y="116.84" rot="R90"/>
 <instance part="GND17" gate="1" x="299.72" y="116.84" rot="R90"/>
-<instance part="U3" gate="G$1" x="119.38" y="53.34"/>
+<instance part="U3" gate="G$1" x="119.38" y="53.34">
+<attribute name="DIGIKEY" x="119.38" y="53.34" size="1.27" layer="96" align="top-left" display="off"/>
+</instance>
 <instance part="C5" gate="G$1" x="180.34" y="81.28" rot="R90"/>
 <instance part="ICSP1" gate="A" x="60.96" y="99.06"/>
 <instance part="P+11" gate="1" x="71.12" y="111.76" smashed="yes">
@@ -14127,6 +14133,7 @@ identical smd</text>
 <instance part="IC5" gate="G$1" x="233.68" y="48.26" smashed="yes">
 <attribute name="NAME" x="217.17" y="76.835" size="1.778" layer="95"/>
 <attribute name="VALUE" x="217.805" y="14.605" size="1.778" layer="96"/>
+<attribute name="DIGIKEY" x="233.68" y="48.26" size="1.27" layer="96" align="top-left" display="off"/>
 </instance>
 <instance part="GND15" gate="1" x="167.64" y="45.72"/>
 <instance part="S2" gate="G$1" x="208.28" y="101.6" rot="R270"/>
