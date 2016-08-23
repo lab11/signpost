@@ -1556,8 +1556,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="-16.002" y="29.972" size="1.27" layer="27" ratio="10" rot="R180"/>
 <attribute name="DIGIKEY" value="535-9041-ND" x="-21.082" y="26.035" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="J1" library="signpost" package="MODULE_GENERIC" value="MODULE_GENERIC" x="38.608" y="26.67" rot="R90">
-<attribute name="DIGIKEY" value="S9170-ND" x="-36.83" y="-27.813" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="J1" library="signpost" package="MODULE_GENERIC" value="MODULE_GENERIC" x="34.417" y="26.67" rot="R90">
+<attribute name="DIGIKEY" value="S9170-ND" x="-41.021" y="-27.813" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="JP5" library="pinhead" package="1X03" value="" x="37.846" y="-25.146"/>
 <element name="VR1" library="regulators" package="RLT0007A" value="TPS62086" x="29.337" y="-24.257">
@@ -1677,9 +1677,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="66.167" y1="25.4" x2="59.47" y2="36.576" width="0" layer="19" extent="1-1"/>
 <wire x1="91.948" y1="53.086" x2="59.47" y2="36.576" width="0" layer="19" extent="1-1"/>
 <wire x1="26.416" y1="50.8" x2="41.275" y2="24.892" width="0" layer="19" extent="1-1"/>
-<wire x1="9.398" y1="34.29" x2="26.416" y2="50.8" width="0" layer="19" extent="1-1"/>
-<wire x1="11.938" y1="19.05" x2="9.398" y2="34.29" width="0" layer="19" extent="1-1"/>
-<wire x1="-11.176" y1="31.369" x2="9.398" y2="34.29" width="0" layer="19" extent="1-1"/>
+<wire x1="5.207" y1="34.29" x2="26.416" y2="50.8" width="0" layer="19" extent="1-1"/>
+<wire x1="7.747" y1="19.05" x2="5.207" y2="34.29" width="0" layer="19" extent="1-1"/>
+<wire x1="-11.176" y1="31.369" x2="5.207" y2="34.29" width="0" layer="19" extent="1-1"/>
 <wire x1="-16.891" y1="29.464" x2="-11.176" y2="31.369" width="0" layer="19" extent="1-1"/>
 <wire x1="-20.816" y1="32.094" x2="-16.891" y2="29.464" width="0" layer="19" extent="1-1"/>
 <wire x1="-20.066" y1="34.544" x2="-20.816" y2="32.094" width="0" layer="19" extent="1-1"/>
@@ -2065,7 +2065,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="VR1" pad="7"/>
 <contactref element="VR1" pad="1"/>
 <contactref element="C10" pad="1"/>
-<wire x1="28.437" y1="-23.507" x2="11.938" y2="34.29" width="0" layer="19" extent="1-1"/>
+<wire x1="28.437" y1="-23.507" x2="7.747" y2="34.29" width="0" layer="19" extent="1-1"/>
 <wire x1="29.787" y1="-23.657" x2="28.437" y2="-23.507" width="0" layer="19" extent="1-1"/>
 <wire x1="35.306" y1="-25.146" x2="29.787" y2="-23.657" width="0" layer="19" extent="1-1"/>
 <wire x1="47.61" y1="-23.749" x2="35.306" y2="-25.146" width="0" layer="19" extent="1-1"/>
@@ -2073,7 +2073,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <signal name="MOD_VCCIO">
 <contactref element="JP5" pad="2"/>
 <contactref element="J1" pad="4"/>
-<wire x1="37.846" y1="-25.146" x2="11.938" y2="31.75" width="0" layer="19" extent="1-1"/>
+<wire x1="37.846" y1="-25.146" x2="7.747" y2="31.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$2">
 <contactref element="L2" pad="1"/>
@@ -2088,17 +2088,17 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <signal name="MOD_USB_VBUS">
 <contactref element="J1" pad="13"/>
 <contactref element="S1" pad="1"/>
-<wire x1="9.398" y1="19.05" x2="-10.461" y2="-124.099" width="0" layer="19" extent="1-1"/>
+<wire x1="5.207" y1="19.05" x2="-10.461" y2="-124.099" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD_USB_D+">
 <contactref element="J1" pad="11"/>
 <contactref element="S1" pad="7"/>
-<wire x1="9.398" y1="21.59" x2="-10.461" y2="-126.599" width="0" layer="19" extent="1-1"/>
+<wire x1="5.207" y1="21.59" x2="-10.461" y2="-126.599" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOD_USB_D-">
 <contactref element="J1" pad="12"/>
 <contactref element="S1" pad="4"/>
-<wire x1="11.938" y1="21.59" x2="-4.461" y2="-124.099" width="0" layer="19" extent="1-1"/>
+<wire x1="7.747" y1="21.59" x2="-4.461" y2="-124.099" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="EXT_USB_D-">
 <contactref element="J4" pad="2"/>
