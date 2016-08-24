@@ -1956,6 +1956,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <smd name="P$1" x="-1.2" y="0" dx="3" dy="1.4" layer="1" rot="R90"/>
 <smd name="P$2" x="1.2" y="0" dx="3" dy="1.4" layer="1" rot="R90"/>
+<text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -3784,6 +3785,16 @@ See Page 16: http://www.ti.com/lit/an/spraar7e/spraar7e.pdf</description>
 <text x="-2.55" y="1.78" size="1.016" layer="25">&gt;NAME</text>
 <text x="-2.72" y="-2.77" size="1.016" layer="25">&gt;VALUE</text>
 </package>
+<package name="XFL4015">
+<description>Coilcraft XFL4015 series inductor package</description>
+<smd name="1" x="-1.1811" y="0" dx="0.9652" dy="3.4036" layer="1"/>
+<smd name="2" x="1.1811" y="0" dx="0.9652" dy="3.4036" layer="1"/>
+<wire x1="-1.9939" y1="1.9939" x2="1.9939" y2="1.9939" width="0.127" layer="21"/>
+<wire x1="1.9939" y1="1.9939" x2="1.9939" y2="-1.9939" width="0.127" layer="21"/>
+<wire x1="1.9939" y1="-1.9939" x2="-1.9939" y2="-1.9939" width="0.127" layer="21"/>
+<wire x1="-1.9939" y1="-1.9939" x2="-1.9939" y2="1.9939" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="FERRITE_BEAD">
@@ -4016,6 +4027,15 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </technologies>
 </device>
 <device name="1210" package="1210_CAP">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="XFL4015" package="XFL4015">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
@@ -4507,6 +4527,62 @@ High-power, low thermal resistance package.</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="crystals">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Crystals of various frequencies.</description>
+<packages>
+<package name="4-SMD">
+<smd name="2" x="0" y="0" dx="1.5" dy="1.2" layer="1"/>
+<smd name="3" x="0" y="2.2" dx="1.5" dy="1.2" layer="1"/>
+<smd name="1" x="-3.8" y="0" dx="1.5" dy="1.2" layer="1"/>
+<smd name="4" x="-3.8" y="2.2" dx="1.5" dy="1.2" layer="1"/>
+<wire x1="-4.4" y1="2.7" x2="0.6" y2="2.7" width="0.127" layer="21"/>
+<wire x1="0.6" y1="2.7" x2="0.6" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="0.6" y1="-0.5" x2="-4.4" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="-4.4" y1="-0.5" x2="-4.4" y2="2.7" width="0.127" layer="21"/>
+<text x="-2" y="3.04" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="-1.5" y="-2.46" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<wire x1="-3.28" y1="-1.01" x2="-4.98" y2="-1.01" width="0.127" layer="21"/>
+<wire x1="-4.98" y1="-1.01" x2="-4.98" y2="0.49" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="CRYSTAL-GND">
+<pin name="1" x="-5.08" y="0" visible="pad" length="short"/>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" rot="R180"/>
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="3.81" x2="-1.27" y2="-3.81" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-3.81" x2="1.27" y2="-3.81" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-3.81" x2="1.27" y2="3.81" width="0.254" layer="94"/>
+<wire x1="1.27" y1="3.81" x2="-1.27" y2="3.81" width="0.254" layer="94"/>
+<text x="-2.54" y="7.62" size="1.27" layer="95">&gt;NAME</text>
+<text x="-2.54" y="5.08" size="1.27" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="-5.08" visible="off" length="short" rot="R90"/>
+<text x="0" y="-2.54" size="0.762" layer="95" ratio="12" align="bottom-center">GND</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="CTS-405" prefix="X" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="CRYSTAL-GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="4-SMD">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="3"/>
+<connect gate="G$1" pin="GND" pad="2 4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="CTX834CT-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Branden Ghena"/>
@@ -4627,16 +4703,36 @@ High-power, low thermal resistance package.</description>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
 <part name="GND24" library="umich" deviceset="GND" device=""/>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF"/>
-<part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF"/>
-<part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF"/>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF"/>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
+<part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
+<part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
 <part name="L3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5k"/>
 <part name="L4" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
-<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF"/>
-<part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7 uF"/>
+<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
+<part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7 uF">
+<attribute name="DIGIKEY" value="490-13252-1-ND"/>
+</part>
 <part name="U$18" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
+<part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="12 pF">
+<attribute name="DIGIKEY" value="490-6196-1-ND"/>
+</part>
+<part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="12 pF">
+<attribute name="DIGIKEY" value="490-6196-1-ND"/>
+</part>
+<part name="X1" library="crystals" deviceset="CTS-405" device=""/>
+<part name="GND26" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4992,16 +5088,39 @@ High-power, low thermal resistance package.</description>
 <instance part="U$17" gate="G$1" x="58.42" y="45.72"/>
 <instance part="GND24" gate="1" x="7.62" y="81.28"/>
 <instance part="GND25" gate="1" x="58.42" y="27.94"/>
-<instance part="C6" gate="G$1" x="35.56" y="109.22"/>
-<instance part="C7" gate="G$1" x="25.4" y="121.92"/>
-<instance part="C8" gate="G$1" x="17.78" y="121.92"/>
-<instance part="C9" gate="G$1" x="10.16" y="121.92"/>
+<instance part="C6" gate="G$1" x="35.56" y="109.22">
+<attribute name="DIGIKEY" x="35.56" y="109.22" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C7" gate="G$1" x="25.4" y="121.92">
+<attribute name="DIGIKEY" x="25.4" y="121.92" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C8" gate="G$1" x="17.78" y="121.92">
+<attribute name="DIGIKEY" x="17.78" y="121.92" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C9" gate="G$1" x="10.16" y="121.92">
+<attribute name="DIGIKEY" x="10.16" y="121.92" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="L3" gate="G$1" x="35.56" y="121.92" rot="R90"/>
 <instance part="L4" gate="G$1" x="48.26" y="106.68" rot="R90"/>
-<instance part="C10" gate="G$1" x="50.8" y="99.06"/>
-<instance part="C11" gate="G$1" x="43.18" y="99.06"/>
+<instance part="C10" gate="G$1" x="50.8" y="99.06">
+<attribute name="DIGIKEY" x="50.8" y="99.06" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C11" gate="G$1" x="43.18" y="99.06">
+<attribute name="DIGIKEY" x="43.18" y="99.06" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="U$18" gate="G$1" x="132.08" y="149.86"/>
 <instance part="R10" gate="G$1" x="127" y="147.32"/>
+<instance part="C12" gate="G$1" x="83.82" y="73.66" rot="R90">
+<attribute name="DIGIKEY" x="83.82" y="73.66" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="C13" gate="G$1" x="83.82" y="63.5" rot="R90">
+<attribute name="DIGIKEY" x="83.82" y="63.5" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="X1" gate="G$1" x="78.74" y="68.58" smashed="yes" rot="R90">
+<attribute name="NAME" x="73.66" y="68.58" size="1.27" layer="95" rot="R180"/>
+<attribute name="VALUE" x="73.66" y="66.04" size="1.27" layer="96" rot="R90"/>
+</instance>
+<instance part="GND26" gate="1" x="88.9" y="58.42"/>
 </instances>
 <busses>
 </busses>
@@ -5051,6 +5170,18 @@ High-power, low thermal resistance package.</description>
 <junction x="50.8" y="86.36"/>
 <wire x1="7.62" y1="86.36" x2="10.16" y2="86.36" width="0.1524" layer="91"/>
 <junction x="10.16" y="86.36"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="GND"/>
+<wire x1="83.82" y1="68.58" x2="88.9" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="C12" gate="G$1" pin="2"/>
+<wire x1="88.9" y1="68.58" x2="88.9" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="C13" gate="G$1" pin="2"/>
+<wire x1="88.9" y1="63.5" x2="88.9" y2="68.58" width="0.1524" layer="91"/>
+<junction x="88.9" y="68.58"/>
+<pinref part="GND26" gate="1" pin="GND"/>
+<wire x1="88.9" y1="60.96" x2="88.9" y2="63.5" width="0.1524" layer="91"/>
+<junction x="88.9" y="63.5"/>
 </segment>
 </net>
 <net name="EDISON_SPI_MISO" class="0">
@@ -5228,6 +5359,36 @@ High-power, low thermal resistance package.</description>
 <wire x1="55.88" y1="162.56" x2="55.88" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="U2" gate="U1" pin="BIASL"/>
 <wire x1="55.88" y1="165.1" x2="58.42" y2="165.1" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="STORAGE_XOUT" class="0">
+<segment>
+<pinref part="U2" gate="U1" pin="PA01"/>
+<wire x1="99.06" y1="149.86" x2="101.6" y2="149.86" width="0.1524" layer="91"/>
+<label x="101.6" y="149.86" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="1"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<wire x1="81.28" y1="63.5" x2="78.74" y2="63.5" width="0.1524" layer="91"/>
+<junction x="78.74" y="63.5"/>
+<wire x1="76.2" y1="63.5" x2="78.74" y2="63.5" width="0.1524" layer="91"/>
+<label x="76.2" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="STORAGE_XIN" class="0">
+<segment>
+<pinref part="U2" gate="U1" pin="PA00"/>
+<wire x1="99.06" y1="152.4" x2="101.6" y2="152.4" width="0.1524" layer="91"/>
+<label x="101.6" y="152.4" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="2"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="73.66" x2="81.28" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="73.66" x2="78.74" y2="73.66" width="0.1524" layer="91"/>
+<junction x="78.74" y="73.66"/>
+<label x="76.2" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
