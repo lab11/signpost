@@ -350,6 +350,75 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
 <text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
 </package>
+<package name="DFN-6-2MMX3MM">
+<smd name="1" x="-0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="2" x="0" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="3" x="0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="4" x="0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="5" x="0" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="6" x="-0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<wire x1="-1" y1="1.5" x2="1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="1.5" x2="1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="-1.5" x2="-1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
+<circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
+<text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
+<package name="SO20L">
+<description>&lt;b&gt;Small Outline Package&lt;/b&gt;</description>
+<wire x1="6.1214" y1="3.7338" x2="-6.1214" y2="3.7338" width="0.1524" layer="21"/>
+<wire x1="6.1214" y1="-3.7338" x2="6.5024" y2="-3.3528" width="0.1524" layer="21" curve="90"/>
+<wire x1="-6.5024" y1="3.3528" x2="-6.1214" y2="3.7338" width="0.1524" layer="21" curve="-90"/>
+<wire x1="6.1214" y1="3.7338" x2="6.5024" y2="3.3528" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-6.5024" y1="-3.3528" x2="-6.1214" y2="-3.7338" width="0.1524" layer="21" curve="90"/>
+<wire x1="-6.1214" y1="-3.7338" x2="6.1214" y2="-3.7338" width="0.1524" layer="21"/>
+<wire x1="6.5024" y1="-3.3528" x2="6.5024" y2="3.3528" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="3.3528" x2="-6.5024" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="1.27" x2="-6.5024" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="-1.27" x2="-6.5024" y2="-3.3528" width="0.1524" layer="21"/>
+<wire x1="-6.477" y1="-3.3782" x2="6.477" y2="-3.3782" width="0.0508" layer="21"/>
+<wire x1="-6.5024" y1="1.27" x2="-6.5024" y2="-1.27" width="0.1524" layer="21" curve="-180"/>
+<smd name="1" x="-5.715" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="2" x="-4.445" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="3" x="-3.175" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="4" x="-1.905" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="5" x="-0.635" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="6" x="0.635" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="7" x="1.905" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="8" x="3.175" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="13" x="3.175" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="14" x="1.905" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="15" x="0.635" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="16" x="-0.635" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="17" x="-1.905" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="18" x="-3.175" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="19" x="-4.445" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="20" x="-5.715" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="9" x="4.445" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="10" x="5.715" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="12" x="4.445" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="11" x="5.715" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<text x="8" y="-3" size="1.016" layer="27" font="vector" ratio="10" rot="R90">&gt;VALUE</text>
+<text x="-7" y="-3" size="1.016" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
+</package>
+<package name="SO8_EP1">
+<smd name="P$1" x="-1.905" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$2" x="-0.635" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$3" x="0.635" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$4" x="1.905" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$5" x="1.905" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$6" x="0.635" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$7" x="-0.635" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$8" x="-1.905" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="GND" x="0" y="0" dx="3.7" dy="2.71" layer="1"/>
+<wire x1="-2.48" y1="1.9" x2="-2.48" y2="-1.9" width="0.254" layer="21"/>
+<wire x1="-2.48" y1="1.9" x2="2.48" y2="1.9" width="0.254" layer="21"/>
+<wire x1="2.48" y1="1.9" x2="2.48" y2="-1.9" width="0.254" layer="21"/>
+<wire x1="-2.48" y1="-1.9" x2="2.48" y2="-1.9" width="0.254" layer="21"/>
+<circle x="-3" y="-2" radius="0.22360625" width="0.254" layer="21"/>
+<text x="-3" y="-1" size="0.8128" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
+<text x="4" y="-2" size="0.8128" layer="27" font="vector" ratio="12" rot="R90">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_POWER">
@@ -380,6 +449,62 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-10.16" y1="27.94" x2="15.24" y2="27.94" width="0.254" layer="94"/>
 <wire x1="-10.16" y1="27.94" x2="-10.16" y2="-27.94" width="0.254" layer="94" style="shortdash"/>
 <text x="-12.7" y="2.54" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST POWER MODULE</text>
+</symbol>
+<symbol name="LTC2941-1">
+<pin name="SENSE+" x="10.16" y="7.62" length="short" direction="oc" rot="R180"/>
+<pin name="SENSE-" x="10.16" y="5.08" length="short" direction="oc" rot="R180"/>
+<pin name="SDA" x="10.16" y="0" length="short" direction="oc" rot="R180"/>
+<pin name="SCL" x="10.16" y="-2.54" length="short" direction="oc" rot="R180"/>
+<pin name="!ALERT" x="10.16" y="-5.08" length="short" direction="oc" rot="R180"/>
+<pin name="GND" x="10.16" y="-10.16" length="short" direction="oc" rot="R180"/>
+<wire x1="7.62" y1="10.16" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-12.7" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-12.7" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="10.16" x2="7.62" y2="10.16" width="0.254" layer="94"/>
+<text x="-5.08" y="10.668" size="1.778" layer="95" ratio="12">&gt;NAME</text>
+<text x="-5.08" y="-14.732" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
+</symbol>
+<symbol name="PCA9544A">
+<pin name="A0" x="-10.16" y="12.7" length="short"/>
+<pin name="A1" x="-10.16" y="10.16" length="short"/>
+<pin name="A2" x="-10.16" y="7.62" length="short"/>
+<pin name="!INT0" x="-10.16" y="5.08" length="short"/>
+<pin name="SD0" x="-10.16" y="2.54" length="short"/>
+<pin name="SC0" x="-10.16" y="0" length="short"/>
+<pin name="!INT1" x="-10.16" y="-2.54" length="short"/>
+<pin name="SD1" x="-10.16" y="-5.08" length="short"/>
+<pin name="SC1" x="-10.16" y="-7.62" length="short"/>
+<pin name="GND" x="-10.16" y="-10.16" length="short"/>
+<pin name="!INT2" x="10.16" y="-10.16" length="short" rot="R180"/>
+<pin name="SD2" x="10.16" y="-7.62" length="short" rot="R180"/>
+<pin name="SC2" x="10.16" y="-5.08" length="short" rot="R180"/>
+<pin name="!INT3" x="10.16" y="-2.54" length="short" rot="R180"/>
+<pin name="SD3" x="10.16" y="0" length="short" rot="R180"/>
+<pin name="SC3" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="!INT" x="10.16" y="5.08" length="short" rot="R180"/>
+<pin name="SCL" x="10.16" y="7.62" length="short" rot="R180"/>
+<pin name="SDA" x="10.16" y="10.16" length="short" rot="R180"/>
+<pin name="VCC" x="10.16" y="12.7" length="short" rot="R180"/>
+<wire x1="-7.62" y1="15.24" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-12.7" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-12.7" x2="7.62" y2="15.24" width="0.254" layer="94"/>
+<wire x1="7.62" y1="15.24" x2="-7.62" y2="15.24" width="0.254" layer="94"/>
+<text x="-7.62" y="15.748" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-15.24" size="1.778" layer="96">&gt;VALUES</text>
+</symbol>
+<symbol name="AOZ1037PI">
+<pin name="GND" x="-12.7" y="2.54" length="short"/>
+<pin name="VIN" x="-12.7" y="0" length="short"/>
+<pin name="FB" x="-12.7" y="-2.54" length="short"/>
+<pin name="COMP" x="12.7" y="-2.54" length="short" rot="R180"/>
+<pin name="EN" x="12.7" y="0" length="short" rot="R180"/>
+<pin name="PGOOD" x="12.7" y="2.54" length="short" rot="R180"/>
+<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="10.16" y2="5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
+<text x="-10.16" y="5.588" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-7.62" size="1.778" layer="96">&gt;VALUES</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -414,6 +539,86 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </device>
 </devices>
 </deviceset>
+<deviceset name="LTC2941-1" prefix="U">
+<description>1A I2C Battery Gas Gauge
+with Internal Sense Resistor</description>
+<gates>
+<gate name="G$1" symbol="LTC2941-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DFN-6-2MMX3MM">
+<connects>
+<connect gate="G$1" pin="!ALERT" pad="5"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="SCL" pad="3"/>
+<connect gate="G$1" pin="SDA" pad="4"/>
+<connect gate="G$1" pin="SENSE+" pad="1"/>
+<connect gate="G$1" pin="SENSE-" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" constant="no"/>
+<attribute name="NEWARK" value="84R6664" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PCA9544A">
+<gates>
+<gate name="G$1" symbol="PCA9544A" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO20L">
+<connects>
+<connect gate="G$1" pin="!INT" pad="14"/>
+<connect gate="G$1" pin="!INT0" pad="4"/>
+<connect gate="G$1" pin="!INT1" pad="7"/>
+<connect gate="G$1" pin="!INT2" pad="18"/>
+<connect gate="G$1" pin="!INT3" pad="15"/>
+<connect gate="G$1" pin="A0" pad="1"/>
+<connect gate="G$1" pin="A1" pad="2"/>
+<connect gate="G$1" pin="A2" pad="3"/>
+<connect gate="G$1" pin="GND" pad="10"/>
+<connect gate="G$1" pin="SC0" pad="6"/>
+<connect gate="G$1" pin="SC1" pad="9"/>
+<connect gate="G$1" pin="SC2" pad="20"/>
+<connect gate="G$1" pin="SC3" pad="17"/>
+<connect gate="G$1" pin="SCL" pad="13"/>
+<connect gate="G$1" pin="SD0" pad="5"/>
+<connect gate="G$1" pin="SD1" pad="8"/>
+<connect gate="G$1" pin="SD2" pad="19"/>
+<connect gate="G$1" pin="SD3" pad="16"/>
+<connect gate="G$1" pin="SDA" pad="12"/>
+<connect gate="G$1" pin="VCC" pad="11"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="AOZ1037PI">
+<description>5A Synchronous Buck Regulator for power supply regulation</description>
+<gates>
+<gate name="G$1" symbol="AOZ1037PI" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO8_EP1">
+<connects>
+<connect gate="G$1" pin="COMP" pad="P$5"/>
+<connect gate="G$1" pin="EN" pad="P$6"/>
+<connect gate="G$1" pin="FB" pad="P$4"/>
+<connect gate="G$1" pin="GND" pad="GND P$1 P$3"/>
+<connect gate="G$1" pin="PGOOD" pad="P$7"/>
+<connect gate="G$1" pin="VIN" pad="P$2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -433,6 +638,18 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="J1" library="signpost" deviceset="MODULE_POWER" device=""/>
+<part name="U1" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U2" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U3" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U4" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U5" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U6" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U7" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U8" library="signpost" deviceset="LTC2941-1" device=""/>
+<part name="U$1" library="signpost" deviceset="PCA9544A" device=""/>
+<part name="U$2" library="signpost" deviceset="PCA9544A" device=""/>
+<part name="U$3" library="signpost" deviceset="AOZ1037PI" device=""/>
+<part name="U$4" library="signpost" deviceset="AOZ1037PI" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -444,6 +661,18 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
 <instance part="J1" gate="G$1" x="109.22" y="139.7"/>
+<instance part="U1" gate="G$1" x="172.72" y="149.86"/>
+<instance part="U2" gate="G$1" x="172.72" y="119.38"/>
+<instance part="U3" gate="G$1" x="172.72" y="88.9"/>
+<instance part="U4" gate="G$1" x="172.72" y="58.42"/>
+<instance part="U5" gate="G$1" x="208.28" y="149.86"/>
+<instance part="U6" gate="G$1" x="208.28" y="119.38"/>
+<instance part="U7" gate="G$1" x="208.28" y="88.9"/>
+<instance part="U8" gate="G$1" x="208.28" y="58.42"/>
+<instance part="U$1" gate="G$1" x="101.6" y="78.74"/>
+<instance part="U$2" gate="G$1" x="101.6" y="40.64"/>
+<instance part="U$3" gate="G$1" x="45.72" y="132.08"/>
+<instance part="U$4" gate="G$1" x="45.72" y="111.76"/>
 </instances>
 <busses>
 </busses>

@@ -266,6 +266,75 @@
 <text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
 <text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
 </package>
+<package name="DFN-6-2MMX3MM">
+<smd name="1" x="-0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="2" x="0" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="3" x="0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="4" x="0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="5" x="0" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="6" x="-0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<wire x1="-1" y1="1.5" x2="1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="1.5" x2="1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="-1.5" x2="-1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
+<circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
+<text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
+<package name="SO20L">
+<description>&lt;b&gt;Small Outline Package&lt;/b&gt;</description>
+<wire x1="6.1214" y1="3.7338" x2="-6.1214" y2="3.7338" width="0.1524" layer="21"/>
+<wire x1="6.1214" y1="-3.7338" x2="6.5024" y2="-3.3528" width="0.1524" layer="21" curve="90"/>
+<wire x1="-6.5024" y1="3.3528" x2="-6.1214" y2="3.7338" width="0.1524" layer="21" curve="-90"/>
+<wire x1="6.1214" y1="3.7338" x2="6.5024" y2="3.3528" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-6.5024" y1="-3.3528" x2="-6.1214" y2="-3.7338" width="0.1524" layer="21" curve="90"/>
+<wire x1="-6.1214" y1="-3.7338" x2="6.1214" y2="-3.7338" width="0.1524" layer="21"/>
+<wire x1="6.5024" y1="-3.3528" x2="6.5024" y2="3.3528" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="3.3528" x2="-6.5024" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="1.27" x2="-6.5024" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-6.5024" y1="-1.27" x2="-6.5024" y2="-3.3528" width="0.1524" layer="21"/>
+<wire x1="-6.477" y1="-3.3782" x2="6.477" y2="-3.3782" width="0.0508" layer="21"/>
+<wire x1="-6.5024" y1="1.27" x2="-6.5024" y2="-1.27" width="0.1524" layer="21" curve="-180"/>
+<smd name="1" x="-5.715" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="2" x="-4.445" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="3" x="-3.175" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="4" x="-1.905" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="5" x="-0.635" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="6" x="0.635" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="7" x="1.905" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="8" x="3.175" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="13" x="3.175" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="14" x="1.905" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="15" x="0.635" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="16" x="-0.635" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="17" x="-1.905" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="18" x="-3.175" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="19" x="-4.445" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="20" x="-5.715" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="9" x="4.445" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="10" x="5.715" y="-5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="12" x="4.445" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<smd name="11" x="5.715" y="5.0292" dx="0.6604" dy="2.032" layer="1"/>
+<text x="8" y="-3" size="1.016" layer="27" font="vector" ratio="10" rot="R90">&gt;VALUE</text>
+<text x="-7" y="-3" size="1.016" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
+</package>
+<package name="SO8_EP1">
+<smd name="P$1" x="-1.905" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$2" x="-0.635" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$3" x="0.635" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$4" x="1.905" y="2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$5" x="1.905" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$6" x="0.635" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$7" x="-0.635" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$8" x="-1.905" y="-2.87" dx="2.2" dy="0.8" layer="1" rot="R90"/>
+<smd name="GND" x="0" y="0" dx="3.7" dy="2.71" layer="1"/>
+<wire x1="-2.48" y1="1.9" x2="-2.48" y2="-1.9" width="0.254" layer="21"/>
+<wire x1="-2.48" y1="1.9" x2="2.48" y2="1.9" width="0.254" layer="21"/>
+<wire x1="2.48" y1="1.9" x2="2.48" y2="-1.9" width="0.254" layer="21"/>
+<wire x1="-2.48" y1="-1.9" x2="2.48" y2="-1.9" width="0.254" layer="21"/>
+<circle x="-3" y="-2" radius="0.22360625" width="0.254" layer="21"/>
+<text x="-3" y="-1" size="0.8128" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
+<text x="4" y="-2" size="0.8128" layer="27" font="vector" ratio="12" rot="R90">&gt;VALUE</text>
+</package>
 </packages>
 </library>
 </libraries>
@@ -455,6 +524,42 @@ design rules under a new name.</description>
 </autorouter>
 <elements>
 <element name="J1" library="signpost" package="MODULE_POWER" value="MODULE_POWER" x="34.036" y="33.02"/>
+<element name="U1" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-6.35">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-6.35" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-6.35" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U2" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-12.7">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-12.7" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-12.7" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U3" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-19.05">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-19.05" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-19.05" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U4" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-25.4">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-25.4" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-25.4" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U5" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-31.75">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-31.75" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-31.75" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U6" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-38.1">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-38.1" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-38.1" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U7" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-44.45">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-44.45" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-44.45" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U8" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941-1" x="1.27" y="-50.8">
+<attribute name="NEWARK" value="84R6664" x="1.27" y="-50.8" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="LTC2941CDCB-1#TRMPBFCT-ND" x="1.27" y="-50.8" size="1.778" layer="27" display="off"/>
+</element>
+<element name="U$1" library="signpost" package="SO20L" value="PCA9544A" x="6.35" y="-59.69"/>
+<element name="U$2" library="signpost" package="SO20L" value="PCA9544A" x="6.35" y="-72.39"/>
+<element name="U$3" library="signpost" package="SO8_EP1" value="AOZ1037PI" x="2.54" y="-83.82"/>
+<element name="U$4" library="signpost" package="SO8_EP1" value="AOZ1037PI" x="2.54" y="-92.71"/>
 </elements>
 <signals>
 <signal name="VSOL+">
