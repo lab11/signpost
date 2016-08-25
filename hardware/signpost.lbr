@@ -2727,6 +2727,7 @@ with Internal Sense Resistor</description>
 </devices>
 </deviceset>
 <deviceset name="PCA9544A">
+<description>1-4 I2C/SMBUS Multiplexer with interrupt for power supply coulomb counters</description>
 <gates>
 <gate name="G$1" symbol="PCA9544A" x="0" y="0"/>
 </gates>
@@ -2761,6 +2762,7 @@ with Internal Sense Resistor</description>
 </devices>
 </deviceset>
 <deviceset name="AOZ1037PI">
+<description>5A Synchronous Buck Regulator for power supply regulation</description>
 <gates>
 <gate name="G$1" symbol="AOZ1037PI" x="0" y="0"/>
 </gates>
