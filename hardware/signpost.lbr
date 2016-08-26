@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1299,6 +1299,19 @@
 <text x="-3" y="5" size="1.27" layer="21" font="vector" ratio="12">&gt;NAME</text>
 <text x="-3" y="-6" size="1.27" layer="21" font="vector" ratio="12">&gt;VALUE</text>
 </package>
+<package name="B340A">
+<smd name="CATHODE" x="-2" y="0" dx="2.5" dy="1.7" layer="1"/>
+<smd name="ANODE" x="2" y="0" dx="2.5" dy="1.7" layer="1"/>
+<wire x1="-2.25" y1="1.5" x2="-2.25" y2="-1.5" width="0.254" layer="21"/>
+<wire x1="-2.25" y1="1.5" x2="2.25" y2="1.5" width="0.254" layer="21"/>
+<wire x1="2.25" y1="1.5" x2="2.25" y2="-1.5" width="0.254" layer="21"/>
+<wire x1="2.25" y1="-1.5" x2="-2.25" y2="-1.5" width="0.254" layer="21"/>
+<wire x1="-3" y1="1.5" x2="-3" y2="-1.5" width="0.254" layer="21"/>
+<wire x1="-3" y1="-1.5" x2="-2.25" y2="-1.5" width="0.254" layer="21"/>
+<wire x1="-3" y1="1.5" x2="-2.25" y2="1.5" width="0.254" layer="21"/>
+<text x="-3" y="2" size="1.016" layer="21" font="vector" ratio="12">&gt;NAME</text>
+<text x="-3" y="-3" size="1.016" layer="21" font="vector" ratio="12">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -1996,20 +2009,20 @@ S high: D = D2</text>
 <text x="-7.62" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 <symbol name="TPS54233">
-<pin name="BOOT" x="-12.7" y="5.08" length="short"/>
-<pin name="VIN" x="-12.7" y="2.54" length="short"/>
-<pin name="EN" x="-12.7" y="0" length="short"/>
-<pin name="SS" x="-12.7" y="-2.54" length="short"/>
+<pin name="BOOT" x="12.7" y="7.62" length="short" rot="R180"/>
+<pin name="VIN" x="-12.7" y="7.62" length="short"/>
+<pin name="EN" x="-12.7" y="2.54" length="short"/>
+<pin name="SS" x="-12.7" y="-5.08" length="short"/>
 <pin name="PH" x="12.7" y="5.08" length="short" rot="R180"/>
-<pin name="GND" x="12.7" y="2.54" length="short" rot="R180"/>
-<pin name="COMP" x="12.7" y="0" length="short" rot="R180"/>
-<pin name="VSENSE" x="12.7" y="-2.54" length="short" rot="R180"/>
-<wire x1="-10.16" y1="7.62" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-5.08" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-5.08" x2="10.16" y2="7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
-<text x="-10.16" y="8.636" size="1.778" layer="95">&gt;NAME</text>
-<text x="-10.16" y="-7.62" size="1.778" layer="95">&gt;VALUE</text>
+<pin name="GND" x="12.7" y="-7.62" length="short" rot="R180"/>
+<pin name="COMP" x="-12.7" y="-7.62" length="short"/>
+<pin name="VSENSE" x="12.7" y="0" length="short" rot="R180"/>
+<wire x1="-10.16" y1="10.16" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-10.16" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-10.16" x2="10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
+<text x="-10.16" y="11.176" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-12.7" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 <symbol name="CAP_POLARIZED">
 <pin name="ANODE" x="0" y="-2.54" visible="off" length="point"/>
@@ -2022,6 +2035,34 @@ S high: D = D2</text>
 <text x="2.032" y="1.524" size="1.778" layer="95" ratio="12">&gt;NAME</text>
 <text x="2.032" y="-2.54" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
 <text x="-0.762" y="0.762" size="1.016" layer="94" font="vector" ratio="12" align="bottom-center">+</text>
+</symbol>
+<symbol name="DIODE">
+<pin name="ANODE" x="-5.08" y="0" visible="off" length="short"/>
+<pin name="CATHODE" x="5.08" y="0" visible="off" length="short" rot="R180"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="0" x2="1.27" y2="0" width="0.1524" layer="94"/>
+<text x="0" y="1.524" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
+</symbol>
+<symbol name="SCHOTTKY_DIODE">
+<pin name="ANODE" x="-5.08" y="0" visible="off" length="short"/>
+<pin name="CATHODE" x="5.08" y="0" visible="off" length="short" rot="R180"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="0" x2="1.27" y2="0" width="0.1524" layer="94"/>
+<text x="0" y="1.524" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="1.905" y2="-1.27" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2835,6 +2876,7 @@ with Internal Sense Resistor</description>
 </devices>
 </deviceset>
 <deviceset name="EEEFK1A471P" prefix="C">
+<description>Aluminim Capacitor 470uF, 20%, 10V, Size F</description>
 <gates>
 <gate name="G$1" symbol="CAP_POLARIZED" x="0" y="0"/>
 </gates>
@@ -2843,6 +2885,23 @@ with Internal Sense Resistor</description>
 <connects>
 <connect gate="G$1" pin="ANODE" pad="+"/>
 <connect gate="G$1" pin="CATHODE" pad="-"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="B340A" prefix="D">
+<description>Diode Schottky 40V 3A Surface Mount SMA</description>
+<gates>
+<gate name="G$1" symbol="SCHOTTKY_DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="B340A">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="ANODE"/>
+<connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
 </connects>
 <technologies>
 <technology name=""/>
