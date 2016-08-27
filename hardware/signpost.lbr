@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1282,11 +1282,15 @@
 <text x="-2.667" y="-1.905" size="1.27" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
 <text x="3.937" y="-1.905" size="1.27" layer="27" font="vector" ratio="12" rot="R90">&gt;VALUE</text>
 </package>
-<package name="VLP8040">
-<smd name="1" x="-2.35" y="0" dx="3.3" dy="8.2" layer="1"/>
-<smd name="2" x="2.35" y="0" dx="3.3" dy="8.2" layer="1"/>
-<text x="-4" y="5" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<package name="NR8040T6R8N">
+<smd name="1" x="-2.8" y="0" dx="1.8" dy="7.5" layer="1"/>
+<smd name="2" x="2.8" y="0" dx="1.8" dy="7.5" layer="1"/>
+<text x="-4" y="4.5" size="1.27" layer="25" font="vector" ratio="12">&gt;NAME</text>
 <text x="-4" y="-6" size="1.27" layer="27" font="vector" ratio="12">&gt;VALUE</text>
+<wire x1="-4" y1="4" x2="4" y2="4" width="0.254" layer="21"/>
+<wire x1="4" y1="4" x2="4" y2="-4" width="0.254" layer="21"/>
+<wire x1="4" y1="-4" x2="-4" y2="-4" width="0.254" layer="21"/>
+<wire x1="-4" y1="-4" x2="-4" y2="4" width="0.254" layer="21"/>
 </package>
 <package name="EEEFK1A471P">
 <smd name="+" x="-3.55" y="0" dx="4" dy="2" layer="1"/>
@@ -1981,32 +1985,32 @@ S high: D = D2</text>
 <text x="3.048" y="-2.54" size="1.27" layer="96" ratio="12" rot="R90">&gt;VALUE</text>
 </symbol>
 <symbol name="PCA9544A">
-<pin name="A0" x="-10.16" y="12.7" length="short"/>
-<pin name="A1" x="-10.16" y="10.16" length="short"/>
-<pin name="A2" x="-10.16" y="7.62" length="short"/>
-<pin name="!INT0" x="-10.16" y="5.08" length="short"/>
-<pin name="SD0" x="-10.16" y="2.54" length="short"/>
-<pin name="SC0" x="-10.16" y="0" length="short"/>
-<pin name="!INT1" x="-10.16" y="-2.54" length="short"/>
-<pin name="SD1" x="-10.16" y="-5.08" length="short"/>
-<pin name="SC1" x="-10.16" y="-7.62" length="short"/>
-<pin name="GND" x="-10.16" y="-10.16" length="short"/>
-<pin name="!INT2" x="10.16" y="-10.16" length="short" rot="R180"/>
-<pin name="SD2" x="10.16" y="-7.62" length="short" rot="R180"/>
+<pin name="A0" x="-10.16" y="-2.54" length="short"/>
+<pin name="A1" x="-10.16" y="-5.08" length="short"/>
+<pin name="A2" x="-10.16" y="-7.62" length="short"/>
+<pin name="!INT0" x="10.16" y="12.7" length="short" rot="R180"/>
+<pin name="SD0" x="10.16" y="17.78" length="short" rot="R180"/>
+<pin name="SC0" x="10.16" y="15.24" length="short" rot="R180"/>
+<pin name="!INT1" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="SD1" x="10.16" y="7.62" length="short" rot="R180"/>
+<pin name="SC1" x="10.16" y="5.08" length="short" rot="R180"/>
+<pin name="GND" x="-10.16" y="-17.78" length="short"/>
+<pin name="!INT2" x="10.16" y="-7.62" length="short" rot="R180"/>
+<pin name="SD2" x="10.16" y="-2.54" length="short" rot="R180"/>
 <pin name="SC2" x="10.16" y="-5.08" length="short" rot="R180"/>
-<pin name="!INT3" x="10.16" y="-2.54" length="short" rot="R180"/>
-<pin name="SD3" x="10.16" y="0" length="short" rot="R180"/>
-<pin name="SC3" x="10.16" y="2.54" length="short" rot="R180"/>
-<pin name="!INT" x="10.16" y="5.08" length="short" rot="R180"/>
-<pin name="SCL" x="10.16" y="7.62" length="short" rot="R180"/>
-<pin name="SDA" x="10.16" y="10.16" length="short" rot="R180"/>
-<pin name="VCC" x="10.16" y="12.7" length="short" rot="R180"/>
-<wire x1="-7.62" y1="15.24" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-12.7" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="7.62" y1="-12.7" x2="7.62" y2="15.24" width="0.254" layer="94"/>
-<wire x1="7.62" y1="15.24" x2="-7.62" y2="15.24" width="0.254" layer="94"/>
-<text x="-7.62" y="15.748" size="1.778" layer="95">&gt;NAME</text>
-<text x="-7.62" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="!INT3" x="10.16" y="-17.78" length="short" rot="R180"/>
+<pin name="SD3" x="10.16" y="-12.7" length="short" rot="R180"/>
+<pin name="SC3" x="10.16" y="-15.24" length="short" rot="R180"/>
+<pin name="!INT" x="-10.16" y="7.62" length="short"/>
+<pin name="SCL" x="-10.16" y="10.16" length="short"/>
+<pin name="SDA" x="-10.16" y="12.7" length="short"/>
+<pin name="VCC" x="-10.16" y="17.78" length="short"/>
+<wire x1="-7.62" y1="20.32" x2="-7.62" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-20.32" x2="7.62" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-20.32" x2="7.62" y2="20.32" width="0.254" layer="94"/>
+<wire x1="7.62" y1="20.32" x2="-7.62" y2="20.32" width="0.254" layer="94"/>
+<text x="-7.62" y="20.828" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-22.86" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 <symbol name="TPS54233">
 <pin name="BOOT" x="12.7" y="7.62" length="short" rot="R180"/>
@@ -2063,6 +2067,21 @@ S high: D = D2</text>
 <text x="0" y="1.524" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <wire x1="0.635" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
 <wire x1="1.27" y1="-1.27" x2="1.905" y2="-1.27" width="0.254" layer="94"/>
+</symbol>
+<symbol name="LM2651">
+<pin name="COMP" x="-10.16" y="0" length="short"/>
+<pin name="!SD" x="-10.16" y="-2.54" length="short"/>
+<pin name="VIN" x="-10.16" y="2.54" length="short"/>
+<pin name="VCB" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="SW" x="10.16" y="0" length="short" rot="R180"/>
+<pin name="FB" x="10.16" y="-2.54" length="short" rot="R180"/>
+<pin name="GND" x="10.16" y="-5.08" length="short" rot="R180"/>
+<wire x1="-7.62" y1="5.08" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-7.62" x2="7.62" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-7.62" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<text x="-7.62" y="5.842" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-10.16" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -2835,7 +2854,7 @@ with Internal Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="TPS54233" prefix="U">
+<deviceset name="TPS54231" prefix="U">
 <description>DC-DC Switching Regulator 3.5-28V input, 0.8-25V output @ 2A</description>
 <gates>
 <gate name="G$1" symbol="TPS54233" x="0" y="0"/>
@@ -2858,13 +2877,13 @@ with Internal Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="VLP8040" prefix="L">
-<description>15uH Wirewound Inductor, 2.6A</description>
+<deviceset name="NR8040T6R8N" prefix="L">
+<description>6.8uH Wirewound Inductor, 3.6A</description>
 <gates>
 <gate name="G$1" symbol="INDUCTOR" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="VLP8040">
+<device name="" package="NR8040T6R8N">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
@@ -2902,6 +2921,28 @@ with Internal Sense Resistor</description>
 <connects>
 <connect gate="G$1" pin="ANODE" pad="ANODE"/>
 <connect gate="G$1" pin="CATHODE" pad="CATHODE"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LM2651" prefix="U">
+<description>High Efficiency DC-DC Switching Regulator 5v to 3v3</description>
+<gates>
+<gate name="G$1" symbol="LM2651" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TSSOP-16">
+<connects>
+<connect gate="G$1" pin="!SD" pad="8"/>
+<connect gate="G$1" pin="COMP" pad="10"/>
+<connect gate="G$1" pin="FB" pad="9"/>
+<connect gate="G$1" pin="GND" pad="12 13 14 15 16"/>
+<connect gate="G$1" pin="SW" pad="1 2"/>
+<connect gate="G$1" pin="VCB" pad="6"/>
+<connect gate="G$1" pin="VIN" pad="3 4 5 7"/>
 </connects>
 <technologies>
 <technology name=""/>
