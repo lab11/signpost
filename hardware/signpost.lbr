@@ -3116,7 +3116,7 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="DCD" pad="P$8"/>
 <connect gate="G$1" pin="DSR" pad="P$6"/>
 <connect gate="G$1" pin="DTR" pad="P$9"/>
-<connect gate="G$1" pin="GND" pad="P$1 P$3 P$5 P$14 P$20 P$21 P$22 P$30 P$32 P$43 P$50 P$54 P$55 P$57 P$58 P$59 P$60 P$61 P$63 P$64 P65 P66 P67 P68 P69 P70 P71 P72 P73 P74 P75 P76 P77 P78 P79 P80 P81 P82 P83 P84 P85 P86 P87 P88 P89 P90 P91 P92 P93 P94 P95 P96"/>
+<connect gate="G$1" pin="GND" pad="P$1 P$3 P$5 P$14 P$20 P$21 P$22 P$30 P$32 P$33 P$43 P$50 P$54 P$55 P$57 P$58 P$59 P$60 P$61 P$63 P$64 P65 P66 P67 P68 P69 P70 P71 P72 P73 P74 P75 P76 P77 P78 P79 P80 P81 P82 P83 P84 P85 P86 P87 P88 P89 P90 P91 P92 P93 P94 P95 P96"/>
 <connect gate="G$1" pin="GPIO1" pad="P$16"/>
 <connect gate="G$1" pin="GPIO2" pad="P$23"/>
 <connect gate="G$1" pin="GPIO3" pad="P$24"/>
