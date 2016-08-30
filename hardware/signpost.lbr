@@ -2950,6 +2950,30 @@ with Internal Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="LTC2941" prefix="U">
+<description>I2C Battery Gas Gauge
+with External Sense Resistor</description>
+<gates>
+<gate name="G$1" symbol="LTC2941-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DFN-6-2MMX3MM">
+<connects>
+<connect gate="G$1" pin="!ALERT" pad="5"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="SCL" pad="3"/>
+<connect gate="G$1" pin="SDA" pad="4"/>
+<connect gate="G$1" pin="SENSE+" pad="1"/>
+<connect gate="G$1" pin="SENSE-" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </drawing>
