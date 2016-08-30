@@ -1316,6 +1316,130 @@
 <text x="-3" y="2" size="1.016" layer="21" font="vector" ratio="12">&gt;NAME</text>
 <text x="-3" y="-3" size="1.016" layer="21" font="vector" ratio="12">&gt;VALUE</text>
 </package>
+<package name="UBLOX_SARA_G3">
+<wire x1="-13" y1="-8" x2="-13" y2="8" width="0.127" layer="21"/>
+<wire x1="-13" y1="8" x2="13" y2="8" width="0.127" layer="21"/>
+<wire x1="13" y1="8" x2="13" y2="-8" width="0.127" layer="21"/>
+<wire x1="13" y1="-8" x2="-13" y2="-8" width="0.127" layer="21"/>
+<smd name="P$1" x="-11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$2" x="-9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$3" x="-8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$4" x="-7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$5" x="-6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$6" x="-5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$7" x="-4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$8" x="-3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$9" x="-2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$10" x="-1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$11" x="0" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$12" x="1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$13" x="2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$14" x="3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$15" x="4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$16" x="5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$17" x="6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$18" x="7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$19" x="8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$20" x="9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$21" x="11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$22" x="11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$23" x="11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$24" x="11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$25" x="11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$26" x="11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$27" x="11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$28" x="11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$29" x="11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$30" x="11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$31" x="11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$32" x="11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$33" x="11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$34" x="9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$35" x="8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$36" x="7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$37" x="6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$38" x="5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$39" x="4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$40" x="3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$41" x="2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$42" x="1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$43" x="0" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$44" x="-1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$45" x="-2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$46" x="-3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$47" x="-4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$48" x="-5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$49" x="-6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$50" x="-7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$51" x="-8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$52" x="-9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$53" x="-11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="P$54" x="-11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$55" x="-11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$56" x="-11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$57" x="-11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$58" x="-11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$59" x="-11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$60" x="-11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$61" x="-11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$62" x="-11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$63" x="-11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P$64" x="-11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="P96" x="10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P90" x="8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P84" x="6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P82" x="3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P95" x="10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P94" x="10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P93" x="10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P92" x="10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P91" x="10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P89" x="8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P88" x="8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P86" x="8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P87" x="8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P85" x="8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P83" x="6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P81" x="3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P70" x="-10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P76" x="-8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P78" x="-6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P80" x="-3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P69" x="-10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P68" x="-10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P67" x="-10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P66" x="-10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P65" x="-10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P75" x="-8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P74" x="-8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P73" x="-8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P72" x="-8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P71" x="-8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P77" x="-6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="P79" x="-3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="1IND" x="-12.1" y="-7" dx="0.6" dy="0.6" layer="1"/>
+<text x="-12.7" y="8.89" size="1.27" layer="25">&gt;NAME</text>
+<circle x="-12.2428" y="-8.7884" radius="0.239621875" width="0.254" layer="25"/>
+</package>
+<package name="WURTH_NANO_SIM">
+<wire x1="-4.93" y1="-6.25" x2="-4.93" y2="6.25" width="0.127" layer="21"/>
+<wire x1="-4.93" y1="6.25" x2="4.93" y2="6.25" width="0.127" layer="21"/>
+<wire x1="4.93" y1="6.25" x2="4.93" y2="-6.25" width="0.127" layer="21"/>
+<wire x1="4.93" y1="-6.25" x2="-4.93" y2="-6.25" width="0.127" layer="21"/>
+<smd name="C5" x="-3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C1" x="-1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C6" x="-0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C2" x="0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C3" x="1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C7" x="3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="P$8" x="-4.465" y="-6.07" dx="1.03" dy="1" layer="1"/>
+<smd name="P$9" x="4.465" y="-6.07" dx="1.03" dy="1" layer="1"/>
+<smd name="P$10" x="-4.66" y="-0.35" dx="1.8" dy="0.48" layer="1" rot="R90"/>
+<smd name="P$11" x="4.66" y="-0.35" dx="1.8" dy="0.48" layer="1" rot="R90"/>
+<smd name="P$12" x="-4.66" y="5.4" dx="1.8" dy="0.48" layer="1" rot="R90"/>
+<smd name="P$13" x="4.66" y="5.4" dx="1.8" dy="0.48" layer="1" rot="R90"/>
+<text x="-5.08" y="7.62" size="1.27" layer="25">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -2082,6 +2206,66 @@ S high: D = D2</text>
 <wire x1="7.62" y1="5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
 <text x="-7.62" y="5.842" size="1.778" layer="95">&gt;NAME</text>
 <text x="-7.62" y="-10.16" size="1.778" layer="95">&gt;VALUE</text>
+</symbol>
+<symbol name="UBLOX_SARA_G350">
+<wire x1="-20.32" y1="27.94" x2="-20.32" y2="-33.02" width="0.254" layer="94"/>
+<wire x1="-20.32" y1="-33.02" x2="20.32" y2="-33.02" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-33.02" x2="20.32" y2="27.94" width="0.254" layer="94"/>
+<wire x1="20.32" y1="27.94" x2="-20.32" y2="27.94" width="0.254" layer="94"/>
+<pin name="GND" x="0" y="-38.1" length="middle" rot="R90"/>
+<pin name="VCC" x="2.54" y="33.02" length="middle" rot="R270"/>
+<pin name="MIC_P" x="25.4" y="25.4" length="middle" rot="R180"/>
+<pin name="MIC_N" x="25.4" y="22.86" length="middle" rot="R180"/>
+<pin name="MIC_GND" x="25.4" y="20.32" length="middle" rot="R180"/>
+<pin name="MIC_BIAS" x="25.4" y="17.78" length="middle" rot="R180"/>
+<pin name="SPK_N" x="25.4" y="10.16" length="middle" rot="R180"/>
+<pin name="SPK_P" x="25.4" y="12.7" length="middle" rot="R180"/>
+<pin name="SIM_DET" x="25.4" y="-5.08" length="middle" rot="R180"/>
+<pin name="VSIM" x="25.4" y="-7.62" length="middle" rot="R180"/>
+<pin name="SIM_RST" x="25.4" y="-10.16" length="middle" rot="R180"/>
+<pin name="SIM_IO" x="25.4" y="-12.7" length="middle" rot="R180"/>
+<pin name="SIM_CLK" x="25.4" y="-15.24" length="middle" rot="R180"/>
+<pin name="I2S_RXD" x="25.4" y="-20.32" length="middle" rot="R180"/>
+<pin name="I2S_CLK" x="25.4" y="-22.86" length="middle" rot="R180"/>
+<pin name="I2S_TXD" x="25.4" y="-25.4" length="middle" rot="R180"/>
+<pin name="I2S_WA" x="25.4" y="-27.94" length="middle" rot="R180"/>
+<pin name="SCL" x="-25.4" y="-15.24" length="middle"/>
+<pin name="SDA" x="-25.4" y="-17.78" length="middle"/>
+<pin name="GPIO4" x="-25.4" y="-30.48" length="middle"/>
+<pin name="GPIO3" x="-25.4" y="-27.94" length="middle"/>
+<pin name="GPIO2" x="-25.4" y="-25.4" length="middle"/>
+<pin name="GPIO1" x="-25.4" y="-22.86" length="middle"/>
+<pin name="RXD" x="-25.4" y="-2.54" length="middle"/>
+<pin name="TXD" x="-25.4" y="0" length="middle"/>
+<pin name="CTS" x="-25.4" y="2.54" length="middle"/>
+<pin name="RTS" x="-25.4" y="5.08" length="middle"/>
+<pin name="DTR" x="-25.4" y="7.62" length="middle"/>
+<pin name="DCD" x="-25.4" y="10.16" length="middle"/>
+<pin name="RI" x="-25.4" y="12.7" length="middle"/>
+<pin name="DSR" x="-25.4" y="15.24" length="middle"/>
+<pin name="V_BCKP" x="-5.08" y="33.02" length="middle" rot="R270"/>
+<pin name="V_INT" x="-2.54" y="33.02" length="middle" rot="R270"/>
+<pin name="RXD_AUX" x="-25.4" y="-10.16" length="middle"/>
+<pin name="TXD_AUX" x="-25.4" y="-7.62" length="middle"/>
+<pin name="ANT" x="25.4" y="5.08" length="middle" rot="R180"/>
+<pin name="ANT_DET" x="25.4" y="2.54" length="middle" rot="R180"/>
+<pin name="PWR_ON" x="-25.4" y="22.86" length="middle"/>
+<pin name="RESET_N" x="-25.4" y="20.32" length="middle"/>
+<text x="-5.08" y="7.62" size="1.27" layer="95">SARA_G350</text>
+<text x="-20.32" y="30.48" size="1.27" layer="95">&gt;NAME</text>
+</symbol>
+<symbol name="SIM">
+<wire x1="-7.62" y1="12.7" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="12.7" width="0.254" layer="94"/>
+<wire x1="5.08" y1="12.7" x2="-7.62" y2="12.7" width="0.254" layer="94"/>
+<pin name="C4" x="-12.7" y="2.54" length="middle"/>
+<pin name="C5" x="-12.7" y="0" length="middle"/>
+<pin name="C6" x="-12.7" y="-2.54" length="middle"/>
+<pin name="C3" x="-12.7" y="5.08" length="middle"/>
+<pin name="C2" x="-12.7" y="7.62" length="middle"/>
+<pin name="C1" x="-12.7" y="10.16" length="middle"/>
+<text x="-7.62" y="12.7" size="1.27" layer="95">&gt;NAME</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -2969,6 +3153,83 @@ with External Sense Resistor</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="UBLOX_SARA_G350">
+<description>Sara G350 2.5G Radio Module</description>
+<gates>
+<gate name="G$1" symbol="UBLOX_SARA_G350" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="UBLOX_SARA_G3">
+<connects>
+<connect gate="G$1" pin="ANT" pad="P$56"/>
+<connect gate="G$1" pin="ANT_DET" pad="P$62"/>
+<connect gate="G$1" pin="CTS" pad="P$11"/>
+<connect gate="G$1" pin="DCD" pad="P$8"/>
+<connect gate="G$1" pin="DSR" pad="P$6"/>
+<connect gate="G$1" pin="DTR" pad="P$9"/>
+<connect gate="G$1" pin="GND" pad="P$1 P$3 P$5 P$14 P$20 P$21 P$22 P$30 P$32 P$33 P$43 P$50 P$54 P$55 P$57 P$58 P$59 P$60 P$61 P$63 P$64 P65 P66 P67 P68 P69 P70 P71 P72 P73 P74 P75 P76 P77 P78 P79 P80 P81 P82 P83 P84 P85 P86 P87 P88 P89 P90 P91 P92 P93 P94 P95 P96"/>
+<connect gate="G$1" pin="GPIO1" pad="P$16"/>
+<connect gate="G$1" pin="GPIO2" pad="P$23"/>
+<connect gate="G$1" pin="GPIO3" pad="P$24"/>
+<connect gate="G$1" pin="GPIO4" pad="P$25"/>
+<connect gate="G$1" pin="I2S_CLK" pad="P$36"/>
+<connect gate="G$1" pin="I2S_RXD" pad="P$37"/>
+<connect gate="G$1" pin="I2S_TXD" pad="P$35"/>
+<connect gate="G$1" pin="I2S_WA" pad="P$34"/>
+<connect gate="G$1" pin="MIC_BIAS" pad="P$46"/>
+<connect gate="G$1" pin="MIC_GND" pad="P$47"/>
+<connect gate="G$1" pin="MIC_N" pad="P$48"/>
+<connect gate="G$1" pin="MIC_P" pad="P$49"/>
+<connect gate="G$1" pin="PWR_ON" pad="P$15"/>
+<connect gate="G$1" pin="RESET_N" pad="P$18"/>
+<connect gate="G$1" pin="RI" pad="P$7"/>
+<connect gate="G$1" pin="RTS" pad="P$10"/>
+<connect gate="G$1" pin="RXD" pad="P$13"/>
+<connect gate="G$1" pin="RXD_AUX" pad="P$28"/>
+<connect gate="G$1" pin="SCL" pad="P$27"/>
+<connect gate="G$1" pin="SDA" pad="P$26"/>
+<connect gate="G$1" pin="SIM_CLK" pad="P$38"/>
+<connect gate="G$1" pin="SIM_DET" pad="P$42"/>
+<connect gate="G$1" pin="SIM_IO" pad="P$39"/>
+<connect gate="G$1" pin="SIM_RST" pad="P$40"/>
+<connect gate="G$1" pin="SPK_N" pad="P$45"/>
+<connect gate="G$1" pin="SPK_P" pad="P$44"/>
+<connect gate="G$1" pin="TXD" pad="P$12"/>
+<connect gate="G$1" pin="TXD_AUX" pad="P$29"/>
+<connect gate="G$1" pin="VCC" pad="P$51 P$52 P$53"/>
+<connect gate="G$1" pin="VSIM" pad="P$41"/>
+<connect gate="G$1" pin="V_BCKP" pad="P$2"/>
+<connect gate="G$1" pin="V_INT" pad="P$4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="NANO_SIM" prefix="J">
+<description>WURTH Nano SIM Connector</description>
+<gates>
+<gate name="G$1" symbol="SIM" x="0" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="WURTH_NANO_SIM">
+<connects>
+<connect gate="G$1" pin="C1" pad="C1"/>
+<connect gate="G$1" pin="C2" pad="C2"/>
+<connect gate="G$1" pin="C3" pad="C3"/>
+<connect gate="G$1" pin="C4" pad="C5"/>
+<connect gate="G$1" pin="C5" pad="C6"/>
+<connect gate="G$1" pin="C6" pad="C7"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="732-5954-1-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
