@@ -13363,7 +13363,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="Y2" library="SmartPrj" deviceset="RESONATOR" device="MU" value="16MHz">
 <attribute name="DIGIKEY" value="490-1198-1-ND"/>
 </part>
-<part name="GROUND" library="jumper" deviceset="SJ" device=""/>
 <part name="RESET-PROG-EN" library="jumper" deviceset="SJ" device=""/>
 <part name="R2" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1M"/>
 <part name="C8" library="SmartPrj" deviceset="C-EU" device="0603-RND" value="1uF"/>
@@ -13462,6 +13461,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="1kΩ"/>
 <part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="1kΩ"/>
+<part name="GND21" library="supply1" deviceset="GND" device=""/>
+<part name="GND25" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13541,7 +13542,7 @@ Rename USB signals
  XUSB -&gt; ARD_USB_VBUS
  D-       -&gt; ARD_USB_D-
  D+      -&gt; ARD_USB_D+
- UGND-&gt; ARD_USB_GND
+ UGND-&gt; GND
 USHIELD -&gt; (nil)</text>
 <wire x1="-48.26" y1="101.6" x2="-48.26" y2="50.8" width="0.508" layer="98"/>
 <wire x1="-48.26" y1="50.8" x2="0" y2="50.8" width="0.508" layer="98"/>
@@ -13770,6 +13771,7 @@ for reset</text>
 <instance part="C7" gate="G$1" x="53.34" y="40.64"/>
 <instance part="R11" gate="G$1" x="238.76" y="10.16"/>
 <instance part="R12" gate="G$1" x="246.38" y="5.08"/>
+<instance part="GND21" gate="1" x="60.96" y="12.7"/>
 </instances>
 <busses>
 </busses>
@@ -14001,6 +14003,17 @@ for reset</text>
 <pinref part="RN1" gate="D" pin="2"/>
 <pinref part="GND18" gate="1" pin="GND"/>
 <wire x1="482.6" y1="-2.54" x2="482.6" y2="-5.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="60.96" y1="17.78" x2="71.12" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="17.78" x2="71.12" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="30.48" x2="91.44" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="27.94" x2="60.96" y2="17.78" width="0.1524" layer="91"/>
+<junction x="60.96" y="17.78"/>
+<pinref part="U1" gate="G$1" pin="UGND"/>
+<pinref part="C8" gate="G$1" pin="2"/>
+<pinref part="GND21" gate="1" pin="GND"/>
+<wire x1="60.96" y1="15.24" x2="60.96" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AREF" class="4">
@@ -14349,27 +14362,6 @@ for reset</text>
 <pinref part="U4" gate="G$1" pin="A1"/>
 <wire x1="469.9" y1="76.2" x2="464.82" y2="76.2" width="0.1524" layer="91"/>
 <label x="469.9" y="76.2" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="ARD_USB_GND" class="2">
-<segment>
-<wire x1="58.42" y1="17.78" x2="60.96" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="17.78" x2="71.12" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="17.78" x2="71.12" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="30.48" x2="91.44" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="27.94" x2="60.96" y2="17.78" width="0.1524" layer="91"/>
-<junction x="60.96" y="17.78"/>
-<pinref part="U1" gate="G$1" pin="UGND"/>
-<pinref part="C8" gate="G$1" pin="2"/>
-<label x="58.42" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<wire x1="20.32" y1="55.88" x2="35.56" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="60.96" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="60.96" x2="20.32" y2="60.96" width="0.1524" layer="91"/>
-<label x="0" y="60.96" size="1.778" layer="95"/>
-<label x="-5.08" y="60.96" size="1.27" layer="95" rot="R180" xref="yes"/>
-<label x="35.56" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="ARD_USB_VBUS" class="3">
@@ -14997,8 +14989,7 @@ avoid using them</text>
 <instance part="P+8" gate="1" x="22.86" y="53.34" smashed="yes">
 <attribute name="VALUE" x="24.765" y="55.88" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="GROUND" gate="1" x="185.42" y="106.68" rot="R270"/>
-<instance part="GND6" gate="1" x="185.42" y="96.52"/>
+<instance part="GND6" gate="1" x="185.42" y="109.22"/>
 <instance part="D1" gate="G$1" x="43.18" y="96.52">
 <attribute name="DIGIKEY" x="43.18" y="96.52" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
@@ -15006,6 +14997,7 @@ avoid using them</text>
 <attribute name="VALUE" x="52.705" y="104.14" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="LOGO1" gate="G$1" x="2.54" y="172.72"/>
+<instance part="GND25" gate="1" x="175.26" y="43.18"/>
 </instances>
 <busses>
 </busses>
@@ -15037,12 +15029,23 @@ avoid using them</text>
 <pinref part="S1" gate="G$1" pin="4TA"/>
 <pinref part="GND28" gate="1" pin="GND"/>
 <wire x1="193.04" y1="50.8" x2="198.12" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="50.8" x2="198.12" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="50.8" x2="198.12" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="S1" gate="G$1" pin="4TB"/>
+<wire x1="198.12" y1="48.26" x2="198.12" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="48.26" x2="198.12" y2="48.26" width="0.1524" layer="91"/>
+<junction x="198.12" y="48.26"/>
 </segment>
 <segment>
-<pinref part="GROUND" gate="1" pin="2"/>
+<pinref part="S1" gate="G$1" pin="4P"/>
+<pinref part="GND25" gate="1" pin="GND"/>
+<wire x1="177.8" y1="48.26" x2="175.26" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="48.26" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="GND"/>
 <pinref part="GND6" gate="1" pin="GND"/>
-<wire x1="185.42" y1="99.06" x2="185.42" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="114.3" x2="185.42" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="114.3" x2="185.42" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MOD_PPS" class="0">
@@ -15265,29 +15268,6 @@ avoid using them</text>
 <pinref part="S1" gate="G$1" pin="3P"/>
 <wire x1="175.26" y1="55.88" x2="177.8" y2="55.88" width="0.1524" layer="91"/>
 <label x="175.26" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="ARD_USB_GND" class="2">
-<segment>
-<pinref part="S1" gate="G$1" pin="4P"/>
-<wire x1="175.26" y1="48.26" x2="177.8" y2="48.26" width="0.1524" layer="91"/>
-<label x="175.26" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="EXT_USB_GND" class="0">
-<segment>
-<pinref part="J4" gate="G$1" pin="GND"/>
-<wire x1="182.88" y1="114.3" x2="185.42" y2="114.3" width="0.1524" layer="91"/>
-<label x="182.88" y="114.3" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="GROUND" gate="1" pin="1"/>
-<wire x1="185.42" y1="114.3" x2="187.96" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="185.42" y1="111.76" x2="185.42" y2="114.3" width="0.1524" layer="91"/>
-<junction x="185.42" y="114.3"/>
-</segment>
-<segment>
-<pinref part="S1" gate="G$1" pin="4TB"/>
-<wire x1="200.66" y1="48.26" x2="193.04" y2="48.26" width="0.1524" layer="91"/>
-<label x="200.66" y="48.26" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
