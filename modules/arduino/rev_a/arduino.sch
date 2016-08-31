@@ -11469,6 +11469,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="GND25" library="umich" deviceset="GND" device=""/>
 <part name="R10" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
+<part name="5V-VIN" library="jumper" deviceset="SJ" device=""/>
+<part name="D3" library="passives" deviceset="DIODE" device="">
+<attribute name="DIGIKEY" value="P18981CT-ND"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -11629,6 +11633,19 @@ for reset</text>
 <text x="335.28" y="101.6" size="1.27" layer="98" align="top-left">Leave this named "L" because
 people know and expect
 "the L LED" in Arduino</text>
+<text x="256.54" y="139.7" size="2.54" layer="98" align="top-left">Add VIN-5V Solder Jumper</text>
+<text x="256.54" y="134.62" size="1.27" layer="98" align="top-left">Normally shields expect VIN, an unknown supply at
+7-20V on this pin. Some will also use this pin to supply
+it. We have no voltages this high though, so leave it NC.
+
+Add a solder jumper to tie to 5V if shield needs some
+voltage there, and diode option if shield wants to supply.
+
+Default: Not Connected</text>
+<wire x1="254" y1="142.24" x2="302.26" y2="142.24" width="0.508" layer="98"/>
+<wire x1="302.26" y1="142.24" x2="302.26" y2="111.76" width="0.508" layer="98"/>
+<wire x1="302.26" y1="111.76" x2="254" y2="111.76" width="0.508" layer="98"/>
+<wire x1="254" y1="111.76" x2="254" y2="142.24" width="0.508" layer="98"/>
 </plain>
 <instances>
 <instance part="J4" gate="A" x="243.84" y="93.98"/>
@@ -11775,6 +11792,10 @@ people know and expect
 <instance part="GND21" gate="1" x="60.96" y="12.7"/>
 <instance part="R10" gate="G$1" x="86.36" y="69.85" rot="R90"/>
 <instance part="R11" gate="G$1" x="195.58" y="64.77" rot="R90"/>
+<instance part="5V-VIN" gate="1" x="269.24" y="114.3"/>
+<instance part="D3" gate="G$1" x="281.94" y="114.3">
+<attribute name="DIGIKEY" x="281.94" y="114.3" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -11838,6 +11859,11 @@ people know and expect
 <pinref part="S3" gate="G$1" pin="B"/>
 <wire x1="434.34" y1="165.1" x2="431.8" y2="165.1" width="0.1524" layer="91"/>
 <label x="434.34" y="165.1" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="D3" gate="G$1" pin="CATHODE"/>
+<wire x1="287.02" y1="114.3" x2="289.56" y2="114.3" width="0.1524" layer="91"/>
+<label x="289.56" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="2">
@@ -12072,6 +12098,11 @@ people know and expect
 <wire x1="226.06" y1="121.92" x2="233.68" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="J-ARD-POWER" gate="A" pin="6"/>
 <label x="226.06" y="121.92" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="5V-VIN" gate="1" pin="1"/>
+<wire x1="264.16" y1="114.3" x2="261.62" y2="114.3" width="0.1524" layer="91"/>
+<label x="261.62" y="114.3" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="M8RXD" class="0">
@@ -12950,6 +12981,13 @@ people know and expect
 <pinref part="RN1" gate="D" pin="1"/>
 <wire x1="482.6" y1="7.62" x2="482.6" y2="10.16" width="0.1524" layer="91"/>
 <junction x="482.6" y="10.16"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="5V-VIN" gate="1" pin="2"/>
+<pinref part="D3" gate="G$1" pin="ANODE"/>
+<wire x1="274.32" y1="114.3" x2="276.86" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
