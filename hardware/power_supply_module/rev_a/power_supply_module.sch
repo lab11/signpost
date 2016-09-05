@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -384,6 +384,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
 <text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<smd name="NC" x="0" y="0" dx="1.35" dy="1.65" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -502,26 +503,26 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <devices>
 <device name="" package="SO20L">
 <connects>
-<connect gate="G$1" pin="!INT" pad="14"/>
+<connect gate="G$1" pin="!INT" pad="17"/>
 <connect gate="G$1" pin="!INT0" pad="4"/>
 <connect gate="G$1" pin="!INT1" pad="7"/>
-<connect gate="G$1" pin="!INT2" pad="18"/>
-<connect gate="G$1" pin="!INT3" pad="15"/>
+<connect gate="G$1" pin="!INT2" pad="11"/>
+<connect gate="G$1" pin="!INT3" pad="14"/>
 <connect gate="G$1" pin="A0" pad="1"/>
 <connect gate="G$1" pin="A1" pad="2"/>
 <connect gate="G$1" pin="A2" pad="3"/>
 <connect gate="G$1" pin="GND" pad="10"/>
 <connect gate="G$1" pin="SC0" pad="6"/>
 <connect gate="G$1" pin="SC1" pad="9"/>
-<connect gate="G$1" pin="SC2" pad="20"/>
-<connect gate="G$1" pin="SC3" pad="17"/>
-<connect gate="G$1" pin="SCL" pad="13"/>
+<connect gate="G$1" pin="SC2" pad="13"/>
+<connect gate="G$1" pin="SC3" pad="16"/>
+<connect gate="G$1" pin="SCL" pad="18"/>
 <connect gate="G$1" pin="SD0" pad="5"/>
 <connect gate="G$1" pin="SD1" pad="8"/>
-<connect gate="G$1" pin="SD2" pad="19"/>
-<connect gate="G$1" pin="SD3" pad="16"/>
-<connect gate="G$1" pin="SDA" pad="12"/>
-<connect gate="G$1" pin="VCC" pad="11"/>
+<connect gate="G$1" pin="SD2" pad="12"/>
+<connect gate="G$1" pin="SD3" pad="15"/>
+<connect gate="G$1" pin="SDA" pad="19"/>
+<connect gate="G$1" pin="VCC" pad="20"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -640,7 +641,7 @@ with External Sense Resistor</description>
 <wire x1="-1.9" y1="1.5" x2="1.9" y2="1.5" width="0.127" layer="21"/>
 <wire x1="1.9" y1="1.5" x2="1.9" y2="-1.5" width="0.127" layer="21"/>
 <wire x1="1.9" y1="-1.5" x2="-1.9" y2="-1.5" width="0.127" layer="21"/>
-<text x="-2.4" y="1.8" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-2.4" y="1.8" size="1.27" layer="25">&gt;NAME</text>
 </package>
 <package name="XFL4015">
 <description>Coilcraft XFL4015 series inductor package</description>
@@ -903,7 +904,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.127" layer="21"/>
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.82" y="-1.93" radius="0.086021875" width="0.127" layer="21"/>
-<text x="-2.35" y="2.29" size="1.016" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<text x="-2.35" y="2.29" size="0.889" layer="25">&gt;NAME</text>
+<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -944,7 +946,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <connect gate="G$1" pin="FB" pad="5"/>
 <connect gate="G$1" pin="FSW" pad="7"/>
 <connect gate="G$1" pin="PG" pad="4"/>
-<connect gate="G$1" pin="PGND" pad="15 16"/>
+<connect gate="G$1" pin="PGND" pad="15 16 GND"/>
 <connect gate="G$1" pin="PVIN" pad="11 12"/>
 <connect gate="G$1" pin="SS/TR" pad="9"/>
 <connect gate="G$1" pin="SW" pad="1 2 3"/>
