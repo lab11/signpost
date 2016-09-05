@@ -981,19 +981,21 @@ Per TI's guidelines: http://www.ti.com/lit/an/scba017d/scba017d.pdf</description
 <library name="crystals">
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Crystals of various frequencies.</description>
 <packages>
-<package name="4-SMD">
-<smd name="2" x="0" y="0" dx="1.5" dy="1.2" layer="1"/>
-<smd name="3" x="0" y="2.2" dx="1.5" dy="1.2" layer="1"/>
-<smd name="1" x="-3.8" y="0" dx="1.5" dy="1.2" layer="1"/>
-<smd name="4" x="-3.8" y="2.2" dx="1.5" dy="1.2" layer="1"/>
-<wire x1="-4.4" y1="2.7" x2="0.6" y2="2.7" width="0.127" layer="21"/>
-<wire x1="0.6" y1="2.7" x2="0.6" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="0.6" y1="-0.5" x2="-4.4" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="-4.4" y1="-0.5" x2="-4.4" y2="2.7" width="0.127" layer="21"/>
-<text x="-2" y="3.04" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<text x="-1.5" y="-2.46" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
-<wire x1="-3.28" y1="-1.01" x2="-4.98" y2="-1.01" width="0.127" layer="21"/>
-<wire x1="-4.98" y1="-1.01" x2="-4.98" y2="0.49" width="0.127" layer="21"/>
+<package name="FHXXX">
+<description>Pericom Type FH crystals
+2.5 mm x 2.0 mm</description>
+<smd name="1" x="-0.925" y="-0.775" dx="1" dy="0.95" layer="1"/>
+<smd name="2" x="0.925" y="-0.775" dx="1" dy="0.95" layer="1"/>
+<smd name="3" x="0.925" y="0.775" dx="1" dy="0.95" layer="1"/>
+<smd name="4" x="-0.925" y="0.775" dx="1" dy="0.95" layer="1"/>
+<wire x1="-1.25" y1="1" x2="1.25" y2="1" width="0.127" layer="21"/>
+<wire x1="1.25" y1="1" x2="1.25" y2="-1" width="0.127" layer="21"/>
+<wire x1="1.25" y1="-1" x2="-1.25" y2="-1" width="0.127" layer="21"/>
+<wire x1="-1.25" y1="-1" x2="-1.25" y2="1" width="0.127" layer="21"/>
+<text x="0" y="1.5" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<wire x1="-0.41" y1="-1.57" x2="-1.71" y2="-1.57" width="0.127" layer="21"/>
+<wire x1="-1.71" y1="-1.57" x2="-1.71" y2="-0.27" width="0.127" layer="21"/>
 </package>
 </packages>
 </library>
@@ -1288,14 +1290,14 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="490-13252-1-ND" x="-33.02" y="-78.74" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R10" library="passives" package="0402_RES" value="10 k" x="-33.02" y="-83.82"/>
-<element name="C12" library="passives" package="0402_CAP" value="12 pF" x="-34.29" y="-87.63">
-<attribute name="DIGIKEY" value="490-6196-1-ND" x="-34.29" y="-87.63" size="1.778" layer="27" display="off"/>
+<element name="C12" library="passives" package="0402_CAP" value="8 pF" x="-34.29" y="-87.63">
+<attribute name="DIGIKEY" value="490-8230-1-ND" x="-34.29" y="-87.63" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C13" library="passives" package="0402_CAP" value="12 pF" x="-34.29" y="-91.44">
-<attribute name="DIGIKEY" value="490-6196-1-ND" x="-34.29" y="-91.44" size="1.778" layer="27" display="off"/>
+<element name="C13" library="passives" package="0402_CAP" value="8 pF" x="-34.29" y="-91.44">
+<attribute name="DIGIKEY" value="490-8230-1-ND" x="-34.29" y="-91.44" size="1.778" layer="27" display="off"/>
 </element>
-<element name="X1" library="crystals" package="4-SMD" value="" x="-39.37" y="-88.9">
-<attribute name="DIGIKEY" value="CTX834CT-ND" x="-39.37" y="-88.9" size="1.778" layer="27" display="off"/>
+<element name="X1" library="crystals" package="FHXXX" value="" x="-39.37" y="-88.9">
+<attribute name="DIGIKEY" value="FH1600015CT-ND" x="-39.37" y="-88.9" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>
@@ -1368,8 +1370,8 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="X1" pad="4"/>
 <contactref element="C12" pad="2"/>
 <contactref element="C13" pad="2"/>
-<wire x1="-43.17" y1="-86.7" x2="-39.37" y2="-88.9" width="0" layer="19" extent="1-1"/>
-<wire x1="-33.85693125" y1="-87.63" x2="-39.37" y2="-88.9" width="0" layer="19" extent="1-1"/>
+<wire x1="-40.295" y1="-88.125" x2="-38.445" y2="-89.675" width="0" layer="19" extent="1-1"/>
+<wire x1="-33.85693125" y1="-87.63" x2="-38.445" y2="-89.675" width="0" layer="19" extent="1-1"/>
 <wire x1="-33.85693125" y1="-91.44" x2="-33.85693125" y2="-87.63" width="0" layer="19" extent="1-1"/>
 <wire x1="-32.58693125" y1="-78.74" x2="-33.85693125" y2="-87.63" width="0" layer="19" extent="1-1"/>
 <wire x1="-32.58693125" y1="-73.66" x2="-32.58693125" y2="-78.74" width="0" layer="19" extent="1-1"/>
@@ -1893,14 +1895,14 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="U2" pad="2"/>
 <contactref element="C13" pad="1"/>
 <contactref element="X1" pad="1"/>
-<wire x1="-34.72306875" y1="-91.44" x2="-43.17" y2="-88.9" width="0" layer="19" extent="1-1"/>
-<wire x1="-12.39" y1="8.6" x2="-43.17" y2="-88.9" width="0" layer="19" extent="1-1"/>
+<wire x1="-34.72306875" y1="-91.44" x2="-40.295" y2="-89.675" width="0" layer="19" extent="1-1"/>
+<wire x1="-12.39" y1="8.6" x2="-40.295" y2="-89.675" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STORAGE_XIN">
 <contactref element="U2" pad="1"/>
 <contactref element="X1" pad="3"/>
 <contactref element="C12" pad="1"/>
-<wire x1="-34.72306875" y1="-87.63" x2="-39.37" y2="-86.7" width="0" layer="19" extent="1-1"/>
+<wire x1="-34.72306875" y1="-87.63" x2="-38.445" y2="-88.125" width="0" layer="19" extent="1-1"/>
 <wire x1="-12.39" y1="9.1" x2="-34.72306875" y2="-87.63" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
