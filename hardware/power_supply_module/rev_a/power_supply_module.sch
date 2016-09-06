@@ -1655,8 +1655,8 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C26" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22uF"/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="750k"/>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="143k"/>
+<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="680k"/>
+<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="130k"/>
 <part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="100K"/>
 <part name="L3" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="U1" library="chips" deviceset="TLV62130" device=""/>
@@ -1668,8 +1668,8 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C25" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22uF"/>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="750k"/>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="143k"/>
+<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="680k"/>
+<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="130k"/>
 <part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="100K"/>
 <part name="L2" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
@@ -1680,8 +1680,8 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C27" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22uF"/>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="750k"/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="143k"/>
+<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="680k"/>
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="130k"/>
 <part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="100K"/>
 <part name="L4" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="FRAME8" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
@@ -1692,8 +1692,8 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C28" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22uF"/>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="750k"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="143k"/>
+<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="680k"/>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="130k"/>
 <part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="100K"/>
 <part name="L5" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M02" device="PTH"/>

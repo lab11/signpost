@@ -1281,11 +1281,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="C26" library="passives" package="0402_CAP" value="22uF" x="38.735" y="4.445" smashed="yes" rot="R90">
 <attribute name="NAME" x="39.37" y="4.826" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R21" library="passives" package="0402_RES" value="750k" x="38.735" y="6.35" smashed="yes" rot="R270">
+<element name="R21" library="passives" package="0402_RES" value="680k" x="38.735" y="6.35" smashed="yes" rot="R270">
 <attribute name="NAME" x="39.37" y="7.747" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="37.338" y="6.35" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R15" library="passives" package="0402_RES" value="143k" x="37.465" y="8.89" smashed="yes">
+<element name="R15" library="passives" package="0402_RES" value="130k" x="37.465" y="8.89" smashed="yes">
 <attribute name="NAME" x="37.465" y="9.271" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="37.465" y="7.493" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -1317,11 +1317,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="C25" library="passives" package="0402_CAP" value="22uF" x="29.21" y="4.445" smashed="yes" rot="R90">
 <attribute name="NAME" x="29.718" y="4.699" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R20" library="passives" package="0402_RES" value="750k" x="29.21" y="6.35" smashed="yes" rot="R270">
+<element name="R20" library="passives" package="0402_RES" value="680k" x="29.21" y="6.35" smashed="yes" rot="R270">
 <attribute name="NAME" x="29.591" y="7.62" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="27.813" y="6.35" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R14" library="passives" package="0402_RES" value="143k" x="27.94" y="8.89" smashed="yes">
+<element name="R14" library="passives" package="0402_RES" value="130k" x="27.94" y="8.89" smashed="yes">
 <attribute name="NAME" x="27.94" y="9.271" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="27.94" y="7.493" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -1349,11 +1349,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="C27" library="passives" package="0402_CAP" value="22uF" x="48.895" y="3.81" smashed="yes" rot="R90">
 <attribute name="NAME" x="49.022" y="2.794" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="R22" library="passives" package="0402_RES" value="750k" x="48.895" y="6.35" smashed="yes" rot="R270">
+<element name="R22" library="passives" package="0402_RES" value="680k" x="48.895" y="6.35" smashed="yes" rot="R270">
 <attribute name="NAME" x="49.276" y="6.35" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="47.498" y="6.35" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R16" library="passives" package="0402_RES" value="143k" x="47.625" y="8.89" smashed="yes">
+<element name="R16" library="passives" package="0402_RES" value="130k" x="47.625" y="8.89" smashed="yes">
 <attribute name="NAME" x="47.625" y="9.271" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="47.625" y="7.493" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -1381,11 +1381,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="C28" library="passives" package="0402_CAP" value="22uF" x="57.15" y="10.16" smashed="yes" rot="R90">
 <attribute name="NAME" x="56.896" y="9.144" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="R23" library="passives" package="0402_RES" value="750k" x="57.15" y="12.7" smashed="yes" rot="R270">
+<element name="R23" library="passives" package="0402_RES" value="680k" x="57.15" y="12.7" smashed="yes" rot="R270">
 <attribute name="NAME" x="57.531" y="12.7" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="55.753" y="12.7" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R17" library="passives" package="0402_RES" value="143k" x="55.88" y="15.24" smashed="yes">
+<element name="R17" library="passives" package="0402_RES" value="130k" x="55.88" y="15.24" smashed="yes">
 <attribute name="NAME" x="55.88" y="15.621" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="55.88" y="13.843" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
