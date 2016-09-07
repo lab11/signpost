@@ -4639,6 +4639,7 @@ High-power, low thermal resistance package.</description>
 <part name="J1" library="signpost" deviceset="MODULE_CONTROLLER" device=""/>
 <part name="E_1" library="Edison" deviceset="EDISON_CONNECTOR_SEGMENTED" device="">
 <attribute name="AMAZON" value="B00PTVSS4A"/>
+<attribute name="MOUSER" value="798-DF40HC3070DS4V51"/>
 </part>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L" device=""/>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L" device=""/>
@@ -4650,7 +4651,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="428-3206-ND"/>
 </part>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
-<part name="L1" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 Ω">
+<part name="L1" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 ohm">
 <attribute name="DIGIKEY" value="ACML-0402-301-TCT-ND"/>
 </part>
 <part name="J3" library="connector" deviceset="U.FL-R-SMT" device=""/>
@@ -4673,22 +4674,36 @@ High-power, low thermal resistance package.</description>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="U7" library="chips" deviceset="FTDI234XD" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
-<part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF"/>
-<part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF"/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="27"/>
-<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="27"/>
+<part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47 pF">
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
+</part>
+<part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47 pF">
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
+</part>
+<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="27">
+<attribute name="DIGIKEY" value="1276-3907-1-ND"/>
+</part>
+<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="27">
+<attribute name="DIGIKEY" value="1276-3907-1-ND"/>
+</part>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100"/>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100"/>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="665k">
+<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100">
+<attribute name="DIGIKEY" value="1276-3429-1-ND"/>
+</part>
+<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100">
+<attribute name="DIGIKEY" value="1276-3429-1-ND"/>
+</part>
+<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="665 k">
 <attribute name="DIGIKEY" value="1276-4275-1-ND"/>
 </part>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="332k">
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="332 k">
 <attribute name="DIGIKEY" value="1276-4245-1-ND"/>
 </part>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
-<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
+<attribute name="DIGIKEY" value="SI2312CDS-T1-GE3CT-ND"/>
+</part>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="U$6" library="signpost" deviceset="VCC_LINUX" device=""/>
 <part name="D1" library="passives" deviceset="DIODE" device="">
@@ -4707,24 +4722,38 @@ High-power, low thermal resistance package.</description>
 </part>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
 <part name="GND17" library="umich" deviceset="GND" device=""/>
-<part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="540k"/>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="120k"/>
+<part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="549 k">
+<attribute name="DIGIKEY" value="1276-3472-1-ND"/>
+</part>
+<part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="120 k">
+<attribute name="DIGIKEY" value="1276-4208-1-ND"/>
+</part>
 <part name="L2" library="passives" deviceset="INDUCTOR" device="1210" value="1 uH">
 <attribute name="DIGIKEY" value="490-10767-2-ND"/>
 </part>
 <part name="S1" library="signpost" deviceset="SIP3240X" device=""/>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
-<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 M"/>
+<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 M">
+<attribute name="DIGIKEY" value="1276-3433-1-ND"/>
+</part>
 <part name="U$8" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
 <part name="U$11" library="signpost" deviceset="VCC_LINUX_1V8" device=""/>
 <part name="U$12" library="signpost" deviceset="VCC_LINUX_1V8" device=""/>
 <part name="D3" library="leds" deviceset="SML-LX0404SIUPGUSB" device=""/>
 <part name="U$13" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="U8" library="chips" deviceset="TXS0108E" device="VQFN20"/>
+<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="U8" library="chips" deviceset="TXS0108E" device="VQFN20">
+<attribute name="DIGIKEY" value="296-24806-1-ND"/>
+</part>
 <part name="U$14" library="signpost" deviceset="VCC_LINUX_1V8" device=""/>
 <part name="GND22" library="umich" deviceset="GND" device=""/>
 <part name="U$15" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
@@ -4748,7 +4777,9 @@ High-power, low thermal resistance package.</description>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="L3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5k"/>
+<part name="L3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<attribute name="DIGIKEY" value="490-5216-1-ND"/>
+</part>
 <part name="L4" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
@@ -4757,7 +4788,9 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="490-13252-1-ND"/>
 </part>
 <part name="U$18" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
-<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
+<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="8 pF">
 <attribute name="DIGIKEY" value="490-8230-1-ND"/>
 </part>
@@ -4766,14 +4799,22 @@ High-power, low thermal resistance package.</description>
 </part>
 <part name="X1" library="crystals" deviceset="FH1600015" device="" value="16 MHz"/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k"/>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k"/>
+<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
+<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
 <part name="U$19" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="J7" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="U$9" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
 <part name="U$10" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="8 pF">
 <attribute name="DIGIKEY" value="490-8230-1-ND"/>
@@ -4783,7 +4824,9 @@ High-power, low thermal resistance package.</description>
 </part>
 <part name="X2" library="crystals" deviceset="FH1600015" device="" value="16 MHz"/>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES"/>
+<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
 <part name="U$20" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U$21" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="GND27" library="umich" deviceset="GND" device=""/>
@@ -4799,7 +4842,9 @@ High-power, low thermal resistance package.</description>
 <part name="C19" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="L5" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5k"/>
+<part name="L5" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<attribute name="DIGIKEY" value="490-5216-1-ND"/>
+</part>
 <part name="L6" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
@@ -4809,18 +4854,34 @@ High-power, low thermal resistance package.</description>
 </part>
 <part name="U$22" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="D2" library="leds" deviceset="SML-LX0404SIUPGUSB" device=""/>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
+<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
 <part name="U$23" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U$24" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="Q2" library="fets" deviceset="NX3008PBK" device=""/>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
-<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
-<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k"/>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k"/>
+<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
+<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
+<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
+<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
+<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
 <part name="C22" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7 uF">
 <attribute name="DIGIKEY" value="490-13252-1-ND"/>
 </part>
@@ -4845,9 +4906,15 @@ High-power, low thermal resistance package.</description>
 <attribute name="NAME" x="149.606" y="86.106" size="1.778" layer="95" ratio="12" rot="MR180" align="bottom-center"/>
 <attribute name="VALUE" x="149.86" y="82.55" size="1.016" layer="96" ratio="12" rot="MR0" align="bottom-center"/>
 </instance>
-<instance part="R19" gate="G$1" x="165.1" y="81.28" rot="R270"/>
-<instance part="R20" gate="G$1" x="175.26" y="91.44"/>
-<instance part="R21" gate="G$1" x="175.26" y="99.06"/>
+<instance part="R19" gate="G$1" x="165.1" y="81.28" rot="MR270">
+<attribute name="DIGIKEY" x="165.1" y="81.28" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
+</instance>
+<instance part="R20" gate="G$1" x="175.26" y="91.44">
+<attribute name="DIGIKEY" x="175.26" y="91.44" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
+<instance part="R21" gate="G$1" x="175.26" y="99.06">
+<attribute name="DIGIKEY" x="175.26" y="99.06" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
 <instance part="GND28" gate="1" x="165.1" y="73.66" rot="MR0"/>
 <instance part="U$23" gate="G$1" x="144.78" y="96.52"/>
 </instances>
@@ -5096,9 +5163,13 @@ High-power, low thermal resistance package.</description>
 <instance part="U$7" gate="G$1" x="220.98" y="76.2"/>
 <instance part="J7" gate="G$1" x="33.02" y="38.1"/>
 <instance part="U$9" gate="G$1" x="15.24" y="55.88"/>
-<instance part="GND19" gate="1" x="15.24" y="30.48"/>
-<instance part="R16" gate="G$1" x="48.26" y="50.8" rot="R90"/>
-<instance part="R17" gate="G$1" x="55.88" y="50.8" rot="R90"/>
+<instance part="GND19" gate="1" x="15.24" y="27.94"/>
+<instance part="R16" gate="G$1" x="48.26" y="50.8" rot="R90">
+<attribute name="DIGIKEY" x="48.26" y="50.8" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R17" gate="G$1" x="55.88" y="50.8" rot="R90">
+<attribute name="DIGIKEY" x="55.88" y="50.8" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="U$10" gate="G$1" x="48.26" y="55.88"/>
 <instance part="C14" gate="G$1" x="20.32" y="162.56" rot="MR90">
 <attribute name="DIGIKEY" x="20.32" y="162.56" size="1.27" layer="96" rot="MR90" align="bottom-center" display="off"/>
@@ -5111,7 +5182,9 @@ High-power, low thermal resistance package.</description>
 <attribute name="VALUE" x="30.48" y="157.48" size="1.27" layer="96" rot="MR180"/>
 </instance>
 <instance part="GND20" gate="1" x="15.24" y="147.32" rot="MR0"/>
-<instance part="R18" gate="G$1" x="142.24" y="149.86" rot="R90"/>
+<instance part="R18" gate="G$1" x="142.24" y="149.86" rot="R90">
+<attribute name="DIGIKEY" x="142.24" y="149.86" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="U$20" gate="G$1" x="142.24" y="154.94"/>
 <instance part="U$21" gate="G$1" x="15.24" y="127"/>
 <instance part="GND27" gate="1" x="15.24" y="76.2"/>
@@ -5127,7 +5200,9 @@ High-power, low thermal resistance package.</description>
 <instance part="C19" gate="G$1" x="17.78" y="116.84">
 <attribute name="DIGIKEY" x="17.78" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="L5" gate="G$1" x="43.18" y="116.84" rot="R90"/>
+<instance part="L5" gate="G$1" x="43.18" y="116.84" rot="R90">
+<attribute name="DIGIKEY" x="43.18" y="116.84" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="L6" gate="G$1" x="55.88" y="101.6" rot="R90"/>
 <instance part="C20" gate="G$1" x="58.42" y="93.98">
 <attribute name="DIGIKEY" x="58.42" y="93.98" size="1.27" layer="96" align="bottom-center" display="off"/>
@@ -5188,6 +5263,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="J7" gate="G$1" pin="GND"/>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="20.32" y1="33.02" x2="15.24" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="33.02" x2="15.24" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="X2" gate="G$1" pin="GND"/>
@@ -5469,7 +5545,7 @@ High-power, low thermal resistance package.</description>
 <label x="220.98" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="STORAGE_MOSI" class="0">
+<net name="MEMORY_MOSI" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="SI"/>
 <wire x1="195.58" y1="71.12" x2="193.04" y2="71.12" width="0.1524" layer="91"/>
@@ -5481,7 +5557,7 @@ High-power, low thermal resistance package.</description>
 <label x="109.22" y="116.84" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="STORAGE_MISO" class="0">
+<net name="MEMORY_MISO" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="SO"/>
 <wire x1="195.58" y1="68.58" x2="193.04" y2="68.58" width="0.1524" layer="91"/>
@@ -5493,7 +5569,7 @@ High-power, low thermal resistance package.</description>
 <label x="109.22" y="119.38" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="STORAGE_SCLK" class="0">
+<net name="MEMORY_SCLK" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="SCK"/>
 <wire x1="195.58" y1="66.04" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
@@ -5668,7 +5744,7 @@ High-power, low thermal resistance package.</description>
 <instance part="U$16" gate="G$1" x="15.24" y="127"/>
 <instance part="U$17" gate="G$1" x="15.24" y="60.96"/>
 <instance part="GND24" gate="1" x="15.24" y="76.2"/>
-<instance part="GND25" gate="1" x="15.24" y="35.56"/>
+<instance part="GND25" gate="1" x="15.24" y="33.02"/>
 <instance part="C6" gate="G$1" x="43.18" y="104.14">
 <attribute name="DIGIKEY" x="43.18" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
@@ -5681,7 +5757,9 @@ High-power, low thermal resistance package.</description>
 <instance part="C9" gate="G$1" x="17.78" y="116.84">
 <attribute name="DIGIKEY" x="17.78" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="L3" gate="G$1" x="43.18" y="116.84" rot="R90"/>
+<instance part="L3" gate="G$1" x="43.18" y="116.84" rot="R90">
+<attribute name="DIGIKEY" x="43.18" y="116.84" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="L4" gate="G$1" x="55.88" y="101.6" rot="R90"/>
 <instance part="C10" gate="G$1" x="58.42" y="93.98">
 <attribute name="DIGIKEY" x="58.42" y="93.98" size="1.27" layer="96" align="bottom-center" display="off"/>
@@ -5690,7 +5768,9 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="50.8" y="93.98" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="U$18" gate="G$1" x="137.16" y="154.94"/>
-<instance part="R10" gate="G$1" x="137.16" y="149.86" rot="R90"/>
+<instance part="R10" gate="G$1" x="137.16" y="149.86" rot="R90">
+<attribute name="DIGIKEY" x="137.16" y="149.86" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="C12" gate="G$1" x="20.32" y="162.56" rot="MR90">
 <attribute name="DIGIKEY" x="20.32" y="162.56" size="1.27" layer="96" rot="MR90" align="bottom-center" display="off"/>
 </instance>
@@ -5702,18 +5782,32 @@ High-power, low thermal resistance package.</description>
 <attribute name="VALUE" x="30.48" y="157.48" size="1.27" layer="96" rot="MR180"/>
 </instance>
 <instance part="GND26" gate="1" x="15.24" y="147.32" rot="MR0"/>
-<instance part="R14" gate="G$1" x="48.26" y="55.88" rot="R90"/>
-<instance part="R15" gate="G$1" x="55.88" y="55.88" rot="R90"/>
+<instance part="R14" gate="G$1" x="48.26" y="55.88" rot="R90">
+<attribute name="DIGIKEY" x="48.26" y="55.88" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R15" gate="G$1" x="55.88" y="55.88" rot="R90">
+<attribute name="DIGIKEY" x="55.88" y="55.88" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="U$19" gate="G$1" x="48.26" y="60.96"/>
 <instance part="U$24" gate="G$1" x="142.24" y="76.2"/>
 <instance part="Q2" gate="G$1" x="147.32" y="73.66" smashed="yes" rot="MR90">
 <attribute name="NAME" x="149.86" y="76.2" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="R22" gate="G$1" x="147.32" y="45.72" rot="R90"/>
-<instance part="R23" gate="G$1" x="182.88" y="68.58" rot="R90"/>
-<instance part="R24" gate="G$1" x="193.04" y="68.58" rot="R90"/>
-<instance part="R25" gate="G$1" x="205.74" y="68.58" rot="R90"/>
-<instance part="R26" gate="G$1" x="170.18" y="68.58" rot="R90"/>
+<instance part="R22" gate="G$1" x="147.32" y="45.72" rot="R90">
+<attribute name="DIGIKEY" x="147.32" y="45.72" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R23" gate="G$1" x="182.88" y="68.58" rot="R90">
+<attribute name="DIGIKEY" x="182.88" y="68.58" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R24" gate="G$1" x="193.04" y="68.58" rot="R90">
+<attribute name="DIGIKEY" x="193.04" y="68.58" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R25" gate="G$1" x="205.74" y="68.58" rot="R90">
+<attribute name="DIGIKEY" x="205.74" y="68.58" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R26" gate="G$1" x="170.18" y="68.58" rot="R90">
+<attribute name="DIGIKEY" x="170.18" y="68.58" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="C22" gate="G$1" x="154.94" y="68.58">
 <attribute name="DIGIKEY" x="154.94" y="68.58" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
@@ -5744,6 +5838,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="J6" gate="G$1" pin="GND"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 <wire x1="20.32" y1="38.1" x2="15.24" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="38.1" x2="15.24" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND24" gate="1" pin="GND"/>
@@ -6004,21 +6099,21 @@ High-power, low thermal resistance package.</description>
 <label x="27.94" y="162.56" size="1.27" layer="95" font="vector" rot="MR180" xref="yes"/>
 </segment>
 </net>
-<net name="STORAGE_MOSI" class="0">
+<net name="MEMORY_MOSI" class="0">
 <segment>
 <wire x1="106.68" y1="119.38" x2="109.22" y2="119.38" width="0.1524" layer="91"/>
 <label x="109.22" y="119.38" size="1.27" layer="95" font="vector" rot="MR180" xref="yes"/>
 <pinref part="U2" gate="U1" pin="PA11"/>
 </segment>
 </net>
-<net name="STORAGE_MISO" class="0">
+<net name="MEMORY_MISO" class="0">
 <segment>
 <wire x1="106.68" y1="116.84" x2="109.22" y2="116.84" width="0.1524" layer="91"/>
 <label x="109.22" y="116.84" size="1.27" layer="95" font="vector" rot="MR180" xref="yes"/>
 <pinref part="U2" gate="U1" pin="PA12"/>
 </segment>
 </net>
-<net name="STORAGE_SCLK" class="0">
+<net name="MEMORY_SCLK" class="0">
 <segment>
 <wire x1="106.68" y1="121.92" x2="109.22" y2="121.92" width="0.1524" layer="91"/>
 <label x="109.22" y="121.92" size="1.27" layer="95" font="vector" rot="MR180" xref="yes"/>
@@ -6174,7 +6269,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="Q2" gate="G$1" pin="G"/>
 <pinref part="R22" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="48.26" x2="147.32" y2="66.04" width="0.1524" layer="91"/>
-<label x="147.32" y="53.34" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<label x="147.32" y="60.96" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -6194,6 +6289,7 @@ choice for software reasons</text>
 <text x="129.54" y="160.02" size="1.778" layer="98">XXX: Need to check over these parts</text>
 <text x="127" y="152.4" size="1.778" layer="98">XXX: HUGE</text>
 <text x="66.04" y="101.6" size="1.778" layer="98">IO Level Conversion</text>
+<text x="127" y="165.1" size="1.778" layer="98">XXX: They don't actually sell a 540k resistor</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
@@ -6221,14 +6317,20 @@ choice for software reasons</text>
 </instance>
 <instance part="GND16" gate="1" x="142.24" y="127" rot="MR0"/>
 <instance part="GND17" gate="1" x="160.02" y="127" rot="MR0"/>
-<instance part="R7" gate="G$1" x="142.24" y="147.32" rot="R90"/>
-<instance part="R8" gate="G$1" x="142.24" y="137.16" rot="R90"/>
+<instance part="R7" gate="G$1" x="142.24" y="147.32" rot="R90">
+<attribute name="DIGIKEY" x="142.24" y="147.32" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
+<instance part="R8" gate="G$1" x="142.24" y="137.16" rot="R90">
+<attribute name="DIGIKEY" x="142.24" y="137.16" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="L2" gate="G$1" x="132.08" y="149.86" rot="R90">
 <attribute name="DIGIKEY" x="132.08" y="149.86" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="S1" gate="G$1" x="63.5" y="144.78"/>
 <instance part="GND18" gate="1" x="76.2" y="127" rot="MR0"/>
-<instance part="R9" gate="G$1" x="45.72" y="149.86" rot="R90"/>
+<instance part="R9" gate="G$1" x="45.72" y="149.86" rot="R90">
+<attribute name="DIGIKEY" x="45.72" y="149.86" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+</instance>
 <instance part="GND21" gate="1" x="175.26" y="109.22" rot="MR0"/>
 <instance part="U$11" gate="G$1" x="172.72" y="134.62"/>
 <instance part="D3" gate="G$1" x="20.32" y="53.34" smashed="yes" rot="MR180">
@@ -6236,12 +6338,20 @@ choice for software reasons</text>
 <attribute name="VALUE" x="15.24" y="44.45" size="1.016" layer="96" ratio="12" rot="MR0" align="bottom-center"/>
 </instance>
 <instance part="U$13" gate="G$1" x="10.16" y="55.88"/>
-<instance part="R11" gate="G$1" x="30.48" y="43.18" rot="R270"/>
-<instance part="R12" gate="G$1" x="40.64" y="53.34"/>
-<instance part="R13" gate="G$1" x="40.64" y="60.96"/>
+<instance part="R11" gate="G$1" x="30.48" y="43.18" rot="MR270">
+<attribute name="DIGIKEY" x="30.48" y="43.18" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
+</instance>
+<instance part="R12" gate="G$1" x="40.64" y="53.34">
+<attribute name="DIGIKEY" x="40.64" y="53.34" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
+<instance part="R13" gate="G$1" x="40.64" y="60.96">
+<attribute name="DIGIKEY" x="40.64" y="60.96" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
 <instance part="E_1" gate="_I2C_1" x="213.36" y="76.2"/>
 <instance part="E_1" gate="_SPI" x="119.38" y="88.9"/>
-<instance part="U8" gate="G$1" x="76.2" y="81.28" rot="MR0"/>
+<instance part="U8" gate="G$1" x="76.2" y="81.28" rot="MR0">
+<attribute name="DIGIKEY" x="76.2" y="81.28" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
+</instance>
 <instance part="U$14" gate="G$1" x="93.98" y="93.98"/>
 <instance part="GND22" gate="1" x="58.42" y="63.5" rot="MR0"/>
 <instance part="U$15" gate="G$1" x="58.42" y="93.98"/>
@@ -6607,7 +6717,9 @@ if USB is attached</text>
 <instances>
 <instance part="FRAME5" gate="G$1" x="0" y="0"/>
 <instance part="FRAME5" gate="G$2" x="147.32" y="0"/>
-<instance part="E_1" gate="_USB" x="50.8" y="147.32" rot="MR0"/>
+<instance part="E_1" gate="_USB" x="50.8" y="147.32" rot="MR0">
+<attribute name="MOUSER" x="50.8" y="147.32" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
+</instance>
 <instance part="U5" gate="G$1" x="104.14" y="144.78" smashed="yes">
 <attribute name="NAME" x="96.52" y="154.432" size="1.778" layer="95" ratio="12" align="top-left"/>
 <attribute name="VALUE" x="96.52" y="131.572" size="1.778" layer="96" ratio="12" align="top-left"/>
@@ -6622,36 +6734,45 @@ if USB is attached</text>
 <instance part="E_1" gate="_UART_2" x="55.88" y="76.2" rot="R180"/>
 <instance part="U7" gate="G$1" x="86.36" y="68.58" rot="MR0"/>
 <instance part="GND11" gate="1" x="101.6" y="48.26" rot="MR0"/>
-<instance part="C1" gate="G$1" x="127" y="58.42" rot="MR0"/>
-<instance part="C2" gate="G$1" x="116.84" y="58.42" rot="MR0"/>
+<instance part="C1" gate="G$1" x="127" y="58.42" rot="MR0">
+<attribute name="DIGIKEY" x="127" y="58.42" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
+</instance>
+<instance part="C2" gate="G$1" x="116.84" y="58.42" rot="MR0">
+<attribute name="DIGIKEY" x="116.84" y="58.42" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
+</instance>
 <instance part="R1" gate="G$1" x="109.22" y="68.58" smashed="yes" rot="MR0">
 <attribute name="NAME" x="113.03" y="70.0786" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="107.95" y="70.358" size="1.778" layer="96" rot="MR0"/>
+<attribute name="DIGIKEY" x="109.22" y="68.58" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="R2" gate="G$1" x="109.22" y="66.04" smashed="yes" rot="MR0">
 <attribute name="NAME" x="113.03" y="62.4586" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="107.95" y="62.738" size="1.778" layer="96" rot="MR0"/>
+<attribute name="DIGIKEY" x="109.22" y="66.04" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="GND12" gate="1" x="116.84" y="48.26" rot="MR0"/>
 <instance part="GND13" gate="1" x="127" y="48.26" rot="MR0"/>
 <instance part="R5" gate="G$1" x="66.04" y="78.74" smashed="yes" rot="MR0">
 <attribute name="NAME" x="69.85" y="80.2386" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="64.77" y="80.518" size="1.778" layer="96" rot="MR0"/>
+<attribute name="DIGIKEY" x="66.04" y="78.74" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="R6" gate="G$1" x="66.04" y="76.2" smashed="yes" rot="MR0">
 <attribute name="NAME" x="69.85" y="72.6186" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="64.77" y="72.898" size="1.778" layer="96" rot="MR0"/>
+<attribute name="DIGIKEY" x="66.04" y="76.2" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="R3" gate="G$1" x="124.46" y="132.08" rot="R90">
 <attribute name="DIGIKEY" x="124.46" y="132.08" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
-<instance part="R4" gate="G$1" x="132.08" y="157.48" rot="R180">
-<attribute name="DIGIKEY" x="132.08" y="157.48" size="1.27" layer="96" font="vector" rot="R180" display="off"/>
+<instance part="R4" gate="G$1" x="137.16" y="157.48">
+<attribute name="DIGIKEY" x="137.16" y="157.48" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
 <instance part="GND10" gate="1" x="124.46" y="121.92" rot="MR0"/>
 <instance part="Q1" gate="G$1" x="60.96" y="132.08" smashed="yes" rot="MR0">
 <attribute name="NAME" x="58.42" y="127" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="58.42" y="124.46" size="1.778" layer="96" rot="MR0"/>
+<attribute name="DIGIKEY" x="60.96" y="132.08" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="GND14" gate="1" x="60.96" y="121.92" rot="MR0"/>
 <instance part="U$6" gate="G$1" x="177.8" y="172.72"/>
@@ -6712,15 +6833,15 @@ if USB is attached</text>
 <wire x1="127" y1="157.48" x2="127" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="127" y1="162.56" x2="109.22" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="162.56" x2="71.12" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="R4" gate="G$1" pin="2"/>
-<wire x1="129.54" y1="157.48" x2="127" y2="157.48" width="0.1524" layer="91"/>
-<junction x="127" y="157.48"/>
 <label x="109.22" y="165.1" size="1.27" layer="95" font="vector" xref="yes"/>
 <wire x1="109.22" y1="162.56" x2="109.22" y2="165.1" width="0.1524" layer="91"/>
 <junction x="109.22" y="162.56"/>
 <pinref part="Q1" gate="G$1" pin="G"/>
 <wire x1="68.58" y1="132.08" x2="71.12" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="132.08" x2="71.12" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="132.08" y1="157.48" x2="127" y2="157.48" width="0.1524" layer="91"/>
+<junction x="127" y="157.48"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -6847,8 +6968,6 @@ if USB is attached</text>
 </net>
 <net name="USB_VBUS" class="0">
 <segment>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="137.16" y1="157.48" x2="154.94" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="157.48" x2="177.8" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="157.48" x2="182.88" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="157.48" x2="182.88" y2="147.32" width="0.1524" layer="91"/>
@@ -6863,10 +6982,12 @@ if USB is attached</text>
 <wire x1="55.88" y1="170.18" x2="109.22" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="170.18" x2="154.94" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="170.18" x2="154.94" y2="157.48" width="0.1524" layer="91"/>
-<junction x="154.94" y="157.48"/>
 <wire x1="109.22" y1="170.18" x2="109.22" y2="172.72" width="0.1524" layer="91"/>
 <junction x="109.22" y="170.18"/>
 <label x="109.22" y="172.72" size="1.27" layer="95" font="vector" xref="yes"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="157.48" x2="154.94" y2="157.48" width="0.1524" layer="91"/>
+<junction x="154.94" y="157.48"/>
 </segment>
 </net>
 <net name="N$30" class="0">
