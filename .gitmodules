@@ -15,3 +15,6 @@
 [submodule "modules/spectrum154/contiki/atum"]
 	path = modules/spectrum154/contiki/atum
 	url = https://github.com/lab11/atum
+[submodule "software/kernel/tock"]
+	path = software/kernel/tock
+	url = https://github.com/helena-project/tock
