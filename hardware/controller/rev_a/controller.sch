@@ -3829,7 +3829,7 @@ Bottom Mount</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="FERRITE_BEAD" prefix="L" uservalue="yes">
+<deviceset name="FERRITE_BEAD" prefix="FB" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="FERRITE_BEAD" x="0" y="0"/>
 </gates>
@@ -3847,6 +3847,15 @@ Bottom Mount</description>
 <connects>
 <connect gate="G$1" pin="P$1" pad="1"/>
 <connect gate="G$1" pin="P$2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="0805" package="0805_CAP">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+<connect gate="G$1" pin="P$2" pad="P$2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -4717,7 +4726,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="428-3206-ND"/>
 </part>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
-<part name="L1" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 ohm">
+<part name="FB2" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 ohm">
 <attribute name="DIGIKEY" value="ACML-0402-301-TCT-ND"/>
 </part>
 <part name="J3" library="connector" deviceset="U.FL-R-SMT" device=""/>
@@ -4821,7 +4830,7 @@ High-power, low thermal resistance package.</description>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="L3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<part name="FB3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L4" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
@@ -4886,7 +4895,7 @@ High-power, low thermal resistance package.</description>
 <part name="C19" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="L5" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<part name="FB4" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L6" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
@@ -4967,14 +4976,17 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND31" library="supply1" deviceset="GND" device=""/>
-<part name="C29" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<part name="C29" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="10 nF">
+<attribute name="DIGIKEY" value="490-6296-1-ND"/>
 </part>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="C30" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND33" library="umich" deviceset="GND" device=""/>
+<part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0805" value="600 ohm">
+<attribute name="DIGIKEY" value="240-2390-1-ND"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -5257,7 +5269,7 @@ High-power, low thermal resistance package.</description>
 <instance part="U4" gate="U1" x="208.28" y="66.04" rot="MR0">
 <attribute name="DIGIKEY" x="208.28" y="66.04" size="1.778" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
-<instance part="L1" gate="G$1" x="180.34" y="134.62" rot="MR0">
+<instance part="FB2" gate="G$1" x="180.34" y="134.62" rot="MR0">
 <attribute name="DIGIKEY" x="180.34" y="134.62" size="1.778" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="J3" gate="G$1" x="167.64" y="139.7" rot="MR0"/>
@@ -5305,7 +5317,7 @@ High-power, low thermal resistance package.</description>
 <instance part="C19" gate="G$1" x="17.78" y="116.84">
 <attribute name="DIGIKEY" x="17.78" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="L5" gate="G$1" x="43.18" y="116.84" rot="R90">
+<instance part="FB4" gate="G$1" x="43.18" y="116.84" rot="R90">
 <attribute name="DIGIKEY" x="43.18" y="116.84" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
 <instance part="L6" gate="G$1" x="55.88" y="101.6" rot="R90"/>
@@ -5336,7 +5348,7 @@ High-power, low thermal resistance package.</description>
 <net name="N$1" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="VOUT"/>
-<pinref part="L1" gate="G$1" pin="P$1"/>
+<pinref part="FB2" gate="G$1" pin="P$1"/>
 <wire x1="185.42" y1="134.62" x2="187.96" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -5345,7 +5357,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="U3" gate="G$1" pin="RFIN"/>
 <wire x1="187.96" y1="137.16" x2="185.42" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="137.16" x2="185.42" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="L1" gate="G$1" pin="P$2"/>
+<pinref part="FB2" gate="G$1" pin="P$2"/>
 <wire x1="175.26" y1="134.62" x2="172.72" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="134.62" x2="172.72" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="139.7" x2="172.72" y2="139.7" width="0.1524" layer="91"/>
@@ -5517,7 +5529,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C17" gate="G$1" pin="1"/>
 <wire x1="33.02" y1="119.38" x2="33.02" y2="124.46" width="0.1524" layer="91"/>
 <junction x="33.02" y="124.46"/>
-<pinref part="L5" gate="G$1" pin="P$2"/>
+<pinref part="FB4" gate="G$1" pin="P$2"/>
 <wire x1="43.18" y1="124.46" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
 <junction x="43.18" y="124.46"/>
 <wire x1="63.5" y1="149.86" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
@@ -5620,7 +5632,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C16" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="106.68" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
 <junction x="43.18" y="109.22"/>
-<pinref part="L5" gate="G$1" pin="P$1"/>
+<pinref part="FB4" gate="G$1" pin="P$1"/>
 <wire x1="43.18" y1="111.76" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="U1" gate="U1" pin="VDDANA"/>
 </segment>
@@ -5885,7 +5897,7 @@ High-power, low thermal resistance package.</description>
 <instance part="C9" gate="G$1" x="17.78" y="116.84">
 <attribute name="DIGIKEY" x="17.78" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="L3" gate="G$1" x="43.18" y="116.84" rot="R90">
+<instance part="FB3" gate="G$1" x="43.18" y="116.84" rot="R90">
 <attribute name="DIGIKEY" x="43.18" y="116.84" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
 <instance part="L4" gate="G$1" x="55.88" y="101.6" rot="R90"/>
@@ -6065,7 +6077,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="33.02" y1="119.38" x2="33.02" y2="124.46" width="0.1524" layer="91"/>
 <junction x="33.02" y="124.46"/>
-<pinref part="L3" gate="G$1" pin="P$2"/>
+<pinref part="FB3" gate="G$1" pin="P$2"/>
 <wire x1="43.18" y1="124.46" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
 <junction x="43.18" y="124.46"/>
 <pinref part="U2" gate="U1" pin="VLCD"/>
@@ -6145,7 +6157,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="106.68" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
 <junction x="43.18" y="109.22"/>
-<pinref part="L3" gate="G$1" pin="P$1"/>
+<pinref part="FB3" gate="G$1" pin="P$1"/>
 <wire x1="43.18" y1="111.76" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -6936,6 +6948,9 @@ if USB is attached</text>
 <attribute name="DIGIKEY" x="116.84" y="93.98" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND32" gate="1" x="116.84" y="83.82" rot="MR0"/>
+<instance part="FB1" gate="G$1" x="124.46" y="78.74">
+<attribute name="DIGIKEY" x="124.46" y="78.74" size="1.778" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -7125,18 +7140,8 @@ if USB is attached</text>
 <wire x1="58.42" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$26" class="0">
-<segment>
-<pinref part="R5" gate="G$1" pin="2"/>
-<pinref part="E_1" gate="_UART_2" pin="GP134_UART_2_RX"/>
-<wire x1="63.5" y1="78.74" x2="58.42" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$28" class="0">
 <segment>
-<pinref part="J5" gate="G$1" pin="+5V"/>
-<wire x1="137.16" y1="71.12" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="71.12" x2="119.38" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="VCC"/>
 <wire x1="119.38" y1="78.74" x2="111.76" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="78.74" x2="99.06" y2="78.74" width="0.1524" layer="91"/>
@@ -7145,6 +7150,7 @@ if USB is attached</text>
 <pinref part="C29" gate="G$1" pin="1"/>
 <wire x1="111.76" y1="99.06" x2="116.84" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="99.06" x2="116.84" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="FB1" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="USB_VBUS" class="0">
@@ -7213,6 +7219,22 @@ if USB is attached</text>
 <wire x1="106.68" y1="96.52" x2="106.68" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
 <junction x="101.6" y="99.06"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="FB1" gate="G$1" pin="P$2"/>
+<wire x1="129.54" y1="78.74" x2="134.62" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="78.74" x2="134.62" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="J5" gate="G$1" pin="+5V"/>
+<wire x1="134.62" y1="71.12" x2="137.16" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="EDISON_UART_RX" class="0">
+<segment>
+<pinref part="E_1" gate="_UART_2" pin="GP134_UART_2_RX"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="58.42" y1="78.74" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
