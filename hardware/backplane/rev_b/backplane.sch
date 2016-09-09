@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -5539,7 +5539,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Pat Pannuto"/>
-<attribute name="REV" value="A"/>
+<attribute name="REV" value="B"/>
 <attribute name="TITLE" value="Signpost Backplane"/>
 </attributes>
 <variantdefs>
