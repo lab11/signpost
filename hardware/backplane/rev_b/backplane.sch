@@ -10779,48 +10779,6 @@ EECLK must be NC</text>
 <wire x1="218.44" y1="139.7" x2="215.9" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="MOD0_ISO_USB" class="0">
-<segment>
-<pinref part="U20" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="157.48" x2="190.5" y2="157.48" width="0.1524" layer="91"/>
-<label x="187.96" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="MOD1_ISO_USB" class="0">
-<segment>
-<pinref part="U21" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
-<label x="187.96" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="MOD2_ISO_USB" class="0">
-<segment>
-<pinref part="U22" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="106.68" x2="190.5" y2="106.68" width="0.1524" layer="91"/>
-<label x="187.96" y="106.68" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="MOD5_ISO_USB" class="0">
-<segment>
-<pinref part="U23" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="81.28" x2="190.5" y2="81.28" width="0.1524" layer="91"/>
-<label x="187.96" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="MOD6_ISO_USB" class="0">
-<segment>
-<pinref part="U24" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="55.88" x2="190.5" y2="55.88" width="0.1524" layer="91"/>
-<label x="187.96" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="MOD7_ISO_USB" class="0">
-<segment>
-<pinref part="U25" gate="G$1" pin="!OE"/>
-<wire x1="187.96" y1="30.48" x2="190.5" y2="30.48" width="0.1524" layer="91"/>
-<label x="187.96" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
 <net name="HUB_DP6" class="0">
 <segment>
 <wire x1="43.18" y1="35.56" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
@@ -10867,6 +10825,48 @@ EECLK must be NC</text>
 <wire x1="55.88" y1="63.5" x2="53.34" y2="63.5" width="0.1524" layer="91"/>
 <junction x="53.34" y="63.5"/>
 <pinref part="C12" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="MOD7_USB_!EN" class="0">
+<segment>
+<pinref part="U25" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="30.48" x2="190.5" y2="30.48" width="0.1524" layer="91"/>
+<label x="187.96" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD6_USB_!EN" class="0">
+<segment>
+<pinref part="U24" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="55.88" x2="190.5" y2="55.88" width="0.1524" layer="91"/>
+<label x="187.96" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD5_USB_!EN" class="0">
+<segment>
+<pinref part="U23" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="81.28" x2="190.5" y2="81.28" width="0.1524" layer="91"/>
+<label x="187.96" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD2_USB_!EN" class="0">
+<segment>
+<pinref part="U22" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="106.68" x2="190.5" y2="106.68" width="0.1524" layer="91"/>
+<label x="187.96" y="106.68" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_USB_!EN" class="0">
+<segment>
+<pinref part="U21" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
+<label x="187.96" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_USB_!EN" class="0">
+<segment>
+<pinref part="U20" gate="G$1" pin="!OE"/>
+<wire x1="187.96" y1="157.48" x2="190.5" y2="157.48" width="0.1524" layer="91"/>
+<label x="187.96" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
