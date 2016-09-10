@@ -2662,7 +2662,7 @@ S high: D = D2</text>
 <packages>
 <package name="QFN-48-7MM">
 <description>7MM x 7MM 48 QFN package</description>
-<smd name="P$1" x="0" y="0" dx="5.6" dy="5.6" layer="1" cream="no"/>
+<smd name="THERMAL" x="0" y="0" dx="5.6" dy="5.6" layer="1" cream="no"/>
 <wire x1="-3.5" y1="-3.5" x2="3.5" y2="-3.5" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="-3.5" x2="-3.5" y2="3.5" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="3.5" x2="3.5" y2="3.5" width="0.127" layer="21"/>
@@ -3044,7 +3044,7 @@ Per TI's guidelines: http://www.ti.com/lit/an/scba017d/scba017d.pdf</description
 <connect gate="U1" pin="BIASL" pad="29"/>
 <connect gate="U1" pin="CAPH" pad="25"/>
 <connect gate="U1" pin="CAPL" pad="26"/>
-<connect gate="U1" pin="GND" pad="6 30 48"/>
+<connect gate="U1" pin="GND" pad="6 30 48 THERMAL"/>
 <connect gate="U1" pin="GNDANA" pad="17"/>
 <connect gate="U1" pin="PA00" pad="1"/>
 <connect gate="U1" pin="PA01" pad="2"/>
@@ -6823,7 +6823,7 @@ choice for software reasons</text>
 <label x="58.42" y="83.82" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="LINUX_5V_IN" class="0">
 <segment>
 <pinref part="S1" gate="G$1" pin="VLOAD"/>
 <pinref part="VR1" gate="G$1" pin="VIN"/>
