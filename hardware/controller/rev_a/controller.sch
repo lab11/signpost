@@ -5260,6 +5260,7 @@ High-power, low thermal resistance package.</description>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Controller</text>
+<text x="132.08" y="132.08" size="1.778" layer="98">XXX Jumper me</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
