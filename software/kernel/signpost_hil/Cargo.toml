@@ -1,11 +1,10 @@
 [package]
-name = "signpost_drivers"
+name = "signpost_hil"
 version = "0.1.0"
 authors = ["Brad Campbell <bradjc@umich.edu>"]
 
 [dependencies]
 rust-libcore = "*"
 common = { path = "../tock/src/common" }
-hil = { path = "../tock/src/hil" }
 main = { path = "../tock/src/main" }
-signpost_hil = { path = "../signpost_hil" }
+hil = { path = "../tock/src/hil" }

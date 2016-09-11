@@ -7,11 +7,13 @@
 extern crate common;
 extern crate cortexm4;
 extern crate drivers;
-extern crate signpost_drivers;
 extern crate hil;
 extern crate main;
 extern crate sam4l;
 extern crate support;
+
+extern crate signpost_drivers;
+extern crate signpost_hil;
 
 use drivers::console::{self, Console};
 // use drivers::nrf51822_serialization::{self, Nrf51822Serialization};
@@ -87,7 +89,8 @@ struct SignpostController {
     // isl29035: &'static drivers::isl29035::Isl29035<'static>,
     spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
     // nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
-    mcp23008_0: &'static signpost_drivers::mcp23008::MCP23008<'static>,
+    // mcp23008_0: &'static signpost_drivers::mcp23008::MCP23008<'static>,
+    gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     // mcp23008_1: &'static drivers::mcp23008::MCP23008<'static>,
     // mcp23008_2: &'static drivers::mcp23008::MCP23008<'static>,
     // mcp23008_5: &'static drivers::mcp23008::MCP23008<'static>,
@@ -112,7 +115,7 @@ impl Platform for SignpostController {
             4 => f(Some(self.spi)),
             // 5 => f(Some(self.nrf51822)),
             // 6 => f(Some(self.isl29035)),
-            10 => f(Some(self.mcp23008_0)),
+            100 => f(Some(self.gpio_async)),
             // 11 => f(Some(self.mcp23008_1)),
             // 12 => f(Some(self.mcp23008_2)),
             // 13 => f(Some(self.mcp23008_5)),
@@ -399,54 +402,84 @@ pub unsafe fn reset_handler() {
     sam4l::i2c::I2C1.set_client(mux_i2c1);
 
     // Configure the MCP23008_0. Device address 0x20
-    let mcp23008_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x27), 32);
+    let mcp23008_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x20), 32);
     let mcp23008_0 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_0_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        256/8);
+        224/8);
     mcp23008_0_i2c.set_client(mcp23008_0);
 
-    // // Configure the MCP23008_1. Device address 0x21
-    // let mcp23008_1_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c1, 0x21), 32);
-    // let mcp23008_1 = static_init!(
-    //     drivers::mcp23008::MCP23008<'static>,
-    //     drivers::mcp23008::MCP23008::new(mcp23008_1_i2c, &mut drivers::mcp23008::BUFFER),
-    //     256/8);
-    // mcp23008_1_i2c.set_client(mcp23008_1);
+    // Configure the MCP23008_1. Device address 0x21
+    let mcp23008_1_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x21), 32);
+    let mcp23008_1 = static_init!(
+        signpost_drivers::mcp23008::MCP23008<'static>,
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_1_i2c, &mut signpost_drivers::mcp23008::BUFFER),
+        224/8);
+    mcp23008_1_i2c.set_client(mcp23008_1);
 
-    // // Configure the MCP23008_2. Device address 0x22
-    // let mcp23008_2_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c1, 0x22), 32);
-    // let mcp23008_2 = static_init!(
-    //     drivers::mcp23008::MCP23008<'static>,
-    //     drivers::mcp23008::MCP23008::new(mcp23008_2_i2c, &mut drivers::mcp23008::BUFFER),
-    //     256/8);
-    // mcp23008_2_i2c.set_client(mcp23008_2);
+    // Configure the MCP23008_2. Device address 0x22
+    let mcp23008_2_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x22), 32);
+    let mcp23008_2 = static_init!(
+        signpost_drivers::mcp23008::MCP23008<'static>,
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_2_i2c, &mut signpost_drivers::mcp23008::BUFFER),
+        224/8);
+    mcp23008_2_i2c.set_client(mcp23008_2);
 
-    // // Configure the MCP23008_5. Device address 0x25
-    // let mcp23008_5_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c1, 0x25), 32);
-    // let mcp23008_5 = static_init!(
-    //     drivers::mcp23008::MCP23008<'static>,
-    //     drivers::mcp23008::MCP23008::new(mcp23008_5_i2c, &mut drivers::mcp23008::BUFFER),
-    //     256/8);
-    // mcp23008_5_i2c.set_client(mcp23008_5);
+    // Configure the MCP23008_5. Device address 0x25
+    let mcp23008_5_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x25), 32);
+    let mcp23008_5 = static_init!(
+        signpost_drivers::mcp23008::MCP23008<'static>,
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_5_i2c, &mut signpost_drivers::mcp23008::BUFFER),
+        224/8);
+    mcp23008_5_i2c.set_client(mcp23008_5);
 
-    // // Configure the MCP23008_6. Device address 0x26
-    // let mcp23008_6_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c1, 0x26), 32);
-    // let mcp23008_6 = static_init!(
-    //     drivers::mcp23008::MCP23008<'static>,
-    //     drivers::mcp23008::MCP23008::new(mcp23008_6_i2c, &mut drivers::mcp23008::BUFFER),
-    //     256/8);
-    // mcp23008_6_i2c.set_client(mcp23008_6);
+    // Configure the MCP23008_6. Device address 0x26
+    let mcp23008_6_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x26), 32);
+    let mcp23008_6 = static_init!(
+        signpost_drivers::mcp23008::MCP23008<'static>,
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_6_i2c, &mut signpost_drivers::mcp23008::BUFFER),
+        224/8);
+    mcp23008_6_i2c.set_client(mcp23008_6);
 
-    // // Configure the MCP23008_7. Device address 0x27
-    // let mcp23008_7_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c1, 0x27), 32);
-    // let mcp23008_7 = static_init!(
-    //     drivers::mcp23008::MCP23008<'static>,
-    //     drivers::mcp23008::MCP23008::new(mcp23008_7_i2c, &mut drivers::mcp23008::BUFFER),
-    //     256/8);
-    // mcp23008_7_i2c.set_client(mcp23008_7);
+    // Configure the MCP23008_7. Device address 0x27
+    let mcp23008_7_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x27), 32);
+    let mcp23008_7 = static_init!(
+        signpost_drivers::mcp23008::MCP23008<'static>,
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_7_i2c, &mut signpost_drivers::mcp23008::BUFFER),
+        224/8);
+    mcp23008_7_i2c.set_client(mcp23008_7);
 
 
+    // let async_gpio_ports = static_init!(
+    //     [&'static signpost_drivers::mcp23008::MCP23008; 6],
+    //     [&mcp23008_0,
+    //      &mcp23008_1,
+    //      &mcp23008_2,
+    //      &mcp23008_5,
+    //      &mcp23008_6,
+    //      &mcp23008_7],
+    //      192/8
+    // );
+
+    let async_gpio_ports = static_init!(
+        [&'static signpost_drivers::mcp23008::MCP23008; 6],
+        [mcp23008_0,
+         mcp23008_1,
+         mcp23008_2,
+         mcp23008_5,
+         mcp23008_6,
+         mcp23008_7],
+         192/8
+    );
+
+    let gpio_async = static_init!(
+        signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
+        signpost_drivers::gpio_async::GPIOAsync::new(async_gpio_ports),
+        160/8
+    );
+    for port in async_gpio_ports.iter() {
+        port.set_client(gpio_async);
+    }
 
 
 
@@ -492,7 +525,7 @@ pub unsafe fn reset_handler() {
             // isl29035: isl29035,
             spi: spi,
             // nrf51822: nrf_serialization,
-            mcp23008_0: mcp23008_0,
+            gpio_async: gpio_async,
             // mcp23008_1: mcp23008_1,
             // mcp23008_2: mcp23008_2,
             // mcp23008_5: mcp23008_5,
@@ -552,8 +585,6 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-mcp23008_0.set_direction(0, signpost_drivers::mcp23008::Direction::Output);
-// mcp23008_0.set_pin(0, drivers::mcp23008::PinState::High);
 
     main::main(signpost_controller, &mut chip, load_processes());
 }

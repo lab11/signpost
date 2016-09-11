@@ -3,6 +3,7 @@ use common::take_cell::TakeCell;
 use main::{AppId, Callback, Driver};
 use hil::i2c;
 use hil;
+use signpost_hil;
 
 // Buffer to use for I2C messages
 pub static mut BUFFER : [u8; 4] = [0; 4];
@@ -42,21 +43,22 @@ enum State {
     Done,
 }
 
-pub enum Direction {
+enum Direction {
     Input = 0x01,
     Output = 0x00,
 }
 
-pub enum PinState {
+enum PinState {
     High = 0x01,
     Low = 0x00,
 }
 
 pub struct MCP23008<'a> {
     i2c: &'a i2c::I2CDevice,
-    callback: Cell<Option<Callback>>,
+    // callback: Cell<Option<Callback>>,
     state: Cell<State>,
-    buffer: TakeCell<&'static mut [u8]>
+    buffer: TakeCell<&'static mut [u8]>,
+    client: TakeCell<&'static signpost_hil::gpio_async::Client>,
 }
 
 impl<'a> MCP23008<'a> {
@@ -64,13 +66,18 @@ impl<'a> MCP23008<'a> {
         // setup and return struct
         MCP23008{
             i2c: i2c,
-            callback: Cell::new(None),
+            // callback: Cell::new(None),
             state: Cell::new(State::Idle),
-            buffer: TakeCell::new(buffer)
+            buffer: TakeCell::new(buffer),
+            client: TakeCell::empty(),
         }
     }
 
- pub   fn set_direction(&self, pin_number: u8, direction: Direction) {
+    pub fn set_client<C: signpost_hil::gpio_async::Client>(&self, client: &'static C, ) {
+        self.client.replace(client);
+    }
+
+    fn set_direction(&self, pin_number: u8, direction: Direction) {
         self.buffer.take().map(|buffer| {
             // turn on i2c to send commands
             self.i2c.enable();
@@ -100,7 +107,7 @@ impl<'a> MCP23008<'a> {
         });
     }
 
-    pub fn set_pin(&self, pin_number: u8, value: PinState) {
+    fn set_pin(&self, pin_number: u8, value: PinState) {
         self.buffer.take().map(|buffer| {
             // turn on i2c to send commands
             self.i2c.enable();
@@ -129,7 +136,7 @@ impl<'a> MCP23008<'a> {
         });
     }
 
-    fn read_pin(&self, pin_number: u8) -> bool {
+    fn read_pin(&self, pin_number: u8) {
         self.buffer.take().map(|buffer| {
             // turn on i2c to send commands
             self.i2c.enable();
@@ -141,9 +148,6 @@ impl<'a> MCP23008<'a> {
             self.i2c.write(buffer, 1);
             self.state.set(State::SelectGpioRead);
         });
-
-        // TODO: not sure how to fix this!!!
-        false
     }
 
 }
@@ -218,9 +222,13 @@ impl<'a> i2c::I2CClient for MCP23008<'a> {
                 let pin_number = buffer[1];
                 let pin_value = (buffer[0] >> pin_number) & 0x01;
 
-                self.callback.get().map(|mut cb|
-                    cb.schedule(1, pin_value as usize, 0)
-                );
+                // self.callback.get().map(|mut cb|
+                //     cb.schedule(1, pin_value as usize, 0)
+                // );
+
+                self.client.map(|client| {
+                    client.done(pin_value as usize);
+                });
 
                 self.buffer.replace(buffer);
                 self.i2c.disable();
@@ -279,9 +287,13 @@ impl<'a> i2c::I2CClient for MCP23008<'a> {
             // },
             State::Done => {
                 // General "I just finished something" callback
-                self.callback.get().map(|mut cb|
-                    cb.schedule(0, 0, 0)
-                );
+                // self.callback.get().map(|mut cb|
+                //     cb.schedule(0, 0, 0)
+                // );
+
+                self.client.map(|client| {
+                    client.done(0);
+                });
 
                 self.buffer.replace(buffer);
                 self.i2c.disable();
@@ -294,140 +306,140 @@ impl<'a> i2c::I2CClient for MCP23008<'a> {
 
 
 
-impl<'a> Driver for MCP23008<'a> {
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
-        match subscribe_num {
-            0 => {
-                // set callback function
-                self.callback.set(Some(callback));
-                0
-            },
+// impl<'a> Driver for MCP23008<'a> {
+//     fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+//         match subscribe_num {
+//             0 => {
+//                 // set callback function
+//                 self.callback.set(Some(callback));
+//                 0
+//             },
 
-            // default
-            _ => -1
-        }
-    }
+//             // default
+//             _ => -1
+//         }
+//     }
 
-    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
-        match command_num {
-            // enable output
-            0 => {
-                if data >= 8 {
-                    // Pin number too high
-                    -1
-                } else {
-                    self.set_direction(data as u8, Direction::Output);
-                    0
-                }
-            },
+//     fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+//         match command_num {
+//             // enable output
+//             0 => {
+//                 if data >= 8 {
+//                     // Pin number too high
+//                     -1
+//                 } else {
+//                     self.set_direction(data as u8, Direction::Output);
+//                     0
+//                 }
+//             },
 
-            // set pin
-            1 => {
-                if data >=8 {
-                    -1
-                } else {
-                    self.set_pin(data as u8, PinState::High);
-                    0
-                }
-            },
+//             // set pin
+//             1 => {
+//                 if data >=8 {
+//                     -1
+//                 } else {
+//                     self.set_pin(data as u8, PinState::High);
+//                     0
+//                 }
+//             },
 
-            // clear pin
-            2  => {
-                if data >= 8 {
-                    -1
-                } else {
-                    self.set_pin(data as u8, PinState::Low);
-                    0
-                }
-            },
+//             // clear pin
+//             2  => {
+//                 if data >= 8 {
+//                     -1
+//                 } else {
+//                     self.set_pin(data as u8, PinState::Low);
+//                     0
+//                 }
+//             },
 
-            // toggle pin
-            3 => {
-                if data >= 8 {
-                    -1
-                } else {
-                    self.toggle_pin(data as u8);
-                    0
-                }
-            },
+//             // toggle pin
+//             3 => {
+//                 if data >= 8 {
+//                     -1
+//                 } else {
+//                     self.toggle_pin(data as u8);
+//                     0
+//                 }
+//             },
 
-            // enable and configure input
-            4 => {
-                //XXX: this is clunky
-                // data == ((pin_config << 8) | pin)
-                // this allows two values to be passed into a command interface
-                let pin_num = data & 0xFF;
-                let pin_config = (data >> 8) & 0xFF;
-                if pin_num >= 8 {
-                    -1
-                } else {
-                   self.set_direction(data as u8, Direction::Input);
-                   match pin_config {
-                       0 => { // pull up
-                           self.configure_pullup(data as u8, true);
-                           0
-                       },
-                       1 => { // pull down
-                           // No support for this
-                           -1
-                       },
-                       2 => { // no pull up/down
-                           self.configure_pullup(data as u8, false);
-                           0
-                       },
-                       _ => -1
-                   }
-                }
-            },
+//             // enable and configure input
+//             4 => {
+//                 //XXX: this is clunky
+//                 // data == ((pin_config << 8) | pin)
+//                 // this allows two values to be passed into a command interface
+//                 let pin_num = data & 0xFF;
+//                 let pin_config = (data >> 8) & 0xFF;
+//                 if pin_num >= 8 {
+//                     -1
+//                 } else {
+//                    self.set_direction(data as u8, Direction::Input);
+//                    match pin_config {
+//                        0 => { // pull up
+//                            self.configure_pullup(data as u8, true);
+//                            0
+//                        },
+//                        1 => { // pull down
+//                            // No support for this
+//                            -1
+//                        },
+//                        2 => { // no pull up/down
+//                            self.configure_pullup(data as u8, false);
+//                            0
+//                        },
+//                        _ => -1
+//                    }
+//                 }
+//             },
 
-            // read input
-            5 => {
-                if data >= 8 {
-                    -1
-                } else {
-                    self.read_pin(data as u8);
-                    0
-                }
-            },
+//             // read input
+//             5 => {
+//                 if data >= 8 {
+//                     -1
+//                 } else {
+//                     self.read_pin(data as u8);
+//                     0
+//                 }
+//             },
 
-            // enable and configure interrupts on pin, also sets pin as input
-            // (no affect or reliance on registered callback)
-            6 => {
-                // not yet implemented
-                0
-            },
+//             // enable and configure interrupts on pin, also sets pin as input
+//             // (no affect or reliance on registered callback)
+//             6 => {
+//                 // not yet implemented
+//                 0
+//             },
 
-            // disable interrupts on pin, also disables pin
-            // (no affect or reliance on registered callback)
-            7 => {
-                // not yet implemented
-                // if data >= pins.len() {
-                //     -1
-                // } else {
-                //     pins[data].disable_interrupt();
-                //     pins[data].disable();
-                //     0
-                // }
-                0
-            },
+//             // disable interrupts on pin, also disables pin
+//             // (no affect or reliance on registered callback)
+//             7 => {
+//                 // not yet implemented
+//                 // if data >= pins.len() {
+//                 //     -1
+//                 // } else {
+//                 //     pins[data].disable_interrupt();
+//                 //     pins[data].disable();
+//                 //     0
+//                 // }
+//                 0
+//             },
 
-            // disable pin
-            8 => {
-                // ?
-                // if data >= pins.len() {
-                //     -1
-                // } else {
-                //     pins[data].disable();
-                //     0
-                // }
-                0
-            }
+//             // disable pin
+//             8 => {
+//                 // ?
+//                 // if data >= pins.len() {
+//                 //     -1
+//                 // } else {
+//                 //     pins[data].disable();
+//                 //     0
+//                 // }
+//                 0
+//             }
 
-            // default
-            _ => -1
-        }
-    }
-}
+//             // default
+//             _ => -1
+//         }
+//     }
+// }
 
 
 
@@ -460,55 +472,88 @@ impl<'a> Driver for MCP23008<'a> {
 //     }
 // }
 
-// impl<'a> hil::gpio::GPIOPin for GPIOPin<'a> {
-//     fn disable(&self) {
-//         // ??
-//     }
+impl<'a> signpost_hil::gpio_async::GPIOAsyncPort for MCP23008<'a> {
+    fn disable(&self, pin: usize) -> isize {
+        // ??
+        0
+    }
 
-//     fn enable_output(&self) {
-//         self.mcp23008.set_direction(self.pin, Direction::Output);
-//     }
+    fn enable_output(&self, pin: usize) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.set_direction(pin as u8, Direction::Output);
+            0
+        }
+    }
 
-//     fn enable_input(&self, mode: hil::gpio::InputMode) {
-//         self.mcp23008.set_direction(self.pin, Direction::Input);
-//         match mode {
-//             hil::gpio::InputMode::PullUp => {
-//                 self.mcp23008.configure_pullup(self.pin, true);
-//             },
-//             hil::gpio::InputMode::PullDown => {
-//                 // No support for this
-//             },
-//             hil::gpio::InputMode::PullNone => {
-//                 self.mcp23008.configure_pullup(self.pin, false);
-//             },
-//         }
-//     }
+    fn enable_input(&self, pin: usize, mode: hil::gpio::InputMode) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.set_direction(pin as u8, Direction::Input);
+            match mode {
+                hil::gpio::InputMode::PullUp => {
+                    self.configure_pullup(pin as u8, true);
+                },
+                hil::gpio::InputMode::PullDown => {
+                    // No support for this
+                },
+                hil::gpio::InputMode::PullNone => {
+                    self.configure_pullup(pin as u8, false);
+                },
+            }
+            0
+        }
+    }
 
-//     fn read(&self) -> bool {
-//         self.mcp23008.read_pin(self.pin)
-//     }
+    fn read(&self, pin: usize) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.read_pin(pin as u8);
+            0
+        }
+    }
 
-//     fn toggle(&self) {
-//         self.mcp23008.toggle_pin(self.pin);
-//     }
+    fn toggle(&self, pin: usize) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.toggle_pin(pin as u8);
+            0
+        }
+    }
 
-//     fn set(&self) {
-//         self.mcp23008.set_pin(self.pin, PinState::High);
-//     }
+    fn set(&self, pin: usize) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.set_pin(pin as u8, PinState::High);
+            0
+        }
+    }
 
-//     fn clear(&self) {
-//         self.mcp23008.set_pin(self.pin, PinState::Low);
-//     }
+    fn clear(&self, pin: usize) -> isize {
+        if pin > 7 {
+            -1
+        } else {
+            self.set_pin(pin as u8, PinState::Low);
+            0
+        }
+    }
 
-//     fn enable_interrupt(&self, client_data: usize,
-//                         mode: hil::gpio::InterruptMode) {
-//         // not yet implemented
-//     }
+    fn enable_interrupt(&self, pin: usize, client_data: usize,
+                        mode: hil::gpio::InterruptMode) -> isize {
+        // not yet implemented
+        0
+    }
 
-//     fn disable_interrupt(&self) {
-//         // not yet implemented
-//     }
-// }
+    fn disable_interrupt(&self, pin: usize) -> isize {
+        // not yet implemented
+        0
+    }
+}
 
 
 
