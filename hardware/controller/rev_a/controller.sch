@@ -2902,7 +2902,7 @@ Per TI's guidelines: http://www.ti.com/lit/an/scba017d/scba017d.pdf</description
 <pin name="VDDCORE" x="-20.32" y="-20.32" length="middle" direction="pwr"/>
 <pin name="VDDOUT" x="-20.32" y="-22.86" length="middle" direction="pwr"/>
 <pin name="VDDIN" x="-20.32" y="-2.54" length="middle" direction="pwr"/>
-<pin name="ADVREFP" x="-20.32" y="-15.24" length="middle" direction="pwr"/>
+<pin name="ADVREFP" x="-20.32" y="-15.24" length="middle"/>
 <pin name="VDDANA" x="-20.32" y="-12.7" length="middle" direction="pwr"/>
 <pin name="VDDIO" x="-20.32" y="-5.08" length="middle" direction="pwr"/>
 <pin name="GNDANA" x="-20.32" y="-40.64" length="middle" direction="pwr"/>
