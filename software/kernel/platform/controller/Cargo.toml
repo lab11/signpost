@@ -21,3 +21,4 @@ main = { path = "../../tock/src/main" }
 sam4l = { path = "../../tock/src/chips/sam4l" }
 support = { path = "../../tock/src/support" }
 signpost_drivers = { path = "../../signpost_drivers" }
+signpost_hil = { path = "../../signpost_hil" }

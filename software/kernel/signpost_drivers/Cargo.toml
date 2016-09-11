@@ -8,3 +8,4 @@ rust-libcore = "*"
 common = { path = "../tock/src/common" }
 hil = { path = "../tock/src/hil" }
 main = { path = "../tock/src/main" }
+signpost_hil = { path = "../signpost_hil" }

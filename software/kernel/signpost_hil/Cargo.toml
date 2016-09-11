@@ -1,0 +1,10 @@
+[package]
+name = "signpost_hil"
+version = "0.1.0"
+authors = ["Brad Campbell <bradjc@umich.edu>"]
+
+[dependencies]
+rust-libcore = "*"
+common = { path = "../tock/src/common" }
+main = { path = "../tock/src/main" }
+hil = { path = "../tock/src/hil" }

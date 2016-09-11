@@ -6,9 +6,11 @@
 extern crate common;
 extern crate hil;
 extern crate main;
+extern crate signpost_hil;
 
 
 pub mod mcp23008;
+pub mod gpio_async;
 // pub mod nrf51822_serialization;
 // pub mod timer;
 // pub mod tmp006;

@@ -2662,7 +2662,7 @@ S high: D = D2</text>
 <packages>
 <package name="QFN-48-7MM">
 <description>7MM x 7MM 48 QFN package</description>
-<smd name="P$1" x="0" y="0" dx="5.6" dy="5.6" layer="1" cream="no"/>
+<smd name="THERMAL" x="0" y="0" dx="5.6" dy="5.6" layer="1" cream="no"/>
 <wire x1="-3.5" y1="-3.5" x2="3.5" y2="-3.5" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="-3.5" x2="-3.5" y2="3.5" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="3.5" x2="3.5" y2="3.5" width="0.127" layer="21"/>
@@ -2902,7 +2902,7 @@ Per TI's guidelines: http://www.ti.com/lit/an/scba017d/scba017d.pdf</description
 <pin name="VDDCORE" x="-20.32" y="-20.32" length="middle" direction="pwr"/>
 <pin name="VDDOUT" x="-20.32" y="-22.86" length="middle" direction="pwr"/>
 <pin name="VDDIN" x="-20.32" y="-2.54" length="middle" direction="pwr"/>
-<pin name="ADVREFP" x="-20.32" y="-15.24" length="middle" direction="pwr"/>
+<pin name="ADVREFP" x="-20.32" y="-15.24" length="middle"/>
 <pin name="VDDANA" x="-20.32" y="-12.7" length="middle" direction="pwr"/>
 <pin name="VDDIO" x="-20.32" y="-5.08" length="middle" direction="pwr"/>
 <pin name="GNDANA" x="-20.32" y="-40.64" length="middle" direction="pwr"/>
@@ -3044,7 +3044,7 @@ Per TI's guidelines: http://www.ti.com/lit/an/scba017d/scba017d.pdf</description
 <connect gate="U1" pin="BIASL" pad="29"/>
 <connect gate="U1" pin="CAPH" pad="25"/>
 <connect gate="U1" pin="CAPL" pad="26"/>
-<connect gate="U1" pin="GND" pad="6 30 48"/>
+<connect gate="U1" pin="GND" pad="6 30 48 THERMAL"/>
 <connect gate="U1" pin="GNDANA" pad="17"/>
 <connect gate="U1" pin="PA00" pad="1"/>
 <connect gate="U1" pin="PA01" pad="2"/>
@@ -5260,6 +5260,7 @@ High-power, low thermal resistance package.</description>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Controller</text>
+<text x="132.08" y="132.08" size="1.778" layer="98">XXX Jumper me</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
@@ -6823,7 +6824,7 @@ choice for software reasons</text>
 <label x="58.42" y="83.82" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="LINUX_5V_IN" class="0">
 <segment>
 <pinref part="S1" gate="G$1" pin="VLOAD"/>
 <pinref part="VR1" gate="G$1" pin="VIN"/>
