@@ -85,17 +85,8 @@ struct SignpostController {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static drivers::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    // tmp006: &'static drivers::tmp006::TMP006<'static>,
-    // isl29035: &'static drivers::isl29035::Isl29035<'static>,
     spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
-    // nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
-    // mcp23008_0: &'static signpost_drivers::mcp23008::MCP23008<'static>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
-    // mcp23008_1: &'static drivers::mcp23008::MCP23008<'static>,
-    // mcp23008_2: &'static drivers::mcp23008::MCP23008<'static>,
-    // mcp23008_5: &'static drivers::mcp23008::MCP23008<'static>,
-    // mcp23008_6: &'static drivers::mcp23008::MCP23008<'static>,
-    // mcp23008_7: &'static drivers::mcp23008::MCP23008<'static>,
 }
 
 impl Platform for SignpostController {
@@ -110,17 +101,9 @@ impl Platform for SignpostController {
         match driver_num {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
-            // 2 => f(Some(self.tmp006)),
             3 => f(Some(self.timer)),
             4 => f(Some(self.spi)),
-            // 5 => f(Some(self.nrf51822)),
-            // 6 => f(Some(self.isl29035)),
             100 => f(Some(self.gpio_async)),
-            // 11 => f(Some(self.mcp23008_1)),
-            // 12 => f(Some(self.mcp23008_2)),
-            // 13 => f(Some(self.mcp23008_5)),
-            // 14 => f(Some(self.mcp23008_6)),
-            // 15 => f(Some(self.mcp23008_7)),
             _ => f(None)
         }
     }
@@ -335,15 +318,6 @@ pub unsafe fn reset_handler() {
         24);
     usart::USART3.set_client(console);
 
-    // // Create the Nrf51822Serialization driver for passing BLE commands
-    // // over UART to the nRF51822 radio.
-    // let nrf_serialization = static_init!(
-    //     Nrf51822Serialization<usart::USART>,
-    //     Nrf51822Serialization::new(&usart::USART2,
-    //                                &mut nrf51822_serialization::WRITE_BUF),
-    //     68);
-    // usart::USART2.set_client(nrf_serialization);
-
     let ast = &sam4l::ast::AST;
 
     let mux_alarm = static_init!(
@@ -354,25 +328,6 @@ pub unsafe fn reset_handler() {
 
     let mux_i2c2 = static_init!(drivers::virtual_i2c::MuxI2C<'static>, drivers::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
     sam4l::i2c::I2C2.set_client(mux_i2c2);
-
-    // // Configure the TMP006. Device address 0x40
-    // let tmp006_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c, 0x40), 32);
-    // let tmp006 = static_init!(
-    //     drivers::tmp006::TMP006<'static>,
-    //     drivers::tmp006::TMP006::new(tmp006_i2c,
-    //                                  &sam4l::gpio::PA[9],
-    //                                  &mut drivers::tmp006::BUFFER),
-    //     52);
-    // tmp006_i2c.set_client(tmp006);
-    // sam4l::gpio::PA[9].set_client(tmp006);
-
-    // Configure the ISL29035, device address 0x44
-    // let isl29035_i2c = static_init!(I2CDevice, I2CDevice::new(mux_i2c, 0x44), 32);
-    // let isl29035 = static_init!(
-    //     drivers::isl29035::Isl29035<'static>,
-    //     drivers::isl29035::Isl29035::new(isl29035_i2c, &mut drivers::isl29035::BUF),
-    //     36);
-    // isl29035_i2c.set_client(isl29035);
 
     let virtual_alarm1 = static_init!(
         VirtualMuxAlarm<'static, sam4l::ast::Ast>,
@@ -449,18 +404,6 @@ pub unsafe fn reset_handler() {
         224/8);
     mcp23008_7_i2c.set_client(mcp23008_7);
 
-
-    // let async_gpio_ports = static_init!(
-    //     [&'static signpost_drivers::mcp23008::MCP23008; 6],
-    //     [&mcp23008_0,
-    //      &mcp23008_1,
-    //      &mcp23008_2,
-    //      &mcp23008_5,
-    //      &mcp23008_6,
-    //      &mcp23008_7],
-    //      192/8
-    // );
-
     let async_gpio_ports = static_init!(
         [&'static signpost_drivers::mcp23008::MCP23008; 6],
         [mcp23008_0,
@@ -480,7 +423,6 @@ pub unsafe fn reset_handler() {
     for port in async_gpio_ports.iter() {
         port.set_client(gpio_async);
     }
-
 
 
     // set GPIO driver controlling remaining GPIO pins
@@ -521,19 +463,10 @@ pub unsafe fn reset_handler() {
             console: console,
             gpio: gpio,
             timer: timer,
-            // tmp006: tmp006,
-            // isl29035: isl29035,
             spi: spi,
-            // nrf51822: nrf_serialization,
             gpio_async: gpio_async,
-            // mcp23008_1: mcp23008_1,
-            // mcp23008_2: mcp23008_2,
-            // mcp23008_5: mcp23008_5,
-            // mcp23008_6: mcp23008_6,
-            // mcp23008_7: mcp23008_7,
         },
         160/8);
-        // 416/8);
 
     usart::USART3.configure(usart::USARTParams {
         // client: &console,
