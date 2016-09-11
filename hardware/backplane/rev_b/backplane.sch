@@ -5900,7 +5900,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="U$41" library="signpost" deviceset="VCC_LINUX" device=""/>
 <part name="U$42" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="R82" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ"/>
-<part name="GND72" library="umich" deviceset="GND" device=""/>
 <part name="R45" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
@@ -6202,6 +6201,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="R62" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="R63" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="GND142" library="umich" deviceset="GND" device=""/>
+<part name="U$52" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6223,8 +6223,7 @@ gets real connectors !!!</text>
 <instance part="U$40" gate="G$1" x="86.36" y="73.66"/>
 <instance part="U$41" gate="G$1" x="93.98" y="73.66"/>
 <instance part="U$42" gate="G$1" x="101.6" y="73.66"/>
-<instance part="R82" gate="G$1" x="162.56" y="160.02" rot="R90"/>
-<instance part="GND72" gate="1" x="162.56" y="149.86"/>
+<instance part="R82" gate="G$1" x="162.56" y="157.48" rot="R270"/>
 <instance part="R45" gate="G$1" x="147.32" y="129.54" rot="R90"/>
 <instance part="R46" gate="G$1" x="154.94" y="127" rot="R90"/>
 <instance part="R47" gate="G$1" x="162.56" y="124.46" rot="R90"/>
@@ -6237,6 +6236,7 @@ gets real connectors !!!</text>
 <instance part="LOGO1" gate="G$1" x="2.54" y="172.72"/>
 <instance part="J10" gate="G$1" x="177.8" y="160.02" rot="R180"/>
 <instance part="U$51" gate="G$1" x="187.96" y="162.56"/>
+<instance part="U$52" gate="G$1" x="162.56" y="165.1"/>
 </instances>
 <busses>
 </busses>
@@ -6467,11 +6467,6 @@ gets real connectors !!!</text>
 <wire x1="68.58" y1="99.06" x2="88.9" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="99.06" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="GND72" gate="1" pin="GND"/>
-<pinref part="R82" gate="G$1" pin="1"/>
-<wire x1="162.56" y1="152.4" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="VSOL+" class="0">
 <segment>
@@ -6558,6 +6553,11 @@ gets real connectors !!!</text>
 <wire x1="180.34" y1="160.02" x2="187.96" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="160.02" x2="187.96" y2="162.56" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R82" gate="G$1" pin="1"/>
+<pinref part="U$52" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="162.56" y1="162.56" x2="162.56" y2="165.1" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="MOD0_5V_METERED" class="0">
 <segment>
@@ -6609,9 +6609,9 @@ gets real connectors !!!</text>
 </segment>
 <segment>
 <pinref part="R82" gate="G$1" pin="2"/>
-<wire x1="162.56" y1="162.56" x2="162.56" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="165.1" x2="160.02" y2="165.1" width="0.1524" layer="91"/>
-<label x="160.02" y="165.1" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="162.56" y1="154.94" x2="162.56" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="152.4" x2="160.02" y2="152.4" width="0.1524" layer="91"/>
+<label x="160.02" y="152.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="J10" gate="G$1" pin="1"/>
