@@ -3947,35 +3947,35 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 </package>
 <package name="SOIC-18">
-<smd name="15" x="-1.27" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="16" x="-2.54" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="17" x="-3.81" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="18" x="-5.08" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="1" x="-5.08" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="2" x="-3.81" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="3" x="-2.54" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="4" x="-1.27" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="5" x="0" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="6" x="1.27" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="7" x="2.54" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="8" x="3.81" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="11" x="3.81" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="12" x="2.54" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="13" x="1.27" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="14" x="0" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<wire x1="-5.775" y1="1.9558" x2="-5.775" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="-5.775" y1="-1.27" x2="-5.775" y2="-1.9558" width="0.127" layer="21"/>
-<wire x1="-5.775" y1="-1.9558" x2="5.775" y2="-1.9558" width="0.127" layer="21"/>
-<wire x1="5.775" y1="-1.9558" x2="5.775" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="5.775" y1="-1.27" x2="5.775" y2="1.9558" width="0.127" layer="21"/>
-<wire x1="5.775" y1="1.9558" x2="-5.775" y2="1.9558" width="0.127" layer="21"/>
-<wire x1="-5.775" y1="-1.27" x2="5.775" y2="-1.27" width="0.127" layer="21" style="shortdash"/>
-<circle x="-6.35" y="-2.54" radius="0.508" width="0" layer="21"/>
-<text x="0" y="3.81" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-5.08" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<smd name="15" x="-1.27" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="16" x="-2.54" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="17" x="-3.81" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="18" x="-5.08" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="1" x="-5.08" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="2" x="-3.81" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="3" x="-2.54" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="4" x="-1.27" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="5" x="0" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="6" x="1.27" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="7" x="2.54" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="8" x="3.81" y="-4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="11" x="3.81" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="12" x="2.54" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="13" x="1.27" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="14" x="0" y="4.7" dx="0.6" dy="2" layer="1"/>
+<wire x1="-5.775" y1="3.75" x2="-5.775" y2="-2.77" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-2.77" x2="-5.775" y2="-3.75" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-3.75" x2="5.775" y2="-3.75" width="0.127" layer="21"/>
+<wire x1="5.775" y1="-3.75" x2="5.775" y2="-2.77" width="0.127" layer="21"/>
+<wire x1="5.775" y1="-2.77" x2="5.775" y2="3.75" width="0.127" layer="21"/>
+<wire x1="5.775" y1="3.75" x2="-5.775" y2="3.75" width="0.127" layer="21"/>
+<wire x1="-5.775" y1="-2.77" x2="5.775" y2="-2.77" width="0.127" layer="21" style="shortdash"/>
+<circle x="-6.85" y="-4.04" radius="0.508" width="0" layer="21"/>
+<text x="0" y="6.35" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-6.35" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center">&gt;VALUE</text>
 <text x="-4.445" y="0" size="0.3048" layer="47" font="vector" ratio="11">0.104 / 2.65 high</text>
-<smd name="10" x="5.08" y="2.3622" dx="0.635" dy="1.524" layer="1"/>
-<smd name="9" x="5.08" y="-2.3622" dx="0.635" dy="1.524" layer="1"/>
+<smd name="10" x="5.08" y="4.7" dx="0.6" dy="2" layer="1"/>
+<smd name="9" x="5.08" y="-4.7" dx="0.6" dy="2" layer="1"/>
 </package>
 <package name="MSOP-8EP">
 <smd name="8" x="-0.975" y="1.975" dx="0.45" dy="1.35" layer="1" roundness="10"/>
