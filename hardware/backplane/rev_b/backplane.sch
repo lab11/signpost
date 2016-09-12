@@ -6110,6 +6110,14 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="R63" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="GND142" library="umich" deviceset="GND" device=""/>
 <part name="U$52" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="LOGO2" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO3" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO4" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO5" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO6" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO7" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO8" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="LOGO9" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
 </parts>
 <sheets>
 <sheet>
@@ -6143,6 +6151,8 @@ gets real connectors !!!</text>
 <instance part="J9" gate="G$1" x="190.5" y="50.8" rot="R180"/>
 <instance part="LOGO1" gate="G$1" x="2.54" y="172.72"/>
 <instance part="U$52" gate="G$1" x="162.56" y="165.1"/>
+<instance part="LOGO8" gate="G$1" x="15.24" y="132.08"/>
+<instance part="LOGO9" gate="G$1" x="15.24" y="53.34"/>
 </instances>
 <busses>
 </busses>
@@ -6535,6 +6545,12 @@ gets real connectors !!!</text>
 <instance part="GND27" gate="1" x="50.8" y="2.54"/>
 <instance part="GND28" gate="1" x="127" y="2.54"/>
 <instance part="GND29" gate="1" x="127" y="50.8"/>
+<instance part="LOGO2" gate="G$1" x="162.56" y="170.18"/>
+<instance part="LOGO3" gate="G$1" x="162.56" y="157.48"/>
+<instance part="LOGO4" gate="G$1" x="162.56" y="144.78"/>
+<instance part="LOGO5" gate="G$1" x="162.56" y="132.08"/>
+<instance part="LOGO6" gate="G$1" x="162.56" y="119.38"/>
+<instance part="LOGO7" gate="G$1" x="162.56" y="106.68"/>
 </instances>
 <busses>
 </busses>

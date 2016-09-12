@@ -596,7 +596,7 @@
 <wire x1="127" y1="0" x2="127" y2="50.8" width="0.254" layer="49"/>
 <text x="127" y="12.446" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Signpost Backplane</text>
 <text x="127" y="8.636" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Pat Pannuto</text>
-<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev A. 2016-08-20</text>
+<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev B. 2016-09-12</text>
 <text x="59.182" y="197.612" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">VCC_MODn_METERED</text>
 <text x="76.2" y="182.118" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">GND</text>
 <wire x1="79.756" y1="187.96" x2="77.724" y2="187.96" width="0.254" layer="21"/>
@@ -645,6 +645,16 @@ CLK</text>
 <text x="208.28" y="187.96" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">SMB
 DATA</text>
 <text x="136.398" y="276.352" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">PPS</text>
+<text x="46.228" y="335.788" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 0</text>
+<text x="207.772" y="335.788" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 1</text>
+<text x="46.228" y="239.014" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 2</text>
+<text x="207.772" y="141.986" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 5</text>
+<text x="46.228" y="45.212" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 6</text>
+<text x="207.772" y="45.212" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 7</text>
+<text x="46.228" y="141.986" size="5.08" layer="21" font="vector" ratio="15" align="center">Power</text>
+<text x="207.772" y="238.76" size="5.08" layer="21" font="vector" ratio="15" align="center">Control</text>
+<text x="218.694" y="207.772" size="1.016" layer="21" font="vector" ratio="12" align="center-left">RevB
+2016-09-12</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -1401,6 +1411,30 @@ See Page 16: http://www.ti.com/lit/an/spraar7e/spraar7e.pdf</description>
 <rectangle x1="22.0472" y1="0" x2="35.4584" y2="7.2136" layer="21"/>
 <rectangle x1="24.9428" y1="7.2136" x2="32.8676" y2="18.1864" layer="21"/>
 <rectangle x1="25.146" y1="18.1864" x2="35.4584" y2="25.4" layer="21"/>
+</package>
+<package name="UMICH_SOLID_200MIL">
+<description>University of Michigan - Solid block M 0.200 in tall.</description>
+<rectangle x1="0" y1="3.6322" x2="2.1336" y2="5.08" layer="21"/>
+<wire x1="2.1336" y1="5.0673" x2="3.5433" y2="3.1623" width="0.0254" layer="21"/>
+<wire x1="3.5433" y1="3.1623" x2="4.9276" y2="5.0673" width="0.0254" layer="21"/>
+<wire x1="4.9657" y1="2.7559" x2="3.5306" y2="0.8763" width="0.0254" layer="21"/>
+<wire x1="3.5306" y1="0.8763" x2="2.1209" y2="2.7559" width="0.0254" layer="21"/>
+<rectangle x1="0.5334" y1="1.4478" x2="2.1082" y2="3.6322" layer="21"/>
+<rectangle x1="0" y1="0" x2="2.6924" y2="1.4478" layer="21"/>
+<rectangle x1="4.3942" y1="0" x2="7.0866" y2="1.4478" layer="21"/>
+<rectangle x1="4.9784" y1="1.4478" x2="6.5532" y2="3.6322" layer="21"/>
+<rectangle x1="4.9276" y1="3.6322" x2="7.0866" y2="5.08" layer="21"/>
+<polygon width="0.0254" layer="21">
+<vertex x="2.1209" y="2.7559"/>
+<vertex x="3.5306" y="0.8763"/>
+<vertex x="5.0165" y="2.8194"/>
+<vertex x="5.0165" y="5.0673"/>
+<vertex x="4.9276" y="5.0673"/>
+<vertex x="3.5433" y="3.1623"/>
+<vertex x="2.1336" y="5.0673"/>
+<vertex x="2.0701" y="5.0673"/>
+<vertex x="2.0701" y="2.7559"/>
+</polygon>
 </package>
 </packages>
 </library>
@@ -2534,6 +2568,14 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R63" library="passives" package="0603-RES" value="15kΩ" x="99.822" y="188.976" smashed="yes" rot="R270">
 <attribute name="NAME" x="100.584" y="188.976" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
+<element name="LOGO2" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="42.672" y="326.39"/>
+<element name="LOGO3" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="204.216" y="326.39"/>
+<element name="LOGO4" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="42.672" y="229.616"/>
+<element name="LOGO5" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="204.216" y="132.334"/>
+<element name="LOGO6" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="42.672" y="36.068"/>
+<element name="LOGO7" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="204.47" y="35.814"/>
+<element name="LOGO8" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="204.216" y="229.87"/>
+<element name="LOGO9" library="logos" package="UMICH_SOLID_200MIL" value="UMICH_SOLID_MEDIUM" x="42.418" y="127.762"/>
 </elements>
 <signals>
 <signal name="GND">
