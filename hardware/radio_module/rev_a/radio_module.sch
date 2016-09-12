@@ -5519,7 +5519,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF"/>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="220uF"/>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="100uF"/>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF"/>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="10nF"/>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="56pF"/>
@@ -5700,6 +5699,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="TP38" library="testpad" deviceset="TP" device="TP08SQ"/>
 <part name="TP39" library="testpad" deviceset="TP" device="TP08SQ"/>
 <part name="TP33" library="testpad" deviceset="TP" device="TP08SQ"/>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF"/>
 </parts>
 <sheets>
 <sheet>
@@ -7333,7 +7333,6 @@ to make Normally on.</text>
 <instance part="C4" gate="G$1" x="182.88" y="73.66"/>
 <instance part="GND6" gate="1" x="99.06" y="121.92"/>
 <instance part="C7" gate="G$1" x="162.56" y="132.08"/>
-<instance part="C6" gate="G$1" x="99.06" y="132.08"/>
 <instance part="C8" gate="G$1" x="170.18" y="132.08"/>
 <instance part="C9" gate="G$1" x="177.8" y="132.08"/>
 <instance part="C10" gate="G$1" x="185.42" y="132.08"/>
@@ -7347,6 +7346,7 @@ to make Normally on.</text>
 <instance part="R36" gate="G$1" x="172.72" y="152.4" rot="R90"/>
 <instance part="R37" gate="G$1" x="175.26" y="162.56" rot="R90"/>
 <instance part="JP1" gate="G$1" x="81.28" y="76.2" rot="R90"/>
+<instance part="C6" gate="G$1" x="99.06" y="132.08"/>
 </instances>
 <busses>
 </busses>
