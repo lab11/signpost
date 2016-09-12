@@ -29,13 +29,13 @@
 <layer number="19" name="Unrouted" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="3" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -50,13 +50,13 @@
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="10" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
@@ -3350,8 +3350,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="98.044" y="351.028" extent="1-16" drill="0.6"/>
 <wire x1="96.891" y1="350.666" x2="97.682" y2="350.666" width="0.2032" layer="1"/>
 <wire x1="97.682" y1="350.666" x2="98.044" y2="351.028" width="0.2032" layer="1"/>
-<via x="65.786" y="285.496" extent="1-16" drill="0.6"/>
+<via x="66.04" y="285.242" extent="1-16" drill="0.6"/>
 <wire x1="63.942" y1="285.496" x2="65.786" y2="285.496" width="0.254" layer="1"/>
+<wire x1="65.786" y1="285.496" x2="66.04" y2="285.242" width="0.254" layer="1"/>
 <via x="92.202" y="102.743" extent="1-16" drill="0.6"/>
 <via x="97.028" y="104.013" extent="1-16" drill="0.6"/>
 <wire x1="93.33" y1="102.616" x2="92.329" y2="102.616" width="0.254" layer="1"/>
@@ -3812,8 +3813,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="118.364" y1="205.994" x2="118.364" y2="205.41106875" width="0.254" layer="1"/>
 <wire x1="118.978" y1="362.925" x2="120.101" y2="362.925" width="0.254" layer="1"/>
 <wire x1="120.101" y1="362.925" x2="120.396" y2="363.22" width="0.254" layer="1"/>
-<wire x1="120.396" y1="363.22" x2="122.174" y2="363.22" width="0.254" layer="1"/>
-<wire x1="122.174" y1="363.22" x2="121.412" y2="363.586" width="0" layer="19" extent="1-1"/>
+<wire x1="120.396" y1="363.22" x2="121.412" y2="363.22" width="0.254" layer="1"/>
+<wire x1="121.412" y1="363.22" x2="122.174" y2="363.22" width="0.254" layer="1"/>
+<wire x1="121.412" y1="363.586" x2="121.412" y2="363.22" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_D-_HUB-SW">
 <contactref element="R51" pad="2"/>
@@ -3850,9 +3852,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="118.039" y1="361.625" x2="117.348" y2="360.934" width="0.254" layer="1"/>
 <wire x1="118.978" y1="361.625" x2="119.959" y2="361.625" width="0.254" layer="1"/>
 <wire x1="119.959" y1="361.625" x2="120.269" y2="361.315" width="0.254" layer="1"/>
-<wire x1="120.269" y1="361.315" x2="122.301" y2="361.315" width="0.254" layer="1"/>
+<wire x1="120.269" y1="361.315" x2="121.412" y2="361.315" width="0.254" layer="1"/>
+<wire x1="121.412" y1="361.315" x2="122.301" y2="361.315" width="0.254" layer="1"/>
 <wire x1="122.301" y1="361.315" x2="122.79" y2="361.804" width="0.254" layer="1"/>
-<wire x1="122.301" y1="361.315" x2="121.412" y2="360.949" width="0" layer="19" extent="1-1"/>
+<wire x1="121.412" y1="360.949" x2="121.412" y2="361.315" width="0.254" layer="1"/>
 </signal>
 <signal name="HUB_DP7">
 <contactref element="U1" pad="39"/>
@@ -4438,7 +4441,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="142.748" y="152.781" extent="1-16" drill="0.6"/>
 <via x="145.796" y="152.781" extent="1-16" drill="0.6"/>
 <wire x1="145.796" y1="152.781" x2="142.748" y2="152.781" width="0.254" layer="16"/>
-<wire x1="63.942" y1="286.146" x2="62.042" y2="285.496" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="USB_SUSPEND_STATUS">
 <contactref element="U1" pad="1"/>
