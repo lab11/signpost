@@ -3180,7 +3180,22 @@ Positioning System receiver</description>
 </technology>
 </technologies>
 </device>
-<device name="CLXXB" package="SOIC-8">
+<device name="CLXXB-G" package="SOIC-8">
+<connects>
+<connect gate="U1" pin="!CS" pad="1"/>
+<connect gate="U1" pin="!HOLD" pad="7"/>
+<connect gate="U1" pin="!WP" pad="3"/>
+<connect gate="U1" pin="SCK" pad="6"/>
+<connect gate="U1" pin="SI" pad="5"/>
+<connect gate="U1" pin="SO" pad="2"/>
+<connect gate="U1" pin="VDD" pad="8"/>
+<connect gate="U1" pin="VSS" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="CLXXB-DG" package="TDFN-8">
 <connects>
 <connect gate="U1" pin="!CS" pad="1"/>
 <connect gate="U1" pin="!HOLD" pad="7"/>
@@ -3544,7 +3559,7 @@ Positioning System receiver</description>
 <connect gate="G$1" pin="DATA1/RSV" pad="8"/>
 <connect gate="G$1" pin="DATA2/NC" pad="1"/>
 <connect gate="G$1" pin="DATA3-CD/CS_N" pad="2"/>
-<connect gate="G$1" pin="GND" pad="6"/>
+<connect gate="G$1" pin="GND" pad="6 MOUNT0 MOUNT1 MOUNT2 MOUNT3"/>
 <connect gate="G$1" pin="VCC" pad="4"/>
 </connects>
 <technologies>
@@ -4722,7 +4737,7 @@ High-power, low thermal resistance package.</description>
 <part name="U1" library="chips" deviceset="SAM4LC8AA" device=""/>
 <part name="U2" library="chips" deviceset="SAM4LC8AA" device=""/>
 <part name="U3" library="chips" deviceset="RXM-GPS-RM-T" device=""/>
-<part name="U4" library="chips" deviceset="FM25" device="CLXXB">
+<part name="U4" library="chips" deviceset="FM25" device="CLXXB-DG" value="FM25CLXXB-DG">
 <attribute name="DIGIKEY" value="428-3206-ND"/>
 </part>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
@@ -4992,7 +5007,7 @@ High-power, low thermal resistance package.</description>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Headers</text>
-<text x="170.18" y="78.74" size="1.778" layer="98">DNP after testing to save power</text>
+<text x="83.82" y="129.54" size="1.778" layer="98">XXX Button</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -5004,21 +5019,6 @@ High-power, low thermal resistance package.</description>
 <instance part="GND5" gate="1" x="63.5" y="53.34"/>
 <instance part="U$1" gate="G$1" x="73.66" y="137.16"/>
 <instance part="U$8" gate="G$1" x="60.96" y="137.16"/>
-<instance part="D2" gate="G$1" x="154.94" y="91.44" smashed="yes" rot="MR180">
-<attribute name="NAME" x="149.606" y="86.106" size="1.778" layer="95" ratio="12" rot="MR180" align="bottom-center"/>
-<attribute name="VALUE" x="149.86" y="82.55" size="1.016" layer="96" ratio="12" rot="MR0" align="bottom-center"/>
-</instance>
-<instance part="R19" gate="G$1" x="165.1" y="81.28" rot="MR270">
-<attribute name="DIGIKEY" x="165.1" y="81.28" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
-</instance>
-<instance part="R20" gate="G$1" x="175.26" y="91.44">
-<attribute name="DIGIKEY" x="175.26" y="91.44" size="1.27" layer="96" font="vector" display="off"/>
-</instance>
-<instance part="R21" gate="G$1" x="175.26" y="99.06">
-<attribute name="DIGIKEY" x="175.26" y="99.06" size="1.27" layer="96" font="vector" display="off"/>
-</instance>
-<instance part="GND28" gate="1" x="165.1" y="73.66" rot="MR0"/>
-<instance part="U$23" gate="G$1" x="144.78" y="96.52"/>
 <instance part="C5" gate="G$1" x="119.38" y="93.98">
 <attribute name="DIGIKEY" x="119.38" y="93.98" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
@@ -5169,11 +5169,6 @@ High-power, low thermal resistance package.</description>
 <wire x1="63.5" y1="58.42" x2="63.5" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R19" gate="G$1" pin="2"/>
-<pinref part="GND28" gate="1" pin="GND"/>
-<wire x1="165.1" y1="78.74" x2="165.1" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND17" gate="1" pin="GND"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="119.38" y1="88.9" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
@@ -5192,11 +5187,6 @@ High-power, low thermal resistance package.</description>
 <pinref part="U$8" gate="G$1" pin="VCC_CONTROLLER"/>
 <wire x1="60.96" y1="137.16" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VCC_CONTROLLER"/>
-</segment>
-<segment>
-<pinref part="D2" gate="G$1" pin="VDD"/>
-<wire x1="144.78" y1="91.44" x2="144.78" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="U$23" gate="G$1" pin="VCC_CONTROLLER"/>
 </segment>
 <segment>
 <pinref part="U$25" gate="G$1" pin="VCC_CONTROLLER"/>
@@ -5218,49 +5208,21 @@ High-power, low thermal resistance package.</description>
 <label x="63.5" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="D2" gate="G$1" pin="R"/>
-<wire x1="165.1" y1="88.9" x2="165.1" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="R19" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="D2" gate="G$1" pin="G"/>
-<pinref part="R20" gate="G$1" pin="1"/>
-<wire x1="165.1" y1="91.44" x2="170.18" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
-<pinref part="D2" gate="G$1" pin="B"/>
-<pinref part="R21" gate="G$1" pin="1"/>
-<wire x1="165.1" y1="93.98" x2="167.64" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="93.98" x2="167.64" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="99.06" x2="170.18" y2="99.06" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="!STORAGE_LED" class="0">
-<segment>
-<pinref part="R20" gate="G$1" pin="2"/>
-<wire x1="177.8" y1="91.44" x2="180.34" y2="91.44" width="0.1524" layer="91"/>
-<label x="180.34" y="91.44" size="1.27" layer="95" font="vector" xref="yes"/>
-</segment>
-</net>
-<net name="!FRAM_CS" class="0">
-<segment>
-<pinref part="R21" gate="G$1" pin="2"/>
-<wire x1="177.8" y1="99.06" x2="180.34" y2="99.06" width="0.1524" layer="91"/>
-<label x="180.34" y="99.06" size="1.27" layer="95" font="vector" xref="yes"/>
-</segment>
-</net>
 </nets>
 </sheet>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Controller</text>
 <text x="132.08" y="132.08" size="1.778" layer="98">XXX Jumper me</text>
+<text x="132.08" y="93.98" size="1.778" layer="98">XXX Test points
+ ? Modules I2C
+ * GPS UART &amp; PPS
+ * Storage SPI
+ * SD SPI
+ * Edison SPI
+ ? SMBUS &amp; ALERT
+ * Voltages</text>
+<text x="134.62" y="81.28" size="1.778" layer="98">XXX SAM4L Thermal pad vias</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
@@ -5679,13 +5641,6 @@ High-power, low thermal resistance package.</description>
 <wire x1="63.5" y1="152.4" x2="66.04" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="!BACKPLANE_RESET" class="0">
-<segment>
-<pinref part="U3" gate="G$1" pin="!RESET"/>
-<wire x1="218.44" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
-<label x="220.98" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
-</segment>
-</net>
 <net name="MEMORY_MOSI" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="SI"/>
@@ -5722,7 +5677,7 @@ High-power, low thermal resistance package.</description>
 <label x="109.22" y="121.92" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="!FRAM_CS" class="0">
+<net name="!FRAM_CS/CONTROLLER_LED" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="!CS"/>
 <wire x1="195.58" y1="63.5" x2="193.04" y2="63.5" width="0.1524" layer="91"/>
@@ -5874,6 +5829,7 @@ High-power, low thermal resistance package.</description>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Storage Master</text>
+<text x="200.66" y="114.3" size="1.778" layer="98">DNP after testing to save power</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0"/>
@@ -5952,6 +5908,21 @@ High-power, low thermal resistance package.</description>
 <instance part="C22" gate="G$1" x="157.48" y="63.5">
 <attribute name="DIGIKEY" x="157.48" y="63.5" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
+<instance part="D2" gate="G$1" x="175.26" y="127" smashed="yes" rot="MR180">
+<attribute name="NAME" x="169.926" y="121.666" size="1.778" layer="95" ratio="12" rot="MR180" align="bottom-center"/>
+<attribute name="VALUE" x="170.18" y="118.11" size="1.016" layer="96" ratio="12" rot="MR0" align="bottom-center"/>
+</instance>
+<instance part="R19" gate="G$1" x="187.96" y="116.84" rot="MR270">
+<attribute name="DIGIKEY" x="187.96" y="116.84" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
+</instance>
+<instance part="R20" gate="G$1" x="200.66" y="127">
+<attribute name="DIGIKEY" x="200.66" y="127" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
+<instance part="R21" gate="G$1" x="200.66" y="119.38">
+<attribute name="DIGIKEY" x="200.66" y="119.38" size="1.27" layer="96" font="vector" display="off"/>
+</instance>
+<instance part="GND28" gate="1" x="187.96" y="109.22" rot="MR0"/>
+<instance part="U$23" gate="G$1" x="165.1" y="132.08"/>
 </instances>
 <busses>
 </busses>
@@ -6027,6 +5998,11 @@ High-power, low thermal resistance package.</description>
 <pinref part="GND26" gate="1" pin="GND"/>
 <wire x1="15.24" y1="149.86" x2="15.24" y2="152.4" width="0.1524" layer="91"/>
 <junction x="15.24" y="152.4"/>
+</segment>
+<segment>
+<pinref part="R19" gate="G$1" pin="2"/>
+<pinref part="GND28" gate="1" pin="GND"/>
+<wire x1="187.96" y1="114.3" x2="187.96" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="EDISON_SPI_MISO" class="0">
@@ -6105,6 +6081,11 @@ High-power, low thermal resistance package.</description>
 <pinref part="U$24" gate="G$1" pin="VCC_CONTROLLER"/>
 <wire x1="144.78" y1="68.58" x2="144.78" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="Q2" gate="G$1" pin="S"/>
+</segment>
+<segment>
+<pinref part="D2" gate="G$1" pin="VDD"/>
+<wire x1="165.1" y1="127" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="U$23" gate="G$1" pin="VCC_CONTROLLER"/>
 </segment>
 </net>
 <net name="!STORAGE_RESET" class="0">
@@ -6285,9 +6266,14 @@ High-power, low thermal resistance package.</description>
 </net>
 <net name="!STORAGE_LED" class="0">
 <segment>
-<pinref part="U2" gate="U1" pin="PA25"/>
-<wire x1="106.68" y1="83.82" x2="109.22" y2="83.82" width="0.1524" layer="91"/>
-<label x="109.22" y="83.82" size="1.27" layer="95" font="vector" xref="yes"/>
+<pinref part="U2" gate="U1" pin="PA07"/>
+<wire x1="106.68" y1="129.54" x2="109.22" y2="129.54" width="0.1524" layer="91"/>
+<label x="109.22" y="129.54" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R20" gate="G$1" pin="2"/>
+<wire x1="203.2" y1="127" x2="205.74" y2="127" width="0.1524" layer="91"/>
+<label x="205.74" y="127" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="!EDISON_SPI_CS" class="0">
@@ -6416,9 +6402,40 @@ High-power, low thermal resistance package.</description>
 </net>
 <net name="LINUX_ENABLE_POWER" class="0">
 <segment>
-<pinref part="U2" gate="U1" pin="PA26"/>
-<wire x1="106.68" y1="81.28" x2="109.22" y2="81.28" width="0.1524" layer="91"/>
-<label x="109.22" y="81.28" size="1.27" layer="95" font="vector" xref="yes"/>
+<pinref part="U2" gate="U1" pin="PA06"/>
+<wire x1="106.68" y1="132.08" x2="109.22" y2="132.08" width="0.1524" layer="91"/>
+<label x="109.22" y="132.08" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="D2" gate="G$1" pin="G"/>
+<pinref part="R20" gate="G$1" pin="1"/>
+<wire x1="185.42" y1="127" x2="195.58" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="!FRAM_CS/CONTROLLER_LED" class="0">
+<segment>
+<pinref part="R21" gate="G$1" pin="2"/>
+<wire x1="203.2" y1="119.38" x2="205.74" y2="119.38" width="0.1524" layer="91"/>
+<label x="205.74" y="119.38" size="1.27" layer="95" font="vector" xref="yes"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="R19" gate="G$1" pin="1"/>
+<wire x1="187.96" y1="121.92" x2="187.96" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="B"/>
+<wire x1="187.96" y1="129.54" x2="185.42" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="R21" gate="G$1" pin="1"/>
+<wire x1="195.58" y1="119.38" x2="193.04" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="119.38" x2="193.04" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="R"/>
+<wire x1="193.04" y1="124.46" x2="185.42" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -6436,6 +6453,8 @@ choice for software reasons</text>
 <wire x1="241.3" y1="86.36" x2="172.72" y2="86.36" width="0.1524" layer="98"/>
 <text x="182.88" y="76.2" size="1.778" layer="98">Unused</text>
 <text x="66.04" y="101.6" size="1.778" layer="98">IO Level Conversion</text>
+<text x="147.32" y="81.28" size="1.778" layer="98">XXX Jumper me</text>
+<text x="71.12" y="55.88" size="1.778" layer="98">Check VCCA vs VCCB</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
@@ -6443,8 +6462,8 @@ choice for software reasons</text>
 <instance part="E_1" gate="_BASIC" x="180.34" y="149.86">
 <attribute name="AMAZON" x="180.34" y="149.86" size="1.778" layer="96" font="vector" display="off"/>
 </instance>
-<instance part="E_1" gate="_GPIO" x="119.38" y="17.78" rot="MR180"/>
-<instance part="E_1" gate="_I2C_6" x="119.38" y="66.04"/>
+<instance part="E_1" gate="_GPIO" x="121.92" y="12.7" rot="MR180"/>
+<instance part="E_1" gate="_I2C_6" x="121.92" y="60.96"/>
 <instance part="E_1" gate="_I2S" x="180.34" y="60.96"/>
 <instance part="E_1" gate="_SD" x="213.36" y="60.96"/>
 <instance part="E_1" gate="_UART_1" x="180.34" y="40.64"/>
@@ -6472,7 +6491,7 @@ choice for software reasons</text>
 <attribute name="DIGIKEY" x="40.64" y="60.96" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
 <instance part="E_1" gate="_I2C_1" x="213.36" y="76.2"/>
-<instance part="E_1" gate="_SPI" x="119.38" y="88.9"/>
+<instance part="E_1" gate="_SPI" x="121.92" y="88.9"/>
 <instance part="U8" gate="G$1" x="76.2" y="81.28" rot="MR0">
 <attribute name="DIGIKEY" x="76.2" y="81.28" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
@@ -6702,27 +6721,27 @@ choice for software reasons</text>
 <segment>
 <pinref part="U8" gate="G$1" pin="A3"/>
 <pinref part="E_1" gate="_SPI" pin="GP109_SPI_2_CLK"/>
-<wire x1="116.84" y1="83.82" x2="91.44" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="83.82" x2="91.44" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$40" class="0">
 <segment>
 <pinref part="U8" gate="G$1" pin="A2"/>
 <pinref part="E_1" gate="_SPI" pin="GP115_SPI_2_TXD"/>
-<wire x1="116.84" y1="86.36" x2="91.44" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="86.36" x2="91.44" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$41" class="0">
 <segment>
 <pinref part="U8" gate="G$1" pin="A1"/>
 <pinref part="E_1" gate="_SPI" pin="GP114_SPI_2_RXD"/>
-<wire x1="116.84" y1="88.9" x2="91.44" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="88.9" x2="91.44" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">
 <segment>
 <pinref part="E_1" gate="_SPI" pin="GP111_SPI_2_FS1"/>
-<wire x1="116.84" y1="78.74" x2="114.3" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="78.74" x2="114.3" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="78.74" x2="114.3" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="U8" gate="G$1" pin="A4"/>
 <wire x1="114.3" y1="81.28" x2="91.44" y2="81.28" width="0.1524" layer="91"/>
@@ -6731,33 +6750,26 @@ choice for software reasons</text>
 <net name="N$27" class="0">
 <segment>
 <pinref part="E_1" gate="_I2C_6" pin="GP28_I2C_6_SDA"/>
-<wire x1="116.84" y1="66.04" x2="111.76" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="66.04" x2="111.76" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="60.96" x2="109.22" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="60.96" x2="109.22" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="U8" gate="G$1" pin="A5"/>
-<wire x1="111.76" y1="78.74" x2="91.44" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="78.74" x2="91.44" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$42" class="0">
 <segment>
 <pinref part="E_1" gate="_I2C_6" pin="GP27_I2C_6_SCL"/>
-<wire x1="116.84" y1="63.5" x2="109.22" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="63.5" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="58.42" x2="106.68" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="58.42" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="U8" gate="G$1" pin="A6"/>
-<wire x1="109.22" y1="76.2" x2="91.44" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="EDISON_SPI_MISO" class="0">
-<segment>
-<pinref part="U8" gate="G$1" pin="B1"/>
-<wire x1="60.96" y1="88.9" x2="58.42" y2="88.9" width="0.1524" layer="91"/>
-<label x="58.42" y="88.9" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="106.68" y1="76.2" x2="91.44" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="EDISON_SPI_MOSI" class="0">
 <segment>
 <pinref part="U8" gate="G$1" pin="B2"/>
-<wire x1="60.96" y1="86.36" x2="58.42" y2="86.36" width="0.1524" layer="91"/>
-<label x="58.42" y="86.36" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="60.96" y1="86.36" x2="33.02" y2="86.36" width="0.1524" layer="91"/>
+<label x="33.02" y="86.36" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="MODULES_SDA" class="0">
@@ -6774,22 +6786,13 @@ choice for software reasons</text>
 <label x="58.42" y="76.2" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$49" class="0">
-<segment>
-<pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="53.34" x2="50.8" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="U8" gate="G$1" pin="B8"/>
-<wire x1="60.96" y1="71.12" x2="50.8" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="71.12" x2="50.8" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$50" class="0">
 <segment>
-<pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="60.96" x2="48.26" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="60.96" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="U8" gate="G$1" pin="B7"/>
 <wire x1="48.26" y1="73.66" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="53.34" x2="48.26" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="73.66" x2="48.26" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$31" class="0">
@@ -6797,17 +6800,17 @@ choice for software reasons</text>
 <pinref part="U8" gate="G$1" pin="A7"/>
 <wire x1="104.14" y1="73.66" x2="91.44" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="E_1" gate="_GPIO" pin="GP182_PWM2"/>
-<wire x1="116.84" y1="48.26" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="48.26" x2="104.14" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="43.18" x2="104.14" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="43.18" x2="104.14" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$43" class="0">
 <segment>
 <pinref part="U8" gate="G$1" pin="A8"/>
 <wire x1="101.6" y1="71.12" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="71.12" x2="101.6" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="71.12" x2="101.6" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="E_1" gate="_GPIO" pin="GP12_PWM0"/>
-<wire x1="101.6" y1="43.18" x2="116.84" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="38.1" x2="119.38" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!EDISON_SPI_CS" class="0">
@@ -6819,9 +6822,9 @@ choice for software reasons</text>
 </net>
 <net name="EDISON_SPI_SCLK" class="0">
 <segment>
-<pinref part="U8" gate="G$1" pin="B3"/>
-<wire x1="60.96" y1="83.82" x2="58.42" y2="83.82" width="0.1524" layer="91"/>
-<label x="58.42" y="83.82" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<pinref part="U8" gate="G$1" pin="B1"/>
+<wire x1="60.96" y1="88.9" x2="55.88" y2="88.9" width="0.1524" layer="91"/>
+<label x="55.88" y="88.9" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="LINUX_5V_IN" class="0">
@@ -6858,6 +6861,28 @@ choice for software reasons</text>
 <wire x1="124.46" y1="149.86" x2="127" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="60.96" x2="50.8" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="U8" gate="G$1" pin="B8"/>
+<wire x1="60.96" y1="71.12" x2="50.8" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="60.96" x2="50.8" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="EDISON_SPI_MISO" class="0">
+<segment>
+<pinref part="U8" gate="G$1" pin="B3"/>
+<wire x1="60.96" y1="83.82" x2="33.02" y2="83.82" width="0.1524" layer="91"/>
+<label x="33.02" y="83.82" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="E_1" gate="_SPI" pin="GP110_SPI_2_FS0"/>
+<wire x1="119.38" y1="81.28" x2="116.84" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -6871,6 +6896,8 @@ Edison as USB device</text>
 <text x="139.7" y="149.86" size="1.778" layer="98">To modules</text>
 <text x="185.42" y="172.72" size="1.778" layer="98">Power Linux subsystem
 if USB is attached</text>
+<text x="114.3" y="157.48" size="1.778" layer="98">XXX Jumper me</text>
+<text x="182.88" y="162.56" size="1.778" layer="98">XXX Jumper me</text>
 </plain>
 <instances>
 <instance part="FRAME5" gate="G$1" x="0" y="0"/>
