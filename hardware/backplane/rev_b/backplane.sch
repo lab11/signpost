@@ -6067,6 +6067,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="LOGO7" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
 <part name="LOGO8" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
 <part name="LOGO9" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
+<part name="R83" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
+<part name="U$51" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9392,10 +9394,10 @@ EECLK must be NC</text>
 <text x="246.38" y="176.53" size="1.778" layer="98" align="top-right">Hub</text>
 <text x="149.86" y="116.84" size="1.27" layer="98">Tie unused ports to GND</text>
 <text x="149.86" y="114.3" size="0.6096" layer="98">https://e2e.ti.com/support/interface/digital_interface/f/130/p/367935/1295211#1295211</text>
-<wire x1="147.32" y1="119.38" x2="147.32" y2="91.44" width="0.3048" layer="98"/>
-<wire x1="147.32" y1="91.44" x2="182.88" y2="91.44" width="0.3048" layer="98"/>
-<wire x1="182.88" y1="91.44" x2="182.88" y2="119.38" width="0.3048" layer="98"/>
-<wire x1="182.88" y1="119.38" x2="147.32" y2="119.38" width="0.3048" layer="98"/>
+<wire x1="142.24" y1="119.38" x2="142.24" y2="78.74" width="0.3048" layer="98"/>
+<wire x1="142.24" y1="78.74" x2="182.88" y2="78.74" width="0.3048" layer="98"/>
+<wire x1="182.88" y1="78.74" x2="182.88" y2="119.38" width="0.3048" layer="98"/>
+<wire x1="182.88" y1="119.38" x2="142.24" y2="119.38" width="0.3048" layer="98"/>
 </plain>
 <instances>
 <instance part="FRAME8" gate="G$1" x="0" y="0"/>
@@ -9422,6 +9424,8 @@ EECLK must be NC</text>
 <instance part="R62" gate="G$1" x="167.64" y="109.22"/>
 <instance part="R63" gate="G$1" x="167.64" y="101.6"/>
 <instance part="GND142" gate="1" x="172.72" y="96.52"/>
+<instance part="R83" gate="G$1" x="167.64" y="83.82"/>
+<instance part="U$51" gate="G$1" x="172.72" y="86.36"/>
 </instances>
 <busses>
 </busses>
@@ -9527,6 +9531,12 @@ EECLK must be NC</text>
 <junction x="33.02" y="119.38"/>
 <pinref part="C63" gate="G$1" pin="2"/>
 <wire x1="25.4" y1="119.38" x2="25.4" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R83" gate="G$1" pin="2"/>
+<pinref part="U$51" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="170.18" y1="83.82" x2="172.72" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="83.82" x2="172.72" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
@@ -9739,6 +9749,11 @@ EECLK must be NC</text>
 <pinref part="U1" gate="G$1" pin="!OVRCUR5"/>
 <wire x1="99.06" y1="55.88" x2="96.52" y2="55.88" width="0.1524" layer="91"/>
 <label x="99.06" y="55.88" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R83" gate="G$1" pin="1"/>
+<wire x1="162.56" y1="83.82" x2="160.02" y2="83.82" width="0.1524" layer="91"/>
+<label x="160.02" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR6" class="0">
