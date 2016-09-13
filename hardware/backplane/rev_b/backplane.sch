@@ -5183,55 +5183,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </deviceset>
 </devicesets>
 </library>
-<library name="connector">
-<description>&lt;b&gt;LAB11&lt;/b&gt; - Connectors for various cable types.</description>
-<packages>
-<package name="PHEONIX-1935161">
-<pad name="1" x="0" y="0" drill="1.3"/>
-<pad name="2" x="5" y="0" drill="1.3"/>
-<wire x1="-2.5" y1="4" x2="7.5" y2="4" width="0.127" layer="21"/>
-<wire x1="7.5" y1="4" x2="7.5" y2="-4.3" width="0.127" layer="21"/>
-<wire x1="7.5" y1="-4.3" x2="7.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="7.5" y1="-5" x2="-2.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-5" x2="-2.5" y2="-4.3" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-4.3" x2="-2.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-4.3" x2="7.5" y2="-4.3" width="0.127" layer="21"/>
-<text x="-2.54" y="5.08" size="1.27" layer="25">&gt;NAME</text>
-</package>
-</packages>
-<symbols>
-<symbol name="2-PIN-GEN">
-<pin name="2" x="5.08" y="2.54" length="middle" rot="R180"/>
-<pin name="1" x="5.08" y="-2.54" length="middle" rot="R180"/>
-<wire x1="-5.08" y1="-5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="5.08" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
-<text x="-5.08" y="7.62" size="1.27" layer="95">&gt;NAME</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SCREW_TERMINAL" prefix="J">
-<description>PCB terminal block 5mm</description>
-<gates>
-<gate name="G$1" symbol="2-PIN-GEN" x="2.54" y="0"/>
-</gates>
-<devices>
-<device name="" package="PHEONIX-1935161">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="277-1667-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="logos">
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Logos for PCBs.</description>
 <packages>
@@ -5981,8 +5932,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
-<part name="J8" library="connector" deviceset="SCREW_TERMINAL" device=""/>
-<part name="J9" library="connector" deviceset="SCREW_TERMINAL" device=""/>
 <part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
@@ -6124,8 +6073,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Special Modules</text>
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
-<text x="147.32" y="25.4" size="6.4516" layer="98">!!! Placeholder until Josh
-gets real connectors !!!</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -6147,8 +6094,6 @@ gets real connectors !!!</text>
 <instance part="U$44" gate="G$1" x="162.56" y="106.68"/>
 <instance part="R48" gate="G$1" x="154.94" y="99.06" rot="R90"/>
 <instance part="R49" gate="G$1" x="162.56" y="96.52" rot="R90"/>
-<instance part="J8" gate="G$1" x="190.5" y="68.58" rot="R180"/>
-<instance part="J9" gate="G$1" x="190.5" y="50.8" rot="R180"/>
 <instance part="LOGO1" gate="G$1" x="2.54" y="172.72"/>
 <instance part="U$52" gate="G$1" x="162.56" y="165.1"/>
 <instance part="LOGO8" gate="G$1" x="15.24" y="132.08"/>
@@ -6390,22 +6335,12 @@ gets real connectors !!!</text>
 <wire x1="71.12" y1="83.82" x2="68.58" y2="83.82" width="0.1524" layer="91"/>
 <label x="71.12" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
-<segment>
-<pinref part="J8" gate="G$1" pin="1"/>
-<wire x1="182.88" y1="71.12" x2="185.42" y2="71.12" width="0.1524" layer="91"/>
-<label x="182.88" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
 <net name="VSOL-" class="0">
 <segment>
 <pinref part="J4" gate="G$1" pin="VSOL-"/>
 <wire x1="71.12" y1="81.28" x2="68.58" y2="81.28" width="0.1524" layer="91"/>
 <label x="71.12" y="81.28" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="J8" gate="G$1" pin="2"/>
-<wire x1="182.88" y1="66.04" x2="185.42" y2="66.04" width="0.1524" layer="91"/>
-<label x="182.88" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="VBATT+" class="0">
@@ -6414,22 +6349,12 @@ gets real connectors !!!</text>
 <wire x1="71.12" y1="78.74" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
 <label x="71.12" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
-<segment>
-<pinref part="J9" gate="G$1" pin="1"/>
-<wire x1="182.88" y1="53.34" x2="185.42" y2="53.34" width="0.1524" layer="91"/>
-<label x="182.88" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
 <net name="VBATT-" class="0">
 <segment>
 <pinref part="J4" gate="G$1" pin="VBATT-"/>
 <wire x1="71.12" y1="76.2" x2="68.58" y2="76.2" width="0.1524" layer="91"/>
 <label x="71.12" y="76.2" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="J9" gate="G$1" pin="2"/>
-<wire x1="182.88" y1="48.26" x2="185.42" y2="48.26" width="0.1524" layer="91"/>
-<label x="182.88" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
