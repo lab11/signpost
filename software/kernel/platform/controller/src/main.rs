@@ -432,18 +432,20 @@ pub unsafe fn reset_handler() {
     let pca9544a_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x70), 32);
     let pca9544a_0 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
-        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, &sam4l::gpio::PA[9], &mut signpost_drivers::pca9544a::BUFFER),
+        // signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, Some(&sam4l::gpio::PA[9]), &mut signpost_drivers::pca9544a::BUFFER),
+        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
         288/8);
     pca9544a_0_i2c.set_client(pca9544a_0);
-    sam4l::gpio::PA[9].set_client(pca9544a_0);
+    // sam4l::gpio::PA[9].set_client(pca9544a_0);
 
     let pca9544a_1_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x71), 32);
     let pca9544a_1 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
-        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, &sam4l::gpio::PA[10], &mut signpost_drivers::pca9544a::BUFFER),
+        // signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, Some(&sam4l::gpio::PA[10]), &mut signpost_drivers::pca9544a::BUFFER),
+        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
         288/8);
     pca9544a_1_i2c.set_client(pca9544a_1);
-    sam4l::gpio::PA[10].set_client(pca9544a_1);
+    // sam4l::gpio::PA[10].set_client(pca9544a_1);
 
 
     let i2c_selectors = static_init!(

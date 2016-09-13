@@ -21,7 +21,7 @@ enum State {
 
 pub struct PCA9544A<'a> {
     i2c: &'a i2c::I2CDevice,
-    interrupt_pin: &'a gpio::GPIOPin,
+    interrupt_pin: Option<&'a gpio::GPIOPin>,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static signpost_hil::i2c_selector::Client>,
@@ -29,7 +29,7 @@ pub struct PCA9544A<'a> {
 
 impl<'a> PCA9544A<'a> {
     pub fn new(i2c: &'a i2c::I2CDevice,
-               interrupt_pin: &'a gpio::GPIOPin,
+               interrupt_pin: Option<&'a gpio::GPIOPin>,
                buffer: &'static mut [u8])
                -> PCA9544A<'a> {
         // setup and return struct
@@ -45,8 +45,10 @@ impl<'a> PCA9544A<'a> {
     pub fn set_client<C: signpost_hil::i2c_selector::Client>(&self, client: &'static C, ) {
         self.client.replace(client);
 
-        self.interrupt_pin.enable_input(gpio::InputMode::PullNone);
-        self.interrupt_pin.enable_interrupt(0, gpio::InterruptMode::FallingEdge);
+        self.interrupt_pin.map(|interrupt_pin| {
+            interrupt_pin.enable_input(gpio::InputMode::PullNone);
+            interrupt_pin.enable_interrupt(0, gpio::InterruptMode::FallingEdge);
+        });
     }
 
     /// Choose which channel(s) are active. Channels are encoded with a bitwise
