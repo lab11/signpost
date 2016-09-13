@@ -10,10 +10,7 @@ extern crate signpost_hil;
 
 
 pub mod mcp23008;
+pub mod pca9544a;
+
 pub mod gpio_async;
-// pub mod nrf51822_serialization;
-// pub mod timer;
-// pub mod tmp006;
-// pub mod spi;
-// pub mod virtual_alarm;
-// pub mod virtual_i2c;
+pub mod i2c_selector;
