@@ -11,6 +11,7 @@ extern crate signpost_hil;
 
 pub mod mcp23008;
 pub mod pca9544a;
+pub mod ltc2941;
 
 pub mod gpio_async;
 pub mod i2c_selector;

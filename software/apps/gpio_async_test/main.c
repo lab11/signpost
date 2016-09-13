@@ -57,26 +57,26 @@ int main () {
     putstr(buf);
   }
 
-  while (1) {
+  // while (1) {
 
-    int i;
-    for (i=0;i<10;i++) {
-      gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 2);
-      wait();
-      gpio_async_clear(MOD7_GPIOA_PORT_NUM, 2);
-      wait();
-      gpio_async_set(MOD7_GPIOA_PORT_NUM, 2);
-      // gpio_async_enable_input(10, 2, PullNone);
-      wait();
-      delay_ms(10);
-    }
+  //   int i;
+  //   for (i=0;i<10;i++) {
+  //     gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 2);
+  //     wait();
+  //     gpio_async_clear(MOD7_GPIOA_PORT_NUM, 2);
+  //     wait();
+  //     gpio_async_set(MOD7_GPIOA_PORT_NUM, 2);
+  //     // gpio_async_enable_input(10, 2, PullNone);
+  //     wait();
+  //     delay_ms(10);
+  //   }
 
 
 
-    // delay_ms(500);
-    gpio_async_toggle(MOD7_GPIOA_PORT_NUM, 1);
-    wait();
-  }
+  //   // delay_ms(500);
+  //   gpio_async_toggle(MOD7_GPIOA_PORT_NUM, 1);
+  //   wait();
+  // }
 
   // gpio_async_enable_input(10, 0, PullNone);
   // wait();

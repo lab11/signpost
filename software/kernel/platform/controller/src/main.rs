@@ -464,6 +464,13 @@ pub unsafe fn reset_handler() {
         selector.set_client(i2c_selector);
     }
 
+    let ltc2941_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
+    let ltc2941_0 = static_init!(
+        signpost_drivers::ltc2941::LTC2941<'static>,
+        signpost_drivers::ltc2941::LTC2941::new(ltc2941_0_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
+        288/8);
+    ltc2941_0_i2c.set_client(ltc2941_0);
+
 
     // set GPIO driver controlling remaining GPIO pins
     let gpio_pins = static_init!(
@@ -559,6 +566,7 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
+ltc2941_0.read_status();
 
     main::main(signpost_controller, &mut chip, load_processes());
 }
