@@ -5760,7 +5760,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="U$40" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U$41" library="signpost" deviceset="VCC_LINUX" device=""/>
 <part name="U$42" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="R82" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ"/>
+<part name="R82" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="R45" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>

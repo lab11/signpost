@@ -2036,7 +2036,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R81" library="passives" package="0603-RES" value="10MΩ" x="162.306" y="66.294" smashed="yes" rot="R90">
 <attribute name="NAME" x="161.798" y="62.484" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R82" library="passives" package="0603-RES" value="10MΩ" x="142.748" y="270.51" rot="R180"/>
+<element name="R82" library="passives" package="0603-RES" value="1.5kΩ" x="142.748" y="270.51" rot="R180"/>
 <element name="R45" library="passives" package="0603-RES" value="10kΩ" x="144.526" y="294.386" smashed="yes" rot="R90">
 <attribute name="NAME" x="145.288" y="294.386" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
