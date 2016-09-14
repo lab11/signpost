@@ -88,6 +88,7 @@ struct SignpostController {
     spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
+    coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
 }
 
 impl Platform for SignpostController {
@@ -106,6 +107,7 @@ impl Platform for SignpostController {
             4 => f(Some(self.spi)),
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
+            102 => f(Some(self.coulomb_counter_generic)),
             _ => f(None)
         }
     }
@@ -464,12 +466,18 @@ pub unsafe fn reset_handler() {
         selector.set_client(i2c_selector);
     }
 
-    let ltc2941_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
-    let ltc2941_0 = static_init!(
+    let ltc2941_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
+    let ltc2941 = static_init!(
         signpost_drivers::ltc2941::LTC2941<'static>,
-        signpost_drivers::ltc2941::LTC2941::new(ltc2941_0_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
+        signpost_drivers::ltc2941::LTC2941::new(ltc2941_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
         288/8);
-    ltc2941_0_i2c.set_client(ltc2941_0);
+    ltc2941_i2c.set_client(ltc2941);
+
+    let ltc2941driver = static_init!(
+        signpost_drivers::ltc2941::LTC2941Driver<'static>,
+        signpost_drivers::ltc2941::LTC2941Driver::new(ltc2941),
+        128/8);
+    ltc2941.set_client(ltc2941driver);
 
 
     // set GPIO driver controlling remaining GPIO pins
@@ -513,8 +521,9 @@ pub unsafe fn reset_handler() {
             spi: spi,
             gpio_async: gpio_async,
             coulomb_counter_i2c_selector: i2c_selector,
+            coulomb_counter_generic: ltc2941driver,
         },
-        192/8);
+        224/8);
 
     usart::USART3.configure(usart::USARTParams {
         // client: &console,
@@ -566,7 +575,6 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-ltc2941_0.read_status();
 
     main::main(signpost_controller, &mut chip, load_processes());
 }
