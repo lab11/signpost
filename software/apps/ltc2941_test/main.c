@@ -28,6 +28,7 @@ void callback (int callback_type, int data, int data2, void* callback_args) {
 
   _data = data;
   _data2 = data2;
+
 }
 
 void print_data () {

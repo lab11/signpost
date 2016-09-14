@@ -2,7 +2,7 @@
 #include <tock.h>
 #include <ltc2941.h>
 
-#define DRIVER_NUM_LTC2941 102
+
 
 
 int ltc2941_set_callback (subscribe_cb callback, void* callback_args) {
