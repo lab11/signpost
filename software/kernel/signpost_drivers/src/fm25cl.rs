@@ -25,7 +25,7 @@ enum State {
     ReadStatus,
     WriteMemory,
     // ReadShutdown,
-    ReadMemory(&'static mut [u8]),
+    ReadMemory(TakeCell<&'static mut [u8]>),
 
     // Done,
 }
@@ -138,7 +138,7 @@ impl<'a> FM25CL<'a> {
                 txbuffer[2] = address & 0xFF;
 
                 self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), len+3);
-                self.state.set(State::ReadMemory(buffer));
+                self.state.set(State::ReadMemory(TakeCell::new(buffer)));
             });
         });
     }
