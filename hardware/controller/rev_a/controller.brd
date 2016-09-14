@@ -1486,7 +1486,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="J2" library="connector" package="DM3AT-SF-PEJM5" value="DM3AT-SF-PEJM5" x="-17.1704" y="6.223" rot="MR90">
 <attribute name="DIGIKEY" value="HR1964CT-ND" x="-17.1704" y="6.223" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
-<element name="FB2" library="passives" package="0402_CAP" value="300 ohm" x="-17.145" y="21.844" rot="R270">
+<element name="FB2" library="passives" package="0402_CAP" value="300 Ω" x="-17.145" y="21.844" rot="R270">
 <attribute name="DIGIKEY" value="ACML-0402-301-TCT-ND" x="-17.145" y="21.844" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="J3" library="connector" package="U.FL_SMT" value="U.FL-R-SMT" x="-20.32" y="20.32" rot="R90">
@@ -1516,22 +1516,22 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="C2" library="passives" package="0402_CAP" value="47 pF" x="26.797" y="8.3312" rot="MR270">
 <attribute name="DIGIKEY" value="490-6241-1-ND" x="26.797" y="8.3312" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
-<element name="R1" library="passives" package="0402_RES" value="27" x="25.5016" y="9.652" rot="MR0">
+<element name="R1" library="passives" package="0402_RES" value="27 Ω" x="25.5016" y="9.652" rot="MR0">
 <attribute name="DIGIKEY" value="1276-3907-1-ND" x="25.5016" y="9.652" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R2" library="passives" package="0402_RES" value="27" x="25.5016" y="8.763" rot="MR0">
+<element name="R2" library="passives" package="0402_RES" value="27 Ω" x="25.5016" y="8.763" rot="MR0">
 <attribute name="DIGIKEY" value="1276-3907-1-ND" x="25.5016" y="8.763" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R5" library="passives" package="0402_RES" value="100" x="23.6076" y="5.08" rot="R270">
+<element name="R5" library="passives" package="0402_RES" value="100 Ω" x="23.6076" y="5.08" rot="R270">
 <attribute name="DIGIKEY" value="1276-3429-1-ND" x="23.6076" y="5.08" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R6" library="passives" package="0402_RES" value="100" x="21.9964" y="5.08" rot="R270">
+<element name="R6" library="passives" package="0402_RES" value="100 Ω" x="21.9964" y="5.08" rot="R270">
 <attribute name="DIGIKEY" value="1276-3429-1-ND" x="21.9964" y="5.08" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R3" library="passives" package="0402_RES" value="665 k" x="5.08" y="-4.6482" rot="R90">
+<element name="R3" library="passives" package="0402_RES" value="665 kΩ" x="5.08" y="-4.6482" rot="R90">
 <attribute name="DIGIKEY" value="1276-4275-1-ND" x="5.08" y="-4.6482" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R4" library="passives" package="0402_RES" value="332 k" x="7.0104" y="-4.6482" rot="R270">
+<element name="R4" library="passives" package="0402_RES" value="332 kΩ" x="7.0104" y="-4.6482" rot="R270">
 <attribute name="DIGIKEY" value="1276-4245-1-ND" x="7.0104" y="-4.6482" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Q1" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="6.0325" y="-7.6454" rot="R180">
@@ -1543,19 +1543,19 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="S1" library="signpost" package="TDFN4" value="SIP3240X" x="-1.3716" y="-6.4516">
 <attribute name="DIGIKEY" value="SIP32402ADNP-T1GE4CT-ND" x="-1.3716" y="-6.4516" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R9" library="passives" package="0402_RES" value="1 M" x="-1.3716" y="-4.0894">
+<element name="R9" library="passives" package="0402_RES" value="1 MΩ" x="-1.3716" y="-4.0894">
 <attribute name="DIGIKEY" value="1276-3433-1-ND" x="-1.3716" y="-4.0894" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D3" library="leds" package="1MM_SQ_4PAD" value="SML-LX0404SIUPGUSB" x="-14.5034" y="-22.352">
 <attribute name="DIGIKEY" value="67-2125-1-ND" x="-14.5034" y="-22.352" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R11" library="passives" package="0402_RES" value="1 k" x="-12.6492" y="-22.7838">
+<element name="R11" library="passives" package="0402_RES" value="1 kΩ" x="-12.6492" y="-22.7838">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-12.6492" y="-22.7838" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R12" library="passives" package="0402_RES" value="1 k" x="-16.4338" y="-21.717" rot="R180">
+<element name="R12" library="passives" package="0402_RES" value="1 kΩ" x="-16.4338" y="-21.717" rot="R180">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-16.4338" y="-21.717" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R13" library="passives" package="0402_RES" value="1 k" x="-16.4338" y="-22.987" rot="R180">
+<element name="R13" library="passives" package="0402_RES" value="1 kΩ" x="-16.4338" y="-22.987" rot="R180">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-16.4338" y="-22.987" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U8" library="chips" package="R-PVQFN-N20" value="TXS0108EVQFN20" x="-13.843" y="-26.1874" rot="R90">
@@ -1574,7 +1574,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="C9" library="passives" package="0402_CAP" value="100 nF" x="-15.5956" y="-13.6652" rot="MR180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="-15.5956" y="-13.6652" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="FB3" library="passives" package="0402_CAP" value="1.5 k" x="-19.3802" y="-8.7376" rot="MR270">
+<element name="FB3" library="passives" package="0402_CAP" value="1.5 kΩ" x="-19.3802" y="-8.7376" rot="MR270">
 <attribute name="DIGIKEY" value="490-5216-1-ND" x="-19.3802" y="-8.7376" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="L4" library="signpost" package="1212" value="22 uH" x="-12.0142" y="-12.6492" rot="R270">
@@ -1586,7 +1586,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="C11" library="passives" package="0402_CAP" value="4.7 uF" x="-12.8016" y="-10.2362">
 <attribute name="DIGIKEY" value="490-13252-1-ND" x="-12.8016" y="-10.2362" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R10" library="passives" package="0402_RES" value="10 k" x="-11.8872" y="-15.6972">
+<element name="R10" library="passives" package="0402_RES" value="10 kΩ" x="-11.8872" y="-15.6972">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="-11.8872" y="-15.6972" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C12" library="passives" package="0402_CAP" value="8 pF" x="-16.7386" y="-18.8976" rot="R270">
@@ -1598,17 +1598,17 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="X1" library="crystals" package="FHXXX" value="16 MHz" x="-14.5796" y="-17.6784" rot="R180">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" x="-14.5796" y="-17.6784" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R14" library="passives" package="0402_RES" value="100 k" x="-15.0876" y="-8.9916">
+<element name="R14" library="passives" package="0402_RES" value="100 kΩ" x="-15.0876" y="-8.9916">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="-15.0876" y="-8.9916" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R15" library="passives" package="0402_RES" value="100 k" x="-15.0876" y="-10.7696">
+<element name="R15" library="passives" package="0402_RES" value="100 kΩ" x="-15.0876" y="-10.7696">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="-15.0876" y="-10.7696" size="1.778" layer="27" display="off"/>
 </element>
 <element name="J7" library="connector" package="TC2030-IDC" value="TC2030-JLINK-L" x="20.2438" y="19.05"/>
-<element name="R16" library="passives" package="0402_RES" value="100 k" x="14.732" y="14.9098">
+<element name="R16" library="passives" package="0402_RES" value="100 kΩ" x="14.732" y="14.9098">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="14.732" y="14.9098" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R17" library="passives" package="0402_RES" value="100 k" x="14.732" y="12.3698">
+<element name="R17" library="passives" package="0402_RES" value="100 kΩ" x="14.732" y="12.3698">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="14.732" y="12.3698" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C14" library="passives" package="0402_CAP" value="8 pF" x="12.5476" y="3.302" rot="R270">
@@ -1620,7 +1620,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="X2" library="crystals" package="FHXXX" value="16 MHz" x="14.7066" y="4.5212" rot="R180">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" x="19.7866" y="4.5212" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R18" library="passives" package="0402_RES" value="10 k" x="17.399" y="6.5024">
+<element name="R18" library="passives" package="0402_RES" value="10 kΩ" x="17.399" y="6.5024">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="17.399" y="6.5024" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C16" library="passives" package="0402_CAP" value="100 nF" x="9.906" y="15.5448" rot="MR90">
@@ -1635,7 +1635,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="C19" library="passives" package="0402_CAP" value="100 nF" x="13.6906" y="8.5344" rot="MR180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="7.3406" y="14.8844" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="FB4" library="passives" package="0402_CAP" value="1.5 k" x="9.906" y="13.462" rot="MR270">
+<element name="FB4" library="passives" package="0402_CAP" value="1.5 kΩ" x="9.906" y="13.462" rot="MR270">
 <attribute name="DIGIKEY" value="490-5216-1-ND" x="9.906" y="13.462" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="L6" library="signpost" package="1212" value="22 uH" x="17.272" y="9.5504" rot="R270">
@@ -1650,13 +1650,13 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="D2" library="leds" package="1MM_SQ_4PAD" value="SML-LX0404SIUPGUSB" x="-7.2136" y="-2.4892" rot="R90">
 <attribute name="DIGIKEY" value="67-2125-1-ND" x="-7.2136" y="-7.5692" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R19" library="passives" package="0402_RES" value="1k" x="-6.6802" y="-4.3434" rot="R270">
+<element name="R19" library="passives" package="0402_RES" value="1 kΩ" x="-6.6802" y="-4.3434" rot="R270">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-6.6802" y="-4.3434" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R20" library="passives" package="0402_RES" value="1k" x="-7.8486" y="-4.3434" rot="R270">
+<element name="R20" library="passives" package="0402_RES" value="1 kΩ" x="-7.8486" y="-4.3434" rot="R270">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-7.8486" y="-4.3434" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R21" library="passives" package="0402_RES" value="1k" x="-7.1882" y="-0.9398" rot="R180">
+<element name="R21" library="passives" package="0402_RES" value="1 kΩ" x="-7.1882" y="-0.9398" rot="R180">
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="-7.1882" y="-0.9398" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="Q2" library="fets" package="SOT23-3" value="NX3008PBK" x="-29.2862" y="5.9436" rot="R90">
@@ -1664,19 +1664,19 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NEWARK" value="74T4665" x="-29.2862" y="7.2136" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="DIGIKEY" value="568-10499-1-ND" x="-29.2862" y="7.2136" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R22" library="passives" package="0402_RES" value="10 k" x="-28.7274" y="2.8956" rot="R90">
+<element name="R22" library="passives" package="0402_RES" value="10 kΩ" x="-28.7274" y="2.8956" rot="R90">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="-28.7274" y="2.8956" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R23" library="passives" package="0402_RES" value="10 k" x="-26.3398" y="7.223" rot="R180">
+<element name="R23" library="passives" package="0402_RES" value="10 kΩ" x="-26.3398" y="7.223" rot="R180">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="-26.3398" y="7.223" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R24" library="passives" package="0402_RES" value="10 k" x="-26.3398" y="8.323" rot="R180">
+<element name="R24" library="passives" package="0402_RES" value="10 kΩ" x="-26.3398" y="8.323" rot="R180">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="-26.3398" y="8.323" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R25" library="passives" package="0402_RES" value="10 k" x="-26.3398" y="2.823" rot="R180">
+<element name="R25" library="passives" package="0402_RES" value="10 kΩ" x="-26.3398" y="2.823" rot="R180">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="-26.3398" y="2.823" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R26" library="passives" package="0402_RES" value="100 k" x="-30.4628" y="2.8956" rot="R90">
+<element name="R26" library="passives" package="0402_RES" value="100 kΩ" x="-30.4628" y="2.8956" rot="R90">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="-30.4628" y="2.8956" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C22" library="passives" package="0402_CAP" value="4.7 uF" x="-25.8572" y="5.6896" rot="R270">
@@ -1721,7 +1721,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="C30" library="passives" package="0402_CAP" value="100 nF" x="-12.2305" y="-29.845" rot="R90">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="-12.2305" y="-29.845" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="FB1" library="passives" package="0805_CAP" value="600 ohm" x="26.035" y="12.6492" rot="MR0">
+<element name="FB1" library="passives" package="0805_CAP" value="600 Ω" x="26.035" y="12.6492" rot="MR0">
 <attribute name="DIGIKEY" value="240-2390-1-ND" x="26.035" y="12.6492" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="U6" library="switches" package="PTS810SJ" value="PTS810SJ" x="13.4874" y="-25.8826" rot="R90">

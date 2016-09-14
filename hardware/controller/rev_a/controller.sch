@@ -5619,7 +5619,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="428-3206-ND"/>
 </part>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
-<part name="FB2" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 ohm">
+<part name="FB2" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300 Ω">
 <attribute name="DIGIKEY" value="ACML-0402-301-TCT-ND"/>
 </part>
 <part name="J3" library="connector" deviceset="U.FL-R-SMT" device=""/>
@@ -5648,24 +5648,24 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47 pF">
 <attribute name="DIGIKEY" value="490-6241-1-ND"/>
 </part>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="27">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="27 Ω">
 <attribute name="DIGIKEY" value="1276-3907-1-ND"/>
 </part>
-<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="27">
+<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="27 Ω">
 <attribute name="DIGIKEY" value="1276-3907-1-ND"/>
 </part>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100">
+<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 Ω">
 <attribute name="DIGIKEY" value="1276-3429-1-ND"/>
 </part>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100">
+<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 Ω">
 <attribute name="DIGIKEY" value="1276-3429-1-ND"/>
 </part>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="665 k">
+<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="665 kΩ">
 <attribute name="DIGIKEY" value="1276-4275-1-ND"/>
 </part>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="332 k">
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="332 kΩ">
 <attribute name="DIGIKEY" value="1276-4245-1-ND"/>
 </part>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
@@ -5679,7 +5679,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="S1" library="signpost" deviceset="SIP3240X" device=""/>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
-<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 M">
+<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
 <attribute name="DIGIKEY" value="1276-3433-1-ND"/>
 </part>
 <part name="U$8" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
@@ -5688,13 +5688,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$12" library="signpost" deviceset="VCC_LINUX_1V8" device=""/>
 <part name="D3" library="leds" deviceset="SML-LX0404SIUPGUSB" device=""/>
 <part name="U$13" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 k">
+<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
 <part name="U8" library="chips" deviceset="TXS0108E" device="VQFN20">
@@ -5723,7 +5723,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="FB3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<part name="FB3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 kΩ">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L4" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
@@ -5734,7 +5734,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="490-13252-1-ND"/>
 </part>
 <part name="U$18" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
-<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="8 pF">
@@ -5745,20 +5745,20 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="X1" library="crystals" deviceset="FH1600015" device="" value="16 MHz"/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="U$19" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="J7" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="U$9" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="U$10" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
@@ -5770,7 +5770,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="X2" library="crystals" deviceset="FH1600015" device="" value="16 MHz"/>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
 <part name="U$20" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
@@ -5788,7 +5788,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C19" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100 nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="FB4" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 k">
+<part name="FB4" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5 kΩ">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L6" library="signpost" deviceset="LHQ3NP" device="" value="22 uH"/>
@@ -5800,32 +5800,32 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="U$22" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="D2" library="leds" deviceset="SML-LX0404SIUPGUSB" device=""/>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="1276-3430-1-ND"/>
 </part>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
 <part name="U$23" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U$24" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="Q2" library="fets" deviceset="NX3008PBK" device=""/>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
-<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
-<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 k">
+<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 k">
+<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="C22" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7 uF">
@@ -5877,7 +5877,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND33" library="umich" deviceset="GND" device=""/>
-<part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0805" value="600 ohm">
+<part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0805" value="600 Ω">
 <attribute name="DIGIKEY" value="240-2390-1-ND"/>
 </part>
 <part name="U6" library="switches" deviceset="PTS810SJ" device=""/>
