@@ -63,10 +63,10 @@ pub trait FM25CLClient {
 
 }
 
-struct FM25CLClientObj {
-    client: &'static FM25CLClient,
-    buffer: TakeCell<&'static mut [u8]>,
-}
+// struct FM25CLClientObj {
+//     client: &'static FM25CLClient,
+//     buffer: TakeCell<&'static mut [u8]>,
+// }
 
 pub struct FM25CL<'a> {
     spi: &'a hil::spi_master::SpiMaster,
@@ -74,8 +74,9 @@ pub struct FM25CL<'a> {
     state: Cell<State>,
     txbuffer: TakeCell<&'static mut [u8]>,
     rxbuffer: TakeCell<&'static mut [u8]>,
-    // client: TakeCell<&'static FM25CLClient>,
-    client: TakeCell<&'static FM25CLClientObj>,
+    client: TakeCell<&'static FM25CLClient>,
+    // client: TakeCell<&'static FM25CLClientObj>,
+    client_buffer: TakeCell<&'static mut [u8]>,
 }
 
 impl<'a> FM25CL<'a> {
@@ -92,19 +93,19 @@ impl<'a> FM25CL<'a> {
             txbuffer: TakeCell::new(txbuffer),
             rxbuffer: TakeCell::new(rxbuffer),
             client: TakeCell::empty(),
-            // client_buffer: TakeCell::empty(),
+            client_buffer: TakeCell::empty(),
         }
     }
 
     pub fn set_client<C: FM25CLClient>(&self, client: &'static C, ) {
-        // self.client.replace(client);
+        self.client.replace(client);
 
-        let new_client = FM25CLClientObj {
-            client: client,
-            buffer: TakeCell::empty(),
-        };
+        // let new_client = FM25CLClientObj {
+        //     client: client,
+        //     buffer: TakeCell::empty(),
+        // };
 
-        self.client.put(Some(&new_client));
+        // self.client.put(Some(&new_client));
 
         // self.interrupt_pin.map(|interrupt_pin| {
         //     interrupt_pin.enable_input(gpio::InputMode::PullNone);
@@ -166,7 +167,7 @@ impl<'a> FM25CL<'a> {
     fn read(&self, address: u16, buffer: &'static mut [u8], len: u16) {
         self.configure_spi();
 
-        self.client.map(|client| {
+        // self.client.map(|client| {
             self.txbuffer.take().map(|txbuffer| {
                 self.rxbuffer.take().map(move |rxbuffer| {
                     txbuffer[0] = Opcodes::ReadMemory as u8;
@@ -174,14 +175,15 @@ impl<'a> FM25CL<'a> {
                     txbuffer[2] = (address & 0xFF) as u8;
 
                     // Save the user buffer for later
-                    client.buffer.put(Some(buffer));
+                    // client.buffer.put(Some(buffer));
+                    self.client_buffer.put(Some(buffer));
 
                     self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), (len+3) as usize);
                     // self.state.set(State::ReadMemory(TakeCell::new(buffer)));
                     self.state.set(State::ReadMemory);
                 });
             });
-        });
+        // });
     }
 
 
@@ -284,7 +286,8 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
                 // };
                 read_buffer.map(|read_buffer| {
                     self.client.map(|client| {
-                        client.client.status(read_buffer[1]);
+                        // client.client.status(read_buffer[1]);
+                        client.status(read_buffer[1]);
                     });
                 });
                 // self.client.map(|client| {
@@ -299,7 +302,8 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
                 // TODO: Actually calculate charge!!!!!
                 // let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
                 self.client.map(|client| {
-                    client.client.done();
+                    // client.client.done();
+                    client.done();
                 });
 
                 // self.buffer.replace(buffer);
@@ -308,15 +312,28 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
             },
             State::ReadMemory => {
 
+                // read_buffer.map(|read_buffer| {
+                //     self.client.map(move |client| {
+                //         client.buffer.take().map(move |buffer| {
+
+                //             for i in 0..10 {
+                //                 buffer[i] = read_buffer[3+i];
+                //             }
+
+                //             client.client.read(buffer);
+                //         });
+                //     });
+                // });
+
                 read_buffer.map(|read_buffer| {
-                    self.client.map(move |client| {
-                        client.buffer.take().map(move |buffer| {
+                    self.client_buffer.take().map(move |buffer| {
 
-                            for i in 0..10 {
-                                buffer[i] = read_buffer[3+i];
-                            }
+                        for i in 0..(len-3) {
+                            buffer[i] = read_buffer[3+i];
+                        }
 
-                            client.client.read(buffer);
+                        self.client.map(move |client| {
+                            client.read(buffer);
                         });
                     });
                 });
