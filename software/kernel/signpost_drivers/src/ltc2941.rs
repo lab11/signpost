@@ -5,7 +5,7 @@ use hil::gpio;
 use hil::i2c;
 use main::{AppId, Callback, Driver};
 
-pub static mut BUFFER: [u8; 5] = [0; 5];
+pub static mut BUFFER: [u8; 8] = [0; 8];
 
 #[allow(dead_code)]
 enum Registers {
@@ -23,14 +23,9 @@ enum Registers {
 enum State {
     Idle,
 
-    /// Simple read to determine which interrupts are set currently
-    SelectStatus,
+    /// Simple read states
     ReadStatus,
-
-    SelectCharge,
     ReadCharge,
-
-    SelectShutdown,
     ReadShutdown,
 
     Done,
@@ -97,11 +92,9 @@ impl<'a> LTC2941<'a> {
         self.buffer.take().map(|buffer| {
             self.i2c.enable();
 
-            // Read the status register by first writing the address
-            buffer[0] = Registers::Status as u8;
-
-            self.i2c.write(buffer, 1);
-            self.state.set(State::SelectStatus);
+            // Address pointer automatically resets to the status register.
+            self.i2c.read(buffer, 1);
+            self.state.set(State::ReadStatus);
         });
     }
 
@@ -159,23 +152,27 @@ impl<'a> LTC2941<'a> {
         });
     }
 
+    /// Get the cumulative charge as measured by the LTC2941.
     fn get_charge(&self) {
         self.buffer.take().map(|buffer| {
             self.i2c.enable();
 
-            buffer[0] = Registers::AccumulatedChargeMSB as u8;
-
-            self.i2c.write(buffer, 1);
-            self.state.set(State::SelectCharge);
+            // Read all of the first four registers rather than wasting
+            // time writing an address.
+            self.i2c.read(buffer, 4);
+            self.state.set(State::ReadCharge);
         });
     }
 
+    /// Put the LTC2941 in a low power state.
     fn shutdown(&self) {
         self.buffer.take().map(|buffer| {
-            buffer[0] = Registers::Control as u8;
+            self.i2c.enable();
 
-            self.i2c.write(buffer, 1);
-            self.state.set(State::SelectShutdown);
+            // Read both the status and control register rather than
+            // writing an address.
+            self.i2c.read(buffer, 2);
+            self.state.set(State::ReadShutdown);
         });
     }
 
@@ -185,10 +182,6 @@ impl<'a> LTC2941<'a> {
 impl<'a> i2c::I2CClient for LTC2941<'a> {
     fn command_complete(&self, buffer: &'static mut [u8], _error: i2c::Error) {
         match self.state.get() {
-            State::SelectStatus => {
-                self.i2c.read(buffer, 1);
-                self.state.set(State::ReadStatus);
-            },
             State::ReadStatus => {
                 let status = buffer[0];
                 let uvlock = (status & 0x01) > 0;
@@ -196,8 +189,6 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 let ca_low = (status & 0x04) > 0;
                 let ca_high = (status & 0x08) > 0;
                 let accover = (status & 0x20) > 0;
-                // let chip = ((status & 0x80) >> 7) as ChipModel::from_u8((status & 0x80) >> 7);
-                // let chip = ChipModel::from_u8((status & 0x80) >> 7);
                 let chip = match (status & 0x80) >> 7 {
                     1 => ChipModel::LTC2941,
                     0 => ChipModel::LTC2942,
@@ -211,13 +202,9 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 self.i2c.disable();
                 self.state.set(State::Idle);
             },
-            State::SelectCharge => {
-                self.i2c.read(buffer, 2);
-                self.state.set(State::ReadCharge);
-            },
             State::ReadCharge => {
                 // TODO: Actually calculate charge!!!!!
-                let charge = ((buffer[0] as u16) << 8) | (buffer[1] as u16);
+                let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
                 self.client.map(|client| {
                     client.charge(charge);
                 });
@@ -226,14 +213,14 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 self.i2c.disable();
                 self.state.set(State::Idle);
             },
-            State::SelectShutdown => {
-                self.i2c.read(buffer, 1);
-                self.state.set(State::ReadShutdown);
-            },
             State::ReadShutdown => {
                 // Set the shutdown pin to 1
-                buffer[0] |= 0x01;
-                self.i2c.read(buffer, 1);
+                buffer[1] |= 0x01;
+
+                // Write the control register back but with a in the shutdown
+                // bit.
+                buffer[0] = Registers::Control as u8;
+                self.i2c.write(buffer, 2);
                 self.state.set(State::Done);
             },
             State::Done => {

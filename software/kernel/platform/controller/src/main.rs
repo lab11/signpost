@@ -466,6 +466,9 @@ pub unsafe fn reset_handler() {
         selector.set_client(i2c_selector);
     }
 
+    // Setup the driver for the coulomb counter. We only use one because
+    // they all share the same address, so one driver can be used for any
+    // of them based on which port is selected on the i2c selector.
     let ltc2941_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
     let ltc2941 = static_init!(
         signpost_drivers::ltc2941::LTC2941<'static>,
