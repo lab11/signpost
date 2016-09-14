@@ -3,8 +3,7 @@ use common::take_cell::TakeCell;
 use core::cell::Cell;
 use hil::gpio;
 use hil::i2c;
-
-// use signpost_hil;
+use main::{AppId, Callback, Driver};
 
 pub static mut BUFFER: [u8; 5] = [0; 5];
 
@@ -267,12 +266,126 @@ impl<'a> gpio::Client for LTC2941<'a> {
     }
 }
 
-// impl<'a> signpost_hil::i2c_selector::I2CSelector for PCA9544A<'a> {
-//     fn select_channels(&self, channels: usize) {
-//         self.select_channels(channels as u8);
-//     }
 
-//     fn disable_all_channels(&self) {
-//         self.select_channels(0);
-//     }
-// }
+/// Default implementation of the LTC2941 driver that provides a Driver
+/// interface for providing access to applications.
+pub struct LTC2941Driver<'a> {
+    ltc2941: &'a LTC2941<'a>,
+    callback: Cell<Option<Callback>>,
+}
+
+impl<'a> LTC2941Driver<'a> {
+    pub fn new(ltc: &'a LTC2941) -> LTC2941Driver<'a> {
+        LTC2941Driver {
+            ltc2941: ltc,
+            callback: Cell::new(None),
+        }
+    }
+}
+
+impl<'a> LTC2941Client for LTC2941Driver<'a> {
+    fn interrupt(&self) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(0, 0, 0);
+        });
+    }
+
+    fn status(&self, undervolt_lockout: bool, vbat_alert: bool, charge_alert_low: bool, charge_alert_high: bool, accumulated_charge_overflow: bool, chip: ChipModel) {
+        self.callback.get().map(|mut cb| {
+            let ret = (undervolt_lockout as usize) | ((vbat_alert as usize) << 1) | ((charge_alert_low as usize) << 2) | ((charge_alert_high as usize) << 3) | ((accumulated_charge_overflow as usize) << 4);
+            cb.schedule(1, ret, chip as usize);
+        });
+    }
+
+    fn charge(&self, charge: u16) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(2, charge as usize, 0);
+        });
+    }
+
+    fn done(&self) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(3, 0, 0);
+        });
+    }
+}
+
+impl<'a> Driver for LTC2941Driver<'a> {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+        match subscribe_num {
+            0 => {
+                self.callback.set(Some(callback));
+                0
+            }
+
+            // default
+            _ => -1,
+        }
+    }
+
+    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+        match command_num {
+            // get status
+            0 => {
+                self.ltc2941.read_status();
+                0
+            }
+
+            // configure
+            1 => {
+                let int_pin_raw = data & 0x03;
+                let prescaler = (data >> 2) & 0x07;
+                let vbat_raw = (data >> 5) & 0x03;
+                let int_pin_conf = match int_pin_raw {
+                    0 => InterruptPinConf::Disabled,
+                    1 => InterruptPinConf::ChargeCompleteMode,
+                    2 => InterruptPinConf::AlertMode,
+                    _ => InterruptPinConf::Disabled,
+                };
+                let vbat_alert = match vbat_raw {
+                    0 => VBatAlert::Off,
+                    1 => VBatAlert::Threshold2V8,
+                    2 => VBatAlert::Threshold2V9,
+                    3 => VBatAlert::Threshold3V0,
+                    _ => VBatAlert::Off,
+                };
+
+                self.ltc2941.configure(int_pin_conf, prescaler as u8, vbat_alert);
+                0
+            }
+
+            // reset charge
+            2 => {
+                self.ltc2941.reset_charge();
+                0
+            }
+
+            // set high threshold
+            3 => {
+                self.ltc2941.set_high_threshold(data as u16);
+                0
+            }
+
+            // set low threshold
+            4 => {
+                self.ltc2941.set_low_threshold(data as u16);
+                0
+            }
+
+            // get charge
+            5 => {
+                self.ltc2941.get_charge();
+                0
+            }
+
+            // shutdown
+            6 => {
+                self.ltc2941.shutdown();
+                0
+            }
+
+            // default
+            _ => -1,
+        }
+    }
+}
