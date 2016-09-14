@@ -25,6 +25,7 @@ enum State {
     ReadStatus,
     WriteMemory,
     // ReadShutdown,
+    ReadMemory(&'static mut [u8]),
 
     // Done,
 }
@@ -52,6 +53,7 @@ pub trait FM25CLClient {
     // fn status(&self, undervolt_lockout: bool, vbat_alert: bool, charge_alert_low: bool, charge_alert_high: bool, accumulated_charge_overflow: bool, chip: ChipModel);
     // fn charge(&self, charge: u16);
     fn status(&self, status: u8);
+    fn read(&self, data: &'static mut [u8]);
     fn done(&self);
 }
 
@@ -101,21 +103,23 @@ impl<'a> FM25CL<'a> {
         });
     }
 
-    fn write(&self, address: u16, buffer: &'static mut [u8]) {
+    fn write(&self, address: u16, buffer: &'static mut [u8], len: u16) {
         self.txbuffer.take().map(|txbuffer| {
 
             txbuffer[0] = Opcodes::WriteEnable as u8;
             txbuffer[1] = Opcodes::WriteMemory as u8;
+            txbuffer[2] = (address >> 8) & 0xFF;
+            txbuffer[3] = address & 0xFF;
 
-            for i in 0..buffer.len() {
-                txbuffer[i+2] = buffer[i];
+            for i in 0..len {
+                txbuffer[i+4] = buffer[i];
             }
 
             // self.rxbuffer.take().map(|rxbuffer| {
 
             //     txbuffer[0] = Opcodes::ReadStatusRegister;
 
-            self.spi.read_write_bytes(Some(txbuffer), None, buffer.len()+2);
+            self.spi.read_write_bytes(Some(txbuffer), None, len+4);
 
                 // self.i2c.enable();
 
@@ -125,6 +129,21 @@ impl<'a> FM25CL<'a> {
             // });
         });
     }
+
+    fn read(&self, address: u16, buffer: &'static mut [u8], len: u16) {
+        self.txbuffer.take().map(|txbuffer| {
+            self.rxbuffer.take().map(move |rxbuffer| {
+                txbuffer[0] = Opcodes::ReadMemory as u8;
+                txbuffer[1] = (address >> 8) & 0xFF;
+                txbuffer[2] = address & 0xFF;
+
+                self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), len+3);
+                self.state.set(State::ReadMemory(buffer));
+            });
+        });
+    }
+
+
 
     // fn configure(&self, int_pin_conf: InterruptPinConf, prescaler: u8, vbat_alert: VBatAlert) {
     //     self.buffer.take().map(|buffer| {
@@ -240,6 +259,23 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
                 // let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
                 self.client.map(|client| {
                     client.done();
+                });
+
+                // self.buffer.replace(buffer);
+                // self.i2c.disable();
+                self.state.set(State::Idle);
+            },
+            State::ReadMemory(buffer) => {
+
+                for i in 0.10 {
+                    buffer[i] = read_buffer[3+i];
+                }
+
+
+                // TODO: Actually calculate charge!!!!!
+                // let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
+                self.client.map(|client| {
+                    client.read(buffer);
                 });
 
                 // self.buffer.replace(buffer);
