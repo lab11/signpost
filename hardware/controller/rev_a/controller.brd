@@ -1606,7 +1606,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="-16.1654" y="15.113" size="0.8128" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="U4" library="chips" package="TDFN-8" value="FM25CLXXB-DG" x="-11.0236" y="-2.0828" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="428-3206-ND" x="-11.0236" y="-2.0828" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="FM25CL64B-DGRA-ND" x="-11.0236" y="-2.0828" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="-14.3402" y="-2.2352" size="0.8128" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="-14.4236" y="-2.0828" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>

@@ -5908,7 +5908,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U2" library="chips" deviceset="SAM4LC8AA" device=""/>
 <part name="U3" library="chips" deviceset="RXM-GPS-RM-T" device=""/>
 <part name="U4" library="chips" deviceset="FM25" device="CLXXB-DG" value="FM25CLXXB-DG">
-<attribute name="DIGIKEY" value="428-3206-ND"/>
+<attribute name="DIGIKEY" value="FM25CL64B-DGRA-ND"/>
 </part>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
 <part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0402" value="300Ω">
