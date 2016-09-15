@@ -4,7 +4,7 @@
 
 use hil;
 
-pub trait SpiMasterDevice {
+pub trait SPIMasterDevice {
     // fn init(&mut self, client: &'static SpiCallback);
     // fn is_busy(&self) -> bool;
 

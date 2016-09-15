@@ -482,10 +482,19 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941driver);
 
+
+    // SPI
+
+    let mux_spi = static_init!(signpost_drivers::virtual_spi_master::MuxSPIMaster<'static>, signpost_drivers::virtual_spi_master::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
+    sam4l::spi::SPI.init(mux_spi);
+
+
+
     // Setup FRAM driver
+    let fm25cl_spi = static_init!(signpost_drivers::virtual_spi_master::SPIMasterDevice, signpost_drivers::virtual_spi_master::SPIMasterDevice::new(mux_spi, None, None), 480/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
-        signpost_drivers::fm25cl::FM25CL::new(&sam4l::spi::SPI, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
+        signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
         352/8);
 
 

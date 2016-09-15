@@ -3,6 +3,7 @@ use common::take_cell::TakeCell;
 use core::cell::Cell;
 // use hil::gpio;
 use hil;
+use signpost_hil;
 use main::{AppId, Callback, Driver};
 
 pub static mut TXBUFFER: [u8; 512] = [0; 512];
@@ -70,7 +71,7 @@ pub trait FM25CLClient {
 // }
 
 pub struct FM25CL<'a> {
-    spi: &'a hil::spi_master::SpiMaster,
+    spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
     // interrupt_pin: Option<&'a gpio::GPIOPin>,
     state: Cell<State>,
     txbuffer: TakeCell<&'static mut [u8]>,
@@ -81,7 +82,7 @@ pub struct FM25CL<'a> {
 }
 
 impl<'a> FM25CL<'a> {
-    pub fn new(spi: &'a hil::spi_master::SpiMaster,
+    pub fn new(spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
                // interrupt_pin: Option<&'a gpio::GPIOPin>,
                txbuffer: &'static mut [u8],
                rxbuffer: &'static mut [u8])
@@ -116,13 +117,14 @@ impl<'a> FM25CL<'a> {
 
     /// Setup SPI for this chip
     fn configure_spi(&self) {
-        self.spi.set_rate(SPI_SPEED);
-        // CPOL = 0
-        self.spi.set_clock(hil::spi_master::ClockPolarity::IdleLow);
-        // CPAL = 0
-        self.spi.set_phase(hil::spi_master::ClockPhase::SampleLeading);
-        // Chip select
-        self.spi.set_chip_select(0);
+        self.spi.configure(hil::spi_master::ClockPolarity::IdleLow, hil::spi_master::ClockPhase::SampleLeading, SPI_SPEED);
+        // self.spi.set_rate(SPI_SPEED);
+        // // CPOL = 0
+        // self.spi.set_clock(hil::spi_master::ClockPolarity::IdleLow);
+        // // CPAL = 0
+        // self.spi.set_phase(hil::spi_master::ClockPhase::SampleLeading);
+        // // Chip select
+        // self.spi.set_chip_select(0);
     }
 
     fn read_status(&self) {

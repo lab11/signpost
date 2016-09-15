@@ -7,9 +7,9 @@ use signpost_hil;
 
 pub struct MuxSPIMaster<'a> {
     spi: &'a hil::spi_master::SpiMaster,
-    devices: List<'a, SpiMasterDevice<'a>>,
+    devices: List<'a, SPIMasterDevice<'a>>,
     // enabled: Cell<usize>,
-    inflight: TakeCell<&'a SpiMasterDevice<'a>>,
+    inflight: TakeCell<&'a SPIMasterDevice<'a>>,
 }
 
 impl<'a> hil::spi_master::SpiCallback for MuxSPIMaster<'a> {
@@ -90,7 +90,7 @@ enum Op {
     // WriteRead(u8, u8),
 }
 
-pub struct SpiMasterDevice<'a> {
+pub struct SPIMasterDevice<'a> {
     mux: &'a MuxSPIMaster<'a>,
     chip_select: Option<u8>,
     chip_select_gpio: Option<&'static hil::gpio::GPIOPin>,
@@ -98,13 +98,13 @@ pub struct SpiMasterDevice<'a> {
     txbuffer: TakeCell<Option<&'static mut [u8]>>,
     rxbuffer: TakeCell<Option<&'static mut [u8]>>,
     operation: Cell<Op>,
-    next: ListLink<'a, SpiMasterDevice<'a>>,
+    next: ListLink<'a, SPIMasterDevice<'a>>,
     client: Cell<Option<&'a hil::spi_master::SpiCallback>>,
 }
 
-impl<'a> SpiMasterDevice<'a> {
-    pub const fn new(mux: &'a MuxSPIMaster<'a>, chip_select: Option<u8>, chip_select_gpio: Option<&'static hil::gpio::GPIOPin>) -> SpiMasterDevice<'a> {
-        SpiMasterDevice {
+impl<'a> SPIMasterDevice<'a> {
+    pub const fn new(mux: &'a MuxSPIMaster<'a>, chip_select: Option<u8>, chip_select_gpio: Option<&'static hil::gpio::GPIOPin>) -> SPIMasterDevice<'a> {
+        SPIMasterDevice {
             mux: mux,
             chip_select: chip_select,
             chip_select_gpio: chip_select_gpio,
@@ -123,7 +123,7 @@ impl<'a> SpiMasterDevice<'a> {
     }
 }
 
-impl<'a> hil::spi_master::SpiCallback for SpiMasterDevice<'a> {
+impl<'a> hil::spi_master::SpiCallback for SPIMasterDevice<'a> {
     fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
         self.client.get().map(move |client| {
             client.read_write_done(write_buffer, read_buffer, len);
@@ -131,13 +131,13 @@ impl<'a> hil::spi_master::SpiCallback for SpiMasterDevice<'a> {
     }
 }
 
-impl<'a> ListNode<'a, SpiMasterDevice<'a>> for SpiMasterDevice<'a> {
-    fn next(&'a self) -> &'a ListLink<'a, SpiMasterDevice<'a>> {
+impl<'a> ListNode<'a, SPIMasterDevice<'a>> for SPIMasterDevice<'a> {
+    fn next(&'a self) -> &'a ListLink<'a, SPIMasterDevice<'a>> {
         &self.next
     }
 }
 
-impl<'a> signpost_hil::spi_master2::SpiMasterDevice for SpiMasterDevice<'a> {
+impl<'a> signpost_hil::spi_master2::SPIMasterDevice for SPIMasterDevice<'a> {
     // fn enable(&self) {
     //     if !self.enabled.get() {
     //         self.enabled.set(true);
