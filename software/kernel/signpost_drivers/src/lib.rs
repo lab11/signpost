@@ -16,3 +16,5 @@ pub mod fm25cl;
 
 pub mod gpio_async;
 pub mod i2c_selector;
+
+pub mod virtual_spi_master;

@@ -85,7 +85,7 @@ struct SignpostController {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static drivers::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
+    // spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
@@ -104,7 +104,7 @@ impl Platform for SignpostController {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            4 => f(Some(self.spi)),
+            // 4 => f(Some(self.spi)),
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
@@ -344,12 +344,12 @@ pub unsafe fn reset_handler() {
     virtual_alarm1.set_client(timer);
 
     // Initialize and enable SPI HAL
-    let spi = static_init!(
-        drivers::spi::Spi<'static, sam4l::spi::Spi>,
-        drivers::spi::Spi::new(&mut sam4l::spi::SPI),
-        84);
-    spi.config_buffers(&mut spi_read_buf, &mut spi_write_buf);
-    sam4l::spi::SPI.init(spi as &hil::spi_master::SpiCallback);
+    // let spi = static_init!(
+    //     drivers::spi::Spi<'static, sam4l::spi::Spi>,
+    //     drivers::spi::Spi::new(&mut sam4l::spi::SPI),
+    //     84);
+    // spi.config_buffers(&mut spi_read_buf, &mut spi_write_buf);
+    // sam4l::spi::SPI.init(spi as &hil::spi_master::SpiCallback);
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -482,6 +482,12 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941driver);
 
+    // Setup FRAM driver
+    let fm25cl = static_init!(
+        signpost_drivers::fm25cl::FM25CL<'static>,
+        signpost_drivers::fm25cl::FM25CL::new(&sam4l::spi::SPI, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
+        352/8);
+
 
     // set GPIO driver controlling remaining GPIO pins
     let gpio_pins = static_init!(
@@ -521,12 +527,12 @@ pub unsafe fn reset_handler() {
             console: console,
             gpio: gpio,
             timer: timer,
-            spi: spi,
+            // spi: spi,
             gpio_async: gpio_async,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941driver,
         },
-        224/8);
+        192/8);
 
     usart::USART3.configure(usart::USARTParams {
         // client: &console,

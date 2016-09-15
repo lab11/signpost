@@ -5,7 +5,8 @@ use core::cell::Cell;
 use hil;
 use main::{AppId, Callback, Driver};
 
-pub static mut BUFFER: [u8; 8] = [0; 8];
+pub static mut TXBUFFER: [u8; 512] = [0; 512];
+pub static mut RXBUFFER: [u8; 512] = [0; 512];
 
 const SPI_SPEED: u32 = 4000000;
 
@@ -120,6 +121,8 @@ impl<'a> FM25CL<'a> {
         self.spi.set_clock(hil::spi_master::ClockPolarity::IdleLow);
         // CPAL = 0
         self.spi.set_phase(hil::spi_master::ClockPhase::SampleLeading);
+        // Chip select
+        self.spi.set_chip_select(0);
     }
 
     fn read_status(&self) {
