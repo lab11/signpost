@@ -57,6 +57,26 @@ impl<'a> MuxSPIMaster<'a> {
                             self.spi.set_clock(cpol);
                             self.spi.set_phase(cpal);
                             self.spi.set_rate(rate);
+
+                            match node.chip_select {
+                                Some(x) => {
+                                    self.spi.set_chip_select(x);
+                                },
+                                None => {}
+                            }
+
+                            // In theory, the SPI interface should support
+                            // using a GPIO in lieu of a hardware CS line.
+                            // This is particularly important for the SAM4L
+                            // if using a USART, but might be relevant
+                            // for other platforms as well.
+                            // TODO: make this do something if given GPIO pin
+                            match node.chip_select_gpio {
+                                Some(x) => { },
+                                None => {}
+                            }
+
+
                         },
                           //  self.i2c.write(node.addr, buf, len),
                         Op::ReadWriteBytes(len) => {
