@@ -52,11 +52,11 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
@@ -281,7 +281,7 @@ Master</text>
 <text x="32.258" y="8.89" size="0.8128" layer="21" font="vector" ratio="12" rot="R90" align="center">Edison
 Serial</text>
 <text x="32.258" y="-8.89" size="0.8128" layer="21" font="vector" ratio="12" rot="R90" align="center">Edison
-Flashing</text>
+Program</text>
 <text x="16.4846" y="-26.7462" size="0.8128" layer="21" font="vector" ratio="12" rot="R90" align="center">Backplane
 Reset</text>
 <wire x1="9.525" y1="1.3462" x2="14.986" y2="1.3462" width="0.2032" layer="21"/>
