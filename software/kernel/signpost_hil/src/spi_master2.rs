@@ -9,7 +9,7 @@ pub trait SPIMasterDevice {
     // fn is_busy(&self) -> bool;
 
 
-    fn configure(&self, cpol: hil::spi_master::ClockPolarity, cpal: hil::spi_master::ClockPhase, rate: u32);
+    fn configure(&self, cpol: hil::spi::ClockPolarity, cpal: hil::spi::ClockPhase, rate: u32);
 
     /// Perform an asynchronous read/write operation, whose
     /// completion is signaled by invoking SpiCallback on

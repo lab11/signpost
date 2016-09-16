@@ -118,12 +118,12 @@ impl<'a> FM25CL<'a> {
 
     /// Setup SPI for this chip
     fn configure_spi(&self) {
-        self.spi.configure(hil::spi_master::ClockPolarity::IdleLow, hil::spi_master::ClockPhase::SampleLeading, SPI_SPEED);
+        self.spi.configure(hil::spi::ClockPolarity::IdleLow, hil::spi::ClockPhase::SampleLeading, SPI_SPEED);
         // self.spi.set_rate(SPI_SPEED);
         // // CPOL = 0
-        // self.spi.set_clock(hil::spi_master::ClockPolarity::IdleLow);
+        // self.spi.set_clock(hil::spi::ClockPolarity::IdleLow);
         // // CPAL = 0
-        // self.spi.set_phase(hil::spi_master::ClockPhase::SampleLeading);
+        // self.spi.set_phase(hil::spi::ClockPhase::SampleLeading);
         // // Chip select
         // self.spi.set_chip_select(0);
     }
@@ -289,7 +289,7 @@ impl<'a> FM25CL<'a> {
 
 }
 
-impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
+impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
     fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
         // if len == 9 {
         //     match self.state.get() {

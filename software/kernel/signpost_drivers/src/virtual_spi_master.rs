@@ -6,13 +6,13 @@ use hil;
 use signpost_hil;
 
 pub struct MuxSPIMaster<'a> {
-    spi: &'a hil::spi_master::SpiMaster,
+    spi: &'a hil::spi::SpiMaster,
     devices: List<'a, SPIMasterDevice<'a>>,
     // enabled: Cell<usize>,
     inflight: TakeCell<&'a SPIMasterDevice<'a>>,
 }
 
-impl<'a> hil::spi_master::SpiCallback for MuxSPIMaster<'a> {
+impl<'a> hil::spi::SpiMasterClient for MuxSPIMaster<'a> {
     fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
         self.inflight.take().map(move |device| {
             // write_buffer.map(move |txbuf| {
@@ -38,7 +38,7 @@ impl<'a> hil::spi_master::SpiCallback for MuxSPIMaster<'a> {
 }
 
 impl<'a> MuxSPIMaster<'a> {
-    pub const fn new(spi: &'a hil::spi_master::SpiMaster) -> MuxSPIMaster<'a> {
+    pub const fn new(spi: &'a hil::spi::SpiMaster) -> MuxSPIMaster<'a> {
         MuxSPIMaster {
             spi: spi,
             devices: List::new(),
@@ -127,7 +127,7 @@ impl<'a> MuxSPIMaster<'a> {
 #[derive(Copy, Clone,PartialEq)]
 enum Op {
     Idle,
-    Configure(hil::spi_master::ClockPolarity, hil::spi_master::ClockPhase, u32),
+    Configure(hil::spi::ClockPolarity, hil::spi::ClockPhase, u32),
     ReadWriteBytes(usize),
     // Write(u8),
     // Read(u8),
@@ -143,7 +143,7 @@ pub struct SPIMasterDevice<'a> {
     rxbuffer: TakeCell<Option<&'static mut [u8]>>,
     operation: Cell<Op>,
     next: ListLink<'a, SPIMasterDevice<'a>>,
-    client: Cell<Option<&'a hil::spi_master::SpiCallback>>,
+    client: Cell<Option<&'a hil::spi::SpiMasterClient>>,
 }
 
 impl<'a> SPIMasterDevice<'a> {
@@ -161,13 +161,13 @@ impl<'a> SPIMasterDevice<'a> {
         }
     }
 
-    pub fn set_client(&'a self, client: &'a hil::spi_master::SpiCallback) {
+    pub fn set_client(&'a self, client: &'a hil::spi::SpiMasterClient) {
         self.mux.devices.push_head(self);
         self.client.set(Some(client));
     }
 }
 
-impl<'a> hil::spi_master::SpiCallback for SPIMasterDevice<'a> {
+impl<'a> hil::spi::SpiMasterClient for SPIMasterDevice<'a> {
     fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
         self.client.get().map(move |client| {
             client.read_write_done(write_buffer, read_buffer, len);
@@ -196,7 +196,7 @@ impl<'a> signpost_hil::spi_master2::SPIMasterDevice for SPIMasterDevice<'a> {
     //     }
     // }
 
-    fn configure(&self, cpol: hil::spi_master::ClockPolarity, cpal: hil::spi_master::ClockPhase, rate: u32) {
+    fn configure(&self, cpol: hil::spi::ClockPolarity, cpal: hil::spi::ClockPhase, rate: u32) {
         self.operation.set(Op::Configure(cpol, cpal, rate));
         self.mux.do_next_op();
     }

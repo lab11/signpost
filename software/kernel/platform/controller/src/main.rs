@@ -22,7 +22,7 @@ use drivers::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use drivers::virtual_i2c::I2CDevice;
 use drivers::virtual_i2c::MuxI2C;
 use hil::Controller;
-use hil::spi_master::SpiMaster;
+use hil::spi::SpiMaster;
 use main::{Chip, MPU, Platform};
 use sam4l::usart;
 
@@ -506,7 +506,8 @@ pub unsafe fn reset_handler() {
     // SPI
 
     let mux_spi = static_init!(signpost_drivers::virtual_spi_master::MuxSPIMaster<'static>, signpost_drivers::virtual_spi_master::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
-    sam4l::spi::SPI.init(mux_spi);
+    sam4l::spi::SPI.set_client(mux_spi);
+    sam4l::spi::SPI.init();
 
 
 
