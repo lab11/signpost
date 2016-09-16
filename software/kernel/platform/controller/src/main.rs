@@ -516,7 +516,7 @@ pub unsafe fn reset_handler() {
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
-        352/8);
+        384/8);
     fm25cl_spi.set_client(fm25cl);
 
 
@@ -647,7 +647,7 @@ pub unsafe fn reset_handler() {
 
     impl<'a> signpost_drivers::fm25cl::FM25CLClient for TestFM<'a> {
         fn status(&self, status: u8) {
-            // panic!("status {}", status);
+            panic!("status {}", status);
             self.txtest.take().map(|txtest| {
                 // panic!("here");
                 self.fm.write(8, txtest, 4);
@@ -655,8 +655,8 @@ pub unsafe fn reset_handler() {
 
         }
 
-        fn read(&self, data: &'static mut [u8]) {
-
+        fn read(&self, data: &'static mut [u8], len: usize) {
+            panic!("read: {} {} {} {}", data[0], data[1], data[2], data[3]);
         }
 
         fn done(&self, buffer: &'static mut [u8]) {
