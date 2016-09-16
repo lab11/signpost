@@ -149,7 +149,7 @@
 <text x="20.32" y="62.865" size="0.635" layer="25" font="vector" rot="R90">3V8</text>
 <text x="51.308" y="66.675" size="0.635" layer="25" font="vector">5V</text>
 <text x="57.531" y="60.833" size="0.635" layer="25" font="vector" rot="R180">3V3</text>
-<text x="24.638" y="52.07" size="0.635" layer="25" font="vector">GSM
+<text x="25.654" y="52.07" size="0.635" layer="25" font="vector">GSM
 GPIO2</text>
 <text x="28.067" y="46.101" size="0.635" layer="25" font="vector" rot="R90">USB+</text>
 <text x="29.718" y="46.101" size="0.635" layer="25" font="vector" rot="R90">USB-</text>
@@ -184,6 +184,8 @@ GPIO2</text>
 <wire x1="2.794" y1="50.165" x2="5.715" y2="50.165" width="0.127" layer="20"/>
 <wire x1="5.715" y1="50.165" x2="12.065" y2="56.515" width="0.127" layer="20" curve="90"/>
 <wire x1="12.065" y1="56.515" x2="12.065" y2="68.58" width="0.127" layer="20"/>
+<text x="23.368" y="50.673" size="0.635" layer="25">Aux
+UART</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -1734,7 +1736,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="J4" library="signpost" package="WURTH_NANO_SIM" value="NANO_SIM" x="9.398" y="34.417" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="732-5954-1-ND" x="9.398" y="34.417" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="17.018" y="29.337" size="0.635" layer="26" font="vector" rot="MR90"/>
 </element>
 <element name="D1" library="passives" package="0402_DIODE" value="14V" x="5.461" y="39.243" smashed="yes">
 <attribute name="NAME" x="4.191" y="38.862" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -1798,13 +1799,13 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="4.826" y="26.543" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C14" library="passives" package="0402_CAP" value="100nF" x="6.985" y="22.606" smashed="yes" rot="R270">
-<attribute name="NAME" x="6.985" y="21.082" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="7.112" y="24.384" size="0.635" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C11" library="passives" package="0402_CAP" value="10nF" x="8.636" y="22.606" smashed="yes" rot="R270">
-<attribute name="NAME" x="9.652" y="22.86" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="10.033" y="22.86" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C8" library="passives" package="0402_CAP" value="56pF" x="7.874" y="22.606" smashed="yes" rot="R270">
-<attribute name="NAME" x="8.509" y="21.082" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="7.874" y="21.082" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U1" library="nucleum" package="NUCLEUM" value="NUCLEUM" x="70.866" y="46.609" smashed="yes" rot="R180">
 <attribute name="NAME" x="69.041" y="47.707" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -1870,7 +1871,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="R11" library="passives" package="0402_RES" value="10k" x="30.861" y="42.672" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="37.211" y="69.342" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="31.242" y="42.672" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="30.988" y="41.148" size="0.635" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="29.464" y="42.672" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C15" library="passives" package="0402_CAP" value="100nF" x="36.703" y="45.466" smashed="yes">
@@ -1893,7 +1894,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="490-5216-1-ND" x="-3.937" y="37.338" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="35.052" y="45.974" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="L6" library="signpost" package="1212" value="22uH" x="48.006" y="38.481" smashed="yes" rot="R270">
+<element name="L3" library="signpost" package="1212" value="22uH" x="48.006" y="38.481" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-5350-1-ND" x="23.876" y="71.501" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="50.292" y="38.322" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -1916,7 +1917,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="53.594" y="59.69" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C9" library="passives" package="0402_CAP" value="3.3nF" x="59.309" y="57.023" smashed="yes" rot="R90">
-<attribute name="NAME" x="60.706" y="57.531" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="60.325" y="57.277" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C25" library="passives" package="0402_CAP" value="22uF" x="53.975" y="55.118" smashed="yes" rot="R270">
 <attribute name="NAME" x="52.832" y="55.118" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
@@ -1930,10 +1931,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="61.595" y="54.864" size="0.8128" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R28" library="passives" package="0402_RES" value="100k" x="58.42" y="52.705" smashed="yes" rot="R270">
-<attribute name="NAME" x="59.817" y="52.451" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="59.817" y="52.324" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="57.023" y="52.705" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="L3" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="55.245" y="52.451" smashed="yes" rot="R180">
+<element name="L1" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="55.245" y="52.451" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="70.485" y="80.391" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="55.613" y="50.778" size="0.635" layer="25" font="vector" rot="R180"/>
 </element>
@@ -1965,9 +1966,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="16.764" y="55.626" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="18.415" y="56.769" size="0.8128" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="L4" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="18.415" y="58.293" smashed="yes" rot="R90">
+<element name="L2" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="18.415" y="58.293" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="73.025" y="46.863" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="16.615" y="55.893" size="0.635" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="18.275" y="61.065" size="0.635" layer="25" font="vector" rot="R180"/>
 </element>
 <element name="U11" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="36.449" y="39.497" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.449" y="34.497" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -1998,12 +1999,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="R13" library="passives" package="0402_RES" value="10k" x="39.624" y="52.07" smashed="yes">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="39.624" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="39.624" y="52.451" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="38.1" y="51.816" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="39.624" y="50.673" size="0.8128" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R14" library="passives" package="0402_RES" value="10k" x="39.624" y="52.832" smashed="yes">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="39.624" y="52.832" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="39.624" y="53.213" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="38.1" y="52.578" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="39.624" y="51.435" size="0.8128" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R7" library="passives" package="0402_RES" value="3.333" x="51.689" y="53.721" smashed="yes" rot="R90">
@@ -2044,7 +2045,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="U9" library="signpost" package="DFN-6-2MMX3MM" value="LTC2941" x="14.224" y="57.912" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" x="12.954" y="57.912" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="12.16" y="57.785" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="12.414" y="58.166" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R5" library="passives" package="0402_RES" value="0.016" x="16.256" y="58.166" smashed="yes" rot="R90">
 <attribute name="NAME" x="16.129" y="59.69" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -2068,7 +2069,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="38.608" y="55.753" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R30" library="passives" package="0402_RES" value="100k" x="58.801" y="18.923" smashed="yes" rot="R270">
-<attribute name="NAME" x="59.69" y="19.812" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="60.198" y="18.796" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="57.404" y="18.923" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R31" library="passives" package="0402_RES" value="100k" x="18.415" y="20.828" smashed="yes">
@@ -2096,11 +2097,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="61.976" y="51.562" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R34" library="passives" package="0402_RES" value="100k" x="59.309" y="49.276" smashed="yes" rot="R270">
-<attribute name="NAME" x="58.166" y="49.403" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="58.166" y="49.022" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="57.912" y="49.276" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R35" library="passives" package="0402_RES" value="100k" x="59.309" y="50.927" smashed="yes" rot="R270">
-<attribute name="NAME" x="58.166" y="51.054" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="58.166" y="50.673" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="57.912" y="50.927" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="Q7" library="fets" package="SOT23-3" value="NX3008PBK" x="22.987" y="7.366" smashed="yes">
@@ -2118,7 +2119,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="21.844" y="3.302" size="0.8128" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="JP1" library="SparkFun-Connectors" package="1X02" value="" x="25.019" y="46.736" smashed="yes" rot="R90">
-<attribute name="NAME" x="23.1902" y="45.3898" size="0.635" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="28.194" y="45.466" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="C20" library="passives" package="0402_CAP" value="100nF" x="24.384" y="27.051" smashed="yes">
@@ -2567,7 +2567,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </signal>
 <signal name="3V8">
 <contactref element="U8" pad="14"/>
-<contactref element="L4" pad="P$2"/>
+<contactref element="L2" pad="P$2"/>
 <contactref element="R29" pad="2"/>
 <contactref element="R41" pad="2"/>
 <contactref element="C26" pad="2"/>
@@ -2699,7 +2699,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </signal>
 <signal name="3V3">
 <contactref element="U2" pad="14"/>
-<contactref element="L3" pad="P$2"/>
+<contactref element="L1" pad="P$2"/>
 <contactref element="R28" pad="2"/>
 <contactref element="R40" pad="2"/>
 <contactref element="C25" pad="2"/>
@@ -3427,7 +3427,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="36.26993125" y1="45.466" x2="36.26993125" y2="46.228" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$44">
-<contactref element="L6" pad="P$1"/>
+<contactref element="L3" pad="P$1"/>
 <contactref element="C22" pad="1"/>
 <contactref element="C19" pad="1"/>
 <contactref element="U11" pad="7"/>
@@ -3443,7 +3443,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="48.18506875" y1="39.86006875" x2="48.006" y2="39.681" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$52">
-<contactref element="L6" pad="P$2"/>
+<contactref element="L3" pad="P$2"/>
 <contactref element="U11" pad="5"/>
 <wire x1="40.974" y1="37.747" x2="41.002" y2="37.719" width="0.2032" layer="1"/>
 <wire x1="41.002" y1="37.719" x2="41.529" y2="37.719" width="0.2032" layer="1"/>
@@ -3490,7 +3490,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="U2" pad="1"/>
 <contactref element="U2" pad="2"/>
 <contactref element="U2" pad="3"/>
-<contactref element="L3" pad="P$1"/>
+<contactref element="L1" pad="P$1"/>
 <polygon width="0.254" layer="1" thermals="no">
 <vertex x="55.626" y="51.562"/>
 <vertex x="55.626" y="53.975"/>
@@ -4495,7 +4495,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="U8" pad="1"/>
 <contactref element="U8" pad="2"/>
 <contactref element="U8" pad="3"/>
-<contactref element="L4" pad="P$1"/>
+<contactref element="L2" pad="P$1"/>
 </signal>
 <signal name="IM880_NETWORK">
 <contactref element="Q4" pad="G"/>
