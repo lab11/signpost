@@ -15,6 +15,22 @@ pub struct MuxSPIMaster<'a> {
 impl<'a> hil::spi_master::SpiCallback for MuxSPIMaster<'a> {
     fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
         self.inflight.take().map(move |device| {
+            // write_buffer.map(move |txbuf| {
+            //     panic!("virtual cb tx {}", txbuf[0]);
+            // });
+            // match read_buffer {
+            //     Some(x) => {
+            //         panic!("virtual cb {} {} {}", x[0], x[1], x[2]);
+            //     },
+            //     None => {}
+            // }
+            // match write_buffer {
+            //     Some(x) => {
+            //         panic!("virtual cbtx {}", x[0]);
+            //     },
+            //     None => {}
+            // }
+
             device.read_write_done(write_buffer, read_buffer, len);
         });
         self.do_next_op();
@@ -54,9 +70,7 @@ impl<'a> MuxSPIMaster<'a> {
 
                     match node.operation.get() {
                         Op::Configure(cpol, cpal, rate) => {
-                            self.spi.set_clock(cpol);
-                            self.spi.set_phase(cpal);
-                            self.spi.set_rate(rate);
+
 
                             match node.chip_select {
                                 Some(x) => {
@@ -76,15 +90,25 @@ impl<'a> MuxSPIMaster<'a> {
                                 None => {}
                             }
 
+                            self.spi.set_clock(cpol);
+                            self.spi.set_phase(cpal);
+                            self.spi.set_rate(rate);
+
 
                         },
                           //  self.i2c.write(node.addr, buf, len),
                         Op::ReadWriteBytes(len) => {
+
+
                             node.txbuffer.take().map(|txbuffer| {
                                 node.rxbuffer.take().map(|rxbuffer| {
                                     self.spi.read_write_bytes(txbuffer, rxbuffer, len);
                                 });
                             });
+
+                            // Only async operations want to block by setting the devices
+                            // as inflight.
+                            self.inflight.replace(node);
                         },
                         // Op::Read(len) => self.i2c.read(node.addr, buf, len),
                         // Op::WriteRead(wlen, rlen) => {
@@ -94,7 +118,7 @@ impl<'a> MuxSPIMaster<'a> {
                     }
                 // });
                 node.operation.set(Op::Idle);
-                self.inflight.replace(node);
+                // self.inflight.replace(node);
             });
         }
     }
