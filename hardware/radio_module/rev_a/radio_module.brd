@@ -1023,7 +1023,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Logos for PCBs.</description>
 <packages>
 <package name="UCB_CAL_100MIL">
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="1.55105" y="0.065025"/>
 <vertex x="1.55105" y="0.348234375"/>
 <vertex x="1.52996875" y="0.349503125"/>
@@ -1084,7 +1084,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="1.516253125" y="0.066803125"/>
 <vertex x="1.550796875" y="0.065025"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="2.72529375" y="2.052065625"/>
 <vertex x="2.72529375" y="1.713484375"/>
 <vertex x="2.7456125" y="1.75056875"/>
@@ -1143,7 +1143,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="2.7385" y="2.06730625"/>
 <vertex x="2.7250375" y="2.0533375"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="2.72529375" y="2.052065625"/>
 <vertex x="2.6932875" y="2.018790625"/>
 <vertex x="2.64985625" y="1.969515625"/>
@@ -1277,7 +1277,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="2.7250375" y="1.713484375"/>
 <vertex x="2.7250375" y="2.052065625"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="2.72529375" y="0.60045625"/>
 <vertex x="2.72529375" y="0.446025"/>
 <vertex x="2.74993125" y="0.443484375"/>
@@ -1303,7 +1303,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="2.7440875" y="0.5842"/>
 <vertex x="2.7258" y="0.600203125"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="2.72529375" y="0.14401875"/>
 <vertex x="2.72529375" y="0.35051875"/>
 <vertex x="2.6724625" y="0.328421875"/>
@@ -1348,7 +1348,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="2.68008125" y="0.12573125"/>
 <vertex x="2.7258" y="0.14401875"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="1.55105" y="0.593090625"/>
 <vertex x="1.55105" y="0.74726875"/>
 <vertex x="1.548765625" y="0.743965625"/>
@@ -1497,7 +1497,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="1.52438125" y="0.5707375"/>
 <vertex x="1.5502875" y="0.593090625"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="1.55105" y="2.543809375"/>
 <vertex x="1.55105" y="2.423159375"/>
 <vertex x="1.56095625" y="2.42138125"/>
@@ -1522,7 +1522,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <vertex x="1.554353125" y="2.543809375"/>
 <vertex x="1.55130625" y="2.54355625"/>
 </polygon>
-<polygon width="0" layer="51">
+<polygon width="0" layer="21">
 <vertex x="1.55105" y="2.00380625"/>
 <vertex x="1.55105" y="2.179065625"/>
 <vertex x="1.5137125" y="2.155953125"/>
