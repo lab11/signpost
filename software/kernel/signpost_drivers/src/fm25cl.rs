@@ -27,6 +27,7 @@ enum State {
 
     /// Simple read states
     ReadStatus,
+    WriteEnable,
     WriteMemory,
     // ReadShutdown,
     // ReadMemory(TakeCell<&'static mut [u8]>),
@@ -59,7 +60,7 @@ pub trait FM25CLClient {
     // fn charge(&self, charge: u16);
     fn status(&self, status: u8);
     fn read(&self, data: &'static mut [u8]);
-    fn done(&self);
+    fn done(&self, buffer: &'static mut [u8]);
 
 
 
@@ -71,7 +72,7 @@ pub trait FM25CLClient {
 // }
 
 pub struct FM25CL<'a> {
-    spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
+    spi: &'a hil::spi::SPIMasterDevice,
     // interrupt_pin: Option<&'a gpio::GPIOPin>,
     state: Cell<State>,
     txbuffer: TakeCell<&'static mut [u8]>,
@@ -82,7 +83,7 @@ pub struct FM25CL<'a> {
 }
 
 impl<'a> FM25CL<'a> {
-    pub fn new(spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
+    pub fn new(spi: &'a hil::spi::SPIMasterDevice,
                // interrupt_pin: Option<&'a gpio::GPIOPin>,
                txbuffer: &'static mut [u8],
                rxbuffer: &'static mut [u8])
@@ -117,77 +118,91 @@ impl<'a> FM25CL<'a> {
 
     /// Setup SPI for this chip
     fn configure_spi(&self) {
-        self.spi.configure(hil::spi_master::ClockPolarity::IdleLow, hil::spi_master::ClockPhase::SampleLeading, SPI_SPEED);
+        self.spi.configure(hil::spi::ClockPolarity::IdleLow, hil::spi::ClockPhase::SampleLeading, SPI_SPEED);
         // self.spi.set_rate(SPI_SPEED);
         // // CPOL = 0
-        // self.spi.set_clock(hil::spi_master::ClockPolarity::IdleLow);
+        // self.spi.set_clock(hil::spi::ClockPolarity::IdleLow);
         // // CPAL = 0
-        // self.spi.set_phase(hil::spi_master::ClockPhase::SampleLeading);
+        // self.spi.set_phase(hil::spi::ClockPhase::SampleLeading);
         // // Chip select
         // self.spi.set_chip_select(0);
     }
 
-    fn read_status(&self) {
+    pub fn read_status(&self) {
         self.configure_spi();
 
         self.txbuffer.take().map(|txbuffer| {
             self.rxbuffer.take().map(move |rxbuffer| {
                 txbuffer[0] = Opcodes::ReadStatusRegister as u8;
 
-                self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), 2);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
                 self.state.set(State::ReadStatus);
             });
         });
     }
 
-    fn write(&self, address: u16, buffer: &'static mut [u8], len: u16) {
+    pub fn write(&self, address: u16, buffer: &'static mut [u8], len: u16) {
         self.configure_spi();
 
-        self.txbuffer.take().map(|txbuffer| {
+        self.txbuffer.take().map(move |txbuffer| {
+
+            // txbuffer[0] = Opcodes::WriteEnable as u8;
+            // txbuffer[1] = Opcodes::WriteMemory as u8;
+            // txbuffer[2] = ((address >> 8) & 0xFF) as u8;
+            // txbuffer[3] = (address & 0xFF) as u8;
+
+            // for i in 0..len {
+            //     txbuffer[(i+4) as usize] = buffer[i as usize];
+            // }
+
+            // self.spi.read_write_bytes(Some(txbuffer), None, (len+4) as usize);
+            // self.state.set(State::WriteMemory);
+
+
+            // panic!("write");
+
 
             txbuffer[0] = Opcodes::WriteEnable as u8;
-            txbuffer[1] = Opcodes::WriteMemory as u8;
-            txbuffer[2] = ((address >> 8) & 0xFF) as u8;
-            txbuffer[3] = (address & 0xFF) as u8;
+            // txbuffer[1] = Opcodes::WriteMemory as u8;
+            // txbuffer[2] = 0;
+            // txbuffer[3] = ((address >> 8) & 0xFF) as u8;
+            // txbuffer[4] = (address & 0xFF) as u8;
 
-            for i in 0..len {
-                txbuffer[(i+4) as usize] = buffer[i as usize];
-            }
+            // for i in 0..len {
+            //     txbuffer[(i+5) as usize] = buffer[i as usize];
+            // }
 
-            // self.rxbuffer.take().map(|rxbuffer| {
+            // Need to save the buffer passed to us so we can give it back.
+            self.client_buffer.replace(buffer);
 
-            //     txbuffer[0] = Opcodes::ReadStatusRegister;
+            self.state.set(State::WriteEnable);
 
-            self.spi.read_write_bytes(Some(txbuffer), None, (len+4) as usize);
+            // self.spi.read_write_bytes(Some(txbuffer), None, (len+5) as usize);
+            self.spi.read_write_bytes(txbuffer, None, 1);
 
-                // self.i2c.enable();
-
-                // // Address pointer automatically resets to the status register.
-                // self.i2c.read(buffer, 1);
-            self.state.set(State::WriteMemory);
-            // });
         });
     }
 
-    fn read(&self, address: u16, buffer: &'static mut [u8], len: u16) {
+    pub fn read(&self, address: u16, buffer: &'static mut [u8], len: u16) {
         self.configure_spi();
 
         // self.client.map(|client| {
-            self.txbuffer.take().map(|txbuffer| {
-                self.rxbuffer.take().map(move |rxbuffer| {
-                    txbuffer[0] = Opcodes::ReadMemory as u8;
-                    txbuffer[1] = ((address >> 8) & 0xFF) as u8;
-                    txbuffer[2] = (address & 0xFF) as u8;
+        self.txbuffer.take().map(|txbuffer| {
+            self.rxbuffer.take().map(move |rxbuffer| {
+                txbuffer[0] = Opcodes::ReadMemory as u8;
+                txbuffer[1] = 0;
+                txbuffer[2] = ((address >> 8) & 0xFF) as u8;
+                txbuffer[3] = (address & 0xFF) as u8;
 
-                    // Save the user buffer for later
-                    // client.buffer.put(Some(buffer));
-                    self.client_buffer.put(Some(buffer));
+                // Save the user buffer for later
+                // client.buffer.put(Some(buffer));
+                self.client_buffer.put(Some(buffer));
 
-                    self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), (len+3) as usize);
-                    // self.state.set(State::ReadMemory(TakeCell::new(buffer)));
-                    self.state.set(State::ReadMemory);
-                });
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), (len+4) as usize);
+                // self.state.set(State::ReadMemory(TakeCell::new(buffer)));
+                self.state.set(State::ReadMemory);
             });
+        });
         // });
     }
 
@@ -274,10 +289,30 @@ impl<'a> FM25CL<'a> {
 
 }
 
-impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
-    fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
+impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
+    fn read_write_done(&self, write_buffer: &'static mut [u8], read_buffer: Option<&'static mut [u8]>, len: usize) {
+        // if len == 9 {
+        //     match self.state.get() {
+        //         State::ReadStatus => {
+        //             panic!("back in fm driver ReadStatus");
+        //         },
+        //         State::WriteMemory => {
+        //             panic!("back in fm driver WriteMemory");
+        //         },
+        //         State::ReadMemory => {
+        //             panic!("back in fm driver ReadMemory");
+        //         },
+        //         State::Idle => {
+        //             panic!("back in fm driver Idle");
+        //         },
+        //         // _ => {
+        //         //     panic!("back in fm driver null");
+        //         // }
+        //     }
+        // }
         match self.state.get() {
             State::ReadStatus => {
+                self.state.set(State::Idle);
                 // let status = buffer[0];
                 // let uvlock = (status & 0x01) > 0;
                 // let vbata = (status & 0x02) > 0;
@@ -289,10 +324,21 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
                 //     0 => ChipModel::LTC2942,
                 //     _ => ChipModel::LTC2941
                 // };
+                // write_buffer.map(|write_buffer| {
+                    self.txbuffer.replace(write_buffer);
+                // });
+
                 read_buffer.map(|read_buffer| {
+
+                    let status = read_buffer[1];
+
+                    self.rxbuffer.replace(read_buffer);
+
+
+
                     self.client.map(|client| {
                         // client.client.status(read_buffer[1]);
-                        client.status(read_buffer[1]);
+                        client.status(status);
                     });
                 });
                 // self.client.map(|client| {
@@ -301,21 +347,104 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
 
                 // self.buffer.replace(buffer);
                 // self.i2c.disable();
-                self.state.set(State::Idle);
+
             },
-            State::WriteMemory => {
+            State::WriteEnable => {
+                self.state.set(State::WriteMemory);
+                // panic!("not sure??");
+                // write_buffer.map(|write_buffer| {
+                //     self.txbuffer.replace(write_buffer);
+                // });
+
+                // read_buffer.map(|read_buffer| {
+                //     self.rxbuffer.replace(read_buffer);
+                // });
+
+                // write_buffer.map(|write_buffer| {
+                    self.client_buffer.map(move |buffer| {
+
+
+
+                        write_buffer[0] = Opcodes::WriteMemory as u8;
+                        write_buffer[1] = 0;
+                        // write_buffer[2] = ((address >> 8) & 0xFF) as u8;
+                        // write_buffer[3] = (address & 0xFF) as u8;
+                        write_buffer[2] = 0;
+                        write_buffer[3] = 8;
+
+                        // for i in 0..len {
+                        for i in 0..4 {
+                            write_buffer[(i+4) as usize] = buffer[i as usize];
+                        }
+
+                        // Need to save the buffer passed to us so we can give it back.
+                        // self.client_buffer.replace(buffer);
+
+                        // self.state.set(State::WriteEnable);
+
+                        self.spi.read_write_bytes(write_buffer, read_buffer, 8);
+                    });
+                // });
+
+
+
+
                 // TODO: Actually calculate charge!!!!!
                 // let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
-                self.client.map(|client| {
+                // self.client.map(|client| {
                     // client.client.done();
-                    client.done();
-                });
+                    // client.done();
+                // self.client_buffer.take().map(move |buffer| {
+
+                //     // for i in 0..(len-3) {
+                //     //     buffer[i] = read_buffer[3+i];
+                //     // }
+
+                //     self.client.map(move |client| {
+                //         client.done(buffer);
+                //     });
+                // });
+                // });
 
                 // self.buffer.replace(buffer);
                 // self.i2c.disable();
+
+            },
+            State::WriteMemory => {
                 self.state.set(State::Idle);
+                // panic!("not sure??");
+                // write_buffer.map(|write_buffer| {
+                    self.txbuffer.replace(write_buffer);
+                // });
+
+                read_buffer.map(|read_buffer| {
+                    self.rxbuffer.replace(read_buffer);
+                });
+
+
+                // TODO: Actually calculate charge!!!!!
+                // let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
+                // self.client.map(|client| {
+                    // client.client.done();
+                    // client.done();
+                self.client_buffer.take().map(move |buffer| {
+
+                    // for i in 0..(len-3) {
+                    //     buffer[i] = read_buffer[3+i];
+                    // }
+
+                    self.client.map(move |client| {
+                        client.done(buffer);
+                    });
+                });
+                // });
+
+                // self.buffer.replace(buffer);
+                // self.i2c.disable();
+
             },
             State::ReadMemory => {
+                self.state.set(State::Idle);
 
                 // read_buffer.map(|read_buffer| {
                 //     self.client.map(move |client| {
@@ -353,7 +482,7 @@ impl<'a> hil::spi_master::SpiCallback for FM25CL<'a> {
 
                 // self.buffer.replace(buffer);
                 // self.i2c.disable();
-                self.state.set(State::Idle);
+
             },
             // State::ReadShutdown => {
             //     // Set the shutdown pin to 1

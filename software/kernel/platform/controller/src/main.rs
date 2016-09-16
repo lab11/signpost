@@ -22,9 +22,11 @@ use drivers::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use drivers::virtual_i2c::I2CDevice;
 use drivers::virtual_i2c::MuxI2C;
 use hil::Controller;
-use hil::spi_master::SpiMaster;
+use hil::spi::SpiMaster;
 use main::{Chip, MPU, Platform};
 use sam4l::usart;
+
+use common::take_cell::TakeCell;
 
 #[macro_use]
 pub mod io;
@@ -125,7 +127,8 @@ unsafe fn set_pin_primary_functions() {
     PC[00].configure(Some(A)); // SPI NPCS2
     PC[01].configure(Some(A)); // SPI NPCS3 (RF233)
     PC[06].configure(Some(A)); // SPI CLK
-    PC[04].configure(Some(A)); // SPI MISO
+    // PC[04].configure(Some(A)); // SPI MISO
+    PC[04].configure(None); // SPI MISO
     PC[05].configure(Some(A)); // SPI MOSI
     // GIRQ line of RF233
     PA[20].enable();
@@ -135,9 +138,19 @@ unsafe fn set_pin_primary_functions() {
     // PC14 is RSLP
     // PC15 is RRST
     PC[14].enable();
-    PC[14].disable_output();
+    // PC[14].disable_output();
+    PC[14].clear();
+    PC[14].enable_output();
+    PC[14].clear();
+
+
+
+
     PC[15].enable();
-    PC[15].disable_output();
+    // PC[15].disable_output();
+    PC[15].set();
+    PC[15].enable_output();
+    PC[15].set();
 
     // Right column: Firestorm pin name
     // Left  column: SAM4L peripheral function
@@ -175,51 +188,49 @@ unsafe fn set_pin_primary_functions() {
     PB[04].configure(Some(A));
 
     // AD0      --  ADCIFE AD6
-    PB[05].configure(Some(A));
+    // PB[05].configure(Some(A));
+    PB[05].configure(None);
+    PB[05].enable();
+    // PC[14].disable_output();
+    PB[05].disable_output();
+    PB[05].disable_pull_up();
+    PB[05].disable_pull_down();
+
+
 
 
     // BL_SEL   --  USART3 RTS
     PB[06].configure(Some(A));
-
     //          --  USART3 CTS
     PB[07].configure(Some(A));
-
     //          --  USART3 CLK
     PB[08].configure(Some(A));
-
     // PRI_RX   --  USART3 RX
     PB[09].configure(Some(A));
-
     // PRI_TX   --  USART3 TX
     PB[10].configure(Some(A));
-
     // U1_CTS   --  USART0 CTS
     PB[11].configure(Some(A));
-
     // U1_RTS   --  USART0 RTS
     PB[12].configure(Some(A));
-
     // U1_CLK   --  USART0 CLK
     PB[13].configure(Some(A));
-
     // U1_RX    --  USART0 RX
-    PB[14].configure(Some(A));
+    // PB[14].configure(Some(A));
+    PB[14].configure(Some(B));
+
+
 
     // U1_TX    --  USART0 TX
     PB[15].configure(Some(A));
-
     // STORMRTS --  USART2 RTS
     PC[07].configure(Some(B));
-
     // STORMCTS --  USART2 CTS
     PC[08].configure(Some(E));
-
     // STORMRX  --  USART2 RX
     PC[11].configure(Some(B));
-
     // STORMTX  --  USART2 TX
     PC[12].configure(Some(B));
-
     // STORMCLK --  USART2 CLK
     PA[18].configure(Some(A));
 
@@ -256,7 +267,16 @@ unsafe fn set_pin_primary_functions() {
     // PCD3     --  PARC PCDATA3
     PC[27].configure(Some(D));
     // PCD4     --  PARC PCDATA4
-    PC[28].configure(Some(D));
+    // PC[28].configure(Some(D));
+    // PC[28].configure(Some(B));  // temp MISO
+    PC[28].configure(None);  // temp MISO
+    PC[28].enable();
+    // PC[14].disable_output();
+    PC[28].disable_output();
+    PC[28].disable_pull_up();
+    PC[28].disable_pull_down();
+
+
     // PCD5     --  PARC PCDATA5
     PC[29].configure(Some(D));
     // PCD6     --  PARC PCDATA6
@@ -485,17 +505,19 @@ pub unsafe fn reset_handler() {
 
     // SPI
 
-    let mux_spi = static_init!(signpost_drivers::virtual_spi_master::MuxSPIMaster<'static>, signpost_drivers::virtual_spi_master::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
-    sam4l::spi::SPI.init(mux_spi);
+    let mux_spi = static_init!(drivers::virtual_spi::MuxSPIMaster<'static>, drivers::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
+    sam4l::spi::SPI.set_client(mux_spi);
+    sam4l::spi::SPI.init();
 
 
 
     // Setup FRAM driver
-    let fm25cl_spi = static_init!(signpost_drivers::virtual_spi_master::SPIMasterDevice, signpost_drivers::virtual_spi_master::SPIMasterDevice::new(mux_spi, None, None), 480/8);
+    let fm25cl_spi = static_init!(drivers::virtual_spi::SPIMasterDevice, drivers::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None), 448/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
         352/8);
+    fm25cl_spi.set_client(fm25cl);
 
 
     // set GPIO driver controlling remaining GPIO pins
@@ -592,6 +614,71 @@ pub unsafe fn reset_handler() {
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
+
+
+
+
+
+    struct TestFM<'a> {
+        fm: &'a signpost_drivers::fm25cl::FM25CL<'static>,
+        txtest: TakeCell<&'static mut [u8]>,
+    };
+
+    impl<'a> TestFM<'a> {
+        pub fn new(fm: &'a signpost_drivers::fm25cl::FM25CL<'static>, txtest: &'static mut [u8]) -> TestFM<'a> {
+            TestFM {
+                fm: fm,
+                txtest: TakeCell::new(txtest),
+            }
+        }
+    }
+
+    let txtest = static_init!(
+        [u8; 10],
+        [7, 0xb2, 0, 0, 0, 0, 0, 0, 0, 0],
+        10*1
+    );
+
+    let rxtest = static_init!(
+        [u8; 10],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        10*1
+    );
+
+    impl<'a> signpost_drivers::fm25cl::FM25CLClient for TestFM<'a> {
+        fn status(&self, status: u8) {
+            // panic!("status {}", status);
+            self.txtest.take().map(|txtest| {
+                // panic!("here");
+                self.fm.write(8, txtest, 4);
+            });
+
+        }
+
+        fn read(&self, data: &'static mut [u8]) {
+
+        }
+
+        fn done(&self, buffer: &'static mut [u8]) {
+            // panic!("got done");
+            self.fm.read(8, buffer, 4);
+
+        }
+    }
+
+    let testfm = static_init!(
+        TestFM,
+        TestFM::new(fm25cl, txtest),
+        96/8);
+
+    fm25cl.set_client(testfm);
+
+fm25cl.read_status();
+
+
+
+
+
 
 
     main::main(signpost_controller, &mut chip, load_processes());

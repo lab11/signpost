@@ -9,5 +9,3 @@ extern crate hil;
 
 pub mod gpio_async;
 pub mod i2c_selector;
-
-pub mod spi_master2;
