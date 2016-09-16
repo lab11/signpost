@@ -505,14 +505,14 @@ pub unsafe fn reset_handler() {
 
     // SPI
 
-    let mux_spi = static_init!(signpost_drivers::virtual_spi_master::MuxSPIMaster<'static>, signpost_drivers::virtual_spi_master::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
+    let mux_spi = static_init!(drivers::virtual_spi::MuxSPIMaster<'static>, drivers::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
     sam4l::spi::SPI.set_client(mux_spi);
     sam4l::spi::SPI.init();
 
 
 
     // Setup FRAM driver
-    let fm25cl_spi = static_init!(signpost_drivers::virtual_spi_master::SPIMasterDevice, signpost_drivers::virtual_spi_master::SPIMasterDevice::new(mux_spi, Some(2), None), 480/8);
+    let fm25cl_spi = static_init!(drivers::virtual_spi::SPIMasterDevice, drivers::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None), 448/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),

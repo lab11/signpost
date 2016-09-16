@@ -72,7 +72,7 @@ pub trait FM25CLClient {
 // }
 
 pub struct FM25CL<'a> {
-    spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
+    spi: &'a hil::spi::SPIMasterDevice,
     // interrupt_pin: Option<&'a gpio::GPIOPin>,
     state: Cell<State>,
     txbuffer: TakeCell<&'static mut [u8]>,
@@ -83,7 +83,7 @@ pub struct FM25CL<'a> {
 }
 
 impl<'a> FM25CL<'a> {
-    pub fn new(spi: &'a signpost_hil::spi_master2::SPIMasterDevice,
+    pub fn new(spi: &'a hil::spi::SPIMasterDevice,
                // interrupt_pin: Option<&'a gpio::GPIOPin>,
                txbuffer: &'static mut [u8],
                rxbuffer: &'static mut [u8])
@@ -135,7 +135,7 @@ impl<'a> FM25CL<'a> {
             self.rxbuffer.take().map(move |rxbuffer| {
                 txbuffer[0] = Opcodes::ReadStatusRegister as u8;
 
-                self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), 2);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
                 self.state.set(State::ReadStatus);
             });
         });
@@ -178,7 +178,7 @@ impl<'a> FM25CL<'a> {
             self.state.set(State::WriteEnable);
 
             // self.spi.read_write_bytes(Some(txbuffer), None, (len+5) as usize);
-            self.spi.read_write_bytes(Some(txbuffer), None, 1);
+            self.spi.read_write_bytes(txbuffer, None, 1);
 
         });
     }
@@ -198,7 +198,7 @@ impl<'a> FM25CL<'a> {
                 // client.buffer.put(Some(buffer));
                 self.client_buffer.put(Some(buffer));
 
-                self.spi.read_write_bytes(Some(txbuffer), Some(rxbuffer), (len+4) as usize);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), (len+4) as usize);
                 // self.state.set(State::ReadMemory(TakeCell::new(buffer)));
                 self.state.set(State::ReadMemory);
             });
@@ -290,7 +290,7 @@ impl<'a> FM25CL<'a> {
 }
 
 impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
-    fn read_write_done(&self, write_buffer: Option<&'static mut [u8]>, read_buffer: Option<&'static mut [u8]>, len: usize) {
+    fn read_write_done(&self, write_buffer: &'static mut [u8], read_buffer: Option<&'static mut [u8]>, len: usize) {
         // if len == 9 {
         //     match self.state.get() {
         //         State::ReadStatus => {
@@ -324,9 +324,9 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
                 //     0 => ChipModel::LTC2942,
                 //     _ => ChipModel::LTC2941
                 // };
-                write_buffer.map(|write_buffer| {
+                // write_buffer.map(|write_buffer| {
                     self.txbuffer.replace(write_buffer);
-                });
+                // });
 
                 read_buffer.map(|read_buffer| {
 
@@ -360,7 +360,7 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
                 //     self.rxbuffer.replace(read_buffer);
                 // });
 
-                write_buffer.map(|write_buffer| {
+                // write_buffer.map(|write_buffer| {
                     self.client_buffer.map(move |buffer| {
 
 
@@ -382,9 +382,9 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
 
                         // self.state.set(State::WriteEnable);
 
-                        self.spi.read_write_bytes(Some(write_buffer), read_buffer, 8);
+                        self.spi.read_write_bytes(write_buffer, read_buffer, 8);
                     });
-                });
+                // });
 
 
 
@@ -413,9 +413,9 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
             State::WriteMemory => {
                 self.state.set(State::Idle);
                 // panic!("not sure??");
-                write_buffer.map(|write_buffer| {
+                // write_buffer.map(|write_buffer| {
                     self.txbuffer.replace(write_buffer);
-                });
+                // });
 
                 read_buffer.map(|read_buffer| {
                     self.rxbuffer.replace(read_buffer);
