@@ -1984,6 +1984,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="U11" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="36.449" y="39.497" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.449" y="34.497" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="36.449" y="45.497" size="0.8128" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURDKR-ND" x="36.449" y="39.497" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R3" library="passives" package="0402_RES" value="0" x="46.99" y="44.577" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="46.99" y="44.577" size="1.778" layer="27" rot="R180" display="off"/>
@@ -2087,11 +2088,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="18.796" y="22.098" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="18.796" y="20.32" size="0.8128" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="Q5" library="fets" package="SOT23-3" value="NX3008PBK" x="5.08" y="29.591" smashed="yes" rot="R180">
-<attribute name="MOUSER" value="771-NX3008PBK,215" x="5.08" y="29.591" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NEWARK" value="74T4665" x="5.08" y="29.591" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="DIGIKEY" value="568-10499-1-ND" x="5.08" y="29.591" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="Q5" library="fets" package="SOT23-3" value="SI223DDS" x="5.08" y="29.591" smashed="yes" rot="R180">
 <attribute name="NAME" x="3.81" y="28.575" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND" x="5.08" y="29.591" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R32" library="passives" package="0402_RES" value="100k" x="6.477" y="33.274" smashed="yes" rot="R270">
 <attribute name="NAME" x="6.223" y="34.163" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -2101,11 +2100,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="5.207" y="32.385" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="5.207" y="34.29" size="0.8128" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="Q6" library="fets" package="SOT23-3" value="NX3008PBK" x="61.214" y="50.038" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="771-NX3008PBK,215" x="61.214" y="50.038" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NEWARK" value="74T4665" x="61.214" y="50.038" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="DIGIKEY" value="568-10499-1-ND" x="61.214" y="50.038" size="1.778" layer="27" rot="R270" display="off"/>
+<element name="Q6" library="fets" package="SOT23-3" value="SI223DDS" x="61.214" y="50.038" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.976" y="51.562" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND" x="61.214" y="50.038" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="R34" library="passives" package="0402_RES" value="100k" x="59.309" y="49.276" smashed="yes" rot="R270">
 <attribute name="NAME" x="58.166" y="49.022" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -2115,11 +2112,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="58.166" y="50.673" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="57.912" y="50.927" size="0.8128" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="Q7" library="fets" package="SOT23-3" value="NX3008PBK" x="22.987" y="7.366" smashed="yes">
-<attribute name="MOUSER" value="771-NX3008PBK,215" x="22.987" y="7.366" size="1.778" layer="27" display="off"/>
-<attribute name="NEWARK" value="74T4665" x="22.987" y="7.366" size="1.778" layer="27" display="off"/>
-<attribute name="DIGIKEY" value="568-10499-1-ND" x="22.987" y="7.366" size="1.778" layer="27" display="off"/>
+<element name="Q7" library="fets" package="SOT23-3" value="SI223DDS" x="22.987" y="7.366" smashed="yes">
 <attribute name="NAME" x="22.987" y="9.144" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND" x="22.987" y="7.366" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R36" library="passives" package="0402_RES" value="100k" x="22.733" y="3.683" smashed="yes">
 <attribute name="NAME" x="24.511" y="3.429" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>

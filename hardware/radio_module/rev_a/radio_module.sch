@@ -3533,7 +3533,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <connect gate="G$1" pin="XOUT32" pad="18"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURDKR-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -3965,8 +3967,8 @@ High-power, low thermal resistance package.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="NX3008PBK" prefix="Q">
-<description>MOSFET - P Channel</description>
+<deviceset name="SI223DDS" prefix="Q">
+<description>6A SOT-23 P Fet</description>
 <gates>
 <gate name="G$1" symbol="MOSFET-P" x="0" y="0"/>
 </gates>
@@ -3979,9 +3981,7 @@ High-power, low thermal resistance package.</description>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="568-10499-1-ND" constant="no"/>
-<attribute name="MOUSER" value="771-NX3008PBK,215" constant="no"/>
-<attribute name="NEWARK" value="74T4665" constant="no"/>
+<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -10253,15 +10253,15 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </part>
 <part name="R30" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R31" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="Q5" library="fets" deviceset="NX3008PBK" device=""/>
+<part name="Q5" library="fets" deviceset="SI223DDS" device=""/>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
 <part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="Q6" library="fets" deviceset="NX3008PBK" device=""/>
+<part name="Q6" library="fets" deviceset="SI223DDS" device=""/>
 <part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
-<part name="Q7" library="fets" deviceset="NX3008PBK" device=""/>
+<part name="Q7" library="fets" deviceset="SI223DDS" device=""/>
 <part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
