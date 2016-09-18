@@ -3297,8 +3297,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pin name="BOOT" x="-20.32" y="7.62" length="middle"/>
 <pin name="P17" x="20.32" y="5.08" length="middle" rot="R180"/>
 <pin name="RF" x="20.32" y="12.7" length="middle" rot="R180"/>
-<text x="-15.24" y="20.32" size="2.286" layer="104" font="vector">&gt;NAME</text>
-<text x="-5.08" y="-5.08" size="2.286" layer="104" font="vector">IM880</text>
+<text x="-15.24" y="20.32" size="2.286" layer="95" font="vector">&gt;NAME</text>
+<text x="-5.08" y="-5.08" size="2.286" layer="95" font="vector">IM880</text>
 </symbol>
 <symbol name="SAM4LC8BA">
 <wire x1="-15.24" y1="40.64" x2="15.24" y2="40.64" width="0.254" layer="94"/>
@@ -10085,6 +10085,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </library>
 </libraries>
 <attributes>
+<attribute name="AUTHOR" value="Joshua Adkins"/>
+<attribute name="REV" value="A"/>
+<attribute name="TITLE" value="Radio Module"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -10229,19 +10232,19 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </part>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
-<part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="3.333"/>
+<part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="3.32"/>
 <part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="U4" library="signpost" deviceset="LTC2941" device=""/>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="0.423"/>
+<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="0.43"/>
 <part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="U9" library="signpost" deviceset="LTC2941" device=""/>
 <part name="GND24" library="umich" deviceset="GND" device=""/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="0.016"/>
+<part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="0.015"/>
 <part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 <part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
