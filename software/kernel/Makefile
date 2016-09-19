@@ -21,6 +21,9 @@ all:
 program: all
 	sload flash tock/build/controller/kernel.sdb
 
+flash: all tock/build/controller/kernel.hex
+	JLinkExe -device ATSAM4LC8C -if swd -speed 1200 -AutoConnect 1 platform/controller/prog.jlink
+
 # program:
 # include platform/controller/Makefile.mk
 

@@ -12,7 +12,7 @@ PLATFORM_DEPS += $(BUILD_PLATFORM_DIR)/libhil.rlib $(BUILD_PLATFORM_DIR)/libdriv
 PLATFORM_DEPS += $(BUILD_PLATFORM_DIR)/libmain.rlib $(BUILD_PLATFORM_DIR)/libsignpost_drivers.rlib
 PLATFORM_DEPS += $(BUILD_PLATFORM_DIR)/libsignpost_hil.rlib
 
-all: $(BUILD_PLATFORM_DIR)/kernel.elf $(BUILD_PLATFORM_DIR)/kernel.sdb
+all: $(BUILD_PLATFORM_DIR)/kernel.elf $(BUILD_PLATFORM_DIR)/kernel.sdb $(BUILD_PLATFORM_DIR)/kernel.hex
 
 $(BUILD_PLATFORM_DIR)/libcontroller.o: $(call rwildcard,$(SRC_DIR)../../platform/controller/src,*.rs) $(BUILD_PLATFORM_DIR)/libsam4l.rlib $(PLATFORM_DEPS) | $(BUILD_PLATFORM_DIR)
 	@echo "Building $@"
@@ -24,6 +24,10 @@ $(BUILD_PLATFORM_DIR)/kernel.elf: $(BUILD_PLATFORM_DIR)/libcontroller.o | $(BUIL
 	@$(CC) $(CFLAGS) -Wl,-gc-sections $^ $(LDFLAGS) -Wl,-Map=$(BUILD_PLATFORM_DIR)/kernel.Map -o $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(BUILD_PLATFORM_DIR)/kernel_post-link.lst
 	@$(SIZE) $@
+
+$(BUILD_PLATFORM_DIR)/kernel.hex: $(BUILD_PLATFORM_DIR)/kernel.elf
+	@echo "Generating $@"
+	@$(OBJCOPY) -Oihex $^ $@
 
 $(BUILD_PLATFORM_DIR)/kernel.sdb: $(BUILD_PLATFORM_DIR)/kernel.elf
 	@tput bold ; echo "Packing SDB..." ; tput sgr0
