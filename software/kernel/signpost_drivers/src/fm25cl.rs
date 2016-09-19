@@ -9,6 +9,9 @@ use main::{AppId, AppSlice, Callback, Driver, Shared};
 pub static mut TXBUFFER: [u8; 512] = [0; 512];
 pub static mut RXBUFFER: [u8; 512] = [0; 512];
 
+pub static mut KERNEL_TXBUFFER: [u8; 512] = [0; 512];
+pub static mut KERNEL_RXBUFFER: [u8; 512] = [0; 512];
+
 const SPI_SPEED: u32 = 4000000;
 
 #[allow(dead_code)]
@@ -88,7 +91,8 @@ impl<'a> FM25CL<'a> {
             self.rxbuffer.take().map(move |rxbuffer| {
                 txbuffer[0] = Opcodes::ReadStatusRegister as u8;
 
-                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
+                // self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 4);
                 self.state.set(State::ReadStatus);
             });
         });
@@ -144,6 +148,7 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
 
                 read_buffer.map(|read_buffer| {
                     let status = read_buffer[1];
+                    // let status = read_buffer[0];
 
                     // Also replace this buffer
                     self.rxbuffer.replace(read_buffer);
@@ -188,12 +193,24 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
             State::ReadMemory => {
                 self.state.set(State::Idle);
 
+                // Replace these buffers
+                self.txbuffer.replace(write_buffer);
+                // read_buffer.map(|read_buffer| {
+                //     self.rxbuffer.replace(read_buffer);
+                // });
+
                 read_buffer.map(|read_buffer| {
                     self.client_buffer.take().map(move |buffer| {
 
+                        // panic!("read: {}", read_buffer[4]);
+
                         for i in 0..(len-4) {
-                            buffer[i] = read_buffer[4+i];
+
+                            // buffer[i] = read_buffer[i];
+                            buffer[i] = read_buffer[i+4];
                         }
+
+                        self.rxbuffer.replace(read_buffer);
 
                         self.client.map(move |client| {
                             client.read(buffer, len);
@@ -240,7 +257,7 @@ pub struct FM25CLDriver<'a> {
 }
 
 impl<'a> FM25CLDriver<'a> {
-    pub fn new(fm25: &'a FM25CL, read_buf: &'static mut [u8], write_buf: &'static mut [u8]) -> FM25CLDriver<'a> {
+    pub fn new(fm25: &'a FM25CL, write_buf: &'static mut [u8], read_buf: &'static mut [u8]) -> FM25CLDriver<'a> {
         FM25CLDriver {
             fm25cl: fm25,
             // callback: Cell::new(None),
@@ -336,6 +353,7 @@ impl<'a> FM25CLClient for FM25CLDriver<'a> {
     }
 
     fn done(&self, buffer: &'static mut [u8]) {
+        // panic!("got done");
         self.kernel_write.replace(buffer);
 
         self.app_state.map(|app_state| {
@@ -397,7 +415,7 @@ impl<'a> Driver for FM25CLDriver<'a> {
                 let appst = match self.app_state.take() {
                     None => {
                         AppState {
-                            callback: Cell::new(None),
+                            callback: Cell::new(Some(callback)),
                             write_buffer: TakeCell::empty(),
                             read_buffer: TakeCell::empty(),
                             len: 0,

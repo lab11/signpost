@@ -91,6 +91,7 @@ struct SignpostController {
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
+    fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
 }
 
 impl Platform for SignpostController {
@@ -110,6 +111,7 @@ impl Platform for SignpostController {
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
+            103 => f(Some(self.fram)),
             _ => f(None)
         }
     }
@@ -519,6 +521,12 @@ pub unsafe fn reset_handler() {
         384/8);
     fm25cl_spi.set_client(fm25cl);
 
+    let fm25cl_driver = static_init!(
+        signpost_drivers::fm25cl::FM25CLDriver<'static>,
+        signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
+        576/8);
+    fm25cl.set_client(fm25cl_driver);
+
 
     // set GPIO driver controlling remaining GPIO pins
     let gpio_pins = static_init!(
@@ -562,8 +570,9 @@ pub unsafe fn reset_handler() {
             gpio_async: gpio_async,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941driver,
+            fram: fm25cl_driver,
         },
-        192/8);
+        224/8);
 
     usart::USART3.configure(usart::USARTParams {
         // client: &console,
@@ -614,72 +623,6 @@ pub unsafe fn reset_handler() {
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
-
-
-
-
-
-    struct TestFM<'a> {
-        fm: &'a signpost_drivers::fm25cl::FM25CL<'static>,
-        txtest: TakeCell<&'static mut [u8]>,
-    };
-
-    impl<'a> TestFM<'a> {
-        pub fn new(fm: &'a signpost_drivers::fm25cl::FM25CL<'static>, txtest: &'static mut [u8]) -> TestFM<'a> {
-            TestFM {
-                fm: fm,
-                txtest: TakeCell::new(txtest),
-            }
-        }
-    }
-
-    let txtest = static_init!(
-        [u8; 10],
-        [7, 0xb2, 0, 0, 0, 0, 0, 0, 0, 0],
-        10*1
-    );
-
-    let rxtest = static_init!(
-        [u8; 10],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        10*1
-    );
-
-    impl<'a> signpost_drivers::fm25cl::FM25CLClient for TestFM<'a> {
-        fn status(&self, status: u8) {
-            panic!("status {}", status);
-            self.txtest.take().map(|txtest| {
-                // panic!("here");
-                self.fm.write(8, txtest, 4);
-            });
-
-        }
-
-        fn read(&self, data: &'static mut [u8], len: usize) {
-            panic!("read: {} {} {} {}", data[0], data[1], data[2], data[3]);
-        }
-
-        fn done(&self, buffer: &'static mut [u8]) {
-            // panic!("got done");
-            self.fm.read(8, buffer, 4);
-
-        }
-    }
-
-    let testfm = static_init!(
-        TestFM,
-        TestFM::new(fm25cl, txtest),
-        96/8);
-
-    fm25cl.set_client(testfm);
-
-fm25cl.read_status();
-
-
-
-
-
-
 
     main::main(signpost_controller, &mut chip, load_processes());
 }
