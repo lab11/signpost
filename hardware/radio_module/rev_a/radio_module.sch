@@ -10272,8 +10272,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="TP1" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP2" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP3" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP4" library="testpad" deviceset="TP" device="B1,27"/>
-<part name="TP5" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP6" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP7" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP8" library="testpad" deviceset="TP" device="B1,27"/>
@@ -10392,12 +10390,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </instance>
 <instance part="TP3" gate="G$1" x="129.54" y="116.84" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="130.81" y="118.11" size="1.778" layer="97" rot="R90"/>
-</instance>
-<instance part="TP4" gate="G$1" x="177.8" y="93.98" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="179.07" y="95.25" size="1.778" layer="97" rot="R90"/>
-</instance>
-<instance part="TP5" gate="G$1" x="177.8" y="96.52" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="179.07" y="97.79" size="1.778" layer="97" rot="R90"/>
 </instance>
 <instance part="TP6" gate="G$1" x="177.8" y="124.46" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="179.07" y="125.73" size="1.778" layer="97" rot="R90"/>
@@ -10769,11 +10761,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <net name="USB_D-" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="PA25"/>
-<wire x1="175.26" y1="96.52" x2="180.34" y2="96.52" width="0.1524" layer="91"/>
 <label x="185.42" y="96.52" size="1.27" layer="95" xref="yes"/>
-<pinref part="TP5" gate="G$1" pin="TP"/>
-<wire x1="180.34" y1="96.52" x2="185.42" y2="96.52" width="0.1524" layer="91"/>
-<junction x="180.34" y="96.52"/>
+<wire x1="175.26" y1="96.52" x2="185.42" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="USB_D-"/>
@@ -10784,11 +10773,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <net name="USB_D+" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="PA26"/>
-<wire x1="175.26" y1="93.98" x2="180.34" y2="93.98" width="0.1524" layer="91"/>
 <label x="185.42" y="93.98" size="1.27" layer="95" xref="yes"/>
-<pinref part="TP4" gate="G$1" pin="TP"/>
-<wire x1="180.34" y1="93.98" x2="185.42" y2="93.98" width="0.1524" layer="91"/>
-<junction x="180.34" y="93.98"/>
+<wire x1="175.26" y1="93.98" x2="185.42" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="USB_D+"/>
