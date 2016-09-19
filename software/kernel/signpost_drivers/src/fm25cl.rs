@@ -1,7 +1,5 @@
-
 use common::take_cell::TakeCell;
 use core::cell::Cell;
-// use hil::gpio;
 use hil;
 use signpost_hil;
 use main::{AppId, AppSlice, Callback, Driver, Shared};
@@ -91,8 +89,10 @@ impl<'a> FM25CL<'a> {
             self.rxbuffer.take().map(move |rxbuffer| {
                 txbuffer[0] = Opcodes::ReadStatusRegister as u8;
 
-                // self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
+                // Use 4 bytes instead of the required 2 because that works better
+                // with DMA for some reason.
                 self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 4);
+                // self.spi.read_write_bytes(txbuffer, Some(rxbuffer), 2);
                 self.state.set(State::ReadStatus);
             });
         });
@@ -148,7 +148,6 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
 
                 read_buffer.map(|read_buffer| {
                     let status = read_buffer[1];
-                    // let status = read_buffer[0];
 
                     // Also replace this buffer
                     self.rxbuffer.replace(read_buffer);
@@ -193,20 +192,12 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
             State::ReadMemory => {
                 self.state.set(State::Idle);
 
-                // Replace these buffers
+                // Replace the TX buffer
                 self.txbuffer.replace(write_buffer);
-                // read_buffer.map(|read_buffer| {
-                //     self.rxbuffer.replace(read_buffer);
-                // });
 
                 read_buffer.map(|read_buffer| {
                     self.client_buffer.take().map(move |buffer| {
-
-                        // panic!("read: {}", read_buffer[4]);
-
                         for i in 0..(len-4) {
-
-                            // buffer[i] = read_buffer[i];
                             buffer[i] = read_buffer[i+4];
                         }
 
@@ -222,22 +213,6 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
         }
     }
 }
-
-// impl<'a> gpio::Client for LTC2941<'a> {
-//     fn fired(&self, _: usize) {
-//         self.client.map(|client| {
-//             client.interrupt();
-//         });
-//         // self.buffer.take().map(|buffer| {
-//         //     // turn on i2c to send commands
-//         //     self.i2c.enable();
-
-//         //     // Just issuing a read to the selector reads its control register.
-//         //     self.i2c.read(buffer, 1);
-//         //     self.state.set(State::SelectStatus);
-//         // });
-//     }
-// }
 
 /// Holds buffers and whatnot that the application has passed us.
 struct AppState {
@@ -260,7 +235,6 @@ impl<'a> FM25CLDriver<'a> {
     pub fn new(fm25: &'a FM25CL, write_buf: &'static mut [u8], read_buf: &'static mut [u8]) -> FM25CLDriver<'a> {
         FM25CLDriver {
             fm25cl: fm25,
-            // callback: Cell::new(None),
             app_state: TakeCell::empty(),
             kernel_read: TakeCell::new(read_buf),
             kernel_write: TakeCell::new(write_buf),
@@ -269,36 +243,6 @@ impl<'a> FM25CLDriver<'a> {
 }
 
 impl<'a> FM25CLClient for FM25CLDriver<'a> {
-    // fn interrupt(&self) {
-    //     self.callback.get().map(|mut cb| {
-    //         cb.schedule(0, 0, 0);
-    //     });
-    // }
-
-    // fn status(&self, undervolt_lockout: bool, vbat_alert: bool, charge_alert_low: bool, charge_alert_high: bool, accumulated_charge_overflow: bool, chip: ChipModel) {
-    //     self.callback.get().map(|mut cb| {
-    //         let ret = (undervolt_lockout as usize) | ((vbat_alert as usize) << 1) | ((charge_alert_low as usize) << 2) | ((charge_alert_high as usize) << 3) | ((accumulated_charge_overflow as usize) << 4);
-    //         cb.schedule(1, ret, chip as usize);
-    //     });
-    // }
-
-    // fn charge(&self, charge: u16) {
-    //     self.callback.get().map(|mut cb| {
-    //         cb.schedule(2, charge as usize, 0);
-    //     });
-    // }
-
-    // fn done(&self) {
-    //     self.app_state.map(|app_state| {
-    //         app_state.callback.get().map(|mut cb| {
-    //             cb.schedule(3, 0, 0);
-    //         });
-    //     });
-    // }
-
-
-
-
     fn status(&self, status: u8) {
         self.app_state.map(|app_state| {
             app_state.callback.get().map(|mut cb| {
@@ -310,11 +254,6 @@ impl<'a> FM25CLClient for FM25CLDriver<'a> {
     fn read(&self, data: &'static mut [u8], len: usize) {
         self.app_state.map(|app_state| {
             app_state.read_buffer.map(move |read_buffer| {
-                // let src = data;
-                // let dest = app_state.read_buffer.as_mut().unwrap();
-                // let dest = read_buffer.unwrap();
-
-                // let d = &mut dest.as_mut()[0..len];
                 let d = &mut read_buffer.as_mut()[0..(len as usize)];
                 for (i, c) in data[0..len].iter().enumerate() {
                     d[i] = *c;
@@ -322,38 +261,14 @@ impl<'a> FM25CLClient for FM25CLDriver<'a> {
 
                 self.kernel_read.replace(data);
             });
-            // if !app_state.read_buffer.is_none() {
-            //     let src = data;
-            //     // let dest = app_state.read_buffer.as_mut().unwrap();
-            //     let dest = app_state.read_buffer.take().unwrap();
-
-            //     let d = &mut dest.as_mut()[0..len];
-            //     for (i, c) in src[0..len].iter().enumerate() {
-            //         d[i] = *c;
-            //     }
-            // }
-
-
-
-
-
-            // app_state.read_buffer.map(|read_buffer| {
-            //     // TODO: check appslice bounds
-            //     for i in 0..len {
-            //         read_buffer[i] = data[i];
-            //     }
-
-
 
             app_state.callback.get().map(|mut cb| {
                 cb.schedule(1, len, 0);
             });
-            // });
         });
     }
 
     fn done(&self, buffer: &'static mut [u8]) {
-        // panic!("got done");
         self.kernel_write.replace(buffer);
 
         self.app_state.map(|app_state| {
@@ -463,9 +378,6 @@ impl<'a> Driver for FM25CLDriver<'a> {
                     app_state.write_buffer.map(|write_buffer| {
                         self.kernel_write.take().map(|kernel_write| {
                             // TODO: check bounds
-                            // for i in 0..len {
-                            //     kernel_write[i] = write_buffer[i];
-                            // }
                             let d = &mut write_buffer.as_mut()[0..len];
                             for (i, c) in kernel_write[0..len].iter_mut().enumerate() {
                                 *c = d[i];
