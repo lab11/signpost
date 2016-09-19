@@ -56,7 +56,7 @@
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="10" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
@@ -644,6 +644,40 @@ DATA</text>
 <text x="218.694" y="207.772" size="1.016" layer="21" font="vector" ratio="12" align="center-left">RevB
 2016-09-12</text>
 <hole x="44.4246" y="146.0754" drill="28.575"/>
+<text x="127.508" y="188.214" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">HUB
+CFG</text>
+<text x="131.318" y="188.214" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">SUSP
+STAT</text>
+<text x="127.508" y="180.594" size="1.016" layer="21" font="vector" ratio="20" rot="R180" align="bottom-center">HUB
+PORT
+PWR</text>
+<text x="131.318" y="180.594" size="1.016" layer="21" font="vector" ratio="20" rot="R180" align="bottom-center">HUB
+PORT
+DIS</text>
+<text x="132.588" y="342.138" size="1.016" layer="21" font="vector" ratio="20" rot="R180" align="bottom-center">!PWR
+!ON1</text>
+<text x="129.286" y="348.996" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!OVR
+!CUR1</text>
+<text x="99.06" y="323.342" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!OVR
+!CUR2</text>
+<text x="111.252" y="307.34" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!PWR
+!ON2</text>
+<text x="68.58" y="280.67" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!PWR
+!ON3</text>
+<text x="42.164" y="284.226" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!OVR
+!CUR3</text>
+<text x="53.594" y="97.79" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!PWR
+!ON4</text>
+<text x="11.176" y="91.44" size="1.016" layer="21" font="vector" ratio="20" rot="R180" align="bottom-center">!OVR
+!CUR4</text>
+<text x="142.748" y="100.584" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!OVR
+!CUR6</text>
+<text x="139.192" y="103.886" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!PWR
+!ON6</text>
+<text x="117.856" y="168.91" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">!OVR
+!CUR7</text>
+<text x="117.856" y="161.544" size="1.016" layer="21" font="vector" ratio="20" rot="R180" align="bottom-center">!PWR
+!ON7</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -2299,14 +2333,20 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="155.702" y="53.086" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="LOGO1" library="logos" package="UMICH_SOLID_1000MIL" value="UMICH_SOLID_GIANT" x="109.347" y="16.383"/>
-<element name="TP28" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="127.508" y="186.436">
+<element name="TP28" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="127.508" y="186.436" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="127.508" y="186.436" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="127.508" y="191.262" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="127.508" y="183.896" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP29" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="127.508" y="182.372">
+<element name="TP29" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="127.508" y="182.372" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="127.508" y="182.372" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="127.508" y="183.896" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="127.508" y="179.832" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP30" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="131.318" y="182.372">
+<element name="TP30" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="131.318" y="182.372" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="131.318" y="182.372" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="131.318" y="183.896" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="131.318" y="179.832" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="TP1001" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="89.662" y="314.706">
 <attribute name="DIGIKEY" value="5001K-ND" x="89.662" y="314.706" size="1.778" layer="27" display="off"/>
@@ -2487,16 +2527,20 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="TP32" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="132.588" y="344.17">
 <attribute name="DIGIKEY" value="5001K-ND" x="132.588" y="344.17" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
 </element>
-<element name="TP33" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="129.286" y="347.472">
+<element name="TP33" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="129.286" y="347.472" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="129.286" y="347.472" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="129.286" y="345.694" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="129.286" y="344.932" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="TP34" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="109.728" y="305.816" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="109.728" y="305.816" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="NAME" x="112.014" y="304.292" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="109.728" y="303.276" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP35" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="99.06" y="321.818">
+<element name="TP35" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="99.06" y="321.818" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="99.06" y="321.818" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="100.33" y="320.294" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="99.06" y="319.278" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="TP36" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="65.024" y="282.194" rot="R180">
 <attribute name="DIGIKEY" value="5001K-ND" x="65.024" y="282.194" size="1.27" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
@@ -2507,23 +2551,35 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="TP38" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.038" y="99.314">
 <attribute name="DIGIKEY" value="5001K-ND" x="45.212" y="99.314" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
 </element>
-<element name="TP39" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="11.176" y="93.472" rot="R180">
+<element name="TP39" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="11.176" y="93.472" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="5001K-ND" x="20.828" y="93.472" size="1.27" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="11.176" y="88.392" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="11.176" y="96.012" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="TP40" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="139.192" y="102.108">
+<element name="TP40" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="139.192" y="102.108" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="124.714" y="102.108" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="139.192" y="107.188" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="139.192" y="99.568" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP41" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="142.494" y="98.806">
+<element name="TP41" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="142.494" y="98.806" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="123.19" y="98.806" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="142.748" y="103.886" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="142.494" y="96.266" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP42" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="117.856" y="163.576" rot="R180">
+<element name="TP42" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="117.856" y="163.576" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="5001K-ND" x="141.986" y="163.576" size="1.27" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="117.856" y="158.496" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="117.856" y="166.116" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="TP43" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="117.856" y="167.132">
+<element name="TP43" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="117.856" y="167.132" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="88.9" y="167.132" size="1.27" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="117.856" y="172.212" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="117.856" y="164.592" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP31" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="131.318" y="186.436">
+<element name="TP31" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="131.318" y="186.436" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="131.318" y="186.436" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="131.318" y="191.262" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="131.318" y="183.896" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="TP10" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="136.398" y="273.304">
 <attribute name="DIGIKEY" value="5001K-ND" x="136.398" y="273.304" size="1.778" layer="27" display="off"/>
@@ -4157,9 +4213,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="137.922" y="177.673" extent="1-16" drill="0.6"/>
 <via x="139.827" y="175.768" extent="1-16" drill="0.6"/>
 <wire x1="137.922" y1="177.673" x2="139.827" y2="175.768" width="0.254" layer="16"/>
-<via x="128.452246875" y="178.564640625" extent="1-16" drill="0.6"/>
-<via x="130.06869375" y="176.948196875" extent="1-16" drill="0.6"/>
-<wire x1="128.452246875" y1="178.564640625" x2="130.06869375" y2="176.948196875" width="0.254" layer="16"/>
+<via x="134.294246875" y="184.406640625" extent="1-16" drill="0.6"/>
+<via x="135.91069375" y="182.790196875" extent="1-16" drill="0.6"/>
+<wire x1="134.294246875" y1="184.406640625" x2="135.91069375" y2="182.790196875" width="0.254" layer="16"/>
 <via x="154.686" y="155.067" extent="1-16" drill="0.6"/>
 <via x="156.083" y="153.67" extent="1-16" drill="0.6"/>
 <wire x1="156.083" y1="153.67" x2="154.686" y2="155.067" width="0.254" layer="16"/>
@@ -4234,9 +4290,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="132.715" y="164.211" extent="1-16" drill="0.6"/>
 <wire x1="132.715" y1="164.211" x2="132.715" y2="166.497" width="0.254" layer="16"/>
 <wire x1="130.683" y1="167.386" x2="128.397" y2="167.386" width="0.254" layer="16"/>
-<via x="115.57" y="172.339" extent="1-16" drill="0.6"/>
-<via x="115.57" y="170.053" extent="1-16" drill="0.6"/>
-<wire x1="115.57" y1="172.339" x2="115.57" y2="170.053" width="0.254" layer="16"/>
+<via x="115.062" y="172.339" extent="1-16" drill="0.6"/>
+<via x="115.062" y="170.053" extent="1-16" drill="0.6"/>
+<wire x1="115.062" y1="172.339" x2="115.062" y2="170.053" width="0.254" layer="16"/>
 <via x="104.068246875" y="115.826640625" extent="1-16" drill="0.6"/>
 <via x="106.354246875" y="115.826640625" extent="1-16" drill="0.6"/>
 <wire x1="106.354246875" y1="115.826640625" x2="104.068246875" y2="115.826640625" width="0.254" layer="16"/>
@@ -4367,9 +4423,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="116.078" y="334.899" extent="1-16" drill="0.6"/>
 <via x="110.744" y="334.899" extent="1-16" drill="0.6"/>
 <wire x1="121.92" y1="338.963" x2="121.92" y2="334.899" width="0.254" layer="16"/>
-<via x="128.127590625" y="344.845934375" extent="1-16" drill="0.6"/>
-<via x="129.7440375" y="343.2294875" extent="1-16" drill="0.6"/>
-<wire x1="129.7440375" y1="343.2294875" x2="128.127590625" y2="344.845934375" width="0.254" layer="16"/>
+<via x="127.365590625" y="344.083934375" extent="1-16" drill="0.6"/>
+<via x="128.9820375" y="342.4674875" extent="1-16" drill="0.6"/>
+<wire x1="128.9820375" y1="342.4674875" x2="127.365590625" y2="344.083934375" width="0.254" layer="16"/>
 <via x="138.684" y="347.853" extent="1-16" drill="0.6"/>
 <via x="138.684" y="350.139" extent="1-16" drill="0.6"/>
 <wire x1="138.684" y1="350.139" x2="138.684" y2="347.853" width="0.254" layer="16"/>
@@ -8242,10 +8298,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="141.224" y1="270.51" x2="140.716" y2="270.002" width="0.254" layer="1"/>
 <wire x1="141.224" y1="270.51" x2="140.716" y2="271.018" width="0.254" layer="1"/>
 <wire x1="125.222" y1="172.339" x2="125.222" y2="176.276" width="0.254" layer="16"/>
-<wire x1="125.222" y1="176.276" x2="125.73" y2="176.784" width="0.254" layer="16"/>
-<via x="125.73" y="176.784" extent="1-16" drill="0.6"/>
-<wire x1="125.73" y1="176.784" x2="125.73" y2="179.324" width="0.254" layer="1"/>
-<wire x1="125.73" y1="179.324" x2="122.174" y2="182.88" width="0.254" layer="1"/>
+<via x="125.222" y="176.276" extent="1-16" drill="0.6"/>
+<wire x1="125.222" y1="176.276" x2="125.222" y2="179.832" width="0.254" layer="1"/>
+<wire x1="125.222" y1="179.832" x2="122.174" y2="182.88" width="0.254" layer="1"/>
 <wire x1="122.174" y1="182.88" x2="122.174" y2="184.531" width="0.254" layer="1"/>
 <via x="122.174" y="184.531" extent="1-16" drill="0.6"/>
 <wire x1="121.666" y1="185.039" x2="121.666" y2="190.246" width="0.254" layer="16"/>
