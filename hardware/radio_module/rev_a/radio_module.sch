@@ -10284,6 +10284,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="TP14" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
 <part name="TP17" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL"/>
+<part name="GND29" library="umich" deviceset="GND" device=""/>
+<part name="GND30" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11794,6 +11796,7 @@ to make Normally on.</text>
 <instance part="JP1" gate="G$1" x="81.28" y="76.2" rot="R90"/>
 <instance part="C20" gate="G$1" x="99.06" y="132.08"/>
 <instance part="U10" gate="G$1" x="40.64" y="96.52" rot="MR0"/>
+<instance part="GND29" gate="1" x="210.82" y="96.52"/>
 </instances>
 <busses>
 </busses>
@@ -11948,6 +11951,11 @@ to make Normally on.</text>
 <pinref part="GND25" gate="1" pin="GND"/>
 <wire x1="172.72" y1="147.32" x2="172.72" y2="144.78" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="P1" gate="G$1" pin="P$2"/>
+<pinref part="GND29" gate="1" pin="GND"/>
+<wire x1="210.82" y1="101.6" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -11969,14 +11977,6 @@ to make Normally on.</text>
 <pinref part="U12" gate="G$1" pin="ANT"/>
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="175.26" y1="99.06" x2="187.96" y2="99.06" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="195.58" y1="99.06" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="210.82" y1="99.06" x2="210.82" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="P1" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="V_GSM_INT" class="0">
@@ -12245,6 +12245,15 @@ to make Normally on.</text>
 <pinref part="U10" gate="G$1" pin="B2"/>
 </segment>
 </net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="C3" gate="G$1" pin="2"/>
+<wire x1="195.58" y1="99.06" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="99.06" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="P1" gate="G$1" pin="ANT"/>
+<wire x1="203.2" y1="106.68" x2="208.28" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -12423,7 +12432,7 @@ Switch R40/R41 to be normally on.</text>
 <attribute name="NAME" x="78.74" y="88.9" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="GND17" gate="1" x="83.82" y="71.12"/>
-<instance part="P2" gate="G$1" x="195.58" y="114.3"/>
+<instance part="P2" gate="G$1" x="195.58" y="109.22"/>
 <instance part="J2" gate="G$1" x="27.94" y="152.4"/>
 <instance part="R1" gate="G$1" x="215.9" y="93.98" smashed="yes">
 <attribute name="NAME" x="209.55" y="95.4786" size="1.778" layer="95"/>
@@ -12440,6 +12449,7 @@ Switch R40/R41 to be normally on.</text>
 <instance part="R36" gate="G$1" x="144.78" y="147.32" rot="R90"/>
 <instance part="R37" gate="G$1" x="142.24" y="129.54" rot="R90"/>
 <instance part="GND28" gate="1" x="142.24" y="119.38"/>
+<instance part="GND30" gate="1" x="195.58" y="99.06"/>
 </instances>
 <busses>
 </busses>
@@ -12475,6 +12485,11 @@ Switch R40/R41 to be normally on.</text>
 <pinref part="GND28" gate="1" pin="GND"/>
 <pinref part="R37" gate="G$1" pin="1"/>
 <wire x1="142.24" y1="121.92" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND30" gate="1" pin="GND"/>
+<pinref part="P2" gate="G$1" pin="P$2"/>
+<wire x1="195.58" y1="101.6" x2="195.58" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -12580,13 +12595,6 @@ Switch R40/R41 to be normally on.</text>
 <wire x1="83.82" y1="93.98" x2="83.82" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$29" class="0">
-<segment>
-<pinref part="U6" gate="G$1" pin="RF"/>
-<pinref part="P2" gate="G$1" pin="P$2"/>
-<wire x1="182.88" y1="109.22" x2="195.58" y2="109.22" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="IM880_SWCLK" class="0">
 <segment>
 <pinref part="J2" gate="G$1" pin="SWDCLK"/>
@@ -12685,6 +12693,13 @@ Switch R40/R41 to be normally on.</text>
 <pinref part="U6" gate="G$1" pin="P5"/>
 <wire x1="142.24" y1="93.98" x2="139.7" y2="93.98" width="0.1524" layer="91"/>
 <label x="139.7" y="93.98" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$24" class="0">
+<segment>
+<pinref part="U6" gate="G$1" pin="RF"/>
+<pinref part="P2" gate="G$1" pin="ANT"/>
+<wire x1="182.88" y1="109.22" x2="193.04" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
