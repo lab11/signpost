@@ -10286,6 +10286,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 <part name="GND30" library="umich" deviceset="GND" device=""/>
+<part name="TP4" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="TP5" library="testpad" deviceset="TP" device="B1,27"/>
+<part name="TP13" library="testpad" deviceset="TP" device="B1,27"/>
 </parts>
 <sheets>
 <sheet>
@@ -10415,6 +10418,15 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <attribute name="TP_SIGNAL_NAME" x="179.07" y="140.97" size="1.778" layer="97" rot="R90"/>
 </instance>
 <instance part="U$1" gate="G$1" x="238.76" y="177.8"/>
+<instance part="TP4" gate="G$1" x="88.9" y="63.5" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" x="90.17" y="64.77" size="1.778" layer="97" rot="R90"/>
+</instance>
+<instance part="TP5" gate="G$1" x="88.9" y="60.96" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" x="90.17" y="62.23" size="1.778" layer="97" rot="R90"/>
+</instance>
+<instance part="TP13" gate="G$1" x="88.9" y="58.42" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" x="90.17" y="59.69" size="1.778" layer="97" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -10980,10 +10992,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="114.3" y1="93.98" x2="114.3" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="SDA"/>
 <pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="114.3" y1="63.5" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="63.5" x2="91.44" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="63.5" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="63.5" x2="66.04" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="66.04" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
 <junction x="81.28" y="63.5"/>
+<pinref part="TP4" gate="G$1" pin="TP"/>
+<junction x="91.44" y="63.5"/>
 </segment>
 </net>
 <net name="SCL_INTERNAL" class="0">
@@ -10993,10 +11008,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="116.84" y1="91.44" x2="116.84" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="SCL"/>
 <pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="60.96" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="60.96" x2="91.44" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="60.96" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="60.96" x2="66.04" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="66.04" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
 <junction x="78.74" y="60.96"/>
+<pinref part="TP5" gate="G$1" pin="TP"/>
+<junction x="91.44" y="60.96"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -11006,10 +11024,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="104.14" y1="99.06" x2="104.14" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="!INT"/>
 <pinref part="R14" gate="G$1" pin="2"/>
-<wire x1="104.14" y1="58.42" x2="73.66" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="58.42" x2="91.44" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="58.42" x2="73.66" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="58.42" x2="66.04" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="66.04" x2="73.66" y2="58.42" width="0.1524" layer="91"/>
 <junction x="73.66" y="58.42"/>
+<pinref part="TP13" gate="G$1" pin="TP"/>
+<junction x="91.44" y="58.42"/>
 </segment>
 </net>
 <net name="NUCLEUM_GAUGE_SDA" class="0">
@@ -11188,8 +11209,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <text x="116.84" y="180.34" size="2.54" layer="97">Energy gauge for nucleum</text>
 <text x="116.84" y="124.46" size="2.54" layer="97">Energy gauge for IM880</text>
 <text x="114.3" y="71.12" size="2.54" layer="97">Energy gauge for GSM module</text>
-<text x="187.96" y="180.34" size="2.54" layer="97">Rsense = 0.05V/Imax = 0.05V/15ma</text>
-<text x="190.5" y="127" size="2.54" layer="97">Rsense = 0.05V/Imax = 0.05V/118ma</text>
+<text x="187.96" y="180.34" size="2.54" layer="97">Rsense = 0.05V/Imax = 0.05V/15mA</text>
+<text x="190.5" y="127" size="2.54" layer="97">Rsense = 0.05V/Imax = 0.05V/118mA</text>
 <text x="190.5" y="73.66" size="2.54" layer="97">Rsense = 0.05V/Imax = 0.05V/3A</text>
 </plain>
 <instances>
