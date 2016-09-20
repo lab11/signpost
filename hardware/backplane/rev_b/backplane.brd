@@ -590,7 +590,7 @@
 <wire x1="127" y1="0" x2="127" y2="50.8" width="0.254" layer="49"/>
 <text x="127" y="12.446" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Signpost Backplane</text>
 <text x="127" y="8.636" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Pat Pannuto</text>
-<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev B. 2016-09-12</text>
+<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev B. 2016-09-20</text>
 <text x="59.182" y="197.612" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">VCC_MODn_METERED</text>
 <text x="76.2" y="182.118" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">GND</text>
 <wire x1="79.756" y1="187.96" x2="77.724" y2="187.96" width="0.254" layer="21"/>
@@ -642,7 +642,7 @@ DATA</text>
 <text x="46.228" y="125.476" size="5.08" layer="21" font="vector" ratio="15" align="center">Power</text>
 <text x="207.772" y="238.76" size="5.08" layer="21" font="vector" ratio="15" align="center">Control</text>
 <text x="218.694" y="207.772" size="1.016" layer="21" font="vector" ratio="12" align="center-left">RevB
-2016-09-12</text>
+2016-09-20</text>
 <hole x="44.4246" y="146.0754" drill="28.575"/>
 <text x="127.508" y="188.214" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">HUB
 CFG</text>
