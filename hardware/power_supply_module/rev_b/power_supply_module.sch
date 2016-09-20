@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1763,7 +1763,7 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uH"/>
+<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="R44" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>

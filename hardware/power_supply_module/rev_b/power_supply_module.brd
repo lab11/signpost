@@ -176,7 +176,7 @@
 <hole x="54.991" y="62.23" drill="3.2639"/>
 <hole x="13.081" y="3.81" drill="3.2639"/>
 <hole x="54.991" y="3.81" drill="3.2639"/>
-<text x="22.352" y="55.88" size="0.8128" layer="21" font="vector" ratio="12" align="top-left">Signpost
+<text x="24.384" y="55.88" size="0.8128" layer="21" font="vector" ratio="12" align="top-left">Signpost
 Power Module
 Neal Jackson
 9/19/2016</text>
@@ -184,11 +184,11 @@ Neal Jackson
 <text x="4.445" y="36.195" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center">VSOL-</text>
 <text x="4.445" y="24.765" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center">VBATT-</text>
 <text x="4.445" y="31.115" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">VBATT+</text>
-<text x="19.9136" y="53.6194" size="3.302" layer="21" font="vector" ratio="12" align="center">B</text>
-<wire x1="17.9578" y1="55.6768" x2="21.082" y2="55.6768" width="0.3048" layer="21"/>
-<wire x1="21.082" y1="55.6768" x2="21.082" y2="51.562" width="0.3048" layer="21"/>
-<wire x1="21.082" y1="51.562" x2="17.9578" y2="51.562" width="0.3048" layer="21"/>
-<wire x1="17.9578" y1="51.562" x2="17.9578" y2="55.6768" width="0.3048" layer="21"/>
+<text x="21.6916" y="53.6194" size="3.302" layer="21" font="vector" ratio="12" align="center">B</text>
+<wire x1="19.7358" y1="55.6768" x2="22.86" y2="55.6768" width="0.3048" layer="21"/>
+<wire x1="22.86" y1="55.6768" x2="22.86" y2="51.562" width="0.3048" layer="21"/>
+<wire x1="22.86" y1="51.562" x2="19.7358" y2="51.562" width="0.3048" layer="21"/>
+<wire x1="19.7358" y1="51.562" x2="19.7358" y2="55.6768" width="0.3048" layer="21"/>
 </plain>
 <libraries>
 <library name="signpost">
@@ -1351,7 +1351,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="C2" library="passives" package="0402_CAP" value="3.3 nF" x="27.94" y="10.795" smashed="yes" rot="R180">
 <attribute name="NAME" x="27.94" y="11.43" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C25" library="passives" package="0603_CAP" value="22 uH" x="29.21" y="4.445" smashed="yes" rot="R90">
+<element name="C25" library="passives" package="0603_CAP" value="22 uF" x="29.21" y="4.445" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.099" y="4.699" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R44" library="passives" package="0402_RES" value="680 kΩ" x="29.21" y="6.35" smashed="yes" rot="R270">
@@ -1636,7 +1636,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="57.785" y="34.798" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="59.563" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="U$1" library="logos" package="UCB_CAL_200MIL" value="" x="10.414" y="51.308"/>
+<element name="U$1" library="logos" package="UCB_CAL_200MIL" value="" x="11.684" y="51.308"/>
 </elements>
 <signals>
 <signal name="GND">
