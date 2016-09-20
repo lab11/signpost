@@ -1,8 +1,8 @@
 
-use common::take_cell::TakeCell;
+use kernel::common::take_cell::TakeCell;
 use core::cell::Cell;
-use hil::gpio;
-use hil::i2c;
+use kernel::hil::gpio;
+use kernel::hil::i2c;
 
 use signpost_hil;
 

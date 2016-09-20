@@ -13,7 +13,7 @@ doc:
 
 .PHONY: target/target/release/storm
 target/target/release/controller:
-	@cargo build --release --target=../../chips/sam4l/target.json
+	@cargo build --release --target=../../tock/chips/sam4l/target.json
 
 target/target/release/controller.sdb: target/target/release/controller
 	@tput bold ; echo "Packing SDB..." ; tput sgr0

@@ -5,14 +5,14 @@
 
 # Default platform is the Storm (http://storm.rocks). Change to any platform in
 # the `platform` directory.
-TOCK_PLATFORM = controller
+BOARD = controller
 #TOCK_PLATFORM ?= nrf_pca10028
 
 # ALL_PLATFORMS = platform/controller
 
 # include tock/Makefile
 
-export TOCK_PLATFORM
+export BOARD
 
 all:
 	$(MAKE) -C tock

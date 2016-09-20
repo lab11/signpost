@@ -1,8 +1,8 @@
-use common::take_cell::TakeCell;
+use kernel::common::take_cell::TakeCell;
 use core::cell::Cell;
-use hil;
+use kernel::hil;
 use signpost_hil;
-use main::{AppId, AppSlice, Callback, Driver, Shared};
+use kernel::{AppId, AppSlice, Callback, Driver, Shared};
 
 pub static mut TXBUFFER: [u8; 512] = [0; 512];
 pub static mut RXBUFFER: [u8; 512] = [0; 512];

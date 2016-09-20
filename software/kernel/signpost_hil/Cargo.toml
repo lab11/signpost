@@ -5,6 +5,7 @@ authors = ["Brad Campbell <bradjc@umich.edu>"]
 
 [dependencies]
 rust-libcore = "*"
-common = { path = "../tock/src/common" }
-main = { path = "../tock/src/main" }
-hil = { path = "../tock/src/hil" }
+#common = { path = "../tock/src/common" }
+#main = { path = "../tock/src/main" }
+#hil = { path = "../tock/src/hil" }
+kernel = { path = "../tock/kernel" }

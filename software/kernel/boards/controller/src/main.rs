@@ -1,32 +1,33 @@
-#![crate_name = "storm"]
+#![crate_name = "controller"]
 #![no_std]
 #![no_main]
 #![feature(const_fn,lang_items)]
 
-#[macro_use(static_init)]
-extern crate common;
+
+// extern crate common;
 extern crate cortexm4;
-extern crate drivers;
-extern crate hil;
-extern crate main;
+extern crate capsules;
+#[macro_use(static_init)]
+extern crate kernel;
+// extern crate main;
 extern crate sam4l;
-extern crate support;
+// extern crate support;
 
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use drivers::console::{self, Console};
-// use drivers::nrf51822_serialization::{self, Nrf51822Serialization};
-use drivers::timer::TimerDriver;
-use drivers::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
-use drivers::virtual_i2c::I2CDevice;
-use drivers::virtual_i2c::MuxI2C;
-use hil::Controller;
-use hil::spi::SpiMaster;
-use main::{Chip, MPU, Platform};
+use capsules::console::{self, Console};
+// use capsules::nrf51822_serialization::{self, Nrf51822Serialization};
+use capsules::timer::TimerDriver;
+use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
+use capsules::virtual_i2c::I2CDevice;
+use capsules::virtual_i2c::MuxI2C;
+use kernel::hil::Controller;
+use kernel::hil::spi::SpiMaster;
+use kernel::{Chip, MPU, Platform};
 use sam4l::usart;
 
-use common::take_cell::TakeCell;
+use kernel::common::take_cell::TakeCell;
 
 #[macro_use]
 pub mod io;
@@ -45,7 +46,7 @@ pub mod io;
 static mut spi_read_buf: [u8; 64] = [0; 64];
 static mut spi_write_buf: [u8; 64] = [0; 64];
 
-unsafe fn load_processes() -> &'static mut [Option<main::process::Process<'static>>] {
+unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {
     extern "C" {
         /// Beginning of the ROM region containing app images.
         static _sapps: u8;
@@ -56,7 +57,7 @@ unsafe fn load_processes() -> &'static mut [Option<main::process::Process<'stati
     #[link_section = ".app_memory"]
     static mut MEMORIES: [[u8; 8192]; NUM_PROCS] = [[0; 8192]; NUM_PROCS];
 
-    static mut processes: [Option<main::process::Process<'static>>; NUM_PROCS] = [None, None];
+    static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
     let mut addr = &_sapps as *const u8;
     for i in 0..NUM_PROCS {
@@ -70,7 +71,7 @@ unsafe fn load_processes() -> &'static mut [Option<main::process::Process<'stati
 
         let process = &mut processes[i];
         let memory = &mut MEMORIES[i];
-        *process = Some(main::process::Process::create(addr, total_size, memory));
+        *process = Some(kernel::process::Process::create(addr, total_size, memory));
         // TODO: panic if loading failed?
 
         addr = addr.offset(total_size as isize);
@@ -85,9 +86,9 @@ unsafe fn load_processes() -> &'static mut [Option<main::process::Process<'stati
 
 struct SignpostController {
     console: &'static Console<'static, usart::USART>,
-    gpio: &'static drivers::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    // spi: &'static drivers::spi::Spi<'static, sam4l::spi::Spi>,
+    // spi: &'static capsules::spi::Spi<'static, sam4l::spi::Spi>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
@@ -100,7 +101,7 @@ impl Platform for SignpostController {
     // }
 
     fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
-        where F: FnOnce(Option<&main::Driver>) -> R
+        where F: FnOnce(Option<&kernel::Driver>) -> R
     {
 
         match driver_num {
@@ -340,7 +341,7 @@ pub unsafe fn reset_handler() {
         Console<usart::USART>,
         Console::new(&usart::USART3,
                      &mut console::WRITE_BUF,
-                     main::Container::create()),
+                     kernel::Container::create()),
         24);
     usart::USART3.set_client(console);
 
@@ -352,7 +353,7 @@ pub unsafe fn reset_handler() {
         16);
     ast.configure(mux_alarm);
 
-    let mux_i2c2 = static_init!(drivers::virtual_i2c::MuxI2C<'static>, drivers::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
+    let mux_i2c2 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
     sam4l::i2c::I2C2.set_client(mux_i2c2);
 
     let virtual_alarm1 = static_init!(
@@ -361,14 +362,14 @@ pub unsafe fn reset_handler() {
         24);
     let timer = static_init!(
         TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        TimerDriver::new(virtual_alarm1, main::Container::create()),
+        TimerDriver::new(virtual_alarm1, kernel::Container::create()),
         12);
     virtual_alarm1.set_client(timer);
 
     // Initialize and enable SPI HAL
     // let spi = static_init!(
-    //     drivers::spi::Spi<'static, sam4l::spi::Spi>,
-    //     drivers::spi::Spi::new(&mut sam4l::spi::SPI),
+    //     capsules::spi::Spi<'static, sam4l::spi::Spi>,
+    //     capsules::spi::Spi::new(&mut sam4l::spi::SPI),
     //     84);
     // spi.config_buffers(&mut spi_read_buf, &mut spi_write_buf);
     // sam4l::spi::SPI.init(spi as &hil::spi_master::SpiCallback);
@@ -379,11 +380,11 @@ pub unsafe fn reset_handler() {
     ////////////////////////////////////////////////////////////////////////////
 
     // I2C Bus
-    let mux_i2c1 = static_init!(drivers::virtual_i2c::MuxI2C<'static>, drivers::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C1), 20);
+    let mux_i2c1 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C1), 20);
     sam4l::i2c::I2C1.set_client(mux_i2c1);
 
     // Configure the MCP23008_0. Device address 0x20
-    let mcp23008_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x20), 32);
+    let mcp23008_0_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x20), 32);
     let mcp23008_0 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_0_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -391,7 +392,7 @@ pub unsafe fn reset_handler() {
     mcp23008_0_i2c.set_client(mcp23008_0);
 
     // Configure the MCP23008_1. Device address 0x21
-    let mcp23008_1_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x21), 32);
+    let mcp23008_1_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x21), 32);
     let mcp23008_1 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_1_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -399,7 +400,7 @@ pub unsafe fn reset_handler() {
     mcp23008_1_i2c.set_client(mcp23008_1);
 
     // Configure the MCP23008_2. Device address 0x22
-    let mcp23008_2_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x22), 32);
+    let mcp23008_2_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x22), 32);
     let mcp23008_2 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_2_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -407,7 +408,7 @@ pub unsafe fn reset_handler() {
     mcp23008_2_i2c.set_client(mcp23008_2);
 
     // Configure the MCP23008_5. Device address 0x25
-    let mcp23008_5_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x25), 32);
+    let mcp23008_5_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x25), 32);
     let mcp23008_5 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_5_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -415,7 +416,7 @@ pub unsafe fn reset_handler() {
     mcp23008_5_i2c.set_client(mcp23008_5);
 
     // Configure the MCP23008_6. Device address 0x26
-    let mcp23008_6_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x26), 32);
+    let mcp23008_6_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x26), 32);
     let mcp23008_6 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_6_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -423,7 +424,7 @@ pub unsafe fn reset_handler() {
     mcp23008_6_i2c.set_client(mcp23008_6);
 
     // Configure the MCP23008_7. Device address 0x27
-    let mcp23008_7_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x27), 32);
+    let mcp23008_7_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x27), 32);
     let mcp23008_7 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
         signpost_drivers::mcp23008::MCP23008::new(mcp23008_7_i2c, &mut signpost_drivers::mcp23008::BUFFER),
@@ -453,7 +454,7 @@ pub unsafe fn reset_handler() {
 
 
     // Configure the I2C selectors.
-    let pca9544a_0_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x70), 32);
+    let pca9544a_0_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x70), 32);
     let pca9544a_0 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
         // signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, Some(&sam4l::gpio::PA[9]), &mut signpost_drivers::pca9544a::BUFFER),
@@ -462,7 +463,7 @@ pub unsafe fn reset_handler() {
     pca9544a_0_i2c.set_client(pca9544a_0);
     // sam4l::gpio::PA[9].set_client(pca9544a_0);
 
-    let pca9544a_1_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x71), 32);
+    let pca9544a_1_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x71), 32);
     let pca9544a_1 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
         // signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, Some(&sam4l::gpio::PA[10]), &mut signpost_drivers::pca9544a::BUFFER),
@@ -491,7 +492,7 @@ pub unsafe fn reset_handler() {
     // Setup the driver for the coulomb counter. We only use one because
     // they all share the same address, so one driver can be used for any
     // of them based on which port is selected on the i2c selector.
-    let ltc2941_i2c = static_init!(drivers::virtual_i2c::I2CDevice, drivers::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
+    let ltc2941_i2c = static_init!(capsules::virtual_i2c::I2CDevice, capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64), 32);
     let ltc2941 = static_init!(
         signpost_drivers::ltc2941::LTC2941<'static>,
         signpost_drivers::ltc2941::LTC2941::new(ltc2941_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
@@ -507,14 +508,14 @@ pub unsafe fn reset_handler() {
 
     // SPI
 
-    let mux_spi = static_init!(drivers::virtual_spi::MuxSPIMaster<'static>, drivers::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
+    let mux_spi = static_init!(capsules::virtual_spi::MuxSPIMaster<'static>, capsules::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI), 128/8);
     sam4l::spi::SPI.set_client(mux_spi);
     sam4l::spi::SPI.init();
 
 
 
     // Setup FRAM driver
-    let fm25cl_spi = static_init!(drivers::virtual_spi::SPIMasterDevice, drivers::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None), 448/8);
+    let fm25cl_spi = static_init!(capsules::virtual_spi::SPIMasterDevice, capsules::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None), 448/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
@@ -546,8 +547,8 @@ pub unsafe fn reset_handler() {
         12 * 4
     );
     let gpio = static_init!(
-        drivers::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-        drivers::gpio::GPIO::new(gpio_pins),
+        capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+        capsules::gpio::GPIO::new(gpio_pins),
         20);
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
@@ -578,16 +579,16 @@ pub unsafe fn reset_handler() {
         // client: &console,
         baud_rate: 115200,
         data_bits: 8,
-        parity: hil::uart::Parity::None,
-        mode: hil::uart::Mode::Normal,
+        parity: kernel::hil::uart::Parity::None,
+        mode: kernel::hil::uart::Mode::Normal,
     });
 
     // Setup USART2 for the nRF51822 connection
     usart::USART2.configure(usart::USARTParams {
         baud_rate: 250000,
         data_bits: 8,
-        parity: hil::uart::Parity::Even,
-        mode: hil::uart::Mode::FlowControl,
+        parity: kernel::hil::uart::Parity::Even,
+        mode: kernel::hil::uart::Mode::FlowControl,
     });
     // // Configure USART2 Pins for connection to nRF51822
     // // NOTE: the SAM RTS pin is not working for some reason. Our hypothesis is
@@ -624,5 +625,5 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    main::main(signpost_controller, &mut chip, load_processes());
+    kernel::main(signpost_controller, &mut chip, load_processes());
 }

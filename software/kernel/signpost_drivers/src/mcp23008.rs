@@ -1,8 +1,8 @@
 use core::cell::Cell;
-use common::take_cell::TakeCell;
-use main::{AppId, Callback, Driver};
-use hil::i2c;
-use hil;
+use kernel::common::take_cell::TakeCell;
+use kernel::{AppId, Callback, Driver};
+use kernel::hil::i2c;
+use kernel::hil;
 use signpost_hil;
 
 // Buffer to use for I2C messages

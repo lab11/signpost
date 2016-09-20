@@ -1,9 +1,9 @@
 
-use common::take_cell::TakeCell;
+use kernel::common::take_cell::TakeCell;
 use core::cell::Cell;
-use hil::gpio;
-use hil::i2c;
-use main::{AppId, Callback, Driver};
+use kernel::hil::gpio;
+use kernel::hil::i2c;
+use kernel::{AppId, Callback, Driver};
 
 pub static mut BUFFER: [u8; 8] = [0; 8];
 

@@ -1,8 +1,8 @@
 use core::cell::Cell;
 use signpost_hil;
-use hil;
+use kernel::hil;
 // use hil::gpio::{GPIOPin, InputMode, InterruptMode, Client};
-use main::{AppId, Callback, Driver};
+use kernel::{AppId, Callback, Driver};
 
 pub struct I2CSelector<'a, Selector: signpost_hil::i2c_selector::I2CSelector + 'a> {
     selectors: &'a [&'a Selector],

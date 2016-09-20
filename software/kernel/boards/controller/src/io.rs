@@ -1,9 +1,9 @@
 
 use core::fmt::*;
-use hil::Controller;
-use hil::uart::{self, UART};
+use kernel::hil::Controller;
+use kernel::hil::uart::{self, UART};
 use sam4l;
-use support::nop;
+// use support::nop;
 
 pub struct Writer {
     initialized: bool,
@@ -48,11 +48,11 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     loop {
         for _ in 0..1000000 {
             led.set();
-            nop();
+            // nop();
         }
         for _ in 0..1000000 {
             led.clear();
-            nop();
+            // nop();
         }
     }
 }

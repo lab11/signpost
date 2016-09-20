@@ -3,9 +3,7 @@
 #![feature(const_fn)]
 #![no_std]
 
-extern crate common;
-extern crate hil;
-extern crate main;
+extern crate kernel;
 extern crate signpost_hil;
 
 

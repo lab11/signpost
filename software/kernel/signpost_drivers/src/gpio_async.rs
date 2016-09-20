@@ -1,8 +1,8 @@
 use core::cell::Cell;
 use signpost_hil;
-use hil;
+use kernel::hil;
 // use hil::gpio::{GPIOPin, InputMode, InterruptMode, Client};
-use main::{AppId, Callback, Driver};
+use kernel::{AppId, Callback, Driver};
 
 pub struct GPIOAsync<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort + 'a> {
     ports: &'a [&'a Port],
