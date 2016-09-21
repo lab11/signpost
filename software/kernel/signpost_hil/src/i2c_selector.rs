@@ -5,6 +5,6 @@ pub trait I2CSelector {
 }
 
 pub trait Client {
-    fn interrupts(&self, interrupt_bitmask: usize);
+    fn interrupts(&self, identifier: usize, interrupt_bitmask: usize);
     fn done(&self);
 }

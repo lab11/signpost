@@ -57,7 +57,15 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> I2CSelector<'a, Sele
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_selector::Client for I2CSelector<'a, Selector> {
-    fn interrupts(&self, interrupt_bitmask: usize) {
+    // Identifier is expected to be the index of the selector in the array
+    // that is calling this callback.
+    fn interrupts(&self, identifier: usize, interrupt_bitmask: usize) {
+        let bitmask = interrupt_bitmask << (identifier * 4);
+
+        self.callback.get().map(|mut cb|
+            cb.schedule(1, bitmask, 0)
+        );
+
         // // read the value of the pin
         // let pins = self.pins.as_ref();
         // let pin_state = pins[pin_num].read();

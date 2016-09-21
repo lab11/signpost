@@ -25,6 +25,7 @@ pub struct PCA9544A<'a> {
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static signpost_hil::i2c_selector::Client>,
+    identifier: Cell<usize>,
 }
 
 impl<'a> PCA9544A<'a> {
@@ -39,11 +40,13 @@ impl<'a> PCA9544A<'a> {
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
             client: TakeCell::empty(),
+            identifier: Cell::new(0),
         }
     }
 
-    pub fn set_client<C: signpost_hil::i2c_selector::Client>(&self, client: &'static C, ) {
+    pub fn set_client<C: signpost_hil::i2c_selector::Client>(&self, client: &'static C, identifier: usize) {
         self.client.replace(client);
+        self.identifier.set(identifier);
 
         self.interrupt_pin.map(|interrupt_pin| {
             interrupt_pin.enable_input(gpio::InputMode::PullNone);
@@ -94,7 +97,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
                 let interrupt_bitmask = (buffer[0] >> 4) & 0x0F;
 
                 self.client.map(|client| {
-                    client.interrupts(interrupt_bitmask as usize);
+                    client.interrupts(self.identifier.get(), interrupt_bitmask as usize);
                 });
 
                 self.buffer.replace(buffer);

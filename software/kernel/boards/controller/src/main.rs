@@ -459,7 +459,7 @@ pub unsafe fn reset_handler() {
     let pca9544a_0 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
         signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
-        288/8);
+        320/8);
     pca9544a_0_i2c.set_client(pca9544a_0);
 
     let pca9544a_1_i2c = static_init!(
@@ -469,7 +469,7 @@ pub unsafe fn reset_handler() {
     let pca9544a_1 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
         signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
-        288/8);
+        320/8);
     pca9544a_1_i2c.set_client(pca9544a_1);
 
     // Create an array of the I2C selectors so we can give them a single interface
@@ -486,8 +486,8 @@ pub unsafe fn reset_handler() {
         signpost_drivers::i2c_selector::I2CSelector::new(i2c_selectors),
         228/8
     );
-    for selector in i2c_selectors.iter() {
-        selector.set_client(i2c_selector);
+    for (i, selector) in i2c_selectors.iter().enumerate() {
+        selector.set_client(i2c_selector, i);
     }
 
     //
