@@ -484,7 +484,7 @@ pub unsafe fn reset_handler() {
     let i2c_selector = static_init!(
         signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
         signpost_drivers::i2c_selector::I2CSelector::new(i2c_selectors),
-        160/8
+        228/8
     );
     for selector in i2c_selectors.iter() {
         selector.set_client(i2c_selector);

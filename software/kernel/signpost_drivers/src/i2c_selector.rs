@@ -1,12 +1,25 @@
+/*
+ * Supports up to 8 I2C selectors.
+ */
+
 use core::cell::Cell;
-use signpost_hil;
-use kernel::hil;
-// use hil::gpio::{GPIOPin, InputMode, InterruptMode, Client};
+
 use kernel::{AppId, Callback, Driver};
+
+use signpost_hil;
+
+#[derive(Clone,Copy,PartialEq)]
+enum Operation {
+    SetAll = 0,
+    DisableAll = 1,
+}
 
 pub struct I2CSelector<'a, Selector: signpost_hil::i2c_selector::I2CSelector + 'a> {
     selectors: &'a [&'a Selector],
     callback: Cell<Option<Callback>>,
+    operation: Cell<Operation>,
+    index: Cell<u8>,      // Which selector we are currently configuring.
+    bitmask: Cell<usize>, // What we are trying to set all channels to.
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> I2CSelector<'a, Selector> {
@@ -14,49 +27,33 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> I2CSelector<'a, Sele
         I2CSelector {
             selectors: selectors,
             callback: Cell::new(None),
+            operation: Cell::new(Operation::SetAll),
+            index: Cell::new(0),
+            bitmask: Cell::new(0),
         }
     }
 
-    // fn configure_input_pin(&self, port: usize, pin: usize, config: usize) -> isize {
-    //     let ports = self.ports.as_ref();
-    //     match config {
-    //         0 => {
-    //             ports[port].enable_input(pin, hil::gpio::InputMode::PullUp)
-    //         }
+    // Calls the underlying selector driver to set the correct state.
+    // Used in the async loop for setting all needed selectors.
+    fn set_channels(&self) {
+        let selectors = self.selectors.as_ref();
+        let index = self.index.get() as usize;
+        let bitmask = self.bitmask.get();
 
-    //         1 => {
-    //             ports[port].enable_input(pin, hil::gpio::InputMode::PullDown)
-    //         }
+        if selectors.len() > index {
+            selectors[index].select_channels((bitmask >> (index*4)) & 0x0F);
+        }
+    }
 
-    //         2 => {
-    //             ports[port].enable_input(pin, hil::gpio::InputMode::PullNone)
-    //         }
+    // Calls the underlying selector driver to disable all of its I2C channels.
+    fn disable_channels(&self) {
+        let selectors = self.selectors.as_ref();
+        let index = self.index.get() as usize;
 
-    //         _ => -1,
-    //     }
-    // }
-
-    // fn configure_interrupt(&self, pin_num: usize, config: usize) -> isize {
-    //     let pins = self.pins.as_ref();
-    //     match config {
-    //         0 => {
-    //             pins[pin_num].enable_interrupt(pin_num, InterruptMode::Change);
-    //             0
-    //         }
-
-    //         1 => {
-    //             pins[pin_num].enable_interrupt(pin_num, InterruptMode::RisingEdge);
-    //             0
-    //         }
-
-    //         2 => {
-    //             pins[pin_num].enable_interrupt(pin_num, InterruptMode::FallingEdge);
-    //             0
-    //         }
-
-    //         _ => -1,
-    //     }
-    // }
+        if selectors.len() > index {
+            selectors[index].disable_all_channels();
+        }
+    }
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_selector::Client for I2CSelector<'a, Selector> {
@@ -71,10 +68,33 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
         // }
     }
 
+    // Called when underlying selector operation completes.
     fn done(&self) {
-        self.callback.get().map(|mut cb|
-            cb.schedule(0, 0, 0)
-        );
+        let selectors = self.selectors.as_ref();
+        // Increment the selector we are operating on now that we finished
+        // the last one.
+        let index = self.index.get() + 1;
+
+        // Check if we have more to do
+        if selectors.len() > index as usize {
+            self.index.set(index);
+
+            // Do the right thing based on what command was called.
+            match self.operation.get() {
+                Operation::SetAll => {
+                    self.set_channels();
+                }
+                Operation::DisableAll => {
+                    self.disable_channels();
+                }
+            }
+
+        } else {
+            // Otherwise we notify the application this finished.
+            self.callback.get().map(|mut cb|
+                cb.schedule(0, self.operation.get() as usize, 0)
+            );
+        }
     }
 }
 
@@ -92,43 +112,25 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
     }
 
     fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
-        // let port = data & 0xFF;
-        // let pin = (data >> 8) & 0xFF;
-        let selectors = self.selectors.as_ref();
-
         match command_num {
             // select channels
             0 => {
-                // HAKJHDFSLKJSLK
-                // AHH
-                // TODO
-                // This needs to be serialized
-                for i in 0..selectors.len() {
-                    selectors[i].select_channels((data >> (i*4)) & 0x0F);
-                }
-                // if port >= ports.len() {
-                //     -1
-                // } else {
-                //     ports[port].enable_output(pin)
-                // }
+                self.operation.set(Operation::SetAll);
+                self.index.set(0);
+                self.bitmask.set(data);
+
+                self.set_channels();
                 0
             }
 
             // disable all channels
             1 => {
-                // TODO
-                // This needs to be serialized
-                for i in 0..selectors.len() {
-                    selectors[i].disable_all_channels();
-                }
-                // if port >= ports.len() {
-                //     -1
-                // } else {
-                //     ports[port].set(pin)
-                // }
+                self.operation.set(Operation::DisableAll);
+                self.index.set(0);
+
+                self.disable_channels();
                 0
             }
-
 
             // default
             _ => -1,
