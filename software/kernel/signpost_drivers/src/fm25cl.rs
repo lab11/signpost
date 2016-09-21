@@ -1,4 +1,5 @@
 use core::cell::Cell;
+use core::cmp;
 
 use kernel::common::take_cell::TakeCell;
 use kernel::hil;
@@ -106,11 +107,13 @@ impl<'a> FM25CL<'a> {
 
             txbuffer[0] = Opcodes::WriteEnable as u8;
 
+            let write_len = cmp::min(txbuffer.len(), len as usize);
+
             // Need to save the buffer passed to us so we can give it back.
             self.client_buffer.replace(buffer);
             // Also save address and len for the actual write.
             self.client_write_address.set(address);
-            self.client_write_len.set(len);
+            self.client_write_len.set(write_len as u16);
 
             self.state.set(State::WriteEnable);
             self.spi.read_write_bytes(txbuffer, None, 1);
@@ -130,8 +133,10 @@ impl<'a> FM25CL<'a> {
                 // Save the user buffer for later
                 self.client_buffer.replace(buffer);
 
+                let read_len = cmp::min(rxbuffer.len()-4, len as usize);
+
                 self.state.set(State::ReadMemory);
-                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), (len+4) as usize);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), read_len+4);
             });
         });
     }
@@ -167,11 +172,13 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
                     write_buffer[2] = ((self.client_write_address.get() >> 8) & 0xFF) as u8;
                     write_buffer[3] = (self.client_write_address.get() & 0xFF) as u8;
 
-                    for i in 0..self.client_write_len.get() {
+                    let write_len = cmp::min(write_buffer.len(), self.client_write_len.get() as usize);
+
+                    for i in 0..write_len {
                         write_buffer[(i+4) as usize] = buffer[i as usize];
                     }
 
-                    self.spi.read_write_bytes(write_buffer, read_buffer, (self.client_write_len.get()+4) as usize);
+                    self.spi.read_write_bytes(write_buffer, read_buffer, write_len+4);
                 });
             },
             State::WriteMemory => {
@@ -198,14 +205,16 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
 
                 read_buffer.map(|read_buffer| {
                     self.client_buffer.take().map(move |buffer| {
-                        for i in 0..(len-4) {
+                        let read_len = cmp::min(buffer.len(), len);
+
+                        for i in 0..(read_len-4) {
                             buffer[i] = read_buffer[i+4];
                         }
 
                         self.rxbuffer.replace(read_buffer);
 
                         self.client.map(move |client| {
-                            client.read(buffer, len);
+                            client.read(buffer, read_len);
                         });
                     });
                 });
@@ -220,7 +229,6 @@ struct AppState {
     callback: Cell<Option<Callback>>,
     read_buffer: TakeCell<AppSlice<Shared, u8>>,
     write_buffer: TakeCell<AppSlice<Shared, u8>>,
-    len: usize,
 }
 
 /// Default implementation of the FM25CL driver that provides a Driver
@@ -254,9 +262,13 @@ impl<'a> FM25CLClient for FM25CLDriver<'a> {
 
     fn read(&self, data: &'static mut [u8], len: usize) {
         self.app_state.map(|app_state| {
+            let mut read_len: usize = 0;
+
             app_state.read_buffer.map(move |read_buffer| {
-                let d = &mut read_buffer.as_mut()[0..(len as usize)];
-                for (i, c) in data[0..len].iter().enumerate() {
+                read_len = cmp::min(read_buffer.len(), len);
+
+                let d = &mut read_buffer.as_mut()[0..(read_len as usize)];
+                for (i, c) in data[0..read_len].iter().enumerate() {
                     d[i] = *c;
                 }
 
@@ -264,7 +276,7 @@ impl<'a> FM25CLClient for FM25CLDriver<'a> {
             });
 
             app_state.callback.get().map(|mut cb| {
-                cb.schedule(1, len, 0);
+                cb.schedule(1, read_len, 0);
             });
         });
     }
@@ -291,10 +303,9 @@ impl<'a> Driver for FM25CLDriver<'a> {
                             callback: Cell::new(None),
                             read_buffer: TakeCell::new(slice),
                             write_buffer: TakeCell::empty(),
-                            len: 0,
                         }
                     }
-                    Some(mut appst) => {
+                    Some(appst) => {
                         appst.read_buffer.replace(slice);
                         appst
                     }
@@ -310,10 +321,9 @@ impl<'a> Driver for FM25CLDriver<'a> {
                             callback: Cell::new(None),
                             write_buffer: TakeCell::new(slice),
                             read_buffer: TakeCell::empty(),
-                            len: 0,
                         }
                     }
-                    Some(mut appst) => {
+                    Some(appst) => {
                         appst.write_buffer.replace(slice);
                         appst
                     }
@@ -334,10 +344,9 @@ impl<'a> Driver for FM25CLDriver<'a> {
                             callback: Cell::new(Some(callback)),
                             write_buffer: TakeCell::empty(),
                             read_buffer: TakeCell::empty(),
-                            len: 0,
                         }
                     }
-                    Some(mut appst) => {
+                    Some(appst) => {
                         appst.callback.set(Some(callback));
                         appst
                     }
@@ -362,10 +371,12 @@ impl<'a> Driver for FM25CLDriver<'a> {
             // read
             1 => {
                 let address = (data & 0xFFFF) as u16;
-                let len = ((data >> 16) & 0xFFFF) as u16;
+                let len = (data >> 16) & 0xFFFF;
 
                 self.kernel_read.take().map(|kernel_read| {
-                    self.fm25cl.read(address, kernel_read, len);
+                    let read_len = cmp::min(len, kernel_read.len());
+
+                    self.fm25cl.read(address, kernel_read, read_len as u16);
                 });
                 0
             }
@@ -378,13 +389,16 @@ impl<'a> Driver for FM25CLDriver<'a> {
                 self.app_state.map(|app_state| {
                     app_state.write_buffer.map(|write_buffer| {
                         self.kernel_write.take().map(|kernel_write| {
-                            // TODO: check bounds
-                            let d = &mut write_buffer.as_mut()[0..len];
-                            for (i, c) in kernel_write[0..len].iter_mut().enumerate() {
+                            // Check bounds for write length
+                            let buf_len = cmp::min(write_buffer.len(), kernel_write.len());
+                            let write_len = cmp::min(buf_len, len);
+
+                            let d = &mut write_buffer.as_mut()[0..write_len];
+                            for (i, c) in kernel_write[0..write_len].iter_mut().enumerate() {
                                 *c = d[i];
                             }
 
-                            self.fm25cl.write(address, kernel_write, len as u16);
+                            self.fm25cl.write(address, kernel_write, write_len as u16);
                         });
                     });
                 });

@@ -544,7 +544,7 @@ pub unsafe fn reset_handler() {
     let fm25cl_driver = static_init!(
         signpost_drivers::fm25cl::FM25CLDriver<'static>,
         signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
-        576/8);
+        544/8);
     fm25cl.set_client(fm25cl_driver);
 
     //
