@@ -11,7 +11,7 @@ all: target/target/release/controller
 doc:
 	@cargo doc --release --target=../../chips/sam4l/target.json
 
-.PHONY: target/target/release/storm
+.PHONY: target/target/release/controller
 target/target/release/controller:
 	@cargo build --release --target=../../tock/chips/sam4l/target.json
 
