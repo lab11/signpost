@@ -9,7 +9,7 @@ all: target/target/release/controller
 
 .PHONY: doc
 doc:
-	@cargo doc --release --target=../../chips/sam4l/target.json
+	@cargo doc --release --target=../../tock/chips/sam4l/target.json
 
 .PHONY: target/target/release/controller
 target/target/release/controller:
