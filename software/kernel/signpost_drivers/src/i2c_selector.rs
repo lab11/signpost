@@ -65,15 +65,6 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
         self.callback.get().map(|mut cb|
             cb.schedule(1, bitmask, 0)
         );
-
-        // // read the value of the pin
-        // let pins = self.pins.as_ref();
-        // let pin_state = pins[pin_num].read();
-
-        // // schedule callback with the pin number and value
-        // if self.callback.get().is_some() {
-        //     self.callback.get().unwrap().schedule(pin_num, pin_state as usize, 0);
-        // }
     }
 
     // Called when underlying selector operation completes.
