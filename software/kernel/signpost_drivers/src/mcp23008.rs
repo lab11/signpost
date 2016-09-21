@@ -1,8 +1,8 @@
 use core::cell::Cell;
+
 use kernel::common::take_cell::TakeCell;
-use kernel::{AppId, Callback, Driver};
-use kernel::hil::i2c;
 use kernel::hil;
+
 use signpost_hil;
 
 // Buffer to use for I2C messages
@@ -54,14 +54,14 @@ enum PinState {
 }
 
 pub struct MCP23008<'a> {
-    i2c: &'a i2c::I2CDevice,
+    i2c: &'a hil::i2c::I2CDevice,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static signpost_hil::gpio_async::Client>,
 }
 
 impl<'a> MCP23008<'a> {
-    pub fn new(i2c: &'a i2c::I2CDevice, buffer: &'static mut [u8]) -> MCP23008<'a> {
+    pub fn new(i2c: &'a hil::i2c::I2CDevice, buffer: &'static mut [u8]) -> MCP23008<'a> {
         // setup and return struct
         MCP23008{
             i2c: i2c,
@@ -150,8 +150,8 @@ impl<'a> MCP23008<'a> {
 
 }
 
-impl<'a> i2c::I2CClient for MCP23008<'a> {
-    fn command_complete(&self, buffer: &'static mut [u8], _error: i2c::Error) {
+impl<'a> hil::i2c::I2CClient for MCP23008<'a> {
+    fn command_complete(&self, buffer: &'static mut [u8], _error: hil::i2c::Error) {
         match self.state.get() {
             State::SelectIoDir => {
                 self.i2c.read(buffer, 1);
@@ -244,7 +244,8 @@ impl<'a> i2c::I2CClient for MCP23008<'a> {
 
 impl<'a> signpost_hil::gpio_async::GPIOAsyncPort for MCP23008<'a> {
     fn disable(&self, pin: usize) -> isize {
-        // ??
+        // Best we can do is make this an input.
+        self.set_direction(pin as u8, Direction::Input);
         0
     }
 
