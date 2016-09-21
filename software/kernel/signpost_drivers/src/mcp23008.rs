@@ -57,22 +57,41 @@ pub struct MCP23008<'a> {
     i2c: &'a hil::i2c::I2CDevice,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
+    interrupt_pin: Option<&'static hil::gpio::GPIOPin>,
+    identifier: Cell<usize>,
     client: TakeCell<&'static signpost_hil::gpio_async::Client>,
 }
 
 impl<'a> MCP23008<'a> {
-    pub fn new(i2c: &'a hil::i2c::I2CDevice, buffer: &'static mut [u8]) -> MCP23008<'a> {
+    pub fn new(i2c: &'a hil::i2c::I2CDevice, interrupt_pin: Option<&'static hil::gpio::GPIOPin>, buffer: &'static mut [u8]) -> MCP23008<'a> {
         // setup and return struct
         MCP23008{
             i2c: i2c,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
+            interrupt_pin: interrupt_pin,
+            identifier: Cell::new(0),
             client: TakeCell::empty(),
         }
     }
 
-    pub fn set_client<C: signpost_hil::gpio_async::Client>(&self, client: &'static C, ) {
+    pub fn set_client<C: signpost_hil::gpio_async::Client>(&self, client: &'static C, identifier: usize) {
         self.client.replace(client);
+        self.identifier.set(identifier);
+    }
+
+    fn enable_interrupts(&self, edge: hil::gpio::InterruptMode) {
+        self.interrupt_pin.map(|interrupt_pin| {
+            interrupt_pin.enable_input(hil::gpio::InputMode::PullNone);
+            interrupt_pin.enable_interrupt(0, edge);
+        });
+    }
+
+    fn disable_interrupts(&self) {
+        self.interrupt_pin.map(|interrupt_pin| {
+            interrupt_pin.disable_interrupt();
+            interrupt_pin.disable();
+        });
     }
 
     fn set_direction(&self, pin_number: u8, direction: Direction) {
@@ -239,6 +258,17 @@ impl<'a> hil::i2c::I2CClient for MCP23008<'a> {
             },
             _ => {}
         }
+    }
+}
+
+impl<'a> hil::gpio::Client for MCP23008<'a> {
+    fn fired(&self, _: usize) {
+
+        // TODO: This should ask the chip which pins interrupted.
+        self.client.map(|client| {
+            // Put the port number in the lower half of the forwarded identifier.
+            client.fired(self.identifier.get() & 0x00FF);
+        });
     }
 }
 

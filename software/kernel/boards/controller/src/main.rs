@@ -367,8 +367,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_0 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_0_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_0_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_0_i2c.set_client(mcp23008_0);
 
     // Configure the MCP23008_1. Device address 0x21
@@ -378,8 +378,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_1 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_1_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_1_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_1_i2c.set_client(mcp23008_1);
 
     // Configure the MCP23008_2. Device address 0x22
@@ -389,8 +389,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_2 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_2_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_2_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_2_i2c.set_client(mcp23008_2);
 
     // Configure the MCP23008_5. Device address 0x25
@@ -400,8 +400,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_5 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_5_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_5_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_5_i2c.set_client(mcp23008_5);
 
     // Configure the MCP23008_6. Device address 0x26
@@ -411,8 +411,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_6 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_6_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_6_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_6_i2c.set_client(mcp23008_6);
 
     // Configure the MCP23008_7. Device address 0x27
@@ -422,8 +422,8 @@ pub unsafe fn reset_handler() {
         32);
     let mcp23008_7 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
-        signpost_drivers::mcp23008::MCP23008::new(mcp23008_7_i2c, &mut signpost_drivers::mcp23008::BUFFER),
-        224/8);
+        signpost_drivers::mcp23008::MCP23008::new(mcp23008_7_i2c, None, &mut signpost_drivers::mcp23008::BUFFER),
+        320/8);
     mcp23008_7_i2c.set_client(mcp23008_7);
 
     // Create an array of the GPIO extenders so we can pass them to an
@@ -445,8 +445,8 @@ pub unsafe fn reset_handler() {
         signpost_drivers::gpio_async::GPIOAsync::new(async_gpio_ports),
         160/8
     );
-    for port in async_gpio_ports.iter() {
-        port.set_client(gpio_async);
+    for (i, port) in async_gpio_ports.iter().enumerate() {
+        port.set_client(gpio_async, i);
     }
 
     //

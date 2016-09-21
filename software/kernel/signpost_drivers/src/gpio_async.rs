@@ -1,8 +1,9 @@
 use core::cell::Cell;
-use signpost_hil;
+
 use kernel::hil;
-// use hil::gpio::{GPIOPin, InputMode, InterruptMode, Client};
 use kernel::{AppId, Callback, Driver};
+
+use signpost_hil;
 
 pub struct GPIOAsync<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort + 'a> {
     ports: &'a [&'a Port],
@@ -60,20 +61,15 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> GPIOAsync<'a, Port> {
 }
 
 impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> signpost_hil::gpio_async::Client for GPIOAsync<'a, Port> {
-    fn fired(&self, pin_num: usize) {
-        // // read the value of the pin
-        // let pins = self.pins.as_ref();
-        // let pin_state = pins[pin_num].read();
-
-        // // schedule callback with the pin number and value
-        // if self.callback.get().is_some() {
-        //     self.callback.get().unwrap().schedule(pin_num, pin_state as usize, 0);
-        // }
+    fn fired(&self, port_pin_num: usize) {
+        self.callback.get().map(|mut cb|
+            cb.schedule(1, port_pin_num, 0)
+        );
     }
 
     fn done(&self, value: usize) {
         self.callback.get().map(|mut cb|
-            cb.schedule(value, 0, 0)
+            cb.schedule(0, value, 0)
         );
     }
 }
@@ -192,13 +188,11 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
 
             // disable pin
             8 => {
-                // if data >= ports.len() {
-                //     -1
-                // } else {
-                //     ports[data].disable();
-                //     0
-                // }
-                0
+                if port >= ports.len() {
+                    -1
+                } else {
+                    ports[port].disable(pin)
+                }
             }
 
             // default
