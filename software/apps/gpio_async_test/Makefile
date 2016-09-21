@@ -1,4 +1,15 @@
-TOCK_APPS_DIR=../../kernel/tock/apps
-ADDITIONAL_LIBS_DIR=../libs
-include $(TOCK_APPS_DIR)/Makefile.GenericApp.mk
+# makefile for user application
+
+# the current directory
+APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
+# files needed for this code
+C_SRCS   := $(wildcard *.c)
+INCLUDE_PATHS += .
+
+# specific flags needed for this code
+CPPFLAGS += -DSTACK_SIZE=2048
+
+# include makefile settings that are shared between applications
+include ../AppMakefile.mk
 

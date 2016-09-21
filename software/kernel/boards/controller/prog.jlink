@@ -1,6 +1,0 @@
-r
-loadfile tock/build/controller/kernel.hex, 0x10000
-r
-g
-q
-

@@ -1,7 +1,0 @@
-r
-loadbin tock/build/apps.bin, 0x30000
-verifybin tock/build/apps.bin, 0x30000
-r
-g
-q
-

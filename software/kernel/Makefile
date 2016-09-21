@@ -24,6 +24,6 @@ flash: boards/$(TOCK_BOARD)/
 
 
 # rule for making userland example applications
-examples/%: userland/examples/%
+apps/%: ../apps/%
 	$(MAKE) -C $< ARCH=$(TOCK_ARCH)
 

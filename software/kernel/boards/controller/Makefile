@@ -1,3 +1,5 @@
+# Makefile for building the tock kernel for the signpost controller
+
 SLOAD=sload
 SDB=$(TOCK_BUILD_DIR)/kernel.sdb
 SDB_MAINTAINER=$(shell whoami)
@@ -5,7 +7,15 @@ SDB_VERSION=$(shell git show-ref -s HEAD)
 SDB_NAME=controller.rs
 SDB_DESCRIPTION="An OS for the signpost controller"
 
-all: target/target/release/controller
+OBJCOPY?=arm-none-eabi-objcopy
+OBJDUMP?=arm-none-eabi-objdump
+OBJDUMP_FLAGS+= --disassemble-all --source --disassembler-options=force-thumb -C --section-headers
+
+JLINK=JLinkExe
+JLINK_OPTIONS=-device ATSAM4LC8C -if swd -speed 1200 -AutoConnect 1
+JLINK_SCRIPTS_DIR=jtag/
+
+all: target/target/release/controller target/target/release/controller.lst
 
 .PHONY: doc
 doc:
@@ -19,11 +29,29 @@ target/target/release/controller.sdb: target/target/release/controller
 	@tput bold ; echo "Packing SDB..." ; tput sgr0
 	@$(SLOAD) pack -m "$(SDB_MAINTAINER)" -v "$(SDB_VERSION)" -n "$(SDB_NAME)" -d $(SDB_DESCRIPTION) -o $@ $<
 
+target/target/release/controller.lst: target/target/release/controller
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $^ > $@
+
+target/target/release/controller.hex: target/target/release/controller
+	@$(OBJCOPY) -Oihex $^ $@
+
 .PHONY: clean
 clean:
 	@cargo clean
 
+# upload programs over uart with stormloader
 .PHONY: program
 program: target/target/release/controller.sdb
 	$(SLOAD) flash $<
+
+# upload kernel over JTAG
+.PHONY: flash
+flash: target/target/release/controller.hex
+	$(JLINK) $(JLINK_OPTIONS) $(JLINK_SCRIPTS_DIR)/flash-kernel.jlink
+
+# special command for the sam4l. Flashes the stormloader bootloader onto
+# 	the SAM4L so that sload can communicate with it
+.PHONY: flash-bootloader
+flash-bootloader: bootloader/bootloader.bin
+	$(JLINK) $(JLINK_OPTIONS) $(JLINK_SCRIPTS_DIR)/flash-bootloader.jlink
 
