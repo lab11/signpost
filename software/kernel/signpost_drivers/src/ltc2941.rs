@@ -79,7 +79,7 @@ impl<'a> LTC2941<'a> {
         }
     }
 
-    pub fn set_client<C: LTC2941Client>(&self, client: &'static C, ) {
+    pub fn set_client<C: LTC2941Client>(&self, client: &'static C) {
         self.client.replace(client);
 
         self.interrupt_pin.map(|interrupt_pin| {
@@ -242,14 +242,6 @@ impl<'a> gpio::Client for LTC2941<'a> {
         self.client.map(|client| {
             client.interrupt();
         });
-        // self.buffer.take().map(|buffer| {
-        //     // turn on i2c to send commands
-        //     self.i2c.enable();
-
-        //     // Just issuing a read to the selector reads its control register.
-        //     self.i2c.read(buffer, 1);
-        //     self.state.set(State::SelectStatus);
-        // });
     }
 }
 
