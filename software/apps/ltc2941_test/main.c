@@ -44,36 +44,36 @@ int main () {
   ltc2941_set_callback(callback, NULL);
 
   ltc2941_read_status();
-  wait();
+  yield();
   print_data();
 
   ltc2941_reset_charge();
-  wait();
+  yield();
 
   ltc2941_set_high_threshold(0x0010);
-  wait();
+  yield();
 
   while (1) {
     ltc2941_get_charge();
-    wait();
+    yield();
     print_data();
     delay_ms(1000);
   }
 
   // gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 0);
-  // wait();
+  // yield();
 
   // gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 1);
-  // wait();
+  // yield();
 
   // gpio_async_set(MOD7_GPIOA_PORT_NUM, 0);
-  // wait();
+  // yield();
   // gpio_async_clear(10, 0);
-  // wait();
+  // yield();
   // gpio_async_toggle(10, 0);
-  // wait();
+  // yield();
   // gpio_async_toggle(10, 0);
-  // wait();
+  // yield();
 
 
 
@@ -82,12 +82,12 @@ int main () {
   //   int i;
   //   for (i=0;i<10;i++) {
   //     gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 2);
-  //     wait();
+  //     yield();
   //     gpio_async_clear(MOD7_GPIOA_PORT_NUM, 2);
-  //     wait();
+  //     yield();
   //     gpio_async_set(MOD7_GPIOA_PORT_NUM, 2);
   //     // gpio_async_enable_input(10, 2, PullNone);
-  //     wait();
+  //     yield();
   //     delay_ms(10);
   //   }
 
@@ -95,16 +95,16 @@ int main () {
 
   //   // delay_ms(500);
   //   gpio_async_toggle(MOD7_GPIOA_PORT_NUM, 1);
-  //   wait();
+  //   yield();
   // }
 
   // gpio_async_enable_input(10, 0, PullNone);
-  // wait();
+  // yield();
 
   // while (1) {
   //   gpio_async_read(10, 0);
 
-  //   wait();
+  //   yield();
 
   //   {
   //     // Print the pressure value
