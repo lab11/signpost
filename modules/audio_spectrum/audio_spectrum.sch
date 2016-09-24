@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2295,7 +2295,7 @@ MICROPHONE</text>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MP23AB02B">
+<deviceset name="MP23AB02B" prefix="U">
 <description>A pretty normal mems microphone</description>
 <gates>
 <gate name="G$1" symbol="MP23AB02B" x="0" y="0"/>
@@ -2666,7 +2666,7 @@ MICROPHONE</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="FERRITE_BEAD" prefix="FB" uservalue="yes">
+<deviceset name="FERRITE_BEAD" prefix="L" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="FERRITE_BEAD" x="0" y="0"/>
 </gates>
@@ -2684,15 +2684,6 @@ MICROPHONE</text>
 <connects>
 <connect gate="G$1" pin="P$1" pad="1"/>
 <connect gate="G$1" pin="P$2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="0805" package="0805_CAP">
-<connects>
-<connect gate="G$1" pin="P$1" pad="P$1"/>
-<connect gate="G$1" pin="P$2" pad="P$2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3381,10 +3372,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <smd name="3" x="1.4" y="-2.5" dx="1.2" dy="1.2" layer="1"/>
 <text x="0" y="2.25" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="0.1" y="-4.85" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
-<wire x1="1.8" y1="1.15" x2="-1.8" y2="1.15" width="0.127" layer="25"/>
-<wire x1="-1.8" y1="1.15" x2="-1.8" y2="-2.6" width="0.127" layer="25"/>
-<wire x1="-1.8" y1="-2.6" x2="1.8" y2="-2.6" width="0.127" layer="25"/>
-<wire x1="1.8" y1="-2.6" x2="1.8" y2="1.15" width="0.127" layer="25"/>
+<wire x1="1.8" y1="1.15" x2="-1.8" y2="1.15" width="0.127" layer="21"/>
+<wire x1="-1.8" y1="1.15" x2="-1.8" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="-1.8" y1="-2.6" x2="1.8" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="1.8" y1="-2.6" x2="1.8" y2="1.15" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -3422,9 +3413,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <technologies>
 <technology name="3310C">
 <attribute name="DIGIKEY" value="3310C-125-103L-ND" constant="no"/>
-</technology>
-<technology name="TC33X">
-<attribute name="DIGIKEY" value="" constant="no"/>
 </technology>
 </technologies>
 </device>
