@@ -1,0 +1,114 @@
+
+**** 09/21/16 17:34:40 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "sim.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\apple\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 100m 0 10u 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source HB100_THIR
+R_R1         0 N00255  12k TC=0,0 
+C_C1         N00255 N00275  4.7u  TC=0,0 
+V_V1         N00331 0 5Vdc
+V_V2         N00255 0  AC 0
++SIN 0 0.001 100 0 0 0
+V_V3         N00539 0 5Vdc
+R_R2         N00551 N00539  200k TC=0,0 
+R_R3         0 N00551  100k TC=0,0 
+C_C2         0 N00551  100u  TC=0,0 
+R_R4         N00275 N00551  330k TC=0,0 
+R_R5         N00788 N00784  10k TC=0,0 
+R_R6         N00800 N00788  1000k TC=0,0 
+C_C3         0 N00784  4.7u  TC=0,0 
+C_C4         N00788 N00800  2.2n  TC=0,0 
+C_C5         N00800 N00946  4.7u  TC=0,0 
+R_R7         N00950 N00946  8.2k TC=0,0 
+V_V4         N01094 0 5Vdc
+R_R8         N01171 N00950  1000k TC=0,0 
+C_C6         N00950 N01171  2.2n  TC=0,0 
+X_U3         N00275 N00788 N00331 0 N00800 OP284E/AD
+X_U4         N00551 N00950 N01094 0 N01171 OP284E/AD
+
+**** RESUMING sim.cir ****
+.END
+
+ERROR -- EVALUATION VERSION analog Node Limit (75 Nodes) Exceeded!
+
+
+
+
+ABORTING SIMULATION
+**** 09/21/16 17:34:40 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+Node counts:
+  Top level (NUNODS)                =          13
+  External (NCNODS)                 =         105
+  Total (NUMNOD)                    =         105
+
+Total device count (NUMEL)          =         198
+  Capacitors (C)                    =          26
+  Diodes (D)                        =          20
+  VCVS (E)                          =          10
+  CCCS (F)                          =           6
+  VCCS (G)                          =          12
+  Current Sources (I)               =          10
+  BJTs (Q)                          =          38
+  Resistors (R)                     =          52
+  Voltage Sources (V)               =          24
+
+Number of subcircuits (X)           =           2
+
+Analysis statistics:
+  No. total time points (NUMTTP)    =           0
+  No. rejected time points (NUMRTP) =           0
+  No. iterations (NUMNIT)           =           0
+
+Load Threads                        =           1
+
+Runtime statistics:                       Seconds      Iterations
+  Readin                            =         .02
+  General setup                     =        0.00
+  CMI setup                     =        0.00
+  Setup                             =        0.00
+  DC sweep                          =        0.00               0
+  Bias point                        =        0.00               0
+  AC and noise                      =        0.00               0
+  Total transient analysis          =        0.00
+  Output                            =        0.00
+  Overhead                          =         .03
+  Total job time                    =         .02
+

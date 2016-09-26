@@ -1,0 +1,240 @@
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "sim.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\apple\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 100m 0 10u 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source HB100_THIR
+R_R1         0 N00255  12k TC=0,0 
+C_C1         N00255 N00275  10u  TC=0,0 
+V_V1         N00331 0 3.3Vdc
+V_V2         N00255 0  AC 0
++SIN 0 0.001 100 0 0 0
+V_V3         N00539 0 3.3Vdc
+R_R2         N00551 N00539  100k TC=0,0 
+R_R3         0 N00551  100k TC=0,0 
+C_C2         0 N00551  100u  TC=0,0 
+R_R4         N00275 N00551  330k TC=0,0 
+R_R5         N00788 N00784  10k TC=0,0 
+R_R6         N00800 N00788  100k TC=0,0 
+C_C3         0 N00784  10u  TC=0,0 
+C_C4         N00788 N00800  2.2n  TC=0,0 
+C_C5         N00800 N00946  10u  TC=0,0 
+R_R7         N00950 N00946  8.2k TC=0,0 
+V_V4         N01094 0 3.3Vdc
+R_R8         N01171 N00950  100k TC=0,0 
+C_C6         N00950 N01171  2.2n  TC=0,0 
+X_U1A         N00551 N00950 N01094 0 N01171 LM324
+X_U1B         N00275 N00788 N00331 0 N00800 LM324
+
+**** RESUMING sim.cir ****
+.END
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1A.dx        X_U1A.dy        X_U1B.dx        X_U1B.dy        
+          IS  800.000000E-18  800.000000E-18  800.000000E-18  800.000000E-18 
+          RS    1               1.000000E-03    1               1.000000E-03 
+         CJO                   10.000000E-12                   10.000000E-12 
+
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1A.qx        X_U1B.qx        
+               PNP             PNP             
+       LEVEL    1               1            
+          IS  800.000000E-18  800.000000E-18 
+          BF  166.7           166.7          
+          NF    1               1            
+          BR    1               1            
+          NR    1               1            
+         ISS    0               0            
+          RE    0               0            
+          RC    0               0            
+         CJE    0               0            
+         VJE     .75             .75         
+         CJC    0               0            
+         VJC     .75             .75         
+         MJC     .33             .33         
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          KF    0               0            
+          AF    1               1            
+          CN    2.2             2.2          
+           D     .52             .52         
+
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     Current Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1A.sw2       X_U1A.sw1       X_U1A.sw3       X_U1A.sw4       
+         RON    1               1               1               1            
+        ROFF   10.000000E+06   10.000000E+06   10.000000E+06   10.000000E+06 
+         ION    0              -1.000000E-06   -1.000000E-06    0            
+        IOFF   -1.000000E-06    0               0              -1.000000E-06 
+
+
+               X_U1B.sw2       X_U1B.sw1       X_U1B.sw3       X_U1B.sw4       
+         RON    1               1               1               1            
+        ROFF   10.000000E+06   10.000000E+06   10.000000E+06   10.000000E+06 
+         ION    0              -1.000000E-06   -1.000000E-06    0            
+        IOFF   -1.000000E-06    0               0              -1.000000E-06 
+
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00255)    0.0000 (N00275)    1.6692 (N00331)    3.3000 (N00539)    3.3000     
+
+(N00551)    1.6545 (N00784)    1.6690 (N00788)    1.6690 (N00800)    1.6645     
+
+(N00946)    1.6543 (N00950)    1.6543 (N01094)    3.3000 (N01171)    1.6498     
+
+(X_U1A.6) 41.12E-09                   (X_U1A.7)    1.6498                       
+
+(X_U1A.8)    1.6498                   (X_U1A.9)    0.0000                       
+
+(X_U1A.a)    3.3000                   (X_U1A.b) 49.43E-09                       
+
+(X_U1B.6)-2.741E-06                   (X_U1B.7)    1.6645                       
+
+(X_U1B.8)    1.6645                   (X_U1B.9)    0.0000                       
+
+(X_U1B.a)    3.3000                   (X_U1B.b) 49.43E-09                       
+
+(X_U1A.10)    2.2621                  (X_U1A.11)     .0398                      
+
+(X_U1A.12)     .0396                  (X_U1A.13)    2.2481                      
+
+(X_U1A.14)    2.2482                  (X_U1A.53)    1.8000                      
+
+(X_U1A.54)     .8220                  (X_U1A.90)-44.96E-06                      
+
+(X_U1A.91)   40.0000                  (X_U1A.92)  -40.0000                      
+
+(X_U1A.99)    1.6500                  (X_U1B.10)    2.2768                      
+
+(X_U1B.11)     .0398                  (X_U1B.12)     .0396                      
+
+(X_U1B.13)    2.2629                  (X_U1B.14)    2.2630                      
+
+(X_U1B.53)    1.8000                  (X_U1B.54)     .8220                      
+
+(X_U1B.90)-44.96E-06                  (X_U1B.91)   40.0000                      
+
+(X_U1B.92)  -40.0000                  (X_U1B.99)    1.6500                  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -3.788E-04
+    V_V2         0.000E+00
+    V_V3        -1.646E-05
+    V_V4        -3.788E-04
+    X_U1A.vb     4.112E-13
+    X_U1A.vc     1.510E-13
+    X_U1A.ve     7.161E-13
+    X_U1A.vlim  -4.496E-08
+    X_U1A.vlp   -4.000E-11
+    X_U1A.vln   -4.000E-11
+    X_U1B.vb    -2.741E-11
+    X_U1B.vc     1.363E-13
+    X_U1B.ve     7.308E-13
+    X_U1B.vlim  -4.496E-08
+    X_U1B.vlp   -4.000E-11
+    X_U1B.vln   -4.000E-11
+
+    TOTAL POWER DISSIPATION   2.55E-03  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 09/22/16 16:55:38 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sim"  [ C:\Users\apple\AppData\Roaming\SPB_Data\hb100_thir-pspicefiles\schematic1\sim.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        1.08
+
