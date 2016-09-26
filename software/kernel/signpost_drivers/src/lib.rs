@@ -12,5 +12,9 @@ pub mod pca9544a;
 pub mod ltc2941;
 pub mod fm25cl;
 
+pub mod lps331ap;
+pub mod si7021;
+pub mod tsl2561;
+
 pub mod gpio_async;
 pub mod i2c_selector;
