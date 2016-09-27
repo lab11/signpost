@@ -1,0 +1,6 @@
+r
+loadfile target/target/release/controller.hex, 0x10000
+r
+g
+q
+
