@@ -468,7 +468,7 @@ pub unsafe fn reset_handler() {
         32);
     let pca9544a_1 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
-        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
+        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_1_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
         320/8);
     pca9544a_1_i2c.set_client(pca9544a_1);
 
