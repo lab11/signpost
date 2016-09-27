@@ -3404,7 +3404,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
 <part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
-<part name="U$1" library="chips" deviceset="MP23AB02B" device=""/>
+<part name="U8" library="chips" deviceset="MP23AB02B" device=""/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF"/>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF"/>
@@ -3435,9 +3435,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
 <part name="LED1" library="leds" deviceset="LED" device="0603"/>
+<part name="LED2" library="leds" deviceset="LED" device="0603"/>
 <part name="LED3" library="leds" deviceset="LED" device="0603"/>
-<part name="LED5" library="leds" deviceset="LED" device="0603"/>
-<part name="LED7" library="leds" deviceset="LED" device="0603"/>
+<part name="LED4" library="leds" deviceset="LED" device="0603"/>
 </parts>
 <sheets>
 <sheet>
@@ -3530,13 +3530,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <instance part="LED1" gate="G$1" x="129.54" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="126.365" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="LED3" gate="G$1" x="132.08" y="55.88" smashed="yes" rot="R270">
+<instance part="LED2" gate="G$1" x="132.08" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="133.985" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="LED5" gate="G$1" x="152.4" y="55.88" smashed="yes" rot="R270">
+<instance part="LED3" gate="G$1" x="152.4" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="149.225" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="LED7" gate="G$1" x="154.94" y="55.88" smashed="yes" rot="R270">
+<instance part="LED4" gate="G$1" x="154.94" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="156.845" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
 </instances>
@@ -3872,12 +3872,12 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="142.24" y1="60.96" x2="142.24" y2="63.5" width="0.1524" layer="91"/>
 <junction x="142.24" y="60.96"/>
 <label x="142.24" y="63.5" size="1.016" layer="95" rot="R90" xref="yes"/>
-<pinref part="LED3" gate="G$1" pin="ANODE"/>
+<pinref part="LED2" gate="G$1" pin="ANODE"/>
 <wire x1="132.08" y1="58.42" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
 <junction x="132.08" y="60.96"/>
-<pinref part="LED5" gate="G$1" pin="ANODE"/>
+<pinref part="LED3" gate="G$1" pin="ANODE"/>
 <junction x="152.4" y="60.96"/>
-<pinref part="LED7" gate="G$1" pin="ANODE"/>
+<pinref part="LED4" gate="G$1" pin="ANODE"/>
 <wire x1="154.94" y1="58.42" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="LED1" gate="G$1" pin="ANODE"/>
 <wire x1="129.54" y1="58.42" x2="129.54" y2="60.96" width="0.1524" layer="91"/>
@@ -4087,7 +4087,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <net name="N$25" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="LED7" gate="G$1" pin="CATHODE"/>
+<pinref part="LED4" gate="G$1" pin="CATHODE"/>
 <wire x1="154.94" y1="45.72" x2="154.94" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4154,14 +4154,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 </net>
 <net name="N$23" class="0">
 <segment>
-<pinref part="LED3" gate="G$1" pin="CATHODE"/>
+<pinref part="LED2" gate="G$1" pin="CATHODE"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="132.08" y1="53.34" x2="132.08" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$33" class="0">
 <segment>
-<pinref part="LED5" gate="G$1" pin="CATHODE"/>
+<pinref part="LED3" gate="G$1" pin="CATHODE"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="45.72" x2="152.4" y2="53.34" width="0.1524" layer="91"/>
 </segment>
@@ -4229,7 +4229,7 @@ optional adjustment/debugging.</text>
 <instance part="R8" gate="G$1" x="154.94" y="55.88" rot="R180"/>
 <instance part="R9" gate="G$1" x="154.94" y="48.26" rot="R180"/>
 <instance part="GND9" gate="1" x="165.1" y="38.1"/>
-<instance part="U$1" gate="G$1" x="177.8" y="129.54" rot="MR0"/>
+<instance part="U8" gate="G$1" x="177.8" y="129.54" rot="MR0"/>
 <instance part="GND10" gate="1" x="177.8" y="109.22"/>
 <instance part="C23" gate="G$1" x="182.88" y="149.86" rot="R180"/>
 <instance part="C9" gate="G$1" x="190.5" y="149.86" rot="R180"/>
@@ -4317,7 +4317,7 @@ optional adjustment/debugging.</text>
 <wire x1="165.1" y1="45.72" x2="167.64" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="U8" gate="G$1" pin="GND"/>
 <pinref part="GND10" gate="1" pin="GND"/>
 <wire x1="177.8" y1="116.84" x2="177.8" y2="111.76" width="0.1524" layer="91"/>
 </segment>
@@ -4545,7 +4545,7 @@ optional adjustment/debugging.</text>
 <label x="116.84" y="144.78" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="VDD"/>
+<pinref part="U8" gate="G$1" pin="VDD"/>
 <wire x1="177.8" y1="142.24" x2="177.8" y2="160.02" width="0.1524" layer="91"/>
 <label x="177.8" y="165.1" size="1.27" layer="95" rot="R90" xref="yes"/>
 <pinref part="C9" gate="G$1" pin="2"/>
@@ -4670,7 +4670,7 @@ optional adjustment/debugging.</text>
 <net name="N$18" class="0">
 <segment>
 <pinref part="C25" gate="G$1" pin="2"/>
-<pinref part="U$1" gate="G$1" pin="OUT"/>
+<pinref part="U8" gate="G$1" pin="OUT"/>
 <wire x1="147.32" y1="129.54" x2="162.56" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>

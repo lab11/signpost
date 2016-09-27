@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1521,7 +1521,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R9" library="passives" package="0603-RES" value="10k" x="28.448" y="57.658" smashed="yes" rot="R270">
 <attribute name="NAME" x="30.48" y="57.404" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="U$1" library="chips" package="MP23AB02B" value="MP23AB02B" x="28.194" y="8.89" smashed="yes" rot="MR0">
+<element name="U8" library="chips" package="MP23AB02B" value="MP23AB02B" x="28.194" y="8.89" smashed="yes" rot="MR0">
 <attribute name="DIGIKEY" value="497-14947-1-ND" x="28.194" y="8.89" size="1.778" layer="28" font="vector" ratio="12" rot="MR0" display="off"/>
 </element>
 <element name="C23" library="passives" package="0603_CAP" value="1uF" x="21.59" y="7.874" smashed="yes" rot="R90">
@@ -1583,15 +1583,15 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="43.8785" y="5.842" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="46.5455" y="5.08" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
-<element name="LED3" library="leds" package="LED-0603" value="LED0603" x="48.26" y="5.08" smashed="yes">
+<element name="LED2" library="leds" package="LED-0603" value="LED0603" x="48.26" y="5.08" smashed="yes">
 <attribute name="NAME" x="48.9585" y="6.096" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="49.0855" y="5.08" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
-<element name="LED5" library="leds" package="LED-0603" value="LED0603" x="38.1" y="5.08" smashed="yes">
+<element name="LED3" library="leds" package="LED-0603" value="LED0603" x="38.1" y="5.08" smashed="yes">
 <attribute name="NAME" x="37.4015" y="6.096" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="38.9255" y="5.08" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
-<element name="LED7" library="leds" package="LED-0603" value="LED0603" x="40.64" y="5.08" smashed="yes">
+<element name="LED4" library="leds" package="LED-0603" value="LED0603" x="40.64" y="5.08" smashed="yes">
 <attribute name="NAME" x="42.4815" y="6.096" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="41.4655" y="5.08" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
@@ -1628,7 +1628,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="U6" pad="2"/>
 <contactref element="R13" pad="2"/>
 <contactref element="C22" pad="1"/>
-<contactref element="U$1" pad="3"/>
+<contactref element="U8" pad="3"/>
 <contactref element="C23" pad="1"/>
 <contactref element="C9" pad="1"/>
 <contactref element="U7" pad="7"/>
@@ -2070,9 +2070,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="58.11" y1="24.634" x2="60.127940625" y2="24.634" width="0.2032" layer="1"/>
 <wire x1="60.127940625" y1="24.634" x2="60.127940625" y2="32.949940625" width="0.508" layer="16"/>
 <wire x1="60.127940625" y1="32.949940625" x2="59.944" y2="33.274" width="0.508" layer="16"/>
+<contactref element="LED2" pad="A"/>
 <contactref element="LED3" pad="A"/>
-<contactref element="LED5" pad="A"/>
-<contactref element="LED7" pad="A"/>
+<contactref element="LED4" pad="A"/>
 <contactref element="LED1" pad="A"/>
 <wire x1="48.26" y1="4.33" x2="45.72" y2="4.33" width="0.508" layer="1"/>
 <wire x1="45.72" y1="4.33" x2="40.64" y2="4.33" width="0.508" layer="1"/>
@@ -2203,7 +2203,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="C14" pad="1"/>
 <contactref element="U5" pad="5"/>
 <contactref element="R10" pad="1"/>
-<contactref element="U$1" pad="2"/>
+<contactref element="U8" pad="2"/>
 <contactref element="C9" pad="2"/>
 <contactref element="C23" pad="2"/>
 <wire x1="27.584" y1="9.815" x2="25.146" y2="9.815" width="0.254" layer="16"/>
@@ -2353,7 +2353,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </signal>
 <signal name="N$18">
 <contactref element="C25" pad="2"/>
-<contactref element="U$1" pad="1"/>
+<contactref element="U8" pad="1"/>
 <wire x1="28.804" y1="9.815" x2="28.702" y2="9.815" width="0.254" layer="16"/>
 <wire x1="28.702" y1="9.815" x2="28.702" y2="10.414" width="0.254" layer="16"/>
 <wire x1="28.702" y1="10.414" x2="27.686" y2="11.43" width="0.254" layer="16"/>
@@ -2543,7 +2543,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </signal>
 <signal name="N$25">
 <contactref element="R4" pad="2"/>
-<contactref element="LED7" pad="C"/>
+<contactref element="LED4" pad="C"/>
 <wire x1="40.64" y1="5.83" x2="40.64" y2="7.224" width="0.254" layer="1"/>
 </signal>
 <signal name="LEDG1">
@@ -2629,12 +2629,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="45.72" y1="5.83" x2="45.72" y2="7.224" width="0.254" layer="1"/>
 </signal>
 <signal name="N$23">
-<contactref element="LED3" pad="C"/>
+<contactref element="LED2" pad="C"/>
 <contactref element="R2" pad="2"/>
 <wire x1="48.26" y1="5.83" x2="48.26" y2="7.224" width="0.254" layer="1"/>
 </signal>
 <signal name="N$33">
-<contactref element="LED5" pad="C"/>
+<contactref element="LED3" pad="C"/>
 <contactref element="R3" pad="2"/>
 <wire x1="38.1" y1="5.83" x2="38.1" y2="7.224" width="0.254" layer="1"/>
 </signal>
