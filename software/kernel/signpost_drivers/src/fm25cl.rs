@@ -126,17 +126,16 @@ impl<'a> FM25CL<'a> {
         self.txbuffer.take().map(|txbuffer| {
             self.rxbuffer.take().map(move |rxbuffer| {
                 txbuffer[0] = Opcodes::ReadMemory as u8;
-                txbuffer[1] = 0;
-                txbuffer[2] = ((address >> 8) & 0xFF) as u8;
-                txbuffer[3] = (address & 0xFF) as u8;
+                txbuffer[1] = ((address >> 8) & 0xFF) as u8;
+                txbuffer[2] = (address & 0xFF) as u8;
 
                 // Save the user buffer for later
                 self.client_buffer.replace(buffer);
 
-                let read_len = cmp::min(rxbuffer.len()-4, len as usize);
+                let read_len = cmp::min(rxbuffer.len()-3, len as usize);
 
                 self.state.set(State::ReadMemory);
-                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), read_len+4);
+                self.spi.read_write_bytes(txbuffer, Some(rxbuffer), read_len+3);
             });
         });
     }
@@ -168,17 +167,16 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
 
                 self.client_buffer.map(move |buffer| {
                     write_buffer[0] = Opcodes::WriteMemory as u8;
-                    write_buffer[1] = 0;
-                    write_buffer[2] = ((self.client_write_address.get() >> 8) & 0xFF) as u8;
-                    write_buffer[3] = (self.client_write_address.get() & 0xFF) as u8;
+                    write_buffer[1] = ((self.client_write_address.get() >> 8) & 0xFF) as u8;
+                    write_buffer[2] = (self.client_write_address.get() & 0xFF) as u8;
 
                     let write_len = cmp::min(write_buffer.len(), self.client_write_len.get() as usize);
 
                     for i in 0..write_len {
-                        write_buffer[(i+4) as usize] = buffer[i as usize];
+                        write_buffer[(i+3) as usize] = buffer[i as usize];
                     }
 
-                    self.spi.read_write_bytes(write_buffer, read_buffer, write_len+4);
+                    self.spi.read_write_bytes(write_buffer, read_buffer, write_len+3);
                 });
             },
             State::WriteMemory => {
@@ -207,8 +205,8 @@ impl<'a> hil::spi::SpiMasterClient for FM25CL<'a> {
                     self.client_buffer.take().map(move |buffer| {
                         let read_len = cmp::min(buffer.len(), len);
 
-                        for i in 0..(read_len-4) {
-                            buffer[i] = read_buffer[i+4];
+                        for i in 0..(read_len-3) {
+                            buffer[i] = read_buffer[i+3];
                         }
 
                         self.rxbuffer.replace(read_buffer);
