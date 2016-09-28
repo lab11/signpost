@@ -3169,8 +3169,8 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <text x="38.1" y="1.27" size="1.27" layer="21">GND</text>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="-180"/>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="180"/>
-<text x="-1.27" y="39.37" size="1.27" layer="25">Name</text>
-<text x="-1.27" y="-6.35" size="1.27" layer="27">value</text>
+<text x="-1.27" y="39.37" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.27" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
 </package>
 <package name="OP284E_SEPARATE">
 <smd name="V-" x="0" y="1.27" dx="1.27" dy="0.5" layer="1"/>
