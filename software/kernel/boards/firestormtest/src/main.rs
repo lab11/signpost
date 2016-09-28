@@ -315,6 +315,11 @@ pub unsafe fn reset_handler() {
 
     set_pin_primary_functions();
 
+
+
+
+panic!("before load process");
+
     //
     // UART console
     //
@@ -611,13 +616,14 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-static mut BUFFER: [u8; 100] = [0; 100];
-sam4l::i2c::I2C1.slave_start();
-sam4l::i2c::I2C1.set_slave_address(0x02);
-// sam4l::i2c::I2C1.receive(&mut BUFFER, 100);
-BUFFER[0] = 0x94;
-BUFFER[1] = 0xbe;
-sam4l::i2c::I2C1.answer_read(&mut BUFFER, 2);
+// static mut BUFFER: [u8; 100] = [0; 100];
+// sam4l::i2c::I2C1.slave_start();
+// sam4l::i2c::I2C1.set_slave_address(0x02);
+// // sam4l::i2c::I2C1.receive(&mut BUFFER, 100);
+// BUFFER[0] = 0x94;
+// BUFFER[1] = 0xbe;
+// sam4l::i2c::I2C1.answer_read(&mut BUFFER, 2);
+
 
 
     kernel::main(signpost_controller, &mut chip, load_processes());
