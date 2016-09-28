@@ -1,7 +1,7 @@
 #![crate_name = "firestormtest"]
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(const_fn,lang_items,core_intrinsics)]
 
 extern crate cortexm4;
 extern crate capsules;
@@ -316,9 +316,10 @@ pub unsafe fn reset_handler() {
     set_pin_primary_functions();
 
 
+// // let scif_dfll0conf = ::core::intrinsics::volatile_load(0x400E0828 as *const usize);
+// let scif_dfll0 = ::core::intrinsics::volatile_load(0x400E083c as *const usize);
 
-
-panic!("before load process");
+// panic!("before load process {}", scif_dfll0);
 
     //
     // UART console
@@ -623,6 +624,7 @@ panic!("before load process");
 // BUFFER[0] = 0x94;
 // BUFFER[1] = 0xbe;
 // sam4l::i2c::I2C1.answer_read(&mut BUFFER, 2);
+
 
 
 
