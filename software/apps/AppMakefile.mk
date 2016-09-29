@@ -5,10 +5,8 @@ TOCK_ARCH = cortex-m4
 
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-#XXX: bring these back once PR #115 is in
-#TOCK_USERLAND_BASE_DIR = $(CURRENT_DIR)/../kernel/tock/userland/
-#TOCK_BASE_DIR = $(CURRENT_DIR)/../kernel/tock/
-TOCK_BASE_DIR = $(CURRENT_DIR)/../kernel/tock/userland/
+TOCK_USERLAND_BASE_DIR := $(CURRENT_DIR)/../kernel/tock/userland/
+TOCK_BASE_DIR := $(CURRENT_DIR)/../kernel/tock/
 BUILDDIR ?= $(APP_DIR)/build/$(TOCK_ARCH)
 
 # create list of object files required
@@ -25,11 +23,11 @@ CFLAGS += $(INCLUDES)
 
 # include userland master makefile. Contains rules and flags for actually
 # 	building the application
-#XXX: here too
-#include $(TOCK_USERLAND_BASE_DIR)/Makefile
-include $(TOCK_BASE_DIR)/Makefile
+include $(TOCK_USERLAND_BASE_DIR)/Makefile
 
 $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
+	echo $(TOCK_USERLAND_BASE_DIR)
+	echo $(TOCK_BASE_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(LIBS):
@@ -40,7 +38,8 @@ $(LIBS):
 clean:
 	rm -Rf $(BUILDDIR)../
 	rm -Rf $(LIBS_DIR)/build/
+	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
 # for programming individual apps, include platform app makefile
-include ../../kernel/boards/controller/Makefile-app
+include ../../kernel/boards/$(TOCK_BOARD)/Makefile-app
 
