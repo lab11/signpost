@@ -1,4 +1,4 @@
-# Makefile for building the tock kernel for the signpost controller
+# Makefile for building the tock kernel for signpost firestorm testing
 
 SLOAD=sload
 SDB=$(TOCK_BUILD_DIR)/kernel.sdb
@@ -7,6 +7,7 @@ SDB_VERSION=$(shell git show-ref -s HEAD)
 SDB_NAME=firestormtest.rs
 SDB_DESCRIPTION="An OS for the signpost controller"
 
+SIZE?=arm-none-eabi-size
 OBJCOPY?=arm-none-eabi-objcopy
 OBJDUMP?=arm-none-eabi-objdump
 OBJDUMP_FLAGS+= --disassemble-all --source --disassembler-options=force-thumb -C --section-headers
@@ -17,39 +18,53 @@ JLINK_SCRIPTS_DIR=jtag/
 
 BOARD=firestormtest
 
-all: target/target/release/$(BOARD) target/target/release/$(BOARD).lst
+all: target/sam4l/release/$(BOARD)
 
 .PHONY: doc
 doc:
-	@cargo doc --release --target=../../tock/chips/sam4l/target.json
+	@cargo doc --release --target=sam4l.json
 
-.PHONY: target/target/release/$(BOARD)
-target/target/release/$(BOARD):
-	@cargo build --release --target=../../tock/chips/sam4l/target.json
+.PHONY: target/sam4l/release/$(BOARD)
+target/sam4l/release/$(BOARD):
+	@cargo build --release --target=sam4l.json
+	@$(SIZE) $@
 
-target/target/release/$(BOARD).sdb: target/target/release/$(BOARD)
+.PHONY: target/sam4l/debug/$(BOARD)
+target/sam4l/debug/$(BOARD):
+	@cargo build --target=sam4l.json
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > target/sam4l/debug/$(BOARD).lst
+	@$(SIZE) $@
+
+target/sam4l/release/$(BOARD).sdb: target/sam4l/release/$(BOARD)
 	@tput bold ; echo "Packing SDB..." ; tput sgr0
 	@$(SLOAD) pack -m "$(SDB_MAINTAINER)" -v "$(SDB_VERSION)" -n "$(SDB_NAME)" -d $(SDB_DESCRIPTION) -o $@ $<
 
-target/target/release/$(BOARD).lst: target/target/release/$(BOARD)
-	@$(OBJDUMP) $(OBJDUMP_FLAGS) $^ > $@
+target/sam4l/release/$(BOARD).hex: target/sam4l/release/$(BOARD)
+	@$(OBJCOPY) -Oihex $^ $@
 
-target/target/release/$(BOARD).hex: target/target/release/$(BOARD)
+target/sam4l/debug/$(BOARD).hex: target/sam4l/debug/$(BOARD)
 	@$(OBJCOPY) -Oihex $^ $@
 
 .PHONY: clean
 clean:
 	@cargo clean
 
+.PHONY: debug
+debug: target/sam4l/debug/controller
+
 # upload programs over uart with stormloader
 .PHONY: program
-program: target/target/release/$(BOARD).sdb
+program: target/sam4l/release/$(BOARD).sdb
 	$(SLOAD) flash $<
 
 # upload kernel over JTAG
 .PHONY: flash
-flash: target/target/release/$(BOARD).hex
+flash: target/sam4l/release/$(BOARD).hex
 	$(JLINK) $(JLINK_OPTIONS) $(JLINK_SCRIPTS_DIR)/flash-kernel.jlink
+
+.PHONY: flash-debug
+flash-debug: target/sam4l/debug/$(BOARD).hex
+	$(JLINK) $(JLINK_OPTIONS) $(JLINK_SCRIPTS_DIR)/flash-debug.jlink
 
 # special command for the sam4l. Flashes the stormloader bootloader onto
 # 	the SAM4L so that sload can communicate with it

@@ -1,0 +1,6 @@
+r
+loadfile target/sam4l/debug/firestormtest.hex
+r
+g
+q
+

@@ -1,5 +1,5 @@
 r
-loadfile target/target/release/firestormtest.hex, 0x10000
+loadfile target/sam4l/release/firestormtest.hex
 r
 g
 q
