@@ -185,11 +185,11 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
-    let mux_i2c1 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
-    sam4l::i2c::I2C1.set_client(mux_i2c1);
+    let i2c_mux_modules = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C0), 20);
+    sam4l::i2c::I2C0.set_client(i2c_mux_modules);
 
-    let mux_i2c2 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C0), 20);
-    sam4l::i2c::I2C2.set_client(mux_i2c2);
+    let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
+    sam4l::i2c::I2C2.set_client(i2c_mux_smbus);
 
     //
     // GPIO EXTENDERS
@@ -198,7 +198,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_0. Device address 0x20
     let mcp23008_0_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x20),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x20),
         32);
     let mcp23008_0 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -209,7 +209,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_1. Device address 0x21
     let mcp23008_1_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x21),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x21),
         32);
     let mcp23008_1 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -220,7 +220,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_2. Device address 0x22
     let mcp23008_2_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x22),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x22),
         32);
     let mcp23008_2 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -231,7 +231,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_5. Device address 0x25
     let mcp23008_5_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x25),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x25),
         32);
     let mcp23008_5 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -242,7 +242,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_6. Device address 0x26
     let mcp23008_6_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x26),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x26),
         32);
     let mcp23008_6 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -253,7 +253,7 @@ pub unsafe fn reset_handler() {
     // Configure the MCP23008_7. Device address 0x27
     let mcp23008_7_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x27),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x27),
         32);
     let mcp23008_7 = static_init!(
         signpost_drivers::mcp23008::MCP23008<'static>,
@@ -289,7 +289,7 @@ pub unsafe fn reset_handler() {
     //
     let pca9544a_0_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x70),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x70),
         32);
     let pca9544a_0 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
@@ -299,7 +299,7 @@ pub unsafe fn reset_handler() {
 
     let pca9544a_1_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x71),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x71),
         32);
     let pca9544a_1 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
@@ -334,7 +334,7 @@ pub unsafe fn reset_handler() {
     // of them based on which port is selected on the i2c selector.
     let ltc2941_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x64),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x64),
         32);
     let ltc2941 = static_init!(
         signpost_drivers::ltc2941::LTC2941<'static>,
