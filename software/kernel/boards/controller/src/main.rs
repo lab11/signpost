@@ -133,7 +133,10 @@ unsafe fn set_pin_primary_functions() {
     // Right column: Firestorm pin name
     // Left  column: SAM4L peripheral function
     // LI_INT   --  EIC EXTINT2
-    PA[04].configure(Some(C));
+    PA[04].configure(None);
+    PA[04].enable();
+    PA[04].enable_output();
+    PA[04].set();
 
     // EXTINT1  --  EIC EXTINT1
     PA[06].configure(Some(C));
@@ -154,7 +157,10 @@ unsafe fn set_pin_primary_functions() {
     PA[05].configure(Some(A));
 
     // AD4      --  ADCIFE AD2
-    PA[07].configure(Some(A));
+    PA[07].configure(None);
+    PA[07].enable();
+    PA[07].enable_output();
+    PA[07].clear();
 
     // AD3      --  ADCIFE AD3
     PB[02].configure(Some(A));
@@ -225,7 +231,7 @@ unsafe fn set_pin_primary_functions() {
     PA[22].configure(Some(E));
 
     // EPCLK    --  USBC DM
-    PA[25].configure(Some(A));
+    PA[25].configure(None);
 
     // EPDAT    --  USBC DP
     PA[26].configure(Some(A));
@@ -552,7 +558,8 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 12],
-        [&sam4l::gpio::PC[10], // LED_0
+        //[&sam4l::gpio::PC[10], // LED_0
+        [&sam4l::gpio::PA[25],
          &sam4l::gpio::PA[16], // P2
          &sam4l::gpio::PA[12], // P3
          &sam4l::gpio::PC[9], // P4

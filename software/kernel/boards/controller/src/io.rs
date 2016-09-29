@@ -43,16 +43,20 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
 
-    let led = &sam4l::gpio::PC[10];
+    let led = &sam4l::gpio::PA[25];
     led.enable_output();
     loop {
         for _ in 0..1000000 {
+            led.clear();
+        }
+        for _ in 0..100000 {
             led.set();
-            // nop();
         }
         for _ in 0..1000000 {
             led.clear();
-            // nop();
+        }
+        for _ in 0..500000 {
+            led.set();
         }
     }
 }
