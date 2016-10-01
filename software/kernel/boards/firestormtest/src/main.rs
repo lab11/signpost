@@ -71,6 +71,7 @@ struct SignpostController {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
@@ -90,6 +91,7 @@ impl Platform for SignpostController {
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
             103 => f(Some(self.fram)),
+            104 => f(Some(self.smbus_interrupt)),
             _ => f(None)
         }
     }
@@ -363,6 +365,31 @@ pub unsafe fn reset_handler() {
     sam4l::i2c::I2C2.set_client(mux_i2c2);
 
     //
+    // SMBUS INTERRUPT
+    //
+
+    let smbusint_i2c = static_init!(
+        capsules::virtual_i2c::I2CDevice,
+        capsules::virtual_i2c::I2CDevice::new(mux_i2c1, 0x0C),
+        32);
+
+    let smbusint = static_init!(
+        signpost_drivers::smbus_interrupt::SMBUSInterrupt<'static>,
+        // Make sure to replace "None" below with gpio used as SMBUS Alert
+        // Some(&sam4l::gpio::PA[16]) for instance
+        signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
+        32);
+
+    smbusint_i2c.set_client(smbusint);
+    // &sam4l::gpio::PA[16].set_client(smbusint); for instance
+
+    let smbusint_driver = static_init!(
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),
+        128/8);
+    smbusint.set_client(smbusint_driver);
+
+    //
     // GPIO EXTENDERS
     //
 
@@ -594,8 +621,9 @@ pub unsafe fn reset_handler() {
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
             fram: fm25cl_driver,
+            smbus_interrupt: smbusint_driver,
         },
-        224/8);
+        256/8);
 
     usart::USART3.configure(usart::USARTParams {
         baud_rate: 115200,

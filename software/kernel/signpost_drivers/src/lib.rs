@@ -18,3 +18,4 @@ pub mod tsl2561;
 
 pub mod gpio_async;
 pub mod i2c_selector;
+pub mod smbus_interrupt;
