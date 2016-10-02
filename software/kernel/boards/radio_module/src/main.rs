@@ -67,18 +67,15 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  * Setup this platform
  ******************************************************************************/
 
-struct SignpostController {
+struct RadioModule {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-	//ble
-	lora
 }
 
-impl Platform for SignpostController {
+impl Platform for RadioModule {
     fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
@@ -87,7 +84,6 @@ impl Platform for SignpostController {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
             _ => f(None)
@@ -148,7 +144,7 @@ unsafe fn set_pin_primary_functions() {
     PA[22].configure(Some(A)); //Mosi
     PA[23].configure(Some(A)); //Sclk
     PB[12].configure(None); //smbus alert
-    PB[14].configure(Some(C))); //sda for smbus
+    PB[14].configure(Some(C)); //sda for smbus
     PB[15].configure(Some(C)); //scl for smbus
 }
 
@@ -200,12 +196,39 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
+
     //some declaration of an i2c slave that I don't know how to do yet
 
+	//stuff for the smbus i2c
     let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C3), 20);
     sam4l::i2c::I2C3.set_client(i2c_mux_smbus);
 
-    //
+	//
+	// SMBUS Interrupt
+	//
+
+    let smbusint_i2c = static_init!(                                            
+        capsules::virtual_i2c::I2CDevice,                                       
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x0C),             
+        32);                                                                    
+                                                                                
+    let smbusint = static_init!(                                                
+        signpost_drivers::smbus_interrupt::SMBUSInterrupt<'static>,             
+        // Make sure to replace "None" below with gpio used as SMBUS Alert      
+        // Some(&sam4l::gpio::PA[16]) for instance                                 
+        signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
+        32);                                                                     
+                                                                                
+    smbusint_i2c.set_client(smbusint);                                          
+    // Make sure to set smbusint as client for chosen gpio for SMBUS Alert      
+    // &sam4l::gpio::PA[16].set_client(smbusint); for instance                     
+                                                                                
+    let smbusint_driver = static_init!(                                         
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,             
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),       
+        128/8);                                                                    
+    smbusint.set_client(smbusint_driver);
+
     // I2C Selectors.
     //
     let pca9544a_0_i2c = static_init!(
@@ -217,6 +240,13 @@ pub unsafe fn reset_handler() {
         signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
         320/8);
     pca9544a_0_i2c.set_client(pca9544a_0);
+
+	//create an array of the I2C selectors
+	let i2c_selectors = static_init!(
+		[& 'static signpost_drivers::pca9544a::PCA9544A; 1],
+		[pca9544a_0],
+		32/8
+	);
 
     // This provides the common interface to the I2C selectors
     let i2c_selector = static_init!(
@@ -253,8 +283,7 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941_driver);
 
-    /*
-    XXX: Needs to be changed to the USART SPI implementation
+    //XXX: Needs to be changed to the USART SPI implementation
     //
     // SPI
     //
@@ -298,16 +327,16 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let signpost_controller = static_init!(
-        SignpostController,
-        SignpostController {
+    let radio_module = static_init!(
+        RadioModule,
+        RadioModule {
             console: console,
             gpio: gpio,
             timer: timer,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
         },
-        192/8);
+        160/8);
 
     usart::USART1.configure(usart::USARTParams {
         baud_rate: 115200,
@@ -316,10 +345,10 @@ pub unsafe fn reset_handler() {
         mode: kernel::hil::uart::Mode::Normal,
     });
 
-    signpost_controller.console.initialize();
+    radio_module.console.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    kernel::main(signpost_controller, &mut chip, load_processes());
+    kernel::main(radio_module, &mut chip, load_processes());
 }

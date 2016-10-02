@@ -23,7 +23,7 @@ doc:
 	@cargo doc --release --target=sam4l.json
 
 .PHONY: target/sam4l/release/radio_module
-target/sam4l/release/radio_module
+target/sam4l/release/radio_module:
 	@cargo build --release --target=sam4l.json
 	@$(SIZE) $@
 
