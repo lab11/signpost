@@ -207,7 +207,7 @@ pub unsafe fn reset_handler() {
         // Make sure to replace "None" below with gpio used as SMBUS Alert
         // Some(&sam4l::gpio::PA[16]) for instance
         signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
-        32);
+        288/8);
 
     smbusint_i2c.set_client(smbusint);
     // Make sure to set smbusint as client for chosen gpio for SMBUS Alert
