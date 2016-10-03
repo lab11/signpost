@@ -166,11 +166,12 @@ pub unsafe fn reset_handler() {
     //
     let console = static_init!(
         Console<usart::USART>,
-        Console::new(&usart::USART1,
+        Console::new(&usart::USART2,
                      &mut console::WRITE_BUF,
                      kernel::Container::create()),
         24);
-    usart::USART1.set_client(console);
+    usart::USART2.set_client(console);
+
 
     //
     // Timer
@@ -217,7 +218,7 @@ pub unsafe fn reset_handler() {
         // Make sure to replace "None" below with gpio used as SMBUS Alert      
         // Some(&sam4l::gpio::PA[16]) for instance                                 
         signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
-        32);                                                                     
+        288/8);                                                                     
                                                                                 
     smbusint_i2c.set_client(smbusint);                                          
     // Make sure to set smbusint as client for chosen gpio for SMBUS Alert      
@@ -338,8 +339,8 @@ pub unsafe fn reset_handler() {
         },
         160/8);
 
-    usart::USART1.configure(usart::USARTParams {
-        baud_rate: 115200,
+    usart::USART2.configure(usart::USARTParams {
+        baud_rate: 125000,
         data_bits: 8,
         parity: kernel::hil::uart::Parity::None,
         mode: kernel::hil::uart::Mode::Normal,
