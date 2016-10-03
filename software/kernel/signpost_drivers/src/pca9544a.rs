@@ -21,7 +21,6 @@ enum State {
 
 pub struct PCA9544A<'a> {
     i2c: &'a i2c::I2CDevice,
-    interrupt_pin: Option<&'a gpio::GPIOPin>,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static signpost_hil::i2c_selector::Client>,
@@ -30,13 +29,11 @@ pub struct PCA9544A<'a> {
 
 impl<'a> PCA9544A<'a> {
     pub fn new(i2c: &'a i2c::I2CDevice,
-               interrupt_pin: Option<&'a gpio::GPIOPin>,
                buffer: &'static mut [u8])
                -> PCA9544A<'a> {
         // setup and return struct
         PCA9544A {
             i2c: i2c,
-            interrupt_pin: interrupt_pin,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
             client: TakeCell::empty(),
@@ -47,11 +44,6 @@ impl<'a> PCA9544A<'a> {
     pub fn set_client<C: signpost_hil::i2c_selector::Client>(&self, client: &'static C, identifier: usize) {
         self.client.replace(client);
         self.identifier.set(identifier);
-
-        self.interrupt_pin.map(|interrupt_pin| {
-            interrupt_pin.enable_input(gpio::InputMode::PullNone);
-            interrupt_pin.enable_interrupt(0, gpio::InterruptMode::FallingEdge);
-        });
     }
 
     /// Choose which channel(s) are active. Channels are encoded with a bitwise
@@ -76,6 +68,17 @@ impl<'a> PCA9544A<'a> {
 
             self.i2c.write(buffer, index as u8);
             self.state.set(State::Done);
+        });
+    }
+    
+    fn read_interrupts(&self) {
+        self.buffer.take().map(|buffer| {
+            // turn on i2c to send commands
+            self.i2c.enable();
+
+            // Just issuing a read to the selector reads its control register.
+            self.i2c.read(buffer, 1);
+            self.state.set(State::ReadInterrupts);
         });
     }
 
@@ -118,19 +121,6 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
     }
 }
 
-impl<'a> gpio::Client for PCA9544A<'a> {
-    fn fired(&self, _: usize) {
-        self.buffer.take().map(|buffer| {
-            // turn on i2c to send commands
-            self.i2c.enable();
-
-            // Just issuing a read to the selector reads its control register.
-            self.i2c.read(buffer, 1);
-            self.state.set(State::ReadInterrupts);
-        });
-    }
-}
-
 impl<'a> signpost_hil::i2c_selector::I2CSelector for PCA9544A<'a> {
     fn select_channels(&self, channels: usize) {
         self.select_channels(channels as u8);
@@ -138,5 +128,9 @@ impl<'a> signpost_hil::i2c_selector::I2CSelector for PCA9544A<'a> {
 
     fn disable_all_channels(&self) {
         self.select_channels(0);
+    }
+    
+    fn read_interrupts(&self) {
+        self.read_interrupts();
     }
 }
