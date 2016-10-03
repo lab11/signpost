@@ -210,9 +210,15 @@ typedef struct RadioMsg_T
 // Defualt RF Radio Mode: Normal Device
 #define COMRADIO_CFG_DEFAULT_RFRADIOMODE        RADIO_MODE_NORMAL
 // Default to high power band with 869.525 MHz
-#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MSB      0xD9
-#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MID      0x61
-#define COMRADIO_CFG_DEFAULT_RFCHANNEL_LSB      0x99
+//#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MSB      0xD9
+//#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MID      0x61
+//#define COMRADIO_CFG_DEFAULT_RFCHANNEL_LSB      0x99
+//sets the center frequency to 903.8, the center fot he 1.6Mhz uplink band
+//calculations
+//0xE1F333 = 903.8 / (32000000 / 2^19)
+#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MSB      0xE1
+#define COMRADIO_CFG_DEFAULT_RFCHANNEL_MID      0xF3
+#define COMRADIO_CFG_DEFAULT_RFCHANNEL_LSB      0x33
 // Channel zero within the high power band
 #define COMRADIO_CFG_DEFAULT_RFCHANNEL          0x00
 // bandwidth default is 125 kHz
@@ -228,7 +234,9 @@ typedef struct RadioMsg_T
 // default RF tx options: filter not used
 #define COMRADIO_CFG_DEFAULT_RFTXOPTIONS        0x00
 // default RF Rx options: receiver always on
-#define COMRADIO_CFG_DEFAULT_RFRXOPTIONS        0x01
+//#define COMRADIO_CFG_DEFAULT_RFRXOPTIONS        0x01
+//set receiver off
+#define COMRADIO_CFG_DEFAULT_RFRXOPTIONS        0x00
 // Power level 17 dBm
 #define COMRADIO_CFG_DEFAULT_RFPOWERLEVEL       17
 // Radio Modulation Mode: LoRa
