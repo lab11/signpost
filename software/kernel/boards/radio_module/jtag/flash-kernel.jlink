@@ -1,5 +1,5 @@
 r
-loadfile target/sam4l/release/controller.hex
+loadfile target/sam4l/release/radio_module.hex
 r
 g
 q
