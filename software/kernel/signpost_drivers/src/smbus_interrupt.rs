@@ -49,7 +49,7 @@ impl<'a> SMBUSInterrupt<'a> {
         });
     }
 
-    pub fn issue_ar(&self) {
+    pub fn issue_alert_response(&self) {
         self.buffer.take().map(|buffer| {
             self.i2c.enable();
             self.i2c.read(buffer, 1);
@@ -138,7 +138,7 @@ impl<'a> Driver for SMBUSIntDriver<'a> {
         match command_num {
             // issue alert response
             0 => {
-                self.smbusint.issue_ar();
+                self.smbusint.issue_alert_response();
                 0
             },
             _ => -1,
