@@ -56,7 +56,7 @@ int main () {
   ltc2941_reset_charge();
   yield();
   // And tell it any interrupt that may have existed has been handled
-  smbus_interrupt_send_ar();
+  smbus_interrupt_issue_alert_response();
   yield();
   
   // Read status, first byte should be 0x00
@@ -87,7 +87,7 @@ int main () {
   // Reset charge and handle interrupt
   ltc2941_reset_charge();
   yield();
-  smbus_interrupt_send_ar();
+  smbus_interrupt_issue_alert_response();
   yield();
 
   // Read status twice
