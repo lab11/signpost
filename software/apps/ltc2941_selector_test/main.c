@@ -79,9 +79,14 @@ int main () {
   yield();
   print_data(0);
   
-  // Here we would query the i2c_selector driver for who interrupted
-  // but we're still working on it
-  i2c_selector_select_channels(0x08);
+  putstr("Reading Interrupts\n");
+
+  // Query the i2c_selector driver for who interrupted
+  i2c_selector_read_interrupts();
+  yield();
+  print_data(0);
+
+  i2c_selector_select_channels(_data2);
   yield();
 
   // Reset charge and handle interrupt

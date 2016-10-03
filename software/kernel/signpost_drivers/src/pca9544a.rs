@@ -100,7 +100,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
                 let interrupt_bitmask = (buffer[0] >> 4) & 0x0F;
 
                 self.client.map(|client| {
-                    client.interrupts(self.identifier.get(), interrupt_bitmask as usize);
+                    client.done(Some(interrupt_bitmask as usize));
                 });
 
                 self.buffer.replace(buffer);
@@ -109,7 +109,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
             }
             State::Done => {
                 self.client.map(|client| {
-                    client.done();
+                    client.done(None);
                 });
 
                 self.buffer.replace(buffer);

@@ -13,3 +13,6 @@ int i2c_selector_select_channels(uint32_t channels);
 
 // Disable all channels on all I2C selectors.
 int i2c_selector_select_channels();
+
+// Read interrupts on all I2C selectors
+int i2c_selector_read_interrupts();
