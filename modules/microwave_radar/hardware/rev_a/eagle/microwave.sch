@@ -3497,12 +3497,12 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <wire x1="215.9" y1="170.18" x2="218.44" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="170.18" x2="220.98" y2="170.18" width="0.1524" layer="91"/>
-<label x="215.9" y="170.18" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="215.9" y="170.18" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA00"/>
 <wire x1="149.86" y1="134.62" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
-<label x="152.4" y="134.62" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="134.62" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="CONTROLLER_XOUT" class="0">
@@ -3511,19 +3511,19 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="160.02" x2="220.98" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="160.02" x2="215.9" y2="160.02" width="0.1524" layer="91"/>
-<label x="215.9" y="160.02" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="215.9" y="160.02" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA01"/>
 <wire x1="149.86" y1="132.08" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
-<label x="152.4" y="132.08" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="132.08" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="AMP_OUT" class="0">
 <segment>
 <pinref part="U1" gate="U1" pin="PA04"/>
 <wire x1="149.86" y1="124.46" x2="152.4" y2="124.46" width="0.1524" layer="91"/>
-<label x="152.4" y="124.46" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -3560,14 +3560,14 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="U1" gate="U1" pin="PA14"/>
 <wire x1="149.86" y1="99.06" x2="152.4" y2="99.06" width="0.1524" layer="91"/>
-<label x="152.4" y="99.06" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="99.06" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MSGEQ_RESET" class="0">
 <segment>
 <pinref part="U1" gate="U1" pin="PA15"/>
 <wire x1="149.86" y1="96.52" x2="152.4" y2="96.52" width="0.1524" layer="91"/>
-<label x="152.4" y="96.52" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="96.52" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="N$25" class="0">
@@ -3604,12 +3604,12 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="U1" gate="U1" pin="PA24"/>
 <wire x1="149.86" y1="73.66" x2="152.4" y2="73.66" width="0.1524" layer="91"/>
-<label x="152.4" y="73.66" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="73.66" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="SCL"/>
 <wire x1="35.56" y1="139.7" x2="38.1" y2="139.7" width="0.1524" layer="91"/>
-<label x="38.1" y="139.7" size="1.778" layer="95" xref="yes"/>
+<label x="38.1" y="139.7" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="N$34" class="0">
@@ -3648,13 +3648,13 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="R9" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="45.72" x2="195.58" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="45.72" x2="195.58" y2="50.8" width="0.1524" layer="91"/>
-<label x="208.28" y="45.72" size="1.778" layer="95" xref="yes"/>
+<label x="208.28" y="45.72" size="1.27" layer="95" font="vector" xref="yes"/>
 <wire x1="195.58" y1="45.72" x2="208.28" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA03"/>
 <wire x1="149.86" y1="127" x2="152.4" y2="127" width="0.1524" layer="91"/>
-<label x="152.4" y="127" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="127" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="CONTROLLER_SWDCLK" class="0">
@@ -3663,25 +3663,25 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="190.5" y1="43.18" x2="203.2" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="43.18" x2="203.2" y2="50.8" width="0.1524" layer="91"/>
-<label x="208.28" y="43.18" size="1.778" layer="95" xref="yes"/>
+<label x="208.28" y="43.18" size="1.27" layer="95" font="vector" xref="yes"/>
 <wire x1="203.2" y1="43.18" x2="208.28" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="TCK"/>
 <wire x1="149.86" y1="144.78" x2="152.4" y2="144.78" width="0.1524" layer="91"/>
-<label x="152.4" y="144.78" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="144.78" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="CONTROLLER_RESET" class="0">
 <segment>
 <pinref part="J2" gate="G$1" pin="!RESET"/>
 <wire x1="190.5" y1="35.56" x2="193.04" y2="35.56" width="0.1524" layer="91"/>
-<label x="193.04" y="35.56" size="1.778" layer="95" xref="yes"/>
+<label x="193.04" y="35.56" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="!RESET"/>
 <wire x1="149.86" y1="147.32" x2="152.4" y2="147.32" width="0.1524" layer="91"/>
-<label x="152.4" y="147.32" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="147.32" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -3745,12 +3745,12 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="U1" gate="U1" pin="PA23"/>
 <wire x1="149.86" y1="76.2" x2="152.4" y2="76.2" width="0.1524" layer="91"/>
-<label x="152.4" y="76.2" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="76.2" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="SDA"/>
 <wire x1="35.56" y1="142.24" x2="38.1" y2="142.24" width="0.1524" layer="91"/>
-<label x="38.1" y="142.24" size="1.778" layer="95" xref="yes"/>
+<label x="38.1" y="142.24" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -3832,57 +3832,57 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="PPS"/>
 <wire x1="35.56" y1="154.94" x2="38.1" y2="154.94" width="0.1524" layer="91"/>
-<label x="38.1" y="154.94" size="1.778" layer="95" xref="yes"/>
+<label x="38.1" y="154.94" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA08"/>
 <wire x1="149.86" y1="114.3" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
-<label x="152.4" y="114.3" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="114.3" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD_IN"/>
 <wire x1="35.56" y1="149.86" x2="38.1" y2="149.86" width="0.1524" layer="91"/>
-<label x="38.1" y="149.86" size="1.778" layer="95" xref="yes"/>
+<label x="38.1" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA09"/>
 <wire x1="149.86" y1="111.76" x2="152.4" y2="111.76" width="0.1524" layer="91"/>
-<label x="152.4" y="111.76" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="111.76" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD_OUT"/>
 <wire x1="35.56" y1="147.32" x2="38.1" y2="147.32" width="0.1524" layer="91"/>
-<label x="38.1" y="147.32" size="1.778" layer="95" xref="yes"/>
+<label x="38.1" y="147.32" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="U1" pin="PA10"/>
 <wire x1="149.86" y1="109.22" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
-<label x="152.4" y="109.22" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="109.22" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="ADVREFP" class="0">
 <segment>
 <pinref part="U1" gate="U1" pin="ADVREFP"/>
 <wire x1="109.22" y1="93.98" x2="106.68" y2="93.98" width="0.1524" layer="91"/>
-<label x="106.68" y="93.98" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="106.68" y="93.98" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="83.82" y1="154.94" x2="83.82" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="J3" gate="A" pin="2"/>
 <wire x1="83.82" y1="154.94" x2="88.9" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="154.94" x2="88.9" y2="167.64" width="0.1524" layer="91"/>
-<label x="88.9" y="167.64" size="1.778" layer="95" xref="yes"/>
+<label x="88.9" y="167.64" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MSGEQ_OUT" class="0">
 <segment>
 <pinref part="U1" gate="U1" pin="PA13"/>
 <wire x1="149.86" y1="101.6" x2="152.4" y2="101.6" width="0.1524" layer="91"/>
-<label x="152.4" y="101.6" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="101.6" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -3945,7 +3945,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <wire x1="25.4" y1="45.72" x2="17.78" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="45.72" x2="17.78" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="45.72" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
-<label x="12.7" y="45.72" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="12.7" y="45.72" size="1.27" layer="91" font="vector" rot="R180" xref="yes"/>
 <pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
 <junction x="17.78" y="45.72"/>
 </segment>
@@ -3956,7 +3956,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="U$2" gate="G$1" pin="IF_2"/>
 <wire x1="137.16" y1="116.84" x2="137.16" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="111.76" x2="139.7" y2="111.76" width="0.1524" layer="91"/>
-<label x="129.54" y="116.84" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="129.54" y="116.84" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 <wire x1="137.16" y1="116.84" x2="129.54" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4074,7 +4074,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <wire x1="142.24" y1="25.4" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="45.72" x2="139.7" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="45.72" x2="152.4" y2="45.72" width="0.1524" layer="91"/>
-<label x="152.4" y="45.72" size="1.778" layer="95" xref="yes"/>
+<label x="152.4" y="45.72" size="1.27" layer="91" font="vector" xref="yes"/>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
 <junction x="142.24" y="45.72"/>
 <pinref part="U$1" gate="G$1" pin="OUT_B"/>
@@ -4323,7 +4323,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="C19" gate="G$1" pin="2"/>
 <wire x1="124.46" y1="73.66" x2="127" y2="73.66" width="0.1524" layer="91"/>
-<label x="127" y="73.66" size="1.778" layer="95" xref="yes"/>
+<label x="127" y="73.66" size="1.27" layer="91" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="N$30" class="0">
@@ -4348,7 +4348,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="U3" gate="G$1" pin="OUT"/>
 <wire x1="81.28" y1="73.66" x2="78.74" y2="73.66" width="0.1524" layer="91"/>
-<label x="78.74" y="73.66" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="78.74" y="73.66" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 <pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
 <junction x="81.28" y="73.66"/>
 </segment>
@@ -4357,14 +4357,14 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <pinref part="U3" gate="G$1" pin="STROBE"/>
 <wire x1="81.28" y1="60.96" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
-<label x="78.74" y="60.96" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="78.74" y="60.96" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="MSGEQ_RESET" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="RESET"/>
 <wire x1="81.28" y1="58.42" x2="78.74" y2="58.42" width="0.1524" layer="91"/>
-<label x="78.74" y="58.42" size="1.778" layer="95" rot="R180" xref="yes"/>
+<label x="78.74" y="58.42" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
