@@ -1077,10 +1077,10 @@ design rules under a new name.</description>
 <wire x1="8.89" y1="31.75" x2="28.25" y2="38.35" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MSGEQ_OUT">
-<contactref element="U1" pad="32"/>
 <contactref element="U3" pad="3"/>
 <contactref element="TP6" pad="TESTPOINT"/>
-<wire x1="24.13" y1="22.86" x2="32.5" y2="34.6" width="0" layer="19" extent="1-1"/>
+<contactref element="U1" pad="12"/>
+<wire x1="24.13" y1="22.86" x2="29" y2="41.6" width="0" layer="19" extent="1-1"/>
 <wire x1="6.35" y1="27.94" x2="24.13" y2="22.86" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MSGEQ_STROBE">

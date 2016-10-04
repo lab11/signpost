@@ -3794,13 +3794,6 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <label x="154.94" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
-<net name="MSGEQ_OUT" class="0">
-<segment>
-<pinref part="U1" gate="U1" pin="PA13"/>
-<wire x1="149.86" y1="101.6" x2="154.94" y2="101.6" width="0.1524" layer="91"/>
-<label x="154.94" y="101.6" size="1.27" layer="95" font="vector" xref="yes"/>
-</segment>
-</net>
 <net name="MSGEQ_STROBE" class="0">
 <segment>
 <pinref part="U1" gate="U1" pin="PA14"/>
@@ -3813,6 +3806,13 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="U1" gate="U1" pin="PA15"/>
 <wire x1="149.86" y1="96.52" x2="154.94" y2="96.52" width="0.1524" layer="91"/>
 <label x="154.94" y="96.52" size="1.27" layer="95" font="vector" xref="yes"/>
+</segment>
+</net>
+<net name="MSGEQ_OUT" class="0">
+<segment>
+<pinref part="U1" gate="U1" pin="PA05"/>
+<wire x1="149.86" y1="121.92" x2="154.94" y2="121.92" width="0.1524" layer="91"/>
+<label x="154.94" y="121.92" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 </nets>
