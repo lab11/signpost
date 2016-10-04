@@ -3237,7 +3237,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="HB100">
+<deviceset name="HB100" prefix="U">
 <gates>
 <gate name="G$1" symbol="HB100" x="-7.62" y="5.08"/>
 </gates>
@@ -3259,7 +3259,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="OP284E_SEPARATE">
+<deviceset name="OP284E_SEPARATE" prefix="U">
 <gates>
 <gate name="OP284E_A" symbol="OP284E_A" x="-27.94" y="27.94"/>
 <gate name="G$1" symbol="OP284E_B" x="-27.94" y="2.54"/>
