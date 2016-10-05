@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -70,7 +70,7 @@
 </layers>
 <library>
 <packages>
-<package name="OP284E">
+<package name="SOIC_OP284E">
 <wire x1="-2" y1="2" x2="-2" y2="1" width="0.127" layer="21"/>
 <wire x1="-2" y1="1" x2="-2" y2="-3" width="0.127" layer="21"/>
 <wire x1="-2" y1="-3" x2="2" y2="-3" width="0.127" layer="21"/>
@@ -86,8 +86,8 @@
 <smd name="8" x="2.54" y="1.27" dx="1.27" dy="0.635" layer="1"/>
 <wire x1="-1" y1="2" x2="-2" y2="2" width="0.127" layer="21"/>
 <wire x1="-2" y1="1" x2="-1" y2="2" width="0.127" layer="21"/>
-<text x="-1" y="-4" size="0.6096" layer="27">value</text>
-<text x="-1" y="3" size="0.6096" layer="25">Name</text>
+<text x="-1" y="-4" size="0.6096" layer="27">&lt;VALUE</text>
+<text x="-1" y="3" size="0.6096" layer="25">&lt;NAME</text>
 </package>
 <package name="HB100">
 <pad name="IF_1" x="0" y="0" drill="0.8"/>
@@ -112,8 +112,8 @@
 <text x="38.1" y="1.27" size="1.27" layer="21">GND</text>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="-180"/>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="180"/>
-<text x="-1.27" y="39.37" size="1.27" layer="25">Name</text>
-<text x="-1.27" y="-6.35" size="1.27" layer="27">value</text>
+<text x="-1.27" y="39.37" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.27" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
 </package>
 <package name="OP284E_SEPARATE">
 <smd name="V-" x="0" y="1.27" dx="1.27" dy="0.5" layer="1"/>
@@ -168,7 +168,31 @@
 <text x="-17.78" y="15.24" size="1.778" layer="95">&gt;NAME</text>
 <text x="-17.78" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
-<symbol name="OP284E_SEPARATE">
+<symbol name="OP284E_A">
+<wire x1="0" y1="7.62" x2="0" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="0" y1="-7.62" x2="15.24" y2="0" width="0.254" layer="94"/>
+<wire x1="15.24" y1="0" x2="0" y2="7.62" width="0.254" layer="94"/>
+<pin name="+IN_A" x="-5.08" y="2.54" length="middle"/>
+<pin name="-IN_A" x="-5.08" y="-2.54" length="middle"/>
+<pin name="OUT_A" x="20.32" y="0" length="middle" rot="R180"/>
+<text x="0" y="10.16" size="1.778" layer="95">&gt;NAME</text>
+<text x="0" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="OP284E_SOURCE">
+<pin name="GND" x="0" y="-12.7" length="middle" rot="R90"/>
+<pin name="VCC" x="0" y="12.7" length="middle" rot="R270"/>
+<wire x1="0" y1="7.62" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="-7.62" x2="0" y2="-2.54" width="0.254" layer="94"/>
+</symbol>
+<symbol name="OP284E_B">
+<wire x1="0" y1="7.62" x2="0" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="0" y1="-7.62" x2="15.24" y2="0" width="0.254" layer="94"/>
+<wire x1="15.24" y1="0" x2="0" y2="7.62" width="0.254" layer="94"/>
+<pin name="+IN_B" x="-5.08" y="2.54" length="middle"/>
+<pin name="-IN_B" x="-5.08" y="-2.54" length="middle"/>
+<pin name="OUT_B" x="20.32" y="0" length="middle" rot="R180"/>
+<text x="0" y="10.16" size="1.778" layer="95">&gt;NAME</text>
+<text x="0" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -177,7 +201,7 @@
 <gate name="G$1" symbol="OP284E" x="-5.08" y="10.16"/>
 </gates>
 <devices>
-<device name="" package="OP284E">
+<device name="" package="SOIC_OP284E">
 <connects>
 <connect gate="G$1" pin="+IN_A" pad="3"/>
 <connect gate="G$1" pin="+IN_B" pad="5"/>
@@ -194,7 +218,7 @@
 </device>
 </devices>
 </deviceset>
-<deviceset name="HB100">
+<deviceset name="HB100" prefix="U">
 <gates>
 <gate name="G$1" symbol="HB100" x="-7.62" y="5.08"/>
 </gates>
@@ -210,6 +234,43 @@
 <connect gate="G$1" pin="IF_1" pad="IF_1"/>
 <connect gate="G$1" pin="IF_2" pad="IF_2"/>
 </connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="OP284E_SEPARATE" prefix="U">
+<gates>
+<gate name="OP284E_A" symbol="OP284E_A" x="-27.94" y="27.94"/>
+<gate name="G$1" symbol="OP284E_B" x="-27.94" y="2.54"/>
+<gate name="G$2" symbol="OP284E_SOURCE" x="7.62" y="15.24"/>
+</gates>
+<devices>
+<device name="" package="OP284E_SEPARATE">
+<connects>
+<connect gate="G$1" pin="+IN_B" pad="+IN_B"/>
+<connect gate="G$1" pin="-IN_B" pad="-IN_B"/>
+<connect gate="G$1" pin="OUT_B" pad="OUT_B"/>
+<connect gate="G$2" pin="GND" pad="V-"/>
+<connect gate="G$2" pin="VCC" pad="V+"/>
+<connect gate="OP284E_A" pin="+IN_A" pad="+IN_A"/>
+<connect gate="OP284E_A" pin="-IN_A" pad="-IN_A"/>
+<connect gate="OP284E_A" pin="OUT_A" pad="OUT_A"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="OP284E_TRY">
+<gates>
+<gate name="G$1" symbol="OP284E_A" x="-33.02" y="10.16"/>
+<gate name="G$2" symbol="OP284E_SOURCE" x="10.16" y="0"/>
+</gates>
+<devices>
+<device name="" package="OP284E_SEPARATE">
 <technologies>
 <technology name=""/>
 </technologies>

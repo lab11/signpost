@@ -12,6 +12,7 @@ use signpost_hil;
 enum Operation {
     SetAll = 0,
     DisableAll = 1,
+    ReadInterrupts = 2,
 }
 
 pub struct I2CSelector<'a, Selector: signpost_hil::i2c_selector::I2CSelector + 'a> {
@@ -54,21 +55,36 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> I2CSelector<'a, Sele
             selectors[index].disable_all_channels();
         }
     }
+
+    // Calls the underlying selector driver to read interrupts.
+    fn read_interrupts(&self) {
+        let selectors = self.selectors.as_ref();
+        let index = self.index.get() as usize;
+
+        if selectors.len() > index {
+            selectors[index].read_interrupts();
+        }
+    }
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_selector::Client for I2CSelector<'a, Selector> {
     // Identifier is expected to be the index of the selector in the array
     // that is calling this callback.
-    fn interrupts(&self, identifier: usize, interrupt_bitmask: usize) {
-        let bitmask = interrupt_bitmask << (identifier * 4);
+    //fn interrupts(&self, identifier: usize, interrupt_bitmask: usize) {
+    //    let bitmask = interrupt_bitmask << (identifier * 4);
 
-        self.callback.get().map(|mut cb|
-            cb.schedule(1, bitmask, 0)
-        );
-    }
+    //    self.callback.get().map(|mut cb|
+    //        cb.schedule(1, bitmask, identifier)
+    //    );
+    //}
 
     // Called when underlying selector operation completes.
-    fn done(&self) {
+    fn done(&self, interrupt_bitmask: Option<usize>) {
+        // if selector operation returns an interrupt bitmask
+        if interrupt_bitmask.is_some() {
+            self.bitmask.set(interrupt_bitmask.unwrap() << self.index.get() * 4 | self.bitmask.get());
+        }
+        
         let selectors = self.selectors.as_ref();
         // Increment the selector we are operating on now that we finished
         // the last one.
@@ -86,12 +102,15 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
                 Operation::DisableAll => {
                     self.disable_channels();
                 }
+                Operation::ReadInterrupts => {
+                    self.read_interrupts();
+                }
             }
 
         } else {
             // Otherwise we notify the application this finished.
             self.callback.get().map(|mut cb|
-                cb.schedule(0, self.operation.get() as usize, 0)
+                cb.schedule(0, self.operation.get() as usize, self.bitmask.get())
             );
         }
     }
@@ -128,6 +147,15 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.index.set(0);
 
                 self.disable_channels();
+                0
+            }
+
+            2 => {
+                self.operation.set(Operation::ReadInterrupts);
+                self.index.set(0);
+                self.bitmask.set(0);
+
+                self.read_interrupts();
                 0
             }
 

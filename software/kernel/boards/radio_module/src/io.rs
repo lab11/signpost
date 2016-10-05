@@ -17,7 +17,7 @@ impl Write for Writer {
         if !self.initialized {
             self.initialized = true;
             uart.configure(sam4l::usart::USARTParams {
-                baud_rate: 115200,
+                baud_rate: 125000,
                 data_bits: 8,
                 parity: uart::Parity::None,
                 mode: uart::Mode::Normal,

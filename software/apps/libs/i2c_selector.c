@@ -16,3 +16,7 @@ int i2c_selector_select_channels(uint32_t channels) {
 int i2c_selector_disable_all_channels() {
 	return command(DRIVER_NUM_I2C_SELECTOR, 1, 0);
 }
+
+int i2c_selector_read_interrupts() {
+	return command(DRIVER_NUM_I2C_SELECTOR, 2, 0);
+}
