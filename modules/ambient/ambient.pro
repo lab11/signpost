@@ -1,4 +1,4 @@
-update=9/30/2016 5:23:07 PM
+update=10/5/2016 10:29:51 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=C:/Users/wwhuang/Dropbox/git/kicad/parts/schematic
+LibDir=C:/Users/huang/Dropbox/git/kicad/parts;C:/Users/huang/Dropbox/git/kicad/parts/schematic
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -78,3 +78,23 @@ LibName46=lab11_transistors
 LibName47=lab11_voltage_references
 LibName48=lab11_sensors
 LibName49=lab11_crystals
+LibName50=schematic/lab11_adc
+LibName51=schematic/lab11_battery_chargers
+LibName52=schematic/lab11_buffers
+LibName53=schematic/lab11_comparators
+LibName54=schematic/lab11_connectors
+LibName55=schematic/lab11_crystals
+LibName56=schematic/lab11_diodes
+LibName57=schematic/lab11_ldo
+LibName58=schematic/lab11_level_shifters
+LibName59=schematic/lab11_mcu
+LibName60=schematic/lab11_memory
+LibName61=schematic/lab11_microphones
+LibName62=schematic/lab11_nucleum
+LibName63=schematic/lab11_opamps
+LibName64=schematic/lab11_receptacles
+LibName65=schematic/lab11_rlc
+LibName66=schematic/lab11_sensors
+LibName67=schematic/lab11_switches
+LibName68=schematic/lab11_transistors
+LibName69=schematic/lab11_voltage_references
