@@ -106,13 +106,13 @@
 <wire x1="0" y1="-2.9" x2="40.7" y2="-2.9" width="0.127" layer="21"/>
 <wire x1="43.6" y1="34.2" x2="43.6" y2="0" width="0.127" layer="21"/>
 <wire x1="40.7" y1="37.1" x2="0" y2="37.1" width="0.127" layer="21"/>
-<text x="0" y="1.27" size="1.27" layer="21">IF</text>
-<text x="0" y="31.75" size="1.27" layer="21">5V</text>
-<text x="35.56" y="31.75" size="1.27" layer="21">GND</text>
-<text x="38.1" y="1.27" size="1.27" layer="21">GND</text>
+<text x="0" y="1.27" size="1.27" layer="21" font="vector">IF</text>
+<text x="0" y="31.75" size="1.27" layer="21" font="vector">5V</text>
+<text x="35.56" y="31.75" size="1.27" layer="21" font="vector">GND</text>
+<text x="38.1" y="1.27" size="1.27" layer="21" font="vector">GND</text>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="-180"/>
 <wire x1="0" y1="5.08" x2="0" y2="3.81" width="0.127" layer="21" curve="180"/>
-<text x="-1.27" y="39.37" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.27" y="39.37" size="1.27" layer="25" font="vector">&gt;NAME</text>
 <text x="-1.27" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
 </package>
 <package name="OP284E_SEPARATE">
@@ -220,19 +220,19 @@
 </deviceset>
 <deviceset name="HB100" prefix="U">
 <gates>
-<gate name="G$1" symbol="HB100" x="-7.62" y="5.08"/>
+<gate name="G1" symbol="HB100" x="-7.62" y="5.08"/>
 </gates>
 <devices>
 <device name="" package="HB100">
 <connects>
-<connect gate="G$1" pin="5V_1" pad="5V_1"/>
-<connect gate="G$1" pin="5V_2" pad="5V_2"/>
-<connect gate="G$1" pin="GND_1" pad="GND_1"/>
-<connect gate="G$1" pin="GND_2" pad="GND_2"/>
-<connect gate="G$1" pin="GND_3" pad="GND_3"/>
-<connect gate="G$1" pin="GND_4" pad="GND_4"/>
-<connect gate="G$1" pin="IF_1" pad="IF_1"/>
-<connect gate="G$1" pin="IF_2" pad="IF_2"/>
+<connect gate="G1" pin="5V_1" pad="5V_1"/>
+<connect gate="G1" pin="5V_2" pad="5V_2"/>
+<connect gate="G1" pin="GND_1" pad="GND_1"/>
+<connect gate="G1" pin="GND_2" pad="GND_2"/>
+<connect gate="G1" pin="GND_3" pad="GND_3"/>
+<connect gate="G1" pin="GND_4" pad="GND_4"/>
+<connect gate="G1" pin="IF_1" pad="IF_1"/>
+<connect gate="G1" pin="IF_2" pad="IF_2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -242,21 +242,21 @@
 </deviceset>
 <deviceset name="OP284E_SEPARATE" prefix="U">
 <gates>
-<gate name="OP284E_A" symbol="OP284E_A" x="-27.94" y="27.94"/>
-<gate name="G$1" symbol="OP284E_B" x="-27.94" y="2.54"/>
+<gate name="_A" symbol="OP284E_A" x="-27.94" y="27.94"/>
+<gate name="_B" symbol="OP284E_B" x="-27.94" y="2.54"/>
 <gate name="G$2" symbol="OP284E_SOURCE" x="7.62" y="15.24"/>
 </gates>
 <devices>
 <device name="" package="OP284E_SEPARATE">
 <connects>
-<connect gate="G$1" pin="+IN_B" pad="+IN_B"/>
-<connect gate="G$1" pin="-IN_B" pad="-IN_B"/>
-<connect gate="G$1" pin="OUT_B" pad="OUT_B"/>
 <connect gate="G$2" pin="GND" pad="V-"/>
 <connect gate="G$2" pin="VCC" pad="V+"/>
-<connect gate="OP284E_A" pin="+IN_A" pad="+IN_A"/>
-<connect gate="OP284E_A" pin="-IN_A" pad="-IN_A"/>
-<connect gate="OP284E_A" pin="OUT_A" pad="OUT_A"/>
+<connect gate="_A" pin="+IN_A" pad="+IN_A"/>
+<connect gate="_A" pin="-IN_A" pad="-IN_A"/>
+<connect gate="_A" pin="OUT_A" pad="OUT_A"/>
+<connect gate="_B" pin="+IN_B" pad="+IN_B"/>
+<connect gate="_B" pin="-IN_B" pad="-IN_B"/>
+<connect gate="_B" pin="OUT_B" pad="OUT_B"/>
 </connects>
 <technologies>
 <technology name=""/>
