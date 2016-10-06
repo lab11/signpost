@@ -879,10 +879,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R3" library="passives" package="0402_RES" value="100k" x="25.4" y="25.4" smashed="yes" rot="R270">
 <attribute name="NAME" x="25.781" y="25.4" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="24.003" y="25.4" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND" x="25.4" y="25.4" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="R4" library="passives" package="0402_RES" value="100k" x="27.94" y="22.86" smashed="yes" rot="R90">
 <attribute name="NAME" x="27.559" y="22.86" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="29.337" y="22.86" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND" x="27.94" y="22.86" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C2" library="passives" package="0402_CAP" value="100u" x="27.94" y="25.4" smashed="yes" rot="R270">
 <attribute name="NAME" x="28.321" y="25.4" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
@@ -890,10 +892,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R5" library="passives" package="0402_RES" value="100k" x="24.384" y="14.732" smashed="yes" rot="R90">
 <attribute name="NAME" x="24.003" y="14.732" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="25.781" y="14.732" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND" x="24.384" y="14.732" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R6" library="passives" package="0402_RES" value="10k" x="21.59" y="15.24" smashed="yes" rot="R180">
 <attribute name="NAME" x="21.59" y="14.859" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="21.59" y="16.637" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="21.59" y="15.24" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C3" library="passives" package="0402_CAP" value="4.7u" x="19.05" y="15.24" smashed="yes">
 <attribute name="NAME" x="19.05" y="15.621" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -914,6 +918,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R8" library="passives" package="0402_RES" value="100k" x="34.29" y="13.97" smashed="yes" rot="R180">
 <attribute name="NAME" x="34.29" y="13.589" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="34.29" y="15.367" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND" x="34.29" y="13.97" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R11" library="passives" package="0402_RES" value="10k" x="31.242" y="34.29" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="31.242" y="34.29" size="1.778" layer="27" rot="R180" display="off"/>
@@ -981,7 +986,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="53.34" y="8.763" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U4" library="microwave_radar" package="HB100" value="HB100" x="16.51" y="19.05"/>
-<element name="U5" library="microwave_radar" package="OP284E_SEPARATE" value="OP284E_SEPARATE" x="27.94" y="15.24"/>
+<element name="U5" library="microwave_radar" package="OP284E_SEPARATE" value="OP284E_SEPARATE" x="27.94" y="15.24">
+<attribute name="DIGIKEY" value="OP284ESZ-ND" x="27.94" y="15.24" size="1.778" layer="27" display="off"/>
+</element>
 <element name="JP1" library="pinhead" package="1X06" value="" x="6.35" y="35.56" rot="R270"/>
 </elements>
 <signals>

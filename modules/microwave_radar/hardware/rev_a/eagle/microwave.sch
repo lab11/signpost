@@ -3474,12 +3474,20 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7u"/>
 <part name="GND1" library="umich" deviceset="GND" device=""/>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="330k"/>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
+<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100u"/>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
+<part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
+<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+</part>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7u"/>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="2.2n"/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
@@ -3487,7 +3495,9 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7u"/>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="8.2k"/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="2.2n"/>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
+<part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
 <part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
@@ -3532,7 +3542,9 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
 <part name="U4" library="microwave_radar" deviceset="HB100" device=""/>
-<part name="U5" library="microwave_radar" deviceset="OP284E_SEPARATE" device=""/>
+<part name="U5" library="microwave_radar" deviceset="OP284E_SEPARATE" device="">
+<attribute name="DIGIKEY" value="OP284ESZ-ND"/>
+</part>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X6" device=""/>
 </parts>
 <sheets>
@@ -3995,12 +4007,20 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <instance part="C1" gate="G$1" x="27.94" y="45.72" rot="R90"/>
 <instance part="GND1" gate="1" x="17.78" y="25.4"/>
 <instance part="R2" gate="G$1" x="38.1" y="58.42" rot="R90"/>
-<instance part="R3" gate="G$1" x="22.86" y="73.66" rot="R90"/>
-<instance part="R4" gate="G$1" x="22.86" y="91.44" rot="R90"/>
+<instance part="R3" gate="G$1" x="22.86" y="73.66" rot="R90">
+<attribute name="DIGIKEY" x="22.86" y="73.66" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R4" gate="G$1" x="22.86" y="91.44" rot="R90">
+<attribute name="DIGIKEY" x="22.86" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="C2" gate="G$1" x="5.08" y="73.66" rot="R180"/>
 <instance part="GND2" gate="1" x="22.86" y="58.42"/>
-<instance part="R5" gate="G$1" x="45.72" y="10.16" rot="R180"/>
-<instance part="R6" gate="G$1" x="33.02" y="10.16" rot="R180"/>
+<instance part="R5" gate="G$1" x="45.72" y="10.16" rot="R180">
+<attribute name="DIGIKEY" x="45.72" y="10.16" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R6" gate="G$1" x="33.02" y="10.16" rot="R180">
+<attribute name="DIGIKEY" x="33.02" y="10.16" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="C3" gate="G$1" x="20.32" y="10.16" rot="R90"/>
 <instance part="C4" gate="G$1" x="45.72" y="-2.54" rot="R90"/>
 <instance part="GND3" gate="1" x="10.16" y="-2.54"/>
@@ -4009,14 +4029,18 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <instance part="C5" gate="G$1" x="91.44" y="43.18" rot="R90"/>
 <instance part="R7" gate="G$1" x="104.14" y="43.18" rot="R180"/>
 <instance part="C7" gate="G$1" x="127" y="25.4" rot="R90"/>
-<instance part="R8" gate="G$1" x="127" y="12.7" rot="R180"/>
+<instance part="R8" gate="G$1" x="127" y="12.7" rot="R180">
+<attribute name="DIGIKEY" x="127" y="12.7" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND6" gate="1" x="157.48" y="88.9"/>
 <instance part="+3V1" gate="G$1" x="22.86" y="109.22"/>
 <instance part="P+2" gate="1" x="187.96" y="124.46"/>
 <instance part="+3V3" gate="G$1" x="76.2" y="139.7"/>
 <instance part="GND7" gate="1" x="76.2" y="104.14"/>
 <instance part="U4" gate="G1" x="160.02" y="116.84"/>
-<instance part="U5" gate="_A" x="60.96" y="43.18"/>
+<instance part="U5" gate="_A" x="60.96" y="43.18">
+<attribute name="DIGIKEY" x="60.96" y="43.18" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U5" gate="_B" x="119.38" y="45.72"/>
 <instance part="U5" gate="G$2" x="76.2" y="121.92"/>
 </instances>
