@@ -2,6 +2,21 @@ Signpost Data Schemas
 =====================
 
 
+Generate Test Data
+------------------
+
+    npm install mqtt
+    ./generate_test_data.js
+
+Make sure you have an MQTT broker running on `localhost` (or change the path
+in the script).
+
+
+
+Schemas
+-------
+
+
 ### Common
 
 All data packets include a `_meta` section like the following:
@@ -36,7 +51,7 @@ All data packets include a `_meta` section like the following:
 ```
 
 
-# Microwave Radar Module
+### Microwave Radar Module
 
 ```
 {
@@ -46,7 +61,7 @@ All data packets include a `_meta` section like the following:
 ```
 
 
-# Ambient Sensing Module
+### Ambient Sensing Module
 
 ```
 {
@@ -59,7 +74,7 @@ All data packets include a `_meta` section like the following:
 ```
 
 
-# 2.4GHz RF Spectrum Sensing Module
+### 2.4GHz RF Spectrum Sensing Module
 
 ```
 {
@@ -83,7 +98,7 @@ All data packets include a `_meta` section like the following:
 }
 ```
 
-# GPS Data
+### GPS Data
 
 ```
 {
