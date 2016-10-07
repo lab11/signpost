@@ -71,6 +71,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "tock.h"
+#include "tock_str.h"
 #include "ComSlip.h"
 #include "firestorm.h"
 
@@ -107,7 +108,7 @@ typedef struct
 {
     // upper layer client
     TComSlipCbByteIndication    RxIndication;
-    
+
     // receiver/decoder state
     int                         RxState;
 
@@ -137,7 +138,7 @@ ComSlip_Init()
     ComSlip.RxIndex         =   0;
     ComSlip.RxBuffer        =   0;
     ComSlip.RxBufferSize    =   0;
-    
+
     // Register ComSlip_ProcessRxByte at LDDUART
     //LDDUsart_RegisterClient(ComSlip_ProcessRxByte);
 }
@@ -215,7 +216,7 @@ ComSlip_SendMessage(uint8_t* msg, uint16_t msgLength)
     // send wakeup chars
     while (countWakeupChars--)
 		putnstr(&slip_end,1);
-    
+
     // iterate over all message bytes
     while(msgLength--)
     {
