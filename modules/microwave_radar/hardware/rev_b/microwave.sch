@@ -5716,16 +5716,28 @@ Source: www.kingbright.com</description>
 <wire x1="35.56" y1="134.62" x2="38.1" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$35" class="0">
+<net name="USB-" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="USB_D+"/>
-<wire x1="35.56" y1="132.08" x2="38.1" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="U1" gate="U1" pin="PA25"/>
+<wire x1="149.86" y1="71.12" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
+<label x="154.94" y="71.12" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
-</net>
-<net name="N$36" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="USB_D-"/>
 <wire x1="35.56" y1="129.54" x2="38.1" y2="129.54" width="0.1524" layer="91"/>
+<label x="38.1" y="129.54" size="1.27" layer="95" font="vector" xref="yes"/>
+</segment>
+</net>
+<net name="USB+" class="0">
+<segment>
+<pinref part="U1" gate="U1" pin="PA26"/>
+<wire x1="149.86" y1="68.58" x2="154.94" y2="68.58" width="0.1524" layer="91"/>
+<label x="154.94" y="68.58" size="1.27" layer="95" font="vector" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="USB_D+"/>
+<wire x1="35.56" y1="132.08" x2="38.1" y2="132.08" width="0.1524" layer="91"/>
+<label x="38.1" y="132.08" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 </nets>
