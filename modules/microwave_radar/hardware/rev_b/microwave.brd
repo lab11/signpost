@@ -2163,10 +2163,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="40.005" y1="38.3286" x2="40.005" y2="38.5572" width="0.2032" layer="1"/>
 <via x="40.005" y="38.5572" extent="1-16" drill="0.6"/>
 <wire x1="40.005" y1="38.5572" x2="40.005" y2="40.5384" width="0.2032" layer="16"/>
-<wire x1="40.005" y1="40.5384" x2="30.6324" y2="49.911" width="0.2032" layer="16"/>
-<wire x1="30.6324" y1="49.911" x2="16.1544" y2="49.911" width="0.2032" layer="16"/>
-<wire x1="16.1544" y1="49.911" x2="5.9182" y2="39.6748" width="0.2032" layer="16"/>
-<wire x1="5.9182" y1="39.6748" x2="5.9182" y2="39.2938" width="0.2032" layer="16"/>
+<wire x1="40.005" y1="40.5384" x2="30.7467" y2="49.7967" width="0.2032" layer="16"/>
+<wire x1="5.9182" y1="39.2938" x2="6.223" y2="39.2938" width="0.2032" layer="16"/>
+<wire x1="6.223" y1="39.2938" x2="16.8402" y2="49.911" width="0.2032" layer="16"/>
+<wire x1="16.8402" y1="49.911" x2="30.6324" y2="49.911" width="0.2032" layer="16"/>
+<wire x1="30.6324" y1="49.911" x2="30.7467" y2="49.7967" width="0.2032" layer="16"/>
 </signal>
 <signal name="USART2_RX">
 <contactref element="U1" pad="46"/>
