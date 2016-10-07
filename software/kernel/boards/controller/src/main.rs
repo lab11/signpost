@@ -147,6 +147,9 @@ unsafe fn set_pin_primary_functions() {
 pub unsafe fn reset_handler() {
     sam4l::init();
 
+    // Setup clock
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
@@ -188,10 +191,10 @@ pub unsafe fn reset_handler() {
     // I2C Buses
     //
     let i2c_mux_modules = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C0), 20);
-    sam4l::i2c::I2C0.set_client(i2c_mux_modules);
+    sam4l::i2c::I2C0.set_master_client(i2c_mux_modules);
 
     let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
-    sam4l::i2c::I2C2.set_client(i2c_mux_smbus);
+    sam4l::i2c::I2C2.set_master_client(i2c_mux_smbus);
 
     //
     // SMBUS INTERRUPT
