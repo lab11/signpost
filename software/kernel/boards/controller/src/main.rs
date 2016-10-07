@@ -188,10 +188,10 @@ pub unsafe fn reset_handler() {
     // I2C Buses
     //
     let i2c_mux_modules = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C0), 20);
-    sam4l::i2c::I2C0.set_client(i2c_mux_modules);
+    sam4l::i2c::I2C0.set_master_client(i2c_mux_modules);
 
     let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
-    sam4l::i2c::I2C2.set_client(i2c_mux_smbus);
+    sam4l::i2c::I2C2.set_master_client(i2c_mux_smbus);
 
     //
     // SMBUS INTERRUPT
