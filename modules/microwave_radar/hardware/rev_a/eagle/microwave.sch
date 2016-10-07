@@ -3134,23 +3134,23 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <text x="-1.27" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
 </package>
 <package name="OP284E_SEPARATE">
-<smd name="V-" x="0" y="1.27" dx="1.27" dy="0.5" layer="1"/>
-<smd name="+IN_A" x="0" y="2.54" dx="1.27" dy="0.5" layer="1"/>
-<smd name="-IN_A" x="0" y="3.81" dx="1.27" dy="0.5" layer="1"/>
-<smd name="OUT_A" x="0" y="5.08" dx="1.27" dy="0.5" layer="1"/>
-<smd name="V+" x="5.5" y="5.08" dx="1.27" dy="0.5" layer="1"/>
-<smd name="OUT_B" x="5.5" y="3.81" dx="1.27" dy="0.5" layer="1"/>
-<smd name="-IN_B" x="5.5" y="2.54" dx="1.27" dy="0.5" layer="1"/>
-<smd name="+IN_B" x="5.5" y="1.27" dx="1.27" dy="0.5" layer="1"/>
-<wire x1="0.75" y1="6.35" x2="0.75" y2="5.08" width="0.127" layer="21"/>
-<wire x1="0.75" y1="5.08" x2="0.75" y2="0" width="0.127" layer="21"/>
-<wire x1="0.75" y1="0" x2="4.75" y2="0" width="0.127" layer="21"/>
-<wire x1="4.75" y1="0" x2="4.75" y2="6.35" width="0.127" layer="21"/>
-<wire x1="4.75" y1="6.35" x2="1.91" y2="6.35" width="0.127" layer="21"/>
-<wire x1="1.91" y1="6.35" x2="0.75" y2="6.35" width="0.127" layer="21"/>
-<wire x1="0.75" y1="5.08" x2="1.91" y2="6.35" width="0.127" layer="21"/>
+<smd name="V-" x="0" y="1.27" dx="1.27" dy="0.55" layer="1"/>
+<smd name="+IN_A" x="0" y="2.54" dx="1.27" dy="0.55" layer="1"/>
+<smd name="-IN_A" x="0" y="3.81" dx="1.27" dy="0.55" layer="1"/>
+<smd name="OUT_A" x="0" y="5.08" dx="1.27" dy="0.55" layer="1"/>
+<smd name="V+" x="5.5" y="5.08" dx="1.27" dy="0.55" layer="1"/>
+<smd name="OUT_B" x="5.5" y="3.81" dx="1.27" dy="0.55" layer="1"/>
+<smd name="-IN_B" x="5.5" y="2.54" dx="1.27" dy="0.55" layer="1"/>
+<smd name="+IN_B" x="5.5" y="1.27" dx="1.27" dy="0.55" layer="1"/>
+<wire x1="0.75" y1="5.675" x2="0.75" y2="5" width="0.127" layer="21"/>
+<wire x1="0.75" y1="5" x2="0.75" y2="0.675" width="0.127" layer="21"/>
+<wire x1="0.75" y1="0.675" x2="4.75" y2="0.675" width="0.127" layer="21"/>
+<wire x1="4.75" y1="0.675" x2="4.75" y2="5.675" width="0.127" layer="21"/>
 <text x="-1.27" y="7.62" size="1.27" layer="25">&gt;NAME</text>
 <text x="-1.27" y="-2.54" size="1.27" layer="27">&gt;VALUE</text>
+<wire x1="0.75" y1="5.675" x2="1.425" y2="5.675" width="0.127" layer="21"/>
+<wire x1="1.425" y1="5.675" x2="4.76" y2="5.675" width="0.127" layer="21"/>
+<wire x1="0.75" y1="5" x2="1.425" y2="5.675" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
