@@ -3562,7 +3562,9 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <part name="+3V12" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
-<part name="U4" library="microwave_radar" deviceset="HB100" device=""/>
+<part name="U4" library="microwave_radar" deviceset="HB100" device="">
+<attribute name="DIGIKEY" value="SAM1067-02-ND"/>
+</part>
 <part name="U5" library="microwave_radar" deviceset="OP284E_SEPARATE" device="">
 <attribute name="DIGIKEY" value="OP284ESZ-ND"/>
 </part>
@@ -3587,6 +3589,9 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 </part>
 <part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k">
 <attribute name="DIGIKEY" value="RHM200KCFCT-ND"/>
+</part>
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 </parts>
 <sheets>
@@ -4097,12 +4102,17 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <instance part="P+2" gate="1" x="187.96" y="124.46"/>
 <instance part="+3V3" gate="G$1" x="76.2" y="139.7"/>
 <instance part="GND7" gate="1" x="76.2" y="104.14"/>
-<instance part="U4" gate="G1" x="160.02" y="116.84"/>
+<instance part="U4" gate="G1" x="160.02" y="116.84">
+<attribute name="DIGIKEY" x="160.02" y="116.84" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U5" gate="_A" x="60.96" y="43.18">
 <attribute name="DIGIKEY" x="60.96" y="43.18" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="U5" gate="_B" x="119.38" y="45.72"/>
 <instance part="U5" gate="G$2" x="76.2" y="121.92"/>
+<instance part="C9" gate="G$1" x="185.42" y="101.6" rot="R180">
+<attribute name="DIGIKEY" x="185.42" y="101.6" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4145,6 +4155,10 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="U4" gate="G1" pin="GND_2"/>
 <pinref part="U4" gate="G1" pin="GND_3"/>
 <pinref part="U4" gate="G1" pin="GND_4"/>
+<wire x1="165.1" y1="96.52" x2="185.42" y2="96.52" width="0.1524" layer="91"/>
+<junction x="165.1" y="96.52"/>
+<pinref part="C9" gate="G$1" pin="1"/>
+<wire x1="185.42" y1="96.52" x2="185.42" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND2" gate="1" pin="GND"/>
@@ -4172,12 +4186,16 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <segment>
 <wire x1="177.8" y1="121.92" x2="177.8" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="116.84" x2="177.8" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="116.84" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="116.84" x2="185.42" y2="116.84" width="0.1524" layer="91"/>
 <junction x="177.8" y="116.84"/>
 <pinref part="P+2" gate="1" pin="+5V"/>
+<wire x1="185.42" y1="116.84" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="116.84" x2="187.96" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G1" pin="5V_1"/>
 <pinref part="U4" gate="G1" pin="5V_2"/>
+<pinref part="C9" gate="G$1" pin="2"/>
+<wire x1="185.42" y1="106.68" x2="185.42" y2="116.84" width="0.1524" layer="91"/>
+<junction x="185.42" y="116.84"/>
 </segment>
 </net>
 <net name="IF" class="0">
