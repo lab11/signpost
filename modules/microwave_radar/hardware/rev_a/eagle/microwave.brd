@@ -1064,7 +1064,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R11" library="passives" package="0402_RES" value="100k" x="28.956" y="38.1" smashed="yes">
 <attribute name="NAME" x="28.956" y="38.481" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="28.956" y="36.703" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
-<attribute name="DGIKEY" value="P100KJCT-ND" x="28.956" y="38.1" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="P100KJCT-ND" x="28.956" y="38.1" size="1.778" layer="27" display="off"/>
 </element>
 <element name="L1" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="24.638" y="36.322" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="-97.282" y="-0.508" size="1.778" layer="27" rot="R270" display="off"/>

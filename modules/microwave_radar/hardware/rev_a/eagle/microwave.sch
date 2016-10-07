@@ -3522,7 +3522,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <part name="FRAME4" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U2" library="chips" deviceset="TLV62130" device=""/>
 <part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
-<attribute name="DGIKEY" value="P100KJCT-ND"/>
+<attribute name="DIGIKEY" value="P100KJCT-ND"/>
 </part>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
@@ -4342,7 +4342,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <instance part="FRAME4" gate="G$2" x="127" y="-10.16"/>
 <instance part="U2" gate="G$1" x="91.44" y="142.24"/>
 <instance part="R11" gate="G$1" x="134.62" y="147.32" rot="R90">
-<attribute name="DGIKEY" x="134.62" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="DIGIKEY" x="134.62" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="GND4" gate="1" x="63.5" y="119.38"/>
 <instance part="L1" gate="G$1" x="116.84" y="152.4" rot="R90"/>
