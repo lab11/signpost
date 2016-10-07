@@ -95,8 +95,8 @@ impl Platform for RadioModule {
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA,PB};
     use sam4l::gpio::PeripheralFunction::{A, B, C, D, E};
-    
-    //backplane communication 
+
+    //backplane communication
     PB[00].configure(Some(A)); //SDA
     PB[01].configure(Some(A)); //SCL
     PB[04].configure(None); //MOD_IN
@@ -104,7 +104,7 @@ unsafe fn set_pin_primary_functions() {
     PB[03].configure(None); //MOD_OUT
     PA[25].configure(Some(A)); //USB
     PA[26].configure(Some(A)); //USB
-    
+
 
     //Nucleum Signals
     PB[02].configure(None); //Nucleum Reset
@@ -156,6 +156,8 @@ unsafe fn set_pin_primary_functions() {
 pub unsafe fn reset_handler() {
     sam4l::init();
 
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
@@ -202,32 +204,32 @@ pub unsafe fn reset_handler() {
 
 	//stuff for the smbus i2c
     let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C3), 20);
-    sam4l::i2c::I2C3.set_client(i2c_mux_smbus);
+    sam4l::i2c::I2C3.set_master_client(i2c_mux_smbus);
 
 	//
 	// SMBUS Interrupt
 	//
 
-    let smbusint_i2c = static_init!(                                            
-        capsules::virtual_i2c::I2CDevice,                                       
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x0C),             
-        32);                                                                    
-                                                                                
-    let smbusint = static_init!(                                                
-        signpost_drivers::smbus_interrupt::SMBUSInterrupt<'static>,             
-        // Make sure to replace "None" below with gpio used as SMBUS Alert      
-        // Some(&sam4l::gpio::PA[16]) for instance                                 
+    let smbusint_i2c = static_init!(
+        capsules::virtual_i2c::I2CDevice,
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x0C),
+        32);
+
+    let smbusint = static_init!(
+        signpost_drivers::smbus_interrupt::SMBUSInterrupt<'static>,
+        // Make sure to replace "None" below with gpio used as SMBUS Alert
+        // Some(&sam4l::gpio::PA[16]) for instance
         signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
-        288/8);                                                                     
-                                                                                
-    smbusint_i2c.set_client(smbusint);                                          
-    // Make sure to set smbusint as client for chosen gpio for SMBUS Alert      
-    // &sam4l::gpio::PA[16].set_client(smbusint); for instance                     
-                                                                                
-    let smbusint_driver = static_init!(                                         
-        signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,             
-        signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),       
-        128/8);                                                                    
+        288/8);
+
+    smbusint_i2c.set_client(smbusint);
+    // Make sure to set smbusint as client for chosen gpio for SMBUS Alert
+    // &sam4l::gpio::PA[16].set_client(smbusint); for instance
+
+    let smbusint_driver = static_init!(
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
+        signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),
+        128/8);
     smbusint.set_client(smbusint_driver);
 
     // I2C Selectors.
@@ -238,8 +240,8 @@ pub unsafe fn reset_handler() {
         32);
     let pca9544a_0 = static_init!(
         signpost_drivers::pca9544a::PCA9544A<'static>,
-        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, None, &mut signpost_drivers::pca9544a::BUFFER),
-        320/8);
+        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, &mut signpost_drivers::pca9544a::BUFFER),
+        256/8);
     pca9544a_0_i2c.set_client(pca9544a_0);
 
 	//create an array of the I2C selectors
