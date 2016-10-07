@@ -170,8 +170,9 @@ pub unsafe fn reset_handler() {
         Console<usart::USART>,
         Console::new(&usart::USART2,
                      &mut console::WRITE_BUF,
+                     &mut console::READ_BUF,
                      kernel::Container::create()),
-        24);
+        256/8);
     usart::USART2.set_client(console);
 
 
@@ -340,13 +341,6 @@ pub unsafe fn reset_handler() {
             coulomb_counter_generic: ltc2941_driver,
         },
         160/8);
-
-    usart::USART2.configure(usart::USARTParams {
-        baud_rate: 125000,
-        data_bits: 8,
-        parity: kernel::hil::uart::Parity::None,
-        mode: kernel::hil::uart::Mode::Normal,
-    });
 
     radio_module.console.initialize();
 

@@ -13,25 +13,26 @@ pub static mut WRITER: Writer = Writer { initialized: false };
 
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
-        let uart = unsafe { &mut sam4l::usart::USART1 };
+        let uart = unsafe { &mut sam4l::usart::USART2 };
         if !self.initialized {
             self.initialized = true;
-            uart.configure(sam4l::usart::USARTParams {
-                baud_rate: 125000,
-                data_bits: 8,
+            uart.init(uart::UARTParams{
+                baud_rate: 115200,
+                stop_bits: uart::StopBits::One,
                 parity: uart::Parity::None,
-                mode: uart::Mode::Normal,
+                hw_flow_control: false,
             });
+            uart.reset();
             uart.enable_tx();
-
         }
+        //XXX: I'd like to get this working the "right" way, but I'm not sure how
         for c in s.bytes() {
             uart.send_byte(c);
+            while !uart.tx_ready() {};
         }
         Ok(())
     }
 }
-
 
 #[cfg(not(test))]
 #[lang="panic_fmt"]
@@ -43,7 +44,7 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
 
-    let led = &sam4l::gpio::PB[03];
+    let led = &sam4l::gpio::PA[25];
     led.enable_output();
     loop {
         for _ in 0..1000000 {

@@ -330,8 +330,9 @@ pub unsafe fn reset_handler() {
         Console<usart::USART>,
         Console::new(&usart::USART3,
                      &mut console::WRITE_BUF,
+                     &mut console::READ_BUF,
                      kernel::Container::create()),
-        24);
+        256/8);
     usart::USART3.set_client(console);
 
     //
@@ -359,10 +360,10 @@ pub unsafe fn reset_handler() {
     // I2C Buses
     //
     let mux_i2c1 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C1), 20);
-    sam4l::i2c::I2C1.set_client(mux_i2c1);
+    sam4l::i2c::I2C1.set_master_client(mux_i2c1);
 
     let mux_i2c2 = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
-    sam4l::i2c::I2C2.set_client(mux_i2c2);
+    sam4l::i2c::I2C2.set_master_client(mux_i2c2);
 
     //
     // SMBUS INTERRUPT
@@ -624,21 +625,6 @@ pub unsafe fn reset_handler() {
             smbus_interrupt: smbusint_driver,
         },
         256/8);
-
-    usart::USART3.configure(usart::USARTParams {
-        baud_rate: 115200,
-        data_bits: 8,
-        parity: kernel::hil::uart::Parity::None,
-        mode: kernel::hil::uart::Mode::Normal,
-    });
-
-    // Setup USART2 for the nRF51822 connection
-    usart::USART2.configure(usart::USARTParams {
-        baud_rate: 250000,
-        data_bits: 8,
-        parity: kernel::hil::uart::Parity::Even,
-        mode: kernel::hil::uart::Mode::FlowControl,
-    });
 
     signpost_controller.console.initialize();
 

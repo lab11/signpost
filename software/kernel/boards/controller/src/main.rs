@@ -162,8 +162,9 @@ pub unsafe fn reset_handler() {
         Console<usart::USART>,
         Console::new(&usart::USART2,
                      &mut console::WRITE_BUF,
+                     &mut console::READ_BUF,
                      kernel::Container::create()),
-        24);
+        256/8);
     usart::USART2.set_client(console);
 
     //
@@ -462,13 +463,6 @@ pub unsafe fn reset_handler() {
             //fram: fm25cl_driver,
         },
         224/8);
-
-    usart::USART2.configure(usart::USARTParams {
-        baud_rate: 115200,
-        data_bits: 8,
-        parity: kernel::hil::uart::Parity::None,
-        mode: kernel::hil::uart::Mode::Normal,
-    });
 
     signpost_controller.console.initialize();
 

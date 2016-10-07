@@ -16,22 +16,23 @@ impl Write for Writer {
         let uart = unsafe { &mut sam4l::usart::USART3 };
         if !self.initialized {
             self.initialized = true;
-            uart.configure(sam4l::usart::USARTParams {
+            uart.init(uart::UARTParams{
                 baud_rate: 115200,
-                data_bits: 8,
+                stop_bits: uart::StopBits::One,
                 parity: uart::Parity::None,
-                mode: uart::Mode::Normal,
+                hw_flow_control: false,
             });
+            uart.reset();
             uart.enable_tx();
-
         }
+        //XXX: I'd like to get this working the "right" way, but I'm not sure how
         for c in s.bytes() {
             uart.send_byte(c);
+            while !uart.tx_ready() {};
         }
         Ok(())
     }
 }
-
 
 #[cfg(not(test))]
 #[lang="panic_fmt"]
@@ -47,12 +48,16 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     led.enable_output();
     loop {
         for _ in 0..1000000 {
+            led.clear();
+        }
+        for _ in 0..100000 {
             led.set();
-            // nop();
         }
         for _ in 0..1000000 {
             led.clear();
-            // nop();
+        }
+        for _ in 0..500000 {
+            led.set();
         }
     }
 }
