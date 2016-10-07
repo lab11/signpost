@@ -5098,14 +5098,26 @@ Source: www.kingbright.com</description>
 <part name="C17" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="LED1" library="led" deviceset="LED" device="CHIP-LED0805"/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
+<part name="ON" library="led" deviceset="LED" device="CHIP-LED0805">
+<attribute name="DIGIKEY" value="475-1410-1-ND"/>
+</part>
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
 <part name="SUPPLY2" library="supply1" deviceset="GND" device=""/>
 <part name="P+4" library="supply1" deviceset="+5V" device=""/>
-<part name="LED2" library="led" deviceset="LED" device="CHIP-LED0805"/>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
+<part name="L" library="led" deviceset="LED" device="CHIP-LED0805">
+<attribute name="DIGIKEY" value="475-1410-1-ND"/>
+</part>
+<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
+<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="1276-3430-1-ND"/>
+</part>
 <part name="SUPPLY3" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -5176,14 +5188,26 @@ Source: www.kingbright.com</description>
 <instance part="SUPPLY1" gate="1" x="38.1" y="119.38"/>
 <instance part="J3" gate="A" x="81.28" y="162.56"/>
 <instance part="+3V9" gate="G$1" x="76.2" y="170.18"/>
-<instance part="LED1" gate="G$1" x="220.98" y="109.22" rot="R90"/>
-<instance part="R16" gate="G$1" x="210.82" y="109.22"/>
-<instance part="R17" gate="G$1" x="210.82" y="101.6"/>
+<instance part="ON" gate="G$1" x="220.98" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="220.98" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R16" gate="G$1" x="210.82" y="109.22">
+<attribute name="DIGIKEY" x="210.82" y="109.22" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R17" gate="G$1" x="210.82" y="101.6">
+<attribute name="DIGIKEY" x="210.82" y="101.6" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="SUPPLY2" gate="1" x="233.68" y="109.22" rot="R90"/>
 <instance part="P+4" gate="1" x="198.12" y="116.84"/>
-<instance part="LED2" gate="G$1" x="193.04" y="91.44" rot="R90"/>
-<instance part="R18" gate="G$1" x="182.88" y="91.44"/>
-<instance part="R19" gate="G$1" x="182.88" y="83.82"/>
+<instance part="L" gate="G$1" x="193.04" y="91.44" rot="R90">
+<attribute name="DIGIKEY" x="193.04" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R18" gate="G$1" x="182.88" y="91.44">
+<attribute name="DIGIKEY" x="182.88" y="91.44" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R19" gate="G$1" x="182.88" y="83.82">
+<attribute name="DIGIKEY" x="182.88" y="83.82" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="SUPPLY3" gate="1" x="205.74" y="91.44" rot="R90"/>
 </instances>
 <busses>
@@ -5248,12 +5272,12 @@ Source: www.kingbright.com</description>
 <junction x="233.68" y="160.02"/>
 </segment>
 <segment>
-<pinref part="LED1" gate="G$1" pin="C"/>
+<pinref part="ON" gate="G$1" pin="C"/>
 <pinref part="SUPPLY2" gate="1" pin="GND"/>
 <wire x1="226.06" y1="109.22" x2="231.14" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="LED2" gate="G$1" pin="C"/>
+<pinref part="L" gate="G$1" pin="C"/>
 <pinref part="SUPPLY3" gate="1" pin="GND"/>
 <wire x1="198.12" y1="91.44" x2="203.2" y2="91.44" width="0.1524" layer="91"/>
 </segment>
@@ -5587,7 +5611,7 @@ Source: www.kingbright.com</description>
 <net name="N$4" class="0">
 <segment>
 <pinref part="R16" gate="G$1" pin="2"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="ON" gate="G$1" pin="A"/>
 <wire x1="213.36" y1="109.22" x2="215.9" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="R17" gate="G$1" pin="2"/>
 <wire x1="215.9" y1="109.22" x2="218.44" y2="109.22" width="0.1524" layer="91"/>
@@ -5677,13 +5701,31 @@ Source: www.kingbright.com</description>
 <net name="N$34" class="0">
 <segment>
 <pinref part="R18" gate="G$1" pin="2"/>
-<pinref part="LED2" gate="G$1" pin="A"/>
+<pinref part="L" gate="G$1" pin="A"/>
 <wire x1="185.42" y1="91.44" x2="187.96" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="R19" gate="G$1" pin="2"/>
 <wire x1="187.96" y1="91.44" x2="190.5" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="83.82" x2="187.96" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="83.82" x2="187.96" y2="91.44" width="0.1524" layer="91"/>
 <junction x="187.96" y="91.44"/>
+</segment>
+</net>
+<net name="N$28" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="USB_VBUS"/>
+<wire x1="35.56" y1="134.62" x2="38.1" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$35" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="USB_D+"/>
+<wire x1="35.56" y1="132.08" x2="38.1" y2="132.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$36" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="USB_D-"/>
+<wire x1="35.56" y1="129.54" x2="38.1" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
