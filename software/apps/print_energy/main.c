@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "firestorm.h"
 #include "tock.h"
 #include "tock_str.h"
 #include "signpost_energy.h"
@@ -63,20 +64,26 @@ int main () {
 
   int i;
 
-  putstr("\nChecking Energy\n");
+  while (1) {
 
-  for (i=0; i<8; i++) {
-    if (i == 3 || i == 4) continue;
+    putstr("\nChecking Energy\n");
 
-    energy = signpost_energy_get_module_energy(i);
-    print_data(i, energy);
+    for (i=0; i<8; i++) {
+      if (i == 3 || i == 4) continue;
+
+      energy = signpost_energy_get_module_energy(i);
+      print_data(i, energy);
+    }
+
+    energy = signpost_energy_get_controller_energy();
+    print_data(3, energy);
+
+    energy = signpost_energy_get_linux_energy();
+    print_data(4, energy);
+
+
+    delay_ms(500);
   }
-
-  energy = signpost_energy_get_controller_energy();
-  print_data(3, energy);
-
-  energy = signpost_energy_get_linux_energy();
-  print_data(4, energy);
 
 
 
