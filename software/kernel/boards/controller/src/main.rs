@@ -408,10 +408,11 @@ pub unsafe fn reset_handler() {
     //
     // FRAM
     //
+    let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
     let fm25cl_spi = static_init!(
         capsules::virtual_spi::SPIMasterDevice,
-        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None),
-        448/8);
+        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
+        480/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
@@ -456,7 +457,7 @@ pub unsafe fn reset_handler() {
     }
 
     sam4l::gpio::PA[25].enable();
-    sam4l::gpio::PA[25].disable_output();
+    sam4l::gpio::PA[25].enable_output();
 
 
     //
