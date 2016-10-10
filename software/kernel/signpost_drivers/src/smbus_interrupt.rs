@@ -21,7 +21,7 @@ pub trait SMBUSIntClient {
 
 pub struct SMBUSInterrupt<'a> {
     i2c: &'a i2c::I2CDevice,
-    interrupt_pin: Option<&'a gpio::GPIOPin>,
+    interrupt_pin: Option<&'a gpio::Pin>,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static SMBUSIntClient>,
@@ -29,7 +29,7 @@ pub struct SMBUSInterrupt<'a> {
 
 impl<'a> SMBUSInterrupt<'a> {
     pub fn new(i2c: &'a i2c::I2CDevice,
-        interrupt_pin: Option<&'a gpio::GPIOPin>,
+        interrupt_pin: Option<&'a gpio::Pin>,
         buffer: &'static mut [u8]) -> SMBUSInterrupt<'a> {
         SMBUSInterrupt {
             i2c: i2c,
@@ -38,13 +38,15 @@ impl<'a> SMBUSInterrupt<'a> {
             buffer: TakeCell::new(buffer),
             client: TakeCell::empty(),
         }
-    } 
-    
+    }
+
     pub fn set_client<C: SMBUSIntClient>(&self, client: &'static C) {
         self.client.replace(client);
 
         self.interrupt_pin.map(|interrupt_pin| {
-            interrupt_pin.enable_input(gpio::InputMode::PullUp);
+            // interrupt_pin.enable_input(gpio::InputMode::PullUp);
+            // AHH NEED PULL UP
+            interrupt_pin.make_input();
             interrupt_pin.enable_interrupt(0, gpio::InterruptMode::FallingEdge);
         });
     }
@@ -105,7 +107,7 @@ impl<'a> SMBUSIntDriver <'a> {
             smbusint: smbusint,
             callback: Cell::new(None),
         }
-    } 
+    }
 }
 
 impl<'a> SMBUSIntClient for SMBUSIntDriver<'a> {
@@ -114,7 +116,7 @@ impl<'a> SMBUSIntClient for SMBUSIntDriver<'a> {
             cb.schedule(0, addr, 0);
         });
     }
-    
+
     fn done(&self) {
         self.callback.get().map(|mut cb| {
             cb.schedule(3, 0, 0);

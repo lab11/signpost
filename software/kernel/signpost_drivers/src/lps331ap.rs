@@ -68,14 +68,14 @@ enum State {
 
 pub struct LPS331AP<'a> {
     i2c: &'a i2c::I2CDevice,
-    interrupt_pin: &'a gpio::GPIOPin,
+    interrupt_pin: &'a gpio::Pin,
     callback: Cell<Option<Callback>>,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>
 }
 
 impl<'a> LPS331AP<'a> {
-    pub fn new(i2c: &'a i2c::I2CDevice, interrupt_pin: &'a gpio::GPIOPin, buffer: &'static mut [u8]) -> LPS331AP<'a> {
+    pub fn new(i2c: &'a i2c::I2CDevice, interrupt_pin: &'a gpio::Pin, buffer: &'static mut [u8]) -> LPS331AP<'a> {
         // setup and return struct
         LPS331AP{
             i2c: i2c,
@@ -99,7 +99,8 @@ impl<'a> LPS331AP<'a> {
 
     pub fn take_measurement(&self) {
 
-        self.interrupt_pin.enable_input(gpio::InputMode::PullNone);
+        // self.interrupt_pin.enable_input(gpio::InputMode::PullNone);
+        self.interrupt_pin.make_input();
         self.interrupt_pin.enable_interrupt(0, gpio::InterruptMode::RisingEdge);
 
         self.buffer.take().map(|buf| {

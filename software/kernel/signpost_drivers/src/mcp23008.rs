@@ -2,6 +2,7 @@ use core::cell::Cell;
 
 use kernel::common::take_cell::TakeCell;
 use kernel::hil;
+use kernel::hil::gpio::PinCtl;
 
 use signpost_hil;
 
@@ -57,13 +58,13 @@ pub struct MCP23008<'a> {
     i2c: &'a hil::i2c::I2CDevice,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
-    interrupt_pin: Option<&'static hil::gpio::GPIOPin>,
+    interrupt_pin: Option<&'static hil::gpio::Pin>,
     identifier: Cell<usize>,
     client: TakeCell<&'static signpost_hil::gpio_async::Client>,
 }
 
 impl<'a> MCP23008<'a> {
-    pub fn new(i2c: &'a hil::i2c::I2CDevice, interrupt_pin: Option<&'static hil::gpio::GPIOPin>, buffer: &'static mut [u8]) -> MCP23008<'a> {
+    pub fn new(i2c: &'a hil::i2c::I2CDevice, interrupt_pin: Option<&'static hil::gpio::Pin>, buffer: &'static mut [u8]) -> MCP23008<'a> {
         // setup and return struct
         MCP23008{
             i2c: i2c,
@@ -82,7 +83,10 @@ impl<'a> MCP23008<'a> {
 
     fn enable_interrupts(&self, edge: hil::gpio::InterruptMode) {
         self.interrupt_pin.map(|interrupt_pin| {
-            interrupt_pin.enable_input(hil::gpio::InputMode::PullNone);
+            // interrupt_pin.enable_input(hil::gpio::InputMode::PullNone);
+            interrupt_pin.make_input();
+            // interrupt_pin.set_input_mode(hil::gpio::InputMode::PullNone);
+            // hil::gpio::PinCtl::set_input_mode(interrupt_pin, hil::gpio::InputMode::PullNone);
             interrupt_pin.enable_interrupt(0, edge);
         });
     }

@@ -58,7 +58,7 @@ pub trait LTC2941Client {
 
 pub struct LTC2941<'a> {
     i2c: &'a i2c::I2CDevice,
-    interrupt_pin: Option<&'a gpio::GPIOPin>,
+    interrupt_pin: Option<&'a gpio::Pin>,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
     client: TakeCell<&'static LTC2941Client>,
@@ -66,7 +66,7 @@ pub struct LTC2941<'a> {
 
 impl<'a> LTC2941<'a> {
     pub fn new(i2c: &'a i2c::I2CDevice,
-               interrupt_pin: Option<&'a gpio::GPIOPin>,
+               interrupt_pin: Option<&'a gpio::Pin>,
                buffer: &'static mut [u8])
                -> LTC2941<'a> {
         // setup and return struct
@@ -83,7 +83,8 @@ impl<'a> LTC2941<'a> {
         self.client.replace(client);
 
         self.interrupt_pin.map(|interrupt_pin| {
-            interrupt_pin.enable_input(gpio::InputMode::PullNone);
+            // interrupt_pin.enable_input(gpio::InputMode::PullNone);
+            interrupt_pin.make_input();
             interrupt_pin.enable_interrupt(0, gpio::InterruptMode::FallingEdge);
         });
     }
