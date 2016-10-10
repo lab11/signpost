@@ -173,7 +173,7 @@ pub unsafe fn reset_handler() {
                      &mut console::READ_BUF,
                      kernel::Container::create()),
         256/8);
-    usart::USART2.set_client(console);
+    usart::USART2.set_uart_client(console);
 
 
     //
