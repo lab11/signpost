@@ -56,7 +56,8 @@ All data packets include a `_meta` section like the following:
 ```
 {
 	"device": "signpost_microwave_radar",
-	???
+	"motion": <boolean>,
+	"velocity_m/s": <float>,
 }
 ```
 
@@ -104,7 +105,29 @@ All data packets include a `_meta` section like the following:
 {
 	"device": "signpost_gps",
 	"latitude":  <float>,
+	"latitude_direction": "N"|"S",
 	"longitude": <float>,
+	"longitude_direction": "E"|"W",
 	"timestamp": <ISO time>
 }
 ```
+
+### Signpost Status
+
+```
+{
+	"device": "signpost_status",
+	"module0_enabled": <boolean>,
+	"module1_enabled": <boolean>,
+	"module2_enabled": <boolean>,
+	"module5_enabled": <boolean>,
+	"module6_enabled": <boolean>,
+	"module7_enabled": <boolean>,
+	"controller_energy_mAh": <float>,
+	"module0_energy_mAh": <float>,
+	"module1_energy_mAh": <float>,
+	"module2_energy_mAh": <float>,
+	"module5_energy_mAh": <float>,
+	"module6_energy_mAh": <float>,
+	"module7_energy_mAh": <float>
+}

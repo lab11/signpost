@@ -34,8 +34,21 @@ function generate_audio_frequency_packet () {
 }
 
 function generate_microwave_radar_packet () {
+	function get_velocity (beg, end) {
+		return get_value(beg*1000, end*1000)/1000.0
+	}
+
+	m = get_value(0, 1)
+	if (m == 1) {
+		v = get_velocity(0, 4)
+	} else {
+		v = 0.0
+	}
+
 	return {
 		device: 'signpost_microwave_radar',
+		motion: m == 1,
+		'velocity_m/s': v,
 		_meta: get_meta()
 	}
 }
@@ -90,8 +103,53 @@ function generate_gps_packet () {
 	return {
 		device: 'signpost_gps',
 		latitude: get_lat(),
+		latitude_direction: 'N',
 		longitude: get_long(),
+		longitude_direction: 'W',
 		timestamp: new Date().toISOString(),
+		_meta: get_meta()
+	}
+}
+
+var cont_energy = 0
+var mod0_energy = 0
+var mod1_energy = 0
+var mod2_energy = 0
+var mod5_energy = 0
+var mod6_energy = 0
+var mod7_energy = 0
+
+function generate_status_packet () {
+	function increase_mah () {
+		return get_value(0, 1000)/500.0
+	}
+	function enabled () {
+		return get_value(0, 100) > 25
+	}
+
+	cont_energy += increase_mah()
+	mod0_energy += increase_mah()
+	mod1_energy += increase_mah()
+	mod2_energy += increase_mah()
+	mod5_energy += increase_mah()
+	mod6_energy += increase_mah()
+	mod7_energy += increase_mah()
+
+	return {
+		device: 'signpost_status',
+		module0_enabled: enabled(),
+		module1_enabled: enabled(),
+		module2_enabled: enabled(),
+		module5_enabled: enabled(),
+		module6_enabled: enabled(),
+		module7_enabled: enabled(),
+		controller_energy_mAh: cont_energy,
+		module0_energy_mAh: mod0_energy,
+		module1_energy_mAh: mod1_energy,
+		module2_energy_mAh: mod2_energy,
+		module5_energy_mAh: mod5_energy,
+		module6_energy_mAh: mod6_energy,
+		module7_energy_mAh: mod7_energy,
 		_meta: get_meta()
 	}
 }
@@ -130,6 +188,10 @@ function gps_generate () {
 	publish(generate_gps_packet)
 }
 
+function status_generate () {
+	publish(generate_status_packet)
+}
+
 
 var mqtt_client = mqtt.connect('mqtt://localhost')
 
@@ -141,3 +203,4 @@ setInterval(microwave_radar_generate, 3000)
 setInterval(ambient_generate, 5000)
 setInterval(spectrum_generate, 2500)
 setInterval(gps_generate, 7000)
+setInterval(status_generate, 10000)
