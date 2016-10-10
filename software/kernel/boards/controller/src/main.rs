@@ -15,6 +15,7 @@ extern crate signpost_hil;
 use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
+use kernel::hil;
 use kernel::hil::Controller;
 use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
@@ -75,7 +76,7 @@ struct SignpostController {
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-    //fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
+    fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
 }
 
 impl Platform for SignpostController {
@@ -90,7 +91,7 @@ impl Platform for SignpostController {
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
-            //103 => f(Some(self.fram)),
+            103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             _ => f(None)
         }
@@ -107,7 +108,14 @@ unsafe fn set_pin_primary_functions() {
     PA[05].configure(None); // MOD1_IN
     PA[06].configure(None); // MOD2_IN
     PA[07].configure(None); // MOD5_IN
-    PA[08].configure(None); // MOD6_IN
+
+
+    // PA[08].configure(None); // MOD6_IN
+
+    // use for FRAM !CS
+    PA[08].configure(Some(A)); // MOD6_IN
+
+
     PA[09].configure(None); // MOD7_IN
 
     // GPIO: signal to modules
@@ -165,7 +173,7 @@ pub unsafe fn reset_handler() {
                      &mut console::READ_BUF,
                      kernel::Container::create()),
         256/8);
-    usart::USART2.set_client(console);
+    usart::USART2.set_uart_client(console);
 
     //
     // Timer
@@ -382,17 +390,18 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941_driver);
 
-    /*
-    XXX: Needs to be changed to the USART SPI implementation
+
     //
     // SPI
     //
     let mux_spi = static_init!(
         capsules::virtual_spi::MuxSPIMaster<'static>,
-        capsules::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI),
+        capsules::virtual_spi::MuxSPIMaster::new(&sam4l::usart::USART0),
         128/8);
-    sam4l::spi::SPI.set_client(mux_spi);
-    sam4l::spi::SPI.init();
+    // sam4l::spi::SPI.set_client(mux_spi);
+    // sam4l::spi::SPI.init();
+    hil::spi::SpiMaster::set_client(&sam4l::usart::USART0, mux_spi);
+    hil::spi::SpiMaster::init(&sam4l::usart::USART0);
 
 
 
@@ -415,19 +424,19 @@ pub unsafe fn reset_handler() {
         signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
         544/8);
     fm25cl.set_client(fm25cl_driver);
-    */
+
 
     //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 14],
-        [&sam4l::gpio::PA[25],  // CONTROLLER_LED
-         &sam4l::gpio::PA[04],  // MOD0_IN
+        [&'static sam4l::gpio::GPIOPin; 12],
+        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED
+         [&sam4l::gpio::PA[04],  // MOD0_IN
          &sam4l::gpio::PA[05],  // MOD1_IN
          &sam4l::gpio::PA[06],  // MOD2_IN
          &sam4l::gpio::PA[07],  // MOD5_IN
-         &sam4l::gpio::PA[08],  // MOD6_IN
+         // &sam4l::gpio::PA[08],  // MOD6_IN
          &sam4l::gpio::PA[09],  // MOD7_IN
          &sam4l::gpio::PA[13],  // MOD0_OUT
          &sam4l::gpio::PA[14],  // MOD1_OUT
@@ -436,7 +445,7 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PA[17],  // MOD6_OUT
          &sam4l::gpio::PA[18],  // MOD7_OUT
          &sam4l::gpio::PA[26]], // !SMBALERT
-        14 * 4
+        12 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -445,6 +454,9 @@ pub unsafe fn reset_handler() {
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }
+
+    sam4l::gpio::PA[25].enable();
+    sam4l::gpio::PA[25].disable_output();
 
 
     //
@@ -460,9 +472,9 @@ pub unsafe fn reset_handler() {
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
             smbus_interrupt: smbusint_driver,
-            //fram: fm25cl_driver,
+            fram: fm25cl_driver,
         },
-        224/8);
+        256/8);
 
     signpost_controller.console.initialize();
 
