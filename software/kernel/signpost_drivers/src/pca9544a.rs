@@ -15,6 +15,8 @@ enum State {
     /// Simple read to determine which interrupts are set currently
     ReadInterrupts,
 
+    ReadSelectedChannel,
+
     Done,
 }
 
@@ -70,7 +72,7 @@ impl<'a> PCA9544A<'a> {
             self.state.set(State::Done);
         });
     }
-    
+
     fn read_interrupts(&self) {
         self.buffer.take().map(|buffer| {
             // turn on i2c to send commands
@@ -79,6 +81,17 @@ impl<'a> PCA9544A<'a> {
             // Just issuing a read to the selector reads its control register.
             self.i2c.read(buffer, 1);
             self.state.set(State::ReadInterrupts);
+        });
+    }
+
+    fn read_selected_channel(&self) {
+        self.buffer.take().map(|buffer| {
+            // turn on i2c to send commands
+            self.i2c.enable();
+
+            // Just issuing a read to the selector reads its control register.
+            self.i2c.read(buffer, 1);
+            self.state.set(State::ReadSelectedChannel);
         });
     }
 
@@ -107,6 +120,17 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
                 self.i2c.disable();
                 self.state.set(State::Idle);
             }
+            State::ReadSelectedChannel => {
+                let b = buffer[0] & 0x07;
+
+                self.client.map(|client| {
+                    client.done(Some(b as usize));
+                });
+
+                self.buffer.replace(buffer);
+                self.i2c.disable();
+                self.state.set(State::Idle);
+            }
             State::Done => {
                 self.client.map(|client| {
                     client.done(None);
@@ -129,8 +153,12 @@ impl<'a> signpost_hil::i2c_selector::I2CSelector for PCA9544A<'a> {
     fn disable_all_channels(&self) {
         self.select_channels(0);
     }
-    
+
     fn read_interrupts(&self) {
         self.read_interrupts();
+    }
+
+    fn read_selected(&self) {
+        self.read_selected_channel();
     }
 }

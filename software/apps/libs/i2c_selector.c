@@ -20,3 +20,7 @@ int i2c_selector_disable_all_channels() {
 int i2c_selector_read_interrupts() {
 	return command(DRIVER_NUM_I2C_SELECTOR, 2, 0);
 }
+
+int i2c_selector_read_selected() {
+	return command(DRIVER_NUM_I2C_SELECTOR, 3, 0);
+}

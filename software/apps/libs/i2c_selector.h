@@ -1,5 +1,6 @@
 #pragma once
 
+#include "tock.h"
 
 #define DRIVER_NUM_I2C_SELECTOR 101
 
@@ -16,3 +17,5 @@ int i2c_selector_select_channels();
 
 // Read interrupts on all I2C selectors
 int i2c_selector_read_interrupts();
+
+int i2c_selector_read_selected();

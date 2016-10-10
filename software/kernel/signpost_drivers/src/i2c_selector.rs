@@ -13,6 +13,7 @@ enum Operation {
     SetAll = 0,
     DisableAll = 1,
     ReadInterrupts = 2,
+    ReadSelected = 3,
 }
 
 pub struct I2CSelector<'a, Selector: signpost_hil::i2c_selector::I2CSelector + 'a> {
@@ -65,6 +66,15 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> I2CSelector<'a, Sele
             selectors[index].read_interrupts();
         }
     }
+
+    fn read_selected(&self) {
+        let selectors = self.selectors.as_ref();
+        let index = self.index.get() as usize;
+
+        if selectors.len() > index {
+            selectors[index].read_selected();
+        }
+    }
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_selector::Client for I2CSelector<'a, Selector> {
@@ -84,7 +94,7 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
         if interrupt_bitmask.is_some() {
             self.bitmask.set(interrupt_bitmask.unwrap() << self.index.get() * 4 | self.bitmask.get());
         }
-        
+
         let selectors = self.selectors.as_ref();
         // Increment the selector we are operating on now that we finished
         // the last one.
@@ -104,6 +114,9 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
                 }
                 Operation::ReadInterrupts => {
                     self.read_interrupts();
+                }
+                Operation::ReadSelected => {
+                    self.read_selected();
                 }
             }
 
@@ -156,6 +169,15 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.bitmask.set(0);
 
                 self.read_interrupts();
+                0
+            }
+
+            3 => {
+                self.operation.set(Operation::ReadSelected);
+                self.index.set(0);
+                self.bitmask.set(0);
+
+                self.read_selected();
                 0
             }
 
