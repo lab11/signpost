@@ -86,7 +86,7 @@ impl Platform for AudioModule {
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
     use sam4l::gpio::PeripheralFunction::{A};
-    
+
 	//analog inputs?
     PA[04].configure(Some(A)); //Input one
     PA[05].configure(Some(A)); //Input two
@@ -122,6 +122,8 @@ unsafe fn set_pin_primary_functions() {
 #[no_mangle]
 pub unsafe fn reset_handler() {
     sam4l::init();
+
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -160,23 +162,23 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 17],
-        [&sam4l::gpio::PA[06],  
-         &sam4l::gpio::PA[07],  
-         &sam4l::gpio::PA[08],  
-         &sam4l::gpio::PA[09],  
-         &sam4l::gpio::PA[10],  
-         &sam4l::gpio::PA[11],  
-         &sam4l::gpio::PA[12],  
-         &sam4l::gpio::PA[13],  
-         &sam4l::gpio::PA[14],  
-         &sam4l::gpio::PA[15],  
-         &sam4l::gpio::PA[16],  
-         &sam4l::gpio::PA[17],  
-         &sam4l::gpio::PA[18],  
-         &sam4l::gpio::PA[19],  
-         &sam4l::gpio::PA[20],  
-         &sam4l::gpio::PA[21],  
-         &sam4l::gpio::PA[22]],  
+        [&sam4l::gpio::PA[06],
+         &sam4l::gpio::PA[07],
+         &sam4l::gpio::PA[08],
+         &sam4l::gpio::PA[09],
+         &sam4l::gpio::PA[10],
+         &sam4l::gpio::PA[11],
+         &sam4l::gpio::PA[12],
+         &sam4l::gpio::PA[13],
+         &sam4l::gpio::PA[14],
+         &sam4l::gpio::PA[15],
+         &sam4l::gpio::PA[16],
+         &sam4l::gpio::PA[17],
+         &sam4l::gpio::PA[18],
+         &sam4l::gpio::PA[19],
+         &sam4l::gpio::PA[20],
+         &sam4l::gpio::PA[21],
+         &sam4l::gpio::PA[22]],
         17 * 4
     );
     let gpio = static_init!(
@@ -198,6 +200,18 @@ pub unsafe fn reset_handler() {
             timer: timer,
         },
         64/8);
+
+    sam4l::gpio::PA[14].enable();
+    sam4l::gpio::PA[14].enable_output();
+    sam4l::gpio::PA[14].set();
+
+    sam4l::gpio::PA[15].enable();
+    sam4l::gpio::PA[15].enable_output();
+    sam4l::gpio::PA[15].set();
+
+    sam4l::gpio::PA[16].enable();
+    sam4l::gpio::PA[16].enable_output();
+    sam4l::gpio::PA[16].clear();
 
 	sam4l::gpio::PA[17].enable();
 	sam4l::gpio::PA[17].enable_output();
