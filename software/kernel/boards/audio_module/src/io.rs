@@ -16,11 +16,11 @@ impl Write for Writer {
         let uart = unsafe { &mut sam4l::usart::USART1 };
         if !self.initialized {
             self.initialized = true;
-            uart.configure(sam4l::usart::USARTParams {
-                baud_rate: 125000,
-                data_bits: 8,
+            uart.init(uart::UARTParams{
+                baud_rate: 115200,
+                stop_bits: uart::StopBits::One,
                 parity: uart::Parity::None,
-                mode: uart::Mode::Normal,
+                hw_flow_control: false,
             });
             uart.enable_tx();
 
