@@ -4,7 +4,7 @@ CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 TOCK_BOARD = radio_module
 
-TOCK_USERLAND_BASE_DIR = $(CURRENT_DIR)../
+#TOCK_USERLAND_BASE_DIR = $(CURRENT_DIR)../
 #TOCK_BASE_DIR = $(CURRENT_DIR)/../../../
 BUILDDIR ?= build/$(TOCK_ARCH)
 
@@ -16,6 +16,7 @@ PROJECT_NAME = $(shell basename "$(realpath ./)")
 APPLICATION_SRCS = $(notdir $(wildcard ./*.c))
 APPLICATION_SRCS += simple_ble.c
 APPLICATION_SRCS += simple_adv.c
+APPLICATION_SRCS += multi_adv.c
 APPLICATION_SRCS += eddystone.c
 
 APPLICATION_SRCS += app_ble_gap_sec_keys.c
@@ -143,7 +144,6 @@ APPLICATION_SRCS += ble_srv_common.c
 APPLICATION_SRCS += softdevice_handler.c
 
 LIBRARY_PATHS += .
-
 
 DEVICE := SAM4L
 SOFTDEVICE_MODEL := s110
@@ -352,7 +352,7 @@ CPPFLAGS += -DSTACK_SIZE=2048
 
 # include userland master makefile. Contains rules and flags for actually
 # 	building the application
-include $(TOCK_USERLAND_BASE_DIR)/AppMakefile.mk
+include ../AppMakefile.mk
 
 $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<

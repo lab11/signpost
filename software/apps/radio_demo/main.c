@@ -6,16 +6,18 @@
 #include <stdbool.h>
 
 //nordic includes
+#include "nrf.h"
 #include <nordic_common.h>
 #include <nrf_error.h>
 #include <simple_ble.h>
 #include <eddystone.h>
 #include <simple_adv.h>
-#include <multi_adv.h>
-#include "nrf.h"
+#include "multi_adv.h"
 
 //tock includes
 #include <tock.h>
+#include "firestorm.h"
+#include <tock_str.h>
 #include "iM880A_RadioInterface.h"
 #include "i2c_master_slave.h"
 
