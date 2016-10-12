@@ -67,6 +67,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct AudioModule {
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 }
 
 impl Platform for AudioModule {
@@ -77,6 +78,7 @@ impl Platform for AudioModule {
         match driver_num {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
     }
@@ -85,7 +87,7 @@ impl Platform for AudioModule {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
-    use sam4l::gpio::PeripheralFunction::{A};
+    use sam4l::gpio::PeripheralFunction::{A, B};
 
 	//analog inputs?
     PA[04].configure(Some(A)); //Input one
@@ -108,8 +110,8 @@ unsafe fn set_pin_primary_functions() {
     PA[20].configure(None); //Mod in
     PA[21].configure(None); //
     PA[22].configure(None); //
-    PA[23].configure(Some(A)); //SDA
-	PA[24].configure(Some(A)); //SCL
+    PA[23].configure(Some(B)); //SDA
+	PA[24].configure(Some(B)); //SCL
 	PA[25].configure(Some(A)); //USB-
 	PA[26].configure(Some(A)); //USB+
 
@@ -154,8 +156,15 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
-
-    //some declaration of an i2c slave that I don't know how to do yet
+    let i2c_master_slave = static_init!(
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+        928/8);
+    sam4l::i2c::I2C0.set_master_client(i2c_master_slave);
+    sam4l::i2c::I2C0.set_slave_client(i2c_master_slave);
 
     //
     // Remaining GPIO pins
@@ -198,8 +207,9 @@ pub unsafe fn reset_handler() {
         AudioModule {
             gpio: gpio,
             timer: timer,
+            i2c_master_slave: i2c_master_slave,
         },
-        64/8);
+        96/8);
 
     sam4l::gpio::PA[14].enable();
     sam4l::gpio::PA[14].enable_output();
@@ -213,9 +223,17 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[16].enable_output();
     sam4l::gpio::PA[16].clear();
 
-	sam4l::gpio::PA[17].enable();
-	sam4l::gpio::PA[17].enable_output();
-	sam4l::gpio::PA[17].clear();
+    sam4l::gpio::PA[17].enable();
+    sam4l::gpio::PA[17].enable_output();
+    sam4l::gpio::PA[17].clear();
+
+    sam4l::gpio::PA[08].enable();
+    sam4l::gpio::PA[08].enable_output();
+    sam4l::gpio::PA[08].clear();
+
+	sam4l::gpio::PA[12].enable();
+	sam4l::gpio::PA[12].enable_output();
+	sam4l::gpio::PA[12].clear();
 
 
     let mut chip = sam4l::chip::Sam4l::new();
