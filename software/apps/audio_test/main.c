@@ -24,21 +24,21 @@ int main () {
 	
 	delay_ms(1000);
   	while (1) {
-		delay_ms(10);
+		delay_ms(1);
 		gpio_set(STROBE);
 		gpio_set(RESET);
-		delay_ms(10);
+		delay_ms(1);
 		gpio_clear(STROBE);
-		delay_ms(10);
+		delay_ms(1);
 		gpio_clear(RESET);
 		gpio_set(STROBE);
-		delay_ms(10);
+		delay_ms(1);
 		gpio_clear(STROBE);
 	
-		for(uint8_t i = 0; i < 7; i++) {
-			delay_ms(10);
+		for(uint8_t i = 0; i < 6; i++) {
+			delay_ms(1);
 			gpio_set(STROBE);
-			delay_ms(10);
+			delay_ms(1);
 			gpio_clear(STROBE);
 		}
   	}
