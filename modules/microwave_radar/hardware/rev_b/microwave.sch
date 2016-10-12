@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4626,8 +4626,8 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <instance part="C9" gate="G$1" x="86.36" y="91.44" rot="R90">
 <attribute name="DIGIKEY" x="86.36" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C10" gate="G$1" x="99.06" y="38.1">
-<attribute name="DIGIKEY" x="99.06" y="38.1" size="1.778" layer="96" display="off"/>
+<instance part="C10" gate="G$1" x="93.98" y="38.1">
+<attribute name="DIGIKEY" x="93.98" y="38.1" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="C3" gate="G$1" x="132.08" y="48.26">
 <attribute name="DIGIKEY" x="132.08" y="48.26" size="1.778" layer="96" display="off"/>
@@ -4724,12 +4724,13 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 </segment>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="99.06" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="33.02" x2="93.98" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="U3" gate="G$1" pin="GND"/>
-<wire x1="93.98" y1="33.02" x2="93.98" y2="43.18" width="0.1524" layer="91"/>
-<junction x="93.98" y="33.02"/>
+<wire x1="93.98" y1="33.02" x2="93.98" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="C10" gate="G$1" pin="2"/>
+<pinref part="U3" gate="G$1" pin="VSS"/>
+<wire x1="93.98" y1="30.48" x2="93.98" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="43.18" x2="99.06" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="30.48" x2="93.98" y2="30.48" width="0.1524" layer="91"/>
+<junction x="93.98" y="30.48"/>
 </segment>
 <segment>
 <pinref part="JP2" gate="A" pin="5"/>
@@ -4841,13 +4842,6 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <junction x="132.08" y="58.42"/>
 </segment>
 </net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="U3" gate="G$1" pin="VSS"/>
-<wire x1="99.06" y1="43.18" x2="99.06" y2="40.64" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$1" pin="1"/>
-</segment>
-</net>
 <net name="MSGEQ_OUT" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="OUT"/>
@@ -4893,6 +4887,13 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <pinref part="JP2" gate="A" pin="3"/>
 <wire x1="190.5" y1="106.68" x2="182.88" y2="106.68" width="0.1524" layer="91"/>
 <label x="182.88" y="106.68" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="GND"/>
+<pinref part="C10" gate="G$1" pin="1"/>
+<wire x1="93.98" y1="40.64" x2="93.98" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
