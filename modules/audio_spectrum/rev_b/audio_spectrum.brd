@@ -178,14 +178,12 @@ CCW+,CW-</text>
 <wire x1="2.54" y1="50.165" x2="5.461" y2="50.165" width="0.127" layer="20"/>
 <wire x1="5.461" y1="50.165" x2="11.811" y2="56.515" width="0.127" layer="20" curve="90"/>
 <wire x1="11.811" y1="56.515" x2="11.811" y2="68.58" width="0.127" layer="20"/>
-<text x="52.324" y="36.83" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">Audio 
+<text x="52.324" y="37.084" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">Audio 
 Spectrum
 Analyzer</text>
-<wire x1="-3.556" y1="34.544" x2="-6.604" y2="34.29" width="0.1524" layer="21"/>
-<wire x1="-6.604" y1="34.29" x2="-6.604" y2="36.322" width="0.1524" layer="21"/>
-<text x="-1.27" y="35.052" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">A</text>
-<text x="41.402" y="35.052" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">Joshua Adkins</text>
-<text x="41.402" y="36.322" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">10/2016</text>
+<text x="41.402" y="33.782" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">B</text>
+<text x="41.402" y="35.814" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">Joshua Adkins</text>
+<text x="41.402" y="37.338" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">10/2016</text>
 <text x="31.75" y="43.434" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">RESET</text>
 <text x="31.75" y="40.64" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">POWER</text>
 <text x="32.258" y="37.846" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">STROBE</text>
@@ -235,6 +233,10 @@ Button</text>
 <text x="20.32" y="61.468" size="0.889" layer="21" font="vector" ratio="12">IN/TX</text>
 <text x="16.256" y="50.8" size="0.889" layer="21" font="vector" ratio="12">Mic</text>
 <text x="20.828" y="18.796" size="0.889" layer="21" font="vector" ratio="12">Mic</text>
+<wire x1="40.386" y1="35.306" x2="40.386" y2="33.274" width="0.254" layer="21"/>
+<wire x1="40.386" y1="33.274" x2="42.164" y2="33.274" width="0.254" layer="21"/>
+<wire x1="42.164" y1="33.274" x2="42.164" y2="35.306" width="0.254" layer="21"/>
+<wire x1="42.164" y1="35.306" x2="40.386" y2="35.306" width="0.254" layer="21"/>
 </plain>
 <libraries>
 <library name="chips">
@@ -1637,7 +1639,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="62.738" y="87.122" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="50.152" y="49.254" size="0.889" layer="25" rot="R180"/>
 </element>
-<element name="U$2" library="logos" package="UCB_CAL_200MIL" value="" x="38.354" y="38.1"/>
+<element name="U$2" library="logos" package="UCB_CAL_200MIL" value="" x="38.354" y="38.862"/>
 <element name="J2" library="connector" package="AUDIO-JACK-VERTICAL" value="AUDIO-JACK-VERTICAL" x="36.83" y="48.006" smashed="yes" rot="R90">
 <attribute name="MOUSER" value="806-STX-3790-5N" x="36.83" y="48.006" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="34.29" y="50.546" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
@@ -1864,7 +1866,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="44.196" y="27.178" extent="1-16" drill="0.3048"/>
 <via x="45.72" y="25.146" extent="1-16" drill="0.3048"/>
 <contactref element="S1" pad="1"/>
-<via x="41.91" y="34.29" extent="1-16" drill="0.3048"/>
+<via x="39.624" y="31.496" extent="1-16" drill="0.3048"/>
 <via x="43.688" y="14.732" extent="1-16" drill="0.3048"/>
 </signal>
 <signal name="CONTROLLER_SWDCLK">
