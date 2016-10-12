@@ -64,7 +64,12 @@ static void i2c_master_slave_callback (
 
 void print_data () {
   char buf[64];
-  sprintf(buf, "I2C Slave: %i (%02x %02x)\n", _length, slave_write_buf[0], slave_write_buf[1]);
+  sprintf(buf, "I2C Slave: %i (%02x %02x %02x %02x %02x %02x)\n", _length, slave_write_buf[0],
+                                                                 slave_write_buf[1],
+                                                                 slave_write_buf[2],
+                                                                 slave_write_buf[3],
+                                                                 slave_write_buf[4],
+                                                                 slave_write_buf[5]);
   putstr(buf);
 }
 
