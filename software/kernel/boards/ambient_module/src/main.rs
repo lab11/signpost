@@ -12,12 +12,14 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use capsules::console::{self, Console};
+// use capsules::console::{self, Console};
+use signpost_drivers::uartprint::{self, UartPrint};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
 use sam4l::usart;
+use kernel::hil;
 
 // For panic!()
 #[macro_use]
@@ -67,7 +69,8 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct AmbientModule {
-    console: &'static Console<'static, usart::USART>,
+    // console: &'static Console<'static, usart::USART>,
+    uartprint: &'static UartPrint<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
@@ -83,7 +86,7 @@ impl Platform for AmbientModule {
     {
 
         match driver_num {
-            0 => f(Some(self.console)),
+            0 => f(Some(self.uartprint)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             6 => f(Some(self.isl29035)),
@@ -140,7 +143,7 @@ unsafe fn set_pin_primary_functions() {
     // Configure LEDs to be off
     sam4l::gpio::PA[05].enable();
     sam4l::gpio::PA[05].enable_output();
-    sam4l::gpio::PA[05].set();
+    sam4l::gpio::PA[05].clear();
     sam4l::gpio::PA[06].enable();
     sam4l::gpio::PA[06].enable_output();
     sam4l::gpio::PA[06].clear();
@@ -168,14 +171,22 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
-    let console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART0,
-                     &mut console::WRITE_BUF,
-                     &mut console::READ_BUF,
-                     kernel::Container::create()),
-        256/8);
-    usart::USART0.set_uart_client(console);
+    // let console = static_init!(
+    //     Console<usart::USART>,
+    //     Console::new(&usart::USART0,
+    //                  &mut console::WRITE_BUF,
+    //                  &mut console::READ_BUF,
+    //                  kernel::Container::create()),
+    //     256/8);
+    // usart::USART0.set_uart_client(console);
+
+    let uartprint = static_init!(
+        UartPrint<usart::USART>,
+        UartPrint::new(&usart::USART0,
+                     &mut uartprint::WRITE_BUF,
+                     &mut uartprint::READ_BUF),
+        384/8);
+    usart::USART0.set_uart_client(uartprint);
 
     //
     // Timer
@@ -211,6 +222,10 @@ pub unsafe fn reset_handler() {
         928/8);
     sam4l::i2c::I2C0.set_master_client(i2c_master_slave);
     sam4l::i2c::I2C0.set_slave_client(i2c_master_slave);
+
+    // Set I2C slave address here, because it is board specific and not app
+    // specific. It can be overridden in the app, of course.
+    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x32);
 
     // Sensors
     let i2c_mux_sensors = static_init!(
@@ -309,7 +324,8 @@ pub unsafe fn reset_handler() {
     let ambient_module = static_init!(
         AmbientModule,
         AmbientModule {
-            console: console,
+            // console: console,
+            uartprint: uartprint,
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
@@ -320,7 +336,7 @@ pub unsafe fn reset_handler() {
         },
         256/8);
 
-    ambient_module.console.initialize();
+    ambient_module.uartprint.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
