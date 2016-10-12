@@ -102,7 +102,8 @@ int main () {
     txbuf[8] = (uint8_t) ((_pressure_reading >> 8) & 0xFF);
     txbuf[9] = (uint8_t) (_pressure_reading & 0xFF);
 
-    // i2c_master_slave_write(0x20, 10);
+    i2c_master_slave_write(0x20, 10);
+    yield();
 
     {
       char buf[256];
