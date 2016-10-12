@@ -3451,7 +3451,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
 <attribute name="DIGIKEY" value="490-8230-1-ND"/>
 </part>
-<part name="X2" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
+<part name="X1" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
@@ -3583,6 +3583,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="TP14" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP16" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3608,7 +3609,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <instance part="C2" gate="G$1" x="236.22" y="160.02" rot="R90">
 <attribute name="DIGIKEY" x="236.22" y="160.02" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="X2" gate="G$1" x="231.14" y="165.1" smashed="yes" rot="R90">
+<instance part="X1" gate="G$1" x="231.14" y="165.1" smashed="yes" rot="R90">
 <attribute name="NAME" x="226.06" y="167.64" size="1.27" layer="95" rot="R180"/>
 <attribute name="VALUE" x="226.06" y="165.1" size="1.27" layer="96" rot="R180"/>
 </instance>
@@ -3703,6 +3704,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <instance part="TP14" gate="G$1" x="175.26" y="106.68" rot="R180"/>
 <instance part="TP15" gate="G$1" x="175.26" y="109.22" rot="R180"/>
 <instance part="TP16" gate="G$1" x="175.26" y="111.76" rot="R180"/>
+<instance part="TP11" gate="G$1" x="78.74" y="93.98" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -3715,7 +3717,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="175.26" y1="48.26" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="X2" gate="G$1" pin="GND"/>
+<pinref part="X1" gate="G$1" pin="GND"/>
 <wire x1="236.22" y1="165.1" x2="241.3" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="241.3" y1="165.1" x2="241.3" y2="170.18" width="0.1524" layer="91"/>
@@ -3760,6 +3762,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <junction x="81.28" y="91.44"/>
 <pinref part="U1" gate="U1" pin="GND"/>
 <pinref part="U1" gate="U1" pin="GNDANA"/>
+<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
+<junction x="78.74" y="91.44"/>
 </segment>
 <segment>
 <pinref part="GND18" gate="1" pin="GND"/>
@@ -3853,7 +3857,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </net>
 <net name="CONTROLLER_XIN" class="0">
 <segment>
-<pinref part="X2" gate="G$1" pin="2"/>
+<pinref part="X1" gate="G$1" pin="2"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="231.14" y1="170.18" x2="233.68" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="228.6" y1="170.18" x2="231.14" y2="170.18" width="0.1524" layer="91"/>
@@ -3868,7 +3872,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </net>
 <net name="CONTROLLER_XOUT" class="0">
 <segment>
-<pinref part="X2" gate="G$1" pin="1"/>
+<pinref part="X1" gate="G$1" pin="1"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="233.68" y1="160.02" x2="231.14" y2="160.02" width="0.1524" layer="91"/>
 <junction x="231.14" y="160.02"/>
