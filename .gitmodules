@@ -18,3 +18,6 @@
 [submodule "software/kernel/tock"]
 	path = software/kernel/tock
 	url = https://github.com/helena-project/tock
+[submodule "software/apps/radio_demo/nrf5x-base"]
+	path = software/apps/radio_demo/nrf5x-base
+	url = git@github.com:lab11/nrf5x-base
