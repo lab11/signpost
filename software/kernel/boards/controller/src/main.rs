@@ -77,6 +77,7 @@ struct SignpostController {
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
     fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
+    i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 }
 
 impl Platform for SignpostController {
@@ -93,6 +94,7 @@ impl Platform for SignpostController {
             102 => f(Some(self.coulomb_counter_generic)),
             103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
+            105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
     }
@@ -157,6 +159,7 @@ pub unsafe fn reset_handler() {
 
     // Setup clock
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -199,8 +202,15 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
-    let i2c_mux_modules = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C0), 20);
-    sam4l::i2c::I2C0.set_master_client(i2c_mux_modules);
+    let i2c_modules = static_init!(
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+        928/8);
+    sam4l::i2c::I2C0.set_master_client(i2c_modules);
+    sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
     let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
     sam4l::i2c::I2C2.set_master_client(i2c_mux_smbus);
@@ -474,8 +484,9 @@ pub unsafe fn reset_handler() {
             coulomb_counter_generic: ltc2941_driver,
             smbus_interrupt: smbusint_driver,
             fram: fm25cl_driver,
+            i2c_master_slave: i2c_modules,
         },
-        256/8);
+        288/8);
 
     signpost_controller.console.initialize();
 
