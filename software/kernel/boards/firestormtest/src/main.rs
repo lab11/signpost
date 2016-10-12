@@ -15,6 +15,7 @@ extern crate signpost_hil;
 use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
+use kernel::hil;
 use kernel::hil::Controller;
 use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
@@ -227,7 +228,7 @@ unsafe fn set_pin_primary_functions() {
     PA[22].configure(Some(E));
 
     // EPCLK    --  USBC DM
-    PA[25].configure(Some(A));
+    PA[25].configure(None);
 
     // EPDAT    --  USBC DP
     PA[26].configure(Some(A));
@@ -333,7 +334,7 @@ pub unsafe fn reset_handler() {
                      &mut console::READ_BUF,
                      kernel::Container::create()),
         256/8);
-    usart::USART3.set_client(console);
+    usart::USART3.set_uart_client(console);
 
     //
     // Timer
@@ -564,10 +565,11 @@ pub unsafe fn reset_handler() {
     //
     // FRAM
     //
+    let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
     let fm25cl_spi = static_init!(
         capsules::virtual_spi::SPIMasterDevice,
-        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, Some(2), None),
-        448/8);
+        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
+        480/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
