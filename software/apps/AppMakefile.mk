@@ -1,3 +1,7 @@
+# Top-level phony all
+.PHONY: all
+all:
+
 # makefile with shared settings among user applications
 
 TOCK_BOARD ?= controller
@@ -21,6 +25,13 @@ INCLUDE_PATHS += $(LIBS_DIR)
 INCLUDES = $(addprefix -I,$(INCLUDE_PATHS))
 CFLAGS += $(INCLUDES)
 
+# include the library makefile. Should pull in rules to rebuild libraries
+# when needed
+#$(LIBS):
+#	make -C $(LIBS_DIR) TOCK_ARCH=$(TOCK_ARCH)
+include $(LIBS_DIR)/Makefile
+
+
 # include userland master makefile. Contains rules and flags for actually
 # 	building the application
 include $(TOCK_USERLAND_BASE_DIR)/Makefile
@@ -29,9 +40,6 @@ $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
 	echo $(TOCK_USERLAND_BASE_DIR)
 	echo $(TOCK_BASE_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-
-$(LIBS):
-	make -C $(LIBS_DIR) TOCK_ARCH=$(TOCK_ARCH)
 
 # add platform-specific headers
 .PHONY:

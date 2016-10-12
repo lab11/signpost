@@ -1,52 +1,34 @@
-MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
-CUR_DIR := $(dir $(MKFILE_PATH))
+LIBS_MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+LIBS_DIR := $(dir $(LIBS_MAKEFILE_PATH))
 
-TOCK_BASE_DIR = $(CUR_DIR)../../kernel/tock/
-TOCK_USERLAND_BASE_DIR = $(CUR_DIR)../../kernel/tock/userland/
-BUILDDIR ?= build/$(TOCK_ARCH)
+ifeq ($(LIBS_DIR),$(CURDIR)/)
+$(error Do not run make from the libs directory)
+endif
 
-TOOLCHAIN ?= arm-none-eabi
+LIBS_BUILDDIR ?= $(LIBS_DIR)/build/$(TOCK_ARCH)
 
-AS := $(TOOLCHAIN)-as
-ASFLAGS += -mcpu=$(TOCK_ARCH) -mthumb
+LIBS_C_SRCS=$(wildcard $(LIBS_DIR)*.c)
+LIBS_AS_SRCS=$(wildcard $(LIBS_DIR)*.s)
+LIBS_OBJS := $(patsubst $(LIBS_DIR)%.s,$(LIBS_BUILDDIR)/%.o,$(LIBS_AS_SRCS))
+LIBS_OBJS += $(patsubst $(LIBS_DIR)%.c,$(LIBS_BUILDDIR)/%.o,$(LIBS_C_SRCS))
 
-CC := $(TOOLCHAIN)-gcc
-CFLAGS += -O3 -Wall -Werror -I$(CUR_DIR) -I$(TOCK_USERLAND_BASE_DIR)/libtock -g -mcpu=$(TOCK_ARCH) -mthumb
-CFLAGS += \
-	    -fdata-sections -ffunction-sections\
-	    -Wall\
-	    -Wextra\
-	    -Wl,-gc-sections\
-	    -g\
-	    -fPIC\
-	    -msingle-pic-base\
-	    -mpic-register=r9\
-	    -mno-pic-data-is-text-relative
-
-AR := $(TOOLCHAIN)-ar
-
-C_SRCS=$(wildcard *.c)
-AS_SRCS=
-OBJS := $(patsubst %.S,$(BUILDDIR)/%.o,$(AS_SRCS))
-OBJS += $(patsubst %.c,$(BUILDDIR)/%.o,$(C_SRCS))
-
-.PHONY: all
-all: $(BUILDDIR)/libs.a
-
-$(BUILDDIR):
-	mkdir -p $@
-
-$(BUILDDIR)/%.o: %.c | $(BUILDDIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(BUILDDIR)/%.o: %.S | $(BUILDDIR)
-	$(AS) $(ASFLAGS) -c -o $@ $<
-
-$(BUILDDIR)/libs.a: $(OBJS) | $(BUILDDIR)
-	$(AR) rc $@ $^
+$(LIBS_BUILDDIR)/libs.a: $(LIBS_OBJS) | $(LIBS_BUILDDIR)
+	$(TOOLCHAIN)-ar rc $@ $^
 	$(TOOLCHAIN)-ranlib $@
 
-.PHONY: clean
-clean:
-	rm -Rf $(BUILDDIR)
+#.PHONY: all
+#all: $(BUILDDIR)/libs.a
+#
+$(LIBS_BUILDDIR):
+	mkdir -p $@
+
+$(LIBS_BUILDDIR)/%.o: $(LIBS_DIR)%.c | $(LIBS_BUILDDIR)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+$(LIBS_BUILDDIR)/%.o: %.S | $(LIBS_BUILDDIR)
+	$(AS) $(ASFLAGS) -c -o $@ $<
+
+#$(BUILDDIR)/libs.a: $(OBJS) | $(BUILDDIR)
+#	$(AR) rc $@ $^
+#	$(TOOLCHAIN)-ranlib $@
 
