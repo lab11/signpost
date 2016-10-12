@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -172,7 +172,7 @@
 <text x="27.178" y="3.556" size="0.6096" layer="21" font="vector">Signpost Microwave Radar
 Yifan Hao
 10/5/2016</text>
-<text x="27.94" y="7.112" size="2.54" layer="21" font="vector">A</text>
+<text x="27.94" y="7.112" size="2.54" layer="21" font="vector">B</text>
 <wire x1="27.432" y1="6.858" x2="30.226" y2="6.858" width="0.3048" layer="21"/>
 <wire x1="30.226" y1="6.858" x2="30.226" y2="9.906" width="0.3048" layer="21"/>
 <wire x1="30.226" y1="9.906" x2="27.432" y2="9.906" width="0.3048" layer="21"/>
@@ -869,9 +869,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
-<param name="AutoGrid" value="1"/>
-<param name="Efforts" value="0"/>
-<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
