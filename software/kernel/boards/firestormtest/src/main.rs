@@ -20,6 +20,7 @@ use kernel::hil::Controller;
 use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
 use sam4l::usart;
+use sam4l::adc;
 
 // For panic!()
 #[macro_use]
@@ -77,6 +78,7 @@ struct SignpostController {
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
     fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
+    adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
 }
 
 impl Platform for SignpostController {
@@ -88,6 +90,7 @@ impl Platform for SignpostController {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            7 => f(Some(self.adc)),
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
@@ -228,7 +231,7 @@ unsafe fn set_pin_primary_functions() {
     PA[22].configure(Some(E));
 
     // EPCLK    --  USBC DM
-    PA[25].configure(None);
+    PA[25].configure(Some(A));
 
     // EPDAT    --  USBC DP
     PA[26].configure(Some(A));
@@ -584,6 +587,15 @@ pub unsafe fn reset_handler() {
     fm25cl.set_client(fm25cl_driver);
 
     //
+    // ADC
+    //
+    let adc_driver = static_init!(
+        capsules::adc::ADC<'static, sam4l::adc::Adc>,
+        capsules::adc::ADC::new(&adc::ADC),
+        160/8);
+    adc::ADC.set_client(adc_driver);
+
+    //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
@@ -625,8 +637,9 @@ pub unsafe fn reset_handler() {
             coulomb_counter_generic: ltc2941_driver,
             fram: fm25cl_driver,
             smbus_interrupt: smbusint_driver,
+            adc: adc_driver,
         },
-        256/8);
+        288/8);
 
     signpost_controller.console.initialize();
 
