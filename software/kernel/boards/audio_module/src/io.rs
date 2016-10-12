@@ -1,6 +1,5 @@
 
 use core::fmt::*;
-use kernel::hil::Controller;
 use kernel::hil::uart::{self, UART};
 use sam4l;
 // use support::nop;
@@ -43,7 +42,7 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
 
-    let led = &sam4l::gpio::PB[03];
+    let led = &sam4l::gpio::PA[17];
     led.enable_output();
     loop {
         for _ in 0..1000000 {
