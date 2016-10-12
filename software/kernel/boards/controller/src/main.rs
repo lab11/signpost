@@ -212,7 +212,14 @@ pub unsafe fn reset_handler() {
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
-    let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2), 20);
+    // Set I2C slave address here, because it is board specific and not app
+    // specific. It can be overridden in the app, of course.
+    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x20);
+
+    let i2c_mux_smbus = static_init!(
+        capsules::virtual_i2c::MuxI2C<'static>,
+        capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2),
+        20);
     sam4l::i2c::I2C2.set_master_client(i2c_mux_smbus);
 
     //
