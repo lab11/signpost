@@ -263,10 +263,7 @@ impl<'a> Driver for I2CMasterSlaveDriver<'a> {
                             self.master_action.set(MasterAction::Write);
 
                             hil::i2c::I2CMaster::enable(self.i2c);
-                            // hil::i2c::I2CMaster::write(self.i2c, address, kernel_tx, write_len as u8);
-                            hil::i2c::I2CMaster::write(self.i2c, 0x02, kernel_tx, 8);
-
-                            // panic!("OKKK");
+                            hil::i2c::I2CMaster::write(self.i2c, address, kernel_tx, write_len as u8);
                         });
                     });
                 });
