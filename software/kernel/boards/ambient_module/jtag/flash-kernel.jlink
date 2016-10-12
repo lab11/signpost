@@ -1,5 +1,5 @@
 r
-loadfile target/sam4l/release/audio_module.hex
+loadfile target/sam4l/release/ambient_module.hex
 r
 g
 q

@@ -1,4 +1,4 @@
-#![crate_name = "audio_module"]
+#![crate_name = "ambient_module"]
 #![no_std]
 #![no_main]
 #![feature(const_fn,lang_items)]

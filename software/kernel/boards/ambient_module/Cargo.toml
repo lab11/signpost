@@ -1,5 +1,5 @@
 [package]
-name = "audio_module"
+name = "ambient_module"
 version = "0.1.0"
 authors = ["Brad Campbell <bradjc@umich.edu>"]
 
