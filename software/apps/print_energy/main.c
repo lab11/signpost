@@ -60,6 +60,7 @@ int main () {
   gpio_async_set_callback(gpio_async_callback, NULL);
   controller_init_module_switches();
   controller_all_modules_enable_power();
+  controller_all_modules_enable_i2c();
 
 
   int i;
