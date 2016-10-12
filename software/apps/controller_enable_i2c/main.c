@@ -69,6 +69,26 @@ void print_data () {
 
       break;
     }
+    case 0x32: { // Ambient
+      if (message_type == 1 && _length == (8+2)) {
+        // Got valid message from ambient
+        putstr("Message type 1 from Ambient\n");
+        int temp = (int) ((int16_t) ((((uint16_t) slave_write_buf[2]) << 8) | ((uint16_t) slave_write_buf[3])));
+        int humi = (int) ((int16_t) ((((uint16_t) slave_write_buf[4]) << 8) | ((uint16_t) slave_write_buf[5])));
+        int ligh = (int) ((int16_t) ((((uint16_t) slave_write_buf[6]) << 8) | ((uint16_t) slave_write_buf[7])));
+        int pres = (int) ((int16_t) ((((uint16_t) slave_write_buf[8]) << 8) | ((uint16_t) slave_write_buf[9])));
+        sprintf(buf, "  Temperature: %i 1/100 degrees C\n", temp);
+        putstr(buf);
+        sprintf(buf, "  Humidity: %i 0.01%%\n", humi);
+        putstr(buf);
+        sprintf(buf, "  Light: %i Lux\n", ligh);
+        putstr(buf);
+        sprintf(buf, "  Pressure: %i ubar\n", pres);
+        putstr(buf);
+      }
+
+      break;
+    }
     default: {
       sprintf(buf, "Different message? %i\n", sender_address);
       putstr(buf);
