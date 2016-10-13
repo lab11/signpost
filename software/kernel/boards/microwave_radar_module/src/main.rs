@@ -15,6 +15,7 @@ extern crate signpost_hil;
 // use capsules::console::{self, Console};
 use signpost_drivers::uartprint::{self, UartPrint};
 use capsules::timer::TimerDriver;
+use sam4l::adc;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
@@ -68,19 +69,16 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  * Setup this platform
  ******************************************************************************/
 
-struct AmbientModule {
+struct MicrowaveRadarModule {
     // console: &'static Console<'static, usart::USART>,
     uartprint: &'static UartPrint<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    lps331ap: &'static signpost_drivers::lps331ap::LPS331AP<'static>,
-    si7021: &'static signpost_drivers::si7021::SI7021<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    isl29035: &'static capsules::isl29035::Isl29035<'static>,
-    tsl2561: &'static signpost_drivers::tsl2561::TSL2561<'static>,
+    adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>
 }
 
-impl Platform for AmbientModule {
+impl Platform for MicrowaveRadarModule {
     fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
@@ -89,11 +87,8 @@ impl Platform for AmbientModule {
             0 => f(Some(self.uartprint)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            6 => f(Some(self.isl29035)),
+	    4 => f(Some(self.adc)),
             105 => f(Some(self.i2c_master_slave)),
-            106 => f(Some(self.lps331ap)),
-            107 => f(Some(self.si7021)),
-            108 => f(Some(self.tsl2561)),
             _ => f(None)
         }
     }
@@ -271,25 +266,22 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let ambient_module = static_init!(
-        AmbientModule,
-        AmbientModule {
+    let microwave_radar_module = static_init!(
+        MicrowaveRadarModule,
+        MicrowaveRadarModule {
             // console: console,
             uartprint: uartprint,
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
-            lps331ap: lps331ap,
-            si7021: si7021,
-            isl29035: isl29035,
-            tsl2561: tsl2561,
+	    adc: adc_driver
         },
-        256/8);
+        160/8);
 
-    ambient_module.uartprint.initialize();
+    microwave_radar_module.uartprint.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    kernel::main(ambient_module, &mut chip, load_processes());
+    kernel::main(microwave_radar_module, &mut chip, load_processes());
 }
