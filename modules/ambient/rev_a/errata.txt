@@ -1,0 +1,2 @@
+Need pull up resistors for SWDIO and SWDCLK lines
+Random trace on pin32?
