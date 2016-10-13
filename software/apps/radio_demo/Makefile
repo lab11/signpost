@@ -358,7 +358,7 @@ $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 .PHONY: clean
-clean:
+clean::
 	rm -rf $(OUTPUT_PATH)
 	rm -f *.jlink
 	rm -f JLink.log

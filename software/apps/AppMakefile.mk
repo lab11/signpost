@@ -42,8 +42,8 @@ $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 # add platform-specific headers
-.PHONY:
-clean:
+.PHONY: clean
+clean::
 	rm -Rf $(BUILDDIR)../
 	rm -Rf $(LIBS_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
