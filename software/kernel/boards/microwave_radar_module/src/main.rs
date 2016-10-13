@@ -233,74 +233,18 @@ pub unsafe fn reset_handler() {
     // specific. It can be overridden in the app, of course.
     hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x32);
 
-    // Sensors
-    let i2c_mux_sensors = static_init!(
-        capsules::virtual_i2c::MuxI2C<'static>,
-        capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C2),
-        20);
-    sam4l::i2c::I2C2.set_master_client(i2c_mux_sensors);
-
     //
     // Sensors
     //
 
-    // SI7021 Temperature / Humidity
-    let si7021_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x40),
-        32);
-    let si7021_virtual_alarm = static_init!(
-        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
-        VirtualMuxAlarm::new(mux_alarm),
-        192/8);
-    let si7021 = static_init!(
-        signpost_drivers::si7021::SI7021<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::si7021::SI7021::new(si7021_i2c,
-            si7021_virtual_alarm,
-            &mut signpost_drivers::si7021::BUFFER),
-        288/8);
-    si7021_i2c.set_client(si7021);
-    si7021_virtual_alarm.set_client(si7021);
-
-    // LPS331AP Pressure Sensor
-    let lps331ap_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x5C),
-        32);
-    let lps331ap = static_init!(
-        signpost_drivers::lps331ap::LPS331AP<'static>,
-        signpost_drivers::lps331ap::LPS331AP::new(lps331ap_i2c,
-            &sam4l::gpio::PA[14],
-            &mut signpost_drivers::lps331ap::BUFFER),
-        40);
-    lps331ap_i2c.set_client(lps331ap);
-    sam4l::gpio::PA[14].set_client(lps331ap);
-
-    // TSL2561 Light Sensor
-    let tsl2561_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x29),
-        32);
-    let tsl2561 = static_init!(
-        signpost_drivers::tsl2561::TSL2561<'static>,
-        signpost_drivers::tsl2561::TSL2561::new(tsl2561_i2c,
-            &sam4l::gpio::PA[16],
-            &mut signpost_drivers::tsl2561::BUFFER),
-        40);
-    tsl2561_i2c.set_client(tsl2561);
-    sam4l::gpio::PA[16].set_client(tsl2561);
-
-    // Configure the ISL29035, device address 0x44
-    let isl29035_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x44),
-        32);
-    let isl29035 = static_init!(
-        capsules::isl29035::Isl29035<'static>,
-        capsules::isl29035::Isl29035::new(isl29035_i2c,
-            &mut capsules::isl29035::BUF),
-        36);
-    isl29035_i2c.set_client(isl29035);
+    //
+    // ADC
+    //
+    let adc_driver = static_init!(
+		    capsules::adc::ADC<'static, sam4l::adc::Adc>,
+		    capsules::adc::ADC::new(&adc::ADC),
+		    160/8);
+    adc::ADC.set_client(adc_driver);
 
     //
     // Remaining GPIO pins
