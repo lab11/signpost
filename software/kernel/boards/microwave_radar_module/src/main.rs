@@ -102,54 +102,60 @@ impl Platform for AmbientModule {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
-    use sam4l::gpio::PeripheralFunction::{A, B, E};
+    use sam4l::gpio::PeripheralFunction::{A, B};
 
-    PA[04].configure(None); // Unused
-    PA[05].configure(None); // LED1
-    PA[06].configure(None); // LED2
-    PA[07].configure(None); // LED3
-    PA[08].configure(None); // Unused
-    PA[09].configure(None); // Unused
-    PA[10].configure(None); // Unused
-    PA[11].configure(Some(A)); // UART RX
-    PA[12].configure(Some(A)); // UART TX
+    PA[04].configure(Some(A)); // amplified analog signal
+    PA[05].configure(Some(A)); // MSGEQ7 output. Should be analog
+    PA[06].configure(None); // Unused
+    PA[07].configure(None); // Unused
+    PA[08].configure(None); // PPS
+    PA[09].configure(None); // MOD_IN
+    PA[10].configure(None); // MOD_OUT
+    PA[11].configure(None); // Unused
+    PA[12].configure(None); // Unused
     PA[13].configure(None); // Unused
-    PA[14].configure(None); // LPS331AP Pressure Sensor Interrupt 1
-    PA[15].configure(None); // LPS331AP Pressure Sensor Interrupt 2
-    PA[16].configure(None); // TSL2561 Light Sensor Interrupt
-	PA[17].configure(None); // ISL29035 Light Sensor Interrupt
-    PA[18].configure(None); // Module Out
-    PA[19].configure(None); // PPS
-    PA[20].configure(None); // Module In
-    PA[21].configure(Some(E)); // Sensor I2C SDA
-    PA[22].configure(Some(E)); // Sensor I2C SCL
-    PA[23].configure(Some(B)); // Backplane I2C SDA
-	PA[24].configure(Some(B)); // Backplane I2C SCL
-	PA[25].configure(Some(A)); // USB-
-	PA[26].configure(Some(A)); // USB+
+    PA[14].configure(None); // MSGEQ7 strobe
+    PA[15].configure(None); // MSGEQ7 reset
+    PA[16].configure(None); // Unused
+    PA[17].configure(None); // Blink LED
+    PA[18].configure(None); // Unused
+    PA[19].configure(None); // Unused
+    PA[20].configure(None); // Unused
+    PA[21].configure(None); // Unused
+    PA[22].configure(None); // Unused
+    PA[23].configure(Some(B)); // I2C SDA
+    PA[24].configure(Some(B)); // I2C SCL
+    PA[25].configure(Some(B)); // USART2 RX
+    PA[26].configure(Some(B)); // USART2 TX
 
     // Setup unused pins as inputs
-    sam4l::gpio::PA[04].enable();
-    sam4l::gpio::PA[04].disable_output();
-    sam4l::gpio::PA[08].enable();
-    sam4l::gpio::PA[08].disable_output();
-    sam4l::gpio::PA[09].enable();
-    sam4l::gpio::PA[09].disable_output();
-    sam4l::gpio::PA[10].enable();
-    sam4l::gpio::PA[10].disable_output();
+    sam4l::gpio::PA[06].enable();
+    sam4l::gpio::PA[06].disable_output();
+    sam4l::gpio::PA[07].enable();
+    sam4l::gpio::PA[07].disable_output();
+    sam4l::gpio::PA[11].enable();
+    sam4l::gpio::PA[11].disable_output();
+    sam4l::gpio::PA[12].enable();
+    sam4l::gpio::PA[12].disable_output();
     sam4l::gpio::PA[13].enable();
     sam4l::gpio::PA[13].disable_output();
+    sam4l::gpio::PA[16].enable();
+    sam4l::gpio::PA[16].disable_output();
+    sam4l::gpio::PA[18].enable();
+    sam4l::gpio::PA[18].disable_output();
+    sam4l::gpio::PA[19].enable();
+    sam4l::gpio::PA[19].disable_output();
+    sam4l::gpio::PA[20].enable();
+    sam4l::gpio::PA[20].disable_output();
+    sam4l::gpio::PA[21].enable();
+    sam4l::gpio::PA[21].disable_output();
+    sam4l::gpio::PA[22].enable();
+    sam4l::gpio::PA[22].disable_output();
 
     // Configure LEDs to be off
-    sam4l::gpio::PA[05].enable();
-    sam4l::gpio::PA[05].enable_output();
-    sam4l::gpio::PA[05].clear();
-    sam4l::gpio::PA[06].enable();
-    sam4l::gpio::PA[06].enable_output();
-    sam4l::gpio::PA[06].clear();
-    sam4l::gpio::PA[07].enable();
-    sam4l::gpio::PA[07].enable_output();
-    sam4l::gpio::PA[07].set();
+    sam4l::gpio::PA[17].enable();
+    sam4l::gpio::PA[17].enable_output();
+    sam4l::gpio::PA[17].clear();
 }
 
 /*******************************************************************************
@@ -182,11 +188,11 @@ pub unsafe fn reset_handler() {
 
     let uartprint = static_init!(
         UartPrint<usart::USART>,
-        UartPrint::new(&usart::USART0,
+        UartPrint::new(&usart::USART2,
                      &mut uartprint::WRITE_BUF,
                      &mut uartprint::READ_BUF),
         384/8);
-    usart::USART0.set_uart_client(uartprint);
+    usart::USART2.set_uart_client(uartprint);
 
     //
     // Timer
@@ -301,12 +307,12 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 6],
-        [&sam4l::gpio::PA[05],
-         &sam4l::gpio::PA[06],
-         &sam4l::gpio::PA[07],
-         &sam4l::gpio::PA[18],
-         &sam4l::gpio::PA[19],
-         &sam4l::gpio::PA[20]],
+        [&sam4l::gpio::PA[08],
+         &sam4l::gpio::PA[09],
+         &sam4l::gpio::PA[10],
+         &sam4l::gpio::PA[14],
+         &sam4l::gpio::PA[15],
+         &sam4l::gpio::PA[17]],
         6 * 4
     );
     let gpio = static_init!(
