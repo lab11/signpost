@@ -27,8 +27,6 @@ CFLAGS += $(INCLUDES)
 
 # include the library makefile. Should pull in rules to rebuild libraries
 # when needed
-#$(LIBS):
-#	make -C $(LIBS_DIR) TOCK_ARCH=$(TOCK_ARCH)
 include $(LIBS_DIR)/Makefile
 
 
