@@ -246,7 +246,7 @@ typedef struct RadioMsg_T
 // rx window default, no window
 #define COMRADIO_CFG_DEFAULT_RFRXWINDOW         3000 // 3s
 // default spreading factor = 7
-#define COMRADIO_CFG_DEFAULT_RFSPREADINGFACTOR  RF_LORA_SF_11
+#define COMRADIO_CFG_DEFAULT_RFSPREADINGFACTOR  RF_LORA_SF_7
 // default tx group address
 #define COMRADIO_CFG_DEFAULT_TXGROUPADDRESS     0x10
 // default tx address: broadcast
