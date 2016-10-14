@@ -54,13 +54,13 @@ void print_timer () {
 void print_data () {
   char buf[64];
   // the value read from adc register is left alligned to 16 bits
-  sprintf(buf, "\tGot: 0x%02x\n\n", _adc_val>>4);
+  sprintf(buf, "\tGot: 0x%02x\n\n", _adc_val);
   putstr(buf);
 }
 
 void sample_frequency(){
   prev_data = INITIAL_VAL;
-  curr_data = _adc_val>>4;
+  curr_data = _adc_val;
 
   uint32_t i;
 
@@ -73,14 +73,14 @@ void sample_frequency(){
 		while((prev_data < curr_data) || is_stable(curr_data, prev_data)){
 			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
-			curr_data = _adc_val >> 4;
+			curr_data = _adc_val;
 			delay_ms(2);
 		}
 	} else if(prev_data >= curr_data) {
 		while((prev_data >= curr_data) || is_stable(curr_data, prev_data)){
 			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
-			curr_data = _adc_val >> 4;
+			curr_data = _adc_val;
 			delay_ms(2);
 		}
 	}
@@ -113,7 +113,7 @@ void sample_frequency(){
 }
 
 bool detect_moving(){
-    return ((_adc_val>>4) > UPPER_BOUND || (_adc_val>>4) < LOWER_BOUND);
+    return ((_adc_val) > UPPER_BOUND || (_adc_val) < LOWER_BOUND);
 }
 
 int main () {
