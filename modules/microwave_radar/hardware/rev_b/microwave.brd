@@ -1338,6 +1338,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="LED1" pad="C"/>
 <contactref element="C10" pad="2"/>
 <contactref element="U3" pad="2"/>
+<via x="65.7606" y="43.8912" extent="1-16" drill="0.6"/>
+<via x="51.054" y="19.5834" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="CONTROLLER_XIN">
 <contactref element="U1" pad="1"/>

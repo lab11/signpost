@@ -71,16 +71,16 @@ static void i2c_master_slave_callback (
 
 
 int main(void) {
-    // printf("Backplane Test i2c\n");
+    printf("Test I2C\n");
 
     gpio_enable_output(8);
 
     gpio_toggle(8);
-    delay_ms(500);
-    gpio_toggle(8);
-    delay_ms(500);
-    gpio_toggle(8);
-    delay_ms(500);
+    // delay_ms(500);
+    // gpio_toggle(8);
+    // delay_ms(500);
+    // gpio_toggle(8);
+    // delay_ms(500);
 
     // // yield();
 
@@ -111,26 +111,33 @@ int main(void) {
 
 
 
-    master_write_buf[0] = 0x8;
-    master_write_buf[1] = 0xb6;
-    master_write_buf[2] = 0x91;
-    master_write_buf[3] = 0x55;
-    master_write_buf[4] = 0x56;
-    master_write_buf[5] = 0x57;
 
-    i2c_master_slave_write(0x02, 8);
 
 
     while(1) {
+
+        master_write_buf[0] = 0x8;
+        master_write_buf[1] = 0xb6;
+        master_write_buf[2] = 0x91;
+        master_write_buf[3] = 0x55;
+        master_write_buf[4] = 0x56;
+        master_write_buf[5] = 0x57;
+        master_write_buf[6] = 0x58;
+        master_write_buf[7] = 0x59;
+
+        i2c_master_slave_write(0x20, 8);
+
+
+
         // gpio_async_set(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_POWER);
         yield();
 
         gpio_toggle(8);
-        delay_ms(200);
-        gpio_toggle(8);
-        delay_ms(200);
-        gpio_toggle(8);
-        delay_ms(200);
+        // delay_ms(200);
+        // gpio_toggle(8);
+        // delay_ms(200);
+        // gpio_toggle(8);
+        // delay_ms(200);
 
         // printf("got 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n", slave_write_buf[0], slave_write_buf[1], slave_write_buf[2], slave_write_buf[3], slave_write_buf[4]);
 
@@ -157,7 +164,7 @@ int main(void) {
 
         // gpio_toggle(LED_0);
         // // yield();
-        // delay_ms(500);
+        delay_ms(500);
     }
 }
 

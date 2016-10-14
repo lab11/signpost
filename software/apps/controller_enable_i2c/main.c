@@ -9,6 +9,7 @@
 #include "tock.h"
 #include "tock_str.h"
 #include "signpost_energy.h"
+#include "controller.h"
 
 
 
@@ -90,7 +91,13 @@ void print_data () {
       break;
     }
     default: {
-      sprintf(buf, "Different message? %i\n", sender_address);
+      sprintf(buf, "Different message? %i\n  ", sender_address);
+      putstr(buf);
+      for (int i=0; i<_length; i++) {
+        sprintf(buf, "0x%02x ", slave_write_buf[i]);
+        putstr(buf);
+      }
+      sprintf(buf, "\n");
       putstr(buf);
     }
   }
@@ -105,6 +112,9 @@ int main () {
   controller_init_module_switches();
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
+  // controller_all_modules_disable_i2c();
+  // controller_module_enable_i2c(MODULE5);
+  // controller_module_enable_i2c(MODULE0);
 
   // Setup I2C listen
   i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);

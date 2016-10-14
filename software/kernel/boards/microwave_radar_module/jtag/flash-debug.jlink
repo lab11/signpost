@@ -1,0 +1,6 @@
+r
+loadfile target/sam4l/debug/microwave_radar_module.hex
+r
+g
+q
+

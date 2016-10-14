@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1817,30 +1817,30 @@ Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="SDA" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="SCL" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="!INT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R27" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R28" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R29" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R30" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R31" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
+<part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R11" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R27" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R28" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R29" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R30" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R31" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
+<part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
 </parts>
 <sheets>
 <sheet>
