@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1540,99 +1540,99 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="34.29" y="36.576" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="35.814" y="34.036" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="R9" library="passives" package="0402_RES" value="10 kΩ" x="38.862" y="23.114" smashed="yes" rot="R270">
+<element name="R9" library="passives" package="0402_RES" value="2 kΩ" x="38.862" y="23.114" smashed="yes" rot="R270">
 <attribute name="NAME" x="39.243" y="24.13" size="1.016" layer="25" font="vector" ratio="12" rot="R90"/>
 <attribute name="VALUE" x="37.465" y="23.114" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R10" library="passives" package="0402_RES" value="10 kΩ" x="40.132" y="23.114" smashed="yes" rot="R270">
+<element name="R10" library="passives" package="0402_RES" value="2 kΩ" x="40.132" y="23.114" smashed="yes" rot="R270">
 <attribute name="NAME" x="40.513" y="24.384" size="1.016" layer="25" font="vector" ratio="12" rot="R270"/>
 <attribute name="VALUE" x="38.735" y="23.114" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R11" library="passives" package="0402_RES" value="10 kΩ" x="37.338" y="23.114" smashed="yes" rot="R270">
+<element name="R11" library="passives" package="0402_RES" value="2 kΩ" x="37.338" y="23.114" smashed="yes" rot="R270">
 <attribute name="NAME" x="36.957" y="22.352" size="1.016" layer="25" font="vector" ratio="12" rot="R90"/>
 <attribute name="VALUE" x="35.941" y="23.114" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R12" library="passives" package="0402_RES" value="10 kΩ" x="44.704" y="23.114" smashed="yes" rot="R270">
+<element name="R12" library="passives" package="0402_RES" value="2 kΩ" x="44.704" y="23.114" smashed="yes" rot="R270">
 <attribute name="NAME" x="46.736" y="23.495" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="43.307" y="23.114" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R13" library="passives" package="0402_RES" value="10 kΩ" x="48.26" y="20.066" smashed="yes">
+<element name="R13" library="passives" package="0402_RES" value="2 kΩ" x="48.26" y="20.066" smashed="yes">
 <attribute name="NAME" x="48.26" y="18.542" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="48.26" y="18.669" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="R14" library="passives" package="0402_RES" value="10 kΩ" x="42.926" y="23.114" smashed="yes" rot="R270">
+<element name="R14" library="passives" package="0402_RES" value="2 kΩ" x="42.926" y="23.114" smashed="yes" rot="R270">
 <attribute name="NAME" x="43.307" y="23.114" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="41.529" y="23.114" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R15" library="passives" package="0402_RES" value="10 kΩ" x="48.006" y="32.512" smashed="yes" rot="R90">
+<element name="R15" library="passives" package="0402_RES" value="2 kΩ" x="48.006" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="47.625" y="32.512" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="49.403" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R16" library="passives" package="0402_RES" value="10 kΩ" x="46.228" y="32.512" smashed="yes" rot="R90">
+<element name="R16" library="passives" package="0402_RES" value="2 kΩ" x="46.228" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.847" y="31.75" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="47.625" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R17" library="passives" package="0402_RES" value="10 kΩ" x="49.784" y="32.512" smashed="yes" rot="R90">
+<element name="R17" library="passives" package="0402_RES" value="2 kΩ" x="49.784" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="49.403" y="31.75" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="51.181" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R18" library="passives" package="0402_RES" value="10 kΩ" x="42.672" y="32.512" smashed="yes" rot="R90">
+<element name="R18" library="passives" package="0402_RES" value="2 kΩ" x="42.672" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.291" y="31.75" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="44.069" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R19" library="passives" package="0402_RES" value="10 kΩ" x="40.894" y="32.512" smashed="yes" rot="R90">
+<element name="R19" library="passives" package="0402_RES" value="2 kΩ" x="40.894" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="40.513" y="32.512" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="42.291" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R20" library="passives" package="0402_RES" value="10 kΩ" x="44.45" y="32.512" smashed="yes" rot="R90">
+<element name="R20" library="passives" package="0402_RES" value="2 kΩ" x="44.45" y="32.512" smashed="yes" rot="R90">
 <attribute name="NAME" x="44.069" y="32.512" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="45.847" y="32.512" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R21" library="passives" package="0402_RES" value="10 kΩ" x="61.722" y="34.798" smashed="yes" rot="R90">
+<element name="R21" library="passives" package="0402_RES" value="2 kΩ" x="61.722" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="61.341" y="34.798" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="63.119" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R22" library="passives" package="0402_RES" value="10 kΩ" x="59.944" y="34.798" smashed="yes" rot="R90">
+<element name="R22" library="passives" package="0402_RES" value="2 kΩ" x="59.944" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.563" y="34.036" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="61.341" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R23" library="passives" package="0402_RES" value="10 kΩ" x="63.5" y="34.798" smashed="yes" rot="R90">
+<element name="R23" library="passives" package="0402_RES" value="2 kΩ" x="63.5" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="63.119" y="34.036" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="64.897" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R24" library="passives" package="0402_RES" value="10 kΩ" x="59.944" y="25.654" smashed="yes" rot="R270">
+<element name="R24" library="passives" package="0402_RES" value="2 kΩ" x="59.944" y="25.654" smashed="yes" rot="R270">
 <attribute name="NAME" x="60.325" y="25.908" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="58.547" y="25.654" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R25" library="passives" package="0402_RES" value="10 kΩ" x="63.246" y="22.098" smashed="yes" rot="R270">
+<element name="R25" library="passives" package="0402_RES" value="2 kΩ" x="63.246" y="22.098" smashed="yes" rot="R270">
 <attribute name="NAME" x="63.881" y="22.098" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="61.849" y="22.098" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R26" library="passives" package="0402_RES" value="10 kΩ" x="58.166" y="25.654" smashed="yes" rot="R270">
+<element name="R26" library="passives" package="0402_RES" value="2 kΩ" x="58.166" y="25.654" smashed="yes" rot="R270">
 <attribute name="NAME" x="58.547" y="25.908" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="56.769" y="25.654" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R27" library="passives" package="0402_RES" value="10 kΩ" x="52.832" y="25.654" smashed="yes" rot="R270">
+<element name="R27" library="passives" package="0402_RES" value="2 kΩ" x="52.832" y="25.654" smashed="yes" rot="R270">
 <attribute name="NAME" x="53.213" y="26.162" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="51.435" y="25.654" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R28" library="passives" package="0402_RES" value="10 kΩ" x="54.61" y="25.654" smashed="yes" rot="R270">
+<element name="R28" library="passives" package="0402_RES" value="2 kΩ" x="54.61" y="25.654" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.991" y="26.162" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="53.213" y="25.654" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R29" library="passives" package="0402_RES" value="10 kΩ" x="51.054" y="25.654" smashed="yes" rot="R270">
+<element name="R29" library="passives" package="0402_RES" value="2 kΩ" x="51.054" y="25.654" smashed="yes" rot="R270">
 <attribute name="NAME" x="51.435" y="25.654" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="49.657" y="25.654" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R30" library="passives" package="0402_RES" value="10 kΩ" x="56.388" y="34.798" smashed="yes" rot="R90">
+<element name="R30" library="passives" package="0402_RES" value="2 kΩ" x="56.388" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="56.007" y="34.036" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="57.785" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R31" library="passives" package="0402_RES" value="10 kΩ" x="54.61" y="34.798" smashed="yes" rot="R90">
+<element name="R31" library="passives" package="0402_RES" value="2 kΩ" x="54.61" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.229" y="34.798" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="56.007" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R32" library="passives" package="0402_RES" value="10 kΩ" x="58.166" y="34.798" smashed="yes" rot="R90">
+<element name="R32" library="passives" package="0402_RES" value="2 kΩ" x="58.166" y="34.798" smashed="yes" rot="R90">
 <attribute name="NAME" x="57.785" y="34.798" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="59.563" y="34.798" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
