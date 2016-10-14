@@ -22,10 +22,10 @@ uint32_t t1;
 uint32_t t2;
 
 // Other global variable
-const uint32_t INITIAL_VAL = 0x820;
-const uint32_t LOWER_BOUND = 0X800;
-const uint32_t UPPER_BOUND = 0x840;
-const uint32_t NOISE_OFFSET = 4;
+const uint32_t INITIAL_VAL = 0x820 << 4;
+const uint32_t LOWER_BOUND = 0X800 << 4;
+const uint32_t UPPER_BOUND = 0x840 << 4;
+const uint32_t NOISE_OFFSET = 4 << 4;
 
 // Some define
 #define SAMPLE_TIMES 20
@@ -74,14 +74,14 @@ void sample_frequency(){
 			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
 			curr_data = _adc_val;
-			delay_ms(2);
+			delay_ms(1);
 		}
 	} else if(prev_data >= curr_data) {
 		while((prev_data >= curr_data) || is_stable(curr_data, prev_data)){
 			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
 			curr_data = _adc_val;
-			delay_ms(2);
+			delay_ms(1);
 		}
 	}
 
@@ -102,10 +102,13 @@ void sample_frequency(){
  // One tick means 0.0000625 s
  uint32_t interval = average * 625 * 2;
  uint32_t frequency = 10000000/interval;
+ // Note: this speed is not really meaningful because it calculates
+ // the corresponding speed when object moving perpendicular to sensor
+ uint32_t speed_fph = (frequency * 5280)/31;
 
 
   char buf[64];
-  sprintf(buf, "\tFrequency is: %d\n\n", frequency);
+  sprintf(buf, "\tFrequency is: %d, Speed is: %d feet per hour\n\n", frequency, speed_fph);
   putstr(buf);
 
   delay_ms(500);
@@ -127,6 +130,7 @@ int main () {
   while (1) {
     adc_single_sample(0);
     yield();
+    //print_data();
     if(detect_moving()){
 	sample_frequency();
     }
