@@ -12,7 +12,7 @@ static uint8_t out;
 static uint16_t adc_data;
 static bool adc_done;
 
-#define NUM_TO_AV 50
+#define NUM_TO_AV 1
 
 static void adc_callback(int callback_type __attribute__ ((unused)),
 							int channel __attribute__ ((unused)),
@@ -20,7 +20,7 @@ static void adc_callback(int callback_type __attribute__ ((unused)),
 							void* callback_args __attribute__ ((unused))) {
 
 	adc_done = 1;
-	adc_data = data >> 4;
+	adc_data = data;
 }
 
 void msgeq7_initialize(uint8_t strobe_pin,
@@ -42,7 +42,6 @@ void msgeq7_initialize(uint8_t strobe_pin,
 }
 
 void msgeq7_get_values(uint16_t* samples) {
-	uint32_t f[7] = {0,0,0,0,0,0,0};
 
 	gpio_set(strobe);
 	gpio_set(reset);
@@ -53,7 +52,7 @@ void msgeq7_get_values(uint16_t* samples) {
 	gpio_clear(reset);
 	delay_ms(1);
 	uint32_t i;
-	for(i = 0; i < 7*NUM_TO_AV; i++) {
+	for(i = 0; i < 7; i++) {
 		//sample adc
 		gpio_clear(strobe);
 		delay_ms(1);
@@ -63,7 +62,7 @@ void msgeq7_get_values(uint16_t* samples) {
 		while(adc_done == 0) {
 			yield();
 		}
-		f[i%7] += adc_data;
+		samples[i] = adc_data;
 
 		delay_ms(1);
 		gpio_set(strobe);
@@ -71,8 +70,4 @@ void msgeq7_get_values(uint16_t* samples) {
 	}
 
 	gpio_clear(strobe);
-
-	for(i = 0; i < 7; i++) {
-		samples[i] = (uint16_t)(f[i]/NUM_TO_AV);
-	}
 }
