@@ -130,6 +130,7 @@ pub unsafe fn reset_handler() {
     sam4l::init();
 
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    let clock_freq = 16000000;
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -139,13 +140,16 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
+    usart::USART2.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
+                     115200,
                      &mut console::WRITE_BUF,
                      &mut console::READ_BUF,
+                     &mut console::LINE_BUF,
                      kernel::Container::create()),
-        256/8);
+        416/8);
     usart::USART2.set_uart_client(console);
 
     //

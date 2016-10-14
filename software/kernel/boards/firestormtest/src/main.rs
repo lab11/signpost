@@ -13,6 +13,7 @@ extern crate signpost_drivers;
 extern crate signpost_hil;
 
 use capsules::console::{self, Console};
+use capsules::nrf51822_serialization::{self, Nrf51822Serialization};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -79,6 +80,7 @@ struct SignpostController {
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
     fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
+    nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
 }
 
 impl Platform for SignpostController {
@@ -90,6 +92,7 @@ impl Platform for SignpostController {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            5 => f(Some(self.nrf51822)),
             7 => f(Some(self.adc)),
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
@@ -317,7 +320,7 @@ pub unsafe fn reset_handler() {
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
-
+    let clock_freq = 48000000;
 
     set_pin_primary_functions();
 
@@ -330,14 +333,28 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
+    usart::USART3.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART3,
+                     115200,
                      &mut console::WRITE_BUF,
                      &mut console::READ_BUF,
+                     &mut console::LINE_BUF,
                      kernel::Container::create()),
-        256/8);
+        416/8);
     usart::USART3.set_uart_client(console);
+
+    // Create the Nrf51822Serialization driver for passing BLE commands
+    // over UART to the nRF51822 radio.
+    usart::USART2.set_clock_freq(clock_freq);
+    let nrf_serialization = static_init!(
+        Nrf51822Serialization<usart::USART>,
+        Nrf51822Serialization::new(&usart::USART2,
+                                   &mut nrf51822_serialization::WRITE_BUF,
+                                   &mut nrf51822_serialization::READ_BUF),
+        608/8);
+    usart::USART2.set_uart_client(nrf_serialization);
 
     //
     // Timer
@@ -638,10 +655,20 @@ pub unsafe fn reset_handler() {
             fram: fm25cl_driver,
             smbus_interrupt: smbusint_driver,
             adc: adc_driver,
+            nrf51822: nrf_serialization,
         },
-        288/8);
+        320/8);
+
+    // Configure USART2 Pins for connection to nRF51822
+    // NOTE: the SAM RTS pin is not working for some reason. Our hypothesis is
+    //  that it is because RX DMA is not set up. For now, just having it always
+    //  enabled works just fine
+    sam4l::gpio::PC[07].enable();
+    sam4l::gpio::PC[07].enable_output();
+    sam4l::gpio::PC[07].clear();
 
     signpost_controller.console.initialize();
+    signpost_controller.nrf51822.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
