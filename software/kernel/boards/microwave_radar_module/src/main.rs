@@ -87,7 +87,7 @@ impl Platform for MicrowaveRadarModule {
             0 => f(Some(self.uartprint)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-	    4 => f(Some(self.adc)),
+	    7 => f(Some(self.adc)), // needs to be seven because the driver num is 7 in tocklib
             105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
