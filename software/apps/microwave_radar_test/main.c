@@ -29,6 +29,8 @@ const uint32_t NOISE_OFFSET = 4;
 
 // Some define
 #define SAMPLE_TIMES 20
+#define ADC_CHANNEL 0
+#define is_stable(curr, prev) (curr < prev + NOISE_OFFSET && curr > prev - NOISE_OFFSET)
 
 // used to store the interval of each half period
 uint32_t time_intervals[SAMPLE_TIMES];
@@ -68,22 +70,18 @@ void sample_frequency(){
   for(i = 0; i < SAMPLE_TIMES; ++i){
   	t1 = t2;
 	if(prev_data < curr_data) {
-		while((prev_data < curr_data) || (curr_data < prev_data + NOISE_OFFSET && curr_data > prev_data - NOISE_OFFSET)){
+		while((prev_data < curr_data) || is_stable(curr_data, prev_data)){
+			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
-			adc_single_sample(0);
 			curr_data = _adc_val >> 4;
-			char buf1[64];
-			sprintf(buf1, "\tprev: 0x%02x, curr: 0x%02x\n\n", prev_data, curr_data);
-			putstr(buf1);
+			delay_ms(2);
 		}
 	} else if(prev_data >= curr_data) {
-		while((prev_data >= curr_data) || (curr_data < prev_data + NOISE_OFFSET && curr_data > prev_data - NOISE_OFFSET)){
+		while((prev_data >= curr_data) || is_stable(curr_data, prev_data)){
+			adc_single_sample(ADC_CHANNEL);
 			prev_data = curr_data;
-			adc_single_sample(0);
 			curr_data = _adc_val >> 4;
-			char buf1[64];
-			sprintf(buf1, "\tprev: 0x%02x, curr: 0x%02x\n\n", prev_data, curr_data);
-			putstr(buf1);
+			delay_ms(2);
 		}
 	}
 
@@ -92,12 +90,16 @@ void sample_frequency(){
 
   }
 
+  // average clock ticks between pos and neg edge
   uint32_t average = 0;
 
+  // The first value is outlier. Don't account for that
   for(i = 1; i < SAMPLE_TIMES; ++i) {
   	average += time_intervals[i]/(SAMPLE_TIMES - 1);
   }
 
+ // Since we are using timer with 32kHz frequency and prescaler 0
+ // One tick means 0.0000625 s
  uint32_t interval = average * 625 * 2;
  uint32_t frequency = 10000000/interval;
 
@@ -105,6 +107,8 @@ void sample_frequency(){
   char buf[64];
   sprintf(buf, "\tFrequency is: %d\n\n", frequency);
   putstr(buf);
+
+  delay_ms(500);
 
 }
 
@@ -127,5 +131,4 @@ int main () {
 	sample_frequency();
     }
   }
-
 }
