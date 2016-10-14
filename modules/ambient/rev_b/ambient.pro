@@ -1,4 +1,4 @@
-update=10/12/2016 6:16:02 PM
+update=10/14/2016 3:59:10 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=C:/Users/wwhuang/Dropbox/git/kicad/parts/schematic
+LibDir=../../../../kicad/parts/schematic
 [eeschema/libraries]
 LibName1=power
 LibName2=device
