@@ -6,13 +6,13 @@
 #include <stdbool.h>
 
 //nordic includes
-#include "nrf.h"
-#include <nordic_common.h>
-#include <nrf_error.h>
-#include <simple_ble.h>
-#include <eddystone.h>
-#include <simple_adv.h>
-#include "multi_adv.h"
+//#include "nrf.h"
+//#include <nordic_common.h>
+//#include <nrf_error.h>
+//#include <simple_ble.h>
+//#include <eddystone.h>
+//#include <simple_adv.h>
+//#include "multi_adv.h"
 
 //tock includes
 #include <tock.h>
@@ -29,14 +29,14 @@
 
 #define UMICH_COMPANY_IDENTIFIER 0x02E0
 
-static simple_ble_config_t ble_config = {
+/*static simple_ble_config_t ble_config = {
 	.platform_id 		= 0x00,
 	.device_id			= DEVICE_ID_DEFAULT,
 	.adv_name			= DEVICE_NAME,
 	.adv_interval		= MSEC_TO_UNITS(50, UNIT_0_625_MS),
 	.min_conn_interval	= MSEC_TO_UNITS(500, UNIT_1_25_MS),
 	.max_conn_interval	= MSEC_TO_UNITS(1000, UNIT_1_25_MS),
-};
+};*/
 
 //definitions for the i2c
 #define BUFFER_SIZE 20
@@ -51,7 +51,7 @@ uint8_t master_write_buf[BUFFER_SIZE];
 //array of the data we're going to send on the radios
 uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
 
-static void adv_config_eddystone () {
+/*static void adv_config_eddystone () {
 	eddystone_adv(PHYSWEB_URL, NULL);
 }
 
@@ -66,9 +66,11 @@ static void adv_config_data() {
 	
 	simple_adv_manuf_data(&mandata);
 	
-	//on the next advertisement update
 	i++;
-}
+	if(i >= NUMBER_OF_MODULES) {
+		i = 0;
+	}
+}*/
 
 static void i2c_master_slave_callback (
 	int callback_type,
@@ -82,10 +84,31 @@ static void i2c_master_slave_callback (
 	} else if (callback_type == CB_SLAVE_READ_COMPLETE) {
 		return;
 	} else if (callback_type == CB_SLAVE_WRITE) {
-		//this is a valid sender ID
-		if(slave_write_buf[0] < NUMBER_OF_MODULES) {
-			//copy the data they wrote into their send array
-			memcpy(data_to_send[slave_write_buf[0]], slave_write_buf, BUFFER_SIZE);
+		switch(slave_write_buf[0]) {
+		case 0x20:
+			if(slave_write_buf[1] == 0x00) {
+				memcpy(data_to_send[0], slave_write_buf, BUFFER_SIZE);
+			} else if (slave_write_buf[1] == 0x01) {
+				memcpy(data_to_send[1], slave_write_buf, BUFFER_SIZE);
+			} else {
+				//this shouldn't happen
+			}
+		break;
+		case 0x31:
+			memcpy(data_to_send[2], slave_write_buf, BUFFER_SIZE);
+		break;
+		case 0x32:
+			memcpy(data_to_send[3], slave_write_buf, BUFFER_SIZE);
+		break;
+		case 0x33:
+			memcpy(data_to_send[4], slave_write_buf, BUFFER_SIZE);
+		break;
+		case 0x34:
+			memcpy(data_to_send[5], slave_write_buf, BUFFER_SIZE);
+		break;
+		default:
+			//this shouldn't happen
+		break;
 		}
 	}
 }
@@ -96,24 +119,26 @@ int main () {
 	uint16_t result = iM880A_Configure();
 
 	//ble
-	simple_ble_init(&ble_config);
-	multi_adv_init(ADV_SWITCH_MS);
-	multi_adv_register_config(adv_config_eddystone);
-	multi_adv_register_config(adv_config_data);
+//	simple_ble_init(&ble_config);
+//	multi_adv_init(ADV_SWITCH_MS);
+//	multi_adv_register_config(adv_config_eddystone);
+//	multi_adv_register_config(adv_config_data);
 
-	multi_adv_start();
+//	multi_adv_start();
 
 	//configure the data array to send zeros with IDs
-	for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
-		data_to_send[i][0] = i;
-		for(uint8_t j = 1; j < BUFFER_SIZE; j++) {
-			data_to_send[i][j] = 0;
-		}
-	}
+	data_to_send[0][0] = 0x20;
+	data_to_send[1][0] = 0x20;
+	data_to_send[1][1] = 0x01;
+
+	data_to_send[2][0] = 0x31;
+	data_to_send[3][0] = 0x32;
+	data_to_send[4][0] = 0x33;
+	data_to_send[5][0] = 0x34;
 
 	//low configure i2c slave to listen
 	i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
-	i2c_master_slave_set_slave_address(0xFE);
+	i2c_master_slave_set_slave_address(0x22);
 //
 	i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
 	i2c_master_slave_set_master_write_buffer(master_write_buf, BUFFER_SIZE);
@@ -124,13 +149,10 @@ int main () {
 	i2c_master_slave_listen();
 
 	while(1) {
-		static uint8_t i = 0;
-
-		uint8_t ID = i % NUMBER_OF_MODULES;
-
-		result = iM880A_SendRadioTelegram(data_to_send[ID],BUFFER_SIZE);
-		delay_ms(2000);
-
-		i++;
+		for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+			result = iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+			delay_ms(1000);
+			yield();
+		}
 	}
 }
