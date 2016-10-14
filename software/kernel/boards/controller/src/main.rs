@@ -127,6 +127,10 @@ unsafe fn set_pin_primary_functions() {
     PA[16].configure(None); // MOD5_OUT
     PA[17].configure(None); // MOD6_OUT
     PA[18].configure(None); // MOD7_OUT
+    PA[18].enable();
+    PA[18].enable_output();
+    PA[18].set();
+
 
     // SPI: Storage Master & FRAM
     PA[10].configure(Some(A)); // MEMORY_SCLK
@@ -165,17 +169,21 @@ pub unsafe fn reset_handler() {
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
     set_pin_primary_functions();
+    let clock_freq = 16000000;
 
     //
     // UART console
     //
+    usart::USART2.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
+                     9600,
                      &mut console::WRITE_BUF,
                      &mut console::READ_BUF,
+                     &mut console::LINE_BUF,
                      kernel::Container::create()),
-        256/8);
+        416/8);
     usart::USART2.set_uart_client(console);
 
     //
@@ -411,6 +419,7 @@ pub unsafe fn reset_handler() {
     //
     // SPI
     //
+    usart::USART0.set_clock_freq(clock_freq);
     let mux_spi = static_init!(
         capsules::virtual_spi::MuxSPIMaster<'static>,
         capsules::virtual_spi::MuxSPIMaster::new(&sam4l::usart::USART0),

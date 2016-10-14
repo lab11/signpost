@@ -17,7 +17,7 @@ impl Write for Writer {
         if !self.initialized {
             self.initialized = true;
             uart.init(uart::UARTParams{
-                baud_rate: 115200,
+                baud_rate: 9600,
                 stop_bits: uart::StopBits::One,
                 parity: uart::Parity::None,
                 hw_flow_control: false,
