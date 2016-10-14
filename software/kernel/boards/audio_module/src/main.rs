@@ -16,6 +16,7 @@ use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
+use sam4l::adc;
 
 // For panic!()
 #[macro_use]
@@ -68,6 +69,7 @@ struct AudioModule {
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+	adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
 }
 
 impl Platform for AudioModule {
@@ -78,6 +80,7 @@ impl Platform for AudioModule {
         match driver_num {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            7 => f(Some(self.adc)),
             105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
@@ -166,6 +169,15 @@ pub unsafe fn reset_handler() {
     sam4l::i2c::I2C0.set_master_client(i2c_master_slave);
     sam4l::i2c::I2C0.set_slave_client(i2c_master_slave);
 
+	//
+	//ADC
+	//
+	let adc_driver = static_init!(
+		capsules::adc::ADC<'static, sam4l::adc::Adc>,
+		capsules::adc::ADC::new(&adc::ADC),
+		160/8);
+	adc::ADC.set_client(adc_driver);
+
     //
     // Remaining GPIO pins
     //
@@ -208,9 +220,11 @@ pub unsafe fn reset_handler() {
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
+			adc: adc_driver,
         },
-        96/8);
-
+        128/8);
+	
+	//turn on some LEDs
     sam4l::gpio::PA[14].enable();
     sam4l::gpio::PA[14].enable_output();
     sam4l::gpio::PA[14].set();
@@ -227,13 +241,15 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[17].enable_output();
     sam4l::gpio::PA[17].clear();
 
+	//enable the power to the onboard mic
     sam4l::gpio::PA[08].enable();
     sam4l::gpio::PA[08].enable_output();
     sam4l::gpio::PA[08].clear();
 
+	//disable power to the external mic
 	sam4l::gpio::PA[12].enable();
 	sam4l::gpio::PA[12].enable_output();
-	sam4l::gpio::PA[12].clear();
+	sam4l::gpio::PA[12].set();
 
 
     let mut chip = sam4l::chip::Sam4l::new();
