@@ -226,7 +226,7 @@ pub unsafe fn reset_handler() {
 
     // Set I2C slave address here, because it is board specific and not app
     // specific. It can be overridden in the app, of course.
-    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x32);
+    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x34);
 
     //
     // Sensors
