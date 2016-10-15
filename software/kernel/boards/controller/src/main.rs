@@ -71,6 +71,7 @@ struct SignpostController {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    bonus_timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
@@ -94,6 +95,7 @@ impl Platform for SignpostController {
             103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             105 => f(Some(self.i2c_master_slave)),
+            203 => f(Some(self.bonus_timer)),
             _ => f(None)
         }
     }
@@ -205,6 +207,17 @@ pub unsafe fn reset_handler() {
         TimerDriver::new(virtual_alarm1, kernel::Container::create()),
         12);
     virtual_alarm1.set_client(timer);
+
+
+    let virtual_alarm2 = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let bonus_timer = static_init!(
+        TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        TimerDriver::new(virtual_alarm2, kernel::Container::create()),
+        12);
+    virtual_alarm2.set_client(bonus_timer);
 
     //
     // I2C Buses
@@ -496,6 +509,7 @@ pub unsafe fn reset_handler() {
             console: console,
             gpio: gpio,
             timer: timer,
+            bonus_timer: bonus_timer,
             gpio_async: gpio_async,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
@@ -503,7 +517,7 @@ pub unsafe fn reset_handler() {
             fram: fm25cl_driver,
             i2c_master_slave: i2c_modules,
         },
-        288/8);
+        320/8);
 
     signpost_controller.console.initialize();
 

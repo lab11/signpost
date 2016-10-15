@@ -4,7 +4,7 @@
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 # files needed for this code
-C_SRCS   := main.c
+C_SRCS   := main.c bonus_timer.c
 INCLUDE_PATHS += .
 
 # specific flags needed for this code

@@ -46,12 +46,30 @@ static void i2c_master_slave_callback (
   }
 }
 
-static void fm25cl_async_callback (
+static void fm25cl_callback (
         int callback_type __attribute__ ((unused)),
         int pin_value __attribute__ ((unused)),
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
+}
+
+static void timer_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+  get_energy();
+}
+
+static void bonus_timer_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+  putstr("BONUS TIMER!!!!!!!!!!!!!!!!!\n");
 }
 
 void print_data () {
@@ -116,6 +134,8 @@ void print_data () {
 }
 
 
+
+
 #define MAGIC 0x49A80003
 
 typedef struct {
@@ -156,6 +176,54 @@ void print_energy_data (int module, int energy) {
   putstr(buf);
 }
 
+void get_energy () {
+  putstr("\n\nUpdated Energy!\n");
+
+  for (int i=0; i<8; i++) {
+    uint32_t energy;
+    uint32_t* last_reading = &energy_last_readings[i];
+
+    if (i == 3) {
+      energy = signpost_ltc_to_uAh(signpost_energy_get_controller_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+    } else if (i == 4) {
+      energy = signpost_ltc_to_uAh(signpost_energy_get_linux_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+    } else {
+      energy = signpost_ltc_to_uAh(signpost_energy_get_module_energy(i), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+    }
+
+    uint32_t diff = energy - *last_reading;
+    *last_reading = energy;
+
+
+
+    switch (i) {
+      case 0: fram.energy_module0 += diff; break;
+      case 1: fram.energy_module1 += diff; break;
+      case 2: fram.energy_module2 += diff; break;
+      case 3: fram.energy_controller += diff; break;
+      case 4: fram.energy_linux += diff; break;
+      case 5: fram.energy_module5 += diff; break;
+      case 6: fram.energy_module6 += diff; break;
+      case 7: fram.energy_module7 += diff; break;
+    }
+
+    fm25cl_write(0, sizeof(controller_fram_t));
+    yield();
+
+    // Test print
+    switch (i) {
+      case 0: print_energy_data(i, fram.energy_module0); break;
+      case 1: print_energy_data(i, fram.energy_module1); break;
+      case 2: print_energy_data(i, fram.energy_module2); break;
+      case 3: print_energy_data(i, fram.energy_controller); break;
+      case 4: print_energy_data(i, fram.energy_linux); break;
+      case 5: print_energy_data(i, fram.energy_module5); break;
+      case 6: print_energy_data(i, fram.energy_module6); break;
+      case 7: print_energy_data(i, fram.energy_module7); break;
+    }
+  }
+}
+
 int main () {
   putstr("[Controller] ** Main App **\n");
 
@@ -169,7 +237,7 @@ int main () {
   // controller_module_enable_i2c(MODULE0);
 
   // Configure FRAM
-  fm25cl_set_callback(fm25cl_async_callback, NULL);
+  fm25cl_set_callback(fm25cl_callback, NULL);
   fm25cl_set_read_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
@@ -199,59 +267,23 @@ int main () {
   // Reset all of the LTC2941s
   signpost_energy_reset();
 
+  // Need a timer
+  timer_subscribe(timer_callback, NULL);
+  bonus_timer_subscribe(bonus_timer_callback, NULL);
 
+
+  timer_start_repeating(10000);
+  bonus_timer_start_repeating(27000);
 
 
 
   while (1) {
 
-    delay_ms(2000);
+    yield();
 
-    putstr("\n\nUpdated Energy!\n");
-
-    for (int i=0; i<8; i++) {
-      uint32_t energy;
-      uint32_t* last_reading = &energy_last_readings[i];
-
-      if (i == 3) {
-        energy = signpost_ltc_to_uAh(signpost_energy_get_controller_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
-      } else if (i == 4) {
-        energy = signpost_ltc_to_uAh(signpost_energy_get_linux_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
-      } else {
-        energy = signpost_ltc_to_uAh(signpost_energy_get_module_energy(i), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
-      }
-
-      uint32_t diff = energy - *last_reading;
-      *last_reading = energy;
+    // get_energy();
 
 
-
-      switch (i) {
-        case 0: fram.energy_module0 += diff; break;
-        case 1: fram.energy_module1 += diff; break;
-        case 2: fram.energy_module2 += diff; break;
-        case 3: fram.energy_controller += diff; break;
-        case 4: fram.energy_linux += diff; break;
-        case 5: fram.energy_module5 += diff; break;
-        case 6: fram.energy_module6 += diff; break;
-        case 7: fram.energy_module7 += diff; break;
-      }
-
-      fm25cl_write(0, sizeof(controller_fram_t));
-      yield();
-
-      // Test print
-      switch (i) {
-        case 0: print_energy_data(i, fram.energy_module0); break;
-        case 1: print_energy_data(i, fram.energy_module1); break;
-        case 2: print_energy_data(i, fram.energy_module2); break;
-        case 3: print_energy_data(i, fram.energy_controller); break;
-        case 4: print_energy_data(i, fram.energy_linux); break;
-        case 5: print_energy_data(i, fram.energy_module5); break;
-        case 6: print_energy_data(i, fram.energy_module6); break;
-        case 7: print_energy_data(i, fram.energy_module7); break;
-      }
-    }
 
   }
 
