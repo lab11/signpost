@@ -131,3 +131,78 @@ All data packets include a `_meta` section like the following:
 	"module6_energy_mAh": <float>,
 	"module7_energy_mAh": <float>
 }
+
+
+
+I2C Message Structure
+---------------------
+
+### 2.4GHz RF Spectrum Sensing Module
+
+```
+18 bytes:
+
+u8 : 0x31
+u8 : 0x01
+i8 : Channel 11 RSSI
+i8 : Channel 12 RSSI
+i8 : Channel 13 RSSI
+i8 : Channel 14 RSSI
+i8 : Channel 15 RSSI
+i8 : Channel 16 RSSI
+i8 : Channel 17 RSSI
+i8 : Channel 18 RSSI
+i8 : Channel 19 RSSI
+i8 : Channel 20 RSSI
+i8 : Channel 21 RSSI
+i8 : Channel 22 RSSI
+i8 : Channel 23 RSSI
+i8 : Channel 24 RSSI
+i8 : Channel 25 RSSI
+i8 : Channel 26 RSSI
+```
+
+### Ambient Sensing Module
+
+```
+10 bytes:
+
+u8  : 0x32
+u8  : 0x01
+u16 : temperature (1/100 degree c)
+u16 : humidity (1/100 %)
+u16 : light (lux)
+u16 : pressure
+```
+
+
+### Controller
+
+
+Energy & status
+```
+19 bytes:
+
+u8  : 0x20
+u8  : 0x01
+u16 : Module0 Energy (mAh)
+u16 : Module1 Energy (mAh)
+u16 : Module2 Energy (mAh)
+u16 : Controller/Backplane Energy (mAh)
+u16 : Linux Energy (mAh)
+u16 : Module5 Energy (mAh)
+u16 : Module6 Energy (mAh)
+u16 : Module7 Energy (mAh)
+u1  : Module0 Enabled
+u1  : Module1 Enabled
+u1  : Module2 Enabled
+u1  : reserved
+u1  : Linux Enabled
+u1  : Module5 Enabled
+u1  : Module6 Enabled
+u1  : Module7 Enabled
+```
+
+
+
+
