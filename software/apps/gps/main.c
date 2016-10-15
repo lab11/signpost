@@ -30,6 +30,17 @@ void gps_callback (gps_data_t* gps_data) {
             fix_str, gps_data-> satellite_count);
 }
 
+static void timer_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+
+    // get a single gps update
+    gps_sample(gps_callback);
+}
+
 
 void main() {
     printf("GPS Test\n");
@@ -37,7 +48,15 @@ void main() {
 
     // initialize and begin collecting gps data
     gps_init();
-    gps_start(gps_callback);
+
+    // option 1:
+    // use GPS with a timer
+    timer_subscribe(timer_callback, NULL);
+    timer_start_repeating(7000);
+
+    // other option:
+    // get gps updates continuously
+    //gps_continuous(gps_callback);
 
     while (1) {
         yield();

@@ -18,10 +18,10 @@ void getline_cb(int len, int y, int z, void* userdata) {
     getauto(str_buffer, 500, getline_cb, NULL);
 }
 
-uint32_t to_decimal_degrees (struct minmea_float coor) {
-    uint16_t degrees = coor.value/(coor.scale*100);
-    uint32_t minutes = coor.value - (degrees * 100);
-    uint32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60;
+int32_t to_decimal_degrees (struct minmea_float coor) {
+    int16_t degrees = coor.value/(coor.scale*100);
+    int32_t minutes = coor.value - degrees*(coor.scale*100);
+    int32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60*100;
 
     return decimal_degrees;
 }

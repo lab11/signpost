@@ -8,6 +8,7 @@
 static char gps_data_buffer[500] = {0};
 static gps_data_t gps_data = {0};
 static void (*gps_callback)(gps_data_t*) = NULL;
+static bool continuous_mode = false;
 
 // useful GPS settings transmissions
 char* GPS_NORMAL_OPERATION = "$PMTK225,0*";
@@ -22,8 +23,8 @@ char* GPS_DATUM_GLOBAL = "$PMTK330,0*";
 // internal prototypes
 void gps_send_msg (char* msg);
 void gps_rx_callback (int len, int y, int z, void* userdata);
-void gps_parse_data (char* line);
-uint32_t to_decimal_degrees (struct minmea_float coor);
+bool gps_parse_data (char* line);
+int32_t to_decimal_degrees (struct minmea_float coor);
 
 
 // global functions
@@ -43,9 +44,19 @@ void gps_init () {
     gps_send_msg(GPS_DATUM_US);
 }
 
-void gps_start (void (*callback)(gps_data_t*)) {
+void gps_continuous (void (*callback)(gps_data_t*)) {
     // store user callback
     gps_callback = callback;
+    continuous_mode = true;
+
+    // start listening for data
+    getauto(gps_data_buffer, 500, gps_rx_callback, NULL);
+}
+
+void gps_sample (void (*callback)(gps_data_t*)) {
+    // store user callback
+    gps_callback = callback;
+    continuous_mode = false;
 
     // start listening for data
     getauto(gps_data_buffer, 500, gps_rx_callback, NULL);
@@ -61,21 +72,30 @@ void gps_send_msg (char* msg) {
 void gps_rx_callback (int len, int y, int z, void* userdata) {
 
     // parse data
+    bool data_updated = false;
     char* line = NULL;
     line = strtok(gps_data_buffer, "\n");
     while (line != NULL) {
-        gps_parse_data(line);
+        if (gps_parse_data(line)) {
+            data_updated = true;
+        }
         line = strtok(NULL, "\n");
     }
 
     // listen for next GPS data
-    getauto(gps_data_buffer, 500, gps_rx_callback, NULL);
+    if (continuous_mode == true || data_updated == false) {
+        getauto(gps_data_buffer, 500, gps_rx_callback, NULL);
+    }
 
     // call back user
-    gps_callback(&gps_data);
+    if (gps_callback != NULL && data_updated == true) {
+        gps_callback(&gps_data);
+    }
 }
 
-void gps_parse_data (char* line) {
+bool gps_parse_data (char* line) {
+    bool data_updated = false;
+
     if (line != NULL) {
         struct minmea_sentence_gsa gsa_frame;
         struct minmea_sentence_rmc rmc_frame;
@@ -93,6 +113,8 @@ void gps_parse_data (char* line) {
                         }
                     }
                     gps_data.satellite_count = satellite_count;
+
+                    data_updated = true;
                 }
                 break;
             case MINMEA_SENTENCE_RMC:
@@ -111,6 +133,8 @@ void gps_parse_data (char* line) {
                     // location
                     gps_data.latitude = to_decimal_degrees(rmc_frame.latitude);
                     gps_data.longitude = to_decimal_degrees(rmc_frame.longitude);
+
+                    data_updated = true;
                 }
                 break;
             default:
@@ -118,12 +142,14 @@ void gps_parse_data (char* line) {
                 break;
         }
     }
+
+    return data_updated;
 }
 
-uint32_t to_decimal_degrees (struct minmea_float coor) {
-    uint16_t degrees = coor.value/(coor.scale*100);
-    uint32_t minutes = coor.value - (degrees * 100);
-    uint32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60;
+int32_t to_decimal_degrees (struct minmea_float coor) {
+    int16_t degrees = coor.value/(coor.scale*100);
+    int32_t minutes = coor.value - degrees*(coor.scale*100);
+    int32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60*100;
 
     return decimal_degrees;
 }

@@ -26,6 +26,9 @@ typedef struct {
 // initialize the GPS
 void gps_init ();
 
-// start receiving GPS data
-void gps_start (void (*callback)(gps_data_t*));
+// receive GPS updates continuously
+void gps_continuous (void (*callback)(gps_data_t*));
+
+// request a single GPS sample
+void gps_sample (void (*callback)(gps_data_t*));
 
