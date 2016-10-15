@@ -3,6 +3,8 @@
 #include <gpio_async.h>
 #include <stdio.h>
 
+#include "controller.h"
+
 #define MOD0_GPIO_ASYNC_PORT_NUM 0
 #define MOD1_GPIO_ASYNC_PORT_NUM 1
 #define MOD2_GPIO_ASYNC_PORT_NUM 2
@@ -37,47 +39,61 @@ static void gpio_async_callback (
 }
 
 
+void test_module(uint32_t gpio_async_port_number) {
+        /////////////////////////////
+        gpio_async_set(gpio_async_port_number, PIN_IDX_ISOLATE_POWER);
+        yield();
+
+        gpio_async_set(gpio_async_port_number, PIN_IDX_ISOLATE_I2C);
+        yield();
+
+        gpio_async_set(gpio_async_port_number, PIN_IDX_ISOLATE_USB);
+        yield();
+
+        gpio_toggle(LED_0);
+        delay_ms(500);
+
+        gpio_async_clear(gpio_async_port_number, PIN_IDX_ISOLATE_POWER);
+        yield();
+
+        gpio_async_clear(gpio_async_port_number, PIN_IDX_ISOLATE_I2C);
+        yield();
+
+        gpio_async_clear(gpio_async_port_number, PIN_IDX_ISOLATE_USB);
+        yield();
+
+        gpio_toggle(LED_0);
+        delay_ms(500);
+}
+
+
 int main(void) {
-    putstr("Backplane Test222\n");
+    putstr("Backplane Test\n");
 
     gpio_enable_output(LED_0);
 
     gpio_async_set_callback(gpio_async_callback, NULL);
 
-    gpio_async_enable_output(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_POWER);
-    yield();
+    controller_init_module_switches();
 
-    gpio_async_enable_output(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_I2C);
-    yield();
+    putstr("Test Module 0\n");
+    test_module(MOD0_GPIO_ASYNC_PORT_NUM);
+    putstr("Test Module 1\n");
+    test_module(MOD1_GPIO_ASYNC_PORT_NUM);
+    putstr("Test Module 2\n");
+    test_module(MOD2_GPIO_ASYNC_PORT_NUM);
+    putstr("Test Module 5\n");
+    test_module(MOD5_GPIO_ASYNC_PORT_NUM);
+    putstr("Test Module 6\n");
+    test_module(MOD6_GPIO_ASYNC_PORT_NUM);
+    putstr("Test Module 7\n");
+    test_module(MOD7_GPIO_ASYNC_PORT_NUM);
 
-    gpio_async_enable_output(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_USB);
-    yield();
+    putstr("Enable all modules\n");
+    controller_all_modules_enable_power();
+    controller_all_modules_enable_i2c();
+    controller_all_modules_enable_usb();
 
-
-    while(1) {
-        gpio_async_set(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_POWER);
-        yield();
-
-        gpio_async_set(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_I2C);
-        yield();
-
-        gpio_async_set(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_USB);
-        yield();
-
-        gpio_toggle(LED_0);
-        delay_ms(500);
-
-        gpio_async_clear(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_POWER);
-        yield();
-
-        gpio_async_clear(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_I2C);
-        yield();
-
-        gpio_async_clear(MOD7_GPIO_ASYNC_PORT_NUM, PIN_IDX_ISOLATE_USB);
-        yield();
-
-        gpio_toggle(LED_0);
-        delay_ms(500);
-    }
+    putstr("Backplane Test Complete.\n");
 }
 
