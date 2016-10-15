@@ -131,7 +131,7 @@ All data packets include a `_meta` section like the following:
 	"module6_energy_mAh": <float>,
 	"module7_energy_mAh": <float>
 }
-
+```
 
 
 I2C Message Structure
