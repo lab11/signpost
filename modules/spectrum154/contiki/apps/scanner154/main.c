@@ -64,7 +64,7 @@ PROCESS_THREAD(scanner154_process, ev, data) {
 
 					// send to radio
 					// uint8_t ret = i2c_burst_send(0x22, (uint8_t*) out_buf, 18);
-					uint8_t ret = i2c_burst_send(0x20, (uint8_t*) out_buf, 18);
+					uint8_t ret = i2c_burst_send(0x22, (uint8_t*) out_buf, 18);
 					if (ret != I2C_MASTER_ERR_NONE) {
 						i2c_master_command(I2C_MASTER_CMD_BURST_SEND_FINISH);
 					}
