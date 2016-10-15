@@ -421,9 +421,9 @@ pub unsafe fn reset_handler() {
     //
     usart::USART0.set_clock_freq(clock_freq);
     let mux_spi = static_init!(
-        capsules::virtual_spi::MuxSPIMaster<'static>,
+        capsules::virtual_spi::MuxSPIMaster<'static, usart::USART>,
         capsules::virtual_spi::MuxSPIMaster::new(&sam4l::usart::USART0),
-        128/8);
+        96/8);
     // sam4l::spi::SPI.set_client(mux_spi);
     // sam4l::spi::SPI.init();
     hil::spi::SpiMaster::set_client(&sam4l::usart::USART0, mux_spi);
@@ -434,11 +434,12 @@ pub unsafe fn reset_handler() {
     //
     // FRAM
     //
-    let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
+    // let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
     let fm25cl_spi = static_init!(
-        capsules::virtual_spi::SPIMasterDevice,
-        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
-        480/8);
+        capsules::virtual_spi::SPIMasterDevice<'static, usart::USART>,
+        // capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
+        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
+        416/8);
     let fm25cl = static_init!(
         signpost_drivers::fm25cl::FM25CL<'static>,
         signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
@@ -484,6 +485,7 @@ pub unsafe fn reset_handler() {
 
     sam4l::gpio::PA[25].enable();
     sam4l::gpio::PA[25].enable_output();
+    sam4l::gpio::PA[25].set();
 
 
     //

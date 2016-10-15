@@ -35,17 +35,18 @@ void signpost_energy_init () {
 	i2c_selector_set_callback(i2c_selector_callback, NULL);
 	ltc2941_set_callback(ltc2941_callback, NULL);
 
-        // configure each ltc with the correct prescaler
-        for (int i = 0; i < 8; i++) {
-            i2c_selector_select_channels(1<<i);
-            yield();
+    // configure each ltc with the correct prescaler
+    for (int i = 0; i < 8; i++) {
+        i2c_selector_select_channels(1<<i);
+        yield();
 
-            ltc2941_configure(InterruptPinAlertMode, POWER_MODULE_PRESCALER, VbatAlertOff);
-            yield();
-        }
+        ltc2941_configure(InterruptPinAlertMode, POWER_MODULE_PRESCALER, VbatAlertOff);
+        yield();
+    }
 
-        // set all channels open for Alert Response
-        i2c_selector_select_channels(0xFF);
+    // set all channels open for Alert Response
+    i2c_selector_select_channels(0xFF);
+    yield();
 }
 
 static int get_ltc_energy (int selector_mask) {
@@ -77,6 +78,16 @@ int signpost_energy_get_linux_energy () {
 
 int signpost_energy_get_module_energy (int module_num) {
 	return get_ltc_energy(module_num_to_selector_mask[module_num]);
+}
+
+int signpost_energy_reset () {
+	for (int i = 0; i < 8; i++) {
+		i2c_selector_select_channels(1<<i);
+		yield();
+
+		ltc2941_reset_charge();
+		yield();
+	}
 }
 
 int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler) {
