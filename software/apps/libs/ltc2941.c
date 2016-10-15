@@ -14,8 +14,14 @@ int ltc2941_read_status() {
 }
 
 int ltc2941_configure(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat) {
-	uint8_t cmd = (int_pin & 0x03) | ((prescaler & 0x07) << 2) | ((vbat & 0x03) << 5);
-	return command(DRIVER_NUM_LTC2941, 1, cmd);
+	uint8_t M = 0;
+        // ltc2941 expects log_2 of prescaler value
+        for(int i = 0; i < 8; i++) {
+            if ((1<<i) & prescaler)
+                M = i;
+        }
+        uint8_t cmd = (int_pin & 0x03) | ((M & 0x07) << 2) | ((vbat & 0x03) << 5);
+        return command(DRIVER_NUM_LTC2941, 1, cmd);
 }
 
 int ltc2941_reset_charge() {

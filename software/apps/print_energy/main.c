@@ -9,6 +9,7 @@
 #include "tock.h"
 #include "tock_str.h"
 #include "signpost_energy.h"
+#include "i2c_selector.h"
 
 // #define MOD0_GPIOA_PORT_NUM 0
 // #define MOD1_GPIOA_PORT_NUM 1
@@ -42,12 +43,13 @@ static void gpio_async_callback (
 
 void print_data (int module, int energy) {
   char buf[64];
+  int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
   if (module == 3) {
-    sprintf(buf, "Controller energy: %i\n", energy);
+    sprintf(buf, "Controller energy: %i uAh\n", int_energy);
   } else if (module == 4) {
-    sprintf(buf, "Linux energy: %i\n", energy);
+    sprintf(buf, "Linux energy: %i uAh\n", int_energy);
   } else {
-    sprintf(buf, "Module %i energy: %i\n", module, energy);
+    sprintf(buf, "Module %i energy: %i uAh\n", module, int_energy);
   }
   putstr(buf);
 }
@@ -62,6 +64,13 @@ int main () {
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
 
+  // Reset all gauges to 0:
+  //for(int i = 0; i < 8; i++) {
+  //  i2c_selector_select_channels(1<<i);
+  //  yield();
+  //  ltc2941_reset_charge();
+  //  yield();
+  //}
 
   int i;
 

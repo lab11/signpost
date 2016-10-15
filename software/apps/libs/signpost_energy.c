@@ -1,6 +1,7 @@
 
 #include "firestorm.h"
 
+#include "signpost_energy.h"
 #include "i2c_selector.h"
 #include "ltc2941.h"
 
@@ -33,6 +34,18 @@ void ltc2941_callback (int callback_type, int data, int data2, void* callback_ar
 void signpost_energy_init () {
 	i2c_selector_set_callback(i2c_selector_callback, NULL);
 	ltc2941_set_callback(ltc2941_callback, NULL);
+
+        // configure each ltc with the correct prescaler
+        for (int i = 0; i < 8; i++) {
+            i2c_selector_select_channels(1<<i);
+            yield();
+
+            ltc2941_configure(InterruptPinAlertMode, POWER_MODULE_PRESCALER, VbatAlertOff);
+            yield();
+        }
+
+        // set all channels open for Alert Response
+        i2c_selector_select_channels(0xFF);
 }
 
 static int get_ltc_energy (int selector_mask) {
@@ -44,8 +57,8 @@ static int get_ltc_energy (int selector_mask) {
 
 
 
-	i2c_selector_read_selected();
-	yield();
+	//i2c_selector_read_selected();
+	//yield();
 
 	// Get charge
 	ltc2941_get_charge();
@@ -64,5 +77,18 @@ int signpost_energy_get_linux_energy () {
 
 int signpost_energy_get_module_energy (int module_num) {
 	return get_ltc_energy(module_num_to_selector_mask[module_num]);
+}
+
+int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler) {
+    // prescaler needs to be a power of two
+    uint8_t power;
+    uint8_t M;
+    for(int i = 0; i < 8; i++) {
+        if ((1<<i) & prescaler)
+            power = i;
+    }
+    M = 1<<power;
+    // Note that decimal values will be floored
+    return ltc_energy * (((85*50)/rsense)*M)/128;
 }
 
