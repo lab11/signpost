@@ -33,6 +33,8 @@ static ser_phy_evt_t _ser_phy_rx_event;
 // Data structure for TX events.
 static ser_phy_evt_t _ser_phy_tx_event;
 
+static int saved_rx_len = 0;
+
 
 /*******************************************************************************
  * Callback from the UART layer in the kernel
@@ -80,6 +82,7 @@ void ble_serialization_callback (int callback_type, int rx_len, int c, void* oth
         if (hal_rx_buf) {
             // Copy our buffer into the upper layer's buffer.
             memcpy(hal_rx_buf, rx+2, rx_len - SER_PHY_HEADER_SIZE);
+            //printf("Rx done, buffer %d,%d,%d,%d\n", rx[2], rx[3], rx[4], rx[5]);
 
             _ser_phy_rx_event.evt_type = SER_PHY_EVT_RX_PKT_RECEIVED;
             _ser_phy_rx_event.evt_params.rx_pkt_received.num_of_bytes = rx_len - SER_PHY_HEADER_SIZE;
@@ -88,8 +91,42 @@ void ble_serialization_callback (int callback_type, int rx_len, int c, void* oth
             if (_ser_phy_event_handler) {
                 _ser_phy_event_handler(_ser_phy_rx_event);
             }
+        } else {
+          printf("ULTIMATE SADNESS, buffer %d,%d,%d,%d\n", rx[2], rx[3], rx[4], rx[5]);
         }
 
+    } else if (callback_type == 4) {
+        // RX entire buffer
+
+        saved_rx_len = rx_len;
+
+        // Need a dummy request for a buffer to keep the state machines
+        // in the serialization library happy. We do use this buffer, but
+        // we don't block packet receive until we get it.
+        _ser_phy_rx_event.evt_type = SER_PHY_EVT_RX_BUF_REQUEST;
+        _ser_phy_rx_event.evt_params.rx_buf_request.num_of_bytes = (rx[0] | rx[1] << 8) - SER_PHY_HEADER_SIZE;
+
+        if (_ser_phy_event_handler) {
+            _ser_phy_event_handler(_ser_phy_rx_event);
+        }
+
+    } else if (callback_type == 17) {
+        // great, we're awake
+
+        // Check that we actually have a buffer to pass to the upper layers.
+        // This buffer MUST be the same buffer that it passed us.
+        if (hal_rx_buf) {
+            // Copy our buffer into the upper layer's buffer.
+            memcpy(hal_rx_buf, rx+2, saved_rx_len - SER_PHY_HEADER_SIZE);
+
+            _ser_phy_rx_event.evt_type = SER_PHY_EVT_RX_PKT_RECEIVED;
+            _ser_phy_rx_event.evt_params.rx_pkt_received.num_of_bytes = saved_rx_len - SER_PHY_HEADER_SIZE;
+            _ser_phy_rx_event.evt_params.rx_pkt_received.p_buffer = hal_rx_buf;
+
+            if (_ser_phy_event_handler) {
+                _ser_phy_event_handler(_ser_phy_rx_event);
+            }
+        }
     }
 }
 
@@ -196,6 +233,8 @@ uint32_t ser_phy_tx_pkt_send (const uint8_t* p_buffer, uint16_t num_of_bytes) {
 uint32_t ser_phy_rx_buf_set (uint8_t* p_buffer) {
     // Save a pointer to the buffer we can use.
     hal_rx_buf = p_buffer;
+
+    nrf51822_WAKEME_WAKEME_WAKEME();
 
     return NRF_SUCCESS;
 }
