@@ -15,6 +15,7 @@ extern crate signpost_hil;
 use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
+use kernel::hil;
 use kernel::hil::Controller;
 use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
@@ -73,6 +74,7 @@ struct RadioModule {
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
+	i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 }
 
 impl Platform for RadioModule {
@@ -86,6 +88,7 @@ impl Platform for RadioModule {
             3 => f(Some(self.timer)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
+            105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
     }
@@ -204,6 +207,17 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
+	let i2c_modules = static_init!(
+		signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+		signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C1,
+			&mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
+			&mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
+			&mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+		928/8);
+	sam4l::i2c::I2C1.set_master_client(i2c_modules);
+	sam4l::i2c::I2C1.set_slave_client(i2c_modules);
+
+	hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C1, 0x22);
 
     //some declaration of an i2c slave that I don't know how to do yet
 
@@ -307,20 +321,20 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 14],
-        [&sam4l::gpio::PA[25],  // CONTROLLER_LED
-         &sam4l::gpio::PA[04],  // MOD0_IN
-         &sam4l::gpio::PA[05],  // MOD1_IN
-         &sam4l::gpio::PA[06],  // MOD2_IN
-         &sam4l::gpio::PA[07],  // MOD5_IN
-         &sam4l::gpio::PA[08],  // MOD6_IN
-         &sam4l::gpio::PA[09],  // MOD7_IN
-         &sam4l::gpio::PA[13],  // MOD0_OUT
-         &sam4l::gpio::PA[14],  // MOD1_OUT
-         &sam4l::gpio::PA[15],  // MOD2_OUT
-         &sam4l::gpio::PA[16],  // MOD5_OUT
-         &sam4l::gpio::PA[17],  // MOD6_OUT
-         &sam4l::gpio::PA[18],  // MOD7_OUT
-         &sam4l::gpio::PA[26]], // !SMBALERT
+        [&sam4l::gpio::PA[25],  
+         &sam4l::gpio::PA[04],  
+         &sam4l::gpio::PA[05],  
+         &sam4l::gpio::PA[06],  
+         &sam4l::gpio::PA[07],  
+         &sam4l::gpio::PA[08],  
+         &sam4l::gpio::PA[09],  
+         &sam4l::gpio::PA[13],  
+         &sam4l::gpio::PA[14],  
+         &sam4l::gpio::PA[15],  
+         &sam4l::gpio::PA[16],  
+         &sam4l::gpio::PA[17],  
+         &sam4l::gpio::PA[18],  
+         &sam4l::gpio::PA[26]], 
         14 * 4
     );
     let gpio = static_init!(
@@ -343,8 +357,9 @@ pub unsafe fn reset_handler() {
             timer: timer,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
+			i2c_master_slave: i2c_modules,
         },
-        160/8);
+        192/8);
 
     radio_module.console.initialize();
 
