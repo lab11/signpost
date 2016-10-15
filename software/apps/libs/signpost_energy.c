@@ -50,16 +50,9 @@ void signpost_energy_init () {
 }
 
 static int get_ltc_energy (int selector_mask) {
-	// delay_ms(200);
-
 	// Select correct LTC2941
 	i2c_selector_select_channels(selector_mask);
 	yield();
-
-
-
-	//i2c_selector_read_selected();
-	//yield();
 
 	// Get charge
 	ltc2941_get_charge();
