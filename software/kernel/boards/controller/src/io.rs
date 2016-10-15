@@ -1,6 +1,5 @@
 
 use core::fmt::*;
-use kernel::hil::Controller;
 use kernel::hil::uart::{self, UART};
 use sam4l;
 // use support::nop;

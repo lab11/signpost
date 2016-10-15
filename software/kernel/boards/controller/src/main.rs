@@ -17,7 +17,6 @@ use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
-use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
 use sam4l::usart;
 
@@ -103,7 +102,7 @@ impl Platform for SignpostController {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
-    use sam4l::gpio::PeripheralFunction::{A, B, C, D, E};
+    use sam4l::gpio::PeripheralFunction::{A, B, E};
 
     // GPIO: signal from modules
     PA[04].configure(None); // MOD0_IN
