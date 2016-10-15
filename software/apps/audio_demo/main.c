@@ -9,7 +9,7 @@
 #include <tock.h>
 #include "firestorm.h"
 #include <tock_str.h>
-//#include "msgeq7.h"
+#include "msgeq7.h"
 #include "i2c_master_slave.h"
 
 #define BUFFER_SIZE 20
@@ -29,6 +29,17 @@ static void i2c_master_slave_callback (
 	return;
 }
 
+static void timer_callback (
+	int callback_type __attribute__ ((unused)),
+	int length __attribute__ ((unused)),
+	int unused __attribute__ ((unused)),
+	void * callback_args __attribute__ ((unused))) {
+
+	msgeq7_get_values(result);
+	memcpy(master_write_buf+2, (uint8_t* )result, 14);
+	i2c_master_slave_write(0x22, 16);
+}
+
 int main () {
 	//low configure i2c slave to listen
 	i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
@@ -42,15 +53,15 @@ int main () {
 	//listen
 	i2c_master_slave_listen();
 
+	timer_subscribe(timer_callback, NULL);
+
 	//msgeq7_initialize(4, 5, 0);
 	master_write_buf[0] = 0x33;
 	master_write_buf[1] = 0x00;
 
+	timer_start_repeating(1000);
+
 	while(1) {
-	//	msgeq7_get_values(result);
-	//	memcpy(master_write_buf+2, (uint8_t* )result, 14);
-		i2c_master_slave_write(0x22, 16);
-		delay_ms(1000);
 		yield();
 	}
 }
