@@ -72,67 +72,6 @@ static void bonus_timer_callback (
   putstr("BONUS TIMER!!!!!!!!!!!!!!!!!\n");
 }
 
-void print_data () {
-  char buf[64];
-
-  // Need at least two bytes to be a valid signpost message.
-  if (_length < 2) {
-    return;
-  }
-
-  // First byte is the sender
-  int sender_address = slave_write_buf[0];
-  // Second byte is the packet type
-  int message_type = slave_write_buf[1];
-
-  // Handle each type of message.
-  switch (sender_address) {
-    case 0x31: { // 802.15.4 scanner
-      if (message_type == 1 && _length == (16+2)) {
-        // Got valid message from 15.4 scanner
-        putstr("Message type 1 from Scanner15.4\n");
-        for (int channel=11; channel<27; channel++) {
-          sprintf(buf, "  Channel %i RSSI: %i\n", channel, (int) ((int8_t) slave_write_buf[2+(channel-11)]));
-          putstr(buf);
-        }
-      }
-
-      break;
-    }
-    case 0x32: { // Ambient
-      if (message_type == 1 && _length == (8+2)) {
-        // Got valid message from ambient
-        putstr("Message type 1 from Ambient\n");
-        int temp = (int) ((int16_t) ((((uint16_t) slave_write_buf[2]) << 8) | ((uint16_t) slave_write_buf[3])));
-        int humi = (int) ((int16_t) ((((uint16_t) slave_write_buf[4]) << 8) | ((uint16_t) slave_write_buf[5])));
-        int ligh = (int) ((int16_t) ((((uint16_t) slave_write_buf[6]) << 8) | ((uint16_t) slave_write_buf[7])));
-        int pres = (int) ((int16_t) ((((uint16_t) slave_write_buf[8]) << 8) | ((uint16_t) slave_write_buf[9])));
-        sprintf(buf, "  Temperature: %i 1/100 degrees C\n", temp);
-        putstr(buf);
-        sprintf(buf, "  Humidity: %i 0.01%%\n", humi);
-        putstr(buf);
-        sprintf(buf, "  Light: %i Lux\n", ligh);
-        putstr(buf);
-        sprintf(buf, "  Pressure: %i ubar\n", pres);
-        putstr(buf);
-      }
-
-      break;
-    }
-    default: {
-      sprintf(buf, "Different message? %i\n  ", sender_address);
-      putstr(buf);
-      for (int i=0; i<_length; i++) {
-        sprintf(buf, "0x%02x ", slave_write_buf[i]);
-        putstr(buf);
-      }
-      sprintf(buf, "\n");
-      putstr(buf);
-    }
-  }
-
-}
-
 
 
 
@@ -152,14 +91,6 @@ typedef struct {
 
 // Keep track of the last time we got data from the ltc chips
 // so we can do diffs when reading the energy.
-// uint32_t energy_controller_last_reading = 0;
-// uint32_t energy_linux_last_reading = 0;
-// uint32_t energy_module0_last_reading = 0;
-// uint32_t energy_module1_last_reading = 0;
-// uint32_t energy_module2_last_reading = 0;
-// uint32_t energy_module5_last_reading = 0;
-// uint32_t energy_module6_last_reading = 0;
-// uint32_t energy_module7_last_reading = 0;
 uint32_t energy_last_readings[128] = {0};
 
 controller_fram_t fram;
@@ -194,8 +125,6 @@ void get_energy () {
     uint32_t diff = energy - *last_reading;
     *last_reading = energy;
 
-
-
     switch (i) {
       case 0: fram.energy_module0 += diff; break;
       case 1: fram.energy_module1 += diff; break;
@@ -206,9 +135,6 @@ void get_energy () {
       case 6: fram.energy_module6 += diff; break;
       case 7: fram.energy_module7 += diff; break;
     }
-
-    fm25cl_write(0, sizeof(controller_fram_t));
-    yield();
 
     // Test print
     switch (i) {
@@ -222,6 +148,34 @@ void get_energy () {
       case 7: print_energy_data(i, fram.energy_module7); break;
     }
   }
+
+  fm25cl_write(0, sizeof(controller_fram_t));
+  yield();
+
+  // My address
+  master_write_buf[0] = 0x20;
+  // Packet type. 1 == Energy Meters
+  master_write_buf[1] = 0x01;
+
+  master_write_buf[2]  = (uint8_t) (((fram.energy_module0 / 1000) >> 8) & 0xFF);
+  master_write_buf[3]  = (uint8_t) ((fram.energy_module0 / 1000) & 0xFF);
+  master_write_buf[4]  = (uint8_t) (((fram.energy_module1 / 1000) >> 8) & 0xFF);
+  master_write_buf[5]  = (uint8_t) ((fram.energy_module1 / 1000) & 0xFF);
+  master_write_buf[6]  = (uint8_t) (((fram.energy_module2 / 1000) >> 8) & 0xFF);
+  master_write_buf[7]  = (uint8_t) ((fram.energy_module2 / 1000) & 0xFF);
+  master_write_buf[8]  = (uint8_t) (((fram.energy_controller / 1000) >> 8) & 0xFF);
+  master_write_buf[9]  = (uint8_t) ((fram.energy_controller / 1000) & 0xFF);
+  master_write_buf[10] = (uint8_t) (((fram.energy_linux / 1000) >> 8) & 0xFF);
+  master_write_buf[11] = (uint8_t) ((fram.energy_linux / 1000) & 0xFF);
+  master_write_buf[12] = (uint8_t) (((fram.energy_module5 / 1000) >> 8) & 0xFF);
+  master_write_buf[13] = (uint8_t) ((fram.energy_module5 / 1000) & 0xFF);
+  master_write_buf[14] = (uint8_t) (((fram.energy_module6 / 1000) >> 8) & 0xFF);
+  master_write_buf[15] = (uint8_t) ((fram.energy_module6 / 1000) & 0xFF);
+  master_write_buf[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
+  master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
+
+  // i2c_master_slave_write(0x22, 18);
+  // yield();
 }
 
 int main () {
@@ -278,13 +232,7 @@ int main () {
 
 
   while (1) {
-
     yield();
-
-    // get_energy();
-
-
-
   }
 
 
