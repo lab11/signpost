@@ -18,7 +18,6 @@ use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
-use kernel::hil::spi::SpiMaster;
 use kernel::{Chip, MPU, Platform};
 use sam4l::usart;
 
@@ -316,16 +315,6 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941_driver);
 
-    //XXX: Needs to be changed to the USART SPI implementation
-    //
-    // SPI
-    //
-    let mux_spi = static_init!(
-        capsules::virtual_spi::MuxSPIMaster<'static>,
-        capsules::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI),
-        128/8);
-    sam4l::spi::SPI.set_client(mux_spi);
-    sam4l::spi::SPI.init();
 
     //
     // Remaining GPIO pins
