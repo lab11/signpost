@@ -11,10 +11,12 @@ SIZE?=arm-none-eabi-size
 OBJCOPY?=arm-none-eabi-objcopy
 OBJDUMP?=arm-none-eabi-objdump
 OBJDUMP_FLAGS+= --disassemble-all --source --disassembler-options=force-thumb -C --section-headers
+GDB=arm-none-eabi-gdb
 
 JLINK=JLinkExe
 JLINK_OPTIONS=-device ATSAM4LC8C -if swd -speed 1200 -AutoConnect 1
 JLINK_SCRIPTS_DIR=jtag/
+TERMINAL=gnome-terminal -e
 
 all: target/sam4l/release/controller
 
@@ -25,6 +27,7 @@ doc:
 .PHONY: target/sam4l/release/controller
 target/sam4l/release/controller:
 	@cargo build --release --target=sam4l.json
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > target/sam4l/release/controller.lst
 	@$(SIZE) $@
 
 .PHONY: target/sam4l/debug/controller
@@ -70,4 +73,12 @@ flash-debug: target/sam4l/debug/controller.hex
 .PHONY: flash-bootloader
 flash-bootloader: bootloader/bootloader.bin
 	$(JLINK) $(JLINK_OPTIONS) $(JLINK_SCRIPTS_DIR)/flash-bootloader.jlink
+
+startdebug: debug-gdbinit
+	$(TERMINAL) "JLinkGDBServer $(JLINK_OPTIONS) -port 2331"
+	sleep 1
+	$(TERMINAL) "$(GDB) target/sam4l/release/controller"
+
+debug-gdbinit:
+	printf "target remote localhost:2331\nload\nmon reset\nbreak main\n" > .gdbinit
 
