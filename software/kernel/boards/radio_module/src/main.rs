@@ -13,6 +13,7 @@ extern crate signpost_drivers;
 extern crate signpost_hil;
 
 use capsules::console::{self, Console};
+use capsules::nrf51822_serialization::{self, Nrf51822Serialization};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -75,6 +76,7 @@ struct RadioModule {
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
 	i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+	nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
 }
 
 impl Platform for RadioModule {
@@ -86,6 +88,7 @@ impl Platform for RadioModule {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            5 => f(Some(self.nrf51822)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
             105 => f(Some(self.i2c_master_slave)),
@@ -181,7 +184,15 @@ pub unsafe fn reset_handler() {
                      kernel::Container::create()),
         416/8);
     usart::USART2.set_uart_client(console);
-
+	
+	usart::USART3.set_clock_freq(clock_freq);
+	let nrf_serialization = static_init!(
+		Nrf51822Serialization<usart::USART>,
+		Nrf51822Serialization::new(&usart::USART3,
+				&mut nrf51822_serialization::WRITE_BUF,
+				&mut nrf51822_serialization::READ_BUF),
+		608/8);
+	usart::USART3.set_uart_client(nrf_serialization);
 
     //
     // Timer
@@ -358,10 +369,16 @@ pub unsafe fn reset_handler() {
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
 			i2c_master_slave: i2c_modules,
+			nrf51822:nrf_serialization,
         },
-        192/8);
+        224/8);
+
+	sam4l::gpio::PB[06].enable();
+	sam4l::gpio::PB[06].enable_output();
+	sam4l::gpio::PB[06].clear();
 
     radio_module.console.initialize();
+	radio_module.nrf51822.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
