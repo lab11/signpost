@@ -18,6 +18,14 @@ void getline_cb(int len, int y, int z, void* userdata) {
     getauto(str_buffer, 500, getline_cb, NULL);
 }
 
+uint32_t to_decimal_degrees (struct minmea_float coor) {
+    uint16_t degrees = coor.value/(coor.scale*100);
+    uint32_t minutes = coor.value - (degrees * 100);
+    uint32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60;
+
+    return decimal_degrees;
+}
+
 char print_buf[500] = {0};
 void parse_data (char* line) {
     sprintf(print_buf, "%d   ", strlen(line));
@@ -34,9 +42,9 @@ void parse_data (char* line) {
         switch (minmea_sentence_id(line, false)) {
             case MINMEA_SENTENCE_RMC:
                 if (minmea_parse_rmc(&rmc_frame, line)) {
-                    sprintf(print_str, "RMC: lat %d:%d lon %d:%d M/D/Y %d/%d/%d\n",
-                            rmc_frame.latitude.value, rmc_frame.latitude.scale,
-                            rmc_frame.longitude.value, rmc_frame.longitude.scale,
+                    sprintf(print_str, "RMC: lat %d:%d [%d] lon %d:%d [%d] M/D/Y %d/%d/%d\n",
+                            rmc_frame.latitude.value, rmc_frame.latitude.scale, to_decimal_degrees(rmc_frame.latitude),
+                            rmc_frame.longitude.value, rmc_frame.longitude.scale, to_decimal_degrees(rmc_frame.longitude),
                             rmc_frame.date.month, rmc_frame.date.day, rmc_frame.date.year);
                 }
                 break;
@@ -123,7 +131,7 @@ void parse_data (char* line) {
                     if (!minmea_check(line, false)) {
                         sprintf(print_str, "Invalid (fails check) %s\n", line);
                     } else
-                        if (!minmea_scan(line, 't', type)) {
+                        if (!minmea_scan(line, "t", type)) {
                         sprintf(print_str, "Invalid (fails scan) %s\n", line);
                     } else {
                         sprintf(print_str, "Invalid (other?) %s\n", line);
