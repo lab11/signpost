@@ -186,6 +186,7 @@ int main () {
   controller_init_module_switches();
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
+  controller_all_modules_disable_usb();
   // controller_all_modules_disable_i2c();
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
