@@ -120,6 +120,22 @@ void ble_address_set() {
 	//this has to be here I promise
 }
 
+void ble_error(uint32_t error_code) {
+	//this has to be here too
+}
+
+void ble_evt_connected(ble_evt_t* p_ble_evt) {
+	//this might also need to be here
+}
+
+void ble_evt_disconnected(ble_evt_t* p_ble_evt) {
+	//this too
+}
+
+void ble_evt_user_handler (ble_evt_t* p_ble_evt) {
+	//and maybe this
+}
+
 static void timer_callback (
 	int callback_type __attribute__ ((unused)),
 	int length __attribute__ ((unused)),
@@ -128,10 +144,12 @@ static void timer_callback (
 	
 	static uint8_t i = 0;
 
-	iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
-	if(i % 5 == 0) {
+//	iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+	if(i == 5) {
+		putstr("eddystone adv\n");
 		eddystone_adv(PHYSWEB_URL, NULL);
 	} else {
+		putstr("data adv\n");
 		adv_config_data();
 	}
 
@@ -144,13 +162,16 @@ static void timer_callback (
 int main () {
 	//configure the radios
 	//lora
-	uint16_t result = iM880A_Configure();
+//	uint16_t result = iM880A_Configure();
 	
+	putstr("started app\n");
 	//ble
 	simple_ble_init(&ble_config);
+	putstr("init ble\n");
 	
 	//setup a tock timer to 
 	eddystone_adv(PHYSWEB_URL,NULL);
+	putstr("started physweb adv\n");
 	
 	//configure the data array to send zeros with IDs
 	data_to_send[0][0] = 0x20;
@@ -176,7 +197,7 @@ int main () {
 	
 	//setup timer
 	timer_subscribe(timer_callback, NULL);
-	timer_start_repeating(1000);
+	timer_start_repeating(150);
 
 	while(1) {
 		yield();
