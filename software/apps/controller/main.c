@@ -8,13 +8,20 @@
 #include "firestorm.h"
 #include "tock.h"
 #include "console.h"
+#include "fm25cl.h"
 #include "signpost_energy.h"
+#include "gpio_async.h"
+#include "i2c_master_slave.h"
+#include "timer.h"
+#include "bonus_timer.h"
 #include "controller.h"
 
 
+void get_energy ();
 
-int _length;
-int _go = 0;
+
+// int _length;
+// int _go = 0;
 
 uint8_t slave_read_buf[256];
 uint8_t slave_write_buf[256];
@@ -39,11 +46,11 @@ static void i2c_master_slave_callback (
         void* callback_args __attribute__ ((unused))
         ) {
 
-  if (callback_type == 3) {
-    _length = length;
+  // if (callback_type == 3) {
+  //   _length = length;
 
-    _go = 1;
-  }
+  //   _go = 1;
+  // }
 }
 
 static void fm25cl_callback (
@@ -108,7 +115,7 @@ void print_energy_data (int module, int energy) {
 }
 
 void get_energy () {
-  putstr("\n\nUpdated Energy!\n");
+  putstr("\n\nUpdated Energy woo!\n");
 
   for (int i=0; i<8; i++) {
     uint32_t energy;
@@ -174,8 +181,8 @@ void get_energy () {
   master_write_buf[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
   master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
-  // i2c_master_slave_write(0x22, 18);
-  // yield();
+  i2c_master_slave_write(0x22, 18);
+  yield();
 }
 
 int main () {
@@ -190,6 +197,14 @@ int main () {
   // controller_all_modules_disable_i2c();
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
+
+  i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+  i2c_master_slave_set_slave_address(0x20);
+
+  // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
+  i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
+  // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
+  // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   // Configure FRAM
   fm25cl_set_callback(fm25cl_callback, NULL);
