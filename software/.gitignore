@@ -1,4 +1,4 @@
 target/
 build/
 .gdbinit
-.swp
+*.swp
