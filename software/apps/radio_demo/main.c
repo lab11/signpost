@@ -34,7 +34,7 @@ static simple_ble_config_t ble_config = {
 	.platform_id 		= 0x00,
 	.device_id			= DEVICE_ID_DEFAULT,
 	.adv_name			= DEVICE_NAME,
-	.adv_interval		= MSEC_TO_UNITS(150, UNIT_0_625_MS),
+	.adv_interval		= MSEC_TO_UNITS(300, UNIT_0_625_MS),
 	.min_conn_interval	= MSEC_TO_UNITS(500, UNIT_1_25_MS),
 	.max_conn_interval	= MSEC_TO_UNITS(1250, UNIT_1_25_MS),
 };
@@ -66,8 +66,8 @@ static void adv_config_data() {
 	static ble_advdata_manuf_data_t mandata;
 
 	mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
-	mandata.data.p_data = data_to_send[0];
-	mandata.data.size = 1;
+	mandata.data.p_data = data_to_send[i];
+	mandata.data.size = BUFFER_SIZE;
 
 	simple_adv_manuf_data(&mandata);
 
@@ -124,10 +124,6 @@ void ble_address_set() {
 
 void ble_error(uint32_t error_code) {
 	//this has to be here too
-    putstr("BLE Error");
-    char buf[20];
-    snprintf(buf, 20, "err/line: %d", error_code);
-    putnstr(buf, 20);
 }
 
 void ble_evt_connected(ble_evt_t* p_ble_evt) {
@@ -149,13 +145,12 @@ static void timer_callback (
 	void * callback_args __attribute__ ((unused))) {
 
 	static uint8_t i = 0;
+    static volatile uint16_t result = 0;
 
-//	iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+	result = iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
 	if(i == 5) {
-		putstr("eddystone adv\n");
 		eddystone_adv(PHYSWEB_URL, NULL);
 	} else {
-		putstr("data adv\n");
 		adv_config_data();
 	}
 
@@ -168,21 +163,17 @@ static void timer_callback (
 int main () {
 	//configure the radios
 	//lora
-//	uint16_t result = iM880A_Configure();
 //
     gpio_enable_output(BLE_POWER);
     gpio_set(BLE_POWER);
     delay_ms(10);
     gpio_clear(BLE_POWER);
 
-	putstr("started app\n");
 	//ble
 	simple_ble_init(&ble_config);
-	putstr("init ble\n");
 
 	//setup a tock timer to
 	eddystone_adv(PHYSWEB_URL,NULL);
-	putstr("started physweb adv\n");
 
 	//configure the data array to send zeros with IDs
 	data_to_send[0][0] = 0x20;
@@ -193,6 +184,8 @@ int main () {
 	data_to_send[3][0] = 0x32;
 	data_to_send[4][0] = 0x33;
 	data_to_send[5][0] = 0x34;
+
+	uint16_t result = iM880A_Configure();
 
 	//low configure i2c slave to listen
 	i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
@@ -208,7 +201,7 @@ int main () {
 
 	//setup timer
 	timer_subscribe(timer_callback, NULL);
-	timer_start_repeating(150);
+	timer_start_repeating(300);
 
 	while(1) {
 		yield();
