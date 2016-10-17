@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "controller.h"
+#include "i2c_master_slave.h"
 
 #define MOD0_GPIO_ASYNC_PORT_NUM 0
 #define MOD1_GPIO_ASYNC_PORT_NUM 1
@@ -16,13 +17,14 @@
 #define PIN_IDX_ISOLATE_I2C     1
 #define PIN_IDX_ISOLATE_USB     2
 
-// Callback when the pressure reading is ready
+
 static void gpio_async_callback (
         int callback_type __attribute__ ((unused)),
         int pin_value __attribute__ ((unused)),
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
+    /*
     static unsigned count = 0;
     static int addend = 1;
 
@@ -36,11 +38,26 @@ static void gpio_async_callback (
     count += addend;
     if (count > 10) addend = -1;
     if (count == 0) addend = 1;
+    */
+}
+
+static void i2c_master_slave_callback (
+        int callback_type,
+        int length,
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+    /*
+    if (callback_type == 3) {
+        _length = length;
+
+        _go = 1;
+    }
+    */
 }
 
 
 void test_module(uint32_t gpio_async_port_number) {
-        /////////////////////////////
         gpio_async_set(gpio_async_port_number, PIN_IDX_ISOLATE_POWER);
         yield();
 
@@ -76,6 +93,7 @@ int main(void) {
 
     controller_init_module_switches();
 
+    /*
     putstr("Test Module 0\n");
     test_module(MOD0_GPIO_ASYNC_PORT_NUM);
     putstr("Test Module 1\n");
@@ -88,11 +106,37 @@ int main(void) {
     test_module(MOD6_GPIO_ASYNC_PORT_NUM);
     putstr("Test Module 7\n");
     test_module(MOD7_GPIO_ASYNC_PORT_NUM);
+    */
 
-    putstr("Enable all modules\n");
-    controller_all_modules_enable_power();
-    controller_all_modules_enable_i2c();
-    controller_all_modules_enable_usb();
+    uint8_t master_write_buf[8] = {0x12, 0x34, 0x56, 0x78, 0xde, 0xad, 0xbe, 0xef};
+    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+    i2c_master_slave_set_master_write_buffer(master_write_buf, 8);
+
+    while (1) {
+        /*
+        putstr("Enable all modules\n");
+        controller_all_modules_enable_power();
+        controller_all_modules_enable_i2c();
+        controller_all_modules_enable_usb();
+        */
+
+        i2c_master_slave_write(0xa5, 8);
+        yield();
+
+        delay_ms(1000);
+
+        /*
+        putstr("Disable all modules\n");
+        controller_all_modules_disable_power();
+        controller_all_modules_disable_i2c();
+        controller_all_modules_disable_usb();
+
+        i2c_master_slave_write(0xa5, 8);
+        yield();
+
+        delay_ms(500);
+        */
+    }
 
     putstr("Backplane Test Complete.\n");
 }
