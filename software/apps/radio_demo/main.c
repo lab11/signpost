@@ -64,12 +64,14 @@ static void adv_config_data() {
 	static uint8_t i = 0;
 
 	static ble_advdata_manuf_data_t mandata;
+        
+        if(data_to_send[i][0] != 0x00) {
+	    mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
+	    mandata.data.p_data = data_to_send[i];
+	    mandata.data.size = BUFFER_SIZE;
 
-	mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
-	mandata.data.p_data = data_to_send[i];
-	mandata.data.size = BUFFER_SIZE;
-
-	simple_adv_manuf_data(&mandata);
+	    simple_adv_manuf_data(&mandata);
+        }
 
 	i++;
 	if(i >= NUMBER_OF_MODULES) {
@@ -92,24 +94,38 @@ static void i2c_master_slave_callback (
 		switch(slave_write_buf[0]) {
 		case 0x20:
 			if(slave_write_buf[1] == 0x01) {
-				memcpy(data_to_send[0], slave_write_buf, BUFFER_SIZE);
+				memcpy(data_to_send[0], slave_write_buf, 2);
+				memcpy(data_to_send[0]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                                data_to_send[0][2]++;
+                                
 			} else if (slave_write_buf[1] == 0x02) {
-				memcpy(data_to_send[1], slave_write_buf, BUFFER_SIZE);
+                                memcpy(data_to_send[1], slave_write_buf, 2);
+				memcpy(data_to_send[1]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                                data_to_send[1][2]++;
 			} else {
 				//this shouldn't happen
 			}
 		break;
 		case 0x31:
-			memcpy(data_to_send[2], slave_write_buf, BUFFER_SIZE);
+                        memcpy(data_to_send[2], slave_write_buf, 2);
+			memcpy(data_to_send[2]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                        data_to_send[2][2]++;
 		break;
 		case 0x32:
-			memcpy(data_to_send[3], slave_write_buf, BUFFER_SIZE);
+                        memcpy(data_to_send[3], slave_write_buf, 2);
+			memcpy(data_to_send[3]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                        data_to_send[3][2]++;
+
 		break;
 		case 0x33:
-			memcpy(data_to_send[4], slave_write_buf, BUFFER_SIZE);
+                        memcpy(data_to_send[4], slave_write_buf, 2);
+			memcpy(data_to_send[4]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                        data_to_send[4][2]++;
 		break;
 		case 0x34:
-			memcpy(data_to_send[5], slave_write_buf, BUFFER_SIZE);
+                        memcpy(data_to_send[5], slave_write_buf, 2);
+			memcpy(data_to_send[5]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                        data_to_send[5][2]++;
 		break;
 		default:
 			//this shouldn't happen
@@ -145,9 +161,11 @@ static void timer_callback (
 	void * callback_args __attribute__ ((unused))) {
 
 	static uint8_t i = 0;
-    static volatile uint16_t result = 0;
+        static volatile uint16_t result = 0;
 
-	result = iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+        if(data_to_send[i][0] != 0x00) {
+	    result = iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+        }
 	if(i == 5) {
 		eddystone_adv(PHYSWEB_URL, NULL);
 	} else {
@@ -175,15 +193,12 @@ int main () {
 	//setup a tock timer to
 	eddystone_adv(PHYSWEB_URL,NULL);
 
-	//configure the data array to send zeros with IDs
-	data_to_send[0][0] = 0x20;
-	data_to_send[1][0] = 0x20;
-	data_to_send[1][1] = 0x01;
-
-	data_to_send[2][0] = 0x31;
-	data_to_send[3][0] = 0x32;
-	data_to_send[4][0] = 0x33;
-	data_to_send[5][0] = 0x34;
+        //zero the rest of the data array
+        for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+            for(uint8_t j = 0; j < BUFFER_SIZE; j++) {
+                data_to_send[i][j] = 0;
+            }
+        }
 
 	uint16_t result = iM880A_Configure();
 
