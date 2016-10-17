@@ -5,112 +5,35 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
-#include <firestorm.h>
-#include <ltc2941.h>
+#include "tock.h"
+#include "console.h"
+#include "ltc2941.h"
 
-#define MOD0_GPIOA_PORT_NUM 0
-#define MOD1_GPIOA_PORT_NUM 1
-#define MOD2_GPIOA_PORT_NUM 2
-#define MOD5_GPIOA_PORT_NUM 3
-#define MOD6_GPIOA_PORT_NUM 4
-#define MOD7_GPIOA_PORT_NUM 5
 
-#define UNUSED_PARAMETER(x) (void)(x)
-
-// Global store
-int _data = 5;
-int _data2 = 6;
-
-// Callback when the pressure reading is ready
-void callback (int callback_type, int data, int data2, void* callback_args) {
-  UNUSED_PARAMETER(callback_args);
-
-  _data = data;
-  _data2 = data2;
-
+void print_data (int charge) {
+  char buf[64];
+  sprintf(buf, "\tCharge: 0x%02x\n\n", charge);
+  putstr(buf);
 }
 
-void print_data () {
+void print_status (int status) {
   char buf[64];
-  sprintf(buf, "\tGot something: 0x%02x  | 0x%02x\n\n", _data, _data2);
+  sprintf(buf, "\tStatus: 0x%02x\n\n", status);
   putstr(buf);
 }
 
 int main () {
-  putstr("Welcome to Tock...lets count some coulombs!!\n");
+  putstr("[LTC2941] Test\n");
 
-  // Pass a callback function to the kernel
-  ltc2941_set_callback(callback, NULL);
+  int status = ltc2941_read_status_sync();
+  print_status(status);
 
-  ltc2941_read_status();
-  yield();
-  print_data();
-
-  ltc2941_reset_charge();
-  yield();
-
-  ltc2941_set_high_threshold(0x0010);
-  yield();
+  ltc2941_reset_charge_sync();
+  ltc2941_set_high_threshold_sync(0x0010);
 
   while (1) {
-    ltc2941_get_charge();
-    yield();
-    print_data();
+    int charge = ltc2941_get_charge_sync();
+    print_data(charge);
     delay_ms(1000);
   }
-
-  // gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 0);
-  // yield();
-
-  // gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 1);
-  // yield();
-
-  // gpio_async_set(MOD7_GPIOA_PORT_NUM, 0);
-  // yield();
-  // gpio_async_clear(10, 0);
-  // yield();
-  // gpio_async_toggle(10, 0);
-  // yield();
-  // gpio_async_toggle(10, 0);
-  // yield();
-
-
-
-  // while (1) {
-
-  //   int i;
-  //   for (i=0;i<10;i++) {
-  //     gpio_async_enable_output(MOD7_GPIOA_PORT_NUM, 2);
-  //     yield();
-  //     gpio_async_clear(MOD7_GPIOA_PORT_NUM, 2);
-  //     yield();
-  //     gpio_async_set(MOD7_GPIOA_PORT_NUM, 2);
-  //     // gpio_async_enable_input(10, 2, PullNone);
-  //     yield();
-  //     delay_ms(10);
-  //   }
-
-
-
-  //   // delay_ms(500);
-  //   gpio_async_toggle(MOD7_GPIOA_PORT_NUM, 1);
-  //   yield();
-  // }
-
-  // gpio_async_enable_input(10, 0, PullNone);
-  // yield();
-
-  // while (1) {
-  //   gpio_async_read(10, 0);
-
-  //   yield();
-
-  //   {
-  //     // Print the pressure value
-  //     char buf[64];
-  //     sprintf(buf, "\tREAD GPIO async %i\n\n", _pin_value);
-  //     putstr(buf);
-  //   }
-  // }
 }

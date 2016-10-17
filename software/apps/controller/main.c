@@ -233,8 +233,4 @@ int main () {
 
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
-
-  while (1) {
-    yield();
-  }
 }
