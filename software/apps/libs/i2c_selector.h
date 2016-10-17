@@ -19,3 +19,10 @@ int i2c_selector_select_channels();
 int i2c_selector_read_interrupts();
 
 int i2c_selector_read_selected();
+
+
+// Synchronous versions
+int i2c_selector_select_channels_sync(uint32_t channels);
+int i2c_selector_disable_all_channels_sync();
+int i2c_selector_read_interrupts_sync();
+int i2c_selector_read_selected_sync();

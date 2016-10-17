@@ -53,13 +53,7 @@ static void i2c_master_slave_callback (
   // }
 }
 
-static void fm25cl_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-}
+
 
 static void timer_callback (
         int callback_type __attribute__ ((unused)),
@@ -156,8 +150,7 @@ void get_energy () {
     }
   }
 
-  fm25cl_write(0, sizeof(controller_fram_t));
-  yield();
+  fm25cl_write_sync(0, sizeof(controller_fram_t));
 
   // My address
   master_write_buf[0] = 0x20;
@@ -207,13 +200,11 @@ int main () {
   // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   // Configure FRAM
-  fm25cl_set_callback(fm25cl_callback, NULL);
   fm25cl_set_read_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  fm25cl_read(0, sizeof(controller_fram_t));
-  yield();
+  fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == MAGIC) {
     // Great. We have saved data.
   } else {
@@ -227,8 +218,7 @@ int main () {
     fram.energy_module5 = 0;
     fram.energy_module6 = 0;
     fram.energy_module7 = 0;
-    fm25cl_write(0, sizeof(controller_fram_t));
-    yield();
+    fm25cl_write_sync(0, sizeof(controller_fram_t));
   }
 
   // Need to init the signpost energy library

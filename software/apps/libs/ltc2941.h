@@ -67,3 +67,15 @@ int ltc2941_get_charge();
 // Put the LTC2941 in a low power state.
 // Will trigger a `done` callback.
 int ltc2941_shutdown();
+
+
+//
+// Synchronous Versions
+//
+int ltc2941_read_status_sync();
+int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat);
+int ltc2941_reset_charge_sync();
+int ltc2941_set_high_threshold_sync(uint16_t threshold);
+int ltc2941_set_low_threshold_sync(uint16_t threshold);
+int ltc2941_get_charge_sync();
+int ltc2941_shutdown_sync();
