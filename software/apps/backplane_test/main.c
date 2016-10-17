@@ -60,6 +60,8 @@ static void i2c_master_slave_callback (
 int main(void) {
     putstr("Backplane Test\n");
 
+    delay_ms(100);
+
     controller_gpio_enable_all_MODINs();
     controller_gpio_enable_all_MODOUTs(PullDown);
 
