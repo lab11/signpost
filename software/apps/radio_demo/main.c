@@ -20,6 +20,8 @@
 #include <tock_str.h>
 #include "iM880A_RadioInterface.h"
 #include "i2c_master_slave.h"
+#include "radio_module.h"
+#include "gpio.h"
 
 //definitions for the ble
 #define DEVICE_NAME "Signpost"
@@ -55,20 +57,20 @@ static void adv_config_eddystone () {
 }
 
 static void adv_config_name() {
-	simple_adv_only_name();	
+	simple_adv_only_name();
 }
 
 static void adv_config_data() {
 	static uint8_t i = 0;
 
-	ble_advdata_manuf_data_t mandata;
+	static ble_advdata_manuf_data_t mandata;
 
 	mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
-	mandata.data.p_data = data_to_send[i];
-	mandata.data.size = BUFFER_SIZE;
-	
+	mandata.data.p_data = data_to_send[0];
+	mandata.data.size = 1;
+
 	simple_adv_manuf_data(&mandata);
-	
+
 	i++;
 	if(i >= NUMBER_OF_MODULES) {
 		i = 0;
@@ -122,6 +124,10 @@ void ble_address_set() {
 
 void ble_error(uint32_t error_code) {
 	//this has to be here too
+    putstr("BLE Error");
+    char buf[20];
+    snprintf(buf, 20, "err/line: %d", error_code);
+    putnstr(buf, 20);
 }
 
 void ble_evt_connected(ble_evt_t* p_ble_evt) {
@@ -141,7 +147,7 @@ static void timer_callback (
 	int length __attribute__ ((unused)),
 	int unused __attribute__ ((unused)),
 	void * callback_args __attribute__ ((unused))) {
-	
+
 	static uint8_t i = 0;
 
 //	iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
@@ -163,38 +169,43 @@ int main () {
 	//configure the radios
 	//lora
 //	uint16_t result = iM880A_Configure();
-	
+//
+    gpio_enable_output(BLE_POWER);
+    gpio_set(BLE_POWER);
+    delay_ms(10);
+    gpio_clear(BLE_POWER);
+
 	putstr("started app\n");
 	//ble
 	simple_ble_init(&ble_config);
 	putstr("init ble\n");
-	
-	//setup a tock timer to 
+
+	//setup a tock timer to
 	eddystone_adv(PHYSWEB_URL,NULL);
 	putstr("started physweb adv\n");
-	
+
 	//configure the data array to send zeros with IDs
 	data_to_send[0][0] = 0x20;
 	data_to_send[1][0] = 0x20;
 	data_to_send[1][1] = 0x01;
-	
+
 	data_to_send[2][0] = 0x31;
 	data_to_send[3][0] = 0x32;
 	data_to_send[4][0] = 0x33;
 	data_to_send[5][0] = 0x34;
-	
+
 	//low configure i2c slave to listen
 	i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
 	i2c_master_slave_set_slave_address(0x22);
-	
+
 	i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
 	i2c_master_slave_set_master_write_buffer(master_write_buf, BUFFER_SIZE);
 	i2c_master_slave_set_slave_write_buffer(slave_write_buf, BUFFER_SIZE);
 	i2c_master_slave_set_slave_read_buffer(slave_read_buf, BUFFER_SIZE);
-	
+
 	//listen
 	i2c_master_slave_listen();
-	
+
 	//setup timer
 	timer_subscribe(timer_callback, NULL);
 	timer_start_repeating(150);

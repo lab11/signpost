@@ -72,8 +72,6 @@ struct RadioModule {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
-    coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
 	i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 	nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
 }
@@ -88,8 +86,6 @@ impl Platform for RadioModule {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             5 => f(Some(self.nrf51822)),
-            101 => f(Some(self.coulomb_counter_i2c_selector)),
-            102 => f(Some(self.coulomb_counter_generic)),
             105 => f(Some(self.i2c_master_slave)),
             _ => f(None)
         }
@@ -113,7 +109,7 @@ unsafe fn set_pin_primary_functions() {
 
     //Nucleum Signals
     PB[02].configure(None); //Nucleum Reset
-    PB[06].configure(Some(A)); //RTS
+    PB[06].configure(None); //RTS
     PB[07].configure(Some(A)); //CTS
     PB[08].configure(None); //Boot
     PB[09].configure(Some(A)); //TX
@@ -229,113 +225,27 @@ pub unsafe fn reset_handler() {
 
 	hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C1, 0x22);
 
-    //some declaration of an i2c slave that I don't know how to do yet
-
-	//stuff for the smbus i2c
-    let i2c_mux_smbus = static_init!(capsules::virtual_i2c::MuxI2C<'static>, capsules::virtual_i2c::MuxI2C::new(&sam4l::i2c::I2C3), 20);
-    sam4l::i2c::I2C3.set_master_client(i2c_mux_smbus);
-
-	//
-	// SMBUS Interrupt
-	//
-
-    let smbusint_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x0C),
-        32);
-
-    let smbusint = static_init!(
-        signpost_drivers::smbus_interrupt::SMBUSInterrupt<'static>,
-        // Make sure to replace "None" below with gpio used as SMBUS Alert
-        // Some(&sam4l::gpio::PA[16]) for instance
-        signpost_drivers::smbus_interrupt::SMBUSInterrupt::new(smbusint_i2c, None, &mut signpost_drivers::smbus_interrupt::BUFFER),
-        288/8);
-
-    smbusint_i2c.set_client(smbusint);
-    // Make sure to set smbusint as client for chosen gpio for SMBUS Alert
-    // &sam4l::gpio::PA[16].set_client(smbusint); for instance
-
-    let smbusint_driver = static_init!(
-        signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
-        signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),
-        128/8);
-    smbusint.set_client(smbusint_driver);
-
-    // I2C Selectors.
-    //
-    let pca9544a_0_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x70),
-        32);
-    let pca9544a_0 = static_init!(
-        signpost_drivers::pca9544a::PCA9544A<'static>,
-        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_0_i2c, &mut signpost_drivers::pca9544a::BUFFER),
-        256/8);
-    pca9544a_0_i2c.set_client(pca9544a_0);
-
-	//create an array of the I2C selectors
-	let i2c_selectors = static_init!(
-		[& 'static signpost_drivers::pca9544a::PCA9544A; 1],
-		[pca9544a_0],
-		32/8
-	);
-
-    // This provides the common interface to the I2C selectors
-    let i2c_selector = static_init!(
-        signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
-        signpost_drivers::i2c_selector::I2CSelector::new(i2c_selectors),
-        228/8
-    );
-    for (i, selector) in i2c_selectors.iter().enumerate() {
-        selector.set_client(i2c_selector, i);
-    }
-
-    //
-    // Coulomb counter
-    //
-
-    // Setup the driver for the coulomb counter. We only use one because
-    // they all share the same address, so one driver can be used for any
-    // of them based on which port is selected on the i2c selector.
-    let ltc2941_i2c = static_init!(
-        capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x64),
-        32);
-    let ltc2941 = static_init!(
-        signpost_drivers::ltc2941::LTC2941<'static>,
-        signpost_drivers::ltc2941::LTC2941::new(ltc2941_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
-        288/8);
-    ltc2941_i2c.set_client(ltc2941);
-
-    // Create the object that provides an interface for the coulomb counter
-    // for applications.
-    let ltc2941_driver = static_init!(
-        signpost_drivers::ltc2941::LTC2941Driver<'static>,
-        signpost_drivers::ltc2941::LTC2941Driver::new(ltc2941),
-        128/8);
-    ltc2941.set_client(ltc2941_driver);
-
-
     //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 14],
-        [&sam4l::gpio::PA[25],  
+        [&'static sam4l::gpio::GPIOPin; 15],
+        [&sam4l::gpio::PB[04],  
+         &sam4l::gpio::PB[05],  
+         &sam4l::gpio::PB[03],  
+         &sam4l::gpio::PB[02],  
+         &sam4l::gpio::PB[08],  
+         &sam4l::gpio::PB[11],  
          &sam4l::gpio::PA[04],  
          &sam4l::gpio::PA[05],  
          &sam4l::gpio::PA[06],  
-         &sam4l::gpio::PA[07],  
-         &sam4l::gpio::PA[08],  
-         &sam4l::gpio::PA[09],  
-         &sam4l::gpio::PA[13],  
-         &sam4l::gpio::PA[14],  
-         &sam4l::gpio::PA[15],  
-         &sam4l::gpio::PA[16],  
          &sam4l::gpio::PA[17],  
          &sam4l::gpio::PA[18],  
-         &sam4l::gpio::PA[26]], 
-        14 * 4
+         &sam4l::gpio::PA[07],  
+         &sam4l::gpio::PA[10],  
+         &sam4l::gpio::PA[13],  
+         &sam4l::gpio::PA[14]], 
+        15 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -344,7 +254,6 @@ pub unsafe fn reset_handler() {
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }
-
 
     //
     // Actual platform object
@@ -355,12 +264,10 @@ pub unsafe fn reset_handler() {
             console: console,
             gpio: gpio,
             timer: timer,
-            coulomb_counter_i2c_selector: i2c_selector,
-            coulomb_counter_generic: ltc2941_driver,
 			i2c_master_slave: i2c_modules,
 			nrf51822:nrf_serialization,
         },
-        224/8);
+        160/8);
 
 	sam4l::gpio::PB[06].enable();
 	sam4l::gpio::PB[06].enable_output();
