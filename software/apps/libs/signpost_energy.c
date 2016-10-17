@@ -73,7 +73,7 @@ int signpost_energy_get_module_energy (int module_num) {
 	return get_ltc_energy(module_num_to_selector_mask[module_num]);
 }
 
-int signpost_energy_reset () {
+void signpost_energy_reset () {
 	for (int i = 0; i < 8; i++) {
 		i2c_selector_select_channels(1<<i);
 		yield();

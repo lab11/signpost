@@ -8,7 +8,8 @@
 void signpost_energy_init ();
 
 int signpost_energy_get_controller_energy ();
+int signpost_energy_get_linux_energy ();
 int signpost_energy_get_module_energy (int module_num);
-int signpost_energy_reset ();
+void signpost_energy_reset ();
 int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler);
 

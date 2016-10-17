@@ -1,5 +1,7 @@
 #pragma once
 
+#include "gpio.h"
+
 #define MOD0_GPIO_ASYNC_PORT_NUM 0
 #define MOD1_GPIO_ASYNC_PORT_NUM 1
 #define MOD2_GPIO_ASYNC_PORT_NUM 2
@@ -57,6 +59,7 @@ void controller_init_module_switches ();
 
 void controller_gpio_enable_all_MODINs ();
 void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config);
+
 void controller_gpio_set_all ();
 void controller_gpio_clear_all ();
 
