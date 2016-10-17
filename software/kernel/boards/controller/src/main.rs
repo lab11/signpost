@@ -111,14 +111,7 @@ unsafe fn set_pin_primary_functions() {
     PA[05].configure(None); // MOD1_IN
     PA[06].configure(None); // MOD2_IN
     PA[07].configure(None); // MOD5_IN
-
-
-    // PA[08].configure(None); // MOD6_IN
-
-    // use for FRAM !CS
-    PA[08].configure(Some(A)); // MOD6_IN
-
-
+    PA[08].configure(None); // MOD6_IN
     PA[09].configure(None); // MOD7_IN
 
     // GPIO: signal to modules
