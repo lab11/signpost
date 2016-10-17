@@ -2,7 +2,7 @@
 #include "tock.h"
 #include "i2c_master_slave.h"
 
-static struct i2c_master_slave_data {
+struct i2c_master_slave_data {
   bool fired;
   int callback_type;
   int length;

@@ -8,7 +8,7 @@
 
 
 
-static struct gpio_async_data {
+struct gpio_async_data {
   bool fired;
   int value;
   int callback_type;

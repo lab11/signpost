@@ -5,7 +5,7 @@
 #define DRIVER_NUM_I2C_SELECTOR 101
 
 
-static struct i2c_selector_data {
+struct i2c_selector_data {
   bool fired;
   int value;
 };
