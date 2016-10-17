@@ -19,40 +19,40 @@ void controller_init_module_switches () {
     }
 }
 
-void controller_gpio_enable_all_module_inputs (GPIO_InputMode_t pin_config) {
-    gpio_enable_input(MOD0_IN, pin_config);
-    gpio_enable_input(MOD1_IN, pin_config);
-    gpio_enable_input(MOD2_IN, pin_config);
-    gpio_enable_input(MOD5_IN, pin_config);
-    gpio_enable_input(MOD6_IN, pin_config);
-    gpio_enable_input(MOD7_IN, pin_config);
+void controller_gpio_enable_all_MODINs () {
+    gpio_enable_output(MOD0_IN);
+    gpio_enable_output(MOD1_IN);
+    gpio_enable_output(MOD2_IN);
+    gpio_enable_output(MOD5_IN);
+    gpio_enable_output(MOD6_IN);
+    gpio_enable_output(MOD7_IN);
 }
 
-void controller_gpio_enable_all_module_outputs () {
-    gpio_enable_output(MOD0_OUT);
-    gpio_enable_output(MOD1_OUT);
-    gpio_enable_output(MOD2_OUT);
-    gpio_enable_output(MOD5_OUT);
-    gpio_enable_output(MOD6_OUT);
-    gpio_enable_output(MOD7_OUT);
+void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config) {
+    gpio_enable_input(MOD0_OUT, pin_config);
+    gpio_enable_input(MOD1_OUT, pin_config);
+    gpio_enable_input(MOD2_OUT, pin_config);
+    gpio_enable_input(MOD5_OUT, pin_config);
+    gpio_enable_input(MOD6_OUT, pin_config);
+    gpio_enable_input(MOD7_OUT, pin_config);
 }
 
 void controller_gpio_set_all () {
-    gpio_set(MOD0_OUT);
-    gpio_set(MOD1_OUT);
-    gpio_set(MOD2_OUT);
-    gpio_set(MOD5_OUT);
-    gpio_set(MOD6_OUT);
-    gpio_set(MOD7_OUT);
+    gpio_set(MOD0_IN);
+    gpio_set(MOD1_IN);
+    gpio_set(MOD2_IN);
+    gpio_set(MOD5_IN);
+    gpio_set(MOD6_IN);
+    gpio_set(MOD7_IN);
 }
 
 void controller_gpio_clear_all () {
-    gpio_clear(MOD0_OUT);
-    gpio_clear(MOD1_OUT);
-    gpio_clear(MOD2_OUT);
-    gpio_clear(MOD5_OUT);
-    gpio_clear(MOD6_OUT);
-    gpio_clear(MOD7_OUT);
+    gpio_clear(MOD0_IN);
+    gpio_clear(MOD1_IN);
+    gpio_clear(MOD2_IN);
+    gpio_clear(MOD5_IN);
+    gpio_clear(MOD6_IN);
+    gpio_clear(MOD7_IN);
 }
 
 // Supply power to a given module

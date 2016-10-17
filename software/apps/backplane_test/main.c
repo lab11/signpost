@@ -60,8 +60,8 @@ static void i2c_master_slave_callback (
 int main(void) {
     putstr("Backplane Test\n");
 
-    controller_gpio_enable_all_module_inputs(PullDown);
-    controller_gpio_enable_all_module_outputs();
+    controller_gpio_enable_all_MODINs();
+    controller_gpio_enable_all_MODOUTs(PullDown);
 
     gpio_async_set_callback(gpio_async_callback, NULL);
 

@@ -55,8 +55,8 @@ enum GPIO_Pin_enum{
 
 void controller_init_module_switches ();
 
-void controller_gpio_enable_all_module_inputs (GPIO_InputMode_t pin_config);
-void controller_gpio_enable_all_module_outputs ();
+void controller_gpio_enable_all_MODINs ();
+void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config);
 void controller_gpio_set_all ();
 void controller_gpio_clear_all ();
 
