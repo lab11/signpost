@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <tock_str.h>
+#include <console.h>
 #include <gpio.h>
 
 #include "minmea.h"

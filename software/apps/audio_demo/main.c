@@ -6,10 +6,11 @@
 #include <stdbool.h>
 
 #include <tock.h>
-#include <tock_str.h>
+#include <console.h>
 #include "firestorm.h"
 #include "gpio.h"
 #include "adc.h"
+#include "msgeq7.h"
 #include "i2c_master_slave.h"
 
 #define STROBE 4

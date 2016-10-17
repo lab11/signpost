@@ -7,7 +7,7 @@
 
 #include "firestorm.h"
 #include "tock.h"
-#include "tock_str.h"
+#include "console.h"
 #include "signpost_energy.h"
 #include "controller.h"
 

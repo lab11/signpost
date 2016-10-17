@@ -71,7 +71,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "tock.h"
-#include "tock_str.h"
+#include "console.h"
 #include "ComSlip.h"
 #include "firestorm.h"
 

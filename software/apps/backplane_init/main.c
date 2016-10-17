@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include <tock.h>
-#include <tock_str.h>
+#include <console.h>
 
 #include <gpio.h>
 #include <gpio_async.h>

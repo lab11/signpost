@@ -17,7 +17,7 @@
 //tock includes
 #include <tock.h>
 #include "firestorm.h"
-#include <tock_str.h>
+#include <console.h>
 #include "iM880A_RadioInterface.h"
 #include "i2c_master_slave.h"
 #include "radio_module.h"

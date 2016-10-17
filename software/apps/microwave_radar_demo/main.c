@@ -9,7 +9,7 @@
 #include <tock.h>
 #include <firestorm.h>
 #include <adc.h>
-#include <tock_str.h>
+#include <console.h>
 
 #include "i2c_master_slave.h"
 

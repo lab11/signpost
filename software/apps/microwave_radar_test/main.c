@@ -8,7 +8,7 @@
 #include <tock.h>
 #include <firestorm.h>
 #include <adc.h>
-#include <tock_str.h>
+#include <console.h>
 
 #define UNUSED_PARAMETER(x) (void)(x)
 

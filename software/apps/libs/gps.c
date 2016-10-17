@@ -1,5 +1,5 @@
 #include "gps.h"
-#include "tock_str.h"
+#include "console.h"
 #include "minmea.h"
 
 #include <string.h>
