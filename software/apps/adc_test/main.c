@@ -33,8 +33,7 @@ void callback (int callback_type, int data, int data2, void* callback_args) {
 
 void print_data () {
   char buf[64];
-  // _data2 is left alligned to 16 bits
-  sprintf(buf, "\tGot: 0x%02x\n\n", _data2>>4);
+  sprintf(buf, "\tGot: 0x%02x\n\n", _data2);
   putstr(buf);
 }
 
