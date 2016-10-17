@@ -113,29 +113,23 @@ int main(void) {
     i2c_master_slave_set_master_write_buffer(master_write_buf, 8);
 
     while (1) {
-        /*
-        putstr("Enable all modules\n");
         controller_all_modules_enable_power();
         controller_all_modules_enable_i2c();
-        controller_all_modules_enable_usb();
-        */
 
-        i2c_master_slave_write(0xa5, 8);
+        i2c_master_slave_write(0x11, 8);
+        yield();
+
+        controller_all_modules_disable_i2c();
+
+        i2c_master_slave_write(0x22, 8);
+        yield();
+
+        controller_all_modules_disable_power();
+
+        i2c_master_slave_write(0x33, 8);
         yield();
 
         delay_ms(1000);
-
-        /*
-        putstr("Disable all modules\n");
-        controller_all_modules_disable_power();
-        controller_all_modules_disable_i2c();
-        controller_all_modules_disable_usb();
-
-        i2c_master_slave_write(0xa5, 8);
-        yield();
-
-        delay_ms(500);
-        */
     }
 
     putstr("Backplane Test Complete.\n");
