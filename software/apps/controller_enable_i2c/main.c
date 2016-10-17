@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "firestorm.h"
 #include "tock.h"
 #include "console.h"
 #include "signpost_energy.h"
@@ -13,21 +12,12 @@
 
 
 
-int _length;
-int _go = 0;
-
 uint8_t slave_read_buf[256];
 uint8_t slave_write_buf[256];
 uint8_t master_read_buf[256];
 uint8_t master_write_buf[256];
 
-static void gpio_async_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-}
+
 
 static void i2c_master_slave_callback (
         int callback_type,
@@ -37,17 +27,15 @@ static void i2c_master_slave_callback (
         ) {
 
   if (callback_type == 3) {
-    _length = length;
-
-    _go = 1;
+    print_data(length);
   }
 }
 
-void print_data () {
+void print_data (int length) {
   char buf[64];
 
   // Need at least two bytes to be a valid signpost message.
-  if (_length < 2) {
+  if (length < 2) {
     return;
   }
 
@@ -59,7 +47,7 @@ void print_data () {
   // Handle each type of message.
   switch (sender_address) {
     case 0x31: { // 802.15.4 scanner
-      if (message_type == 1 && _length == (16+2)) {
+      if (message_type == 1 && length == (16+2)) {
         // Got valid message from 15.4 scanner
         putstr("Message type 1 from Scanner15.4\n");
         for (int channel=11; channel<27; channel++) {
@@ -71,7 +59,7 @@ void print_data () {
       break;
     }
     case 0x32: { // Ambient
-      if (message_type == 1 && _length == (8+2)) {
+      if (message_type == 1 && length == (8+2)) {
         // Got valid message from ambient
         putstr("Message type 1 from Ambient\n");
         int temp = (int) ((int16_t) ((((uint16_t) slave_write_buf[2]) << 8) | ((uint16_t) slave_write_buf[3])));
@@ -93,7 +81,7 @@ void print_data () {
     default: {
       sprintf(buf, "Different message? %i\n  ", sender_address);
       putstr(buf);
-      for (int i=0; i<_length; i++) {
+      for (int i=0; i<length; i++) {
         sprintf(buf, "0x%02x ", slave_write_buf[i]);
         putstr(buf);
       }
@@ -108,7 +96,6 @@ int main () {
   putstr("[Controller] Start!\n");
 
   // Setup backplane
-  gpio_async_set_callback(gpio_async_callback, NULL);
   controller_init_module_switches();
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
@@ -126,14 +113,4 @@ int main () {
   i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   i2c_master_slave_listen();
-
-  while (1) {
-    yield();
-
-    if (_go == 1) {
-      _go = 0;
-
-      print_data();
-    }
-  }
 }
