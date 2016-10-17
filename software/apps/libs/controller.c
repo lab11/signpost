@@ -10,12 +10,9 @@ void controller_init_module_switches () {
     int i;
 
     for (i=0; i<6; i++) {
-        gpio_async_enable_output(i, PIN_IDX_ISOLATE_POWER);
-        yield();
-        gpio_async_enable_output(i, PIN_IDX_ISOLATE_I2C);
-        yield();
-        gpio_async_enable_output(i, PIN_IDX_ISOLATE_USB);
-        yield();
+        gpio_async_enable_output_sync(i, PIN_IDX_ISOLATE_POWER);
+        gpio_async_enable_output_sync(i, PIN_IDX_ISOLATE_I2C);
+        gpio_async_enable_output_sync(i, PIN_IDX_ISOLATE_USB);
     }
 }
 
@@ -57,20 +54,17 @@ void controller_gpio_clear_all () {
 
 // Supply power to a given module
 void controller_module_enable_power (module_num_t module_number) {
-    gpio_async_set(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_POWER);
-    yield();
+    gpio_async_set_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_POWER);
 }
 
 // Enable a module's I2C
 void controller_module_enable_i2c (module_num_t module_number) {
-    gpio_async_set(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_I2C);
-    yield();
+    gpio_async_set_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_I2C);
 }
 
 // Enable a module's USB
 void controller_module_enable_usb (module_num_t module_number) {
-    gpio_async_set(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_USB);
-    yield();
+    gpio_async_set_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_USB);
 }
 
 void controller_all_modules_enable_power () {
@@ -102,20 +96,17 @@ void controller_all_modules_enable_usb () {
 
 // Shut off power to a given module
 void controller_module_disable_power (module_num_t module_number) {
-    gpio_async_clear(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_POWER);
-    yield();
+    gpio_async_clear_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_POWER);
 }
 
 // Disable a module's I2C
 void controller_module_disable_i2c (module_num_t module_number) {
-    gpio_async_clear(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_I2C);
-    yield();
+    gpio_async_clear_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_I2C);
 }
 
 // Disable a module's USB
 void controller_module_disable_usb (module_num_t module_number) {
     gpio_async_clear(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_USB);
-    yield();
 }
 
 void controller_all_modules_disable_power () {

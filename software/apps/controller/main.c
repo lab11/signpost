@@ -234,33 +234,7 @@ int main () {
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
 
-
-
   while (1) {
     yield();
   }
-
-
-
-
-  // // Setup I2C listen
-  // i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
-  // i2c_master_slave_set_slave_address(0x20);
-
-  // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
-  // i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
-  // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
-  // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
-
-  // i2c_master_slave_listen();
-
-  // while (1) {
-  //   yield();
-
-  //   if (_go == 1) {
-  //     _go = 0;
-
-  //     print_data();
-  //   }
-  // }
 }
