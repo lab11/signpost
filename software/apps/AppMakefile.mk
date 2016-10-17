@@ -7,6 +7,9 @@ all:
 TOCK_BOARD ?= controller
 TOCK_ARCH = cortex-m4
 
+# TODO(Pat) This should be thought about more
+TOCK_BOARD_DIR ?= $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)
+
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 TOCK_USERLAND_BASE_DIR := $(CURRENT_DIR)/../kernel/tock/userland/
@@ -46,6 +49,7 @@ clean::
 	rm -Rf $(LIBS_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
-# for programming individual apps, include platform app makefile
-include ../../kernel/boards/$(TOCK_BOARD)/Makefile-app
+##   TODO(Pat) this include is handled by main tock makefile currently
+##   # for programming individual apps, include platform app makefile
+##   include ../../kernel/boards/$(TOCK_BOARD)/Makefile-app
 
