@@ -47,6 +47,7 @@ int i2c_selector_read_selected() {
 
 int i2c_selector_select_channels_sync(uint32_t channels) {
     int err;
+    result.fired = false;
 
     err = i2c_selector_set_callback(i2c_selector_cb, (void*) &result);
     if (err < 0) return err;
@@ -62,6 +63,7 @@ int i2c_selector_select_channels_sync(uint32_t channels) {
 
 int i2c_selector_disable_all_channels_sync() {
     int err;
+    result.fired = false;
 
     err = i2c_selector_set_callback(i2c_selector_cb, (void*) &result);
     if (err < 0) return err;
@@ -77,6 +79,7 @@ int i2c_selector_disable_all_channels_sync() {
 
 int i2c_selector_read_interrupts_sync() {
     int err;
+    result.fired = false;
 
     err = i2c_selector_set_callback(i2c_selector_cb, (void*) &result);
     if (err < 0) return err;
@@ -92,6 +95,7 @@ int i2c_selector_read_interrupts_sync() {
 
 int i2c_selector_read_selected_sync() {
     int err;
+    result.fired = false;
 
     err = i2c_selector_set_callback(i2c_selector_cb, (void*) &result);
     if (err < 0) return err;

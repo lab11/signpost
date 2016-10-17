@@ -61,6 +61,7 @@ int gpio_async_read(uint32_t port, uint8_t pin) {
 
 int gpio_async_enable_output_sync(uint32_t port, uint8_t pin) {
     int err;
+    result.fired = false;
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;
@@ -76,6 +77,8 @@ int gpio_async_enable_output_sync(uint32_t port, uint8_t pin) {
 
 int gpio_async_set_sync(uint32_t port, uint8_t pin) {
     int err;
+    result.fired = false;
+
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;
@@ -91,6 +94,7 @@ int gpio_async_set_sync(uint32_t port, uint8_t pin) {
 
 int gpio_async_clear_sync(uint32_t port, uint8_t pin) {
     int err;
+    result.fired = false;
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;
@@ -106,6 +110,7 @@ int gpio_async_clear_sync(uint32_t port, uint8_t pin) {
 
 int gpio_async_toggle_sync(uint32_t port, uint8_t pin) {
     int err;
+    result.fired = false;
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;
@@ -121,6 +126,7 @@ int gpio_async_toggle_sync(uint32_t port, uint8_t pin) {
 
 int gpio_async_enable_input_sync(uint32_t port, uint8_t pin, GPIO_InputMode_t pin_config) {
     int err;
+    result.fired = false;
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;
@@ -136,6 +142,7 @@ int gpio_async_enable_input_sync(uint32_t port, uint8_t pin, GPIO_InputMode_t pi
 
 int gpio_async_read_sync(uint32_t port, uint8_t pin) {
     int err;
+    result.fired = false;
 
     err = gpio_async_set_callback(gpio_async_cb, (void*) &result);
     if (err < 0) return err;

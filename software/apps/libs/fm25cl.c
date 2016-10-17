@@ -46,6 +46,7 @@ int fm25cl_write(uint16_t address, uint16_t len) {
 
 int fm25cl_read_status_sync() {
 	int err;
+    result.fired = false;
 
 	err = fm25cl_set_callback(fm25cl_cb, (void*) &result);
 	if (err < 0) return err;
@@ -61,6 +62,7 @@ int fm25cl_read_status_sync() {
 
 int fm25cl_read_sync(uint16_t address, uint16_t len) {
 	int err;
+    result.fired = false;
 
 	err = fm25cl_set_callback(fm25cl_cb, (void*) &result);
 	if (err < 0) return err;
@@ -76,6 +78,7 @@ int fm25cl_read_sync(uint16_t address, uint16_t len) {
 
 int fm25cl_write_sync(uint16_t address, uint16_t len) {
 	int err;
+    result.fired = false;
 
 	err = fm25cl_set_callback(fm25cl_cb, (void*) &result);
 	if (err < 0) return err;

@@ -62,6 +62,7 @@ int ltc2941_shutdown() {
 
 int ltc2941_read_status_sync() {
     int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -77,6 +78,7 @@ int ltc2941_read_status_sync() {
 
 int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat) {
 	int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -92,6 +94,7 @@ int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat
 
 int ltc2941_reset_charge_sync() {
     int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -107,6 +110,7 @@ int ltc2941_reset_charge_sync() {
 
 int ltc2941_set_high_threshold_sync(uint16_t threshold) {
 	int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -122,6 +126,7 @@ int ltc2941_set_high_threshold_sync(uint16_t threshold) {
 
 int ltc2941_set_low_threshold_sync(uint16_t threshold) {
 	int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -137,6 +142,7 @@ int ltc2941_set_low_threshold_sync(uint16_t threshold) {
 
 int ltc2941_get_charge_sync() {
 	int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
@@ -152,6 +158,7 @@ int ltc2941_get_charge_sync() {
 
 int ltc2941_shutdown_sync() {
 	int err;
+    result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
     if (err < 0) return err;
