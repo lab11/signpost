@@ -25,6 +25,7 @@ doc:
 .PHONY: target/sam4l/release/radio_module
 target/sam4l/release/radio_module:
 	@cargo build --release --target=sam4l.json
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > target/sam4l/release/radio_module.lst
 	@$(SIZE) $@
 
 .PHONY: target/sam4l/debug/radio_module

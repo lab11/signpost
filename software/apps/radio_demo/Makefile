@@ -324,6 +324,10 @@ CFLAGS += -D$(shell echo $(SOFTDEVICE_MODEL) | tr a-z A-Z)
 CFLAGS += -D__TOCK__
 COMPILE_ONLY += -c
 
+JLINK_OPTIONS=-device ATSAM4LC8C -if swd -speed 1200 -AutoConnect 1
+GDB=arm-none-eabi-gdb
+TERMINAL=gnome-terminal -e
+
 SRCS = $(SYSTEM_FILE) $(notdir $(APPLICATION_SRCS))
 OBJS = $(addprefix $(OUTPUT_PATH), $(SRCS:.c=.o)) $(addprefix $(OUTPUT_PATH),$(APPLICATION_LIBS))
 
@@ -364,4 +368,12 @@ clean::
 	rm -f JLink.log
 	rm -f .gdbinit
 	rm -f *.d
+
+startdebug: debug-gdbinit
+	$(TERMINAL) "JLinkGDBServer $(JLINK_OPTIONS) -port 2331"
+	sleep 1
+	$(TERMINAL) "$(GDB)"
+
+debug-gdbinit:
+	printf "target remote localhost:2331\nload\nmon reset\n" > .gdbinit
 
