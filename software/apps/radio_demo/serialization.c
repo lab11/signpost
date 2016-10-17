@@ -10,6 +10,7 @@
 #include "nordic_common.h"
 #include "app_timer.h"
 
+#include "radio_module.h"
 #include "firestorm.h"
 
 // Buffer to receive packets from the nRF51822 in.
@@ -143,7 +144,7 @@ void ble_serialization_callback (int callback_type, int rx_len, int c, void* oth
 uint32_t ser_app_hal_hw_init() {
     // Configure the pin for the reset pin. We don't have the actual !RESET
     // pin pinned to the Storm, so we will use this one.
-    gpio_enable_output(STORM_INT);
+    //gpio_enable_output(BLE_BOOT);
 
     return NRF_SUCCESS;
 }
@@ -153,11 +154,11 @@ void ser_app_hal_delay (uint32_t ms)  {
 }
 
 void ser_app_hal_nrf_reset_pin_clear() {
-    gpio_clear(STORM_INT);
+    //gpio_clear(BLE_BOOT);
 }
 
 void ser_app_hal_nrf_reset_pin_set() {
-    gpio_set(STORM_INT);
+    //gpio_set(BLE_BOOT);
 }
 
 void ser_app_hal_nrf_evt_irq_priority_set () {
