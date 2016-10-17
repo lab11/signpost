@@ -19,4 +19,7 @@ int i2c_master_slave_read(uint16_t address, uint16_t len);
 int i2c_master_slave_listen();
 int i2c_master_slave_set_slave_address(uint8_t address);
 
+int i2c_master_slave_write_sync(uint8_t address, uint8_t length);
+int i2c_master_slave_read_sync(uint16_t address, uint16_t len);
+
 #endif

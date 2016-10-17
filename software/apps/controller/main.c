@@ -174,8 +174,7 @@ void get_energy () {
   master_write_buf[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
   master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
-  i2c_master_slave_write(0x22, 18);
-  yield();
+  i2c_master_slave_write_sync(0x22, 18);
 }
 
 int main () {
