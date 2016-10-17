@@ -1,3 +1,4 @@
+#include "gpio.h"
 #include "gpio_async.h"
 #include "controller.h"
 
@@ -16,6 +17,42 @@ void controller_init_module_switches () {
         gpio_async_enable_output(i, PIN_IDX_ISOLATE_USB);
         yield();
     }
+}
+
+void controller_gpio_enable_all_module_inputs (GPIO_InputMode_t pin_config) {
+    gpio_enable_input(MOD0_IN, pin_config);
+    gpio_enable_input(MOD1_IN, pin_config);
+    gpio_enable_input(MOD2_IN, pin_config);
+    gpio_enable_input(MOD5_IN, pin_config);
+    gpio_enable_input(MOD6_IN, pin_config);
+    gpio_enable_input(MOD7_IN, pin_config);
+}
+
+void controller_gpio_enable_all_module_outputs () {
+    gpio_enable_output(MOD0_OUT);
+    gpio_enable_output(MOD1_OUT);
+    gpio_enable_output(MOD2_OUT);
+    gpio_enable_output(MOD5_OUT);
+    gpio_enable_output(MOD6_OUT);
+    gpio_enable_output(MOD7_OUT);
+}
+
+void controller_gpio_set_all () {
+    gpio_set(MOD0_OUT);
+    gpio_set(MOD1_OUT);
+    gpio_set(MOD2_OUT);
+    gpio_set(MOD5_OUT);
+    gpio_set(MOD6_OUT);
+    gpio_set(MOD7_OUT);
+}
+
+void controller_gpio_clear_all () {
+    gpio_clear(MOD0_OUT);
+    gpio_clear(MOD1_OUT);
+    gpio_clear(MOD2_OUT);
+    gpio_clear(MOD5_OUT);
+    gpio_clear(MOD6_OUT);
+    gpio_clear(MOD7_OUT);
 }
 
 // Supply power to a given module

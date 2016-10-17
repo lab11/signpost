@@ -470,13 +470,12 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 12],
-        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED
+        [&'static sam4l::gpio::GPIOPin; 13],
          [&sam4l::gpio::PA[04],  // MOD0_IN
          &sam4l::gpio::PA[05],  // MOD1_IN
          &sam4l::gpio::PA[06],  // MOD2_IN
          &sam4l::gpio::PA[07],  // MOD5_IN
-         // &sam4l::gpio::PA[08],  // MOD6_IN
+         &sam4l::gpio::PA[08],  // MOD6_IN
          &sam4l::gpio::PA[09],  // MOD7_IN
          &sam4l::gpio::PA[13],  // MOD0_OUT
          &sam4l::gpio::PA[14],  // MOD1_OUT
@@ -485,8 +484,9 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PA[17],  // MOD6_OUT
          &sam4l::gpio::PA[18],  // MOD7_OUT
          &sam4l::gpio::PA[26]], // !SMBALERT
-        12 * 4
+        13 * 4
     );
+        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED { => !FRAM_CS }
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
