@@ -46,7 +46,7 @@ int main (void) {
         master_write_buf[8] = 0x00;
         master_write_buf[9] += 4;
 
-        i2c_master_slave_write(0x22, 10);
+        i2c_master_slave_write(0x20, 10);
         yield();
 
         delay_ms(4000);

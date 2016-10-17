@@ -53,17 +53,7 @@ static void putstrasync_callback (
 }
 
 int main () {
-  // char buff[256];
-  // sprintf(buff, "Hello Branden\n");
-  // putstr_async(buff, putstrasync_callback, NULL);
-  // delay_ms(10);
-
-
   putstr("[Ambient] Measure and Report8\n");
-  // putstr("[Ambient] Me\nasure and Report3\n", putstrasync_callback, NULL);
-  // putstr_async("[Ambient] Me\nasure and Report4\n", putstrasync_callback, NULL);
-  // yield();
-  // delay_ms(10);
 
   // Setup I2C TX buffer
   txbuf[0] = 0x32; // My address
@@ -123,34 +113,6 @@ int main () {
       sprintf(buf, "\tLight(%d) [0x%X]\n", light, light);
       putstr(buf);
     }
-
-    // {
-    //   char buf[256];
-    //   // putstr_async("[Ambient] Got Measurements\n", putstrasync_callback, NULL);
-    //   // yield();
-
-    //   // Temperature and Humidity
-    //   sprintf(buf, "\tTemp(%d 1/100 degrees C) [0x%X]\n", _temp_reading, _temp_reading);
-    //   putstr_async(buf, putstrasync_callback, NULL);
-    //   // yield();
-    //   delay_ms(10);
-    //   sprintf(buf, "\tHumi(%d 0.01%%) [0x%X]\n", _humi_reading, _humi_reading);
-    //   putstr_async(buf, putstrasync_callback, NULL);
-    //   // yield();
-    //   delay_ms(10);
-
-    //   // Print the pressure value
-    //   sprintf(buf, "\tPressure(%d ubar) [0x%X]\n", _pressure_reading, _pressure_reading);
-    //   putstr_async(buf, putstrasync_callback, NULL);
-    //   // yield();
-    //   delay_ms(10);
-
-    //   // Light
-    //   sprintf(buf, "\tLight(%d) [0x%X]\n", light, light);
-    //   putstr_async(buf, putstrasync_callback, NULL);
-    //   // yield();
-    //   delay_ms(10);
-    // }
 
     // Delay
     delay_ms(5000);
