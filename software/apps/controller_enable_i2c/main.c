@@ -9,6 +9,7 @@
 #include "console.h"
 #include "signpost_energy.h"
 #include "controller.h"
+#include "i2c_master_slave.h"
 
 
 
@@ -19,17 +20,7 @@ uint8_t master_write_buf[256];
 
 
 
-static void i2c_master_slave_callback (
-        int callback_type,
-        int length,
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
 
-  if (callback_type == 3) {
-    print_data(length);
-  }
-}
 
 void print_data (int length) {
   char buf[64];
@@ -89,7 +80,18 @@ void print_data (int length) {
       putstr(buf);
     }
   }
+}
 
+static void i2c_master_slave_callback (
+        int callback_type,
+        int length,
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+
+  if (callback_type == 3) {
+    print_data(length);
+  }
 }
 
 int main () {

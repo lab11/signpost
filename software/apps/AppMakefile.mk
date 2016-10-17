@@ -38,8 +38,6 @@ include $(LIBS_DIR)/Makefile
 include $(TOCK_USERLAND_BASE_DIR)/Makefile
 
 $(BUILDDIR)/%.o: %.c | $(BUILDDIR)
-	echo $(TOCK_USERLAND_BASE_DIR)
-	echo $(TOCK_BASE_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 # add platform-specific headers
