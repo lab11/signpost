@@ -21,7 +21,7 @@ $(LIBS_BUILDDIR)/libs.a: $(LIBS_OBJS) | $(LIBS_BUILDDIR)
 #all: $(BUILDDIR)/libs.a
 #
 $(LIBS_BUILDDIR):
-	mkdir -p $@
+	$(Q)mkdir -p $@
 
 $(LIBS_BUILDDIR)/%.o: $(LIBS_DIR)%.c | $(LIBS_BUILDDIR)
 	$(TRACE_CC)
