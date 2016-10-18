@@ -19,22 +19,17 @@
 
 #define BUFFER_SIZE 20
 
+
 uint8_t slave_write_buf[BUFFER_SIZE];
 uint8_t slave_read_buf[BUFFER_SIZE];
 uint8_t master_read_buf[BUFFER_SIZE];
 uint8_t master_write_buf[BUFFER_SIZE];
 
-static int adc_data;
-static int adc_done = 0;
 
 static void i2c_master_slave_callback(int callback_type, int length, int unused, void* callback_args) {
     return;
 }
 
-static void  adc_callback( int callback_type , int channel, int data, void* callback_args) {
-    adc_data = data;
-    adc_done = 1;
-}
 
 /*static void  timer_callback( int callback_type , int channel, int data, void* callback_args) {
     i2c_master_slave_write(0x22,16);
@@ -57,7 +52,7 @@ int main () {
     master_write_buf[1] = 0x01;
 
     //init adc
-    adc_set_callback(adc_callback, NULL);
+    //adc_set_callback(adc_callback, (void*)&result);
     adc_initialize();
 	gpio_enable_output(STROBE);
 	gpio_enable_output(RESET);
@@ -72,7 +67,7 @@ int main () {
     //i2c_master_slave_write(0x22,16);
 
 	delay_ms(1000);
-    uint8_t count;
+    uint8_t count = 50;
   	while (1) {
 		delay_ms(1);
 		gpio_set(STROBE);
@@ -86,25 +81,17 @@ int main () {
 		gpio_clear(STROBE);
 
 		for(uint8_t i = 0; i < 6; i++) {
-            adc_single_sample(0);
-            adc_done = 0;
-            while(adc_done == 0) {
-                yield();
-            }
-            master_write_buf[2+i*2] = (uint8_t)((adc_data >> 8) & 0xff);
-            master_write_buf[2+i*2+1] = (uint8_t)(adc_data & 0xff);
+            uint16_t data = (uint16_t)adc_read_single_sample(0);
+            master_write_buf[2+i*2] = (uint8_t)((data >> 8) & 0xff);
+            master_write_buf[2+i*2+1] = (uint8_t)(data & 0xff);
 			delay_ms(1);
 			gpio_set(STROBE);
 			delay_ms(1);
 			gpio_clear(STROBE);
 		}
-        adc_single_sample(0);
-        adc_done = 0;
-        while(adc_done == 0) {
-            yield();
-        }
-        master_write_buf[14] = (uint8_t)((adc_data >> 8) & 0xff);
-        master_write_buf[15] = (uint8_t)(adc_data & 0xff);
+        uint16_t data = (uint16_t)adc_read_single_sample(0);
+        master_write_buf[14] = (uint8_t)((data >> 8) & 0xff);
+        master_write_buf[15] = (uint8_t)(data & 0xff);
         count++;
         if(count >= 50) {
             i2c_master_slave_write(0x22,16);
