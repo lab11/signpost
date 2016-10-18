@@ -22,3 +22,4 @@ pub mod smbus_interrupt;
 pub mod i2c_master_slave_driver;
 pub mod uartprint;
 pub mod app_watchdog;
+pub mod watchdog_kernel;

@@ -17,14 +17,16 @@ pub struct Timeout<'a, A: alarm::Alarm + 'a> {
     alarm: &'a A,
     timeout: Cell<usize>, // milliseconds before resetting the app
     mode: TimeoutMode,
+    reset: unsafe fn(),
 }
 
 impl<'a, A: alarm::Alarm + 'a> Timeout<'a, A> {
-    pub fn new(alarm: &'a A, mode: TimeoutMode, timeout: usize) -> Timeout<'a, A> {
+    pub fn new(alarm: &'a A, mode: TimeoutMode, timeout: usize, reset: unsafe fn()) -> Timeout<'a, A> {
         Timeout {
             alarm: alarm,
             timeout: Cell::new(timeout),
             mode: mode,
+            reset: reset,
         }
     }
 
@@ -90,6 +92,10 @@ impl<'a, A: alarm::Alarm + 'a> alarm::AlarmClient for Timeout<'a, A> {
             }
             TimeoutMode::Kernel => {
                 // reset whole processor
+                // reset();
+                unsafe {
+                    (self.reset)();
+                }
             }
         }
     }
