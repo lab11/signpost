@@ -74,9 +74,29 @@ int main(void) {
     i2c_master_slave_set_master_write_buffer(master_write_buf, 8);
 
     while (1) {
+        controller_gpio_set_all();
+        delay_ms(5);
+        controller_gpio_clear_all();
+        delay_ms(5);
+
         controller_all_modules_enable_power();
         controller_all_modules_enable_i2c();
+
+        delay_ms(10);
+
         controller_gpio_set_all();
+
+        /*
+        delay_ms(10);
+        gpio_clear(MOD5_IN);
+        delay_ms(10);
+        gpio_set(MOD5_IN);
+
+        delay_ms(10);
+        controller_gpio_clear_all();
+        delay_ms(10);
+        controller_gpio_set_all();
+        */
 
         i2c_master_slave_write(0x11, 8);
         yield();
