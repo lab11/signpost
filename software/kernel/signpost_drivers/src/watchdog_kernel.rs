@@ -12,7 +12,6 @@ pub struct WatchdogKernel<'a, A: alarm::Alarm + 'a> {
     alarm: &'a A,
     watchdog: &'a hil::watchdog::Watchdog,
     timeout: Cell<usize>, // milliseconds before resetting the app
-counter: Cell<usize>,
 }
 
 impl<'a, A: alarm::Alarm + 'a> WatchdogKernel<'a, A> {
@@ -21,7 +20,6 @@ impl<'a, A: alarm::Alarm + 'a> WatchdogKernel<'a, A> {
             alarm: alarm,
             watchdog: watchdog,
             timeout: Cell::new(timeout),
-    counter: Cell::new(0),
         }
     }
 
@@ -36,14 +34,10 @@ impl<'a, A: alarm::Alarm + 'a> WatchdogKernel<'a, A> {
 
 impl<'a, A: alarm::Alarm + 'a> alarm::AlarmClient for WatchdogKernel<'a, A> {
     fn fired(&self) {
-        self.counter.set(self.counter.get() + 1);
+        self.watchdog.tickle();
 
-        if self.counter.get() < 115 {
-            self.watchdog.tickle();
-
-            let interval = (self.timeout.get() as u32) * <A::Frequency>::frequency() / 1000;
-            let tics = self.alarm.now().wrapping_add(interval);
-            self.alarm.set_alarm(tics);
-        }
+        let interval = (self.timeout.get() as u32) * <A::Frequency>::frequency() / 1000;
+        let tics = self.alarm.now().wrapping_add(interval);
+        self.alarm.set_alarm(tics);
     }
 }
