@@ -11,6 +11,16 @@ BUILDDIR ?= build/$(TOCK_ARCH)
 INCLUDE_PATHS += .
 C_SRCS := $(wilcard *.c)
 
+#define this variable to be your device address
+#set the last octets to your radio address
+#ADDRESS = "static uint8_t address[ADDRESS_SIZE] = {0xC0, 0x98, 0xE5, 0x12, 0x00, 0x02};"
+
+ifndef ADDRESS
+$(error You must define an address in the Makefile to compile!)
+endif
+
+CFLAGS += -DADDRESS=$(ADDRESS)
+
 PROJECT_NAME = $(shell basename "$(realpath ./)")
 
 APPLICATION_SRCS = $(notdir $(wildcard ./*.c))

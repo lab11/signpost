@@ -41,6 +41,7 @@ static simple_ble_config_t ble_config = {
 
 //definitions for the i2c
 #define BUFFER_SIZE 20
+#define ADDRESS_SIZE 6
 #define NUMBER_OF_MODULES 6
 
 //i2c buffers
@@ -51,6 +52,11 @@ uint8_t master_write_buf[BUFFER_SIZE];
 
 //array of the data we're going to send on the radios
 uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
+
+//This line is now in the Makefile
+//static uint8_t address[ADDRESS_SIZE] = {0xC0, 0x98, 0xE5, 0x12, 0x00, 0x00};
+//This is defined in the make file - do it or it won't compile
+ADDRESS
 
 static void adv_config_eddystone () {
 	eddystone_adv(PHYSWEB_URL, NULL);
@@ -65,11 +71,13 @@ static void adv_config_data() {
 
 	static ble_advdata_manuf_data_t mandata;
 
-	mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
-	mandata.data.p_data = data_to_send[i];
-	mandata.data.size = BUFFER_SIZE;
+    if(data_to_send[i][0] != 0x00) {
+	    mandata.company_identifier = UMICH_COMPANY_IDENTIFIER;
+	    mandata.data.p_data = data_to_send[i];
+	    mandata.data.size = BUFFER_SIZE;
 
-	simple_adv_manuf_data(&mandata);
+	    simple_adv_manuf_data(&mandata);
+    }
 
 	i++;
 	if(i >= NUMBER_OF_MODULES) {
@@ -92,24 +100,38 @@ static void i2c_master_slave_callback (
 		switch(slave_write_buf[0]) {
 		case 0x20:
 			if(slave_write_buf[1] == 0x01) {
-				memcpy(data_to_send[0], slave_write_buf, BUFFER_SIZE);
+				memcpy(data_to_send[0], slave_write_buf, 2);
+				memcpy(data_to_send[0]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                data_to_send[0][2]++;
+
 			} else if (slave_write_buf[1] == 0x02) {
-				memcpy(data_to_send[1], slave_write_buf, BUFFER_SIZE);
+                memcpy(data_to_send[1], slave_write_buf, 2);
+				memcpy(data_to_send[1]+3, slave_write_buf+2, BUFFER_SIZE-3);
+                data_to_send[1][2]++;
 			} else {
 				//this shouldn't happen
 			}
 		break;
 		case 0x31:
-			memcpy(data_to_send[2], slave_write_buf, BUFFER_SIZE);
+            memcpy(data_to_send[2], slave_write_buf, 2);
+			memcpy(data_to_send[2]+3, slave_write_buf+2, BUFFER_SIZE-3);
+            data_to_send[2][2]++;
 		break;
 		case 0x32:
-			memcpy(data_to_send[3], slave_write_buf, BUFFER_SIZE);
+            memcpy(data_to_send[3], slave_write_buf, 2);
+			memcpy(data_to_send[3]+3, slave_write_buf+2, BUFFER_SIZE-3);
+            data_to_send[3][2]++;
+
 		break;
 		case 0x33:
-			memcpy(data_to_send[4], slave_write_buf, BUFFER_SIZE);
+            memcpy(data_to_send[4], slave_write_buf, 2);
+			memcpy(data_to_send[4]+3, slave_write_buf+2, BUFFER_SIZE-3);
+            data_to_send[4][2]++;
 		break;
 		case 0x34:
-			memcpy(data_to_send[5], slave_write_buf, BUFFER_SIZE);
+            memcpy(data_to_send[5], slave_write_buf, 2);
+			memcpy(data_to_send[5]+3, slave_write_buf+2, BUFFER_SIZE-3);
+            data_to_send[5][2]++;
 		break;
 		default:
 			//this shouldn't happen
@@ -119,7 +141,17 @@ static void i2c_master_slave_callback (
 }
 
 void ble_address_set() {
-	//this has to be here I promise
+    static ble_gap_addr_t gap_addr;
+
+    //switch the addres to little endian in a for loop
+    for(uint8_t i = 0; i < ADDRESS_SIZE; i++) {
+        gap_addr.addr[i] = address[ADDRESS_SIZE-1-i];
+    }
+
+    //set the address type
+    gap_addr.addr_type = BLE_GAP_ADDR_TYPE_PUBLIC;
+    uint32_t err_code = sd_ble_gap_address_set(BLE_GAP_ADDR_CYCLE_MODE_NONE, &gap_addr);
+    APP_ERROR_CHECK(err_code);
 }
 
 void ble_error(uint32_t error_code) {
@@ -146,8 +178,14 @@ static void timer_callback (
 
 	static uint8_t i = 0;
     static volatile uint16_t result = 0;
+    static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
 
-	result = iM880A_SendRadioTelegram(data_to_send[i],BUFFER_SIZE);
+    if(data_to_send[i][0] != 0x00) {
+        memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
+        memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_to_send[i], BUFFER_SIZE);
+	    result = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+    }
+
 	if(i == 5) {
 		eddystone_adv(PHYSWEB_URL, NULL);
 	} else {
@@ -175,15 +213,12 @@ int main () {
 	//setup a tock timer to
 	eddystone_adv(PHYSWEB_URL,NULL);
 
-	//configure the data array to send zeros with IDs
-	data_to_send[0][0] = 0x20;
-	data_to_send[1][0] = 0x20;
-	data_to_send[1][1] = 0x01;
-
-	data_to_send[2][0] = 0x31;
-	data_to_send[3][0] = 0x32;
-	data_to_send[4][0] = 0x33;
-	data_to_send[5][0] = 0x34;
+    //zero the rest of the data array
+    for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+       for(uint8_t j = 0; j < BUFFER_SIZE; j++) {
+           data_to_send[i][j] = 0;
+        }
+    }
 
 	uint16_t result = iM880A_Configure();
 
