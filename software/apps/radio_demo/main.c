@@ -238,7 +238,7 @@ int main () {
 	timer_subscribe(timer_callback, NULL);
 	timer_start_repeating(300);
 
-	while(1) {
-		yield();
-	}
+//	while(1) {
+//		yield();
+//	}
 }
