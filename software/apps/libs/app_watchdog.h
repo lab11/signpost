@@ -2,6 +2,8 @@
 
 #include "tock.h"
 
+#define DRIVER_NUM_APPWATCHDOG 108
+
 int app_watchdog_start();
 int app_watchdog_stop();
 int app_watchdog_tickle_app();

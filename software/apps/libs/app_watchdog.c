@@ -3,8 +3,6 @@
 #include "tock.h"
 #include "app_watchdog.h"
 
-#define DRIVER_NUM_APPWATCHDOG 108
-
 int app_watchdog_start() {
 	return command(DRIVER_NUM_APPWATCHDOG, 4, 0);
 }
