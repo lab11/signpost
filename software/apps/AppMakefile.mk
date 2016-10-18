@@ -14,7 +14,7 @@ CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 TOCK_USERLAND_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/userland/)
 TOCK_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/)
-BUILDDIR ?= $(APP_DIR)/build/$(TOCK_ARCH)
+BUILDDIR ?= $(abspath $(APP_DIR)/build/$(TOCK_ARCH))
 
 # create list of object files required
 OBJS += $(patsubst %.c,$(BUILDDIR)/%.o,$(C_SRCS))
