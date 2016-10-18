@@ -39,7 +39,7 @@ const uint32_t NOISE_OFFSET = 10;
 // Some define
 #define SAMPLE_TIMES 20
 #define ADC_CHANNEL 0
-#define LED_PIN 9
+#define LED_PIN 5
 
 // used to store the interval of each half period
 uint32_t time_intervals[SAMPLE_TIMES];
@@ -160,10 +160,10 @@ void adc_callback (int callback_type, int channel, int sample, void* callback_ar
 
     bool motion = detect_motion(sample);
     if (motion) {
-        gpio_set(LED_PIN);
+        gpio_clear(LED_PIN);
         motion_since_last_transmit = true;
     } else {
-        gpio_clear(LED_PIN);
+        gpio_set(LED_PIN);
     }
     uint32_t speed_mfps = 0;
 
@@ -189,6 +189,8 @@ static void timer_callback (
         void* callback_args __attribute__ ((unused))
         ) {
 
+    //printf("TIMER motion: %d speed: %d (mm/s)\n", motion_since_last_transmit, max_speed_since_last_transmit);
+
     // set i2c address and service id
     master_write_buf[0] = 0x34;
     master_write_buf[1] = 0x01;
@@ -204,6 +206,10 @@ static void timer_callback (
 
     // write data
     i2c_master_slave_write_sync(0x22, 7);
+
+    // reset variables
+    motion_since_last_transmit = false;
+    max_speed_since_last_transmit = 0;
 }
 
 int main () {
@@ -211,6 +217,7 @@ int main () {
 
     // initialize LED
     gpio_enable_output(LED_PIN);
+    gpio_set(LED_PIN);
 
     // setup i2c
     // microwave radar's i2c address is 0x34
@@ -218,10 +225,10 @@ int main () {
     i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
 
     // setup timer
-    // set to about a second, but a larger prime number so that hopefully we
+    // set to about two seconds, but a larger prime number so that hopefully we
     //  can avoid continually conflicting with other modules
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(1039);
+    timer_start_repeating(2*1039);
 
     // initialize adc
     adc_set_callback(adc_callback, NULL);
