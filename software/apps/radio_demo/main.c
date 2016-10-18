@@ -42,7 +42,7 @@ static simple_ble_config_t ble_config = {
 //definitions for the i2c
 #define BUFFER_SIZE 20
 #define ADDRESS_SIZE 6
-#define NUMBER_OF_MODULES 6
+#define NUMBER_OF_MODULES 7
 
 //i2c buffers
 uint8_t slave_write_buf[BUFFER_SIZE];
@@ -91,53 +91,64 @@ static void i2c_master_slave_callback (
 	int unused __attribute__ ((unused)),
 	void * callback_args __attribute__ ((unused))) {
 
-	//for now only take writes
-	if(callback_type == CB_SLAVE_READ_REQUEST) {
-		return;
-	} else if (callback_type == CB_SLAVE_READ_COMPLETE) {
-		return;
-	} else if (callback_type == CB_SLAVE_WRITE) {
-		switch(slave_write_buf[0]) {
-		case 0x20:
-			if(slave_write_buf[1] == 0x01) {
-				memcpy(data_to_send[0], slave_write_buf, 2);
-				memcpy(data_to_send[0]+3, slave_write_buf+2, BUFFER_SIZE-3);
-                data_to_send[0][2]++;
+    //for now only take writes
+    if(callback_type == CB_SLAVE_READ_REQUEST) {
+	return;
+    } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
+	return;
+    } else if (callback_type == CB_SLAVE_WRITE) {
+	switch(slave_write_buf[0]) {
+	    case 0x20:
+		// controller
+		if(slave_write_buf[1] == 0x01) {
+		    // energy and status
+		    memcpy(data_to_send[0], slave_write_buf, 2);
+		    memcpy(data_to_send[0]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		    data_to_send[0][2]++;
 
-			} else if (slave_write_buf[1] == 0x02) {
-                memcpy(data_to_send[1], slave_write_buf, 2);
-				memcpy(data_to_send[1]+3, slave_write_buf+2, BUFFER_SIZE-3);
-                data_to_send[1][2]++;
-			} else {
-				//this shouldn't happen
-			}
-		break;
-		case 0x31:
-            memcpy(data_to_send[2], slave_write_buf, 2);
-			memcpy(data_to_send[2]+3, slave_write_buf+2, BUFFER_SIZE-3);
-            data_to_send[2][2]++;
-		break;
-		case 0x32:
-            memcpy(data_to_send[3], slave_write_buf, 2);
-			memcpy(data_to_send[3]+3, slave_write_buf+2, BUFFER_SIZE-3);
-            data_to_send[3][2]++;
-
-		break;
-		case 0x33:
-            memcpy(data_to_send[4], slave_write_buf, 2);
-			memcpy(data_to_send[4]+3, slave_write_buf+2, BUFFER_SIZE-3);
-            data_to_send[4][2]++;
-		break;
-		case 0x34:
-            memcpy(data_to_send[5], slave_write_buf, 2);
-			memcpy(data_to_send[5]+3, slave_write_buf+2, BUFFER_SIZE-3);
-            data_to_send[5][2]++;
-		break;
-		default:
-			//this shouldn't happen
-		break;
+		} else if (slave_write_buf[1] == 0x02) {
+		    // gps
+		    memcpy(data_to_send[1], slave_write_buf, 2);
+		    memcpy(data_to_send[1]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		    data_to_send[1][2]++;
+		} else {
+		    //this shouldn't happen
 		}
+		break;
+	    case 0x31:
+		// 15.4 scanner
+		memcpy(data_to_send[2], slave_write_buf, 2);
+		memcpy(data_to_send[2]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		data_to_send[2][2]++;
+		break;
+	    case 0x32:
+		// ambient sensing
+		memcpy(data_to_send[3], slave_write_buf, 2);
+		memcpy(data_to_send[3]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		data_to_send[3][2]++;
+		break;
+	    case 0x33:
+		// audio sensing
+		memcpy(data_to_send[4], slave_write_buf, 2);
+		memcpy(data_to_send[4]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		data_to_send[4][2]++;
+		break;
+	    case 0x34:
+		// radar module
+		memcpy(data_to_send[5], slave_write_buf, 2);
+		memcpy(data_to_send[5]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		data_to_send[5][2]++;
+		break;
+	    case 0x35:
+		// air quality sensing
+		memcpy(data_to_send[6], slave_write_buf, 2);
+		memcpy(data_to_send[6]+3, slave_write_buf+2, BUFFER_SIZE-3);
+		data_to_send[6][2]++;
+	    default:
+		//this shouldn't happen
+		break;
 	}
+    }
 }
 
 void ble_address_set() {
