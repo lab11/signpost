@@ -53,7 +53,10 @@ uint8_t master_write_buf[BUFFER_SIZE];
 //array of the data we're going to send on the radios
 uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
 
-static uint8_t address[ADDRESS_SIZE] = {0xC0, 0x98, 0xE5, 0x12, 0x00, 0x00};
+//This line is now in the Makefile
+//static uint8_t address[ADDRESS_SIZE] = {0xC0, 0x98, 0xE5, 0x12, 0x00, 0x00};
+//This is defined in the make file - do it or it won't compile
+ADDRESS
 
 static void adv_config_eddystone () {
 	eddystone_adv(PHYSWEB_URL, NULL);
