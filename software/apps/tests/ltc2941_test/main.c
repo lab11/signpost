@@ -7,6 +7,7 @@
 
 #include "tock.h"
 #include "console.h"
+#include "timer.h"
 #include "ltc2941.h"
 
 

@@ -12,7 +12,7 @@
 uint8_t read_buf[256];
 uint8_t write_buf[256];
 
-void print_status (status) {
+void print_status (int status) {
   char buf[64];
   sprintf(buf, "\tStatus: 0x%02x\n\n", status);
   putstr(buf);
