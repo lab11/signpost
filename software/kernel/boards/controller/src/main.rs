@@ -78,6 +78,7 @@ struct SignpostController {
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
     fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
 }
 
 impl Platform for SignpostController {
@@ -95,6 +96,7 @@ impl Platform for SignpostController {
             103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             105 => f(Some(self.i2c_master_slave)),
+            108 => f(Some(self.app_watchdog)),
             203 => f(Some(self.bonus_timer)),
             _ => f(None)
         }
@@ -458,6 +460,30 @@ pub unsafe fn reset_handler() {
         544/8);
     fm25cl.set_client(fm25cl_driver);
 
+    //
+    // App Watchdog
+    //
+    let app_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let kernel_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let app_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000),
+        96/8);
+    let kernel_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000),
+        96/8);
+    let app_watchdog = static_init!(
+        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
+        64/8);
+
 
     //
     // Remaining GPIO pins
@@ -509,8 +535,9 @@ pub unsafe fn reset_handler() {
             smbus_interrupt: smbusint_driver,
             fram: fm25cl_driver,
             i2c_master_slave: i2c_modules,
+            app_watchdog: app_watchdog,
         },
-        320/8);
+        352/8);
 
     signpost_controller.console.initialize();
 
