@@ -3,9 +3,6 @@
 	url = git@github.com:lab11/nucleum.git
 	branch = master
 
-[submodule "testbed/module/nrf51822/nrf5x-base"]
-	path = testbed/module/nrf51822/nrf5x-base
-	url = https://github.com/lab11/nrf5x-base.git
 [submodule "modules/spectrum154/contiki/contiki"]
 	path = modules/spectrum154/contiki/contiki
 	url = https://github.com/contiki-os/contiki
