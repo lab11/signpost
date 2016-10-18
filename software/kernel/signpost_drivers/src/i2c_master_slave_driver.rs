@@ -31,7 +31,7 @@ pub struct I2CMasterSlaveDriver<'a> {
     master_action: Cell<MasterAction>, // Whether we issued a write or read as master
     master_buffer: TakeCell<&'static mut [u8]>,
     slave_buffer1: TakeCell<&'static mut [u8]>,
-    slave_buffer2: TakeCell<&'static mut [u8]>,
+    _slave_buffer2: TakeCell<&'static mut [u8]>,
     app_state: TakeCell<AppState>,
 }
 
@@ -55,14 +55,14 @@ impl<'a> I2CMasterSlaveDriver<'a> {
             master_action: Cell::new(MasterAction::Write),
             master_buffer: TakeCell::new(master_buffer),
             slave_buffer1: TakeCell::new(slave_buffer1),
-            slave_buffer2: TakeCell::new(slave_buffer2),
+            _slave_buffer2: TakeCell::new(slave_buffer2),
             app_state: TakeCell::new(app_state),
         }
     }
 }
 
 impl<'a> hil::i2c::I2CHwMasterClient for I2CMasterSlaveDriver<'a> {
-    fn command_complete(&self, buffer: &'static mut [u8], error:  hil::i2c::Error) {
+    fn command_complete(&self, buffer: &'static mut [u8], _error:  hil::i2c::Error) {
 
         // Signal the application layer. Need to copy read in bytes if this
         // was a read call.

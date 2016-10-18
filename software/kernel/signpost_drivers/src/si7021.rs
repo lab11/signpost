@@ -45,9 +45,6 @@ enum State {
     ReadRhMeasurement,
     ReadTempMeasurement,
     GotMeasurement,
-
-    /// Disable I2C and release buffer
-    Done,
 }
 
 pub struct SI7021<'a, A: alarm::Alarm + 'a> {
@@ -128,7 +125,6 @@ impl<'a, A: alarm::Alarm + 'a> i2c::I2CClient for SI7021<'a, A> {
 
                 let interval = (20 as u32) * <A::Frequency>::frequency() / 1000;
 
-                let now = self.alarm.now();
                 let tics = self.alarm.now().wrapping_add(interval);
                 self.alarm.set_alarm(tics);
 
@@ -162,11 +158,6 @@ impl<'a, A: alarm::Alarm + 'a> i2c::I2CClient for SI7021<'a, A> {
                     cb.schedule(temp as usize, humidity as usize, 0)
                 );
 
-                self.buffer.replace(buffer);
-                self.i2c.disable();
-                self.state.set(State::Idle);
-            },
-            State::Done => {
                 self.buffer.replace(buffer);
                 self.i2c.disable();
                 self.state.set(State::Idle);

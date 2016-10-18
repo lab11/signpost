@@ -2,7 +2,6 @@ use core::cell::Cell;
 
 use kernel::common::take_cell::TakeCell;
 use kernel::hil;
-use kernel::hil::gpio::PinCtl;
 
 use signpost_hil;
 
@@ -58,7 +57,7 @@ pub struct MCP23008<'a> {
     i2c: &'a hil::i2c::I2CDevice,
     state: Cell<State>,
     buffer: TakeCell<&'static mut [u8]>,
-    interrupt_pin: Option<&'static hil::gpio::Pin>,
+    _interrupt_pin: Option<&'static hil::gpio::Pin>,
     identifier: Cell<usize>,
     client: TakeCell<&'static signpost_hil::gpio_async::Client>,
 }
@@ -70,7 +69,7 @@ impl<'a> MCP23008<'a> {
             i2c: i2c,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
-            interrupt_pin: interrupt_pin,
+            _interrupt_pin: interrupt_pin,
             identifier: Cell::new(0),
             client: TakeCell::empty(),
         }
@@ -81,22 +80,22 @@ impl<'a> MCP23008<'a> {
         self.identifier.set(identifier);
     }
 
-    fn enable_interrupts(&self, edge: hil::gpio::InterruptMode) {
-        self.interrupt_pin.map(|interrupt_pin| {
-            // interrupt_pin.enable_input(hil::gpio::InputMode::PullNone);
-            interrupt_pin.make_input();
-            // interrupt_pin.set_input_mode(hil::gpio::InputMode::PullNone);
-            // hil::gpio::PinCtl::set_input_mode(interrupt_pin, hil::gpio::InputMode::PullNone);
-            interrupt_pin.enable_interrupt(0, edge);
-        });
-    }
+    // fn enable_interrupts(&self, edge: hil::gpio::InterruptMode) {
+    //     self.interrupt_pin.map(|interrupt_pin| {
+    //         // interrupt_pin.enable_input(hil::gpio::InputMode::PullNone);
+    //         interrupt_pin.make_input();
+    //         // interrupt_pin.set_input_mode(hil::gpio::InputMode::PullNone);
+    //         // hil::gpio::PinCtl::set_input_mode(interrupt_pin, hil::gpio::InputMode::PullNone);
+    //         interrupt_pin.enable_interrupt(0, edge);
+    //     });
+    // }
 
-    fn disable_interrupts(&self) {
-        self.interrupt_pin.map(|interrupt_pin| {
-            interrupt_pin.disable_interrupt();
-            interrupt_pin.disable();
-        });
-    }
+    // fn disable_interrupts(&self) {
+    //     self.interrupt_pin.map(|interrupt_pin| {
+    //         interrupt_pin.disable_interrupt();
+    //         interrupt_pin.disable();
+    //     });
+    // }
 
     fn set_direction(&self, pin_number: u8, direction: Direction) {
         self.buffer.take().map(|buffer| {
@@ -348,13 +347,13 @@ impl<'a> signpost_hil::gpio_async::GPIOAsyncPort for MCP23008<'a> {
         }
     }
 
-    fn enable_interrupt(&self, pin: usize, client_data: usize,
-                        mode: hil::gpio::InterruptMode) -> isize {
+    fn enable_interrupt(&self, _pin: usize, _client_data: usize,
+                        _mode: hil::gpio::InterruptMode) -> isize {
         // not yet implemented
         0
     }
 
-    fn disable_interrupt(&self, pin: usize) -> isize {
+    fn disable_interrupt(&self, _pin: usize) -> isize {
         // not yet implemented
         0
     }

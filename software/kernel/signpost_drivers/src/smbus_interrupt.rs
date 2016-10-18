@@ -136,7 +136,7 @@ impl<'a> Driver for SMBUSIntDriver<'a> {
             _ => -1,
         }
     }
-    fn command(&self, command_num: usize, data: usize, _:AppId) -> isize {
+    fn command(&self, command_num: usize, _data: usize, _:AppId) -> isize {
         match command_num {
             // issue alert response
             0 => {
