@@ -106,7 +106,7 @@ void controller_module_disable_i2c (module_num_t module_number) {
 
 // Disable a module's USB
 void controller_module_disable_usb (module_num_t module_number) {
-    gpio_async_clear(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_USB);
+    gpio_async_clear_sync(module_to_async_port_num[module_number], PIN_IDX_ISOLATE_USB);
 }
 
 void controller_all_modules_disable_power () {
