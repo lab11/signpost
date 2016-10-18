@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "firestorm.h"
 #include "tock.h"
 #include "console.h"
 #include "fm25cl.h"
@@ -40,8 +39,8 @@ static void gpio_async_callback (
 }
 
 static void i2c_master_slave_callback (
-        int callback_type,
-        int length,
+        int callback_type __attribute__ ((unused)),
+        int length __attribute__ ((unused)),
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
