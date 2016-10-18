@@ -37,9 +37,6 @@ include $(LIBS_DIR)/Makefile
 # 	building the application
 include $(TOCK_USERLAND_BASE_DIR)/Makefile
 
-$(BUILDDIR)/%.o: %.c | $(BUILDDIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-
 # add platform-specific headers
 .PHONY: clean
 clean::
