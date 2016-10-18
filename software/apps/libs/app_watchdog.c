@@ -20,9 +20,9 @@ int app_watchdog_tickle_kernel() {
 }
 
 int app_watchdog_set_app_timeout(int timeout) {
-	return command(DRIVER_NUM_APPWATCHDOG, 1, timeout);
+	return command(DRIVER_NUM_APPWATCHDOG, 2, timeout);
 }
 
 int app_watchdog_set_kernel_timeout(int timeout) {
-	return command(DRIVER_NUM_APPWATCHDOG, 2, timeout);
+	return command(DRIVER_NUM_APPWATCHDOG, 3, timeout);
 }

@@ -12,6 +12,7 @@
 #include "gpio_async.h"
 #include "i2c_master_slave.h"
 #include "timer.h"
+#include "app_watchdog.h"
 #include "bonus_timer.h"
 #include "controller.h"
 
@@ -174,6 +175,9 @@ void get_energy () {
   master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
   i2c_master_slave_write_sync(0x22, 18);
+
+  // Tickle the watchdog because something good happened.
+  app_watchdog_tickle_kernel();
 }
 
 int main () {
@@ -232,4 +236,8 @@ int main () {
 
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
+
+  // Setup watchdog
+  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_start();
 }
