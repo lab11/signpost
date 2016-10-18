@@ -203,6 +203,16 @@ u1  : Module6 Enabled
 u1  : Module7 Enabled
 ```
 
+### Microwave Radar Module
+
+```
+7 bytes:
+
+u8  : 0x32
+u8  : 0x01
+u8  : motion since last transmission (boolean)
+u32 : max speed measured since last transmission (mm/s)
+```
 
 
 

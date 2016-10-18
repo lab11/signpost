@@ -26,18 +26,20 @@ int main (void) {
     while (1) {
         gpio_toggle(9);
 
+        // my i2c address and service id
         master_write_buf[0] = 0x34;
-        master_write_buf[1] = 0x00;
-        master_write_buf[2] = 0x00;
+        master_write_buf[1] = 0x01;
+
+        // boolean motion (true in this case)
+        master_write_buf[2] = 0x01;
+
+        // speed in milli-meters per second (360 mm/s in this case)
         master_write_buf[3] = 0x00;
         master_write_buf[4] = 0x00;
-        master_write_buf[5] += 2;
-        master_write_buf[6] = 0x00;
-        master_write_buf[7] = 0x00;
-        master_write_buf[8] = 0x00;
-        master_write_buf[9] += 3;
+        master_write_buf[5] = 0x01;
+        master_write_buf[6] = 0x68;
 
-        i2c_master_slave_write_sync(0x22, 10);
+        i2c_master_slave_write_sync(0x22, 7);
 
         delay_ms(3000);
     }
