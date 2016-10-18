@@ -69,7 +69,11 @@ void gps_send_msg (char* msg) {
     printf("%s%02X\r\n", msg, minmea_checksum(msg));
 }
 
-void gps_rx_callback (int len, int y, int z, void* userdata) {
+void gps_rx_callback (
+        __attribute__ ((unused)) int len,
+        __attribute__ ((unused)) int y,
+        __attribute__ ((unused)) int z,
+        __attribute__ ((unused)) void* userdata) {
 
     // parse data
     bool data_updated = false;

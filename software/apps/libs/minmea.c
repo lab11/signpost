@@ -585,6 +585,8 @@ bool minmea_parse_vtg(struct minmea_sentence_vtg *frame, const char *sentence)
     return true;
 }
 
+/*
+// SIGNPOST CHANGE: remove this function since we don't use it
 int minmea_gettime(struct timespec *ts, const struct minmea_date *date, const struct minmea_time *time_)
 {
     if (date->year == -1 || time_->hours == -1)
@@ -599,7 +601,7 @@ int minmea_gettime(struct timespec *ts, const struct minmea_date *date, const st
     tm.tm_min = time_->minutes;
     tm.tm_sec = time_->seconds;
 
-    time_t timestamp = timegm(&tm); /* See README.md if your system lacks timegm(). */
+    time_t timestamp = timegm(&tm); // See README.md if your system lacks timegm().
     if (timestamp != -1) {
         ts->tv_sec = timestamp;
         ts->tv_nsec = time_->microseconds * 1000;
@@ -608,5 +610,6 @@ int minmea_gettime(struct timespec *ts, const struct minmea_date *date, const st
         return -1;
     }
 }
+*/
 
 /* vim: set ts=4 sw=4 et: */

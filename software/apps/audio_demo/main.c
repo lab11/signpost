@@ -12,6 +12,7 @@
 #include "adc.h"
 #include "msgeq7.h"
 #include "i2c_master_slave.h"
+#include "timer.h"
 
 #define STROBE 4
 #define RESET 5

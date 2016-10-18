@@ -11,5 +11,5 @@ INCLUDE_PATHS += .
 CPPFLAGS += -DSTACK_SIZE=2048
 
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 

@@ -4,6 +4,7 @@
 #include <msgeq7.h>
 #include <gpio.h>
 #include <adc.h>
+#include <timer.h>
 
 static uint8_t strobe;
 static uint8_t reset;
