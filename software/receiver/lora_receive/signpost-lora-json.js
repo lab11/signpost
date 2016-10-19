@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 
 var iM880 = require('iM880-serial-comm');
+var mqtt = require('mqtt');
 
 // set the endpoint ID
 DEVICE_ID = 0x09;
 DEVICE_GROUP = 0x10;
 SERIAL_PORT = '/dev/ttyUSB1';
 
+var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
+
 // call the construction with and endpointID
-device = new iM880(DEVICE_ID, DEVICE_GROUP, SERIAL_PORT);
+var device = new iM880(DEVICE_ID, DEVICE_GROUP, SERIAL_PORT);
 
 // wait for config-done message and print endpointID
 var msg = new Uint8Array([ 9, 8, 10, 67 ]);
@@ -40,7 +43,7 @@ function parse (buf) {
 	var addr = '';
 	for (var i=0; i<6; i++) {
 		addr += pad(buf[i].toString(16), 2);
-		if (i < 5) addr += ':';
+		// if (i < 5) addr += ':';
 	}
 
 	// Get the sender module
@@ -156,4 +159,5 @@ device.on('rx-msg', function(data) {
   var buf = new Buffer(data.payload);
   var pkt = parse(buf);
   console.log(pkt);
+  mqtt_client.publish('gateway-data', JSON.stringify(pkt));
 });
