@@ -370,9 +370,6 @@ CPPFLAGS += -DSTACK_SIZE=2048
 # 	building the application
 include ../AppMakefile.mk
 
-$(BUILDDIR)/%.o: %.c | $(BUILDDIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-
 .PHONY: clean
 clean::
 	rm -rf $(OUTPUT_PATH)
