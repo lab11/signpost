@@ -1,15 +1,19 @@
+.PHONY: all
+all:
 # makefile for user application
 
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
+TOCK_ARCH ?= cortex-m4
 TOCK_BOARD = radio_module
 
 #TOCK_USERLAND_BASE_DIR = $(CURRENT_DIR)../
 #TOCK_BASE_DIR = $(CURRENT_DIR)/../../../
-BUILDDIR ?= build/$(TOCK_ARCH)
+BUILDDIR ?= $(abspath build/$(TOCK_ARCH))
 
 INCLUDE_PATHS += .
-C_SRCS := $(wilcard *.c)
+#This worked b/c of a typo? APPLICATION_SRCS has wildcard
+#C_SRCS := $(wilcard *.c)
 
 ifneq ($(MAKECMDGOALS),clean)
 # Convenience shorthand to only set the last octet:
@@ -21,9 +25,12 @@ $(error You must supply and ID (last octet) or full address)
 endif
 endif
 C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2)]))")
+$(shell bash -c "diff <(echo $(C_ADDRESS)) .address &>/dev/null || echo $(C_ADDRESS) > .address")
 endif
 
 CFLAGS += -DCOMPILE_TIME_ADDRESS="$(C_ADDRESS)"
+
+$(BUILDDIR)/main.o: .address
 
 PROJECT_NAME = $(shell basename "$(realpath ./)")
 
