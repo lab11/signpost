@@ -35,7 +35,7 @@ void gps_init () {
 
     // only get GSA and RMC messages
     gps_send_msg(GPS_ACTIVATE_GSA_RMC);
-    
+
     // enable differential GPS mode
     gps_send_msg(GPS_DGPS_WAAS);
     gps_send_msg(GPS_SBAS_ENABLE);
@@ -126,7 +126,7 @@ bool gps_parse_data (char* line) {
                     // get date fields
                     gps_data.day   = (uint8_t)rmc_frame.date.day;
                     gps_data.month = (uint8_t)rmc_frame.date.month;
-                    gps_data.year  = (uint16_t)rmc_frame.date.year;
+                    gps_data.year  = (uint8_t)rmc_frame.date.year;
 
                     // get time fields
                     gps_data.hours        = (uint8_t)rmc_frame.time.hours;

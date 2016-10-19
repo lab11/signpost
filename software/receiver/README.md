@@ -203,6 +203,25 @@ u1  : Module6 Enabled
 u1  : Module7 Enabled
 ```
 
+GPS
+```
+18 bytes:
+
+u8  : 0x20
+u8  : 0x02
+u8  : Day
+u8  : Month
+u8  : Year (Last two digits)
+u8  : Hours
+u8  : Minutes
+u8  : Seconds
+u32 : Latitude
+u32 : Longitude
+u8  : Fix (1=No Fix, 2=2D, 3=3D)
+u8  : Satellite Count (Satellites used in fix)
+```
+
+
 ### Microwave Radar Module
 
 ```

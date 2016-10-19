@@ -15,7 +15,8 @@
 #include "app_watchdog.h"
 #include "bonus_timer.h"
 #include "controller.h"
-
+#include "gps.h"
+#include "minmea.h"
 
 void get_energy ();
 
@@ -53,7 +54,54 @@ static void i2c_master_slave_callback (
   // }
 }
 
+void gps_callback (gps_data_t* gps_data) {
+    // got new gps data
 
+    printf("GPS Data: %d:%d:%d.%d %d/%d/%d\n",
+            gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
+            gps_data->month, gps_data->day, gps_data->year
+            );
+
+    printf("\t%d degrees lat - %d degrees lon\n",
+            gps_data->latitude, gps_data->longitude);
+
+    char* fix_str = "Invalid fix";
+    if (gps_data->fix == 2) {
+        fix_str = "2D fix";
+    } else if (gps_data->fix == 3) {
+        fix_str = "3D fix";
+    }
+    printf("\tfix %s sats %d\n",
+            fix_str, gps_data-> satellite_count);
+
+  // My address
+  master_write_buf[0] = 0x20;
+  // Packet type. 2 == GPS
+  master_write_buf[1] = 0x02;
+  // date
+  master_write_buf[2] = (uint8_t) (gps_data->day   & 0xFF);
+  master_write_buf[3] = (uint8_t) (gps_data->month & 0xFF);
+  master_write_buf[4] = (uint8_t) (gps_data->year  & 0xFF);
+  // time
+  master_write_buf[5] = (uint8_t) (gps_data->hours   & 0xFF);
+  master_write_buf[6] = (uint8_t) (gps_data->minutes & 0xFF);
+  master_write_buf[7] = (uint8_t) (gps_data->seconds & 0xFF);
+  // latitude
+  master_write_buf[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
+  master_write_buf[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
+  master_write_buf[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
+  master_write_buf[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
+  // longitude
+  master_write_buf[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
+  master_write_buf[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
+  master_write_buf[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
+  master_write_buf[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
+  // quality
+  master_write_buf[16] = (uint8_t) (gps_data->fix & 0xFF);
+  master_write_buf[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
+
+  i2c_master_slave_write_sync(0x22, 18);
+}
 
 static void timer_callback (
         int callback_type __attribute__ ((unused)),
@@ -70,7 +118,7 @@ static void bonus_timer_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-  putstr("BONUS TIMER!!!!!!!!!!!!!!!!!\n");
+  gps_sample(gps_callback);
 }
 
 
@@ -189,7 +237,7 @@ void get_energy () {
 }
 
 int main () {
-  putstr("[Controller] ** Main App **\n");
+  putstr("[Controller (Status & GPS)] ** Main App **\n");
 
   // Setup backplane by enabling the modules
   gpio_async_set_callback(gpio_async_callback, NULL);
@@ -236,6 +284,9 @@ int main () {
 
   // Reset all of the LTC2941s
   signpost_energy_reset();
+
+  // setup gps
+  gps_init();
 
   // Need a timer
   timer_subscribe(timer_callback, NULL);

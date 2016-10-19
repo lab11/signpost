@@ -4,9 +4,9 @@
 
 typedef struct {
     // date
-    uint8_t  day;
-    uint8_t  month;
-    uint16_t year;
+    uint8_t day;
+    uint8_t month;
+    uint8_t year;
 
     // time
     uint8_t  hours;
