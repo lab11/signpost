@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 #include "tock.h"
 #include "console.h"
@@ -19,10 +20,8 @@
 #include "minmea.h"
 
 void get_energy ();
+void gps_callback (gps_data_t* gps_data);
 
-
-// int _length;
-// int _go = 0;
 
 uint8_t slave_read_buf[256];
 uint8_t slave_write_buf[256];
@@ -32,76 +31,9 @@ uint8_t master_write_buf[256];
 uint8_t fm25cl_read_buf[256];
 uint8_t fm25cl_write_buf[256];
 
-static void gpio_async_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-}
 
-static void i2c_master_slave_callback (
-        int callback_type __attribute__ ((unused)),
-        int length __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
 
-  // if (callback_type == 3) {
-  //   _length = length;
 
-  //   _go = 1;
-  // }
-}
-
-void gps_callback (gps_data_t* gps_data) {
-    // got new gps data
-
-    printf("GPS Data: %d:%d:%d.%d %d/%d/%d\n",
-            gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
-            gps_data->month, gps_data->day, gps_data->year
-            );
-
-    printf("\t%d degrees lat - %d degrees lon\n",
-            gps_data->latitude, gps_data->longitude);
-
-    char* fix_str = "Invalid fix";
-    if (gps_data->fix == 2) {
-        fix_str = "2D fix";
-    } else if (gps_data->fix == 3) {
-        fix_str = "3D fix";
-    }
-    printf("\tfix %s sats %d\n",
-            fix_str, gps_data-> satellite_count);
-
-  // My address
-  master_write_buf[0] = 0x20;
-  // Packet type. 2 == GPS
-  master_write_buf[1] = 0x02;
-  // date
-  master_write_buf[2] = (uint8_t) (gps_data->day   & 0xFF);
-  master_write_buf[3] = (uint8_t) (gps_data->month & 0xFF);
-  master_write_buf[4] = (uint8_t) (gps_data->year  & 0xFF);
-  // time
-  master_write_buf[5] = (uint8_t) (gps_data->hours   & 0xFF);
-  master_write_buf[6] = (uint8_t) (gps_data->minutes & 0xFF);
-  master_write_buf[7] = (uint8_t) (gps_data->seconds & 0xFF);
-  // latitude
-  master_write_buf[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
-  master_write_buf[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
-  master_write_buf[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
-  master_write_buf[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
-  // longitude
-  master_write_buf[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
-  master_write_buf[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
-  master_write_buf[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
-  master_write_buf[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
-  // quality
-  master_write_buf[16] = (uint8_t) (gps_data->fix & 0xFF);
-  master_write_buf[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
-
-  i2c_master_slave_write_sync(0x22, 18);
-}
 
 static void timer_callback (
         int callback_type __attribute__ ((unused)),
@@ -236,11 +168,64 @@ void get_energy () {
   }
 }
 
+void gps_callback (gps_data_t* gps_data) {
+  // Got new gps data
+
+  printf("\n\nGPS Data: %d:%d:%d.%lu %d/%d/%d\n",
+          gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
+          gps_data->month, gps_data->day, gps_data->year
+          );
+
+  printf("  %lu degrees lat - %lu degrees lon\n",
+          gps_data->latitude, gps_data->longitude);
+
+  char* fix_str = "Invalid fix";
+  if (gps_data->fix == 2) {
+      fix_str = "2D fix";
+  } else if (gps_data->fix == 3) {
+      fix_str = "3D fix";
+  }
+  printf("  fix %s sats %d\n", fix_str, gps_data-> satellite_count);
+
+  // My address
+  master_write_buf[0] = 0x20;
+  // Packet type. 2 == GPS
+  master_write_buf[1] = 0x02;
+  // date
+  master_write_buf[2] = (uint8_t) (gps_data->day   & 0xFF);
+  master_write_buf[3] = (uint8_t) (gps_data->month & 0xFF);
+  master_write_buf[4] = (uint8_t) (gps_data->year  & 0xFF);
+  // time
+  master_write_buf[5] = (uint8_t) (gps_data->hours   & 0xFF);
+  master_write_buf[6] = (uint8_t) (gps_data->minutes & 0xFF);
+  master_write_buf[7] = (uint8_t) (gps_data->seconds & 0xFF);
+  // latitude
+  master_write_buf[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
+  master_write_buf[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
+  master_write_buf[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
+  master_write_buf[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
+  // longitude
+  master_write_buf[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
+  master_write_buf[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
+  master_write_buf[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
+  master_write_buf[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
+  // quality
+  master_write_buf[16] = (uint8_t) (gps_data->fix & 0xFF);
+  master_write_buf[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
+
+  int result = i2c_master_slave_write_sync(0x22, 18);
+
+  // Only say things are working if i2c worked
+  if (result == 0) {
+    // Tickle the watchdog because something good happened.
+    app_watchdog_tickle_kernel();
+  }
+}
+
 int main () {
-  putstr("[Controller (Status & GPS)] ** Main App **\n");
+  putstr("[Controller] ** Main App **\n");
 
   // Setup backplane by enabling the modules
-  gpio_async_set_callback(gpio_async_callback, NULL);
   controller_init_module_switches();
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
@@ -249,7 +234,6 @@ int main () {
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
 
-  i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
   i2c_master_slave_set_slave_address(0x20);
 
   // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
@@ -292,7 +276,7 @@ int main () {
   timer_subscribe(timer_callback, NULL);
   bonus_timer_subscribe(bonus_timer_callback, NULL);
 
-
+  // Start timers to read energy and GPS
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
 
