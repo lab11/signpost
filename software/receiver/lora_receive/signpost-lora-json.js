@@ -150,6 +150,18 @@ function parse (buf) {
 				_meta: get_meta(addr)
 			}
 		}
+	} else if (module == 0x34) {
+		if (message_type == 0x01) {
+			var motion = buf.readInt8(9) > 0;
+			var speed = buf.readUInt32BE(10) / 1000.0;
+
+			return {
+				device: 'signpost_microwave_radar',
+				motion: motion,
+				'velocity_m/s': speed,
+				_meta: get_meta(addr)
+			}
+		}
 	}
 }
 
