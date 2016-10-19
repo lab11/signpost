@@ -25,7 +25,7 @@
 
 //definitions for the ble
 #define DEVICE_NAME "Signpost"
-#define PHYSWEB_URL "testURL"
+#define PHYSWEB_URL "j2x.us/signp"
 
 
 #define UMICH_COMPANY_IDENTIFIER 0x02E0
