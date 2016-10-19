@@ -11,6 +11,7 @@ BUILDDIR ?= build/$(TOCK_ARCH)
 INCLUDE_PATHS += .
 C_SRCS := $(wilcard *.c)
 
+ifneq ($(MAKECMDGOALS),clean)
 # Convenience shorthand to only set the last octet:
 ifneq ($(ID),)
 ADDRESS ?= c098e51200$(ID)
@@ -20,6 +21,7 @@ $(error You must supply and ID (last octet) or full address)
 endif
 endif
 C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2)]))")
+endif
 
 CFLAGS += -DCOMPILE_TIME_ADDRESS="$(C_ADDRESS)"
 
