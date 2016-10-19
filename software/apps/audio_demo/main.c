@@ -93,6 +93,21 @@ int main () {
         uint16_t data = (uint16_t)adc_read_single_sample(0);
         master_write_buf[14] = (uint8_t)((data >> 8) & 0xff);
         master_write_buf[15] = (uint8_t)(data & 0xff);
+
+        //give some indication of volume to the user
+        if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 400) {
+            //turn on green LED
+            gpio_clear(10);
+        } else {
+            gpio_set(10);
+        }
+        if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 900) {
+            //turn on red LED
+            gpio_clear(11);
+        } else {
+            gpio_set(11);
+        }
+
         count++;
         if(count >= 50) {
             i2c_master_slave_write(0x22,16);
