@@ -58,14 +58,6 @@ uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
 #endif
 static uint8_t address[ADDRESS_SIZE] = { COMPILE_TIME_ADDRESS };
 
-// static void adv_config_eddystone () {
-// 	eddystone_adv(PHYSWEB_URL, NULL);
-// }
-
-// static void adv_config_name() {
-// 	simple_adv_only_name();
-// }
-
 static void adv_config_data() {
 	static uint8_t i = 0;
 
