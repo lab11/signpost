@@ -235,11 +235,11 @@ pub unsafe fn reset_handler() {
 
     sam4l::gpio::PA[16].enable();
     sam4l::gpio::PA[16].enable_output();
-    sam4l::gpio::PA[16].clear();
+    sam4l::gpio::PA[16].set();
 
     sam4l::gpio::PA[17].enable();
     sam4l::gpio::PA[17].enable_output();
-    sam4l::gpio::PA[17].clear();
+    sam4l::gpio::PA[17].set();
 
 	//enable the power to the onboard mic
     sam4l::gpio::PA[08].enable();
