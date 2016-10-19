@@ -11,15 +11,17 @@ BUILDDIR ?= build/$(TOCK_ARCH)
 INCLUDE_PATHS += .
 C_SRCS := $(wilcard *.c)
 
-#define this variable to be your device address
-#set the last octets to your radio address
-#ADDRESS = "static uint8_t address[ADDRESS_SIZE] = {0xC0, 0x98, 0xE5, 0x12, 0x00, 0x02};"
-
+# Convenience shorthand to only set the last octet:
+ifneq ($(ID),)
+ADDRESS ?= c098e51200$(ID)
+else
 ifndef ADDRESS
-$(error You must define an address in the Makefile to compile!)
+$(error You must supply and ID (last octet) or full address)
 endif
+endif
+C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2)]))")
 
-CFLAGS += -DADDRESS=$(ADDRESS)
+CFLAGS += -DCOMPILE_TIME_ADDRESS="$(C_ADDRESS)"
 
 PROJECT_NAME = $(shell basename "$(realpath ./)")
 
