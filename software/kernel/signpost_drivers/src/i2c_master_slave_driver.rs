@@ -62,7 +62,15 @@ impl<'a> I2CMasterSlaveDriver<'a> {
 }
 
 impl<'a> hil::i2c::I2CHwMasterClient for I2CMasterSlaveDriver<'a> {
-    fn command_complete(&self, buffer: &'static mut [u8], _error:  hil::i2c::Error) {
+    fn command_complete(&self, buffer: &'static mut [u8], error:  hil::i2c::Error) {
+
+        // Map I2C error to a number we can pass back to the application
+        let err: isize = match error {
+            hil::i2c::Error::AddressNak => -1,
+            hil::i2c::Error::DataNak => -2,
+            hil::i2c::Error::ArbitrationLost => -3,
+            hil::i2c::Error::CommandComplete => 0,
+        };
 
         // Signal the application layer. Need to copy read in bytes if this
         // was a read call.
@@ -72,7 +80,7 @@ impl<'a> hil::i2c::I2CHwMasterClient for I2CMasterSlaveDriver<'a> {
 
                 self.app_state.map(|app_state| {
                     app_state.callback.map(|mut cb| {
-                        cb.schedule(0, 0, 0);
+                        cb.schedule(0, err as usize, 0);
                     });
                 });
             }
@@ -91,7 +99,7 @@ impl<'a> hil::i2c::I2CHwMasterClient for I2CMasterSlaveDriver<'a> {
                     });
 
                     app_state.callback.map(|mut cb| {
-                        cb.schedule(1, 0, 0);
+                        cb.schedule(1, err as usize, 0);
                     });
                 });
             }

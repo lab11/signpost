@@ -15,9 +15,9 @@
 //#include "multi_adv.h"
 
 //tock includes
-#include <tock.h>
-#include "firestorm.h"
-#include <console.h>
+#include "tock.h"
+#include "console.h"
+#include "timer.h"
 #include "iM880A_RadioInterface.h"
 #include "i2c_master_slave.h"
 #include "radio_module.h"
@@ -58,13 +58,13 @@ uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
 #endif
 static uint8_t address[ADDRESS_SIZE] = { COMPILE_TIME_ADDRESS };
 
-static void adv_config_eddystone () {
-	eddystone_adv(PHYSWEB_URL, NULL);
-}
+// static void adv_config_eddystone () {
+// 	eddystone_adv(PHYSWEB_URL, NULL);
+// }
 
-static void adv_config_name() {
-	simple_adv_only_name();
-}
+// static void adv_config_name() {
+// 	simple_adv_only_name();
+// }
 
 static void adv_config_data() {
 	static uint8_t i = 0;
@@ -165,19 +165,19 @@ void ble_address_set() {
     APP_ERROR_CHECK(err_code);
 }
 
-void ble_error(uint32_t error_code) {
+void ble_error(uint32_t error_code __attribute__ ((unused))) {
 	//this has to be here too
 }
 
-void ble_evt_connected(ble_evt_t* p_ble_evt) {
+void ble_evt_connected(ble_evt_t* p_ble_evt __attribute__ ((unused))) {
 	//this might also need to be here
 }
 
-void ble_evt_disconnected(ble_evt_t* p_ble_evt) {
+void ble_evt_disconnected(ble_evt_t* p_ble_evt __attribute__ ((unused))) {
 	//this too
 }
 
-void ble_evt_user_handler (ble_evt_t* p_ble_evt) {
+void ble_evt_user_handler (ble_evt_t* p_ble_evt __attribute__ ((unused))) {
 	//and maybe this
 }
 
@@ -188,13 +188,12 @@ static void timer_callback (
 	void * callback_args __attribute__ ((unused))) {
 
 	static uint8_t i = 0;
-    static volatile uint16_t result = 0;
     static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
 
     if(data_to_send[i][0] != 0x00) {
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
         memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_to_send[i], BUFFER_SIZE);
-	    result = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+	    iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
     }
 
 	if(i == 5) {
@@ -231,7 +230,7 @@ int main () {
         }
     }
 
-	uint16_t result = iM880A_Configure();
+	iM880A_Configure();
 
 	//low configure i2c slave to listen
 	i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);

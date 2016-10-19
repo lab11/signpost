@@ -174,10 +174,18 @@ void get_energy () {
   master_write_buf[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
   master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
-  i2c_master_slave_write_sync(0x22, 18);
+  int result = i2c_master_slave_write_sync(0x22, 18);
+  {
+    char buf[64];
+    sprintf(buf, "Return from I2C Write: %i\n", result);
+    putstr(buf);
+  }
 
-  // Tickle the watchdog because something good happened.
-  app_watchdog_tickle_kernel();
+  // Only say things are working if i2c worked
+  if (result == 0) {
+    // Tickle the watchdog because something good happened.
+    app_watchdog_tickle_kernel();
+  }
 }
 
 int main () {

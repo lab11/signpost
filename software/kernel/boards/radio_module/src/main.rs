@@ -95,7 +95,7 @@ impl Platform for RadioModule {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA,PB};
-    use sam4l::gpio::PeripheralFunction::{A, B, C, D, E};
+    use sam4l::gpio::PeripheralFunction::{A, C};
 
     //backplane communication
     PB[00].configure(Some(A)); //SDA
@@ -179,7 +179,7 @@ pub unsafe fn reset_handler() {
                      kernel::Container::create()),
         416/8);
     usart::USART2.set_uart_client(console);
-	
+
 	usart::USART3.set_clock_freq(clock_freq);
 	let nrf_serialization = static_init!(
 		Nrf51822Serialization<usart::USART>,
@@ -230,21 +230,21 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 15],
-        [&sam4l::gpio::PB[04],  
-         &sam4l::gpio::PB[05],  
-         &sam4l::gpio::PB[03],  
-         &sam4l::gpio::PB[02],  
-         &sam4l::gpio::PB[08],  
-         &sam4l::gpio::PB[11],  
-         &sam4l::gpio::PA[04],  
-         &sam4l::gpio::PA[05],  
-         &sam4l::gpio::PA[06],  
-         &sam4l::gpio::PA[17],  
-         &sam4l::gpio::PA[18],  
-         &sam4l::gpio::PA[07],  
-         &sam4l::gpio::PA[10],  
-         &sam4l::gpio::PA[13],  
-         &sam4l::gpio::PA[14]], 
+        [&sam4l::gpio::PB[04],
+         &sam4l::gpio::PB[05],
+         &sam4l::gpio::PB[03],
+         &sam4l::gpio::PB[02],
+         &sam4l::gpio::PB[08],
+         &sam4l::gpio::PB[11],
+         &sam4l::gpio::PA[04],
+         &sam4l::gpio::PA[05],
+         &sam4l::gpio::PA[06],
+         &sam4l::gpio::PA[17],
+         &sam4l::gpio::PA[18],
+         &sam4l::gpio::PA[07],
+         &sam4l::gpio::PA[10],
+         &sam4l::gpio::PA[13],
+         &sam4l::gpio::PA[14]],
         15 * 4
     );
     let gpio = static_init!(
