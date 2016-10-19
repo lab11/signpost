@@ -152,6 +152,8 @@ uint32_t calculate_radar_speed (uint32_t freq) {
 }
 
 
+bool _sample_done = false;
+
 // Callback when the adc reading is done
 void adc_callback (int callback_type, int channel, int sample, void* callback_args) {
     UNUSED_PARAMETER(callback_type);
@@ -179,7 +181,8 @@ void adc_callback (int callback_type, int channel, int sample, void* callback_ar
     }
 
     // get new sample
-    adc_single_sample(ADC_CHANNEL);
+    // adc_single_sample(ADC_CHANNEL);
+    _sample_done = true;
 }
 
 static void timer_callback (
@@ -235,6 +238,11 @@ int main () {
     adc_initialize();
 
     // start getting samples
-    adc_single_sample(ADC_CHANNEL);
+    while (1) {
+        _sample_done = false;
+        adc_single_sample(ADC_CHANNEL);
+        yield_for(&_sample_done);
+    }
+
 }
 
