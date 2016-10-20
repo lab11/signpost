@@ -72,7 +72,6 @@ function parse (buf) {
 	// And get the sequence number
 	var sequence_number = buf[8];
 
-	// TODO
 	// DISCARD DUPLICATES BASED ON SEQ NUMBER
 	var duplicate = check_duplicate(module, message_type, sequence_number);
 	if (duplicate) {
@@ -152,6 +151,27 @@ function parse (buf) {
 			var chan24 = buf.readInt8(22);
 			var chan25 = buf.readInt8(23);
 			var chan26 = buf.readInt8(24);
+
+			console.log(buf);
+			if (chan11 >= 0 ||
+				chan12 >= 0 ||
+				chan13 >= 0 ||
+				chan14 >= 0 ||
+				chan15 >= 0 ||
+				chan16 >= 0 ||
+				chan17 >= 0 ||
+				chan18 >= 0 ||
+				chan19 >= 0 ||
+				chan20 >= 0 ||
+				chan21 >= 0 ||
+				chan22 >= 0 ||
+				chan22 >= 0 ||
+				chan23 >= 0 ||
+				chan24 >= 0 ||
+				chan25 >= 0 ||
+				chan26 >= 0) {
+				return undefined;
+			}
 
 			return {
 				device: 'signpost_2.4ghz_spectrum',
