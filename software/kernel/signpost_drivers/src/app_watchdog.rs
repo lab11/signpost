@@ -80,6 +80,12 @@ impl<'a, A: alarm::Alarm + 'a> AppWatchdog<'a, A> {
     fn tickle_kernel(&self) {
         self.kernel_timeout.tickle();
     }
+
+    fn reset(&self) {
+        unsafe {
+            (self.app_timeout.reset)();
+        }
+    }
 }
 
 
@@ -132,6 +138,14 @@ impl<'a, A: alarm::Alarm + 'a> Driver for AppWatchdog<'a, A> {
             // Disable app watchdog
             5 => {
                 self.stop();
+                0
+            },
+            // Reset the board
+            6 => {
+                // safety check
+                if data == 0xDEAD {
+                    self.reset();
+                }
                 0
             },
 

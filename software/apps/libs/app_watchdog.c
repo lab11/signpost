@@ -26,3 +26,7 @@ int app_watchdog_set_app_timeout(int timeout) {
 int app_watchdog_set_kernel_timeout(int timeout) {
 	return command(DRIVER_NUM_APPWATCHDOG, 3, timeout);
 }
+
+int app_watchdog_reset_app() {
+	return command(DRIVER_NUM_APPWATCHDOG, 6, 0xDEAD);
+}

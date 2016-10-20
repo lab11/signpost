@@ -10,3 +10,4 @@ int app_watchdog_tickle_app();
 int app_watchdog_tickle_kernel();
 int app_watchdog_set_app_timeout(int timeout);
 int app_watchdog_set_kernel_timeout(int timeout);
+int app_watchdog_reset_app();
