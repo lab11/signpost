@@ -55,7 +55,7 @@ int main () {
     txbuf[8] = (uint8_t) ((pressure >> 8) & 0xFF);
     txbuf[9] = (uint8_t) (pressure & 0xFF);
 
-    i2c_master_slave_write_sync(0x20, 10);
+    // i2c_master_slave_write_sync(0x20, 10);
 
     {
       char buf[256];

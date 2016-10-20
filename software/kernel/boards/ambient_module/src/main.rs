@@ -74,7 +74,8 @@ struct AmbientModule {
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    lps331ap: &'static signpost_drivers::lps331ap::LPS331AP<'static>,
+    // lps331ap: &'static signpost_drivers::lps331ap::LPS331AP<'static>,
+    lps25hb: &'static signpost_drivers::lps25hb::LPS25HB<'static>,
     si7021: &'static signpost_drivers::si7021::SI7021<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     isl29035: &'static capsules::isl29035::Isl29035<'static>,
     tsl2561: &'static signpost_drivers::tsl2561::TSL2561<'static>,
@@ -91,7 +92,7 @@ impl Platform for AmbientModule {
             3 => f(Some(self.timer)),
             6 => f(Some(self.isl29035)),
             105 => f(Some(self.i2c_master_slave)),
-            106 => f(Some(self.lps331ap)),
+            106 => f(Some(self.lps25hb)),
             107 => f(Some(self.si7021)),
             108 => f(Some(self.tsl2561)),
             _ => f(None)
@@ -104,39 +105,33 @@ unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
     use sam4l::gpio::PeripheralFunction::{A, B, E};
 
-    PA[04].configure(None); // Unused
+    PA[04].configure(None); // PIR
     PA[05].configure(None); // LED1
     PA[06].configure(None); // LED2
     PA[07].configure(None); // LED3
-    PA[08].configure(None); // Unused
+    PA[08].configure(None); // LPS35 Pressure Sensor Interrupt
     PA[09].configure(None); // Unused
-    PA[10].configure(None); // Unused
+    PA[10].configure(None); // LPS25HB Pressure Sensor Interrupt
     PA[11].configure(Some(A)); // UART RX
     PA[12].configure(Some(A)); // UART TX
     PA[13].configure(None); // Unused
     PA[14].configure(None); // LPS331AP Pressure Sensor Interrupt 1
     PA[15].configure(None); // LPS331AP Pressure Sensor Interrupt 2
     PA[16].configure(None); // TSL2561 Light Sensor Interrupt
-	PA[17].configure(None); // ISL29035 Light Sensor Interrupt
+    PA[17].configure(None); // ISL29035 Light Sensor Interrupt
     PA[18].configure(None); // Module Out
     PA[19].configure(None); // PPS
     PA[20].configure(None); // Module In
     PA[21].configure(Some(E)); // Sensor I2C SDA
     PA[22].configure(Some(E)); // Sensor I2C SCL
     PA[23].configure(Some(B)); // Backplane I2C SDA
-	PA[24].configure(Some(B)); // Backplane I2C SCL
-	PA[25].configure(Some(A)); // USB-
-	PA[26].configure(Some(A)); // USB+
+    PA[24].configure(Some(B)); // Backplane I2C SCL
+    PA[25].configure(Some(A)); // USB-
+    PA[26].configure(Some(A)); // USB+
 
     // Setup unused pins as inputs
-    sam4l::gpio::PA[04].enable();
-    sam4l::gpio::PA[04].disable_output();
-    sam4l::gpio::PA[08].enable();
-    sam4l::gpio::PA[08].disable_output();
     sam4l::gpio::PA[09].enable();
     sam4l::gpio::PA[09].disable_output();
-    sam4l::gpio::PA[10].enable();
-    sam4l::gpio::PA[10].disable_output();
     sam4l::gpio::PA[13].enable();
     sam4l::gpio::PA[13].disable_output();
 
@@ -257,19 +252,33 @@ pub unsafe fn reset_handler() {
     si7021_i2c.set_client(si7021);
     si7021_virtual_alarm.set_client(si7021);
 
-    // LPS331AP Pressure Sensor
-    let lps331ap_i2c = static_init!(
+    // // LPS331AP Pressure Sensor
+    // let lps331ap_i2c = static_init!(
+    //     capsules::virtual_i2c::I2CDevice,
+    //     capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x5C),
+    //     32);
+    // let lps331ap = static_init!(
+    //     signpost_drivers::lps331ap::LPS331AP<'static>,
+    //     signpost_drivers::lps331ap::LPS331AP::new(lps331ap_i2c,
+    //         &sam4l::gpio::PA[14],
+    //         &mut signpost_drivers::lps331ap::BUFFER),
+    //     40);
+    // lps331ap_i2c.set_client(lps331ap);
+    // sam4l::gpio::PA[14].set_client(lps331ap);
+
+    // LPS25HB Pressure Sensor
+    let lps25hb_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
         capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x5C),
         32);
-    let lps331ap = static_init!(
-        signpost_drivers::lps331ap::LPS331AP<'static>,
-        signpost_drivers::lps331ap::LPS331AP::new(lps331ap_i2c,
-            &sam4l::gpio::PA[14],
-            &mut signpost_drivers::lps331ap::BUFFER),
+    let lps25hb = static_init!(
+        signpost_drivers::lps25hb::LPS25HB<'static>,
+        signpost_drivers::lps25hb::LPS25HB::new(lps25hb_i2c,
+            &sam4l::gpio::PA[10],
+            &mut signpost_drivers::lps25hb::BUFFER),
         40);
-    lps331ap_i2c.set_client(lps331ap);
-    sam4l::gpio::PA[14].set_client(lps331ap);
+    lps25hb_i2c.set_client(lps25hb);
+    sam4l::gpio::PA[10].set_client(lps25hb);
 
     // TSL2561 Light Sensor
     let tsl2561_i2c = static_init!(
@@ -330,7 +339,7 @@ pub unsafe fn reset_handler() {
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
-            lps331ap: lps331ap,
+            lps25hb: lps25hb,
             si7021: si7021,
             isl29035: isl29035,
             tsl2561: tsl2561,
