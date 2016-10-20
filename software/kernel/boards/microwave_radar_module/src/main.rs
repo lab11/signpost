@@ -301,7 +301,7 @@ pub unsafe fn reset_handler() {
         24);
     let watchdog = static_init!(
         signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 250),
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 1200),
         128/8);
     watchdog_alarm.set_client(watchdog);
 
@@ -323,7 +323,7 @@ pub unsafe fn reset_handler() {
         192/8);
 
     microwave_radar_module.uartprint.initialize();
-    // watchdog.start();
+    watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();

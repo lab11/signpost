@@ -495,7 +495,7 @@ pub unsafe fn reset_handler() {
         24);
     let watchdog = static_init!(
         signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 250),
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 1200),
         128/8);
     watchdog_alarm.set_client(watchdog);
 
