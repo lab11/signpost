@@ -1,8 +1,6 @@
-
 use core::fmt::*;
 use kernel::hil::uart::{self, UART};
 use sam4l;
-// use support::nop;
 
 pub struct Writer {
     initialized: bool,
@@ -43,7 +41,10 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
 
-    // blink MOD_IN pin which is unused
+    // Optional reset after hard fault
+    sam4l::bsc::reset();
+
+    // Blink MOD_IN pin which is unused
     let led = &sam4l::gpio::PB[05];
     led.enable_output();
     loop {
