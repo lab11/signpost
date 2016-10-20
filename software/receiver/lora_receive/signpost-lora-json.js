@@ -4,14 +4,15 @@ var iM880 = require('iM880-serial-comm');
 var mqtt = require('mqtt');
 
 // set the endpoint ID
-DEVICE_ID = 0x09;
-DEVICE_GROUP = 0x10;
-SERIAL_PORT = '/dev/ttyUSB1';
+const DEVICE_ID = 0x09;
+const DEVICE_GROUP = 0x10;
+const SERIAL_PORT = '/dev/tty.usbserial-AJ0EB9M7';
+const SPREADING_FACTOR = 7;
 
 var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
 
 // call the construction with and endpointID
-var device = new iM880(DEVICE_ID, DEVICE_GROUP, SERIAL_PORT);
+var device = new iM880(DEVICE_ID, DEVICE_GROUP, SERIAL_PORT, SPREADING_FACTOR);
 
 // wait for config-done message and print endpointID
 var msg = new Uint8Array([ 9, 8, 10, 67 ]);
