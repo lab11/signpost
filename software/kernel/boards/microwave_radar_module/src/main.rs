@@ -75,7 +75,8 @@ struct MicrowaveRadarModule {
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>
+    adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
 }
 
 impl Platform for MicrowaveRadarModule {
@@ -87,8 +88,9 @@ impl Platform for MicrowaveRadarModule {
             0 => f(Some(self.uartprint)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-	    7 => f(Some(self.adc)), // needs to be seven because the driver num is 7 in tocklib
+            7 => f(Some(self.adc)), // needs to be seven because the driver num is 7 in tocklib
             105 => f(Some(self.i2c_master_slave)),
+            108 => f(Some(self.app_watchdog)),
             _ => f(None)
         }
     }
@@ -264,6 +266,45 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
+    //
+    // App Watchdog
+    //
+    let app_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let kernel_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let app_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, sam4l::scb::reset),
+        128/8);
+    app_timeout_alarm.set_client(app_timeout);
+    let kernel_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, sam4l::scb::reset),
+        128/8);
+    kernel_timeout_alarm.set_client(kernel_timeout);
+    let app_watchdog = static_init!(
+        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
+        64/8);
+
+    //
+    // Kernel Watchdog
+    //
+    let watchdog_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let watchdog = static_init!(
+        signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 250),
+        128/8);
+    watchdog_alarm.set_client(watchdog);
+
 
     //
     // Actual platform object
@@ -276,11 +317,13 @@ pub unsafe fn reset_handler() {
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
-	    adc: adc_driver
+            adc: adc_driver,
+            app_watchdog: app_watchdog,
         },
-        160/8);
+        192/8);
 
     microwave_radar_module.uartprint.initialize();
+    // watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();

@@ -208,7 +208,11 @@ static void timer_callback (
     master_write_buf[6] = ((max_speed_since_last_transmit)       & 0xFF);
 
     // write data
-    i2c_master_slave_write_sync(0x22, 7);
+    int result = i2c_master_slave_write_sync(0x22, 7);
+
+    if (result >= 0) {
+        app_watchdog_tickle_kernel();
+    }
 
     // reset variables
     motion_since_last_transmit = false;
@@ -236,6 +240,10 @@ int main () {
     // initialize adc
     adc_set_callback(adc_callback, NULL);
     adc_initialize();
+
+    // Setup a watchdog
+    app_watchdog_set_kernel_timeout(10000);
+    app_watchdog_start();
 
     // start getting samples
     while (1) {
