@@ -79,17 +79,17 @@ controller_fram_t fram;
 void print_energy_data (int module, int energy) {
   char buf[64];
   if (module == 3) {
-    sprintf(buf, "Controller energy: %i uAh\n", energy);
+    sprintf(buf, "  Controller energy: %i uAh\n", energy);
   } else if (module == 4) {
-    sprintf(buf, "Linux energy: %i uAh\n", energy);
+    sprintf(buf, "  Linux energy:      %i uAh\n", energy);
   } else {
-    sprintf(buf, "Module %i energy: %i uAh\n", module, energy);
+    sprintf(buf, "  Module %i energy:   %i uAh\n", module, energy);
   }
   putstr(buf);
 }
 
 void get_energy () {
-  putstr("\n\nUpdated Energy woo!\n");
+  putstr("\n\nEnergy Data\n");
 
   for (int i=0; i<8; i++) {
     uint32_t energy;
