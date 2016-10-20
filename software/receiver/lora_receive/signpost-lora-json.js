@@ -65,6 +65,8 @@ function parse (buf) {
 		addr += pad(buf[i].toString(16), 2);
 	}
 
+	// Get the id (last address octet) of the sending signpost
+	var signpost_id = buf[5];
 	// Get the sender module
 	var module = buf[6];
 	// And the message type
