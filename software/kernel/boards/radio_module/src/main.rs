@@ -74,6 +74,7 @@ struct RadioModule {
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
 	i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 	nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
 }
 
 impl Platform for RadioModule {
@@ -87,6 +88,7 @@ impl Platform for RadioModule {
             3 => f(Some(self.timer)),
             5 => f(Some(self.nrf51822)),
             105 => f(Some(self.i2c_master_slave)),
+            108 => f(Some(self.app_watchdog)),
             _ => f(None)
         }
     }
@@ -256,6 +258,45 @@ pub unsafe fn reset_handler() {
     }
 
     //
+    // App Watchdog
+    //
+    let app_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let kernel_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let app_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, sam4l::scb::reset),
+        128/8);
+    app_timeout_alarm.set_client(app_timeout);
+    let kernel_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, sam4l::scb::reset),
+        128/8);
+    kernel_timeout_alarm.set_client(kernel_timeout);
+    let app_watchdog = static_init!(
+        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
+        64/8);
+
+    //
+    // Kernel Watchdog
+    //
+    let watchdog_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let watchdog = static_init!(
+        signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 250),
+        128/8);
+    watchdog_alarm.set_client(watchdog);
+
+    //
     // Actual platform object
     //
     let radio_module = static_init!(
@@ -266,8 +307,9 @@ pub unsafe fn reset_handler() {
             timer: timer,
 			i2c_master_slave: i2c_modules,
 			nrf51822:nrf_serialization,
+            app_watchdog: app_watchdog,
         },
-        160/8);
+        192/8);
 
 	sam4l::gpio::PB[06].enable();
 	sam4l::gpio::PB[06].enable_output();
@@ -275,6 +317,7 @@ pub unsafe fn reset_handler() {
 
     radio_module.console.initialize();
 	radio_module.nrf51822.initialize();
+    // watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
