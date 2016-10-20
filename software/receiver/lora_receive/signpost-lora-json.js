@@ -6,7 +6,8 @@ var mqtt = require('mqtt');
 // set the endpoint ID
 const DEVICE_ID = 0x09;
 const DEVICE_GROUP = 0x10;
-const SERIAL_PORT = '/dev/tty.usbserial-AJ0EB9M7';
+//const SERIAL_PORT = '/dev/tty.usbserial-AJ0EB9M7';
+const SERIAL_PORT = '/dev/ttyUSB1';
 const SPREADING_FACTOR = 7;
 
 var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
