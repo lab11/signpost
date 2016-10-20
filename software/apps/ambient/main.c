@@ -12,6 +12,7 @@
 #include "isl29035.h"
 #include "si7021.h"
 #include "timer.h"
+#include "led.h"
 
 uint8_t txbuf[32] = {0};
 
@@ -58,6 +59,8 @@ void sample_and_send () {
   print_measurements(temperature, humidity, pressure, light);
 
   // i2c_master_slave_write_sync(0x20, 10);
+
+  led_toggle(0);
 }
 
 static void timer_callback (int callback_type _U, int pin_value _U, int unused _U, void* callback_args _U) {

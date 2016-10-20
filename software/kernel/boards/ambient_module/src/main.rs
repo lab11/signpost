@@ -72,6 +72,7 @@ struct AmbientModule {
     // console: &'static Console<'static, usart::USART>,
     uartprint: &'static UartPrint<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    led: &'static signpost_drivers::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     // lps331ap: &'static signpost_drivers::lps331ap::LPS331AP<'static>,
@@ -89,6 +90,7 @@ impl Platform for AmbientModule {
         match driver_num {
             0 => f(Some(self.uartprint)),
             1 => f(Some(self.gpio)),
+            10 => f(Some(self.led)),
             3 => f(Some(self.timer)),
             6 => f(Some(self.isl29035)),
             105 => f(Some(self.i2c_master_slave)),
@@ -135,16 +137,16 @@ unsafe fn set_pin_primary_functions() {
     sam4l::gpio::PA[13].enable();
     sam4l::gpio::PA[13].disable_output();
 
-    // Configure LEDs to be off
-    sam4l::gpio::PA[05].enable();
-    sam4l::gpio::PA[05].enable_output();
-    sam4l::gpio::PA[05].clear();
-    sam4l::gpio::PA[06].enable();
-    sam4l::gpio::PA[06].enable_output();
-    sam4l::gpio::PA[06].clear();
-    sam4l::gpio::PA[07].enable();
-    sam4l::gpio::PA[07].enable_output();
-    sam4l::gpio::PA[07].set();
+    // // Configure LEDs to be off
+    // sam4l::gpio::PA[05].enable();
+    // sam4l::gpio::PA[05].enable_output();
+    // sam4l::gpio::PA[05].clear();
+    // sam4l::gpio::PA[06].enable();
+    // sam4l::gpio::PA[06].enable_output();
+    // sam4l::gpio::PA[06].clear();
+    // sam4l::gpio::PA[07].enable();
+    // sam4l::gpio::PA[07].enable_output();
+    // sam4l::gpio::PA[07].set();
 }
 
 /*******************************************************************************
@@ -307,25 +309,34 @@ pub unsafe fn reset_handler() {
     isl29035_i2c.set_client(isl29035);
 
     //
+    // LEDs
+    //
+    let led_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 3],
+        [&sam4l::gpio::PA[05],
+         &sam4l::gpio::PA[06],
+         &sam4l::gpio::PA[07]],
+        3 * 4
+    );
+    let led = static_init!(
+        signpost_drivers::led::LED<'static, sam4l::gpio::GPIOPin>,
+        signpost_drivers::led::LED::new(led_pins, signpost_drivers::led::ActivationMode::ActiveLow),
+        96/8);
+
+    //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 6],
-        [&sam4l::gpio::PA[05],
-         &sam4l::gpio::PA[06],
-         &sam4l::gpio::PA[07],
-         &sam4l::gpio::PA[18],
+        [&'static sam4l::gpio::GPIOPin; 3],
+        [&sam4l::gpio::PA[18],
          &sam4l::gpio::PA[19],
          &sam4l::gpio::PA[20]],
-        6 * 4
+        3 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
         20);
-    for pin in gpio_pins.iter() {
-        pin.set_client(gpio);
-    }
 
 
     //
@@ -337,6 +348,7 @@ pub unsafe fn reset_handler() {
             // console: console,
             uartprint: uartprint,
             gpio: gpio,
+            led: led,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
             lps25hb: lps25hb,
@@ -344,7 +356,7 @@ pub unsafe fn reset_handler() {
             isl29035: isl29035,
             tsl2561: tsl2561,
         },
-        256/8);
+        288/8);
 
     ambient_module.uartprint.initialize();
 
