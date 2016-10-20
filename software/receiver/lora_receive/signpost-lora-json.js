@@ -6,7 +6,7 @@ var mqtt = require('mqtt');
 // set the endpoint ID
 const DEVICE_ID = 0x09;
 const DEVICE_GROUP = 0x10;
-const SERIAL_PORT = '/dev/tty.usbserial-AJ0EB9M7';
+const SERIAL_PORT = '/dev/ttyUSB0';
 const SPREADING_FACTOR = 7;
 
 var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
@@ -171,6 +171,39 @@ function parse (buf) {
 				channel_24: chan24,
 				channel_25: chan25,
 				channel_26: chan26,
+				_meta: get_meta(addr)
+			}
+		}
+    } else if (module == 0x33) {
+		if (message_type == 0x01) {
+            //these are in dB SPL! I simplified the math to some magic numbers
+            //here's the rundown
+            //output/4096*3.3 = vout
+            //vout/2.82 = voutrms
+            //voutdB = 20*log(voutrms/ref=-38dBV@SPL=0.0125Vrms)
+            //voutmic = voutdB-(msgeq7gain+ampgain@100k=58.5dB)
+            //voutmic+94dB SPL = outdB @spl
+            //reduces to
+            //(20*log(output/43.75))+35.5
+            //for right now this is happening here, but I'm trying to move it
+            //to the app itself
+			var f_63_hz = (Math.log10(buf.readUInt16BE(9)/43.75)*20)+35.5;
+			var f_160_hz = (Math.log10(buf.readUInt16BE(11)/43.75)*20)+35.5;
+			var f_400_hz = (Math.log10(buf.readUInt16BE(13)/43.75)*20)+35.5;
+			var f_1000_hz = (Math.log10(buf.readUInt16BE(15)/43.75)*20)+35.5;
+			var f_2500_hz = (Math.log10(buf.readUInt16BE(17)/43.75)*20)+35.5;
+			var f_6250_hz = (Math.log10(buf.readUInt16BE(19)/43.75)*20)+35.5;
+			var f_16000_hz = (Math.log10(buf.readUInt16BE(21)/43.75)*20)+35.5;
+
+			return {
+				device: 'signpost_audio_spectrum',
+                frequency_63_hz: f_63_hz, 
+                frequency_160_hz: f_160_hz, 
+                frequency_400_hz: f_400_hz, 
+                frequency_1000_hz: f_1000_hz, 
+                frequency_2500_hz: f_2500_hz, 
+                frequency_6250_hz: f_6250_hz, 
+                frequency_16000_hz: f_16000_hz, 
 				_meta: get_meta(addr)
 			}
 		}
