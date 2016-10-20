@@ -22,30 +22,26 @@
 
 #define UCSD_AQ_I2C_ADDR 0x35
 
-uint8_t txbuf[32] = {0};
+#define BUFLEN 32
 
 static bool fired = false;
-static char uart_rx_buf[128];
+static uint8_t uart_rx_buf[BUFLEN];
 void uart_rx_callback (
 		__attribute__ ((unused)) int len,
 		__attribute__ ((unused)) int y,
 		__attribute__ ((unused)) int z,
 		__attribute__ ((unused)) void* userdata) {
 	fired = true;
-
-	memcpy(txbuf, uart_rx_buf, 3);
 }
 
 static void blink(unsigned duration_ms) {
 	gpio_clear(LED1);
 	gpio_clear(LED2);
 	gpio_clear(LED3);
-	gpio_clear(LED4);
 	delay_ms(duration_ms);
 	gpio_set(LED1);
 	gpio_set(LED2);
 	gpio_set(LED3);
-	gpio_set(LED4);
 }
 
 int main () {
@@ -54,13 +50,17 @@ int main () {
 	gpio_enable_output(LED2);
 	gpio_enable_output(LED3);
 	gpio_enable_output(LED4);
+	// Active low, clear all to start
+	gpio_set(LED1);
+	gpio_set(LED2);
+	gpio_set(LED3);
+	gpio_set(LED4);
 
-	// Setup I2C TX buffer
-	txbuf[0] = UCSD_AQ_I2C_ADDR;  // My address
-	txbuf[1] = 0x01;              // Message type
+	// Photon sends properly formatted packets, so use the same buffer to
+	// receive UART and send I2C messages
 
 	// Set buffer for I2C messages
-	i2c_master_slave_set_master_write_buffer(txbuf, 32);
+	i2c_master_slave_set_master_write_buffer(uart_rx_buf, BUFLEN);
 
 	// Set out slave address (though we don't listen)
 	i2c_master_slave_set_slave_address(UCSD_AQ_I2C_ADDR);
@@ -69,7 +69,7 @@ int main () {
 	blink(1000);
 
 	while (1) {
-		getauto(uart_rx_buf, 128, uart_rx_callback, NULL);
+		getauto(uart_rx_buf, BUFLEN, uart_rx_callback, NULL);
 		yield_for(&fired);
 		fired = false; // feels like yield_for should do this
 
@@ -77,6 +77,6 @@ int main () {
 		blink(10);
 
 		// Forward on the payload
-		i2c_master_slave_write_sync(0x20, 5);
+		i2c_master_slave_write_sync(0x22, 5);
 	}
 }
