@@ -220,7 +220,7 @@ static void timer_callback (
 }
 
 int main () {
-    putstr("Start Microwave Radar program. Sampling!!!\n");
+    putstr("[Microwave Radar] Start\n");
 
     // initialize LED
     gpio_enable_output(LED_PIN);

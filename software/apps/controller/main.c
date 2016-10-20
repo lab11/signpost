@@ -176,8 +176,8 @@ void gps_callback (gps_data_t* gps_data) {
           gps_data->month, gps_data->day, gps_data->year
           );
 
-  printf("  %lu degrees lat - %lu degrees lon\n",
-          gps_data->latitude, gps_data->longitude);
+  printf("  Latitude:   %lu degrees\n", gps_data->latitude);
+  printf("  Longitude:  %lu degrees\n", gps_data->longitude);
 
   char* fix_str = "Invalid fix";
   if (gps_data->fix == 2) {
@@ -185,7 +185,8 @@ void gps_callback (gps_data_t* gps_data) {
   } else if (gps_data->fix == 3) {
       fix_str = "3D fix";
   }
-  printf("  fix %s sats %d\n", fix_str, gps_data-> satellite_count);
+  printf("  Status:     %s\n", fix_str);
+  printf("  Satellites: %d\n", gps_data->satellite_count);
 
   // My address
   master_write_buf[0] = 0x20;
