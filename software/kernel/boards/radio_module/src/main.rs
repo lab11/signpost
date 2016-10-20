@@ -102,8 +102,8 @@ unsafe fn set_pin_primary_functions() {
     //backplane communication
     PB[00].configure(Some(A)); //SDA
     PB[01].configure(Some(A)); //SCL
-    PB[04].configure(None); //MOD_IN
-    PB[05].configure(None); //PPS
+    PB[04].configure(None); //PPS
+    PB[05].configure(None); //MOD_IN
     PB[03].configure(None); //MOD_OUT
     PA[25].configure(Some(A)); //USB
     PA[26].configure(Some(A)); //USB
