@@ -44,6 +44,9 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
 
+    // Optional reset after hard fault
+    sam4l::scb::reset();
+
     let led = &sam4l::gpio::PA[07];
     led.enable_output();
     loop {
