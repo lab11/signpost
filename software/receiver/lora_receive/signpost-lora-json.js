@@ -65,6 +65,8 @@ function parse (buf) {
 		addr += pad(buf[i].toString(16), 2);
 	}
 
+	// Get the id (last address octet) of the sending signpost
+	var signpost_id = buf[5];
 	// Get the sender module
 	var module = buf[6];
 	// And the message type
@@ -72,7 +74,6 @@ function parse (buf) {
 	// And get the sequence number
 	var sequence_number = buf[8];
 
-	// TODO
 	// DISCARD DUPLICATES BASED ON SEQ NUMBER
 	var duplicate = check_duplicate(module, message_type, sequence_number);
 	if (duplicate) {
@@ -153,6 +154,27 @@ function parse (buf) {
 			var chan25 = buf.readInt8(23);
 			var chan26 = buf.readInt8(24);
 
+			console.log(buf);
+			if (chan11 >= 0 ||
+				chan12 >= 0 ||
+				chan13 >= 0 ||
+				chan14 >= 0 ||
+				chan15 >= 0 ||
+				chan16 >= 0 ||
+				chan17 >= 0 ||
+				chan18 >= 0 ||
+				chan19 >= 0 ||
+				chan20 >= 0 ||
+				chan21 >= 0 ||
+				chan22 >= 0 ||
+				chan22 >= 0 ||
+				chan23 >= 0 ||
+				chan24 >= 0 ||
+				chan25 >= 0 ||
+				chan26 >= 0) {
+				return undefined;
+			}
+
 			return {
 				device: 'signpost_2.4ghz_spectrum',
 				channel_11: chan11,
@@ -216,6 +238,15 @@ function parse (buf) {
 				device: 'signpost_microwave_radar',
 				motion: motion,
 				'velocity_m/s': speed,
+				_meta: get_meta(addr)
+			}
+		}
+	} else if (module == 0x35) {
+		if (message_type == 0x01) {
+			var co2 = buf.readUInt16BE(9);
+			return {
+				device: 'signpost_ucsd_air_quality',
+				co2: co2,
 				_meta: get_meta(addr)
 			}
 		}

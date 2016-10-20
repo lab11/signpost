@@ -144,7 +144,7 @@ pub unsafe fn reset_handler() {
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
-                     115200,
+                     9600,
                      &mut console::WRITE_BUF,
                      &mut console::READ_BUF,
                      &mut console::LINE_BUF,
