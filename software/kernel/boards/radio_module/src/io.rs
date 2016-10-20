@@ -42,7 +42,7 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = writer.write_str("\"\r\n");
 
     // Optional reset after hard fault
-    sam4l::bsc::reset();
+    sam4l::scb::reset();
 
     // Blink MOD_IN pin which is unused
     let led = &sam4l::gpio::PB[05];
