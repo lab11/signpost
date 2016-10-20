@@ -206,6 +206,15 @@ function parse (buf) {
 				_meta: get_meta(addr)
 			}
 		}
+	} else if (module == 0x35) {
+		if (message_type == 0x01) {
+			var co2 = buf.readUInt16BE(9);
+			return {
+				device: 'signpost_ucsd_air_quality',
+				co2: co2,
+				_meta: get_meta(addr)
+			}
+		}
 	}
 }
 
