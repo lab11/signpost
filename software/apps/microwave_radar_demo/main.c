@@ -9,6 +9,8 @@
 #include "adc.h"
 #include "console.h"
 #include "timer.h"
+#include "gpio.h"
+#include "app_watchdog.h"
 #include "i2c_master_slave.h"
 
 #define UNUSED_PARAMETER(x) (void)(x)
@@ -146,7 +148,7 @@ uint32_t calculate_radar_speed (uint32_t freq) {
     uint32_t speed_fph = (freq * 5280)/31;
     uint32_t speed_mfps = (speed_fph*1000)/3600;
 
-    printf("Freq: %d\tSpeed: %d (milli-fps)\n", freq, speed_mfps);
+    printf("Freq: %lu\tSpeed: %lu (milli-fps)\n", freq, speed_mfps);
 
     return speed_mfps;
 }
