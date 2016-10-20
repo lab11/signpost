@@ -38,12 +38,30 @@ function pad (s, len) {
 	return s;
 }
 
+var last_packets = {};
+
 function parse (buf) {
+	function check_duplicate (mod, msg_type, seq_no) {
+		if (!(mod in last_packets)) {
+			last_packets[mod] = {};
+		}
+		if (!(msg_type in last_packets[mod])) {
+			last_packets[mod][msg_type] = seq_no-1;
+		}
+
+		var duplicate = true;
+		if (seq_no != last_packets[mod][msg_type]) {
+			duplicate = false;
+		}
+
+		last_packets[mod][msg_type] = seq_no;
+		return duplicate;
+	}
+
 	// Strip out address
 	var addr = '';
 	for (var i=0; i<6; i++) {
 		addr += pad(buf[i].toString(16), 2);
-		// if (i < 5) addr += ':';
 	}
 
 	// Get the sender module
@@ -55,6 +73,11 @@ function parse (buf) {
 
 	// TODO
 	// DISCARD DUPLICATES BASED ON SEQ NUMBER
+	var duplicate = check_duplicate(module, message_type, sequence_number);
+	if (duplicate) {
+		console.log('[' + module + ':'+ message_type +'] Duplicate (' + sequence_number + ')');
+		return undefined;
+	}
 
 
 	if (module == 0x20) {
@@ -167,9 +190,11 @@ function parse (buf) {
 
 // listen for new messages and print them
 device.on('rx-msg', function(data) {
-  // print rx message without slip encoding or checksum
-  var buf = new Buffer(data.payload);
-  var pkt = parse(buf);
-  console.log(pkt);
-  mqtt_client.publish('gateway-data', JSON.stringify(pkt));
+	// print rx message without slip encoding or checksum
+	var buf = new Buffer(data.payload);
+	var pkt = parse(buf);
+	if (pkt !== undefined) {
+		console.log(pkt);
+		mqtt_client.publish('gateway-data', JSON.stringify(pkt));
+	}
 });
