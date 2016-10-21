@@ -56,14 +56,6 @@ int main () {
 	gpio_set(LED3);
 	gpio_set(LED4);
 
-	gpio_enable_output(STROBE);
-	while (1) {
-		gpio_set(STROBE);
-		delay_ms(3);
-		gpio_clear(STROBE);
-		delay_ms(1);
-	}
-
 	// Photon sends properly formatted packets, so use the same buffer to
 	// receive UART and send I2C messages
 
