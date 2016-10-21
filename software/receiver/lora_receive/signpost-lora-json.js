@@ -152,22 +152,43 @@ function parse (buf) {
 			// GPS
 			var day = buf.readUInt8(9);
 			var month = buf.readUInt8(10);
-			var year = 2000 + buf.readUInt8(11);
+			var year = buf.readUInt8(11);
 			var hours = buf.readUInt8(12);
 			var minutes = buf.readUInt8(13);
 			var seconds = buf.readUInt8(14);
-			var latitude = buf.readUInt32BE(15);
-			var longitude = buf.readUInt32BE(19);
+			var latitude = buf.readInt32BE(15)/(10000*100.0);
+			var longitude = buf.readInt32BE(19)/(10000*100.0);
 			var fix = ['', 'No Fix', '2D', '3D'][buf.readUInt8(23)];
 			var satellite_count = buf.readUInt8(24);
+
+			if (year >= 80) {
+			  year += 1900;
+			} else {
+			  year += 2000;
+			}
+
+			var latitude_direction = 'N';
+			if (latitude < 0) {
+			  latitude *= -1;
+			  latitude_direction = 'S';
+			}
+
+			var longitude_direction = 'E';
+			if (longitude < 0) {
+			  longitude *= -1;
+			  longitude_direction = 'W';
+			}
+
+			// that's right, month is zero-indexed for some reason
+			var utcDate = new Date(Date.UTC(year, month-1, day, hours, minutes, seconds));
 
 			return {
 				device: 'signpost_gps',
 				latitude: latitude,
-				latitude_direction: '???',
+				latitude_direction: latitude_direction,
 				longitude: longitude,
-				longitude_direction: '???',
-				timestamp: 'fill in',
+				longitude_direction: longitude_direction,
+				timestamp: utcDate.toISOString(),
 				_meta: get_meta(addr)
 			}
 		}

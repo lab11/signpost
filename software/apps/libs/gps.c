@@ -155,6 +155,14 @@ int32_t to_decimal_degrees (struct minmea_float coor) {
     int32_t minutes = coor.value - degrees*(coor.scale*100);
     int32_t decimal_degrees = degrees*(coor.scale*100) + minutes/60*100;
 
+    // make sure everything is scaled to 10000,
+    //  even if we have to truncate a digit
+    if (coor.scale == 100000) {
+        decimal_degrees /= 10;
+    } else if (coor.scale == 1000) {
+        decimal_degress *= 10;
+    }
+
     return decimal_degrees;
 }
 
