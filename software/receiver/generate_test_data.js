@@ -154,6 +154,30 @@ function generate_status_packet () {
 	}
 }
 
+var ucsd_aq_CO2 = 500;
+var ucsd_aq_VOC_PID = 4000;
+var ucsd_aq_VOC_IAQ = 120;
+var ucsd_aq_barometric = 990;
+var ucsd_aq_humidity = 40;
+
+function generate_ucsd_aq_packet () {
+	ucsd_aq_CO2 += get_value(-20, 20);
+	ucsd_aq_VOC_PID += get_value(-50, 50);
+	ucsd_aq_VOC_IAQ += get_value(-5, 5);
+	ucsd_aq_barometric += get_value(-1, 1);
+	ucsd_aq_humidity += get_value(3, 3);
+
+	return {
+		device: 'signpost_ucsd_air_quality',
+		co2_ppm: ucsd_aq_CO2,
+		VOC_PID_ppb: ucsd_aq_VOC_PID,
+		VOC_IAQ_ppb: ucsd_aq_VOC_IAQ,
+		barometirc_millibar: ucsd_aq_barometric,
+		humidity_percent: ucsd_aq_humidity,
+		_meta: get_meta()
+	}
+}
+
 
 function publish (f) {
 	var rand = get_value(0, 100)
@@ -192,6 +216,9 @@ function status_generate () {
 	publish(generate_status_packet)
 }
 
+function ucsd_aq_generate () {
+	publish(generate_ucsd_aq_packet)
+}
 
 var mqtt_client = mqtt.connect('mqtt://localhost')
 
@@ -204,3 +231,4 @@ setInterval(ambient_generate, 5000)
 setInterval(spectrum_generate, 2500)
 setInterval(gps_generate, 7000)
 setInterval(status_generate, 10000)
+setInterval(ucsd_aq_generate, 700);
