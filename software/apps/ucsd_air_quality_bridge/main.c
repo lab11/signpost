@@ -82,7 +82,8 @@ int main () {
 		//   3-4 - CO2 ppm
 		//   5-8 - VOC_PID_ppb
 		//  9-12 - VOC_IAQ_ppb
-		// xx-xx -
-		i2c_master_slave_write_sync(0x22, 12);
+		// 13-14 - Barometric pressure millibar
+		// 15-16 - Humidity in percent
+		i2c_master_slave_write_sync(0x22, 16);
 	}
 }

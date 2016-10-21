@@ -296,14 +296,18 @@ function parse (buf) {
 		}
 	} else if (module == 0x35) {
 		if (message_type == 0x01) {
-			var co2 = buf.readUInt16BE(9);
+			var co2_ppm = buf.readUInt16BE(9);
 			var VOC_PID_ppb = buf.readUInt32BE(11);
 			var VOC_IAQ_ppb = buf.readUInt32BE(15);
+			var barometirc_millibar = buf.readUInt16BE(19);
+			var humidity_percent = buf.readUInt16BE(21);
 			return {
 				device: 'signpost_ucsd_air_quality',
-				co2: co2,
+				co2_ppm: co2_ppm,
 				VOC_PID_ppb: VOC_PID_ppb,
 				VOC_IAQ_ppb: VOC_IAQ_ppb,
+				barometirc_millibar: barometirc_millibar,
+				humidity_percent: humidity_percent,
 				_meta: get_meta(addr)
 			}
 		}
