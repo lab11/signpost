@@ -11,13 +11,14 @@
 #include "firestorm.h"
 #include "gpio.h"
 #include "adc.h"
+#include "app_watchdog.h"
 #include "msgeq7.h"
 #include "i2c_master_slave.h"
 #include "timer.h"
 
 #define STROBE 4
 #define RESET 5
-#define	POWER 6
+#define POWER 6
 
 #define BUFFER_SIZE 20
 
@@ -54,6 +55,11 @@ static void i2c_master_slave_callback(int callback_type, int length, int unused,
 
 int main () {
 
+    gpio_enable_output(8);
+    gpio_enable_output(9);
+    gpio_clear(8);
+    gpio_clear(9);
+
     //init i2c
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(0x33);
@@ -84,6 +90,13 @@ int main () {
     //i2c_master_slave_write(0x22,16);
 
     delay_ms(1000);
+    gpio_set(8);
+    gpio_set(9);
+
+    // start up the app watchdog
+    app_watchdog_set_kernel_timeout(10000);
+    app_watchdog_start();
+
     uint8_t count = 50;
     while (1) {
         delay_ms(1);
@@ -126,8 +139,12 @@ int main () {
 
         count++;
         if(count >= 50) {
-            i2c_master_slave_write(0x22,16);
+            i2c_master_slave_write_sync(0x22,16);
+            //i2c_master_slave_write(0x22,16);
             count = 0;
         }
+
+        // well we made it through a loop. Seems as good a time to tickle as any
+        app_watchdog_tickle_kernel();
     }
 }
