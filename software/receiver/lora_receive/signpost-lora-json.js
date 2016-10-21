@@ -7,7 +7,7 @@ var mqtt = require('mqtt');
 var fs = require('fs');
 var conf;
 try {
-  conf = fs.readFileSync('configuration.json');
+  conf = fs.readFileSync('/etc/swarm-gateway/lora.json');
   conf = JSON.parse(conf);
 } catch (err) {
   conf = {}
@@ -28,6 +28,9 @@ if ( ! ('spreading_factor' in conf) ) {
 }
 if ( ! ('stats_interval_milliseconds' in conf) ) {
   conf.stats_interval_milliseconds = 1000 * 10;
+}
+if ( ! ('mqtt_broker' in conf) ) {
+  conf.mqtt_broker = 'localhost';
 }
 
 // Stats while running
@@ -85,14 +88,12 @@ function stats_print_and_reset_last () {
 	console.log("***********************************************************");
 	stats_lasttime = {};
 
-	setTimeout(stats_print_and_reset_last,
-		conf.stats_interval_milliseconds);
+	setTimeout(stats_print_and_reset_last, conf.stats_interval_milliseconds);
 }
 
-setTimeout(stats_print_and_reset_last,
-	conf.stats_interval_milliseconds);
+setTimeout(stats_print_and_reset_last, conf.stats_interval_milliseconds);
 
-var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
+var mqtt_client = mqtt.connect('mqtt://' + conf.mqtt_broker);
 
 // call the construction with and endpointID
 var device = new iM880(
