@@ -97,6 +97,20 @@ function parse (buf) {
 	// And get the sequence number
 	var sequence_number = buf[8];
 
+	// Optionally filter packets
+	if ( 'only_signpost_id' in conf ) {
+		if (signpost_id != conf.only_signpost_id) {
+			console.log("skip " + signpost_id);
+			return;
+		}
+	}
+	if ( 'only_module_id' in conf ) {
+		if (module != conf.only_module_id) {
+			console.log("modskip " + module + " - 0x" + module.toString(16));
+			return;
+		}
+	}
+
 	// DISCARD DUPLICATES BASED ON SEQ NUMBER
 	var duplicate = check_duplicate(module, message_type, sequence_number);
 	if (duplicate) {
