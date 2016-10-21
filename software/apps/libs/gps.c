@@ -160,7 +160,7 @@ int32_t to_decimal_degrees (struct minmea_float coor) {
     if (coor.scale == 100000) {
         decimal_degrees /= 10;
     } else if (coor.scale == 1000) {
-        decimal_degress *= 10;
+        decimal_degrees *= 10;
     }
 
     return decimal_degrees;
