@@ -261,9 +261,13 @@ function parse (buf) {
 	} else if (module == 0x35) {
 		if (message_type == 0x01) {
 			var co2 = buf.readUInt16BE(9);
+			var VOC_PID_ppb = buf.readUInt32BE(11);
+			var VOC_IAQ_ppb = buf.readUInt32BE(15);
 			return {
 				device: 'signpost_ucsd_air_quality',
 				co2: co2,
+				VOC_PID_ppb: VOC_PID_ppb,
+				VOC_IAQ_ppb: VOC_IAQ_ppb,
 				_meta: get_meta(addr)
 			}
 		}

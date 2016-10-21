@@ -77,6 +77,12 @@ int main () {
 		blink(10);
 
 		// Forward on the payload
-		i2c_master_slave_write_sync(0x22, 5);
+		//     1 - UCSD_AQ_I2C_ADDR
+		//     2 - Message Type
+		//   3-4 - CO2 ppm
+		//   5-8 - VOC_PID_ppb
+		//  9-12 - VOC_IAQ_ppb
+		// xx-xx -
+		i2c_master_slave_write_sync(0x22, 12);
 	}
 }
