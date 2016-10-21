@@ -26,6 +26,71 @@ if ( ! ('serial_port' in conf) ) {
 if ( ! ('spreading_factor' in conf) ) {
   conf.spreading_factor = 7;
 }
+if ( ! ('stats_interval_milliseconds' in conf) ) {
+  conf.stats_interval_milliseconds = 1000 * 10;
+}
+
+// Stats while running
+var stats_start = Date.now();
+var stats_lifetime = {};
+var stats_lasttime = {};
+
+function stats_new_packet (buf) {
+	var signpost_id = buf[5];
+	var module = buf[6];
+	var message_type = buf[7];
+
+	if ( ! (signpost_id in stats_lifetime) ) {
+		stats_lifetime[signpost_id] = {};
+	}
+	var life = stats_lifetime[signpost_id];
+	if ( ! (signpost_id in stats_lasttime) ) {
+		stats_lasttime[signpost_id] = {};
+	}
+	var last = stats_lasttime[signpost_id];
+
+	var mod_mes = [module, message_type];
+	if ( ! (mod_mes in life) ) {
+		life[mod_mes] = 0;
+	}
+	life[mod_mes] += 1;
+	if ( ! (mod_mes in last) ) {
+		last[mod_mes] = 0;
+	}
+	last[mod_mes] += 1;
+}
+
+function stats_print_and_reset_last () {
+	function print_signpost(stats, id) {
+		console.log("    Signpost ID " + id);
+		for (mod_mes in stats[id]) {
+			// JS converts array -> string as object key
+			var mod = mod_mes.split(',')[0];
+			var mes = mod_mes.split(',')[1];
+			console.log('\tMod 0x' + mod.toString(16) + ' Type ' + mes + ' - ' + stats[id][mod_mes])
+		}
+	}
+
+	console.log("***********************************************************");
+	var timediff = Date.now() - stats_start;
+	var seconds = Math.round(timediff / 1000);
+	console.log("Script lifetime - " + seconds + " seconds")
+	for (signpost in stats_lifetime) {
+		print_signpost(stats_lifetime, signpost);
+	}
+	console.log("Since last stats printing")
+	for (signpost in stats_lasttime) {
+		print_signpost(stats_lasttime, signpost);
+	}
+	console.log("***********************************************************");
+	stats_lasttime = {};
+
+	setTimeout(stats_print_and_reset_last,
+		conf.stats_interval_milliseconds);
+}
+
+setTimeout(stats_print_and_reset_last,
+	conf.stats_interval_milliseconds);
 
 var mqtt_client = mqtt.connect('mqtt://141.212.11.202');
 
@@ -80,6 +145,9 @@ function parse (buf) {
 		last_packets[mod][msg_type] = seq_no;
 		return duplicate;
 	}
+
+	// Update stats
+	stats_new_packet(buf);
 
 	// Strip out address
 	var addr = '';
