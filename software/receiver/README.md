@@ -133,6 +133,18 @@ All data packets include a `_meta` section like the following:
 }
 ```
 
+### UCSD Air Quality
+
+```
+{
+	device:              'signpost_ucsd_air_quality',
+	co2_ppm:             <uint>,
+	VOC_PID_ppb:         <uint>,
+	VOC_IAQ_ppb:         <uint>,
+	barometirc_millibar: <uint>,
+	humidity_percent:    <uint>,
+}
+```
 
 I2C Message Structure
 ---------------------
@@ -233,5 +245,17 @@ u8  : motion since last transmission (boolean)
 u32 : max speed measured since last transmission (mm/s)
 ```
 
+### UCSD Air Quality
 
+```
+16 bytes:
+
+u8  : 0x35
+u8  : 0x01
+u16 : CO2 ppm
+u32 : VOC from the PID sensor
+u32 : VOC from the IAQ sensor
+u16 : Barometric pressure
+u16 : Percent Humidity
+```
 
