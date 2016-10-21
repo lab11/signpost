@@ -10,7 +10,6 @@ try {
   conf = fs.readFileSync('configuration.json');
   conf = JSON.parse(conf);
 } catch (err) {
-  console.log(err);
   conf = {}
 }
 console.log(conf);
