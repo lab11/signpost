@@ -80,6 +80,7 @@ struct AmbientModule {
     si7021: &'static signpost_drivers::si7021::SI7021<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     isl29035: &'static capsules::isl29035::Isl29035<'static>,
     tsl2561: &'static signpost_drivers::tsl2561::TSL2561<'static>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
 }
 
 impl Platform for AmbientModule {
@@ -96,7 +97,8 @@ impl Platform for AmbientModule {
             105 => f(Some(self.i2c_master_slave)),
             106 => f(Some(self.lps25hb)),
             107 => f(Some(self.si7021)),
-            108 => f(Some(self.tsl2561)),
+            108 => f(Some(self.app_watchdog)),
+            109 => f(Some(self.tsl2561)),
             _ => f(None)
         }
     }
@@ -136,17 +138,6 @@ unsafe fn set_pin_primary_functions() {
     sam4l::gpio::PA[09].disable_output();
     sam4l::gpio::PA[13].enable();
     sam4l::gpio::PA[13].disable_output();
-
-    // // Configure LEDs to be off
-    // sam4l::gpio::PA[05].enable();
-    // sam4l::gpio::PA[05].enable_output();
-    // sam4l::gpio::PA[05].clear();
-    // sam4l::gpio::PA[06].enable();
-    // sam4l::gpio::PA[06].enable_output();
-    // sam4l::gpio::PA[06].clear();
-    // sam4l::gpio::PA[07].enable();
-    // sam4l::gpio::PA[07].enable_output();
-    // sam4l::gpio::PA[07].set();
 }
 
 /*******************************************************************************
@@ -169,14 +160,6 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
-    // let console = static_init!(
-    //     Console<usart::USART>,
-    //     Console::new(&usart::USART0,
-    //                  &mut console::WRITE_BUF,
-    //                  &mut console::READ_BUF,
-    //                  kernel::Container::create()),
-    //     256/8);
-    // usart::USART0.set_uart_client(console);
     usart::USART0.set_clock_freq(clock_freq);
     let uartprint = static_init!(
         UartPrint<usart::USART>,
@@ -338,6 +321,45 @@ pub unsafe fn reset_handler() {
         capsules::gpio::GPIO::new(gpio_pins),
         20);
 
+    //
+    // App Watchdog
+    //
+    let app_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let kernel_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let app_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, sam4l::scb::reset),
+        128/8);
+    app_timeout_alarm.set_client(app_timeout);
+    let kernel_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, sam4l::scb::reset),
+        128/8);
+    kernel_timeout_alarm.set_client(kernel_timeout);
+    let app_watchdog = static_init!(
+        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
+        64/8);
+
+    //
+    // Kernel Watchdog
+    //
+    let watchdog_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let watchdog = static_init!(
+        signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 1200),
+        128/8);
+    watchdog_alarm.set_client(watchdog);
+
 
     //
     // Actual platform object
@@ -355,8 +377,9 @@ pub unsafe fn reset_handler() {
             si7021: si7021,
             isl29035: isl29035,
             tsl2561: tsl2561,
+            app_watchdog: app_watchdog,
         },
-        288/8);
+        320/8);
 
     ambient_module.uartprint.initialize();
 

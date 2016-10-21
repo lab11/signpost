@@ -197,6 +197,22 @@ function parse (buf) {
 				_meta: get_meta(addr)
 			}
 		}
+	} else if (module == 0x32) {
+		if (message_type == 0x01) {
+			var temp = buf.readInt16BE(9) / 100.0;
+			var humi = buf.readInt16BE(11) / 100.0;
+			var ligh = buf.readInt16BE(13);
+			var pres = buf.readInt16BE(15);
+
+			return {
+				device: 'signpost_ambient',
+				temperature_c: temp,
+				humidity: humi,
+				light_lux: ligh,
+				pressure_pascals: pres,
+				_meta: get_meta(addr)
+			}
+		}
     } else if (module == 0x33) {
 		if (message_type == 0x01) {
             //these are in dB SPL! I simplified the math to some magic numbers
@@ -220,13 +236,13 @@ function parse (buf) {
 
 			return {
 				device: 'signpost_audio_spectrum',
-                frequency_63_hz: f_63_hz, 
-                frequency_160_hz: f_160_hz, 
-                frequency_400_hz: f_400_hz, 
-                frequency_1000_hz: f_1000_hz, 
-                frequency_2500_hz: f_2500_hz, 
-                frequency_6250_hz: f_6250_hz, 
-                frequency_16000_hz: f_16000_hz, 
+                frequency_63_hz: f_63_hz,
+                frequency_160_hz: f_160_hz,
+                frequency_400_hz: f_400_hz,
+                frequency_1000_hz: f_1000_hz,
+                frequency_2500_hz: f_2500_hz,
+                frequency_6250_hz: f_6250_hz,
+                frequency_16000_hz: f_16000_hz,
 				_meta: get_meta(addr)
 			}
 		}

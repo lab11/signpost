@@ -13,6 +13,7 @@
 #include "si7021.h"
 #include "timer.h"
 #include "led.h"
+#include "app_watchdog.h"
 
 uint8_t txbuf[32] = {0};
 
@@ -23,17 +24,17 @@ void print_measurements (int temp, int humi, int pres, int ligh) {
   putstr("[Ambient] Got Measurements\n");
 
   // Temperature and Humidity
-  sprintf(buf, "\tTemp(%d 1/100 degrees C) [0x%X]\n", temp, temp);
+  sprintf(buf, "  Temp(%d 1/100 degrees C) [0x%X]\n", temp, temp);
   putstr(buf);
-  sprintf(buf, "\tHumi(%d 0.01%%) [0x%X]\n", humi, humi);
+  sprintf(buf, "  Humi(%d 0.01%%) [0x%X]\n", humi, humi);
   putstr(buf);
 
   // Print the pressure value
-  sprintf(buf, "\tPressure(%d ubar) [0x%X]\n", pres, pres);
+  sprintf(buf, "  Pressure(%d ubar) [0x%X]\n", pres, pres);
   putstr(buf);
 
   // Light
-  sprintf(buf, "\tLight(%d) [0x%X]\n", ligh, ligh);
+  sprintf(buf, "  Light(%d) [0x%X]\n", ligh, ligh);
   putstr(buf);
 }
 
@@ -58,9 +59,15 @@ void sample_and_send () {
 
   print_measurements(temperature, humidity, pressure, light);
 
-  // i2c_master_slave_write_sync(0x20, 10);
-
-  led_toggle(0);
+  int result = i2c_master_slave_write_sync(0x22, 10);
+  if (result >= 0) {
+    app_watchdog_tickle_kernel();
+    led_toggle(0);
+  } else {
+    char buf[256];
+    sprintf(buf, "I2C Write: %i\n", result);
+    putstr(buf);
+  }
 }
 
 static void timer_callback (int callback_type _U, int pin_value _U, int unused _U, void* callback_args _U) {
@@ -83,4 +90,8 @@ int main () {
   // Setup a timer for sampling the sensors
   timer_subscribe(timer_callback, NULL);
   timer_start_repeating(6000);
+
+  // Setup watchdog
+  app_watchdog_set_kernel_timeout(10000);
+  app_watchdog_start();
 }
