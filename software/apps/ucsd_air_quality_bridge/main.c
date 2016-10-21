@@ -34,14 +34,10 @@ void uart_rx_callback (
 	fired = true;
 }
 
-static void blink(unsigned duration_ms) {
-	gpio_clear(LED1);
-	gpio_clear(LED2);
-	gpio_clear(LED3);
+static void blink(unsigned led, unsigned duration_ms) {
+	gpio_clear(led);
 	delay_ms(duration_ms);
-	gpio_set(LED1);
-	gpio_set(LED2);
-	gpio_set(LED3);
+	gpio_set(led);
 }
 
 int main () {
@@ -66,24 +62,32 @@ int main () {
 	i2c_master_slave_set_slave_address(UCSD_AQ_I2C_ADDR);
 
 	// Debug: Blink on boot
-	blink(1000);
+	blink(LED2, 1000);
 
 	while (1) {
+		// Clear the first byte so we can validate it's written
+		uart_rx_buf[0] = 0;
+
 		getauto(uart_rx_buf, BUFLEN, uart_rx_callback, NULL);
 		yield_for(&fired);
 		fired = false; // feels like yield_for should do this
 
-		// Debug: Quick blink every packet
-		blink(10);
+		if (uart_rx_buf[0] == UCSD_AQ_I2C_ADDR) {
+			// Debug: Quick blink every packet
+			blink(LED2, 10);
 
-		// Forward on the payload
-		//     1 - UCSD_AQ_I2C_ADDR
-		//     2 - Message Type
-		//   3-4 - CO2 ppm
-		//   5-8 - VOC_PID_ppb
-		//  9-12 - VOC_IAQ_ppb
-		// 13-14 - Barometric pressure millibar
-		// 15-16 - Humidity in percent
-		i2c_master_slave_write_sync(0x22, 16);
+			// Forward on the payload
+			//     1 - UCSD_AQ_I2C_ADDR
+			//     2 - Message Type
+			//   3-4 - CO2 ppm
+			//   5-8 - VOC_PID_ppb
+			//  9-12 - VOC_IAQ_ppb
+			// 13-14 - Barometric pressure millibar
+			// 15-16 - Humidity in percent
+			i2c_master_slave_write_sync(0x22, 16);
+		} else {
+			// This is a bad packet
+			blink(LED3, 50);
+		}
 	}
 }
