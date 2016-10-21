@@ -15,18 +15,30 @@ INCLUDE_PATHS += .
 #This worked b/c of a typo? APPLICATION_SRCS has wildcard
 #C_SRCS := $(wilcard *.c)
 
-ifneq ($(MAKECMDGOALS),clean)
-# Convenience shorthand to only set the last octet:
+
+
 ifneq ($(ID),)
 ADDRESS ?= c098e51200$(ID)
-else
-ifndef ADDRESS
-$(error You must supply and ID (last octet) or full address)
 endif
-endif
+ifneq ($(ADDRESS),)
 C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2)]))")
-$(shell bash -c "diff <(echo $(C_ADDRESS)) .address &>/dev/null || echo $(C_ADDRESS) > .address")
 endif
+
+
+# The trick here is to only include the rule to build .address if the
+# requisite variable is define, otherwise we define a "build rule" that
+# fails with a debug message
+
+ifeq ($(C_ADDRESS),)
+.address:
+	@echo "You must supply an ID (last octet) or full address"
+	@exit 1
+else
+.PHONY: force_address
+.address: force_address
+	$(Q)bash -c "diff <(echo $(C_ADDRESS)) .address &>/dev/null || echo $(C_ADDRESS) > .address"
+endif
+
 
 CFLAGS += -DCOMPILE_TIME_ADDRESS="$(C_ADDRESS)"
 
