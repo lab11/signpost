@@ -360,13 +360,13 @@ function parse (buf) {
 
 			return {
 			    device: 'signpost_audio_spectrum',
-                            63Hz: f_63_hz,
-                            160Hz: f_160_hz,
-                            400Hz: f_400_hz,
-                            1000Hz: f_1000_hz,
-                            2500Hz: f_2500_hz,
-                            6250Hz: f_6250_hz,
-                            16000Hz: f_16000_hz,
+                "63Hz": f_63_hz,
+                '160Hz': f_160_hz,
+                '400Hz': f_400_hz,
+                '1000Hz': f_1000_hz,
+                '2500Hz': f_2500_hz,
+                '6250Hz': f_6250_hz,
+                '16000Hz': f_16000_hz,
 			    _meta: get_meta(addr)
 			}
 		}
