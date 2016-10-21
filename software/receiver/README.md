@@ -141,7 +141,7 @@ All data packets include a `_meta` section like the following:
 	co2_ppm:             <uint>,
 	VOC_PID_ppb:         <uint>,
 	VOC_IAQ_ppb:         <uint>,
-	barometirc_millibar: <uint>,
+	barometric_millibar: <uint>,
 	humidity_percent:    <uint>,
 }
 ```

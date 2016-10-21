@@ -172,7 +172,7 @@ function generate_ucsd_aq_packet () {
 		co2_ppm: ucsd_aq_CO2,
 		VOC_PID_ppb: ucsd_aq_VOC_PID,
 		VOC_IAQ_ppb: ucsd_aq_VOC_IAQ,
-		barometirc_millibar: ucsd_aq_barometric,
+		barometric_millibar: ucsd_aq_barometric,
 		humidity_percent: ucsd_aq_humidity,
 		_meta: get_meta()
 	}
