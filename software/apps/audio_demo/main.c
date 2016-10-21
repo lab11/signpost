@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <math.h>
+//#include <math.h>
 
 #include <tock.h>
 #include <console.h>
@@ -38,9 +38,9 @@ uint8_t master_write_buf[BUFFER_SIZE];
 //microphone sensitivity
 #define MAGIC_NUMBER 43.75
 
-static uint16_t convert_to_dB(uint16_t output) {
+/*static uint16_t convert_to_dB(uint16_t output) {
     return (uint16_t)(((20*log10(output/MAGIC_NUMBER)) + SPL - PREAMP_GAIN - MSGEQ7_GAIN)*10);
-}
+}*/
 
 
 static void i2c_master_slave_callback(int callback_type, int length, int unused, void* callback_args) {
@@ -111,13 +111,13 @@ int main () {
         master_write_buf[15] = (uint8_t)(data & 0xff);
 
         //give some indication of volume to the user
-        if(convert_to_dB((master_write_buf[6] << 8) + master_write_buf[7]) > 60) {
+        if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 400) {
             //turn on green LED
             gpio_clear(10);
         } else {
             gpio_set(10);
         }
-        if(convert_to_dB((master_write_buf[6] << 8) + master_write_buf[7]) > 80) {
+        if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 3500) {
             //turn on red LED
             gpio_clear(11);
         } else {
