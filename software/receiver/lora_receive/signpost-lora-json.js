@@ -410,5 +410,6 @@ device.on('rx-msg', function(data) {
 	if (pkt !== undefined) {
 		console.log(pkt);
 		mqtt_client.publish('gateway-data', JSON.stringify(pkt));
+		mqtt_client.publish('signpost', JSON.stringify(pkt));
 	}
 });
