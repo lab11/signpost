@@ -350,24 +350,24 @@ function parse (buf) {
             //(20*log(output/43.75))+35.5
             //for right now this is happening here, but I'm trying to move it
             //to the app itself
-			var f_63_hz = (Math.log10(buf.readUInt16BE(9)/43.75)*20)+35.5;
-			var f_160_hz = (Math.log10(buf.readUInt16BE(11)/43.75)*20)+35.5;
-			var f_400_hz = (Math.log10(buf.readUInt16BE(13)/43.75)*20)+35.5;
-			var f_1000_hz = (Math.log10(buf.readUInt16BE(15)/43.75)*20)+35.5;
-			var f_2500_hz = (Math.log10(buf.readUInt16BE(17)/43.75)*20)+35.5;
-			var f_6250_hz = (Math.log10(buf.readUInt16BE(19)/43.75)*20)+35.5;
-			var f_16000_hz = (Math.log10(buf.readUInt16BE(21)/43.75)*20)+35.5;
+			var f_63_hz = Number(((Math.log10(buf.readUInt16BE(9)/43.75)*20)+35.5).toFixed(0));
+			var f_160_hz = Number(((Math.log10(buf.readUInt16BE(11)/43.75)*20)+35.5).toFixed(0));
+			var f_400_hz = Number(((Math.log10(buf.readUInt16BE(13)/43.75)*20)+35.5).toFixed(0));
+			var f_1000_hz = Number(((Math.log10(buf.readUInt16BE(15)/43.75)*20)+35.5).toFixed(0));
+			var f_2500_hz = Number(((Math.log10(buf.readUInt16BE(17)/43.75)*20)+35.5).toFixed(0));
+			var f_6250_hz = Number(((Math.log10(buf.readUInt16BE(19)/43.75)*20)+35.5).toFixed(0));
+			var f_16000_hz = Number(((Math.log10(buf.readUInt16BE(21)/43.75)*20)+35.5).toFixed(0));
 
 			return {
-				device: 'signpost_audio_spectrum',
-                frequency_63_hz: f_63_hz,
-                frequency_160_hz: f_160_hz,
-                frequency_400_hz: f_400_hz,
-                frequency_1000_hz: f_1000_hz,
-                frequency_2500_hz: f_2500_hz,
-                frequency_6250_hz: f_6250_hz,
-                frequency_16000_hz: f_16000_hz,
-				_meta: get_meta(addr)
+			    device: 'signpost_audio_spectrum',
+                "63Hz": f_63_hz,
+                '160Hz': f_160_hz,
+                '400Hz': f_400_hz,
+                '1000Hz': f_1000_hz,
+                '2500Hz': f_2500_hz,
+                '6250Hz': f_6250_hz,
+                '16000Hz': f_16000_hz,
+			    _meta: get_meta(addr)
 			}
 		}
 	} else if (module == 0x34) {
