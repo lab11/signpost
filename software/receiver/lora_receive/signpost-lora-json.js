@@ -65,7 +65,7 @@ function stats_print_and_reset_last () {
 		console.log("    Signpost ID " + id);
 		for (mod_mes in stats[id]) {
 			// JS converts array -> string as object key
-			var mod = mod_mes.split(',')[0];
+			var mod = parseInt(mod_mes.split(',')[0]);
 			var mes = mod_mes.split(',')[1];
 			console.log('\tMod 0x' + mod.toString(16) + ' Type ' + mes + ' - ' + stats[id][mod_mes])
 		}
