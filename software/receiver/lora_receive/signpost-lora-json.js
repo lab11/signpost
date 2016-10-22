@@ -21,7 +21,7 @@ if ( ! ('device_group' in conf) ) {
   conf.device_group = 0x10;
 }
 if ( ! ('serial_port' in conf) ) {
-  conf.serial_port = '/dev/ttyUSB1';
+  conf.serial_port = '/dev/ttyUSB0';
 }
 if ( ! ('spreading_factor' in conf) ) {
   conf.spreading_factor = 7;
@@ -400,7 +400,44 @@ function parse (buf) {
 				_meta: get_meta(addr)
 			}
 		}
-	}
+	} else if (module == 0x22) {
+		if (message_type == 0x01) {
+			var energy = buf.readUInt16BE(9);
+			var gps = buf.readUInt16BE(11);
+			var rf = buf.readUInt16BE(13);
+			var ambient = buf.readUInt16BE(15);
+			var audio = buf.readUInt16BE(17);
+			var microwave = buf.readUInt16BE(19);
+			var ucsd = buf.readUInt16BE(21);
+
+			return {
+                //energy estimations on mWh/packet. packetcount*(ble/pack+lora/pack)
+			    device: 'signpost_radio_status',
+                "status_ble_packets_sent": Number((energy*(7.0/8.0)).toFixed(0)),
+                "gps_ble_packets_sent": Number((gps*(7.0/8.0)).toFixed(0)),
+                "2.4gHz_spectrum_ble_packets_sent":Number((rf*(7.0/8.0)).toFixed(0)),
+                "ambient_sensing_ble_packets_sent":Number((ambient*(7.0/8.0)).toFixed(0)),
+                "audio_spectrum_ble_packets_sent": Number((audio*(7.0/8.0)).toFixed(0)),
+                "microwave_radar_ble_packets_sent":Number((microwave*(7.0/8.0)).toFixed(0)),
+                "ucsd_air_quality_ble_packets_sent":Number((ucsd*(7.0/8.0)).toFixed(0)),
+                "status_lora_packets_sent": energy,
+                "gps_lora_packets_sent": gps,
+                "2.4gHz_spectrum_lora_packets_sent": rf,
+                "ambient_sensing_lora_packets_sent": ambient,
+                "audio_spectrum_lora_packets_sent": audio,
+                "microwave_radar_lora_packets_sent": microwave,
+                "ucsd_air_quality_lora_packets_sent": ucsd,
+                "status_radio_energy_used_mWh": Number(energy*(0.000096+0.01)).toFixed(3),
+                "gps_radio_energy_used_mWh": Number(gps*(0.000096+0.01)).toFixed(3),
+                "2.4gHz_spectrum_radio_energy_used_mWh":Number(rf*(0.000096+0.01)).toFixed(3),
+                "ambient_sensing_radio_energy_used_mWh":Number(ambient*(0.000096+0.01)).toFixed(3),
+                "audio_spectrum_radio_energy_used_mWh":Number(audio*(0.000096+0.01)).toFixed(3), 
+                "microwave_radar_radio_energy_used_mWh":Number(microwave*(0.000096+0.01)).toFixed(3),
+                "ucsd_air_quality_radio_energy_used_mWh":Number(ucsd*(0.000096+0.01)).toFixed(3),
+			    _meta: get_meta(addr)
+			}
+		}
+	} 
 }
 
 // listen for new messages and print them

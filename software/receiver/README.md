@@ -151,27 +151,27 @@ All data packets include a `_meta` section like the following:
 ```
 {
 	"device": "signpost_radio_status",
-	"energy_ble_packets_sent": <uint>,
+	"status_ble_packets_sent": <uint>,
 	"gps_ble_packets_sent": <uint>,
 	"2.4gHz_spectrum_ble_packets_sent": <uint>,
 	"ambient_sensing_ble_packets_sent": <uint>,
 	"audio_spectrum_ble_packets_sent": <uint>,
 	"microwave_radar_ble_packets_sent": <uint>,
 	"ucsd_air_quality_ble_packets_sent": <uint>,
-    "energy_lora_packets_sent": <uint>,
+    "status_lora_packets_sent": <uint>,
 	"gps_lora_packets_sent": <uint>,
 	"2.4gHz_spectrum_lora_packets_sent": <uint>,
 	"ambient_sensing_lora_packets_sent": <uint>,
 	"audio_spectrum_lora_packets_sent": <uint>,
 	"microwave_radar_lora_packets_sent": <uint>,
 	"ucsd_air_quality_lora_packets_sent": <uint>,
-    "energy_radio_energy_used": <float>,
-	"gps_radio_energy_used": <float>,
-	"2.4gHz_spectrum_radio_energy_used": <float>,
-	"ambient_sensing_radio_energy_used": <float>,
-	"audio_spectrum_radio_energy_used": <float>,
-	"microwave_radar_radio_energy_used": <float>,
-	"ucsd_air_quality_radio_energy_used": <float>,
+    "status_radio_energy_used_mWh": <float>,
+	"gps_radio_energy_used_mWh": <float>,
+	"2.4gHz_spectrum_radio_energy_used_mWh": <float>,
+	"ambient_sensing_radio_energy_used_mWh": <float>,
+	"audio_spectrum_radio_energy_used_mWh": <float>,
+	"microwave_radar_radio_energy_used_mWh": <float>,
+	"ucsd_air_quality_radio_energy_used_mWh": <float>,
 }
 ```
 
@@ -294,7 +294,7 @@ u16 : Percent Humidity
 ```
 16 bytes:
 
-u8  : 0x36
+u8  : 0x22
 u8  : 0x01
 u16 : controller energy packets sent
 u16 : controller gps packets sent
