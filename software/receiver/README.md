@@ -146,6 +146,36 @@ All data packets include a `_meta` section like the following:
 }
 ```
 
+### Radio Status
+
+```
+{
+	"device": "signpost_radio_status",
+	"energy_ble_packets_sent": <uint>,
+	"gps_ble_packets_sent": <uint>,
+	"2.4gHz_spectrum_ble_packets_sent": <uint>,
+	"ambient_sensing_ble_packets_sent": <uint>,
+	"audio_spectrum_ble_packets_sent": <uint>,
+	"microwave_radar_ble_packets_sent": <uint>,
+	"ucsd_air_quality_ble_packets_sent": <uint>,
+    "energy_lora_packets_sent": <uint>,
+	"gps_lora_packets_sent": <uint>,
+	"2.4gHz_spectrum_lora_packets_sent": <uint>,
+	"ambient_sensing_lora_packets_sent": <uint>,
+	"audio_spectrum_lora_packets_sent": <uint>,
+	"microwave_radar_lora_packets_sent": <uint>,
+	"ucsd_air_quality_lora_packets_sent": <uint>,
+    "energy_radio_energy_used": <float>,
+	"gps_radio_energy_used": <float>,
+	"2.4gHz_spectrum_radio_energy_used": <float>,
+	"ambient_sensing_radio_energy_used": <float>,
+	"audio_spectrum_radio_energy_used": <float>,
+	"microwave_radar_radio_energy_used": <float>,
+	"ucsd_air_quality_radio_energy_used": <float>,
+}
+```
+
+
 I2C Message Structure
 ---------------------
 
@@ -259,3 +289,18 @@ u16 : Barometric pressure
 u16 : Percent Humidity
 ```
 
+### Radio Status (Over the air format - all energy estimated)
+
+```
+16 bytes:
+
+u8  : 0x36
+u8  : 0x01
+u16 : controller energy packets sent
+u16 : controller gps packets sent
+u16 : 2.4ghz packets sent
+u16 : ambient sensing packets sent
+u16 : audio spectrum packets sent
+u16 : microwave radar packets sent
+u16 : ucsd air quality packets sent
+```
