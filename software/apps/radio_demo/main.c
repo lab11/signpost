@@ -44,7 +44,7 @@ static simple_ble_config_t ble_config = {
 //definitions for the i2c
 #define BUFFER_SIZE 20
 #define ADDRESS_SIZE 6
-#define NUMBER_OF_MODULES 7
+#define NUMBER_OF_MODULES 8
 
 //i2c buffers
 uint8_t slave_write_buf[BUFFER_SIZE];
@@ -54,8 +54,8 @@ uint8_t master_write_buf[BUFFER_SIZE];
 
 //array of the data we're going to send on the radios
 uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
-uint32_t packets_sent = 1;
-uint32_t last_packets_sent = 0;
+uint32_t lora_packets_sent = 1;
+uint32_t lora_last_packets_sent = 0;
 
 #ifndef COMPILE_TIME_ADDRESS
 #error Missing required define COMPILE_TIME_ADDRESS of format: 0xC0, 0x98, 0xE5, 0x12, 0x00, 0x00
@@ -75,7 +75,7 @@ void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
                         uint8_t status) {
     //right now the  radio library ONLY implements txdone messages
     if(status == DEVMGMT_STATUS_OK) {
-        packets_sent++;
+        lora_packets_sent++;
     } else {
         putstr("Lora error, resetting...");
         app_watchdog_reset_app();
@@ -213,12 +213,24 @@ static void timer_callback (
     if(data_to_send[i][0] != 0x00) {
 
         //before we send this packet, make sure the last one completed
-        if(last_packets_sent == packets_sent) {
+        if(lora_last_packets_sent == lora_packets_sent) {
             //error
             putstr("lora error! Reseting..\n");
             app_watchdog_reset_app();
         } else {
-            last_packets_sent = packets_sent;
+            lora_last_packets_sent = lora_packets_sent;
+        }
+
+        //increment the packet counter for this slot
+        // //don't meta count packets sent packets
+        if(i != 7)  {
+            uint16_t packets = (uint16_t)((data_to_send[7][3+i*2+1]) + (data_to_send[7][3+i*2] << 8));
+            packets++;
+            data_to_send[7][3+i*2] = (uint8_t)((packets >> 8) & 0xff);
+            data_to_send[7][3+i*2+1] = (uint8_t)(packets  & 0xff);
+            data_to_send[7][2]++;
+            data_to_send[7][0] = 0x22;
+            data_to_send[7][1] = 0x01;
         }
 
         //send the packet
@@ -234,7 +246,7 @@ static void timer_callback (
         }
     }
 
-    if(i == 5) {
+    if(i == NUMBER_OF_MODULES-1) {
         eddystone_adv(PHYSWEB_URL, NULL);
     } else {
         adv_config_data();
