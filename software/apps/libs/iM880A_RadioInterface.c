@@ -92,7 +92,7 @@ static uint8_t configBuffer[26];
 //
 //------------------------------------------------------------------------------
 
-static TWiMDLRResultcodes 
+static TWiMDLRResultcodes
 iM880A_SendHCIMessage(uint8_t sapID, uint8_t msgID, uint8_t* payload, uint16_t length)
 {
     // 1. check parameter
@@ -163,13 +163,13 @@ iM880A_SendHCIMessage(uint8_t sapID, uint8_t msgID, uint8_t* payload, uint16_t l
 //
 //------------------------------------------------------------------------------
 
-TWiMDLRResultcodes 
+TWiMDLRResultcodes
 iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length)
 {
     TxMessage.Payload[0] = COMRADIO_CFG_DEFAULT_TXGROUPADDRESS;
     TxMessage.Payload[1] = LOBYTE(COMRADIO_CFG_DEFAULT_TXADDRESS);
     TxMessage.Payload[2] = HIBYTE(COMRADIO_CFG_DEFAULT_TXADDRESS);
-    
+
     if(payload && length)
     {
         uint8_t*  dstPtr  = TxMessage.Payload + DEST_ADDR_SIZE;
@@ -179,7 +179,7 @@ iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length)
         while(n--)
             *dstPtr++ = *payload++;
     }
-    
+
     return iM880A_SendHCIMessage(RADIOLINK_SAP_ID, RADIOLINK_MSG_SEND_URADIO_MSG_REQ, NULL, length + DEST_ADDR_SIZE);
 }
 
@@ -230,15 +230,18 @@ iM880A_CbProcessRxMessage(uint8_t* rxBuffer, uint16_t length)
             switch(RxMessage.SapID)
             {
                 case    DEVMGMT_SAP_ID:
-                        
+
                         // TODO: handle messaged for DEVMGMT_SAP_ID, e.g. ping response
-                        
+
                         break;
 
                 case    RADIOLINK_SAP_ID:
+                        if(RxMessage.MsgID == RADIOLINK_MSG_SEND_URADIO_MSG_RSP) {
+                            (*cbTxIndication)(NULL, RxMessage.Payload[0]);
+                        }
                         if(RxMessage.MsgID == RADIOLINK_MSG_URADIO_MSG_TX_IND)
                         {
-                            (*cbTxIndication)(NULL, trx_TXDone);
+                            (*cbTxIndication)(NULL, RxMessage.Payload[0]);
                         }
                         else if(RxMessage.MsgID == RADIOLINK_MSG_RECV_URADIO_MSG_IND)
                         {
@@ -269,15 +272,15 @@ iM880A_CbProcessRxMessage(uint8_t* rxBuffer, uint16_t length)
 //
 //------------------------------------------------------------------------------
 
-void 
+void
 iM880A_Init(void)
 {
     // Init Slip Layer
     ComSlip_Init();
     ComSlip_RegisterClient(iM880A_CbProcessRxMessage);
-    
+
     // pass first RxBuffer and enable receiver/decoder
-    ComSlip_SetRxBuffer(&RxMessage.SapID, (uint16_t)WIMODLR_HCI_RX_MESSAGE_SIZE);        
+    ComSlip_SetRxBuffer(&RxMessage.SapID, (uint16_t)WIMODLR_HCI_RX_MESSAGE_SIZE);
 }
 
 
@@ -289,12 +292,12 @@ iM880A_Init(void)
 //
 //------------------------------------------------------------------------------
 
-void 
-iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd, 
-                              TRadioInterfaceCbTxIndication cbTxInd)                
+void
+iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd,
+                              TRadioInterfaceCbTxIndication cbTxInd)
 {
     cbRxIndication = cbRxInd;
-    cbTxIndication = cbTxInd;    
+    cbTxIndication = cbTxInd;
 }
 
 
@@ -307,11 +310,11 @@ iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd,
 //
 //------------------------------------------------------------------------------
 
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_Configure(void)
 {
     uint8_t offset=0;
-    
+
     configBuffer[offset++]   = 0x00;                                        // NVM Flag - change config only temporary
     configBuffer[offset++]   = COMRADIO_CFG_DEFAULT_RFRADIOMODE;            // 0
     configBuffer[offset++]   = COMRADIO_CFG_DEFAULT_RXGROUPADDRESS;         // 1
@@ -327,21 +330,21 @@ iM880A_Configure(void)
     configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFCHANNELBW;             // 11
     configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFSPREADINGFACTOR;       // 12
     configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFERRORCODING;           // 13
-    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFPOWERLEVEL;            // 14    
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFPOWERLEVEL;            // 14
     configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFTXOPTIONS;             // 15
     configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFRXOPTIONS;             // 16
     HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_RFRXWINDOW);         // 17
     offset += 2;
     configBuffer[offset++] = COMRADIO_CFG_DEFAULT_LEDCONTROL;               // 19
     configBuffer[offset++] = COMRADIO_CFG_DEFAULT_MISCOPTIONS;              // 20
-    
+
     configBuffer[offset++] = COMRADIO_CFG_DEFAULT_FSK_DATARATE;             // 21
     configBuffer[offset++] = COMRADIO_CFG_DEFAULT_POWERSAVINGMODE;          // 22
     HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_LBTTHRESHOLD);       // 23
     offset += 2;
-    
+
     // Set Configuration
-    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_SET_RADIO_CONFIG_REQ, (unsigned char*)&configBuffer, offset);    
+    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_SET_RADIO_CONFIG_REQ, (unsigned char*)&configBuffer, offset);
 }
 
 
@@ -352,11 +355,11 @@ iM880A_Configure(void)
 //  @brief: Set iM880A to low power mode
 //
 //------------------------------------------------------------------------------
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_PowerDown(void)
 {
     uint8_t payload[1] = {0x00};
-    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_ENTER_LPM_REQ, payload, 1);    
+    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_ENTER_LPM_REQ, payload, 1);
 }
 
 
@@ -367,7 +370,7 @@ iM880A_PowerDown(void)
 //  @brief: Wake up iM880A from power down mode
 //
 //------------------------------------------------------------------------------
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_WakeUp(void)
 {
     return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_PING_REQ, NULL, 0);
@@ -385,7 +388,7 @@ iM880A_WakeUp(void)
 TWiMODLRResult
 iM880A_ResetRadioConfig(void)
 {
-    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_RESET_RADIO_CONFIG_REQ, NULL, 0);      
+    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_RESET_RADIO_CONFIG_REQ, NULL, 0);
 }
 
 
@@ -401,6 +404,6 @@ iM880A_ResetRadioConfig(void)
 TWiMODLRResult
 iM880A_ResetRequest(void)
 {
-    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_RESET_REQ, NULL, 0);        
+    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_RESET_REQ, NULL, 0);
 }
 

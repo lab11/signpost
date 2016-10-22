@@ -224,7 +224,7 @@ typedef struct
 
 
 typedef void (*TRadioInterfaceCbRxIndication)(uint8_t* rxMsg, uint8_t length, TRadioFlags rxFlags);
-typedef void (*TRadioInterfaceCbTxIndication)(TRadioMsg* txMsg, TRadioFlags txFlags);
+typedef void (*TRadioInterfaceCbTxIndication)(TRadioMsg* txMsg, uint8_t status);
 
 
 
@@ -234,26 +234,26 @@ typedef void (*TRadioInterfaceCbTxIndication)(TRadioMsg* txMsg, TRadioFlags txFl
 //
 //------------------------------------------------------------------------------
 
-void 
+void
 iM880A_Init(void);
 
-void 
-iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd, 
+void
+iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd,
                               TRadioInterfaceCbTxIndication cbTxInd);
 
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_Configure(void);
 
-TWiMDLRResultcodes 
+TWiMDLRResultcodes
 iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length);
 
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_PingRequest();
 
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_PowerDown(void);
 
-TWiMODLRResult 
+TWiMODLRResult
 iM880A_WakeUp(void);
 
 TWiMODLRResult
@@ -263,4 +263,4 @@ TWiMODLRResult
 iM880A_ResetRequest(void);
 
 
-#endif  
+#endif

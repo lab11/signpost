@@ -122,6 +122,10 @@ typedef struct
     uint8_t*                      RxBuffer;
 }TComSlip;
 
+#define GET_AUTO_MAX 256
+
+static char StrBuf[GET_AUTO_MAX];
+
 
 TComSlip ComSlip;
 
@@ -130,6 +134,20 @@ TComSlip ComSlip;
 //  ComSlip_Init
 //
 //------------------------------------------------------------------------------
+//
+
+void receive_message(int len,
+                int unused __attribute__ ((unused)),
+                int unused1 __attribute__ ((unused)),
+                void* args __attribute__ ((unused))) {
+    for(int i = 0; i < len; i++) {
+        ComSlip_ProcessRxByte((uint8_t)StrBuf[i]);
+    }
+
+    //get the next message
+    getauto(StrBuf, GET_AUTO_MAX, receive_message, NULL);
+}
+
 void
 ComSlip_Init()
 {
@@ -141,6 +159,7 @@ ComSlip_Init()
 
     // Register ComSlip_ProcessRxByte at LDDUART
     //LDDUsart_RegisterClient(ComSlip_ProcessRxByte);
+    getauto(StrBuf, GET_AUTO_MAX, receive_message, NULL);
 }
 
 //------------------------------------------------------------------------------
@@ -289,6 +308,7 @@ ComSlip_SetRxBuffer(uint8_t* rxBuffer, uint16_t  rxBufferSize)
 void
 ComSlip_ProcessRxByte(uint8_t rxData)
 {
+    //putstr("got a byte to process\n");
     // get rxByte
     uint8_t rxByte = rxData;
 

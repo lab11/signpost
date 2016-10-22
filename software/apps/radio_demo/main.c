@@ -23,6 +23,7 @@
 #include "app_watchdog.h"
 #include "radio_module.h"
 #include "gpio.h"
+#include "RadioDefs.h"
 
 //definitions for the ble
 #define DEVICE_NAME "Signpost"
@@ -53,11 +54,33 @@ uint8_t master_write_buf[BUFFER_SIZE];
 
 //array of the data we're going to send on the radios
 uint8_t data_to_send[NUMBER_OF_MODULES][BUFFER_SIZE];
+uint32_t packets_sent = 1;
+uint32_t last_packets_sent = 0;
 
 #ifndef COMPILE_TIME_ADDRESS
 #error Missing required define COMPILE_TIME_ADDRESS of format: 0xC0, 0x98, 0xE5, 0x12, 0x00, 0x00
 #endif
 static uint8_t address[ADDRESS_SIZE] = { COMPILE_TIME_ADDRESS };
+
+//these are the lora callback functions for seeing if everything is okay
+
+void lora_rx_callback(uint8_t* payload __attribute__ ((unused)),
+                        uint8_t len __attribute__ ((unused)),
+                        TRadioFlags flag __attribute__ ((unused))) {
+    //this should never happen because I'm not receiving
+//    putstr("Lora received a message?\n");
+}
+
+void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
+                        uint8_t status) {
+    //right now the  radio library ONLY implements txdone messages
+    if(status == DEVMGMT_STATUS_OK) {
+        packets_sent++;
+    } else {
+        putstr("Lora error, resetting...");
+        app_watchdog_reset_app();
+    }
+}
 
 static void adv_config_data() {
     static uint8_t i = 0;
@@ -162,6 +185,8 @@ void ble_address_set() {
 
 void ble_error(uint32_t error_code __attribute__ ((unused))) {
     //this has to be here too
+    putstr("ble error, resetting...");
+    app_watchdog_reset_app();
 }
 
 void ble_evt_connected(ble_evt_t* p_ble_evt __attribute__ ((unused))) {
@@ -186,9 +211,27 @@ static void timer_callback (
     static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
 
     if(data_to_send[i][0] != 0x00) {
+
+        //before we send this packet, make sure the last one completed
+        if(last_packets_sent == packets_sent) {
+            //error
+            putstr("lora error! Reseting..\n");
+            app_watchdog_reset_app();
+        } else {
+            last_packets_sent = packets_sent;
+        }
+
+        //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
         memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_to_send[i], BUFFER_SIZE);
-        iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+
+        //parse the HCI layer error codes
+        if(status != 0) {
+            //error
+            putstr("lora error! Resetting...\n");
+            app_watchdog_reset_app();
+        }
     }
 
     if(i == 5) {
@@ -206,11 +249,18 @@ static void timer_callback (
 int main () {
     //configure the radios
     //lora
-//
+
+    // reset the BLE radio at startup
     gpio_enable_output(BLE_POWER);
     gpio_set(BLE_POWER);
     delay_ms(10);
     gpio_clear(BLE_POWER);
+
+    //soft reset the LoRa Radio at startup
+    gpio_enable_output(LORA_RESET);
+    gpio_clear(LORA_RESET);
+    delay_ms(50);
+    gpio_set(LORA_RESET);
 
     //ble
     simple_ble_init(&ble_config);
@@ -225,6 +275,11 @@ int main () {
         }
     }
 
+    //setup lora
+    //register radio callbacks
+    iM880A_Init();
+    iM880A_RegisterRadioCallbacks(lora_rx_callback, lora_tx_callback);
+    //configure
     iM880A_Configure();
 
     //low configure i2c slave to listen
