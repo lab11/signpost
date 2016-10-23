@@ -54,12 +54,13 @@ void sample_and_send () {
   txbuf[5] = (uint8_t) (humidity & 0xFF);
   txbuf[6] = (uint8_t) ((light >> 8) & 0xFF);
   txbuf[7] = (uint8_t) (light & 0xFF);
-  txbuf[8] = (uint8_t) ((pressure >> 8) & 0xFF);
-  txbuf[9] = (uint8_t) (pressure & 0xFF);
+  txbuf[8] = (uint8_t) ((pressure >> 16) & 0xFF);
+  txbuf[9] = (uint8_t) ((pressure >> 8) & 0xFF);
+  txbuf[10] = (uint8_t) (pressure & 0xFF);
 
   print_measurements(temperature, humidity, pressure, light);
 
-  int result = i2c_master_slave_write_sync(0x22, 10);
+  int result = i2c_master_slave_write_sync(0x22, 11);
   if (result >= 0) {
     app_watchdog_tickle_kernel();
     led_toggle(0);

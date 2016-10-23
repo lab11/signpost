@@ -21,7 +21,7 @@ if ( ! ('device_group' in conf) ) {
   conf.device_group = 0x10;
 }
 if ( ! ('serial_port' in conf) ) {
-  conf.serial_port = '/dev/ttyUSB0';
+  conf.serial_port = '/dev/ttyUSB1';
 }
 if ( ! ('spreading_factor' in conf) ) {
   conf.spreading_factor = 7;
@@ -324,10 +324,12 @@ function parse (buf) {
 		}
 	} else if (module == 0x32) {
 		if (message_type == 0x01) {
-			var temp = buf.readInt16BE(9) / 100.0;
+                        var temp = buf.readInt16BE(9) / 100.0;
 			var humi = buf.readInt16BE(11) / 100.0;
 			var ligh = buf.readInt16BE(13);
-			var pres = buf.readInt16BE(15);
+			// app returns pressure in uBar in 3 bytes, left aligned
+                        // pascal = 1x10^-5 Bar = 10 uBar
+                        var pres = (buf.readInt32BE(15) >> 8) / 10.0;
 
 			return {
 				device: 'signpost_ambient',
@@ -434,14 +436,14 @@ function parse (buf) {
                 "gps_radio_energy_used_mWh": Number(gps*(0.000096+0.01)).toFixed(3),
                 "2.4gHz_spectrum_radio_energy_used_mWh":Number(rf*(0.000096+0.01)).toFixed(3),
                 "ambient_sensing_radio_energy_used_mWh":Number(ambient*(0.000096+0.01)).toFixed(3),
-                "audio_spectrum_radio_energy_used_mWh":Number(audio*(0.000096+0.01)).toFixed(3), 
+                "audio_spectrum_radio_energy_used_mWh":Number(audio*(0.000096+0.01)).toFixed(3),
                 "microwave_radar_radio_energy_used_mWh":Number(microwave*(0.000096+0.01)).toFixed(3),
                 "ucsd_air_quality_radio_energy_used_mWh":Number(ucsd*(0.000096+0.01)).toFixed(3),
                 "radio_status_radio_energy_used_mWh":Number(radio*(0.000096+0.01)).toFixed(3),
 			    _meta: get_meta(addr)
 			}
 		}
-	} 
+	}
 }
 
 // listen for new messages and print them
