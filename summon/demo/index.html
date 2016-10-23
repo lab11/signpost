@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signpost</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/index.css">
+    <summon request="bluetooth" />
+  </head>
+  <body>
+    <!-- SIGNPOST -->
+    <svg viewBox="0 0 500 1400" id="sign">
+      <defs>
+        <linearGradient id="d" x1="1" x2="0" y2="1">
+          <stop offset="10%" stop-color="#159"/>
+          <stop offset="90%" stop-color="#136"/>
+        </linearGradient>
+        <linearGradient id="b">
+          <stop offset="2%" stop-color="#555"/>
+          <stop offset="7%" stop-color="#777"/>
+          <stop offset="93%" stop-color="#777"/>
+          <stop offset="98%" stop-color="#999"/>
+        </linearGradient>
+        <pattern id="a" x="215" y="10" width="70" height="40" patternUnits="userSpaceOnUse">
+          <path fill="#fff" d="M0 0h70v40H0z"/>
+          <circle fill="#999" cx="35" cy="20" r="9"/>
+          <circle cx="35" cy="20" r="7"/>
+        </pattern>
+        <mask id="c">
+          <rect width="100%" height="100%" fill="url(#a)"/>
+        </mask>
+      </defs>
+      <!-- POST -->
+      <path fill="url(#b)" mask="url(#c)" d="M215 0h70v1400h-70z"/>
+      <!-- SIGN -->
+      <rect fill="url(#d)" stroke="rgba(255,255,255,.3)" height="670" width="470" ry="13" rx="13" x="15" y="15" opacity=".95"/>
+      <path fill="rgba(255,255,255,.7)" d="M210 315v17h6v26h-6v17h30v-17h-6v-17l16 24 16-24v17h-6v17h30v-17h-6v-26h6v-17h-24l-16 24-16-24h-24z"/>
+      <text fill="rgba(255,255,255,.7)" text-anchor="middle" alignment-baseline="central" x="250" y="385">SIGNPOST</text>
+      <foreignobject width="500" height="1400" x="0" y="0"><div id="rect"></div></foreignobject>
+      <!-- NUTS & BOLTS -->
+      <path fill="url(#b)" d="M257 42h-14l-7-12 7-12h14l7 12z"/>
+      <circle fill="url(#b)" stroke="#555" r="7" cx="250" cy="30"/>
+      <path fill="url(#b)" d="M257 682h-14l-7-12 7-12h14l7 12z"/>
+      <circle fill="url(#b)" stroke="#555" r="7" cx="250" cy="670"/>
+      <!-- MODULES -->
+      <foreignobject width="130" height="130" x="60" y="60">
+        <div class="mod"><b>MODULE 0</b><br/><svg id="mod0"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="310" y="60">
+        <div class="mod"><b>MODULE 1</b><br/><svg id="mod1"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="60" y="210">
+        <div class="mod"><b>MODULE 2</b><br/><svg id="mod2"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="310" y="210">
+        <div class="mod"><b>MODULE 3</b><br/><svg id="mod3"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="60" y="360">
+        <div class="mod"><b>MODULE 4</b><br/><svg id="mod4"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="310" y="360">
+        <div class="mod"><b>MODULE 5</b><br/><svg id="mod5"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="60" y="510">
+        <div class="mod"><b>MODULE 6</b><br/><svg id="mod6"></svg></div>
+      </foreignobject>
+      <foreignobject width="130" height="130" x="310" y="510">
+        <div class="mod"><b>MODULE 7</b><br/><svg id="mod7"></svg></div>
+      </foreignobject>
+    </svg>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="js/generate_test_data.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
