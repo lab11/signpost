@@ -76,6 +76,24 @@ uint32_t energy_last_readings[128] = {0};
 
 controller_fram_t fram;
 
+void watchdog_tickler (int which) {
+  static bool gps_tickle = false;
+  static bool energy_tickle = false;
+
+  if (which == 1) {
+    gps_tickle = true;
+  } else {
+    energy_tickle = true;
+  }
+
+  if (gps_tickle && energy_tickle) {
+    app_watchdog_tickle_kernel();
+
+    gps_tickle = false;
+    energy_tickle = false;
+  }
+}
+
 void print_energy_data (int module, int energy) {
   char buf[64];
   if (module == 3) {
@@ -164,7 +182,8 @@ void get_energy () {
   // Only say things are working if i2c worked
   if (result == 0) {
     // Tickle the watchdog because something good happened.
-    app_watchdog_tickle_kernel();
+    //app_watchdog_tickle_kernel();
+    watchdog_tickler(2);
   }
 }
 
@@ -219,7 +238,8 @@ void gps_callback (gps_data_t* gps_data) {
   // Only say things are working if i2c worked
   if (result == 0) {
     // Tickle the watchdog because something good happened.
-    app_watchdog_tickle_kernel();
+    //app_watchdog_tickle_kernel();
+    watchdog_tickler(1);
   }
 }
 
