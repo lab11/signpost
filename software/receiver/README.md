@@ -158,6 +158,7 @@ All data packets include a `_meta` section like the following:
 	"audio_spectrum_ble_packets_sent": <uint>,
 	"microwave_radar_ble_packets_sent": <uint>,
 	"ucsd_air_quality_ble_packets_sent": <uint>,
+	"radio_status_ble_packets_sent": <uint>,
     "status_lora_packets_sent": <uint>,
 	"gps_lora_packets_sent": <uint>,
 	"2.4gHz_spectrum_lora_packets_sent": <uint>,
@@ -165,6 +166,7 @@ All data packets include a `_meta` section like the following:
 	"audio_spectrum_lora_packets_sent": <uint>,
 	"microwave_radar_lora_packets_sent": <uint>,
 	"ucsd_air_quality_lora_packets_sent": <uint>,
+	"radio_status_lora_packets_sent": <uint>,
     "status_radio_energy_used_mWh": <float>,
 	"gps_radio_energy_used_mWh": <float>,
 	"2.4gHz_spectrum_radio_energy_used_mWh": <float>,
@@ -172,6 +174,7 @@ All data packets include a `_meta` section like the following:
 	"audio_spectrum_radio_energy_used_mWh": <float>,
 	"microwave_radar_radio_energy_used_mWh": <float>,
 	"ucsd_air_quality_radio_energy_used_mWh": <float>,
+	"radio_status_radio_energy_used_mWh": <float>,
 }
 ```
 
@@ -303,4 +306,5 @@ u16 : ambient sensing packets sent
 u16 : audio spectrum packets sent
 u16 : microwave radar packets sent
 u16 : ucsd air quality packets sent
+u16 : radio status packets sent
 ```

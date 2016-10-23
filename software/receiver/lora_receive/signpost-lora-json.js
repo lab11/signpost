@@ -409,6 +409,7 @@ function parse (buf) {
 			var audio = buf.readUInt16BE(17);
 			var microwave = buf.readUInt16BE(19);
 			var ucsd = buf.readUInt16BE(21);
+			var radio = buf.readUInt16BE(23);
 
 			return {
                 //energy estimations on mWh/packet. packetcount*(ble/pack+lora/pack)
@@ -420,6 +421,7 @@ function parse (buf) {
                 "audio_spectrum_ble_packets_sent": Number((audio*(7.0/8.0)).toFixed(0)),
                 "microwave_radar_ble_packets_sent":Number((microwave*(7.0/8.0)).toFixed(0)),
                 "ucsd_air_quality_ble_packets_sent":Number((ucsd*(7.0/8.0)).toFixed(0)),
+                "radio_status_ble_packets_sent":Number((radio*(7.0/8.0)).toFixed(0)),
                 "status_lora_packets_sent": energy,
                 "gps_lora_packets_sent": gps,
                 "2.4gHz_spectrum_lora_packets_sent": rf,
@@ -427,6 +429,7 @@ function parse (buf) {
                 "audio_spectrum_lora_packets_sent": audio,
                 "microwave_radar_lora_packets_sent": microwave,
                 "ucsd_air_quality_lora_packets_sent": ucsd,
+                "radio_status_lora_packets_sent": radio,
                 "status_radio_energy_used_mWh": Number(energy*(0.000096+0.01)).toFixed(3),
                 "gps_radio_energy_used_mWh": Number(gps*(0.000096+0.01)).toFixed(3),
                 "2.4gHz_spectrum_radio_energy_used_mWh":Number(rf*(0.000096+0.01)).toFixed(3),
@@ -434,6 +437,7 @@ function parse (buf) {
                 "audio_spectrum_radio_energy_used_mWh":Number(audio*(0.000096+0.01)).toFixed(3), 
                 "microwave_radar_radio_energy_used_mWh":Number(microwave*(0.000096+0.01)).toFixed(3),
                 "ucsd_air_quality_radio_energy_used_mWh":Number(ucsd*(0.000096+0.01)).toFixed(3),
+                "radio_status_radio_energy_used_mWh":Number(radio*(0.000096+0.01)).toFixed(3),
 			    _meta: get_meta(addr)
 			}
 		}

@@ -223,15 +223,11 @@ static void timer_callback (
 
         //increment the packet counter for this slot
         // //don't meta count packets sent packets
-        if(i != 7)  {
-            uint16_t packets = (uint16_t)((data_to_send[7][3+i*2+1]) + (data_to_send[7][3+i*2] << 8));
-            packets++;
-            data_to_send[7][3+i*2] = (uint8_t)((packets >> 8) & 0xff);
-            data_to_send[7][3+i*2+1] = (uint8_t)(packets  & 0xff);
-            data_to_send[7][2]++;
-            data_to_send[7][0] = 0x22;
-            data_to_send[7][1] = 0x01;
-        }
+        uint16_t packets = (uint16_t)((data_to_send[7][3+i*2+1]) + (data_to_send[7][3+i*2] << 8));
+        packets++;
+        data_to_send[7][3+i*2] = (uint8_t)((packets >> 8) & 0xff);
+        data_to_send[7][3+i*2+1] = (uint8_t)(packets  & 0xff);
+        data_to_send[7][2]++;
 
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
@@ -286,6 +282,10 @@ int main () {
            data_to_send[i][j] = 0;
         }
     }
+
+    //init the one data slot that comes from us
+    data_to_send[7][0] = 0x22;
+    data_to_send[7][1] = 0x01;
 
     //setup lora
     //register radio callbacks
