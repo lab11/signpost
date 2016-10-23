@@ -310,10 +310,18 @@ pub unsafe fn reset_handler() {
             app_watchdog: app_watchdog,
         },
         192/8);
-
+    
+    //fix the rst line
 	sam4l::gpio::PB[06].enable();
 	sam4l::gpio::PB[06].enable_output();
 	sam4l::gpio::PB[06].clear();
+
+    //turn off gsm power
+    sam4l::gpio::PA[07].enable();
+	sam4l::gpio::PA[07].enable_output();
+	sam4l::gpio::PA[07].set();
+
+
 
     radio_module.console.initialize();
 	radio_module.nrf51822.initialize();
