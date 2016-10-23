@@ -61,15 +61,15 @@ int main () {
     gpio_clear(9);
 
     //init i2c
-    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+    //i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(0x33);
 
-    i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
+    //i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
     i2c_master_slave_set_master_write_buffer(master_write_buf, BUFFER_SIZE);
-    i2c_master_slave_set_slave_read_buffer(slave_read_buf, BUFFER_SIZE);
-    i2c_master_slave_set_slave_write_buffer(slave_write_buf, BUFFER_SIZE);
+    //i2c_master_slave_set_slave_read_buffer(slave_read_buf, BUFFER_SIZE);
+    //i2c_master_slave_set_slave_write_buffer(slave_write_buf, BUFFER_SIZE);
 
-    i2c_master_slave_listen();
+    //i2c_master_slave_listen();
 
     master_write_buf[0] = 0x33;
     master_write_buf[1] = 0x01;
