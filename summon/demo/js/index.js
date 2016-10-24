@@ -5,10 +5,10 @@ var SIMULATE_PACKETS = false; // if false, uses websocket when opened in a non-S
 var MODULES = [
   { name:"2.4GHz Spectrum", dev:"2.4ghz_spectrum", x:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26], y:[-128,-.1] },
   { name:"Ambient", dev:"ambient" },
-  { name:"Radio", dev:"radio" },
+  { name:"Radio", dev:"radio_status" },
   { name:"Controller", dev:"gps" },
   { name:"Power Supply", dev:"status" },
-  { name:"Audio Frequency", dev:"audio_spectrum", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
+  { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
   { name:"UCSD Air Quality", dev:"ucsd_air_quality" },
   { name:"Microwave Radar", dev:"microwave_radar" }
 ]
@@ -24,16 +24,12 @@ var app = {
     for (i=0; i<Math.min(MODULES.length,8); i++) app.createModule(i,MODULES[i].name);
     if (typeof summon == "undefined") {
       if (!SIMULATE_PACKETS) {
-        var client = mqtt.connect("ws://signpost.j2x.us:9001");
-        client.subscribe('signpost');
-
-
+        var client = mqtt.connect("ws://signpost.j2x.us:9001/mqtt");
+        client.on("connect", function () {
+          client.subscribe('signpost');
+        });
         client.on("message", function(topic, payload) {
           var data = JSON.parse(payload.toString());
-        // ws = new WebSocket("ws://signpost.j2x.us:9001");
-        // ws.onopen = function() { app.log("Socket open"); };
-        // ws.onclose = function() { app.log("Socket closed") };
-        // ws.onmessage = function (e) {
           SIMULATE_PACKETS=true;
           document.dispatchEvent(new CustomEvent("data",{detail:data}));
         });
