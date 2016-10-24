@@ -8,7 +8,7 @@ var MODULES = [
   { name:"Radio", dev:"radio_status" },
   { name:"Controller", dev:"gps" },
   { name:"Power Supply", dev:"status" },
-  { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
+  { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,179] },
   { name:"UCSD Air Quality", dev:"ucsd_air_quality" },
   { name:"Microwave Radar", dev:"microwave_radar" }
 ]
@@ -67,7 +67,7 @@ var app = {
         g.append("g").attr({ "class":"x axis", "transform":"translate(0,"+box.height+")" })
           .call(d3.svg.axis().scale(app.x[i]).orient("bottom").tickFormat(d3.format(".2s")));
         g.append("g").attr({ "class":"y axis" })
-          .call(d3.svg.axis().scale(app.y[i]).orient("left").tickFormat(d3.format(".2s")));
+          .call(d3.svg.axis().scale(app.y[i]).orient("left"));
         svg.append("text").text(titles[1]).attr({ "x":7, "y":83, "style":"font-size:5px" });
         svg.append("text").text(titles[0]).attr({ "x":18, "y":87, "style":"font-size:5px" });
         break;
@@ -170,7 +170,7 @@ var app = {
       case "Power Supply":
         for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i]) {
           svg.selectAll(".state.m"+i).text(data["module"+i+"_enabled"]?"On":"Off");
-          svg.selectAll(".mah.m"+i).text(data["module"+i+"_energy_mAh"].toFixed(3));
+          svg.selectAll(".mah.m"+i).text(data["module"+i+"_energy_mAh"].toFixed(0));
         }
         break;
     }
