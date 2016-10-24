@@ -36,7 +36,7 @@ var app = {
         // ws.onmessage = function (e) {
           SIMULATE_PACKETS=true;
           document.dispatchEvent(new CustomEvent("data",{detail:data}));
-        };
+        });
         setTimeout(function(){if(!SIMULATE_PACKETS)app.simulatePackets()},30000); // simulate if nothing happens in 30s
       } else app.simulatePackets();
     } else app.log("Running Signpost UI on Summon");
