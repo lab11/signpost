@@ -362,7 +362,7 @@ function parse (buf) {
 			var f_16000_hz = Number(((Math.log10(buf.readUInt16BE(21)/43.75)*20)+35.5).toFixed(0));
 
 			return {
-			    device: 'signpost_audio_spectrum',
+			    device: 'signpost_audio_frequency',
                 "63Hz": f_63_hz,
                 '160Hz': f_160_hz,
                 '400Hz': f_400_hz,
