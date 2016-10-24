@@ -106,7 +106,7 @@ var app = {
       case "Power Supply":
         var table = svg.append("foreignObject").attr({ "width":"100%", "height":"100%"}).append("xhtml:table");
         table.append("tr").html("<td>MODULE</td><td>STATE</td><td class='mah'>ENERGY[mAh]</td>");
-        for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i])
+        for (i=0; i<8; i=[1,2,3,5,8,6,7,8][i])
           table.append("tr").html("<td>"+i+"</td><td class='m"+i+" state'>-</td><td class='m"+i+" mah'>-</td>");
         break;
     }
@@ -168,9 +168,9 @@ var app = {
         svg.select(".lora.pkt").text(packets.lora);
         break;
       case "Power Supply":
-        for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i]) {
-          svg.selectAll(".state.m"+i).text(data["module"+i+"_enabled"]?"On":"Off");
-          svg.selectAll(".mah.m"+i).text(data["module"+i+"_energy_mAh"].toFixed(0));
+        for (i=0; i<8; i=[1,2,3,5,8,6,7,8][i]) {
+          svg.selectAll(".state.m"+i).text(i==3||data["module"+i+"_enabled"]?"On":"Off");
+          svg.selectAll(".mah.m"+i).text(data[(i==3?"controller":"module"+i)+"_energy_mAh"].toFixed(0));
         }
         break;
     }

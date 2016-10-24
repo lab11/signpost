@@ -84,6 +84,7 @@ html, body {
 table td {
   text-align:left;
   font-size:7px;
+  padding:0;
 }
 
 tr:first-child {
