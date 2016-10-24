@@ -8,7 +8,7 @@ var MODULES = [
   { name:"Radio", dev:"radio" },
   { name:"Controller", dev:"gps" },
   { name:"Power Supply", dev:"status" },
-  { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
+  { name:"Audio Frequency", dev:"audio_spectrum", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
   { name:"UCSD Air Quality", dev:"ucsd_air_quality" },
   { name:"Microwave Radar", dev:"microwave_radar" }
 ]
@@ -155,12 +155,21 @@ var app = {
         svg.select("#temp").text(data.temperature_c.toFixed(1) + " \xB0C");
         svg.select("#hum" ).text(data.humidity.toFixed(1) + " %");
         svg.select("#lux" ).text(data.light_lux.toFixed(1) + " lx");
-        svg.select("#pres").text((data.pressure_pascals*1000).toFixed(1) + " kPa");
+        svg.select("#pres").text((data.pressure_pascals/1000).toFixed(1) + " kPa");
         break;
       case "UCSD Air Quality":
         svg.select("#co2" ).text(data.co2_ppm);
         svg.select("#vocp").text(data.VOC_PID_ppb);
         svg.select("#voci").text(data.VOC_IAQ_ppb);
+        break;
+      case "Radio":
+        var packets = { lora:0, ble:0 }
+        for (n in data) {
+          if (n.endsWith("ble_packets_sent")) packets.ble += data[n];
+          else if (n.endsWith("lora_packets_sent")) packets.lora += data[n];
+        }
+        svg.select(".ble.pkt").text(packets.ble);
+        svg.select(".lora.pkt").text(packets.lora);
         break;
       case "Power Supply":
         for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i]) {
