@@ -9,7 +9,7 @@ var MODULES = [
   { name:"Controller", dev:"gps" },
   { name:"Power Supply", dev:"status" },
   { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,4095] },
-  { name:"UCSD Air Quality", dev:"ucsd_air_quality" },
+  { name:"Air Quality", dev:"ucsd_air_quality" },
   { name:"Microwave Radar", dev:"microwave_radar" }
 ]
 
@@ -24,15 +24,11 @@ var app = {
     for (i=0; i<Math.min(MODULES.length,8); i++) app.createModule(i,MODULES[i].name);
     if (typeof summon == "undefined") {
       if (!SIMULATE_PACKETS) {
-        ws = new WebSocket("ws://signpost.j2x.us:9001");
-        ws.onopen = function() { app.log("Socket open"); };
+        var ws = new WebSocket("ws://signpost.j2x.us:9001");
+        ws.onopen = function() { app.log("Socket open") };
         ws.onclose = function() { app.log("Socket closed") };
-        ws.onmessage = function (e) { 
-          SIMULATE_PACKETS=true; 
-          document.dispatchEvent(new CustomEvent("data",{detail:e.data})); 
-        };
-        setTimeout(function(){if(!SIMULATE_PACKETS)app.simulatePackets()},30000); // simulate if nothing happens in 30s
-      } else app.simulatePackets();
+        ws.onmessage = function (e) { document.dispatchEvent(new CustomEvent("data",{detail:e.data})) };
+      } else simulatePackets();
     } else app.log("Running Signpost UI on Summon");
   },
   // Module Constructor
@@ -50,8 +46,7 @@ var app = {
           svg.selectAll("path")
             .data(topojson.feature(geodata,geodata.objects.collection).features).enter().append("path")
             .attr("d",d3.geo.path().projection(app.projection.scale(19).translate([120/2,65/2])));
-          svg.append("text").text("--.---\xB0 N ---.---\xB0 E").attr({ "x":60, "y":75, "id":"coord" });
-          svg.append("text").text("----/--/-- --:--:--.---(UTC)").attr({ "x":60, "y":87, "id":"stamp" });
+          svg.append("text").text("--.---\xB0 N ---.---\xB0 E").attr({ "x":60, "y":80 });
         });
         break;
       case "2.4GHz Spectrum":
@@ -83,8 +78,8 @@ var app = {
         svg.append("image").attr({ "x":80, "y":55, "width":20, "height":20, "xlink:href":"img/pressure.svg" });
         svg.append("text").attr({ "x":90, "y":85, "id":"pres"}).text("-- kPa");
         break;
-      case "UCSD Air Quality":
-        svg.append("text").attr({ "x":60, "y":14, "class":"unit"}).text("CO\u2082");
+      case "Air Quality":
+        svg.append("text").attr({ "x":60, "y":14, "class":"unit"}).text("CO₂");
         svg.append("text").attr({ "x":60, "y":32, "id":"co2"}).text("---");
         svg.append("text").attr({ "x":60, "y":41}).text("ppm");
         svg.append("text").attr({ "x":30, "y":57, "class":"unit"}).text("VOC(PID)");
@@ -125,10 +120,9 @@ var app = {
           .attr("y1", function(d) { return app.projection(d[0])[1]; })
           .attr("x2", function(d) { return app.projection(d[1])[0]; })
           .attr("y2", function(d) { return app.projection(d[1])[1]; });
-        svg.select("#coord").text(
+        svg.select("text").text(
           data.latitude.toFixed(3) + "\xB0 " + data.latitude_direction + " " +
           data.longitude.toFixed(3)+ "\xB0 " + data.longitude_direction );
-        svg.select("#stamp").text(data.timestamp.replace('T',' ').replace('Z','')+"(UTC)");
         break;
       case "2.4GHz Spectrum":
         for (n in mod.x) values.push({ x:mod.x[n], y:data["channel_"+mod.x[n]] });
@@ -151,7 +145,7 @@ var app = {
         svg.select("#lux" ).text(data.light_lux.toFixed(1) + " lx");
         svg.select("#pres").text((data.pressure_pascals*1000).toFixed(1) + " kPa");
         break;
-      case "UCSD Air Quality":
+      case "Air Quality":
         svg.select("#co2" ).text(data.co2_ppm);
         svg.select("#vocp").text(data.VOC_PID_ppb);
         svg.select("#voci").text(data.VOC_IAQ_ppb);
@@ -187,120 +181,122 @@ var app = {
   },
   // BLE Device Discovered Callback
   onDiscover: function(device) {
-    app.log("Found " + device.name + " (" + device.id + ")!");
-    var advertisement = device.advertisement;
-    if (device.id == gateway.getDeviceId() && advertisement.manufacturerData.length) {
-      var data = null;
-      var md = advertisement.manufacturerData;
-      switch (md[0] * 0x100 + md[1]) {
-        case 0x2001: // Power Supply
-          data = {
-            device: "signpost_status",
-            module0_energy_mAh: md[2] * 0x100 + md[3],
-            module1_energy_mAh: md[4] * 0x100 + md[5],
-            module2_energy_mAh: md[6] * 0x100 + md[7],
-            controller_energy_mAh: md[8] * 0x100 +md[9],
-            module5_energy_mAh: md[12] * 0x100 + md[13],
-            module6_energy_mAh: md[14] * 0x100 + md[15],
-            module7_energy_mAh: md[16] * 0x100 + md[17],
-            module0_enabled: Boolean(md[18] & 0b10000000),
-            module1_enabled: Boolean(md[18] & 0b01000000),
-            module2_enabled: Boolean(md[18] & 0b00100000),
-            module5_enabled: Boolean(md[18] & 0b00000100),
-            module6_enabled: Boolean(md[18] & 0b00000010),
-            module7_enabled: Boolean(md[18] & 0b00000001),
-          }; break;
-        case 0x2002: // Controller
-          data = {
-            device: "signpost_gps",
-            latitude: Math.abs((md[8]*0x1000000+md[9]*0x10000+md[10]*0x100+md[11])/(10000*100.0)),
-            latitude_direction: md[8]&0b10000000 ? "S" : "N",
-            longitude: Math.abs((md[12]*0x1000000+md[13]*0x10000+md[14]*0x100+md[15])/(10000*100.0)),
-            longitude_direction: md[12]&0b10000000 ? "W" : "E",
-            timestamp: new Date(Date.UTC(md[4]+2000, md[3]-1, md[2], md[5], md[6], md[7])).toISOString(),
-          }; break;
-        case 0x2201: // Radio
-          data = {
-            device: "signpost_radio_status",
-            "status_ble_packets_sent": Number(((md[2]*0x100+md[3])*(7.0/8.0)).toFixed(0)),
-            "gps_ble_packets_sent": Number(((md[4]*0x100+md[5])*(7.0/8.0)).toFixed(0)),
-            "2.4gHz_spectrum_ble_packets_sent":Number(((md[6]*0x100+md[7])*(7.0/8.0)).toFixed(0)),
-            "ambient_sensing_ble_packets_sent":Number(((md[8]*0x100+md[9])*(7.0/8.0)).toFixed(0)),
-            "audio_spectrum_ble_packets_sent": Number(((md[10]*0x100+md[11])*(7.0/8.0)).toFixed(0)),
-            "microwave_radar_ble_packets_sent":Number(((md[12]*0x100+md[13])*(7.0/8.0)).toFixed(0)),
-            "ucsd_air_quality_ble_packets_sent":Number(((md[14]*0x100+md[15])*(7.0/8.0)).toFixed(0)),
-            "status_lora_packets_sent": (md[2]*0x100+md[3]),
-            "gps_lora_packets_sent": (md[4]*0x100+md[5]),
-            "2.4gHz_spectrum_lora_packets_sent": (md[6]*0x100+md[7]),
-            "ambient_sensing_lora_packets_sent": (md[8]*0x100+md[9]),
-            "audio_spectrum_lora_packets_sent": (md[10]*0x100+md[11]),
-            "microwave_radar_lora_packets_sent": (md[12]*0x100+md[13]),
-            "ucsd_air_quality_lora_packets_sent": (md[14]*0x100+md[15]),
-            "status_radio_energy_used_mWh": Number((md[2]*0x100+md[3])*(0.000096+0.01)).toFixed(3),
-            "gps_radio_energy_used_mWh": Number((md[4]*0x100+md[5])*(0.000096+0.01)).toFixed(3),
-            "2.4gHz_spectrum_radio_energy_used_mWh": Number((md[6]*0x100+md[7])*(0.000096+0.01)).toFixed(3),
-            "ambient_sensing_radio_energy_used_mWh": Number((md[8]*0x100+md[9])*(0.000096+0.01)).toFixed(3),
-            "audio_spectrum_radio_energy_used_mWh": Number((md[10]*0x100+md[11])*(0.000096+0.01)).toFixed(3), 
-            "microwave_radar_radio_energy_used_mWh": Number((md[12]*0x100+md[13])*(0.000096+0.01)).toFixed(3),
-            "ucsd_air_quality_radio_energy_used_mWh": Number((md[14]*0x100+md[15])*(0.000096+0.01)).toFixed(3),
-          }; break;
-        case 0x3101: // 2.4GHz Spectrum
-          var md8 = new Int8Array(md.buffer.slice(2,18));
-          data = {
-            device: 'signpost_2.4ghz_spectrum',
-            channel_11: md8[0],
-            channel_12: md8[1],
-            channel_13: md8[2],
-            channel_14: md8[3],
-            channel_15: md8[4],
-            channel_16: md8[5],
-            channel_17: md8[6],
-            channel_18: md8[7],
-            channel_19: md8[8],
-            channel_20: md8[9],
-            channel_21: md8[10],
-            channel_22: md8[11],
-            channel_23: md8[12],
-            channel_24: md8[13],
-            channel_25: md8[14],
-            channel_26: md8[15],
-          }; break;
-        case 0x3201: // Ambient
-          data = {
-            device: 'signpost_ambient',
-            temperature_c: (md[2] * 0x100 + md[3]) / 100.0,
-            humidity: (md[4] * 0x100 + md[5]) / 100.0,
-            light_lux: md[6] * 0x100 + md[7],
-            pressure_pascals: md[8] * 0x100 +md[9],
-          }; break;
-        case 0x3301: // Audio Frequency
-          data = {
-            device: 'signpost_audio_spectrum',
-            "63Hz": Number(((Math.log10((md[2]*0x100+md[3])/43.75)*20)+35.5).toFixed(0)),
-            "160Hz": Number(((Math.log10((md[4]*0x100+md[5])/43.75)*20)+35.5).toFixed(0)),
-            "400Hz": Number(((Math.log10((md[6]*0x100+md[7])/43.75)*20)+35.5).toFixed(0)),
-            "1000Hz": Number(((Math.log10((md[8]*0x100+md[9])/43.75)*20)+35.5).toFixed(0)),
-            "2500Hz": Number(((Math.log10((md[10]*0x100+md[11])/43.75)*20)+35.5).toFixed(0)),
-            "6250Hz": Number(((Math.log10((md[12]*0x100+md[13])/43.75)*20)+35.5).toFixed(0)),
-            "16000Hz": Number(((Math.log10((md[14]*0x100+md[15])/43.75)*20)+35.5).toFixed(0)),
-          }; break;
-        case 0x3401: // Microwave Radar
-          data = {
-            device: 'signpost_microwave_radar',
-            motion: md[2] & 0b10000000,
-            'velocity_m/s': (md[2]*0x1000000+md[3]*0x10000+md[4]*0x100+md[5]) / 1000.0,
-          }; break;
-        case 0x3501: // Air Quality
-          data = {
-            device: 'signpost_ucsd_air_quality',
-            co2_ppm: md[2] * 0x100 + md[3],
-            VOC_PID_ppb: md[4]*0x1000000+md[5]*0x10000+md[6]*0x100+md[7],
-            VOC_IAQ_ppb: md[8]*0x1000000+md[9]*0x10000+md[10]*0x100+md[11],
-            barometric_millibar: md[12] * 0x100 + md[13],
-            humidity_percent: md[14] * 0x100 + md[15],
-          }; break;
+    if (device.name == "Signpost") {
+      app.log("Found " + device.name + " (" + device.id + ")!");
+      var advertisement = device.advertisement;
+      if (device.id == gateway.getDeviceId() && advertisement.manufacturerData.length) {
+        var data = null;
+        var md = advertisement.manufacturerData;
+        switch (md[0] * 0x100 + md[1]) {
+          case 0x2001: // Power Supply
+            data = {
+              device: "signpost_status",
+              module0_energy_mAh: md[2] * 0x100 + md[3],
+              module1_energy_mAh: md[4] * 0x100 + md[5],
+              module2_energy_mAh: md[6] * 0x100 + md[7],
+              controller_energy_mAh: md[8] * 0x100 +md[9],
+              module5_energy_mAh: md[12] * 0x100 + md[13],
+              module6_energy_mAh: md[14] * 0x100 + md[15],
+              module7_energy_mAh: md[16] * 0x100 + md[17],
+              module0_enabled: Boolean(md[18] & 0b10000000),
+              module1_enabled: Boolean(md[18] & 0b01000000),
+              module2_enabled: Boolean(md[18] & 0b00100000),
+              module5_enabled: Boolean(md[18] & 0b00000100),
+              module6_enabled: Boolean(md[18] & 0b00000010),
+              module7_enabled: Boolean(md[18] & 0b00000001),
+            }; break;
+          case 0x2002: // Controller
+            data = {
+              device: "signpost_gps",
+              latitude: Math.abs((md[8]*0x1000000+md[9]*0x10000+md[10]*0x100+md[11])/(10000*100.0)),
+              latitude_direction: md[8]&0b10000000 ? "S" : "N",
+              longitude: Math.abs((md[12]*0x1000000+md[13]*0x10000+md[14]*0x100+md[15])/(10000*100.0)),
+              longitude_direction: md[12]&0b10000000 ? "W" : "E",
+              timestamp: new Date(Date.UTC(md[4]+2000, md[3]-1, md[2], md[5], md[6], md[7])).toISOString(),
+            }; break;
+          case 0x2201: // Radio
+            data = {
+              device: "signpost_radio_status",
+              "status_ble_packets_sent": Number(((md[2]*0x100+md[3])*(7.0/8.0)).toFixed(0)),
+              "gps_ble_packets_sent": Number(((md[4]*0x100+md[5])*(7.0/8.0)).toFixed(0)),
+              "2.4gHz_spectrum_ble_packets_sent":Number(((md[6]*0x100+md[7])*(7.0/8.0)).toFixed(0)),
+              "ambient_sensing_ble_packets_sent":Number(((md[8]*0x100+md[9])*(7.0/8.0)).toFixed(0)),
+              "audio_spectrum_ble_packets_sent": Number(((md[10]*0x100+md[11])*(7.0/8.0)).toFixed(0)),
+              "microwave_radar_ble_packets_sent":Number(((md[12]*0x100+md[13])*(7.0/8.0)).toFixed(0)),
+              "ucsd_air_quality_ble_packets_sent":Number(((md[14]*0x100+md[15])*(7.0/8.0)).toFixed(0)),
+              "status_lora_packets_sent": (md[2]*0x100+md[3]),
+              "gps_lora_packets_sent": (md[4]*0x100+md[5]),
+              "2.4gHz_spectrum_lora_packets_sent": (md[6]*0x100+md[7]),
+              "ambient_sensing_lora_packets_sent": (md[8]*0x100+md[9]),
+              "audio_spectrum_lora_packets_sent": (md[10]*0x100+md[11]),
+              "microwave_radar_lora_packets_sent": (md[12]*0x100+md[13]),
+              "ucsd_air_quality_lora_packets_sent": (md[14]*0x100+md[15]),
+              "status_radio_energy_used_mWh": Number((md[2]*0x100+md[3])*(0.000096+0.01)).toFixed(3),
+              "gps_radio_energy_used_mWh": Number((md[4]*0x100+md[5])*(0.000096+0.01)).toFixed(3),
+              "2.4gHz_spectrum_radio_energy_used_mWh": Number((md[6]*0x100+md[7])*(0.000096+0.01)).toFixed(3),
+              "ambient_sensing_radio_energy_used_mWh": Number((md[8]*0x100+md[9])*(0.000096+0.01)).toFixed(3),
+              "audio_spectrum_radio_energy_used_mWh": Number((md[10]*0x100+md[11])*(0.000096+0.01)).toFixed(3), 
+              "microwave_radar_radio_energy_used_mWh": Number((md[12]*0x100+md[13])*(0.000096+0.01)).toFixed(3),
+              "ucsd_air_quality_radio_energy_used_mWh": Number((md[14]*0x100+md[15])*(0.000096+0.01)).toFixed(3),
+            }; break;
+          case 0x3101: // 2.4GHz Spectrum
+            var md8 = new Int8Array(md.buffer.slice(2,18));
+            data = {
+              device: 'signpost_2.4ghz_spectrum',
+              channel_11: md8[0],
+              channel_12: md8[1],
+              channel_13: md8[2],
+              channel_14: md8[3],
+              channel_15: md8[4],
+              channel_16: md8[5],
+              channel_17: md8[6],
+              channel_18: md8[7],
+              channel_19: md8[8],
+              channel_20: md8[9],
+              channel_21: md8[10],
+              channel_22: md8[11],
+              channel_23: md8[12],
+              channel_24: md8[13],
+              channel_25: md8[14],
+              channel_26: md8[15],
+            }; break;
+          case 0x3201: // Ambient
+            data = {
+              device: 'signpost_ambient',
+              temperature_c: (md[2] * 0x100 + md[3]) / 100.0,
+              humidity: (md[4] * 0x100 + md[5]) / 100.0,
+              light_lux: md[6] * 0x100 + md[7],
+              pressure_pascals: md[8] * 0x100 +md[9],
+            }; break;
+          case 0x3301: // Audio Frequency
+            data = {
+              device: 'signpost_audio_spectrum',
+              "63Hz": Number(((Math.log10((md[2]*0x100+md[3])/43.75)*20)+35.5).toFixed(0)),
+              "160Hz": Number(((Math.log10((md[4]*0x100+md[5])/43.75)*20)+35.5).toFixed(0)),
+              "400Hz": Number(((Math.log10((md[6]*0x100+md[7])/43.75)*20)+35.5).toFixed(0)),
+              "1000Hz": Number(((Math.log10((md[8]*0x100+md[9])/43.75)*20)+35.5).toFixed(0)),
+              "2500Hz": Number(((Math.log10((md[10]*0x100+md[11])/43.75)*20)+35.5).toFixed(0)),
+              "6250Hz": Number(((Math.log10((md[12]*0x100+md[13])/43.75)*20)+35.5).toFixed(0)),
+              "16000Hz": Number(((Math.log10((md[14]*0x100+md[15])/43.75)*20)+35.5).toFixed(0)),
+            }; break;
+          case 0x3401: // Microwave Radar
+            data = {
+              device: 'signpost_microwave_radar',
+              motion: md[2] & 0b10000000,
+              'velocity_m/s': (md[2]*0x1000000+md[3]*0x10000+md[4]*0x100+md[5]) / 1000.0,
+            }; break;
+          case 0x3501: // Air Quality
+            data = {
+              device: 'signpost_ucsd_air_quality',
+              co2_ppm: md[2] * 0x100 + md[3],
+              VOC_PID_ppb: md[4]*0x1000000+md[5]*0x10000+md[6]*0x100+md[7],
+              VOC_IAQ_ppb: md[8]*0x1000000+md[9]*0x10000+md[10]*0x100+md[11],
+              barometric_millibar: md[12] * 0x100 + md[13],
+              humidity_percent: md[14] * 0x100 + md[15],
+            }; break;
+        }
+        if (data) document.dispatchEvent(new CustomEvent("data",{detail:data}));
       }
-      if (data) document.dispatchEvent(new CustomEvent("data",{detail:data}));
     }
   },
   // Module Click Event Handler
@@ -312,11 +308,6 @@ var app = {
       s = Math.min(window.innerHeight,window.innerWidth) / (el.width + 20);
       document.body.style.transform = "scale("+s+") translate("+x+"px,"+y+"px)";
     } else document.body.style.transform = "";
-  },
-  // Function to simulate data packets
-  simulatePackets: function() {
-    d3.select("#sim").attr("class","flash")
-    simulatePackets();
   },
   // Function to Log Text to Screen
   log: function(string) {

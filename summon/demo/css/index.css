@@ -21,7 +21,6 @@ html, body {
   margin-bottom:-5px;
   display:inline-block;
   font-family: monospace;
-  font-size:12px;
 }
 
 #rect {
@@ -34,16 +33,12 @@ html, body {
   font-size:50px;
 }
 
-#temp, #hum, #lux, #pres, #stamp {
+#temp, #hum, #lux, #pres {
   font-size:7px;
 }
 
 #co2, #vocp, #voci {
   font-size:20px;
-}
-
-.flash {
-  animation:flash 2s infinite;
 }
 
 .mod {
@@ -96,7 +91,7 @@ line {
 }
 
 b {
-  font-size:7px;
+  font-size:8px;
   font-weight:normal;
 }
 
@@ -109,10 +104,4 @@ text {
 image {
   width:20px;
   height:20px;
-}
-
-@keyframes flash {
-    0% {opacity: 0;}
-    50% {opacity: 1;}
-    100% {opacity: 0;}
 }
