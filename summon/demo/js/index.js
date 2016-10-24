@@ -24,12 +24,18 @@ var app = {
     for (i=0; i<Math.min(MODULES.length,8); i++) app.createModule(i,MODULES[i].name);
     if (typeof summon == "undefined") {
       if (!SIMULATE_PACKETS) {
-        ws = new WebSocket("ws://signpost.j2x.us:9001");
-        ws.onopen = function() { app.log("Socket open"); };
-        ws.onclose = function() { app.log("Socket closed") };
-        ws.onmessage = function (e) { 
-          SIMULATE_PACKETS=true; 
-          document.dispatchEvent(new CustomEvent("data",{detail:e.data})); 
+        var client = mqtt.connect("ws://signpost.j2x.us:9001");
+        client.subscribe('signpost');
+
+
+        client.on("message", function(topic, payload) {
+          var data = JSON.parse(payload.toString());
+        // ws = new WebSocket("ws://signpost.j2x.us:9001");
+        // ws.onopen = function() { app.log("Socket open"); };
+        // ws.onclose = function() { app.log("Socket closed") };
+        // ws.onmessage = function (e) {
+          SIMULATE_PACKETS=true;
+          document.dispatchEvent(new CustomEvent("data",{detail:data}));
         };
         setTimeout(function(){if(!SIMULATE_PACKETS)app.simulatePackets()},30000); // simulate if nothing happens in 30s
       } else app.simulatePackets();
@@ -104,19 +110,19 @@ var app = {
       case "Power Supply":
         var table = svg.append("foreignObject").attr({ "width":"100%", "height":"100%"}).append("xhtml:table");
         table.append("tr").html("<td>MODULE</td><td>STATE</td><td class='mah'>ENERGY[mAh]</td>");
-        for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i]) 
+        for (i=0; i<8; i=[1,2,5,8,8,6,7,8][i])
           table.append("tr").html("<td>"+i+"</td><td class='m"+i+" state'>-</td><td class='m"+i+" mah'>-</td>");
         break;
     }
   },
-  // Module Data Updater 
+  // Module Data Updater
   updateModule: function(i,data) {
     var svg = d3.select("#mod"+i);
     var mod = MODULES[i];
     var values = [];
     switch(mod.name) {
       case "Controller":
-        var lat = data.latitude * (data.latitude_direction=="N"?1:-1); 
+        var lat = data.latitude * (data.latitude_direction=="N"?1:-1);
         var lon = data.longitude * (data.longitude_direction=="E"?1:-1);
         svg.selectAll("line").remove();
         svg.selectAll("line")
@@ -175,7 +181,7 @@ var app = {
     app.log("Pause");
     summon.bluetooth.stopScan();
   },
-  // New Data Received Event Handeler 
+  // New Data Received Event Handeler
   onData: function(data) {
     app.updateModule(MODULES.findIndex(function(x){return x.dev==data.detail.device.substr(9)}),data.detail);
   },
@@ -240,7 +246,7 @@ var app = {
             "gps_radio_energy_used_mWh": Number((md[4]*0x100+md[5])*(0.000096+0.01)).toFixed(3),
             "2.4gHz_spectrum_radio_energy_used_mWh": Number((md[6]*0x100+md[7])*(0.000096+0.01)).toFixed(3),
             "ambient_sensing_radio_energy_used_mWh": Number((md[8]*0x100+md[9])*(0.000096+0.01)).toFixed(3),
-            "audio_spectrum_radio_energy_used_mWh": Number((md[10]*0x100+md[11])*(0.000096+0.01)).toFixed(3), 
+            "audio_spectrum_radio_energy_used_mWh": Number((md[10]*0x100+md[11])*(0.000096+0.01)).toFixed(3),
             "microwave_radar_radio_energy_used_mWh": Number((md[12]*0x100+md[13])*(0.000096+0.01)).toFixed(3),
             "ucsd_air_quality_radio_energy_used_mWh": Number((md[14]*0x100+md[15])*(0.000096+0.01)).toFixed(3),
           }; break;
