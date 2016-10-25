@@ -25,9 +25,7 @@ var app = {
     if (typeof summon == "undefined") {
       if (!SIMULATE_PACKETS) {
         var client = mqtt.connect("ws://signpost.j2x.us:9001/mqtt");
-        client.on("connect", function () {
-          client.subscribe('signpost');
-        });
+        client.on("connect", function () { client.subscribe('signpost'); });
         client.on("message", function(topic, payload) {
           var data = JSON.parse(payload.toString());
           SIMULATE_PACKETS=true;
@@ -76,13 +74,13 @@ var app = {
         svg.append("text").text("m/s").attr({ "x":60, "y":75 });
         break;
       case "Ambient":
-        svg.append("image").attr({ "x":20, "y":10, "xlink:href":"img/temperature.svg" });
+        svg.append("image").attr({ "x":20, "y":10, "height":20, "width":20, "xlink:href":"img/temperature.svg" });
         svg.append("text").attr({ "x":30, "y":40, "id":"temp"}).text("-- \xB0C");
-        svg.append("image").attr({ "x":80, "y":10, "xlink:href":"img/humidity.svg" });
+        svg.append("image").attr({ "x":80, "y":10, "height":20, "width":20, "xlink:href":"img/humidity.svg" });
         svg.append("text").attr({ "x":90, "y":40, "id":"hum"}).text("-- %");
-        svg.append("image").attr({ "x":20, "y":55, "xlink:href":"img/light.svg" });
+        svg.append("image").attr({ "x":20, "y":55, "height":20, "width":20, "xlink:href":"img/light.svg" });
         svg.append("text").attr({ "x":30, "y":85, "id":"lux"}).text("-- lx");
-        svg.append("image").attr({ "x":80, "y":55, "xlink:href":"img/pressure.svg" });
+        svg.append("image").attr({ "x":80, "y":55, "height":20, "width":20, "xlink:href":"img/pressure.svg" });
         svg.append("text").attr({ "x":90, "y":85, "id":"pres"}).text("-- kPa");
         break;
       case "UCSD Air Quality":
