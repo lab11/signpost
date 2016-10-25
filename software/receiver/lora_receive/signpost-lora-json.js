@@ -24,7 +24,7 @@ if ( ! ('serial_port' in conf) ) {
   conf.serial_port = '/dev/ttyUSB1';
 }
 if ( ! ('spreading_factor' in conf) ) {
-  conf.spreading_factor = 8;
+  conf.spreading_factor = 9;
 }
 if ( ! ('stats_interval_milliseconds' in conf) ) {
   conf.stats_interval_milliseconds = 1000 * 10;
