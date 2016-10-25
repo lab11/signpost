@@ -167,7 +167,7 @@ var app = {
             values.ble.byts += data[n]*MODULES[i].bytes;
           } else if (n.endsWith("lora_packets_sent")) {
             values.lora.pkts += data[n];
-            values.lora.pkts += data[n]*MODULES[i].bytes;
+            values.lora.byts += data[n]*MODULES[i].bytes;
           }
         }
         svg.select(".ble.pkt").text(values.ble.pkts);
