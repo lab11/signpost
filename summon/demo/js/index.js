@@ -22,7 +22,7 @@ var app = {
     document.addEventListener("data", app.onData, false);
     document.querySelector("#rect").addEventListener("click", app.onClick);
     for (i=0; i<Math.min(MODULES.length,8); i++) app.createModule(i,MODULES[i].name);
-    if (typeof summon == "undefined") {
+    if (!navigator.userAgent.endsWith("Summon") && typeof gateway == "undefined") {
       if (!SIMULATE_PACKETS) {
         var client = mqtt.connect("ws://signpost.j2x.us:9001/mqtt");
         client.on("connect", function () { client.subscribe('signpost'); });
