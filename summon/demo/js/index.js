@@ -3,12 +3,12 @@
 var SIMULATE_PACKETS = false; // if false, uses websocket when opened in a non-Summon browser; else, simulates packets
 
 var MODULES = [
-  { name:"2.4GHz Spectrum", dev:"2.4ghz_spectrum", bytes:18, x:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26], y:[-128,-.1] },
+  { name:"2.4GHz Spectrum", dev:"2.4ghz_spectrum", bytes:18, x:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26], y:[-128,-60] },
   { name:"Ambient", dev:"ambient", bytes:10 },
   { name:"Radio", dev:"radio_status", bytes:16 },
   { name:"Controller", dev:"gps", bytes:18 },
   { name:"Power Supply", dev:"status", bytes:19 },
-  { name:"Audio Frequency", dev:"audio_frequency", bytes:16, x:[63,160,400,1000,2500,6250,16000], y:[0,179] },
+  { name:"Audio Frequency", dev:"audio_frequency", bytes:16, x:[63,160,400,1000,2500,6250,16000], y:[0,80] },
   { name:"UCSD Air Quality", dev:"ucsd_air_quality", bytes:16 },
   { name:"Microwave Radar", dev:"microwave_radar", bytes:7 }
 ]
