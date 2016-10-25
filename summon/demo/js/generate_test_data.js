@@ -17,7 +17,7 @@ function get_value (beg, end) {
 
 function generate_audio_frequency_packet () {
 	function get_audio_value () {
-		return get_value(0, 4095)
+		return get_value(0, 170)
 	}
 
 	return {

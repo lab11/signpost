@@ -3,14 +3,14 @@
 var SIMULATE_PACKETS = false; // if false, uses websocket when opened in a non-Summon browser; else, simulates packets
 
 var MODULES = [
-  { name:"2.4GHz Spectrum", dev:"2.4ghz_spectrum", x:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26], y:[-128,-.1] },
-  { name:"Ambient", dev:"ambient" },
-  { name:"Radio", dev:"radio_status" },
-  { name:"Controller", dev:"gps" },
-  { name:"Power Supply", dev:"status" },
-  { name:"Audio Frequency", dev:"audio_frequency", x:[63,160,400,1000,2500,6250,16000], y:[0,179] },
-  { name:"UCSD Air Quality", dev:"ucsd_air_quality" },
-  { name:"Microwave Radar", dev:"microwave_radar" }
+  { name:"2.4GHz Spectrum", dev:"2.4ghz_spectrum", bytes:18, x:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26], y:[-128,-.1] },
+  { name:"Ambient", dev:"ambient", bytes:10 },
+  { name:"Radio", dev:"radio_status", bytes:16 },
+  { name:"Controller", dev:"gps", bytes:18 },
+  { name:"Power Supply", dev:"status", bytes:19 },
+  { name:"Audio Frequency", dev:"audio_frequency", bytes:16, x:[63,160,400,1000,2500,6250,16000], y:[0,179] },
+  { name:"UCSD Air Quality", dev:"ucsd_air_quality", bytes:16 },
+  { name:"Microwave Radar", dev:"microwave_radar", bytes:7 }
 ]
 
 var app = {
@@ -76,13 +76,13 @@ var app = {
         svg.append("text").text("m/s").attr({ "x":60, "y":75 });
         break;
       case "Ambient":
-        svg.append("image").attr({ "x":20, "y":10, "width":20, "height":20, "xlink:href":"img/temperature.svg" });
+        svg.append("image").attr({ "x":20, "y":10, "xlink:href":"img/temperature.svg" });
         svg.append("text").attr({ "x":30, "y":40, "id":"temp"}).text("-- \xB0C");
-        svg.append("image").attr({ "x":80, "y":10, "width":20, "height":20, "xlink:href":"img/humidity.svg" });
+        svg.append("image").attr({ "x":80, "y":10, "xlink:href":"img/humidity.svg" });
         svg.append("text").attr({ "x":90, "y":40, "id":"hum"}).text("-- %");
-        svg.append("image").attr({ "x":20, "y":55, "width":20, "height":20, "xlink:href":"img/light.svg" });
+        svg.append("image").attr({ "x":20, "y":55, "xlink:href":"img/light.svg" });
         svg.append("text").attr({ "x":30, "y":85, "id":"lux"}).text("-- lx");
-        svg.append("image").attr({ "x":80, "y":55, "width":20, "height":20, "xlink:href":"img/pressure.svg" });
+        svg.append("image").attr({ "x":80, "y":55, "xlink:href":"img/pressure.svg" });
         svg.append("text").attr({ "x":90, "y":85, "id":"pres"}).text("-- kPa");
         break;
       case "UCSD Air Quality":
@@ -159,13 +159,21 @@ var app = {
         svg.select("#voci").text(data.VOC_IAQ_ppb);
         break;
       case "Radio":
-        var packets = { lora:0, ble:0 }
+        var values = { lora:{pkts:0,byts:0}, ble:{pkts:0,byts:0} }
         for (n in data) {
-          if (n.endsWith("ble_packets_sent")) packets.ble += data[n];
-          else if (n.endsWith("lora_packets_sent")) packets.lora += data[n];
+          var i = MODULES.findIndex(function(x){return x.dev.startsWith(n.split("_")[0].toLowerCase());});
+          if (n.endsWith("ble_packets_sent")) {
+            values.ble.pkts += data[n];
+            values.ble.byts += data[n]*MODULES[i].bytes;
+          } else if (n.endsWith("lora_packets_sent")) {
+            values.lora.pkts += data[n];
+            values.lora.pkts += data[n]*MODULES[i].bytes;
+          }
         }
-        svg.select(".ble.pkt").text(packets.ble);
-        svg.select(".lora.pkt").text(packets.lora);
+        svg.select(".ble.pkt").text(values.ble.pkts);
+        svg.select(".ble.byt").text(values.ble.byts.toFixed(0));
+        svg.select(".lora.pkt").text(values.lora.pkts);
+        svg.select(".lora.byt").text(values.lora.byts.toFixed(0));
         break;
       case "Power Supply":
         for (i=0; i<8; i=[1,2,3,5,8,6,7,8][i]) {
@@ -286,7 +294,7 @@ var app = {
           }; break;
         case 0x3301: // Audio Frequency
           data = {
-            device: 'signpost_audio_spectrum',
+            device: 'signpost_audio_frequency',
             "63Hz": Number(((Math.log10((md[2]*0x100+md[3])/43.75)*20)+35.5).toFixed(0)),
             "160Hz": Number(((Math.log10((md[4]*0x100+md[5])/43.75)*20)+35.5).toFixed(0)),
             "400Hz": Number(((Math.log10((md[6]*0x100+md[7])/43.75)*20)+35.5).toFixed(0)),
@@ -299,7 +307,7 @@ var app = {
           data = {
             device: 'signpost_microwave_radar',
             motion: md[2] & 0b10000000,
-            'velocity_m/s': (md[2]*0x1000000+md[3]*0x10000+md[4]*0x100+md[5]) / 1000.0,
+            'velocity_m/s': (md[3]*0x1000000+md[4]*0x10000+md[5]*0x100+md[6]) / 1000.0,
           }; break;
         case 0x3501: // Air Quality
           data = {
