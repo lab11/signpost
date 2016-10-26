@@ -319,6 +319,10 @@ var app = {
       if (data) document.dispatchEvent(new CustomEvent("data",{detail:data}));
       app.log(JSON.stringify(data));
     }
+    if (summon.device.platform=="Android") {
+      bluetooth.stopScan();
+      bluetooth.startScan([], app.onDiscover, app.onAppReady);
+    }
   },
   // Module Click Event Handler
   onClick: function() {
