@@ -206,9 +206,9 @@ var app = {
     var advertisement = device.advertisement;
     if (device.id == gateway.getDeviceId() && advertisement.manufacturerData.length) {
       var data = null;
-      var md = advertisement.manufacturerData;
+      var md = new Uint8Array(advertisement.manufacturerData.buffer.slice(3));
       app.log("Found AD: "+Array.prototype.map.call(md,function(m){return ("0"+m.toString(16)).substr(-2);}).join(''));
-      switch (md[0] * 0x100 + md[1]) {
+      switch (advertisement.manufacturerData[2] * 0x100 + advertisement.manufacturerData[3]) {
         case 0x2001: // Power Supply
           data = {
             device: "signpost_status",
