@@ -238,7 +238,7 @@ typedef struct RadioMsg_T
 //set receiver off
 #define COMRADIO_CFG_DEFAULT_RFRXOPTIONS        0x00
 // Power level 17 dBm
-#define COMRADIO_CFG_DEFAULT_RFPOWERLEVEL       17
+#define COMRADIO_CFG_DEFAULT_RFPOWERLEVEL       20
 // Radio Modulation Mode: LoRa
 #define COMRADIO_CFG_DEFAULT_RFRADIOMODULATION  0x00
 // RX group address default
@@ -246,7 +246,7 @@ typedef struct RadioMsg_T
 // rx window default, no window
 #define COMRADIO_CFG_DEFAULT_RFRXWINDOW         3000 // 3s
 // default spreading factor = 7
-#define COMRADIO_CFG_DEFAULT_RFSPREADINGFACTOR  RF_LORA_SF_8
+#define COMRADIO_CFG_DEFAULT_RFSPREADINGFACTOR  RF_LORA_SF_9
 // default tx group address
 #define COMRADIO_CFG_DEFAULT_TXGROUPADDRESS     0x10
 // default tx address: broadcast
