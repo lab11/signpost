@@ -10,7 +10,7 @@ Modular city-scale sensing platform.
 Architecture
 ------------
 
-<img src="http://www.gliffy.com/go/publish/image/10989855/L.png" />
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_arch_1000x445.jpg" />
 
 
 
