@@ -184,12 +184,11 @@ var app = {
   // App Ready Event Handler
   onAppReady: function() {
     app.log("onAppReady");
-    app.log("Checking if BLE is enabled...");
     summon.bluetooth.isEnabled(app.onEnable);
   },
   // App Paused Event Handler
   onPause: function() {
-    app.log("Pause");
+    app.log("onPause");
     summon.bluetooth.stopScan();
   },
   // New Data Received Event Handeler
@@ -200,15 +199,15 @@ var app = {
   onEnable: function() {
     app.onPause();
     summon.bluetooth.startScan([], app.onDiscover, app.onAppReady);
-    app.log("Searching");
+    app.log("BLE Scanning");
   },
   // BLE Device Discovered Callback
   onDiscover: function(device) {
-    app.log("Found " + device.name + " (" + device.id + ")!");
     var advertisement = device.advertisement;
     if (device.id == gateway.getDeviceId() && advertisement.manufacturerData.length) {
       var data = null;
       var md = advertisement.manufacturerData;
+      app.log("Found AD: "+Array.prototype.map.call(md,function(m){return ("0"+m.toString(16)).substr(-2);}).join(''));
       switch (md[0] * 0x100 + md[1]) {
         case 0x2001: // Power Supply
           data = {
@@ -318,6 +317,7 @@ var app = {
           }; break;
       }
       if (data) document.dispatchEvent(new CustomEvent("data",{detail:data}));
+      app.log(JSON.stringify(data));
     }
   },
   // Module Click Event Handler
