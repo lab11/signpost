@@ -303,7 +303,7 @@ var app = {
         case 0x3401: // Microwave Radar
           data = {
             device: 'signpost_microwave_radar',
-            motion: md[2] & 0b10000000,
+            motion: !(md[2] & 0b10000000),
             'velocity_m/s': (md[3]*0x1000000+md[4]*0x10000+md[5]*0x100+md[6]) / 1000.0,
           }; break;
         case 0x3501: // Air Quality
