@@ -15,3 +15,6 @@
 [submodule "software/apps/radio_demo/nrf5x-base"]
 	path = software/apps/radio_demo/nrf5x-base
 	url = git@github.com:lab11/nrf5x-base
+[submodule "software/apps/erpc_test/erpc"]
+	path = software/apps/erpc_test/erpc
+	url = git@github.com:lab11/erpc.git
