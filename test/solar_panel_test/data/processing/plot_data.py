@@ -57,3 +57,11 @@ for i in os.listdir(os.getcwd() + '/' + in_folder):
 
 	print 'gnuplot -e "' + inarg+outarg+startarg+endarg+meanarg+meanarg2+titlearg + '" power_plotter.plt'
 	os.system('gnuplot -e "' + inarg+outarg+startarg+endarg+meanarg+meanarg2+titlearg + '" power_plotter.plt');
+
+for i in os.listdir(os.getcwd() + '/' + out_folder):
+        #convert all files to pdf
+        fullpath = out_folder + '/' + i;
+        newname = out_folder + '/' + i.split('.')[0] + '.pdf';
+        os.system('epstopdf ' + fullpath + ' --outfile=' + newname);
+        #remove eps
+        os.system('rm ' + fullpath);
