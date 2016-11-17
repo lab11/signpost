@@ -53,3 +53,15 @@ All in inches.
 |                                             | Reserved | 9   |   | 10  | MOD_IN   | GPIO from controller to module.                                                     |
 | USB Data+ signal.                           | USB_D+   | 11  |   | 12  | USB_D-   | USB Data- signal.                                                                   |
 | USB bus voltage (5 V).                      | USB_VBUS | 13  |   | 14  | GND      | USB GND.                                                                            |
+
+
+
+Roadmap
+-------
+
+### History
+
+- **Summer 2016**: Discussions on physical design yield a prototype enclosure and module form factor
+
+
+
