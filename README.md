@@ -4,9 +4,14 @@ Signpost
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_on_sign_full_666x1000.jpg" alt="Signpost" width="31%" align="left" />
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_close_up_662x1000.jpg" align="left" width="31%" />
 
-Modular city-scale sensing platform.
+The Signpost project is a modular city-scale sensing platform that is installed on existing signposts, harvests
+energy to power itself, and provides eight slots for diverse sensing modules that support
+a range of applications. This significantly reduces the barrier for city-scale sensing
+by not requiring a connection to AC mains power, providing shared resources (power, communication,
+storage, and computation) for sensing modules, and supporting a programming environment
+for building inter-signpost and inter-module applications.
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br />
 
 Architecture
 ------------
