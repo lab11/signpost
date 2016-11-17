@@ -16,6 +16,15 @@ for building inter-signpost and inter-module applications.
 Architecture
 ------------
 
+Each Signpost platform includes a power supply that also meters energy usage, a controller that provides
+storage and computation and manages the operation of the Signpost, and several module slots that support
+extensible sensor modules for city-scale sensing applications. All modules are connected via an I2C bus,
+and core system features (e.g. per-module energy metering) are on a SMBus network. For higher bandwidth
+communication on the Signpost, each module is also attached to a USB 2.0 host.
+
+Each module can be individually disconnected from the USB host and/or the I2C bus, as well as entirely
+powered off.
+
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_arch_1000x445.jpg" />
 
 
@@ -40,7 +49,7 @@ All in inches.
 |                                             | GND      | 1   |   | 2   | 5V       |                                                                                     |
 |                                             | Reserved | 3   |   | 4   | VCCIO    | I/O voltage the module uses. This must be fed by the module to set the I/O voltage. |
 | I²C clock line.                             | SCL      | 5   |   | 6   | SDA      | I²C data line.                                                                      |
-| Pulse per second. TODO: how is this driven? | PPS      | 7   |   | 8   | MOD_OUT  | Interrupt line to the controller. Allows modules to signal the controller.          |
+| Pulse per second from GPS.                  | PPS      | 7   |   | 8   | MOD_OUT  | Interrupt line to the controller. Allows modules to signal the controller.          |
 |                                             | Reserved | 9   |   | 10  | MOD_IN   | GPIO from controller to module.                                                     |
 | USB Data+ signal.                           | USB_D+   | 11  |   | 12  | USB_D-   | USB Data- signal.                                                                   |
 | USB bus voltage (5 V).                      | USB_VBUS | 13  |   | 14  | GND      | USB GND.                                                                            |
