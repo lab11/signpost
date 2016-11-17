@@ -11,6 +11,18 @@ by not requiring a connection to AC mains power, providing shared resources (pow
 storage, and computation) for sensing modules, and supporting a programming environment
 for building inter-signpost and inter-module applications.
 
+The project is driven by several core applications, but also strives to be
+an upgradeable and adaptable platform that supports new applications
+for scientists and cities. Modules can be added and removed from the platform
+after deployment without disassembling the installed Signpost, reprogramming
+the Signpost, or interrupting the other functions of the Signpost. Additionally,
+by providing APIs to modules that support common operations, developing and
+deploying a sensing application in a city is significantly streamlined. A focus
+of this project is ensuring that domain scientists and researchers interested
+in city-scale applications can effectively leverage this platform to accelerate
+their projects.
+
+
 <br />
 
 Architecture
@@ -59,9 +71,36 @@ All in inches.
 Roadmap
 -------
 
+Developing the Signpost platform is an ongoing effort with several primary
+goals:
+
+- Designing a programming model for running applications across a network of
+Signposts. This should truly simplify creating interesting and useful applications,
+and not discourage development by imposing unnecessary hurdles.
+- Developing the Signpost platform operation, including energy-sharing and
+reliability ensurance.
+- Creating a HW/SW test framework for accelerating module development.
+- A deployment on the order of 10 devices by October 2017.
+
+
 ### History
 
-- **Summer 2016**: Discussions on physical design yield a prototype enclosure and module form factor
+- **Fall 2016**: Signpost v0.1 presented at [TerraSwarm Annual Review](https://www.terraswarm.org/conferences/16/annual/).
+The demo included six modules (ambient conditions, 2.4 GHz RF sensing, LoRa/BLE radios,
+ambient audio level, microwave radar, and air quality sensing from UCSD), data communication
+over LoRa to a gateway, and a real-time UI.
+- **Summer 2016**: Discussions on physical design yield a prototype enclosure and module form factor.
+
+
+
+Related Projects
+----------------
+
+City-scale sensing platforms are a growing area of research with several emerging
+approaches:
+
+- Chicago's [Array of Things](https://arrayofthings.github.io/)
+- NYC's [SONYC](https://wp.nyu.edu/sonyc/)
 
 
 
