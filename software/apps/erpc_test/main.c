@@ -18,18 +18,14 @@ int main () {
     transport = erpc_transport_serial_init("out",115200);
     erpc_client_init(transport);
 
-  	while (1) {
-        delay_ms(5000);
-        putstr("About to test the rpc\n");
-        delay_ms(5000);
+    delay_ms(5000);
 
-        float result = 0;
-        result =  add(5,6);
+    float result = 0;
+    result =  add(5,6);
 
-        if(result == 11) {
-            //putstr("RPC Completed Correctly\n");
-        } else {
-            //putstr("RPC Failed\n");
-        }
-  	}
+    if(result == 11) {
+        putstr("RPC Completed Correctly\n");
+    } else {
+        putstr("RPC Failed\n");
+    }
 }
