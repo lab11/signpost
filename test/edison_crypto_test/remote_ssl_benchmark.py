@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import saleae
 import argparse
+import ssl
+import urllib
 import sys
 import requests
 from pexpect import pxssh
@@ -16,8 +17,9 @@ args = parser.parse_args()
 
 s = pxssh.pxssh()
 
-cipher_list = open('cipher_list.txt').read().strip().split(':')
-print(cipher_list)
+context = ssl._create_unverified_context()
+cipher_list_rsa = open('cipher_list_rsa.txt').read().strip().split('\n')
+cipher_list_ecdsa = open('cipher_list_ecdsa.txt').read().strip().split('\n')
 
 def get_sudo (session, password):
     session.sendline ('sudo -s')
@@ -37,20 +39,44 @@ def get_sudo (session, password):
         raise Exception('unexpected output')
     session.set_unique_prompt()
 
+def run_benchmarks (key, length):
+    if key == 'rsa':
+        cipher_list = cipher_list_rsa
+    elif key == 'ecdsa':
+        cipher_list = cipher_list_ecdsa
+    for cipher in cipher_list:
+        print ('Now running test with ' + length + ' ' + key + ' cipher suite ' + cipher)
+        #restart server with new cipher suite
+        s.sendline('openssl s_server -key /home/debian/cryptobench/key_' + key + '_' + length + '.pem -cert /home/debian/cryptobench/cert_' + key + '_' + length + '.pem -www -cipher ' + cipher + ' &')
+        s.sendline()
+        s.prompt ()
+        s.sendline('pid=$!')
+        #trigger oscope
+        input ('Ready?')
+        #https get request
+        response = urllib.request.urlopen('https://' + args.host + ':4433', context=context)
+        print(response.read())
+        input ('Done?')
+        s.sendline('kill ${pid}')
+
+
 if not s.login (args.host, args.username, args.password):
     print ('SSH session failed to login')
     print (str(s))
-else:
-    print ('SSH session login successful')
-    get_sudo(s, args.password)
-    for cipher in cipher_list:
-        print ('Now running test with cipher suite ' + cipher)
-        #change config to support cipher
-        #restart apache
-        s.sendline ('systemctl restart apache2')
-        s.prompt ()
-        #trigger saleae
-        #https get request
-    s.sendline ('exit')
-    s.prompt ()
-    s.logout ()
+    exit(1)
+
+print ('SSH session login successful')
+get_sudo(s, args.password)
+print ('Begin ECDSA TLS handshake benchmarks')
+run_benchmarks('ecdsa', '256')
+run_benchmarks('ecdsa', '384')
+run_benchmarks('ecdsa', '521')
+print ('Begin RSA TLS handshake benchmarks')
+run_benchmarks('rsa', '2048')
+run_benchmarks('rsa', '3072')
+run_benchmarks('rsa', '4096')
+
+#exit sudo
+s.sendline ('exit')
+s.prompt ()
+s.logout ()
