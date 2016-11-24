@@ -21,7 +21,6 @@ extern ClientManager *g_client;
 // Arithmetic interface add function client shim.
 float add(float a, float b)
 {
-    char test[32];
     erpc_status_t err = kErpcStatus_Success;
 
     // Get a new request.
@@ -36,35 +35,17 @@ float add(float a, float b)
     if (!err)
     {
         err = codec->startWriteMessage(kInvocationMessage, kArithmetic_service_id, kArithmetic_add_id, request.getSequence());
-        snprintf(test,10,"%d",kInvocationMessage);
-        putnstr((const char*)test,1);
-        snprintf(test,10,"%d",kArithmetic_service_id);
-        putnstr((const char*)test,1);
-        snprintf(test,10,"%d",kArithmetic_add_id);
-        putnstr((const char*)test,1);
-        snprintf(test,10,"%d",kArithmetic_add_id);
-        putnstr((const char*)test,1);
-        request.getCodec()->getBuffer()->read(0,test,32);
-        putnstr((const char*)test,32);
     }
 
     if (!err)
     {
         err = codec->write(a);
-        snprintf(test,10,"%d",(uint8_t)a);
-        putnstr((const char*)test,1);
-        request.getCodec()->getBuffer()->read(0,test,32);
-        putnstr((const char*)test,32);
     }
 
 
     if (!err)
     {
         err = codec->write(b);
-        snprintf(test,10,"%d",(uint8_t)b);
-        putnstr((const char*)test,1);
-        request.getCodec()->getBuffer()->read(0,test,32);
-        putnstr((const char*)test,32);
     }
 
 
