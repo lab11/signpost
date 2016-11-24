@@ -18,6 +18,7 @@ BUILDDIR ?= $(abspath $(APP_DIR)/build/$(TOCK_ARCH))
 
 # create list of object files required
 OBJS += $(patsubst %.c,$(BUILDDIR)/%.o,$(C_SRCS))
+OBJS += $(patsubst %.cpp,$(BUILDDIR)/%.o,$(CXX_SRCS))
 
 # add platform-specific library files
 LIBS_DIR = $(CURRENT_DIR)/libs/
@@ -26,7 +27,7 @@ OBJS += $(LIBS)
 
 INCLUDE_PATHS += $(LIBS_DIR)
 INCLUDES = $(addprefix -I,$(INCLUDE_PATHS))
-CFLAGS += $(INCLUDES)
+CPPFLAGS += $(INCLUDES)
 
 # include the library makefile. Should pull in rules to rebuild libraries
 # when needed
@@ -40,7 +41,7 @@ include $(TOCK_USERLAND_BASE_DIR)/Makefile
 # add platform-specific headers
 .PHONY: clean
 clean::
-	rm -Rf $(BUILDDIR)../
+	rm -Rf $(BUILDDIR)/
 	rm -Rf $(LIBS_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
