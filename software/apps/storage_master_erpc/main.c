@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "i2c_master_slave.h"
 #include "gpio.h"
+#include "storage_master.h"
 
 #define BUFFER_SIZE 64
 
@@ -54,6 +55,7 @@ static void i2c_master_slave_callback (
                 memcpy(request_buf,slave_write_buf,length-1);
 
                 //wakeup the edison to tell it that it has an rpc request
+                storage_master_wakeup_edison();
 
             } else if(slave_write_buf[1] = RPC_RETURN) {
                 //this is an rpc return from the edison
@@ -67,6 +69,7 @@ static void i2c_master_slave_callback (
 }
 
 int main () {
+    storage_master_enable_edison();
 
     //low configure i2c slave to listen
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
