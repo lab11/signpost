@@ -12,13 +12,11 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
-use sam4l::usart;
 
 // For panic!()
 #[macro_use]
@@ -68,15 +66,8 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct SignpostStorageMaster {
-    console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    bonus_timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
-    gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
-    coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
-    coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-    fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
 }
 
@@ -86,16 +77,9 @@ impl Platform for SignpostStorageMaster {
     {
 
         match driver_num {
-            0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            100 => f(Some(self.gpio_async)),
-            101 => f(Some(self.coulomb_counter_i2c_selector)),
-            102 => f(Some(self.coulomb_counter_generic)),
-            103 => f(Some(self.fram)),
-            104 => f(Some(self.smbus_interrupt)),
             105 => f(Some(self.i2c_master_slave)),
-            203 => f(Some(self.bonus_timer)),
             _ => f(None)
         }
     }
@@ -104,54 +88,36 @@ impl Platform for SignpostStorageMaster {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA};
-    use sam4l::gpio::PeripheralFunction::{A, B, E};
+    use sam4l::gpio::PeripheralFunction::{A, B};
 
-    // GPIO: signal from modules
-    PA[04].configure(None); // MOD0_IN
-    PA[05].configure(None); // MOD1_IN
-    PA[06].configure(None); // MOD2_IN
-    PA[07].configure(None); // MOD5_IN
+    //a few gpio signals
+    PA[05].configure(None); // Edison_pwrbtn
+    PA[06].configure(None); // linux_enable_power
+    PA[07].configure(None); // storage led
 
+    //memory spi bus 
+    PA[9].configure(None); // Storage CS
+    PA[10].configure(Some(A)); // MEMORY_SCLK
+    PA[11].configure(Some(A)); // MEMORY_MISO
+    PA[12].configure(Some(A)); // MEMORY_MOSI
+    
+    //SD card spi bus
+    PA[13].configure(None); // SD_CS
+    PA[14].configure(Some(A)); // SD_SCLK
+    PA[15].configure(Some(A)); // SD_MISO
+    PA[16].configure(Some(A)); // SD_MOSI
+    PA[17].configure(None); // SD_DETECT
+    PA[21].configure(None); // SD_ENABLE
 
-    // PA[08].configure(None); // MOD6_IN
-
-    // use for FRAM !CS
-    PA[08].configure(None); // MOD6_IN
-
-
-    PA[09].configure(None); // MOD7_IN
-
-    // GPIO: signal to modules
-    PA[13].configure(None); // MOD0_OUT
-    PA[14].configure(None); // MOD1_OUT
-    PA[15].configure(None); // MOD2_OUT
-    PA[16].configure(None); // MOD5_OUT
-    PA[17].configure(None); // MOD6_OUT
-    PA[18].configure(None); // MOD7_OUT
-    PA[18].enable();
-    PA[18].enable_output();
-    PA[18].set();
-
-
-    // SPI: Storage Master & FRAM
-    PA[10].configure(None); // MEMORY_SCLK
-    PA[11].configure(None); // MEMORY_MISO
-    PA[12].configure(None); // MEMORY_MOSI
-    //PA[03].configure(None); // !STORAGE_CS //XXX: check that this works
-    PA[25].configure(None); // !FRAM_CS/CONTROLLER_LED
-
-    // UART: GPS
-    PA[19].configure(None); // GPS_OUT_TX
-    PA[20].configure(None); // GPS_IN_RX
-
-    // SMBus: Power / Backplane
-    PA[21].configure(None); // SMBDATA
-    PA[22].configure(None); // SMBCLK
-    PA[26].configure(None); // !SMBALERT
+    //Edison SPI Bus
+    PA[18].configure(Some(A)); // EDISON_SCLK
+    PA[19].configure(Some(A)); // EDISON_MOSI
+    PA[20].configure(Some(A)); // EDISON_MISO
+    PA[22].configure(Some(B)); // EDISON_CS
 
     // I2C: Modules
-    PA[23].configure(None); // MODULES_SDA
-    PA[24].configure(None); // MODULES_SCL
+    PA[23].configure(Some(B)); // MODULES_SDA
+    PA[24].configure(Some(B)); // MODULES_SCL
 }
 
 /*******************************************************************************
@@ -165,10 +131,90 @@ pub unsafe fn reset_handler() {
     // Setup clock
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
     // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
-    let clock_freq = 16000000;
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
     set_pin_primary_functions();
+
+    //
+    // Timer
+    //
+    let ast = &sam4l::ast::AST;
+
+    let mux_alarm = static_init!(
+        MuxAlarm<'static, sam4l::ast::Ast>,
+        MuxAlarm::new(&sam4l::ast::AST),
+        16);
+    ast.configure(mux_alarm);
+
+    let virtual_alarm1 = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let timer = static_init!(
+        TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        TimerDriver::new(virtual_alarm1, kernel::Container::create()),
+        12);
+    virtual_alarm1.set_client(timer);
+
+
+    //
+    // I2C Buses
+    //
+    let i2c_modules = static_init!(
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
+            &mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+        928/8);
+    sam4l::i2c::I2C0.set_master_client(i2c_modules);
+    sam4l::i2c::I2C0.set_slave_client(i2c_modules);
+
+    // Set I2C slave address here, because it is board specific and not app
+    // specific. It can be overridden in the app, of course.
+    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x20);
+
+    //
+    // Remaining GPIO pins
+    //
+    let gpio_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 7],
+         [&sam4l::gpio::PA[05],  // EDISON_PWRBTN
+         &sam4l::gpio::PA[06],  // LINUX_ENABLE_POWER
+         &sam4l::gpio::PA[07],  // STORAGE_LED
+         &sam4l::gpio::PA[09],  // STORAGE_CS
+         &sam4l::gpio::PA[13],  // SD_CS
+         &sam4l::gpio::PA[17],  // SD_DETECT
+         &sam4l::gpio::PA[21]], // SD_ENABLE
+        7 * 4
+    );
+        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED { => !FRAM_CS }
+    let gpio = static_init!(
+        capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+        capsules::gpio::GPIO::new(gpio_pins),
+        20);
+    for pin in gpio_pins.iter() {
+        pin.set_client(gpio);
+    }
+
+
+    //
+    // Actual platform object
+    //
+    let signpost_storage_master = static_init!(
+        SignpostStorageMaster,
+        SignpostStorageMaster {
+            gpio: gpio,
+            timer: timer,
+            i2c_master_slave: i2c_modules,
+        },
+        96/8);
+
+
+    let mut chip = sam4l::chip::Sam4l::new();
+    chip.mpu().enable_mpu();
+
+    kernel::main(signpost_storage_master, &mut chip, load_processes());
 }
