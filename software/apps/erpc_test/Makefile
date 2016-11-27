@@ -11,8 +11,10 @@ APP_SRCS   += basic_codec.cpp
 APP_SRCS   += framed_transport.cpp
 APP_SRCS   += message_buffer.cpp
 APP_SRCS   += erpc_client_setup.cpp
-APP_SRCS   += erpc_setup_serial.cpp
-APP_SRCS   += serial_transport.cpp
+#APP_SRCS   += erpc_setup_serial.cpp
+APP_SRCS   += erpc_setup_i2c_master_slave.cpp
+#APP_SRCS   += serial_transport.cpp
+APP_SRCS   += i2c_master_slave_transport.cpp
 				
 INCLUDE_PATHS += .
 INCLUDE_PATHS += erpc/erpc_c/infra/
@@ -31,6 +33,8 @@ SOURCE_PATHS += erpc/erpc_c/config/
 VPATH=$(SOURCE_PATHS)
 
 C_SRCS   := $(wildcard *.c)
+#C_SRCS   += i2c_master_slave.c
+
 CXX_SRCS  := $(notdir $(APP_SRCS))
 
 # specific flags needed for this code

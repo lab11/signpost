@@ -15,7 +15,7 @@
 
 int main () {
     erpc_transport_t transport;
-    transport = erpc_transport_serial_init("out",115200);
+    transport = erpc_transport_i2c_master_slave_init(0x19,0x30);
     erpc_client_init(transport);
 
     delay_ms(5000);
