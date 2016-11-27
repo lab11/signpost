@@ -12,11 +12,13 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
+use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
+use sam4l::usart;
 
 // For panic!()
 #[macro_use]
@@ -66,6 +68,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct SignpostStorageMaster {
+    console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
@@ -77,6 +80,7 @@ impl Platform for SignpostStorageMaster {
     {
 
         match driver_num {
+            0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             105 => f(Some(self.i2c_master_slave)),
@@ -110,10 +114,10 @@ unsafe fn set_pin_primary_functions() {
     PA[21].configure(None); // SD_ENABLE
 
     //Edison SPI Bus
-    PA[18].configure(Some(A)); // EDISON_SCLK
-    PA[19].configure(Some(A)); // EDISON_MOSI
-    PA[20].configure(Some(A)); // EDISON_MISO
-    PA[22].configure(Some(B)); // EDISON_CS
+    PA[18].configure(None); // EDISON_SCLK
+    PA[19].configure(Some(A)); // EDISON_MOSI //console test
+    PA[20].configure(Some(A)); // EDISON_MISO // console test
+    PA[22].configure(None); // EDISON_CS
 
     // I2C: Modules
     PA[23].configure(Some(B)); // MODULES_SDA
@@ -131,11 +135,24 @@ pub unsafe fn reset_handler() {
     // Setup clock
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
     // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
+    let clock_freq = 16000000;
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
     set_pin_primary_functions();
+
+    usart::USART2.set_clock_freq(clock_freq);
+    let console = static_init!(
+        Console<usart::USART>,
+        Console::new(&usart::USART2,
+                    115200,
+                    &mut console::WRITE_BUF,
+                    &mut console::READ_BUF,
+                    &mut console::LINE_BUF,
+                    kernel::Container::create()),
+        416/8);
+    usart::USART2.set_uart_client(console);
 
     //
     // Timer
@@ -206,12 +223,14 @@ pub unsafe fn reset_handler() {
     let signpost_storage_master = static_init!(
         SignpostStorageMaster,
         SignpostStorageMaster {
+            console: console,
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_modules,
         },
-        96/8);
+        128/8);
 
+    signpost_storage_master.console.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
