@@ -8,6 +8,7 @@ import requests
 from pexpect import pxssh
 import re
 import subprocess
+import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('host', help='host ip address')
@@ -53,10 +54,16 @@ def run_benchmarks (key, length):
         s.sendline('pid=$!')
         #trigger oscope
         input ('Ready?')
+        s.sendline('echo 1 > /sys/class/gpio/gpio114/value')
+        s.prompt()
+        s.sendline('echo 0 > /sys/class/gpio/gpio114/value')
+        time.sleep(1)
         #https get request
         response = urllib.request.urlopen('https://' + args.host + ':4433', context=context)
         print(response.read())
+        print ('Now finished test with ' + length + ' ' + key + ' cipher suite ' + cipher)
         input ('Done?')
+        s.prompt()
         s.sendline('kill ${pid}')
 
 
