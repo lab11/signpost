@@ -46,8 +46,11 @@ static void i2c_master_slave_callback (
 
     if(callback_type == CB_SLAVE_READ_REQUEST) {
         //this isn't really working right now
+        //i2c_master_slave_read_ready(BUFFER_SIZE);
+        putstr("read request");
         return;
     } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
+        //putstr("read complete");
         return;
     } else if (callback_type == CB_SLAVE_WRITE) {
         reg = slave_write_buf[0];
@@ -57,7 +60,7 @@ static void i2c_master_slave_callback (
                 //this is an rpc request
                 //
                 //copy the rpc request to the request buffer
-                memcpy(request_buf,slave_write_buf+1,length-1);
+                memcpy(request_buf,slave_write_buf+1,BUFFER_SIZE-1);
                 memcpy(slave_read_buf,request_buf,BUFFER_SIZE);
                 i2c_master_slave_read_ready(BUFFER_SIZE);
 
@@ -112,5 +115,9 @@ int main () {
 
     //listen
     i2c_master_slave_listen();
-    i2c_master_slave_read_ready(BUFFER_SIZE);
+
+    while(1) {
+        yield();
+        i2c_master_slave_read_ready(BUFFER_SIZE);
+    }
 }
