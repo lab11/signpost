@@ -176,12 +176,30 @@ impl<'a> hil::i2c::I2CHwSlaveClient for I2CMasterSlaveDriver<'a> {
     fn read_expected(&self) {
         // Pass this up to the client. Not much we can do until the application
         // has setup a buffer to read from.
-        self.app_state.map(|app_state| {
+        /*self.app_state.map(|app_state| {
             app_state.callback.map(|mut cb| {
                 // Ask the app to setup a read buffer. The app must call
                 // command 3 after it has setup the shared read buffer with
                 // the correct bytes.
                 cb.schedule(2, 0, 0);
+            });
+        });*/
+
+        //this allows the kernel to handle buffer reads transparently
+        //With this code the app never needs to call command #3
+        self.app_state.map(|app_state| {
+            app_state.slave_tx_buffer.map(|app_tx| {
+                self.slave_buffer2.take().map(|kernel_tx| {
+                    // Check bounds for write length
+                    let read_len = cmp::min(app_tx.len(), kernel_tx.len());
+
+                    let d = &mut app_tx.as_mut()[0..read_len];
+                    for (i, c) in kernel_tx[0..read_len].iter_mut().enumerate() {
+                        *c = d[i];
+                    }
+
+                    hil::i2c::I2CSlave::read_send(self.i2c, kernel_tx, read_len as u8);
+                });
             });
         });
     }
