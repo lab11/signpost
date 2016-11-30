@@ -4070,7 +4070,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U1" library="chips" deviceset="NRF51822" device="QF"/>
 <part name="U2" library="chips" deviceset="SAM4LC8AA" device=""/>
-<part name="J2" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
+<part name="J2" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device="">
+<attribute name="DIGIKEY" value="H125274CT-ND"/>
+<attribute name="MOUSER" value=""/>
+<attribute name="NEWARK" value=""/>
+</part>
 <part name="J3" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
 <part name="D1" library="leds" deviceset="SML-LX0404SIUPGUSB" device=""/>
 <part name="S1" library="switches" deviceset="B3U" device="-1000P"/>
