@@ -2,6 +2,7 @@
 
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+LIBS_DIR := ../libs/
 
 # files needed for this code
 APP_SRCS   += test_arithmetic_client.cpp
@@ -17,18 +18,18 @@ APP_SRCS   += erpc_setup_i2c_master_slave.cpp
 APP_SRCS   += i2c_master_slave_transport.cpp
 				
 INCLUDE_PATHS += .
-INCLUDE_PATHS += erpc/erpc_c/infra/
-INCLUDE_PATHS += erpc/erpc_c/setup/
-INCLUDE_PATHS += erpc/erpc_c/transports/
-INCLUDE_PATHS += erpc/erpc_c/port/
-INCLUDE_PATHS += erpc/erpc_c/config/
+INCLUDE_PATHS += $(LIBS_DIR)erpc/erpc_c/infra/
+INCLUDE_PATHS += $(LIBS_DIR)erpc/erpc_c/setup/
+INCLUDE_PATHS += $(LIBS_DIR)erpc/erpc_c/transports/
+INCLUDE_PATHS += $(LIBS_DIR)erpc/erpc_c/port/
+INCLUDE_PATHS += $(LIBS_DIR)erpc/erpc_c/config/
 
 SOURCE_PATHS += .
-SOURCE_PATHS += erpc/erpc_c/infra/
-SOURCE_PATHS += erpc/erpc_c/setup/
-SOURCE_PATHS += erpc/erpc_c/transports/
-SOURCE_PATHS += erpc/erpc_c/port/
-SOURCE_PATHS += erpc/erpc_c/config/
+SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/infra/
+SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/setup/
+SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/transports/
+SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/port/
+SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/config/
 
 VPATH=$(SOURCE_PATHS)
 
