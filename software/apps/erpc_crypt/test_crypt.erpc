@@ -1,0 +1,10 @@
+program test_crypt
+
+struct ret {
+    list<uint8> data  @length(len)
+    uint32 len
+}
+
+interface Crypto {
+    sign(list<uint8> data @length(len), uint32 len) -> ret
+}
