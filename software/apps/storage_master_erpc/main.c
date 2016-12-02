@@ -13,10 +13,11 @@
 #include "gpio.h"
 #include "storage_master.h"
 
-#define BUFFER_SIZE 64
+#define BUFFER_SIZE 1024
 
 //i2c buffers
 uint8_t slave_write_buf[BUFFER_SIZE];
+uint8_t master_write_buf[BUFFER_SIZE];
 uint8_t slave_read_buf[BUFFER_SIZE];
 
 uint8_t request_buf[BUFFER_SIZE];
@@ -27,7 +28,6 @@ uint8_t reg = 0x00;
 #define RPC_REQUEST 0x01
 #define RPC_RETURN 0x02
 #define RPC_RETURN_ADDRESS 0x03
-
 
 static void i2c_master_slave_callback (
     int callback_type,
@@ -50,6 +50,7 @@ static void i2c_master_slave_callback (
                 //copy the rpc request to the request buffer
                 memcpy(request_buf,slave_write_buf+1,BUFFER_SIZE-1);
                 memcpy(slave_read_buf,request_buf,BUFFER_SIZE);
+                gpio_clear(2);
 
                 //I know that this write is occuring. I am observing
                 //the edison wakeup pin
@@ -61,10 +62,13 @@ static void i2c_master_slave_callback (
                 //copy the rpc return to the return buffer
                 memcpy(return_buf,slave_write_buf+1,length-1);
                 memcpy(slave_read_buf,return_buf,BUFFER_SIZE);
+                gpio_set(2);
 
                 //alert the module that the request has returned
                 //should this happen over i2c?? I would like to just set the
                 //alert pin but that's on another microcontroller...
+                memcpy(master_write_buf,return_buf,BUFFER_SIZE);
+                i2c_master_slave_write(return_address,BUFFER_SIZE);
             } else if(reg == RPC_RETURN_ADDRESS) {
                 memcpy(&return_address,slave_write_buf+1,1);
                 //memcpy(slave_read_buf,&return_address,BUFFER_SIZE);
@@ -73,21 +77,25 @@ static void i2c_master_slave_callback (
             //just setting the register - asume it's to read it soon
             if(reg == RPC_REQUEST) {
                 memcpy(slave_read_buf,request_buf,BUFFER_SIZE);
-                //i2c_master_slave_read_ready(BUFFER_SIZE);
+                gpio_clear(2);
             } else if(reg == RPC_RETURN) {
                 memcpy(slave_read_buf,return_buf,BUFFER_SIZE);
-                //i2c_master_slave_read_ready(BUFFER_SIZE);
+                gpio_set(2);
             } else if(reg == RPC_RETURN_ADDRESS) {
-                //no one should ever read this
             }
         }
+    }
 }
 
 int main () {
     storage_master_enable_edison();
 
+    gpio_enable_output(2);
+    gpio_set(2);
+
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, BUFFER_SIZE);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, BUFFER_SIZE);
+    i2c_master_slave_set_master_write_buffer(master_write_buf, BUFFER_SIZE);
 
     //low configure i2c slave to listen
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
@@ -95,4 +103,7 @@ int main () {
 
     //listen
     i2c_master_slave_listen();
+
+
 }
+
