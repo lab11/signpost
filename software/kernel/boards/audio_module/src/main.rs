@@ -12,11 +12,13 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
+use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil::Controller;
 use kernel::{Chip, MPU, Platform};
 use sam4l::adc;
+use sam4l::usart;
 
 // For panic!()
 #[macro_use]
@@ -32,7 +34,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
     const NUM_PROCS: usize = 2;
 
     #[link_section = ".app_memory"]
-    static mut MEMORIES: [[u8; 8192]; NUM_PROCS] = [[0; 8192]; NUM_PROCS];
+    static mut MEMORIES: [[u8; 16384]; NUM_PROCS] = [[0; 16384]; NUM_PROCS];
 
     static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
@@ -66,6 +68,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct AudioModule {
+    console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
     i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
@@ -79,6 +82,7 @@ impl Platform for AudioModule {
     {
 
         match driver_num {
+            0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             7 => f(Some(self.adc)),
@@ -111,8 +115,8 @@ unsafe fn set_pin_primary_functions() {
     PA[16].configure(None); //G1
 	PA[17].configure(None); //R1
     PA[18].configure(None); //PPS
-    PA[19].configure(None); //Mod out
-    PA[20].configure(None); //Mod in
+    PA[19].configure(Some(A)); //Mod out
+    PA[20].configure(Some(A)); //Mod in
     PA[21].configure(None); //
     PA[22].configure(None); //
     PA[23].configure(Some(B)); //SDA
@@ -134,8 +138,24 @@ pub unsafe fn reset_handler() {
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
+    let clock_freq = 16000000;
 
     set_pin_primary_functions();
+
+    //
+    // UART console
+    //
+    usart::USART2.set_clock_freq(clock_freq);
+    let console = static_init!(
+        Console<usart::USART>,
+        Console::new(&usart::USART2,
+                     115200,
+                     &mut console::WRITE_BUF,
+                     &mut console::READ_BUF,
+                     &mut console::LINE_BUF,
+                     kernel::Container::create()),
+        416/8);
+    usart::USART2.set_uart_client(console);
 
     //
     // Timer
@@ -259,14 +279,16 @@ pub unsafe fn reset_handler() {
     let audio_module = static_init!(
         AudioModule,
         AudioModule {
+            console: console,
             gpio: gpio,
             timer: timer,
             i2c_master_slave: i2c_master_slave,
 	    adc: adc_driver,
             app_watchdog: app_watchdog,
         },
-        160/8);
-	
+        192/8);
+
+    audio_module.console.initialize();
 	//turn on some LEDs
     sam4l::gpio::PA[14].enable();
     sam4l::gpio::PA[14].enable_output();
