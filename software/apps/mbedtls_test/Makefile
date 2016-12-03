@@ -12,7 +12,7 @@ APP_SRCS += sha1.c
 APP_SRCS += sha256.c
 APP_SRCS += sha512.c
 APP_SRCS += ripemd160.c
-#APP_SRCS += aes.c
+APP_SRCS += aes.c
 
 # files needed for this code
 INCLUDE_PATHS += .

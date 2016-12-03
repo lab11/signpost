@@ -11,13 +11,13 @@
 #include "gpio.h"
 #include "timer.h"
 #include "mbedtls/md.h"
-//#include "mbedtls/aes.h"
+#include "mbedtls/aes.h"
 
 #define PIN 4
 
 const mbedtls_md_info_t * md_info;
 mbedtls_md_context_t md_context;
-//mbedtls_aes_context aes_context;
+mbedtls_aes_context aes_context;
 
 
 void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
@@ -54,16 +54,16 @@ void hmac_sha256(const unsigned char * in, size_t ilen, const unsigned char * ke
     mbedtls_md_hmac_finish(&md_context, out);
 }
 
-//void aes_128_cbc_enc(const unsigned char * in, size_t ilen, const unsigned char * key, unsigned char * iv, unsigned char * out) {
-//    // clear context
-//    mbedtls_aes_free(&aes_context);
-//    // init context
-//    mbedtls_aes_init(&aes_context);
-//    // set key for operation
-//    mbedtls_aes_setkey_enc(&aes_context, key, 128);
-//    // set IV
-//    mbedtls_aes_crypt_cbc(&aes_context, MBEDTLS_AES_ENCRYPT, ilen, iv, in, out);
-//}
+void aes_128_cbc_enc(const unsigned char * in, size_t ilen, const unsigned char * key, unsigned char * iv, unsigned char * out) {
+    // clear context
+    mbedtls_aes_free(&aes_context);
+    // init context
+    mbedtls_aes_init(&aes_context);
+    // set key for operation
+    mbedtls_aes_setkey_enc(&aes_context, key, 128);
+    // set IV
+    mbedtls_aes_crypt_cbc(&aes_context, MBEDTLS_AES_ENCRYPT, ilen, iv, in, out);
+}
 
 int main(void) {
     gpio_enable_output(PIN);
@@ -128,22 +128,22 @@ int main(void) {
       unsigned char output256[512];
 
       // aes enc benchmarks
-      //gpio_set(PIN);
-      //aes_128_cbc_enc(message, 32, key, key, output32);
-      //gpio_clear(PIN);
-      //delay_ms(100);
-      //gpio_set(PIN);
-      //aes_128_cbc_enc(message, 128, key, key, output128);
-      //gpio_clear(PIN);
-      //delay_ms(100);
-      //gpio_set(PIN);
-      //aes_128_cbc_enc(message, 256, key, key, output256);
-      //gpio_clear(PIN);
-      //delay_ms(100);
+      gpio_set(PIN);
+      aes_128_cbc_enc(message, 32, key, key, output32);
+      gpio_clear(PIN);
+      delay_ms(100);
+      gpio_set(PIN);
+      aes_128_cbc_enc(message, 128, key, key, output128);
+      gpio_clear(PIN);
+      delay_ms(100);
+      gpio_set(PIN);
+      aes_128_cbc_enc(message, 256, key, key, output256);
+      gpio_clear(PIN);
+      delay_ms(100);
 
-      //gpio_set(PIN);
-      //delay_ms(250);
-      //gpio_clear(PIN);
+      gpio_set(PIN);
+      delay_ms(250);
+      gpio_clear(PIN);
 
       //printf("output: 0x");
       //for(int i = 0; i < 32; i++) {
