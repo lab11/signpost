@@ -311,16 +311,17 @@ unsafe fn set_pin_primary_functions() {
 pub unsafe fn reset_handler() {
     sam4l::init();
 
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
+
     // Workaround for SB.02 hardware bug
     // TODO(alevy): Get rid of this when we think SB.02 are out of circulation
     sam4l::gpio::PA[14].enable();
     sam4l::gpio::PA[14].set();
     sam4l::gpio::PA[14].enable_output();
 
-
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
-    let clock_freq = 48000000;
+    let clock_freq = 16000000;
 
     set_pin_primary_functions();
 
@@ -333,7 +334,6 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
-    usart::USART3.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART3,
