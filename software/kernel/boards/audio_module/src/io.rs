@@ -12,7 +12,7 @@ pub static mut WRITER: Writer = Writer { initialized: false };
 
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
-        let uart = unsafe { &mut sam4l::usart::USART1 };
+        let uart = unsafe { &mut sam4l::usart::USART2 };
         if !self.initialized {
             self.initialized = true;
             uart.init(uart::UARTParams{
@@ -26,6 +26,7 @@ impl Write for Writer {
         }
         for c in s.bytes() {
             uart.send_byte(c);
+            while !uart.tx_ready() {};
         }
         Ok(())
     }
