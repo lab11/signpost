@@ -72,7 +72,7 @@ int main(void) {
     //printf("Test mbedtls\n");
 
     unsigned char key[16];
-    unsigned char output[32];
+    unsigned char output[512];
     unsigned char message[256];
 
     // Generate psuedorandom key using hash
@@ -110,6 +110,7 @@ int main(void) {
       delay_ms(500);
 
       // hmac benchmarks
+      printf("Test hmac\n");
       gpio_set(PIN);
       hmac_sha256(message, 32, key, 16, output);
       gpio_clear(PIN);
@@ -123,21 +124,18 @@ int main(void) {
       gpio_clear(PIN);
       delay_ms(500);
 
-      unsigned char output32[512];
-      unsigned char output128[512];
-      unsigned char output256[512];
-
       // aes enc benchmarks
+      printf("Test aes\n");
       gpio_set(PIN);
-      aes_128_cbc_enc(message, 32, key, key, output32);
+      aes_128_cbc_enc(message, 32, key, key, output);
       gpio_clear(PIN);
       delay_ms(100);
       gpio_set(PIN);
-      aes_128_cbc_enc(message, 128, key, key, output128);
+      aes_128_cbc_enc(message, 128, key, key, output);
       gpio_clear(PIN);
       delay_ms(100);
       gpio_set(PIN);
-      aes_128_cbc_enc(message, 256, key, key, output256);
+      aes_128_cbc_enc(message, 256, key, key, output);
       gpio_clear(PIN);
       delay_ms(100);
 
