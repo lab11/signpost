@@ -22,6 +22,18 @@ int main () {
     ret* signed_data;
     uint8_t data[100];
 
-    signed_data = sign(data,100);
+    signed_data = sign(data,10);
+
+    gpio_set(10);
+    gpio_set(11);
+
+    for(uint8_t i = 0; i < signed_data->len; i++) {
+        if(signed_data->data[i] == 1) {
+
+        } else {
+            gpio_clear(10);
+            gpio_clear(11);
+        }
+    }
 
 }
