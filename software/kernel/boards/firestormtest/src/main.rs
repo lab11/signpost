@@ -78,7 +78,7 @@ struct SignpostController {
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-    fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
+    //fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
     nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
 }
@@ -97,7 +97,7 @@ impl Platform for SignpostController {
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
-            103 => f(Some(self.fram)),
+            //103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             _ => f(None)
         }
@@ -573,35 +573,35 @@ pub unsafe fn reset_handler() {
     //
     // SPI
     //
-    let mux_spi = static_init!(
-        capsules::virtual_spi::MuxSPIMaster<'static>,
-        capsules::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI),
-        128/8);
-    sam4l::spi::SPI.set_client(mux_spi);
-    sam4l::spi::SPI.init();
+    //let mux_spi = static_init!(
+    //    capsules::virtual_spi::MuxSPIMaster<'static>,
+    //    capsules::virtual_spi::MuxSPIMaster::new(&sam4l::spi::SPI),
+    //    128/8);
+    //sam4l::spi::SPI.set_client(mux_spi);
+    //sam4l::spi::SPI.init();
 
 
 
     //
     // FRAM
     //
-    let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
-    let fm25cl_spi = static_init!(
-        capsules::virtual_spi::SPIMasterDevice,
-        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
-        480/8);
-    let fm25cl = static_init!(
-        signpost_drivers::fm25cl::FM25CL<'static>,
-        signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
-        384/8);
-    fm25cl_spi.set_client(fm25cl);
+    //let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
+    //let fm25cl_spi = static_init!(
+    //    capsules::virtual_spi::SPIMasterDevice,
+    //    capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
+    //    480/8);
+    //let fm25cl = static_init!(
+    //    signpost_drivers::fm25cl::FM25CL<'static>,
+    //    signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
+    //    384/8);
+    //fm25cl_spi.set_client(fm25cl);
 
     // Interface for applications
-    let fm25cl_driver = static_init!(
-        signpost_drivers::fm25cl::FM25CLDriver<'static>,
-        signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
-        544/8);
-    fm25cl.set_client(fm25cl_driver);
+    //let fm25cl_driver = static_init!(
+    //    signpost_drivers::fm25cl::FM25CLDriver<'static>,
+    //    signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
+    //    544/8);
+    //fm25cl.set_client(fm25cl_driver);
 
     //
     // ADC
@@ -652,12 +652,12 @@ pub unsafe fn reset_handler() {
             gpio_async: gpio_async,
             coulomb_counter_i2c_selector: i2c_selector,
             coulomb_counter_generic: ltc2941_driver,
-            fram: fm25cl_driver,
+            //fram: fm25cl_driver,
             smbus_interrupt: smbusint_driver,
             adc: adc_driver,
             nrf51822: nrf_serialization,
         },
-        320/8);
+        288/8);
 
     // Configure USART2 Pins for connection to nRF51822
     // NOTE: the SAM RTS pin is not working for some reason. Our hypothesis is
