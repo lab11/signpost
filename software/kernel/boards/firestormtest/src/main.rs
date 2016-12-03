@@ -34,12 +34,12 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
         static _sapps: u8;
     }
 
-    const NUM_PROCS: usize = 2;
+    const NUM_PROCS: usize = 1;
 
     #[link_section = ".app_memory"]
-    static mut MEMORIES: [[u8; 8192]; NUM_PROCS] = [[0; 8192]; NUM_PROCS];
+    static mut MEMORIES: [[u8; 32768]; NUM_PROCS] = [[0; 32768]; NUM_PROCS];
 
-    static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
+    static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None];
 
     let mut addr = &_sapps as *const u8;
     for i in 0..NUM_PROCS {
