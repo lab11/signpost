@@ -16,10 +16,10 @@ APP_SRCS += aes.c
 
 # files needed for this code
 INCLUDE_PATHS += .
-INCLUDE_PATHS += mbedtls/include/
+INCLUDE_PATHS += ../libs/mbedtls/include/
 
 SOURCE_PATHS += .
-SOURCE_PATHS += mbedtls/library/
+SOURCE_PATHS += ../libs/mbedtls/library/
 
 VPATH=$(SOURCE_PATHS)
 
