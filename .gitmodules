@@ -15,9 +15,6 @@
 [submodule "software/apps/radio_demo/nrf5x-base"]
 	path = software/apps/radio_demo/nrf5x-base
 	url = git@github.com:lab11/nrf5x-base
-[submodule "software/apps/mbedtls_test/mbedtls"]
-	path = software/apps/mbedtls_test/mbedtls
-	url = git@github.com:ARMmbed/mbedtls.git
 [submodule "software/apps/libs/erpc"]
 	path = software/apps/libs/erpc
 	url = git@github.com:lab11/erpc
