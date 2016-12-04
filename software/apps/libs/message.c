@@ -8,7 +8,7 @@
 
 static uint8_t master_write_buf[I2C_MAX_LEN];
 static uint8_t slave_write_buf[I2C_MAX_LEN];
-static uint8_t master_read_buf[I2C_MAX_LEN];
+//static uint8_t master_read_buf[I2C_MAX_LEN];
 static uint8_t slave_read_buf[I2C_MAX_LEN];
 static uint8_t packet_buf[I2C_MAX_LEN];
 
@@ -54,7 +54,6 @@ void message_init(uint8_t src) {
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
-    //i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(src);
     src_address = src;
