@@ -36,11 +36,11 @@ int main () {
         len = message_recv(message_buf, BUFFER_SIZE, &src);
 
         if(message_buf[0] == RPC_REQUEST) {
-            gpio_clear(2);
             if(!rpc_pending) {
+                gpio_clear(2);
                 rpc_pending = 1;
                 memcpy(request_buf, message_buf+1,len-1);
-                message_set_read_buffer(message_buf,len-1);
+                message_set_read_buffer(request_buf,len-1);
                 return_address = src;
                 storage_master_wakeup_edison();
             }
