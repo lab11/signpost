@@ -18,6 +18,6 @@ void message_init(uint8_t src);
 uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len);
 
 //synchronous receive
-uint32_t message_recv(uint8_t dest, uint8_t* data, uint32_t len, uint8_t* src);
+uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src);
 
 #endif

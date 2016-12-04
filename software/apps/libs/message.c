@@ -31,7 +31,7 @@ typedef struct {
 
 static uint8_t src_address;
 static uint16_t id = 0;
-volatile uint8_t new_packet;
+volatile static uint8_t new_packet;
 static uint8_t new_packet_length;
 
 static void i2c_master_slave_callback(
@@ -54,7 +54,6 @@ void message_init(uint8_t src) {
     //i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
     i2c_master_slave_set_slave_address(src);
     src_address = src;
-    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
 }
 
 static uint16_t htons(uint16_t in) {
@@ -102,7 +101,6 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
         //set the fragment offset
         p.header.ffragment_offset = htons((p.header.ffragment_offset | offset));
 
-
         //set the data field
         //if there are more packets write the whole packet
         if(morePackets) {
@@ -134,7 +132,10 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
 
 //blocking receive call
 uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
+
+    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_listen();
+
 
     uint8_t done = 0;
     uint32_t lengthReceived = 0;
@@ -143,18 +144,21 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 
     //loop receiving packets until we get the whole datagram
     while(!done) {
+
         //wait and receive a packet
         new_packet = 0;
         while(!new_packet) {
             yield();
         }
+
         //a new packet is in the packet buf
 
         //copy the packet into a header struct
         Packet p;
         memcpy(&p,packet_buf,I2C_MAX_LEN);
 
-        if(lengthReceived = 0) {
+
+        if(lengthReceived == 0) {
             //this is the first packet
             //save the messageID
             messageID = p.header.id;
@@ -173,8 +177,8 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
         *src = p.header.src;
 
         //are there more fragments?
-        uint8_t moreFragments = (p.header.ffragment_offset & 0x8000) >> 15;
-        uint16_t fragmentOffset = (p.header.ffragment_offset & 0x7FFF);
+        uint8_t moreFragments = (htons(p.header.ffragment_offset) & 0x8000) >> 15;
+        uint16_t fragmentOffset = (htons(p.header.ffragment_offset) & 0x7FFF);
 
         if(moreFragments) {
             //is there room to copy into the buffer?
