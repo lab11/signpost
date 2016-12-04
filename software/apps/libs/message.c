@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "gpio.h"
 #include "i2c_master_slave.h"
 
 #define I2C_MAX_LEN 255
@@ -33,6 +34,7 @@ static uint8_t src_address;
 static uint16_t id = 0;
 volatile static uint8_t new_packet;
 static uint8_t new_packet_length;
+static void iterate_read_buf(void);
 
 static void i2c_master_slave_callback(
         int callback_type,
@@ -44,20 +46,111 @@ static void i2c_master_slave_callback(
         memcpy(packet_buf, slave_write_buf, length);
         new_packet_length = length;
         new_packet = 1;
+    } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
+        iterate_read_buf();
     }
 }
 
 void message_init(uint8_t src) {
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
-    //i2c_master_slave_set_slave_read_buffer(slave_read_buf, BUFFER_SIZE);
+    i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
     //i2c_master_slave_set_master_read_buffer(master_read_buf, BUFFER_SIZE);
+    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(src);
     src_address = src;
+    gpio_enable_output(2);
+    gpio_set(2);
 }
 
 static uint16_t htons(uint16_t in) {
     return (((in & 0x00FF) << 8) | ((in & 0xFF00) >> 8));
+}
+
+static uint32_t readToSend;
+static uint32_t readLen;
+static Packet readPacket;
+static uint8_t* readData;
+
+static void iterate_read_buf() {
+
+    if(readToSend > 0) {
+        //set more fragments bit
+        readPacket.header.ffragment_offset = 0;
+        uint8_t morePackets = 0;
+        uint16_t offset = 0;
+
+        //calculate moreFragments
+        morePackets = (readToSend > MAX_DATA_LEN);
+        //calculate offset
+        offset = (readLen-readToSend);
+
+        //set more fragments bit
+        readPacket.header.ffragment_offset = ((morePackets & 0x01) << 15);
+
+        //set the fragment offset
+        readPacket.header.ffragment_offset = htons((readPacket.header.ffragment_offset | offset));
+
+        //set the data field
+        //if there are more packets write the whole packet
+        if(morePackets) {
+            memcpy(readPacket.data,
+                    readData+offset,
+                    MAX_DATA_LEN);
+            gpio_set(2);
+        } else {
+            //if not just send the remainder of the data
+            memcpy(readPacket.data,
+                    readData+offset,
+                    readToSend);
+            gpio_clear(2);
+        }
+
+        //copy the packet into the send buffer
+        memcpy(slave_read_buf,&readPacket,I2C_MAX_LEN);
+
+        //send the packet in syncronous mode
+        if(morePackets) {
+            readToSend -= MAX_DATA_LEN;
+        } else {
+            readToSend = 0;
+        }
+
+    } else {
+        readToSend = readLen;
+        iterate_read_buf();
+    }
+}
+
+void message_set_read_buffer(uint8_t* data, uint32_t len) {
+    //essentially call message_send on the buff but only
+    //iterate after someone has read the buffer.
+    //after the buffer has been read restart it from
+    //the beginning
+    i2c_master_slave_listen();
+    id++;
+    readLen = len;
+    readToSend = readLen;
+    readData = data;
+
+    //calculate the number of packets we will have to send
+    uint16_t numPackets;
+    if(len % MAX_DATA_LEN) {
+        numPackets = (len/MAX_DATA_LEN) + 1;
+    } else {
+        numPackets = (len/MAX_DATA_LEN);
+    }
+
+    //set version
+    readPacket.header.version = 0x01;
+    //set the source
+    readPacket.header.src = src_address;
+    readPacket.header.id = htons(id);
+
+    //set the total length
+    readPacket.header.length = htons((numPackets*sizeof(Header))+len);
+
+    iterate_read_buf();
 }
 
 
@@ -120,9 +213,11 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
         //send the packet in syncronous mode
         if(morePackets) {
             i2c_master_slave_write_sync(dest,I2C_MAX_LEN);
+            i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend -= MAX_DATA_LEN;
         } else {
             i2c_master_slave_write_sync(dest,sizeof(Header)+toSend);
+            i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend = 0;
         }
     }
@@ -133,9 +228,7 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
 //blocking receive call
 uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 
-    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_listen();
-
 
     uint8_t done = 0;
     uint32_t lengthReceived = 0;
