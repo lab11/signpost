@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "gpio.h"
 #include "i2c_master_slave.h"
 
 #define I2C_MAX_LEN 255
@@ -59,8 +58,6 @@ void message_init(uint8_t src) {
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(src);
     src_address = src;
-    gpio_enable_output(2);
-    gpio_set(2);
 }
 
 static uint16_t htons(uint16_t in) {
@@ -97,13 +94,11 @@ static void iterate_read_buf() {
             memcpy(readPacket.data,
                     readData+offset,
                     MAX_DATA_LEN);
-            gpio_set(2);
         } else {
             //if not just send the remainder of the data
             memcpy(readPacket.data,
                     readData+offset,
                     readToSend);
-            gpio_clear(2);
         }
 
         //copy the packet into the send buffer
