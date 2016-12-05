@@ -1,4 +1,4 @@
-"Qty";"Value";"Device";"Package";"Parts";"Description";"DIGIKEY";"MOUSER";"MPN";"NEWARK";"RICHARDSON_RFPD";"TP_SIGNAL_NAME";
+Qty;Value;Device;Package;Parts;Description;DIGIKEY;MOUSER;MPN;NEWARK;RICHARDSON_RFPD;TP_SIGNAL_NAME;
 "1";"FRACTUS-2.4GHZ-FR05-S1-N-0-110";"FRACTUS-2.4GHZ-FR05-S1-N-0-110";"FRACTUS-ANTENNA-FR05-S1-N-0-110";"A1";"Fractus Micro Reach Xtend";"";"";"";"";"FR05-S1-N-0110B";"";
 "1";"BAL-NRF01D3";"BAL-NRF01D3";"BAL-NRF01D3";"B1";"50 ohm nominal input / conjugate match balun to nRF51422-QFAA,";"497-13637-1-ND";"511-BAL-NRF01D3";"";"";"";"";
 "1";"1.5pF";"CAPACITOR0402_CAP";"0402_CAP";"C1";"0402 Capacitor";"490-6212-1-ND";"";"";"";"";"";
