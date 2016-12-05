@@ -4898,7 +4898,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_UMICH" device="">
 <attribute name="TITLE" value="Hail"/>
 </part>
-<part name="U5" library="chips" deviceset="NRF51822" device="QF"/>
+<part name="U5" library="chips" deviceset="NRF51822" device="QF">
+<attribute name="DIGIKEY" value="1490-1049-1-ND"/>
+<attribute name="MOUSER" value=""/>
+</part>
 <part name="J1" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device="">
 <attribute name="DIGIKEY" value="H125274CT-ND"/>
 <attribute name="MOUSER" value=""/>
@@ -5008,7 +5011,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="FRAME6" library="lab11-frames" deviceset="LETTER_L_UMICH" device="">
 <attribute name="TITLE" value="Hail"/>
 </part>
-<part name="U7" library="chips" deviceset="SI7021" device=""/>
+<part name="U7" library="chips" deviceset="SI7021" device="">
+<attribute name="DIGIKEY" value="336-3141-ND"/>
+</part>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
@@ -5050,7 +5055,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </part>
 <part name="P+14" library="supply1" deviceset="VCC" device=""/>
 <part name="GND23" library="umich" deviceset="GND" device=""/>
-<part name="U6" library="chips" deviceset="SAM4LC8BA" device=""/>
+<part name="U6" library="chips" deviceset="SAM4LC8BA" device="">
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND"/>
+</part>
 <part name="GND27" library="umich" deviceset="GND" device=""/>
 <part name="C18" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>

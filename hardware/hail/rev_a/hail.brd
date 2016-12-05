@@ -1261,8 +1261,8 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 </autorouter>
 <elements>
 <element name="U5" library="chips" package="QFN-48-6MM" value="NRF51822QF" x="13.843" y="6.477" smashed="yes" rot="R180">
-<attribute name="MOUSER" value="949-NRF51822-QFAB-R7" x="13.843" y="6.477" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="DIGIKEY" value="1490-1032-1-ND" x="13.843" y="6.477" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MOUSER" value="" x="13.843" y="6.477" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="1490-1049-1-ND" x="13.843" y="6.477" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="17.907" y="2.7332" size="0.508" layer="25" font="vector" ratio="18" align="bottom-center"/>
 </element>
 <element name="J1" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="10.16" y="36.576" smashed="yes" rot="R180">
@@ -1396,7 +1396,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="9.1186" y="10.9474" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="U7" library="chips" package="DFN-6/3MM" value="SI7021" x="5.588" y="25.654" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="336-3141-1-ND" x="18.542" y="24.13" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="336-3141-ND" x="18.542" y="24.13" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="5.588" y="23.954" size="0.508" layer="25" font="vector" ratio="18" rot="R180" align="bottom-center"/>
 </element>
 <element name="R6" library="passives" package="0402_RES" value="10k" x="3.81" y="16.637" smashed="yes" rot="R90">
@@ -1450,7 +1450,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="15.367" y="32.766" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="U6" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="10.668" y="18.034" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURDKR-ND" x="10.668" y="18.034" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND" x="10.668" y="18.034" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="6.1468" y="23.2702" size="0.508" layer="25" font="vector" ratio="18" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="4.668" y="18.034" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
