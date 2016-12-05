@@ -36,7 +36,9 @@ int main () {
         len = message_recv(message_buf, BUFFER_SIZE, &src);
 
         if(message_buf[0] == RPC_REQUEST) {
-            if(!rpc_pending) {
+            //use len > 1 to make sure that someone isn't just setting
+            //up the correct buffer
+            if(!rpc_pending && len > 1) {
                 gpio_clear(2);
                 rpc_pending = 1;
                 memcpy(request_buf, message_buf+1,len-1);
