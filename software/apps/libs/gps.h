@@ -1,6 +1,11 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#include "tock.h"
 
 typedef struct {
     // date
@@ -31,4 +36,7 @@ void gps_continuous (void (*callback)(gps_data_t*));
 
 // request a single GPS sample
 void gps_sample (void (*callback)(gps_data_t*));
+
+// read from the gps console
+void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata);
 

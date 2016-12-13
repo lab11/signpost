@@ -1,8 +1,11 @@
 #include "gps.h"
 #include "console.h"
 #include "minmea.h"
+#include "tock.h"
 
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 // local data
 static char gps_data_buffer[500] = {0};
@@ -25,6 +28,12 @@ void gps_send_msg (char* msg);
 void gps_rx_callback (int len, int y, int z, void* userdata);
 bool gps_parse_data (char* line);
 int32_t to_decimal_degrees (struct minmea_float coor);
+
+// gps console functions
+void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata) {
+  allow(0, 0, (void*)str, max_len);
+  subscribe(0, 2, cb, userdata);
+}
 
 
 // global functions
