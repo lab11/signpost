@@ -12,7 +12,7 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use capsules::console::{self, Console};
+use signpost_drivers::gps_console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -68,36 +68,40 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct SignpostController {
-    console: &'static Console<'static, usart::USART>,
+    gps_console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    bonus_timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    bonus_timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-    fram: &'static signpost_drivers::fm25cl::FM25CLDriver<'static>,
-    i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    fram: &'static capsules::fm25cl::FM25CLDriver<'static>,
+    i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    ipc: kernel::ipc::IPC,
 }
 
 impl Platform for SignpostController {
-    fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
+    fn with_driver<F, R>(&self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
 
         match driver_num {
-            0 => f(Some(self.console)),
+            0 => f(Some(self.gps_console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.fram)),
+
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
-            103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
-            105 => f(Some(self.i2c_master_slave)),
             108 => f(Some(self.app_watchdog)),
             203 => f(Some(self.bonus_timer)),
+
+            0xff => f(Some(&self.ipc)),
             _ => f(None)
         }
     }
@@ -158,9 +162,8 @@ pub unsafe fn reset_handler() {
     sam4l::init();
 
     // Setup clock
-    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
-    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
-    let clock_freq = 16000000;
+    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillatorPll, 48000000);
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -170,17 +173,16 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
-    usart::USART2.set_clock_freq(clock_freq);
-    let console = static_init!(
+    let gps_console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
                      9600,
-                     &mut console::WRITE_BUF,
-                     &mut console::READ_BUF,
-                     &mut console::LINE_BUF,
+                     &mut gps_console::WRITE_BUF,
+                     &mut gps_console::READ_BUF,
+                     &mut gps_console::LINE_BUF,
                      kernel::Container::create()),
         416/8);
-    usart::USART2.set_uart_client(console);
+    hil::uart::UART::set_client(&usart::USART2, gps_console);
 
     //
     // Timer
@@ -218,11 +220,11 @@ pub unsafe fn reset_handler() {
     // I2C Buses
     //
     let i2c_modules = static_init!(
-        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
+            &mut capsules::i2c_master_slave_driver::BUFFER1,
+            &mut capsules::i2c_master_slave_driver::BUFFER2,
+            &mut capsules::i2c_master_slave_driver::BUFFER3),
         928/8);
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
@@ -426,7 +428,6 @@ pub unsafe fn reset_handler() {
     //
     // SPI
     //
-    usart::USART0.set_clock_freq(clock_freq);
     let mux_spi = static_init!(
         capsules::virtual_spi::MuxSPIMaster<'static, usart::USART>,
         capsules::virtual_spi::MuxSPIMaster::new(&sam4l::usart::USART0),
@@ -448,15 +449,15 @@ pub unsafe fn reset_handler() {
         capsules::virtual_spi::SPIMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
         416/8);
     let fm25cl = static_init!(
-        signpost_drivers::fm25cl::FM25CL<'static>,
-        signpost_drivers::fm25cl::FM25CL::new(fm25cl_spi, &mut signpost_drivers::fm25cl::TXBUFFER, &mut signpost_drivers::fm25cl::RXBUFFER),
+        capsules::fm25cl::FM25CL<'static>,
+        capsules::fm25cl::FM25CL::new(fm25cl_spi, &mut capsules::fm25cl::TXBUFFER, &mut capsules::fm25cl::RXBUFFER),
         384/8);
     fm25cl_spi.set_client(fm25cl);
 
     // Interface for applications
     let fm25cl_driver = static_init!(
-        signpost_drivers::fm25cl::FM25CLDriver<'static>,
-        signpost_drivers::fm25cl::FM25CLDriver::new(fm25cl, &mut signpost_drivers::fm25cl::KERNEL_TXBUFFER, &mut signpost_drivers::fm25cl::KERNEL_RXBUFFER),
+        capsules::fm25cl::FM25CLDriver<'static>,
+        capsules::fm25cl::FM25CLDriver::new(fm25cl, &mut capsules::fm25cl::KERNEL_TXBUFFER, &mut capsules::fm25cl::KERNEL_RXBUFFER),
         544/8);
     fm25cl.set_client(fm25cl_driver);
 
@@ -473,12 +474,12 @@ pub unsafe fn reset_handler() {
         24);
     let app_timeout = static_init!(
         signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, sam4l::scb::reset),
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, cortexm4::scb::reset),
         128/8);
     app_timeout_alarm.set_client(app_timeout);
     let kernel_timeout = static_init!(
         signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, sam4l::scb::reset),
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, cortexm4::scb::reset),
         128/8);
     kernel_timeout_alarm.set_client(kernel_timeout);
     let app_watchdog = static_init!(
@@ -537,28 +538,26 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let signpost_controller = static_init!(
-        SignpostController,
-        SignpostController {
-            console: console,
-            gpio: gpio,
-            timer: timer,
-            bonus_timer: bonus_timer,
-            gpio_async: gpio_async,
-            coulomb_counter_i2c_selector: i2c_selector,
-            coulomb_counter_generic: ltc2941_driver,
-            smbus_interrupt: smbusint_driver,
-            fram: fm25cl_driver,
-            i2c_master_slave: i2c_modules,
-            app_watchdog: app_watchdog,
-        },
-        352/8);
+    let signpost_controller = SignpostController {
+        gps_console: gps_console,
+        gpio: gpio,
+        timer: timer,
+        bonus_timer: bonus_timer,
+        gpio_async: gpio_async,
+        coulomb_counter_i2c_selector: i2c_selector,
+        coulomb_counter_generic: ltc2941_driver,
+        smbus_interrupt: smbusint_driver,
+        fram: fm25cl_driver,
+        i2c_master_slave: i2c_modules,
+        app_watchdog: app_watchdog,
+        ipc: kernel::ipc::IPC::new(),
+    };
 
-    signpost_controller.console.initialize();
+    signpost_controller.gps_console.initialize();
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    kernel::main(signpost_controller, &mut chip, load_processes());
+    kernel::main(&signpost_controller, &mut chip, load_processes(), &signpost_controller.ipc);
 }

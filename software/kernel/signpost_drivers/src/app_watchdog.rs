@@ -3,8 +3,8 @@
 use core::cell::Cell;
 
 use kernel::{AppId, Driver};
-use kernel::hil::alarm;
-use kernel::hil::alarm::Frequency;
+use kernel::hil::time;
+use kernel::hil::time::Frequency;
 
 
 
@@ -13,14 +13,14 @@ pub enum TimeoutMode {
     Kernel,
 }
 
-pub struct Timeout<'a, A: alarm::Alarm + 'a> {
+pub struct Timeout<'a, A: time::Alarm + 'a> {
     alarm: &'a A,
     timeout: Cell<usize>, // milliseconds before resetting the app
     mode: TimeoutMode,
     reset: unsafe fn(),
 }
 
-impl<'a, A: alarm::Alarm + 'a> Timeout<'a, A> {
+impl<'a, A: time::Alarm + 'a> Timeout<'a, A> {
     pub fn new(alarm: &'a A, mode: TimeoutMode, timeout: usize, reset: unsafe fn()) -> Timeout<'a, A> {
         Timeout {
             alarm: alarm,
@@ -37,17 +37,17 @@ impl<'a, A: alarm::Alarm + 'a> Timeout<'a, A> {
     }
 
     fn stop(&self) {
-        self.alarm.disable_alarm();
+        self.alarm.disable();
     }
 }
 
 
-pub struct AppWatchdog<'a, A: alarm::Alarm + 'a> {
+pub struct AppWatchdog<'a, A: time::Alarm + 'a> {
     app_timeout: &'a Timeout<'a, A>,
     kernel_timeout: &'a Timeout<'a, A>,
 }
 
-impl<'a, A: alarm::Alarm + 'a> AppWatchdog<'a, A> {
+impl<'a, A: time::Alarm + 'a> AppWatchdog<'a, A> {
     pub fn new(appt: &'a Timeout<'a, A>, kernelt: &'a Timeout<'a, A>) -> AppWatchdog<'a, A> {
         AppWatchdog {
             app_timeout: appt,
@@ -90,7 +90,7 @@ impl<'a, A: alarm::Alarm + 'a> AppWatchdog<'a, A> {
 
 
 
-impl<'a, A: alarm::Alarm + 'a> alarm::AlarmClient for Timeout<'a, A> {
+impl<'a, A: time::Alarm + 'a> time::Client for Timeout<'a, A> {
     fn fired(&self) {
         match self.mode {
             TimeoutMode::App => {
@@ -107,7 +107,7 @@ impl<'a, A: alarm::Alarm + 'a> alarm::AlarmClient for Timeout<'a, A> {
     }
 }
 
-impl<'a, A: alarm::Alarm + 'a> Driver for AppWatchdog<'a, A> {
+impl<'a, A: time::Alarm + 'a> Driver for AppWatchdog<'a, A> {
     fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
         match command_num {
             // Tickle application timer

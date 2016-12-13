@@ -3,18 +3,18 @@
 use core::cell::Cell;
 
 use kernel::hil;
-use kernel::hil::alarm;
-use kernel::hil::alarm::Frequency;
+use kernel::hil::time;
+use kernel::hil::time::Frequency;
 
 
 
-pub struct WatchdogKernel<'a, A: alarm::Alarm + 'a> {
+pub struct WatchdogKernel<'a, A: time::Alarm + 'a> {
     alarm: &'a A,
     watchdog: &'a hil::watchdog::Watchdog,
     timeout: Cell<usize>, // milliseconds before resetting the app
 }
 
-impl<'a, A: alarm::Alarm + 'a> WatchdogKernel<'a, A> {
+impl<'a, A: time::Alarm + 'a> WatchdogKernel<'a, A> {
     pub fn new(alarm: &'a A, watchdog: &'a hil::watchdog::Watchdog, timeout: usize) -> WatchdogKernel<'a, A> {
         WatchdogKernel {
             alarm: alarm,
@@ -28,11 +28,11 @@ impl<'a, A: alarm::Alarm + 'a> WatchdogKernel<'a, A> {
         let tics = self.alarm.now().wrapping_add(interval);
         self.alarm.set_alarm(tics);
 
-        self.watchdog.start();
+        self.watchdog.start(2000);
     }
 }
 
-impl<'a, A: alarm::Alarm + 'a> alarm::AlarmClient for WatchdogKernel<'a, A> {
+impl<'a, A: time::Alarm + 'a> time::Client for WatchdogKernel<'a, A> {
     fn fired(&self) {
         self.watchdog.tickle();
 
