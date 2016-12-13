@@ -1,8 +1,7 @@
-
 use core::fmt::*;
 use kernel::hil::uart::{self, UART};
 use sam4l;
-// use support::nop;
+use cortexm4;
 
 pub struct Writer {
     initialized: bool,
@@ -45,7 +44,7 @@ pub unsafe extern "C" fn rust_begin_unwind(args: Arguments, file: &'static str, 
     let _ = writer.write_str("\"\r\n");
 
     // Optional reset after hard fault
-    sam4l::scb::reset();
+    cortexm4::scb::reset();
 
     let led = &sam4l::gpio::PA[17];
     led.enable_output();
