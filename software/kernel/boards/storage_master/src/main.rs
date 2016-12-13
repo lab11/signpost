@@ -70,12 +70,13 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct SignpostStorageMaster {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-    i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    ipc: kernel::ipc::IPC,
 }
 
 impl Platform for SignpostStorageMaster {
-    fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
+    fn with_driver<F, R>(&self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
 
@@ -83,7 +84,9 @@ impl Platform for SignpostStorageMaster {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            105 => f(Some(self.i2c_master_slave)),
+            13 => f(Some(self.i2c_master_slave)),
+
+            0xff => f(Some(&self.ipc)),
             _ => f(None)
         }
     }
@@ -99,12 +102,12 @@ unsafe fn set_pin_primary_functions() {
     PA[06].configure(None); // linux_enable_power
     PA[07].configure(None); // storage led
 
-    //memory spi bus 
+    //memory spi bus
     PA[9].configure(None); // Storage CS
     PA[10].configure(Some(A)); // MEMORY_SCLK
     PA[11].configure(Some(A)); // MEMORY_MISO
     PA[12].configure(Some(A)); // MEMORY_MOSI
-    
+
     //SD card spi bus
     PA[13].configure(None); // SD_CS
     PA[14].configure(Some(A)); // SD_SCLK
@@ -134,25 +137,20 @@ pub unsafe fn reset_handler() {
 
     // Setup clock
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
-    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
-    let clock_freq = 16000000;
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
     set_pin_primary_functions();
 
-    usart::USART2.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
-                    115200,
-                    &mut console::WRITE_BUF,
-                    &mut console::READ_BUF,
-                    &mut console::LINE_BUF,
-                    kernel::Container::create()),
-        416/8);
-    usart::USART2.set_uart_client(console);
+                     115200,
+                     &mut console::WRITE_BUF,
+                     kernel::Container::create()),
+        224/8);
+    hil::uart::UART::set_client(&usart::USART2, console);
 
     //
     // Timer
@@ -180,11 +178,11 @@ pub unsafe fn reset_handler() {
     // I2C Buses
     //
     let i2c_modules = static_init!(
-        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-        signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
-            &mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
+            &mut capsules::i2c_master_slave_driver::BUFFER1,
+            &mut capsules::i2c_master_slave_driver::BUFFER2,
+            &mut capsules::i2c_master_slave_driver::BUFFER3),
         928/8);
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
@@ -220,20 +218,18 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let signpost_storage_master = static_init!(
-        SignpostStorageMaster,
-        SignpostStorageMaster {
-            console: console,
-            gpio: gpio,
-            timer: timer,
-            i2c_master_slave: i2c_modules,
-        },
-        128/8);
+    let signpost_storage_master = SignpostStorageMaster {
+        console: console,
+        gpio: gpio,
+        timer: timer,
+        i2c_master_slave: i2c_modules,
+        ipc: kernel::ipc::IPC::new(),
+    };
 
     signpost_storage_master.console.initialize();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    kernel::main(signpost_storage_master, &mut chip, load_processes());
+    kernel::main(&signpost_storage_master, &mut chip, load_processes(), &signpost_storage_master.ipc);
 }
