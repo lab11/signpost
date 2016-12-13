@@ -71,14 +71,15 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct RadioModule {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-	i2c_master_slave: &'static signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-	nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
-    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+    timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
+    app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    ipc: kernel::ipc::IPC,
 }
 
 impl Platform for RadioModule {
-    fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
+    fn with_driver<F, R>(&self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
 
@@ -87,8 +88,11 @@ impl Platform for RadioModule {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             5 => f(Some(self.nrf51822)),
-            105 => f(Some(self.i2c_master_slave)),
+            13 => f(Some(self.i2c_master_slave)),
+
             108 => f(Some(self.app_watchdog)),
+
+            0xff => f(Some(&self.ipc)),
             _ => f(None)
         }
     }
@@ -160,7 +164,6 @@ pub unsafe fn reset_handler() {
     sam4l::init();
 
     sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
-    let clock_freq = 16000000;
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -170,26 +173,22 @@ pub unsafe fn reset_handler() {
     //
     // UART console
     //
-    usart::USART2.set_clock_freq(clock_freq);
     let console = static_init!(
         Console<usart::USART>,
         Console::new(&usart::USART2,
                      115200,
                      &mut console::WRITE_BUF,
-                     &mut console::READ_BUF,
-                     &mut console::LINE_BUF,
                      kernel::Container::create()),
-        416/8);
-    usart::USART2.set_uart_client(console);
+        224/8);
+    hil::uart::UART::set_client(&usart::USART2, console);
 
-	usart::USART3.set_clock_freq(clock_freq);
-	let nrf_serialization = static_init!(
-		Nrf51822Serialization<usart::USART>,
-		Nrf51822Serialization::new(&usart::USART3,
-				&mut nrf51822_serialization::WRITE_BUF,
-				&mut nrf51822_serialization::READ_BUF),
-		608/8);
-	usart::USART3.set_uart_client(nrf_serialization);
+    let nrf_serialization = static_init!(
+        Nrf51822Serialization<usart::USART>,
+        Nrf51822Serialization::new(&usart::USART3,
+                &mut nrf51822_serialization::WRITE_BUF,
+                &mut nrf51822_serialization::READ_BUF),
+        608/8);
+    hil::uart::UART::set_client(&usart::USART3, nrf_serialization);
 
     //
     // Timer
@@ -215,17 +214,17 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
-	let i2c_modules = static_init!(
-		signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-		signpost_drivers::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C1,
-			&mut signpost_drivers::i2c_master_slave_driver::BUFFER1,
-			&mut signpost_drivers::i2c_master_slave_driver::BUFFER2,
-			&mut signpost_drivers::i2c_master_slave_driver::BUFFER3),
-		928/8);
-	sam4l::i2c::I2C1.set_master_client(i2c_modules);
-	sam4l::i2c::I2C1.set_slave_client(i2c_modules);
+    let i2c_modules = static_init!(
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+        capsules::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C1,
+            &mut capsules::i2c_master_slave_driver::BUFFER1,
+            &mut capsules::i2c_master_slave_driver::BUFFER2,
+            &mut capsules::i2c_master_slave_driver::BUFFER3),
+        928/8);
+    sam4l::i2c::I2C1.set_master_client(i2c_modules);
+    sam4l::i2c::I2C1.set_slave_client(i2c_modules);
 
-	hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C1, 0x22);
+    hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C1, 0x22);
 
     //
     // Remaining GPIO pins
@@ -270,12 +269,12 @@ pub unsafe fn reset_handler() {
         24);
     let app_timeout = static_init!(
         signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, sam4l::scb::reset),
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, cortexm4::scb::reset),
         128/8);
     app_timeout_alarm.set_client(app_timeout);
     let kernel_timeout = static_init!(
         signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, sam4l::scb::reset),
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, cortexm4::scb::reset),
         128/8);
     kernel_timeout_alarm.set_client(kernel_timeout);
     let app_watchdog = static_init!(
@@ -299,36 +298,34 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let radio_module = static_init!(
-        RadioModule,
-        RadioModule {
-            console: console,
-            gpio: gpio,
-            timer: timer,
-			i2c_master_slave: i2c_modules,
-			nrf51822:nrf_serialization,
-            app_watchdog: app_watchdog,
-        },
-        192/8);
-    
+    let radio_module = RadioModule {
+        console: console,
+        gpio: gpio,
+        timer: timer,
+        i2c_master_slave: i2c_modules,
+        nrf51822:nrf_serialization,
+        app_watchdog: app_watchdog,
+        ipc: kernel::ipc::IPC::new(),
+    };
+
     //fix the rst line
-	sam4l::gpio::PB[06].enable();
-	sam4l::gpio::PB[06].enable_output();
-	sam4l::gpio::PB[06].clear();
+    sam4l::gpio::PB[06].enable();
+    sam4l::gpio::PB[06].enable_output();
+    sam4l::gpio::PB[06].clear();
 
     //turn off gsm power
     sam4l::gpio::PA[07].enable();
-	sam4l::gpio::PA[07].enable_output();
-	sam4l::gpio::PA[07].set();
+    sam4l::gpio::PA[07].enable_output();
+    sam4l::gpio::PA[07].set();
 
 
 
     radio_module.console.initialize();
-	radio_module.nrf51822.initialize();
+    radio_module.nrf51822.initialize();
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    kernel::main(radio_module, &mut chip, load_processes());
+    kernel::main(&radio_module, &mut chip, load_processes(), &radio_module.ipc);
 }
