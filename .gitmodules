@@ -20,4 +20,4 @@
 	url = git@github.com:lab11/erpc
 [submodule "software/apps/libs/mbedtls"]
 	path = software/apps/libs/mbedtls
-	url = git@github.com:ARMmbed/mbedtls
+	url = git@github.com:lab11/mbedtls
