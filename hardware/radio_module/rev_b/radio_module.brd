@@ -8,8 +8,8 @@
 </settings>
 <grid distance="0.005" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -22,8 +22,8 @@
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -3465,30 +3465,15 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="22.098" y1="55.073" x2="22.11" y2="55.085" width="0.2032" layer="1"/>
 </signal>
 <signal name="GSM_TX">
-<contactref element="U11" pad="31"/>
 <contactref element="U3" pad="8"/>
-<contactref element="TP22" pad="TESTPOINT"/>
-<wire x1="26.543" y1="28.829" x2="26.543" y2="33.655" width="0.1016" layer="1"/>
-<wire x1="26.543" y1="33.655" x2="25.146" y2="35.052" width="0.1016" layer="1"/>
-<wire x1="25.146" y1="35.052" x2="26.162" y2="36.068" width="0.1016" layer="2"/>
-<wire x1="26.162" y1="36.068" x2="26.162" y2="40.894" width="0.1016" layer="2"/>
-<wire x1="26.162" y1="40.894" x2="30.48" y2="45.212" width="0.1016" layer="2"/>
-<wire x1="30.48" y1="45.212" x2="33.655" y2="45.212" width="0.1016" layer="2"/>
-<via x="33.655" y="45.212" extent="1-2" drill="0.2032"/>
-<wire x1="33.199" y1="44.022" x2="33.199" y2="44.756" width="0.1016" layer="1"/>
-<wire x1="33.199" y1="44.756" x2="33.655" y2="45.212" width="0.1016" layer="1"/>
+<wire x1="26.543" y1="28.829" x2="26.543" y2="33.274" width="0.1016" layer="1"/>
 <wire x1="26.543" y1="28.829" x2="26.797" y2="28.575" width="0.1016" layer="1"/>
 <wire x1="26.797" y1="28.575" x2="27.559" y2="28.575" width="0.1016" layer="1"/>
 <wire x1="27.559" y1="28.575" x2="27.813" y2="28.829" width="0.1016" layer="1"/>
 <wire x1="27.813" y1="28.829" x2="27.813" y2="29.43" width="0.1016" layer="1"/>
 <wire x1="27.813" y1="29.43" x2="27.794" y2="29.449" width="0.1016" layer="1"/>
-</signal>
-<signal name="GSM_RX">
 <contactref element="U11" pad="32"/>
-<contactref element="U3" pad="7"/>
 <contactref element="TP23" pad="TESTPOINT"/>
-<wire x1="26.797" y1="30.046" x2="26.797" y2="35.941" width="0.1016" layer="1"/>
-<wire x1="26.797" y1="35.941" x2="25.146" y2="37.592" width="0.1016" layer="1"/>
 <wire x1="25.146" y1="37.592" x2="25.908" y2="38.354" width="0.1016" layer="2"/>
 <wire x1="25.908" y1="38.354" x2="25.908" y2="41.021" width="0.1016" layer="2"/>
 <wire x1="25.908" y1="41.021" x2="30.353" y2="45.466" width="0.1016" layer="2"/>
@@ -3498,7 +3483,27 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="33.02" y1="45.593" x2="32.766" y2="45.339" width="0.1016" layer="1"/>
 <wire x1="32.699" y1="44.022" x2="32.699" y2="45.272" width="0.1016" layer="1"/>
 <wire x1="32.699" y1="45.272" x2="33.02" y2="45.593" width="0.1016" layer="1"/>
+<wire x1="26.543" y1="33.274" x2="26.035" y2="33.782" width="0.1016" layer="1"/>
+<wire x1="26.035" y1="33.782" x2="24.511" y2="33.782" width="0.1016" layer="1"/>
+<wire x1="24.511" y1="33.782" x2="23.876" y2="34.417" width="0.1016" layer="1"/>
+<wire x1="23.876" y1="34.417" x2="23.876" y2="35.433" width="0.1016" layer="1"/>
+<wire x1="23.876" y1="35.433" x2="25.146" y2="36.703" width="0.1016" layer="1"/>
+<wire x1="25.146" y1="36.703" x2="25.146" y2="37.592" width="0.1016" layer="1"/>
+</signal>
+<signal name="GSM_RX">
+<contactref element="U3" pad="7"/>
+<wire x1="26.797" y1="30.046" x2="26.797" y2="33.401" width="0.1016" layer="1"/>
 <wire x1="26.797" y1="30.046" x2="27.394" y2="29.449" width="0.1016" layer="1"/>
+<contactref element="U11" pad="31"/>
+<contactref element="TP22" pad="TESTPOINT"/>
+<wire x1="25.146" y1="35.052" x2="26.162" y2="36.068" width="0.1016" layer="2"/>
+<wire x1="26.162" y1="36.068" x2="26.162" y2="40.894" width="0.1016" layer="2"/>
+<wire x1="26.162" y1="40.894" x2="30.48" y2="45.212" width="0.1016" layer="2"/>
+<wire x1="30.48" y1="45.212" x2="33.655" y2="45.212" width="0.1016" layer="2"/>
+<via x="33.655" y="45.212" extent="1-2" drill="0.2032"/>
+<wire x1="33.199" y1="44.022" x2="33.199" y2="44.756" width="0.1016" layer="1"/>
+<wire x1="33.199" y1="44.756" x2="33.655" y2="45.212" width="0.1016" layer="1"/>
+<wire x1="26.797" y1="33.401" x2="25.146" y2="35.052" width="0.1016" layer="1"/>
 </signal>
 <signal name="ADVREFP">
 <contactref element="U11" pad="24"/>

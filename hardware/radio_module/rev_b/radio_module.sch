@@ -8856,6 +8856,10 @@ High-power, low thermal resistance package.</description>
 <wire x1="147.32" y1="71.12" x2="248.92" y2="71.12" width="0.1524" layer="97"/>
 <text x="15.24" y="96.52" size="2.54" layer="97">Address mux for energy gauges</text>
 <text x="149.86" y="66.04" size="2.54" layer="97">Programmer for the SAM4L</text>
+<text x="200.66" y="129.54" size="1.016" layer="97" align="bottom-center">Note: The 3G module 
+labels TX/RX from the 
+processor's reference 
+not the modules reference</text>
 </plain>
 <instances>
 <instance part="J1" gate="G$1" x="15.24" y="157.48"/>
@@ -9325,7 +9329,7 @@ High-power, low thermal resistance package.</description>
 <label x="30.48" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="GSM_TX" class="0">
+<net name="GSM_RX" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="PA11"/>
 <label x="177.8" y="132.08" size="1.27" layer="95" xref="yes"/>
@@ -9333,16 +9337,6 @@ High-power, low thermal resistance package.</description>
 <pinref part="TP22" gate="G$1" pin="TESTPOINT"/>
 <wire x1="172.72" y1="132.08" x2="177.8" y2="132.08" width="0.1524" layer="91"/>
 <junction x="172.72" y="132.08"/>
-</segment>
-</net>
-<net name="GSM_RX" class="0">
-<segment>
-<pinref part="U11" gate="G$1" pin="PA12"/>
-<label x="177.8" y="129.54" size="1.27" layer="95" xref="yes"/>
-<wire x1="170.18" y1="129.54" x2="172.72" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
-<wire x1="172.72" y1="129.54" x2="177.8" y2="129.54" width="0.1524" layer="91"/>
-<junction x="172.72" y="129.54"/>
 </segment>
 </net>
 <net name="IM880_TX" class="0">
@@ -9761,6 +9755,16 @@ High-power, low thermal resistance package.</description>
 <wire x1="218.44" y1="106.68" x2="218.44" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="U11" gate="G$1" pin="PA22"/>
 <wire x1="218.44" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GSM_TX" class="0">
+<segment>
+<pinref part="U11" gate="G$1" pin="PA12"/>
+<label x="177.8" y="129.54" size="1.27" layer="95" xref="yes"/>
+<wire x1="170.18" y1="129.54" x2="172.72" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
+<wire x1="172.72" y1="129.54" x2="177.8" y2="129.54" width="0.1524" layer="91"/>
+<junction x="172.72" y="129.54"/>
 </segment>
 </net>
 </nets>
