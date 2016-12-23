@@ -8655,10 +8655,7 @@ High-power, low thermal resistance package.</description>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
 <part name="LED1" library="leds" deviceset="LED" device="0603"/>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="XFDN-3"/>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
-<part name="Q2" library="fets" deviceset="MOSFET-NCHANNEL" device="XFDN-3"/>
-<part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="XFDN-3"/>
 <part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF"/>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF"/>
@@ -8682,7 +8679,6 @@ High-power, low thermal resistance package.</description>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
 <part name="LED2" library="leds" deviceset="LED" device="0603"/>
 <part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k"/>
-<part name="Q4" library="fets" deviceset="MOSFET-NCHANNEL" device="XFDN-3"/>
 <part name="GND17" library="umich" deviceset="GND" device=""/>
 <part name="P2" library="connector" deviceset="MOLEX_73251-135X" device=""/>
 <part name="J2" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
@@ -8798,7 +8794,7 @@ High-power, low thermal resistance package.</description>
 <part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
-<part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF"/>
+<part name="C20" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="100uF"/>
 <part name="J5" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
@@ -8843,6 +8839,10 @@ High-power, low thermal resistance package.</description>
 <part name="TP23" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP24" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP25" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="Q8" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="Q2" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
 </parts>
 <sheets>
 <sheet>
@@ -9742,25 +9742,25 @@ High-power, low thermal resistance package.</description>
 <net name="N$17" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="213.36" y1="106.68" x2="213.36" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA22"/>
-<wire x1="213.36" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="106.68" x2="213.36" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$1" pin="PA23"/>
+<wire x1="213.36" y1="101.6" x2="170.18" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$25" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="215.9" y1="106.68" x2="215.9" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA23"/>
-<wire x1="215.9" y1="101.6" x2="170.18" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="106.68" x2="215.9" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$1" pin="PA24"/>
+<wire x1="215.9" y1="99.06" x2="170.18" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="218.44" y1="106.68" x2="218.44" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA24"/>
-<wire x1="218.44" y1="99.06" x2="170.18" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="106.68" x2="218.44" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$1" pin="PA22"/>
+<wire x1="218.44" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -10343,16 +10343,7 @@ to make Normally on.</text>
 <instance part="GND4" gate="1" x="101.6" y="101.6"/>
 <instance part="LED1" gate="G$1" x="17.78" y="30.48" rot="R270"/>
 <instance part="R8" gate="G$1" x="17.78" y="40.64" rot="R90"/>
-<instance part="Q1" gate="G$1" x="17.78" y="20.32" smashed="yes" rot="MR0">
-<attribute name="NAME" x="12.7" y="20.32" size="1.778" layer="95" rot="MR0"/>
-</instance>
 <instance part="GND5" gate="1" x="17.78" y="7.62"/>
-<instance part="Q2" gate="G$1" x="116.84" y="109.22" smashed="yes">
-<attribute name="NAME" x="111.76" y="111.76" size="1.778" layer="95"/>
-</instance>
-<instance part="Q3" gate="G$1" x="91.44" y="111.76" smashed="yes">
-<attribute name="NAME" x="86.36" y="114.3" size="1.778" layer="95"/>
-</instance>
 <instance part="R25" gate="G$1" x="109.22" y="132.08" rot="R90"/>
 <instance part="C4" gate="G$1" x="198.12" y="66.04"/>
 <instance part="C5" gate="G$1" x="193.04" y="68.58"/>
@@ -10375,6 +10366,15 @@ to make Normally on.</text>
 <instance part="C20" gate="G$1" x="99.06" y="132.08"/>
 <instance part="GND29" gate="1" x="210.82" y="96.52"/>
 <instance part="U3" gate="G$1" x="38.1" y="96.52" rot="MR0"/>
+<instance part="Q8" gate="G$1" x="17.78" y="20.32" smashed="yes" rot="MR0">
+<attribute name="NAME" x="12.7" y="22.86" size="1.778" layer="95" rot="MR0"/>
+</instance>
+<instance part="Q1" gate="G$1" x="91.44" y="111.76" smashed="yes">
+<attribute name="NAME" x="96.52" y="114.3" size="1.778" layer="95"/>
+</instance>
+<instance part="Q2" gate="G$1" x="116.84" y="109.22" smashed="yes">
+<attribute name="NAME" x="121.92" y="111.76" size="1.778" layer="95"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -10473,27 +10473,27 @@ to make Normally on.</text>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
-<pinref part="Q3" gate="G$1" pin="S"/>
 <wire x1="91.44" y1="106.68" x2="91.44" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="104.14" x2="101.6" y2="104.14" width="0.1524" layer="91"/>
 <junction x="101.6" y="104.14"/>
 <pinref part="U12" gate="G$1" pin="DTR"/>
 <wire x1="124.46" y1="101.6" x2="116.84" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="S"/>
 <wire x1="116.84" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="101.6" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="104.14" x2="101.6" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="101.6" x2="116.84" y2="104.14" width="0.1524" layer="91"/>
 <junction x="116.84" y="101.6"/>
+<pinref part="Q1" gate="G$1" pin="S"/>
+<pinref part="Q2" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
-<pinref part="Q1" gate="G$1" pin="S"/>
 <wire x1="17.78" y1="10.16" x2="17.78" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="R31" gate="G$1" pin="1"/>
 <wire x1="17.78" y1="12.7" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="12.7" x2="17.78" y2="12.7" width="0.1524" layer="91"/>
 <junction x="17.78" y="12.7"/>
+<pinref part="Q8" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
@@ -10570,13 +10570,6 @@ to make Normally on.</text>
 <wire x1="50.8" y1="104.14" x2="53.34" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="R10" gate="G$1" pin="1"/>
-<wire x1="7.62" y1="101.6" x2="7.62" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="88.9" x2="25.4" y2="88.9" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="U12" gate="G$1" pin="TXD"/>
@@ -10593,19 +10586,19 @@ to make Normally on.</text>
 </net>
 <net name="N$13" class="0">
 <segment>
-<pinref part="Q1" gate="G$1" pin="D"/>
 <pinref part="LED1" gate="G$1" pin="CATHODE"/>
 <wire x1="17.78" y1="25.4" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
+<pinref part="Q8" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="GSM_LED" class="0">
 <segment>
-<pinref part="Q1" gate="G$1" pin="G"/>
 <wire x1="25.4" y1="20.32" x2="27.94" y2="20.32" width="0.1524" layer="91"/>
 <label x="35.56" y="20.32" size="1.27" layer="95" xref="yes"/>
 <pinref part="R31" gate="G$1" pin="2"/>
 <wire x1="27.94" y1="20.32" x2="35.56" y2="20.32" width="0.1524" layer="91"/>
 <junction x="27.94" y="20.32"/>
+<pinref part="Q8" gate="G$1" pin="G"/>
 </segment>
 <segment>
 <pinref part="U12" gate="G$1" pin="GPIO1"/>
@@ -10615,16 +10608,16 @@ to make Normally on.</text>
 </net>
 <net name="N$14" class="0">
 <segment>
-<pinref part="Q2" gate="G$1" pin="D"/>
 <pinref part="U12" gate="G$1" pin="RESET_N"/>
 <wire x1="116.84" y1="114.3" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="Q2" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="!GSM_RST" class="0">
 <segment>
-<pinref part="Q2" gate="G$1" pin="G"/>
 <wire x1="109.22" y1="109.22" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
 <label x="106.68" y="109.22" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="Q2" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -10642,13 +10635,13 @@ to make Normally on.</text>
 </net>
 <net name="N$16" class="0">
 <segment>
-<pinref part="Q3" gate="G$1" pin="D"/>
 <pinref part="U12" gate="G$1" pin="PWR_ON"/>
 <wire x1="91.44" y1="116.84" x2="109.22" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="R25" gate="G$1" pin="1"/>
 <wire x1="109.22" y1="116.84" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="127" x2="109.22" y2="116.84" width="0.1524" layer="91"/>
 <junction x="109.22" y="116.84"/>
+<pinref part="Q1" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -10666,9 +10659,9 @@ to make Normally on.</text>
 </net>
 <net name="GSM_POWER" class="0">
 <segment>
-<pinref part="Q3" gate="G$1" pin="G"/>
 <wire x1="83.82" y1="111.76" x2="81.28" y2="111.76" width="0.1524" layer="91"/>
 <label x="81.28" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -10783,6 +10776,14 @@ to make Normally on.</text>
 <wire x1="203.2" y1="99.06" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="P1" gate="G$1" pin="ANT"/>
 <wire x1="203.2" y1="106.68" x2="208.28" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="7.62" y1="101.6" x2="7.62" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="OE"/>
+<wire x1="7.62" y1="88.9" x2="25.4" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -10927,9 +10928,6 @@ Switch R40/R41 to be normally on.</text>
 <instance part="GND16" gate="1" x="10.16" y="142.24"/>
 <instance part="LED2" gate="G$1" x="83.82" y="99.06" rot="R270"/>
 <instance part="R9" gate="G$1" x="83.82" y="109.22" rot="R90"/>
-<instance part="Q4" gate="G$1" x="83.82" y="88.9" smashed="yes" rot="MR0">
-<attribute name="NAME" x="78.74" y="88.9" size="1.778" layer="95" rot="MR0"/>
-</instance>
 <instance part="GND17" gate="1" x="83.82" y="71.12"/>
 <instance part="P2" gate="G$1" x="195.58" y="109.22"/>
 <instance part="J2" gate="G$1" x="27.94" y="152.4"/>
@@ -10941,6 +10939,9 @@ Switch R40/R41 to be normally on.</text>
 <instance part="R37" gate="G$1" x="142.24" y="129.54" rot="R90"/>
 <instance part="GND28" gate="1" x="142.24" y="119.38"/>
 <instance part="GND30" gate="1" x="195.58" y="99.06"/>
+<instance part="Q3" gate="G$1" x="83.82" y="88.9" smashed="yes" rot="MR0">
+<attribute name="NAME" x="78.74" y="91.44" size="1.778" layer="95" rot="MR0"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -10964,13 +10965,13 @@ Switch R40/R41 to be normally on.</text>
 </segment>
 <segment>
 <pinref part="GND17" gate="1" pin="GND"/>
-<pinref part="Q4" gate="G$1" pin="S"/>
 <wire x1="83.82" y1="73.66" x2="83.82" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="R30" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="76.2" x2="83.82" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="76.2" x2="96.52" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="76.2" x2="96.52" y2="78.74" width="0.1524" layer="91"/>
 <junction x="83.82" y="76.2"/>
+<pinref part="Q3" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <pinref part="GND28" gate="1" pin="GND"/>
@@ -11025,9 +11026,9 @@ Switch R40/R41 to be normally on.</text>
 </net>
 <net name="N$28" class="0">
 <segment>
-<pinref part="Q4" gate="G$1" pin="D"/>
 <pinref part="LED2" gate="G$1" pin="CATHODE"/>
 <wire x1="83.82" y1="93.98" x2="83.82" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="Q3" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="IM880_SWCLK" class="0">
@@ -11105,7 +11106,6 @@ Switch R40/R41 to be normally on.</text>
 </net>
 <net name="IM880_NETWORK" class="0">
 <segment>
-<pinref part="Q4" gate="G$1" pin="G"/>
 <wire x1="91.44" y1="88.9" x2="96.52" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="88.9" x2="119.38" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="88.9" x2="119.38" y2="99.06" width="0.1524" layer="91"/>
@@ -11114,6 +11114,7 @@ Switch R40/R41 to be normally on.</text>
 <pinref part="R30" gate="G$1" pin="2"/>
 <wire x1="96.52" y1="86.36" x2="96.52" y2="88.9" width="0.1524" layer="91"/>
 <junction x="96.52" y="88.9"/>
+<pinref part="Q3" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="IM880_INT2" class="0">
