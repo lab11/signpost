@@ -139,17 +139,17 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="222.23" y2="0" width="0" layer="20"/>
-<wire x1="222.23" y1="0" x2="222.25" y2="228.6" width="0" layer="20"/>
-<wire x1="222.25" y1="228.6" x2="0" y2="228.6" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="228.58" y2="0" width="0" layer="20"/>
+<wire x1="228.58" y1="0" x2="228.6" y2="228.6" width="0" layer="20"/>
+<wire x1="228.6" y1="228.6" x2="0" y2="228.6" width="0" layer="20"/>
 <wire x1="0" y1="228.6" x2="0" y2="0" width="0" layer="20"/>
-<circle x="219.075" y="3.175" radius="2.921" width="0.254" layer="21"/>
-<circle x="3.175" y="113.665" radius="2.921" width="0.254" layer="21"/>
+<circle x="225.425" y="3.175" radius="2.921" width="0.254" layer="21"/>
+<circle x="3.175" y="114.3" radius="2.921" width="0.254" layer="21"/>
 <circle x="3.175" y="225.425" radius="2.921" width="0.254" layer="21"/>
-<circle x="219.075" y="225.425" radius="2.921" width="0.254" layer="21"/>
-<circle x="111.125" y="3.175" radius="2.921" width="0.254" layer="21"/>
-<circle x="111.125" y="225.425" radius="2.921" width="0.254" layer="21"/>
-<circle x="219.075" y="114.935" radius="2.921" width="0.254" layer="21"/>
+<circle x="225.425" y="225.425" radius="2.921" width="0.254" layer="21"/>
+<circle x="114.3" y="3.175" radius="2.921" width="0.254" layer="21"/>
+<circle x="114.3" y="225.425" radius="2.921" width="0.254" layer="21"/>
+<circle x="225.425" y="114.3" radius="2.921" width="0.254" layer="21"/>
 </plain>
 <libraries>
 <library name="batteries">
@@ -1530,9 +1530,9 @@ design rules under a new name.
 </pass>
 </autorouter>
 <elements>
-<element name="BAT1" library="batteries" package="PL-809797-1C" value="3.7V" x="115.062" y="2.54"/>
-<element name="BAT2" library="batteries" package="PL-809797-1C" value="3.7V" x="7.62" y="2.54"/>
-<element name="BAT3" library="batteries" package="PL-809797-1C" value="3.7V" x="7.62" y="114.3"/>
+<element name="BAT1" library="batteries" package="PL-809797-1C" value="3.7V" x="120.142" y="2.54"/>
+<element name="BAT2" library="batteries" package="PL-809797-1C" value="3.7V" x="8.128" y="2.54"/>
+<element name="BAT3" library="batteries" package="PL-809797-1C" value="3.7V" x="8.128" y="114.3"/>
 <element name="U1" library="chips" package="TSSOP-20/6MM" value="BQ77904" x="161.036" y="176.784">
 <attribute name="DIGIKEY" value="296-44599-5-ND" x="161.036" y="176.784" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MOUSER" value="595-BQ7790503PW" x="161.036" y="176.784" size="1.778" layer="27" display="off"/>
@@ -1564,8 +1564,8 @@ design rules under a new name.
 <contactref element="BAT1" pad="+"/>
 <contactref element="BAT2" pad="-"/>
 <contactref element="R3" pad="1"/>
-<wire x1="70.62" y1="108.54" x2="152.062" y2="108.54" width="10.16" layer="1"/>
-<wire x1="152.062" y1="108.54" x2="139.954" y2="120.648" width="2.54" layer="1"/>
+<wire x1="71.128" y1="108.54" x2="157.142" y2="108.54" width="10.16" layer="1"/>
+<wire x1="157.142" y1="108.54" x2="139.954" y2="120.648" width="2.54" layer="1"/>
 <wire x1="139.954" y1="120.648" x2="139.954" y2="172.72" width="2.54" layer="1"/>
 <wire x1="139.954" y1="172.72" x2="140.066" y2="172.72" width="0.254" layer="1"/>
 <wire x1="140.066" y1="172.72" x2="143.876" y2="176.53" width="0.762" layer="1"/>
@@ -1574,11 +1574,11 @@ design rules under a new name.
 <contactref element="BAT2" pad="+"/>
 <contactref element="BAT3" pad="-"/>
 <contactref element="R2" pad="1"/>
-<wire x1="44.62" y1="108.54" x2="44.62" y2="171.874" width="10.16" layer="1"/>
-<wire x1="44.62" y1="171.874" x2="70.358" y2="197.612" width="10.16" layer="1"/>
-<wire x1="70.358" y1="197.612" x2="70.866" y2="198.12" width="10.16" layer="1"/>
-<wire x1="70.866" y1="198.12" x2="70.866" y2="220.054" width="10.16" layer="1"/>
-<wire x1="70.866" y1="220.054" x2="70.62" y2="220.3" width="10.16" layer="1"/>
+<wire x1="45.128" y1="108.54" x2="45.128" y2="172.128" width="10.16" layer="1"/>
+<wire x1="45.128" y1="172.128" x2="70.358" y2="197.612" width="10.16" layer="1"/>
+<wire x1="70.358" y1="197.612" x2="71.12" y2="198.12" width="10.16" layer="1"/>
+<wire x1="71.12" y1="198.12" x2="71.12" y2="220.054" width="10.16" layer="1"/>
+<wire x1="71.12" y1="220.054" x2="71.128" y2="220.3" width="10.16" layer="1"/>
 <wire x1="143.876" y1="179.07" x2="139.192" y2="179.07" width="0.762" layer="1"/>
 <wire x1="139.192" y1="179.07" x2="84.582" y2="179.07" width="2.54" layer="1"/>
 <wire x1="84.582" y1="179.07" x2="68.58" y2="195.072" width="2.54" layer="1"/>
@@ -1625,6 +1625,8 @@ design rules under a new name.
 <wire x1="143.876" y1="184.15" x2="125.984" y2="184.15" width="0.762" layer="1"/>
 <wire x1="125.984" y1="184.15" x2="120.65" y2="189.484" width="0.762" layer="1"/>
 <wire x1="120.65" y1="189.484" x2="120.65" y2="194.056" width="0.762" layer="1"/>
+<via x="144.272" y="205.74" extent="1-16" drill="2.54"/>
+<wire x1="143.876" y1="184.15" x2="144.272" y2="205.74" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="GND">
 <contactref element="BAT1" pad="-"/>
@@ -1643,22 +1645,22 @@ design rules under a new name.
 <contactref element="U1" pad="17"/>
 <via x="3.175" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
 <via x="3.175" y="225.425" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="219.075" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="219.075" y="225.425" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="111.125" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="3.175" y="113.665" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="111.125" y="225.425" extent="1-16" drill="3.175" diameter="5.08"/>
-<via x="219.075" y="114.935" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="225.425" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="225.425" y="225.425" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="114.3" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="3.175" y="114.3" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="114.3" y="225.425" extent="1-16" drill="3.175" diameter="5.08"/>
+<via x="225.425" y="114.3" extent="1-16" drill="3.175" diameter="5.08"/>
 <polygon width="0.254" layer="16" isolate="0.3048">
 <vertex x="0" y="228.6"/>
-<vertex x="222.25" y="228.6"/>
-<vertex x="222.25" y="0"/>
+<vertex x="228.6" y="228.6"/>
+<vertex x="228.6" y="0"/>
 <vertex x="0" y="0"/>
 </polygon>
 <polygon width="0.254" layer="1" isolate="0.3048">
 <vertex x="0" y="228.6"/>
-<vertex x="222.25" y="228.6"/>
-<vertex x="222.25" y="0"/>
+<vertex x="228.6" y="228.6"/>
+<vertex x="228.6" y="0"/>
 <vertex x="0" y="0"/>
 </polygon>
 <via x="147.32" y="182.88" extent="1-16" drill="0.6096"/>
@@ -1668,10 +1670,10 @@ design rules under a new name.
 <via x="148.844" y="177.038" extent="1-16" drill="0.6096"/>
 <via x="150.114" y="179.832" extent="1-16" drill="0.6096"/>
 <polygon width="1.27" layer="1" isolate="0.3048">
-<vertex x="171.196" y="115.316"/>
-<vertex x="171.196" y="101.346"/>
-<vertex x="184.404" y="101.346"/>
-<vertex x="184.404" y="115.316"/>
+<vertex x="176.784" y="115.316"/>
+<vertex x="176.784" y="101.346"/>
+<vertex x="189.992" y="101.6"/>
+<vertex x="189.992" y="115.57"/>
 </polygon>
 <via x="114.554" y="174.244" extent="1-16" drill="2.54"/>
 <via x="114.554" y="183.896" extent="1-16" drill="2.54"/>
@@ -1806,6 +1808,8 @@ design rules under a new name.
 <wire x1="185.054" y1="170.688" x2="185.054" y2="166.198" width="0.762" layer="1"/>
 <wire x1="185.054" y1="166.198" x2="186.666" y2="164.586" width="0.762" layer="1"/>
 <wire x1="180.736" y1="170.688" x2="185.054" y2="170.688" width="0.762" layer="1"/>
+<via x="149.352" y="205.74" extent="1-16" drill="2.54"/>
+<wire x1="185.054" y1="176.022" x2="149.352" y2="205.74" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$17">
 <contactref element="R10" pad="1"/>
