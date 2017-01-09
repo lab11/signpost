@@ -64,6 +64,8 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -96,6 +98,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
@@ -131,6 +134,9 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -9654,6 +9660,127 @@ type 0309, grid 2.5 mm</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="headers">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Headers for pins and wires.</description>
+<packages>
+<package name="TESTPOINT_0.112IN">
+<pad name="1" x="0" y="0" drill="2.9464"/>
+<circle x="0" y="0" radius="2.3876" width="0.127" layer="21"/>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
+<package name="TESTPOINT_0.040IN">
+<pad name="TESTPOINT" x="0" y="0" drill="1.016"/>
+<text x="0" y="1.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="0" y="0" radius="1.27" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TEST_POINT">
+<description>Test point.</description>
+<pin name="TESTPOINT" x="2.54" y="0" visible="off" length="short" rot="R180"/>
+<circle x="-1.27" y="0" radius="1.27" width="0.254" layer="94"/>
+<text x="-3.175" y="0" size="1.016" layer="95" ratio="12" align="center-right">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TEST_POINT_0.112IN" prefix="TP">
+<description>Solder terminal, turreted</description>
+<gates>
+<gate name="G$1" symbol="TEST_POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPOINT_0.112IN">
+<connects>
+<connect gate="G$1" pin="TESTPOINT" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="NEWARK" value="40F6015" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TEST_POINT_0.040IN" prefix="TP">
+<description>0.040in Test Point</description>
+<gates>
+<gate name="G$1" symbol="TEST_POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPOINT_0.040IN">
+<connects>
+<connect gate="G$1" pin="TESTPOINT" pad="TESTPOINT"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="5001K-ND"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="connector">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Connectors for various cable types.</description>
+<packages>
+<package name="PJ-102AH">
+<pad name="1" x="0" y="-3" drill="1.65"/>
+<pad name="2" x="0" y="3" drill="1.65"/>
+<pad name="3" x="-4.7" y="0" drill="1.65"/>
+<wire x1="4.3" y1="10.7" x2="4.3" y2="-3.7" width="0.127" layer="21"/>
+<wire x1="4.3" y1="-3.7" x2="-4.7" y2="-3.7" width="0.127" layer="21"/>
+<wire x1="-4.7" y1="-3.7" x2="-4.7" y2="10.7" width="0.127" layer="21"/>
+<wire x1="-4.7" y1="10.7" x2="4.3" y2="10.7" width="0.127" layer="21"/>
+<wire x1="0" y1="10" x2="-1" y2="9" width="0.127" layer="51"/>
+<wire x1="-1" y1="9" x2="1" y2="9" width="0.127" layer="51"/>
+<wire x1="1" y1="9" x2="0" y2="10" width="0.127" layer="51"/>
+<wire x1="0" y1="10" x2="0" y2="7" width="0.127" layer="51"/>
+<text x="0" y="11" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<wire x1="2.54" y1="-1.27" x2="2.54" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="1.905" y1="-1.905" x2="3.175" y2="-1.905" width="0.127" layer="21"/>
+<wire x1="1.905" y1="3.81" x2="3.175" y2="3.81" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="BARREL-JACK">
+<pin name="VCC" x="7.62" y="2.54" length="short" rot="R180"/>
+<pin name="GND" x="7.62" y="-2.54" length="short" rot="R180"/>
+<pin name="NC" x="7.62" y="0" length="short" rot="R180"/>
+<wire x1="5.08" y1="5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="5.588" size="1.778" layer="95" ratio="12">&gt;NAME</text>
+<text x="-5.08" y="-7.366" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PJ-102AH" prefix="J">
+<description>DC Power Jack 
+&lt;br&gt;
+2.0mm / 5.5mm</description>
+<gates>
+<gate name="G$1" symbol="BARREL-JACK" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PJ-102AH">
+<connects>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="NC" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="CP-102AH-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins"/>
@@ -9696,6 +9823,19 @@ type 0309, grid 2.5 mm</description>
 <part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
 <part name="Q4" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="500MIL"/>
+<part name="TP1" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
+<part name="TP2" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
+<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP5" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
+<part name="TP6" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
+<part name="J1" library="connector" deviceset="PJ-102AH" device=""/>
+<part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP13" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP7" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9748,6 +9888,19 @@ number (bq7790503)</text>
 <attribute name="NAME" x="177.8" y="63.5" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="U$1" gate="G$1" x="236.22" y="175.26"/>
+<instance part="TP1" gate="G$1" x="215.9" y="147.32" smashed="yes" rot="R270"/>
+<instance part="TP2" gate="G$1" x="220.98" y="58.42" smashed="yes" rot="R270"/>
+<instance part="TP3" gate="G$1" x="210.82" y="147.32" smashed="yes" rot="R270"/>
+<instance part="TP4" gate="G$1" x="215.9" y="58.42" smashed="yes" rot="R270"/>
+<instance part="TP5" gate="G$1" x="210.82" y="58.42" smashed="yes" rot="R270"/>
+<instance part="TP6" gate="G$1" x="220.98" y="147.32" smashed="yes" rot="R270"/>
+<instance part="J1" gate="G$1" x="193.04" y="119.38"/>
+<instance part="TP9" gate="G$1" x="81.28" y="58.42" smashed="yes" rot="R270"/>
+<instance part="TP10" gate="G$1" x="119.38" y="58.42" smashed="yes" rot="R270"/>
+<instance part="TP11" gate="G$1" x="157.48" y="73.66" smashed="yes" rot="R270"/>
+<instance part="TP12" gate="G$1" x="190.5" y="83.82" smashed="yes" rot="R270"/>
+<instance part="TP13" gate="G$1" x="157.48" y="99.06" smashed="yes" rot="R270"/>
+<instance part="TP7" gate="G$1" x="60.96" y="58.42" smashed="yes" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -9786,8 +9939,22 @@ number (bq7790503)</text>
 <pinref part="R5" gate="G$1" pin="1"/>
 <wire x1="50.8" y1="137.16" x2="73.66" y2="137.16" width="0.1524" layer="91"/>
 <junction x="50.8" y="137.16"/>
-<wire x1="50.8" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91"/>
-<label x="213.36" y="144.78" size="1.016" layer="95" xref="yes"/>
+<wire x1="50.8" y1="144.78" x2="210.82" y2="144.78" width="0.1524" layer="91"/>
+<label x="226.06" y="144.78" size="1.016" layer="95" xref="yes"/>
+<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
+<wire x1="210.82" y1="144.78" x2="215.9" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="144.78" x2="220.98" y2="144.78" width="0.1524" layer="91"/>
+<junction x="215.9" y="144.78"/>
+<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
+<junction x="210.82" y="144.78"/>
+<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
+<wire x1="220.98" y1="144.78" x2="226.06" y2="144.78" width="0.1524" layer="91"/>
+<junction x="220.98" y="144.78"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="VCC"/>
+<wire x1="200.66" y1="121.92" x2="205.74" y2="121.92" width="0.1524" layer="91"/>
+<label x="205.74" y="121.92" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -9797,9 +9964,11 @@ number (bq7790503)</text>
 <wire x1="50.8" y1="71.12" x2="50.8" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="55.88" x2="50.8" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="55.88" x2="60.96" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="55.88" x2="76.2" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="55.88" x2="83.82" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="55.88" x2="81.28" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="55.88" x2="83.82" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="55.88" x2="83.82" y2="78.74" width="0.1524" layer="91"/>
 <junction x="50.8" y="55.88"/>
 <pinref part="C2" gate="G$1" pin="2"/>
@@ -9826,6 +9995,10 @@ number (bq7790503)</text>
 <wire x1="205.74" y1="50.8" x2="205.74" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="CCFG"/>
 <wire x1="205.74" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="TP9" gate="G$1" pin="TESTPOINT"/>
+<junction x="81.28" y="55.88"/>
+<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
+<junction x="60.96" y="55.88"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="DVSS"/>
@@ -9905,13 +10078,16 @@ number (bq7790503)</text>
 <pinref part="U1" gate="G$1" pin="SRN"/>
 <wire x1="104.14" y1="71.12" x2="104.14" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="2"/>
-<wire x1="104.14" y1="55.88" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="55.88" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
 <junction x="104.14" y="55.88"/>
 <pinref part="R6" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="55.88" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="55.88" x2="152.4" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="58.42" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <junction x="147.32" y="55.88"/>
 <pinref part="Q3" gate="G$1" pin="S"/>
+<pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
+<junction x="119.38" y="55.88"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -9956,6 +10132,8 @@ number (bq7790503)</text>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="157.48" y1="71.12" x2="157.48" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="Q3" gate="G$1" pin="G"/>
+<pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
+<junction x="157.48" y="71.12"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -9975,6 +10153,8 @@ number (bq7790503)</text>
 <wire x1="190.5" y1="81.28" x2="180.34" y2="81.28" width="0.1524" layer="91"/>
 <junction x="180.34" y="81.28"/>
 <pinref part="Q4" gate="G$1" pin="G"/>
+<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
+<junction x="190.5" y="81.28"/>
 </segment>
 </net>
 <net name="VPACK-" class="0">
@@ -9982,14 +10162,28 @@ number (bq7790503)</text>
 <wire x1="185.42" y1="55.88" x2="190.5" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="55.88" x2="198.12" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="55.88" x2="213.36" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="55.88" x2="210.82" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="55.88" x2="215.9" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="55.88" x2="220.98" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="55.88" x2="226.06" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="58.42" x2="190.5" y2="55.88" width="0.1524" layer="91"/>
 <junction x="190.5" y="55.88"/>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="198.12" y1="55.88" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
 <junction x="198.12" y="55.88"/>
-<label x="213.36" y="55.88" size="1.016" layer="95" xref="yes"/>
+<label x="226.06" y="55.88" size="1.016" layer="95" xref="yes"/>
 <pinref part="Q4" gate="G$1" pin="S"/>
+<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
+<junction x="220.98" y="55.88"/>
+<pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
+<junction x="215.9" y="55.88"/>
+<pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
+<junction x="210.82" y="55.88"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="GND"/>
+<wire x1="200.66" y1="116.84" x2="205.74" y2="116.84" width="0.1524" layer="91"/>
+<label x="205.74" y="116.84" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$17" class="0">
@@ -10017,6 +10211,8 @@ number (bq7790503)</text>
 <wire x1="157.48" y1="96.52" x2="157.48" y2="91.44" width="0.1524" layer="91"/>
 <junction x="157.48" y="91.44"/>
 <pinref part="R12" gate="G$1" pin="2"/>
+<pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
+<junction x="157.48" y="96.52"/>
 </segment>
 </net>
 </nets>
