@@ -42,6 +42,16 @@ uint8_t minmea_checksum(const char *sentence)
     return checksum;
 }
 
+bool signpost_isprint(unsigned char c) {
+    // http://www.cplusplus.com/reference/cctype/isprint/
+    return (c > 0x1f) && (c < 0x7f);
+}
+
+bool signpost_isdigit(unsigned char c) {
+    // http://www.cplusplus.com/reference/cctype/isdigit/
+    return (c >= 48) && (c <= 57);
+}
+
 bool minmea_check(const char *sentence, bool strict)
 {
     uint8_t checksum = 0x00;
@@ -55,7 +65,7 @@ bool minmea_check(const char *sentence, bool strict)
         return false;
 
     // The optional checksum is an XOR of all bytes between "$" and "*".
-    while (*sentence && *sentence != '*' && isprint((unsigned char) *sentence))
+    while (*sentence && *sentence != '*' && signpost_isprint((unsigned char) *sentence))
         checksum ^= *sentence++;
 
     // If checksum is present...
@@ -87,7 +97,7 @@ bool minmea_check(const char *sentence, bool strict)
 }
 
 static inline bool minmea_isfield(char c) {
-    return isprint((unsigned char) c) && c != ',' && c != '*';
+    return signpost_isprint((unsigned char) c) && c != ',' && c != '*';
 }
 
 bool minmea_scan(const char *sentence, const char *format, ...)
@@ -168,7 +178,7 @@ bool minmea_scan(const char *sentence, const char *format, ...)
                             sign = 1;
                         } else if (*field == '-' && !sign && value == -1) {
                             sign = -1;
-                        } else if (isdigit((unsigned char) *field)) {
+                        } else if (signpost_isdigit((unsigned char) *field)) {
                             int digit = *field - '0';
                             if (value == -1)
                                 value = 0;
@@ -264,7 +274,7 @@ bool minmea_scan(const char *sentence, const char *format, ...)
                 if (field && minmea_isfield(*field)) {
                     // Always six digits.
                     for (int f=0; f<6; f++)
-                        if (!isdigit((unsigned char) field[f]))
+                        if (!signpost_isdigit((unsigned char) field[f]))
                             goto parse_error;
 
                     char dArr[] = {field[0], field[1], '\0'};
@@ -288,7 +298,7 @@ bool minmea_scan(const char *sentence, const char *format, ...)
                 if (field && minmea_isfield(*field)) {
                     // Minimum required: integer time.
                     for (int f=0; f<6; f++)
-                        if (!isdigit((unsigned char) field[f]))
+                        if (!signpost_isdigit((unsigned char) field[f]))
                             goto parse_error;
 
                     char hArr[] = {field[0], field[1], '\0'};
@@ -303,7 +313,7 @@ bool minmea_scan(const char *sentence, const char *format, ...)
                     if (*field++ == '.') {
                         int value = 0;
                         int scale = 1000000;
-                        while (isdigit((unsigned char) *field) && scale > 1) {
+                        while (signpost_isdigit((unsigned char) *field) && scale > 1) {
                             value = (value * 10) + (*field++ - '0');
                             scale /= 10;
                         }
