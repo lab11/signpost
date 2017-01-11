@@ -407,7 +407,7 @@
 <text x="-5.08" y="-26.67" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-29.21" size="1.27" layer="49" align="center">X</text>
 </package>
-<package name="BACKPLANE_MODULE_14PIN_6PIN">
+<package name="BACKPLANE_MODULE_14PIN_8PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
 <wire x1="-26.8351" y1="33.9852" x2="-25.6032" y2="35.2171" width="0.127" layer="49" curve="-90"/>
 <wire x1="-25.6032" y1="35.2171" x2="25.6032" y2="35.2171" width="0.127" layer="49"/>
@@ -516,16 +516,18 @@
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 <text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
-<pad name="15" x="-2.54" y="-29.21" drill="1.016" shape="square" rot="R180"/>
-<pad name="16" x="-2.54" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
-<pad name="17" x="0" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
-<pad name="18" x="0" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
-<pad name="20" x="2.54" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
-<pad name="19" x="2.54" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
-<wire x1="-5.08" y1="-30.48" x2="-5.08" y2="-25.4" width="0.127" layer="21"/>
-<wire x1="-5.08" y1="-25.4" x2="5.08" y2="-25.4" width="0.127" layer="21"/>
-<wire x1="5.08" y1="-25.4" x2="5.08" y2="-30.48" width="0.127" layer="21"/>
-<wire x1="5.08" y1="-30.48" x2="-5.08" y2="-30.48" width="0.127" layer="21"/>
+<pad name="15" x="-3.81" y="-29.21" drill="1.016" shape="square" rot="R180"/>
+<pad name="16" x="-3.81" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
+<pad name="17" x="-1.27" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
+<pad name="18" x="-1.27" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
+<pad name="20" x="1.27" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
+<pad name="19" x="1.27" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
+<wire x1="-6.35" y1="-30.48" x2="-6.35" y2="-25.4" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-25.4" x2="6.35" y2="-25.4" width="0.127" layer="21"/>
+<wire x1="6.35" y1="-25.4" x2="6.35" y2="-30.48" width="0.127" layer="21"/>
+<wire x1="6.35" y1="-30.48" x2="-6.35" y2="-30.48" width="0.127" layer="21"/>
+<pad name="21" x="3.81" y="-29.21" drill="1.016" shape="octagon" rot="R180"/>
+<pad name="22" x="3.81" y="-26.67" drill="1.016" shape="octagon" rot="R180"/>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -1575,16 +1577,18 @@
 <text x="20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, 1.15)</text>
 <text x="20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, -1.15)</text>
 <text x="-20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, -1.15)</text>
-<pad name="20" x="2.54" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="19" x="2.54" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="17" x="0" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="18" x="0" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="16" x="-2.54" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="15" x="-2.54" y="-29.21" drill="0.9906" shape="square" rot="R180"/>
-<wire x1="-5.08" y1="-30.48" x2="-5.08" y2="-25.4" width="0.127" layer="22"/>
-<wire x1="-5.08" y1="-25.4" x2="5.08" y2="-25.4" width="0.127" layer="22"/>
-<wire x1="5.08" y1="-25.4" x2="5.08" y2="-30.48" width="0.127" layer="22"/>
-<wire x1="5.08" y1="-30.48" x2="-5.08" y2="-30.48" width="0.127" layer="22"/>
+<pad name="20" x="1.27" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="19" x="1.27" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="17" x="-1.27" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="18" x="-1.27" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="16" x="-3.81" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="15" x="-3.81" y="-29.21" drill="0.9906" shape="square" rot="R180"/>
+<wire x1="-6.35" y1="-30.48" x2="-6.35" y2="-25.4" width="0.127" layer="22"/>
+<wire x1="-6.35" y1="-25.4" x2="6.35" y2="-25.4" width="0.127" layer="22"/>
+<wire x1="6.35" y1="-25.4" x2="6.35" y2="-30.48" width="0.127" layer="22"/>
+<wire x1="6.35" y1="-30.48" x2="-6.35" y2="-30.48" width="0.127" layer="22"/>
+<pad name="21" x="3.81" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="22" x="3.81" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
 </package>
 <package name="BACKPLANE_MODULE_14PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -2525,19 +2529,19 @@ S high: D = D2</text>
 </symbol>
 <symbol name="HEADER_MODULE_DEBUG">
 <pin name="5V" x="10.16" y="20.32" length="middle" rot="R180"/>
-<pin name="GND" x="10.16" y="-35.56" length="middle" rot="R180"/>
+<pin name="GND" x="10.16" y="-43.18" length="middle" rot="R180"/>
 <pin name="MOD_OUT" x="10.16" y="5.08" length="middle" rot="R180"/>
 <pin name="SDA" x="10.16" y="0" length="middle" rot="R180"/>
 <pin name="SCL" x="10.16" y="-2.54" length="middle" rot="R180"/>
 <pin name="USB_D+" x="10.16" y="-10.16" length="middle" rot="R180"/>
 <pin name="USB_D-" x="10.16" y="-12.7" length="middle" rot="R180"/>
 <pin name="PPS" x="10.16" y="12.7" length="middle" rot="R180"/>
-<wire x1="5.08" y1="22.86" x2="5.08" y2="-38.1" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-38.1" x2="-12.7" y2="-38.1" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-38.1" x2="-12.7" y2="22.86" width="0.254" layer="94"/>
+<wire x1="5.08" y1="22.86" x2="5.08" y2="-45.72" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-45.72" x2="-12.7" y2="-45.72" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-45.72" x2="-12.7" y2="22.86" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="22.86" x2="5.08" y2="22.86" width="0.254" layer="94"/>
 <text x="-12.7" y="25.4" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-<text x="-12.7" y="-40.64" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-12.7" y="-48.26" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="USB_VBUS" x="10.16" y="-7.62" length="middle" rot="R180"/>
 <pin name="VCCIO" x="10.16" y="17.78" length="middle" rot="R180"/>
 <pin name="MOD_IN" x="10.16" y="7.62" length="middle" rot="R180"/>
@@ -2545,9 +2549,11 @@ S high: D = D2</text>
 **Supplied by module**</text>
 <pin name="DBG_TX" x="10.16" y="-17.78" visible="pin" length="middle" rot="R180"/>
 <pin name="DBG_RX" x="10.16" y="-20.32" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_GPIO1" x="10.16" y="-25.4" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_GPIO2" x="10.16" y="-27.94" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_GPIO3" x="10.16" y="-30.48" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO1" x="10.16" y="-35.56" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO2" x="10.16" y="-38.1" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_!RESET" x="10.16" y="-30.48" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDCLK" x="10.16" y="-27.94" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDIO" x="10.16" y="-25.4" visible="pin" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -3555,10 +3561,12 @@ with External Sense Resistor</description>
 <device name="" package="MODULE_GENERIC_DEBUG">
 <connects>
 <connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
 <connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
 <connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
-<connect gate="G$1" pin="DBG_GPIO3" pad="20"/>
 <connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
 <connect gate="G$1" pin="DBG_TX" pad="17"/>
 <connect gate="G$1" pin="GND" pad="1 14 15"/>
 <connect gate="G$1" pin="MOD_IN" pad="10"/>
@@ -3585,13 +3593,15 @@ with External Sense Resistor</description>
 <gate name="G$1" symbol="HEADER_MODULE_DEBUG" x="2.54" y="0"/>
 </gates>
 <devices>
-<device name="" package="BACKPLANE_MODULE_14PIN_6PIN">
+<device name="" package="BACKPLANE_MODULE_14PIN_8PIN">
 <connects>
 <connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
 <connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
 <connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
-<connect gate="G$1" pin="DBG_GPIO3" pad="20"/>
 <connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
 <connect gate="G$1" pin="DBG_TX" pad="17"/>
 <connect gate="G$1" pin="GND" pad="1 14 15"/>
 <connect gate="G$1" pin="MOD_IN" pad="10"/>
