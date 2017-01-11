@@ -8785,7 +8785,6 @@ High-power, low thermal resistance package.</description>
 <part name="Q5" library="fets" deviceset="SI223DDS" device=""/>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
 <part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="Q6" library="fets" deviceset="SI223DDS" device=""/>
 <part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
@@ -8843,6 +8842,7 @@ High-power, low thermal resistance package.</description>
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
 <part name="Q2" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
 <part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -10323,12 +10323,13 @@ prevent glitching</text>
 <wire x1="66.04" y1="71.12" x2="0" y2="71.12" width="0.1524" layer="97"/>
 <text x="2.54" y="137.16" size="2.54" layer="97">Level Translator, GSM_INT = 1.8V</text>
 <text x="71.12" y="96.52" size="1.27" layer="97">UART lines for commands</text>
-<text x="172.72" y="147.32" size="1.27" layer="97">DNP</text>
 <text x="152.4" y="162.56" size="1.27" layer="97">Configured to be
 Normally off.
 Can switch R37/R36 
 to make Normally on.</text>
 <text x="71.12" y="71.12" size="1.27" layer="97">Connector for FW upgrade</text>
+<text x="200.66" y="91.44" size="1.016" layer="97" align="bottom-center">The System Integration Manual has an error.
+This MUST be pulled up on the SARA_G3*.</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -10366,7 +10367,6 @@ to make Normally on.</text>
 </instance>
 <instance part="GND25" gate="1" x="172.72" y="142.24"/>
 <instance part="R32" gate="G$1" x="172.72" y="152.4" rot="R90"/>
-<instance part="R33" gate="G$1" x="175.26" y="162.56" rot="R90"/>
 <instance part="C20" gate="G$1" x="99.06" y="132.08"/>
 <instance part="GND29" gate="1" x="210.82" y="96.52"/>
 <instance part="U3" gate="G$1" x="38.1" y="96.52" rot="MR0"/>
@@ -10379,6 +10379,7 @@ to make Normally on.</text>
 <instance part="Q2" gate="G$1" x="116.84" y="109.22" smashed="yes">
 <attribute name="NAME" x="121.92" y="111.76" size="1.778" layer="95"/>
 </instance>
+<instance part="R4" gate="G$1" x="182.88" y="93.98" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -10573,6 +10574,11 @@ to make Normally on.</text>
 <pinref part="U3" gate="G$1" pin="VCC_A"/>
 <wire x1="50.8" y1="104.14" x2="53.34" y2="104.14" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="182.88" y1="96.52" x2="182.88" y2="101.6" width="0.1524" layer="91"/>
+<label x="182.88" y="101.6" size="1.016" layer="95" rot="R90" xref="yes"/>
+</segment>
 </net>
 <net name="N$10" class="0">
 <segment>
@@ -10692,13 +10698,8 @@ to make Normally on.</text>
 <net name="GSM_3V8" class="0">
 <segment>
 <pinref part="Q5" gate="G$1" pin="S"/>
-<wire x1="190.5" y1="160.02" x2="190.5" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="160.02" x2="190.5" y2="172.72" width="0.1524" layer="91"/>
 <label x="190.5" y="172.72" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="R33" gate="G$1" pin="2"/>
-<wire x1="190.5" y1="167.64" x2="190.5" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="165.1" x2="175.26" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="167.64" x2="190.5" y2="167.64" width="0.1524" layer="91"/>
-<junction x="190.5" y="167.64"/>
 </segment>
 <segment>
 <pinref part="R8" gate="G$1" pin="2"/>
@@ -10709,15 +10710,11 @@ to make Normally on.</text>
 <net name="GSM_POWER_GATE" class="0">
 <segment>
 <pinref part="Q5" gate="G$1" pin="G"/>
-<wire x1="182.88" y1="154.94" x2="175.26" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="154.94" x2="172.72" y2="154.94" width="0.1524" layer="91"/>
 <label x="167.64" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R32" gate="G$1" pin="2"/>
-<wire x1="175.26" y1="154.94" x2="172.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="154.94" x2="167.64" y2="154.94" width="0.1524" layer="91"/>
 <junction x="172.72" y="154.94"/>
-<pinref part="R33" gate="G$1" pin="1"/>
-<wire x1="175.26" y1="157.48" x2="175.26" y2="154.94" width="0.1524" layer="91"/>
-<junction x="175.26" y="154.94"/>
 </segment>
 </net>
 <net name="GSM_GATED" class="0">
@@ -10788,6 +10785,13 @@ to make Normally on.</text>
 <wire x1="7.62" y1="101.6" x2="7.62" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="OE"/>
 <wire x1="7.62" y1="88.9" x2="25.4" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$29" class="0">
+<segment>
+<pinref part="U12" gate="G$1" pin="SIM_DET"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="175.26" y1="88.9" x2="182.88" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
