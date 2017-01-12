@@ -5677,67 +5677,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </deviceset>
 </devicesets>
 </library>
-<library name="SparkFun-Aesthetics">
-<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
-In this library you'll find non-functional items- supply symbols, logos, notations, frame blocks, etc.&lt;br&gt;&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
-&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; CC v3.0 Share-Alike You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="FIDUCIAL-1.5X3">
-<circle x="0" y="0" radius="0.9055" width="1.27" layer="29"/>
-<smd name="1" x="0" y="0" dx="1.5" dy="1.5" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="FIDUCIAL-1X2">
-<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="FIDUCIAL-1X2.5">
-<circle x="0" y="0" radius="0.9" width="1.27" layer="29"/>
-<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="MICRO-FIDUCIAL">
-<smd name="1" x="0" y="0" dx="0.635" dy="0.635" layer="1" roundness="100" cream="no"/>
-</package>
-</packages>
-<symbols>
-<symbol name="FIDUCIAL">
-<wire x1="-0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.254" layer="94"/>
-<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="FIDUCIAL" prefix="JP">
-<description>&lt;b&gt;Fiducial Alignment Points&lt;/b&gt;
-Various fiducial points for machine vision alignment.</description>
-<gates>
-<gate name="G$1" symbol="FIDUCIAL" x="0" y="0"/>
-</gates>
-<devices>
-<device name="1.5X3" package="FIDUCIAL-1.5X3">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="1X2" package="FIDUCIAL-1X2">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="1X2.5" package="FIDUCIAL-1X2.5">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="UFIDUCIAL" package="MICRO-FIDUCIAL">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="supply1">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
  GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
@@ -7860,7 +7799,6 @@ Low profile connectors, straight&lt;p&gt;
 <part name="LOGO8" library="logos" deviceset="UMICH_SOLID" device="_MEDIUM"/>
 <part name="R51" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$51" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="JP4" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
@@ -8125,7 +8063,6 @@ Low profile connectors, straight&lt;p&gt;
 <instance part="LOGO1" gate="G$1" x="2.54" y="172.72"/>
 <instance part="U$52" gate="G$1" x="162.56" y="165.1"/>
 <instance part="LOGO8" gate="G$1" x="15.24" y="132.08"/>
-<instance part="JP4" gate="G$1" x="223.52" y="50.8"/>
 </instances>
 <busses>
 </busses>
