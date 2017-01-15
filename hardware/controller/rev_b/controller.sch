@@ -65,7 +65,9 @@
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
 <layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -90,6 +92,7 @@
 <layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="113" name="IDFDebug" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="no" active="yes"/>
+<layer number="118" name="Rect_Pads" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
@@ -98,6 +101,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
@@ -134,6 +138,12 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
@@ -142,6 +152,7 @@
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
@@ -1794,13 +1805,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="24.765" y1="20.955" x2="31.115" y2="14.605" width="0.127" layer="51" curve="90"/>
 <wire x1="31.115" y1="14.605" x2="34.036" y2="14.605" width="0.127" layer="51"/>
 <wire x1="34.036" y1="14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="24.765" y2="-20.955" width="0.127" layer="51"/>
 <wire x1="24.765" y1="-20.955" x2="31.115" y2="-14.605" width="0.127" layer="51" curve="-90"/>
 <wire x1="31.115" y1="-14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
 <wire x1="-34.036" y1="-14.605" x2="-31.115" y2="-14.605" width="0.127" layer="51"/>
 <wire x1="-31.115" y1="-14.605" x2="-24.765" y2="-20.955" width="0.127" layer="51" curve="-90"/>
-<wire x1="-24.765" y1="-20.955" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
 <wire x1="-34.036" y1="-14.605" x2="-34.036" y2="14.605" width="0.127" layer="51"/>
 <wire x1="-34.036" y1="14.605" x2="-31.115" y2="14.605" width="0.127" layer="51"/>
 <wire x1="-31.115" y1="14.605" x2="-24.765" y2="20.955" width="0.127" layer="51" curve="90"/>
@@ -1908,6 +1916,66 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0" y="-29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-26.67" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-29.21" size="1.27" layer="49" align="center">X</text>
+<wire x1="24.765" y1="-33.02" x2="24.765" y2="-20.955" width="0.127" layer="51"/>
+<wire x1="-24.765" y1="-20.955" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
+<wire x1="24.765" y1="-34.29" x2="17.145" y2="-34.29" width="0.127" layer="51"/>
+<wire x1="17.145" y1="-34.29" x2="17.145" y2="-33.02" width="0.127" layer="51" curve="-180"/>
+<wire x1="-17.145" y1="-34.29" x2="-17.145" y2="-33.02" width="0.127" layer="51" curve="180"/>
+<wire x1="-24.765" y1="-33.02" x2="-17.145" y2="-33.02" width="0.127" layer="51"/>
+<wire x1="24.765" y1="-33.02" x2="17.145" y2="-33.02" width="0.127" layer="51"/>
+<wire x1="-17.145" y1="-34.29" x2="-24.765" y2="-34.29" width="0.127" layer="51"/>
+<wire x1="-24.765" y1="-34.29" x2="-24.765" y2="-46.99" width="0.127" layer="51"/>
+<wire x1="-24.765" y1="-46.99" x2="24.765" y2="-46.99" width="0.127" layer="51"/>
+<wire x1="24.765" y1="-46.99" x2="24.765" y2="-34.29" width="0.127" layer="51"/>
+<hole x="0" y="-33.655" drill="0.381"/>
+<hole x="1.27" y="-33.655" drill="0.381"/>
+<hole x="-1.27" y="-33.655" drill="0.381"/>
+<hole x="3.81" y="-33.655" drill="0.381"/>
+<hole x="5.08" y="-33.655" drill="0.381"/>
+<hole x="2.54" y="-33.655" drill="0.381"/>
+<hole x="-3.81" y="-33.655" drill="0.381"/>
+<hole x="-2.54" y="-33.655" drill="0.381"/>
+<hole x="-5.08" y="-33.655" drill="0.381"/>
+<hole x="11.43" y="-33.655" drill="0.381"/>
+<hole x="12.7" y="-33.655" drill="0.381"/>
+<hole x="10.16" y="-33.655" drill="0.381"/>
+<hole x="15.24" y="-33.655" drill="0.381"/>
+<hole x="13.97" y="-33.655" drill="0.381"/>
+<hole x="7.62" y="-33.655" drill="0.381"/>
+<hole x="8.89" y="-33.655" drill="0.381"/>
+<hole x="6.35" y="-33.655" drill="0.381"/>
+<hole x="-11.43" y="-33.655" drill="0.381"/>
+<hole x="-10.16" y="-33.655" drill="0.381"/>
+<hole x="-12.7" y="-33.655" drill="0.381"/>
+<hole x="-7.62" y="-33.655" drill="0.381"/>
+<hole x="-6.35" y="-33.655" drill="0.381"/>
+<hole x="-8.89" y="-33.655" drill="0.381"/>
+<hole x="-15.24" y="-33.655" drill="0.381"/>
+<hole x="-13.97" y="-33.655" drill="0.381"/>
+<pad name="105" x="-17.78" y="-39.37" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="104" x="-15.24" y="-39.37" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="102" x="-15.24" y="-41.91" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="103" x="-17.78" y="-41.91" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="101" x="-17.78" y="-44.45" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="100" x="-15.24" y="-44.45" drill="0.9906" shape="square" rot="R270"/>
+<wire x1="-13.97" y1="-46.99" x2="-19.05" y2="-46.99" width="0.127" layer="22"/>
+<wire x1="-19.05" y1="-46.99" x2="-19.05" y2="-34.29" width="0.127" layer="22"/>
+<wire x1="-19.05" y1="-34.29" x2="-13.97" y2="-34.29" width="0.127" layer="22"/>
+<wire x1="-13.97" y1="-34.29" x2="-13.97" y2="-46.99" width="0.127" layer="22"/>
+<pad name="106" x="-15.24" y="-36.83" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="107" x="-17.78" y="-36.83" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="205" x="15.24" y="-39.37" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="204" x="17.78" y="-39.37" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="202" x="17.78" y="-41.91" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="203" x="15.24" y="-41.91" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="201" x="15.24" y="-44.45" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="200" x="17.78" y="-44.45" drill="0.9906" shape="square" rot="R270"/>
+<wire x1="19.05" y1="-46.99" x2="13.97" y2="-46.99" width="0.127" layer="22"/>
+<wire x1="13.97" y1="-46.99" x2="13.97" y2="-34.29" width="0.127" layer="22"/>
+<wire x1="13.97" y1="-34.29" x2="19.05" y2="-34.29" width="0.127" layer="22"/>
+<wire x1="19.05" y1="-34.29" x2="19.05" y2="-46.99" width="0.127" layer="22"/>
+<pad name="206" x="17.78" y="-36.83" drill="0.9906" shape="octagon" rot="R270"/>
+<pad name="207" x="15.24" y="-36.83" drill="0.9906" shape="octagon" rot="R270"/>
 </package>
 <package name="UQFN-10">
 <smd name="1" x="-0.2" y="-0.65" dx="0.2" dy="0.9" layer="1"/>
@@ -1993,7 +2061,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="!SMBALERT" x="17.78" y="22.86" length="middle" rot="R180"/>
 <wire x1="-12.7" y1="40.64" x2="12.7" y2="40.64" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
-<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROL MODULE</text>
 <pin name="!BACKPLANE_RESET" x="17.78" y="33.02" length="middle" rot="R180"/>
 </symbol>
 <symbol name="VCC_LINUX">
@@ -2092,16 +2160,46 @@ S high: D = D2</text>
 <text x="-0.508" y="-2.54" size="1.27" layer="95" ratio="12" rot="R90">&gt;NAME</text>
 <text x="3.048" y="-2.54" size="1.27" layer="96" ratio="12" rot="R90">&gt;VALUE</text>
 </symbol>
+<symbol name="HEADER_DEBUG">
+<wire x1="25.4" y1="30.48" x2="25.4" y2="0" width="0.254" layer="94"/>
+<wire x1="25.4" y1="0" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="5.08" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="30.48" width="0.254" layer="94"/>
+<wire x1="0" y1="30.48" x2="5.08" y2="30.48" width="0.254" layer="94"/>
+<text x="5.08" y="33.02" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="5.08" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<wire x1="5.08" y1="30.48" x2="25.4" y2="30.48" width="0.254" layer="94"/>
+<wire x1="5.08" y1="30.48" x2="5.08" y2="0" width="0.254" layer="94" style="shortdash"/>
+<text x="2.54" y="15.24" size="1.778" layer="97" ratio="12" rot="R90" align="center">DEBUG HEADER</text>
+<pin name="GND1" x="30.48" y="2.54" length="middle" rot="R180"/>
+<pin name="DBG_TX" x="30.48" y="27.94" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_RX" x="30.48" y="25.4" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO1" x="30.48" y="10.16" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO2" x="30.48" y="7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_!RESET" x="30.48" y="15.24" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDCLK" x="30.48" y="17.78" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDIO" x="30.48" y="20.32" visible="pin" length="middle" rot="R180"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="MODULE_CONTROLLER" prefix="J">
 <description>Controller module for signpost</description>
 <gates>
 <gate name="G$1" symbol="HEADER_CONTROL" x="12.7" y="-2.54"/>
+<gate name="CONTROLLER" symbol="HEADER_DEBUG" x="58.42" y="5.08"/>
+<gate name="STORAGE_MASTER" symbol="HEADER_DEBUG" x="58.42" y="-40.64"/>
 </gates>
 <devices>
 <device name="" package="MODULE_CONTROLLER">
 <connects>
+<connect gate="CONTROLLER" pin="DBG_!RESET" pad="105"/>
+<connect gate="CONTROLLER" pin="DBG_GPIO1" pad="101"/>
+<connect gate="CONTROLLER" pin="DBG_GPIO2" pad="104"/>
+<connect gate="CONTROLLER" pin="DBG_RX" pad="103"/>
+<connect gate="CONTROLLER" pin="DBG_SWDCLK" pad="106"/>
+<connect gate="CONTROLLER" pin="DBG_SWDIO" pad="107"/>
+<connect gate="CONTROLLER" pin="DBG_TX" pad="102"/>
+<connect gate="CONTROLLER" pin="GND1" pad="100"/>
 <connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
@@ -2126,6 +2224,14 @@ S high: D = D2</text>
 <connect gate="G$1" pin="USB_D-" pad="28"/>
 <connect gate="G$1" pin="VCC_CONTROLLER" pad="2"/>
 <connect gate="G$1" pin="VCC_LINUX" pad="4"/>
+<connect gate="STORAGE_MASTER" pin="DBG_!RESET" pad="205"/>
+<connect gate="STORAGE_MASTER" pin="DBG_GPIO1" pad="201"/>
+<connect gate="STORAGE_MASTER" pin="DBG_GPIO2" pad="204"/>
+<connect gate="STORAGE_MASTER" pin="DBG_RX" pad="203"/>
+<connect gate="STORAGE_MASTER" pin="DBG_SWDCLK" pad="206"/>
+<connect gate="STORAGE_MASTER" pin="DBG_SWDIO" pad="207"/>
+<connect gate="STORAGE_MASTER" pin="DBG_TX" pad="202"/>
+<connect gate="STORAGE_MASTER" pin="GND1" pad="200"/>
 </connects>
 <technologies>
 <technology name="">
@@ -6194,30 +6300,32 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Headers</text>
 <text x="172.72" y="157.48" size="1.778" layer="98">Test Points</text>
-<text x="111.76" y="60.96" size="1.778" layer="98">Backplane Reset Button</text>
-<text x="27.94" y="144.78" size="1.778" layer="98">Signpost Headers</text>
+<text x="187.96" y="63.5" size="1.778" layer="98">Backplane Reset Button</text>
+<text x="25.4" y="142.24" size="1.778" layer="98">Signpost Headers</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
-<instance part="J1" gate="G$1" x="43.18" y="96.52" smashed="yes">
-<attribute name="NAME" x="33.02" y="139.7" size="1.778" layer="95" align="top-left"/>
-<attribute name="VALUE" x="25.4" y="53.34" size="1.778" layer="96"/>
+<instance part="J1" gate="G$1" x="40.64" y="93.98" smashed="yes">
+<attribute name="NAME" x="30.48" y="137.16" size="1.778" layer="95" align="top-left"/>
+<attribute name="VALUE" x="22.86" y="50.8" size="1.778" layer="96"/>
 </instance>
-<instance part="GND5" gate="1" x="63.5" y="53.34"/>
-<instance part="U$1" gate="G$1" x="73.66" y="137.16"/>
-<instance part="U$8" gate="G$1" x="60.96" y="137.16"/>
-<instance part="C29" gate="G$1" x="119.38" y="93.98">
-<attribute name="DIGIKEY" x="119.38" y="93.98" size="1.27" layer="96" font="vector" display="off"/>
+<instance part="GND5" gate="1" x="60.96" y="50.8"/>
+<instance part="U$1" gate="G$1" x="71.12" y="134.62"/>
+<instance part="U$8" gate="G$1" x="58.42" y="134.62"/>
+<instance part="C29" gate="G$1" x="160.02" y="66.04">
+<attribute name="DIGIKEY" x="160.02" y="66.04" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
-<instance part="U$25" gate="G$1" x="119.38" y="99.06"/>
-<instance part="GND17" gate="1" x="119.38" y="83.82"/>
-<instance part="GND34" gate="1" x="137.16" y="45.72"/>
+<instance part="U$25" gate="G$1" x="160.02" y="71.12"/>
+<instance part="GND17" gate="1" x="160.02" y="55.88"/>
+<instance part="GND34" gate="1" x="213.36" y="48.26"/>
 <instance part="J10" gate="A" x="177.8" y="137.16"/>
 <instance part="LOGO1" gate="G$1" x="231.14" y="22.86"/>
-<instance part="SW1" gate="G$1" x="127" y="50.8"/>
+<instance part="SW1" gate="G$1" x="203.2" y="53.34"/>
 <instance part="J11" gate="G$1" x="180.34" y="111.76"/>
 <instance part="J12" gate="G$1" x="180.34" y="99.06"/>
+<instance part="J1" gate="CONTROLLER" x="96.52" y="99.06"/>
+<instance part="J1" gate="STORAGE_MASTER" x="96.52" y="58.42"/>
 </instances>
 <busses>
 </busses>
@@ -6225,152 +6333,152 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <net name="PPS" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="PPS"/>
-<wire x1="60.96" y1="114.3" x2="63.5" y2="114.3" width="0.1524" layer="91"/>
-<label x="63.5" y="114.3" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="111.76" x2="60.96" y2="111.76" width="0.1524" layer="91"/>
+<label x="60.96" y="111.76" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="USB_MOD_D+" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="USB_D+"/>
-<wire x1="60.96" y1="109.22" x2="63.5" y2="109.22" width="0.1524" layer="91"/>
-<label x="63.5" y="109.22" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="106.68" x2="60.96" y2="106.68" width="0.1524" layer="91"/>
+<label x="60.96" y="106.68" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="USB_MOD_D-" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="USB_D-"/>
-<wire x1="60.96" y1="106.68" x2="63.5" y2="106.68" width="0.1524" layer="91"/>
-<label x="63.5" y="106.68" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="104.14" x2="60.96" y2="104.14" width="0.1524" layer="91"/>
+<label x="60.96" y="104.14" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="SMBCLK" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="SMBCLK"/>
-<wire x1="60.96" y1="121.92" x2="63.5" y2="121.92" width="0.1524" layer="91"/>
-<label x="63.5" y="121.92" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="119.38" x2="60.96" y2="119.38" width="0.1524" layer="91"/>
+<label x="60.96" y="119.38" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="!SMBALERT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="!SMBALERT"/>
-<wire x1="60.96" y1="119.38" x2="63.5" y2="119.38" width="0.1524" layer="91"/>
-<label x="63.5" y="119.38" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="116.84" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
+<label x="60.96" y="116.84" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MODULES_SDA" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MODULES_SDA"/>
-<wire x1="60.96" y1="101.6" x2="63.5" y2="101.6" width="0.1524" layer="91"/>
-<label x="63.5" y="101.6" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="99.06" x2="60.96" y2="99.06" width="0.1524" layer="91"/>
+<label x="60.96" y="99.06" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MODULES_SCL" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MODULES_SCL"/>
-<wire x1="60.96" y1="99.06" x2="63.5" y2="99.06" width="0.1524" layer="91"/>
-<label x="63.5" y="99.06" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="96.52" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
+<label x="60.96" y="96.52" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD0_IN"/>
-<wire x1="60.96" y1="93.98" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
-<label x="63.5" y="93.98" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
+<label x="60.96" y="91.44" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD1_IN"/>
-<wire x1="60.96" y1="91.44" x2="63.5" y2="91.44" width="0.1524" layer="91"/>
-<label x="63.5" y="91.44" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="88.9" x2="60.96" y2="88.9" width="0.1524" layer="91"/>
+<label x="60.96" y="88.9" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD2_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD2_IN"/>
-<wire x1="60.96" y1="88.9" x2="63.5" y2="88.9" width="0.1524" layer="91"/>
-<label x="63.5" y="88.9" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="86.36" x2="60.96" y2="86.36" width="0.1524" layer="91"/>
+<label x="60.96" y="86.36" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD5_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD5_IN"/>
-<wire x1="60.96" y1="86.36" x2="63.5" y2="86.36" width="0.1524" layer="91"/>
-<label x="63.5" y="86.36" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="83.82" x2="60.96" y2="83.82" width="0.1524" layer="91"/>
+<label x="60.96" y="83.82" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD6_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD6_IN"/>
-<wire x1="60.96" y1="83.82" x2="63.5" y2="83.82" width="0.1524" layer="91"/>
-<label x="63.5" y="83.82" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="81.28" x2="60.96" y2="81.28" width="0.1524" layer="91"/>
+<label x="60.96" y="81.28" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD7_IN" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD7_IN"/>
-<wire x1="60.96" y1="81.28" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
-<label x="63.5" y="81.28" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="78.74" x2="60.96" y2="78.74" width="0.1524" layer="91"/>
+<label x="60.96" y="78.74" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD0_OUT"/>
-<wire x1="60.96" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
-<label x="63.5" y="76.2" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="73.66" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
+<label x="60.96" y="73.66" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD1_OUT"/>
-<wire x1="60.96" y1="73.66" x2="63.5" y2="73.66" width="0.1524" layer="91"/>
-<label x="63.5" y="73.66" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="71.12" x2="60.96" y2="71.12" width="0.1524" layer="91"/>
+<label x="60.96" y="71.12" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD2_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD2_OUT"/>
-<wire x1="60.96" y1="71.12" x2="63.5" y2="71.12" width="0.1524" layer="91"/>
-<label x="63.5" y="71.12" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="68.58" x2="60.96" y2="68.58" width="0.1524" layer="91"/>
+<label x="60.96" y="68.58" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD5_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD5_OUT"/>
-<wire x1="60.96" y1="68.58" x2="63.5" y2="68.58" width="0.1524" layer="91"/>
-<label x="63.5" y="68.58" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="66.04" x2="60.96" y2="66.04" width="0.1524" layer="91"/>
+<label x="60.96" y="66.04" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD6_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD6_OUT"/>
-<wire x1="60.96" y1="66.04" x2="63.5" y2="66.04" width="0.1524" layer="91"/>
-<label x="63.5" y="66.04" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="63.5" x2="60.96" y2="63.5" width="0.1524" layer="91"/>
+<label x="60.96" y="63.5" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="MOD7_OUT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="MOD7_OUT"/>
-<wire x1="60.96" y1="63.5" x2="63.5" y2="63.5" width="0.1524" layer="91"/>
-<label x="63.5" y="63.5" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="60.96" x2="60.96" y2="60.96" width="0.1524" layer="91"/>
+<label x="60.96" y="60.96" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="GND"/>
 <pinref part="GND5" gate="1" pin="GND"/>
-<wire x1="60.96" y1="58.42" x2="63.5" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="58.42" x2="63.5" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="55.88" x2="60.96" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="55.88" x2="60.96" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND17" gate="1" pin="GND"/>
 <pinref part="C29" gate="G$1" pin="2"/>
-<wire x1="119.38" y1="88.9" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="60.96" x2="160.02" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND34" gate="1" pin="GND"/>
-<wire x1="134.62" y1="50.8" x2="137.16" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="50.8" x2="137.16" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="53.34" x2="213.36" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="53.34" x2="213.36" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="SW1" gate="G$1" pin="P$2"/>
 </segment>
 <segment>
@@ -6397,9 +6505,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <net name="VCC_LINUX" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="60.96" y1="132.08" x2="73.66" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="129.54" x2="71.12" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="73.66" y1="132.08" x2="73.66" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="129.54" x2="71.12" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J10" gate="A" pin="17"/>
@@ -6410,13 +6518,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <net name="VCC_CONTROLLER" class="0">
 <segment>
 <pinref part="U$8" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="60.96" y1="137.16" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="134.62" x2="58.42" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VCC_CONTROLLER"/>
 </segment>
 <segment>
 <pinref part="U$25" gate="G$1" pin="VCC_CONTROLLER"/>
 <pinref part="C29" gate="G$1" pin="1"/>
-<wire x1="119.38" y1="96.52" x2="119.38" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="68.58" x2="160.02" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J10" gate="A" pin="20"/>
@@ -6427,20 +6535,20 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="!BACKPLANE_RESET"/>
-<wire x1="60.96" y1="129.54" x2="63.5" y2="129.54" width="0.1524" layer="91"/>
-<label x="63.5" y="129.54" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="127" x2="60.96" y2="127" width="0.1524" layer="91"/>
+<label x="60.96" y="127" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
-<wire x1="116.84" y1="50.8" x2="119.38" y2="50.8" width="0.1524" layer="91"/>
-<label x="116.84" y="50.8" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="193.04" y1="53.34" x2="195.58" y2="53.34" width="0.1524" layer="91"/>
+<label x="193.04" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="SW1" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="SMBDATA" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="SMBDATA"/>
-<wire x1="60.96" y1="124.46" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
-<label x="63.5" y="124.46" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="121.92" x2="60.96" y2="121.92" width="0.1524" layer="91"/>
+<label x="60.96" y="121.92" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 <net name="SD_SCLK" class="0">
@@ -6560,6 +6668,102 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="J10" gate="A" pin="16"/>
 <wire x1="182.88" y1="129.54" x2="187.96" y2="129.54" width="0.1524" layer="91"/>
 <label x="187.96" y="129.54" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_TX"/>
+<wire x1="127" y1="127" x2="129.54" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_RX"/>
+<wire x1="127" y1="124.46" x2="129.54" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_SWDIO"/>
+<wire x1="127" y1="119.38" x2="129.54" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$22" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_SWDCLK"/>
+<wire x1="127" y1="116.84" x2="129.54" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_!RESET"/>
+<wire x1="127" y1="114.3" x2="129.54" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_GPIO1"/>
+<wire x1="127" y1="109.22" x2="129.54" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$27" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="DBG_GPIO2"/>
+<wire x1="127" y1="106.68" x2="129.54" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="J1" gate="CONTROLLER" pin="GND1"/>
+<wire x1="127" y1="101.6" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$35" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="GND1"/>
+<wire x1="127" y1="60.96" x2="129.54" y2="60.96" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$36" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_GPIO2"/>
+<wire x1="127" y1="66.04" x2="129.54" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_GPIO1"/>
+<wire x1="127" y1="68.58" x2="129.54" y2="68.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$40" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_!RESET"/>
+<wire x1="127" y1="73.66" x2="129.54" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$41" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_SWDCLK"/>
+<wire x1="127" y1="76.2" x2="129.54" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$42" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_SWDIO"/>
+<wire x1="127" y1="78.74" x2="129.54" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$47" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_RX"/>
+<wire x1="127" y1="83.82" x2="129.54" y2="83.82" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$49" class="0">
+<segment>
+<pinref part="J1" gate="STORAGE_MASTER" pin="DBG_TX"/>
+<wire x1="127" y1="86.36" x2="129.54" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
