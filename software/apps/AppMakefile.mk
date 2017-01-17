@@ -13,10 +13,6 @@ TOCK_USERLAND_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/userland/)
 TOCK_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/)
 BUILDDIR ?= $(abspath $(APP_DIR)/build/$(TOCK_ARCH))
 
-# create list of object files required
-OBJS += $(patsubst %.c,$(BUILDDIR)/%.o,$(C_SRCS))
-OBJS += $(patsubst %.cpp,$(BUILDDIR)/%.o,$(CXX_SRCS))
-
 # add platform-specific library files
 LIBS_DIR = $(CURRENT_DIR)/libs/
 LIBS ?= $(LIBS_DIR)/build/$(TOCK_ARCH)/libs.a
