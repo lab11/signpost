@@ -7,9 +7,6 @@ all:
 TOCK_BOARD ?= controller
 TOCK_ARCH = cortex-m4
 
-# TODO(Pat) This should be thought about more
-TOCK_BOARD_DIR ?= $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)
-
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 TOCK_USERLAND_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/userland/)
