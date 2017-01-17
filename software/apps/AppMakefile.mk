@@ -14,17 +14,17 @@ TOCK_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/)
 BUILDDIR ?= $(abspath $(APP_DIR)/build/$(TOCK_ARCH))
 
 # add platform-specific library files
-LIBS_DIR = $(CURRENT_DIR)/libs/
-LIBS ?= $(LIBS_DIR)/build/$(TOCK_ARCH)/libs.a
-OBJS += $(LIBS)
+LIBSIGNPOST_DIR = $(CURRENT_DIR)libs/
+LIBSIGNPOST ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)/libsignpost.a
+OBJS += $(LIBSIGNPOST)
 
-INCLUDE_PATHS += $(LIBS_DIR)
+INCLUDE_PATHS += $(LIBSIGNPOST_DIR)
 INCLUDES = $(addprefix -I,$(INCLUDE_PATHS))
 CPPFLAGS += $(INCLUDES)
 
 # include the library makefile. Should pull in rules to rebuild libraries
 # when needed
-include $(LIBS_DIR)/Makefile
+include $(LIBSIGNPOST_DIR)/Makefile
 
 
 # include userland master makefile. Contains rules and flags for actually
@@ -35,7 +35,7 @@ include $(TOCK_USERLAND_BASE_DIR)/Makefile
 .PHONY: clean
 clean::
 	rm -Rf $(BUILDDIR)/
-	rm -Rf $(LIBS_DIR)/build/
+	rm -Rf $(LIBSIGNPOST_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
 ##   TODO(Pat) this include is handled by main tock makefile currently
