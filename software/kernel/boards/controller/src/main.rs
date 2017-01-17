@@ -17,7 +17,8 @@ use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
-use kernel::{Chip, MPU, Platform};
+use kernel::{Chip, Platform};
+use kernel::mpu::MPU;
 use sam4l::usart;
 
 // For panic!()
@@ -33,31 +34,31 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 
     const NUM_PROCS: usize = 2;
 
+    // how should the kernel respond when a process faults
+    const FAULT_RESPONSE: kernel::process::FaultResponse = kernel::process::FaultResponse::Panic;
     #[link_section = ".app_memory"]
-    static mut MEMORIES: [[u8; 8192]; NUM_PROCS] = [[0; 8192]; NUM_PROCS];
+    static mut APP_MEMORY: [u8; 16384] = [0; 16384];
 
     static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
-    let mut addr = &_sapps as *const u8;
+    let mut apps_in_flash_ptr = &_sapps as *const u8;
+    let mut app_memory_ptr = APP_MEMORY.as_mut_ptr();
+    let mut app_memory_size = APP_MEMORY.len();
     for i in 0..NUM_PROCS {
-        // The first member of the LoadInfo header contains the total size of each process image. A
-        // sentinel value of 0 (invalid because it's smaller than the header itself) is used to
-        // mark the end of the list of processes.
-        let total_size = *(addr as *const usize);
-        if total_size == 0 {
+        let (process, flash_offset, memory_offset) =
+            kernel::process::Process::create(apps_in_flash_ptr,
+                                             app_memory_ptr,
+                                             app_memory_size,
+                                             FAULT_RESPONSE);
+
+        if process.is_none() {
             break;
         }
 
-        let process = &mut processes[i];
-        let memory = &mut MEMORIES[i];
-        *process = Some(kernel::process::Process::create(addr, total_size, memory));
-        // TODO: panic if loading failed?
-
-        addr = addr.offset(total_size as isize);
-    }
-
-    if *(addr as *const usize) != 0 {
-        panic!("Exceeded maximum NUM_PROCS.");
+        processes[i] = process;
+        apps_in_flash_ptr = apps_in_flash_ptr.offset(flash_offset as isize);
+        app_memory_ptr = app_memory_ptr.offset(memory_offset as isize);
+        app_memory_size -= memory_offset;
     }
 
     &mut processes
@@ -76,7 +77,7 @@ struct SignpostController {
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
-    fram: &'static capsules::fm25cl::FM25CLDriver<'static>,
+    fram: &'static capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     ipc: kernel::ipc::IPC,
@@ -429,8 +430,8 @@ pub unsafe fn reset_handler() {
     // SPI
     //
     let mux_spi = static_init!(
-        capsules::virtual_spi::MuxSPIMaster<'static, usart::USART>,
-        capsules::virtual_spi::MuxSPIMaster::new(&sam4l::usart::USART0),
+        capsules::virtual_spi::MuxSpiMaster<'static, usart::USART>,
+        capsules::virtual_spi::MuxSpiMaster::new(&sam4l::usart::USART0),
         96/8);
     // sam4l::spi::SPI.set_client(mux_spi);
     // sam4l::spi::SPI.init();
@@ -444,19 +445,19 @@ pub unsafe fn reset_handler() {
     //
     // let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
     let fm25cl_spi = static_init!(
-        capsules::virtual_spi::SPIMasterDevice<'static, usart::USART>,
-        // capsules::virtual_spi::SPIMasterDevice::new(mux_spi, k),
-        capsules::virtual_spi::SPIMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
+        capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
+        // capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, k),
+        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
         416/8);
     let fm25cl = static_init!(
-        capsules::fm25cl::FM25CL<'static>,
+        capsules::fm25cl::FM25CL<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
         capsules::fm25cl::FM25CL::new(fm25cl_spi, &mut capsules::fm25cl::TXBUFFER, &mut capsules::fm25cl::RXBUFFER),
-        384/8);
+        352/8);
     fm25cl_spi.set_client(fm25cl);
 
     // Interface for applications
     let fm25cl_driver = static_init!(
-        capsules::fm25cl::FM25CLDriver<'static>,
+        capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
         capsules::fm25cl::FM25CLDriver::new(fm25cl, &mut capsules::fm25cl::KERNEL_TXBUFFER, &mut capsules::fm25cl::KERNEL_RXBUFFER),
         544/8);
     fm25cl.set_client(fm25cl_driver);
