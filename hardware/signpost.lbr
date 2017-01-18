@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -447,12 +447,6 @@
 <wire x1="-24.765" y1="-34.29" x2="-24.765" y2="-46.99" width="0.127" layer="51"/>
 <wire x1="-24.765" y1="-46.99" x2="24.765" y2="-46.99" width="0.127" layer="51"/>
 <wire x1="24.765" y1="-46.99" x2="24.765" y2="-34.29" width="0.127" layer="51"/>
-<attribute name="NAME" x="-12.6492" y="-57.15" size="0.8128" layer="25" font="vector" ratio="12" rot="R90"/>
-<attribute name="VALUE" x="-11.9126" y="-61.5696" size="1.27" layer="27"/>
-<attribute name="NAME" x="-20.5486" y="-54.356" size="0.8128" layer="25" font="vector" ratio="12" rot="R270"/>
-<attribute name="VALUE" x="-13.8176" y="-59.6646" size="1.27" layer="27" rot="R90"/>
-<attribute name="NAME" x="21.9964" y="-56.4134" size="0.8128" layer="25" font="vector" ratio="12" rot="R90"/>
-<attribute name="VALUE" x="21.7424" y="-59.6646" size="1.27" layer="27" rot="R90"/>
 <hole x="0" y="-33.655" drill="0.381"/>
 <hole x="1.27" y="-33.655" drill="0.381"/>
 <hole x="-1.27" y="-33.655" drill="0.381"/>
@@ -1795,6 +1789,59 @@
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 <text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
+</package>
+<package name="QFN-20-4MM">
+<smd name="3" x="-1.9" y="0" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="2" x="-1.9" y="0.5" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="1" x="-1.9" y="1" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<wire x1="2" y1="2" x2="-2" y2="2" width="0.127" layer="21"/>
+<wire x1="-2" y1="2" x2="-2" y2="-2" width="0.127" layer="21"/>
+<wire x1="-2" y1="-2" x2="2" y2="-2" width="0.127" layer="21"/>
+<wire x1="2" y1="-2" x2="2" y2="2" width="0.127" layer="21"/>
+<smd name="4" x="-1.9" y="-0.5" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="5" x="-1.9" y="-1" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="6" x="-1" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="7" x="-0.5" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="8" x="0" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="9" x="0.5" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="10" x="1" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="11" x="1.9" y="-1" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="12" x="1.9" y="-0.5" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="13" x="1.9" y="0" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="14" x="1.9" y="0.5" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="15" x="1.9" y="1" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="16" x="1" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="17" x="0.5" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="18" x="0" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="19" x="-0.5" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="20" x="-1" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<circle x="-2.25" y="2.25" radius="0.2" width="0" layer="21"/>
+<smd name="GND" x="0" y="0" dx="2.45" dy="2.45" layer="1" cream="no"/>
+<text x="0" y="2.5" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<polygon width="0" layer="31">
+<vertex x="-1.1" y="1.1"/>
+<vertex x="-0.2" y="1.1"/>
+<vertex x="-0.2" y="0.2"/>
+<vertex x="-1.1" y="0.2"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="0.2" y="1.1"/>
+<vertex x="1.1" y="1.1"/>
+<vertex x="1.1" y="0.2"/>
+<vertex x="0.2" y="0.2"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="0.2" y="-0.2"/>
+<vertex x="1.1" y="-0.2"/>
+<vertex x="1.1" y="-1.1"/>
+<vertex x="0.2" y="-1.1"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="-1.1" y="-0.2"/>
+<vertex x="-0.2" y="-0.2"/>
+<vertex x="-0.2" y="-1.1"/>
+<vertex x="-1.1" y="-1.1"/>
+</polygon>
 </package>
 </packages>
 <symbols>
@@ -3346,8 +3393,32 @@ with Internal Sense Resistor</description>
 <connect gate="G$1" pin="VCC" pad="18"/>
 </connects>
 <technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="QFN" package="QFN-20-4MM">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="4"/>
+<connect gate="G$1" pin="A0" pad="3"/>
+<connect gate="G$1" pin="A1" pad="2"/>
+<connect gate="G$1" pin="A2" pad="1"/>
+<connect gate="G$1" pin="GND" pad="17 GND"/>
+<connect gate="G$1" pin="INT" pad="7"/>
+<connect gate="G$1" pin="P0" pad="9"/>
+<connect gate="G$1" pin="P1" pad="10"/>
+<connect gate="G$1" pin="P2" pad="11"/>
+<connect gate="G$1" pin="P3" pad="12"/>
+<connect gate="G$1" pin="P4" pad="13"/>
+<connect gate="G$1" pin="P5" pad="14"/>
+<connect gate="G$1" pin="P6" pad="15"/>
+<connect gate="G$1" pin="P7" pad="16"/>
+<connect gate="G$1" pin="SCL" pad="19"/>
+<connect gate="G$1" pin="SDA" pad="20"/>
+<connect gate="G$1" pin="VCC" pad="18"/>
+</connects>
+<technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" constant="no"/>
+<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
