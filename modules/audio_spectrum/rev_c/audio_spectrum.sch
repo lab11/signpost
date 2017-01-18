@@ -3632,62 +3632,135 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U2" library="chips" deviceset="MSGEQ7" device=""/>
 <part name="GND1" library="umich" deviceset="GND" device=""/>
-<part name="C11" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="33pF"/>
-<part name="C12" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF"/>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k"/>
+<part name="C11" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
+</part>
+<part name="C3" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="33pF">
+<attribute name="DIGIKEY" value="490-1415-1-ND"/>
+</part>
+<part name="C12" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
+</part>
+<part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF">
+<attribute name="DIGIKEY" value="490-1494-1-ND"/>
+</part>
+<part name="R19" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k">
+<attribute name="DIGIKEY" value="RHM200KCFCT-ND"/>
+</part>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="Q1" library="fets" deviceset="NX3008PBK" device=""/>
 <part name="U3" library="chips" deviceset="MSGEQ7" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C4" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="33pF"/>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C8" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF"/>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k"/>
+<part name="C4" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="33pF">
+<attribute name="DIGIKEY" value="490-1415-1-ND"/>
+</part>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
+</part>
+<part name="C8" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF">
+<attribute name="DIGIKEY" value="490-1494-1-ND"/>
+</part>
+<part name="R20" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k">
+<attribute name="DIGIKEY" value="RHM200KCFCT-ND"/>
+</part>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="Q2" library="fets" deviceset="NX3008PBK" device=""/>
-<part name="U5" library="SparkFun-AnalogIC" deviceset="OPA344" device=""/>
+<part name="U5" library="SparkFun-AnalogIC" deviceset="OPA344" device="">
+<attribute name="DIGIKEY" value="OPA344NACT-ND"/>
+</part>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
-<part name="R10" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k"/>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k"/>
-<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF"/>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0603_RES" value="60k"/>
-<part name="C5" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100pF"/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k"/>
-<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="R10" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k">
+<attribute name="DIGIKEY" value="RHM20KCGCT-ND"/>
+</part>
+<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k">
+<attribute name="DIGIKEY" value="RHM20KCGCT-ND"/>
+</part>
+<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF">
+<attribute name="DIGIKEY" value="490-1536-1-ND"/>
+</part>
+<part name="R14" library="passives" deviceset="RESISTOR" device="0603_RES" value="60k">
+<attribute name="DIGIKEY" value="RHM60.4KCLCT-ND"/>
+</part>
+<part name="C5" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100pF">
+<attribute name="DIGIKEY" value="490-1427-1-ND"/>
+</part>
+<part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
+<attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
+</part>
+<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF">
+<attribute name="DIGIKEY" value="490-3297-1-ND"/>
+</part>
 <part name="P1" library="pots" deviceset="POT" device="TC33X" value="4k-200k"/>
-<part name="U6" library="SparkFun-AnalogIC" deviceset="OPA344" device=""/>
+<part name="U6" library="SparkFun-AnalogIC" deviceset="OPA344" device="">
+<attribute name="DIGIKEY" value="OPA344NACT-ND"/>
+</part>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k"/>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k"/>
-<part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k"/>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100pF"/>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k"/>
-<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k">
+<attribute name="DIGIKEY" value="RHM20KCGCT-ND"/>
+</part>
+<part name="R13" library="passives" deviceset="RESISTOR" device="0603_RES" value="20k">
+<attribute name="DIGIKEY" value="RHM20KCGCT-ND"/>
+</part>
+<part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF">
+<attribute name="DIGIKEY" value="490-1536-1-ND"/>
+</part>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
+<attribute name="DIGIKEY" value="RHM100KCGCT-ND"/>
+</part>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100pF">
+<attribute name="DIGIKEY" value="490-1427-1-ND"/>
+</part>
+<part name="R6" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
+<attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
+</part>
+<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF">
+<attribute name="DIGIKEY" value="490-3297-1-ND"/>
+</part>
 <part name="P2" library="pots" deviceset="POT" device="TC33X" value="4k-200k"/>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
-<part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
+<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k">
+<attribute name="DIGIKEY" value="RHM10.0KHCT-ND"/>
+</part>
+<part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k">
+<attribute name="DIGIKEY" value="RHM10.0KHCT-ND
+"/>
+</part>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="U8" library="chips" deviceset="MP23AB02B" device=""/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
-<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF"/>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF"/>
+<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1uF">
+<attribute name="DIGIKEY" value="490-1536-1-ND"/>
+</part>
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1nF">
+<attribute name="DIGIKEY" value="490-1494-1-ND"/>
+</part>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="U7" library="chips" deviceset="TLV62130" device=""/>
-<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="10uF"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C10" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="3.3nF"/>
-<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22uF"/>
+<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="10uF">
+<attribute name="DIGIKEY" value="490-6405-1-ND"/>
+</part>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
+</part>
+<part name="C10" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="3.3nF">
+<attribute name="DIGIKEY" value="490-1503-1-ND"/>
+</part>
+<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22uF">
+<attribute name="DIGIKEY" value="490-13241-1-ND"/>
+</part>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k"/>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k"/>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k"/>
+<part name="R22" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k">
+<attribute name="DIGIKEY" value="RHM750KCFCT-ND"/>
+</part>
+<part name="R21" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k">
+<attribute name="DIGIKEY" value="RHM240KCFCT-ND"/>
+</part>
+<part name="R18" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
+<attribute name="DIGIKEY" value="RHM100KCGCT-ND"/>
+</part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
 <part name="J2" library="connector" deviceset="AUDIO-JACK-VERTICAL" device=""/>
@@ -3703,12 +3776,24 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="R4" library="passives" deviceset="RESISTOR" device="0603_RES" value="1k">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
-<part name="LED1" library="leds" deviceset="LED" device="0603"/>
-<part name="LED2" library="leds" deviceset="LED" device="0603"/>
-<part name="LED3" library="leds" deviceset="LED" device="0603"/>
-<part name="LED4" library="leds" deviceset="LED" device="0603"/>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k"/>
-<part name="R24" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k"/>
+<part name="LED1" library="leds" deviceset="LED" device="0603">
+<attribute name="DIGIKEY" value="160-1446-1-ND"/>
+</part>
+<part name="LED2" library="leds" deviceset="LED" device="0603">
+<attribute name="DIGIKEY" value="160-1447-1-ND"/>
+</part>
+<part name="LED3" library="leds" deviceset="LED" device="0603">
+<attribute name="DIGIKEY" value="160-1446-1-ND"/>
+</part>
+<part name="LED4" library="leds" deviceset="LED" device="0603">
+<attribute name="DIGIKEY" value="160-1447-1-ND"/>
+</part>
+<part name="R23" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
+<attribute name="DIGIKEY" value="RHM100KCGCT-ND"/>
+</part>
+<part name="R24" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
+<attribute name="DIGIKEY" value="RHM100KCGCT-ND"/>
+</part>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="R25" library="passives" deviceset="RESISTOR" device="0603_RES" value="0">
@@ -3733,27 +3818,51 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="TP15" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP16" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="360pF"/>
+<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="360pF">
+<attribute name="DIGIKEY" value="490-1440-1-ND"/>
+</part>
 <part name="GND17" library="umich" deviceset="GND" device=""/>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
-<part name="R27" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
-<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="360pF"/>
+<part name="R26" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k">
+<attribute name="DIGIKEY" value="RHM10.0KHCT-ND"/>
+</part>
+<part name="R27" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k">
+<attribute name="DIGIKEY" value="RHM10.0KHCT-ND"/>
+</part>
+<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="360pF">
+<attribute name="DIGIKEY" value="490-1440-1-ND"/>
+</part>
 <part name="GND22" library="umich" deviceset="GND" device=""/>
 <part name="U100" library="chips" deviceset="SAM4LC8BA" device=""/>
 <part name="GND23" library="umich" deviceset="GND" device=""/>
 <part name="GND24" library="umich" deviceset="GND" device=""/>
 <part name="U1" library="chips" deviceset="AT45DB641E" device="UDFN"/>
-<part name="U4" library="SparkFun-AnalogIC" deviceset="OPA344" device=""/>
-<part name="U9" library="SparkFun-AnalogIC" deviceset="OPA344" device=""/>
+<part name="U4" library="SparkFun-AnalogIC" deviceset="OPA344" device="">
+<attribute name="DIGIKEY" value="OPA344NACT-ND"/>
+</part>
+<part name="U9" library="SparkFun-AnalogIC" deviceset="OPA344" device="">
+<attribute name="DIGIKEY" value="OPA344NACT-ND"/>
+</part>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
-<part name="R28" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k"/>
-<part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="19k"/>
-<part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1.2nF"/>
-<part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1.2nF"/>
-<part name="R30" library="passives" deviceset="RESISTOR" device="0603_RES" value="19k"/>
-<part name="R31" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k"/>
+<part name="R28" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
+<attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
+</part>
+<part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="19k">
+<attribute name="DIGIKEY" value="RHM19.1KCFCT-ND"/>
+</part>
+<part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1.2nF">
+<attribute name="DIGIKEY" value="490-1304-1-ND"/>
+</part>
+<part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1.2nF">
+<attribute name="DIGIKEY" value="490-1304-1-ND"/>
+</part>
+<part name="R30" library="passives" deviceset="RESISTOR" device="0603_RES" value="19k">
+<attribute name="DIGIKEY" value="RHM19.1KCFCT-ND"/>
+</part>
+<part name="R31" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
+<attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
+</part>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -3811,15 +3920,29 @@ We've spent an enormous amount of time creating and checking these footprints an
 </instance>
 <instance part="J1" gate="G$1" x="22.86" y="132.08"/>
 <instance part="U7" gate="G$1" x="50.8" y="30.48"/>
-<instance part="C27" gate="G$1" x="15.24" y="35.56"/>
-<instance part="C15" gate="G$1" x="22.86" y="33.02"/>
-<instance part="C10" gate="G$1" x="27.94" y="20.32" rot="R180"/>
-<instance part="C28" gate="G$1" x="111.76" y="27.94" rot="R180"/>
+<instance part="C27" gate="G$1" x="15.24" y="35.56">
+<attribute name="DIGIKEY" x="15.24" y="35.56" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C15" gate="G$1" x="22.86" y="33.02">
+<attribute name="DIGIKEY" x="22.86" y="33.02" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C10" gate="G$1" x="27.94" y="20.32" rot="R180">
+<attribute name="DIGIKEY" x="27.94" y="20.32" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C28" gate="G$1" x="111.76" y="27.94" rot="R180">
+<attribute name="DIGIKEY" x="111.76" y="27.94" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND18" gate="1" x="25.4" y="10.16"/>
 <instance part="GND21" gate="1" x="73.66" y="10.16"/>
-<instance part="R22" gate="G$1" x="99.06" y="35.56" rot="R90"/>
-<instance part="R21" gate="G$1" x="99.06" y="22.86" rot="R90"/>
-<instance part="R18" gate="G$1" x="91.44" y="35.56" rot="R90"/>
+<instance part="R22" gate="G$1" x="99.06" y="35.56" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="35.56" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R21" gate="G$1" x="99.06" y="22.86" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="22.86" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R18" gate="G$1" x="91.44" y="35.56" rot="R90">
+<attribute name="DIGIKEY" x="91.44" y="35.56" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L1" gate="G$1" x="76.2" y="40.64" rot="R90"/>
 <instance part="GND12" gate="1" x="48.26" y="86.36"/>
 <instance part="R1" gate="G$1" x="129.54" y="43.18" smashed="yes" rot="R90">
@@ -3844,15 +3967,19 @@ We've spent an enormous amount of time creating and checking these footprints an
 </instance>
 <instance part="LED1" gate="G$1" x="129.54" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="126.365" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="DIGIKEY" x="129.54" y="55.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="LED2" gate="G$1" x="132.08" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="133.985" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="DIGIKEY" x="132.08" y="55.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="LED3" gate="G$1" x="152.4" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="149.225" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="DIGIKEY" x="152.4" y="55.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="LED4" gate="G$1" x="154.94" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="156.845" y="55.88" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="DIGIKEY" x="154.94" y="55.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R25" gate="G$1" x="205.74" y="147.32" rot="R90">
 <attribute name="DIGIKEY" x="205.74" y="147.32" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
@@ -4733,11 +4860,21 @@ optional adjustment/debugging.</text>
 <instance part="FRAME2" gate="G$2" x="147.32" y="0"/>
 <instance part="U2" gate="G$1" x="33.02" y="45.72"/>
 <instance part="GND1" gate="1" x="30.48" y="5.08"/>
-<instance part="C11" gate="G$1" x="30.48" y="17.78"/>
-<instance part="C3" gate="G$1" x="50.8" y="33.02"/>
-<instance part="C12" gate="G$1" x="43.18" y="66.04" rot="R90"/>
-<instance part="C7" gate="G$1" x="53.34" y="53.34" rot="R90"/>
-<instance part="R19" gate="G$1" x="55.88" y="38.1" rot="R180"/>
+<instance part="C11" gate="G$1" x="30.48" y="17.78">
+<attribute name="DIGIKEY" x="30.48" y="17.78" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C3" gate="G$1" x="50.8" y="33.02">
+<attribute name="DIGIKEY" x="50.8" y="33.02" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C12" gate="G$1" x="43.18" y="66.04" rot="R90">
+<attribute name="DIGIKEY" x="43.18" y="66.04" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C7" gate="G$1" x="53.34" y="53.34" rot="R90">
+<attribute name="DIGIKEY" x="53.34" y="53.34" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R19" gate="G$1" x="55.88" y="38.1" rot="R180">
+<attribute name="DIGIKEY" x="55.88" y="38.1" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND2" gate="1" x="48.26" y="58.42"/>
 <instance part="GND3" gate="1" x="50.8" y="22.86"/>
 <instance part="Q1" gate="G$1" x="33.02" y="73.66" smashed="yes" rot="MR180">
@@ -4746,67 +4883,143 @@ optional adjustment/debugging.</text>
 <instance part="U3" gate="G$1" x="33.02" y="137.16"/>
 <instance part="GND4" gate="1" x="30.48" y="96.52"/>
 <instance part="C13" gate="G$1" x="30.48" y="109.22"/>
-<instance part="C4" gate="G$1" x="50.8" y="124.46"/>
-<instance part="C14" gate="G$1" x="43.18" y="157.48" rot="R90"/>
-<instance part="C8" gate="G$1" x="55.88" y="144.78" rot="R90"/>
-<instance part="R20" gate="G$1" x="55.88" y="129.54" rot="R180"/>
+<instance part="C4" gate="G$1" x="50.8" y="124.46">
+<attribute name="DIGIKEY" x="50.8" y="124.46" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C14" gate="G$1" x="43.18" y="157.48" rot="R90">
+<attribute name="DIGIKEY" x="43.18" y="157.48" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C8" gate="G$1" x="55.88" y="144.78" rot="R90">
+<attribute name="DIGIKEY" x="55.88" y="144.78" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R20" gate="G$1" x="55.88" y="129.54" rot="R180">
+<attribute name="DIGIKEY" x="55.88" y="129.54" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND5" gate="1" x="48.26" y="149.86"/>
 <instance part="GND6" gate="1" x="50.8" y="114.3"/>
 <instance part="Q2" gate="G$1" x="33.02" y="165.1" smashed="yes" rot="MR180">
 <attribute name="NAME" x="38.1" y="162.56" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="U5" gate="G$1" x="162.56" y="127" rot="MR0"/>
+<instance part="U5" gate="G$1" x="162.56" y="127" rot="MR0">
+<attribute name="DIGIKEY" x="162.56" y="127" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
 <instance part="GND7" gate="1" x="162.56" y="106.68"/>
-<instance part="R10" gate="G$1" x="177.8" y="137.16" rot="R270"/>
-<instance part="R11" gate="G$1" x="177.8" y="116.84" rot="R270"/>
-<instance part="C21" gate="G$1" x="185.42" y="116.84" rot="R180"/>
-<instance part="R14" gate="G$1" x="160.02" y="147.32" rot="R180"/>
-<instance part="C5" gate="G$1" x="160.02" y="154.94" rot="R90"/>
-<instance part="R5" gate="G$1" x="182.88" y="129.54" rot="R180"/>
-<instance part="C25" gate="G$1" x="193.04" y="129.54" rot="R90"/>
+<instance part="R10" gate="G$1" x="177.8" y="137.16" rot="R270">
+<attribute name="DIGIKEY" x="177.8" y="137.16" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R11" gate="G$1" x="177.8" y="116.84" rot="R270">
+<attribute name="DIGIKEY" x="177.8" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C21" gate="G$1" x="185.42" y="116.84" rot="R180">
+<attribute name="DIGIKEY" x="185.42" y="116.84" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R14" gate="G$1" x="160.02" y="147.32" rot="R180">
+<attribute name="DIGIKEY" x="160.02" y="147.32" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C5" gate="G$1" x="160.02" y="154.94" rot="R90">
+<attribute name="DIGIKEY" x="160.02" y="154.94" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R5" gate="G$1" x="182.88" y="129.54" rot="R180">
+<attribute name="DIGIKEY" x="182.88" y="129.54" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C25" gate="G$1" x="193.04" y="129.54" rot="R90">
+<attribute name="DIGIKEY" x="193.04" y="129.54" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="P1" gate="G$1" x="160.02" y="167.64" rot="R180"/>
-<instance part="U6" gate="G$1" x="147.32" y="53.34" rot="MR0"/>
+<instance part="U6" gate="G$1" x="147.32" y="53.34" rot="MR0">
+<attribute name="DIGIKEY" x="147.32" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
 <instance part="GND8" gate="1" x="147.32" y="33.02"/>
-<instance part="R12" gate="G$1" x="162.56" y="63.5" rot="R270"/>
-<instance part="R13" gate="G$1" x="162.56" y="43.18" rot="R270"/>
-<instance part="C22" gate="G$1" x="170.18" y="43.18" rot="R180"/>
-<instance part="R17" gate="G$1" x="144.78" y="73.66" rot="R180"/>
-<instance part="C6" gate="G$1" x="144.78" y="81.28" rot="R90"/>
-<instance part="R6" gate="G$1" x="175.26" y="55.88" rot="R180"/>
-<instance part="C26" gate="G$1" x="185.42" y="55.88" rot="R90"/>
+<instance part="R12" gate="G$1" x="162.56" y="63.5" rot="R270">
+<attribute name="DIGIKEY" x="162.56" y="63.5" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R13" gate="G$1" x="162.56" y="43.18" rot="R270">
+<attribute name="DIGIKEY" x="162.56" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="C22" gate="G$1" x="170.18" y="43.18" rot="R180">
+<attribute name="DIGIKEY" x="170.18" y="43.18" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R17" gate="G$1" x="144.78" y="73.66" rot="R180">
+<attribute name="DIGIKEY" x="144.78" y="73.66" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C6" gate="G$1" x="144.78" y="81.28" rot="R90">
+<attribute name="DIGIKEY" x="144.78" y="81.28" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R6" gate="G$1" x="175.26" y="55.88" rot="R180">
+<attribute name="DIGIKEY" x="175.26" y="55.88" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C26" gate="G$1" x="185.42" y="55.88" rot="R90">
+<attribute name="DIGIKEY" x="185.42" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="P2" gate="G$1" x="144.78" y="91.44" rot="R180"/>
-<instance part="R8" gate="G$1" x="215.9" y="55.88" rot="R180"/>
-<instance part="R9" gate="G$1" x="215.9" y="48.26" rot="R180"/>
+<instance part="R8" gate="G$1" x="215.9" y="55.88" rot="R180">
+<attribute name="DIGIKEY" x="215.9" y="55.88" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R9" gate="G$1" x="215.9" y="48.26" rot="R180">
+<attribute name="DIGIKEY" x="215.9" y="48.26" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND9" gate="1" x="220.98" y="38.1"/>
 <instance part="U8" gate="G$1" x="228.6" y="129.54" rot="MR0"/>
 <instance part="GND10" gate="1" x="228.6" y="109.22"/>
-<instance part="C23" gate="G$1" x="233.68" y="149.86" rot="R180"/>
-<instance part="C9" gate="G$1" x="241.3" y="149.86" rot="R180"/>
+<instance part="C23" gate="G$1" x="233.68" y="149.86" rot="R180">
+<attribute name="DIGIKEY" x="233.68" y="149.86" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C9" gate="G$1" x="241.3" y="149.86" rot="R180">
+<attribute name="DIGIKEY" x="241.3" y="149.86" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND11" gate="1" x="241.3" y="142.24"/>
 <instance part="J2" gate="G$1" x="226.06" y="55.88" rot="R180"/>
-<instance part="R23" gate="G$1" x="22.86" y="66.04" rot="R270"/>
-<instance part="R24" gate="G$1" x="17.78" y="157.48" rot="R270"/>
+<instance part="R23" gate="G$1" x="22.86" y="66.04" rot="R270">
+<attribute name="DIGIKEY" x="22.86" y="66.04" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R24" gate="G$1" x="17.78" y="157.48" rot="R270">
+<attribute name="DIGIKEY" x="17.78" y="157.48" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
 <instance part="GND13" gate="1" x="17.78" y="149.86"/>
 <instance part="GND14" gate="1" x="22.86" y="60.96"/>
 <instance part="TP9" gate="G$1" x="68.58" y="144.78"/>
 <instance part="TP10" gate="G$1" x="71.12" y="53.34"/>
-<instance part="C29" gate="G$1" x="203.2" y="124.46"/>
+<instance part="C29" gate="G$1" x="203.2" y="124.46">
+<attribute name="DIGIKEY" x="203.2" y="124.46" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND17" gate="1" x="203.2" y="116.84"/>
-<instance part="R26" gate="G$1" x="208.28" y="129.54" rot="R180"/>
-<instance part="R27" gate="G$1" x="203.2" y="55.88" rot="R180"/>
-<instance part="C30" gate="G$1" x="195.58" y="50.8"/>
+<instance part="R26" gate="G$1" x="208.28" y="129.54" rot="R180">
+<attribute name="DIGIKEY" x="208.28" y="129.54" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R27" gate="G$1" x="203.2" y="55.88" rot="R180">
+<attribute name="DIGIKEY" x="203.2" y="55.88" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C30" gate="G$1" x="195.58" y="50.8">
+<attribute name="DIGIKEY" x="195.58" y="50.8" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND22" gate="1" x="195.58" y="43.18"/>
-<instance part="U4" gate="G$1" x="111.76" y="149.86" rot="MR0"/>
-<instance part="U9" gate="G$1" x="104.14" y="68.58" rot="MR0"/>
+<instance part="U4" gate="G$1" x="111.76" y="149.86" rot="MR0">
+<attribute name="DIGIKEY" x="111.76" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
+<instance part="U9" gate="G$1" x="104.14" y="68.58" rot="MR0">
+<attribute name="DIGIKEY" x="104.14" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
 <instance part="GND25" gate="1" x="104.14" y="58.42"/>
 <instance part="GND26" gate="1" x="111.76" y="139.7"/>
 <instance part="GND28" gate="1" x="119.38" y="142.24"/>
-<instance part="R28" gate="G$1" x="121.92" y="152.4" rot="R180"/>
-<instance part="R29" gate="G$1" x="106.68" y="172.72" rot="R180"/>
-<instance part="C31" gate="G$1" x="106.68" y="180.34" rot="R90"/>
-<instance part="C32" gate="G$1" x="99.06" y="101.6" rot="R90"/>
-<instance part="R30" gate="G$1" x="99.06" y="93.98" rot="R180"/>
-<instance part="R31" gate="G$1" x="116.84" y="71.12" rot="R180"/>
+<instance part="R28" gate="G$1" x="121.92" y="152.4" rot="R180">
+<attribute name="DIGIKEY" x="121.92" y="152.4" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R29" gate="G$1" x="106.68" y="172.72" rot="R180">
+<attribute name="DIGIKEY" x="106.68" y="172.72" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C31" gate="G$1" x="106.68" y="180.34" rot="R90">
+<attribute name="DIGIKEY" x="106.68" y="180.34" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C32" gate="G$1" x="99.06" y="101.6" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="101.6" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R30" gate="G$1" x="99.06" y="93.98" rot="R180">
+<attribute name="DIGIKEY" x="99.06" y="93.98" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R31" gate="G$1" x="116.84" y="71.12" rot="R180">
+<attribute name="DIGIKEY" x="116.84" y="71.12" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="GND29" gate="1" x="111.76" y="63.5"/>
 </instances>
 <busses>
