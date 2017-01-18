@@ -1,0 +1,1 @@
+../tock/boards/kernel_layout.ld

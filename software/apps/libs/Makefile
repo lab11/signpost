@@ -1,37 +1,30 @@
-LIBS_MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
-LIBS_DIR := $(dir $(LIBS_MAKEFILE_PATH))
+LIBSIGNPOST_MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+LIBSIGNPOST_DIR := $(dir $(LIBSIGNPOST_MAKEFILE_PATH))
 
-ifeq ($(LIBS_DIR),$(CURDIR)/)
+ifeq ($(LIBSIGNPOST_DIR),$(CURDIR)/)
 $(error Do not run make from the libs directory)
 endif
 
-LIBS_BUILDDIR ?= $(LIBS_DIR)/build/$(TOCK_ARCH)
+LIBSIGNPOST_BUILDDIR ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)
 
-LIBS_C_SRCS=$(wildcard $(LIBS_DIR)*.c)
-LIBS_AS_SRCS=$(wildcard $(LIBS_DIR)*.s)
-LIBS_OBJS := $(patsubst $(LIBS_DIR)%.s,$(LIBS_BUILDDIR)/%.o,$(LIBS_AS_SRCS))
-LIBS_OBJS += $(patsubst $(LIBS_DIR)%.c,$(LIBS_BUILDDIR)/%.o,$(LIBS_C_SRCS))
+LIBSIGNPOST_C_SRCS=$(wildcard $(LIBSIGNPOST_DIR)*.c)
+LIBSIGNPOST_AS_SRCS=$(wildcard $(LIBSIGNPOST_DIR)*.s)
+LIBSIGNPOST_OBJS := $(patsubst $(LIBSIGNPOST_DIR)%.s,$(LIBSIGNPOST_BUILDDIR)/%.o,$(LIBSIGNPOST_AS_SRCS))
+LIBSIGNPOST_OBJS += $(patsubst $(LIBSIGNPOST_DIR)%.c,$(LIBSIGNPOST_BUILDDIR)/%.o,$(LIBSIGNPOST_C_SRCS))
 
-$(LIBS_BUILDDIR)/libs.a: $(LIBS_OBJS) | $(LIBS_BUILDDIR)
+$(LIBSIGNPOST_BUILDDIR)/libsignpost.a: $(LIBSIGNPOST_OBJS) | $(LIBSIGNPOST_BUILDDIR)
 	$(TRACE_AR)
 	$(Q)$(TOOLCHAIN)-ar rc $@ $^
 	$(Q)$(TOOLCHAIN)-ranlib $@
 
-#.PHONY: all
-#all: $(BUILDDIR)/libs.a
-#
-$(LIBS_BUILDDIR):
+$(LIBSIGNPOST_BUILDDIR):
 	$(Q)mkdir -p $@
 
-$(LIBS_BUILDDIR)/%.o: $(LIBS_DIR)%.c | $(LIBS_BUILDDIR)
+$(LIBSIGNPOST_BUILDDIR)/%.o: $(LIBSIGNPOST_DIR)%.c | $(LIBSIGNPOST_BUILDDIR)
 	$(TRACE_CC)
 	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-$(LIBS_BUILDDIR)/%.o: %.S | $(LIBS_BUILDDIR)
+$(LIBSIGNPOST_BUILDDIR)/%.o: %.S | $(LIBSIGNPOST_BUILDDIR)
 	$(TRACE_AS)
 	$(Q)$(AS) $(ASFLAGS) -c -o $@ $<
-
-#$(BUILDDIR)/libs.a: $(OBJS) | $(BUILDDIR)
-#	$(AR) rc $@ $^
-#	$(TOOLCHAIN)-ranlib $@
 
