@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2318,16 +2318,16 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="3.175" y="114.3" extent="1-16" drill="3.175" diameter="5.08"/>
 <via x="225.425" y="114.3" extent="1-16" drill="3.175" diameter="5.08"/>
 <polygon width="0.254" layer="16" isolate="0.3048">
-<vertex x="0" y="203.2"/>
-<vertex x="228.6" y="203.2"/>
-<vertex x="228.6" y="0"/>
-<vertex x="0" y="0"/>
+<vertex x="147.32" y="185.42"/>
+<vertex x="226.06" y="185.42"/>
+<vertex x="226.06" y="134.62"/>
+<vertex x="147.32" y="134.62"/>
 </polygon>
 <polygon width="0.254" layer="1" isolate="0.3048" rank="2">
-<vertex x="0" y="203.2"/>
-<vertex x="228.6" y="203.2"/>
-<vertex x="228.6" y="0"/>
-<vertex x="0" y="0"/>
+<vertex x="147.32" y="185.42"/>
+<vertex x="226.06" y="185.42"/>
+<vertex x="226.06" y="134.62"/>
+<vertex x="147.32" y="134.62"/>
 </polygon>
 <via x="167.894" y="166.878" extent="1-16" drill="0.6096"/>
 <via x="170.18" y="166.878" extent="1-16" drill="0.6096"/>
@@ -2338,8 +2338,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <polygon width="1.27" layer="1" isolate="0.3048">
 <vertex x="216.408" y="43.942"/>
 <vertex x="216.408" y="29.972"/>
-<vertex x="230.886" y="29.972"/>
-<vertex x="230.886" y="43.942"/>
+<vertex x="228.346" y="29.972"/>
+<vertex x="228.346" y="43.942"/>
 </polygon>
 <via x="157.48" y="166.878" extent="1-16" drill="1.27"/>
 <via x="167.64" y="153.67" extent="1-16" drill="1.27"/>
@@ -2372,6 +2372,35 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="170.942" y="153.67" extent="1-16" drill="1.27"/>
 <via x="170.942" y="156.21" extent="1-16" drill="1.27"/>
 <contactref element="TP7" pad="1"/>
+<polygon width="0.254" layer="16" isolate="0.3048">
+<vertex x="228.6" y="27.94"/>
+<vertex x="147.32" y="27.94"/>
+<vertex x="147.32" y="144.78"/>
+<vertex x="167.64" y="144.78"/>
+<vertex x="167.64" y="45.72"/>
+<vertex x="228.6" y="45.72"/>
+</polygon>
+<polygon width="0.254" layer="1" isolate="0.3048">
+<vertex x="228.6" y="27.94"/>
+<vertex x="147.32" y="27.94"/>
+<vertex x="147.32" y="144.78"/>
+<vertex x="167.64" y="144.78"/>
+<vertex x="167.64" y="45.72"/>
+<vertex x="228.6" y="45.72"/>
+</polygon>
+<wire x1="225.425" y1="3.175" x2="114.3" y2="3.175" width="2.54" layer="1"/>
+<wire x1="225.425" y1="3.175" x2="223.52" y2="3.175" width="2.54" layer="1"/>
+<wire x1="223.52" y1="3.175" x2="223.52" y2="38.1" width="2.54" layer="1"/>
+<wire x1="114.3" y1="3.175" x2="3.175" y2="3.175" width="2.54" layer="1"/>
+<wire x1="3.175" y1="114.3" x2="3.175" y2="200.025" width="2.54" layer="1"/>
+<wire x1="3.175" y1="200.025" x2="114.3" y2="200.025" width="2.54" layer="1"/>
+<wire x1="114.3" y1="200.025" x2="225.425" y2="200.025" width="2.54" layer="1"/>
+<wire x1="114.3" y1="200.025" x2="154.94" y2="200.025" width="2.54" layer="16"/>
+<wire x1="154.94" y1="200.025" x2="154.94" y2="182.88" width="2.54" layer="16"/>
+<wire x1="225.425" y1="114.3" x2="223.52" y2="114.3" width="2.54" layer="16"/>
+<wire x1="223.52" y1="114.3" x2="223.52" y2="137.16" width="2.54" layer="16"/>
+<wire x1="3.175" y1="3.175" x2="3.175" y2="114.3" width="2.54" layer="1"/>
+<wire x1="3.175" y1="114.3" x2="2.54" y2="114.3" width="2.54" layer="1"/>
 </signal>
 <signal name="N$4">
 <contactref element="R4" pad="2"/>
