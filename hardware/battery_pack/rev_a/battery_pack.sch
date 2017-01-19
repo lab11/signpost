@@ -9820,8 +9820,8 @@ type 0309, grid 2.5 mm</description>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k 3435K-B25/85 "/>
-<part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
-<part name="Q4" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
+<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
+<part name="Q2" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="500MIL"/>
 <part name="TP1" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
 <part name="TP2" library="headers" deviceset="TEST_POINT_0.112IN" device=""/>
@@ -9884,10 +9884,10 @@ number (bq7790503)</text>
 <attribute name="NAME" x="168.91" y="89.9414" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="184.15" y="94.742" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="Q3" gate="G$1" x="157.48" y="55.88" smashed="yes" rot="R270">
+<instance part="Q1" gate="G$1" x="157.48" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="160.02" y="63.5" size="1.778" layer="95"/>
 </instance>
-<instance part="Q4" gate="G$1" x="180.34" y="55.88" smashed="yes" rot="MR270">
+<instance part="Q2" gate="G$1" x="180.34" y="55.88" smashed="yes" rot="MR270">
 <attribute name="NAME" x="177.8" y="63.5" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="U$1" gate="G$1" x="236.22" y="175.26"/>
@@ -10100,7 +10100,7 @@ number (bq7790503)</text>
 <wire x1="147.32" y1="55.88" x2="152.4" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="58.42" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <junction x="147.32" y="55.88"/>
-<pinref part="Q3" gate="G$1" pin="S"/>
+<pinref part="Q1" gate="G$1" pin="S"/>
 <pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
 <junction x="119.38" y="55.88"/>
 </segment>
@@ -10127,8 +10127,8 @@ number (bq7790503)</text>
 <net name="N$7" class="0">
 <segment>
 <wire x1="162.56" y1="55.88" x2="175.26" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="D"/>
-<pinref part="Q4" gate="G$1" pin="D"/>
+<pinref part="Q1" gate="G$1" pin="D"/>
+<pinref part="Q2" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -10146,7 +10146,7 @@ number (bq7790503)</text>
 <segment>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="157.48" y1="71.12" x2="157.48" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="G"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
 <pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
 <junction x="157.48" y="71.12"/>
 </segment>
@@ -10167,7 +10167,7 @@ number (bq7790503)</text>
 <wire x1="190.5" y1="66.04" x2="190.5" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="81.28" x2="180.34" y2="81.28" width="0.1524" layer="91"/>
 <junction x="180.34" y="81.28"/>
-<pinref part="Q4" gate="G$1" pin="G"/>
+<pinref part="Q2" gate="G$1" pin="G"/>
 <pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
 <junction x="190.5" y="81.28"/>
 </segment>
@@ -10187,7 +10187,7 @@ number (bq7790503)</text>
 <wire x1="198.12" y1="55.88" x2="198.12" y2="66.04" width="0.1524" layer="91"/>
 <junction x="198.12" y="55.88"/>
 <label x="226.06" y="55.88" size="1.016" layer="95" xref="yes"/>
-<pinref part="Q4" gate="G$1" pin="S"/>
+<pinref part="Q2" gate="G$1" pin="S"/>
 <pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
 <junction x="220.98" y="55.88"/>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
