@@ -66,7 +66,16 @@ All in inches.
 | USB Data+ signal.                           | USB_D+   | 11  |   | 12  | USB_D-   | USB Data- signal.                                                                   |
 | USB bus voltage (5 V).                      | USB_VBUS | 13  |   | 14  | GND      | USB GND.                                                                            |
 
+### Debug Header Signals
 
+Modules may choose to implement a Debug header as well. The Debug header will allow for easier interactions with modules while they are connected to the development version of the backplane.
+
+| Description                                         | Signal   | Pin |   | Pin | Signal   | Description                                                                         |
+|-----------------------------------------------------|----------|-----|---|-----|----------|-------------------------------------------------------------------------------------|
+|                                                     | GND      | 1   |   | 2   | GPIO1    | Output line to control LED on development backplane                                 |
+| UART data from the module                           | TX       | 3   |   | 4   | RX       | UART data to the module                                                             |
+| Output line to control LED on development backplane | GPIO2    | 5   |   | 6   | !Reset   | Active-low reset for the module microcontroller                           |
+| JTAG line for the module microcontroller            | SWDCLK   | 7   |   | 8   | SWDIO    | JTAG line for the module microcontroller                                             |
 
 Roadmap
 -------
