@@ -1949,35 +1949,33 @@ chip</description>
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
-<designrules name="default">
-<description language="en">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
+<designrules name="quickturn_co_kr_1oz">
+<description language="en">&lt;b&gt;EAGLE Design Rules for *2* Layer Designs (DS)&lt;/b&gt;
 &lt;p&gt;
-The default Design Rules have been set to cover
-a wide range of applications. Your particular design
-may have different requirements, so please make the
-necessary adjustments and save your customized
-design rules under a new name.
-</description>
+This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requirements for our double sided products. For questions, comments, suggestions, please contact Sunstone Customer Support: &lt;p&gt;&lt;b&gt;Email:&lt;/b&gt;  mailto:support@sunstone.com&lt;br&gt;&lt;b&gt;Phone:&lt;/b&gt; 800-228-8198.&lt;p&gt; v1.1Mod10/16/07~Layers-core reversal.Distance C/D.Restring%.Supply G%.&lt;p&gt; v1.2 Mod12/06/07~Distance C/D to 20mils.&lt;p&gt;v1.3Mod12/12/07~Supply/Annulus Value to 12.5mils&lt;p&gt;1/15/08 SSC-EAGLE-2Lyr_v1.0.0.3~For Release&lt;p&gt;10/3/08 Description Edit.&lt;p&gt;
+
+&lt;p&gt;
+&lt;i&gt;Attention: Upon running the design check and making modifications, please remember to save any changes before closing the application and sending in your board file to Sunstone Circuits for conversion.&lt;i&gt;</description>
 <param name="layerSetup" value="(1*16)"/>
-<param name="mtCopper" value="0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm"/>
-<param name="mtIsolate" value="1.5mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
-<param name="mdWireWire" value="8mil"/>
-<param name="mdWirePad" value="8mil"/>
-<param name="mdWireVia" value="8mil"/>
-<param name="mdPadPad" value="8mil"/>
-<param name="mdPadVia" value="8mil"/>
-<param name="mdViaVia" value="8mil"/>
-<param name="mdSmdPad" value="8mil"/>
-<param name="mdSmdVia" value="8mil"/>
-<param name="mdSmdSmd" value="8mil"/>
+<param name="mtCopper" value="0.0178mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0178mm"/>
+<param name="mtIsolate" value="59mil 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm"/>
+<param name="mdWireWire" value="4mil"/>
+<param name="mdWirePad" value="4mil"/>
+<param name="mdWireVia" value="4mil"/>
+<param name="mdPadPad" value="4mil"/>
+<param name="mdPadVia" value="4mil"/>
+<param name="mdViaVia" value="4mil"/>
+<param name="mdSmdPad" value="4mil"/>
+<param name="mdSmdVia" value="4mil"/>
+<param name="mdSmdSmd" value="4mil"/>
 <param name="mdViaViaSameLayer" value="8mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
-<param name="mdCopperDimension" value="40mil"/>
-<param name="mdDrill" value="8mil"/>
+<param name="mdCopperDimension" value="20mil"/>
+<param name="mdDrill" value="16mil"/>
 <param name="mdSmdStop" value="0mil"/>
-<param name="msWidth" value="10mil"/>
-<param name="msDrill" value="0.6mm"/>
-<param name="msMicroVia" value="9.99mm"/>
+<param name="msWidth" value="4mil"/>
+<param name="msDrill" value="0.200659375mm"/>
+<param name="msMicroVia" value="9.9898mm"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
 <param name="rvPadInner" value="0.25"/>
@@ -1986,20 +1984,20 @@ design rules under a new name.
 <param name="rvViaInner" value="0.25"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="10mil"/>
-<param name="rlMaxPadTop" value="20mil"/>
-<param name="rlMinPadInner" value="10mil"/>
-<param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="10mil"/>
-<param name="rlMaxPadBottom" value="20mil"/>
+<param name="rlMinPadTop" value="8mil"/>
+<param name="rlMaxPadTop" value="999mil"/>
+<param name="rlMinPadInner" value="0mil"/>
+<param name="rlMaxPadInner" value="0mil"/>
+<param name="rlMinPadBottom" value="8mil"/>
+<param name="rlMaxPadBottom" value="999mil"/>
 <param name="rlMinViaOuter" value="8mil"/>
-<param name="rlMaxViaOuter" value="20mil"/>
-<param name="rlMinViaInner" value="8mil"/>
-<param name="rlMaxViaInner" value="20mil"/>
-<param name="rlMinMicroViaOuter" value="4mil"/>
-<param name="rlMaxMicroViaOuter" value="20mil"/>
-<param name="rlMinMicroViaInner" value="4mil"/>
-<param name="rlMaxMicroViaInner" value="20mil"/>
+<param name="rlMaxViaOuter" value="999mil"/>
+<param name="rlMinViaInner" value="0mil"/>
+<param name="rlMaxViaInner" value="0mil"/>
+<param name="rlMinMicroViaOuter" value="8mil"/>
+<param name="rlMaxMicroViaOuter" value="999mil"/>
+<param name="rlMinMicroViaInner" value="0mil"/>
+<param name="rlMaxMicroViaInner" value="0mil"/>
 <param name="psTop" value="-1"/>
 <param name="psBottom" value="-1"/>
 <param name="psFirst" value="-1"/>
@@ -2007,11 +2005,11 @@ design rules under a new name.
 <param name="psElongationOffset" value="100"/>
 <param name="mvStopFrame" value="1"/>
 <param name="mvCreamFrame" value="0"/>
-<param name="mlMinStopFrame" value="4mil"/>
-<param name="mlMaxStopFrame" value="4mil"/>
+<param name="mlMinStopFrame" value="3mil"/>
+<param name="mlMaxStopFrame" value="3mil"/>
 <param name="mlMinCreamFrame" value="0mil"/>
 <param name="mlMaxCreamFrame" value="0mil"/>
-<param name="mlViaStopLimit" value="0mil"/>
+<param name="mlViaStopLimit" value="50mil"/>
 <param name="srRoundness" value="0"/>
 <param name="srMinRoundness" value="0mil"/>
 <param name="srMaxRoundness" value="0mil"/>
@@ -2024,7 +2022,7 @@ design rules under a new name.
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
 <param name="useDiameter" value="13"/>
-<param name="maxErrors" value="999999"/>
+<param name="maxErrors" value="500"/>
 </designrules>
 <autorouter>
 <pass name="Default">
@@ -2127,27 +2125,63 @@ design rules under a new name.
 <attribute name="DIGIKEY" value="296-44599-5-ND" x="181.61" y="160.782" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MOUSER" value="595-BQ7790503PW" x="181.61" y="160.782" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C1" library="passives" package="0603_CAP" value="0.1uF" x="173.99" y="159.258" rot="R270"/>
-<element name="C2" library="passives" package="0603_CAP" value="0.1uF" x="171.45" y="161.798" rot="R270"/>
-<element name="C3" library="passives" package="0603_CAP" value="0.1uF" x="168.91" y="164.338" rot="R270"/>
-<element name="R1" library="passives" package="0603-RES" value="1k" x="165.1" y="165.608"/>
-<element name="R2" library="passives" package="0603-RES" value="1k" x="165.1" y="163.068"/>
-<element name="R3" library="passives" package="0603-RES" value="1k" x="165.1" y="160.528"/>
-<element name="R4" library="resistor" package="R1206" value="0.016" x="175.514" y="153.162" smashed="yes">
+<element name="C1" library="passives" package="0603_CAP" value="0.1uF" x="173.99" y="159.258" smashed="yes" rot="R270">
+<attribute name="NAME" x="173.99" y="160.528" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="C2" library="passives" package="0603_CAP" value="0.1uF" x="171.45" y="161.798" smashed="yes" rot="R270">
+<attribute name="NAME" x="171.45" y="159.258" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="C3" library="passives" package="0603_CAP" value="0.1uF" x="168.91" y="164.338" smashed="yes" rot="R270">
+<attribute name="NAME" x="168.91" y="165.862" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R2" library="passives" package="0603-RES" value="1k" x="165.1" y="165.608" smashed="yes">
+<attribute name="NAME" x="162.814" y="164.846" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R3" library="passives" package="0603-RES" value="1k" x="165.1" y="163.068" smashed="yes">
+<attribute name="NAME" x="162.814" y="162.56" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R4" library="passives" package="0603-RES" value="1k" x="165.1" y="160.528" smashed="yes">
+<attribute name="NAME" x="162.814" y="160.02" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R1" library="resistor" package="R1206" value="0.016" x="175.514" y="153.162" smashed="yes">
 <attribute name="NAME" x="174.117" y="154.305" size="1.27" layer="25"/>
 </element>
-<element name="R5" library="passives" package="0603-RES" value="1k" x="165.1" y="168.148"/>
-<element name="C4" library="passives" package="0603_CAP" value="1uF" x="173.228" y="167.386" rot="R270"/>
-<element name="C5" library="passives" package="0603_CAP" value="1uF" x="175.006" y="164.084"/>
-<element name="R6" library="passives" package="0603-RES" value="1M" x="189.484" y="156.972" rot="R90"/>
-<element name="R7" library="passives" package="0603-RES" value="4.5k" x="192.786" y="157.48" rot="R180"/>
-<element name="R8" library="passives" package="0603-RES" value="1k" x="195.834" y="158.242" rot="R180"/>
-<element name="R9" library="passives" package="0603-RES" value="1M" x="200.66" y="154.686"/>
-<element name="R10" library="passives" package="0603-RES" value="450k" x="204.216" y="160.02"/>
-<element name="R11" library="passives" package="0603-RES" value="10k" x="188.722" y="162.052" rot="R180"/>
-<element name="R12" library="passives" package="0603-RES" value="10k 3435K-B25/85 " x="192.786" y="162.052" rot="R180"/>
-<element name="Q3" library="fets" package="DPAK" value="MOSFET-NCHANNELFDD8580" x="191.77" y="147.828" rot="R180"/>
-<element name="Q4" library="fets" package="DPAK" value="MOSFET-NCHANNELFDD8580" x="201.93" y="146.304" rot="R90"/>
+<element name="R5" library="passives" package="0603-RES" value="1k" x="165.1" y="168.148" smashed="yes">
+<attribute name="NAME" x="162.814" y="167.64" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="C4" library="passives" package="0603_CAP" value="1uF" x="173.228" y="167.386" smashed="yes" rot="R270">
+<attribute name="NAME" x="173.228" y="168.91" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="C5" library="passives" package="0603_CAP" value="1uF" x="175.006" y="164.084" smashed="yes">
+<attribute name="NAME" x="175.006" y="164.846" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R11" library="passives" package="0603-RES" value="1M" x="189.484" y="156.972" smashed="yes" rot="R90">
+<attribute name="NAME" x="189.484" y="159.512" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="R7" library="passives" package="0603-RES" value="4.5k" x="192.786" y="157.48" smashed="yes" rot="R180">
+<attribute name="NAME" x="193.04" y="159.512" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="R6" library="passives" package="0603-RES" value="1k" x="195.834" y="158.242" smashed="yes" rot="R180">
+<attribute name="NAME" x="195.834" y="160.274" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="R12" library="passives" package="0603-RES" value="1M" x="200.66" y="154.686" smashed="yes">
+<attribute name="NAME" x="200.66" y="155.448" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R10" library="passives" package="0603-RES" value="450k" x="204.216" y="160.02" smashed="yes">
+<attribute name="NAME" x="204.216" y="160.782" size="1.27" layer="25" font="vector" ratio="12" align="bottom-center"/>
+</element>
+<element name="R8" library="passives" package="0603-RES" value="10k" x="188.722" y="162.052" smashed="yes" rot="R180">
+<attribute name="NAME" x="188.976" y="164.084" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="R9" library="passives" package="0603-RES" value="10k 3435K-B25/85 " x="192.786" y="162.052" smashed="yes" rot="R180">
+<attribute name="NAME" x="192.786" y="164.084" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="Q3" library="fets" package="DPAK" value="MOSFET-NCHANNELFDD8580" x="191.77" y="147.828" smashed="yes" rot="R180">
+<attribute name="NAME" x="185.274" y="148.717" size="1.27" layer="25"/>
+</element>
+<element name="Q4" library="fets" package="DPAK" value="MOSFET-NCHANNELFDD8580" x="201.93" y="146.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="202.33" y="151.257" size="1.27" layer="25" rot="R180"/>
+</element>
 <element name="U$1" library="logos" package="UCB_CAL_500MIL" value="UCB_CAL500MIL" x="197.104" y="121.158"/>
 <element name="TP1" library="headers" package="TESTPOINT_0.112IN" value="TEST_POINT_0.112IN" x="197.358" y="183.896" smashed="yes">
 <attribute name="NEWARK" value="40F6015" x="197.358" y="183.896" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
@@ -2188,12 +2222,21 @@ design rules under a new name.
 <element name="TP7" library="headers" package="TESTPOINT_0.112IN" value="TEST_POINT_0.112IN" x="223.774" y="150.368" smashed="yes">
 <attribute name="NEWARK" value="40F6015" x="223.774" y="150.368" size="2.54" layer="27" font="vector" ratio="12" display="off"/>
 </element>
+<element name="TP8" library="headers" package="TESTPOINT_0.112IN" value="TEST_POINT_0.112IN" x="111.76" y="182.88" smashed="yes">
+<attribute name="NEWARK" value="40F6015" x="111.76" y="182.88" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+</element>
+<element name="TP14" library="headers" package="TESTPOINT_0.112IN" value="TEST_POINT_0.112IN" x="111.76" y="149.86" smashed="yes">
+<attribute name="NEWARK" value="40F6015" x="111.76" y="149.86" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+</element>
+<element name="TP15" library="headers" package="TESTPOINT_0.112IN" value="TEST_POINT_0.112IN" x="111.76" y="48.26" smashed="yes">
+<attribute name="NEWARK" value="40F6015" x="111.76" y="48.26" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+</element>
 </elements>
 <signals>
 <signal name="N$1">
 <contactref element="BAT1" pad="+"/>
 <contactref element="BAT2" pad="-"/>
-<contactref element="R3" pad="1"/>
+<contactref element="R4" pad="1"/>
 <wire x1="160.528" y1="63.754" x2="160.528" y2="156.718" width="2.54" layer="1"/>
 <wire x1="160.528" y1="156.718" x2="160.64" y2="156.718" width="0.254" layer="1"/>
 <wire x1="160.64" y1="156.718" x2="164.45" y2="160.528" width="0.762" layer="1"/>
@@ -2203,20 +2246,27 @@ design rules under a new name.
 <wire x1="134.62" y1="37.846" x2="112.358" y2="37.846" width="10.16" layer="1"/>
 <wire x1="112.358" y1="37.846" x2="112.35" y2="37.838" width="10.16" layer="1"/>
 <wire x1="160.528" y1="63.754" x2="159.893" y2="63.119" width="2.54" layer="1"/>
+<contactref element="TP15" pad="1"/>
+<wire x1="111.76" y1="48.26" x2="112.35" y2="48.26" width="7.62" layer="1"/>
+<wire x1="112.35" y1="48.26" x2="112.35" y2="37.838" width="7.62" layer="1"/>
 </signal>
 <signal name="N$2">
 <contactref element="BAT2" pad="+"/>
 <contactref element="BAT3" pad="-"/>
-<contactref element="R2" pad="1"/>
+<contactref element="R3" pad="1"/>
 <wire x1="164.45" y1="163.068" x2="159.766" y2="163.068" width="0.762" layer="1"/>
-<wire x1="112.35" y1="63.838" x2="112.35" y2="138.43" width="10.16" layer="1"/>
+<wire x1="112.35" y1="63.838" x2="112.35" y2="137.16" width="10.16" layer="1"/>
+<wire x1="112.35" y1="137.16" x2="112.35" y2="138.43" width="10.16" layer="1"/>
 <wire x1="112.35" y1="138.43" x2="112.35" y2="139.184" width="10.16" layer="1"/>
 <wire x1="159.766" y1="163.068" x2="136.988" y2="163.068" width="2.54" layer="1"/>
 <wire x1="136.988" y1="163.068" x2="112.35" y2="138.43" width="2.54" layer="1"/>
+<contactref element="TP14" pad="1"/>
+<wire x1="111.76" y1="149.86" x2="112.35" y2="149.86" width="7.62" layer="1"/>
+<wire x1="112.35" y1="149.86" x2="112.35" y2="137.16" width="7.62" layer="1"/>
 </signal>
 <signal name="VPACK+">
 <contactref element="BAT3" pad="+"/>
-<contactref element="R1" pad="1"/>
+<contactref element="R2" pad="1"/>
 <contactref element="R5" pad="1"/>
 <wire x1="164.45" y1="168.148" x2="164.45" y2="165.608" width="0.762" layer="1"/>
 <contactref element="TP1" pad="1"/>
@@ -2238,12 +2288,12 @@ design rules under a new name.
 <wire x1="190.96" y1="167.434" x2="187.706" y2="170.688" width="1.778" layer="1"/>
 <wire x1="187.706" y1="170.688" x2="187.706" y2="178.562" width="1.778" layer="1"/>
 <wire x1="223.774" y1="185.42" x2="223.774" y2="189.992" width="2.54" layer="1"/>
-<wire x1="223.774" y1="189.992" x2="223.774" y2="190.754" width="2.54" layer="1"/>
-<wire x1="223.774" y1="190.754" x2="223.774" y2="192.278" width="2.54" layer="1"/>
+<wire x1="223.774" y1="189.992" x2="223.774" y2="192.278" width="2.54" layer="1"/>
 <wire x1="223.774" y1="192.278" x2="221.234" y2="194.818" width="2.54" layer="1"/>
 <wire x1="221.234" y1="194.818" x2="199.898" y2="194.818" width="2.54" layer="1"/>
 <wire x1="199.898" y1="194.818" x2="197.358" y2="192.278" width="2.54" layer="1"/>
 <wire x1="197.358" y1="192.278" x2="197.358" y2="189.484" width="2.54" layer="1"/>
+<contactref element="TP8" pad="1"/>
 </signal>
 <signal name="GND">
 <contactref element="BAT1" pad="-"/>
@@ -2251,14 +2301,14 @@ design rules under a new name.
 <contactref element="C2" pad="2"/>
 <contactref element="C3" pad="2"/>
 <contactref element="U1" pad="8"/>
-<contactref element="R4" pad="1"/>
+<contactref element="R1" pad="1"/>
 <contactref element="U1" pad="9"/>
 <contactref element="U1" pad="20"/>
 <contactref element="C4" pad="2"/>
 <contactref element="C5" pad="1"/>
 <contactref element="U1" pad="19"/>
 <contactref element="U1" pad="18"/>
-<contactref element="R12" pad="1"/>
+<contactref element="R9" pad="1"/>
 <contactref element="U1" pad="17"/>
 <via x="3.175" y="3.175" extent="1-16" drill="3.175" diameter="5.08"/>
 <via x="3.175" y="200.025" extent="1-16" drill="3.175" diameter="5.08"/>
@@ -2324,7 +2374,7 @@ design rules under a new name.
 <contactref element="TP7" pad="1"/>
 </signal>
 <signal name="N$4">
-<contactref element="R3" pad="2"/>
+<contactref element="R4" pad="2"/>
 <contactref element="C1" pad="1"/>
 <contactref element="U1" pad="7"/>
 <wire x1="165.75" y1="160.528" x2="165.862" y2="160.528" width="0.254" layer="1"/>
@@ -2335,7 +2385,7 @@ design rules under a new name.
 <wire x1="174.091" y1="159.807" x2="173.99" y2="159.908" width="0.254" layer="1"/>
 </signal>
 <signal name="N$5">
-<contactref element="R2" pad="2"/>
+<contactref element="R3" pad="2"/>
 <contactref element="C2" pad="1"/>
 <contactref element="U1" pad="6"/>
 <wire x1="178.66" y1="160.457" x2="175.077" y2="160.457" width="0.254" layer="1"/>
@@ -2348,7 +2398,7 @@ design rules under a new name.
 <wire x1="171.308" y1="162.306" x2="171.45" y2="162.448" width="0.254" layer="1"/>
 </signal>
 <signal name="N$6">
-<contactref element="R1" pad="2"/>
+<contactref element="R2" pad="2"/>
 <contactref element="C3" pad="1"/>
 <contactref element="U1" pad="5"/>
 <contactref element="U1" pad="4"/>
@@ -2371,8 +2421,8 @@ design rules under a new name.
 </signal>
 <signal name="N$8">
 <contactref element="U1" pad="10"/>
-<contactref element="R4" pad="2"/>
-<contactref element="R6" pad="1"/>
+<contactref element="R1" pad="2"/>
+<contactref element="R11" pad="1"/>
 <contactref element="Q3" pad="3"/>
 <wire x1="178.66" y1="157.857" x2="177.669" y2="157.857" width="0.254" layer="1"/>
 <wire x1="177.669" y1="157.857" x2="177.038" y2="157.226" width="0.254" layer="1"/>
@@ -2416,7 +2466,7 @@ design rules under a new name.
 <signal name="N$10">
 <contactref element="U1" pad="11"/>
 <contactref element="R7" pad="2"/>
-<contactref element="R6" pad="2"/>
+<contactref element="R11" pad="2"/>
 <wire x1="184.56" y1="157.857" x2="189.249" y2="157.857" width="0.254" layer="1"/>
 <wire x1="189.249" y1="157.857" x2="189.484" y2="157.622" width="0.254" layer="1"/>
 <wire x1="189.484" y1="157.622" x2="191.994" y2="157.622" width="0.254" layer="1"/>
@@ -2437,13 +2487,13 @@ design rules under a new name.
 </signal>
 <signal name="N$13">
 <contactref element="U1" pad="13"/>
-<contactref element="R8" pad="2"/>
+<contactref element="R6" pad="2"/>
 <wire x1="184.56" y1="159.157" x2="194.269" y2="159.157" width="0.254" layer="1"/>
 <wire x1="194.269" y1="159.157" x2="195.184" y2="158.242" width="0.254" layer="1"/>
 </signal>
 <signal name="N$14">
-<contactref element="R8" pad="1"/>
-<contactref element="R9" pad="1"/>
+<contactref element="R6" pad="1"/>
+<contactref element="R12" pad="1"/>
 <contactref element="Q4" pad="1"/>
 <wire x1="207.24" y1="144.024" x2="207.24" y2="142.216" width="0.254" layer="1"/>
 <wire x1="207.24" y1="142.216" x2="205.994" y2="140.97" width="0.254" layer="1"/>
@@ -2464,7 +2514,7 @@ design rules under a new name.
 <wire x1="202.184" y1="156.972" x2="199.898" y2="156.972" width="0.254" layer="1"/>
 </signal>
 <signal name="VPACK-">
-<contactref element="R9" pad="2"/>
+<contactref element="R12" pad="2"/>
 <contactref element="R10" pad="2"/>
 <contactref element="Q4" pad="3"/>
 <contactref element="TP2" pad="1"/>
@@ -2493,14 +2543,14 @@ design rules under a new name.
 </signal>
 <signal name="N$18">
 <contactref element="U1" pad="16"/>
-<contactref element="R11" pad="2"/>
+<contactref element="R8" pad="2"/>
 <wire x1="184.56" y1="161.107" x2="187.127" y2="161.107" width="0.254" layer="1"/>
 <wire x1="187.127" y1="161.107" x2="188.072" y2="162.052" width="0.254" layer="1"/>
 </signal>
 <signal name="N$19">
 <contactref element="U1" pad="15"/>
-<contactref element="R11" pad="1"/>
-<contactref element="R12" pad="2"/>
+<contactref element="R8" pad="1"/>
+<contactref element="R9" pad="2"/>
 <wire x1="189.372" y1="162.052" x2="192.136" y2="162.052" width="0.254" layer="1"/>
 <wire x1="184.56" y1="160.457" x2="190.541" y2="160.457" width="0.254" layer="1"/>
 <wire x1="190.541" y1="160.457" x2="192.136" y2="162.052" width="0.254" layer="1"/>
@@ -2517,6 +2567,11 @@ design rules under a new name.
 <wire x1="191.77" y1="146.24" x2="200.342" y2="146.304" width="5.08" layer="1"/>
 </signal>
 </signals>
+<errors>
+<approved hash="4,1,be94fbafe2660eb8"/>
+<approved hash="4,1,0ab4fd43fafb0b0c"/>
+<approved hash="4,1,b6bc7f737e21b5ee"/>
+</errors>
 </board>
 </drawing>
 <compatibility>
