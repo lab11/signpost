@@ -758,6 +758,8 @@ Pat Panutto</text>
 <wire x1="64.389" y1="84.455" x2="64.389" y2="89.027" width="0.254" layer="21"/>
 <wire x1="64.389" y1="89.027" x2="60.96" y2="89.027" width="0.254" layer="21"/>
 <text x="61.341" y="84.836" size="3.81" layer="21" font="vector" ratio="12">A</text>
+<text x="81.28" y="5.969" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">USB Host
+Auto Detect</text>
 </plain>
 <libraries>
 <library name="signpost">
