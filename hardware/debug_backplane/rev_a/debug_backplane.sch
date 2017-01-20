@@ -8126,6 +8126,24 @@ Low profile connectors, straight&lt;p&gt;
 <part name="U$9" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="FRAME15" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U$11" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="TP20" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP41" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP42" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP43" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP44" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP45" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP46" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP47" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP48" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP49" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP50" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP51" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP52" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP53" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP55" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP56" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP57" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP58" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13298,32 +13316,32 @@ Useful for Debuggin Module USB.</text>
 <instance part="TP28" gate="G$1" x="17.78" y="78.74"/>
 <instance part="TP29" gate="G$1" x="17.78" y="76.2"/>
 <instance part="TP30" gate="G$1" x="17.78" y="73.66"/>
-<instance part="TP1001" gate="G$1" x="71.12" y="175.26"/>
-<instance part="TP1002" gate="G$1" x="71.12" y="172.72"/>
-<instance part="TP1003" gate="G$1" x="71.12" y="170.18"/>
-<instance part="R1001" gate="G$1" x="76.2" y="157.48" rot="R90"/>
-<instance part="GND124" gate="1" x="76.2" y="147.32"/>
-<instance part="R1002" gate="G$1" x="91.44" y="157.48" rot="R90"/>
-<instance part="R1003" gate="G$1" x="83.82" y="157.48" rot="R90"/>
-<instance part="GND125" gate="1" x="83.82" y="147.32"/>
-<instance part="GND126" gate="1" x="91.44" y="147.32"/>
-<instance part="LED1001" gate="G$1" x="76.2" y="165.1" rot="R270"/>
-<instance part="LED1002" gate="G$1" x="83.82" y="165.1" rot="R270"/>
-<instance part="LED1003" gate="G$1" x="91.44" y="165.1" rot="R270"/>
-<instance part="TP1004" gate="G$1" x="134.62" y="175.26"/>
-<instance part="TP1005" gate="G$1" x="134.62" y="172.72"/>
-<instance part="TP1006" gate="G$1" x="134.62" y="170.18"/>
-<instance part="R1004" gate="G$1" x="139.7" y="154.94" rot="R90"/>
-<instance part="GND133" gate="1" x="139.7" y="144.78"/>
-<instance part="R1005" gate="G$1" x="147.32" y="154.94" rot="R90"/>
-<instance part="R1006" gate="G$1" x="154.94" y="154.94" rot="R90"/>
-<instance part="GND134" gate="1" x="147.32" y="144.78"/>
-<instance part="GND135" gate="1" x="154.94" y="144.78"/>
-<instance part="LED1004" gate="G$1" x="139.7" y="165.1" rot="R270"/>
-<instance part="LED1005" gate="G$1" x="147.32" y="165.1" rot="R270"/>
-<instance part="LED1006" gate="G$1" x="154.94" y="165.1" rot="R270"/>
+<instance part="TP1001" gate="G$1" x="96.52" y="66.04"/>
+<instance part="TP1002" gate="G$1" x="96.52" y="63.5"/>
+<instance part="TP1003" gate="G$1" x="96.52" y="60.96"/>
+<instance part="R1001" gate="G$1" x="101.6" y="48.26" rot="R90"/>
+<instance part="GND124" gate="1" x="101.6" y="38.1"/>
+<instance part="R1002" gate="G$1" x="116.84" y="48.26" rot="R90"/>
+<instance part="R1003" gate="G$1" x="109.22" y="48.26" rot="R90"/>
+<instance part="GND125" gate="1" x="109.22" y="38.1"/>
+<instance part="GND126" gate="1" x="116.84" y="38.1"/>
+<instance part="LED1001" gate="G$1" x="101.6" y="55.88" rot="R270"/>
+<instance part="LED1002" gate="G$1" x="109.22" y="55.88" rot="R270"/>
+<instance part="LED1003" gate="G$1" x="116.84" y="55.88" rot="R270"/>
+<instance part="TP1004" gate="G$1" x="172.72" y="66.04"/>
+<instance part="TP1005" gate="G$1" x="172.72" y="63.5"/>
+<instance part="TP1006" gate="G$1" x="172.72" y="60.96"/>
+<instance part="R1004" gate="G$1" x="177.8" y="45.72" rot="R90"/>
+<instance part="GND133" gate="1" x="177.8" y="35.56"/>
+<instance part="R1005" gate="G$1" x="185.42" y="45.72" rot="R90"/>
+<instance part="R1006" gate="G$1" x="193.04" y="45.72" rot="R90"/>
+<instance part="GND134" gate="1" x="185.42" y="35.56"/>
+<instance part="GND135" gate="1" x="193.04" y="35.56"/>
+<instance part="LED1004" gate="G$1" x="177.8" y="55.88" rot="R270"/>
+<instance part="LED1005" gate="G$1" x="185.42" y="55.88" rot="R270"/>
+<instance part="LED1006" gate="G$1" x="193.04" y="55.88" rot="R270"/>
 <instance part="TP9" gate="G$1" x="17.78" y="149.86"/>
-<instance part="TP16" gate="G$1" x="17.78" y="124.46"/>
+<instance part="TP16" gate="G$1" x="17.78" y="119.38"/>
 <instance part="TP17" gate="G$1" x="17.78" y="121.92"/>
 <instance part="TP22" gate="G$1" x="17.78" y="104.14"/>
 <instance part="TP24" gate="G$1" x="17.78" y="96.52"/>
@@ -13348,6 +13366,24 @@ Useful for Debuggin Module USB.</text>
 <instance part="TP37" gate="G$1" x="17.78" y="43.18"/>
 <instance part="TP31" gate="G$1" x="17.78" y="68.58"/>
 <instance part="TP10" gate="G$1" x="17.78" y="147.32"/>
+<instance part="TP20" gate="G$1" x="96.52" y="78.74"/>
+<instance part="TP41" gate="G$1" x="172.72" y="76.2"/>
+<instance part="TP42" gate="G$1" x="96.52" y="88.9"/>
+<instance part="TP43" gate="G$1" x="96.52" y="86.36"/>
+<instance part="TP44" gate="G$1" x="172.72" y="88.9"/>
+<instance part="TP45" gate="G$1" x="172.72" y="86.36"/>
+<instance part="TP46" gate="G$1" x="96.52" y="91.44"/>
+<instance part="TP47" gate="G$1" x="172.72" y="91.44"/>
+<instance part="TP48" gate="G$1" x="96.52" y="93.98"/>
+<instance part="TP49" gate="G$1" x="96.52" y="96.52"/>
+<instance part="TP50" gate="G$1" x="96.52" y="99.06"/>
+<instance part="TP51" gate="G$1" x="96.52" y="101.6"/>
+<instance part="TP52" gate="G$1" x="172.72" y="93.98"/>
+<instance part="TP53" gate="G$1" x="172.72" y="96.52"/>
+<instance part="TP55" gate="G$1" x="172.72" y="99.06"/>
+<instance part="TP56" gate="G$1" x="172.72" y="101.6"/>
+<instance part="TP57" gate="G$1" x="96.52" y="76.2"/>
+<instance part="TP58" gate="G$1" x="172.72" y="78.74"/>
 </instances>
 <busses>
 </busses>
@@ -13376,51 +13412,51 @@ Useful for Debuggin Module USB.</text>
 <net name="MOD0_ISO_POWER" class="0">
 <segment>
 <pinref part="TP1001" gate="G$1" pin="TESTPOINT"/>
-<wire x1="93.98" y1="175.26" x2="76.2" y2="175.26" width="0.1524" layer="91"/>
-<label x="93.98" y="175.26" size="1.27" layer="95" xref="yes"/>
+<wire x1="119.38" y1="66.04" x2="101.6" y2="66.04" width="0.1524" layer="91"/>
+<label x="119.38" y="66.04" size="1.27" layer="95" xref="yes"/>
 <pinref part="LED1001" gate="G$1" pin="ANODE"/>
-<wire x1="76.2" y1="175.26" x2="73.66" y2="175.26" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="167.64" x2="76.2" y2="175.26" width="0.1524" layer="91"/>
-<junction x="76.2" y="175.26"/>
+<wire x1="101.6" y1="66.04" x2="99.06" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="58.42" x2="101.6" y2="66.04" width="0.1524" layer="91"/>
+<junction x="101.6" y="66.04"/>
 </segment>
 </net>
 <net name="MOD0_ISO_I2C" class="0">
 <segment>
 <pinref part="TP1002" gate="G$1" pin="TESTPOINT"/>
-<label x="93.98" y="172.72" size="1.27" layer="95" xref="yes"/>
-<wire x1="93.98" y1="172.72" x2="83.82" y2="172.72" width="0.1524" layer="91"/>
+<label x="119.38" y="63.5" size="1.27" layer="95" xref="yes"/>
+<wire x1="119.38" y1="63.5" x2="109.22" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="LED1002" gate="G$1" pin="ANODE"/>
-<wire x1="83.82" y1="172.72" x2="73.66" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="167.64" x2="83.82" y2="172.72" width="0.1524" layer="91"/>
-<junction x="83.82" y="172.72"/>
+<wire x1="109.22" y1="63.5" x2="99.06" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="58.42" x2="109.22" y2="63.5" width="0.1524" layer="91"/>
+<junction x="109.22" y="63.5"/>
 </segment>
 </net>
 <net name="MOD0_ISO_USB" class="0">
 <segment>
 <pinref part="TP1003" gate="G$1" pin="TESTPOINT"/>
-<label x="93.98" y="170.18" size="1.27" layer="95" xref="yes"/>
-<wire x1="93.98" y1="170.18" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
+<label x="119.38" y="60.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="119.38" y1="60.96" x2="116.84" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="LED1003" gate="G$1" pin="ANODE"/>
-<wire x1="91.44" y1="170.18" x2="73.66" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="91.44" y1="167.64" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
-<junction x="91.44" y="170.18"/>
+<wire x1="116.84" y1="60.96" x2="99.06" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="58.42" x2="116.84" y2="60.96" width="0.1524" layer="91"/>
+<junction x="116.84" y="60.96"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND135" gate="1" pin="GND"/>
 <pinref part="R1006" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="149.86" x2="154.94" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="40.64" x2="193.04" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND134" gate="1" pin="GND"/>
 <pinref part="R1005" gate="G$1" pin="1"/>
-<wire x1="147.32" y1="149.86" x2="147.32" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="40.64" x2="185.42" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND133" gate="1" pin="GND"/>
 <pinref part="R1004" gate="G$1" pin="1"/>
-<wire x1="139.7" y1="149.86" x2="139.7" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="40.64" x2="177.8" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
@@ -13451,71 +13487,81 @@ Useful for Debuggin Module USB.</text>
 <segment>
 <pinref part="GND124" gate="1" pin="GND"/>
 <pinref part="R1001" gate="G$1" pin="1"/>
-<wire x1="76.2" y1="149.86" x2="76.2" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="40.64" x2="101.6" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R1003" gate="G$1" pin="1"/>
 <pinref part="GND125" gate="1" pin="GND"/>
-<wire x1="83.82" y1="152.4" x2="83.82" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="43.18" x2="109.22" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R1002" gate="G$1" pin="1"/>
 <pinref part="GND126" gate="1" pin="GND"/>
-<wire x1="91.44" y1="152.4" x2="91.44" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="43.18" x2="116.84" y2="40.64" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP51" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="101.6" x2="101.6" y2="101.6" width="0.1524" layer="91"/>
+<label x="101.6" y="101.6" size="1.016" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP56" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="101.6" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
+<label x="177.8" y="101.6" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_ISO_POWER" class="0">
 <segment>
 <pinref part="TP1004" gate="G$1" pin="TESTPOINT"/>
-<wire x1="160.02" y1="175.26" x2="139.7" y2="175.26" width="0.1524" layer="91"/>
-<label x="160.02" y="175.26" size="1.27" layer="95" xref="yes"/>
+<wire x1="198.12" y1="66.04" x2="177.8" y2="66.04" width="0.1524" layer="91"/>
+<label x="198.12" y="66.04" size="1.27" layer="95" xref="yes"/>
 <pinref part="LED1004" gate="G$1" pin="ANODE"/>
-<wire x1="139.7" y1="175.26" x2="137.16" y2="175.26" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="167.64" x2="139.7" y2="175.26" width="0.1524" layer="91"/>
-<junction x="139.7" y="175.26"/>
+<wire x1="177.8" y1="66.04" x2="175.26" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="58.42" x2="177.8" y2="66.04" width="0.1524" layer="91"/>
+<junction x="177.8" y="66.04"/>
 </segment>
 </net>
 <net name="MOD1_ISO_I2C" class="0">
 <segment>
 <pinref part="TP1005" gate="G$1" pin="TESTPOINT"/>
-<label x="160.02" y="172.72" size="1.27" layer="95" xref="yes"/>
-<wire x1="160.02" y1="172.72" x2="147.32" y2="172.72" width="0.1524" layer="91"/>
+<label x="198.12" y="63.5" size="1.27" layer="95" xref="yes"/>
+<wire x1="198.12" y1="63.5" x2="185.42" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="LED1005" gate="G$1" pin="ANODE"/>
-<wire x1="147.32" y1="172.72" x2="137.16" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="167.64" x2="147.32" y2="172.72" width="0.1524" layer="91"/>
-<junction x="147.32" y="172.72"/>
+<wire x1="185.42" y1="63.5" x2="175.26" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="58.42" x2="185.42" y2="63.5" width="0.1524" layer="91"/>
+<junction x="185.42" y="63.5"/>
 </segment>
 </net>
 <net name="MOD1_ISO_USB" class="0">
 <segment>
 <pinref part="TP1006" gate="G$1" pin="TESTPOINT"/>
-<label x="160.02" y="170.18" size="1.27" layer="95" xref="yes"/>
-<wire x1="160.02" y1="170.18" x2="154.94" y2="170.18" width="0.1524" layer="91"/>
+<label x="198.12" y="60.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="198.12" y1="60.96" x2="193.04" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="LED1006" gate="G$1" pin="ANODE"/>
-<wire x1="154.94" y1="170.18" x2="137.16" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="167.64" x2="154.94" y2="170.18" width="0.1524" layer="91"/>
-<junction x="154.94" y="170.18"/>
+<wire x1="193.04" y1="60.96" x2="175.26" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="58.42" x2="193.04" y2="60.96" width="0.1524" layer="91"/>
+<junction x="193.04" y="60.96"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="R1004" gate="G$1" pin="2"/>
 <pinref part="LED1004" gate="G$1" pin="CATHODE"/>
-<wire x1="139.7" y1="162.56" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="53.34" x2="177.8" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="R1005" gate="G$1" pin="2"/>
 <pinref part="LED1005" gate="G$1" pin="CATHODE"/>
-<wire x1="147.32" y1="162.56" x2="147.32" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="53.34" x2="185.42" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="R1006" gate="G$1" pin="2"/>
 <pinref part="LED1006" gate="G$1" pin="CATHODE"/>
-<wire x1="154.94" y1="162.56" x2="154.94" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="53.34" x2="193.04" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
@@ -13528,15 +13574,15 @@ Useful for Debuggin Module USB.</text>
 <net name="MOD0_5V_METERED" class="0">
 <segment>
 <pinref part="TP16" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
-<label x="22.86" y="124.46" size="1.27" layer="95" xref="yes"/>
+<wire x1="25.4" y1="119.38" x2="20.32" y2="119.38" width="0.1524" layer="91"/>
+<label x="25.4" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_5V_METERED" class="0">
 <segment>
 <pinref part="TP17" gate="G$1" pin="TESTPOINT"/>
-<wire x1="22.86" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
-<label x="22.86" y="121.92" size="1.27" layer="95" xref="yes"/>
+<wire x1="25.4" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
+<label x="25.4" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_CONTROLLER" class="0">
@@ -13660,21 +13706,133 @@ Useful for Debuggin Module USB.</text>
 <segment>
 <pinref part="R1001" gate="G$1" pin="2"/>
 <pinref part="LED1001" gate="G$1" pin="CATHODE"/>
-<wire x1="76.2" y1="160.02" x2="76.2" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="50.8" x2="101.6" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
 <pinref part="LED1002" gate="G$1" pin="CATHODE"/>
 <pinref part="R1003" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="162.56" x2="83.82" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="53.34" x2="109.22" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="LED1003" gate="G$1" pin="CATHODE"/>
 <pinref part="R1002" gate="G$1" pin="2"/>
-<wire x1="91.44" y1="162.56" x2="91.44" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="53.34" x2="116.84" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="MOD0_USB_VBUS" class="0">
+<segment>
+<pinref part="TP20" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="78.74" x2="101.6" y2="78.74" width="0.1524" layer="91"/>
+<label x="101.6" y="78.74" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_USB_VBUS" class="0">
+<segment>
+<pinref part="TP41" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="76.2" x2="177.8" y2="76.2" width="0.1524" layer="91"/>
+<label x="177.8" y="76.2" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_IN" class="0">
+<segment>
+<pinref part="TP48" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="93.98" x2="101.6" y2="93.98" width="0.1524" layer="91"/>
+<label x="101.6" y="93.98" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_OUT" class="0">
+<segment>
+<pinref part="TP49" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="96.52" x2="101.6" y2="96.52" width="0.1524" layer="91"/>
+<label x="101.6" y="96.52" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_SCL" class="0">
+<segment>
+<pinref part="TP43" gate="G$1" pin="TESTPOINT"/>
+<wire x1="101.6" y1="86.36" x2="99.06" y2="86.36" width="0.1524" layer="91"/>
+<label x="101.6" y="86.36" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_SDA" class="0">
+<segment>
+<pinref part="TP42" gate="G$1" pin="TESTPOINT"/>
+<wire x1="101.6" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
+<label x="101.6" y="88.9" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_PPS" class="0">
+<segment>
+<pinref part="TP46" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="91.44" x2="101.6" y2="91.44" width="0.1524" layer="91"/>
+<label x="101.6" y="91.44" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_VCCIO" class="0">
+<segment>
+<pinref part="TP50" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
+<label x="101.6" y="99.06" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_SCL" class="0">
+<segment>
+<pinref part="TP45" gate="G$1" pin="TESTPOINT"/>
+<wire x1="177.8" y1="86.36" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
+<label x="177.8" y="86.36" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_SDA" class="0">
+<segment>
+<pinref part="TP44" gate="G$1" pin="TESTPOINT"/>
+<wire x1="177.8" y1="88.9" x2="175.26" y2="88.9" width="0.1524" layer="91"/>
+<label x="177.8" y="88.9" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_PPS" class="0">
+<segment>
+<pinref part="TP47" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="91.44" x2="177.8" y2="91.44" width="0.1524" layer="91"/>
+<label x="177.8" y="91.44" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_IN" class="0">
+<segment>
+<pinref part="TP52" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="93.98" x2="177.8" y2="93.98" width="0.1524" layer="91"/>
+<label x="177.8" y="93.98" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_OUT" class="0">
+<segment>
+<pinref part="TP53" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="96.52" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
+<label x="177.8" y="96.52" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_VCCIO" class="0">
+<segment>
+<pinref part="TP55" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
+<label x="177.8" y="99.06" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_5V" class="0">
+<segment>
+<pinref part="TP57" gate="G$1" pin="TESTPOINT"/>
+<wire x1="99.06" y1="76.2" x2="101.6" y2="76.2" width="0.1524" layer="91"/>
+<label x="101.6" y="76.2" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_5V" class="0">
+<segment>
+<pinref part="TP58" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="78.74" x2="177.8" y2="78.74" width="0.1524" layer="91"/>
+<label x="177.8" y="78.74" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
