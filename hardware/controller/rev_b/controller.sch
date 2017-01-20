@@ -7175,9 +7175,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <junction x="127" y="35.56"/>
 </segment>
 <segment>
-<pinref part="U30" gate="U1" pin="PB12"/>
-<wire x1="78.74" y1="99.06" x2="76.2" y2="99.06" width="0.1524" layer="91"/>
-<label x="76.2" y="99.06" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<pinref part="U30" gate="U1" pin="PB07"/>
+<wire x1="78.74" y1="111.76" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
+<label x="76.2" y="111.76" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$56" class="0">
@@ -8839,8 +8839,6 @@ USB is attached</text>
 </sheets>
 <errors>
 <approved hash="202,5,139.7,129.54,Q1,G1,,,,"/>
-<approved hash="204,3,91.44,142.24,U29,ADVREFP,,,,"/>
-<approved hash="204,2,78.74,142.24,U30,ADVREFP,,,,"/>
 </errors>
 </schematic>
 </drawing>
