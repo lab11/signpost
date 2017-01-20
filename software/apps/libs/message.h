@@ -1,5 +1,6 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
+
+#include <stdint.h>
 
 //this is the first i2c messaging library!
 //
@@ -27,6 +28,4 @@ uint32_t message_set_read_buffer(uint8_t* data, uint32_t len);
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif
