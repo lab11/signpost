@@ -1864,9 +1864,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="28.2194" y="57.7342" size="0.889" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="DIGIKEY" value="RHM10.0KHCT-ND" x="27.6352" y="57.2516" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="C8" library="passives" package="0603_CAP" value="360pF" x="26.0604" y="58.2168" smashed="yes" rot="R90">
-<attribute name="NAME" x="25.2984" y="58.2168" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
-<attribute name="DIGIKEY" value="490-1440-1-ND" x="26.0604" y="58.2168" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="C8" library="passives" package="0603_CAP" value="360pF" x="26.0604" y="57.7088" smashed="yes" rot="R90">
+<attribute name="NAME" x="25.2984" y="57.7088" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="DIGIKEY" value="490-1440-1-ND" x="26.0604" y="57.7088" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U9" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="53.1368" y="29.1338" smashed="yes">
 <attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND" x="53.1368" y="29.1338" size="1.778" layer="27" display="off"/>
@@ -2985,10 +2985,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="R14" pad="2"/>
 <contactref element="C30" pad="2"/>
 <contactref element="C8" pad="1"/>
-<wire x1="26.0604" y1="57.5668" x2="26.3398" y2="56.6016" width="0.254" layer="1"/>
 <wire x1="26.3398" y1="56.6016" x2="27.6352" y2="56.6016" width="0.254" layer="1"/>
 <wire x1="27.6352" y1="56.6016" x2="27.29" y2="56.2564" width="0.254" layer="1"/>
 <wire x1="27.29" y1="56.2564" x2="27.417" y2="54.6862" width="0.254" layer="1"/>
+<wire x1="26.3398" y1="56.6016" x2="26.0604" y2="56.6016" width="0.254" layer="1"/>
+<wire x1="26.0604" y1="56.6016" x2="26.0604" y2="57.0588" width="0.254" layer="1"/>
 </signal>
 <signal name="ADC_IN_MEMS">
 <contactref element="U9" pad="13"/>
