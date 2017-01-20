@@ -18,7 +18,13 @@ LIBSIGNPOST_DIR = $(CURRENT_DIR)libs/
 LIBSIGNPOST ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)/libsignpost.a
 OBJS += $(LIBSIGNPOST)
 
-INCLUDE_PATHS += $(LIBSIGNPOST_DIR)
+# add mbedtls crypto library
+LIBMBEDTLS_LIB_DIR = $(CURRENT_DIR)libs/mbedtls/library/
+LIBMBEDTLS_INC_DIR = $(CURRENT_DIR)libs/mbedtls/include/
+#LIBMEDTLS ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)/libmbedcrypto.a
+#OBJS += $(LIBMBEDTLS)
+
+INCLUDE_PATHS += $(LIBSIGNPOST_DIR) $(LIBMBEDTLS_INC_DIR)
 INCLUDES = $(addprefix -I,$(INCLUDE_PATHS))
 CPPFLAGS += $(INCLUDES)
 
@@ -26,10 +32,13 @@ CPPFLAGS += $(INCLUDES)
 # when needed
 include $(LIBSIGNPOST_DIR)/Makefile
 
+# include mbedtls library makefile
+#include $(LIBMBEDTLS_LIB_DIR)Makefile
 
 # include userland master makefile. Contains rules and flags for actually
 # 	building the application
 include $(TOCK_USERLAND_BASE_DIR)/Makefile
+
 
 # add platform-specific headers
 .PHONY: clean
