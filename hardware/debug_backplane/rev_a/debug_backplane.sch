@@ -8143,6 +8143,8 @@ Low profile connectors, straight&lt;p&gt;
 <part name="TP18" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R90" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$16" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="S19" library="switches" deviceset="B3U" device="-1000P"/>
+<part name="GND89" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8172,6 +8174,8 @@ Low profile connectors, straight&lt;p&gt;
 <instance part="S17" gate="G$1" x="104.14" y="60.96" rot="R90"/>
 <instance part="S18" gate="G$1" x="104.14" y="20.32" rot="R90"/>
 <instance part="U$11" gate="G$1" x="71.12" y="177.8"/>
+<instance part="S19" gate="G$1" x="93.98" y="162.56" rot="R90"/>
+<instance part="GND89" gate="1" x="93.98" y="149.86"/>
 </instances>
 <busses>
 </busses>
@@ -8334,6 +8338,11 @@ Low profile connectors, straight&lt;p&gt;
 <wire x1="104.14" y1="12.7" x2="104.14" y2="7.62" width="0.1524" layer="91"/>
 <junction x="104.14" y="7.62"/>
 </segment>
+<segment>
+<pinref part="GND89" gate="1" pin="GND"/>
+<pinref part="S19" gate="G$1" pin="P$1"/>
+<wire x1="93.98" y1="152.4" x2="93.98" y2="154.94" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
@@ -8375,8 +8384,11 @@ Low profile connectors, straight&lt;p&gt;
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
 <pinref part="J3" gate="J1" pin="!BACKPLANE_RESET"/>
-<wire x1="68.58" y1="170.18" x2="71.12" y2="170.18" width="0.1524" layer="91"/>
-<label x="71.12" y="170.18" size="1.27" layer="95" xref="yes"/>
+<wire x1="68.58" y1="170.18" x2="93.98" y2="170.18" width="0.1524" layer="91"/>
+<label x="96.52" y="170.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="S19" gate="G$1" pin="P$2"/>
+<wire x1="93.98" y1="170.18" x2="96.52" y2="170.18" width="0.1524" layer="91"/>
+<junction x="93.98" y="170.18"/>
 </segment>
 <segment>
 <pinref part="R27" gate="G$1" pin="2"/>
