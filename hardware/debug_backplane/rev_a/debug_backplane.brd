@@ -3866,7 +3866,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="J2" library="connector" package="PJ-102AH" value="PJ-102AH" x="10.795" y="81.534" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="CP-102AH-ND" x="10.795" y="81.534" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
-<attribute name="NAME" x="-0.205" y="81.534" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="13.589" y="87.171" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U10" library="chips" package="QFN-48-7MM" value="SAM4LC8AA" x="23.114" y="10.668" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="ATSAM4LC8AA-MU-ND" x="33.274" y="-2.032" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
