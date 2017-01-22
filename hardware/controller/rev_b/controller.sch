@@ -6022,11 +6022,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="FB3" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5kΩ">
-<attribute name="DIGIKEY" value="490-5216-1-ND"/>
-</part>
-<part name="L2" library="signpost" deviceset="LHQ3NP" device="" value="22uH">
 <attribute name="DIGIKEY" value="1276-6395-1-ND"/>
 </part>
+<part name="L2" library="signpost" deviceset="LHQ3NP" device="" value="22uH"/>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>

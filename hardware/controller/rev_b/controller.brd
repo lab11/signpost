@@ -1858,11 +1858,11 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="-8.128" y="-5.969" size="0.8128" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="FB3" library="passives" package="0402_CAP" value="1.5kΩ" x="-15.6464" y="0.6858" smashed="yes">
-<attribute name="DIGIKEY" value="490-5216-1-ND" x="-15.6464" y="0.6858" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="1276-6395-1-ND" x="-15.6464" y="0.6858" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="-15.5702" y="1.0922" size="0.8128" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="L2" library="signpost" package="1212" value="22uH" x="-5.6642" y="-6.8072" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="1276-6395-1-ND" x="-5.6642" y="-6.8072" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="490-5350-1-ND" x="-5.6642" y="-6.8072" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="-3.6642" y="-6.8072" size="0.8128" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C12" library="passives" package="0402_CAP" value="100nF" x="-5.2578" y="-3.3528" smashed="yes" rot="R90">
