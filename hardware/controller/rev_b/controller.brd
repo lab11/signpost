@@ -29,11 +29,11 @@
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -249,9 +249,9 @@ Branden Ghena
 <text x="17.272" y="23.876" size="0.8128" layer="21" font="vector" ratio="12" align="top-left">Controller</text>
 <text x="-32.2326" y="-10.4902" size="0.8128" layer="21" font="vector" ratio="12" align="top-left">Storage
 Master</text>
-<text x="32.258" y="8.89" size="0.8128" layer="22" font="vector" ratio="12" rot="SMR270" align="center">Edison
+<text x="30.988" y="8.89" size="0.8128" layer="22" font="vector" ratio="12" rot="SMR270" align="center">Edison
 Serial</text>
-<text x="32.258" y="-8.89" size="0.8128" layer="22" font="vector" ratio="12" rot="SMR270" align="center">Edison
+<text x="30.988" y="-8.89" size="0.8128" layer="22" font="vector" ratio="12" rot="SMR270" align="center">Edison
 Program</text>
 <text x="12.9286" y="-28.0162" size="0.8128" layer="21" font="vector" ratio="12" rot="R90" align="center">Backplane
 Reset</text>
