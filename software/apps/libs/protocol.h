@@ -13,6 +13,8 @@
  *      protocol layer will encrypt with AES256-CTR and HMAC. If NULL, protocol
  *      layer will simply HASH contents.  buf: contents to send
  *   len: length of data to send
+ *
+ *   returns 0 on success, negative on failure.
  */
 int protocol_send(uint8_t addr, uint8_t dest,
                   uint8_t* key, uint8_t *buf,
@@ -27,6 +29,8 @@ int protocol_send(uint8_t addr, uint8_t dest,
  *      layer will simply check HASH. Must be the same key used to encrypt.
  *   appdata: buffer to hold decrypted/verified app data.
  *   applen: length of returned app data.
+ *
+ *   returns 0 on success, negative on failure.
  */
 int protocol_recv(uint8_t* inbuf, size_t inlen,
                   uint8_t* key, uint8_t* appdata,
