@@ -1,29 +1,36 @@
 #include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "message.h"
+#include "protocol.h"
 #include "module.h"
 #include "mbedtls/md.h"
 #include "mbedtls/cipher.h"
 #include "rng.h"
 
 const mbedtls_md_info_t * md_info;
-const mbedtls_cipher_info_t * cipher_info;
 mbedtls_md_context_t md_context;
+const mbedtls_cipher_info_t * cipher_info;
 mbedtls_cipher_context_t cipher_context;
 
 int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
-    uint8_t ivenc[16];
+    uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
 
     if (operation == MBEDTLS_ENCRYPT) {
         // Get 16 random bits for IV
         // TODO use mbedtls entropy
-        rng_sync(iv, 16, 16);
+        rng_sync(iv, MBEDTLS_MAX_IV_LENGTH, MBEDTLS_MAX_IV_LENGTH);
         // copy to iv, to send with encrypted content
-        memcpy(iv, ivenc, 16);
+        memcpy(iv, ivenc, MBEDTLS_MAX_IV_LENGTH);
+        printf("iv = 0x");
+        for(int i = 0; i < 16; i++) {
+            printf("%02x", iv[i]);
+        }
+        printf("\n");
     }
 
-    cipher_info = mbedtls_cipher_info_from_type(MBEDTLS_CIPHER_AES_128_CTR);
+    cipher_info = mbedtls_cipher_info_from_type(MBEDTLS_CIPHER_AES_256_CTR);
     mbedtls_cipher_init(&cipher_context);
     ret = mbedtls_cipher_setup(&cipher_context, cipher_info);
     if(ret<0) return ret;
@@ -31,7 +38,7 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
     if(ret<0) return ret;
     ret = mbedtls_cipher_reset(&cipher_context);
     if(ret<0) return ret;
-    ret = mbedtls_cipher_crypt(&cipher_context, iv, 16, in, inlen, out, olen);
+    ret = mbedtls_cipher_crypt(&cipher_context, iv, MBEDTLS_MAX_IV_LENGTH, in, inlen, out, olen);
     if(ret<0) return ret;
 
     mbedtls_cipher_free(&cipher_context);
@@ -75,34 +82,33 @@ int protocol_send(uint8_t addr, uint8_t dest,
                   uint8_t* key, uint8_t *buf,
                   size_t buflen, size_t len) {
 
-    uint8_t* tempbuf[buflen];
-    uint8_t* iv[16];
+    uint8_t tempbuf[buflen];
+    uint8_t iv[MBEDTLS_MAX_IV_LENGTH];
     size_t olen;
+    size_t size;
     // keep track of free location in buffer
-    size_t idx=0;
+    size=0;
 
     // if there isn't enough room in the provided buffer for an hmac/hash
-    if (buflen - len < ECDH_KEY_LENGTH + 16) return -1;
+    if (buflen - len < ECDH_KEY_LENGTH + MBEDTLS_MAX_IV_LENGTH) return -1;
 
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
         cipher(MBEDTLS_ENCRYPT, key, buf, len, iv, tempbuf, &olen);
         // put iv in front of buf
-        memcpy(buf, iv, 16);
-        idx+=16;
-        // hmac over encrypted content after iv
-        message_digest(key, tempbuf, olen, buf+idx);
-        idx+=32;
-        // copy encrypted content to buf after iv and hmac
-        memcpy(buf+idx, tempbuf, olen);
-        idx+=olen;
+        memcpy(buf, iv, MBEDTLS_MAX_IV_LENGTH);
+        size+=MBEDTLS_MAX_IV_LENGTH;
+        // copy encrypted content to buf after iv
+        memcpy(buf+size, tempbuf, olen);
+        size+=olen;
+        // hmac over iv and content
+        message_digest(key, buf, size, buf+size);
+        size+=SHA256_LEN;
     }
+    // otherwise just hash over content
     else {
-        memcpy(tempbuf, buf, len);
-        message_digest(key, tempbuf, len, buf);
-        idx+=32;
-        memcpy(buf+idx, tempbuf, len);
-        idx+=len;
+        message_digest(key, buf, len, buf+len);
+        size = len + SHA256_LEN;
     }
 
 
@@ -112,3 +118,16 @@ int protocol_send(uint8_t addr, uint8_t dest,
     return 0;
 }
 
+int protocol_recv(uint8_t* inbuf, size_t inlen, uint8_t* key, uint8_t* appdata, size_t* applen) {
+    uint8_t h[SHA256_LEN];
+
+    // check hmac/hash
+    message_digest(key, inbuf-SHA256_LEN, SHA256_LEN, h);
+    if (!memcmp(h, inbuf+inlen-SHA256_LEN, SHA256_LEN)) return -1;
+    printf("hmac\n");
+    // decrypt if needed
+    if(key != NULL) {
+        return cipher(MBEDTLS_DECRYPT, key, inbuf+MBEDTLS_MAX_IV_LENGTH, inlen-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, inbuf, appdata, applen);
+    }
+    return 0;
+}
