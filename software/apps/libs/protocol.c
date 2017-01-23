@@ -23,11 +23,6 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
         rng_sync(iv, MBEDTLS_MAX_IV_LENGTH, MBEDTLS_MAX_IV_LENGTH);
         // copy to iv, to send with encrypted content
         memcpy(iv, ivenc, MBEDTLS_MAX_IV_LENGTH);
-        printf("iv = 0x");
-        for(int i = 0; i < 16; i++) {
-            printf("%02x", iv[i]);
-        }
-        printf("\n");
     }
 
     cipher_info = mbedtls_cipher_info_from_type(MBEDTLS_CIPHER_AES_256_CTR);
@@ -80,41 +75,56 @@ int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out) {
 
 int protocol_send(uint8_t addr, uint8_t dest,
                   uint8_t* key, uint8_t *buf,
-                  size_t buflen, size_t len) {
+                  size_t len) {
 
-    uint8_t tempbuf[buflen];
+    // tempbuf stores encrypted buf, needs to be multiple of 16
+    uint8_t tempbuf[16*(len/16+(len%16 != 0))];
+    // sendbuf is what is sent to message layer, needs to fit hash and IV
+    uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
     uint8_t iv[MBEDTLS_MAX_IV_LENGTH];
     size_t olen;
     size_t size;
     // keep track of free location in buffer
     size=0;
 
-    // if there isn't enough room in the provided buffer for an hmac/hash
-    if (buflen - len < ECDH_KEY_LENGTH + MBEDTLS_MAX_IV_LENGTH) return -1;
-
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
         cipher(MBEDTLS_ENCRYPT, key, buf, len, iv, tempbuf, &olen);
-        // put iv in front of buf
-        memcpy(buf, iv, MBEDTLS_MAX_IV_LENGTH);
+        // put iv in front of sendbuf
+        memcpy(sendbuf, iv, MBEDTLS_MAX_IV_LENGTH);
         size+=MBEDTLS_MAX_IV_LENGTH;
-        // copy encrypted content to buf after iv
-        memcpy(buf+size, tempbuf, olen);
+        // copy encrypted content to sendbuf after iv
+        memcpy(sendbuf+size, tempbuf, olen);
         size+=olen;
         // hmac over iv and content
-        message_digest(key, buf, size, buf+size);
+        message_digest(key, sendbuf, size, sendbuf+size);
         size+=SHA256_LEN;
     }
     // otherwise just hash over content
     else {
-        message_digest(key, buf, len, buf+len);
-        size = len + SHA256_LEN;
+        memcpy(sendbuf, buf, len);
+        size += len;
+        message_digest(key, sendbuf, len, sendbuf+len);
+        size += SHA256_LEN;
     }
-
 
     // pass buffer to message
     //message_init(addr);
     //message_send(dest, buf, len+ECDH_KEY_LENGTH);
+
+    // testing:
+    //printf("(%d) protocol buf:\n", size);
+    //for(int i = 0; i < size; i++) {
+    //    printf("%02x", sendbuf[i]);
+    //}
+    //printf("\n");
+    //protocol_recv(sendbuf, size, key, buf, &olen);
+    //printf("(%d) decrypt buf:\n", olen);
+    //for(int i = 0; i < olen; i++) {
+    //    printf("%02x", buf[i]);
+    //}
+    //printf("\n");
+
     return 0;
 }
 
@@ -124,7 +134,6 @@ int protocol_recv(uint8_t* inbuf, size_t inlen, uint8_t* key, uint8_t* appdata, 
     // check hmac/hash
     message_digest(key, inbuf-SHA256_LEN, SHA256_LEN, h);
     if (!memcmp(h, inbuf+inlen-SHA256_LEN, SHA256_LEN)) return -1;
-    printf("hmac\n");
     // decrypt if needed
     if(key != NULL) {
         return cipher(MBEDTLS_DECRYPT, key, inbuf+MBEDTLS_MAX_IV_LENGTH, inlen-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, inbuf, appdata, applen);
