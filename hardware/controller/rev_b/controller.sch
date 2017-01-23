@@ -6210,14 +6210,14 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="NEWARK" value=""/>
 </part>
 <part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="100kΩ">
-<attribute name="DIGIKEY" value="1276-3429-1-ND"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="U6" library="chips" deviceset="SN74LVC1G125" device="DBVR"/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="Q1" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="100kΩ">
-<attribute name="DIGIKEY" value="1276-3429-1-ND"/>
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="U$24" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
 <part name="U$26" library="signpost" deviceset="VCC_LINUX" device=""/>
