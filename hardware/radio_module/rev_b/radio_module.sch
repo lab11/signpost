@@ -65,7 +65,9 @@
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
 <layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -90,6 +92,7 @@
 <layer number="112" name="tSilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="113" name="IDFDebug" color="7" fill="1" visible="no" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="no" active="yes"/>
+<layer number="118" name="Rect_Pads" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
@@ -98,6 +101,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
@@ -134,6 +138,12 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
@@ -142,6 +152,7 @@
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S" xrefpart="/%S">
 <libraries>
@@ -347,18 +358,22 @@
 <text x="20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, 1.15)</text>
 <text x="20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, -1.15)</text>
 <text x="-20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, -1.15)</text>
+<text x="-20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
+<text x="20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
+<text x="20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
+<text x="-20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
 </package>
 <package name="WURTH_NANO_SIM">
 <wire x1="-4.93" y1="-6.25" x2="-4.93" y2="6.25" width="0.127" layer="21"/>
 <wire x1="-4.93" y1="6.25" x2="4.93" y2="6.25" width="0.127" layer="21"/>
 <wire x1="4.93" y1="6.25" x2="4.93" y2="-6.25" width="0.127" layer="21"/>
 <wire x1="4.93" y1="-6.25" x2="-4.93" y2="-6.25" width="0.127" layer="21"/>
-<smd name="C5" x="-3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
-<smd name="C1" x="-1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
-<smd name="C6" x="-0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
-<smd name="C2" x="0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
-<smd name="C3" x="1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
-<smd name="C7" x="3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C7" x="-3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C3" x="-1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C2" x="-0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C6" x="0.635" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C1" x="1.905" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
+<smd name="C5" x="3.175" y="6.07" dx="1.3" dy="0.65" layer="1" rot="R90"/>
 <smd name="P$8" x="-4.465" y="-6.07" dx="1.03" dy="1" layer="1"/>
 <smd name="P$9" x="4.465" y="-6.07" dx="1.03" dy="1" layer="1"/>
 <smd name="P$10" x="-4.66" y="-0.35" dx="1.8" dy="0.48" layer="1" rot="R90"/>
@@ -2539,6 +2554,24 @@ SMT</description>
 <wire x1="3.556" y1="0.7747" x2="3.556" y2="-0.7747" width="0.127" layer="21"/>
 <wire x1="3.556" y1="-0.7747" x2="2.286" y2="-2.0447" width="0.127" layer="21" curve="-90"/>
 </package>
+<package name="TC2030-IDC-NL_NOSILK">
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SMA">
@@ -2603,6 +2636,19 @@ SMT</description>
 </technologies>
 </device>
 <device name="-NL" package="TC2030-IDC-NL">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="SWDCLK" pad="4"/>
+<connect gate="G$1" pin="SWDIO" pad="2"/>
+<connect gate="G$1" pin="SWO" pad="6"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-NL_NOSILK" package="TC2030-IDC-NL_NOSILK">
 <connects>
 <connect gate="G$1" pin="!RESET" pad="3"/>
 <connect gate="G$1" pin="GND" pad="5"/>
@@ -3321,7 +3367,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pin name="VDDCORE" x="-20.32" y="2.54" length="middle" direction="pwr"/>
 <pin name="VDDOUT" x="-20.32" y="0" length="middle" direction="pwr"/>
 <pin name="VDDIN" x="-20.32" y="20.32" length="middle" direction="pwr"/>
-<pin name="ADVREFP" x="-20.32" y="7.62" length="middle" direction="pwr"/>
+<pin name="ADVREFP" x="-20.32" y="7.62" length="middle"/>
 <pin name="VDDANA" x="-20.32" y="10.16" length="middle" direction="pwr"/>
 <pin name="VDDIO" x="-20.32" y="17.78" length="middle" direction="pwr"/>
 <pin name="GNDANA" x="-20.32" y="-53.34" length="middle" direction="pwr"/>
@@ -3568,76 +3614,76 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <deviceset name="SAM4LC8BA">
 <description>SAM4L Microcontroller. 64QFN Package. 512 Flash.</description>
 <gates>
-<gate name="G$1" symbol="SAM4LC8BA" x="0" y="7.62"/>
+<gate name="U1" symbol="SAM4LC8BA" x="0" y="7.62"/>
 </gates>
 <devices>
 <device name="" package="QFN-64-9MM">
 <connects>
-<connect gate="G$1" pin="!RESET" pad="4"/>
-<connect gate="G$1" pin="ADVREFP" pad="24"/>
-<connect gate="G$1" pin="BIASH" pad="36"/>
-<connect gate="G$1" pin="BIASL" pad="37"/>
-<connect gate="G$1" pin="CAPH" pad="33"/>
-<connect gate="G$1" pin="CAPL" pad="34"/>
-<connect gate="G$1" pin="GND" pad="6 38 64 GND"/>
-<connect gate="G$1" pin="GNDANA" pad="23"/>
-<connect gate="G$1" pin="PA00" pad="1"/>
-<connect gate="G$1" pin="PA01" pad="2"/>
-<connect gate="G$1" pin="PA02" pad="3"/>
-<connect gate="G$1" pin="PA03" pad="10"/>
-<connect gate="G$1" pin="PA04" pad="15"/>
-<connect gate="G$1" pin="PA05" pad="16"/>
-<connect gate="G$1" pin="PA06" pad="21"/>
-<connect gate="G$1" pin="PA07" pad="22"/>
-<connect gate="G$1" pin="PA08" pad="26"/>
-<connect gate="G$1" pin="PA09" pad="29"/>
-<connect gate="G$1" pin="PA10" pad="30"/>
-<connect gate="G$1" pin="PA11" pad="31"/>
-<connect gate="G$1" pin="PA12" pad="32"/>
-<connect gate="G$1" pin="PA13" pad="40"/>
-<connect gate="G$1" pin="PA14" pad="41"/>
-<connect gate="G$1" pin="PA15" pad="42"/>
-<connect gate="G$1" pin="PA16" pad="43"/>
-<connect gate="G$1" pin="PA17" pad="44"/>
-<connect gate="G$1" pin="PA18" pad="49"/>
-<connect gate="G$1" pin="PA19" pad="50"/>
-<connect gate="G$1" pin="PA20" pad="51"/>
-<connect gate="G$1" pin="PA21" pad="55"/>
-<connect gate="G$1" pin="PA22" pad="56"/>
-<connect gate="G$1" pin="PA23" pad="59"/>
-<connect gate="G$1" pin="PA24" pad="60"/>
-<connect gate="G$1" pin="PA25" pad="62"/>
-<connect gate="G$1" pin="PA26" pad="63"/>
-<connect gate="G$1" pin="PB00" pad="11"/>
-<connect gate="G$1" pin="PB01" pad="12"/>
-<connect gate="G$1" pin="PB02" pad="13"/>
-<connect gate="G$1" pin="PB03" pad="14"/>
-<connect gate="G$1" pin="PB04" pad="19"/>
-<connect gate="G$1" pin="PB05" pad="20"/>
-<connect gate="G$1" pin="PB06" pad="27"/>
-<connect gate="G$1" pin="PB07" pad="28"/>
-<connect gate="G$1" pin="PB08" pad="45"/>
-<connect gate="G$1" pin="PB09" pad="46"/>
-<connect gate="G$1" pin="PB10" pad="47"/>
-<connect gate="G$1" pin="PB11" pad="48"/>
-<connect gate="G$1" pin="PB12" pad="53"/>
-<connect gate="G$1" pin="PB13" pad="54"/>
-<connect gate="G$1" pin="PB14" pad="57"/>
-<connect gate="G$1" pin="PB15" pad="58"/>
-<connect gate="G$1" pin="TCK" pad="9"/>
-<connect gate="G$1" pin="VDDANA" pad="25"/>
-<connect gate="G$1" pin="VDDCORE" pad="5"/>
-<connect gate="G$1" pin="VDDIN" pad="8"/>
-<connect gate="G$1" pin="VDDIO" pad="52 61"/>
-<connect gate="G$1" pin="VDDOUT" pad="7"/>
-<connect gate="G$1" pin="VLCD" pad="35"/>
-<connect gate="G$1" pin="VLCDIN" pad="39"/>
-<connect gate="G$1" pin="XIN32" pad="17"/>
-<connect gate="G$1" pin="XOUT32" pad="18"/>
+<connect gate="U1" pin="!RESET" pad="4"/>
+<connect gate="U1" pin="ADVREFP" pad="24"/>
+<connect gate="U1" pin="BIASH" pad="36"/>
+<connect gate="U1" pin="BIASL" pad="37"/>
+<connect gate="U1" pin="CAPH" pad="33"/>
+<connect gate="U1" pin="CAPL" pad="34"/>
+<connect gate="U1" pin="GND" pad="6 38 64 GND"/>
+<connect gate="U1" pin="GNDANA" pad="23"/>
+<connect gate="U1" pin="PA00" pad="1"/>
+<connect gate="U1" pin="PA01" pad="2"/>
+<connect gate="U1" pin="PA02" pad="3"/>
+<connect gate="U1" pin="PA03" pad="10"/>
+<connect gate="U1" pin="PA04" pad="15"/>
+<connect gate="U1" pin="PA05" pad="16"/>
+<connect gate="U1" pin="PA06" pad="21"/>
+<connect gate="U1" pin="PA07" pad="22"/>
+<connect gate="U1" pin="PA08" pad="26"/>
+<connect gate="U1" pin="PA09" pad="29"/>
+<connect gate="U1" pin="PA10" pad="30"/>
+<connect gate="U1" pin="PA11" pad="31"/>
+<connect gate="U1" pin="PA12" pad="32"/>
+<connect gate="U1" pin="PA13" pad="40"/>
+<connect gate="U1" pin="PA14" pad="41"/>
+<connect gate="U1" pin="PA15" pad="42"/>
+<connect gate="U1" pin="PA16" pad="43"/>
+<connect gate="U1" pin="PA17" pad="44"/>
+<connect gate="U1" pin="PA18" pad="49"/>
+<connect gate="U1" pin="PA19" pad="50"/>
+<connect gate="U1" pin="PA20" pad="51"/>
+<connect gate="U1" pin="PA21" pad="55"/>
+<connect gate="U1" pin="PA22" pad="56"/>
+<connect gate="U1" pin="PA23" pad="59"/>
+<connect gate="U1" pin="PA24" pad="60"/>
+<connect gate="U1" pin="PA25" pad="62"/>
+<connect gate="U1" pin="PA26" pad="63"/>
+<connect gate="U1" pin="PB00" pad="11"/>
+<connect gate="U1" pin="PB01" pad="12"/>
+<connect gate="U1" pin="PB02" pad="13"/>
+<connect gate="U1" pin="PB03" pad="14"/>
+<connect gate="U1" pin="PB04" pad="19"/>
+<connect gate="U1" pin="PB05" pad="20"/>
+<connect gate="U1" pin="PB06" pad="27"/>
+<connect gate="U1" pin="PB07" pad="28"/>
+<connect gate="U1" pin="PB08" pad="45"/>
+<connect gate="U1" pin="PB09" pad="46"/>
+<connect gate="U1" pin="PB10" pad="47"/>
+<connect gate="U1" pin="PB11" pad="48"/>
+<connect gate="U1" pin="PB12" pad="53"/>
+<connect gate="U1" pin="PB13" pad="54"/>
+<connect gate="U1" pin="PB14" pad="57"/>
+<connect gate="U1" pin="PB15" pad="58"/>
+<connect gate="U1" pin="TCK" pad="9"/>
+<connect gate="U1" pin="VDDANA" pad="25"/>
+<connect gate="U1" pin="VDDCORE" pad="5"/>
+<connect gate="U1" pin="VDDIN" pad="8"/>
+<connect gate="U1" pin="VDDIO" pad="52 61"/>
+<connect gate="U1" pin="VDDOUT" pad="7"/>
+<connect gate="U1" pin="VLCD" pad="35"/>
+<connect gate="U1" pin="VLCDIN" pad="39"/>
+<connect gate="U1" pin="XIN32" pad="17"/>
+<connect gate="U1" pin="XOUT32" pad="18"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURDKR-ND" constant="no"/>
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -8910,7 +8956,7 @@ not the modules reference</text>
 <instance part="C22" gate="G$1" x="104.14" y="134.62">
 <attribute name="DIGIKEY" x="104.14" y="134.62" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="U11" gate="G$1" x="149.86" y="134.62"/>
+<instance part="U11" gate="U1" x="149.86" y="134.62"/>
 <instance part="GND10" gate="1" x="73.66" y="121.92"/>
 <instance part="U7" gate="G$1" x="55.88" y="50.8" rot="MR0"/>
 <instance part="R12" gate="G$1" x="81.28" y="68.58" smashed="yes" rot="R270">
@@ -9011,9 +9057,9 @@ not the modules reference</text>
 <wire x1="127" y1="76.2" x2="127" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="127" y1="83.82" x2="127" y2="81.28" width="0.1524" layer="91"/>
 <junction x="127" y="81.28"/>
-<pinref part="U11" gate="G$1" pin="GND"/>
+<pinref part="U11" gate="U1" pin="GND"/>
 <wire x1="127" y1="83.82" x2="129.54" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="GNDANA"/>
+<pinref part="U11" gate="U1" pin="GNDANA"/>
 <wire x1="127" y1="81.28" x2="129.54" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9075,7 +9121,7 @@ not the modules reference</text>
 <net name="CONTROLLER_SWDCLK" class="0">
 <segment>
 <label x="177.8" y="170.18" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="TCK"/>
+<pinref part="U11" gate="U1" pin="TCK"/>
 <wire x1="170.18" y1="170.18" x2="177.8" y2="170.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9091,7 +9137,7 @@ not the modules reference</text>
 <net name="!CONTROLLER_RESET" class="0">
 <segment>
 <label x="177.8" y="172.72" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="!RESET"/>
+<pinref part="U11" gate="U1" pin="!RESET"/>
 <wire x1="170.18" y1="172.72" x2="177.8" y2="172.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9111,7 +9157,7 @@ not the modules reference</text>
 </segment>
 <segment>
 <label x="177.8" y="160.02" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="PA00"/>
+<pinref part="U11" gate="U1" pin="PA00"/>
 <wire x1="170.18" y1="160.02" x2="177.8" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9126,7 +9172,7 @@ not the modules reference</text>
 </segment>
 <segment>
 <label x="177.8" y="157.48" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="PA01"/>
+<pinref part="U11" gate="U1" pin="PA01"/>
 <wire x1="170.18" y1="157.48" x2="177.8" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9135,7 +9181,7 @@ not the modules reference</text>
 <wire x1="170.18" y1="154.94" x2="205.74" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="154.94" x2="205.74" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="R11" gate="G$1" pin="1"/>
-<pinref part="U11" gate="G$1" pin="PA02"/>
+<pinref part="U11" gate="U1" pin="PA02"/>
 <pinref part="R42" gate="G$1" pin="2"/>
 <junction x="205.74" y="154.94"/>
 </segment>
@@ -9150,7 +9196,7 @@ not the modules reference</text>
 <junction x="96.52" y="147.32"/>
 <pinref part="FB4" gate="G$1" pin="P$1"/>
 <wire x1="96.52" y1="149.86" x2="96.52" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="VDDANA"/>
+<pinref part="U11" gate="U1" pin="VDDANA"/>
 </segment>
 </net>
 <net name="N$44" class="0">
@@ -9167,13 +9213,13 @@ not the modules reference</text>
 <pinref part="C19" gate="G$1" pin="1"/>
 <wire x1="111.76" y1="137.16" x2="111.76" y2="139.7" width="0.1524" layer="91"/>
 <junction x="111.76" y="139.7"/>
-<pinref part="U11" gate="G$1" pin="VDDOUT"/>
+<pinref part="U11" gate="U1" pin="VDDOUT"/>
 </segment>
 </net>
 <net name="N$52" class="0">
 <segment>
 <pinref part="L3" gate="G$1" pin="2"/>
-<pinref part="U11" gate="G$1" pin="VDDCORE"/>
+<pinref part="U11" gate="U1" pin="VDDCORE"/>
 <wire x1="119.38" y1="142.24" x2="127" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="127" y1="142.24" x2="127" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="127" y1="137.16" x2="129.54" y2="137.16" width="0.1524" layer="91"/>
@@ -9184,8 +9230,8 @@ not the modules reference</text>
 <wire x1="129.54" y1="172.72" x2="121.92" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="172.72" x2="121.92" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="170.18" x2="129.54" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="BIASL"/>
-<pinref part="U11" gate="G$1" pin="BIASH"/>
+<pinref part="U11" gate="U1" pin="BIASL"/>
+<pinref part="U11" gate="U1" pin="BIASH"/>
 </segment>
 </net>
 <net name="N$54" class="0">
@@ -9193,14 +9239,14 @@ not the modules reference</text>
 <wire x1="129.54" y1="167.64" x2="121.92" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="167.64" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="165.1" x2="129.54" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="CAPL"/>
-<pinref part="U11" gate="G$1" pin="CAPH"/>
+<pinref part="U11" gate="U1" pin="CAPL"/>
+<pinref part="U11" gate="U1" pin="CAPH"/>
 </segment>
 </net>
 <net name="CONTROLLER_SWDIO" class="0">
 <segment>
 <label x="177.8" y="152.4" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="PA03"/>
+<pinref part="U11" gate="U1" pin="PA03"/>
 <wire x1="170.18" y1="152.4" x2="177.8" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9237,9 +9283,9 @@ not the modules reference</text>
 <pinref part="FB4" gate="G$1" pin="P$2"/>
 <wire x1="96.52" y1="162.56" x2="96.52" y2="160.02" width="0.1524" layer="91"/>
 <label x="71.12" y="165.1" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="VLCDIN"/>
-<pinref part="U11" gate="G$1" pin="VDDIO"/>
-<pinref part="U11" gate="G$1" pin="VDDIN"/>
+<pinref part="U11" gate="U1" pin="VLCDIN"/>
+<pinref part="U11" gate="U1" pin="VDDIO"/>
+<pinref part="U11" gate="U1" pin="VDDIN"/>
 <wire x1="129.54" y1="162.56" x2="121.92" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="154.94" x2="121.92" y2="162.56" width="0.1524" layer="91"/>
 <junction x="121.92" y="154.94"/>
@@ -9251,7 +9297,7 @@ not the modules reference</text>
 <wire x1="121.92" y1="149.86" x2="129.54" y2="149.86" width="0.1524" layer="91"/>
 <junction x="96.52" y="162.56"/>
 <junction x="121.92" y="162.56"/>
-<pinref part="U11" gate="G$1" pin="VLCD"/>
+<pinref part="U11" gate="U1" pin="VLCD"/>
 <wire x1="96.52" y1="162.56" x2="121.92" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9307,7 +9353,7 @@ not the modules reference</text>
 </net>
 <net name="USB_D-" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA25"/>
+<pinref part="U11" gate="U1" pin="PA25"/>
 <label x="177.8" y="96.52" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="96.52" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
 </segment>
@@ -9319,7 +9365,7 @@ not the modules reference</text>
 </net>
 <net name="USB_D+" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA26"/>
+<pinref part="U11" gate="U1" pin="PA26"/>
 <label x="177.8" y="93.98" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="93.98" x2="177.8" y2="93.98" width="0.1524" layer="91"/>
 </segment>
@@ -9331,7 +9377,7 @@ not the modules reference</text>
 </net>
 <net name="GSM_RX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA11"/>
+<pinref part="U11" gate="U1" pin="PA11"/>
 <label x="177.8" y="132.08" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="132.08" x2="172.72" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="TP22" gate="G$1" pin="TESTPOINT"/>
@@ -9341,7 +9387,7 @@ not the modules reference</text>
 </net>
 <net name="IM880_TX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA19"/>
+<pinref part="U11" gate="U1" pin="PA19"/>
 <wire x1="170.18" y1="111.76" x2="172.72" y2="111.76" width="0.1524" layer="91"/>
 <label x="177.8" y="111.76" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
@@ -9351,7 +9397,7 @@ not the modules reference</text>
 </net>
 <net name="IM880_RX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA20"/>
+<pinref part="U11" gate="U1" pin="PA20"/>
 <wire x1="170.18" y1="109.22" x2="172.72" y2="109.22" width="0.1524" layer="91"/>
 <label x="177.8" y="109.22" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
@@ -9361,7 +9407,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_TX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB09"/>
+<pinref part="U11" gate="U1" pin="PB09"/>
 <label x="121.92" y="106.68" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="106.68" x2="127" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
@@ -9371,7 +9417,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_RX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB10"/>
+<pinref part="U11" gate="U1" pin="PB10"/>
 <label x="121.92" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="TP18" gate="G$1" pin="TESTPOINT"/>
@@ -9382,7 +9428,7 @@ not the modules reference</text>
 <net name="SDA" class="0">
 <segment>
 <label x="121.92" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="PB00"/>
+<pinref part="U11" gate="U1" pin="PB00"/>
 <wire x1="121.92" y1="129.54" x2="129.54" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9394,7 +9440,7 @@ not the modules reference</text>
 <net name="SCL" class="0">
 <segment>
 <label x="121.92" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="U11" gate="G$1" pin="PB01"/>
+<pinref part="U11" gate="U1" pin="PB01"/>
 <wire x1="121.92" y1="127" x2="129.54" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -9405,7 +9451,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_BOOT" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB08"/>
+<pinref part="U11" gate="U1" pin="PB08"/>
 <label x="121.92" y="109.22" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="109.22" x2="127" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
@@ -9415,7 +9461,7 @@ not the modules reference</text>
 </net>
 <net name="IM880_BOOT" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA18"/>
+<pinref part="U11" gate="U1" pin="PA18"/>
 <label x="177.8" y="114.3" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="114.3" x2="172.72" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
@@ -9425,7 +9471,7 @@ not the modules reference</text>
 </net>
 <net name="GSM_POWER" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA14"/>
+<pinref part="U11" gate="U1" pin="PA14"/>
 <label x="177.8" y="124.46" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="124.46" x2="172.72" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
@@ -9435,7 +9481,7 @@ not the modules reference</text>
 </net>
 <net name="!GSM_RST" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA13"/>
+<pinref part="U11" gate="U1" pin="PA13"/>
 <label x="177.8" y="127" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="127" x2="172.72" y2="127" width="0.1524" layer="91"/>
 <pinref part="TP24" gate="G$1" pin="TESTPOINT"/>
@@ -9445,7 +9491,7 @@ not the modules reference</text>
 </net>
 <net name="PPS" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB04"/>
+<pinref part="U11" gate="U1" pin="PB04"/>
 <label x="121.92" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="119.38" x2="121.92" y2="119.38" width="0.1524" layer="91"/>
 </segment>
@@ -9457,7 +9503,7 @@ not the modules reference</text>
 </net>
 <net name="MOD_IN" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB05"/>
+<pinref part="U11" gate="U1" pin="PB05"/>
 <label x="121.92" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
 </segment>
@@ -9474,14 +9520,14 @@ not the modules reference</text>
 <label x="30.48" y="162.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$1" pin="PB03"/>
+<pinref part="U11" gate="U1" pin="PB03"/>
 <label x="121.92" y="121.92" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="129.54" y1="121.92" x2="121.92" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SDA_INTERNAL" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB14"/>
+<pinref part="U11" gate="U1" pin="PB14"/>
 <wire x1="129.54" y1="93.98" x2="114.3" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="93.98" x2="114.3" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="SDA"/>
@@ -9494,7 +9540,7 @@ not the modules reference</text>
 </net>
 <net name="SCL_INTERNAL" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB15"/>
+<pinref part="U11" gate="U1" pin="PB15"/>
 <wire x1="129.54" y1="91.44" x2="116.84" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="91.44" x2="116.84" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="SCL"/>
@@ -9507,7 +9553,7 @@ not the modules reference</text>
 </net>
 <net name="N$9" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB12"/>
+<pinref part="U11" gate="U1" pin="PB12"/>
 <wire x1="129.54" y1="99.06" x2="104.14" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="99.06" x2="104.14" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="U7" gate="G$1" pin="!INT"/>
@@ -9590,7 +9636,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_POWER_GATE" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB11"/>
+<pinref part="U11" gate="U1" pin="PB11"/>
 <wire x1="129.54" y1="101.6" x2="127" y2="101.6" width="0.1524" layer="91"/>
 <label x="121.92" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP19" gate="G$1" pin="TESTPOINT"/>
@@ -9600,7 +9646,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_INT1/RTS" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB06"/>
+<pinref part="U11" gate="U1" pin="PB06"/>
 <wire x1="129.54" y1="114.3" x2="127" y2="114.3" width="0.1524" layer="91"/>
 <label x="121.92" y="114.3" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP9" gate="G$1" pin="TESTPOINT"/>
@@ -9610,7 +9656,7 @@ not the modules reference</text>
 </net>
 <net name="NUCLEUM_INT2/CTS" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB07"/>
+<pinref part="U11" gate="U1" pin="PB07"/>
 <wire x1="129.54" y1="111.76" x2="127" y2="111.76" width="0.1524" layer="91"/>
 <label x="121.92" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
@@ -9620,7 +9666,7 @@ not the modules reference</text>
 </net>
 <net name="!NUCLEUM_RESET" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB02"/>
+<pinref part="U11" gate="U1" pin="PB02"/>
 <wire x1="129.54" y1="124.46" x2="127" y2="124.46" width="0.1524" layer="91"/>
 <label x="121.92" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
@@ -9630,7 +9676,7 @@ not the modules reference</text>
 </net>
 <net name="!IM880_RESET" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA17"/>
+<pinref part="U11" gate="U1" pin="PA17"/>
 <wire x1="170.18" y1="116.84" x2="172.72" y2="116.84" width="0.1524" layer="91"/>
 <label x="177.8" y="116.84" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
@@ -9640,21 +9686,21 @@ not the modules reference</text>
 </net>
 <net name="IM880_INT2" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PB13"/>
+<pinref part="U11" gate="U1" pin="PB13"/>
 <wire x1="129.54" y1="96.52" x2="121.92" y2="96.52" width="0.1524" layer="91"/>
 <label x="121.92" y="96.52" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="IM880_INT1" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA21"/>
+<pinref part="U11" gate="U1" pin="PA21"/>
 <wire x1="170.18" y1="106.68" x2="177.8" y2="106.68" width="0.1524" layer="91"/>
 <label x="177.8" y="106.68" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_RTS" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA08"/>
+<pinref part="U11" gate="U1" pin="PA08"/>
 <wire x1="170.18" y1="139.7" x2="172.72" y2="139.7" width="0.1524" layer="91"/>
 <label x="177.8" y="139.7" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP13" gate="G$1" pin="TESTPOINT"/>
@@ -9664,7 +9710,7 @@ not the modules reference</text>
 </net>
 <net name="GSM_CTS" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA09"/>
+<pinref part="U11" gate="U1" pin="PA09"/>
 <wire x1="170.18" y1="137.16" x2="172.72" y2="137.16" width="0.1524" layer="91"/>
 <label x="177.8" y="137.16" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP21" gate="G$1" pin="TESTPOINT"/>
@@ -9674,7 +9720,7 @@ not the modules reference</text>
 </net>
 <net name="IM880_POWER_GATE" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA06"/>
+<pinref part="U11" gate="U1" pin="PA06"/>
 <wire x1="170.18" y1="144.78" x2="172.72" y2="144.78" width="0.1524" layer="91"/>
 <label x="177.8" y="144.78" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
@@ -9684,7 +9730,7 @@ not the modules reference</text>
 </net>
 <net name="GSM_POWER_GATE" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA07"/>
+<pinref part="U11" gate="U1" pin="PA07"/>
 <wire x1="170.18" y1="142.24" x2="172.72" y2="142.24" width="0.1524" layer="91"/>
 <label x="177.8" y="142.24" size="1.27" layer="95" xref="yes"/>
 <pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
@@ -9694,7 +9740,7 @@ not the modules reference</text>
 </net>
 <net name="DEBUG_RX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA15"/>
+<pinref part="U11" gate="U1" pin="PA15"/>
 <wire x1="170.18" y1="121.92" x2="172.72" y2="121.92" width="0.1524" layer="91"/>
 <label x="177.8" y="121.92" size="1.016" layer="95" xref="yes"/>
 <pinref part="TP20" gate="G$1" pin="TESTPOINT"/>
@@ -9704,7 +9750,7 @@ not the modules reference</text>
 </net>
 <net name="DEBUG_TX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA16"/>
+<pinref part="U11" gate="U1" pin="PA16"/>
 <wire x1="170.18" y1="119.38" x2="172.72" y2="119.38" width="0.1524" layer="91"/>
 <label x="177.8" y="119.38" size="1.016" layer="95" xref="yes"/>
 <pinref part="TP8" gate="G$1" pin="TESTPOINT"/>
@@ -9737,7 +9783,7 @@ not the modules reference</text>
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
 <wire x1="213.36" y1="106.68" x2="213.36" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA23"/>
+<pinref part="U11" gate="U1" pin="PA23"/>
 <wire x1="213.36" y1="101.6" x2="170.18" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9745,7 +9791,7 @@ not the modules reference</text>
 <segment>
 <pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="215.9" y1="106.68" x2="215.9" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA24"/>
+<pinref part="U11" gate="U1" pin="PA24"/>
 <wire x1="215.9" y1="99.06" x2="170.18" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9753,13 +9799,13 @@ not the modules reference</text>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="106.68" x2="218.44" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$1" pin="PA22"/>
+<pinref part="U11" gate="U1" pin="PA22"/>
 <wire x1="218.44" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GSM_TX" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="PA12"/>
+<pinref part="U11" gate="U1" pin="PA12"/>
 <label x="177.8" y="129.54" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="129.54" x2="172.72" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="TP23" gate="G$1" pin="TESTPOINT"/>
