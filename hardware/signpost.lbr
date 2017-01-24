@@ -2984,7 +2984,8 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9197-ND , S9194-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S9194-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4022,7 +4023,8 @@ with External Sense Resistor</description>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9195-ND , S7072-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9195-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S7072-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4081,7 +4083,10 @@ with External Sense Resistor</description>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9197-ND , S9194-ND , S7072-ND , S7072-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S9194-ND" constant="no"/>
+<attribute name="DIGIKEY3" value="S7072-ND" constant="no"/>
+<attribute name="DIGIKEY4" value="S7072-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
