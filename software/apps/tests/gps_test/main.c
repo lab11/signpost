@@ -38,6 +38,7 @@ static void timer_callback (
         ) {
 
     // get a single gps update
+    printf("Sampling GPS!\n");
     gps_sample(gps_callback);
 }
 
@@ -53,6 +54,7 @@ void main() {
     // use GPS with a timer
     timer_subscribe(timer_callback, NULL);
     timer_start_repeating(7000);
+    printf("Setup complete\n");
 
     // other option:
     // get gps updates continuously
