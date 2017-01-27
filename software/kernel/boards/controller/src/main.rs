@@ -12,7 +12,7 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use signpost_drivers::gps_console::{self, Console};
+use signpost_drivers::gps_console;
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -69,8 +69,10 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct SignpostController {
-    gps_console: &'static Console<'static, usart::USART>,
+    console: &'static capsules::console::Console<'static, usart::USART>,
+    gps_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     bonus_timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
@@ -89,9 +91,10 @@ impl Platform for SignpostController {
     {
 
         match driver_num {
-            0 => f(Some(self.gps_console)),
+            0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
             14 => f(Some(self.fram)),
 
@@ -100,6 +103,7 @@ impl Platform for SignpostController {
             102 => f(Some(self.coulomb_counter_generic)),
             104 => f(Some(self.smbus_interrupt)),
             108 => f(Some(self.app_watchdog)),
+            109 => f(Some(self.gps_console)),
             203 => f(Some(self.bonus_timer)),
 
             0xff => f(Some(&self.ipc)),
@@ -110,7 +114,7 @@ impl Platform for SignpostController {
 
 
 unsafe fn set_pin_primary_functions() {
-    use sam4l::gpio::{PA};
+    use sam4l::gpio::{PA, PB};
     use sam4l::gpio::PeripheralFunction::{A, B, E};
 
     // GPIO: signal from modules
@@ -128,21 +132,21 @@ unsafe fn set_pin_primary_functions() {
     PA[16].configure(None); // MOD5_OUT
     PA[17].configure(None); // MOD6_OUT
     PA[18].configure(None); // MOD7_OUT
-    PA[18].enable();
-    PA[18].enable_output();
-    PA[18].set();
-
 
     // SPI: Storage Master & FRAM
     PA[10].configure(Some(A)); // MEMORY_SCLK
     PA[11].configure(Some(A)); // MEMORY_MISO
     PA[12].configure(Some(A)); // MEMORY_MOSI
-    //PA[03].configure(None); // !STORAGE_CS //XXX: check that this works
-    PA[25].configure(None); // !FRAM_CS/CONTROLLER_LED
+    PB[13].configure(None); // !STORAGE_CS
+    PA[25].configure(None); // !FRAM_CS
 
     // UART: GPS
     PA[19].configure(Some(A)); // GPS_OUT_TX
     PA[20].configure(Some(A)); // GPS_IN_RX
+    PB[07].configure(None); // GPS_ENABLE_POWER, Turn on GPS to start
+    PB[07].enable();
+    PB[07].set();
+    PB[07].enable_output();
 
     // SMBus: Power / Backplane
     PA[21].configure(Some(E)); // SMBDATA
@@ -152,6 +156,15 @@ unsafe fn set_pin_primary_functions() {
     // I2C: Modules
     PA[23].configure(Some(B)); // MODULES_SDA
     PA[24].configure(Some(B)); // MODULES_SCL
+
+    // UART: Debug
+    PB[04].configure(Some(B)); // CONTROLLER_DEBUG_RX
+    PB[05].configure(Some(B)); // CONTROLLER_DEBUG_TX
+
+    // GPIO: Debug
+    PB[11].configure(None); // !CONTROLLER_LED
+    PB[14].configure(None); // CONTROLLER_DEBUG_GPIO1
+    PB[15].configure(None); // CONTROLLER_DEBUG_GPIO2
 }
 
 /*******************************************************************************
@@ -171,12 +184,22 @@ pub unsafe fn reset_handler() {
 
     set_pin_primary_functions();
 
-    //
     // UART console
+    let console = static_init!(
+        capsules::console::Console<usart::USART>,
+        capsules::console::Console::new(&usart::USART1,
+                     115200,
+                     &mut capsules::console::WRITE_BUF,
+                     kernel::Container::create()),
+        224/8);
+    hil::uart::UART::set_client(&usart::USART1, console);
+
+    //
+    // GPS console
     //
     let gps_console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART2,
+        signpost_drivers::gps_console::Console<usart::USART>,
+        signpost_drivers::gps_console::Console::new(&usart::USART2,
                      9600,
                      &mut gps_console::WRITE_BUF,
                      &mut gps_console::READ_BUF,
@@ -506,7 +529,7 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 13],
+        [&'static sam4l::gpio::GPIOPin; 15],
          [&sam4l::gpio::PA[04],  // MOD0_IN
          &sam4l::gpio::PA[05],  // MOD1_IN
          &sam4l::gpio::PA[06],  // MOD2_IN
@@ -519,10 +542,11 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PA[16],  // MOD5_OUT
          &sam4l::gpio::PA[17],  // MOD6_OUT
          &sam4l::gpio::PA[18],  // MOD7_OUT
+         &sam4l::gpio::PB[14],  // CONTROLLER_DEBUG_GPIO1
+         &sam4l::gpio::PB[15],  // CONTROLLER_DEBUG_GPIO2
          &sam4l::gpio::PA[26]], // !SMBALERT
-        13 * 4
+        15 * 4
     );
-        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED { => !FRAM_CS }
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
@@ -531,17 +555,24 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
-    sam4l::gpio::PA[25].enable();
-    sam4l::gpio::PA[25].enable_output();
-    sam4l::gpio::PA[25].set();
-
+    // LEDs
+    let led_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 1],
+        [&sam4l::gpio::PB[11]], // !CONTROLLER_LED
+        1 * 4);
+    let led = static_init!(
+        capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
+        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
+        96/8);
 
     //
     // Actual platform object
     //
     let signpost_controller = SignpostController {
+        console: console,
         gps_console: gps_console,
         gpio: gpio,
+        led: led,
         timer: timer,
         bonus_timer: bonus_timer,
         gpio_async: gpio_async,
@@ -554,8 +585,9 @@ pub unsafe fn reset_handler() {
         ipc: kernel::ipc::IPC::new(),
     };
 
+    signpost_controller.console.initialize();
     signpost_controller.gps_console.initialize();
-    watchdog.start();
+    //watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();

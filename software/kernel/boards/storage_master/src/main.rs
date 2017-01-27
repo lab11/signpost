@@ -71,6 +71,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct SignpostStorageMaster {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     ipc: kernel::ipc::IPC,
@@ -85,6 +86,7 @@ impl Platform for SignpostStorageMaster {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
 
             0xff => f(Some(&self.ipc)),
@@ -95,37 +97,56 @@ impl Platform for SignpostStorageMaster {
 
 
 unsafe fn set_pin_primary_functions() {
-    use sam4l::gpio::{PA};
+    use sam4l::gpio::{PA, PB};
     use sam4l::gpio::PeripheralFunction::{A, B};
 
-    //a few gpio signals
-    PA[05].configure(None); // Edison_pwrbtn
-    PA[06].configure(None); // linux_enable_power
-    PA[07].configure(None); // storage led
-
-    //memory spi bus
-    PA[9].configure(None); // Storage CS
+    // SPI: Slave to Controller
     PA[10].configure(Some(A)); // MEMORY_SCLK
     PA[11].configure(Some(A)); // MEMORY_MISO
     PA[12].configure(Some(A)); // MEMORY_MOSI
+    PA[09].configure(None); // !STORAGE_CS
 
-    //SD card spi bus
-    PA[13].configure(None); // SD_CS
+    // SPI: SD Card
     PA[14].configure(Some(A)); // SD_SCLK
     PA[15].configure(Some(A)); // SD_MISO
     PA[16].configure(Some(A)); // SD_MOSI
+    PA[13].configure(None); // SD_CS
+
+    // GPIO: SD Card
     PA[17].configure(None); // SD_DETECT
     PA[21].configure(None); // SD_ENABLE
+    PA[21].enable();
+    PA[21].set();
+    PA[21].enable_output();
 
-    //Edison SPI Bus
-    PA[18].configure(None); // EDISON_SCLK
-    PA[19].configure(Some(A)); // EDISON_MOSI //console test
-    PA[20].configure(Some(A)); // EDISON_MISO // console test
-    PA[22].configure(None); // EDISON_CS
+    // SPI: Slave to Edison
+    PA[18].configure(Some(A)); // EDISON_SCLK
+    PA[19].configure(Some(A)); // EDISON_MOSI
+    PA[20].configure(Some(A)); // EDISON_MISO
+    PA[22].configure(None); // !EDISON_SPI_CS
+
+    // GPIO: Edison
+    PA[05].configure(None); // !EDISON_PWRBTN
+    PA[05].enable();
+    PA[05].set();
+    PA[05].enable_output();
+    PA[06].configure(None); // LINUX_ENABLE_POWER
+    PA[06].enable();
+    PA[06].set();
+    PA[06].enable_output();
 
     // I2C: Modules
     PA[23].configure(Some(B)); // MODULES_SDA
     PA[24].configure(Some(B)); // MODULES_SCL
+
+    // UART: Debug
+    PB[09].configure(Some(A)); // STORAGE_DEBUG_RX
+    PB[10].configure(Some(A)); // STORAGE_DEBUG_TX
+
+    // GPIO: Debug
+    PA[07].configure(None); // !STORAGE_LED
+    PB[04].configure(None); // STORAGE_DEBUG_GPIO1
+    PB[05].configure(None); // STORAGE_DEBUG_GPIO2
 }
 
 /*******************************************************************************
@@ -137,7 +158,8 @@ pub unsafe fn reset_handler() {
     sam4l::init();
 
     // Setup clock
-    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    //sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillatorPll, 48000000);
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -146,12 +168,12 @@ pub unsafe fn reset_handler() {
 
     let console = static_init!(
         Console<usart::USART>,
-        Console::new(&usart::USART2,
+        Console::new(&usart::USART3,
                      115200,
                      &mut console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
-    hil::uart::UART::set_client(&usart::USART2, console);
+    hil::uart::UART::set_client(&usart::USART3, console);
 
     //
     // Timer
@@ -196,15 +218,14 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 7],
-         [&sam4l::gpio::PA[05],  // EDISON_PWRBTN
+        [&'static sam4l::gpio::GPIOPin; 6],
+         [&sam4l::gpio::PA[05], // EDISON_PWRBTN
          &sam4l::gpio::PA[06],  // LINUX_ENABLE_POWER
-         &sam4l::gpio::PA[07],  // STORAGE_LED
-         &sam4l::gpio::PA[09],  // STORAGE_CS
-         &sam4l::gpio::PA[13],  // SD_CS
          &sam4l::gpio::PA[17],  // SD_DETECT
-         &sam4l::gpio::PA[21]], // SD_ENABLE
-        7 * 4
+         &sam4l::gpio::PA[21],  // SD_ENABLE
+         &sam4l::gpio::PB[04],  // STORAGE_DEBUG_GPIO1
+         &sam4l::gpio::PB[05]], // STORAGE_DEBUG_GPIO2
+        6 * 4
     );
         // [&sam4l::gpio::PA[25],  // CONTROLLER_LED { => !FRAM_CS }
     let gpio = static_init!(
@@ -215,6 +236,16 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
+    // LEDs
+    let led_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 1],
+        [&sam4l::gpio::PA[07]], // STORAGE_LED
+        1 * 4);
+    let led = static_init!(
+        capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
+        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
+        96/8);
+
 
     //
     // Actual platform object
@@ -222,6 +253,7 @@ pub unsafe fn reset_handler() {
     let signpost_storage_master = SignpostStorageMaster {
         console: console,
         gpio: gpio,
+        led: led,
         timer: timer,
         i2c_master_slave: i2c_modules,
         ipc: kernel::ipc::IPC::new(),
