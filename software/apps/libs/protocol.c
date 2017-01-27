@@ -20,7 +20,7 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
     if (operation == MBEDTLS_ENCRYPT) {
         // Get 16 random bits for IV
         // TODO use mbedtls entropy
-        rng_sync(iv, MBEDTLS_MAX_IV_LENGTH, MBEDTLS_MAX_IV_LENGTH);
+        rng_sync(ivenc, MBEDTLS_MAX_IV_LENGTH, MBEDTLS_MAX_IV_LENGTH);
         // copy to iv, to send with encrypted content
         memcpy(iv, ivenc, MBEDTLS_MAX_IV_LENGTH);
     }
