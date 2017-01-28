@@ -5,6 +5,7 @@
 use core::cell::Cell;
 
 use kernel::{AppId, Callback, Driver};
+use kernel::returncode::ReturnCode;
 
 use signpost_hil;
 
@@ -130,19 +131,19 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> signpost_hil::i2c_se
 }
 
 impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelector<'a, Selector> {
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             0 => {
                 self.callback.set(Some(callback));
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+    fn command(&self, command_num: usize, data: usize, _: AppId) -> ReturnCode {
         match command_num {
             // select channels
             0 => {
@@ -151,7 +152,7 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.bitmask.set(data);
 
                 self.set_channels();
-                0
+                ReturnCode::SUCCESS
             }
 
             // disable all channels
@@ -160,7 +161,7 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.index.set(0);
 
                 self.disable_channels();
-                0
+                ReturnCode::SUCCESS
             }
 
             2 => {
@@ -169,7 +170,7 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.bitmask.set(0);
 
                 self.read_interrupts();
-                0
+                ReturnCode::SUCCESS
             }
 
             3 => {
@@ -178,11 +179,11 @@ impl<'a, Selector: signpost_hil::i2c_selector::I2CSelector> Driver for I2CSelect
                 self.bitmask.set(0);
 
                 self.read_selected();
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }

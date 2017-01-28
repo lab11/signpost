@@ -1,4 +1,5 @@
 use kernel::{AppId, AppSlice, Callback, Shared, Driver};
+use kernel::returncode::ReturnCode;
 use kernel::common::take_cell::TakeCell;
 use kernel::hil::uart::{self, UART, Client};
 
@@ -38,17 +39,17 @@ impl<'a, U: UART> UartPrint<'a, U> {
 }
 
 impl<'a, U: UART> Driver for UartPrint<'a, U> {
-    fn allow(&self, _: AppId, allow_num: usize, slice: AppSlice<Shared, u8>) -> isize {
+    fn allow(&self, _: AppId, allow_num: usize, slice: AppSlice<Shared, u8>) -> ReturnCode {
         match allow_num {
             1 => {
                 self.app_buffer.replace(slice);
-                0
+                ReturnCode::SUCCESS
             }
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             1 /* putstr/write_done */ => {
 
@@ -65,15 +66,15 @@ impl<'a, U: UART> Driver for UartPrint<'a, U> {
                         self.uart.transmit(buffer, app_slice.len());
                     });
                 });
-                0
+                ReturnCode::SUCCESS
             },
-            _ => -1
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn command(&self, cmd_num: usize, _: usize, _: AppId) -> isize {
+    fn command(&self, cmd_num: usize, _: usize, _: AppId) -> ReturnCode {
         match cmd_num {
-            _ => -1
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }

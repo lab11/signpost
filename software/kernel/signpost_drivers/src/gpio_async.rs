@@ -2,6 +2,7 @@ use core::cell::Cell;
 
 use kernel::hil;
 use kernel::{AppId, Callback, Driver};
+use kernel::returncode::ReturnCode;
 
 use signpost_hil;
 
@@ -18,7 +19,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> GPIOAsync<'a, Port> {
         }
     }
 
-    fn configure_input_pin(&self, port: usize, pin: usize, config: usize) -> isize {
+    fn configure_input_pin(&self, port: usize, pin: usize, config: usize) -> ReturnCode {
         let ports = self.ports.as_ref();
         match config {
             0 => {
@@ -33,7 +34,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> GPIOAsync<'a, Port> {
                 ports[port].enable_input(pin, hil::gpio::InputMode::PullNone)
             }
 
-            _ => -1,
+            _ => ReturnCode::EINVAL,
         }
     }
 
@@ -75,19 +76,19 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> signpost_hil::gpio_async
 }
 
 impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a, Port> {
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             0 => {
                 self.callback.set(Some(callback));
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+    fn command(&self, command_num: usize, data: usize, _: AppId) -> ReturnCode {
         let port = data & 0xFF;
         let pin = (data >> 8) & 0xFF;
         let ports = self.ports.as_ref();
@@ -96,7 +97,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
             // enable output
             0 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].enable_output(pin)
                 }
@@ -105,7 +106,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
             // set pin
             1 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].set(pin)
                 }
@@ -114,7 +115,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
             // clear pin
             2 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].clear(pin)
                 }
@@ -123,7 +124,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
             // toggle pin
             3 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].toggle(pin)
                 }
@@ -137,7 +138,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
                 let pin_num = pin & 0xFF;
                 let pin_config = (pin >> 8) & 0xFF;
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     self.configure_input_pin(port, pin_num, pin_config)
                 }
@@ -146,7 +147,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
             // read input
             5 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].read(pin)
                 }
@@ -170,7 +171,7 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
                 //     }
                 //     err_code
                 // }
-                0
+                ReturnCode::SUCCESS
             }
 
             // disable interrupts on pin, also disables pin
@@ -183,20 +184,20 @@ impl<'a, Port: signpost_hil::gpio_async::GPIOAsyncPort> Driver for GPIOAsync<'a,
                 //     ports[data].disable();
                 //     0
                 // }
-                0
+                ReturnCode::SUCCESS
             }
 
             // disable pin
             8 => {
                 if port >= ports.len() {
-                    -1
+                    ReturnCode::EINVAL
                 } else {
                     ports[port].disable(pin)
                 }
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }

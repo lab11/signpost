@@ -4,6 +4,7 @@ use core::cell::Cell;
 use kernel::hil::gpio;
 use kernel::hil::i2c;
 use kernel::{AppId, Callback, Driver};
+use kernel::returncode::ReturnCode;
 
 pub static mut BUFFER: [u8; 8] = [0; 8];
 
@@ -291,24 +292,24 @@ impl<'a> LTC2941Client for LTC2941Driver<'a> {
 }
 
 impl<'a> Driver for LTC2941Driver<'a> {
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             0 => {
                 self.callback.set(Some(callback));
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+    fn command(&self, command_num: usize, data: usize, _: AppId) -> ReturnCode {
         match command_num {
             // get status
             0 => {
                 self.ltc2941.read_status();
-                0
+                ReturnCode::SUCCESS
             }
 
             // configure
@@ -331,41 +332,41 @@ impl<'a> Driver for LTC2941Driver<'a> {
                 };
 
                 self.ltc2941.configure(int_pin_conf, prescaler as u8, vbat_alert);
-                0
+                ReturnCode::SUCCESS
             }
 
             // reset charge
             2 => {
                 self.ltc2941.reset_charge();
-                0
+                ReturnCode::SUCCESS
             }
 
             // set high threshold
             3 => {
                 self.ltc2941.set_high_threshold(data as u16);
-                0
+                ReturnCode::SUCCESS
             }
 
             // set low threshold
             4 => {
                 self.ltc2941.set_low_threshold(data as u16);
-                0
+                ReturnCode::SUCCESS
             }
 
             // get charge
             5 => {
                 self.ltc2941.get_charge();
-                0
+                ReturnCode::SUCCESS
             }
 
             // shutdown
             6 => {
                 self.ltc2941.shutdown();
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }

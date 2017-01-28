@@ -4,6 +4,7 @@ use core::cell::Cell;
 use kernel::hil::gpio;
 use kernel::hil::i2c;
 use kernel::{AppId, Callback, Driver};
+use kernel::returncode::ReturnCode;
 
 pub static mut BUFFER: [u8; 8] = [0; 8];
 
@@ -125,25 +126,25 @@ impl<'a> SMBUSIntClient for SMBUSIntDriver<'a> {
 }
 
 impl<'a> Driver for SMBUSIntDriver<'a> {
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             0 => {
                 self.callback.set(Some(callback));
-                0
+                ReturnCode::SUCCESS
             }
 
             // default
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
-    fn command(&self, command_num: usize, _data: usize, _:AppId) -> isize {
+    fn command(&self, command_num: usize, _data: usize, _:AppId) -> ReturnCode {
         match command_num {
             // issue alert response
             0 => {
                 self.smbusint.issue_alert_response();
-                0
+                ReturnCode::SUCCESS
             },
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }

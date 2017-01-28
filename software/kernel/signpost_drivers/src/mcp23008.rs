@@ -2,6 +2,7 @@ use core::cell::Cell;
 
 use kernel::common::take_cell::TakeCell;
 use kernel::hil;
+use kernel::returncode::ReturnCode;
 
 use signpost_hil;
 
@@ -276,24 +277,24 @@ impl<'a> hil::gpio::Client for MCP23008<'a> {
 }
 
 impl<'a> signpost_hil::gpio_async::GPIOAsyncPort for MCP23008<'a> {
-    fn disable(&self, pin: usize) -> isize {
+    fn disable(&self, pin: usize) -> ReturnCode {
         // Best we can do is make this an input.
         self.set_direction(pin as u8, Direction::Input);
-        0
+        ReturnCode::SUCCESS
     }
 
-    fn enable_output(&self, pin: usize) -> isize {
+    fn enable_output(&self, pin: usize) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.set_direction(pin as u8, Direction::Output);
-            0
+            ReturnCode::SUCCESS
         }
     }
 
-    fn enable_input(&self, pin: usize, mode: hil::gpio::InputMode) -> isize {
+    fn enable_input(&self, pin: usize, mode: hil::gpio::InputMode) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.set_direction(pin as u8, Direction::Input);
             match mode {
@@ -307,54 +308,54 @@ impl<'a> signpost_hil::gpio_async::GPIOAsyncPort for MCP23008<'a> {
                     self.configure_pullup(pin as u8, false);
                 },
             }
-            0
+            ReturnCode::SUCCESS
         }
     }
 
-    fn read(&self, pin: usize) -> isize {
+    fn read(&self, pin: usize) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.read_pin(pin as u8);
-            0
+            ReturnCode::SUCCESS
         }
     }
 
-    fn toggle(&self, pin: usize) -> isize {
+    fn toggle(&self, pin: usize) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.toggle_pin(pin as u8);
-            0
+            ReturnCode::SUCCESS
         }
     }
 
-    fn set(&self, pin: usize) -> isize {
+    fn set(&self, pin: usize) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.set_pin(pin as u8, PinState::High);
-            0
+            ReturnCode::SUCCESS
         }
     }
 
-    fn clear(&self, pin: usize) -> isize {
+    fn clear(&self, pin: usize) -> ReturnCode {
         if pin > 7 {
-            -1
+            ReturnCode::EINVAL
         } else {
             self.set_pin(pin as u8, PinState::Low);
-            0
+            ReturnCode::SUCCESS
         }
     }
 
     fn enable_interrupt(&self, _pin: usize, _client_data: usize,
-                        _mode: hil::gpio::InterruptMode) -> isize {
+                        _mode: hil::gpio::InterruptMode) -> ReturnCode {
         // not yet implemented
-        0
+        ReturnCode::SUCCESS
     }
 
-    fn disable_interrupt(&self, _pin: usize) -> isize {
+    fn disable_interrupt(&self, _pin: usize) -> ReturnCode {
         // not yet implemented
-        0
+        ReturnCode::SUCCESS
     }
 }

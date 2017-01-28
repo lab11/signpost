@@ -3,6 +3,7 @@
 use core::cell::Cell;
 
 use kernel::{AppId, Driver};
+use kernel::returncode::ReturnCode;
 use kernel::hil::time;
 use kernel::hil::time::Frequency;
 
@@ -108,37 +109,37 @@ impl<'a, A: time::Alarm + 'a> time::Client for Timeout<'a, A> {
 }
 
 impl<'a, A: time::Alarm + 'a> Driver for AppWatchdog<'a, A> {
-    fn command(&self, command_num: usize, data: usize, _: AppId) -> isize {
+    fn command(&self, command_num: usize, data: usize, _: AppId) -> ReturnCode {
         match command_num {
             // Tickle application timer
             0 => {
                 self.tickle_app();
-                0
+                ReturnCode::SUCCESS
             },
             // Tickle kernel timer
             1 => {
                 self.tickle_kernel();
-                0
+                ReturnCode::SUCCESS
             },
             // Set app timeout in milliseconds
             2 => {
                 self.set_app_timeout(data);
-                0
+                ReturnCode::SUCCESS
             },
             // Set kernel timeout in milliseconds
             3 => {
                 self.set_kernel_timeout(data);
-                0
+                ReturnCode::SUCCESS
             },
             // Enable app watchdog
             4 => {
                 self.start();
-                0
+                ReturnCode::SUCCESS
             },
             // Disable app watchdog
             5 => {
                 self.stop();
-                0
+                ReturnCode::SUCCESS
             },
             // Reset the board
             6 => {
@@ -146,12 +147,11 @@ impl<'a, A: time::Alarm + 'a> Driver for AppWatchdog<'a, A> {
                 if data == 0xDEAD {
                     self.reset();
                 }
-                0
+                ReturnCode::SUCCESS
             },
 
             // default
-            _ => -1
+            _ => ReturnCode::ENOSUPPORT,
         }
-
     }
 }

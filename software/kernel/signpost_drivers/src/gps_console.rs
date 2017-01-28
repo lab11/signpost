@@ -1,5 +1,7 @@
 use core::cell::Cell;
 use kernel::{AppId, AppSlice, Container, Callback, Shared, Driver};
+use kernel::process::Error;
+use kernel::returncode::ReturnCode;
 use kernel::common::take_cell::TakeCell;
 use kernel::hil::uart::{self, UARTAdvanced, Client};
 
@@ -77,76 +79,46 @@ impl<'a, U: UARTAdvanced> Console<'a, U> {
 }
 
 impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
-    fn allow(&self, appid: AppId, allow_num: usize, slice: AppSlice<Shared, u8>) -> isize {
+    fn allow(&self, appid: AppId, allow_num: usize, slice: AppSlice<Shared, u8>) -> ReturnCode {
         match allow_num {
             0 => {
                 self.apps
                     .enter(appid, |app, _| {
                         app.read_buffer = Some(slice);
                         app.read_idx = 0;
-                        0
+                        ReturnCode::SUCCESS
                     })
-                    .unwrap_or(-1)
+                    .unwrap_or_else(|err| {
+                        match err {
+                            Error::OutOfMemory => ReturnCode::ENOMEM,
+                            Error::AddressOutOfBounds => ReturnCode::EINVAL,
+                            Error::NoSuchApp => ReturnCode::EINVAL,
+                        }
+                    })
             }
             1 => {
                 self.apps
                     .enter(appid, |app, _| {
                         app.write_buffer = Some(slice);
-                        0
+                        ReturnCode::SUCCESS
                     })
-                    .unwrap_or(-1)
+                    .unwrap_or_else(|err| {
+                        match err {
+                            Error::OutOfMemory => ReturnCode::ENOMEM,
+                            Error::AddressOutOfBounds => ReturnCode::EINVAL,
+                            Error::NoSuchApp => ReturnCode::EINVAL,
+                        }
+                    })
             }
-            _ => -1,
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> isize {
+    fn subscribe(&self, subscribe_num: usize, callback: Callback) -> ReturnCode {
         match subscribe_num {
             0 /* read line */ => {
-                self.apps.enter(callback.app_id(), |app, _| {
-                    panic!("readline is borked right now. Don't call it");
-                    app.read_callback = Some(callback);
-
-                    // start receiving, only needs to be started once
-                    if !self.receiving.get() {
-                        self.receiving.set(true);
-                        self.rx_buffer.take().map(|buffer| {
-                            self.uart.receive(buffer, 1);
-                        });
-                    }
-
-                    // check if there is already a line ready
-                    if self.line_complete.get() {
-                        app.read_buffer = app.read_buffer.take().map(|mut rb| {
-                            self.line_buffer.map(|line| {
-                                // copy until newline or app buffer is full
-                                let mut max_idx = self.line_idx.get();
-                                if rb.len() < self.line_idx.get() {
-                                    max_idx = rb.len();
-                                }
-
-                                // copy over data to app buffer
-                                for idx in 0..max_idx {
-                                    rb.as_mut()[idx] = line[idx];
-                                }
-
-                                // call application handler
-                                app.read_callback.as_mut().map(|cb| {
-                                    let buf = rb.as_mut();
-                                    cb.schedule(max_idx, (buf.as_ptr() as usize), 0);
-                                });
-                            });
-
-                            rb
-                        });
-
-                        // reset line
-                        self.line_complete.set(false);
-                        self.line_idx.set(0);
-                    }
-
-                    0
-                }).unwrap_or(-1)
+                panic!("readline is borked right now. Don't call it");
+                ReturnCode::FAIL
             },
             1 /* putstr/write_done */ => {
                 self.apps.enter(callback.app_id(), |app, _| {
@@ -169,11 +141,17 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                                 app.pending_write = true;
                                 app.write_buffer = Some(slice);
                             }
-                            0
+                            ReturnCode::SUCCESS
                         },
-                        None => -1
+                        None => ReturnCode::FAIL
                     }
-                }).unwrap_or(-1)
+                }).unwrap_or_else(|err| {
+                    match err {
+                        Error::OutOfMemory => ReturnCode::ENOMEM,
+                        Error::AddressOutOfBounds => ReturnCode::EINVAL,
+                        Error::NoSuchApp => ReturnCode::EINVAL,
+                    }
+                })
             },
             2 /* read automatic */ => {
                 self.apps.enter(callback.app_id(), |app, _| {
@@ -193,23 +171,29 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                         app_buf
                     });
 
-                    0
-                }).unwrap_or(-1)
+                    ReturnCode::SUCCESS
+                }).unwrap_or_else(|err| {
+                    match err {
+                        Error::OutOfMemory => ReturnCode::ENOMEM,
+                        Error::AddressOutOfBounds => ReturnCode::EINVAL,
+                        Error::NoSuchApp => ReturnCode::EINVAL,
+                    }
+                })
             },
-            _ => -1
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 
-    fn command(&self, cmd_num: usize, arg1: usize, _: AppId) -> isize {
+    fn command(&self, cmd_num: usize, arg1: usize, _: AppId) -> ReturnCode {
         match cmd_num {
             0 /* putc */ => {
                 self.tx_buffer.take().map(|buffer| {
                     buffer[0] = arg1 as u8;
                     self.uart.transmit(buffer, 1);
                 });
-                1
+                ReturnCode::SuccessWithValue{ value: 1 }
             },
-            _ => -1
+            _ => ReturnCode::ENOSUPPORT,
         }
     }
 }
