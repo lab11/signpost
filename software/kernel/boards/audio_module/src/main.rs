@@ -72,6 +72,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct AudioModule {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>, 
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
@@ -88,8 +89,9 @@ impl Platform for AudioModule {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
-            7 => f(Some(self.adc)),
-            13 => f(Some(self.i2c_master_slave)),
+            8 => f(Some(self.led)),
+            13 => f(Some(self.adc)),
+            14 => f(Some(self.i2c_master_slave)),
 
             108 => f(Some(self.app_watchdog)),
 
@@ -101,34 +103,53 @@ impl Platform for AudioModule {
 
 
 unsafe fn set_pin_primary_functions() {
-    use sam4l::gpio::{PA};
+    use sam4l::gpio::{PA, PB};
     use sam4l::gpio::PeripheralFunction::{A, B};
 
-	//analog inputs?
-    PA[04].configure(Some(A)); //Input one
-    PA[05].configure(Some(A)); //Input two
+	// Analog inputs
+    PB[02].configure(Some(A)); // MEMS microphone
+    PB[03].configure(Some(A)); // External microphone
+    
+    // MSGEQ control signals 
+    PA[07].configure(None);    // spec 2 reset
+    PA[08].configure(None);    // spec 2 power
+    PA[06].configure(None);    // spec 2 strobe
+    PA[05].configure(None);    // spec 2 out
+    PA[10].configure(None);    // spec strobe
+    PB[00].configure(None);    // spec reset
+    PB[01].configure(None);    // spec power
+    PA[04].configure(None);    // spec out 
 
-    PA[06].configure(None); //
-    PA[07].configure(None); //2 reset
-    PA[08].configure(None); //2 power
-    PA[09].configure(None); //2 strobe
-    PA[10].configure(None); //strobe
-    PA[11].configure(None); //reset
-    PA[12].configure(None); //power
-    PA[13].configure(None); //
-    PA[14].configure(None); //G2
-    PA[15].configure(None); //R2
-    PA[16].configure(None); //G1
-	PA[17].configure(None); //R1
-    PA[18].configure(None); //PPS
-    PA[19].configure(Some(A)); //Mod out
-    PA[20].configure(Some(A)); //Mod in
-    PA[21].configure(None); //
-    PA[22].configure(None); //
-    PA[23].configure(Some(B)); //SDA
-	PA[24].configure(Some(B)); //SCL
-	PA[25].configure(Some(A)); //USB-
-	PA[26].configure(Some(A)); //USB+
+    // LEDs 
+    PB[04].configure(None);    // LEDG2 (LED3)
+    PB[05].configure(None);    // LEDR2 (LED4)
+    PB[06].configure(None);    // LEDG1 (LED1)
+	PB[07].configure(None);    // LEDR1 (LED2)
+   
+    // Flash chip
+    PA[15].configure(None);    // !FLASH_CS
+    PB[11].configure(None);    // !FLASH_RESET
+    // using USART3 on 64 pin SAM4L
+    PB[08].configure(Some(A)); // FLASH_SCLK
+    PB[09].configure(Some(A)); // FLASH_SI
+    PB[10].configure(Some(A)); // FLASH_SO
+   
+    // Debug lines
+    PA[18].configure(None);    // PPS
+    // using USART2 on 64 pin SAM4L
+    PA[19].configure(Some(A)); // Mod out
+    PA[20].configure(Some(A)); // Mod in
+    // using USART0 on 64 pin SAM4L
+    PA[12].configure(Some(A)); // DBG_TX
+    PA[11].configure(Some(A)); // DBG_RX
+    // using TWIMS0 (I2C)
+    PA[23].configure(Some(B)); // SDA
+	PA[24].configure(Some(B)); // SCL
+    // using USBC
+	PA[25].configure(Some(A)); // USB-
+	PA[26].configure(Some(A)); // USB+
+	PB[14].configure(None);    // DBG_GPIO1
+	PB[15].configure(None);    // DBG_GPIO2
 
 }
 
@@ -152,12 +173,12 @@ pub unsafe fn reset_handler() {
     //
     let console = static_init!(
         Console<usart::USART>,
-        Console::new(&usart::USART2,
+        Console::new(&usart::USART0,
                      115200,
                      &mut console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
-    hil::uart::UART::set_client(&usart::USART2, console);
+    hil::uart::UART::set_client(&usart::USART0, console);
 
     //
     // Timer
@@ -206,14 +227,12 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 17],
+        [&'static sam4l::gpio::GPIOPin; 24],
         [&sam4l::gpio::PA[06],
          &sam4l::gpio::PA[07],
          &sam4l::gpio::PA[08],
          &sam4l::gpio::PA[09],
          &sam4l::gpio::PA[10],
-         &sam4l::gpio::PA[11],
-         &sam4l::gpio::PA[12],
          &sam4l::gpio::PA[13],
          &sam4l::gpio::PA[14],
          &sam4l::gpio::PA[15],
@@ -223,8 +242,17 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PA[19],
          &sam4l::gpio::PA[20],
          &sam4l::gpio::PA[21],
-         &sam4l::gpio::PA[22]],
-        17 * 4
+         &sam4l::gpio::PA[22],
+         &sam4l::gpio::PB[00],
+         &sam4l::gpio::PB[01],
+         &sam4l::gpio::PB[02],
+         &sam4l::gpio::PB[03],
+         &sam4l::gpio::PB[11],
+         &sam4l::gpio::PB[12],
+         &sam4l::gpio::PB[13],
+         &sam4l::gpio::PB[14],
+         &sam4l::gpio::PB[15]],
+        24 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -233,6 +261,22 @@ pub unsafe fn reset_handler() {
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }
+
+    // 
+    // LEDs
+    //
+    let led_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 4],
+         [ &sam4l::gpio::PB[04],
+           &sam4l::gpio::PB[05],
+           &sam4l::gpio::PB[06],
+           &sam4l::gpio::PB[07]],
+           4 * 4);
+    let led = static_init!(
+        capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
+        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveHigh),
+        96/8);
+
 
     //
     // App Watchdog
@@ -281,6 +325,7 @@ pub unsafe fn reset_handler() {
     let audio_module = AudioModule {
         console: console,
         gpio: gpio,
+        led: led,
         timer: timer,
         i2c_master_slave: i2c_master_slave,
         adc: adc_driver,
@@ -290,21 +335,21 @@ pub unsafe fn reset_handler() {
 
     audio_module.console.initialize();
 	//turn on some LEDs
-    sam4l::gpio::PA[14].enable();
-    sam4l::gpio::PA[14].enable_output();
-    sam4l::gpio::PA[14].set();
+    /*sam4l::gpio::PB[04].enable();
+    sam4l::gpio::PB[04].enable_output();
+    sam4l::gpio::PB[04].set();
 
-    sam4l::gpio::PA[15].enable();
-    sam4l::gpio::PA[15].enable_output();
-    sam4l::gpio::PA[15].set();
+    sam4l::gpio::PB[05].enable();
+    sam4l::gpio::PB[05].enable_output();
+    sam4l::gpio::PB[05].set();
 
-    sam4l::gpio::PA[16].enable();
-    sam4l::gpio::PA[16].enable_output();
-    sam4l::gpio::PA[16].set();
+    sam4l::gpio::PB[06].enable();
+    sam4l::gpio::PB[06].enable_output();
+    sam4l::gpio::PB[06].set();
 
-    sam4l::gpio::PA[17].enable();
-    sam4l::gpio::PA[17].enable_output();
-    sam4l::gpio::PA[17].set();
+    sam4l::gpio::PB[07].enable();
+    sam4l::gpio::PB[07].enable_output();
+    sam4l::gpio::PB[07].set();
 
 	//enable the power to the onboard mic
     sam4l::gpio::PA[08].enable();
@@ -312,9 +357,9 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[08].clear();
 
 	//disable power to the external mic
-	sam4l::gpio::PA[12].enable();
-	sam4l::gpio::PA[12].enable_output();
-	sam4l::gpio::PA[12].set();
+	sam4l::gpio::PB[01].enable();
+	sam4l::gpio::PB[01].enable_output();
+	sam4l::gpio::PB[01].set(); */
 
 
     //watchdog.start();
