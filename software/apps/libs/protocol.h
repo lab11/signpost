@@ -32,6 +32,5 @@ int protocol_send(uint8_t addr, uint8_t dest,
  *
  *   returns 0 on success, negative on failure.
  */
-int protocol_recv(uint8_t* inbuf, size_t inlen,
-                  uint8_t* key, uint8_t* appdata,
-                  size_t* applen);
+int protocol_recv(uint8_t* buf, size_t buflen,
+                  size_t len, uint8_t* key, size_t*olen);

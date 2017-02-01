@@ -129,15 +129,25 @@ int protocol_send(uint8_t addr, uint8_t dest,
     return 0;
 }
 
-int protocol_recv(uint8_t* inbuf, size_t inlen, uint8_t* key, uint8_t* appdata, size_t* applen) {
+int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key, size_t* olen) {
     uint8_t h[SHA256_LEN];
+    uint8_t temp[len];
+    int result = 0;
 
+    if (len > buflen) return -1;
     // check hmac/hash
-    message_digest(key, inbuf-SHA256_LEN, SHA256_LEN, h);
-    if (!memcmp(h, inbuf+inlen-SHA256_LEN, SHA256_LEN)) return -1;
+    message_digest(key, buf-SHA256_LEN, SHA256_LEN, h);
+    if (!memcmp(h, buf+len-SHA256_LEN, SHA256_LEN)) return -1;
+    //printf("encrypted: 0x");
+    //for(int i = 0; i < len; i++) {
+    //    printf("%02x", buf[i]);
+    //}
+    //printf("\n");
     // decrypt if needed
     if(key != NULL) {
-        return cipher(MBEDTLS_DECRYPT, key, inbuf+MBEDTLS_MAX_IV_LENGTH, inlen-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, inbuf, appdata, applen);
+        result = cipher(MBEDTLS_DECRYPT, key, buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, buf, temp, olen);
     }
-    return 0;
+    memcpy(buf, temp, *olen);
+
+    return result;
 }
