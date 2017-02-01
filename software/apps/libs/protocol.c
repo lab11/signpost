@@ -109,8 +109,9 @@ int protocol_send(uint8_t addr, uint8_t dest,
     }
 
     // pass buffer to message
-    //message_init(addr);
-    //message_send(dest, buf, len+ECDH_KEY_LENGTH);
+    // TODO init should be handled in different function
+    message_init(addr);
+    message_send(dest, sendbuf, size);
 
     // testing:
     //printf("(%d) protocol buf:\n", size);

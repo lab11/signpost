@@ -29,22 +29,44 @@ typedef struct {
     uint8_t data[MAX_DATA_LEN];
 } __attribute__((__packed__)) Packet;
 
+typedef struct {
+    bool new;
+    uint8_t len;
+} new_packet;
+
+// data for app callback for async slave read
+// this is kinda messy, a quick hack on the existing message layer
+typedef struct {
+    uint8_t* buf;
+    size_t buflen;
+    size_t len;
+    uint8_t* src;
+    subscribe_cb* cb;
+} message_cb_data;
+
 static uint8_t src_address;
 static uint16_t id = 0;
-volatile static uint8_t new_packet;
-static uint8_t new_packet_length;
 static void iterate_read_buf(void);
+static message_cb_data cb_data;
+static new_packet np = { .new = false };
+
+// flag to indicate if callback is for async operation
+static bool async = false;
+
+void get_message(uint8_t* data, uint32_t len, uint8_t* src);
 
 static void i2c_master_slave_callback(
         int callback_type,
         int length,
         int unused __attribute__ ((unused)),
-        void* callback_args __attribute ((unused))) {
+        void* callback_args) {
 
     if(callback_type == CB_SLAVE_WRITE) {
         memcpy(packet_buf, slave_write_buf, length);
-        new_packet_length = length;
-        new_packet = 1;
+        new_packet* np = (new_packet*) callback_args;
+        np->new = true;
+        np->len = length;
+        if(async) get_message(cb_data.buf, cb_data.buflen, cb_data.src);
     } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
         iterate_read_buf();
     }
@@ -54,7 +76,7 @@ void message_init(uint8_t src) {
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
-    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+    i2c_master_slave_set_callback(i2c_master_slave_callback, &np);
     i2c_master_slave_set_slave_address(src);
     src_address = src;
 }
@@ -219,24 +241,20 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
     return len;
 }
 
-//blocking receive call
-uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
-
-    i2c_master_slave_listen();
-
+void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
     uint8_t done = 0;
     uint32_t lengthReceived = 0;
     uint16_t messageID;
     uint8_t messageSrc;
+    async = false;
 
     //loop receiving packets until we get the whole datagram
     while(!done) {
-
         //wait and receive a packet
-        new_packet = 0;
-        while(!new_packet) {
-            yield();
+        if (!np.new) {
+            yield_for(&np.new);
         }
+        np.new = 0;
 
         //a new packet is in the packet buf
 
@@ -282,7 +300,7 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
             }
         } else {
             //is there room to copy into the buffer?
-            if(fragmentOffset + (new_packet_length - sizeof(Header)) > len) {
+            if(fragmentOffset + (np.len - sizeof(Header)) > len) {
                 //this is too long
                 //just copy what we can and end
                 uint16_t remainder = len - fragmentOffset;
@@ -290,15 +308,38 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
                 lengthReceived += remainder;
             } else {
                 //copy the rest of the packet
-                memcpy(data+fragmentOffset,p.data,(new_packet_length - sizeof(Header)));
-                lengthReceived += new_packet_length - sizeof(Header);
+                memcpy(data+fragmentOffset,p.data,(np.len - sizeof(Header)));
+                lengthReceived += np.len - sizeof(Header);
             }
 
             //no more fragments end
             done = 1;
         }
     }
+    cb_data.len = lengthReceived;
 
-    return lengthReceived;
+    if (cb_data.cb) cb_data.cb(0, cb_data.len, 0, NULL);
 }
 
+//blocking receive call
+uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
+
+    async = false;
+    i2c_master_slave_listen();
+
+    get_message(data, len, src);
+
+    return cb_data.len;
+}
+
+//async receive call
+int message_recv_async(subscribe_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
+
+    cb_data.buf = data;
+    cb_data.buflen = len;
+    cb_data.src = src;
+    cb_data.cb = callback;
+    async = true;
+
+    return i2c_master_slave_listen();
+}

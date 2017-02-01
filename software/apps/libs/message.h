@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <tock.h>
 
 //this is the first i2c messaging library!
 //
@@ -22,6 +23,9 @@ uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len);
 
 //synchronous receive
 uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src);
+
+//async receive
+int32_t message_recv_async(subscribe_cb callback, uint8_t* data, uint32_t len, uint8_t* src);
 
 //set the read buffer
 uint32_t message_set_read_buffer(uint8_t* data, uint32_t len);
