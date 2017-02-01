@@ -133,17 +133,20 @@ unsafe fn set_pin_primary_functions() {
     PA[17].configure(None); // MOD6_OUT
     PA[18].configure(None); // MOD7_OUT
 
-    // SPI: Storage Master & FRAM
+    // SPI: Master of Storage Master & FRAM - USART0
     PA[10].configure(Some(A)); // MEMORY_SCLK
     PA[11].configure(Some(A)); // MEMORY_MISO
     PA[12].configure(Some(A)); // MEMORY_MOSI
     PB[13].configure(None); // !STORAGE_CS
+    PA[13].enable();
+    PA[13].set();
+    PA[13].enable_output();
     PA[25].configure(None); // !FRAM_CS
     PA[25].enable();
     PA[25].set();
     PA[25].enable_output();
 
-    // UART: GPS
+    // UART: GPS - USART2
     PA[19].configure(Some(A)); // GPS_OUT_TX
     PA[20].configure(Some(A)); // GPS_IN_RX
     PB[07].configure(None); // GPS_ENABLE_POWER, Turn on GPS to start
@@ -151,16 +154,16 @@ unsafe fn set_pin_primary_functions() {
     PB[07].set();
     PB[07].enable_output();
 
-    // SMBus: Power / Backplane
+    // SMBus: Power / Backplane - TWIM2
     PA[21].configure(Some(E)); // SMBDATA
     PA[22].configure(Some(E)); // SMBCLK
     PA[26].configure(None); // !SMBALERT
 
-    // I2C: Modules
+    // I2C: Modules - TWIMS0
     PA[23].configure(Some(B)); // MODULES_SDA
     PA[24].configure(Some(B)); // MODULES_SCL
 
-    // UART: Debug
+    // UART: Debug - USART1
     PB[04].configure(Some(B)); // CONTROLLER_DEBUG_RX
     PB[05].configure(Some(B)); // CONTROLLER_DEBUG_TX
 

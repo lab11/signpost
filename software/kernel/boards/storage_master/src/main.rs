@@ -1,7 +1,7 @@
 #![crate_name = "storage_master"]
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(asm,const_fn,lang_items)]
 
 extern crate cortexm4;
 extern crate capsules;
@@ -74,6 +74,7 @@ struct SignpostStorageMaster {
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
+    //sdcard: &'static capsules::sdcard::SDCard<'static>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -100,17 +101,20 @@ unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA, PB};
     use sam4l::gpio::PeripheralFunction::{A, B};
 
-    // SPI: Slave to Controller
+    // SPI: Slave to Controller - USART0
     PA[10].configure(Some(A)); // MEMORY_SCLK
     PA[11].configure(Some(A)); // MEMORY_MISO
     PA[12].configure(Some(A)); // MEMORY_MOSI
     PA[09].configure(None); // !STORAGE_CS
 
-    // SPI: SD Card
+    // SPI: Master of SD Card - USART1
     PA[14].configure(Some(A)); // SD_SCLK
     PA[15].configure(Some(A)); // SD_MISO
     PA[16].configure(Some(A)); // SD_MOSI
     PA[13].configure(None); // SD_CS
+    PA[13].enable();
+    PA[13].set();
+    PA[13].enable_output();
 
     // GPIO: SD Card
     PA[17].configure(None); // SD_DETECT
@@ -119,7 +123,7 @@ unsafe fn set_pin_primary_functions() {
     PA[21].set();
     PA[21].enable_output();
 
-    // SPI: Slave to Edison
+    // SPI: Slave to Edison - USART2
     PA[18].configure(Some(A)); // EDISON_SCLK
     PA[19].configure(Some(A)); // EDISON_MOSI
     PA[20].configure(Some(A)); // EDISON_MISO
@@ -135,11 +139,11 @@ unsafe fn set_pin_primary_functions() {
     PA[06].set();
     PA[06].enable_output();
 
-    // I2C: Modules
+    // I2C: Modules - TWIMS0
     PA[23].configure(Some(B)); // MODULES_SDA
     PA[24].configure(Some(B)); // MODULES_SCL
 
-    // UART: Debug
+    // UART: Debug - USART3
     PB[09].configure(Some(A)); // STORAGE_DEBUG_RX
     PB[10].configure(Some(A)); // STORAGE_DEBUG_TX
 
@@ -196,7 +200,6 @@ pub unsafe fn reset_handler() {
         12);
     virtual_alarm1.set_client(timer);
 
-
     //
     // I2C Buses
     //
@@ -215,6 +218,27 @@ pub unsafe fn reset_handler() {
     hil::i2c::I2CSlave::set_address(&sam4l::i2c::I2C0, 0x20);
 
     //
+    // SD card interface, SPI master
+    //
+    /*
+    let mux_spi = static_init!(
+        capsules::virtual_spi::MuxSpiMaster<'static, usart::USART>,
+        capsules::virtual_spi::MuxSpiMaster::new(&sam4l::usart::USART1),
+        96/8);
+    hil::spi::SpiMaster::set_client(&sam4l::usart::USART1, mux_spi);
+    hil::spi::SpiMaster::init(&sam4l::usart::USART1);
+    let sdcard_spi = static_init!(
+        capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
+        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, &sam4l::gpio::PA[13]),
+        416/8);
+    let sdcard = static_init!(
+        capsules::sdcard::SDCard<'static>,
+        capsules::sdcard::SDCard::new(sdcard_spi, &mut capsules::sdcard::TXBUFFER, &mut capsules::sdcard::RXBUFFER),
+        416/8);
+    sdcard_spi.set_client(sdcard);
+    */
+
+    //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
@@ -227,7 +251,6 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PB[05]], // STORAGE_DEBUG_GPIO2
         6 * 4
     );
-        // [&sam4l::gpio::PA[25],  // CONTROLLER_LED { => !FRAM_CS }
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
@@ -236,7 +259,9 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
+    //
     // LEDs
+    //
     let led_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 1],
         [&sam4l::gpio::PA[07]], // STORAGE_LED
@@ -245,7 +270,6 @@ pub unsafe fn reset_handler() {
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
         capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
         96/8);
-
 
     //
     // Actual platform object
@@ -256,6 +280,7 @@ pub unsafe fn reset_handler() {
         led: led,
         timer: timer,
         i2c_master_slave: i2c_modules,
+        //sdcard: sdcard,
         ipc: kernel::ipc::IPC::new(),
     };
 
@@ -263,6 +288,15 @@ pub unsafe fn reset_handler() {
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
+
+
+    //*****Testing SD Card here*****
+
+    // start up sd card
+    //sdcard.initialize();
+
+    //******************************
+
 
     kernel::main(&signpost_storage_master, &mut chip, load_processes(), &signpost_storage_master.ipc);
 }
