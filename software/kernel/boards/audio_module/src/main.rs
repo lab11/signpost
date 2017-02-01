@@ -12,7 +12,7 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use capsules::console::{self, Console};
+// use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -70,9 +70,9 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct AudioModule {
-    console: &'static Console<'static, usart::USART>,
+    console: &'static capsules::console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>, 
+    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
@@ -89,9 +89,9 @@ impl Platform for AudioModule {
             0 => f(Some(self.console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
+            7 => f(Some(self.adc)),
             8 => f(Some(self.led)),
-            13 => f(Some(self.adc)),
-            14 => f(Some(self.i2c_master_slave)),
+            13 => f(Some(self.i2c_master_slave)),
 
             108 => f(Some(self.app_watchdog)),
 
@@ -161,8 +161,8 @@ unsafe fn set_pin_primary_functions() {
 pub unsafe fn reset_handler() {
     sam4l::init();
 
-    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
-
+    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::DfllRc32k, 48000000);
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
 
@@ -172,10 +172,10 @@ pub unsafe fn reset_handler() {
     // UART console
     //
     let console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART0,
+        capsules::console::Console<usart::USART>,
+        capsules::console::Console::new(&usart::USART0,
                      115200,
-                     &mut console::WRITE_BUF,
+                     &mut capsules::console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
     hil::uart::UART::set_client(&usart::USART0, console);
@@ -204,15 +204,15 @@ pub unsafe fn reset_handler() {
     //
     // I2C Buses
     //
-    let i2c_master_slave = static_init!(
+    let i2c_modules = static_init!(
         capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
         capsules::i2c_master_slave_driver::I2CMasterSlaveDriver::new(&sam4l::i2c::I2C0,
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
         928/8);
-    sam4l::i2c::I2C0.set_master_client(i2c_master_slave);
-    sam4l::i2c::I2C0.set_slave_client(i2c_master_slave);
+    sam4l::i2c::I2C0.set_master_client(i2c_modules);
+    sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
 	//
 	//ADC
@@ -222,6 +222,46 @@ pub unsafe fn reset_handler() {
 		capsules::adc::ADC::new(&adc::ADC),
 		160/8);
 	adc::ADC.set_client(adc_driver);
+
+
+    //
+    // App Watchdog
+    //
+    let app_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let kernel_timeout_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let app_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, cortexm4::scb::reset),
+        128/8);
+    app_timeout_alarm.set_client(app_timeout);
+    let kernel_timeout = static_init!(
+        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, cortexm4::scb::reset),
+        128/8);
+    kernel_timeout_alarm.set_client(kernel_timeout);
+    let app_watchdog = static_init!(
+        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
+        64/8);
+
+    //
+    // Kernel Watchdog
+    //
+    let watchdog_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        24);
+    let watchdog = static_init!(
+        signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 1200),
+        128/8);
+    watchdog_alarm.set_client(watchdog);
 
     //
     // Remaining GPIO pins
@@ -274,50 +314,8 @@ pub unsafe fn reset_handler() {
            4 * 4);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
-        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveHigh),
+        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
         96/8);
-
-
-    //
-    // App Watchdog
-    //
-    let app_timeout_alarm = static_init!(
-        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
-        VirtualMuxAlarm::new(mux_alarm),
-        24);
-    let kernel_timeout_alarm = static_init!(
-        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
-        VirtualMuxAlarm::new(mux_alarm),
-        24);
-    let app_timeout = static_init!(
-        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(app_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::App, 1000, cortexm4::scb::reset),
-        128/8);
-    app_timeout_alarm.set_client(app_timeout);
-    let kernel_timeout = static_init!(
-        signpost_drivers::app_watchdog::Timeout<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::Timeout::new(kernel_timeout_alarm, signpost_drivers::app_watchdog::TimeoutMode::Kernel, 5000, cortexm4::scb::reset),
-        128/8);
-    kernel_timeout_alarm.set_client(kernel_timeout);
-    let app_watchdog = static_init!(
-        signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::app_watchdog::AppWatchdog::new(app_timeout, kernel_timeout),
-        64/8);
-
-    //
-    // Kernel Watchdog
-    //
-    let watchdog_alarm = static_init!(
-        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
-        VirtualMuxAlarm::new(mux_alarm),
-        24);
-    let watchdog = static_init!(
-        signpost_drivers::watchdog_kernel::WatchdogKernel<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
-        signpost_drivers::watchdog_kernel::WatchdogKernel::new(watchdog_alarm, &sam4l::wdt::WDT, 1200),
-        128/8);
-    watchdog_alarm.set_client(watchdog);
-
-
     //
     //
     // Actual platform object
@@ -327,45 +325,18 @@ pub unsafe fn reset_handler() {
         gpio: gpio,
         led: led,
         timer: timer,
-        i2c_master_slave: i2c_master_slave,
+        i2c_master_slave: i2c_modules,
         adc: adc_driver,
         app_watchdog: app_watchdog,
         ipc: kernel::ipc::IPC::new(),
     };
 
     audio_module.console.initialize();
-	//turn on some LEDs
-    /*sam4l::gpio::PB[04].enable();
-    sam4l::gpio::PB[04].enable_output();
-    sam4l::gpio::PB[04].set();
-
-    sam4l::gpio::PB[05].enable();
-    sam4l::gpio::PB[05].enable_output();
-    sam4l::gpio::PB[05].set();
-
-    sam4l::gpio::PB[06].enable();
-    sam4l::gpio::PB[06].enable_output();
-    sam4l::gpio::PB[06].set();
-
-    sam4l::gpio::PB[07].enable();
-    sam4l::gpio::PB[07].enable_output();
-    sam4l::gpio::PB[07].set();
-
-	//enable the power to the onboard mic
-    sam4l::gpio::PA[08].enable();
-    sam4l::gpio::PA[08].enable_output();
-    sam4l::gpio::PA[08].clear();
-
-	//disable power to the external mic
-	sam4l::gpio::PB[01].enable();
-	sam4l::gpio::PB[01].enable_output();
-	sam4l::gpio::PB[01].set(); */
-
 
     //watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
-
+    
     kernel::main(&audio_module, &mut chip, load_processes(), &audio_module.ipc);
 }
