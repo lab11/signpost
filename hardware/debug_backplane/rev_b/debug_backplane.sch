@@ -4656,7 +4656,10 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9197-ND , S9194-ND , S7072-ND , S7072-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S9194-ND" constant="no"/>
+<attribute name="DIGIKEY3" value="S7072-ND" constant="no"/>
+<attribute name="DIGIKEY4" value="S7072-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4775,7 +4778,8 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9195-ND , S7072-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9195-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S7072-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -5781,6 +5785,22 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <smd name="48" x="-2.75" y="3.5" dx="0.8" dy="0.28" layer="1" roundness="100" rot="R90"/>
 <rectangle x1="-2.8" y1="-2.8" x2="-1.2" y2="-1.2" layer="31"/>
 </package>
+<package name="SC70-8">
+<smd name="8" x="-0.75" y="0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="1" x="-0.75" y="-0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="7" x="-0.25" y="0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="2" x="-0.25" y="-0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="3" x="0.25" y="-0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="6" x="0.25" y="0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="5" x="0.75" y="0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<smd name="4" x="0.75" y="-0.9" dx="1" dy="0.3" layer="1" rot="R90"/>
+<wire x1="-1" y1="-0.7" x2="-1" y2="0.7" width="0.127" layer="21"/>
+<wire x1="-1" y1="0.7" x2="1" y2="0.7" width="0.127" layer="21"/>
+<wire x1="1" y1="0.7" x2="1" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="1" y1="-0.7" x2="-1" y2="-0.7" width="0.127" layer="21"/>
+<circle x="-1.5" y="-1" radius="0.2" width="0.127" layer="21"/>
+<text x="0" y="1.8" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="MAX8887">
@@ -5850,6 +5870,19 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pin name="CAPH" x="-20.32" y="30.48" length="middle"/>
 <text x="-15.494" y="41.402" size="1.778" layer="95" ratio="12">&gt;NAME</text>
 <text x="5.08" y="41.402" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
+</symbol>
+<symbol name="LTC4360">
+<wire x1="-10.16" y1="-2.54" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="12.7" x2="10.16" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-2.54" x2="-10.16" y2="-2.54" width="0.254" layer="94"/>
+<pin name="IN" x="-15.24" y="10.16" visible="pin" length="middle"/>
+<pin name="OUT" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GATE" x="15.24" y="10.16" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="-15.24" y="0" visible="pin" length="middle"/>
+<text x="-5.08" y="12.7" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
+<pin name="!ON" x="-15.24" y="5.08" visible="pin" length="middle"/>
+<pin name="!PWRGD" x="15.24" y="0" visible="pin" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -5932,6 +5965,29 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="ATSAM4LC8AA-MU-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LTC4360" prefix="U">
+<description>An overvoltage protection IC. Clamps at 5.5V</description>
+<gates>
+<gate name="G$1" symbol="LTC4360" x="0" y="-5.08"/>
+</gates>
+<devices>
+<device name="" package="SC70-8">
+<connects>
+<connect gate="G$1" pin="!ON" pad="6"/>
+<connect gate="G$1" pin="!PWRGD" pad="5"/>
+<connect gate="G$1" pin="GATE" pad="8"/>
+<connect gate="G$1" pin="GND" pad="2 3 4"/>
+<connect gate="G$1" pin="IN" pad="1"/>
+<connect gate="G$1" pin="OUT" pad="7"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="LTC4360CSC8-1#TRMPBFCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -7991,7 +8047,7 @@ Low profile connectors, straight&lt;p&gt;
 </part>
 <part name="X1" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
 <part name="GND34" library="umich" deviceset="GND" device=""/>
-<part name="R71" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
+<part name="R71" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ - DNP">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
@@ -8221,6 +8277,13 @@ Low profile connectors, straight&lt;p&gt;
 <part name="R104" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="GND94" library="umich" deviceset="GND" device=""/>
 <part name="GND95" library="umich" deviceset="GND" device=""/>
+<part name="U25" library="chips" deviceset="LTC4360" device=""/>
+<part name="Q10" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="GND96" library="umich" deviceset="GND" device=""/>
+<part name="D9" library="leds" deviceset="LED" device="0603"/>
+<part name="R105" library="passives" deviceset="RESISTOR" device="0603_RES" value="1kΩ"/>
+<part name="R106" library="passives" deviceset="RESISTOR" device="0603_RES" value="0Ω - DNP"/>
 </parts>
 <sheets>
 <sheet>
@@ -8592,10 +8655,11 @@ Low profile connectors, straight&lt;p&gt;
 <plain>
 <text x="203.2" y="175.26" size="7.62" layer="98" align="bottom-center">POWER SUPPLY</text>
 <text x="104.14" y="170.18" size="5.08" layer="97">Coulomb Counters</text>
-<text x="208.28" y="139.7" size="5.08" layer="98" align="bottom-center">5V Barrel Jack</text>
+<text x="208.28" y="160.02" size="5.08" layer="98" align="bottom-center">5V Barrel Jack</text>
 <text x="205.74" y="91.44" size="5.08" layer="98" align="bottom-center">3V3 Regulator</text>
 <text x="25.4" y="124.46" size="5.08" layer="98" align="bottom-center">Address
 Translator</text>
+<text x="205.74" y="152.4" size="1.016" layer="98" align="bottom-center">DNP Bypass</text>
 </plain>
 <instances>
 <instance part="FRAME10" gate="G$1" x="0" y="0"/>
@@ -8635,8 +8699,17 @@ Translator</text>
 <instance part="C62" gate="G$1" x="177.8" y="76.2"/>
 <instance part="C11" gate="G$1" x="220.98" y="71.12"/>
 <instance part="C63" gate="G$1" x="228.6" y="76.2"/>
-<instance part="J11" gate="G$1" x="200.66" y="121.92"/>
-<instance part="GND11" gate="1" x="213.36" y="114.3"/>
+<instance part="J11" gate="G$1" x="167.64" y="127"/>
+<instance part="GND11" gate="1" x="177.8" y="111.76"/>
+<instance part="U25" gate="G$1" x="195.58" y="119.38"/>
+<instance part="Q10" gate="G$1" x="213.36" y="139.7" smashed="yes" rot="R90">
+<attribute name="NAME" x="208.28" y="144.78" size="1.778" layer="95" rot="R180"/>
+</instance>
+<instance part="C70" gate="G$1" x="236.22" y="129.54"/>
+<instance part="GND96" gate="1" x="236.22" y="119.38"/>
+<instance part="D9" gate="G$1" x="226.06" y="132.08" rot="R270"/>
+<instance part="R105" gate="G$1" x="226.06" y="124.46" rot="R90"/>
+<instance part="R106" gate="G$1" x="210.82" y="149.86" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -8982,8 +9055,20 @@ Translator</text>
 <segment>
 <pinref part="J11" gate="G$1" pin="GND"/>
 <pinref part="GND11" gate="1" pin="GND"/>
-<wire x1="208.28" y1="119.38" x2="213.36" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="119.38" x2="213.36" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="124.46" x2="177.8" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="124.46" x2="177.8" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="U25" gate="G$1" pin="!ON"/>
+<wire x1="177.8" y1="119.38" x2="177.8" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="124.46" x2="177.8" y2="124.46" width="0.1524" layer="91"/>
+<junction x="177.8" y="124.46"/>
+<pinref part="U25" gate="G$1" pin="GND"/>
+<wire x1="180.34" y1="119.38" x2="177.8" y2="119.38" width="0.1524" layer="91"/>
+<junction x="177.8" y="119.38"/>
+</segment>
+<segment>
+<pinref part="C70" gate="G$1" pin="2"/>
+<pinref part="GND96" gate="1" pin="GND"/>
+<wire x1="236.22" y1="124.46" x2="236.22" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -9102,9 +9187,27 @@ Translator</text>
 <junction x="177.8" y="78.74"/>
 </segment>
 <segment>
-<pinref part="J11" gate="G$1" pin="VCC"/>
-<label x="218.44" y="124.46" size="1.016" layer="95" xref="yes"/>
-<wire x1="208.28" y1="124.46" x2="218.44" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="U25" gate="G$1" pin="OUT"/>
+<wire x1="210.82" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="124.46" x2="220.98" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="Q10" gate="G$1" pin="S"/>
+<wire x1="220.98" y1="139.7" x2="218.44" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="139.7" x2="226.06" y2="139.7" width="0.1524" layer="91"/>
+<junction x="220.98" y="139.7"/>
+<label x="238.76" y="139.7" size="1.016" layer="95" xref="yes"/>
+<pinref part="C70" gate="G$1" pin="1"/>
+<wire x1="226.06" y1="139.7" x2="231.14" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="139.7" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="139.7" x2="238.76" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="132.08" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
+<junction x="236.22" y="139.7"/>
+<pinref part="D9" gate="G$1" pin="ANODE"/>
+<wire x1="226.06" y1="139.7" x2="226.06" y2="134.62" width="0.1524" layer="91"/>
+<junction x="226.06" y="139.7"/>
+<pinref part="R106" gate="G$1" pin="1"/>
+<wire x1="215.9" y1="149.86" x2="231.14" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="149.86" x2="231.14" y2="139.7" width="0.1524" layer="91"/>
+<junction x="231.14" y="139.7"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -9121,6 +9224,45 @@ Translator</text>
 <pinref part="U12" gate="G$1" pin="BP"/>
 <pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="73.66" x2="220.98" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$82" class="0">
+<segment>
+<pinref part="J11" gate="G$1" pin="VCC"/>
+<pinref part="U25" gate="G$1" pin="IN"/>
+<wire x1="175.26" y1="129.54" x2="177.8" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="129.54" x2="180.34" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="129.54" x2="177.8" y2="139.7" width="0.1524" layer="91"/>
+<junction x="177.8" y="129.54"/>
+<pinref part="Q10" gate="G$1" pin="D"/>
+<wire x1="177.8" y1="139.7" x2="198.12" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="R106" gate="G$1" pin="2"/>
+<wire x1="198.12" y1="139.7" x2="208.28" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="149.86" x2="198.12" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="149.86" x2="198.12" y2="139.7" width="0.1524" layer="91"/>
+<junction x="198.12" y="139.7"/>
+</segment>
+</net>
+<net name="N$83" class="0">
+<segment>
+<pinref part="U25" gate="G$1" pin="GATE"/>
+<pinref part="Q10" gate="G$1" pin="G"/>
+<wire x1="210.82" y1="129.54" x2="213.36" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="129.54" x2="213.36" y2="132.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$84" class="0">
+<segment>
+<pinref part="U25" gate="G$1" pin="!PWRGD"/>
+<pinref part="R105" gate="G$1" pin="1"/>
+<wire x1="210.82" y1="119.38" x2="226.06" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$85" class="0">
+<segment>
+<pinref part="D9" gate="G$1" pin="CATHODE"/>
+<pinref part="R105" gate="G$1" pin="2"/>
+<wire x1="226.06" y1="129.54" x2="226.06" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
