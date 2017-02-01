@@ -1,7 +1,7 @@
 #![crate_name = "controller"]
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(asm,const_fn,lang_items)]
 
 extern crate cortexm4;
 extern crate capsules;
@@ -96,11 +96,11 @@ impl Platform for SignpostController {
             3 => f(Some(self.timer)),
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
-            14 => f(Some(self.fram)),
 
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
+            103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             108 => f(Some(self.app_watchdog)),
             109 => f(Some(self.gps_console)),
@@ -139,6 +139,9 @@ unsafe fn set_pin_primary_functions() {
     PA[12].configure(Some(A)); // MEMORY_MOSI
     PB[13].configure(None); // !STORAGE_CS
     PA[25].configure(None); // !FRAM_CS
+    PA[25].enable();
+    PA[25].set();
+    PA[25].enable_output();
 
     // UART: GPS
     PA[19].configure(Some(A)); // GPS_OUT_TX
