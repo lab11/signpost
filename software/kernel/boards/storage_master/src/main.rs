@@ -242,14 +242,12 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 6],
-         [&sam4l::gpio::PA[05], // EDISON_PWRBTN
+        [&'static sam4l::gpio::GPIOPin; 4],
+        [&sam4l::gpio::PA[05], // EDISON_PWRBTN
          &sam4l::gpio::PA[06],  // LINUX_ENABLE_POWER
          &sam4l::gpio::PA[17],  // SD_DETECT
-         &sam4l::gpio::PA[21],  // SD_ENABLE
-         &sam4l::gpio::PB[04],  // STORAGE_DEBUG_GPIO1
-         &sam4l::gpio::PB[05]], // STORAGE_DEBUG_GPIO2
-        6 * 4
+         &sam4l::gpio::PA[21]], // SD_ENABLE
+        4 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -263,9 +261,11 @@ pub unsafe fn reset_handler() {
     // LEDs
     //
     let led_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 1],
-        [&sam4l::gpio::PA[07]], // STORAGE_LED
-        1 * 4);
+        [&'static sam4l::gpio::GPIOPin; 3],
+        [&sam4l::gpio::PB[04],  // STORAGE_DEBUG_GPIO1
+         &sam4l::gpio::PB[05],  // STORAGE_DEBUG_GPIO2
+         &sam4l::gpio::PA[07]], // STORAGE_LED
+        3 * 4);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
         capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
