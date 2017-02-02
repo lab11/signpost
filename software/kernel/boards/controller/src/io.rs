@@ -11,7 +11,7 @@ pub static mut WRITER: Writer = Writer { initialized: false };
 
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
-        let uart = unsafe { &mut sam4l::usart::USART0 };
+        let uart = unsafe { &mut sam4l::usart::USART1 };
         if !self.initialized {
             self.initialized = true;
             uart.init(uart::UARTParams {
@@ -38,10 +38,22 @@ impl Write for Writer {
 #[lang="panic_fmt"]
 pub unsafe extern "C" fn panic_fmt(args: Arguments, file: &'static str, line: u32) -> ! {
 
+    // Let any outstanding uart DMA's finish
+    asm!("nop");
+    asm!("nop");
+    for _ in 0..200000 {
+        asm!("nop");
+    }
+    asm!("nop");
+    asm!("nop");
+
     let writer = &mut WRITER;
-    let _ = writer.write_fmt(format_args!("Kernel panic at {}:{}:\r\n\t\"", file, line));
+    let _ = writer.write_fmt(format_args!("\r\n\nKernel panic at {}:{}:\r\n\t\"", file, line));
     let _ = write(writer, args);
     let _ = writer.write_str("\"\r\n");
+
+    // Optional reset after hard fault
+    //cortexm4::scb::reset();
 
     // Print fault status once
     let procs = &mut process::PROCS;
@@ -57,7 +69,7 @@ pub unsafe extern "C" fn panic_fmt(args: Arguments, file: &'static str, line: u3
     }
 
     // blink the panic signal
-    let led = &sam4l::gpio::PA[13];
+    let led = &sam4l::gpio::PB[11];
     led.enable_output();
     loop {
         for _ in 0..1000000 {

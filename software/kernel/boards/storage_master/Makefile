@@ -1,4 +1,4 @@
-# Makefile for building the tock kernel for the Hail platform
+# Makefile for building the tock kernel for the signpost storage master
 
 TOCKLOADER=tockloader
 SIZE?=arm-none-eabi-size

@@ -81,6 +81,7 @@ impl<'a, U: UARTAdvanced> Console<'a, U> {
 impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
     fn allow(&self, appid: AppId, allow_num: usize, slice: AppSlice<Shared, u8>) -> ReturnCode {
         match allow_num {
+            // Allow a read buffer
             0 => {
                 self.apps
                     .enter(appid, |app, _| {
@@ -96,6 +97,7 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                         }
                     })
             }
+            // Allow a write buffer
             1 => {
                 self.apps
                     .enter(appid, |app, _| {

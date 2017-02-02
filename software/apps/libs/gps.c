@@ -12,6 +12,7 @@ static char gps_data_buffer[500] = {0};
 static gps_data_t gps_data = {0};
 static void (*gps_callback)(gps_data_t*) = NULL;
 static bool continuous_mode = false;
+static bool message_sent = false;
 
 // useful GPS settings transmissions
 char* GPS_NORMAL_OPERATION = "$PMTK225,0*";
@@ -31,8 +32,8 @@ int32_t to_decimal_degrees (struct minmea_float coor);
 
 // gps console functions
 void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata) {
-  allow(0, 0, (void*)str, max_len);
-  subscribe(0, 2, cb, userdata);
+  allow(DRIVER_NUM_GPS, 0, (void*)str, max_len);
+  subscribe(DRIVER_NUM_GPS, 2, cb, userdata);
 }
 
 
@@ -74,8 +75,26 @@ void gps_sample (void (*callback)(gps_data_t*)) {
 
 // local functions
 
+void gps_tx_callback (
+        __attribute__ ((unused)) int len,
+        __attribute__ ((unused)) int y,
+        __attribute__ ((unused)) int z,
+        __attribute__ ((unused)) void* userdata) {
+
+    message_sent = true;
+}
+
 void gps_send_msg (char* msg) {
-    printf("%s%02X\r\n", msg, minmea_checksum(msg));
+    static char msg_buffer[50] = {0};
+
+    // create message buffer
+    message_sent = false;
+    sprintf(msg_buffer, "%s%02X\r\n", msg, minmea_checksum(msg));
+
+    allow(DRIVER_NUM_GPS, 1, (void*)msg_buffer, strlen(msg_buffer));
+    subscribe(DRIVER_NUM_GPS, 1, gps_tx_callback, NULL);
+
+    yield_for(&message_sent);
 }
 
 void gps_rx_callback (

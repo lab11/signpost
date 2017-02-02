@@ -49,5 +49,5 @@ clean::
 
 ##   TODO(Pat) this include is handled by main tock makefile currently
 ##   # for programming individual apps, include platform app makefile
-include ../../kernel/boards/$(TOCK_BOARD)/Makefile-app
+include $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)/Makefile-app
 

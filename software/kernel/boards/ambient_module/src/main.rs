@@ -1,7 +1,7 @@
 #![crate_name = "ambient_module"]
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(asm,const_fn,lang_items)]
 
 extern crate cortexm4;
 extern crate capsules;

@@ -7,6 +7,8 @@
 
 #include "tock.h"
 
+#define DRIVER_NUM_GPS 109
+
 typedef struct {
     // date
     uint8_t day;
