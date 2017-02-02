@@ -454,9 +454,8 @@ pub unsafe fn reset_handler() {
         128/8);
     ltc2941.set_client(ltc2941_driver);
 
-
     //
-    // SPI
+    // SPI - Shared by FRAM and Storage Master
     //
     let mux_spi = static_init!(
         capsules::virtual_spi::MuxSpiMaster<'static, usart::USART>,
@@ -467,12 +466,9 @@ pub unsafe fn reset_handler() {
     hil::spi::SpiMaster::set_client(&sam4l::usart::USART0, mux_spi);
     hil::spi::SpiMaster::init(&sam4l::usart::USART0);
 
-
-
     //
     // FRAM
     //
-    // let k = hil::spi::ChipSelect::Gpio(&sam4l::gpio::PA[25]);
     let fm25cl_spi = static_init!(
         capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
         // capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, k),
@@ -483,7 +479,6 @@ pub unsafe fn reset_handler() {
         capsules::fm25cl::FM25CL::new(fm25cl_spi, &mut capsules::fm25cl::TXBUFFER, &mut capsules::fm25cl::RXBUFFER),
         352/8);
     fm25cl_spi.set_client(fm25cl);
-
     // Interface for applications
     let fm25cl_driver = static_init!(
         capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
@@ -530,7 +525,6 @@ pub unsafe fn reset_handler() {
         128/8);
     watchdog_alarm.set_client(watchdog);
 
-
     //
     // Remaining GPIO pins
     //
@@ -561,7 +555,9 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
+    //
     // LEDs
+    //
     let led_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 1],
         [&sam4l::gpio::PB[11]], // !CONTROLLER_LED

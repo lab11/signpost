@@ -87,7 +87,7 @@ void watchdog_tickler (int which) {
   }
 
   if (gps_tickle && energy_tickle) {
-    app_watchdog_tickle_kernel();
+    //app_watchdog_tickle_kernel();
 
     gps_tickle = false;
     energy_tickle = false;
@@ -262,6 +262,7 @@ int main () {
   // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
   // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
+  putstr("Configuring FRAM\n");
   // Configure FRAM
   fm25cl_set_read_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
@@ -284,15 +285,19 @@ int main () {
     fm25cl_write_sync(0, sizeof(controller_fram_t));
   }
 
+  putstr("Init'ing energy\n");
   // Need to init the signpost energy library
   signpost_energy_init();
 
+  putstr("Resetting energy\n");
   // Reset all of the LTC2941s
   signpost_energy_reset();
 
+  putstr("GPS\n");
   // setup gps
   gps_init();
 
+  putstr("Starting timers\n");
   // Need a timer
   timer_subscribe(timer_callback, NULL);
   bonus_timer_subscribe(bonus_timer_callback, NULL);
@@ -302,6 +307,8 @@ int main () {
   bonus_timer_start_repeating(27000);
 
   // Setup watchdog
-  app_watchdog_set_kernel_timeout(30000);
-  app_watchdog_start();
+  //app_watchdog_set_kernel_timeout(30000);
+  //app_watchdog_start();
+
+  putstr("Everything intialized\n");
 }
