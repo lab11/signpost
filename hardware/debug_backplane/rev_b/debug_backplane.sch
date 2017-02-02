@@ -7743,7 +7743,7 @@ Low profile connectors, straight&lt;p&gt;
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins and Pat Pannuto"/>
-<attribute name="REV" value="A"/>
+<attribute name="REV" value="B"/>
 <attribute name="TITLE" value="Signpost Debug Backplane"/>
 </attributes>
 <variantdefs>
