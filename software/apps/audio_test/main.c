@@ -8,9 +8,12 @@
 #include <tock.h>
 #include "gpio.h"
 
+// these correspond to the number (0 indexed) of the GPIO pin in gpio_pins 
+// struct in main.rs
+// in this case we are testing the onboard MEMs microphone
 #define STROBE 4
-#define RESET 5 
-#define	POWER 6
+#define RESET 15 
+#define	POWER 16
 
 int main () {
 	gpio_enable_output(STROBE);
@@ -21,7 +24,6 @@ int main () {
 	gpio_clear(STROBE);
 	gpio_clear(RESET);
 
-	
 	delay_ms(1000);
   	while (1) {
 		delay_ms(1);
