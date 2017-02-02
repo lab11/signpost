@@ -1,0 +1,31 @@
+[package]
+name = "controller"
+version = "0.1.0"
+authors = ["Brad Campbell <bradjc@umich.edu>"]
+
+[profile.dev]
+panic = "abort"
+lto = true
+opt-level = 0
+debug = false
+# Would prefer to have debug symbols, but there is a Rust bug
+#	https://github.com/rust-lang/rust/issues/25270
+#	https://github.com/rust-lang/rust/issues/34434
+#debug = true
+
+[profile.release]
+panic = "abort"
+lto = true
+
+[dependencies]
+rust-libcore = "*"
+#common = { path = "../../../tock/src/common" }
+cortexm4 = { path = "../../../tock/arch/cortex-m4" }
+capsules = { path = "../../../tock/capsules" }
+#hil = { path = "../../../tock/src/hil" }
+#main = { path = "../../../tock/src/main" }
+sam4l = { path = "../../../tock/chips/sam4l" }
+#support = { path = "../../../tock/src/support" }
+kernel = { path = "../../../tock/kernel" }
+signpost_drivers = { path = "../../../signpost_drivers" }
+signpost_hil = { path = "../../../signpost_hil" }
