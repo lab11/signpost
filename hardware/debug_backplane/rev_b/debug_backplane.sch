@@ -8284,6 +8284,7 @@ Low profile connectors, straight&lt;p&gt;
 <part name="D9" library="leds" deviceset="LED" device="0603"/>
 <part name="R105" library="passives" deviceset="RESISTOR" device="0603_RES" value="1kΩ"/>
 <part name="R106" library="passives" deviceset="RESISTOR" device="0603_RES" value="0Ω - DNP"/>
+<part name="TP19" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14157,6 +14158,12 @@ Useful for Debuggin Module USB.</text>
 <text x="124.46" y="177.8" size="1.778" layer="98" align="bottom-center">Controller Debugging</text>
 <text x="68.58" y="177.8" size="1.778" layer="98" align="bottom-center">power debugging</text>
 <text x="68.58" y="114.3" size="1.778" layer="98" align="bottom-center">USB Debugging</text>
+<text x="121.92" y="175.26" size="1.778" layer="98" align="bottom-center">Grouped as J14</text>
+<text x="124.46" y="106.68" size="1.778" layer="98" align="bottom-center">Grouped as J12</text>
+<text x="180.34" y="106.68" size="1.778" layer="98" align="bottom-center">Grouped as J13</text>
+<text x="68.58" y="111.76" size="1.778" layer="98" align="bottom-center">Grouped as J15</text>
+<text x="109.22" y="68.58" size="1.778" layer="98" align="bottom-center">Grouped as J16</text>
+<text x="170.18" y="68.58" size="1.778" layer="98" align="bottom-center">Grouped as J17</text>
 </plain>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
@@ -14231,6 +14238,7 @@ Useful for Debuggin Module USB.</text>
 <instance part="TP4" gate="G$1" x="60.96" y="172.72"/>
 <instance part="TP7" gate="G$1" x="60.96" y="170.18"/>
 <instance part="TP18" gate="G$1" x="60.96" y="167.64"/>
+<instance part="TP19" gate="G$1" x="58.42" y="106.68"/>
 </instances>
 <busses>
 </busses>
@@ -14344,6 +14352,11 @@ Useful for Debuggin Module USB.</text>
 <wire x1="63.5" y1="109.22" x2="60.96" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
 <label x="63.5" y="109.22" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP19" gate="G$1" pin="TESTPOINT"/>
+<wire x1="60.96" y1="106.68" x2="63.5" y2="106.68" width="0.1524" layer="91"/>
+<label x="63.5" y="106.68" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_ISO_POWER" class="0">
