@@ -40,7 +40,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
     #[link_section = ".app_memory"]
     static mut APP_MEMORY: [u8; 16384] = [0; 16384];
 
-    static mut processes: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
+    static mut PROCESSES: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
     let mut apps_in_flash_ptr = &_sapps as *const u8;
     let mut app_memory_ptr = APP_MEMORY.as_mut_ptr();
@@ -56,13 +56,13 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
             break;
         }
 
-        processes[i] = process;
+        PROCESSES[i] = process;
         apps_in_flash_ptr = apps_in_flash_ptr.offset(flash_offset as isize);
         app_memory_ptr = app_memory_ptr.offset(memory_offset as isize);
         app_memory_size -= memory_offset;
     }
 
-    &mut processes
+    &mut PROCESSES
 }
 
 /*******************************************************************************
@@ -210,7 +210,7 @@ pub unsafe fn reset_handler() {
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
-        928/8);
+        800/8);
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
