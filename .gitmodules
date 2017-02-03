@@ -1,8 +1,7 @@
 [submodule "solar_panel_test/nucleum"]
 	path = test/solar_panel_test/nucleum
-	url = git@github.com:lab11/nucleum.git
+	url = https://github.com/lab11/nucleum.git
 	branch = master
-
 [submodule "modules/spectrum154/contiki/contiki"]
 	path = modules/spectrum154/contiki/contiki
 	url = https://github.com/contiki-os/contiki
@@ -14,10 +13,10 @@
 	url = https://github.com/helena-project/tock
 [submodule "software/apps/radio_demo/nrf5x-base"]
 	path = software/apps/radio_demo/nrf5x-base
-	url = git@github.com:lab11/nrf5x-base
+	url = https://github.com/lab11/nrf5x-base
 [submodule "software/apps/libs/erpc"]
 	path = software/apps/libs/erpc
-	url = git@github.com:lab11/erpc
+	url = https://github.com/lab11/erpc
 [submodule "software/apps/libs/mbedtls"]
 	path = software/apps/libs/mbedtls
-	url = git@github.com:lab11/mbedtls
+	url = https://github.com/lab11/mbedtls
