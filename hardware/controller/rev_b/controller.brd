@@ -4564,7 +4564,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="-15.748" y1="-27.686" x2="-15.748" y2="-30.734" width="0.2032" layer="1"/>
 <wire x1="-15.748" y1="-30.734" x2="-13.335" y2="-33.147" width="0.2032" layer="1"/>
 </signal>
-<signal name="SD_DETECT">
+<signal name="!SD_DETECT">
 <contactref element="J1" pad="A"/>
 <contactref element="R21" pad="1"/>
 <contactref element="U4" pad="44"/>

@@ -8005,7 +8005,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="U4" gate="U1" pin="PA14"/>
 </segment>
 </net>
-<net name="SD_DETECT" class="0">
+<net name="!SD_DETECT" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="A"/>
 <wire x1="215.9" y1="35.56" x2="172.72" y2="35.56" width="0.1524" layer="91"/>
