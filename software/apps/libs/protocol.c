@@ -8,10 +8,10 @@
 #include "mbedtls/cipher.h"
 #include "rng.h"
 
-const mbedtls_md_info_t * md_info;
-mbedtls_md_context_t md_context;
-const mbedtls_cipher_info_t * cipher_info;
-mbedtls_cipher_context_t cipher_context;
+static const mbedtls_md_info_t * md_info;
+static mbedtls_md_context_t md_context;
+static const mbedtls_cipher_info_t * cipher_info;
+static mbedtls_cipher_context_t cipher_context;
 
 int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
@@ -36,6 +36,7 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
     ret = mbedtls_cipher_crypt(&cipher_context, iv, MBEDTLS_MAX_IV_LENGTH, in, inlen, out, olen);
     if(ret<0) return ret;
 
+    //TODO make sure freed on error
     mbedtls_cipher_free(&cipher_context);
 
     return 0;
@@ -82,10 +83,9 @@ int protocol_send(uint8_t addr, uint8_t dest,
     // sendbuf is what is sent to message layer, needs to fit hash and IV
     uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
     uint8_t iv[MBEDTLS_MAX_IV_LENGTH];
-    size_t olen;
-    size_t size;
+    size_t olen=0;
     // keep track of free location in buffer
-    size=0;
+    size_t size=0;
 
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
@@ -110,7 +110,6 @@ int protocol_send(uint8_t addr, uint8_t dest,
 
     // pass buffer to message
     // TODO init should be handled in different function
-    message_init(addr);
     message_send(dest, sendbuf, size);
 
     // testing:
@@ -134,7 +133,7 @@ int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key, size_t*
     uint8_t temp[len];
     int result = 0;
 
-    if (len > buflen) return -1;
+    if (len > buflen || len < SHA256_LEN) return -1;
     // check hmac/hash
     message_digest(key, buf-SHA256_LEN, SHA256_LEN, h);
     if (!memcmp(h, buf+len-SHA256_LEN, SHA256_LEN)) return -1;

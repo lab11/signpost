@@ -14,9 +14,8 @@ uint8_t buf[BUFSIZE];
 
 int app_send(uint8_t addr, uint8_t dest, uint8_t* key,
              uint8_t cmdrsp, uint8_t type,
-             uint8_t func, int numarg, ...) {
+             uint8_t func, int numarg, Arg* args) {
 
-    va_list valist;
     uint8_t arglen=0;
     size_t size=0;
     // cmdrsp + type + func + numargs (each of max 256)
@@ -27,12 +26,10 @@ int app_send(uint8_t addr, uint8_t dest, uint8_t* key,
     buf[size++] = cmdrsp;
     buf[size++] = type;
     buf[size++] = func;
-    va_start(valist, numarg);
-    for(int i = 0; i<numarg; i+=2) {
-        arglen = va_arg(valist, int);
-        buf[size++] = arglen;
-        memcpy(buf+size, va_arg(valist, uint8_t*), arglen);
-        size+=arglen;
+    for(int i = 0; i<numarg; i+=1) {
+        buf[size++] = args[i].len;
+        memcpy(buf+size, args[i].arg, args[i].len);
+        size+=args[i].len;
     }
 
     // testing
@@ -44,31 +41,26 @@ int app_send(uint8_t addr, uint8_t dest, uint8_t* key,
     return protocol_send(addr, dest, key, buf, size);
 }
 
-int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, Arg* args, size_t* numargs) {
+int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, Arg* args, size_t* numarg) {
     uint8_t src;
     size_t i = 0;
     size_t len = message_recv(buf, BUFSIZE, &src);
     protocol_recv(buf, BUFSIZE, len, key, &len);
-    //testing
-    //for (int j = 0; j < len; j++) {
-    //    printf("%02x", buf[j]);
-    //}
-    //printf("\n");
 
     if (len > BUFSIZE) return -1;
     *cmdrsp = buf[i++];
     *type   = buf[i++];
     *func   = buf[i++];
-    *numargs = 0;
+    *numarg = 0;
     while(i < len) {
         printf("i: %d, len: %d\n", i, len);
         //first byte is arglen
         uint8_t arglen = buf[i++];
         if (i + (size_t)arglen > BUFSIZE) return -2;
-        args[*numargs].len = arglen;
+        args[*numarg].len = arglen;
         //following is arg
-        memcpy(args[*numargs].arg, buf+i, arglen);
-        *numargs+=1;
+        memcpy(args[*numarg].arg, buf+i, arglen);
+        *numarg+=1;
         i+=arglen;
     }
 
