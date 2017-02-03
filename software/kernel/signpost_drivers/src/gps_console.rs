@@ -31,18 +31,13 @@ impl Default for App {
 
 pub static mut WRITE_BUF: [u8; 200] = [0; 200];
 pub static mut READ_BUF: [u8; 500] = [0; 500];
-pub static mut LINE_BUF: [u8; 100] = [0; 100];
 
 pub struct Console<'a, U: UARTAdvanced + 'a> {
     uart: &'a U,
     apps: Container<App>,
-    in_progress: TakeCell<AppId>,
-    tx_buffer: TakeCell<&'static mut [u8]>,
-    rx_buffer: TakeCell<&'static mut [u8]>,
-    line_buffer: TakeCell<&'static mut [u8]>,
-    line_idx: Cell<usize>,
-    line_complete: Cell<bool>,
-    receiving: Cell<bool>,
+    in_progress: Cell<Option<AppId>>,
+    tx_buffer: TakeCell<'static, [u8]>,
+    rx_buffer: TakeCell<'static, [u8]>,
     baud_rate: Cell<u32>,
 }
 
@@ -51,19 +46,14 @@ impl<'a, U: UARTAdvanced> Console<'a, U> {
                baud_rate: u32,
                tx_buffer: &'static mut [u8],
                rx_buffer: &'static mut [u8],
-               line_buffer: &'static mut [u8],
                container: Container<App>)
                -> Console<'a, U> {
         Console {
             uart: uart,
             apps: container,
-            in_progress: TakeCell::empty(),
+            in_progress: Cell::new(None),
             tx_buffer: TakeCell::new(tx_buffer),
             rx_buffer: TakeCell::new(rx_buffer),
-            line_buffer: TakeCell::new(line_buffer),
-            line_idx: Cell::new(0),
-            line_complete: Cell::new(false),
-            receiving: Cell::new(false),
             baud_rate: Cell::new(baud_rate),
         }
     }
@@ -120,7 +110,6 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
         match subscribe_num {
             0 /* read line */ => {
                 panic!("readline is borked right now. Don't call it");
-                ReturnCode::FAIL
             },
             1 /* putstr/write_done */ => {
                 self.apps.enter(callback.app_id(), |app, _| {
@@ -128,8 +117,8 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                         Some(slice) => {
                             app.write_callback = Some(callback);
                             app.write_len = slice.len();
-                            if self.in_progress.is_none() {
-                                self.in_progress.replace(callback.app_id());
+                            if self.in_progress.get().is_none() {
+                                self.in_progress.set(Some(callback.app_id()));
                                 self.tx_buffer.take().map(|buffer| {
                                     for (i, c) in slice.as_ref().iter().enumerate() {
                                         if buffer.len() <= i {
@@ -162,10 +151,11 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                     // only both receiving if we've got somewhere to put it
                     app.read_buffer = app.read_buffer.take().map(|app_buf| {
                         self.rx_buffer.take().map(|buffer| {
+                            /*
                             let mut receive_len = app_buf.len();
                             if receive_len > buffer.len() {
                                 receive_len = buffer.len();
-                            }
+                            }*/
                             //XXX: this could receive more than the app buffer...
                             self.uart.receive_automatic(buffer, 10);
                         });
@@ -205,7 +195,8 @@ impl<'a, U: UARTAdvanced> Client for Console<'a, U> {
         // Write TX is done, notify appropriate app and start another
         // transaction if pending
         self.tx_buffer.replace(buffer);
-        self.in_progress.take().map(|appid| {
+        self.in_progress.get().map(|appid| {
+            self.in_progress.set(None);
             self.apps.enter(appid, |app, _| {
                 app.write_callback.map(|mut cb| {
                     cb.schedule(app.write_len, 0, 0);
@@ -230,7 +221,7 @@ impl<'a, U: UARTAdvanced> Client for Console<'a, U> {
                                 }
                                 self.uart.transmit(buffer, app.write_len);
                             });
-                            self.in_progress.replace(app.appid());
+                            self.in_progress.set(Some(app.appid()));
                             true
                         })
                         .unwrap_or(false)
@@ -244,7 +235,7 @@ impl<'a, U: UARTAdvanced> Client for Console<'a, U> {
         }
     }
 
-    fn receive_complete(&self, rx_buffer: &'static mut [u8], rx_len: usize, error: uart::Error) {
+    fn receive_complete(&self, rx_buffer: &'static mut [u8], rx_len: usize, _: uart::Error) {
         // if error != uart::Error::CommandComplete {
         //    panic!("UART error: {:x}", error as u32);
         // }

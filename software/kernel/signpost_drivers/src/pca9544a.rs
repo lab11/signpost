@@ -23,8 +23,8 @@ enum State {
 pub struct PCA9544A<'a> {
     i2c: &'a i2c::I2CDevice,
     state: Cell<State>,
-    buffer: TakeCell<&'static mut [u8]>,
-    client: TakeCell<&'static signpost_hil::i2c_selector::Client>,
+    buffer: TakeCell<'static, [u8]>,
+    client: Cell<Option<&'static signpost_hil::i2c_selector::Client>>,
     identifier: Cell<usize>,
 }
 
@@ -37,13 +37,13 @@ impl<'a> PCA9544A<'a> {
             i2c: i2c,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
-            client: TakeCell::empty(),
+            client: Cell::new(None),
             identifier: Cell::new(0),
         }
     }
 
     pub fn set_client<C: signpost_hil::i2c_selector::Client>(&self, client: &'static C, identifier: usize) {
-        self.client.replace(client);
+        self.client.set(Some(client));
         self.identifier.set(identifier);
     }
 
@@ -111,7 +111,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
             State::ReadInterrupts => {
                 let interrupt_bitmask = (buffer[0] >> 4) & 0x0F;
 
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done(Some(interrupt_bitmask as usize));
                 });
 
@@ -122,7 +122,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
             State::ReadSelectedChannel => {
                 let b = buffer[0] & 0x07;
 
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done(Some(b as usize));
                 });
 
@@ -131,7 +131,7 @@ impl<'a> i2c::I2CClient for PCA9544A<'a> {
                 self.state.set(State::Idle);
             }
             State::Done => {
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done(None);
                 });
 

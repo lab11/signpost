@@ -24,8 +24,8 @@ pub struct SMBUSInterrupt<'a> {
     i2c: &'a i2c::I2CDevice,
     interrupt_pin: Option<&'a gpio::Pin>,
     state: Cell<State>,
-    buffer: TakeCell<&'static mut [u8]>,
-    client: TakeCell<&'static SMBUSIntClient>,
+    buffer: TakeCell<'static, [u8]>,
+    client: Cell<Option<&'static SMBUSIntClient>>,
 }
 
 impl<'a> SMBUSInterrupt<'a> {
@@ -37,12 +37,12 @@ impl<'a> SMBUSInterrupt<'a> {
             interrupt_pin: interrupt_pin,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
-            client: TakeCell::empty(),
+            client: Cell::new(None),
         }
     }
 
     pub fn set_client<C: SMBUSIntClient>(&self, client: &'static C) {
-        self.client.replace(client);
+        self.client.set(Some(client));
 
         self.interrupt_pin.map(|interrupt_pin| {
             // interrupt_pin.enable_input(gpio::InputMode::PullUp);
@@ -66,7 +66,7 @@ impl<'a> i2c::I2CClient for SMBUSInterrupt<'a> {
     fn command_complete(&self, buffer: &'static mut [u8], _error: i2c::Error) {
         match self.state.get() {
             State::ReadInterrupt => {
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.interrupt(buffer[0] as usize);
                 });
 
@@ -75,7 +75,7 @@ impl<'a> i2c::I2CClient for SMBUSInterrupt<'a> {
                 self.state.set(State::Idle);
             },
             State::Done => {
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done();
                 });
                 self.buffer.replace(buffer);

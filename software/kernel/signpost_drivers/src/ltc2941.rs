@@ -61,8 +61,8 @@ pub struct LTC2941<'a> {
     i2c: &'a i2c::I2CDevice,
     interrupt_pin: Option<&'a gpio::Pin>,
     state: Cell<State>,
-    buffer: TakeCell<&'static mut [u8]>,
-    client: TakeCell<&'static LTC2941Client>,
+    buffer: TakeCell<'static, [u8]>,
+    client: Cell<Option<&'static LTC2941Client>>,
 }
 
 impl<'a> LTC2941<'a> {
@@ -76,12 +76,12 @@ impl<'a> LTC2941<'a> {
             interrupt_pin: interrupt_pin,
             state: Cell::new(State::Idle),
             buffer: TakeCell::new(buffer),
-            client: TakeCell::empty(),
+            client: Cell::new(None),
         }
     }
 
     pub fn set_client<C: LTC2941Client>(&self, client: &'static C) {
-        self.client.replace(client);
+        self.client.set(Some(client));
 
         self.interrupt_pin.map(|interrupt_pin| {
             // interrupt_pin.enable_input(gpio::InputMode::PullNone);
@@ -196,7 +196,7 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                     0 => ChipModel::LTC2942,
                     _ => ChipModel::LTC2941
                 };
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.status(uvlock, vbata, ca_low, ca_high, accover, chip);
                 });
 
@@ -207,7 +207,7 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
             State::ReadCharge => {
                 // TODO: Actually calculate charge!!!!!
                 let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.charge(charge);
                 });
 
@@ -226,7 +226,7 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 self.state.set(State::Done);
             },
             State::Done => {
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done();
                 });
 
@@ -241,7 +241,7 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
 
 impl<'a> gpio::Client for LTC2941<'a> {
     fn fired(&self, _: usize) {
-        self.client.map(|client| {
+        self.client.get().map(|client| {
             client.interrupt();
         });
     }

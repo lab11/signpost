@@ -57,10 +57,10 @@ enum PinState {
 pub struct MCP23008<'a> {
     i2c: &'a hil::i2c::I2CDevice,
     state: Cell<State>,
-    buffer: TakeCell<&'static mut [u8]>,
+    buffer: TakeCell<'static, [u8]>,
     _interrupt_pin: Option<&'static hil::gpio::Pin>,
     identifier: Cell<usize>,
-    client: TakeCell<&'static signpost_hil::gpio_async::Client>,
+    client: Cell<Option<&'static signpost_hil::gpio_async::Client>>,
 }
 
 impl<'a> MCP23008<'a> {
@@ -72,12 +72,12 @@ impl<'a> MCP23008<'a> {
             buffer: TakeCell::new(buffer),
             _interrupt_pin: interrupt_pin,
             identifier: Cell::new(0),
-            client: TakeCell::empty(),
+            client: Cell::new(None),
         }
     }
 
     pub fn set_client<C: signpost_hil::gpio_async::Client>(&self, client: &'static C, identifier: usize) {
-        self.client.replace(client);
+        self.client.set(Some(client));
         self.identifier.set(identifier);
     }
 
@@ -243,7 +243,7 @@ impl<'a> hil::i2c::I2CClient for MCP23008<'a> {
                 let pin_number = buffer[1];
                 let pin_value = (buffer[0] >> pin_number) & 0x01;
 
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done(pin_value as usize);
                 });
 
@@ -252,7 +252,7 @@ impl<'a> hil::i2c::I2CClient for MCP23008<'a> {
                 self.state.set(State::Idle);
             },
             State::Done => {
-                self.client.map(|client| {
+                self.client.get().map(|client| {
                     client.done(0);
                 });
 
@@ -269,7 +269,7 @@ impl<'a> hil::gpio::Client for MCP23008<'a> {
     fn fired(&self, _: usize) {
 
         // TODO: This should ask the chip which pins interrupted.
-        self.client.map(|client| {
+        self.client.get().map(|client| {
             // Put the port number in the lower half of the forwarded identifier.
             client.fired(self.identifier.get() & 0x00FF);
         });

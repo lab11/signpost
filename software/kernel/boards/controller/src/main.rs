@@ -209,9 +209,8 @@ pub unsafe fn reset_handler() {
                      9600,
                      &mut gps_console::WRITE_BUF,
                      &mut gps_console::READ_BUF,
-                     &mut gps_console::LINE_BUF,
                      kernel::Container::create()),
-        416/8);
+        288/8);
     hil::uart::UART::set_client(&usart::USART2, gps_console);
 
     //
@@ -473,7 +472,7 @@ pub unsafe fn reset_handler() {
         capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
         // capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, k),
         capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
-        416/8);
+        384/8);
     let fm25cl = static_init!(
         capsules::fm25cl::FM25CL<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
         capsules::fm25cl::FM25CL::new(fm25cl_spi, &mut capsules::fm25cl::TXBUFFER, &mut capsules::fm25cl::RXBUFFER),

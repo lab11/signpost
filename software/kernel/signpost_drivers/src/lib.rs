@@ -16,7 +16,6 @@ pub mod lps331ap;
 pub mod gpio_async;
 pub mod i2c_selector;
 pub mod smbus_interrupt;
-pub mod uartprint;
 pub mod app_watchdog;
 pub mod watchdog_kernel;
 
