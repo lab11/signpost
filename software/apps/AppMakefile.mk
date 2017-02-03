@@ -47,7 +47,3 @@ clean::
 	rm -Rf $(LIBSIGNPOST_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
-##   TODO(Pat) this include is handled by main tock makefile currently
-##   # for programming individual apps, include platform app makefile
-include $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)/Makefile-app
-
