@@ -2044,6 +2044,60 @@ Master</text>
 <pad name="MNT3" x="-20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
 <pad name="MNT4" x="20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
 </package>
+<package name="MWSUB3G">
+<smd name="P$1" x="4" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$2" x="7" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$3" x="10" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$4" x="13" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$5" x="16" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$6" x="22" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$7" x="28" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$8" x="34" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$9" x="40" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$10" x="46" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="P$11" x="51.8" y="3" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<wire x1="0" y1="0" x2="0" y2="42" width="0.127" layer="21"/>
+<wire x1="0" y1="42" x2="52" y2="42" width="0.127" layer="21"/>
+<wire x1="52" y1="42" x2="52" y2="0" width="0.127" layer="21"/>
+<wire x1="52" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
+<smd name="P$12" x="51.8" y="6" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$13" x="51.8" y="9" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$14" x="51.8" y="12" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$15" x="51.8" y="15" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$16" x="51.8" y="18" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$17" x="51.8" y="21" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$18" x="51.8" y="24" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$19" x="51.8" y="27" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$20" x="51.8" y="30" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$21" x="51.8" y="33" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$22" x="51.8" y="36" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$23" x="51.8" y="39" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="P$24" x="46" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$25" x="40" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$26" x="34" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$27" x="28" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$28" x="22" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$29" x="16" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$30" x="13" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$31" x="10" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$32" x="7" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$33" x="4" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="P$34" x="0.2" y="39" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$35" x="0.2" y="36" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$36" x="0.2" y="33" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$37" x="0.2" y="30" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$38" x="0.2" y="27" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$39" x="0.2" y="24" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$40" x="0.2" y="21" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$41" x="0.2" y="18" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$42" x="0.2" y="15" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$43" x="0.2" y="12" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$44" x="0.2" y="9" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$45" x="0.2" y="6" dx="2.4" dy="1.3" layer="1"/>
+<smd name="P$46" x="0.2" y="3" dx="2.4" dy="1.3" layer="1"/>
+<circle x="4" y="-3" radius="1" width="0.127" layer="21"/>
+<text x="2" y="45" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -2918,6 +2972,32 @@ S high: D = D2</text>
 <pin name="DBG_!RESET" x="30.48" y="15.24" visible="pin" length="middle" rot="R180"/>
 <pin name="DBG_SWDCLK" x="30.48" y="17.78" visible="pin" length="middle" rot="R180"/>
 <pin name="DBG_SWDIO" x="30.48" y="20.32" visible="pin" length="middle" rot="R180"/>
+</symbol>
+<symbol name="MWSUB3G">
+<wire x1="-15.24" y1="-22.86" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="27.94" x2="12.7" y2="27.94" width="0.254" layer="94"/>
+<wire x1="12.7" y1="27.94" x2="12.7" y2="-22.86" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-22.86" x2="-15.24" y2="-22.86" width="0.254" layer="94"/>
+<pin name="GND" x="-20.32" y="-17.78" visible="pin" length="middle"/>
+<pin name="RFGPIO0" x="17.78" y="7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="RFIN" x="17.78" y="15.24" visible="pin" length="middle" rot="R180"/>
+<pin name="RFGPIO1" x="17.78" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GPIO7" x="-20.32" y="-12.7" visible="pin" length="middle"/>
+<pin name="GPIO2" x="-20.32" y="0" visible="pin" length="middle"/>
+<pin name="GPIO4" x="-20.32" y="-5.08" visible="pin" length="middle"/>
+<pin name="GPIO5" x="-20.32" y="-7.62" visible="pin" length="middle"/>
+<pin name="LED" x="17.78" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="GPIO1" x="-20.32" y="2.54" visible="pin" length="middle"/>
+<pin name="GPIO0" x="-20.32" y="5.08" visible="pin" length="middle"/>
+<pin name="RF_RX" x="-20.32" y="12.7" visible="pin" length="middle"/>
+<pin name="RF_TX" x="-20.32" y="15.24" visible="pin" length="middle"/>
+<pin name="GPIO3" x="-20.32" y="-2.54" visible="pin" length="middle"/>
+<pin name="GPIO6" x="-20.32" y="-10.16" visible="pin" length="middle"/>
+<pin name="RESET" x="-20.32" y="22.86" visible="pin" length="middle"/>
+<pin name="DC3V3" x="-20.32" y="25.4" visible="pin" length="middle"/>
+<pin name="RFGPIO2" x="17.78" y="2.54" visible="pin" length="middle" rot="R180"/>
+<text x="-12.7" y="30.48" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="5.08" y="22.86" size="1.778" layer="95" ratio="12" align="bottom-center">MWSUB3G</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -4088,6 +4168,39 @@ with External Sense Resistor</description>
 <attribute name="DIGIKEY3" value="S7072-ND" constant="no"/>
 <attribute name="DIGIKEY4" value="S7072-ND" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="MWSUB3G" prefix="U">
+<description>An RF Spectrum analyzer module</description>
+<gates>
+<gate name="G$1" symbol="MWSUB3G" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="MWSUB3G">
+<connects>
+<connect gate="G$1" pin="DC3V3" pad="P$31 P$32 P$33"/>
+<connect gate="G$1" pin="GND" pad="P$5 P$6 P$7 P$8 P$9 P$10 P$11 P$12 P$13 P$14 P$15 P$16 P$18 P$20 P$21 P$22 P$24 P$26 P$27 P$28 P$29 P$34 P$43 P$45 P$46"/>
+<connect gate="G$1" pin="GPIO0" pad="P$40"/>
+<connect gate="G$1" pin="GPIO1" pad="P$41"/>
+<connect gate="G$1" pin="GPIO2" pad="P$3"/>
+<connect gate="G$1" pin="GPIO3" pad="P$37"/>
+<connect gate="G$1" pin="GPIO4" pad="P$2"/>
+<connect gate="G$1" pin="GPIO5" pad="P$1"/>
+<connect gate="G$1" pin="GPIO6" pad="P$35"/>
+<connect gate="G$1" pin="GPIO7" pad="P$4"/>
+<connect gate="G$1" pin="LED" pad="P$42"/>
+<connect gate="G$1" pin="RESET" pad="P$44"/>
+<connect gate="G$1" pin="RFGPIO0" pad="P$19"/>
+<connect gate="G$1" pin="RFGPIO1" pad="P$23"/>
+<connect gate="G$1" pin="RFGPIO2" pad="P$25"/>
+<connect gate="G$1" pin="RFIN" pad="P$17"/>
+<connect gate="G$1" pin="RF_RX" pad="P$38"/>
+<connect gate="G$1" pin="RF_TX" pad="P$39"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
