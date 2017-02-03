@@ -187,8 +187,8 @@ uint32_t ser_phy_open (ser_phy_events_handler_t events_handler) {
     }
 
     // Configure the serialization layer in the kernel
-    nrf51822_serialization_subscribe(ble_serialization_callback);
-    nrf51822_serialization_setup_rx_buffer((char*) rx, SER_HAL_TRANSPORT_RX_MAX_PKT_SIZE);
+    nrf51_serialization_subscribe(ble_serialization_callback);
+    nrf51_serialization_setup_rx_buffer((char*) rx, SER_HAL_TRANSPORT_RX_MAX_PKT_SIZE);
 
     // Save the callback handler
     _ser_phy_event_handler = events_handler;
@@ -222,7 +222,7 @@ uint32_t ser_phy_tx_pkt_send (const uint8_t* p_buffer, uint16_t num_of_bytes) {
         tx_len = num_of_bytes + SER_PHY_HEADER_SIZE;
 
         // Call tx procedure to start transmission of a packet
-        nrf51822_serialization_write((char*) tx, tx_len);
+        nrf51_serialization_write((char*) tx, tx_len);
     } else {
         return NRF_ERROR_BUSY;
     }
@@ -235,7 +235,7 @@ uint32_t ser_phy_rx_buf_set (uint8_t* p_buffer) {
     // Save a pointer to the buffer we can use.
     hal_rx_buf = p_buffer;
 
-    nrf51822_WAKEME_WAKEME_WAKEME();
+    nrf51_wakeup();
 
     return NRF_SUCCESS;
 }
