@@ -5,8 +5,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
 #include "gpio.h"
+#include "timer.h"
+#include "tock.h"
 
 // these correspond to the number (0 indexed) of the GPIO pin in gpio_pins 
 // struct in main.rs
