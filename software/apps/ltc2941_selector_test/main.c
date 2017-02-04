@@ -5,11 +5,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
-#include <firestorm.h>
-#include <ltc2941.h>
-#include <i2c_selector.h>
-#include <smbus_interrupt.h>
+#include "console.h"
+#include "i2c_selector.h"
+#include "ltc2941.h"
+#include "smbus_interrupt.h"
+#include "tock.h"
 
 #define MOD0_GPIOA_PORT_NUM 0
 #define MOD1_GPIOA_PORT_NUM 1
@@ -18,19 +18,18 @@
 #define MOD6_GPIOA_PORT_NUM 4
 #define MOD7_GPIOA_PORT_NUM 5
 
-#define UNUSED_PARAMETER(x) (void)(x)
-
 // Global store
 int _data = 5;
 int _data2 = 6;
 
 // Callback when the pressure reading is ready
-void callback (int callback_type, int data, int data2, void* callback_args) {
-  UNUSED_PARAMETER(callback_args);
-
+void callback (
+    int callback_type __attribute__ ((unused)),
+    int data,
+    int data2,
+    void* callback_args __attribute__ ((unused))) {
   _data = data;
   _data2 = data2;
-
 }
 
 void print_data (int i) {
