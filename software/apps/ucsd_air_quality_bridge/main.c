@@ -7,6 +7,7 @@
 
 #include "console.h"
 #include "gpio.h"
+#include "gps.h"
 #include "i2c_master_slave.h"
 #include "timer.h"
 #include "tock.h"
