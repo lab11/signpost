@@ -82,6 +82,7 @@ struct SignpostController {
     fram: &'static capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -96,6 +97,7 @@ impl Platform for SignpostController {
             3 => f(Some(self.timer)),
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.rng)),
 
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
@@ -244,6 +246,13 @@ pub unsafe fn reset_handler() {
         TimerDriver::new(virtual_alarm2, kernel::Container::create()),
         12);
     virtual_alarm2.set_client(bonus_timer);
+
+    // Setup RNG
+    let rng = static_init!(
+            capsules::rng::SimpleRng<'static, sam4l::trng::Trng>,
+            capsules::rng::SimpleRng::new(&sam4l::trng::TRNG, kernel::Container::create()),
+            96/8);
+    sam4l::trng::TRNG.set_client(rng);
 
     //
     // I2C Buses
@@ -583,6 +592,7 @@ pub unsafe fn reset_handler() {
         fram: fm25cl_driver,
         i2c_master_slave: i2c_modules,
         app_watchdog: app_watchdog,
+        rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
 

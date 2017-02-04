@@ -75,6 +75,7 @@ struct SignpostStorageMaster {
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     //sdcard: &'static capsules::sdcard::SDCard<'static>,
+    rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -89,6 +90,7 @@ impl Platform for SignpostStorageMaster {
             3 => f(Some(self.timer)),
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.rng)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -200,6 +202,13 @@ pub unsafe fn reset_handler() {
         12);
     virtual_alarm1.set_client(timer);
 
+    // Setup RNG
+    let rng = static_init!(
+            capsules::rng::SimpleRng<'static, sam4l::trng::Trng>,
+            capsules::rng::SimpleRng::new(&sam4l::trng::TRNG, kernel::Container::create()),
+            96/8);
+    sam4l::trng::TRNG.set_client(rng);
+
     //
     // I2C Buses
     //
@@ -281,6 +290,7 @@ pub unsafe fn reset_handler() {
         timer: timer,
         i2c_master_slave: i2c_modules,
         //sdcard: sdcard,
+        rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
 

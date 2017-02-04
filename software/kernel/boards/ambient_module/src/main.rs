@@ -80,6 +80,7 @@ struct AmbientModule {
     isl29035: &'static capsules::isl29035::Isl29035<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     tsl2561: &'static capsules::tsl2561::TSL2561<'static>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -101,6 +102,7 @@ impl Platform for AmbientModule {
             11 => f(Some(self.lps25hb)),
             12 => f(Some(self.tsl2561)),
             13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
 
@@ -194,6 +196,13 @@ pub unsafe fn reset_handler() {
         TimerDriver::new(virtual_alarm1, kernel::Container::create()),
         12);
     virtual_alarm1.set_client(timer);
+
+    // Setup RNG
+    let rng = static_init!(
+            capsules::rng::SimpleRng<'static, sam4l::trng::Trng>,
+            capsules::rng::SimpleRng::new(&sam4l::trng::TRNG, kernel::Container::create()),
+            96/8);
+    sam4l::trng::TRNG.set_client(rng);
 
     //
     // I2C Buses
@@ -379,6 +388,7 @@ pub unsafe fn reset_handler() {
         isl29035: isl29035,
         tsl2561: tsl2561,
         app_watchdog: app_watchdog,
+        rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
 

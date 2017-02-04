@@ -77,6 +77,7 @@ struct AudioModule {
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -92,6 +93,7 @@ impl Platform for AudioModule {
             7 => f(Some(self.adc)),
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
 
@@ -109,8 +111,8 @@ unsafe fn set_pin_primary_functions() {
 	// Analog inputs
     PB[02].configure(Some(A)); // MEMS microphone
     PB[03].configure(Some(A)); // External microphone
-    
-    // MSGEQ control signals 
+
+    // MSGEQ control signals
     PA[07].configure(None);    // spec 2 reset
     PA[08].configure(None);    // spec 2 power
     PA[06].configure(None);    // spec 2 strobe
@@ -118,14 +120,14 @@ unsafe fn set_pin_primary_functions() {
     PA[10].configure(None);    // spec strobe
     PB[00].configure(None);    // spec reset
     PB[01].configure(None);    // spec power
-    PA[04].configure(None);    // spec out 
+    PA[04].configure(None);    // spec out
 
-    // LEDs 
+    // LEDs
     PB[04].configure(None);    // LEDG2 (LED3)
     PB[05].configure(None);    // LEDR2 (LED4)
     PB[06].configure(None);    // LEDG1 (LED1)
 	PB[07].configure(None);    // LEDR1 (LED2)
-   
+
     // Flash chip
     PA[15].configure(None);    // !FLASH_CS
     PB[11].configure(None);    // !FLASH_RESET
@@ -133,7 +135,7 @@ unsafe fn set_pin_primary_functions() {
     PB[08].configure(Some(A)); // FLASH_SCLK
     PB[09].configure(Some(A)); // FLASH_SI
     PB[10].configure(Some(A)); // FLASH_SO
-   
+
     // Debug lines
     PA[18].configure(None);    // PPS
     // using USART2 on 64 pin SAM4L
@@ -214,15 +216,21 @@ pub unsafe fn reset_handler() {
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
-	//
-	//ADC
-	//
-	let adc_driver = static_init!(
-		capsules::adc::ADC<'static, sam4l::adc::Adc>,
-		capsules::adc::ADC::new(&adc::ADC),
-		160/8);
-	adc::ADC.set_client(adc_driver);
+    //
+    //ADC
+    //
+    let adc_driver = static_init!(
+            capsules::adc::ADC<'static, sam4l::adc::Adc>,
+            capsules::adc::ADC::new(&adc::ADC),
+            160/8);
+    adc::ADC.set_client(adc_driver);
 
+    // Setup RNG
+    let rng = static_init!(
+            capsules::rng::SimpleRng<'static, sam4l::trng::Trng>,
+            capsules::rng::SimpleRng::new(&sam4l::trng::TRNG, kernel::Container::create()),
+            96/8);
+    sam4l::trng::TRNG.set_client(rng);
 
     //
     // App Watchdog
@@ -302,7 +310,7 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
-    // 
+    //
     // LEDs
     //
     let led_pins = static_init!(
@@ -328,6 +336,7 @@ pub unsafe fn reset_handler() {
         i2c_master_slave: i2c_modules,
         adc: adc_driver,
         app_watchdog: app_watchdog,
+        rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
 
@@ -337,6 +346,6 @@ pub unsafe fn reset_handler() {
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
-    
+
     kernel::main(&audio_module, &mut chip, load_processes(), &audio_module.ipc);
 }

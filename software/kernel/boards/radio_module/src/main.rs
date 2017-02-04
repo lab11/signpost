@@ -76,6 +76,7 @@ struct RadioModule {
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
 
@@ -90,6 +91,7 @@ impl Platform for RadioModule {
             3 => f(Some(self.timer)),
             5 => f(Some(self.nrf51822)),
             13 => f(Some(self.i2c_master_slave)),
+            14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
 
@@ -212,6 +214,13 @@ pub unsafe fn reset_handler() {
         12);
     virtual_alarm1.set_client(timer);
 
+    // Setup RNG
+    let rng = static_init!(
+            capsules::rng::SimpleRng<'static, sam4l::trng::Trng>,
+            capsules::rng::SimpleRng::new(&sam4l::trng::TRNG, kernel::Container::create()),
+            96/8);
+    sam4l::trng::TRNG.set_client(rng);
+
     //
     // I2C Buses
     //
@@ -306,6 +315,7 @@ pub unsafe fn reset_handler() {
         i2c_master_slave: i2c_modules,
         nrf51822:nrf_serialization,
         app_watchdog: app_watchdog,
+        rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
 
