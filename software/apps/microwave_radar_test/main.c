@@ -5,9 +5,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
-#include <adc.h>
-#include <console.h>
+#include "adc.h"
+#include "console.h"
+#include "timer.h"
+#include "tock.h"
 
 #define UNUSED_PARAMETER(x) (void)(x)
 
@@ -137,7 +138,7 @@ uint32_t calculate_radar_speed (uint32_t freq) {
     uint32_t speed_fph = (freq * 5280)/31;
     uint32_t speed_fps = speed_fph*1000/3600;
 
-    printf("Freq: %d\tSpeed: %d (milli-fps)\n", freq, speed_fps);
+    printf("Freq: %ld\tSpeed: %ld (milli-fps)\n", freq, speed_fps);
 
     return speed_fps;
 }
