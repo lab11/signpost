@@ -6,6 +6,11 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 # Which files to compile.
 C_SRCS := $(wildcard *.c)
 
+# Set a default address for CI builds
+ifeq ($(CI),true)
+ID=0
+endif
+
 ifneq ($(ID),)
 ADDRESS ?= c098e51200$(ID)
 endif
