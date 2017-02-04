@@ -33,6 +33,7 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./mbedtls_aes" ]; then skips+=($dir-PAT-stacksize); continue; fi
 	if [ $dir == "./mbedtls_hash" ]; then skips+=($dir-PAT-stacksize); continue; fi
 	if [ $dir == "./mbedtls_hmac" ]; then skips+=($dir-PAT-stacksize); continue; fi
+	if [ $dir == "./radio_demo" ]; then skips+=($dir-PAT-travis-radioID); continue; fi
 
 	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
