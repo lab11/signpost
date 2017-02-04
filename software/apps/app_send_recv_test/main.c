@@ -14,11 +14,10 @@
 #include "app.h"
 #include "rng.h"
 
-#define SENDER
+//#define SENDER
 
 Arg args[5];
 uint8_t src;
-unsigned char* test = "hello";
 uint8_t vals[3];
 uint8_t buf[1024];
 
@@ -45,12 +44,12 @@ int main() {
     while(1) {
         delay_ms(2000);
 #ifdef SENDER
-        args[0].len = 255;
-        args[1].len = 50;
+        args[0].len = 6;
+        args[1].len = 6;
         strcpy(args[0].arg, "hello");
         strcpy(args[1].arg, "there");
         message_init(0x32);
-        app_send(0x32, 0x18, key, 0x01, 0x00, 0x00, 2, args);
+        app_send(0x18, key, 0x01, 0x00, 0x00, 2, args);
 #else
         message_init(0x18);
         app_recv(key, vals, vals+1, vals+2, args, &numargs);

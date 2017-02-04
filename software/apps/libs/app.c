@@ -8,7 +8,7 @@
 
 uint8_t buf[BUFSIZE];
 
-int app_send(uint8_t addr, uint8_t dest, uint8_t* key,
+int app_send(uint8_t dest, uint8_t* key,
              uint8_t cmdrsp, uint8_t type,
              uint8_t func, int numarg, Arg* args) {
 
@@ -29,7 +29,7 @@ int app_send(uint8_t addr, uint8_t dest, uint8_t* key,
         size+=args[i].len;
     }
 
-    return protocol_send(addr, dest, key, buf, size);
+    return protocol_send(dest, key, buf, size);
 }
 
 int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, Arg* args, size_t* numarg) {

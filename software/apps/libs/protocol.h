@@ -7,7 +7,6 @@
 /* protocol_send
  * Send a buffer through the protocol layer. Protocol layer calls message_send
  * to send buffer to dest.
- *   addr: i2c address of self. TODO provide this in an init function instead.
  *   dest: i2c address of destination.
  *   key: buffer holding ECDH_KEY_LENGTH size key, if desired. If not NULL,
  *      protocol layer will encrypt with AES256-CTR and HMAC. If NULL, protocol
@@ -16,7 +15,7 @@
  *
  *   returns 0 on success, negative on failure.
  */
-int protocol_send(uint8_t addr, uint8_t dest,
+int protocol_send(uint8_t dest,
                   uint8_t* key, uint8_t *buf,
                   size_t len);
 

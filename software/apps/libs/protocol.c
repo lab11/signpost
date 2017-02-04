@@ -96,9 +96,8 @@ int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out) {
     return ret;
 }
 
-int protocol_send(uint8_t addr, uint8_t dest,
-                  uint8_t* key, uint8_t *buf,
-                  size_t len) {
+int protocol_send(uint8_t dest, uint8_t* key,
+                  uint8_t *buf, size_t len) {
 
     // len is too large
     if(len > BUFSIZE) return -1;
@@ -133,7 +132,7 @@ int protocol_send(uint8_t addr, uint8_t dest,
     }
 
     // pass buffer to message
-    // TODO init should be handled in different function
+    // expects message_init to have been called by module_init
     return message_send(dest, sendbuf, size);
 }
 
