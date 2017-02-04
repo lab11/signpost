@@ -214,7 +214,7 @@ pub unsafe fn reset_handler() {
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
-        800/8);
+        864/8);
     sam4l::i2c::I2C0.set_master_client(i2c_master_slave);
     sam4l::i2c::I2C0.set_slave_client(i2c_master_slave);
 
@@ -247,7 +247,7 @@ pub unsafe fn reset_handler() {
         capsules::si7021::SI7021::new(si7021_i2c,
             si7021_virtual_alarm,
             &mut capsules::si7021::BUFFER),
-        288/8);
+        352/8);
     si7021_i2c.set_client(si7021);
     si7021_virtual_alarm.set_client(si7021);
 
@@ -275,7 +275,7 @@ pub unsafe fn reset_handler() {
         capsules::lps25hb::LPS25HB::new(lps25hb_i2c,
             &sam4l::gpio::PA[10],
             &mut capsules::lps25hb::BUFFER),
-        40);
+        384/8);
     lps25hb_i2c.set_client(lps25hb);
     sam4l::gpio::PA[10].set_client(lps25hb);
 
@@ -289,7 +289,7 @@ pub unsafe fn reset_handler() {
         capsules::tsl2561::TSL2561::new(tsl2561_i2c,
             &sam4l::gpio::PA[16],
             &mut capsules::tsl2561::BUFFER),
-        40);
+        384/8);
     tsl2561_i2c.set_client(tsl2561);
     sam4l::gpio::PA[16].set_client(tsl2561);
 
@@ -301,7 +301,7 @@ pub unsafe fn reset_handler() {
     let isl29035 = static_init!(
         capsules::isl29035::Isl29035<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
         capsules::isl29035::Isl29035::new(isl29035_i2c, virtual_alarm1, &mut capsules::isl29035::BUF),
-        320/8);
+        384/8);
     isl29035_i2c.set_client(isl29035);
 
     //
@@ -332,7 +332,7 @@ pub unsafe fn reset_handler() {
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
-        20);
+        224/8);
 
     //
     // App Watchdog

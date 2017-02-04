@@ -263,7 +263,7 @@ pub unsafe fn reset_handler() {
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
-        800/8);
+        864/8);
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
@@ -300,7 +300,7 @@ pub unsafe fn reset_handler() {
     let smbusint_driver = static_init!(
         signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
         signpost_drivers::smbus_interrupt::SMBUSIntDriver::new(smbusint),
-        128/8);
+        192/8);
     smbusint.set_client(smbusint_driver);
 
     //
@@ -390,7 +390,7 @@ pub unsafe fn reset_handler() {
     let gpio_async = static_init!(
         signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
         signpost_drivers::gpio_async::GPIOAsync::new(async_gpio_ports),
-        160/8
+        224/8
     );
     for (i, port) in async_gpio_ports.iter().enumerate() {
         port.set_client(gpio_async, i);
@@ -431,7 +431,7 @@ pub unsafe fn reset_handler() {
     let i2c_selector = static_init!(
         signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
         signpost_drivers::i2c_selector::I2CSelector::new(i2c_selectors),
-        228/8
+        288/8
     );
     for (i, selector) in i2c_selectors.iter().enumerate() {
         selector.set_client(i2c_selector, i);
@@ -459,7 +459,7 @@ pub unsafe fn reset_handler() {
     let ltc2941_driver = static_init!(
         signpost_drivers::ltc2941::LTC2941Driver<'static>,
         signpost_drivers::ltc2941::LTC2941Driver::new(ltc2941),
-        128/8);
+        192/8);
     ltc2941.set_client(ltc2941_driver);
 
     //
@@ -480,7 +480,7 @@ pub unsafe fn reset_handler() {
     let fm25cl_spi = static_init!(
         capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
         // capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, k),
-        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, &sam4l::gpio::PA[25]),
+        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, Some(&sam4l::gpio::PA[25])),
         384/8);
     let fm25cl = static_init!(
         capsules::fm25cl::FM25CL<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
@@ -491,7 +491,7 @@ pub unsafe fn reset_handler() {
     let fm25cl_driver = static_init!(
         capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
         capsules::fm25cl::FM25CLDriver::new(fm25cl, &mut capsules::fm25cl::KERNEL_TXBUFFER, &mut capsules::fm25cl::KERNEL_RXBUFFER),
-        480/8);
+        544/8);
     fm25cl.set_client(fm25cl_driver);
 
     //
@@ -556,7 +556,7 @@ pub unsafe fn reset_handler() {
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
-        20);
+        224/8);
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }

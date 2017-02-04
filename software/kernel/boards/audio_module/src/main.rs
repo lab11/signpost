@@ -212,7 +212,7 @@ pub unsafe fn reset_handler() {
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
-        800/8);
+        864/8);
     sam4l::i2c::I2C0.set_master_client(i2c_modules);
     sam4l::i2c::I2C0.set_slave_client(i2c_modules);
 
@@ -222,7 +222,7 @@ pub unsafe fn reset_handler() {
     let adc_driver = static_init!(
             capsules::adc::ADC<'static, sam4l::adc::Adc>,
             capsules::adc::ADC::new(&adc::ADC),
-            160/8);
+            224/8);
     adc::ADC.set_client(adc_driver);
 
     // Setup RNG
@@ -305,7 +305,7 @@ pub unsafe fn reset_handler() {
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
-        20);
+        224/8);
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }

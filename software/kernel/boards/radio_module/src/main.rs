@@ -190,7 +190,7 @@ pub unsafe fn reset_handler() {
         Nrf51822Serialization::new(&usart::USART3,
                 &mut nrf51822_serialization::WRITE_BUF,
                 &mut nrf51822_serialization::READ_BUF),
-        544/8);
+        608/8);
     hil::uart::UART::set_client(&usart::USART3, nrf_serialization);
 
     //
@@ -230,7 +230,7 @@ pub unsafe fn reset_handler() {
             &mut capsules::i2c_master_slave_driver::BUFFER1,
             &mut capsules::i2c_master_slave_driver::BUFFER2,
             &mut capsules::i2c_master_slave_driver::BUFFER3),
-        800/8);
+        864/8);
     sam4l::i2c::I2C1.set_master_client(i2c_modules);
     sam4l::i2c::I2C1.set_slave_client(i2c_modules);
 
@@ -261,7 +261,7 @@ pub unsafe fn reset_handler() {
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
-        20);
+        224/8);
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }
