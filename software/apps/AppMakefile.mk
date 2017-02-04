@@ -14,14 +14,14 @@ TOCK_BASE_DIR := $(abspath $(CURRENT_DIR)/../kernel/tock/)
 BUILDDIR ?= $(abspath $(APP_DIR)/build/$(TOCK_ARCH))
 
 # add platform-specific library files
-LIBSIGNPOST_DIR = $(CURRENT_DIR)libs/
-LIBSIGNPOST ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)/libsignpost.a
+LIBSIGNPOST_DIR = $(CURRENT_DIR)libs
+LIBSIGNPOST ?= $(LIBSIGNPOST_DIR)/build/$(TOCK_ARCH)/libsignpost.a
 OBJS += $(LIBSIGNPOST)
 
 # add mbedtls crypto library
 LIBMBEDTLS_LIB_DIR = $(CURRENT_DIR)libs/mbedtls/library/
 LIBMBEDTLS_INC_DIR = $(CURRENT_DIR)libs/mbedtls/include/
-#LIBMEDTLS ?= $(LIBSIGNPOST_DIR)build/$(TOCK_ARCH)/libmbedcrypto.a
+#LIBMEDTLS ?= $(LIBSIGNPOST_DIR)/build/$(TOCK_ARCH)/libmbedcrypto.a
 #OBJS += $(LIBMBEDTLS)
 
 INCLUDE_PATHS += $(LIBSIGNPOST_DIR) $(LIBMBEDTLS_INC_DIR)
