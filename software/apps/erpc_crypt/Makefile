@@ -35,7 +35,8 @@ SOURCE_PATHS += $(LIBS_DIR)erpc/erpc_c/config/
 VPATH=$(SOURCE_PATHS)
 
 C_SRCS   := $(wildcard *.c)
-#C_SRCS   += i2c_master_slave.c
+
+ERPC_SRCS := $(wildcard *.erpc)
 
 CXX_SRCS  := $(notdir $(APP_SRCS))
 
