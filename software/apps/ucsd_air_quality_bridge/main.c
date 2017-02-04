@@ -69,7 +69,7 @@ int main () {
 		// Clear the first byte so we can validate it's written
 		uart_rx_buf[0] = 0;
 
-		getauto(uart_rx_buf, BUFLEN, uart_rx_callback, NULL);
+		getauto((char*) uart_rx_buf, BUFLEN, uart_rx_callback, NULL);
 		yield_for(&fired);
 		fired = false; // feels like yield_for should do this
 
