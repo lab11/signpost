@@ -5,9 +5,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
-#include <firestorm.h>
 #include "iM880A_RadioInterface.h"
+#include "timer.h"
+#include "tock.h"
 
 const char* message = "Hello from LAB12";
 
