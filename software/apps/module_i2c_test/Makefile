@@ -7,9 +7,6 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 C_SRCS   := $(wildcard *.c)
 INCLUDE_PATHS += .
 
-# specific flags needed for this code
-CPPFLAGS += -DSTACK_SIZE=2048
-
 # include makefile settings that are shared between applications
 include ../AppMakefile.mk
 

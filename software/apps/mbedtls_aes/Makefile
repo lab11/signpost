@@ -26,9 +26,6 @@ VPATH=$(SOURCE_PATHS)
 C_SRCS   := $(wildcard *.c)
 C_SRCS   += $(notdir $(APP_SRCS))
 
-# specific flags needed for this code
-CPPFLAGS += -DSTACK_SIZE=2048
-
 # include makefile settings that are shared between applications
 include ../AppMakefile.mk
 

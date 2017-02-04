@@ -40,9 +40,6 @@ ERPC_SRCS := $(wildcard *.erpc)
 
 CXX_SRCS  := $(notdir $(APP_SRCS))
 
-# specific flags needed for this code
-CPPFLAGS += -DSTACK_SIZE=2048
-
 TOCK_BOARD = controller
 
 # include makefile settings that are shared between applications

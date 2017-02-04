@@ -2,8 +2,6 @@
 
 TOCK_BOARD = audio_module
 
-STACK_SIZE = 2048
-
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
