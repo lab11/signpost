@@ -8,16 +8,17 @@
 
 #include "gps.h"
 #include "minmea.h"
+#include "timer.h"
 
 void gps_callback (gps_data_t* gps_data) {
     // got new gps data
 
-    printf("GPS Data: %d:%d:%d.%d %d/%d/%d\n",
+    printf("GPS Data: %d:%d:%d.%ld %d/%d/%d\n",
             gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
             gps_data->month, gps_data->day, gps_data->year
             );
 
-    printf("\t%d degrees lat - %d degrees lon\n",
+    printf("\t%ld degrees lat - %ld degrees lon\n",
             gps_data->latitude, gps_data->longitude);
 
     char* fix_str = "Invalid fix";
@@ -43,7 +44,7 @@ static void timer_callback (
 }
 
 
-void main() {
+int main() {
     printf("GPS Test\n");
     delay_ms(500);
 
