@@ -10,7 +10,7 @@ ifneq ($(ID),)
 ADDRESS ?= c098e51200$(ID)
 endif
 ifneq ($(ADDRESS),)
-C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2 ]))")
+C_ADDRESS ?= $(shell python -c "print('0x' + ',0x'.join([\"$(ADDRESS)\"[i:i+2] for i in range(0, len(\"$(ADDRESS)\"), 2 )]))")
 endif
 
 
