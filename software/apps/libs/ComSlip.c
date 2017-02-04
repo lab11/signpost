@@ -70,10 +70,10 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "tock.h"
-#include "console.h"
 #include "ComSlip.h"
-#include "firestorm.h"
+#include "console.h"
+#include "gps.h"
+#include "tock.h"
 
 //------------------------------------------------------------------------------
 //
