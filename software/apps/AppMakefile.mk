@@ -81,3 +81,7 @@ clean::
 	rm -Rf $(LIBSIGNPOST_DIR)/build/
 	rm -Rf $(TOCK_USERLAND_BASE_DIR)/libtock/build/
 
+
+# include board-specific makefile in order to get `make flash` to work
+include $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)/Makefile-app
+
