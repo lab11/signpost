@@ -156,8 +156,8 @@ unsafe fn set_pin_primary_functions() {
 pub unsafe fn reset_handler() {
     sam4l::init();
 
-    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
-    // sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillatorPll, 48000000);
+    //sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillator, 16000000);
+    sam4l::pm::setup_system_clock(sam4l::pm::SystemClockSource::ExternalOscillatorPll, 48000000);
 
     // Source 32Khz and 1Khz clocks from RC23K (SAM4L Datasheet 11.6.8)
     sam4l::bpm::set_ck32source(sam4l::bpm::CK32Source::RC32K);
@@ -298,11 +298,16 @@ pub unsafe fn reset_handler() {
         capsules::virtual_i2c::I2CDevice,
         capsules::virtual_i2c::I2CDevice::new(i2c_mux_sensors, 0x44),
         32);
+    let isl29035_virtual_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        192/8);
     let isl29035 = static_init!(
         capsules::isl29035::Isl29035<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
-        capsules::isl29035::Isl29035::new(isl29035_i2c, virtual_alarm1, &mut capsules::isl29035::BUF),
+        capsules::isl29035::Isl29035::new(isl29035_i2c, isl29035_virtual_alarm, &mut capsules::isl29035::BUF),
         384/8);
     isl29035_i2c.set_client(isl29035);
+    isl29035_virtual_alarm.set_client(isl29035);
 
     //
     // LEDs
