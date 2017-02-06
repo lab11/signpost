@@ -6,7 +6,27 @@
 #include "module.h"
 #include "app.h"
 
+typedef struct {
+    uint8_t* src;
+    uint8_t* len;
+    uint8_t* key;
+    uint8_t* cmdrsp;
+    uint8_t* type;
+    uint8_t* func;
+    size_t* numarg;
+    Arg* args;
+    app_cb* cb;
+} app_cb_data;
+
 uint8_t buf[BUFSIZE];
+static app_cb_data cb_data;
+
+int app_parse(uint8_t* buf, size_t len, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args);
+
+void app_callback(size_t len) {
+    app_parse(buf, len, cb_data.cmdrsp, cb_data.type, cb_data.func, cb_data.numarg, cb_data.args);
+    cb_data.cb(0);
+}
 
 int app_send(uint8_t dest, uint8_t* key,
              uint8_t cmdrsp, uint8_t type,
@@ -28,16 +48,11 @@ int app_send(uint8_t dest, uint8_t* key,
         memcpy(buf+size, args[i].arg, args[i].len);
         size+=args[i].len;
     }
-
     return protocol_send(dest, key, buf, size);
 }
 
-int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, Arg* args, size_t* numarg) {
-    uint8_t src;
+int app_parse(uint8_t* buf, size_t len, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
     size_t i = 0;
-    size_t len = message_recv(buf, BUFSIZE, &src);
-    protocol_recv(buf, BUFSIZE, len, key, &len);
-
     if (len > BUFSIZE) return -1;
     *cmdrsp = buf[i++];
     *type   = buf[i++];
@@ -55,4 +70,26 @@ int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, Arg* a
     }
 
     return 0;
+}
+
+int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+    uint8_t src;
+    size_t len = message_recv(buf, BUFSIZE, &src);
+
+    len = protocol_recv(buf, BUFSIZE, len, key);
+    app_parse(buf, len, cmdrsp, type, func, numarg, args);
+
+    return 0;
+}
+
+int app_recv_async(app_cb cb, uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+    cb_data.key = key;
+    cb_data.cmdrsp = cmdrsp;
+    cb_data.type = type;
+    cb_data.func = func;
+    cb_data.numarg = numarg;
+    cb_data.args = args;
+    cb_data.cb = cb;
+
+    return protocol_recv_async(app_callback, buf, BUFSIZE, key);
 }

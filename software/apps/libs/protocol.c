@@ -11,6 +11,15 @@
 #include "mbedtls/ctr_drbg.h"
 #include "rng.h"
 
+typedef struct {
+    uint8_t* buf;
+    size_t buflen;
+    uint8_t* key;
+    uint8_t src;
+    app_cb* cb;
+} prot_cb_data;
+
+static prot_cb_data cb_data;
 static const mbedtls_md_info_t * md_info;
 static mbedtls_md_context_t md_context;
 static const mbedtls_cipher_info_t * cipher_info;
@@ -23,6 +32,10 @@ int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, s
     if (num < 0) return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
     *olen = num;
     return 0;
+}
+
+void protocol_cb(size_t len) {
+    cb_data.cb(protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
 }
 
 int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
@@ -45,7 +58,6 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
         // copy to iv, to send with encrypted content
         memcpy(iv, ivenc, MBEDTLS_MAX_IV_LENGTH);
     }
-
     //reset cipher ctx
     mbedtls_cipher_free(&cipher_context);
     cipher_info = mbedtls_cipher_info_from_type(MBEDTLS_CIPHER_AES_256_CTR);
@@ -110,6 +122,7 @@ int protocol_send(uint8_t dest, uint8_t* key,
     // keep track of free location in buffer
     size_t size=0;
 
+    // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
         cipher(MBEDTLS_ENCRYPT, key, buf, len, iv, tempbuf, &olen);
@@ -136,28 +149,32 @@ int protocol_send(uint8_t dest, uint8_t* key,
     return message_send(dest, sendbuf, size);
 }
 
-int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key, size_t* olen) {
-
-    // len is too large
-    if(len > BUFSIZE) return -1;
+int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key) {
     uint8_t h[SHA256_LEN];
     uint8_t temp[len];
     int result = 0;
+    size_t olen = 0;
 
     if (len > buflen || len < SHA256_LEN) return -1;
     // check hmac/hash
     message_digest(key, buf-SHA256_LEN, SHA256_LEN, h);
-    if (!memcmp(h, buf+len-SHA256_LEN, SHA256_LEN)) return -1;
-    //printf("encrypted: 0x");
-    //for(int i = 0; i < len; i++) {
-    //    printf("%02x", buf[i]);
-    //}
-    //printf("\n");
+
     // decrypt if needed
     if(key != NULL) {
-        result = cipher(MBEDTLS_DECRYPT, key, buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, buf, temp, olen);
+        result = cipher(MBEDTLS_DECRYPT, key, buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, buf, temp, &olen);
     }
-    memcpy(buf, temp, *olen);
+    if (result < 0) return result;
 
-    return result;
+    memcpy(buf, temp, olen);
+
+    return olen;
+}
+
+int protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key) {
+    cb_data.buf = buf;
+    cb_data.buflen = buflen;
+    cb_data.key = key;
+    cb_data.cb = cb;
+
+    return message_recv_async(protocol_cb, buf, buflen, &cb_data.src);
 }

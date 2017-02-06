@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "i2c_master_slave.h"
+#include "message.h"
 
 #define I2C_MAX_LEN 255
 
@@ -41,7 +42,7 @@ typedef struct {
     size_t buflen;
     size_t len;
     uint8_t* src;
-    subscribe_cb* cb;
+    app_cb* cb;
 } message_cb_data;
 
 static uint8_t src_address;
@@ -262,7 +263,6 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
         Packet p;
         memcpy(&p,packet_buf,I2C_MAX_LEN);
 
-
         if(lengthReceived == 0) {
             //this is the first packet
             //save the messageID
@@ -284,7 +284,6 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
         //are there more fragments?
         uint8_t moreFragments = (htons(p.header.ffragment_offset) & 0x8000) >> 15;
         uint16_t fragmentOffset = (htons(p.header.ffragment_offset) & 0x7FFF);
-
         if(moreFragments) {
             //is there room to copy into the buffer?
             if(fragmentOffset + MAX_DATA_LEN > len) {
@@ -316,9 +315,9 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
             done = 1;
         }
     }
-    cb_data.len = lengthReceived;
 
-    if (cb_data.cb) cb_data.cb(0, cb_data.len, 0, NULL);
+    cb_data.len = lengthReceived;
+    if (cb_data.cb) cb_data.cb(cb_data.len);
 }
 
 //blocking receive call
@@ -333,7 +332,7 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 }
 
 //async receive call
-int message_recv_async(subscribe_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
+int message_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
 
     cb_data.buf = data;
     cb_data.buflen = len;

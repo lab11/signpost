@@ -1,6 +1,7 @@
 #pragma once
 
 #include "module.h"
+#include "app.h"
 
 #define SHA256_LEN 32
 
@@ -15,9 +16,8 @@
  *
  *   returns 0 on success, negative on failure.
  */
-int protocol_send(uint8_t dest,
-                  uint8_t* key, uint8_t *buf,
-                  size_t len);
+int protocol_send(uint8_t dest, uint8_t* key,
+                  uint8_t *buf, size_t len);
 
 /* protocol_recv
  * Receive buffer through the protocol layer.
@@ -29,7 +29,10 @@ int protocol_send(uint8_t dest,
  *   appdata: buffer to hold decrypted/verified app data.
  *   applen: length of returned app data.
  *
- *   returns 0 on success, negative on failure.
+ *   returns length of decrypted/authenticated buffer on success, negative on
+ *   failure.
  */
 int protocol_recv(uint8_t* buf, size_t buflen,
-                  size_t len, uint8_t* key, size_t*olen);
+                  size_t len, uint8_t* key);
+
+int protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key);

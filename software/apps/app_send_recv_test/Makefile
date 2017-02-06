@@ -1,7 +1,8 @@
 # makefile for user application
 
 TOCK_BOARD = audio_module
-
+#STACK_SIZE = 4096
+APP_HEAP_SIZE = 4096
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
