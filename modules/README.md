@@ -13,3 +13,11 @@ This directory contains modules developed and supported by Lab11 for the signpos
 | Microwave Radar | Passive motion detection that measure the velocity, proximity, rough size, and material estimation of nearby moving objects |
 | RF Spectrum     | A wide band spectrum monitor |
 | Spectrum 15.4   | Sweeps and monitors all channels defined in the 802.15.4e, reporting the energy present in each channel |
+
+
+Third-Party Modules
+-------------------
+
+| Contact               | Module         | Capabilities                                                                              |
+|-----------------------|----------------|-------------------------------------------------------------------------------------------|
+| [Michael Ostertag](mailto:mosterta@eng.ucsd.edu) | [UCSD Air Quality](https://bitbucket.org/mmenarini/metasensefirmwareble) | Air quality monitor with CO, VOC, NO2, O3 sensors            |
