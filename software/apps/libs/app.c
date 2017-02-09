@@ -10,7 +10,7 @@ typedef struct {
     uint8_t* src;
     uint8_t* len;
     uint8_t* key;
-    uint8_t* cmdrsp;
+    uint8_t* reason;
     uint8_t* type;
     uint8_t* func;
     size_t* numarg;
@@ -21,26 +21,26 @@ typedef struct {
 uint8_t buf[BUFSIZE];
 static app_cb_data cb_data;
 
-int app_parse(uint8_t* buf, size_t len, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args);
+int app_parse(uint8_t* buf, size_t len, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args);
 
 void app_callback(size_t len) {
-    app_parse(buf, len, cb_data.cmdrsp, cb_data.type, cb_data.func, cb_data.numarg, cb_data.args);
+    app_parse(buf, len, cb_data.reason, cb_data.type, cb_data.func, cb_data.numarg, cb_data.args);
     cb_data.cb(0);
 }
 
 int app_send(uint8_t dest, uint8_t* key,
-             uint8_t cmdrsp, uint8_t type,
+             uint8_t reason, uint8_t type,
              uint8_t func, int numarg, Arg* args) {
 
     size_t size=0;
-    // cmdrsp + type + func + numargs (each of max 256)
+    // reason + type + func + numargs (each of max 256)
     size_t len = sizeof(uint8_t)*3 + numarg*256;
     // len is too large
     if(len > BUFSIZE) return -1;
     uint8_t buf[len];
     memset(buf, 0, len);
     // copy args to buffer
-    buf[size++] = cmdrsp;
+    buf[size++] = reason;
     buf[size++] = type;
     buf[size++] = func;
     for(int i = 0; i<numarg; i+=1) {
@@ -51,10 +51,10 @@ int app_send(uint8_t dest, uint8_t* key,
     return protocol_send(dest, key, buf, size);
 }
 
-int app_parse(uint8_t* buf, size_t len, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+int app_parse(uint8_t* buf, size_t len, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
     size_t i = 0;
     if (len > BUFSIZE) return -1;
-    *cmdrsp = buf[i++];
+    *reason = buf[i++];
     *type   = buf[i++];
     *func   = buf[i++];
     *numarg = 0;
@@ -72,19 +72,19 @@ int app_parse(uint8_t* buf, size_t len, uint8_t* cmdrsp, uint8_t* type, uint8_t*
     return 0;
 }
 
-int app_recv(uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+int app_recv(uint8_t* key, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
     uint8_t src;
     size_t len = message_recv(buf, BUFSIZE, &src);
 
     len = protocol_recv(buf, BUFSIZE, len, key);
-    app_parse(buf, len, cmdrsp, type, func, numarg, args);
+    app_parse(buf, len, reason, type, func, numarg, args);
 
     return 0;
 }
 
-int app_recv_async(app_cb cb, uint8_t* key, uint8_t* cmdrsp, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+int app_recv_async(app_cb cb, uint8_t* key, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
     cb_data.key = key;
-    cb_data.cmdrsp = cmdrsp;
+    cb_data.reason = reason;
     cb_data.type = type;
     cb_data.func = func;
     cb_data.numarg = numarg;

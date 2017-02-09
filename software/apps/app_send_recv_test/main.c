@@ -22,7 +22,7 @@ static size_t numargs;
 static uint8_t key[32];
 
 static void cb(size_t length){
-    printf("cmdrsp: %02x, type: %02x, func: %02x\n", vals[0], vals[1], vals[2]);
+    printf("reason: %02x, type: %02x, func: %02x\n", vals[0], vals[1], vals[2]);
     for (int i = 0; i < numargs; i++) {
         printf("(%d) arg %d: %s", args[i].len, i, args[i].arg);
         printf("\n");
