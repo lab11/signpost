@@ -1374,8 +1374,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <param name="mdCopperDimension" value="20mil"/>
 <param name="mdDrill" value="16mil"/>
 <param name="mdSmdStop" value="0mil"/>
-<param name="msWidth" value="4mil"/>
-<param name="msDrill" value="0.200659375mm"/>
+<param name="msWidth" value="6mil"/>
+<param name="msDrill" value="8mil"/>
 <param name="msMicroVia" value="9.9898mm"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
@@ -1387,18 +1387,18 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <param name="rvMicroViaInner" value="0.25"/>
 <param name="rlMinPadTop" value="8mil"/>
 <param name="rlMaxPadTop" value="999mil"/>
-<param name="rlMinPadInner" value="0mil"/>
-<param name="rlMaxPadInner" value="0mil"/>
+<param name="rlMinPadInner" value="8mil"/>
+<param name="rlMaxPadInner" value="999mil"/>
 <param name="rlMinPadBottom" value="8mil"/>
 <param name="rlMaxPadBottom" value="999mil"/>
 <param name="rlMinViaOuter" value="8mil"/>
 <param name="rlMaxViaOuter" value="999mil"/>
-<param name="rlMinViaInner" value="0mil"/>
-<param name="rlMaxViaInner" value="0mil"/>
+<param name="rlMinViaInner" value="8mil"/>
+<param name="rlMaxViaInner" value="999mil"/>
 <param name="rlMinMicroViaOuter" value="8mil"/>
 <param name="rlMaxMicroViaOuter" value="999mil"/>
-<param name="rlMinMicroViaInner" value="0mil"/>
-<param name="rlMaxMicroViaInner" value="0mil"/>
+<param name="rlMinMicroViaInner" value="8mil"/>
+<param name="rlMaxMicroViaInner" value="999mil"/>
 <param name="psTop" value="-1"/>
 <param name="psBottom" value="-1"/>
 <param name="psFirst" value="-1"/>
@@ -1422,7 +1422,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <param name="checkAngle" value="0"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
-<param name="useDiameter" value="13"/>
+<param name="useDiameter" value="31"/>
 <param name="maxErrors" value="500"/>
 </designrules>
 <autorouter>
@@ -1881,9 +1881,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="28.3718" y="57.9882" size="0.889" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="DIGIKEY" value="RHM10.0KHCT-ND" x="27.7876" y="57.7088" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="C8" library="passives" package="0603_CAP" value="360pF" x="25.4762" y="57.7088" smashed="yes" rot="R90">
-<attribute name="NAME" x="26.8986" y="57.7088" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
-<attribute name="DIGIKEY" value="490-1440-1-ND" x="25.4762" y="57.7088" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="C8" library="passives" package="0603_CAP" value="360pF" x="25.4762" y="57.7596" smashed="yes" rot="R90">
+<attribute name="NAME" x="26.8986" y="57.7596" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="DIGIKEY" value="490-1440-1-ND" x="25.4762" y="57.7596" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U9" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="53.1368" y="29.1338" smashed="yes">
 <attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND" x="53.1368" y="29.1338" size="1.778" layer="27" display="off"/>
@@ -2053,7 +2053,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="63.4492" y1="46.1518" x2="62.1302" y2="47.4708" width="0.1524" layer="1"/>
 <via x="40.1828" y="23.0124" extent="1-16" drill="0.3048"/>
 <via x="59.7916" y="43.8658" extent="1-16" drill="0.3048"/>
-<via x="49.9364" y="10.8966" extent="1-16" drill="0.3048"/>
+<via x="49.7078" y="10.8966" extent="1-16" drill="0.3048"/>
 <via x="9.8552" y="45.466" extent="1-16" drill="0.3048"/>
 <via x="21.0566" y="63.246" extent="1-16" drill="0.3048"/>
 <via x="51.8922" y="63.5762" extent="1-16" drill="0.3048"/>
@@ -2169,11 +2169,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="56.0088" y1="46.2788" x2="56.0088" y2="47.8554" width="0.254" layer="1"/>
 <wire x1="56.0088" y1="47.8554" x2="56.7944" y2="48.641" width="0.254" layer="1"/>
 <wire x1="56.7944" y1="48.641" x2="59.436" y2="48.641" width="0.254" layer="1"/>
-<wire x1="59.436" y1="48.641" x2="60.2742" y2="49.4792" width="0.254" layer="1"/>
+<wire x1="59.436" y1="48.641" x2="60.706" y2="49.911" width="0.254" layer="1"/>
 <wire x1="64.7192" y1="45.8216" x2="65.7098" y2="46.8122" width="0.1524" layer="1"/>
 <wire x1="65.7098" y1="46.8122" x2="65.7098" y2="49.3014" width="0.1524" layer="1"/>
-<wire x1="65.7098" y1="49.3014" x2="65.532" y2="49.4792" width="0.254" layer="1"/>
-<wire x1="65.532" y1="49.4792" x2="60.2742" y2="49.4792" width="0.254" layer="1"/>
+<wire x1="60.706" y1="49.911" x2="65.1002" y2="49.911" width="0.254" layer="1"/>
+<wire x1="65.1002" y1="49.911" x2="65.7098" y2="49.3014" width="0.254" layer="1"/>
 </signal>
 <signal name="AUDIO_XIN">
 <contactref element="X1" pad="3"/>
@@ -3108,7 +3108,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="R14" pad="2"/>
 <contactref element="C30" pad="2"/>
 <contactref element="C8" pad="1"/>
-<wire x1="25.4762" y1="57.0588" x2="27.7876" y2="57.0588" width="0.254" layer="1"/>
 <wire x1="27.7876" y1="57.0588" x2="28.5092" y2="56.3372" width="0.254" layer="1"/>
 <wire x1="28.5092" y1="56.3372" x2="28.7528" y2="56.3372" width="0.254" layer="1"/>
 <via x="28.7528" y="56.3372" extent="1-16" drill="0.3048"/>
@@ -3117,6 +3116,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="28.8544" y="51.6128" extent="1-16" drill="0.3048"/>
 <wire x1="28.9814" y1="53.9092" x2="28.9814" y2="52.4764" width="0.254" layer="1"/>
 <wire x1="28.9814" y1="52.4764" x2="28.8544" y2="51.6128" width="0.254" layer="1"/>
+<wire x1="25.4762" y1="57.1096" x2="27.7876" y2="57.1096" width="0.254" layer="1"/>
+<wire x1="27.7876" y1="57.1096" x2="27.7876" y2="57.0588" width="0.254" layer="1"/>
 </signal>
 <signal name="ADC_IN_MEMS">
 <contactref element="U9" pad="13"/>
@@ -3168,9 +3169,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="35.433" y1="48.8084" x2="33.655" y2="48.8084" width="0.254" layer="1"/>
 <via x="37.1602" y="53.34" extent="1-16" drill="0.3048"/>
 <wire x1="35.24" y1="54.3966" x2="35.24" y2="53.9543" width="0.254" layer="1"/>
-<wire x1="31.115" y1="55.2092" x2="31.7096" y2="55.8038" width="0.254" layer="1"/>
-<wire x1="31.7096" y1="55.8038" x2="34.4932" y2="55.8038" width="0.254" layer="1"/>
-<wire x1="34.4932" y1="55.8038" x2="35.24" y2="55.057" width="0.254" layer="1"/>
+<wire x1="31.115" y1="55.2092" x2="31.636390625" y2="55.730590625" width="0.254" layer="1"/>
+<wire x1="31.636390625" y1="55.730590625" x2="34.566409375" y2="55.730590625" width="0.254" layer="1"/>
+<wire x1="34.566409375" y1="55.730590625" x2="35.24" y2="55.057" width="0.254" layer="1"/>
 <wire x1="35.24" y1="55.057" x2="35.24" y2="53.9543" width="0.254" layer="1"/>
 <wire x1="36.195" y1="39.243" x2="36.195" y2="48.0464" width="0.254" layer="16"/>
 </signal>
@@ -3379,12 +3380,13 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="C13" pad="2"/>
 <wire x1="33.34" y1="51.3541" x2="31.6992" y2="51.3541" width="0.254" layer="1"/>
 <wire x1="31.6992" y1="51.3541" x2="31.6531" y2="51.3541" width="0.254" layer="1"/>
-<wire x1="31.6531" y1="51.3541" x2="31.115" y2="52.1716" width="0.254" layer="1"/>
-<wire x1="31.115" y1="52.1716" x2="31.115" y2="53.9092" width="0.254" layer="1"/>
 <wire x1="31.3182" y1="48.8338" x2="31.6992" y2="49.0116" width="0.254" layer="1"/>
 <wire x1="31.6992" y1="49.0116" x2="31.6992" y2="51.3541" width="0.254" layer="1"/>
 <wire x1="31.6992" y1="49.0116" x2="33.2024" y2="47.5084" width="0.254" layer="1"/>
 <wire x1="33.2024" y1="47.5084" x2="33.655" y2="47.5084" width="0.254" layer="1"/>
+<wire x1="30.988" y1="52.0192" x2="30.988" y2="53.7822" width="0.254" layer="1"/>
+<wire x1="30.988" y1="53.7822" x2="31.115" y2="53.9092" width="0.254" layer="1"/>
+<wire x1="30.988" y1="52.0192" x2="31.6531" y2="51.3541" width="0.254" layer="1"/>
 </signal>
 <signal name="N$22">
 <contactref element="TP7" pad="TESTPOINT"/>
@@ -3531,24 +3533,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="4,1,4e4f6127636e810f"/>
 <approved hash="4,1,b376e5ac804b56b0"/>
 <approved hash="4,1,b10c5da378007e8e"/>
-<approved hash="4,1,386235445769ff3e"/>
-<approved hash="4,1,fd3653b452a89c40"/>
-<approved hash="4,1,9654eea16372aa17"/>
-<approved hash="4,1,9b195699df01952d"/>
-<approved hash="4,1,0d7d85f6ee98acf7"/>
-<approved hash="4,1,ee578f40c366c1b9"/>
-<approved hash="4,1,75291f19698745d2"/>
-<approved hash="4,1,c6484b095b4393ca"/>
-<approved hash="4,1,48ead13d1e97cce0"/>
-<approved hash="4,1,d8bafc60be69df51"/>
-<approved hash="4,1,a2cd64475224f74c"/>
-<approved hash="4,1,fc2cbae5bbc3c50c"/>
-<approved hash="4,1,c1183fe13c8afc65"/>
-<approved hash="4,1,3e45d1a430629a71"/>
-<approved hash="4,1,a7469798217a5196"/>
-<approved hash="4,1,437c33ecf500c5a2"/>
-<approved hash="4,1,533114ba9763e8eb"/>
-<approved hash="4,1,d029902c15fa6dfc"/>
 </errors>
 </board>
 </drawing>
