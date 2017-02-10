@@ -32,7 +32,7 @@ Net
         0                   1                   2                   3
         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       | Source          | Flags         | Length                      |
+       | Source        |0| Flags         | Length                      |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
        | Offset                          | ... 
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -40,8 +40,7 @@ Net
 
 ### Source
 
-The source address of the device sending this message. The I2C Write bit (bit 0)
-MUST always be set to 0.
+The 7 bit source address of the device sending this message.
 
 ### Flags
 
