@@ -12,86 +12,79 @@ typedef struct {
     uint8_t* src;
     uint8_t* len;
     uint8_t* key;
-    uint8_t* reason;
-    uint8_t* type;
-    uint8_t* func;
-    size_t* numarg;
-    Arg* args;
+    uint8_t* frame_type;
+    uint8_t* api_type;
+    uint8_t* message_type;
+    size_t* message_length;
+    uint8_t* message;
     app_cb* cb;
 } app_cb_data;
 
-uint8_t buf[BUFSIZE];
+static uint8_t app_buf[BUFSIZE];
 static app_cb_data cb_data;
 
-int app_parse(uint8_t* buf, size_t len, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args);
+static int app_parse(uint8_t* to_parse, size_t len,
+        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        size_t* message_length, uint8_t* message) {
+    size_t i = 0;
+    if (len > BUFSIZE) return -1;
+    *frame_type     = to_parse[i++];
+    *api_type       = to_parse[i++];
+    *message_type   = to_parse[i++];
+    *message_length = len - 3;
+    memcpy(message, to_parse + 3, *message_length);
 
-void app_callback(size_t len) {
-    app_parse(buf, len, cb_data.reason, cb_data.type, cb_data.func, cb_data.numarg, cb_data.args);
-    cb_data.cb(0);
+    return 0;
+}
+
+static void app_callback(size_t len) {
+    app_parse(app_buf, len,
+            cb_data.frame_type, cb_data.api_type, cb_data.message_type,
+            cb_data.message_length, cb_data.message);
+    cb_data.cb(SUCCESS);
 }
 
 int app_send(uint8_t dest, uint8_t* key,
-             uint8_t reason, uint8_t type,
-             uint8_t func, int numarg, Arg* args) {
+             uint8_t frame_type, uint8_t api_type, uint8_t message_type,
+             size_t message_length, uint8_t* message) {
+    size_t payload_length = 1 + 1 + 1 + message_length;
+    if (payload_length > BUFSIZE) {
+        return ESIZE;
+    }
 
-    size_t size=0;
-    // reason + type + func + numargs (each of max 256)
-    size_t len = sizeof(uint8_t)*3 + numarg*256;
-    // len is too large
-    if(len > BUFSIZE) return -1;
-    uint8_t buf[len];
-    memset(buf, 0, len);
+    uint8_t payload[payload_length];
+
     // copy args to buffer
-    buf[size++] = reason;
-    buf[size++] = type;
-    buf[size++] = func;
-    for(int i = 0; i<numarg; i+=1) {
-        buf[size++] = args[i].len;
-        memcpy(buf+size, args[i].arg, args[i].len);
-        size+=args[i].len;
-    }
-    return protocol_send(dest, key, buf, size);
+    payload[0] = frame_type;
+    payload[1] = api_type;
+    payload[2] = message_type;
+
+    memcpy(payload + 3, message, message_length);
+    return protocol_send(dest, key, payload, payload_length);
 }
 
-int app_parse(uint8_t* buf, size_t len, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
-    size_t i = 0;
-    if (len > BUFSIZE) return -1;
-    *reason = buf[i++];
-    *type   = buf[i++];
-    *func   = buf[i++];
-    *numarg = 0;
-    while(i < len) {
-        //first byte is arglen
-        uint8_t arglen = buf[i++];
-        if (i + (size_t)arglen > BUFSIZE) return -2;
-        args[*numarg].len = arglen;
-        //following is arg
-        memcpy(args[*numarg].arg, buf+i, arglen);
-        *numarg+=1;
-        i+=arglen;
-    }
-
-    return 0;
-}
-
-int app_recv(uint8_t* key, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+int app_recv(uint8_t* key,
+        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        size_t* message_length, uint8_t* message) {
     uint8_t src;
-    size_t len = message_recv(buf, BUFSIZE, &src);
+    size_t len = message_recv(app_buf, BUFSIZE, &src);
 
-    len = protocol_recv(buf, BUFSIZE, len, key);
-    app_parse(buf, len, reason, type, func, numarg, args);
+    len = protocol_recv(app_buf, BUFSIZE, len, key);
+    app_parse(app_buf, len, frame_type, api_type, message_type, message_length, message);
 
     return 0;
 }
 
-int app_recv_async(app_cb cb, uint8_t* key, uint8_t* reason, uint8_t* type, uint8_t* func, size_t* numarg, Arg* args) {
+int app_recv_async(app_cb cb, uint8_t* key,
+        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        size_t* message_length, uint8_t* message) {
     cb_data.key = key;
-    cb_data.reason = reason;
-    cb_data.type = type;
-    cb_data.func = func;
-    cb_data.numarg = numarg;
-    cb_data.args = args;
+    cb_data.frame_type = frame_type;
+    cb_data.api_type = api_type;
+    cb_data.message_type = message_type;
+    cb_data.message_length = message_length;
+    cb_data.message = message;
     cb_data.cb = cb;
 
-    return protocol_recv_async(app_callback, buf, BUFSIZE, key);
+    return protocol_recv_async(app_callback, app_buf, BUFSIZE, key);
 }
