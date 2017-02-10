@@ -74,7 +74,7 @@ struct SignpostStorageMaster {
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    //sdcard: &'static capsules::sdcard::SDCard<'static>,
+    //sdcard: &'static capsules::sdcard::SDCardDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
@@ -91,6 +91,7 @@ impl Platform for SignpostStorageMaster {
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
             14 => f(Some(self.rng)),
+            //15 => f(Some(self.sdcard)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -119,7 +120,7 @@ unsafe fn set_pin_primary_functions() {
     PA[13].enable_output();
 
     // GPIO: SD Card
-    PA[17].configure(None); // SD_DETECT
+    PA[17].configure(None); // !SD_DETECT
     PA[21].configure(None); // SD_ENABLE
     PA[21].enable();
     PA[21].set();
@@ -238,25 +239,36 @@ pub unsafe fn reset_handler() {
     hil::spi::SpiMaster::init(&sam4l::usart::USART1);
     let sdcard_spi = static_init!(
         capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>,
-        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, &sam4l::gpio::PA[13]),
-        416/8);
+        capsules::virtual_spi::VirtualSpiMasterDevice::new(mux_spi, Some(&sam4l::gpio::PA[13])),
+        384/8);
+    let sdcard_virtual_alarm = static_init!(
+        VirtualMuxAlarm<'static, sam4l::ast::Ast>,
+        VirtualMuxAlarm::new(mux_alarm),
+        192/8);
     let sdcard = static_init!(
-        capsules::sdcard::SDCard<'static>,
-        capsules::sdcard::SDCard::new(sdcard_spi, &mut capsules::sdcard::TXBUFFER, &mut capsules::sdcard::RXBUFFER),
-        416/8);
+        capsules::sdcard::SDCard<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        capsules::sdcard::SDCard::new(sdcard_spi, sdcard_virtual_alarm,
+            Some(&sam4l::gpio::PA[17]), &mut capsules::sdcard::TXBUFFER, &mut capsules::sdcard::RXBUFFER),
+        672/8);
     sdcard_spi.set_client(sdcard);
+    sdcard_virtual_alarm.set_client(sdcard);
+    sam4l::gpio::PA[17].set_client(sdcard);
+    let sdcard_driver = static_init!(
+        capsules::sdcard::SDCardDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast>>,
+        capsules::sdcard::SDCardDriver::new(sdcard, &mut capsules::sdcard::KERNEL_BUFFER),
+        480/8);
+    sdcard.set_client(sdcard_driver);
     */
 
     //
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 4],
+        [&'static sam4l::gpio::GPIOPin; 3],
         [&sam4l::gpio::PA[05], // EDISON_PWRBTN
          &sam4l::gpio::PA[06],  // LINUX_ENABLE_POWER
-         &sam4l::gpio::PA[17],  // SD_DETECT
          &sam4l::gpio::PA[21]], // SD_ENABLE
-        4 * 4
+        3 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -289,7 +301,7 @@ pub unsafe fn reset_handler() {
         led: led,
         timer: timer,
         i2c_master_slave: i2c_modules,
-        //sdcard: sdcard,
+        //sdcard: sdcard_driver,
         rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
@@ -298,15 +310,6 @@ pub unsafe fn reset_handler() {
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
-
-
-    //*****Testing SD Card here*****
-
-    // start up sd card
-    //sdcard.initialize();
-
-    //******************************
-
 
     kernel::main(&signpost_storage_master, &mut chip, load_processes(), &signpost_storage_master.ipc);
 }
