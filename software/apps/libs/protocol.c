@@ -1,14 +1,16 @@
-#include <string.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "message.h"
-#include "protocol.h"
-#include "app.h"
-#include "module.h"
+#include <string.h>
+
 #include "mbedtls/md.h"
 #include "mbedtls/cipher.h"
 #include "mbedtls/entropy.h"
 #include "mbedtls/ctr_drbg.h"
+
+#include "app.h"
+#include "message.h"
+#include "module.h"
+#include "protocol.h"
 #include "rng.h"
 
 typedef struct {

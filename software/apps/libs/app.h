@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdarg.h>
+#include <stddef.h>
+#include <stdint.h>
 
 // Although underlying layers designed to accept up to 2^15-1 byte messages,
 // that's too big for our systems and we need to set a limit. I thought 4KB

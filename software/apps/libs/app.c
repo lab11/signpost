@@ -1,6 +1,8 @@
-#include <string.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <string.h>
+
 #include "message.h"
 #include "protocol.h"
 #include "module.h"
