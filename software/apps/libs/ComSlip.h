@@ -83,7 +83,7 @@ typedef uint8_t* (*TComSlipCbByteIndication)(uint8_t* rxBuffer, uint16_t length)
 //------------------------------------------------------------------------------
 
 void
-ComSlip_Init();
+ComSlip_Init(void);
 
 void
 ComSlip_RegisterClient(TComSlipCbByteIndication cbRxIndication);

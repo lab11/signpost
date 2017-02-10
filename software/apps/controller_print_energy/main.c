@@ -12,7 +12,7 @@
 #include "controller.h"
 #include "timer.h"
 
-void print_data (int module, int energy) {
+static void print_data (int module, int energy) {
   char buf[64];
   int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
   if (module == 3) {

@@ -248,7 +248,7 @@ TWiMDLRResultcodes
 iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length);
 
 TWiMODLRResult
-iM880A_PingRequest();
+iM880A_PingRequest(void);
 
 TWiMODLRResult
 iM880A_PowerDown(void);

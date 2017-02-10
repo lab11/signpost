@@ -17,9 +17,9 @@ static void i2c_selector_cb(__attribute__ ((unused)) int value,
                        __attribute__ ((unused)) int unused1,
                        __attribute__ ((unused)) int unused2,
                        void* ud) {
-  struct i2c_selector_data* result = (struct i2c_selector_data*) ud;
-  result->value = value;
-  result->fired = true;
+  struct i2c_selector_data* data = (struct i2c_selector_data*) ud;
+  data->value = value;
+  data->fired = true;
 }
 
 
@@ -31,15 +31,15 @@ int i2c_selector_select_channels(uint32_t channels) {
 	return command(DRIVER_NUM_I2C_SELECTOR, 0, channels);
 }
 
-int i2c_selector_disable_all_channels() {
+int i2c_selector_disable_all_channels(void) {
 	return command(DRIVER_NUM_I2C_SELECTOR, 1, 0);
 }
 
-int i2c_selector_read_interrupts() {
+int i2c_selector_read_interrupts(void) {
 	return command(DRIVER_NUM_I2C_SELECTOR, 2, 0);
 }
 
-int i2c_selector_read_selected() {
+int i2c_selector_read_selected(void) {
 	return command(DRIVER_NUM_I2C_SELECTOR, 3, 0);
 }
 
@@ -61,7 +61,7 @@ int i2c_selector_select_channels_sync(uint32_t channels) {
     return 0;
 }
 
-int i2c_selector_disable_all_channels_sync() {
+int i2c_selector_disable_all_channels_sync(void) {
     int err;
     result.fired = false;
 
@@ -77,7 +77,7 @@ int i2c_selector_disable_all_channels_sync() {
     return 0;
 }
 
-int i2c_selector_read_interrupts_sync() {
+int i2c_selector_read_interrupts_sync(void) {
     int err;
     result.fired = false;
 
@@ -93,7 +93,7 @@ int i2c_selector_read_interrupts_sync() {
     return result.value;
 }
 
-int i2c_selector_read_selected_sync() {
+int i2c_selector_read_selected_sync(void) {
     int err;
     result.fired = false;
 

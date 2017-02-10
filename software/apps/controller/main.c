@@ -19,8 +19,8 @@
 #include "gps.h"
 #include "minmea.h"
 
-void get_energy ();
-void gps_callback (gps_data_t* gps_data);
+static void get_energy (void);
+static void gps_callback (gps_data_t* gps_data);
 
 
 uint8_t slave_read_buf[256];
@@ -76,7 +76,7 @@ uint32_t energy_last_readings[128] = {0};
 
 controller_fram_t fram;
 
-void watchdog_tickler (int which) {
+static void watchdog_tickler (int which) {
   static bool gps_tickle = false;
   static bool energy_tickle = false;
 
@@ -94,7 +94,7 @@ void watchdog_tickler (int which) {
   }
 }
 
-void print_energy_data (int module, int energy) {
+static void print_energy_data (int module, int energy) {
   char buf[64];
   if (module == 3) {
     sprintf(buf, "  Controller energy: %i uAh\n", energy);
@@ -106,7 +106,7 @@ void print_energy_data (int module, int energy) {
   putstr(buf);
 }
 
-void get_energy () {
+static void get_energy (void) {
   putstr("\n\nEnergy Data\n");
 
   for (int i=0; i<8; i++) {
@@ -187,7 +187,7 @@ void get_energy () {
   }
 }
 
-void gps_callback (gps_data_t* gps_data) {
+static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
   printf("\n\nGPS Data: %d:%d:%d.%lu %d/%d/%d\n",
@@ -198,7 +198,7 @@ void gps_callback (gps_data_t* gps_data) {
   printf("  Latitude:   %lu degrees\n", gps_data->latitude);
   printf("  Longitude:  %lu degrees\n", gps_data->longitude);
 
-  char* fix_str = "Invalid fix";
+  const char* fix_str = "Invalid fix";
   if (gps_data->fix == 2) {
       fix_str = "2D fix";
   } else if (gps_data->fix == 3) {

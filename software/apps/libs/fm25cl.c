@@ -14,8 +14,8 @@ static void fm25cl_cb(__attribute__ ((unused)) int callback_type,
                       __attribute__ ((unused)) int len,
                       __attribute__ ((unused)) int unused,
                       void* ud) {
-  struct fm25cl_data* result = (struct fm25cl_data*) ud;
-  result->fired = true;
+  struct fm25cl_data* data = (struct fm25cl_data*) ud;
+  data->fired = true;
 }
 
 int fm25cl_set_callback (subscribe_cb callback, void* callback_args) {
@@ -30,7 +30,7 @@ int fm25cl_set_write_buffer(uint8_t* buffer, uint32_t len) {
 	return allow(DRIVER_NUM_FM25CL, 1, (void*) buffer, len);
 }
 
-int fm25cl_read_status() {
+int fm25cl_read_status(void) {
 	return command(DRIVER_NUM_FM25CL, 1, 0);
 }
 
@@ -44,7 +44,7 @@ int fm25cl_write(uint16_t address, uint16_t len) {
 	return command(DRIVER_NUM_FM25CL, 3, a);
 }
 
-int fm25cl_read_status_sync() {
+int fm25cl_read_status_sync(void) {
 	int err;
     result.fired = false;
 

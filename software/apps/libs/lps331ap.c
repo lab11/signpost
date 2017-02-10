@@ -13,20 +13,20 @@ static void lps331ap_cb(__attribute__ ((unused)) int value,
                        __attribute__ ((unused)) int unused1,
                        __attribute__ ((unused)) int unused2,
                        void* ud) {
-  struct lps331ap_data* result = (struct lps331ap_data*) ud;
-  result->value = value;
-  result->fired = true;
+  struct lps331ap_data* data = (struct lps331ap_data*) ud;
+  data->value = value;
+  data->fired = true;
 }
 
 int lps331ap_set_callback (subscribe_cb callback, void* callback_args) {
     return subscribe(DRIVER_NUM_LPS331AP, 0, callback, callback_args);
 }
 
-int lps331ap_get_pressure () {
+int lps331ap_get_pressure (void) {
     return command(DRIVER_NUM_LPS331AP, 0, 0);
 }
 
-int lps331ap_get_pressure_sync () {
+int lps331ap_get_pressure_sync (void) {
     int err;
     result.fired = false;
 

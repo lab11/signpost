@@ -12,12 +12,12 @@
 const char* message = "Hello from LAB12";
 
 int main () {
-	uint16_t result = iM880A_Configure();
+	iM880A_Configure();
 	delay_ms(1000);
-  	while (1) {
-		result = iM880A_PingRequest();
+	while (1) {
+		iM880A_PingRequest();
 		delay_ms(1000);
-		result = iM880A_SendRadioTelegram((uint8_t*)message,strlen(message));
+		iM880A_SendRadioTelegram((uint8_t*)message,strlen(message));
 		delay_ms(1000);
-  	}
+	}
 }

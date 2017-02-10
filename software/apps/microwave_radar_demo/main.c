@@ -52,11 +52,11 @@ uint8_t master_write_buf[256];
 bool motion_since_last_transmit = false;
 uint32_t max_speed_since_last_transmit = 0;
 
-bool detect_motion (uint32_t sample) {
+static bool detect_motion (uint32_t sample) {
     return (sample > UPPER_BOUND) || (sample < LOWER_BOUND);
 }
 
-uint32_t calculate_sample_frequency (uint32_t curr_data) {
+static uint32_t calculate_sample_frequency (uint32_t curr_data) {
     // check if data signifies movement
     if (!active_mode && detect_motion(curr_data)) {
         // initialize active mode
@@ -142,7 +142,7 @@ uint32_t calculate_sample_frequency (uint32_t curr_data) {
     return 0;
 }
 
-uint32_t calculate_radar_speed (uint32_t freq) {
+static uint32_t calculate_radar_speed (uint32_t freq) {
     // Note: this speed is not really meaningful because it calculates
     // the corresponding speed when object moving perpendicular to sensor
     uint32_t speed_fph = (freq * 5280)/31;
@@ -157,7 +157,7 @@ uint32_t calculate_radar_speed (uint32_t freq) {
 bool _sample_done = false;
 
 // Callback when the adc reading is done
-void adc_callback (int callback_type, int channel, int sample, void* callback_args) {
+static void adc_callback (int callback_type, int channel, int sample, void* callback_args) {
     UNUSED_PARAMETER(callback_type);
     UNUSED_PARAMETER(channel);
     UNUSED_PARAMETER(callback_args);

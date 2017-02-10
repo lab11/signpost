@@ -19,7 +19,7 @@ uint8_t txbuf[32] = {0};
 
 #define _U __attribute__ ((unused))
 
-void print_measurements (int temp, int humi, int pres, int ligh) {
+static void print_measurements (int temp, int humi, int pres, int ligh) {
   char buf[256];
   putstr("[Ambient] Got Measurements\n");
 
@@ -38,7 +38,7 @@ void print_measurements (int temp, int humi, int pres, int ligh) {
   putstr(buf);
 }
 
-void sample_and_send () {
+static void sample_and_send () {
   // Start a pressure measurement
   int pressure = lps331ap_get_pressure_sync();
   // Get light

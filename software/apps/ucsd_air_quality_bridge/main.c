@@ -27,7 +27,7 @@
 
 static bool fired = false;
 static uint8_t uart_rx_buf[BUFLEN];
-void uart_rx_callback (
+static void uart_rx_callback (
 		__attribute__ ((unused)) int len,
 		__attribute__ ((unused)) int y,
 		__attribute__ ((unused)) int z,

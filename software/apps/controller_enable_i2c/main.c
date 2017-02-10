@@ -22,7 +22,7 @@ uint8_t master_write_buf[256];
 
 
 
-void print_data (int length) {
+static void print_data (int length) {
   char buf[64];
 
   // Need at least two bytes to be a valid signpost message.

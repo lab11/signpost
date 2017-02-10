@@ -23,7 +23,7 @@ int _data = 5;
 int _data2 = 6;
 
 // Callback when the pressure reading is ready
-void callback (
+static void callback (
     int callback_type __attribute__ ((unused)),
     int data,
     int data2,
@@ -32,7 +32,7 @@ void callback (
   _data2 = data2;
 }
 
-void print_data (int i) {
+static void print_data (int i) {
   char buf[64];
   sprintf(buf, "\tGot something from counter %i: 0x%02x  | 0x%02x\n\n",i, _data, _data2);
   putstr(buf);

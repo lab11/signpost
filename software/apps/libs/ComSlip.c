@@ -136,7 +136,7 @@ TComSlip ComSlip;
 //------------------------------------------------------------------------------
 //
 
-void receive_message(int len,
+static void receive_message(int len,
                 int unused __attribute__ ((unused)),
                 int unused1 __attribute__ ((unused)),
                 void* args __attribute__ ((unused))) {
@@ -149,7 +149,7 @@ void receive_message(int len,
 }
 
 void
-ComSlip_Init()
+ComSlip_Init(void)
 {
     // init to idle state, no rx-buffer avaliable
     ComSlip.RxState         =   SLIPDEC_IDLE_STATE;
@@ -184,7 +184,7 @@ ComSlip_RegisterClient(TComSlipCbByteIndication cbRxIndication)
 //
 //------------------------------------------------------------------------------
 
-void
+static void
 ComSlip_StoreRxByte(uint8_t rxByte)
 {
     if (ComSlip.RxIndex < ComSlip.RxBufferSize)

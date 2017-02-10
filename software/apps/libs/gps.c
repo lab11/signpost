@@ -15,20 +15,20 @@ static bool continuous_mode = false;
 static bool message_sent = false;
 
 // useful GPS settings transmissions
-char* GPS_NORMAL_OPERATION = "$PMTK225,0*";
-char* GPS_ACTIVATE_GSA_RMC = "$PMTK314,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0*";
-char* GPS_ACTIVATE_ALL_MSGS = "$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0*";
-char* GPS_DGPS_RTCM = "$PMTK301,1*";
-char* GPS_DGPS_WAAS = "$PMTK301,2*";
-char* GPS_SBAS_ENABLE = "$PMTK313,1*";
-char* GPS_DATUM_US = "$PMTK330,142*";
-char* GPS_DATUM_GLOBAL = "$PMTK330,0*";
+const char* GPS_NORMAL_OPERATION = "$PMTK225,0*";
+const char* GPS_ACTIVATE_GSA_RMC = "$PMTK314,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0*";
+const char* GPS_ACTIVATE_ALL_MSGS = "$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0*";
+const char* GPS_DGPS_RTCM = "$PMTK301,1*";
+const char* GPS_DGPS_WAAS = "$PMTK301,2*";
+const char* GPS_SBAS_ENABLE = "$PMTK313,1*";
+const char* GPS_DATUM_US = "$PMTK330,142*";
+const char* GPS_DATUM_GLOBAL = "$PMTK330,0*";
 
 // internal prototypes
-void gps_send_msg (char* msg);
-void gps_rx_callback (int len, int y, int z, void* userdata);
-bool gps_parse_data (char* line);
-int32_t to_decimal_degrees (struct minmea_float coor);
+static void gps_send_msg (const char* msg);
+static void gps_rx_callback (int len, int y, int z, void* userdata);
+static bool gps_parse_data (char* line);
+static int32_t to_decimal_degrees (struct minmea_float coor);
 
 // gps console functions
 void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata) {
@@ -39,7 +39,7 @@ void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata) {
 
 // global functions
 
-void gps_init () {
+void gps_init (void) {
     // non-duty cycle mode
     gps_send_msg(GPS_NORMAL_OPERATION);
 
@@ -75,7 +75,7 @@ void gps_sample (void (*callback)(gps_data_t*)) {
 
 // local functions
 
-void gps_tx_callback (
+static void gps_tx_callback (
         __attribute__ ((unused)) int len,
         __attribute__ ((unused)) int y,
         __attribute__ ((unused)) int z,
@@ -84,7 +84,7 @@ void gps_tx_callback (
     message_sent = true;
 }
 
-void gps_send_msg (char* msg) {
+static void gps_send_msg (const char* msg) {
     static char msg_buffer[50] = {0};
 
     // create message buffer
@@ -97,7 +97,7 @@ void gps_send_msg (char* msg) {
     yield_for(&message_sent);
 }
 
-void gps_rx_callback (
+static void gps_rx_callback (
         __attribute__ ((unused)) int len,
         __attribute__ ((unused)) int y,
         __attribute__ ((unused)) int z,
@@ -125,7 +125,7 @@ void gps_rx_callback (
     }
 }
 
-bool gps_parse_data (char* line) {
+static bool gps_parse_data (char* line) {
     bool data_updated = false;
 
     if (line != NULL) {

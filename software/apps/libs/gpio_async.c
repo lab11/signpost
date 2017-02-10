@@ -21,10 +21,10 @@ static void gpio_async_cb(__attribute__ ((unused)) int callback_type,
                        __attribute__ ((unused)) int value,
                        __attribute__ ((unused)) int unused,
                        void* ud) {
-  struct gpio_async_data* result = (struct gpio_async_data*) ud;
-  result->callback_type = callback_type;
-  result->value = value;
-  result->fired = true;
+  struct gpio_async_data* data = (struct gpio_async_data*) ud;
+  data->callback_type = callback_type;
+  data->value = value;
+  data->fired = true;
 }
 
 

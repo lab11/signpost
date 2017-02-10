@@ -19,7 +19,7 @@
 // Choose between curves defined in different .h files
 #include "secp521r1.h"
 
-const unsigned char * message = "hello!";
+const char* message = "hello!";
 
 mbedtls_pk_context pk;
 const mbedtls_pk_info_t * pk_info;
@@ -28,7 +28,7 @@ const mbedtls_md_info_t * md_info;
 unsigned char sig[1024];
 unsigned char hash[1024];
 
-void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
+static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     // get parameters for hash
     md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
     // clear context
@@ -45,7 +45,7 @@ void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     mbedtls_md_finish(&md_context, out);
 }
 
-int pseudorandom(void * data, unsigned char * output, size_t len) {
+static int pseudorandom(void * data, unsigned char * output, size_t len) {
     for (int i = 0; i < len; i++) {
         output[i] = rand();
     }

@@ -44,10 +44,11 @@ uint8_t master_write_buf[BUFFER_SIZE];
 }*/
 
 
+/*
 static void i2c_master_slave_callback(int callback_type, int length, int unused, void* callback_args) {
     return;
 }
-
+*/
 
 /*static void  timer_callback( int callback_type , int channel, int data, void* callback_args) {
   i2c_master_slave_write(0x22,16);

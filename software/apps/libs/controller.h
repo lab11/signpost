@@ -55,26 +55,26 @@ enum GPIO_Pin_enum{
     PA26,
 };
 
-void controller_init_module_switches ();
+void controller_init_module_switches (void);
 
-void controller_gpio_enable_all_MODINs ();
+void controller_gpio_enable_all_MODINs (void);
 void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config);
 
-void controller_gpio_set_all ();
-void controller_gpio_clear_all ();
+void controller_gpio_set_all (void);
+void controller_gpio_clear_all (void);
 
 void controller_module_enable_power (module_num_t module_number);
 void controller_module_enable_i2c (module_num_t module_number);
 void controller_module_enable_usb (module_num_t module_number);
 
-void controller_all_modules_enable_power ();
-void controller_all_modules_enable_i2c ();
-void controller_all_modules_enable_usb ();
+void controller_all_modules_enable_power (void);
+void controller_all_modules_enable_i2c (void);
+void controller_all_modules_enable_usb (void);
 
 void controller_module_disable_power (module_num_t module_number);
 void controller_module_disable_i2c (module_num_t module_number);
 void controller_module_disable_usb (module_num_t module_number);
 
-void controller_all_modules_disable_power ();
-void controller_all_modules_disable_i2c ();
-void controller_all_modules_disable_usb ();
+void controller_all_modules_disable_power (void);
+void controller_all_modules_disable_i2c (void);
+void controller_all_modules_disable_usb (void);

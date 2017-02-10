@@ -64,14 +64,14 @@ static uint8_t address[ADDRESS_SIZE] = { COMPILE_TIME_ADDRESS };
 
 //these are the lora callback functions for seeing if everything is okay
 
-void lora_rx_callback(uint8_t* payload __attribute__ ((unused)),
+static void lora_rx_callback(uint8_t* payload __attribute__ ((unused)),
                         uint8_t len __attribute__ ((unused)),
                         TRadioFlags flag __attribute__ ((unused))) {
     //this should never happen because I'm not receiving
 //    putstr("Lora received a message?\n");
 }
 
-void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
+static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
                         uint8_t status) {
     //right now the  radio library ONLY implements txdone messages
     if(status == DEVMGMT_STATUS_OK) {
@@ -169,7 +169,7 @@ static void i2c_master_slave_callback (
     app_watchdog_tickle_kernel();
 }
 
-void ble_address_set() {
+void ble_address_set(void) {
     static ble_gap_addr_t gap_addr;
 
     //switch the addres to little endian in a for loop

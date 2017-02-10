@@ -39,7 +39,7 @@ int ltc2941_set_callback (subscribe_cb callback, void* callback_args);
 
 // Get the current value of the status register. The result will be returned
 // in the callback.
-int ltc2941_read_status();
+int ltc2941_read_status(void);
 
 // Setup the LTC2941 by configuring its !AL/CC pin, charge counting prescaler,
 // and VBat alert threshold.
@@ -48,7 +48,7 @@ int ltc2941_configure(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_aler
 
 // Set the current accumulated charge register to 0.
 // Will trigger a `done` callback.
-int ltc2941_reset_charge();
+int ltc2941_reset_charge(void);
 
 // Configure the high charge threshold. This will be triggered when the
 // accumulated charge is greater than this value.
@@ -62,20 +62,20 @@ int ltc2941_set_low_threshold(uint16_t threshold);
 
 // Read the current charge.
 // Will be returned in the callback.
-int ltc2941_get_charge();
+int ltc2941_get_charge(void);
 
 // Put the LTC2941 in a low power state.
 // Will trigger a `done` callback.
-int ltc2941_shutdown();
+int ltc2941_shutdown(void);
 
 
 //
 // Synchronous Versions
 //
-int ltc2941_read_status_sync();
+int ltc2941_read_status_sync(void);
 int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat);
-int ltc2941_reset_charge_sync();
+int ltc2941_reset_charge_sync(void);
 int ltc2941_set_high_threshold_sync(uint16_t threshold);
 int ltc2941_set_low_threshold_sync(uint16_t threshold);
-int ltc2941_get_charge_sync();
-int ltc2941_shutdown_sync();
+int ltc2941_get_charge_sync(void);
+int ltc2941_shutdown_sync(void);

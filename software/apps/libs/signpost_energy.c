@@ -9,7 +9,7 @@
 static uint8_t module_num_to_selector_mask[8] = {0x4, 0x8, 0x10, 0, 0, 0x20, 0x40, 0x80};
 
 
-void signpost_energy_init () {
+void signpost_energy_init (void) {
     // configure each ltc with the correct prescaler
     for (int i = 0; i < 8; i++) {
         i2c_selector_select_channels_sync(1<<i);
@@ -28,11 +28,11 @@ static int get_ltc_energy (int selector_mask) {
 	return ltc2941_get_charge_sync();
 }
 
-int signpost_energy_get_controller_energy () {
+int signpost_energy_get_controller_energy (void) {
 	return get_ltc_energy(0x1);
 }
 
-int signpost_energy_get_linux_energy () {
+int signpost_energy_get_linux_energy (void) {
 	return get_ltc_energy(0x2);
 }
 
@@ -40,7 +40,7 @@ int signpost_energy_get_module_energy (int module_num) {
 	return get_ltc_energy(module_num_to_selector_mask[module_num]);
 }
 
-void signpost_energy_reset () {
+void signpost_energy_reset (void) {
 	for (int i = 0; i < 8; i++) {
 		i2c_selector_select_channels_sync(1<<i);
 

@@ -31,7 +31,7 @@ typedef struct {
 } gps_data_t;
 
 // initialize the GPS
-void gps_init ();
+void gps_init (void);
 
 // receive GPS updates continuously
 void gps_continuous (void (*callback)(gps_data_t*));

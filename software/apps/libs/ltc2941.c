@@ -14,16 +14,16 @@ static void ltc2941_cb(__attribute__ ((unused)) int callback_type,
                        __attribute__ ((unused)) int value,
                        __attribute__ ((unused)) int chip,
                        void* ud) {
-  struct ltc2941_data* result = (struct ltc2941_data*) ud;
-  result->charge = value;
-  result->fired = true;
+  struct ltc2941_data* data = (struct ltc2941_data*) ud;
+  data->charge = value;
+  data->fired = true;
 }
 
 int ltc2941_set_callback (subscribe_cb callback, void* callback_args) {
     return subscribe(DRIVER_NUM_LTC2941, 0, callback, callback_args);
 }
 
-int ltc2941_read_status() {
+int ltc2941_read_status(void) {
     return command(DRIVER_NUM_LTC2941, 0, 0);
 }
 
@@ -38,7 +38,7 @@ int ltc2941_configure(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_aler
         return command(DRIVER_NUM_LTC2941, 1, cmd);
 }
 
-int ltc2941_reset_charge() {
+int ltc2941_reset_charge(void) {
     return command(DRIVER_NUM_LTC2941, 2, 0);
 }
 
@@ -50,17 +50,17 @@ int ltc2941_set_low_threshold(uint16_t threshold) {
     return command(DRIVER_NUM_LTC2941, 4, threshold);
 }
 
-int ltc2941_get_charge() {
+int ltc2941_get_charge(void) {
     return command(DRIVER_NUM_LTC2941, 5, 0);
 }
 
-int ltc2941_shutdown() {
+int ltc2941_shutdown(void) {
     return command(DRIVER_NUM_LTC2941, 6, 0);
 }
 
 
 
-int ltc2941_read_status_sync() {
+int ltc2941_read_status_sync(void) {
     int err;
     result.fired = false;
 
@@ -92,7 +92,7 @@ int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat
     return 0;
 }
 
-int ltc2941_reset_charge_sync() {
+int ltc2941_reset_charge_sync(void) {
     int err;
     result.fired = false;
 
@@ -140,7 +140,7 @@ int ltc2941_set_low_threshold_sync(uint16_t threshold) {
     return 0;
 }
 
-int ltc2941_get_charge_sync() {
+int ltc2941_get_charge_sync(void) {
 	int err;
     result.fired = false;
 
@@ -156,7 +156,7 @@ int ltc2941_get_charge_sync() {
     return result.charge;
 }
 
-int ltc2941_shutdown_sync() {
+int ltc2941_shutdown_sync(void) {
 	int err;
     result.fired = false;
 

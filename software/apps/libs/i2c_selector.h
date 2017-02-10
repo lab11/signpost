@@ -13,16 +13,16 @@ int i2c_selector_set_callback(subscribe_cb callback, void* callback_args);
 int i2c_selector_select_channels(uint32_t channels);
 
 // Disable all channels on all I2C selectors.
-int i2c_selector_select_channels();
+int i2c_selector_disable_all_channels(void);
 
 // Read interrupts on all I2C selectors
-int i2c_selector_read_interrupts();
+int i2c_selector_read_interrupts(void);
 
-int i2c_selector_read_selected();
+int i2c_selector_read_selected(void);
 
 
 // Synchronous versions
 int i2c_selector_select_channels_sync(uint32_t channels);
-int i2c_selector_disable_all_channels_sync();
-int i2c_selector_read_interrupts_sync();
-int i2c_selector_read_selected_sync();
+int i2c_selector_disable_all_channels_sync(void);
+int i2c_selector_read_interrupts_sync(void);
+int i2c_selector_read_selected_sync(void);

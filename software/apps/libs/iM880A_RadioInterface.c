@@ -194,7 +194,7 @@ iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length)
 //------------------------------------------------------------------------------
 
 TWiMODLRResult
-iM880A_PingRequest()
+iM880A_PingRequest(void)
 {
     return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_PING_REQ, NULL, 0);
 }

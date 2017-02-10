@@ -15,5 +15,5 @@ enum GPIO_Pin_enum{
     PA07,
 };
 
-void storage_master_enable_edison ();
-void storage_master_wakeup_edison ();
+void storage_master_enable_edison (void);
+void storage_master_wakeup_edison (void);
