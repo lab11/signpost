@@ -14,6 +14,8 @@
 #include "app.h"
 #include "rng.h"
 
+#define INTERVAL_IN_MS 2000
+
 //#define SENDER
 
 static uint8_t key[32];
@@ -21,6 +23,8 @@ static uint8_t key[32];
 static uint8_t frame_type, api_type, message_type;
 static size_t message_length;
 static uint8_t message[1024];
+
+static bool recent_message = false;
 
 static void cb(size_t length) {
     // Print data for this received message
@@ -35,6 +39,9 @@ static void cb(size_t length) {
         }
         printf("\n");
     }
+
+    // Tickle our pseduo-watchdog
+    recent_message = true;
 
     // Listen for another message (re-using the same buffers)
     app_recv_async(cb, key,
@@ -57,15 +64,18 @@ int main() {
             &message_length, message);
 #endif
     while(1) {
+        delay_ms(INTERVAL_IN_MS);
 #ifdef SENDER
-        delay_ms(2000);
         memcpy(message, "hello there\0", strlen("hello there") + 1);
         message_init(0x32);
         app_send(0x18, key, 0x01, 0x00, 0x00, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
 #else
-        delay_ms(500);
-        printf("RECEIVER: doing stuff\n");
+        if (recent_message == false) {
+            printf("RECEIVER: No message in %d ms\n", INTERVAL_IN_MS);
+        } else {
+            recent_message = false;
+        }
 #endif
     }
 }
