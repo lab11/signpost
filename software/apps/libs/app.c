@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "message.h"
-#include "protocol.h"
-#include "module.h"
 #include "app.h"
+#include "message.h"
+#include "module.h"
+#include "protocol.h"
 
 typedef struct {
     uint8_t* src;

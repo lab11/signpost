@@ -1,9 +1,10 @@
-#include "tock.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "i2c_master_slave.h"
 #include "message.h"
+#include "tock.h"
 
 #define I2C_MAX_LEN 255
 
