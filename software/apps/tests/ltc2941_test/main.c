@@ -11,13 +11,13 @@
 #include "ltc2941.h"
 
 
-void print_data (int charge) {
+static void print_data (int charge) {
   char buf[64];
   sprintf(buf, "\tCharge: 0x%02x\n\n", charge);
   putstr(buf);
 }
 
-void print_status (int status) {
+static void print_status (int status) {
   char buf[64];
   sprintf(buf, "\tStatus: 0x%02x\n\n", status);
   putstr(buf);
