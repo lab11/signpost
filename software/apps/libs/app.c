@@ -12,7 +12,7 @@ typedef struct {
     uint8_t* src;
     uint8_t* len;
     uint8_t* key;
-    uint8_t* frame_type;
+    frame_type_t* frame_type;
     uint8_t* api_type;
     uint8_t* message_type;
     size_t* message_length;
@@ -24,7 +24,7 @@ static uint8_t app_buf[BUFSIZE];
 static app_cb_data cb_data;
 
 static int app_parse(uint8_t* to_parse, size_t len,
-        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        frame_type_t* frame_type, uint8_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
     size_t i = 0;
     if (len > BUFSIZE) return -1;
@@ -45,7 +45,7 @@ static void app_callback(size_t len) {
 }
 
 int app_send(uint8_t dest, uint8_t* key,
-             uint8_t frame_type, uint8_t api_type, uint8_t message_type,
+             frame_type_t frame_type, uint8_t api_type, uint8_t message_type,
              size_t message_length, uint8_t* message) {
     size_t payload_length = 1 + 1 + 1 + message_length;
     if (payload_length > BUFSIZE) {
@@ -64,7 +64,7 @@ int app_send(uint8_t dest, uint8_t* key,
 }
 
 int app_recv(uint8_t* key,
-        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        frame_type_t* frame_type, uint8_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
     uint8_t src;
     size_t len = message_recv(app_buf, BUFSIZE, &src);
@@ -76,7 +76,7 @@ int app_recv(uint8_t* key,
 }
 
 int app_recv_async(app_cb cb, uint8_t* key,
-        uint8_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        frame_type_t* frame_type, uint8_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
     cb_data.key = key;
     cb_data.frame_type = frame_type;

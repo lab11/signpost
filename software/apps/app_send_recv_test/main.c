@@ -20,7 +20,9 @@
 
 static uint8_t key[32];
 
-static uint8_t frame_type, api_type, message_type;
+static frame_type_t frame_type;
+static uint8_t api_type;
+static uint8_t message_type;
 static size_t message_length;
 static uint8_t message[1024];
 
@@ -30,7 +32,7 @@ static void cb(size_t length) {
     // Print data for this received message
     printf("frame_type: %02x, api_type: %02x, message_type: %02x, message_len: %d, %02x\n",
             frame_type, api_type, message_type, message_length, message_length);
-    if ((frame_type == 0x01) && (api_type == 0x00) && (message_type == 0x00)) {
+    if ((frame_type == NotificationFrame) && (api_type == 0x00) && (message_type == 0x00)) {
         printf("message: >>>%s<<<\n", message);
     } else {
         printf("unknown message: 0x");
@@ -68,7 +70,7 @@ int main() {
 #ifdef SENDER
         memcpy(message, "hello there\0", strlen("hello there") + 1);
         message_init(0x32);
-        app_send(0x18, key, 0x01, 0x00, 0x00, strlen("hello there") + 1, message);
+        app_send(0x18, key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
 #else
         if (recent_message == false) {
