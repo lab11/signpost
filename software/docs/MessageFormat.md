@@ -162,7 +162,7 @@ responsible for ensuring that all active IDs are unique.
 A Command MUST use a new ID which shall be considered active after successful
 delivery of a Command message.
 
-An Error respone MUST be treated as the final message for an ID, which shall
+An Error response MUST be treated as the final message for an ID, which shall
 be considered inactive and available for reuse upon receipt of an Error message.
 
 A Response mesage MAY be treated as the final message for an ID, however long-running
