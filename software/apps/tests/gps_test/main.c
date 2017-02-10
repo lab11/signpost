@@ -10,7 +10,7 @@
 #include "minmea.h"
 #include "timer.h"
 
-void gps_callback (gps_data_t* gps_data) {
+static void gps_callback (gps_data_t* gps_data) {
     // got new gps data
 
     printf("GPS Data: %d:%d:%d.%ld %d/%d/%d\n",
@@ -21,7 +21,7 @@ void gps_callback (gps_data_t* gps_data) {
     printf("\t%ld degrees lat - %ld degrees lon\n",
             gps_data->latitude, gps_data->longitude);
 
-    char* fix_str = "Invalid fix";
+    const char* fix_str = "Invalid fix";
     if (gps_data->fix == 2) {
         fix_str = "2D fix";
     } else if (gps_data->fix == 3) {
