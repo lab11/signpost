@@ -12,13 +12,13 @@
 uint8_t read_buf[256];
 uint8_t write_buf[256];
 
-void print_status (int status) {
+static void print_status (int status) {
   char buf[64];
   sprintf(buf, "\tStatus: 0x%02x\n\n", status);
   putstr(buf);
 }
 
-void print_buf () {
+static void print_buf () {
   char buf[64];
   sprintf(buf, "\tData: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n\n", read_buf[0], read_buf[1], read_buf[2], read_buf[3], read_buf[4]);
   putstr(buf);
