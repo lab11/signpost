@@ -10,7 +10,7 @@
 #include "gpio_async.h"
 
 
-int main () {
+int main (void) {
   putstr("[GPIO Async] Test\n");
 
   // Enable some outputs

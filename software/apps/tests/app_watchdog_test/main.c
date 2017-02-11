@@ -28,7 +28,7 @@ static void timer_callback (
   }
 }
 
-int main () {
+int main (void) {
   putstr("[Watchdog - app] Test\n");
 
   // Need a timer

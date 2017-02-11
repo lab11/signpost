@@ -243,7 +243,7 @@ static void gps_callback (gps_data_t* gps_data) {
   }
 }
 
-int main () {
+int main (void) {
   putstr("[Controller] ** Main App **\n");
 
   // Setup backplane by enabling the modules

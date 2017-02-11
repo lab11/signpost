@@ -16,7 +16,7 @@
 #define RESET 15 
 #define	POWER 16
 
-int main () {
+int main (void) {
 	gpio_enable_output(STROBE);
 	gpio_enable_output(RESET);
 	gpio_enable_output(POWER); 

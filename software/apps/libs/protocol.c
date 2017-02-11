@@ -29,18 +29,18 @@ static mbedtls_cipher_context_t cipher_context;
 static mbedtls_entropy_context entropy_context;
 static mbedtls_ctr_drbg_context ctr_drbg_context;
 
-int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, size_t* olen) {
+static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, size_t* olen) {
     int num = rng_sync(out, len, len);
     if (num < 0) return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
     *olen = num;
     return 0;
 }
 
-void protocol_cb(size_t len) {
+static void protocol_cb(size_t len) {
     cb_data.cb(protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
 }
 
-int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
+static int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
 
@@ -78,7 +78,7 @@ int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_
     return 0;
 }
 
-int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out) {
+static int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out) {
     int ret = 0;
 
     // setup mbedtls message digest

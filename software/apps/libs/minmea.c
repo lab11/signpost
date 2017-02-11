@@ -27,6 +27,7 @@ static int hex2int(char c)
     return -1;
 }
 
+__attribute__((pure))
 uint8_t minmea_checksum(const char *sentence)
 {
     // Support senteces with or without the starting dollar sign.
@@ -42,16 +43,17 @@ uint8_t minmea_checksum(const char *sentence)
     return checksum;
 }
 
-bool signpost_isprint(unsigned char c) {
+static bool signpost_isprint(unsigned char c) {
     // http://www.cplusplus.com/reference/cctype/isprint/
     return (c > 0x1f) && (c < 0x7f);
 }
 
-bool signpost_isdigit(unsigned char c) {
+static bool signpost_isdigit(unsigned char c) {
     // http://www.cplusplus.com/reference/cctype/isdigit/
     return (c >= 48) && (c <= 57);
 }
 
+__attribute__((pure))
 bool minmea_check(const char *sentence, bool strict)
 {
     uint8_t checksum = 0x00;

@@ -209,7 +209,7 @@ iM880A_PingRequest(void)
 //
 //------------------------------------------------------------------------------
 
-uint8_t*
+static uint8_t*
 iM880A_CbProcessRxMessage(uint8_t* rxBuffer, uint16_t length)
 {
     // 1. check CRC

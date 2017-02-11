@@ -221,7 +221,7 @@ static void timer_callback (
     max_speed_since_last_transmit = 0;
 }
 
-int main () {
+int main (void) {
     putstr("[Microwave Radar] Start\n");
 
     // initialize LED

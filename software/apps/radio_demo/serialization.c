@@ -1,6 +1,5 @@
-
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <string.h>
 
 #include "nrf.h"
@@ -13,6 +12,10 @@
 #include "nrf51_serialization.h"
 #include "radio_module.h"
 #include "timer.h"
+
+//TODO(Pat)
+#pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
+#pragma GCC diagnostic ignored "-Wmissing-prototypes"
 
 // Buffer to receive packets from the nRF51822 in.
 // The upper layer also has a buffer, which we could use, but to make
@@ -142,7 +145,7 @@ void ble_serialization_callback (int callback_type, int rx_len, int c, void* oth
 // ser_app_hal_nrf51.c
 //
 
-uint32_t ser_app_hal_hw_init() {
+uint32_t ser_app_hal_hw_init(void) {
     // Configure the pin for the reset pin. We don't have the actual !RESET
     // pin pinned to the Storm, so we will use this one.
     //gpio_enable_output(BLE_BOOT);
@@ -154,19 +157,19 @@ void ser_app_hal_delay (uint32_t ms)  {
     delay_ms(ms);
 }
 
-void ser_app_hal_nrf_reset_pin_clear() {
+void ser_app_hal_nrf_reset_pin_clear(void) {
     //gpio_clear(BLE_BOOT);
 }
 
-void ser_app_hal_nrf_reset_pin_set() {
+void ser_app_hal_nrf_reset_pin_set(void) {
     //gpio_set(BLE_BOOT);
 }
 
-void ser_app_hal_nrf_evt_irq_priority_set () {
+void ser_app_hal_nrf_evt_irq_priority_set (void) {
     // Since we aren't using an actual interrupt, not needed
 }
 
-void ser_app_hal_nrf_evt_pending() {
+void ser_app_hal_nrf_evt_pending(void) {
     // Not sure if we can do software interrupts, so try just doing a
     // function call.
     TOCK_EVT_IRQHandler();
@@ -241,13 +244,13 @@ uint32_t ser_phy_rx_buf_set (uint8_t* p_buffer) {
     return NRF_SUCCESS;
 }
 
-void ser_phy_close () {
+void ser_phy_close (void) {
     _ser_phy_event_handler = NULL;
 }
 
-void ser_phy_interrupts_enable () { }
+void ser_phy_interrupts_enable (void) { }
 
-void ser_phy_interrupts_disable () { }
+void ser_phy_interrupts_disable (void) { }
 
 // TODO: implement timers!
 
@@ -388,7 +391,7 @@ uint32_t app_timer_stop (app_timer_id_t timer_id) {
  * @retval     NRF_ERROR_INVALID_STATE   If the application timer module has not been initialized.
  * @retval     NRF_ERROR_NO_MEM          If the timer operations queue was full.
  */
-uint32_t app_timer_stop_all () {
+uint32_t app_timer_stop_all (void) {
     return NRF_SUCCESS;
 }
 
@@ -424,30 +427,30 @@ uint32_t app_timer_cnt_diff_compute (uint32_t ticks_to,
 
 
 
-void ser_app_power_system_off_set () {
+void ser_app_power_system_off_set (void) {
 
 }
 
-bool ser_app_power_system_off_get () {
+bool ser_app_power_system_off_get (void) {
     return false;
 }
 
-void ser_app_power_system_off_enter () {
+void ser_app_power_system_off_enter (void) {
 
 }
 
 // Essentially sleep this process
-uint32_t sd_app_evt_wait () {
+uint32_t sd_app_evt_wait (void) {
   nrf_serialization_done = false;
   yield_for(&nrf_serialization_done);
   return NRF_SUCCESS;
 }
 
-void critical_region_enter () {
+void critical_region_enter (void) {
 
 }
 
-void critical_region_exit () {
+void critical_region_exit (void) {
 
 }
 

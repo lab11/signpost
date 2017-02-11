@@ -54,7 +54,7 @@ static void i2c_master_slave_callback(int callback_type, int length, int unused,
   i2c_master_slave_write(0x22,16);
   }*/
 
-int main () {
+int main (void) {
 
     gpio_enable_output(8);
     gpio_enable_output(9);

@@ -94,7 +94,7 @@ static void i2c_master_slave_callback (
   }
 }
 
-int main () {
+int main (void) {
   putstr("[Controller] Start!\n");
 
   // Setup backplane

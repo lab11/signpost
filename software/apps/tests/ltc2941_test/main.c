@@ -23,7 +23,7 @@ static void print_status (int status) {
   putstr(buf);
 }
 
-int main () {
+int main (void) {
   putstr("[LTC2941] Test\n");
 
   int status = ltc2941_read_status_sync();

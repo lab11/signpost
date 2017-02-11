@@ -92,7 +92,7 @@ static uint32_t readLen;
 static Packet readPacket;
 static uint8_t* readData;
 
-static void iterate_read_buf() {
+static void iterate_read_buf(void) {
 
     if(readToSend > 0) {
         //set more fragments bit

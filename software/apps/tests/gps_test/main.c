@@ -44,7 +44,7 @@ static void timer_callback (
 }
 
 
-int main() {
+int main(void) {
     printf("GPS Test\n");
     delay_ms(500);
 

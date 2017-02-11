@@ -164,7 +164,7 @@ static void adc_callback (int callback_type, int channel, int sample, void* call
 }
 
 
-int main () {
+int main (void) {
     putstr("Start Microwave Radar program. Sampling!!!\n");
 
     // initialize adc

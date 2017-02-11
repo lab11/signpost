@@ -48,6 +48,7 @@ void signpost_energy_reset (void) {
 	}
 }
 
+__attribute__((const))
 int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler) {
     // prescaler needs to be a power of two
     uint8_t power;

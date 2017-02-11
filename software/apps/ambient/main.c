@@ -38,13 +38,14 @@ static void print_measurements (int temp, int humi, int pres, int ligh) {
   putstr(buf);
 }
 
-static void sample_and_send () {
+static void sample_and_send (void) {
   // Start a pressure measurement
   int pressure = lps331ap_get_pressure_sync();
   // Get light
   int light = isl29035_read_light_intensity();
   // Get temperature and humidity
-  int temperature, humidity;
+  int temperature;
+  unsigned humidity;
   si7021_get_temperature_humidity_sync(&temperature, &humidity);
 
   // Encode readings in txbuf
@@ -75,7 +76,7 @@ static void timer_callback (int callback_type _U, int pin_value _U, int unused _
   sample_and_send();
 }
 
-int main () {
+int main (void) {
   putstr("[Ambient] Measure and Report\n");
 
   // Setup I2C TX buffer

@@ -14,7 +14,7 @@
 
 //#define SENDER
 
-int main () {
+int main (void) {
 
 
     uint8_t data[1024];

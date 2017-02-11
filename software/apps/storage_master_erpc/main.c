@@ -24,7 +24,7 @@ static uint8_t rpc_pending = 0;
 #define RPC_REQUEST 0x01
 #define RPC_RETURN 0x02
 
-int main () {
+int main (void) {
     message_init(0x19);
     storage_master_enable_edison();
     gpio_enable_output(2);

@@ -18,13 +18,13 @@ static void print_status (int status) {
   putstr(buf);
 }
 
-static void print_buf () {
+static void print_buf (void) {
   char buf[64];
   sprintf(buf, "\tData: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n\n", read_buf[0], read_buf[1], read_buf[2], read_buf[3], read_buf[4]);
   putstr(buf);
 }
 
-int main () {
+int main (void) {
   putstr("[FM25CL] Test\n");
 
   fm25cl_set_read_buffer(read_buf, 256);

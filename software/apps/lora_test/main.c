@@ -11,7 +11,7 @@
 
 const char* message = "Hello from LAB12";
 
-int main () {
+int main (void) {
 	iM880A_Configure();
 	delay_ms(1000);
 	while (1) {

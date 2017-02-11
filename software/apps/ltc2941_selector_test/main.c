@@ -38,7 +38,7 @@ static void print_data (int i) {
   putstr(buf);
 }
 
-int main () {
+int main (void) {
   putstr("Welcome to Tock...lets wait for an interrupt!!\n");
 
 

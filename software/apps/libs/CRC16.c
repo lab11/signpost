@@ -85,7 +85,7 @@
 //
 //------------------------------------------------------------------------------
 
-uint16_t CRC16_Table[] =
+static uint16_t CRC16_Table[] =
 {
     0x0000, 0x1189, 0x2312, 0x329B, 0x4624, 0x57AD, 0x6536, 0x74BF,
     0x8C48, 0x9DC1, 0xAF5A, 0xBED3, 0xCA6C, 0xDBE5, 0xE97E, 0xF8F7,
@@ -148,6 +148,7 @@ uint16_t CRC16_Table[] =
 //! @retVal         crc16       crc
 //------------------------------------------------------------------------------
 #ifdef    __CRC16_TABLE__
+__attribute__((pure))
 uint16_t
 CRC16_Calc  (uint8_t*             data,
              uint16_t             length,
@@ -169,7 +170,7 @@ CRC16_Calc  (uint8_t*             data,
 
 #else
 
-
+__attribute__((pure))
 uint16_t
 CRC16_Calc  (uint8_t*             data,
              uint16_t             length,
@@ -224,6 +225,7 @@ CRC16_Calc  (uint8_t*             data,
 //! @retVal         false       CRC16 failed -> data block corrupt
 //------------------------------------------------------------------------------
 
+__attribute__((pure))
 bool
 CRC16_Check     (uint8_t*                    data,
                  uint16_t                    length,

@@ -12,10 +12,6 @@
 #include "timer.h"
 #include "tock.h"
 
-#define STROBE 4
-#define RESET 5
-#define POWER 6
-
 #define LED3 8
 #define LED4 9
 #define LED1 10
@@ -41,7 +37,7 @@ static void blink(unsigned led, unsigned duration_ms) {
 	gpio_set(led);
 }
 
-int main () {
+int main (void) {
 	// LEDs used for debug only
 	gpio_enable_output(LED1);
 	gpio_enable_output(LED2);

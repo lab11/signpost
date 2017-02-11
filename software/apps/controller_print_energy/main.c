@@ -25,7 +25,7 @@ static void print_data (int module, int energy) {
   putstr(buf);
 }
 
-int main () {
+int main (void) {
   int energy;
 
   signpost_energy_init();

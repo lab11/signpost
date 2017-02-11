@@ -52,7 +52,7 @@ static void cb(size_t length) {
 }
 
 
-int main() {
+int main(void) {
     memset(key, 0, 32);
     strcpy(key, "this is a key");
     printf("\n###\n\n\ntest app stack\n");

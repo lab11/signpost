@@ -82,7 +82,7 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
     }
 }
 
-static void adv_config_data() {
+static void adv_config_data(void) {
     static uint8_t i = 0;
 
     static ble_advdata_manuf_data_t mandata;
@@ -254,7 +254,7 @@ static void timer_callback (
     }
 }
 
-int main () {
+int main (void) {
     //configure the radios
     //lora
 

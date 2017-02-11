@@ -199,8 +199,8 @@ ComSlip_StoreRxByte(uint8_t rxByte)
 //
 //------------------------------------------------------------------------------
 
-bool
-ComSlip_ProcessRxMsg()
+static bool
+ComSlip_ProcessRxMsg(void)
 {
     // forward received message to upper layer and allocate new rx-buffer
     if(ComSlip.RxIndication)
