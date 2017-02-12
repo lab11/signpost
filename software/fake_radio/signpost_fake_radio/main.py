@@ -58,8 +58,25 @@ class FakeRadio:
 
 
 	def run (self):
-		ret = self.sp.read(1024)
-		print(ret)
+		while True:
+			buf = self.sp.read(1024)
+			print(buf)
+
+
+
+			# First byte is the source address
+			src = struct.unpack('B', buf[0])
+
+			buf = buf[1:]
+
+			if len(buf) < 3:
+				print('Packet too short')
+				continue
+
+			frame_type, api_type, message_type = struct.unpack('<BBB', buf[0:3])
+			buf = buf[3:]
+
+
 
 
 ################################################################################
