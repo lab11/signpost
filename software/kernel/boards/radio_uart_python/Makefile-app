@@ -1,0 +1,9 @@
+# Makefile for loading applications for the signpost radio_uart_python SAM4L
+
+APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
+
+# upload programs over JTAG
+.PHONY: flash
+flash: $(BUILDDIR)/app.bin
+	$(APP_FLASH) $(BUILDDIR)/app.bin
+
