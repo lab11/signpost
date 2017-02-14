@@ -18,15 +18,24 @@ typedef enum frame_type {
         ErrorFrame = 3,
 } frame_type_t;
 
+typedef enum api_type {
+        InitializationApiType = 1,
+        StorageApiType = 2,
+        NetworkingApiType = 3,
+        ProcessingApiType = 4,
+        EnergyApiType = 5,
+        TimeLocationApiType = 6,
+} api_type_t;
+
 int app_send(uint8_t dest, uint8_t* key,
-             frame_type_t frame_type, uint8_t api_type, uint8_t message_type,
+             frame_type_t frame_type, api_type_t api_type, uint8_t message_type,
              size_t message_length, uint8_t* message);
 
 
 int app_recv(uint8_t* key,
-        frame_type_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+        frame_type_t* frame_type, api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message);
 
 int app_recv_async(app_cb cb, uint8_t* key,
-                   frame_type_t* frame_type, uint8_t* api_type, uint8_t* message_type,
+                   frame_type_t* frame_type, api_type_t* api_type, uint8_t* message_type,
                    size_t* message_length, uint8_t* message);
