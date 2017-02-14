@@ -74,7 +74,7 @@ struct SignpostStorageMaster {
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
-    //sdcard: &'static capsules::sdcard::SDCardDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
+    sdcard: &'static capsules::sdcard::SDCardDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     rng: &'static capsules::rng::SimpleRng<'static, sam4l::trng::Trng<'static>>,
     ipc: kernel::ipc::IPC,
 }
@@ -91,7 +91,7 @@ impl Platform for SignpostStorageMaster {
             8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
             14 => f(Some(self.rng)),
-            //15 => f(Some(self.sdcard)),
+            15 => f(Some(self.sdcard)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -230,7 +230,6 @@ pub unsafe fn reset_handler() {
     //
     // SD card interface, SPI master
     //
-    /*
     let mux_spi = static_init!(
         capsules::virtual_spi::MuxSpiMaster<'static, usart::USART>,
         capsules::virtual_spi::MuxSpiMaster::new(&sam4l::usart::USART1),
@@ -258,7 +257,6 @@ pub unsafe fn reset_handler() {
         capsules::sdcard::SDCardDriver::new(sdcard, &mut capsules::sdcard::KERNEL_BUFFER),
         480/8);
     sdcard.set_client(sdcard_driver);
-    */
 
     //
     // Remaining GPIO pins
@@ -301,7 +299,7 @@ pub unsafe fn reset_handler() {
         led: led,
         timer: timer,
         i2c_master_slave: i2c_modules,
-        //sdcard: sdcard_driver,
+        sdcard: sdcard_driver,
         rng: rng,
         ipc: kernel::ipc::IPC::new(),
     };
