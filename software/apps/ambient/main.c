@@ -89,6 +89,9 @@ int main (void) {
   // Set our address in case anyone cares
   i2c_master_slave_set_slave_address(0x32);
 
+  // sample immediately
+  sample_and_send();
+
   // Setup a timer for sampling the sensors
   timer_subscribe(timer_callback, NULL);
   timer_start_repeating(6000);
