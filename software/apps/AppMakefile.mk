@@ -5,7 +5,7 @@ all:
 # makefile with shared settings among user applications
 
 TOCK_BOARD ?= controller
-TOCK_ARCH = cortex-m4
+TOCK_ARCH := cortex-m4
 
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
