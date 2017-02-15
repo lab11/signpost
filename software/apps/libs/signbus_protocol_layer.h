@@ -36,4 +36,5 @@ int signbus_protocol_send(uint8_t dest, uint8_t* key,
 int signbus_protocol_recv(uint8_t* buf, size_t buflen,
                   size_t len, uint8_t* key);
 
-int signbus_protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key);
+int signbus_protocol_recv_async(signbus_app_callback_t cb,
+                  uint8_t* buf, size_t buflen, uint8_t* key);

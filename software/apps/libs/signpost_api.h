@@ -19,18 +19,23 @@ typedef enum module_address {
     ModuleAddressRadio = 0x22,
 } module_address_t;
 
+typedef struct api_handler {
+    signbus_api_type_t       api_type;
+    signbus_app_callback_t*  callback;
+} api_handler_t;
+
 // Initialize this module.
 // Must be called before any other signpost API methods.
 //
 // params:
-//  i2c_address - The I2C address of this calling module
-//  api_types   - Array of signpost APIs that this calling module implements
-//                The final element of this array MUST be 0.
-//                This array MUST be static (pointer must be valid forever).
-//                Modules that implement no APIs MUST pass SIGNPOST_INITIALIZATION_NO_APIS.
+//  i2c_address  - The I2C address of this calling module
+//  api_handlers - Array of signpost APIs that this calling module implements
+//                 The final element of this array MUST be NULL.
+//                 This array MUST be static (pointer must be valid forever).
+//                 Modules that implement no APIs MUST pass SIGNPOST_INITIALIZATION_NO_APIS.
 int signpost_initialization_module_init(
         uint8_t i2c_address,
-        signbus_api_type_t* api_types);
+        api_handler_t** api_handlers);
 
 /**************************************************************************/
 /* STORAGE API                                                            */
@@ -64,7 +69,7 @@ typedef struct __attribute__((packed)) energy_information {
 _Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
 
 int signpost_energy_query(signpost_energy_information_t* energy);
-int signpost_energy_query_async(signpost_energy_information_t* energy, app_cb cb);
+int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_app_callback_t cb);
 
 /**************************************************************************/
 /* TIME & LOCATION API                                                    */

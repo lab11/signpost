@@ -9,7 +9,7 @@
 // seemed reasonable
 #define BUFSIZE 4096
 
-typedef void (app_cb)(size_t);
+typedef void (signbus_app_callback_t)(size_t);
 
 typedef enum signbus_frame_type {
         NotificationFrame = 0,
@@ -37,6 +37,6 @@ int signbus_app_recv(uint8_t* key,
         signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message);
 
-int signbus_app_recv_async(app_cb cb, uint8_t* key,
+int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t* key,
         signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message);

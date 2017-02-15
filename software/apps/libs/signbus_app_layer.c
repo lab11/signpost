@@ -18,7 +18,7 @@ typedef struct {
     uint8_t* message_type;
     size_t* message_length;
     uint8_t* message;
-    app_cb* cb;
+    signbus_app_callback_t* cb;
 } app_cb_data;
 
 static uint8_t app_buf[BUFSIZE];
@@ -76,7 +76,7 @@ int signbus_app_recv(uint8_t* key,
     return 0;
 }
 
-int signbus_app_recv_async(app_cb cb, uint8_t* key,
+int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t* key,
         signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
     cb_data.key = key;

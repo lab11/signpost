@@ -30,7 +30,8 @@ uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len);
 uint32_t signbus_io_recv(uint8_t* data, uint32_t len, uint8_t* src);
 
 //async receive
-int signbus_io_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src);
+int signbus_io_recv_async(signbus_app_callback_t callback,
+        uint8_t* data, uint32_t len, uint8_t* src);
 
 //set the read buffer
 void signbus_io_set_read_buffer(uint8_t* data, uint32_t len);

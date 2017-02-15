@@ -19,7 +19,7 @@ typedef struct {
     size_t buflen;
     uint8_t* key;
     uint8_t src;
-    app_cb* cb;
+    signbus_app_callback_t* cb;
 } prot_cb_data;
 
 static prot_cb_data cb_data;
@@ -173,7 +173,8 @@ int signbus_protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key)
     return olen;
 }
 
-int signbus_protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key) {
+int signbus_protocol_recv_async(signbus_app_callback_t cb,
+        uint8_t* buf, size_t buflen, uint8_t* key) {
     cb_data.buf = buf;
     cb_data.buflen = buflen;
     cb_data.key = key;

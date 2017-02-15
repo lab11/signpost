@@ -45,7 +45,7 @@ typedef struct {
     size_t buflen;
     size_t len;
     uint8_t* src;
-    app_cb* cb;
+    signbus_app_callback_t* cb;
 } message_cb_data;
 
 static uint8_t src_address;
@@ -335,7 +335,8 @@ uint32_t signbus_io_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 }
 
 //async receive call
-int signbus_io_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
+int signbus_io_recv_async(signbus_app_callback_t callback,
+        uint8_t* data, uint32_t len, uint8_t* src) {
 
     cb_data.buf = data;
     cb_data.buflen = len;
