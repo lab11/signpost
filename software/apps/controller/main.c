@@ -56,8 +56,6 @@ static void bonus_timer_callback (
 
 
 
-#define MAGIC 0x49A80003
-
 typedef struct {
   uint32_t magic;
   uint32_t energy_controller;
@@ -268,12 +266,13 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80003;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
-  if (fram.magic == MAGIC) {
+  if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
   } else {
     // Initialize this
-    fram.magic = MAGIC;
+    fram.magic = FRAM_MAGIC_VALUE;
     fram.energy_controller = 0;
     fram.energy_linux = 0;
     fram.energy_module0 = 0;
