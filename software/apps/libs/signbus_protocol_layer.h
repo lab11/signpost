@@ -1,9 +1,10 @@
 #pragma once
 
-#include "module.h"
 #include "signbus_app_layer.h"
+#include "signbus_protocol_layer.h"
 
 #define SHA256_LEN 32
+#define ECDH_KEY_LENGTH 32
 
 /* protocol_send
  * Send a buffer through the protocol layer. Protocol layer calls message_send

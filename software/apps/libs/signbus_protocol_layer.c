@@ -7,7 +7,6 @@
 #include "mbedtls/entropy.h"
 #include "mbedtls/ctr_drbg.h"
 
-#include "module.h"
 #include "rng.h"
 #include "signbus_app_layer.h"
 #include "signbus_io_interface.h"

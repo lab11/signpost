@@ -25,6 +25,7 @@ typedef enum signbus_api_type {
         ProcessingApiType = 4,
         EnergyApiType = 5,
         TimeLocationApiType = 6,
+        HighestApiType = TimeLocationApiType,
 } signbus_api_type_t;
 
 int signbus_app_send(uint8_t dest, uint8_t* key,

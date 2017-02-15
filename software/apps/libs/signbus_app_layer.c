@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "module.h"
 #include "signbus_app_layer.h"
 #include "signbus_io_interface.h"
 #include "signbus_protocol_layer.h"
