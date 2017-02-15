@@ -55,16 +55,16 @@ int signpost_initialization_module_init(
 typedef struct __attribute__((packed)) energy_information {
     uint32_t    energy_limit_24h_mJ;
     uint32_t    energy_used_24h_mJ;
-    uint16_t    current_limit_24h_mA;
+    uint16_t    current_limit_60s_mA;
     uint16_t    current_average_60s_mA;
     uint8_t     energy_limit_warning_threshold;
     uint8_t     energy_limit_critical_threshold;
-} energy_information_t;
+} signpost_energy_information_t;
 
-_Static_assert(sizeof(energy_information_t) == 14, "On-wire structure size");
+_Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
 
-int energy_query(energy_information_t* energy);
-int energy_query_async(energy_information_t* energy, app_cb cb);
+int signpost_energy_query(signpost_energy_information_t* energy);
+int signpost_energy_query_async(signpost_energy_information_t* energy, app_cb cb);
 
 /**************************************************************************/
 /* TIME & LOCATION API                                                    */

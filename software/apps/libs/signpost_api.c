@@ -53,12 +53,12 @@ int signpost_initialization_module_init(
 /* ENERGY API                                                             */
 /**************************************************************************/
 
-typedef enum energy_message_type {
+enum energy_message_type {
     EnergyQueryMessage = 0,
     EnergyLevelWarning24hMessage = 1,
     EnergyLevelCritical24hMessage = 2,
     EnergyCurrentWarning60sMessage = 3,
-} energy_message_type_t;
+};
 
 static bool energy_query_ready;
 
@@ -68,11 +68,11 @@ static void energy_query_callback(
     energy_query_ready = true;
 }
 
-int energy_query(energy_information_t* energy) {
+int signpost_energy_query(signpost_energy_information_t* energy) {
     energy_query_ready = false;
 
     {
-        int rc = energy_query_async(energy, energy_query_callback);
+        int rc = signpost_energy_query_async(energy, energy_query_callback);
         if (rc != 0) {
             return rc;
         }
@@ -83,7 +83,7 @@ int energy_query(energy_information_t* energy) {
     return SUCCESS;
 }
 
-int energy_query_async(energy_information_t* energy, app_cb cb) {
+int signpost_energy_query_async(signpost_energy_information_t* energy, app_cb cb) {
     uint8_t* key = NULL;
     signbus_app_send(ModuleAddressController, key,
             CommandFrame, EnergyApiType, EnergyQueryMessage,
