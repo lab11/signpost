@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 #include <tock.h>
-#include "app.h"
+#include "signbus_app_layer.h"
 
 //this is the first i2c messaging library!
 //
@@ -16,20 +16,20 @@ extern "C" {
 #endif
 
 //initialize
-void message_init(uint8_t src);
+void signbus_io_init(uint8_t src);
 
 //synchronous send
 //returns size
-uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len);
+uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len);
 
 //synchronous receive
-uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src);
+uint32_t signbus_io_recv(uint8_t* data, uint32_t len, uint8_t* src);
 
 //async receive
-int message_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src);
+int signbus_io_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src);
 
 //set the read buffer
-void message_set_read_buffer(uint8_t* data, uint32_t len);
+void signbus_io_set_read_buffer(uint8_t* data, uint32_t len);
 
 #ifdef __cplusplus
 }

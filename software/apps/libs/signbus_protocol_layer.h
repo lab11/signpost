@@ -1,7 +1,7 @@
 #pragma once
 
 #include "module.h"
-#include "app.h"
+#include "signbus_app_layer.h"
 
 #define SHA256_LEN 32
 
@@ -16,7 +16,7 @@
  *
  *   returns 0 on success, negative on failure.
  */
-int protocol_send(uint8_t dest, uint8_t* key,
+int signbus_protocol_send(uint8_t dest, uint8_t* key,
                   uint8_t *buf, size_t len);
 
 /* protocol_recv
@@ -32,7 +32,7 @@ int protocol_send(uint8_t dest, uint8_t* key,
  *   returns length of decrypted/authenticated buffer on success, negative on
  *   failure.
  */
-int protocol_recv(uint8_t* buf, size_t buflen,
+int signbus_protocol_recv(uint8_t* buf, size_t buflen,
                   size_t len, uint8_t* key);
 
-int protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key);
+int signbus_protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key);

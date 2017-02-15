@@ -7,11 +7,13 @@
 #include "mbedtls/entropy.h"
 #include "mbedtls/ctr_drbg.h"
 
-#include "app.h"
-#include "message.h"
 #include "module.h"
-#include "protocol.h"
 #include "rng.h"
+#include "signbus_app_layer.h"
+#include "signbus_io_interface.h"
+#include "signbus_protocol_layer.h"
+
+#pragma GCC diagnostic ignored "-Wstack-usage="
 
 typedef struct {
     uint8_t* buf;
@@ -37,7 +39,7 @@ static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t
 }
 
 static void protocol_cb(size_t len) {
-    cb_data.cb(protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
+    cb_data.cb(signbus_protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
 }
 
 static int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
@@ -110,7 +112,7 @@ static int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out)
     return ret;
 }
 
-int protocol_send(uint8_t dest, uint8_t* key,
+int signbus_protocol_send(uint8_t dest, uint8_t* key,
                   uint8_t *buf, size_t len) {
 
     // len is too large
@@ -148,10 +150,10 @@ int protocol_send(uint8_t dest, uint8_t* key,
 
     // pass buffer to message
     // expects message_init to have been called by module_init
-    return message_send(dest, sendbuf, size);
+    return signbus_io_send(dest, sendbuf, size);
 }
 
-int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key) {
+int signbus_protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key) {
     uint8_t h[SHA256_LEN];
     uint8_t temp[len];
     int result = 0;
@@ -172,11 +174,11 @@ int protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key) {
     return olen;
 }
 
-int protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key) {
+int signbus_protocol_recv_async(app_cb cb, uint8_t* buf, size_t buflen, uint8_t* key) {
     cb_data.buf = buf;
     cb_data.buflen = buflen;
     cb_data.key = key;
     cb_data.cb = cb;
 
-    return message_recv_async(protocol_cb, buf, buflen, &cb_data.src);
+    return signbus_io_recv_async(protocol_cb, buf, buflen, &cb_data.src);
 }

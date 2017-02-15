@@ -9,10 +9,10 @@
 #include "tock.h"
 #include "console.h"
 #include "timer.h"
-#include "protocol.h"
-#include "message.h"
-#include "app.h"
 #include "rng.h"
+#include "signbus_app_layer.h"
+#include "signbus_io_interface.h"
+#include "signbus_protocol_layer.h"
 
 #define INTERVAL_IN_MS 2000
 
@@ -20,8 +20,8 @@
 
 static uint8_t key[32];
 
-static frame_type_t frame_type;
-static uint8_t api_type;
+static signbus_frame_type_t frame_type;
+static signbus_api_type_t api_type;
 static uint8_t message_type;
 static size_t message_length;
 static uint8_t message[1024];
@@ -46,7 +46,7 @@ static void cb(size_t length) {
     recent_message = true;
 
     // Listen for another message (re-using the same buffers)
-    app_recv_async(cb, key,
+    signbus_app_recv_async(cb, key,
             &frame_type, &api_type, &message_type,
             &message_length, message);
 }
@@ -60,8 +60,8 @@ int main(void) {
 #ifndef SENDER
     printf("RECEIVER: Begin listening\n\n");
 
-    message_init(0x18);
-    app_recv_async(cb, key,
+    signbus_io_init(0x18);
+    signbus_app_recv_async(cb, key,
             &frame_type, &api_type, &message_type,
             &message_length, message);
 #endif
@@ -69,8 +69,8 @@ int main(void) {
         delay_ms(INTERVAL_IN_MS);
 #ifdef SENDER
         memcpy(message, "hello there\0", strlen("hello there") + 1);
-        message_init(0x32);
-        app_send(0x18, key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
+        signbus_io_init(0x32);
+        signbus_app_send(0x18, key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
 #else
         if (recent_message == false) {

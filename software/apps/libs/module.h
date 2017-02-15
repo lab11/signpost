@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "app.h"
+#include "signbus_app_layer.h"
 
 #define NUM_MODULES 8
 // 0    - controller

@@ -3,8 +3,10 @@
 #include <string.h>
 
 #include "i2c_master_slave.h"
-#include "message.h"
+#include "signbus_io_interface.h"
 #include "tock.h"
+
+#pragma GCC diagnostic ignored "-Wstack-usage="
 
 #define I2C_MAX_LEN 255
 
@@ -65,16 +67,16 @@ static void i2c_master_slave_callback(
 
     if(callback_type == CB_SLAVE_WRITE) {
         memcpy(packet_buf, slave_write_buf, length);
-        new_packet* np = (new_packet*) callback_args;
-        np->new = true;
-        np->len = length;
+        new_packet* packet = (new_packet*) callback_args;
+        packet->new = true;
+        packet->len = length;
         if(async) get_message(cb_data.buf, cb_data.buflen, cb_data.src);
     } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
         iterate_read_buf();
     }
 }
 
-void message_init(uint8_t src) {
+void signbus_io_init(uint8_t src) {
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
@@ -140,7 +142,7 @@ static void iterate_read_buf(void) {
     }
 }
 
-void message_set_read_buffer(uint8_t* data, uint32_t len) {
+void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
     //essentially call message_send on the buff but only
     //iterate after someone has read the buffer.
     //after the buffer has been read restart it from
@@ -173,7 +175,7 @@ void message_set_read_buffer(uint8_t* data, uint32_t len) {
 
 
 //synchronous send call
-uint32_t message_send(uint8_t dest, uint8_t* data, uint32_t len) {
+uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
     id++;
     Packet p;
     uint32_t toSend = len;
@@ -322,7 +324,7 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
 }
 
 //blocking receive call
-uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
+uint32_t signbus_io_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 
     async = false;
     i2c_master_slave_listen();
@@ -333,7 +335,7 @@ uint32_t message_recv(uint8_t* data, uint32_t len, uint8_t* src) {
 }
 
 //async receive call
-int message_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
+int signbus_io_recv_async(app_cb callback, uint8_t* data, uint32_t len, uint8_t* src) {
 
     cb_data.buf = data;
     cb_data.buflen = len;
