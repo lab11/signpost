@@ -32,9 +32,9 @@ Net
         0                   1                   2                   3
         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |Version| Flags | Source        |0| Length                      |
+       |Version| Flags | Source        |0| Sequence Number             |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       | Offset                          | ... 
+       | Length                          | Offset                      |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
@@ -53,13 +53,17 @@ The protocol version in use. Currently, the only valid version is version 1.
 
 The 7 bit source address of the device sending this message.
 
+### Sequence Number
+
+A monotonically increasing message counter.
+
 ### Length
 
 The length of the complete message in bytes.
 
 ### Offset
 
-The offset into the complete message in bytes. This field is used to support fragmentation.
+The offset into the complete message in bytes.
 
 
 Protocol
