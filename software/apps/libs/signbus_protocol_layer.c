@@ -41,7 +41,10 @@ static void protocol_cb(size_t len) {
     cb_data.cb(signbus_protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
 }
 
-static int cipher(const mbedtls_operation_t operation, uint8_t* key, uint8_t* in, size_t inlen, uint8_t* iv, uint8_t* out, size_t* olen) {
+static int cipher(const mbedtls_operation_t operation,
+        uint8_t* key, uint8_t* iv,
+        uint8_t* in, size_t inlen,
+        uint8_t* out, size_t* olen) {
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
 
@@ -128,7 +131,7 @@ int signbus_protocol_send(uint8_t dest, uint8_t* key,
     // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
-        cipher(MBEDTLS_ENCRYPT, key, buf, len, iv, tempbuf, &olen);
+        cipher(MBEDTLS_ENCRYPT, key, iv, buf, len, tempbuf, &olen);
         // put iv in front of sendbuf
         memcpy(sendbuf, iv, MBEDTLS_MAX_IV_LENGTH);
         size+=MBEDTLS_MAX_IV_LENGTH;
@@ -164,7 +167,12 @@ int signbus_protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key)
 
     // decrypt if needed
     if(key != NULL) {
-        result = cipher(MBEDTLS_DECRYPT, key, buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH, buf, temp, &olen);
+        _Static_assert(MBEDTLS_MAX_IV_LENGTH == 16, "iv len in proto match");
+        // First 16 bytes in buffer for protocol layer are IV, then the payload
+        result = cipher(MBEDTLS_DECRYPT,
+                key, buf,
+                buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH,
+                temp, &olen);
     }
     if (result < 0) return result;
 
