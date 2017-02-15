@@ -16,20 +16,31 @@ static uint8_t slave_write_buf[I2C_MAX_LEN];
 static uint8_t slave_read_buf[I2C_MAX_LEN];
 static uint8_t packet_buf[I2C_MAX_LEN];
 
-typedef struct {
-    uint8_t version;
-    uint16_t length;
-    uint16_t id;
-    //bit15 - more fragments
-    //other bits - fragment offset in bytes of the data only
-    uint16_t ffragment_offset;
+typedef struct __attribute__((packed)) signbus_network_flags {
+    unsigned int is_fragment   : 1;
+    unsigned int rsv_wire_bit6 : 1;
+    unsigned int rsv_wire_bit5 : 1;
+    unsigned int rsv_wire_bit4 : 1;
+    unsigned int version       : 4;
+} signbus_network_flags_t;
+_Static_assert(sizeof(signbus_network_flags_t) == 1, "network flags size");
+
+typedef struct __attribute__((packed)) signbus_network_header {
+    union {
+        uint8_t flags_storage;
+        signbus_network_flags_t flags;
+    };
     uint8_t src;
-} __attribute__((__packed__)) Header;
+    uint16_t sequence_number;
+    uint16_t length;
+    uint16_t fragment_offset;
+} signbus_network_header_t;
+_Static_assert(sizeof(signbus_network_header_t) == 8, "network header size");
 
-#define MAX_DATA_LEN (I2C_MAX_LEN-sizeof(Header))
+#define MAX_DATA_LEN (I2C_MAX_LEN-sizeof(signbus_network_header_t))
 
 typedef struct {
-    Header header;
+    signbus_network_header_t header;
     uint8_t data[MAX_DATA_LEN];
 } __attribute__((__packed__)) Packet;
 
@@ -49,7 +60,7 @@ typedef struct {
 } message_cb_data;
 
 static uint8_t src_address;
-static uint16_t id = 0;
+static uint16_t sequence_number = 0;
 static void iterate_read_buf(void);
 static message_cb_data cb_data;
 static new_packet np = { .new = false };
@@ -57,7 +68,7 @@ static new_packet np = { .new = false };
 // flag to indicate if callback is for async operation
 static bool async = false;
 
-void get_message(uint8_t* data, uint32_t len, uint8_t* src);
+static void get_message(uint8_t* data, uint32_t len, uint8_t* src);
 
 static void i2c_master_slave_callback(
         int callback_type,
@@ -98,7 +109,6 @@ static void iterate_read_buf(void) {
 
     if(readToSend > 0) {
         //set more fragments bit
-        readPacket.header.ffragment_offset = 0;
         uint8_t morePackets = 0;
         uint16_t offset = 0;
 
@@ -108,10 +118,10 @@ static void iterate_read_buf(void) {
         offset = (readLen-readToSend);
 
         //set more fragments bit
-        readPacket.header.ffragment_offset = ((morePackets & 0x01) << 15);
+        readPacket.header.flags.is_fragment = morePackets;
 
         //set the fragment offset
-        readPacket.header.ffragment_offset = htons((readPacket.header.ffragment_offset | offset));
+        readPacket.header.fragment_offset = htons(offset);
 
         //set the data field
         //if there are more packets write the whole packet
@@ -148,7 +158,7 @@ void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
     //after the buffer has been read restart it from
     //the beginning
     i2c_master_slave_listen();
-    id++;
+    sequence_number++;
     readLen = len;
     readToSend = readLen;
     readData = data;
@@ -162,13 +172,13 @@ void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
     }
 
     //set version
-    readPacket.header.version = 0x01;
+    readPacket.header.flags.version = 0x01;
     //set the source
     readPacket.header.src = src_address;
-    readPacket.header.id = htons(id);
+    readPacket.header.sequence_number = htons(sequence_number);
 
     //set the total length
-    readPacket.header.length = htons((numPackets*sizeof(Header))+len);
+    readPacket.header.length = htons((numPackets*sizeof(signbus_network_header_t))+len);
 
     iterate_read_buf();
 }
@@ -176,7 +186,7 @@ void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
 
 //synchronous send call
 uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
-    id++;
+    sequence_number++;
     Packet p;
     uint32_t toSend = len;
 
@@ -189,17 +199,15 @@ uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
     }
 
     //set version
-    p.header.version = 0x01;
+    p.header.flags.version = 0x01;
     //set the source
     p.header.src = src_address;
-    p.header.id = htons(id);
+    p.header.sequence_number = htons(sequence_number);
 
     //set the total length
-    p.header.length = htons((numPackets*sizeof(Header))+len);
+    p.header.length = htons((numPackets*sizeof(signbus_network_header_t))+len);
 
     while(toSend > 0) {
-        //set more fragments bit
-        p.header.ffragment_offset = 0;
         uint8_t morePackets = 0;
         uint16_t offset = 0;
 
@@ -209,10 +217,10 @@ uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
         offset = (len-toSend);
 
         //set more fragments bit
-        p.header.ffragment_offset = ((morePackets & 0x01) << 15);
+        p.header.flags.is_fragment = morePackets;
 
         //set the fragment offset
-        p.header.ffragment_offset = htons((p.header.ffragment_offset | offset));
+        p.header.fragment_offset = htons(offset);
 
         //set the data field
         //if there are more packets write the whole packet
@@ -236,7 +244,7 @@ uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend -= MAX_DATA_LEN;
         } else {
-            i2c_master_slave_write_sync(dest,sizeof(Header)+toSend);
+            i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend = 0;
         }
@@ -245,11 +253,11 @@ uint32_t signbus_io_send(uint8_t dest, uint8_t* data, uint32_t len) {
     return len;
 }
 
-void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
+static void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
     uint8_t done = 0;
     uint32_t lengthReceived = 0;
-    uint16_t messageID;
-    uint8_t messageSrc;
+    uint16_t message_sequence_number;
+    uint8_t message_source_address;
     async = false;
 
     //loop receiving packets until we get the whole datagram
@@ -268,13 +276,14 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
 
         if(lengthReceived == 0) {
             //this is the first packet
-            //save the messageID
-            messageID = p.header.id;
-            messageSrc = p.header.src;
+            //save the message_sequence_number
+            message_sequence_number = p.header.sequence_number;
+            message_source_address = p.header.src;
         } else {
             //this is not the first packet
-            //is this the same messageID?
-            if(messageID == p.header.id && messageSrc == p.header.src) {
+            //is this the same message_sequence_number?
+            if(message_sequence_number == p.header.sequence_number
+                    && message_source_address == p.header.src) {
                 //yes it is - proceed
             } else {
                 //we should drop this packet
@@ -285,8 +294,8 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
         *src = p.header.src;
 
         //are there more fragments?
-        uint8_t moreFragments = (htons(p.header.ffragment_offset) & 0x8000) >> 15;
-        uint16_t fragmentOffset = (htons(p.header.ffragment_offset) & 0x7FFF);
+        uint8_t moreFragments = p.header.flags.is_fragment;
+        uint16_t fragmentOffset = htons(p.header.fragment_offset);
         if(moreFragments) {
             //is there room to copy into the buffer?
             if(fragmentOffset + MAX_DATA_LEN > len) {
@@ -302,7 +311,7 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
             }
         } else {
             //is there room to copy into the buffer?
-            if(fragmentOffset + (np.len - sizeof(Header)) > len) {
+            if(fragmentOffset + (np.len - sizeof(signbus_network_header_t)) > len) {
                 //this is too long
                 //just copy what we can and end
                 uint16_t remainder = len - fragmentOffset;
@@ -310,8 +319,8 @@ void get_message(uint8_t* data, uint32_t len, uint8_t* src) {
                 lengthReceived += remainder;
             } else {
                 //copy the rest of the packet
-                memcpy(data+fragmentOffset,p.data,(np.len - sizeof(Header)));
-                lengthReceived += np.len - sizeof(Header);
+                memcpy(data+fragmentOffset,p.data,(np.len - sizeof(signbus_network_header_t)));
+                lengthReceived += np.len - sizeof(signbus_network_header_t);
             }
 
             //no more fragments end

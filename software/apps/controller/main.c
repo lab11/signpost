@@ -15,6 +15,7 @@
 #include "gps.h"
 #include "i2c_master_slave.h"
 #include "minmea.h"
+#include "signpost_api.h"
 #include "signpost_energy.h"
 #include "timer.h"
 #include "tock.h"
@@ -185,6 +186,43 @@ static void get_energy (void) {
   }
 }
 
+static void energy_api_callback(uint8_t source_address,
+    signbus_frame_type_t frame_type, signbus_api_type_t api_type,
+    uint8_t message_type, size_t message_length, uint8_t* message) {
+  if (api_type != EnergyApiType) {
+    signpost_api_error_reply(source_address, api_type, message_type);
+    return;
+  }
+
+  if (frame_type == NotificationFrame) {
+    // XXX unexpected, drop
+  } else if (frame_type == CommandFrame) {
+    if (message_type == EnergyQueryMessage) {
+      signpost_energy_information_t info;
+      info.energy_limit_24h_mJ = 1;
+      info.energy_used_24h_mJ = 2;
+      info.current_limit_60s_mA = 3;
+      info.current_average_60s_mA = 4;
+      info.energy_limit_warning_threshold = 5;
+      info.energy_limit_critical_threshold = 6;
+
+      signpost_energy_query_reply(source_address, &info);
+    } else if (message_type == EnergyLevelWarning24hMessage) {
+      signpost_api_error_reply(source_address, api_type, message_type);
+    } else if (message_type == EnergyLevelCritical24hMessage) {
+      signpost_api_error_reply(source_address, api_type, message_type);
+    } else if (message_type == EnergyCurrentWarning60sMessage) {
+      signpost_api_error_reply(source_address, api_type, message_type);
+    } else {
+      signpost_api_error_reply(source_address, api_type, message_type);
+    }
+  } else if (frame_type == ResponseFrame) {
+    // XXX unexpected, drop
+  } else if (frame_type == ErrorFrame) {
+    // XXX unexpected, drop
+  }
+}
+
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
@@ -304,6 +342,11 @@ int main (void) {
   // Start timers to read energy and GPS
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
+
+  // Install hooks for the signpost APIs we implement
+  static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
+  static api_handler_t* handlers[] = {&energy_handler, NULL};
+  signpost_initialization_module_init(ModuleAddressController, handlers);
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);

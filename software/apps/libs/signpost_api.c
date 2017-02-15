@@ -12,6 +12,13 @@ static struct module_struct {
     uint8_t             keys[NUM_MODULES][ECDH_KEY_LENGTH];
 } module_info = {0};
 
+int signpost_api_error_reply(uint8_t destination_address,
+        signbus_api_type_t api_type, uint8_t message_type) {
+    uint8_t* key_FIXME = NULL;
+    return signbus_app_send(destination_address, key_FIXME,
+            ErrorFrame, api_type, message_type, 0, NULL);
+}
+
 /**************************************************************************/
 /* INCOMING MESSAGE / ASYNCHRONOUS DISPATCH                                */
 /**************************************************************************/
@@ -23,6 +30,7 @@ static struct module_struct {
 // To handle this, we have a single, shared receive mechanism that is always
 // issuing an asynchronous receive.
 
+static uint8_t               incoming_source_address;
 static signbus_frame_type_t  incoming_frame_type;
 static signbus_api_type_t    incoming_api_type;
 static uint8_t               incoming_message_type;
@@ -36,7 +44,9 @@ static void signpost_api_recv_callback(size_t length) {
         api_handler_t** handler = module_info.api_handlers;
         while (handler != NULL) {
             if ((*handler)->api_type == incoming_api_type) {
-                (*handler)->callback(length);
+                (*handler)->callback(incoming_source_address,
+                        incoming_frame_type, incoming_api_type,
+                        incoming_message_type, incoming_message_length, incoming_message);
                 break;
             }
             handler++;
@@ -55,7 +65,8 @@ static void signpost_api_recv_callback(size_t length) {
     }
 
     uint8_t* key_FIXME = NULL;
-    signbus_app_recv_async(signpost_api_recv_callback, key_FIXME,
+    signbus_app_recv_async(signpost_api_recv_callback,
+            key_FIXME, &incoming_source_address,
             &incoming_frame_type, &incoming_api_type,
             &incoming_message_type, &incoming_message_length, incoming_message);
 }
@@ -87,7 +98,8 @@ int signpost_initialization_module_init(
     // Begin listening for replies
     int rc;
     uint8_t* key_FIXME = NULL;
-    rc = signbus_app_recv_async(signpost_api_recv_callback, key_FIXME,
+    rc = signbus_app_recv_async(signpost_api_recv_callback,
+            key_FIXME, &incoming_source_address,
             &incoming_frame_type, &incoming_api_type,
             &incoming_message_type, &incoming_message_length, incoming_message);
     if (rc != 0) {
@@ -112,13 +124,6 @@ int signpost_initialization_module_init(
 /**************************************************************************/
 /* ENERGY API                                                             */
 /**************************************************************************/
-
-enum energy_message_type {
-    EnergyQueryMessage = 0,
-    EnergyLevelWarning24hMessage = 1,
-    EnergyLevelCritical24hMessage = 2,
-    EnergyCurrentWarning60sMessage = 3,
-};
 
 static bool energy_query_ready;
 static signbus_app_callback_t* energy_cb = NULL;
@@ -178,12 +183,20 @@ int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_a
     energy_cb_data = energy;
     energy_cb = cb;
 
-    uint8_t* key = NULL;
-    signbus_app_send(ModuleAddressController, key,
+    uint8_t* key_FIXME = NULL;
+    signbus_app_send(ModuleAddressController, key_FIXME,
             CommandFrame, EnergyApiType, EnergyQueryMessage,
             0, NULL);
 
     return SUCCESS;
+}
+
+int signpost_energy_query_reply(uint8_t destination_address,
+        signpost_energy_information_t* info) {
+    uint8_t* key_FIXME = NULL;
+    return signbus_app_send(destination_address, key_FIXME,
+            ResponseFrame, EnergyApiType, EnergyQueryMessage,
+            sizeof(signpost_energy_information_t), (uint8_t*) info);
 }
 
 /**************************************************************************/

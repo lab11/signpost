@@ -12,6 +12,7 @@
 typedef struct {
     uint8_t* src;
     uint8_t* len;
+    uint8_t* sender_address;
     uint8_t* key;
     signbus_frame_type_t* frame_type;
     signbus_api_type_t* api_type;
@@ -38,7 +39,7 @@ static int app_parse(uint8_t* to_parse, size_t len,
     return 0;
 }
 
-static void app_callback(size_t len) {
+static void app_layer_callback(size_t len) {
     app_parse(app_buf, len,
             cb_data.frame_type, cb_data.api_type, cb_data.message_type,
             cb_data.message_length, cb_data.message);
@@ -64,11 +65,10 @@ int signbus_app_send(uint8_t dest, uint8_t* key,
     return signbus_protocol_send(dest, key, payload, payload_length);
 }
 
-int signbus_app_recv(uint8_t* key,
+int signbus_app_recv(uint8_t* sender_address, uint8_t* key,
         signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
-    uint8_t src;
-    size_t len = signbus_io_recv(app_buf, BUFSIZE, &src);
+    size_t len = signbus_io_recv(app_buf, BUFSIZE, sender_address);
 
     len = signbus_protocol_recv(app_buf, BUFSIZE, len, key);
     app_parse(app_buf, len, frame_type, api_type, message_type, message_length, message);
@@ -76,9 +76,10 @@ int signbus_app_recv(uint8_t* key,
     return 0;
 }
 
-int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t* key,
+int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t* sender_address, uint8_t* key,
         signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
         size_t* message_length, uint8_t* message) {
+    cb_data.sender_address = sender_address;
     cb_data.key = key;
     cb_data.frame_type = frame_type;
     cb_data.api_type = api_type;
@@ -87,5 +88,5 @@ int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t* key,
     cb_data.message = message;
     cb_data.cb = cb;
 
-    return signbus_protocol_recv_async(app_callback, app_buf, BUFSIZE, key);
+    return signbus_protocol_recv_async(app_layer_callback, app_buf, BUFSIZE, key);
 }
