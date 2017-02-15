@@ -6,7 +6,6 @@
 #include <stdbool.h>
 
 #include "console.h"
-#include "module.h"
 #include "timer.h"
 #include "tock.h"
 
