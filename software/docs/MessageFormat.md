@@ -32,19 +32,26 @@ Net
         0                   1                   2                   3
         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       | Source        |0| Flags         | Length                      |
+       |Version| Flags | Source        |0| Length                      |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       | Offset                          | ... 
+       | Offset        x                 | ... 
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
+
+### Version
+
+The protocol version in use. Currently, the only valid version is version 1.
+
+### Flags
+
+  - Bit 4: Reserved
+  - Bit 5: Reserved
+  - Bit 6: Reserved
+  - Bit 7: IsFragment - 1 if message has more data, 0 if end of message
 
 ### Source
 
 The 7 bit source address of the device sending this message.
-
-### Flags
-
-XXX: TODO
 
 ### Length
 
