@@ -1,23 +1,23 @@
-#include <string.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <inttypes.h>
 
-#include "tock.h"
-#include "console.h"
-#include "fm25cl.h"
-#include "signpost_energy.h"
-#include "gpio_async.h"
-#include "i2c_master_slave.h"
-#include "timer.h"
 #include "app_watchdog.h"
 #include "bonus_timer.h"
+#include "console.h"
 #include "controller.h"
+#include "fm25cl.h"
+#include "gpio_async.h"
 #include "gps.h"
+#include "i2c_master_slave.h"
 #include "minmea.h"
+#include "signpost_energy.h"
+#include "timer.h"
+#include "tock.h"
 
 static void get_energy (void);
 static void gps_callback (gps_data_t* gps_data);
