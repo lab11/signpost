@@ -15,10 +15,9 @@
 extern "C" {
 #endif
 
-// Defines for testing. These are arbitrary addresses that should not conflict
-// with any existing modules, and gives meaningful names where they're used
-#define SIGNBUS_TEST_SENDER_I2C_ADDRESS   0xe0
-#define SIGNBUS_TEST_RECEIVER_I2C_ADDRESS 0xe2
+// Defines for testing. These are arbitrary addresses.
+#define SIGNBUS_TEST_SENDER_I2C_ADDRESS   0x32
+#define SIGNBUS_TEST_RECEIVER_I2C_ADDRESS 0x18
 
 //initialize
 void signbus_io_init(uint8_t src);

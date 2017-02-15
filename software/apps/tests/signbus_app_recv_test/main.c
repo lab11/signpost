@@ -56,7 +56,7 @@ int main(void) {
 
     printf("RECEIVER: Begin listening\n\n");
 
-    signbus_io_init(0x18);
+    signbus_io_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS);
     signbus_app_recv_async(cb, key,
             &frame_type, &api_type, &message_type,
             &message_length, message);

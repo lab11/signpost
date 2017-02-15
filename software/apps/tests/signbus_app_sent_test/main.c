@@ -26,8 +26,9 @@ int main(void) {
     while(1) {
         delay_ms(INTERVAL_IN_MS);
         memcpy(message, "hello there\0", strlen("hello there") + 1);
-        signbus_io_init(0x32);
-        signbus_app_send(0x18, key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
+        signbus_io_init(SIGNBUS_TEST_SENDER_I2C_ADDRESS);
+        signbus_app_send(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS,
+                key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
     }
 }
