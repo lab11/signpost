@@ -22,31 +22,45 @@ static signbus_frame_type_t frame_type;
 static signbus_api_type_t api_type;
 static uint8_t message_type;
 static size_t message_length;
-static uint8_t message[1024];
+static uint8_t* message;
+static uint8_t message_buffer[1024];
 
 static bool recent_message = false;
 
-static void cb(size_t length __attribute__((unused)) ) {
-    // Print data for this received message
-    printf("from: %02x, frame_type: %02x, api_type: %02x, message_type: %02x, message_len: %d, %02x\n",
-            sender_address, frame_type, api_type, message_type, message_length, message_length);
-    if ((frame_type == NotificationFrame) && (api_type == 0x00) && (message_type == 0x00)) {
-        printf("message: >>>%s<<<\n", message);
+static void cb(int len_or_rc) {
+    if (len_or_rc < 0) {
+        printf("Error rx'ing: %d\n", len_or_rc);
     } else {
-        printf("unknown message: 0x");
-        for (size_t i = 0; i < message_length; i++) {
-            printf("%02x", message[i]);
+        // Print data for this received message
+        printf("from: %02x, frame_type: %02x, api_type: %02x, message_type: %02x, message_len: %d, %02x\n",
+                sender_address, frame_type, api_type, message_type, message_length, message_length);
+        if ((frame_type == NotificationFrame) && (api_type == 0x00) && (message_type == 0x00)) {
+            printf("message: >>>%s<<<\n", message);
+        } else {
+            printf("unknown message: 0x");
+            for (size_t i = 0; i < message_length; i++) {
+                printf("%02x", message[i]);
+            }
+            printf("\n");
         }
-        printf("\n");
     }
 
     // Tickle our pseduo-watchdog
     recent_message = true;
 
     // Listen for another message (re-using the same buffers)
-    signbus_app_recv_async(cb, key, &sender_address,
-            &frame_type, &api_type, &message_type,
-            &message_length, message);
+    signbus_app_recv_async(
+            cb,
+            &sender_address,
+            key,
+            &frame_type,
+            &api_type,
+            &message_type,
+            &message_length,
+            &message,
+            1024,
+            message_buffer
+            );
 }
 
 
@@ -58,9 +72,18 @@ int main(void) {
     printf("RECEIVER: Begin listening\n\n");
 
     signbus_io_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS);
-    signbus_app_recv_async(cb, key, &sender_address,
-            &frame_type, &api_type, &message_type,
-            &message_length, message);
+    signbus_app_recv_async(
+            cb,
+            &sender_address,
+            key,
+            &frame_type,
+            &api_type,
+            &message_type,
+            &message_length,
+            &message,
+            1024,
+            message_buffer
+            );
     while(1) {
         delay_ms(INTERVAL_IN_MS);
         if (recent_message == false) {

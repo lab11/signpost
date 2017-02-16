@@ -108,11 +108,11 @@ static void i2c_master_slave_callback (
     void * callback_args __attribute__ ((unused))) {
 
     //for now only take writes
-    if(callback_type == CB_SLAVE_READ_REQUEST) {
+    if(callback_type == TOCK_I2C_CB_SLAVE_READ_REQUEST) {
         return;
-    } else if (callback_type == CB_SLAVE_READ_COMPLETE) {
+    } else if (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) {
         return;
-    } else if (callback_type == CB_SLAVE_WRITE) {
+    } else if (callback_type == TOCK_I2C_CB_SLAVE_WRITE) {
         switch(slave_write_buf[0]) {
         case 0x20:
             // controller

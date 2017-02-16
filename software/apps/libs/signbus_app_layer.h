@@ -4,39 +4,64 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// Although underlying layers designed to accept up to 2^15-1 byte messages,
-// that's too big for our systems and we need to set a limit. I thought 4KB
-// seemed reasonable
-#define BUFSIZE 4096
-
-typedef void (signbus_app_callback_t)(size_t);
-
 typedef enum signbus_frame_type {
-        NotificationFrame = 0,
-        CommandFrame = 1,
-        ResponseFrame = 2,
-        ErrorFrame = 3,
+    NotificationFrame = 0,
+    CommandFrame = 1,
+    ResponseFrame = 2,
+    ErrorFrame = 3,
 } signbus_frame_type_t;
 
 typedef enum signbus_api_type {
-        InitializationApiType = 1,
-        StorageApiType = 2,
-        NetworkingApiType = 3,
-        ProcessingApiType = 4,
-        EnergyApiType = 5,
-        TimeLocationApiType = 6,
-        HighestApiType = TimeLocationApiType,
+    InitializationApiType = 1,
+    StorageApiType = 2,
+    NetworkingApiType = 3,
+    ProcessingApiType = 4,
+    EnergyApiType = 5,
+    TimeLocationApiType = 6,
+    HighestApiType = TimeLocationApiType,
 } signbus_api_type_t;
 
-int signbus_app_send(uint8_t dest, uint8_t* key,
-        signbus_frame_type_t frame_type, signbus_api_type_t api_type, uint8_t message_type,
-        size_t message_length, uint8_t* message);
+/// Blocking method to send a message
+/// Returns < 0 on failure.
+int signbus_app_send(
+        uint8_t dest,                       // I2C address of destination
+        uint8_t* key,                       // Key for encryption (NULL for none)
+        signbus_frame_type_t frame_type,    // Frame Type
+        signbus_api_type_t api_type,        // Which API?
+        uint8_t message_type,               // Which API method?
+        size_t message_length,              // How many bytes from message param to send
+        uint8_t* message                    // Buffer to send from
+        );
 
+/// Blocking method to receive a message
+/// Returns < 0 on failure.
+int signbus_app_recv(
+        uint8_t *sender_address,            // I2C address of sender
+        uint8_t* key,                       // Key to decrypt message (NULL for none)
+        signbus_frame_type_t* frame_type,   // Frame Type
+        signbus_api_type_t* api_type,       // Which API?
+        uint8_t* message_type,              // Which API method?
+        size_t* message_length,             // How many bytes in message param are valid
+        uint8_t **message,                  // Pointer to beginnig of message
+        size_t recv_buflen,                 // Size of recv buffer
+        uint8_t* recv_buf                   // Buffer to recieve message into
+        );
 
-int signbus_app_recv(uint8_t *sender_address, uint8_t* key,
-        signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
-        size_t* message_length, uint8_t* message, size_t message_buflen);
+/// Parameter matches return of sync
+typedef void (signbus_app_callback_t)(int);
 
-int signbus_app_recv_async(signbus_app_callback_t cb, uint8_t *sender_address, uint8_t* key,
-        signbus_frame_type_t* frame_type, signbus_api_type_t* api_type, uint8_t* message_type,
-        size_t* message_length, uint8_t* message, size_t message_buflen);
+/// Non-blocking method to receive a message
+/// All parameters must remain valid until the callback method executes
+/// Returns < 0 on failure.
+int signbus_app_recv_async(
+        signbus_app_callback_t callback,    // Function to call when message received
+        uint8_t *sender_address,            // I2C address of sender
+        uint8_t* key,                       // Key to decrypt message (NULL for none)
+        signbus_frame_type_t* frame_type,   // Frame Type
+        signbus_api_type_t* api_type,       // Which API?
+        uint8_t* message_type,              // Which API method?
+        size_t* message_length,             // How many bytes in message param are valid
+        uint8_t **message,                  // Pointer to beginnig of message
+        size_t recv_buflen,                 // Size of recv buffer
+        uint8_t* recv_buf                   // Buffer to recieve message into
+        );
