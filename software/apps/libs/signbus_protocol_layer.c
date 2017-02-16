@@ -1,13 +1,10 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "mbedtls/md.h"
 #include "mbedtls/cipher.h"
-#include "mbedtls/entropy.h"
-#include "mbedtls/ctr_drbg.h"
 
-#include "rng.h"
+#include "signpost_entropy.h"
 #include "signbus_app_layer.h"
 #include "signbus_io_interface.h"
 #include "signbus_protocol_layer.h"
@@ -28,20 +25,6 @@ static const mbedtls_md_info_t * md_info;
 static mbedtls_md_context_t md_context;
 static const mbedtls_cipher_info_t * cipher_info;
 static mbedtls_cipher_context_t cipher_context;
-static mbedtls_entropy_context entropy_context;
-static mbedtls_ctr_drbg_context ctr_drbg_context;
-
-static int rng_wrapper(
-        void* data __attribute__ ((unused)),
-        uint8_t* out,
-        size_t len,
-        size_t* olen
-        ) {
-    int num = rng_sync(out, len, len);
-    if (num < 0) return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
-    *olen = num;
-    return 0;
-}
 
 static int cipher(
         const mbedtls_operation_t operation,
@@ -54,17 +37,8 @@ static int cipher(
 
     if (operation == MBEDTLS_ENCRYPT) {
         // Get 16 random bits for IV
-        // TODO make entropy a global resource
-        mbedtls_entropy_init(&entropy_context);
-        mbedtls_entropy_add_source(&entropy_context, rng_wrapper, NULL, 48, true);
-        uint8_t start[32];
-        rng_sync(start, 32, 32);
-        mbedtls_ctr_drbg_free(&ctr_drbg_context);
-        mbedtls_ctr_drbg_init(&ctr_drbg_context);
-        ret = mbedtls_ctr_drbg_seed(&ctr_drbg_context, mbedtls_entropy_func, &entropy_context, start, 32);
+        ret = signpost_entropy_rand(ivenc, MBEDTLS_MAX_IV_LENGTH);
         if (ret < 0) return ret;
-        mbedtls_ctr_drbg_set_prediction_resistance(&ctr_drbg_context, MBEDTLS_CTR_DRBG_PR_ON);
-        mbedtls_ctr_drbg_random(&ctr_drbg_context, ivenc, MBEDTLS_MAX_IV_LENGTH);
         // copy to iv, to send with encrypted content
         memcpy(iv, ivenc, MBEDTLS_MAX_IV_LENGTH);
     }
@@ -140,7 +114,7 @@ int signbus_protocol_send(
 
     // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
-        // encrypt buf and put into tempbuf
+        // encrypt buf
         size_t encrypted_buf_used;
         int rc;
         rc = cipher(MBEDTLS_ENCRYPT, key, iv,
