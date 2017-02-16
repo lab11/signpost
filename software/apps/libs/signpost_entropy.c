@@ -4,6 +4,7 @@
 #include "mbedtls/entropy.h"
 
 #include "rng.h"
+#include "signpost_entropy.h"
 
 static mbedtls_entropy_context entropy_context;
 static mbedtls_ctr_drbg_context ctr_drbg_context;
@@ -15,7 +16,7 @@ static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t
     return 0;
 }
 
-int signpost_entropy_init () {
+int signpost_entropy_init (void) {
     int ret;
     // random start seed
     uint8_t start[32];
