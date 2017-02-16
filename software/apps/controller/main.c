@@ -7,7 +7,6 @@
 #include <unistd.h>
 
 #include "app_watchdog.h"
-#include "bonus_timer.h"
 #include "console.h"
 #include "controller.h"
 #include "fm25cl.h"
@@ -19,6 +18,8 @@
 #include "signpost_energy.h"
 #include "timer.h"
 #include "tock.h"
+
+#include "bonus_timer.h"
 
 static void get_energy (void);
 static void gps_callback (gps_data_t* gps_data);
@@ -36,7 +37,7 @@ uint8_t fm25cl_write_buf[256];
 
 
 
-static void timer_callback (
+static void energy_timer_callback (
         int callback_type __attribute__ ((unused)),
         int pin_value __attribute__ ((unused)),
         int unused __attribute__ ((unused)),
@@ -45,7 +46,7 @@ static void timer_callback (
   get_energy();
 }
 
-static void bonus_timer_callback (
+static void gps_timer_callback (
         int callback_type __attribute__ ((unused)),
         int pin_value __attribute__ ((unused)),
         int unused __attribute__ ((unused)),
@@ -282,24 +283,15 @@ static void gps_callback (gps_data_t* gps_data) {
 int main (void) {
   putstr("[Controller] ** Main App **\n");
 
-  // Setup backplane by enabling the modules
-  controller_init_module_switches();
-  controller_all_modules_enable_power();
-  controller_all_modules_enable_i2c();
-  controller_all_modules_disable_usb();
-  // controller_all_modules_disable_i2c();
-  // controller_module_enable_i2c(MODULE5);
-  // controller_module_enable_i2c(MODULE0);
+  ///////////////////
+  // Local Operations
+  // ================
+  //
+  // Initializations that only touch the controller board
 
-  i2c_master_slave_set_slave_address(0x20);
-
-  // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
-  i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
-  // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
-  // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
-
-  putstr("Configuring FRAM\n");
   // Configure FRAM
+  // --------------
+  putstr("Configuring FRAM\n");
   fm25cl_set_read_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
@@ -322,31 +314,75 @@ int main (void) {
     fm25cl_write_sync(0, sizeof(controller_fram_t));
   }
 
-  putstr("Init'ing energy\n");
-  // Need to init the signpost energy library
-  signpost_energy_init();
 
-  putstr("Resetting energy\n");
-  // Reset all of the LTC2941s
-  signpost_energy_reset();
-
+  // Setup GPS
+  // ---------
   putstr("GPS\n");
-  // setup gps
   gps_init();
 
+
+  // Timers
+  // ------
   putstr("Starting timers\n");
-  // Need a timer
-  timer_subscribe(timer_callback, NULL);
-  bonus_timer_subscribe(bonus_timer_callback, NULL);
+  timer_subscribe(energy_timer_callback, NULL);
+  bonus_timer_subscribe(gps_timer_callback, NULL);
 
   // Start timers to read energy and GPS
   timer_start_repeating(10000);
   bonus_timer_start_repeating(27000);
 
+
+
+  //////////////////////////////////////
+  // Remote System Management Operations
+  //
+  // Initializations that over the system management bus that shouldn't affect
+  // signpost modules
+
+  // Energy Management
+  // -----------------
+
+  // Configure all the I2C selectors
+  putstr("Init'ing energy\n");
+  signpost_energy_init();
+
+  // Reset all of the LTC2941s
+  putstr("Resetting energy\n");
+  signpost_energy_reset();
+
+
+
+  /////////////////////////////
+  // Signpost Module Operations
+  //
+  // Initializations for the rest of the signpost
+
   // Install hooks for the signpost APIs we implement
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
   static api_handler_t* handlers[] = {&energy_handler, NULL};
   signpost_initialization_module_init(ModuleAddressController, handlers);
+
+  // Setup backplane by enabling the modules
+  controller_init_module_switches();
+  controller_all_modules_enable_power();
+  controller_all_modules_enable_i2c();
+  controller_all_modules_disable_usb();
+  // controller_all_modules_disable_i2c();
+  // controller_module_enable_i2c(MODULE5);
+  // controller_module_enable_i2c(MODULE0);
+
+
+  /////////
+  // Legacy
+  //
+  // Stuff that may not be long for this world
+
+  i2c_master_slave_set_slave_address(0x20);
+
+  // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
+  i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
+  // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
+  // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);
