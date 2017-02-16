@@ -33,15 +33,15 @@ int main (void) {
     //receive and echo those messages
     uint8_t src;
     uint16_t len;
-    len = signbus_io_recv(data,1024,&src);
+    len = signbus_io_recv(1024,data,&src);
     signbus_io_send(src,data,len);
 
-    len = signbus_io_recv(data,1024,&src);
+    len = signbus_io_recv(1024,data,&src);
     signbus_io_send(src,data,len);
 
-    len = signbus_io_recv(data,1024,&src);
+    len = signbus_io_recv(1024,data,&src);
     signbus_io_send(src,data,len);
 
-    len = signbus_io_recv(data,1024,&src);
+    len = signbus_io_recv(1024,data,&src);
     signbus_io_send(src,data,len);
 }

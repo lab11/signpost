@@ -14,6 +14,7 @@
 
 int main (void) {
     uint8_t data[1024];
+    uint8_t src;
 
     signbus_io_init(0x25);
     i2c_master_slave_listen();
@@ -26,7 +27,7 @@ int main (void) {
     //a short message
     delay_ms(1000);
     signbus_io_send(0x19, data, 25);
-    signbus_io_recv(data,1024,data);
+    signbus_io_recv(1024, data, &src);
 
     //a longer message
     delay_ms(1000);

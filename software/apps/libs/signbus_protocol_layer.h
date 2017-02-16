@@ -6,35 +6,57 @@
 #define SHA256_LEN 32
 #define ECDH_KEY_LENGTH 32
 
-/* protocol_send
- * Send a buffer through the protocol layer. Protocol layer calls message_send
- * to send buffer to dest.
- *   dest: i2c address of destination.
- *   key: buffer holding ECDH_KEY_LENGTH size key, if desired. If not NULL,
- *      protocol layer will encrypt with AES256-CTR and HMAC. If NULL, protocol
- *      layer will simply HASH contents.  buf: contents to send
- *   len: length of data to send
- *
- *   returns 0 on success, negative on failure.
- */
-int signbus_protocol_send(uint8_t dest, uint8_t* key,
-                  uint8_t *buf, size_t len);
+/// Send a buffer through the protocol layer.
+/// The protocol layer will encrypt the payload using the provided
+/// ECDH_KEY_LENGTH key with AES256-CTR and HMAC. If no key is provided,
+/// the payload with simply be HASHed.
+///
+/// Returns number of bytes sent, or < 0 on failure
+int signbus_protocol_send(
+    uint8_t dest,                     // Address to send to
+    uint8_t* key,                     // Key to encrypt with or NULL for clear
+    uint8_t* buf,                     // Buffer to send from
+    size_t len                        // Number of bytes to send
+    );
 
-/* protocol_recv
- * Receive buffer through the protocol layer.
- *   inbuf: raw receive buffer.
- *   inlen: length of receive data.
- *   key: buffer holding ECDH_KEY_LENGTH size key, if desired. If not NULL,
- *      protocol layer will check HMAC and decrypt with AES256-CTR. If NULL, protocol
- *      layer will simply check HASH. Must be the same key used to encrypt.
- *   appdata: buffer to hold decrypted/verified app data.
- *   applen: length of returned app data.
- *
- *   returns length of decrypted/authenticated buffer on success, negative on
- *   failure.
- */
-int signbus_protocol_recv(uint8_t* buf, size_t buflen,
-                  size_t len, uint8_t* key);
+/// Receive buffer through the protocol layer.
+///  key: buffer holding ECDH_KEY_LENGTH size key, if desired. If not NULL,
+///     protocol layer will check HMAC and decrypt with AES256-CTR. If NULL, protocol
+///     layer will simply check HASH. Must be the same key used to encrypt.
+/// Returns length of decrypted/authenticated buffer on success, < 0 on error.
+int signbus_protocol_recv(
+    uint8_t *sender_address,          // I2C address of sender
+    uint8_t* key,                     // Key to decrypt with or NULL for clear
+    size_t recv_buflen,               // Buffer length
+    uint8_t* recv_buf                 // Buffer to recieve into
+    );
 
-int signbus_protocol_recv_async(signbus_app_callback_t cb,
-                  uint8_t* buf, size_t buflen, uint8_t* key);
+/// Set up async buffer.
+/// For synchronous receives, all necessary buffers will be allocated on the
+/// call stack. Asynchronous recieves require an additional buffer to store
+/// the raw encrypted payload. This buffer should be a little bit larger
+/// (minimally 16 + 16 + 32 + 4 = 68 bytes) than the largest message you
+/// expected to recieve to account for protocol overhead.
+///
+/// XXX: I'm not sure I love this. I do like that it gets rid of the giant
+///      buffers for apps that don't use them. I don't love that apps have
+///      to call this magic function in the protocol layer to get things to
+///      work. That's an interface failure right there. It's okay for now,
+///      as the only things that will see this are the signpost_api demux
+///      and the specialized test app, but something should be done.
+void signbus_protocol_setup_async(
+    uint8_t* buf,                     // Buffer to write to. NULL to disable
+    size_t   buflen                   // Lenght of buf in bytes
+    );
+
+/// async callback
+/// len_or_rc is number of bytes received of < 0 on error.
+typedef void (*signbus_protocol_callback_t)(int len_or_rc);
+
+int signbus_protocol_recv_async(
+    signbus_protocol_callback_t cb,   // Called when recv operation completes
+    uint8_t* sender_address,          // I2C address of sender
+    uint8_t* key,                     // Key to decrypt with or NULL for clear
+    size_t recv_buflen,               // Buffer length
+    uint8_t* recv_buf                 // Buffer to recieve into
+    );

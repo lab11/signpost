@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "rng.h"
 #include "signbus_app_layer.h"
+#include "signbus_protocol_layer.h"
 #include "signbus_io_interface.h"
 
 #define INTERVAL_IN_MS 2000
@@ -24,6 +25,8 @@ static uint8_t message_type;
 static size_t message_length;
 static uint8_t* message;
 static uint8_t message_buffer[1024];
+
+static uint8_t protocol_buffer[1024];
 
 static bool recent_message = false;
 
@@ -72,6 +75,7 @@ int main(void) {
     printf("RECEIVER: Begin listening\n\n");
 
     signbus_io_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS);
+    signbus_protocol_setup_async(protocol_buffer, 1024);
     signbus_app_recv_async(
             cb,
             &sender_address,

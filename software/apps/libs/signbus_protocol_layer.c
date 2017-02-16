@@ -14,15 +14,16 @@
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
-typedef struct {
-    uint8_t* buf;
-    size_t buflen;
-    uint8_t* key;
-    uint8_t src;
-    signbus_app_callback_t* cb;
-} prot_cb_data;
+/// Protocol Layer Operation
+///
+/// Encryption/Decryption routines require source and destination buffers,
+/// so some copying is unavoidable. For both sending and receiving, we make
+/// temporary buffer that matches or slightly exceeds the request size's
+/// buffer. When sending, use the request buffer as cleartext and our buffer
+/// for ciphertext, passing our buffer to the next layer. When receiving,
+/// receive into our buffer, so that the decryption routine writes into the
+/// final destination buffer.
 
-static prot_cb_data cb_data;
 static const mbedtls_md_info_t * md_info;
 static mbedtls_md_context_t md_context;
 static const mbedtls_cipher_info_t * cipher_info;
@@ -30,21 +31,24 @@ static mbedtls_cipher_context_t cipher_context;
 static mbedtls_entropy_context entropy_context;
 static mbedtls_ctr_drbg_context ctr_drbg_context;
 
-static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, size_t* olen) {
+static int rng_wrapper(
+        void* data __attribute__ ((unused)),
+        uint8_t* out,
+        size_t len,
+        size_t* olen
+        ) {
     int num = rng_sync(out, len, len);
     if (num < 0) return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
     *olen = num;
     return 0;
 }
 
-static void protocol_cb(size_t len) {
-    cb_data.cb(signbus_protocol_recv(cb_data.buf, cb_data.buflen, len, cb_data.key));
-}
-
-static int cipher(const mbedtls_operation_t operation,
+static int cipher(
+        const mbedtls_operation_t operation,
         uint8_t* key, uint8_t* iv,
         uint8_t* in, size_t inlen,
-        uint8_t* out, size_t* olen) {
+        uint8_t* out, size_t* olen
+        ) {
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
 
@@ -114,79 +118,183 @@ static int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out)
     return ret;
 }
 
-int signbus_protocol_send(uint8_t dest, uint8_t* key,
-                  uint8_t *buf, size_t len) {
+int signbus_protocol_send(
+        uint8_t dest,
+        uint8_t* key,
+        uint8_t* clear_buf,
+        size_t clear_buflen
+        ) {
+    // Needs to be multiple of 16
+    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0));
 
-    // len is too large
-    if(len > BUFSIZE) return -1;
-    // tempbuf stores encrypted buf, needs to be multiple of 16
-    uint8_t tempbuf[16*(len/16+(len%16 != 0))];
+    // Also allocate space for hash and IV
+    const size_t protocol_buflen =
+        MBEDTLS_MAX_IV_LENGTH + encrypted_buflen + SHA256_LEN;
+
     // sendbuf is what is sent to message layer, needs to fit hash and IV
-    uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
-    uint8_t iv[MBEDTLS_MAX_IV_LENGTH];
-    size_t olen=0;
-    // keep track of free location in buffer
-    size_t size=0;
+    //uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
+    uint8_t protocol_buf[protocol_buflen];
+    uint8_t* iv = protocol_buf;
+    uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
+    size_t protocol_buf_used = MBEDTLS_MAX_IV_LENGTH;
 
     // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
         // encrypt buf and put into tempbuf
-        cipher(MBEDTLS_ENCRYPT, key, iv, buf, len, tempbuf, &olen);
-        // put iv in front of sendbuf
-        memcpy(sendbuf, iv, MBEDTLS_MAX_IV_LENGTH);
-        size+=MBEDTLS_MAX_IV_LENGTH;
-        // copy encrypted content to sendbuf after iv
-        memcpy(sendbuf+size, tempbuf, olen);
-        size+=olen;
-        // hmac over iv and content
-        message_digest(key, sendbuf, size, sendbuf+size);
-        size+=SHA256_LEN;
+        size_t encrypted_buf_used;
+        int rc;
+        rc = cipher(MBEDTLS_ENCRYPT, key, iv,
+                clear_buf, clear_buflen,
+                encrypted_buf, &encrypted_buf_used);
+        if (rc < 0) return rc;
+
+        protocol_buf_used += encrypted_buf_used;
     }
     // otherwise just hash over content
     else {
-        memcpy(sendbuf, buf, len);
-        size += len;
-        message_digest(key, sendbuf, len, sendbuf+len);
-        size += SHA256_LEN;
+        memcpy(protocol_buf, clear_buf, clear_buflen);
+        protocol_buf_used += clear_buflen;
     }
+
+    // hmac over current protocol payload
+    uint8_t* hmac = protocol_buf + protocol_buf_used;
+    message_digest(key, protocol_buf, protocol_buf_used, hmac);
+    protocol_buf_used += SHA256_LEN;
 
     // pass buffer to message
     // expects message_init to have been called by module_init
-    return signbus_io_send(dest, sendbuf, size);
+    return signbus_io_send(dest, protocol_buf, protocol_buf_used);
 }
 
-int signbus_protocol_recv(uint8_t* buf, size_t buflen, size_t len, uint8_t* key) {
-    uint8_t h[SHA256_LEN];
-    uint8_t temp[len];
-    int result = 0;
-    size_t olen = 0;
 
-    if (len > buflen || len < SHA256_LEN) return -1;
-    // check hmac/hash
-    message_digest(key, buf-SHA256_LEN, SHA256_LEN, h);
+/// Decrypt a buffer
+/// Returns number of cleartext payload bytes or < 0 if error.
+static int protocol_encrypted_buffer_received(
+        uint8_t* key,
+        uint8_t* protocol_buf,
+        size_t   protocol_buflen,
+        uint8_t* output_buf,
+        size_t   output_buflen
+        ) {
+    // Basic sanity check
+    if (protocol_buflen < (MBEDTLS_MAX_IV_LENGTH + SHA256_LEN)) {
+        // TODO: Meaningful return codes. Let's at least try to be unique
+        return -93;
+    }
+
+    // Check HMAC or hash
+    uint8_t hmac_or_hash[SHA256_LEN];
+    message_digest(key, protocol_buf, protocol_buflen-SHA256_LEN, hmac_or_hash);
+    if (memcmp(hmac_or_hash, protocol_buf+(protocol_buflen-SHA256_LEN), SHA256_LEN) != 0) {
+        // TODO: Meaningful return codes. Let's at least try to be unique
+        return -94;
+    }
 
     // decrypt if needed
+    size_t clear_len;
+
     if(key != NULL) {
         _Static_assert(MBEDTLS_MAX_IV_LENGTH == 16, "iv len in proto match");
         // First 16 bytes in buffer for protocol layer are IV, then the payload
-        result = cipher(MBEDTLS_DECRYPT,
-                key, buf,
-                buf+MBEDTLS_MAX_IV_LENGTH, len-SHA256_LEN-MBEDTLS_MAX_IV_LENGTH,
-                temp, &olen);
+
+        uint8_t* iv = protocol_buf;
+        uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
+        const size_t encrypted_buflen =
+            protocol_buflen - MBEDTLS_MAX_IV_LENGTH - SHA256_LEN;
+        if (output_buflen < encrypted_buflen) {
+            // This size restriction comes from mbed
+            // TODO: Meaningful return codes. Let's at least try to be unique
+            return -95;
+        }
+        int rc;
+        rc = cipher(MBEDTLS_DECRYPT,
+                key, iv,
+                encrypted_buf, encrypted_buflen,
+                output_buf, &clear_len);
+        if (rc < 0) return rc;
+    } else {
+        clear_len = protocol_buflen - SHA256_LEN;
+        if (output_buflen < clear_len) {
+            // TODO: Meaningful return codes. Let's at least try to be unique
+            return -96;
+        }
+        memcpy(output_buf, protocol_buf, clear_len);
     }
-    if (result < 0) return result;
 
-    memcpy(buf, temp, olen);
-
-    return olen;
+    return clear_len;
 }
 
-int signbus_protocol_recv_async(signbus_app_callback_t cb,
-        uint8_t* buf, size_t buflen, uint8_t* key) {
-    cb_data.buf = buf;
-    cb_data.buflen = buflen;
-    cb_data.key = key;
-    cb_data.cb = cb;
 
-    return signbus_io_recv_async(protocol_cb, buf, buflen, &cb_data.src);
+int signbus_protocol_recv(
+        uint8_t* key,
+        uint8_t* sender_address,
+        size_t clear_buflen,
+        uint8_t* clear_buf
+        ) {
+    // Assumption: The user does not pass a buffer smaller than the message
+    // they plan to receive. We need a slightly bigger one to account for
+    // encryption block size, protocol IV and HMAC overhead. The math is the
+    // same as the send path.
+
+    // Needs to be multiple of 16
+    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0));
+
+    // Also allocate space for hash and IV
+    const size_t protocol_buflen =
+        MBEDTLS_MAX_IV_LENGTH + encrypted_buflen + SHA256_LEN;
+
+    uint8_t protocol_buf[protocol_buflen];
+
+    int len_or_rc = signbus_io_recv(protocol_buflen, protocol_buf, sender_address);
+    if (len_or_rc < 0) return len_or_rc;
+
+    return protocol_encrypted_buffer_received(key,
+            protocol_buf, len_or_rc,
+            clear_buf, clear_buflen);
+}
+
+typedef struct {
+    signbus_app_callback_t* cb;
+    uint8_t* key;
+    size_t buflen;
+    uint8_t* buf;
+} prot_cb_data;
+
+static prot_cb_data cb_data;
+
+static uint8_t* async_buf = NULL;
+static size_t async_buflen = 0;
+
+void signbus_protocol_setup_async(uint8_t* buf, size_t buflen) {
+    async_buf = buf;
+    async_buflen = buflen;
+}
+
+static void protocol_async_callback(int len_or_rc) {
+    if (len_or_rc < 0) return cb_data.cb(len_or_rc);
+
+    len_or_rc = protocol_encrypted_buffer_received(cb_data.key,
+            async_buf, len_or_rc,
+            cb_data.buf, cb_data.buflen);
+    cb_data.cb(len_or_rc);
+}
+
+int signbus_protocol_recv_async(
+        signbus_app_callback_t cb,
+        uint8_t* sender_address,
+        uint8_t* key,
+        size_t buflen,
+        uint8_t* buf
+        ) {
+    if (async_buf == NULL) {
+        // Need to call signbus_protocol_setup_async first
+        // TODO: Meaningful return codes. Let's at least try to be unique
+        return -97;
+    }
+    cb_data.cb = cb;
+    cb_data.key = key;
+    cb_data.buflen = buflen;
+    cb_data.buf = buf;
+
+    return signbus_io_recv_async(protocol_async_callback, buflen, buf, sender_address);
 }

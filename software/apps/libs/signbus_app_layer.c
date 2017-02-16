@@ -61,10 +61,9 @@ int signbus_app_recv(
         size_t recv_buflen,
         uint8_t* recv_buf
         ) {
-    int len_or_rc = signbus_io_recv(recv_buflen, recv_buf, sender_address);
-    if (len_or_rc < 0) return len_or_rc;
+    int len_or_rc;
 
-    len_or_rc = signbus_protocol_recv(recv_buf, recv_buflen, len_or_rc, key);
+    len_or_rc = signbus_protocol_recv(sender_address, key, recv_buflen, recv_buf);
     if (len_or_rc < 0) return len_or_rc;
 
     len_or_rc = app_parse(recv_buf, recv_buflen, frame_type, api_type,
@@ -104,5 +103,6 @@ int signbus_app_recv_async(
     cb_data.recv_buflen = recv_buflen;
     cb_data.recv_buf = recv_buf;
 
-    return signbus_protocol_recv_async(app_layer_callback, recv_buf, recv_buflen, key);
+    return signbus_protocol_recv_async(app_layer_callback,
+            sender_address, key, recv_buflen, recv_buf);
 }

@@ -30,23 +30,34 @@ int signpost_api_error_reply(uint8_t destination_address,
 // To handle this, we have a single, shared receive mechanism that is always
 // issuing an asynchronous receive.
 
+#define INCOMING_MESSAGE_BUFFER_LENGTH 1024
 static uint8_t               incoming_source_address;
 static signbus_frame_type_t  incoming_frame_type;
 static signbus_api_type_t    incoming_api_type;
 static uint8_t               incoming_message_type;
 static size_t                incoming_message_length;
-static uint8_t               incoming_message[1024];
+static uint8_t*              incoming_message;
+static uint8_t               incoming_message_buffer[INCOMING_MESSAGE_BUFFER_LENGTH];
+
+// See comment in protocol_layer.h
+static uint8_t               incoming_protocol_buffer[INCOMING_MESSAGE_BUFFER_LENGTH];
 
 static signbus_app_callback_t* incoming_active_callback = NULL;
 
-static void signpost_api_recv_callback(size_t length) {
+static void signpost_api_recv_callback(int len_or_rc) {
+    if (len_or_rc < 0) {
+        printf("%s:%d It's all fubar?\n", __FILE__, __LINE__);
+        // XXX trip watchdog reset or s/t?
+        return;
+    }
+
     if ( (incoming_frame_type == NotificationFrame) || (incoming_frame_type == CommandFrame) ) {
         api_handler_t** handler = module_info.api_handlers;
         while (handler != NULL) {
             if ((*handler)->api_type == incoming_api_type) {
                 (*handler)->callback(incoming_source_address,
-                        incoming_frame_type, incoming_api_type,
-                        incoming_message_type, incoming_message_length, incoming_message);
+                        incoming_frame_type, incoming_api_type, incoming_message_type,
+                        incoming_message_length, incoming_message);
                 break;
             }
             handler++;
@@ -56,7 +67,7 @@ static void signpost_api_recv_callback(size_t length) {
         }
     } else if ( (incoming_frame_type == ResponseFrame) || (incoming_frame_type == ErrorFrame) ) {
         if (incoming_active_callback != NULL) {
-            incoming_active_callback(length);
+            incoming_active_callback(len_or_rc);
         } else {
             printf("Warn: Unsolicited response/error. Dropping\n");
         }
@@ -65,10 +76,14 @@ static void signpost_api_recv_callback(size_t length) {
     }
 
     uint8_t* key_FIXME = NULL;
-    signbus_app_recv_async(signpost_api_recv_callback,
+    int rc = signbus_app_recv_async(signpost_api_recv_callback,
             key_FIXME, &incoming_source_address,
             &incoming_frame_type, &incoming_api_type,
-            &incoming_message_type, &incoming_message_length, incoming_message);
+            &incoming_message_type, &incoming_message_length, &incoming_message,
+            INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
+    if (rc != 0) {
+        printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
+    }
 }
 
 
@@ -96,12 +111,15 @@ int signpost_initialization_module_init(
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
 
     // Begin listening for replies
+    // See comment in protocol_layer.h
+    signbus_protocol_setup_async(incoming_protocol_buffer, INCOMING_MESSAGE_BUFFER_LENGTH);
     int rc;
     uint8_t* key_FIXME = NULL;
     rc = signbus_app_recv_async(signpost_api_recv_callback,
             key_FIXME, &incoming_source_address,
             &incoming_frame_type, &incoming_api_type,
-            &incoming_message_type, &incoming_message_length, incoming_message);
+            &incoming_message_type, &incoming_message_length, &incoming_message,
+            INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
     if (rc != 0) {
         printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
     }
@@ -126,13 +144,13 @@ int signpost_initialization_module_init(
 /**************************************************************************/
 
 static bool energy_query_ready;
+static int  energy_query_result;
 static signbus_app_callback_t* energy_cb = NULL;
 static signpost_energy_information_t* energy_cb_data = NULL;
 
-static void energy_query_sync_callback(
-        size_t length __attribute__((unused))
-        ) {
+static void energy_query_sync_callback(int result) {
     energy_query_ready = true;
+    energy_query_result = result;
 }
 
 int signpost_energy_query(signpost_energy_information_t* energy) {
@@ -147,18 +165,16 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
 
     yield_for(&energy_query_ready);
 
-    return SUCCESS;
+    return energy_query_result;
 }
 
-static void energy_query_async_callback(
-        size_t length
-        ) {
-    if (length != sizeof(signpost_energy_information_t)) {
+static void energy_query_async_callback(int len_or_rc) {
+    if (len_or_rc != sizeof(signpost_energy_information_t)) {
         printf("%s:%d - Error: bad len, got %d, want %d\n",
-                __FILE__, __LINE__, length, sizeof(signpost_energy_information_t));
+                __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));
     } else {
         if (energy_cb_data != NULL) {
-            memcpy(energy_cb_data, incoming_message, length);
+            memcpy(energy_cb_data, incoming_message, len_or_rc);
         }
         energy_cb_data = NULL;
     }
@@ -167,11 +183,14 @@ static void energy_query_async_callback(
         // allow recursion
         signbus_app_callback_t* temp = energy_cb;
         energy_cb = NULL;
-        temp(length);
+        temp(len_or_rc);
     }
 }
 
-int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_app_callback_t cb) {
+int signpost_energy_query_async(
+        signpost_energy_information_t* energy,
+        signbus_app_callback_t cb
+        ) {
     if (incoming_active_callback != NULL) {
         // XXX: Consider multiplexing based on API
         return -1;
