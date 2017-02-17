@@ -17,7 +17,15 @@
 
 #define INTERVAL_IN_MS 2000
 
+
 static uint8_t key[32];
+static uint8_t* addr_to_key(uint8_t addr __attribute__((unused)) ) {
+    memset(key, 0, 32);
+    strcpy((char *) key, "this is a key");
+    return key;
+}
+
+
 
 static uint8_t sender_address;
 static signbus_frame_type_t frame_type;
@@ -38,7 +46,7 @@ static void cb(int len_or_rc) {
         // Print data for this received message
         printf("from: %02x, frame_type: %02x, api_type: %02x, message_type: %02x, message_len: %d, %02x\n",
                 sender_address, frame_type, api_type, message_type, message_length, message_length);
-        if ((frame_type == NotificationFrame) && (api_type == 0x00) && (message_type == 0x00)) {
+        if ((frame_type == NotificationFrame) && (api_type == 0xde) && (message_type == 0xad)) {
             printf("message: >>>%s<<<\n", message);
         } else {
             printf("unknown message: 0x");
@@ -56,7 +64,7 @@ static void cb(int len_or_rc) {
     signbus_app_recv_async(
             cb,
             &sender_address,
-            key,
+            addr_to_key,
             &frame_type,
             &api_type,
             &message_type,
@@ -69,8 +77,6 @@ static void cb(int len_or_rc) {
 
 
 int main(void) {
-    memset(key, 0, 32);
-    strcpy((char *) key, "this is a key");
     printf("\n###\n\n\ntest app stack\n");
 
     printf("RECEIVER: Begin listening\n\n");
@@ -81,7 +87,7 @@ int main(void) {
     signbus_app_recv_async(
             cb,
             &sender_address,
-            key,
+            addr_to_key,
             &frame_type,
             &api_type,
             &message_type,

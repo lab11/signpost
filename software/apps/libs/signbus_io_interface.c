@@ -135,8 +135,8 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
     SIGNBUS_DEBUG("dest %02x data %p len %d\n", dest, data, len);
 
     sequence_number++;
-    Packet p;
-    uint32_t toSend = len;
+    Packet p = {0};
+    size_t toSend = len;
 
     //calculate the number of packets we will have to send
     uint16_t numPackets;
@@ -192,6 +192,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend -= MAX_DATA_LEN;
         } else {
+            SIGNBUS_DEBUG_DUMP_BUF(master_write_buf, sizeof(signbus_network_header_t)+toSend);
             i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend = 0;
@@ -210,7 +211,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
 // For async invocation, the return value is passed as the callback argument.
 static int get_message(uint8_t* data, size_t len, uint8_t* src) {
     uint8_t done = 0;
-    uint32_t lengthReceived = 0;
+    size_t lengthReceived = 0;
     uint16_t message_sequence_number;
     uint8_t message_source_address;
 
@@ -284,6 +285,8 @@ static int get_message(uint8_t* data, size_t len, uint8_t* src) {
             done = 1;
         }
     }
+
+    SIGNBUS_DEBUG_DUMP_BUF(data, lengthReceived);
 
     if (async_callback != NULL) {
         // allow recursion

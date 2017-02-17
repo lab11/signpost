@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -8,17 +9,45 @@
 #include "tock.h"
 
 static struct module_struct {
-    uint8_t             i2c_address;
-    api_handler_t**     api_handlers;
-    int8_t              api_type_to_module_address[HighestApiType+1];
-    uint8_t             keys[NUM_MODULES][ECDH_KEY_LENGTH];
-} module_info = {0};
+    uint8_t                 i2c_address;
+    api_handler_t**         api_handlers;
+    int8_t                  api_type_to_module_address[HighestApiType+1];
+    uint8_t                 i2c_address_mods[NUM_MODULES];
+    bool                    haskey[NUM_MODULES][ECDH_KEY_LENGTH];
+    uint8_t                 keys[NUM_MODULES][ECDH_KEY_LENGTH];
+} module_info = {.i2c_address_mods = {ModuleAddressController, ModuleAddressStorage, ModuleAddressRadio}};
+
+
+uint8_t* signpost_api_addr_to_key(uint8_t addr);
+
+// Translate module address to pairwise key
+uint8_t* signpost_api_addr_to_key(uint8_t addr) {
+    for (size_t i = 0; i < NUM_MODULES; i++) {
+        if (addr == module_info.i2c_address_mods[i] && module_info.haskey[i]) {
+            return module_info.keys[i];
+        }
+    }
+
+    return NULL;
+}
 
 int signpost_api_error_reply(uint8_t destination_address,
         signbus_api_type_t api_type, uint8_t message_type) {
-    uint8_t* key_FIXME = NULL;
-    return signbus_app_send(destination_address, key_FIXME,
+    return signpost_api_send(destination_address,
             ErrorFrame, api_type, message_type, 0, NULL);
+}
+
+int signpost_api_send(uint8_t destination_address,
+                      signbus_frame_type_t frame_type,
+                      signbus_api_type_t api_type,
+                      uint8_t message_type,
+                      size_t message_length,
+                      uint8_t* message) {
+
+    uint8_t* key = signpost_api_addr_to_key(destination_address);
+
+    return signbus_app_send(destination_address, key, frame_type, api_type,
+                            message_type, message_length, message);
 }
 
 /**************************************************************************/
@@ -77,9 +106,8 @@ static void signpost_api_recv_callback(int len_or_rc) {
         printf("Invalid frame type: %d. Dropping message\n", incoming_frame_type);
     }
 
-    uint8_t* key_FIXME = NULL;
     int rc = signbus_app_recv_async(signpost_api_recv_callback,
-            key_FIXME, &incoming_source_address,
+            &incoming_source_address, signpost_api_addr_to_key,
             &incoming_frame_type, &incoming_api_type,
             &incoming_message_type, &incoming_message_length, &incoming_message,
             INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
@@ -108,7 +136,6 @@ int signpost_initialization_module_init(
     // See comment in protocol_layer.h
     signbus_protocol_setup_async(incoming_protocol_buffer, INCOMING_MESSAGE_BUFFER_LENGTH);
 
-    //TODO: Actually contact the controller
     for (int i=0; i < NUM_MODULES; i++) {
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
     }
@@ -124,10 +151,12 @@ int signpost_initialization_module_init(
     module_info.api_type_to_module_address[EnergyApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
 
+    //TODO: Actually contact the controller
+
     // Begin listening for replies
-    uint8_t* key_FIXME = NULL;
+    // See comment in protocol_layer.h
     rc = signbus_app_recv_async(signpost_api_recv_callback,
-            key_FIXME, &incoming_source_address,
+            &incoming_source_address, signpost_api_addr_to_key,
             &incoming_frame_type, &incoming_api_type,
             &incoming_message_type, &incoming_message_length, &incoming_message,
             INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
@@ -286,8 +315,8 @@ int signpost_energy_query_async(
     energy_cb_data = energy;
     energy_cb = cb;
 
-    uint8_t* key_FIXME = NULL;
-    signbus_app_send(ModuleAddressController, key_FIXME,
+    signbus_app_send(ModuleAddressController,
+            signpost_api_addr_to_key(ModuleAddressController),
             CommandFrame, EnergyApiType, EnergyQueryMessage,
             0, NULL);
 
@@ -296,8 +325,8 @@ int signpost_energy_query_async(
 
 int signpost_energy_query_reply(uint8_t destination_address,
         signpost_energy_information_t* info) {
-    uint8_t* key_FIXME = NULL;
-    return signbus_app_send(destination_address, key_FIXME,
+    return signbus_app_send(destination_address,
+            signpost_api_addr_to_key(destination_address),
             ResponseFrame, EnergyApiType, EnergyQueryMessage,
             sizeof(signpost_energy_information_t), (uint8_t*) info);
 }

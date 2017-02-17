@@ -114,14 +114,16 @@ int signbus_protocol_send(
     // sendbuf is what is sent to message layer, needs to fit hash and IV
     //uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
     uint8_t protocol_buf[protocol_buflen];
-    uint8_t* iv = protocol_buf;
-    uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
-    size_t protocol_buf_used = MBEDTLS_MAX_IV_LENGTH;
+    size_t protocol_buf_used = 0;
 
     // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
+        uint8_t* iv = protocol_buf;
+        protocol_buf_used += MBEDTLS_MAX_IV_LENGTH;
+
         // encrypt buf
         size_t encrypted_buf_used;
+        uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
         int rc;
         rc = cipher(MBEDTLS_ENCRYPT, key, iv,
                 clear_buf, clear_buflen,
@@ -156,8 +158,13 @@ static int protocol_encrypted_buffer_received(
         uint8_t* output_buf,
         size_t   output_buflen
         ) {
+    SIGNBUS_DEBUG("key %p proto buf %p len %u ouput buf %p len %u\n",
+            key, protocol_buf, protocol_buflen, output_buf, output_buflen);
+    SIGNBUS_DEBUG_DUMP_BUF(protocol_buf, protocol_buflen);
+
     // Basic sanity check
-    if (protocol_buflen < (MBEDTLS_MAX_IV_LENGTH + SHA256_LEN)) {
+    size_t sane_length = SHA256_LEN + (key == NULL) ? 0 : MBEDTLS_MAX_IV_LENGTH;
+    if (protocol_buflen < sane_length) {
         // TODO: Meaningful return codes. Let's at least try to be unique
         return -93;
     }
@@ -201,13 +208,14 @@ static int protocol_encrypted_buffer_received(
         memcpy(output_buf, protocol_buf, clear_len);
     }
 
+    SIGNBUS_DEBUG_DUMP_BUF(output_buf, clear_len);
     return clear_len;
 }
 
 
 int signbus_protocol_recv(
-        uint8_t* key,
         uint8_t* sender_address,
+        uint8_t* (*addr_to_key)(uint8_t),
         size_t clear_buflen,
         uint8_t* clear_buf
         ) {
@@ -228,6 +236,8 @@ int signbus_protocol_recv(
     int len_or_rc = signbus_io_recv(protocol_buflen, protocol_buf, sender_address);
     if (len_or_rc < 0) return len_or_rc;
 
+    uint8_t* key = (addr_to_key == NULL) ? NULL : addr_to_key(*sender_address);
+
     return protocol_encrypted_buffer_received(key,
             protocol_buf, len_or_rc,
             clear_buf, clear_buflen);
@@ -235,7 +245,8 @@ int signbus_protocol_recv(
 
 typedef struct {
     signbus_app_callback_t* cb;
-    uint8_t* key;
+    uint8_t* sender_address;
+    uint8_t* (*addr_to_key)(uint8_t);
     size_t buflen;
     uint8_t* buf;
 } prot_cb_data;
@@ -253,7 +264,9 @@ void signbus_protocol_setup_async(uint8_t* buf, size_t buflen) {
 static void protocol_async_callback(int len_or_rc) {
     if (len_or_rc < 0) return cb_data.cb(len_or_rc);
 
-    len_or_rc = protocol_encrypted_buffer_received(cb_data.key,
+    uint8_t* key = (cb_data.addr_to_key == NULL) ? NULL : cb_data.addr_to_key(*cb_data.sender_address);
+
+    len_or_rc = protocol_encrypted_buffer_received(key,
             async_buf, len_or_rc,
             cb_data.buf, cb_data.buflen);
     cb_data.cb(len_or_rc);
@@ -262,9 +275,9 @@ static void protocol_async_callback(int len_or_rc) {
 int signbus_protocol_recv_async(
         signbus_app_callback_t cb,
         uint8_t* sender_address,
-        uint8_t* key,
-        size_t buflen,
-        uint8_t* buf
+        uint8_t* (*addr_to_key)(uint8_t),
+        size_t recv_buflen,
+        uint8_t* recv_buf
         ) {
     if (async_buf == NULL) {
         // Need to call signbus_protocol_setup_async first
@@ -272,9 +285,11 @@ int signbus_protocol_recv_async(
         return -97;
     }
     cb_data.cb = cb;
-    cb_data.key = key;
-    cb_data.buflen = buflen;
-    cb_data.buf = buf;
+    cb_data.addr_to_key = addr_to_key;
+    cb_data.sender_address = sender_address;
+    cb_data.buflen = recv_buflen;
+    cb_data.buf = recv_buf;
 
-    return signbus_io_recv_async(protocol_async_callback, buflen, buf, sender_address);
+    return signbus_io_recv_async(protocol_async_callback,
+            async_buflen, async_buf, sender_address);
 }

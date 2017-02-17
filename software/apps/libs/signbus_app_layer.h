@@ -30,14 +30,14 @@ int signbus_app_send(
         signbus_api_type_t api_type,        // Which API?
         uint8_t message_type,               // Which API method?
         size_t message_length,              // How many bytes from message param to send
-        uint8_t* message                    // Buffer to send from
+        const uint8_t* message              // Buffer to send from
         );
 
 /// Blocking method to receive a message
 /// Returns < 0 on failure.
 int signbus_app_recv(
         uint8_t *sender_address,            // I2C address of sender
-        uint8_t* key,                       // Key to decrypt message (NULL for none)
+        uint8_t* (*addr_to_key)(uint8_t),   // Translation function from address -> key
         signbus_frame_type_t* frame_type,   // Frame Type
         signbus_api_type_t* api_type,       // Which API?
         uint8_t* message_type,              // Which API method?
@@ -56,7 +56,7 @@ typedef void (signbus_app_callback_t)(int);
 int signbus_app_recv_async(
         signbus_app_callback_t callback,    // Function to call when message received
         uint8_t *sender_address,            // I2C address of sender
-        uint8_t* key,                       // Key to decrypt message (NULL for none)
+        uint8_t* (*addr_to_key)(uint8_t),   // Translation function from address -> key
         signbus_frame_type_t* frame_type,   // Frame Type
         signbus_api_type_t* api_type,       // Which API?
         uint8_t* message_type,              // Which API method?
