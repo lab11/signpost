@@ -196,7 +196,7 @@ http_response signpost_networking_post(char* url, http_request request) {
         header_size += strlen(request.headers[i].value);
         header_size += 2;
     }
-    uint16_t message_size = request.body_len + strlen(url) + header_size + 6;
+    uint16_t message_size = request.body_len + strlen(url) + header_size + 6 + 25;
 
     //this is the max message size
     if(message_size > 4096) {
@@ -215,10 +215,14 @@ http_response signpost_networking_post(char* url, http_request request) {
     send_index += len;
     send[send_index] = request.num_headers;
     send_index++;
+    bool has_content_length = false;
     for(uint8_t i = 0; i < request.num_headers; i++) {
         uint8_t f_len = strlen(request.headers[i].header);
         send[send_index] = f_len;
         send_index++;
+        if(!strcmp(request.headers[i].header,"content-length")) {
+            has_content_length = true;
+        }
         memcpy(send+send_index,request.headers[i].header,f_len);
         send_index += f_len;
         f_len = strlen(request.headers[i].value);
@@ -228,6 +232,23 @@ http_response signpost_networking_post(char* url, http_request request) {
         send_index += f_len;
     }
     len = request.body_len;
+
+    //add a content length header if the sender doesn't
+    if(!has_content_length) {
+        uint8_t clen = strlen("content-length");
+        send[send_index] = clen;
+        send_index++;
+        memcpy(send+send_index,(uint8_t*)"content-length",clen);
+        send_index += clen;
+        char* cbuf[5];
+        sprintf(cbuf,"%d",len);
+        clen = strlen(cbuf);
+        send[send_index] = clen;
+        send_index++;
+        memcpy(send+send_index,cbuf,clen);
+        send_index += clen;
+    }
+
     send[send_index] = (len & 0x00ff);
     send[send_index + 1] = ((len & 0xff00) >> 8);
     send_index += 2;
