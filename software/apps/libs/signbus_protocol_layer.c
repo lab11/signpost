@@ -195,22 +195,12 @@ static int protocol_encrypted_buffer_received(
             return -95;
         }
 
-        printf("buffer before decrypt:\n0x");
-        for(int i = 0; i < encrypted_buflen; i++) {
-            printf("%x", encrypted_buf[i]);
-        }
-        printf("\n");
         int rc;
         rc = cipher(MBEDTLS_DECRYPT,
                 key, iv,
                 encrypted_buf, encrypted_buflen,
                 output_buf, &clear_len);
         if (rc < 0) return rc;
-        printf("buffer after decrypt:\n0x");
-        for(int i = 0; i < clear_len; i++) {
-            printf("%x", output_buf[i]);
-        }
-        printf("\n");
     } else {
         clear_len = protocol_buflen - SHA256_LEN;
         if (output_buflen < clear_len) {
