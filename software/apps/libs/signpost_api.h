@@ -21,6 +21,14 @@ typedef struct api_handler {
 int signpost_api_error_reply(uint8_t destination_address,
         signbus_api_type_t api_type, uint8_t message_type);
 
+// API layer send call
+int signpost_api_send(uint8_t destination_address,
+                      signbus_frame_type_t frame_type,
+                      signbus_api_type_t api_type,
+                      uint8_t message_type,
+                      size_t message_length,
+                      uint8_t* message);
+
 /**************************************************************************/
 /* INITIALIZATION API                                                     */
 /**************************************************************************/

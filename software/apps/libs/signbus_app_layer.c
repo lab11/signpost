@@ -37,7 +37,7 @@ static int app_parse(uint8_t* to_parse, size_t len,
 
 int signbus_app_send(uint8_t dest, uint8_t* key,
         signbus_frame_type_t frame_type, signbus_api_type_t api_type, uint8_t message_type,
-        size_t message_length, uint8_t* message) {
+        size_t message_length, const uint8_t* message) {
     size_t payload_length = 1 + 1 + 1 + message_length;
     uint8_t payload[payload_length];
 
@@ -55,7 +55,7 @@ int signbus_app_send(uint8_t dest, uint8_t* key,
 
 int signbus_app_recv(
         uint8_t* sender_address,
-        uint8_t* key,
+        uint8_t* (*addr_to_key)(uint8_t),
         signbus_frame_type_t* frame_type,
         signbus_api_type_t* api_type,
         uint8_t* message_type,
@@ -66,7 +66,7 @@ int signbus_app_recv(
         ) {
     int len_or_rc;
 
-    len_or_rc = signbus_protocol_recv(sender_address, key, recv_buflen, recv_buf);
+    len_or_rc = signbus_protocol_recv(sender_address, addr_to_key, recv_buflen, recv_buf);
     if (len_or_rc < 0) return len_or_rc;
 
     len_or_rc = app_parse(recv_buf, recv_buflen, frame_type, api_type,
@@ -87,7 +87,7 @@ static void app_layer_callback(int len_or_rc) {
 int signbus_app_recv_async(
         signbus_app_callback_t cb,
         uint8_t* sender_address,
-        uint8_t* key,
+        uint8_t* (*addr_to_key)(uint8_t),
         signbus_frame_type_t* frame_type,
         signbus_api_type_t* api_type,
         uint8_t* message_type,
@@ -107,5 +107,5 @@ int signbus_app_recv_async(
     cb_data.recv_buf = recv_buf;
 
     return signbus_protocol_recv_async(app_layer_callback,
-            sender_address, key, recv_buflen, recv_buf);
+            sender_address, addr_to_key, recv_buflen, recv_buf);
 }
