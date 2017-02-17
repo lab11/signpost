@@ -27,10 +27,14 @@ $(LIBSIGNPOST_BUILDDIR):
 	$(Q)mkdir -p $@
 
 $(LIBSIGNPOST_BUILDDIR)/%.o: $(LIBSIGNPOST_DIR)/%.c | $(LIBSIGNPOST_BUILDDIR)
+	$(TRACE_DEP)
+	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -MF"$(@:.o=.d)" -MG -MM -MP -MT"$(@:.o=.d)@" -MT"$@" "$<"
 	$(TRACE_CC)
 	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(LIBSIGNPOST_BUILDDIR)/%.o: $(LIBMBEDTLS_LIB_DIR)%.c | $(LIBSIGNPOST_BUILDDIR)
+	$(TRACE_DEP)
+	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -MF"$(@:.o=.d)" -MG -MM -MP -MT"$(@:.o=.d)@" -MT"$@" "$<"
 	$(TRACE_CC)
 	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
@@ -45,3 +49,10 @@ $(LIBSIGNPOST_BUILDDIR)/%.o: %.S | $(LIBSIGNPOST_BUILDDIR)
 #	$(Q)$(TOOLCHAIN)-ranlib $@
 
 print-%  : ; @echo $* = $($*)
+
+# Include dependency rules for picking up header changes (by convention at bottom of makefile)
+LIBSIGNPOST_OBJS_NO_ARCHIVES=$(filter %.o,$(LIBSIGNPOST_OBJS))
+-include $(LIBSIGNPOST_OBJS_NO_ARCHIVES:.o=.d)
+
+LIBMBEDTLS_OBJS_NO_ARCHIVES=$(filter %.o,$(LIBMBEDTLS_OBJS))
+-include $(LIBMBEDTLS_OBJS_NO_ARCHIVES:.o=.d)
