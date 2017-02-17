@@ -8,7 +8,9 @@ cache:
 
 os:
   - linux
-  - osx
+
+# Disable OS X builds for now. The SNR and delay not worth it for signpost
+# - osx
 
 rust:
   - nightly-2017-01-25
