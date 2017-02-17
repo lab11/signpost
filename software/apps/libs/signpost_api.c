@@ -151,12 +151,76 @@ int signpost_initialization_module_init(
 /* PROCESSING API                                                         */
 /**************************************************************************/
 
-// XXX Placeholder (delete the attr too, but shuts up a warning)
-__attribute__((const))
-int signpost_networking_post(
-        size_t len __attribute__((unused)),
-        uint8_t* data __attribute__((unused)) ) {
-    return ENOSUPPORT;
+static bool networking_ready;
+static bool networking_result;
+static void signpost_networking_post_callback(int result) {
+    networking_ready = true;
+    networking_result = result;
+}
+
+http_response signpost_networking_post(char* url, http_request request) {
+
+    //form the sending array
+    uint16_t header_size = 0;
+    for(uint8_t i = 0; i < request.num_headers; i++) {
+        header_size += strlen(request.headers[i].header);
+        header_size += strlen(request.headers[i].value);
+        header_size += 2;
+    }
+    uint16_t message_size = request.body_len + strlen(url) + header_size + 6;
+
+    //this is the max message size
+    if(message_size > 4096) {
+        //this is an error - we can't send this
+        http_response none;
+        return none;
+    }
+
+    uint8_t send[message_size];
+    uint16_t send_index = 0;
+    uint16_t len = strlen(url);
+    send[0] = (len & 0x00ff);
+    send[1] = ((len & 0xff00) >> 8);
+    send_index += 2;
+    memcpy(send+send_index,url,len);
+    send_index += len;
+    send[send_index] = request.num_headers;
+    send_index++;
+    for(uint8_t i = 0; i < request.num_headers; i++) {
+        uint8_t f_len = strlen(request.headers[i].header);
+        send[send_index] = f_len;
+        send_index++;
+        memcpy(send+send_index,request.headers[i].header,f_len);
+        send_index += f_len;
+        f_len = strlen(request.headers[i].value);
+        send[send_index] = f_len;
+        send_index++;
+        memcpy(send+send_index,request.headers[i].value,f_len);
+        send_index += f_len;
+    }
+    len = request.body_len;
+    send[send_index] = (len & 0x00ff);
+    send[send_index + 1] = ((len & 0xff00) >> 8);
+    send_index += 2;
+    memcpy(send + send_index, request.body, request.body_len);
+    send_index += len;
+
+    //setup the response callback
+    incoming_active_callback = signpost_networking_post_callback;
+    networking_ready = false;
+
+    //call app_send
+    uint8_t* key_FIXME = NULL;
+    signbus_app_send(ModuleAddressRadio, key_FIXME, CommandFrame,
+            NetworkingApiType, NetworkingPostMessage, send_index + 1, send);
+
+    //wait for a response
+    yield_for(&networking_ready);
+
+    //parse the response
+
+    http_response none;
+    return none;
 }
 
 /**************************************************************************/

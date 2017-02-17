@@ -53,13 +53,39 @@ int signpost_initialization_module_init(
 /**************************************************************************/
 /* NETWORKING API                                                         */
 /**************************************************************************/
+enum networking_message_type {
+    NetworkingPostMessage = 0,
+};
+
+
+typedef struct {
+   char* header;
+   char* value;
+} http_header;
+
+typedef struct {
+    uint16_t status;
+    char* reason;
+    uint8_t num_headers;
+    http_header* headers;
+    uint16_t body_len;
+    uint8_t* body;
+} http_response;
+
+typedef struct{
+   uint8_t num_headers;
+   http_header* headers;
+   uint16_t body_len;
+   uint8_t* body;
+} http_request;
+
+http_response signpost_networking_post(char* url, http_request request);
 
 /**************************************************************************/
 /* PROCESSING API                                                         */
 /**************************************************************************/
 
 // XXX Placeholder
-int signpost_networking_post(size_t len, uint8_t* data);
 
 /**************************************************************************/
 /* ENERGY API                                                             */
