@@ -218,7 +218,7 @@ http_response signpost_networking_post(char* url, http_request request) {
         uint8_t f_len = strlen(request.headers[i].header);
         send[send_index] = f_len;
         send_index++;
-        if(!strcmp(request.headers[i].header,"content-length")) {
+        if(!strcasecmp(request.headers[i].header,"content-length")) {
             has_content_length = true;
         }
         memcpy(send+send_index,request.headers[i].header,f_len);
