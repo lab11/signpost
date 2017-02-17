@@ -187,9 +187,11 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 1],
-        [&sam4l::gpio::PB[04]],
-        1 * 4
+        [&'static sam4l::gpio::GPIOPin; 3],
+        [&sam4l::gpio::PA[19], // MOD_OUT
+         &sam4l::gpio::PA[20], // MOD_IN
+         &sam4l::gpio::PA[18]],// PPS
+        3 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
