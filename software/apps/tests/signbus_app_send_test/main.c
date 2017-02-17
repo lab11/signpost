@@ -32,7 +32,7 @@ int main(void) {
         delay_ms(INTERVAL_IN_MS);
         printf("SENDER: sending message\n");
         signbus_app_send(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS,
-                key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
+                NULL, NotificationFrame, 0xde, 0xad, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
     }
 }

@@ -38,7 +38,7 @@ static void cb(int len_or_rc) {
         // Print data for this received message
         printf("from: %02x, frame_type: %02x, api_type: %02x, message_type: %02x, message_len: %d, %02x\n",
                 sender_address, frame_type, api_type, message_type, message_length, message_length);
-        if ((frame_type == NotificationFrame) && (api_type == 0x00) && (message_type == 0x00)) {
+        if ((frame_type == NotificationFrame) && (api_type == 0xde) && (message_type == 0xad)) {
             printf("message: >>>%s<<<\n", message);
         } else {
             printf("unknown message: 0x");

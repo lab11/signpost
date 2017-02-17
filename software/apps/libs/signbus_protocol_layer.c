@@ -266,8 +266,8 @@ int signbus_protocol_recv_async(
         signbus_app_callback_t cb,
         uint8_t* sender_address,
         uint8_t* (*addr_to_key)(uint8_t),
-        size_t buflen,
-        uint8_t* buf
+        size_t recv_buflen,
+        uint8_t* recv_buf
         ) {
     if (async_buf == NULL) {
         // Need to call signbus_protocol_setup_async first
@@ -277,8 +277,9 @@ int signbus_protocol_recv_async(
     cb_data.cb = cb;
     cb_data.addr_to_key = addr_to_key;
     cb_data.sender_address = sender_address;
-    cb_data.buflen = buflen;
-    cb_data.buf = buf;
+    cb_data.buflen = recv_buflen;
+    cb_data.buf = recv_buf;
 
-    return signbus_io_recv_async(protocol_async_callback, buflen, buf, sender_address);
+    return signbus_io_recv_async(protocol_async_callback,
+            async_buflen, async_buf, sender_address);
 }

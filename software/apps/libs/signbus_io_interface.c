@@ -135,7 +135,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
     SIGNBUS_DEBUG("dest %02x data %p len %d\n", dest, data, len);
 
     sequence_number++;
-    Packet p;
+    Packet p = {0};
     uint32_t toSend = len;
 
     //calculate the number of packets we will have to send
