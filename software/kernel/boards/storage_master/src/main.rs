@@ -17,6 +17,7 @@ use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
 use kernel::hil::Controller;
+use kernel::hil::gpio::Pin;
 use kernel::{Chip, Platform};
 use kernel::mpu::MPU;
 use sam4l::usart;
@@ -103,6 +104,41 @@ impl Platform for SignpostStorageMaster {
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA, PB};
     use sam4l::gpio::PeripheralFunction::{A, B};
+
+    // configure SD card SPI as input
+    PA[14].configure(None); // SD_SCLK
+    PA[14].make_input();
+    PA[15].configure(None); // SD_MISO
+    PA[14].make_input();
+    PA[16].configure(None); // SD_MOSI
+    PA[14].make_input();
+    PA[13].configure(None); // SD_CS
+    PA[14].make_input();
+    PA[21].configure(None); // SD_ENABLE
+
+    // power off SD card
+    PA[21].enable();
+    PA[21].clear();
+    PA[21].enable_output();
+
+    // delay for a while
+    asm!("nop");
+    for _ in 0..200000 {
+        asm!("nop");
+    }
+    asm!("nop");
+
+    // power on SD card
+    PA[21].enable();
+    PA[21].set();
+    PA[21].enable_output();
+
+    // delay for a while
+    asm!("nop");
+    for _ in 0..200000 {
+        asm!("nop");
+    }
+    asm!("nop");
 
     // SPI: Slave to Controller - USART0
     PA[10].configure(Some(A)); // MEMORY_SCLK
