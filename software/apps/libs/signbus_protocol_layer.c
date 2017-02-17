@@ -97,10 +97,12 @@ static int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out)
 
 int signbus_protocol_send(
         uint8_t dest,
-        uint8_t* key,
+        uint8_t* (*addr_to_key)(uint8_t),
         uint8_t* clear_buf,
         size_t clear_buflen
         ) {
+    uint8_t* key = addr_to_key(dest);
+
     SIGNBUS_DEBUG("dest %02x key %p clear_buf %p clear_buflen %d\n",
             dest, key, clear_buf, clear_buflen);
 
@@ -116,7 +118,6 @@ int signbus_protocol_send(
     uint8_t protocol_buf[protocol_buflen];
     size_t protocol_buf_used = 0;
 
-    // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
         uint8_t* iv = protocol_buf;
         protocol_buf_used += MBEDTLS_MAX_IV_LENGTH;
@@ -193,6 +194,7 @@ static int protocol_encrypted_buffer_received(
             // TODO: Meaningful return codes. Let's at least try to be unique
             return -95;
         }
+
         int rc;
         rc = cipher(MBEDTLS_DECRYPT,
                 key, iv,

@@ -25,7 +25,7 @@ typedef enum signbus_api_type {
 /// Returns < 0 on failure.
 int signbus_app_send(
         uint8_t dest,                       // I2C address of destination
-        uint8_t* key,                       // Key for encryption (NULL for none)
+        uint8_t* (*addr_to_key)(uint8_t),   // Translation function from address -> key
         signbus_frame_type_t frame_type,    // Frame Type
         signbus_api_type_t api_type,        // Which API?
         uint8_t message_type,               // Which API method?

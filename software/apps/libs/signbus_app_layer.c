@@ -35,14 +35,14 @@ static int app_parse(uint8_t* recv_buf, size_t received_length,
     return *message_length;
 }
 
-int signbus_app_send(uint8_t dest, uint8_t* key,
+int signbus_app_send(uint8_t dest, uint8_t* (*addr_to_key)(uint8_t),
         signbus_frame_type_t frame_type, signbus_api_type_t api_type, uint8_t message_type,
         size_t message_length, const uint8_t* message) {
     size_t payload_length = 1 + 1 + 1 + message_length;
     uint8_t payload[payload_length];
 
     SIGNBUS_DEBUG("dest %02x key %p fr %02x api %02x msg %02x msg_len %d msg %p\n",
-            dest, key, frame_type, api_type, message_type, message_length, message);
+            dest, addr_to_key(dest), frame_type, api_type, message_type, message_length, message);
 
     // copy args to buffer
     payload[0] = frame_type;
@@ -50,7 +50,7 @@ int signbus_app_send(uint8_t dest, uint8_t* key,
     payload[2] = message_type;
 
     memcpy(payload + 3, message, message_length);
-    return signbus_protocol_send(dest, key, payload, payload_length);
+    return signbus_protocol_send(dest, addr_to_key, payload, payload_length);
 }
 
 int signbus_app_recv(
