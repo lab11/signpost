@@ -158,6 +158,10 @@ static int protocol_encrypted_buffer_received(
         uint8_t* output_buf,
         size_t   output_buflen
         ) {
+    SIGNBUS_DEBUG("key %p proto buf %p len %u ouput buf %p len %u\n",
+            key, protocol_buf, protocol_buflen, output_buf, output_buflen);
+    SIGNBUS_DEBUG_DUMP_BUF(protocol_buf, protocol_buflen);
+
     // Basic sanity check
     size_t sane_length = SHA256_LEN + (key == NULL) ? 0 : MBEDTLS_MAX_IV_LENGTH;
     if (protocol_buflen < sane_length) {
@@ -204,6 +208,7 @@ static int protocol_encrypted_buffer_received(
         memcpy(output_buf, protocol_buf, clear_len);
     }
 
+    SIGNBUS_DEBUG_DUMP_BUF(output_buf, clear_len);
     return clear_len;
 }
 

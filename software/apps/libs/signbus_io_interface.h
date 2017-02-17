@@ -17,6 +17,17 @@
     } while (0)
 */
 
+#define SIGNBUS_DEBUG_DUMP_BUF(_buf, _buflen)
+/*
+#define SIGNBUS_DEBUG_DUMP_BUF(_buf, _buflen) do {\
+    printf("SBDBG %24s:%04d %s(%d,%x)=", __FILENAME__, __LINE__, #_buf, _buflen, _buflen);\
+    for (size_t _i = 0; _i < _buflen; _i++) {\
+        printf("%02x", _buf[_i]);\
+    }\
+    printf("\n");\
+} while (0)
+*/
+
 
 
 //this is the first i2c messaging library!

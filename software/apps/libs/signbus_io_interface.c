@@ -192,6 +192,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend -= MAX_DATA_LEN;
         } else {
+            SIGNBUS_DEBUG_DUMP_BUF(master_write_buf, sizeof(signbus_network_header_t)+toSend);
             i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
             i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
             toSend = 0;
@@ -284,6 +285,8 @@ static int get_message(uint8_t* data, size_t len, uint8_t* src) {
             done = 1;
         }
     }
+
+    SIGNBUS_DEBUG_DUMP_BUF(data, lengthReceived);
 
     if (async_callback != NULL) {
         // allow recursion
