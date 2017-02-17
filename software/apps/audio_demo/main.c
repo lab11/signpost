@@ -16,9 +16,9 @@
 #include "i2c_master_slave.h"
 #include "timer.h"
 
-#define STROBE 4
-#define RESET 5
-#define POWER 6
+#define STROBE 5
+#define RESET 6
+#define POWER 7
 
 #define BUFFER_SIZE 20
 
