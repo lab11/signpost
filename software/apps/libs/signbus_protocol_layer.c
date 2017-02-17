@@ -231,7 +231,7 @@ int signbus_protocol_recv(
     int len_or_rc = signbus_io_recv(protocol_buflen, protocol_buf, sender_address);
     if (len_or_rc < 0) return len_or_rc;
 
-    uint8_t* key = addr_to_key(*sender_address);
+    uint8_t* key = (addr_to_key == NULL) ? NULL : addr_to_key(*sender_address);
 
     return protocol_encrypted_buffer_received(key,
             protocol_buf, len_or_rc,
@@ -259,7 +259,9 @@ void signbus_protocol_setup_async(uint8_t* buf, size_t buflen) {
 static void protocol_async_callback(int len_or_rc) {
     if (len_or_rc < 0) return cb_data.cb(len_or_rc);
 
-    len_or_rc = protocol_encrypted_buffer_received(cb_data.addr_to_key(*(cb_data.sender_address)),
+    uint8_t* key = (cb_data.addr_to_key == NULL) ? NULL : cb_data.addr_to_key(*cb_data.sender_address);
+
+    len_or_rc = protocol_encrypted_buffer_received(key,
             async_buf, len_or_rc,
             cb_data.buf, cb_data.buflen);
     cb_data.cb(len_or_rc);

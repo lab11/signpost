@@ -136,7 +136,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
 
     sequence_number++;
     Packet p = {0};
-    uint32_t toSend = len;
+    size_t toSend = len;
 
     //calculate the number of packets we will have to send
     uint16_t numPackets;
@@ -210,7 +210,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
 // For async invocation, the return value is passed as the callback argument.
 static int get_message(uint8_t* data, size_t len, uint8_t* src) {
     uint8_t done = 0;
-    uint32_t lengthReceived = 0;
+    size_t lengthReceived = 0;
     uint16_t message_sequence_number;
     uint8_t message_source_address;
 
