@@ -114,14 +114,16 @@ int signbus_protocol_send(
     // sendbuf is what is sent to message layer, needs to fit hash and IV
     //uint8_t sendbuf[len+MBEDTLS_MAX_IV_LENGTH+SHA256_LEN];
     uint8_t protocol_buf[protocol_buflen];
-    uint8_t* iv = protocol_buf;
-    uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
-    size_t protocol_buf_used = MBEDTLS_MAX_IV_LENGTH;
+    size_t protocol_buf_used = 0;
 
     // TODO key should be passed in as part of module struct instead
     if(key!=NULL) {
+        uint8_t* iv = protocol_buf;
+        protocol_buf_used += MBEDTLS_MAX_IV_LENGTH;
+
         // encrypt buf
         size_t encrypted_buf_used;
+        uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
         int rc;
         rc = cipher(MBEDTLS_ENCRYPT, key, iv,
                 clear_buf, clear_buflen,
@@ -157,7 +159,8 @@ static int protocol_encrypted_buffer_received(
         size_t   output_buflen
         ) {
     // Basic sanity check
-    if (protocol_buflen < (MBEDTLS_MAX_IV_LENGTH + SHA256_LEN)) {
+    size_t sane_length = SHA256_LEN + (key == NULL) ? 0 : MBEDTLS_MAX_IV_LENGTH;
+    if (protocol_buflen < sane_length) {
         // TODO: Meaningful return codes. Let's at least try to be unique
         return -93;
     }
