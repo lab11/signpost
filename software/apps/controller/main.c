@@ -25,11 +25,6 @@ static void get_energy (void);
 static void gps_callback (gps_data_t* gps_data);
 
 
-uint8_t slave_read_buf[256];
-uint8_t slave_write_buf[256];
-uint8_t master_read_buf[256];
-uint8_t master_write_buf[256];
-
 uint8_t fm25cl_read_buf[256];
 uint8_t fm25cl_write_buf[256];
 
@@ -150,34 +145,33 @@ static void get_energy (void) {
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
+
+  uint8_t energy_datum[18];
+
   // My address
-  master_write_buf[0] = 0x20;
+  energy_datum[0] = 0x20;
   // Packet type. 1 == Energy Meters
-  master_write_buf[1] = 0x01;
+  energy_datum[1] = 0x01;
 
-  master_write_buf[2]  = (uint8_t) (((fram.energy_module0 / 1000) >> 8) & 0xFF);
-  master_write_buf[3]  = (uint8_t) ((fram.energy_module0 / 1000) & 0xFF);
-  master_write_buf[4]  = (uint8_t) (((fram.energy_module1 / 1000) >> 8) & 0xFF);
-  master_write_buf[5]  = (uint8_t) ((fram.energy_module1 / 1000) & 0xFF);
-  master_write_buf[6]  = (uint8_t) (((fram.energy_module2 / 1000) >> 8) & 0xFF);
-  master_write_buf[7]  = (uint8_t) ((fram.energy_module2 / 1000) & 0xFF);
-  master_write_buf[8]  = (uint8_t) (((fram.energy_controller / 1000) >> 8) & 0xFF);
-  master_write_buf[9]  = (uint8_t) ((fram.energy_controller / 1000) & 0xFF);
-  master_write_buf[10] = (uint8_t) (((fram.energy_linux / 1000) >> 8) & 0xFF);
-  master_write_buf[11] = (uint8_t) ((fram.energy_linux / 1000) & 0xFF);
-  master_write_buf[12] = (uint8_t) (((fram.energy_module5 / 1000) >> 8) & 0xFF);
-  master_write_buf[13] = (uint8_t) ((fram.energy_module5 / 1000) & 0xFF);
-  master_write_buf[14] = (uint8_t) (((fram.energy_module6 / 1000) >> 8) & 0xFF);
-  master_write_buf[15] = (uint8_t) ((fram.energy_module6 / 1000) & 0xFF);
-  master_write_buf[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
-  master_write_buf[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
+  energy_datum[2]  = (uint8_t) (((fram.energy_module0 / 1000) >> 8) & 0xFF);
+  energy_datum[3]  = (uint8_t) ((fram.energy_module0 / 1000) & 0xFF);
+  energy_datum[4]  = (uint8_t) (((fram.energy_module1 / 1000) >> 8) & 0xFF);
+  energy_datum[5]  = (uint8_t) ((fram.energy_module1 / 1000) & 0xFF);
+  energy_datum[6]  = (uint8_t) (((fram.energy_module2 / 1000) >> 8) & 0xFF);
+  energy_datum[7]  = (uint8_t) ((fram.energy_module2 / 1000) & 0xFF);
+  energy_datum[8]  = (uint8_t) (((fram.energy_controller / 1000) >> 8) & 0xFF);
+  energy_datum[9]  = (uint8_t) ((fram.energy_controller / 1000) & 0xFF);
+  energy_datum[10] = (uint8_t) (((fram.energy_linux / 1000) >> 8) & 0xFF);
+  energy_datum[11] = (uint8_t) ((fram.energy_linux / 1000) & 0xFF);
+  energy_datum[12] = (uint8_t) (((fram.energy_module5 / 1000) >> 8) & 0xFF);
+  energy_datum[13] = (uint8_t) ((fram.energy_module5 / 1000) & 0xFF);
+  energy_datum[14] = (uint8_t) (((fram.energy_module6 / 1000) >> 8) & 0xFF);
+  energy_datum[15] = (uint8_t) ((fram.energy_module6 / 1000) & 0xFF);
+  energy_datum[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
+  energy_datum[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
-  int result = i2c_master_slave_write_sync(0x22, 18);
-  {
-    char buf[64];
-    sprintf(buf, "Return from I2C Write: %i\n", result);
-    putstr(buf);
-  }
+  int result = signpost_networking_post(18, energy_datum);
+  printf("Energy POST result: %d\n", result);
 
   // Only say things are working if i2c worked
   if (result == 0) {
@@ -244,33 +238,37 @@ static void gps_callback (gps_data_t* gps_data) {
   printf("  Status:     %s\n", fix_str);
   printf("  Satellites: %d\n", gps_data->satellite_count);
 
-  // My address
-  master_write_buf[0] = 0x20;
-  // Packet type. 2 == GPS
-  master_write_buf[1] = 0x02;
-  // date
-  master_write_buf[2] = (uint8_t) (gps_data->day   & 0xFF);
-  master_write_buf[3] = (uint8_t) (gps_data->month & 0xFF);
-  master_write_buf[4] = (uint8_t) (gps_data->year  & 0xFF);
-  // time
-  master_write_buf[5] = (uint8_t) (gps_data->hours   & 0xFF);
-  master_write_buf[6] = (uint8_t) (gps_data->minutes & 0xFF);
-  master_write_buf[7] = (uint8_t) (gps_data->seconds & 0xFF);
-  // latitude
-  master_write_buf[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
-  master_write_buf[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
-  master_write_buf[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
-  master_write_buf[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
-  // longitude
-  master_write_buf[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
-  master_write_buf[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
-  master_write_buf[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
-  master_write_buf[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
-  // quality
-  master_write_buf[16] = (uint8_t) (gps_data->fix & 0xFF);
-  master_write_buf[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
 
-  int result = i2c_master_slave_write_sync(0x22, 18);
+  uint8_t gps_datum[18];
+
+  // My address
+  gps_datum[0] = 0x20;
+  // Packet type. 2 == GPS
+  gps_datum[1] = 0x02;
+  // date
+  gps_datum[2] = (uint8_t) (gps_data->day   & 0xFF);
+  gps_datum[3] = (uint8_t) (gps_data->month & 0xFF);
+  gps_datum[4] = (uint8_t) (gps_data->year  & 0xFF);
+  // time
+  gps_datum[5] = (uint8_t) (gps_data->hours   & 0xFF);
+  gps_datum[6] = (uint8_t) (gps_data->minutes & 0xFF);
+  gps_datum[7] = (uint8_t) (gps_data->seconds & 0xFF);
+  // latitude
+  gps_datum[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
+  gps_datum[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
+  gps_datum[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
+  gps_datum[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
+  // longitude
+  gps_datum[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
+  gps_datum[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
+  gps_datum[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
+  gps_datum[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
+  // quality
+  gps_datum[16] = (uint8_t) (gps_data->fix & 0xFF);
+  gps_datum[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
+
+  int result = signpost_networking_post(18, gps_datum);
+  printf("GPS POST result: %d\n", result);
 
   // Only say things are working if i2c worked
   if (result == 0) {
@@ -372,18 +370,9 @@ int main (void) {
   // controller_module_enable_i2c(MODULE0);
 
 
-  /////////
-  // Legacy
-  //
-  // Stuff that may not be long for this world
 
-  i2c_master_slave_set_slave_address(0x20);
 
-  // i2c_master_slave_set_master_read_buffer(master_read_buf, 256);
-  i2c_master_slave_set_master_write_buffer(master_write_buf, 256);
-  // i2c_master_slave_set_slave_read_buffer(slave_read_buf, 256);
-  // i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
-
+  ////////////////////////////////////////////////
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();

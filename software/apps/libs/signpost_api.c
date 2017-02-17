@@ -139,6 +139,13 @@ int signpost_initialization_module_init(
 /* PROCESSING API                                                         */
 /**************************************************************************/
 
+// XXX Placeholder
+int signpost_networking_post(
+        size_t len __attribute__((unused)),
+        uint8_t* data __attribute__((unused)) ) {
+    return ENOSUPPORT;
+}
+
 /**************************************************************************/
 /* ENERGY API                                                             */
 /**************************************************************************/
