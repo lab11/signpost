@@ -110,8 +110,8 @@ unsafe fn set_pin_primary_functions() {
     PB[00].configure(Some(A)); //SDA
     PB[01].configure(Some(A)); //SCL
     PB[04].configure(None); //PPS
-    PB[05].configure(None); //MOD_IN
     PB[03].configure(None); //MOD_OUT
+    PB[05].configure(None); //MOD_IN
     PA[25].configure(Some(A)); //USB
     PA[26].configure(Some(A)); //USB
 
@@ -241,21 +241,21 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 15],
-        [&sam4l::gpio::PB[04],
-         &sam4l::gpio::PB[05],
-         &sam4l::gpio::PB[03],
-         &sam4l::gpio::PB[02],
-         &sam4l::gpio::PB[08],
-         &sam4l::gpio::PB[11],
-         &sam4l::gpio::PA[04],
-         &sam4l::gpio::PA[05],
-         &sam4l::gpio::PA[06],
-         &sam4l::gpio::PA[17],
-         &sam4l::gpio::PA[18],
-         &sam4l::gpio::PA[07],
-         &sam4l::gpio::PA[10],
-         &sam4l::gpio::PA[13],
-         &sam4l::gpio::PA[14]],
+        [&sam4l::gpio::PB[03], //MOD_OUT
+         &sam4l::gpio::PB[05], //MOD_IN
+         &sam4l::gpio::PB[04], //PPS
+         &sam4l::gpio::PB[02], //NUCLEUM RESET
+         &sam4l::gpio::PB[08], //NUCLEUM BOOT
+         &sam4l::gpio::PB[11], //NUCLEUM POWERGATE
+         &sam4l::gpio::PA[04], //LORA INT1
+         &sam4l::gpio::PA[05], //LORA INT2
+         &sam4l::gpio::PA[06], //LORA POWERGATE
+         &sam4l::gpio::PA[17], //LORA RESET
+         &sam4l::gpio::PA[18], //LORA BOOT
+         &sam4l::gpio::PA[07], //GSM POWERGATE
+         &sam4l::gpio::PA[10], //GSM GPIO
+         &sam4l::gpio::PA[13], //GSM RESET
+         &sam4l::gpio::PA[14]],//GSM POWER
         15 * 4
     );
     let gpio = static_init!(

@@ -1,9 +1,9 @@
 #ifndef RADIO_MODULE_H
 #define RADIO_MODULE_H
 
-#define MOD_IN      0
-#define PPS         1
-#define MOD_OUT     2
+#define MOD_OUT     0
+#define MOD_IN      1
+#define PPS         2
 
 #define BLE_RESET   3
 #define BLE_BOOT    4
