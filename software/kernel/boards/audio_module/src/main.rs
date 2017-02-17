@@ -126,7 +126,7 @@ unsafe fn set_pin_primary_functions() {
     PB[04].configure(None);    // LEDG2 (LED3)
     PB[05].configure(None);    // LEDR2 (LED4)
     PB[06].configure(None);    // LEDG1 (LED1)
-	PB[07].configure(None);    // LEDR1 (LED2)
+    PB[07].configure(None);    // LEDR1 (LED2)
 
     // Flash chip
     PA[15].configure(None);    // !FLASH_CS
@@ -291,7 +291,7 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PA[08], // spec 2 power
          //&sam4l::gpio::PA[05], // spec 2 out
 
-         &sam4l::gpio::PB[15], // !FLASH_CS
+         &sam4l::gpio::PA[15], // !FLASH_CS
          &sam4l::gpio::PB[11]], // !FLASH_RESET
         13 * 4
     );
@@ -308,10 +308,10 @@ pub unsafe fn reset_handler() {
     //
     let led_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 4],
-         [ &sam4l::gpio::PB[04],
-           &sam4l::gpio::PB[05],
-           &sam4l::gpio::PB[06],
-           &sam4l::gpio::PB[07]],
+          [&sam4l::gpio::PB[06], // LEDG1
+           &sam4l::gpio::PB[07], // LEDR1
+           &sam4l::gpio::PB[04], // LEDG2
+           &sam4l::gpio::PB[05]],// LEDR2
            4 * 4);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,

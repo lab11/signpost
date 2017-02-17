@@ -10,6 +10,7 @@
 #include <console.h>
 #include "firestorm.h"
 #include "gpio.h"
+#include "led.h"
 #include "adc.h"
 #include "app_watchdog.h"
 #include "msgeq7.h"
@@ -19,7 +20,8 @@
 #define STROBE 5
 #define RESET 6
 #define POWER 7
-
+#define GREEN_LED 0
+#define RED_LED 1
 #define BUFFER_SIZE 20
 
 
@@ -127,15 +129,15 @@ int main (void) {
         //give some indication of volume to the user
         if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 400) {
             //turn on green LED
-            gpio_clear(10);
+            led_on(GREEN_LED);
         } else {
-            gpio_set(10);
+            led_off(GREEN_LED);
         }
         if((uint16_t)((master_write_buf[6] << 8) + master_write_buf[7]) > 3500) {
             //turn on red LED
-            gpio_clear(11);
+            led_on(RED_LED);
         } else {
-            gpio_set(11);
+            led_off(RED_LED);
         }
 
         count++;
