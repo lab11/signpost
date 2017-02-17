@@ -6,12 +6,13 @@ import os
 import struct
 import sys
 import time
+import httplib
 
 import serial
 import serial.tools.list_ports
 import serial.tools.miniterm
 
-from ._version import __version__
+from _version import __version__
 
 
 ################################################################################
@@ -19,62 +20,88 @@ from ._version import __version__
 ################################################################################
 
 class FakeRadio:
-	def __init__ (self, args):
-		self.debug = args.debug
+    def __init__ (self, args):
+        self.debug = args.debug
 
 
-	# Open the serial port to the chip/bootloader
-	def open (self, port):
+    # Open the serial port to the chip/bootloader
+    def open (self, port):
 
-		# Check to see if the serial port was specified or we should find
-		# one to use
-		if port == None:
-			print('No serial port specified. Discovering attached serial devices...')
-			# Start by looking for one with "fake_radio" in the description
-			ports = list(serial.tools.list_ports.grep('fake_radio'))
-			if len(ports) > 0:
-				# Use the first one
-				print('Using "{}"'.format(ports[0]))
-				port = ports[0][0]
-			else:
-				return False
+        # Check to see if the serial port was specified or we should find
+        # one to use
+        if port == None:
+            print('No serial port specified. Discovering attached serial devices...')
+            # Start by looking for one with "fake_radio" in the description
+            ports = list(serial.tools.list_ports.grep('fake_radio'))
+            if len(ports) > 0:
+                # Use the first one
+                print('Using "{}"'.format(ports[0]))
+                port = ports[0][0]
+            else:
+                return False
 
-		# Open the actual serial port
-		self.sp = serial.Serial()
-		self.sp.port = port
-		self.sp.baudrate = 115200
-		self.sp.parity=serial.PARITY_NONE
-		self.sp.stopbits=1
-		self.sp.xonxoff=0
-		self.sp.rtscts=0
-		self.sp.timeout=0.5
-		# Try to set initial conditions, but not all platforms support them.
-		# https://github.com/pyserial/pyserial/issues/124#issuecomment-227235402
-		self.sp.dtr = 0
-		self.sp.rts = 0
-		self.sp.open()
+        # Open the actual serial port
+        self.sp = serial.Serial()
+        self.sp.port = port
+        self.sp.baudrate = 115200
+        self.sp.parity=serial.PARITY_NONE
+        self.sp.stopbits=1
+        self.sp.xonxoff=0
+        self.sp.rtscts=0
+        self.sp.timeout=0.5
+        # Try to set initial conditions, but not all platforms support them.
+        # https://github.com/pyserial/pyserial/issues/124#issuecomment-227235402
+        self.sp.dtr = 0
+        self.sp.rts = 0
+        self.sp.open()
 
-		return True
-
-
-	def run (self):
-		while True:
-			buf = self.sp.read(1024)
-			print(buf)
+        return True
 
 
+    def run (self):
+        while True:
+            buf = self.sp.read(4096)
+            print(buf)
 
-			# First byte is the source address
-			src = struct.unpack('B', buf[0])
+            if(len(buf) < 5):
+                print("packet too short")
+                continue;
 
-			buf = buf[1:]
+            url_len = struct.unpack('<H', buf[0:2])
+            buf = buf[2:]
+            url = buf[0:url_len]
+            print('URL is: {}'.format(url))
+            buf = buf[url_len:]
+            num_headers = struct.unpack('<B', buf[0:1])
+            buf = buf[1:]
+            headers = {}
+            for i in range(0,num_headers):
+                header_len = struct.unpack('<B',buf[0:1])
+                buf = buf[1:]
+                header = buf[0:header_len]
+                buf = buf[header_len:]
+                value_len = struct.unpack('<B',buf[0:1])
+                buf = buf[1:]
+                header = buf[0:value_len]
+                buf = buf[value_len:]
+                headers[header] = value
 
-			if len(buf) < 3:
-				print('Packet too short')
-				continue
+            print('Headers:')
+            print(headers)
 
-			frame_type, api_type, message_type = struct.unpack('<BBB', buf[0:3])
-			buf = buf[3:]
+            body_len = struct.unpack('<H', buf[0:2])
+            buf = buf[2:]
+            body = buf[:body_len]
+            print('Body:')
+            print(body)
+
+            #now that we have parsed the buffer, post
+            conn = httplib.HTTPConnection(url)
+            conn.request("POST","",body,headers)
+
+            #we should send this back, but for now that's good
+            response = conn.getresponse()
+
 
 
 
@@ -84,32 +111,32 @@ class FakeRadio:
 ################################################################################
 
 def main ():
-	parser = argparse.ArgumentParser(add_help=False)
+    parser = argparse.ArgumentParser(add_help=False)
 
-	# All commands need a serial port to talk to the board
-	parser.add_argument('--port', '-p',
-		help='The serial port to use')
+    # All commands need a serial port to talk to the board
+    parser.add_argument('--port', '-p',
+        help='The serial port to use')
 
-	parser.add_argument('--debug',
-		action='store_true',
-		help='Print additional debugging information')
+    parser.add_argument('--debug',
+        action='store_true',
+        help='Print additional debugging information')
 
-	parser.add_argument('--version',
-		action='version',
-		version=__version__,
-		help='Tockloader version')
+    parser.add_argument('--version',
+        action='version',
+        version=__version__,
+        help='Tockloader version')
 
-	args = parser.parse_args()
+    args = parser.parse_args()
 
-	fake_radio = FakeRadio(args)
-	success = fake_radio.open(port=args.port)
-	if not success:
-		print('Could not open the serial port. Make sure the board is plugged in.')
-		sys.exit(1)
+    fake_radio = FakeRadio(args)
+    success = fake_radio.open(port=args.port)
+    if not success:
+        print('Could not open the serial port. Make sure the board is plugged in.')
+        sys.exit(1)
 
-	fake_radio.run()
+    fake_radio.run()
 
 
 
 if __name__ == '__main__':
-	main()
+    main()
