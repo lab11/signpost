@@ -39,6 +39,10 @@ include $(LIBSIGNPOST_DIR)/Makefile
 # 	building the application
 include $(TOCK_USERLAND_BASE_DIR)/Makefile
 
+# XXX(Pat)
+# Turn off some of the less critical warnings while we're developing heavily
+CPPFLAGS += -Wno-suggest-attribute=pure -Wno-suggest-attribute=const
+
 ### WIP: At some point when Josh gets erpc building at all, you'll want most of this
 ###
 ### # eRPC tool
