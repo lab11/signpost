@@ -44,9 +44,7 @@ int signpost_api_send(uint8_t destination_address,
                       size_t message_length,
                       uint8_t* message) {
 
-    uint8_t* key = signpost_api_addr_to_key(destination_address);
-
-    return signbus_app_send(destination_address, key, frame_type, api_type,
+    return signbus_app_send(destination_address, signpost_api_addr_to_key, frame_type, api_type,
                             message_type, message_length, message);
 }
 
@@ -239,8 +237,7 @@ http_response signpost_networking_post(char* url, http_request request) {
     networking_ready = false;
 
     //call app_send
-    uint8_t* key_FIXME = NULL;
-    signbus_app_send(ModuleAddressRadio, key_FIXME, CommandFrame,
+    signbus_app_send(ModuleAddressRadio, signpost_api_addr_to_key, CommandFrame,
             NetworkingApiType, NetworkingPostMessage, send_index + 1, send);
 
     //wait for a response
@@ -316,7 +313,7 @@ int signpost_energy_query_async(
     energy_cb = cb;
 
     signbus_app_send(ModuleAddressController,
-            signpost_api_addr_to_key(ModuleAddressController),
+            signpost_api_addr_to_key,
             CommandFrame, EnergyApiType, EnergyQueryMessage,
             0, NULL);
 
@@ -326,7 +323,7 @@ int signpost_energy_query_async(
 int signpost_energy_query_reply(uint8_t destination_address,
         signpost_energy_information_t* info) {
     return signbus_app_send(destination_address,
-            signpost_api_addr_to_key(destination_address),
+            signpost_api_addr_to_key,
             ResponseFrame, EnergyApiType, EnergyQueryMessage,
             sizeof(signpost_energy_information_t), (uint8_t*) info);
 }

@@ -33,14 +33,11 @@ int main(void) {
     signbus_io_init(SIGNBUS_TEST_SENDER_I2C_ADDRESS);
     memcpy(message, "hello there\0", strlen("hello there") + 1);
 
-    // XXX temp until neal changes send api
-    uint8_t* key_FIXME = addr_to_key(0);
-
     while(1) {
         delay_ms(INTERVAL_IN_MS);
         printf("SENDER: sending message\n");
         signbus_app_send(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS,
-                key_FIXME, NotificationFrame, 0xde, 0xad, strlen("hello there") + 1, message);
+                addr_to_key, NotificationFrame, 0xde, 0xad, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");
     }
 }

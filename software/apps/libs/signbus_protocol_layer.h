@@ -14,7 +14,7 @@
 /// Returns number of bytes sent, or < 0 on failure
 int signbus_protocol_send(
     uint8_t dest,                     // Address to send to
-    uint8_t* key,                     // Key to encrypt with or NULL for clear
+    uint8_t* (*addr_to_key)(uint8_t), // Translation function from address -> key
     uint8_t* buf,                     // Buffer to send from
     size_t len                        // Number of bytes to send
     );
@@ -56,7 +56,7 @@ typedef void (*signbus_protocol_callback_t)(int len_or_rc);
 int signbus_protocol_recv_async(
     signbus_protocol_callback_t cb,   // Called when recv operation completes
     uint8_t* sender_address,          // I2C address of sender
-    uint8_t* (*addr_to_key)(uint8_t),          // Translation function from address -> key
+    uint8_t* (*addr_to_key)(uint8_t), // Translation function from address -> key
     size_t recv_buflen,               // Buffer length
     uint8_t* recv_buf                 // Buffer to recieve into
     );
