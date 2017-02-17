@@ -4,6 +4,21 @@
 #include <tock.h>
 #include "signbus_app_layer.h"
 
+// Debugging macros
+
+// Get just the filename, no path
+#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+
+#define SIGNBUS_DEBUG(...)
+/*
+#define SIGNBUS_DEBUG(...) do {\
+    printf("SBDBG %24s:%04d ", __FILENAME__, __LINE__);\
+    printf(__VA_ARGS__);\
+    } while (0)
+*/
+
+
+
 //this is the first i2c messaging library!
 //
 //The MTU of the i2c bus is 256Bytes.

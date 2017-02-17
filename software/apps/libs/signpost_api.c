@@ -2,7 +2,9 @@
 #include <string.h>
 
 #include "signbus_app_layer.h"
+#include "signbus_io_interface.h"
 #include "signpost_api.h"
+#include "signpost_entropy.h"
 #include "tock.h"
 
 static struct module_struct {
@@ -94,6 +96,18 @@ static void signpost_api_recv_callback(int len_or_rc) {
 int signpost_initialization_module_init(
         uint8_t i2c_address,
         api_handler_t** api_handlers) {
+    SIGNBUS_DEBUG("i2c %02x handlers %p\n", i2c_address, api_handlers);
+
+    int rc;
+
+    // Initialize the lower layers
+    signbus_io_init(i2c_address);
+    rc = signpost_entropy_init();
+    if (rc < 0) return rc;
+
+    // See comment in protocol_layer.h
+    signbus_protocol_setup_async(incoming_protocol_buffer, INCOMING_MESSAGE_BUFFER_LENGTH);
+
     //TODO: Actually contact the controller
     for (int i=0; i < NUM_MODULES; i++) {
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
@@ -111,9 +125,6 @@ int signpost_initialization_module_init(
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
 
     // Begin listening for replies
-    // See comment in protocol_layer.h
-    signbus_protocol_setup_async(incoming_protocol_buffer, INCOMING_MESSAGE_BUFFER_LENGTH);
-    int rc;
     uint8_t* key_FIXME = NULL;
     rc = signbus_app_recv_async(signpost_api_recv_callback,
             key_FIXME, &incoming_source_address,
@@ -124,6 +135,7 @@ int signpost_initialization_module_init(
         printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
     }
 
+    SIGNBUS_DEBUG("complete\n");
     return 0;
 }
 
@@ -139,7 +151,8 @@ int signpost_initialization_module_init(
 /* PROCESSING API                                                         */
 /**************************************************************************/
 
-// XXX Placeholder
+// XXX Placeholder (delete the attr too, but shuts up a warning)
+__attribute__((const))
 int signpost_networking_post(
         size_t len __attribute__((unused)),
         uint8_t* data __attribute__((unused)) ) {

@@ -32,6 +32,9 @@ static int cipher(
         uint8_t* in, size_t inlen,
         uint8_t* out, size_t* olen
         ) {
+    SIGNBUS_DEBUG("op 0x%x key %p iv %p in %p inlen %u out %p olen %p (%u)\n",
+            operation, key, iv, in, inlen, out, olen, *olen);
+
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
 
@@ -98,8 +101,11 @@ int signbus_protocol_send(
         uint8_t* clear_buf,
         size_t clear_buflen
         ) {
-    // Needs to be multiple of 16
-    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0));
+    SIGNBUS_DEBUG("dest %02x key %p clear_buf %p clear_buflen %d\n",
+            dest, key, clear_buf, clear_buflen);
+
+    // Needs to be multiple of block size + 1 additional block
+    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0)) + 16;
 
     // Also allocate space for hash and IV
     const size_t protocol_buflen =
@@ -210,8 +216,8 @@ int signbus_protocol_recv(
     // encryption block size, protocol IV and HMAC overhead. The math is the
     // same as the send path.
 
-    // Needs to be multiple of 16
-    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0));
+    // Needs to be multiple of block size + 1 additional block
+    const size_t encrypted_buflen = 16*(clear_buflen/16+(clear_buflen%16 != 0)) + 16;
 
     // Also allocate space for hash and IV
     const size_t protocol_buflen =

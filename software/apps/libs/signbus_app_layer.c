@@ -41,6 +41,9 @@ int signbus_app_send(uint8_t dest, uint8_t* key,
     size_t payload_length = 1 + 1 + 1 + message_length;
     uint8_t payload[payload_length];
 
+    SIGNBUS_DEBUG("dest %02x key %p fr %02x api %02x msg %02x msg_len %d msg %p\n",
+            dest, key, frame_type, api_type, message_type, message_length, message);
+
     // copy args to buffer
     payload[0] = frame_type;
     payload[1] = api_type;

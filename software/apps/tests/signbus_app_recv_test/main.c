@@ -13,6 +13,7 @@
 #include "signbus_app_layer.h"
 #include "signbus_protocol_layer.h"
 #include "signbus_io_interface.h"
+#include "signpost_entropy.h"
 
 #define INTERVAL_IN_MS 2000
 
@@ -74,6 +75,7 @@ int main(void) {
 
     printf("RECEIVER: Begin listening\n\n");
 
+    signpost_entropy_init();
     signbus_io_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS);
     signbus_protocol_setup_async(protocol_buffer, 1024);
     signbus_app_recv_async(

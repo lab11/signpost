@@ -12,6 +12,7 @@
 #include "rng.h"
 #include "signbus_app_layer.h"
 #include "signbus_io_interface.h"
+#include "signpost_entropy.h"
 
 #define INTERVAL_IN_MS 2000
 
@@ -23,10 +24,13 @@ int main(void) {
     strcpy((char *) key, "this is a key");
     printf("\n###\n\n\ntest app stack\n");
 
+    signpost_entropy_init();
+    signbus_io_init(SIGNBUS_TEST_SENDER_I2C_ADDRESS);
+    memcpy(message, "hello there\0", strlen("hello there") + 1);
+
     while(1) {
         delay_ms(INTERVAL_IN_MS);
-        memcpy(message, "hello there\0", strlen("hello there") + 1);
-        signbus_io_init(SIGNBUS_TEST_SENDER_I2C_ADDRESS);
+        printf("SENDER: sending message\n");
         signbus_app_send(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS,
                 key, NotificationFrame, 0x00, 0x00, strlen("hello there") + 1, message);
         printf("SENDER: sent message\n");

@@ -8,6 +8,7 @@
 
 static mbedtls_entropy_context entropy_context;
 static mbedtls_ctr_drbg_context ctr_drbg_context;
+static uint8_t drbg_data[32];
 
 static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, size_t* olen) {
     int num = rng_sync(out, len, len);
@@ -19,8 +20,7 @@ static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t
 int signpost_entropy_init (void) {
     int ret;
     // random start seed
-    uint8_t start[32];
-    ret = rng_sync(start, 32, 32);
+    ret = rng_sync(drbg_data, 32, 32);
     if (ret < 0) return ret;
 
     // init entropy and prng
@@ -29,7 +29,7 @@ int signpost_entropy_init (void) {
     if (ret < 0) return ret;
     mbedtls_ctr_drbg_free(&ctr_drbg_context);
     mbedtls_ctr_drbg_init(&ctr_drbg_context);
-    ret = mbedtls_ctr_drbg_seed(&ctr_drbg_context, mbedtls_entropy_func, &entropy_context, start, 32);
+    ret = mbedtls_ctr_drbg_seed(&ctr_drbg_context, mbedtls_entropy_func, &entropy_context, drbg_data, 32);
     if (ret < 0) return ret;
     mbedtls_ctr_drbg_set_prediction_resistance(&ctr_drbg_context, MBEDTLS_CTR_DRBG_PR_ON);
     return 0;
