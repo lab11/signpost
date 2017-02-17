@@ -67,8 +67,8 @@ enum networking_message_type {
 
 
 typedef struct {
-   char* header;
-   char* value;
+   const char* header;
+   const char* value;
 } http_header;
 
 typedef struct {
@@ -84,10 +84,10 @@ typedef struct{
    uint8_t num_headers;
    http_header* headers;
    uint16_t body_len;
-   uint8_t* body;
+   const uint8_t* body;
 } http_request;
 
-http_response signpost_networking_post(char* url, http_request request);
+http_response signpost_networking_post(const char* url, http_request request);
 
 /**************************************************************************/
 /* PROCESSING API                                                         */

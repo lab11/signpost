@@ -171,7 +171,7 @@ static void get_energy (void) {
   energy_datum[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
   //make a post url
-  char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/energy_datum/append";
+  const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/energy_datum/append";
   http_request r;
   //the library will automatically throw in content-length
   //if you don't, because it's annoying to do yourself
@@ -282,7 +282,7 @@ static void gps_callback (gps_data_t* gps_data) {
   gps_datum[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
 
   //make a post url
-  char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/gps_datum/append";
+  const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/gps_datum/append";
   http_request r;
   //the library will automatically throw in content-length
   //if you don't, because it's annoying to do yourself

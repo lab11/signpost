@@ -185,7 +185,7 @@ static void signpost_networking_post_callback(int result) {
     networking_result = result;
 }
 
-http_response signpost_networking_post(char* url, http_request request) {
+http_response signpost_networking_post(const char* url, http_request request) {
 
     //form the sending array
     uint16_t header_size = 0;
