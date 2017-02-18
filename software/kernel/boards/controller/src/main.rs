@@ -600,6 +600,13 @@ pub unsafe fn reset_handler() {
     signpost_controller.gps_console.initialize();
     //watchdog.start();
 
+    // Attach the kernel debug interface to this console
+    let kc = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(signpost_controller.console), kc);
+
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
