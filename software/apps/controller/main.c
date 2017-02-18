@@ -387,7 +387,7 @@ int main (void) {
   // Install hooks for the signpost APIs we implement
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
   static api_handler_t* handlers[] = {&energy_handler, NULL};
-  signpost_initialization_module_init(ModuleAddressController, handlers);
+  signpost_initialization_controller_module_init(handlers);
 
   // Setup backplane by enabling the modules
   controller_init_module_switches();

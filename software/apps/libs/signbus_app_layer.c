@@ -41,8 +41,8 @@ int signbus_app_send(uint8_t dest, uint8_t* (*addr_to_key)(uint8_t),
     size_t payload_length = 1 + 1 + 1 + message_length;
     uint8_t payload[payload_length];
 
-    SIGNBUS_DEBUG("dest %02x key %p fr %02x api %02x msg %02x msg_len %d msg %p\n",
-            dest, addr_to_key(dest), frame_type, api_type, message_type, message_length, message);
+    SIGNBUS_DEBUG("dest %02x key -- fr %02x api %02x msg %02x msg_len %d msg %p\n",
+            dest, frame_type, api_type, message_type, message_length, message);
 
     // copy args to buffer
     payload[0] = frame_type;
@@ -77,6 +77,7 @@ int signbus_app_recv(
 }
 
 static void app_layer_callback(int len_or_rc) {
+    SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
     if (len_or_rc < 0) return cb_data.cb(len_or_rc);
 
     len_or_rc = app_parse(cb_data.recv_buf, len_or_rc,

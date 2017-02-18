@@ -24,10 +24,17 @@ uint8_t* signpost_api_addr_to_key(uint8_t addr);
 uint8_t* signpost_api_addr_to_key(uint8_t addr) {
     for (size_t i = 0; i < NUM_MODULES; i++) {
         if (addr == module_info.i2c_address_mods[i] && module_info.haskey[i]) {
-            return module_info.keys[i];
+            uint8_t* key = module_info.keys[i];
+            SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
+                    key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
+            return key;
         }
     }
 
+    printf("WARN: Encryption key lookup for I2C address 0x%02x failed.\n", addr);
+    printf("      This will likely result in a HMAC failure and a message drop.\n");
+
+    SIGNBUS_DEBUG("key: NULL\n");
     return NULL;
 }
 
@@ -73,11 +80,36 @@ static uint8_t               incoming_protocol_buffer[INCOMING_MESSAGE_BUFFER_LE
 
 static signbus_app_callback_t* incoming_active_callback = NULL;
 
+
+
+// Forward decl
+static void signpost_api_recv_callback(int len_or_rc);
+
+static void signpost_api_start_new_async_recv(void) {
+    int rc = signbus_app_recv_async(signpost_api_recv_callback,
+            &incoming_source_address, signpost_api_addr_to_key,
+            &incoming_frame_type, &incoming_api_type,
+            &incoming_message_type, &incoming_message_length, &incoming_message,
+            INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
+    if (rc != 0) {
+        printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
+        printf("*** NO MORE MESSAGES WILL BE RECEIVED ***\n");
+    }
+}
+
 static void signpost_api_recv_callback(int len_or_rc) {
+    SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
+
     if (len_or_rc < 0) {
-        printf("%s:%d It's all fubar?\n", __FILE__, __LINE__);
-        // XXX trip watchdog reset or s/t?
-        return;
+        if (len_or_rc == -94) {
+            // These return codes are a hack
+            printf("Dropping message with HMAC/HASH failure\n");
+            signpost_api_start_new_async_recv();
+        } else {
+            printf("%s:%d It's all fubar?\n", __FILE__, __LINE__);
+            // XXX trip watchdog reset or s/t?
+            return;
+        }
     }
 
     if ( (incoming_frame_type == NotificationFrame) || (incoming_frame_type == CommandFrame) ) {
@@ -104,14 +136,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
         printf("Invalid frame type: %d. Dropping message\n", incoming_frame_type);
     }
 
-    int rc = signbus_app_recv_async(signpost_api_recv_callback,
-            &incoming_source_address, signpost_api_addr_to_key,
-            &incoming_frame_type, &incoming_api_type,
-            &incoming_message_type, &incoming_message_length, &incoming_message,
-            INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
-    if (rc != 0) {
-        printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
-    }
+    signpost_api_start_new_async_recv();
 }
 
 
@@ -119,9 +144,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
 
-int signpost_initialization_module_init(
-        uint8_t i2c_address,
-        api_handler_t** api_handlers) {
+static void signpost_initialization_common(uint8_t i2c_address, api_handler_t** api_handlers) {
     SIGNBUS_DEBUG("i2c %02x handlers %p\n", i2c_address, api_handlers);
 
     int rc;
@@ -134,33 +157,47 @@ int signpost_initialization_module_init(
     // See comment in protocol_layer.h
     signbus_protocol_setup_async(incoming_protocol_buffer, INCOMING_MESSAGE_BUFFER_LENGTH);
 
+    // Clear keys
     for (int i=0; i < NUM_MODULES; i++) {
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
     }
 
+    // Save module configuration
     module_info.i2c_address = i2c_address;
     module_info.api_handlers = api_handlers;
 
-    // Some are well known, hard code for now:
+    // Populate the well-known API types with fixed addresses
     module_info.api_type_to_module_address[InitializationApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[StorageApiType] = ModuleAddressStorage;
     module_info.api_type_to_module_address[NetworkingApiType] = -1; /* not supported */
     module_info.api_type_to_module_address[ProcessingApiType] = -1; /* not supported */
     module_info.api_type_to_module_address[EnergyApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
+}
 
-    //TODO: Actually contact the controller
+int signpost_initialization_controller_module_init(api_handler_t** api_handlers) {
+    signpost_initialization_common(ModuleAddressController, api_handlers);
+
+    // HACK Put this here until this module init's correctly and reports its address to controller
+    //      I happen to have my test board in module 6 using address 50.
+    module_info.i2c_address_mods[6] = 0x50;
 
     // Begin listening for replies
-    // See comment in protocol_layer.h
-    rc = signbus_app_recv_async(signpost_api_recv_callback,
-            &incoming_source_address, signpost_api_addr_to_key,
-            &incoming_frame_type, &incoming_api_type,
-            &incoming_message_type, &incoming_message_length, &incoming_message,
-            INCOMING_MESSAGE_BUFFER_LENGTH, incoming_message_buffer);
-    if (rc != 0) {
-        printf("%s:%d UNKNOWN ERROR %d\n", __FILE__, __LINE__, rc);
-    }
+    signpost_api_start_new_async_recv();
+
+    SIGNBUS_DEBUG("complete\n");
+    return 0;
+}
+
+int signpost_initialization_module_init(
+        uint8_t i2c_address,
+        api_handler_t** api_handlers) {
+    signpost_initialization_common(i2c_address, api_handlers);
+
+    //TODO: Contact the controller to fill in the module address array w/ non-hard coded
+
+    // Begin listening for replies
+    signpost_api_start_new_async_recv();
 
     SIGNBUS_DEBUG("complete\n");
     return 0;
@@ -280,6 +317,7 @@ static signbus_app_callback_t* energy_cb = NULL;
 static signpost_energy_information_t* energy_cb_data = NULL;
 
 static void energy_query_sync_callback(int result) {
+    SIGNBUS_DEBUG("result %d\n", result);
     energy_query_ready = true;
     energy_query_result = result;
 }
@@ -300,6 +338,8 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
 }
 
 static void energy_query_async_callback(int len_or_rc) {
+    SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
+
     if (len_or_rc != sizeof(signpost_energy_information_t)) {
         printf("%s:%d - Error: bad len, got %d, want %d\n",
                 __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));
@@ -333,10 +373,12 @@ int signpost_energy_query_async(
     energy_cb_data = energy;
     energy_cb = cb;
 
-    signbus_app_send(ModuleAddressController,
+    int rc;
+    rc = signbus_app_send(ModuleAddressController,
             signpost_api_addr_to_key,
             CommandFrame, EnergyApiType, EnergyQueryMessage,
             0, NULL);
+    if (rc < 0) return rc;
 
     return SUCCESS;
 }

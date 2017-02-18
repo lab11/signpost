@@ -101,6 +101,12 @@ static void i2c_master_slave_callback(
         int length,
         int unused __attribute__ ((unused)),
         void* callback_args) {
+    SIGNBUS_DEBUG("type %d-%s length %d cb args %p\n",
+            callback_type,
+            (callback_type == TOCK_I2C_CB_SLAVE_WRITE) ? "SLAVE_WRITE" :
+            (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) ? "SLAVE_READ_COMPLETE" :
+            "UNKNOWN",
+            length, callback_args);
 
     if(callback_type == TOCK_I2C_CB_SLAVE_WRITE) {
         memcpy(packet_buf, slave_write_buf, length);
@@ -199,6 +205,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
         }
     }
 
+    SIGNBUS_DEBUG("dest %02x data %p len %d -- COMPLETE\n", dest, data, len);
     return len;
 }
 

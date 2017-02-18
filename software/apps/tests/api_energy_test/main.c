@@ -22,13 +22,13 @@ static void timer_callback (
 }
 */
 
-static const uint8_t i2c_address = 0x50;
+static const uint8_t random_i2c_address = 0x50;
 
 int main (void) {
-  putstr("[Test] API: Energy\n");
+  putstr("\n\n[Test] API: Energy\n");
 
   signpost_initialization_module_init(
-      i2c_address,
+      random_i2c_address,
       SIGNPOST_INITIALIZATION_NO_APIS);
 
   int rc;

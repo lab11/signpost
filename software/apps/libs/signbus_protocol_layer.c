@@ -32,8 +32,8 @@ static int cipher(
         uint8_t* in, size_t inlen,
         uint8_t* out, size_t* olen
         ) {
-    SIGNBUS_DEBUG("op 0x%x key %p iv %p in %p inlen %u out %p olen %p (%u)\n",
-            operation, key, iv, in, inlen, out, olen, *olen);
+    SIGNBUS_DEBUG("op 0x%x key %p iv %p in %p inlen %u out %p olen %p\n",
+            operation, key, iv, in, inlen, out, olen);
 
     uint8_t ivenc[MBEDTLS_MAX_IV_LENGTH];
     int ret = 0;
@@ -264,6 +264,7 @@ void signbus_protocol_setup_async(uint8_t* buf, size_t buflen) {
 }
 
 static void protocol_async_callback(int len_or_rc) {
+    SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
     if (len_or_rc < 0) return cb_data.cb(len_or_rc);
 
     uint8_t* key = (cb_data.addr_to_key == NULL) ? NULL : cb_data.addr_to_key(*cb_data.sender_address);

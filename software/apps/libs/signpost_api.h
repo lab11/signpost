@@ -54,6 +54,9 @@ int signpost_initialization_module_init(
         uint8_t i2c_address,
         api_handler_t** api_handlers);
 
+// A special initialization routine for the controller module only.
+int signpost_initialization_controller_module_init(api_handler_t** api_handlers);
+
 /**************************************************************************/
 /* STORAGE API                                                            */
 /**************************************************************************/
