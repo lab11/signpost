@@ -529,3 +529,123 @@ int signpost_energy_query_reply(uint8_t destination_address,
 /* TIME & LOCATION API                                                    */
 /**************************************************************************/
 
+static bool timelocation_query_answered;
+static int  timelocation_query_result;
+// static signbus_app_callback_t* timeloc_cb = NULL;
+// static signpost_timeloc_time_t* timeloc_cb_time = NULL;
+// static signpost_timeloc_location_t* timeloc_cb_location = NULL;
+
+// Callback when a response is received
+static void timelocation_callback(int result) {
+    timelocation_query_answered = true;
+    timelocation_query_result = result;
+}
+
+
+
+// static void energy_query_async_callback(int len_or_rc) {
+//     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
+
+//     if (len_or_rc != sizeof(signpost_energy_information_t)) {
+//         printf("%s:%d - Error: bad len, got %d, want %d\n",
+//                 __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));
+//     } else {
+//         if (energy_cb_data != NULL) {
+//             memcpy(energy_cb_data, incoming_message, len_or_rc);
+//         }
+//         energy_cb_data = NULL;
+//     }
+
+//     if (energy_cb != NULL) {
+//         // allow recursion
+//         signbus_app_callback_t* temp = energy_cb;
+//         energy_cb = NULL;
+//         temp(len_or_rc);
+//     }
+// }
+
+static int signpost_timelocation_sync(signpost_timelocation_message_type_e message_type) {
+    // Variable we yield() on that is set to true when we get a response
+    timelocation_query_answered = false;
+
+    // Check that the internal buffers aren't already being used
+    if (incoming_active_callback != NULL) {
+        return EBUSY;
+    }
+
+    // Setup the callback that the API layer should use
+    incoming_active_callback = timelocation_callback;
+
+    // Call down to send the message
+    int rc = signbus_app_send(ModuleAddressController,
+            signpost_api_addr_to_key,
+            CommandFrame, TimeLocationApiType, message_type,
+            0, NULL);
+    if (rc < 0) return rc;
+
+    // Wait for a response message to come back
+    yield_for(&timelocation_query_answered);
+
+    // Check the response message type
+    if (incoming_message_type != message_type) {
+        // We got back a different response type?
+        // This is bad, and unexpected.
+        return FAIL;
+    }
+
+    return timelocation_query_result;
+}
+
+int signpost_timelocation_get_time(signpost_timelocation_time_t* time) {
+    // Check the argument, because why not.
+    if (time == NULL) {
+        return EINVAL;
+    }
+
+    int rc = signpost_timelocation_sync(TimeLocationGetTimeMessage);
+    if (rc < 0) return rc;
+
+    // Do our due diligence
+    if (incoming_message_length != sizeof(signpost_timelocation_time_t)) {
+        return FAIL;
+    }
+
+    memcpy(time, incoming_message, incoming_message_length);
+
+    return rc;
+}
+
+int signpost_timelocation_get_location(signpost_timelocation_location_t* location) {
+    // Check the argument, because why not.
+    if (location == NULL) {
+        return EINVAL;
+    }
+
+    int rc = signpost_timelocation_sync(TimeLocationGetLocationMessage);
+    if (rc < 0) return rc;
+
+    // Do our due diligence
+    if (incoming_message_length != sizeof(signpost_timelocation_location_t)) {
+        return FAIL;
+    }
+
+    memcpy(location, incoming_message, incoming_message_length);
+
+    return rc;
+}
+
+int signpost_timelocation_get_time_reply(uint8_t destination_address,
+        signpost_timelocation_time_t* time) {
+    return signbus_app_send(destination_address,
+            signpost_api_addr_to_key,
+            ResponseFrame, TimeLocationApiType, TimeLocationGetTimeMessage,
+            sizeof(signpost_timelocation_time_t), (uint8_t*) time);
+}
+
+int signpost_timelocation_get_location_reply(uint8_t destination_address,
+        signpost_timelocation_location_t* location) {
+    return signbus_app_send(destination_address,
+            signpost_api_addr_to_key,
+            ResponseFrame, TimeLocationApiType, TimeLocationGetLocationMessage,
+            sizeof(signpost_timelocation_time_t), (uint8_t*) location);
+}

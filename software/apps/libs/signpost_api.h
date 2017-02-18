@@ -117,10 +117,6 @@ int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t
 /* ENERGY API                                                             */
 /**************************************************************************/
 
-/**************************************************************************/
-/* ENERGY API                                                             */
-/**************************************************************************/
-
 enum energy_message_type {
     EnergyQueryMessage = 0,
     EnergyLevelWarning24hMessage = 1,
@@ -146,4 +142,31 @@ int signpost_energy_query_reply(uint8_t destination_address, signpost_energy_inf
 /**************************************************************************/
 /* TIME & LOCATION API                                                    */
 /**************************************************************************/
+
+typedef enum {
+    TimeLocationGetTimeMessage = 0,
+    TimeLocationGetLocationMessage = 1,
+    TimeLocationGetTimeNextPpsMessage = 2,
+} signpost_timelocation_message_type_e;
+
+typedef struct __attribute__((packed)) {
+    uint16_t year;
+    uint8_t  month;
+    uint8_t  day;
+    uint8_t  hours;
+    uint8_t  seconds;
+} signpost_timelocation_time_t;
+
+typedef struct __attribute__((packed)) {
+    uint32_t latitude;  // Latitude in microdegrees (divide by 10^6 to get degrees)
+    uint32_t longitude; // Longitude in microdegrees
+} signpost_timelocation_location_t;
+
+int signpost_timelocation_get_time(signpost_timelocation_time_t* time);
+int signpost_timelocation_get_location(signpost_timelocation_location_t* location);
+
+int signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_timelocation_time_t* time);
+int signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location);
+
+
 
