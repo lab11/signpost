@@ -61,6 +61,16 @@ int signpost_initialization_controller_module_init(api_handler_t** api_handlers)
 /* STORAGE API                                                            */
 /**************************************************************************/
 
+enum storage_message_type {
+   StorageWriteMessage = 0,
+};
+
+typedef struct {
+   uint8_t value[8];
+} Storage_Record_t;
+
+int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_pointer);
+
 /**************************************************************************/
 /* NETWORKING API                                                         */
 /**************************************************************************/

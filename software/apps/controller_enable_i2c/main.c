@@ -104,6 +104,7 @@ int main (void) {
   // controller_all_modules_disable_i2c();
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
+  putstr("Enabled\n");
 
   // Setup I2C listen
   i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
@@ -115,4 +116,5 @@ int main (void) {
   i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   i2c_master_slave_listen();
+  putstr("Init complete\n");
 }
