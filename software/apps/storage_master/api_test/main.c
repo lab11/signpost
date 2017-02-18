@@ -31,7 +31,7 @@ static void storage_api_callback(uint8_t source_address,
   if (frame_type == NotificationFrame) {
     // XXX unexpected, drop
   } else if (frame_type == CommandFrame) {
-    printf("Got a command message!: ");
+    printf("Got a command message!: len = %d\n", message_length);
     for (int i=0; i<message_length; i++) {
       printf("%X ", message[i]);
     }

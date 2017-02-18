@@ -5,7 +5,7 @@
 
 extern crate cortexm4;
 extern crate capsules;
-#[macro_use(static_init)]
+#[macro_use(debug, static_init)]
 extern crate kernel;
 extern crate sam4l;
 
@@ -341,9 +341,16 @@ pub unsafe fn reset_handler() {
     };
 
     signpost_storage_master.console.initialize();
+    // Attach the kernel debug interface to this console
+    let debug_console = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(signpost_storage_master.console), debug_console);
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
+    debug!("Board setup complete");
     kernel::main(&signpost_storage_master, &mut chip, load_processes(), &signpost_storage_master.ipc);
 }

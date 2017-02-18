@@ -12,7 +12,7 @@
 
 static const uint8_t i2c_address = 0x50;
 
-#define DATA_SIZE 1200
+#define DATA_SIZE 600
 static uint8_t data[DATA_SIZE] = {0};
 
 int main (void) {
