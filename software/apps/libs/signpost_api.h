@@ -102,6 +102,7 @@ typedef struct{
 } http_request;
 
 http_response signpost_networking_post(const char* url, http_request request);
+int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
 /* PROCESSING API                                                         */

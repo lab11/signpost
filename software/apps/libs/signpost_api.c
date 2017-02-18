@@ -376,6 +376,14 @@ http_response signpost_networking_post(const char* url, http_request request) {
     return none;
 }
 
+int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response,
+                                    uint16_t response_len) {
+
+   return signpost_api_send(src_addr, ResponseFrame, NetworkingApiType,
+                        NetworkingPostMessage, response_len, response);
+
+}
+
 /**************************************************************************/
 /* ENERGY API                                                             */
 /**************************************************************************/
