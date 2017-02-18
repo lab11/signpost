@@ -252,9 +252,11 @@ http_response signpost_networking_post(const char* url, http_request request) {
     send_index += 2;
     memcpy(send+send_index,url,len);
     send_index += len;
+    uint16_t num_headers_index = send_index;
     send[send_index] = request.num_headers;
     send_index++;
     bool has_content_length = false;
+
     for(uint8_t i = 0; i < request.num_headers; i++) {
         uint8_t f_len = strlen(request.headers[i].header);
         send[send_index] = f_len;
@@ -274,6 +276,7 @@ http_response signpost_networking_post(const char* url, http_request request) {
 
     //add a content length header if the sender doesn't
     if(!has_content_length) {
+        send[num_headers_index]++;
         uint8_t clen = strlen("content-length");
         send[send_index] = clen;
         send_index++;
@@ -299,7 +302,7 @@ http_response signpost_networking_post(const char* url, http_request request) {
     networking_ready = false;
 
     //call app_send
-    signbus_app_send(ModuleAddressRadio, signpost_api_addr_to_key, CommandFrame,
+    signpost_api_send(ModuleAddressRadio,  CommandFrame,
             NetworkingApiType, NetworkingPostMessage, send_index + 1, send);
 
     //wait for a response
