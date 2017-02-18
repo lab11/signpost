@@ -5,7 +5,7 @@
 
 extern crate cortexm4;
 extern crate capsules;
-#[macro_use(static_init)]
+#[macro_use(debug, static_init)]
 extern crate kernel;
 extern crate sam4l;
 
@@ -398,9 +398,16 @@ pub unsafe fn reset_handler() {
     };
 
     ambient_module.console.initialize();
+    // Attach the kernel debug interface to this console
+    let kc = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(ambient_module.console), kc);
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
+    debug!("Initialization complete. Entering main loop");
     kernel::main(&ambient_module, &mut chip, load_processes(), &ambient_module.ipc);
 }
