@@ -116,17 +116,17 @@ unsafe fn set_pin_primary_functions() {
     PA[07].configure(None);    // spec 2 reset
     PA[08].configure(None);    // spec 2 power
     PA[06].configure(None);    // spec 2 strobe
-    PA[05].configure(None);    // spec 2 out
+    PA[05].configure(Some(A));    // spec 2 out
     PA[10].configure(None);    // spec strobe
     PB[00].configure(None);    // spec reset
     PB[01].configure(None);    // spec power
-    PA[04].configure(None);    // spec out
+    PA[04].configure(Some(A));    // spec out
 
     // LEDs
     PB[04].configure(None);    // LEDG2 (LED3)
     PB[05].configure(None);    // LEDR2 (LED4)
     PB[06].configure(None);    // LEDG1 (LED1)
-	PB[07].configure(None);    // LEDR1 (LED2)
+    PB[07].configure(None);    // LEDR1 (LED2)
 
     // Flash chip
     PA[15].configure(None);    // !FLASH_CS
@@ -139,8 +139,8 @@ unsafe fn set_pin_primary_functions() {
     // Debug lines
     PA[18].configure(None);    // PPS
     // using USART2 on 64 pin SAM4L
-    PA[19].configure(Some(A)); // Mod out
-    PA[20].configure(Some(A)); // Mod in
+    PA[19].configure(None); // Mod out
+    PA[20].configure(None); // Mod in
     // using USART0 on 64 pin SAM4L
     PA[12].configure(Some(A)); // DBG_TX
     PA[11].configure(Some(A)); // DBG_RX
@@ -274,32 +274,26 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 24],
-        [&sam4l::gpio::PA[06],
-         &sam4l::gpio::PA[07],
-         &sam4l::gpio::PA[08],
-         &sam4l::gpio::PA[09],
-         &sam4l::gpio::PA[10],
-         &sam4l::gpio::PA[13],
-         &sam4l::gpio::PA[14],
-         &sam4l::gpio::PA[15],
-         &sam4l::gpio::PA[16],
-         &sam4l::gpio::PA[17],
-         &sam4l::gpio::PA[18],
-         &sam4l::gpio::PA[19],
-         &sam4l::gpio::PA[20],
-         &sam4l::gpio::PA[21],
-         &sam4l::gpio::PA[22],
-         &sam4l::gpio::PB[00],
-         &sam4l::gpio::PB[01],
-         &sam4l::gpio::PB[02],
-         &sam4l::gpio::PB[03],
-         &sam4l::gpio::PB[11],
-         &sam4l::gpio::PB[12],
-         &sam4l::gpio::PB[13],
-         &sam4l::gpio::PB[14],
-         &sam4l::gpio::PB[15]],
-        24 * 4
+        [&'static sam4l::gpio::GPIOPin; 13],
+        [&sam4l::gpio::PA[19], //Mod out
+         &sam4l::gpio::PA[20], //Mod in
+         &sam4l::gpio::PA[18], //PPS
+         &sam4l::gpio::PB[14], //DBG_GPIO1
+         &sam4l::gpio::PB[15], //DBG_GPIO2
+
+         &sam4l::gpio::PA[10], // spec strobe
+         &sam4l::gpio::PB[00], // spec reset
+         &sam4l::gpio::PB[01], // spec power
+         //&sam4l::gpio::PA[04], // spec out
+
+         &sam4l::gpio::PA[06], // spec 2 strobe
+         &sam4l::gpio::PA[07], // spec 2 reset
+         &sam4l::gpio::PA[08], // spec 2 power
+         //&sam4l::gpio::PA[05], // spec 2 out
+
+         &sam4l::gpio::PA[15], // !FLASH_CS
+         &sam4l::gpio::PB[11]], // !FLASH_RESET
+        13 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -314,10 +308,10 @@ pub unsafe fn reset_handler() {
     //
     let led_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 4],
-         [ &sam4l::gpio::PB[04],
-           &sam4l::gpio::PB[05],
-           &sam4l::gpio::PB[06],
-           &sam4l::gpio::PB[07]],
+          [&sam4l::gpio::PB[06], // LEDG1
+           &sam4l::gpio::PB[07], // LEDR1
+           &sam4l::gpio::PB[04], // LEDG2
+           &sam4l::gpio::PB[05]],// LEDR2
            4 * 4);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,

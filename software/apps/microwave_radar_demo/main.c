@@ -10,6 +10,7 @@
 #include "console.h"
 #include "timer.h"
 #include "gpio.h"
+#include "led.h"
 #include "app_watchdog.h"
 #include "i2c_master_slave.h"
 
@@ -41,7 +42,7 @@ const uint32_t NOISE_OFFSET = 10;
 // Some define
 #define SAMPLE_TIMES 20
 #define ADC_CHANNEL 0
-#define LED_PIN 5
+#define LED_PIN 0
 
 // used to store the interval of each half period
 uint32_t time_intervals[SAMPLE_TIMES];
@@ -164,10 +165,10 @@ static void adc_callback (int callback_type, int channel, int sample, void* call
 
     bool motion = detect_motion(sample);
     if (motion) {
-        gpio_clear(LED_PIN);
+        led_on(LED_PIN);
         motion_since_last_transmit = true;
     } else {
-        gpio_set(LED_PIN);
+        led_off(LED_PIN);
     }
     uint32_t speed_mfps = 0;
 

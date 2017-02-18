@@ -72,6 +72,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 struct MicrowaveRadarModule {
     console: &'static Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
+    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     adc: &'static capsules::adc::ADC<'static, sam4l::adc::Adc>,
@@ -90,6 +91,7 @@ impl Platform for MicrowaveRadarModule {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             7 => f(Some(self.adc)),
+            8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
             14 => f(Some(self.rng)),
 
@@ -250,14 +252,13 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 6],
-        [&sam4l::gpio::PA[08],
-         &sam4l::gpio::PA[09],
-         &sam4l::gpio::PA[10],
-         &sam4l::gpio::PA[14],
-         &sam4l::gpio::PA[15],
-         &sam4l::gpio::PA[17]],
-        6 * 4
+        [&'static sam4l::gpio::GPIOPin; 5],
+        [&sam4l::gpio::PA[10], //MOD_OUT
+         &sam4l::gpio::PA[09], //MOD_IN
+         &sam4l::gpio::PA[08], //PPS
+         &sam4l::gpio::PA[14], //STROBE
+         &sam4l::gpio::PA[15]], //RESET
+        5 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -267,6 +268,17 @@ pub unsafe fn reset_handler() {
         pin.set_client(gpio);
     }
 
+    //
+    // LEDs
+    //
+    let led_pins = static_init!(
+        [&'static sam4l::gpio::GPIOPin; 1],
+           [&sam4l::gpio::PA[17]],
+           1 * 4);
+    let led = static_init!(
+        capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
+        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
+        96/8);
     //
     // App Watchdog
     //
@@ -313,6 +325,7 @@ pub unsafe fn reset_handler() {
     let microwave_radar_module = MicrowaveRadarModule {
         console: console,
         gpio: gpio,
+        led: led,
         timer: timer,
         i2c_master_slave: i2c_master_slave,
         adc: adc_driver,
