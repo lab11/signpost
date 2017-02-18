@@ -183,6 +183,21 @@ class FakeRadio:
                 print("Body: {}".format(response.read().decode("utf-8")))
                 print("")
                 #now format the response and send it back to the radio
+                send_buf = bytearray()
+                send_buf.extend(struct.pack('<H',response.status))
+                send_buf.extend(struct.pack('<H',len(response.reason)))
+                send_buf.extend(response.reason)
+                send_buf.extend(struct.pack('<B',len(response.getheaders())))
+                for header in response.getheaders():
+                    send_buf.extend(struct.pack('<B',len(header[0])))
+                    send_buf.extend(header[0])
+                    send_buf.extend(struct.pack('<B',len(header[1])))
+                    send_buf.extend(header[1])
+                send_buf.extend(struct.pack('<H',len(response.read())))
+                send_buf.extend(response.read())
+                self.sp.write(send_buf);
+
+
                 print("Sending response back to radio")
                 print("#######################################################")
                 print("")
