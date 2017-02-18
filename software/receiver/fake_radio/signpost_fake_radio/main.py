@@ -100,7 +100,8 @@ class FakeRadio:
 
             body_len = struct.unpack('<H', buf[0:2])[0]
             buf = buf[2:]
-            body = buf[:body_len]
+            body = bytearray()
+            body.extend(buf[:body_len])
 
             #now that we have parsed the buffer, post
             #split url into the first and second parts
@@ -171,8 +172,10 @@ class FakeRadio:
                     response = conn.getresponse()
                 except:
                     print("Post failed, please check your destination URL")
+                    print("#######################################################")
                     print("")
-                    print("")
+                    continue
+
 
                 #we should send this back, but for now that's good
                 print("Post Succeeded! See response below.")
