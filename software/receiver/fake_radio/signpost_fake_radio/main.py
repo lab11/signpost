@@ -6,7 +6,7 @@ import os
 import struct
 import sys
 import time
-import httplib
+import http.client
 
 import serial
 import serial.tools.list_ports
@@ -61,46 +61,81 @@ class FakeRadio:
     def run (self):
         while True:
             buf = self.sp.read(4096)
-            print(buf)
+
+            if((len(buf)) == 0):
+                continue
+
+            if(chr(buf[0]) != "$"):
+                #this is a debuggin message, ignore it
+                continue
 
             if(len(buf) < 5):
                 print("packet too short")
                 continue;
 
-            url_len = struct.unpack('<H', buf[0:2])
+            buf = buf[1:]
+            url_len_struct = struct.unpack('<H', buf[0:2])
+            url_len = url_len_struct[0]
             buf = buf[2:]
-            url = buf[0:url_len]
-            print('URL is: {}'.format(url))
+            url = buf[0:url_len].decode("utf-8")
             buf = buf[url_len:]
-            num_headers = struct.unpack('<B', buf[0:1])
+            num_headers = struct.unpack('<B', buf[0:1])[0]
             buf = buf[1:]
             headers = {}
             for i in range(0,num_headers):
-                header_len = struct.unpack('<B',buf[0:1])
+                header_len = struct.unpack('<B',buf[0:1])[0]
                 buf = buf[1:]
-                header = buf[0:header_len]
+                header = buf[0:header_len].decode("utf-8")
                 buf = buf[header_len:]
-                value_len = struct.unpack('<B',buf[0:1])
+                value_len = struct.unpack('<B',buf[0:1])[0]
                 buf = buf[1:]
-                header = buf[0:value_len]
+                value = buf[0:value_len].decode("utf-8")
                 buf = buf[value_len:]
                 headers[header] = value
 
-            print('Headers:')
-            print(headers)
 
-            body_len = struct.unpack('<H', buf[0:2])
+            body_len = struct.unpack('<H', buf[0:2])[0]
             buf = buf[2:]
             body = buf[:body_len]
-            print('Body:')
-            print(body)
 
             #now that we have parsed the buffer, post
-            conn = httplib.HTTPConnection(url)
-            conn.request("POST","",body,headers)
+            #split url into the first and second parts
+            s_index = url.find("/")
+            base = url[:s_index]
+            end = url[s_index:]
 
-            #we should send this back, but for now that's good
-            response = conn.getresponse()
+            # is the base the gdp address?
+            if(base == "gdp.lab11.eecs.umich.edu"):
+                if(end == "/v1/create_log"):
+                    pass
+                else:
+                    pass
+            else:
+                #this is a real http post. let's do it
+                print("")
+                print("#######################################################")
+                print("Trying to post to {}".format(url))
+                print("Post headers: {}".format(headers))
+                print("Post body: {}".format(body))
+                print("")
+                try:
+                    conn = http.client.HTTPConnection(base)
+                    conn.request("POST",end,body,headers)
+                    response = conn.getresponse()
+                except:
+                    print("Post failed, please check your destination URL")
+                    print("")
+                    print("")
+
+                #we should send this back, but for now that's good
+                print("Post Succeeded! See response below.")
+                print("Status: {}, Reason: {}".format(response.status,response.reason))
+                print("Body: {}".format(response.read().decode("utf-8")))
+                print("")
+                print("Sending response back to radio")
+                print("#######################################################")
+                print("")
+
 
 
 
@@ -134,6 +169,8 @@ def main ():
         print('Could not open the serial port. Make sure the board is plugged in.')
         sys.exit(1)
 
+    print("Starting fake-radio server. Listening for commands....")
+    print("")
     fake_radio.run()
 
 
