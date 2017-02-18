@@ -6,14 +6,17 @@
 #include "signbus_io_interface.h"
 #include "signpost_api.h"
 #include "signpost_entropy.h"
+#include "signpost_mod_io.h"
 #include "tock.h"
+#include "gpio.h"
+#include "timer.h"
 
 static struct module_struct {
     uint8_t                 i2c_address;
     api_handler_t**         api_handlers;
     int8_t                  api_type_to_module_address[HighestApiType+1];
     uint8_t                 i2c_address_mods[NUM_MODULES];
-    bool                    haskey[NUM_MODULES][ECDH_KEY_LENGTH];
+    bool                    haskey[NUM_MODULES];
     uint8_t                 keys[NUM_MODULES][ECDH_KEY_LENGTH];
 } module_info = {.i2c_address_mods = {ModuleAddressController, ModuleAddressStorage, ModuleAddressRadio}};
 
@@ -159,6 +162,7 @@ static void signpost_initialization_common(uint8_t i2c_address, api_handler_t** 
 
     // Clear keys
     for (int i=0; i < NUM_MODULES; i++) {
+        module_info.haskey[i] = false;
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
     }
 
@@ -207,6 +211,59 @@ int signpost_initialization_module_init(
 /* STORAGE API                                                            */
 /**************************************************************************/
 
+// message response state
+static bool storage_ready;
+static bool storage_result;
+static Storage_Record_t* callback_record = NULL;
+
+static void signpost_storage_callback(int len_or_rc) {
+
+    if (len_or_rc < SUCCESS) {
+        // error code response
+        storage_result = len_or_rc;
+    } else if (len_or_rc != sizeof(Storage_Record_t)) {
+        // invalid response length
+        printf("%s:%d - Error: bad len, got %d, want %d\n",
+                __FILE__, __LINE__, len_or_rc, sizeof(Storage_Record_t));
+        storage_result = FAIL;
+    } else {
+        // valid storage record
+        if (callback_record != NULL) {
+            // copy over record response
+            memcpy(callback_record, incoming_message, len_or_rc);
+        }
+        callback_record = NULL;
+        storage_result = SUCCESS;
+    }
+
+    // response received
+    storage_ready = true;
+}
+
+int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_pointer) {
+    storage_ready = false;
+    storage_result = SUCCESS;
+    callback_record = record_pointer;
+
+    // set up callback
+    if (incoming_active_callback != NULL) {
+        return EBUSY;
+    }
+    incoming_active_callback = signpost_storage_callback;
+
+    // send message
+    int err = signbus_app_send(ModuleAddressStorage, signpost_api_addr_to_key,
+            CommandFrame, StorageApiType, StorageWriteMessage, len, data);
+    if (err < SUCCESS) {
+        return err;
+    }
+
+    // wait for response
+    yield_for(&storage_ready);
+    return storage_result;
+}
+
+
 /**************************************************************************/
 /* NETWORKING API                                                         */
 /**************************************************************************/
@@ -248,9 +305,11 @@ http_response signpost_networking_post(const char* url, http_request request) {
     send_index += 2;
     memcpy(send+send_index,url,len);
     send_index += len;
+    uint16_t num_headers_index = send_index;
     send[send_index] = request.num_headers;
     send_index++;
     bool has_content_length = false;
+
     for(uint8_t i = 0; i < request.num_headers; i++) {
         uint8_t f_len = strlen(request.headers[i].header);
         send[send_index] = f_len;
@@ -270,6 +329,7 @@ http_response signpost_networking_post(const char* url, http_request request) {
 
     //add a content length header if the sender doesn't
     if(!has_content_length) {
+        send[num_headers_index]++;
         uint8_t clen = strlen("content-length");
         send[send_index] = clen;
         send_index++;
@@ -295,7 +355,7 @@ http_response signpost_networking_post(const char* url, http_request request) {
     networking_ready = false;
 
     //call app_send
-    signbus_app_send(ModuleAddressRadio, signpost_api_addr_to_key, CommandFrame,
+    signpost_api_send(ModuleAddressRadio,  CommandFrame,
             NetworkingApiType, NetworkingPostMessage, send_index + 1, send);
 
     //wait for a response
