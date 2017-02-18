@@ -27,8 +27,8 @@ int main (void) {
   while (true) {
     // create buffer
     // set buffer value to a byte from the record so that the value changes
-    memset(data, record.value[3], DATA_SIZE);
-    printf("Writing buffer [%u]*%d\n", record.value[3], DATA_SIZE);
+    memset(data, record.value[4], DATA_SIZE);
+    printf("Writing buffer [%X]*%d\n", record.value[4], DATA_SIZE);
 
     err = signpost_storage_write(data, DATA_SIZE, &record);
     if (err < SUCCESS) {

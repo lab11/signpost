@@ -266,6 +266,12 @@ int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_
     return storage_result;
 }
 
+int signpost_storage_write_reply(uint8_t destination_address, uint8_t* record_pointer) {
+    return signbus_app_send(destination_address,
+            signpost_api_addr_to_key,
+            ResponseFrame, StorageApiType, StorageWriteMessage,
+            sizeof(Storage_Record_t), record_pointer);
+}
 
 /**************************************************************************/
 /* NETWORKING API                                                         */

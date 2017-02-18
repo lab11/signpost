@@ -21,6 +21,7 @@
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
+  int err = SUCCESS;
 
   if (api_type != StorageApiType) {
     signpost_api_error_reply(source_address, api_type, message_type);
@@ -30,61 +31,45 @@ static void storage_api_callback(uint8_t source_address,
   if (frame_type == NotificationFrame) {
     // XXX unexpected, drop
   } else if (frame_type == CommandFrame) {
-    printf("Got a command message!\n");
-    //XXX write data to SD card and update usage block
-    //  first word written ought to be length each time
-    //  then the record_pointer will point to that length
-    //  and we can know how much to read out
-
-    // this will have to be a loop where we read in blocks,
-    // append data
-    // write block to sd card
-    // until all data is written
+    printf("Got a command message!: ");
+    for (int i=0; i<message_length; i++) {
+      printf("%X ", message[i]);
+    }
+    printf("\n");
 
     //XXX do some checking that the message type is right and all that jazz
     //XXX also figure out what module index this is, somehow
     int module_index = 0;
 
-    //XXX: rewrite this using storage_write_record()
-    /*
-    // get initial record pointer
-    Storage_Status_Record_t* curr_record = &storage_status.status_records[module_index];
-    Storage_Record_Pointer_t orig_record_pointer = {
-      .block = curr_record->curr.block,
-      .offset = curr_record->curr.offset,
-    };
+    printf("Writing data\n");
 
-    // store data to SD card and get updated record pointer
-    int err = SUCCESS;
-    Storage_Record_Pointer_t new_record_pointer;
+    // get initial record
+    Storage_Record_Pointer_t write_record = {0};
+    write_record.block = storage_status.status_records[module_index].curr.block;
+    write_record.offset = storage_status.status_records[module_index].curr.offset;
 
-    // write the header
-    Storage_Record_Header_t header = {
-      .magic_header = STORAGE_RECORD_HEADER,
-      .message_length = message_length,
-    };
-    err = storage_write_data(orig_record_pointer, (uint8_t*)&header, sizeof(Storage_Record_Header_t), &new_record_pointer);
+    // write data to storage
+    err = storage_write_record(write_record, message, message_length, &write_record);
     if (err < SUCCESS) {
-      //XXX: respond with error
+      printf("Writing error: %d\n", err);
+      //XXX: send error
     }
 
-    // write the message data
-    err = storage_write_data(new_record_pointer, message, message_length, &new_record_pointer);
-    if (err < SUCCESS) {
-      //XXX: respond with error
-    }
-
-    // update record and store to SD card
-    curr_record->curr.block = new_record_pointer.block;
-    curr_record->curr.offset = new_record_pointer.offset;
+    // update record
+    storage_status.status_records[module_index].curr.block = write_record.block;
+    storage_status.status_records[module_index].curr.offset = write_record.offset;
     err = storage_update_status();
     if (err < SUCCESS) {
-      //XXX: respond with error
+      printf("Updating status error: %d\n", err);
+      //XXX: send error
     }
-    */
-    
+    printf("Complete. Final block: %lu offset: %lu\n", write_record.block, write_record.offset);
 
-    //XXX send complete response with orig_record_pointer to app
+    // send response
+    err = signpost_storage_write_reply(source_address, (uint8_t*)&write_record);
+    if (err < SUCCESS) {
+      //XXX: I guess just try to send an error...
+    }
 
   } else if (frame_type == ResponseFrame) {
     // XXX unexpected, drop
