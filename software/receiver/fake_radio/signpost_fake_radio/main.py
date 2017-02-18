@@ -11,6 +11,10 @@ import httplib
 import serial
 import serial.tools.list_ports
 import serial.tools.miniterm
+try:
+    import gdp
+except:
+    pass
 
 from _version import __version__
 
@@ -66,7 +70,7 @@ class FakeRadio:
                 continue
 
             if(buf[0].decode("utf-8") != "$"):
-                #this is a debuggin message, ignore it
+                #this is a debugging message, ignore it
                 continue
 
             if(len(buf) < 5):
@@ -106,21 +110,52 @@ class FakeRadio:
 
             # is the base the gdp address?
             if(base == "gdp.lab11.eecs.umich.edu"):
-                if(end == "/v1/create_log"):
-                    #create the log
-                    pass
-                else:
-                    #does it end in append
-                    last_index = end.rfind("/")
-                    last = end[last_index+1:]
-                    if(last != "append"):
-                        #this is an error
-                        pass
+                    print("")
+                    print("#######################################################")
+                    print("Trying to post to GDP")
+                    index1 = 1+end[1:].find("/")
+                    index2 = index1 + 1 + end[index1+1:].find("/")
+                    index3 = index2 + 1 + end[index2+1:].find("/")
+                    #version
+                    try:
+                        version = end[index1+1:index2]
+                        log_name = end[index2+1:index3]
+                        function = end[index3+1:]
+                    except:
+                        print("There was an error, aborting")
+                        print("#######################################################")
+                        print("")
+                        continue
 
-                    slash_index = end[1:].find("/")
-                    logname = end[1:slash_index]
+                    if(function == "append" or function == "Append"):
+                            print("Attempting to append to log name {}".format(log_name))
+                            #try to create the log. Don't know how to do this in python
+                            #so instead call the shell
+                            ret = os.system("gcl-create -C lab11-signpost@umich.edu -k none " + log_name)
+                            if((ret >> 8) == 0):
+                                print("Successfully created log")
+                            elif((ret >> 8) == 73):
+                                print("Log already exists")
+                            else:
+                                print("An unkown gdp error(code {}) occurred).".format(str((ret >> 8))))
 
-                    #post the data to the logname with the gdp api
+                            try:
+                                gcl_name = gdp.GDP_NAME(log_name)
+                                gcl_handle = gdp.GDP_GCL(gcl_name,gdp.GDP_MODE_AO)
+                                gcl_handle.append({"signpost-data": body})
+                                print("Append success")
+                                print("Sending response back to radio")
+                            except:
+                                print("There was an error, aborting")
+                                print("#######################################################")
+                                print("")
+                                continue
+
+                    else:
+                        print("Does not support that function")
+
+                    print("#######################################################")
+                    print("")
 
             else:
                 #this is a real http post. let's do it
@@ -148,8 +183,6 @@ class FakeRadio:
                 print("Sending response back to radio")
                 print("#######################################################")
                 print("")
-
-
 
 
 
