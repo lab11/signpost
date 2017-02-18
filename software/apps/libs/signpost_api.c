@@ -288,7 +288,8 @@ static void signpost_networking_post_callback(int result) {
     networking_result = result;
 }
 
-http_response signpost_networking_post(const char* url, http_request request) {
+
+int signpost_networking_post(const char* url, http_request request, http_response* response) {
 
     //form the sending array
     uint16_t header_size = 0;
@@ -302,8 +303,7 @@ http_response signpost_networking_post(const char* url, http_request request) {
     //this is the max message size
     if(message_size > 4096) {
         //this is an error - we can't send this
-        http_response none;
-        return none;
+        return -1;
     }
 
     uint8_t send[message_size];
@@ -371,9 +371,62 @@ http_response signpost_networking_post(const char* url, http_request request) {
     yield_for(&networking_ready);
 
     //parse the response
+    uint8_t *b = incoming_message_buffer;
+    uint16_t i = 0;
+    response->status = b[i] + (((uint16_t)b[i+1]) >> 8);
+    i += 2;
+    uint16_t reason_len = b[i] + (((uint16_t)b[i+1]) >> 8);
+    i += 2;
+    if(reason_len < response->reason_len) {
+        response->reason_len = reason_len;
+        memcpy(response->reason,b,reason_len);
+        i += reason_len;
+    } else {
+        memcpy(response->reason,b,response->reason_len);
+        i += response->reason_len;
+    }
+    uint8_t num_headers = b[i];
+    i += 1;
+    uint8_t min;
+    if(num_headers < response->num_headers) {
+        min = num_headers;
+        response->num_headers = num_headers;
+    } else {
+        min = response->num_headers;
+    }
+    for(uint8_t j = 0; j < min; j++) {
+        uint8_t hlen = b[i];
+        i += 1;
+        if(hlen < response->headers[j].header_len) {
+            response->headers[j].header_len = hlen;
+            memcpy(response->headers[j].header,b,hlen);
+            i += hlen;
+        } else {
+            memcpy(response->headers[j].header,b,response->headers[j].header_len);
+            i += response->headers[j].header_len;
+        }
+        hlen = b[i];
+        i += 1;
+        if(hlen < response->headers[j].value_len) {
+            response->headers[j].value_len = hlen;
+            memcpy(response->headers[j].value,b,hlen);
+            i += hlen;
+        } else {
+            memcpy(response->headers[j].header,b,response->headers[j].value_len);
+            i += response->headers[j].value_len;
+        }
+    }
+    uint16_t body_len = b[i] + (((uint16_t)b[i+1]) >> 8);
+    i += 2;
+    if(body_len < response->body_len) {
+        response->body_len = body_len;
+        memcpy(response->body,b,body_len);
+    } else {
+        memcpy(response->body,b,response->body_len);
+    }
 
-    http_response none;
-    return none;
+
+    return 0;
 }
 
 int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response,

@@ -81,12 +81,15 @@ enum networking_message_type {
 
 
 typedef struct {
-   const char* header;
-   const char* value;
+   uint8_t header_len;
+   char* header;
+   uint8_t value_len;
+   char* value;
 } http_header;
 
 typedef struct {
     uint16_t status;
+    uint16_t reason_len;
     char* reason;
     uint8_t num_headers;
     http_header* headers;
@@ -101,7 +104,7 @@ typedef struct{
    const uint8_t* body;
 } http_request;
 
-http_response signpost_networking_post(const char* url, http_request request);
+int signpost_networking_post(const char* url, http_request request, http_response* response);
 int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
