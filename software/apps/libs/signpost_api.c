@@ -400,6 +400,9 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
 static void energy_query_async_callback(int len_or_rc) {
     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
 
+    // mark the callback free
+    incoming_active_callback = NULL;
+
     if (len_or_rc != sizeof(signpost_energy_information_t)) {
         printf("%s:%d - Error: bad len, got %d, want %d\n",
                 __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));

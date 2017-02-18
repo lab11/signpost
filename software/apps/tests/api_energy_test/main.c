@@ -46,8 +46,8 @@ int main (void) {
       printf("      24h used:  %-4lu mJ\n", info.energy_used_24h_mJ);
       printf("      60s limit: %-4u mA\n", info.current_limit_60s_mA);
       printf("    60s average: %-4u mA\n", info.current_average_60s_mA);
-      printf("  mJ limit warn: %-4u%%\n",   info.energy_limit_warning_threshold);
-      printf("  mJ limit crit: %-4u%%\n",   info.energy_limit_critical_threshold);
+      printf("  mJ limit warn: %-4u %%\n",   info.energy_limit_warning_threshold);
+      printf("  mJ limit crit: %-4u %%\n",   info.energy_limit_critical_threshold);
       printf("\n");
     }
 
