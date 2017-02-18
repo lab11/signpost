@@ -8,11 +8,27 @@
 
 #include "app_watchdog.h"
 #include "console.h"
+#include "gps.h"
+#include "gpio.h"
 #include "gpio_async.h"
 #include "i2c_master_slave.h"
 #include "signpost_api.h"
 #include "timer.h"
 #include "tock.h"
+
+
+
+static bool message_sent = false;
+
+static void tx_callback (
+            __attribute__ ((unused)) int u1,
+            __attribute__ ((unused)) int u2,
+            __attribute__ ((unused)) int u3,
+            __attribute__ ((unused)) void* userdata) {
+
+    //gpio_set(0);
+    message_sent = true;
+}
 
 
 static void networking_api_callback(uint8_t source_address,
@@ -28,14 +44,27 @@ static void networking_api_callback(uint8_t source_address,
     // XXX unexpected, drop
   } else if (frame_type == CommandFrame) {
 
-    if (message_type == NetworkingPostMessage) {
-        putstr("About to send over real message");
+      if (message_type == NetworkingPostMessage) {
+        //putstr("About to send over real message");
 
         delay_ms(1000);
-        putnstr("$",1);
+        /*putnstr("$",1);
         for(uint16_t i = 0; i < message_length; i++) {
             putnstr((const char*)(message+i),1);
-        }
+        }*/
+        gpio_clear(0);
+
+        message_sent = false;
+        static char d[2];
+        d[0] = '$';
+        allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
+        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+        yield_for(&message_sent);
+
+        message_sent = false;
+        allow(DRIVER_NUM_GPS, 1, (void*)message, message_length);
+        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+        yield_for(&message_sent);
     }
 
   } else if (frame_type == ResponseFrame) {
@@ -47,8 +76,19 @@ static void networking_api_callback(uint8_t source_address,
 
 
 int main (void) {
-  putstr("[Fake radio] ** Main App **\n");
+    //putstr("[Fake radio] ** Main App **\n");
+    gpio_enable_output(0);
+    gpio_set(0);
+/*  gpio_clear(0);
 
+        message_sent = false;
+        static char d[2];
+        d[0] = '$';
+        allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
+        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+        yield_for(&message_sent);*/
+
+  //gpio_clear(0);
   /////////////////////////////
   // Signpost Module Operations
   //
@@ -66,5 +106,5 @@ int main (void) {
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();
 
-  putstr("Everything intialized\n");
+  //putstr("Everything intialized\n");
 }

@@ -11,6 +11,7 @@ extern crate sam4l;
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
+use signpost_drivers::gps_console;
 use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
@@ -69,6 +70,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 
 struct RadioUartPython {
     console: &'static Console<'static, usart::USART>,
+    gps_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
@@ -90,6 +92,7 @@ impl Platform for RadioUartPython {
             14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
+            109 => f(Some(self.gps_console)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -110,6 +113,7 @@ unsafe fn set_pin_primary_functions() {
     PA[24].configure(Some(B)); // SCL
     PA[25].configure(Some(A)); // USB
     PA[26].configure(Some(A)); // USB
+    PA[05].configure(None); // USB
 }
 
 /*******************************************************************************
@@ -133,12 +137,22 @@ pub unsafe fn reset_handler() {
     //
     let console = static_init!(
         Console<usart::USART>,
-        Console::new(&usart::USART0,
+        Console::new(&usart::USART1,
                      115200,
                      &mut console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
-    hil::uart::UART::set_client(&usart::USART0, console);
+    hil::uart::UART::set_client(&usart::USART1, console);
+    //as a hack we are going to use gps console because it can receive bytes
+    let gps_console = static_init!(                                             
+        signpost_drivers::gps_console::Console<usart::USART>,                   
+        signpost_drivers::gps_console::Console::new(&usart::USART0,             
+                     115200,                                                      
+                     &mut gps_console::WRITE_BUF,                               
+                     &mut gps_console::READ_BUF,                                
+                     kernel::Container::create()),                              
+        288/8);                                                                 
+    hil::uart::UART::set_client(&usart::USART0, gps_console); 
 
     //
     // Timer
@@ -187,11 +201,12 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 3],
-        [&sam4l::gpio::PA[19], // MOD_OUT
+        [&'static sam4l::gpio::GPIOPin; 4],
+        [&sam4l::gpio::PA[05],
+         &sam4l::gpio::PA[19], // MOD_OUT
          &sam4l::gpio::PA[20], // MOD_IN
          &sam4l::gpio::PA[18]],// PPS
-        3 * 4
+        4 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -245,6 +260,7 @@ pub unsafe fn reset_handler() {
     //
     let module = RadioUartPython {
         console: console,
+        gps_console: gps_console,
         gpio: gpio,
         timer: timer,
         i2c_master_slave: i2c_modules,
@@ -254,6 +270,7 @@ pub unsafe fn reset_handler() {
     };
 
     module.console.initialize();
+	module.gps_console.initialize();
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
