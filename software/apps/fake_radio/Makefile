@@ -3,7 +3,7 @@
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-STACK_SIZE=6500
+STACK_SIZE=4096
 APP_HEAP_SIZE=2048
 
 # files needed for this code

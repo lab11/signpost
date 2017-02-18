@@ -17,6 +17,8 @@
 #include "tock.h"
 
 
+static uint8_t src;
+static uint8_t rx_buffer[2048];
 
 static bool message_sent = false;
 
@@ -30,6 +32,15 @@ static void tx_callback (
     message_sent = true;
 }
 
+static void rx_callback (
+            int len,
+            __attribute__ ((unused)) int u2,
+            __attribute__ ((unused)) int u3,
+            __attribute__ ((unused)) void* userdata) {
+
+    signpost_networking_post_reply(src, rx_buffer, len);
+}
+
 
 static void networking_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
@@ -39,6 +50,8 @@ static void networking_api_callback(uint8_t source_address,
         signpost_api_error_reply(source_address, api_type, message_type);
         return;
     }
+
+    src = source_address;
 
   if (frame_type == NotificationFrame) {
     // XXX unexpected, drop
@@ -65,6 +78,8 @@ static void networking_api_callback(uint8_t source_address,
         allow(DRIVER_NUM_GPS, 1, (void*)message, message_length);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
+
+        getauto(rx_buffer,4096, rx_callback,NULL);
     }
 
   } else if (frame_type == ResponseFrame) {
@@ -79,17 +94,10 @@ int main (void) {
     //putstr("[Fake radio] ** Main App **\n");
     gpio_enable_output(0);
     gpio_set(0);
-/*  gpio_clear(0);
 
-        message_sent = false;
-        static char d[2];
-        d[0] = '$';
-        allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
-        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
-        yield_for(&message_sent);*/
 
-  //gpio_clear(0);
-  /////////////////////////////
+
+    /////////////////////////////
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
