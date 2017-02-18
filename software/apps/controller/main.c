@@ -92,11 +92,11 @@ static void watchdog_tickler (int which) {
 static void print_energy_data (int module, int energy) {
   char buf[64];
   if (module == 3) {
-    sprintf(buf, "  Controller energy: %i uAh\n", energy);
+    snprintf(buf, 64, "  Controller energy: %10i uAh\n", energy);
   } else if (module == 4) {
-    sprintf(buf, "  Linux energy:      %i uAh\n", energy);
+    snprintf(buf, 64, "  Linux energy:      %10i uAh\n", energy);
   } else {
-    sprintf(buf, "  Module %i energy:   %i uAh\n", module, energy);
+    snprintf(buf, 64, "  Module %i energy:   %10i uAh\n", module, energy);
   }
   putstr(buf);
 }
