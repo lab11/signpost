@@ -131,7 +131,10 @@ static void signpost_api_recv_callback(int len_or_rc) {
         }
     } else if ( (incoming_frame_type == ResponseFrame) || (incoming_frame_type == ErrorFrame) ) {
         if (incoming_active_callback != NULL) {
-            incoming_active_callback(len_or_rc);
+            // clear this before passing it on
+            signbus_app_callback_t* temp = incoming_active_callback;
+            incoming_active_callback = NULL;
+            temp(len_or_rc);
         } else {
             printf("Warn: Unsolicited response/error. Dropping\n");
         }
@@ -400,9 +403,6 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
 static void energy_query_async_callback(int len_or_rc) {
     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
 
-    // mark the callback free
-    incoming_active_callback = NULL;
-
     if (len_or_rc != sizeof(signpost_energy_information_t)) {
         printf("%s:%d - Error: bad len, got %d, want %d\n",
                 __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));
@@ -427,10 +427,10 @@ int signpost_energy_query_async(
         ) {
     if (incoming_active_callback != NULL) {
         // XXX: Consider multiplexing based on API
-        return -1;
+        return -EBUSY;
     }
     if (energy_cb != NULL) {
-        return -1;
+        return -EBUSY;
     }
     incoming_active_callback = energy_query_async_callback;
     energy_cb_data = energy;
