@@ -211,6 +211,59 @@ int signpost_initialization_module_init(
 /* STORAGE API                                                            */
 /**************************************************************************/
 
+// message response state
+static bool storage_ready;
+static bool storage_result;
+static Storage_Record_t* callback_record = NULL;
+
+static void signpost_storage_callback(int len_or_rc) {
+
+    if (len_or_rc < SUCCESS) {
+        // error code response
+        storage_result = len_or_rc;
+    } else if (len_or_rc != sizeof(Storage_Record_t)) {
+        // invalid response length
+        printf("%s:%d - Error: bad len, got %d, want %d\n",
+                __FILE__, __LINE__, len_or_rc, sizeof(Storage_Record_t));
+        storage_result = FAIL;
+    } else {
+        // valid storage record
+        if (callback_record != NULL) {
+            // copy over record response
+            memcpy(callback_record, incoming_message, len_or_rc);
+        }
+        callback_record = NULL;
+        storage_result = SUCCESS;
+    }
+
+    // response received
+    storage_ready = true;
+}
+
+int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_pointer) {
+    storage_ready = false;
+    storage_result = SUCCESS;
+    callback_record = record_pointer;
+
+    // set up callback
+    if (incoming_active_callback != NULL) {
+        return EBUSY;
+    }
+    incoming_active_callback = signpost_storage_callback;
+
+    // send message
+    int err = signbus_app_send(ModuleAddressStorage, signpost_api_addr_to_key,
+            CommandFrame, StorageApiType, StorageWriteMessage, len, data);
+    if (err < SUCCESS) {
+        return err;
+    }
+
+    // wait for response
+    yield_for(&storage_ready);
+    return storage_result;
+}
+
+
 /**************************************************************************/
 /* NETWORKING API                                                         */
 /**************************************************************************/
