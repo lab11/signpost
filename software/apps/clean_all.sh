@@ -25,3 +25,11 @@ for dir in `find storage_master -maxdepth 1 -type d`; do
 	make clean
 	popd
 done
+
+for dir in `find audio_module -maxdepth 1 -type d`; do
+	if [ $dir == "audio_module" ]; then continue; fi
+	pushd $dir
+	make clean
+	popd
+done
+

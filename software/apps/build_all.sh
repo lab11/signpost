@@ -27,6 +27,7 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./support" ]; then continue; fi
 	if [ $dir == "./tests" ]; then continue; fi
 	if [ $dir == "./storage_master" ]; then continue; fi
+	if [ $dir == "./audio_module" ]; then continue; fi
 
 	# XXX Temporary
 	if [ $dir == "./erpc_crypt" ]; then skips+=($dir-JOSH); continue; fi
@@ -50,6 +51,13 @@ done
 
 for dir in `find storage_master -maxdepth 1 -type d`; do
 	if [ $dir == "storage_master" ]; then continue; fi
+	pushd $dir > /dev/null
+	make || failures+=($dir)
+	popd > /dev/null
+done
+
+for dir in `find audio_module -maxdepth 1 -type d`; do
+	if [ $dir == "audio_module" ]; then continue; fi
 	pushd $dir > /dev/null
 	make || failures+=($dir)
 	popd > /dev/null

@@ -7,8 +7,8 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 C_SRCS   := $(wildcard *.c)
 INCLUDE_PATHS += .
 
-TOCK_BOARD = controller
+TOCK_BOARD = audio_module
 
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 
