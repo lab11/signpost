@@ -110,7 +110,7 @@ static void i2c_master_slave_callback(
 
     if(callback_type == TOCK_I2C_CB_SLAVE_WRITE) {
         memcpy(packet_buf, slave_write_buf, length);
-        new_packet* packet = (new_packet*) callback_args;
+        new_packet* packet = (new_packet*) &np;
         packet->new = true;
         packet->len = length;
         if (async_active) {
@@ -130,7 +130,7 @@ void signbus_io_init(uint8_t address) {
     i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
-    i2c_master_slave_set_callback(i2c_master_slave_callback, &np);
+    i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(address);
     this_device_address = address;
 }
