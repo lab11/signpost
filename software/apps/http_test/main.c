@@ -23,6 +23,8 @@ int main (void) {
   signpost_initialization_module_init(0x50, NULL);
   putstr("Initialized\n");
 
+  uint8_t test[600];
+
   while(1) {
       delay_ms(1000);
       const char* url = "posttestserver.com/post.php";
@@ -34,8 +36,8 @@ int main (void) {
       h.header = "content-type";
       h.value = "application/json";
       r.headers = &h;
-      r.body_len = 20;
-      r.body = (uint8_t*)"{ \"name\" : \"test\" }";
+      r.body_len = 600;
+      r.body = test;
 
       putstr("About to send\n");
       http_response result = signpost_networking_post(url, r);
