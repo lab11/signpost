@@ -12,7 +12,7 @@
 #define SIGNBUS_DEBUG(...)
 /*
 #define SIGNBUS_DEBUG(...) do {\
-    printf("SBDBG %24s:%04d ", __FILENAME__, __LINE__);\
+    printf("SBDBG %24s:%30s: %04d: ", __FILENAME__, __func__, __LINE__);\
     printf(__VA_ARGS__);\
     } while (0)
 */
