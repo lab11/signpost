@@ -28,7 +28,15 @@ static void gps_callback (gps_data_t* gps_data);
 uint8_t fm25cl_read_buf[256];
 uint8_t fm25cl_write_buf[256];
 
-
+uint16_t _current_year = 0;
+uint8_t  _current_month = 0;
+uint8_t  _current_day = 0;
+uint8_t  _current_hour = 0;
+uint8_t  _current_minute = 0;
+uint8_t  _current_second = 0;
+uint8_t  _current_microsecond = 0;
+uint32_t _current_latitude = 0;
+uint32_t _current_longitude = 0;
 
 
 
@@ -236,6 +244,43 @@ static void energy_api_callback(uint8_t source_address,
   }
 }
 
+// Callback for when a different module requests time or location information.
+static void timelocation_api_callback(uint8_t source_address,
+    signbus_frame_type_t frame_type, signbus_api_type_t api_type,
+    uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
+  if (api_type != TimeLocationApiType) {
+    signpost_api_error_reply(source_address, api_type, message_type);
+    return;
+  }
+
+  if (frame_type == NotificationFrame) {
+    // XXX unexpected, drop
+  } else if (frame_type == CommandFrame) {
+    if (message_type == TimeLocationGetTimeMessage) {
+      // Copy in time data from the most recent time we got an update
+      // from the GPS.
+      signpost_timelocation_time_t time;
+      time.year = _current_year;
+      time.month = _current_month;
+      time.day = _current_day;
+      time.hours = _current_hour;
+      time.minutes = _current_minute;
+      time.seconds = _current_second;
+      signpost_timelocation_get_time_reply(source_address, &time);
+
+    } else if (message_type == TimeLocationGetLocationMessage) {
+      signpost_timelocation_location_t location;
+      location.latitude = _current_latitude;
+      location.longitude = _current_longitude;
+      signpost_timelocation_get_location_reply(source_address, &location);
+    }
+  } else if (frame_type == ResponseFrame) {
+    // XXX unexpected, drop
+  } else if (frame_type == ErrorFrame) {
+    // XXX unexpected, drop
+  }
+}
+
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
@@ -256,6 +301,20 @@ static void gps_callback (gps_data_t* gps_data) {
   printf("  Status:     %s\n", fix_str);
   printf("  Satellites: %d\n", gps_data->satellite_count);
 
+
+  // Save most recent GPS reading for anyone that wants location and time.
+  // This isn't a great method for proving the TimeLocation API, but it's
+  // pretty easy to do. We eventually need to reduce the sleep current of
+  // the controller, which will mean better handling of GPS.
+  _current_year = gps_data->year + 2000;
+  _current_month = gps_data->month;
+  _current_day = gps_data->day;
+  _current_hour = gps_data->hours;
+  _current_minute = gps_data->minutes;
+  _current_second = gps_data->seconds;
+  _current_microsecond = gps_data->microseconds;
+  _current_latitude = gps_data->latitude;
+  _current_longitude = gps_data->longitude;
 
   uint8_t gps_datum[18];
 
@@ -394,7 +453,8 @@ int main (void) {
 
   // Install hooks for the signpost APIs we implement
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
-  static api_handler_t* handlers[] = {&energy_handler, NULL};
+  static api_handler_t timelocation_handler = {TimeLocationApiType, timelocation_api_callback};
+  static api_handler_t* handlers[] = {&energy_handler, &timelocation_handler, NULL};
   signpost_initialization_controller_module_init(handlers);
 
   // Setup backplane by enabling the modules
