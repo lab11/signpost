@@ -150,7 +150,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
 
-static void signpost_initialization_common(uint8_t i2c_address, api_handler_t** api_handlers) {
+static int signpost_initialization_common(uint8_t i2c_address, api_handler_t** api_handlers) {
     SIGNBUS_DEBUG("i2c %02x handlers %p\n", i2c_address, api_handlers);
 
     int rc;
@@ -180,10 +180,13 @@ static void signpost_initialization_common(uint8_t i2c_address, api_handler_t** 
     module_info.api_type_to_module_address[ProcessingApiType] = -1; /* not supported */
     module_info.api_type_to_module_address[EnergyApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
+
+    return SUCCESS;
 }
 
 int signpost_initialization_controller_module_init(api_handler_t** api_handlers) {
-    signpost_initialization_common(ModuleAddressController, api_handlers);
+    int rc = signpost_initialization_common(ModuleAddressController, api_handlers);
+    if (rc < 0) return rc;
 
     // HACK Put this here until this module init's correctly and reports its address to controller
     //      I happen to have my test board in module 6 using address 50.
@@ -199,7 +202,8 @@ int signpost_initialization_controller_module_init(api_handler_t** api_handlers)
 int signpost_initialization_module_init(
         uint8_t i2c_address,
         api_handler_t** api_handlers) {
-    signpost_initialization_common(i2c_address, api_handlers);
+    int rc = signpost_initialization_common(i2c_address, api_handlers);
+    if (rc < 0) return rc;
 
     //TODO: Contact the controller to fill in the module address array w/ non-hard coded
 
@@ -344,7 +348,7 @@ int signpost_networking_post(const char* url, http_request request, http_respons
         send_index++;
         memcpy(send+send_index,(uint8_t*)"content-length",clen);
         send_index += clen;
-        char* cbuf[5];
+        char cbuf[5];
         sprintf(cbuf,"%d",len);
         clen = strlen(cbuf);
         send[send_index] = clen;

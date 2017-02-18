@@ -13,8 +13,6 @@ static uint8_t out;
 static uint16_t adc_data;
 static bool adc_done;
 
-#define NUM_TO_AV 1
-
 static void adc_callback(int callback_type __attribute__ ((unused)),
 							int channel __attribute__ ((unused)),
 							int data,

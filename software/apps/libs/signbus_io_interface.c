@@ -100,7 +100,7 @@ static void i2c_master_slave_callback(
         int callback_type,
         int length,
         int unused __attribute__ ((unused)),
-        void* callback_args) {
+        __attribute__ ((unused)) void* callback_args) {
     SIGNBUS_DEBUG("type %d-%s length %d cb args %p\n",
             callback_type,
             (callback_type == TOCK_I2C_CB_SLAVE_WRITE) ? "SLAVE_WRITE" :

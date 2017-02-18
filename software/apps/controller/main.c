@@ -182,8 +182,12 @@ static void get_energy (void) {
   r.headers = &h;
   r.body_len = 18;
   r.body = energy_datum;
+  http_response result;
 
-  http_response result = signpost_networking_post(url, r);
+  int rc = signpost_networking_post(url, r, &result);
+  if (rc < 0) {
+    printf("Failed to do post. return code: %d\n", rc);
+  }
 
   //printf("Energy POST result: %d\n", result);
 
@@ -197,7 +201,7 @@ static void get_energy (void) {
 
 static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
-    uint8_t message_type, size_t message_length, uint8_t* message) {
+    uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
   if (api_type != EnergyApiType) {
     signpost_api_error_reply(source_address, api_type, message_type);
     return;
@@ -294,7 +298,11 @@ static void gps_callback (gps_data_t* gps_data) {
   r.body_len = 18;
   r.body = gps_datum;
 
-  http_response result = signpost_networking_post(url, r);
+  http_response result;
+  int rc = signpost_networking_post(url, r, &result);
+  if (rc < 0) {
+    printf("Failed to do GPS post. return code: %d\n", rc);
+  }
 
   //printf("GPS POST result: %d\n", result);
 

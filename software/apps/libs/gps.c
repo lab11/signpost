@@ -169,6 +169,13 @@ static bool gps_parse_data (char* line) {
                     data_updated = true;
                 }
                 break;
+            case MINMEA_INVALID:
+            case MINMEA_UNKNOWN:
+            case MINMEA_SENTENCE_GGA:
+            case MINMEA_SENTENCE_GLL:
+            case MINMEA_SENTENCE_GST:
+            case MINMEA_SENTENCE_GSV:
+            case MINMEA_SENTENCE_VTG:
             default:
                 // do nothing. I don't care about this data
                 break;

@@ -42,33 +42,33 @@ Storage_Status_t storage_status = {0};
 static uint8_t sdcard_buf[SDCARD_BLOCK_SIZE] = {0};
 
 //XXX: TESTING
-static void storage_print_block (uint32_t block) {
-  sdcard_read_block_sync(block);
-  for (int i=0; i<SDCARD_BLOCK_SIZE; i+=16) {
-    printf("%02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X\n",
-        sdcard_buf[i+0],
-        sdcard_buf[i+1],
-        sdcard_buf[i+2],
-        sdcard_buf[i+3],
-        sdcard_buf[i+4],
-        sdcard_buf[i+5],
-        sdcard_buf[i+6],
-        sdcard_buf[i+7],
-        sdcard_buf[i+8],
-        sdcard_buf[i+9],
-        sdcard_buf[i+10],
-        sdcard_buf[i+11],
-        sdcard_buf[i+12],
-        sdcard_buf[i+13],
-        sdcard_buf[i+14],
-        sdcard_buf[i+15]);
-  }
-  printf("\n");
-}
+// static void storage_print_block (uint32_t block) {
+//   sdcard_read_block_sync(block);
+//   for (int i=0; i<SDCARD_BLOCK_SIZE; i+=16) {
+//     printf("%02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X %02X%02X\n",
+//         sdcard_buf[i+0],
+//         sdcard_buf[i+1],
+//         sdcard_buf[i+2],
+//         sdcard_buf[i+3],
+//         sdcard_buf[i+4],
+//         sdcard_buf[i+5],
+//         sdcard_buf[i+6],
+//         sdcard_buf[i+7],
+//         sdcard_buf[i+8],
+//         sdcard_buf[i+9],
+//         sdcard_buf[i+10],
+//         sdcard_buf[i+11],
+//         sdcard_buf[i+12],
+//         sdcard_buf[i+13],
+//         sdcard_buf[i+14],
+//         sdcard_buf[i+15]);
+//   }
+//   printf("\n");
+// }
 
 static int32_t storage_write_data (Storage_Record_Pointer_t curr_record, uint8_t* buf, size_t len, Storage_Record_Pointer_t* new_record) {
   int32_t err = SUCCESS;
-  
+
   // need to write len bytes to SD card
   uint32_t bytes_to_write = len;
 
