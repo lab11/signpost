@@ -6,14 +6,17 @@
 #include "signbus_io_interface.h"
 #include "signpost_api.h"
 #include "signpost_entropy.h"
+#include "signpost_mod_io.h"
 #include "tock.h"
+#include "gpio.h"
+#include "timer.h"
 
 static struct module_struct {
     uint8_t                 i2c_address;
     api_handler_t**         api_handlers;
     int8_t                  api_type_to_module_address[HighestApiType+1];
     uint8_t                 i2c_address_mods[NUM_MODULES];
-    bool                    haskey[NUM_MODULES][ECDH_KEY_LENGTH];
+    bool                    haskey[NUM_MODULES];
     uint8_t                 keys[NUM_MODULES][ECDH_KEY_LENGTH];
 } module_info = {.i2c_address_mods = {ModuleAddressController, ModuleAddressStorage, ModuleAddressRadio}};
 
@@ -159,6 +162,7 @@ static void signpost_initialization_common(uint8_t i2c_address, api_handler_t** 
 
     // Clear keys
     for (int i=0; i < NUM_MODULES; i++) {
+        module_info.haskey[i] = false;
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
     }
 
