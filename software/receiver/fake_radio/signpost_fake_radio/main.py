@@ -6,7 +6,7 @@ import os
 import struct
 import sys
 import time
-import http.client
+import httplib
 
 import serial
 import serial.tools.list_ports
@@ -65,7 +65,7 @@ class FakeRadio:
             if((len(buf)) == 0):
                 continue
 
-            if(chr(buf[0]) != "$"):
+            if(buf[0].decode("utf-8") != "$"):
                 #this is a debuggin message, ignore it
                 continue
 
@@ -107,9 +107,21 @@ class FakeRadio:
             # is the base the gdp address?
             if(base == "gdp.lab11.eecs.umich.edu"):
                 if(end == "/v1/create_log"):
+                    #create the log
                     pass
                 else:
-                    pass
+                    #does it end in append
+                    last_index = end.rfind("/")
+                    last = end[last_index+1:]
+                    if(last != "append"):
+                        #this is an error
+                        pass
+
+                    slash_index = end[1:].find("/")
+                    logname = end[1:slash_index]
+
+                    #post the data to the logname with the gdp api
+
             else:
                 #this is a real http post. let's do it
                 print("")
@@ -119,7 +131,7 @@ class FakeRadio:
                 print("Post body: {}".format(body))
                 print("")
                 try:
-                    conn = http.client.HTTPConnection(base)
+                    conn = httplib.HTTPConnection(base)
                     conn.request("POST",end,body,headers)
                     response = conn.getresponse()
                 except:
@@ -132,6 +144,7 @@ class FakeRadio:
                 print("Status: {}, Reason: {}".format(response.status,response.reason))
                 print("Body: {}".format(response.read().decode("utf-8")))
                 print("")
+                #now format the response and send it back to the radio
                 print("Sending response back to radio")
                 print("#######################################################")
                 print("")
@@ -169,6 +182,17 @@ def main ():
         print('Could not open the serial port. Make sure the board is plugged in.')
         sys.exit(1)
 
+
+    try:
+        import gdp
+    except:
+        print("Failed to import gdp. If you are on a debian based machine, please download the following files:\nhttps://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/python-gdp_0.7.2_all.deb\nhttps://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/gdp-client_0.7.2_all.deb")
+        print("sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
+        print("sudo apt-get -f install")
+        print("sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
+        print("We don't know how to get it to work on mac. Please contact the GDP team for support.")
+
+    print("")
     print("Starting fake-radio server. Listening for commands....")
     print("")
     fake_radio.run()

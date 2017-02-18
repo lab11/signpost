@@ -2,8 +2,8 @@ from setuptools import setup
 
 # Save people like Pat from themselves:
 import sys
-if sys.version_info < (3,0):
-    sys.exit('Sorry, Python < 3.0 is not supported')
+if sys.version_info > (3,0):
+    sys.exit('Sorry, Python3 is not supported')
 
 import re
 VERSIONFILE="signpost_fake_radio/_version.py"
