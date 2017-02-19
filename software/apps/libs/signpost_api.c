@@ -11,6 +11,8 @@
 #include "gpio.h"
 #include "timer.h"
 
+#pragma GCC diagnostic ignored "-Wstack-usage="
+
 static struct module_struct {
     uint8_t                 i2c_address;
     api_handler_t**         api_handlers;
@@ -305,24 +307,36 @@ int signpost_networking_post(const char* url, http_request request, http_respons
     uint16_t message_size = request.body_len + strlen(url) + header_size + 6 + 25;
 
     //this is the max message size
-    if(message_size > 4096) {
+    //You probably can't get a stack big enough for this to work
+    //but if you could, we are stopping at 15000 because out networking stack
+    //is uint16_t size limited
+    if(message_size > 15000) {
         //this is an error - we can't send this
         return -1;
     }
 
+    //we need to serialize the post structure
     uint8_t send[message_size];
     uint16_t send_index = 0;
     uint16_t len = strlen(url);
+    //first length of url
     send[0] = (len & 0x00ff);
     send[1] = ((len & 0xff00) >> 8);
     send_index += 2;
+    //then url
     memcpy(send+send_index,url,len);
     send_index += len;
+    //number of headers
     uint16_t num_headers_index = send_index;
     send[send_index] = request.num_headers;
     send_index++;
     bool has_content_length = false;
 
+    //pack headers
+    //len_key
+    //key
+    //len_value
+    //value
     for(uint8_t i = 0; i < request.num_headers; i++) {
         uint8_t f_len = strlen(request.headers[i].header);
         send[send_index] = f_len;
@@ -357,9 +371,11 @@ int signpost_networking_post(const char* url, http_request request, http_respons
         send_index += clen;
     }
 
+    //body len
     send[send_index] = (len & 0x00ff);
     send[send_index + 1] = ((len & 0xff00) >> 8);
     send_index += 2;
+    //body
     memcpy(send + send_index, request.body, request.body_len);
     send_index += len;
 
@@ -375,20 +391,27 @@ int signpost_networking_post(const char* url, http_request request, http_respons
     yield_for(&networking_ready);
 
     //parse the response
-    uint8_t *b = incoming_message_buffer;
+    //deserialize
+    //Note, we just fill out to the max_lens that the app has provided
+    //and drop the rest
+    uint8_t *b = incoming_message;
     uint16_t i = 0;
+    //status
     response->status = b[i] + (((uint16_t)b[i+1]) >> 8);
     i += 2;
+    //reason_len
     uint16_t reason_len = b[i] + (((uint16_t)b[i+1]) >> 8);
     i += 2;
+    //reason
     if(reason_len < response->reason_len) {
         response->reason_len = reason_len;
-        memcpy(response->reason,b,reason_len);
+        memcpy(response->reason,b+i,reason_len);
         i += reason_len;
     } else {
-        memcpy(response->reason,b,response->reason_len);
+        memcpy(response->reason,b+i,response->reason_len);
         i += response->reason_len;
     }
+    //
     uint8_t num_headers = b[i];
     i += 1;
     uint8_t min;
@@ -403,30 +426,40 @@ int signpost_networking_post(const char* url, http_request request, http_respons
         i += 1;
         if(hlen < response->headers[j].header_len) {
             response->headers[j].header_len = hlen;
-            memcpy(response->headers[j].header,b,hlen);
-            i += hlen;
+            memcpy(response->headers[j].header,b + i,hlen);
         } else {
-            memcpy(response->headers[j].header,b,response->headers[j].header_len);
-            i += response->headers[j].header_len;
+            memcpy(response->headers[j].header,b + i,response->headers[j].header_len);
         }
+        i += hlen;
         hlen = b[i];
         i += 1;
         if(hlen < response->headers[j].value_len) {
             response->headers[j].value_len = hlen;
-            memcpy(response->headers[j].value,b,hlen);
-            i += hlen;
+            memcpy(response->headers[j].value,b + i,hlen);
         } else {
-            memcpy(response->headers[j].header,b,response->headers[j].value_len);
-            i += response->headers[j].value_len;
+            memcpy(response->headers[j].value,b + i ,response->headers[j].value_len);
+        }
+        i += hlen;
+    }
+    //we need to jump to the spot the body begins if we didn't
+    //go through all the headers
+    if(min < num_headers) {
+        for(uint8_t j = 0; j < num_headers-min; j++) {
+            uint8_t hlen = b[i];
+            i += 1;
+            i += hlen;
+            hlen = b[i];
+            i += 1;
+            i += hlen;
         }
     }
     uint16_t body_len = b[i] + (((uint16_t)b[i+1]) >> 8);
     i += 2;
     if(body_len < response->body_len) {
         response->body_len = body_len;
-        memcpy(response->body,b,body_len);
+        memcpy(response->body,b+i,body_len);
     } else {
-        memcpy(response->body,b,response->body_len);
+        memcpy(response->body,b+i,response->body_len);
     }
 
 
