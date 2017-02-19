@@ -5,9 +5,12 @@ file then `git lfs pull` to download.
 
 ## Installation
 
-You'll need to do thing things in psedo parallel here, so have two terminal windows open
+You'll need to do thing things in psedo parallel here, so have two terminal windows open.
 
-### Terminal 1:
+**Note:** You'll also need to be plugged into both USB ports (one is your serial terminal,
+the other is the flash interface).
+
+### Terminal 1 (serial):
 
 You'll need to login to the edison over serial and reboot it. Then your goal it catch it
 to enter the bootloader mode. This is a quick timeout, so pay attention as things are
@@ -43,7 +46,7 @@ GADGET DRIVER: usb_dnl_dfu
 
 ^ There's no time sensitivity here, so this terminal can now just hang out waiting.
 
-### Terminal 2:
+### Terminal 2 (flashing):
 
 Once your `git lfs pull` completes, you'll have an image and some supporting scripts.
 First untar that image, then flash:
