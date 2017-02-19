@@ -52,7 +52,7 @@ class FakeRadio:
         self.sp.stopbits=1
         self.sp.xonxoff=0
         self.sp.rtscts=0
-        self.sp.timeout=0.5
+        self.sp.timeout= 1.0
         # Try to set initial conditions, but not all platforms support them.
         # https://github.com/pyserial/pyserial/issues/124#issuecomment-227235402
         self.sp.dtr = 0
@@ -64,25 +64,63 @@ class FakeRadio:
 
     def run (self):
         while True:
-            buf = self.sp.read(4096)
+            #read one byte at a time in a loop
+            by = self.sp.read(1)
 
-            if((len(buf)) == 0):
+            if(len(by) == 0):
                 continue
 
-            if(buf[0].decode("utf-8") == '#'):
-                if(len(buf) > 1):
-                    if(buf[1].decode("utf-8") == 'r'):
-                        print("Fake-Radio Reset. Ready to receive radio Comands!")
-
-            if(buf[0].decode("utf-8") != "$"):
-                #this is a debugging message, ignore it
+            #if the byte is one of the escape characters read it in
+            byte = None
+            try:
+                byte = by.decode("utf-8")
+                #sys.stdout.write(byte)
+            except:
+                #it won't be valid if this fails
                 continue
 
-            if(len(buf) < 5):
-                print("packet too short")
-                continue;
+            if(byte == "#"):
+                #see if the next character is a reset
+                byte = self.sp.read(1);
+                if(byte == "r"):
+                    print("Fake-Radio Reset. Ready to receive radio Commands!")
+                elif(byte == "w"):
+                    #waiting on you to return data
+                    #is this the state you should be in right now??
+                    print("waiting on response");
+                    pass
+                elif(byte == "p"):
+                    #waiting on you to return data
+                    #is this the state you should be in right now??
+                    print("Kernel Panic - dumping buffer");
+                    #use a bug number just cause
+                    buf = self.sp.read(16000);
+                    print(buf.decode("utf-8"))
+                    pass
 
-            buf = buf[1:]
+
+                continue
+
+            #this is an actual message
+            buf = None
+            if(byte == "$"):
+                #read two more bytes to get the length
+                num_bytes = struct.unpack('<H', self.sp.read(2))[0]
+
+                #read in length number of bytes
+                buf = self.sp.read(num_bytes)
+
+                #did we get the number of bytes or timeout?
+                if(len(buf) < num_bytes):
+                    #we have a long enough timeout this shouldn't happen
+                    #disregard this message
+                    print("Received buffer shorted than expected. Discarding")
+                    continue
+            else:
+                continue
+
+
+            #we have a valid buffer, we should parse it
             url_len_struct = struct.unpack('<H', buf[0:2])
             url_len = url_len_struct[0]
             buf = buf[2:]
