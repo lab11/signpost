@@ -2,8 +2,6 @@
 #include "gpio_async.h"
 #include "controller.h"
 
-#pragma GCC diagnostic ignored "-Wswitch-enum"
-
 const uint8_t MOD_OUTS[NUM_MOD_IO] =  {MOD0_OUT,
                                        MOD1_OUT,
                                        MOD2_OUT,
