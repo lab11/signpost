@@ -244,8 +244,8 @@ pub unsafe fn reset_handler() {
     //
     let adc_driver = static_init!(
 		    capsules::adc::ADC<'static, sam4l::adc::Adc>,
-		    capsules::adc::ADC::new(&adc::ADC),
-		    224/8);
+		    capsules::adc::ADC::new(&adc::ADC, kernel::Container::create()),
+		    96/8);
     adc::ADC.set_client(adc_driver);
 
     //
