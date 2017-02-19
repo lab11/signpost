@@ -706,3 +706,9 @@ int signpost_timelocation_get_location_reply(uint8_t destination_address,
             ResponseFrame, TimeLocationApiType, TimeLocationGetLocationMessage,
             sizeof(signpost_timelocation_time_t), (uint8_t*) location);
 }
+
+
+/**************************************************************************/
+/* EDISON API                                                             */
+/**************************************************************************/
+

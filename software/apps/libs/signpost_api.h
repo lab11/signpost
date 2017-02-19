@@ -175,4 +175,12 @@ int signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_t
 int signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location);
 
 
+/**************************************************************************/
+/* EDISON API                                                             */
+/**************************************************************************/
+
+typedef enum {
+    EdisonReadHandleMessage = 0,
+    EdisonReadRPCMessage = 1,
+} signpost_edison_message_type_e;
 

@@ -7,7 +7,7 @@ from . import protocol
 class Signbus():
     def __init__(self, *,
             source_address,
-            device='/dev/i2c-6',
+            device='/dev/i2c-6'
             ):
         # net/link layer
         self._net = net.NetworkLayer(
@@ -22,4 +22,7 @@ class Signbus():
         self._app = app.AppLayer(
                 protocol_layer=self._protocol,
                 )
+
+        # Expose the application layer send as our send
+        self.send = _app.send
 
