@@ -8,8 +8,8 @@ Link
 Signpost currently uses the well-known I<sup>2</sup>C bus as its link layer
 
 ```text
-        0                   1                   2     
-        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 
+        0                   1                   2
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
        | Destination   |W|A| Payload Byte 0  |A| ...
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -180,3 +180,57 @@ A Response mesage MAY be treated as the final message for an ID, however long-ru
 operations MAY keep the ID alive after the inital Response message, using it with
 subsequent Notification messages. It is Application-defined when such IDs are
 considered inactive and available for reuse.
+
+
+
+
+API Types
+----------
+
+
+### `0x06`: Time and Location
+
+#### `get_time()`
+
+Response message:
+
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x06     | Type: 0x00    | Year
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         Year (cont.)  | Month         | Day           | Hour          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Minute        | Second        |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+- `Year`: Current year.
+- `Month`: Current month, 0-12.
+- `Day`: Current day, 1-31.
+- `Hour`: Current hour, 0-23.
+- `Minute`: Current minute, 0-59.
+- `Second`: Current second, 0-59.
+
+#### `get_location()`
+
+Response message:
+
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x06     | Type: 0x01    | Latitude
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         Latitude (cont.)                              | Longitude
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         Longitude (cont.)                             |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+- `Latitude`: Latitude in microdegrees. Divide by 10^6 to get actual degrees.
+- `Longitude`: Longitude in microdegrees. Divide by 10^6 to get actual degrees.
+
+
+
