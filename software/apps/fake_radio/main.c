@@ -107,6 +107,14 @@ int main (void) {
   static api_handler_t* handlers[] = {&networking_handler, NULL};
   signpost_initialization_module_init(ModuleAddressRadio, handlers);
 
+  message_sent = false;
+  static char d[3];
+  d[0] = '#';
+  d[1] = 'r';
+  allow(DRIVER_NUM_GPS, 1, (void*)d, 3);
+  subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+  yield_for(&message_sent);
+
 
     //should probably actually setup a watchdog at some point
   ////////////////////////////////////////////////
