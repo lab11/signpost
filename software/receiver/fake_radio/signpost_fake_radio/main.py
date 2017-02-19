@@ -154,6 +154,8 @@ class FakeRadio:
 
             # is the base the gdp address?
             if(base == "gdp.lab11.eecs.umich.edu"):
+                    stat = 0
+                    reason = ""
                     print("")
                     print("#######################################################")
                     print("Trying to post to GDP")
@@ -178,26 +180,50 @@ class FakeRadio:
                             ret = os.system("gcl-create -C lab11-signpost@umich.edu -k none " + log_name)
                             if((ret >> 8) == 0):
                                 print("Successfully created log")
+                                stat = 201
+                                reason = "OK - Log Created"
                             elif((ret >> 8) == 73):
                                 print("Log already exists")
+                                stat = 200
+                                reason = "OK"
                             else:
                                 print("An unkown gdp error(code {}) occurred).".format(str((ret >> 8))))
+                                stat = 500
+                                reason = "Server Error"
 
                             try:
                                 gcl_name = gdp.GDP_NAME(log_name)
                                 gcl_handle = gdp.GDP_GCL(gcl_name,gdp.GDP_MODE_AO)
                                 gcl_handle.append({"signpost-data": body})
                                 print("Append success")
-                                print("Sending response back to radio")
                             except:
                                 print("There was an error, aborting")
-                                print("#######################################################")
-                                print("")
-                                continue
-
+                                stat = 500
+                                reason = "Server Error"
                     else:
                         print("Does not support that function")
+                        stat = 503
+                        reason = "Service Unkown"
 
+                    #form the response here based on some of the stats above
+                    send_buf = bytearray()
+                    send_buf.extend(struct.pack('<H',stat))
+                    send_buf.extend(struct.pack('<H',len(reason)))
+                    send_buf.extend(reason)
+                    send_buf.extend(struct.pack('<B',2))
+
+                    send_buf.extend(struct.pack('<B',len("content-type")))
+                    send_buf.extend("content-type")
+                    send_buf.extend(struct.pack('<B',len("application/octet-stream")))
+                    send_buf.extend("application/octet-stream")
+
+                    send_buf.extend(struct.pack('<B',len("content-length")))
+                    send_buf.extend("content-length")
+                    send_buf.extend(struct.pack('<B',len("1")))
+                    send_buf.extend("1")
+                    send_buf.extend(struct.pack('<H',1))
+                    send_buf.extend(struct.pack('<B',0x00))
+                    self.sp.write(send_buf);
                     print("#######################################################")
                     print("")
 
@@ -237,8 +263,6 @@ class FakeRadio:
                     send_buf.extend(header[0])
                     send_buf.extend(struct.pack('<B',len(header[1])))
                     send_buf.extend(header[1])
-                print(len(body))
-                print(body)
                 send_buf.extend(struct.pack('<H',len(body)))
                 send_buf.extend(body)
                 self.sp.write(send_buf);
