@@ -18,7 +18,7 @@ flying by the screen. There's not harm in missing it, just try again. Your sessi
 look something like this:
 
 ```
-miniterm.py /dev/tty.usbserial-DQ0031Z1 115200
+screen /dev/tty.usbserial-DQ0031Z1 115200
 <press enter>
 edison login: root
 root@edison:~# reboot
@@ -45,6 +45,8 @@ GADGET DRIVER: usb_dnl_dfu
 ```
 
 ^ There's no time sensitivity here, so this terminal can now just hang out waiting.
+
+> When you're all done (not now), the sequence `Ctrl-a Ctrl-d` will detach your screen session
 
 ### Terminal 2 (flashing):
 
