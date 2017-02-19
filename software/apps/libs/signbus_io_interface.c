@@ -394,6 +394,7 @@ static void iterate_read_buf(void) {
 
         //copy the packet into the send buffer
         memcpy(slave_read_buf,&readPacket,I2C_MAX_LEN);
+        i2c_master_slave_enable_slave_read(I2C_MAX_LEN);
 
         //send the packet in syncronous mode
         if(morePackets) {
@@ -438,3 +439,4 @@ void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
 
     iterate_read_buf();
 }
+
