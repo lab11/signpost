@@ -10,5 +10,5 @@ C_SRCS   := main.c
 INCLUDE_PATHS += .
 
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 
