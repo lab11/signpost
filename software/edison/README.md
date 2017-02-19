@@ -59,7 +59,7 @@ cd toFlash
 ./flashall.sh
 ```
 
-`flashall.sh` may need to be run as root.
+`flashall.sh` needs to be run as root on Linux and must not be run as root on mac.
 
 The default username is `user` and the default password is `edison`. Root account access is disabled by default, but `user` has sudo access enabled.
 
