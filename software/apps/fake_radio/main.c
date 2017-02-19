@@ -28,9 +28,10 @@ static void tx_callback (
             __attribute__ ((unused)) int u3,
             __attribute__ ((unused)) void* userdata) {
 
-    //gpio_set(0);
     message_sent = true;
 }
+
+static bool waiting_for_response = 0;
 
 static void rx_callback (
             int len,
@@ -38,7 +39,17 @@ static void rx_callback (
             __attribute__ ((unused)) int u3,
             __attribute__ ((unused)) void* userdata) {
 
+    waiting_for_response = 0;
     signpost_networking_post_reply(src, rx_buffer, len);
+}
+
+static void watchdog_timer_cb (
+            __attribute__ ((unused)) int len,
+            __attribute__ ((unused)) int u2,
+            __attribute__ ((unused)) int u3,
+            __attribute__ ((unused)) void* userdata) {
+
+    app_watchdog_tickle_kernel();
 }
 
 
@@ -58,19 +69,18 @@ static void networking_api_callback(uint8_t source_address,
   } else if (frame_type == CommandFrame) {
 
       if (message_type == NetworkingPostMessage) {
-        //putstr("About to send over real message");
 
-        delay_ms(1000);
-        /*putnstr("$",1);
-        for(uint16_t i = 0; i < message_length; i++) {
-            putnstr((const char*)(message+i),1);
-        }*/
-        gpio_clear(0);
-
-        message_sent = false;
         static char d[2];
         d[0] = '$';
+        message_sent = false;
         allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
+        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+        yield_for(&message_sent);
+
+        d[0] = message_length & 0xff;
+        d[1] = ((message_length & 0xff00) >> 8);
+        message_sent = false;
+        allow(DRIVER_NUM_GPS, 1, (void*)d, 2);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
 
@@ -79,6 +89,7 @@ static void networking_api_callback(uint8_t source_address,
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
 
+        waiting_for_response = 1;
         getauto((char *)rx_buffer,4096, rx_callback,NULL);
     }
 
@@ -91,13 +102,7 @@ static void networking_api_callback(uint8_t source_address,
 
 
 int main (void) {
-    //putstr("[Fake radio] ** Main App **\n");
-    gpio_enable_output(0);
-    gpio_set(0);
-
-
-
-    /////////////////////////////
+  /////////////////////////////
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
@@ -108,10 +113,10 @@ int main (void) {
   signpost_initialization_module_init(ModuleAddressRadio, handlers);
 
   message_sent = false;
-  static char d[3];
-  d[0] = '#';
-  d[1] = 'r';
-  allow(DRIVER_NUM_GPS, 1, (void*)d, 3);
+  static char d1[3];
+  d1[0] = '#';
+  d1[1] = 'r';
+  allow(DRIVER_NUM_GPS, 1, (void*)d1, 2);
   subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
   yield_for(&message_sent);
 
@@ -119,8 +124,19 @@ int main (void) {
     //should probably actually setup a watchdog at some point
   ////////////////////////////////////////////////
   // Setup watchdog
-  //app_watchdog_set_kernel_timeout(30000);
-  //app_watchdog_start();
+  timer_subscribe(watchdog_timer_cb,NULL);
+  timer_start_repeating(160);
+  app_watchdog_set_kernel_timeout(500);
+  app_watchdog_start();
 
-  //putstr("Everything intialized\n");
+  /*while(1) {
+        delay_ms(2000);
+        message_sent = false;
+        static char d2[3];
+        d2[0] = '#';
+        d2[1] = 'w';
+        allow(DRIVER_NUM_GPS, 1, (void*)d2, 2);
+        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+        yield_for(&message_sent);
+  }*/
 }
