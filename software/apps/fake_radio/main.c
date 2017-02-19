@@ -79,7 +79,7 @@ static void networking_api_callback(uint8_t source_address,
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
 
-        getauto(rx_buffer,4096, rx_callback,NULL);
+        getauto((char *)rx_buffer,4096, rx_callback,NULL);
     }
 
   } else if (frame_type == ResponseFrame) {
