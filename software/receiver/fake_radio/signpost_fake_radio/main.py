@@ -69,6 +69,11 @@ class FakeRadio:
             if((len(buf)) == 0):
                 continue
 
+            if(buf[0].decode("utf-8") == '#'):
+                if(len(buf) > 1):
+                    if(buf[1].decode("utf-8") == 'r'):
+                        print("Fake-Radio Reset. Ready to receive radio Comands!")
+
             if(buf[0].decode("utf-8") != "$"):
                 #this is a debugging message, ignore it
                 continue
@@ -180,7 +185,8 @@ class FakeRadio:
                 #we should send this back, but for now that's good
                 print("Post Succeeded! See response below.")
                 print("Status: {}, Reason: {}".format(response.status,response.reason))
-                print("Body: {}".format(response.read().decode("utf-8")))
+                body = response.read();
+                print("Body: {}".format(body))
                 print("")
                 #now format the response and send it back to the radio
                 send_buf = bytearray()
@@ -193,11 +199,11 @@ class FakeRadio:
                     send_buf.extend(header[0])
                     send_buf.extend(struct.pack('<B',len(header[1])))
                     send_buf.extend(header[1])
-                send_buf.extend(struct.pack('<H',len(response.read())))
-                send_buf.extend(response.read())
+                print(len(body))
+                print(body)
+                send_buf.extend(struct.pack('<H',len(body)))
+                send_buf.extend(body)
                 self.sp.write(send_buf);
-
-
                 print("Sending response back to radio")
                 print("#######################################################")
                 print("")
