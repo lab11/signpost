@@ -7,6 +7,7 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./tests" ]; then continue; fi
 	if [ $dir == "./support" ]; then continue; fi
 	if [ $dir == "./storage_master" ]; then continue; fi
+	if [ $dir == "./audio_module" ]; then continue; fi
 	pushd $dir
 	make clean
 	popd
