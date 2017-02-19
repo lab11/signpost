@@ -10,6 +10,7 @@
 #include "signpost_api.h"
 #include "tock.h"
 #include "console.h"
+#include "timer.h"
 
 
 
@@ -43,12 +44,12 @@ int main (void) {
       r2.num_headers = 1;
       char h1[20];
       char v1[20];
-      http_header hr;
+      http_response_header hr;
       hr.header = h1;
       hr.header_len = 20;
       hr.value = v1;
       hr.value_len = 20;
-      r2.headers = &h;
+      r2.headers = &hr;
       r2.reason = reason;
       r2.reason_len = 50;
       r2.body_len = 200;
@@ -58,12 +59,21 @@ int main (void) {
         delay_ms(1000);
         putstr("About to send\n");
         int result = signpost_networking_post(url, r, &r2);
-        if(r2.status == 200) {
-            delay_ms(5000);
+        if(result == 0) {
+            printf("Status code is: %d\n", r2.status);
+            printf("Reason len is: %d\n", r2.reason_len);
+            printf("Reason is: %.*s\n", r2.reason_len, r2.reason);
+            printf("Num Headers is: %d\n", r2.num_headers);
+            printf("Header_len 1 is: %d\n", r2.headers[0].header_len);
+            printf("Header 1 is: %.*s\n", r2.headers[0].header_len,r2.headers[0].header);
+            printf("Value_len 1 is: %d\n", r2.headers[0].value_len);
+            printf("Value 1 is: %.*s\n", r2.headers[0].value_len,r2.headers[0].value);
+            printf("Body_len is: %d\n", r2.body_len);
+            printf("Body is: %.*s\n", r2.body_len, r2.body);
+            //printf("Reason is: %.*s\n", 10, r2.reason);
         } else {
-            delay_ms(20000);
+            printf("There was an error\n");
         }
-        putstr("Returned\n");
     }
 
     //should probably actually setup a watchdog at some point
