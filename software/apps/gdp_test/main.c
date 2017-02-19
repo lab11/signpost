@@ -21,7 +21,7 @@ int main (void) {
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
-  signpost_initialization_module_init(0x50, NULL);
+  signpost_initialization_module_init(0x28, NULL);
   putstr("Initialized\n");
   uint8_t test_data[2000];
 
