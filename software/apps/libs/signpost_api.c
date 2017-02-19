@@ -152,6 +152,21 @@ static void signpost_api_recv_callback(int len_or_rc) {
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
 
+static void signpost_initialization_callback(
+        int outpin __attribute__ ((unused)),
+        int pinvalue __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void * callback_args __attribute__ ((unused))
+        ) {
+    //printf("Controller response!\n");
+    gpio_disable_interrupt(MOD_IN);
+    // Now have a private channel with the controller
+    // XXX Key exchange with controller
+    // XXX Now encrypted, ask for other module addresses/services
+    // Notify controller done
+    gpio_set(MOD_OUT);
+}
+
 static int signpost_initialization_common(uint8_t i2c_address, api_handler_t** api_handlers) {
     SIGNBUS_DEBUG("i2c %02x handlers %p\n", i2c_address, api_handlers);
 
@@ -183,6 +198,9 @@ static int signpost_initialization_common(uint8_t i2c_address, api_handler_t** a
     module_info.api_type_to_module_address[EnergyApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[TimeLocationApiType] = ModuleAddressController;
 
+    module_info.i2c_address_mods[3] = ModuleAddressController;
+    module_info.i2c_address_mods[4] = ModuleAddressStorage;
+
     return SUCCESS;
 }
 
@@ -192,7 +210,7 @@ int signpost_initialization_controller_module_init(api_handler_t** api_handlers)
 
     // HACK Put this here until this module init's correctly and reports its address to controller
     //      I happen to have my test board in module 6 using address 50.
-    module_info.i2c_address_mods[6] = 0x50;
+    //module_info.i2c_address_mods[6] = 0x50;
 
     // Begin listening for replies
     signpost_api_start_new_async_recv();
@@ -207,7 +225,13 @@ int signpost_initialization_module_init(
     int rc = signpost_initialization_common(i2c_address, api_handlers);
     if (rc < 0) return rc;
 
-    //TODO: Contact the controller to fill in the module address array w/ non-hard coded
+    // Initialize Mod Out/In GPIO
+    // both are active low
+    gpio_interrupt_callback(signpost_initialization_callback, NULL);
+    gpio_enable_interrupt(MOD_IN, PullUp, FallingEdge);
+    gpio_enable_output(MOD_OUT);
+    // Pull Mod_Out Low to signal controller
+    gpio_clear(MOD_OUT);
 
     // Begin listening for replies
     signpost_api_start_new_async_recv();

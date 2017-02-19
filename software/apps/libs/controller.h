@@ -38,8 +38,10 @@ typedef enum {
 #define MOD6_OUT   PA17
 #define MOD7_OUT   PA18
 
+#define NUM_MOD_IO 6
+
 // Enum indicies must match array in <tock>/kernel/boards/controller/src/main.rs
-enum GPIO_Pin_enum{
+typedef enum {
     PA04=0,
     PA05,
     PA06,
@@ -53,12 +55,19 @@ enum GPIO_Pin_enum{
     PA17,
     PA18,
     PA26,
-};
+} GPIO_Pin_enum;
+
+extern const uint8_t MOD_OUTS[NUM_MOD_IO];
+extern const uint8_t MOD_INS[NUM_MOD_IO];
 
 void controller_init_module_switches (void);
 
 void controller_gpio_enable_all_MODINs (void);
 void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config);
+module_num_t MODOUT_pin_to_mod_name (GPIO_Pin_enum pin);
+module_num_t MODIN_pin_to_mod_name (GPIO_Pin_enum pin);
+GPIO_Pin_enum mod_name_to_MODOUT_pin (module_num_t module);
+GPIO_Pin_enum mod_name_to_MODIN_pin (module_num_t module);
 
 void controller_gpio_set_all (void);
 void controller_gpio_clear_all (void);

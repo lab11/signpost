@@ -2,6 +2,21 @@
 #include "gpio_async.h"
 #include "controller.h"
 
+#pragma GCC diagnostic ignored "-Wswitch-enum"
+
+const uint8_t MOD_OUTS[NUM_MOD_IO] =  {MOD0_OUT,
+                                       MOD1_OUT,
+                                       MOD2_OUT,
+                                       MOD5_OUT,
+                                       MOD6_OUT,
+                                       MOD7_OUT};
+
+const uint8_t MOD_INS[NUM_MOD_IO] =   {MOD0_IN,
+                                       MOD1_IN,
+                                       MOD2_IN,
+                                       MOD5_IN,
+                                       MOD6_IN,
+                                       MOD7_IN};
 
 static uint8_t module_to_async_port_num[8] = {0, 1, 2, 0xff, 0xff, 3, 4, 5};
 
@@ -32,6 +47,85 @@ void controller_gpio_enable_all_MODOUTs (GPIO_InputMode_t pin_config) {
     gpio_enable_input(MOD5_OUT, pin_config);
     gpio_enable_input(MOD6_OUT, pin_config);
     gpio_enable_input(MOD7_OUT, pin_config);
+}
+
+module_num_t MODOUT_pin_to_mod_name (GPIO_Pin_enum pin) {
+    switch(pin) {
+        case MOD0_OUT:
+            return MODULE0;
+        case MOD1_OUT:
+            return MODULE1;
+        case MOD2_OUT:
+            return MODULE2;
+        case MOD5_OUT:
+            return MODULE5;
+        case MOD6_OUT:
+            return MODULE6;
+        case MOD7_OUT:
+            return MODULE7;
+        default:
+            break;
+    }
+    return 0xff;
+}
+
+module_num_t MODIN_pin_to_mod_name (GPIO_Pin_enum pin) {
+    switch(pin) {
+        case MOD0_IN:
+            return MODULE0;
+        case MOD1_IN:
+            return MODULE1;
+        case MOD2_IN:
+            return MODULE2;
+        case MOD5_IN:
+            return MODULE5;
+        case MOD6_IN:
+            return MODULE6;
+        case MOD7_IN:
+            return MODULE7;
+        default:
+            break;
+    }
+    return 0xff;
+}
+GPIO_Pin_enum mod_name_to_MODOUT_pin (module_num_t module) {
+    switch(module) {
+        case MODULE0:
+            return MOD0_OUT;
+        case MODULE1:
+            return MOD1_OUT;
+        case MODULE2:
+            return MOD2_OUT;
+        case MODULE5:
+            return MOD5_OUT;
+        case MODULE6:
+            return MOD6_OUT;
+        case MODULE7:
+            return MOD7_OUT;
+        default:
+            break;
+    }
+    return 0xff;
+}
+
+GPIO_Pin_enum mod_name_to_MODIN_pin (module_num_t module) {
+    switch(module) {
+        case MODULE0:
+            return MOD0_IN;
+        case MODULE1:
+            return MOD1_IN;
+        case MODULE2:
+            return MOD2_IN;
+        case MODULE5:
+            return MOD5_IN;
+        case MODULE6:
+            return MOD6_IN;
+        case MODULE7:
+            return MOD7_IN;
+        default:
+            break;
+    }
+    return 0xff;
 }
 
 void controller_gpio_set_all (void) {

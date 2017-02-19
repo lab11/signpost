@@ -24,7 +24,6 @@
 static void get_energy (void);
 static void gps_callback (gps_data_t* gps_data);
 
-
 uint8_t fm25cl_read_buf[256];
 uint8_t fm25cl_write_buf[256];
 
@@ -37,8 +36,6 @@ uint8_t  _current_second = 0;
 uint8_t  _current_microsecond = 0;
 uint32_t _current_latitude = 0;
 uint32_t _current_longitude = 0;
-
-
 
 static void energy_timer_callback (
         int callback_type __attribute__ ((unused)),
@@ -58,7 +55,58 @@ static void gps_timer_callback (
   gps_sample(gps_callback);
 }
 
+int module_isolated = -1;
+int last_module_isolated = -1;
+size_t isolated_count = 0;
 
+static void priv_timer_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+    if(module_isolated < 0) {
+        for(size_t i = 0; i < NUM_MOD_IO; i++) {
+            if(gpio_read(MOD_OUTS[i]) == 0 && last_module_isolated != MOD_OUTS[i]) {
+
+                printf("Woah, we got %d %d asking for some private time\n", i, MODOUT_pin_to_mod_name(MOD_OUTS[i]));
+                // module requesting isolation
+                module_isolated = MOD_OUTS[i];
+                last_module_isolated = MOD_OUTS[i];
+                isolated_count = 0;
+
+                // create private channel for this module
+                //XXX warn modules of i2c disable
+                controller_all_modules_disable_i2c();
+                controller_module_enable_i2c(MODOUT_pin_to_mod_name(module_isolated));
+                // signal to module that it has a private channel
+                // XXX this should be a controller function operating on the
+                // module number, not index
+                gpio_clear(MOD_INS[i]);
+                delay_ms(1000);
+                gpio_set(MOD_INS[i]);
+                break;
+            }
+            // didn't isolate anyone, reset last_module_isolated
+            last_module_isolated = -1;
+        }
+    } else {
+        printf("checkup\n");
+        if(gpio_read(module_isolated) == 1) {
+            printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(module_isolated));
+            module_isolated = -1;
+            controller_all_modules_enable_i2c();
+        }
+        // this module took too long to talk to controller
+        // XXX need more to police bad modules (repeat offenders)
+        else if(isolated_count > 4) {
+            printf("Module %d took too long\n", MODOUT_pin_to_mod_name(module_isolated));
+            module_isolated = -1;
+            controller_all_modules_enable_i2c();
+        }
+        else isolated_count++;
+    }
+}
 
 
 typedef struct {
@@ -462,6 +510,9 @@ int main (void) {
   controller_all_modules_enable_power();
   controller_all_modules_enable_i2c();
   controller_all_modules_disable_usb();
+  controller_gpio_enable_all_MODINs();
+  controller_gpio_enable_all_MODOUTs(PullUp);
+  controller_gpio_set_all();
   // controller_all_modules_disable_i2c();
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
@@ -475,4 +526,10 @@ int main (void) {
   //app_watchdog_start();
 
   putstr("Everything intialized\n");
+
+  putstr("Entering loop\n");
+  while(1) {
+    delay_ms(2000);
+    priv_timer_callback(0, 0, 0, NULL);
+  }
 }
