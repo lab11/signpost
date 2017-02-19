@@ -1,34 +1,24 @@
 #!/usr/bin/env python3
 
-import hashlib
-import os
-
-try:
-    import cryptography
-except:
-    print("pip install --user cryptography")
-    raise
-
 try:
     import periphery
 except:
     print("pip install --user python-periphery")
     raise
 
-
-class I2C():
+class NetworkLayer():
     MAX_MESSAGE_SIZE = 255
 
     FLAG_FRAGMENT_SHIFT = 0
 
-    def __init__(self, device="/dev/i2c-6", source_address=0x40):
+    def __init__(self, *, source_address, device="/dev/i2c-6"):
         self._i2c = periphery.I2C(device)
         self._address = source_address
 
         self._sequence_number = 0
 
     # Net layer
-    def send(self, dest, data):
+    def send(self, *, dest, data):
         # make a local copy
         data = bytes(data)
 
@@ -106,64 +96,3 @@ class I2C():
                 toReceive = 0
 
         return dataToReturn
-
-
-# https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from cryptography.hazmat.backends import default_backend
-
-class ProtocolLayer():
-    def __init__(self, net):
-        self._backend = default_backend()
-        self._net = net
-
-    def send(self, dest, data, key=None):
-        # make a copy of data
-        data = bytes(data)
-
-        # handle optionally requested encryption
-        if key is not None:
-            # AES 256. Library selects using key length.
-            assert len(key) == 32
-
-            iv = os.urandom(16)
-            cipher = Cipher(algorithms.AES(key), modes.CTR(iv), backend=self._backend)
-            encryptor = cipher.encryptor()
-            encrypted = encryptor.update(data) + encryptor.finalize()
-
-            #>>> decryptor = cipher.decryptor()
-            #>>> decryptor.update(ct) + decryptor.finalize()
-        else:
-            encrypted = data
-
-        # Compute SHA256 digest
-        digest = hashlib.sha256(encrypted).digest()
-
-        # prepare mesage and send down
-        to_send = encrypted + digest
-
-        self._net.send(dest, to_send)
-
-    def recv():
-        raise NotImplementedError
-
-
-class AppLayer():
-    def __init__(self, protocol):
-        self._protocol = protocol
-        self._lookup_key = lambda address: None
-
-    def send(self, dest, frame_type, api_type, message_type, payload):
-        buf = bytes()
-
-        buf += frame_type.to_bytes(1, 'big')
-        buf += api_type.to_bytes(1, 'big')
-        buf += message_type.to_bytes(1, 'big')
-        buf += bytes(payload)
-
-        key = self._lookup_key(dest)
-
-        self._protocol.send(dest, buf, key)
-
-    def recv():
-        raise NotImplementedError
