@@ -55,8 +55,9 @@ static void gps_timer_callback (
   gps_sample(gps_callback);
 }
 
-int module_isolated = -1;
-int last_module_isolated = -1;
+int mod_isolated_out = -1;
+int mod_isolated_in = -1;
+int last_mod_isolated_out = -1;
 size_t isolated_count = 0;
 
 static void priv_timer_callback (
@@ -65,43 +66,48 @@ static void priv_timer_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-    if(module_isolated < 0) {
+    if(mod_isolated_out < 0) {
         for(size_t i = 0; i < NUM_MOD_IO; i++) {
-            if(gpio_read(MOD_OUTS[i]) == 0 && last_module_isolated != MOD_OUTS[i]) {
+            printf("checking %d, %d\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]), gpio_read(MOD_OUTS[i]));
+            if(gpio_read(MOD_OUTS[i]) == 0 && last_mod_isolated_out != MOD_OUTS[i]) {
 
                 printf("Woah, we got %d %d asking for some private time\n", i, MODOUT_pin_to_mod_name(MOD_OUTS[i]));
                 // module requesting isolation
-                module_isolated = MOD_OUTS[i];
-                last_module_isolated = MOD_OUTS[i];
+                mod_isolated_out = MOD_OUTS[i];
+                mod_isolated_in = MOD_INS[i];
+                last_mod_isolated_out = MOD_OUTS[i];
                 isolated_count = 0;
 
                 // create private channel for this module
                 //XXX warn modules of i2c disable
                 controller_all_modules_disable_i2c();
-                controller_module_enable_i2c(MODOUT_pin_to_mod_name(module_isolated));
+                controller_module_enable_i2c(MODOUT_pin_to_mod_name(mod_isolated_out));
                 // signal to module that it has a private channel
                 // XXX this should be a controller function operating on the
                 // module number, not index
-                gpio_clear(MOD_INS[i]);
+                gpio_clear(mod_isolated_in);
                 delay_ms(1000);
-                gpio_set(MOD_INS[i]);
                 break;
             }
-            // didn't isolate anyone, reset last_module_isolated
-            last_module_isolated = -1;
+            // didn't isolate anyone, reset last_mod_isolated_out
+            last_mod_isolated_out = -1;
         }
     } else {
         printf("checkup\n");
-        if(gpio_read(module_isolated) == 1) {
-            printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(module_isolated));
-            module_isolated = -1;
+        if(gpio_read(mod_isolated_out) == 1) {
+            printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
+            gpio_set(mod_isolated_in);
+            mod_isolated_out = -1;
+            mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
         }
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
         else if(isolated_count > 4) {
-            printf("Module %d took too long\n", MODOUT_pin_to_mod_name(module_isolated));
-            module_isolated = -1;
+            printf("Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
+            gpio_set(mod_isolated_in);
+            mod_isolated_out = -1;
+            mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
         }
         else isolated_count++;
@@ -253,6 +259,42 @@ static void get_energy (void) {
     //app_watchdog_tickle_kernel();
     watchdog_tickler(2);
   }
+}
+
+static void initialization_api_callback(uint8_t source_address,
+    signbus_frame_type_t frame_type, signbus_api_type_t api_type,
+    uint8_t message_type, __attribute__ ((unused)) size_t message_length,
+    uint8_t* message) {
+    if (api_type != InitializationApiType) {
+      signpost_api_error_reply(source_address, api_type, message_type);
+      return;
+    }
+
+    switch (frame_type) {
+        case NotificationFrame:
+            // XXX unexpected, drop
+            break;
+        case CommandFrame:
+            switch (message_type) {
+                case InitializationKeyExchange:
+                    // Prepare and reply ECDH key exchange
+                    signpost_initialization_key_exchange_respond(source_address,
+                            message, message_length);
+                    break;
+                //exchange module
+                //get mods
+                default:
+                   break;
+            }
+        case ResponseFrame:
+            // XXX unexpected, drop
+            break;
+        case ErrorFrame:
+            // XXX unexpected, drop
+            break;
+        default:
+            break;
+    }
 }
 
 static void energy_api_callback(uint8_t source_address,
@@ -500,9 +542,10 @@ int main (void) {
   // Initializations for the rest of the signpost
 
   // Install hooks for the signpost APIs we implement
+  static api_handler_t init_handler   = {InitializationApiType, initialization_api_callback};
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
   static api_handler_t timelocation_handler = {TimeLocationApiType, timelocation_api_callback};
-  static api_handler_t* handlers[] = {&energy_handler, &timelocation_handler, NULL};
+  static api_handler_t* handlers[] = {&init_handler, &energy_handler, &timelocation_handler, NULL};
   signpost_initialization_controller_module_init(handlers);
 
   // Setup backplane by enabling the modules

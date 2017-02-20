@@ -338,6 +338,9 @@ pub unsafe fn reset_handler() {
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
         capsules::gpio::GPIO::new(gpio_pins),
         224/8);
+    for pin in gpio_pins.iter() {
+        pin.set_client(gpio);
+    }
 
     //
     // App Watchdog
