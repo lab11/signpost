@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import logging
+log = logging.getLogger(__name__)
+
 try:
     import periphery
 except:
@@ -13,7 +16,7 @@ class NetworkLayer():
 
     def __init__(self, *, source_address, device="/dev/i2c-6"):
         self._i2c = periphery.I2C(device)
-        self._address = source_address
+        self._source_address = source_address
 
         self._sequence_number = 0
 
@@ -44,19 +47,19 @@ class NetworkLayer():
         # length
         buf += len(data).to_bytes(2, 'big')
 
-        overhead = buf.len()
-        goodput_len = I2C.MAX_MESSAGE_SIZE - overhead
+        overhead = len(buf)
+        goodput_len = NetworkLayer.MAX_MESSAGE_SIZE - overhead
 
         while len(data) > goodput_len:
             to_send = bytes(buf)
 
             # set fragment flag
-            to_send[0] |= (1 << I2C.FLAG_FRAGMENT_SHIFT)
+            to_send[0] |= (1 << NetworkLayer.FLAG_FRAGMENT_SHIFT)
 
             # move a chunk of data to send buffer
             to_send += data[:goodput_len]
             data = data[goodput_len:]
-            assert len(to_send) == I2C.MAX_MESSAGE_SIZE
+            assert len(to_send) == NetworkLayer.MAX_MESSAGE_SIZE
 
             # add this to send list
             msgs.append(periphery.I2C.Message(to_send))
@@ -68,7 +71,10 @@ class NetworkLayer():
         msgs.append(periphery.I2C.Message(to_send))
 
         # issue the I2C transactions
-        i2c.trasfer(dest, msgs)
+        log.debug("dest {}")
+        for msg in msgs:
+            log.debug("\t msg {}".format(msg))
+        self._i2c.transfer(dest, msgs)
 
     def recv():
         raise NotImplementedError

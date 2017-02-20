@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 
-from enum import Enum
+import logging
+log = logging.getLogger(__name__)
+
+import enum
 
 from . import signbus
 
-class ModuleAddress(Enum):
+class ModuleAddress(enum.IntEnum):
     Controller = 0x20,
     Storage = 0x21,
     Radio = 0x22,
 
-class FrameType(Enum):
+class FrameType(enum.IntEnum):
     Notification = 0
     Command = 1
     Response = 2
     Error = 3
 
-class ApiType(Enum):
+class ApiType(enum.IntEnum):
     Initialization = 1
     Storage = 2
     Networking = 3
@@ -24,7 +27,7 @@ class ApiType(Enum):
     TimeLocation = 6
     Edison = 7
 
-class EdisonApiMessageType(Enum):
+class EdisonApiMessageType(enum.IntEnum):
     ReadHandle = 0
     ReadRPC = 1
 

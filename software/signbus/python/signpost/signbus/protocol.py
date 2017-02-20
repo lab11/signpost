@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import logging
+log = logging.getLogger(__name__)
+
 import hashlib
 import os
 
@@ -43,7 +46,7 @@ class ProtocolLayer():
         # prepare mesage and send down
         to_send = encrypted + digest
 
-        self._net.send(dest, to_send)
+        self._net.send(dest=dest, data=to_send)
 
     def recv():
         raise NotImplementedError
