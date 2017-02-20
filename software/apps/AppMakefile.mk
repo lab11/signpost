@@ -78,6 +78,10 @@ include $(TOCK_USERLAND_BASE_DIR)/Makefile
 CPPFLAGS += -Wno-suggest-attribute=pure -Wno-suggest-attribute=const
 CPPFLAGS += -Wno-unused-macros
 
+CXXFLAGS += -Wno-suggest-override
+CXXFLAGS += -Wno-suggest-final-methods
+CXXFLAGS += -Wno-suggest-final-types
+
 
 # add platform-specific headers
 .PHONY: clean
