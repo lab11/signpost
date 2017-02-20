@@ -42,8 +42,11 @@ include $(LIBSIGNPOST_DIR)/Makefile
 
 # eRPC tool
 ERPCGEN := $(CURRENT_DIR)support/erpc/bin/erpcgen
+
+ifdef DEFINED_IF_APP_USES_ERPC
 OBJS += $(CURRENT_DIR)support/erpc/liberpc/$(TOCK_ARCH)/liberpc.a
 include $(CURRENT_DIR)support/erpc/AppLibERPC.mk
+endif
 
 ERPC_BUILDDIR := build/erpc
 ERPC_CXX_SRCS += $(patsubst %.erpc,%_client.cpp,$(ERPC_SRCS))
