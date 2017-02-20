@@ -288,8 +288,16 @@ int signpost_initialization_module_init(
     istate = WaitPriv;
     signpost_initialization_request_isolation();
     // Spin until initialized with controller
-    // XXX set timeout
-    while(istate != Done) {delay_ms(50);}
+    int timeout = 0;
+    while(istate != Done) {
+        delay_ms(100);
+        if(timeout++ > 50) {
+            istate = WaitPriv;
+            signpost_initialization_request_isolation();
+            timeout = 0;
+            printf("WARN: timeout for isolated request, resending request\n");
+        }
+    }
     gpio_toggle(MOD_OUT);
     SIGNBUS_DEBUG("complete\n");
     return 0;
