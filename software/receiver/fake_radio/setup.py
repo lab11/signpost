@@ -3,7 +3,7 @@ from setuptools import setup
 # Save people like Pat from themselves:
 import sys
 if sys.version_info > (3,0):
-    sys.exit('Sorry, Python3 is not supported')
+    sys.exit('Sorry, python3 is not supported because of GDP')
 
 import re
 VERSIONFILE="signpost_fake_radio/_version.py"
