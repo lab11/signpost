@@ -93,7 +93,7 @@ static void priv_timer_callback (
             last_mod_isolated_out = -1;
         }
     } else {
-        printf("checkup\n");
+        printf("checkup %d, %d\n", MODOUT_pin_to_mod_name(mod_isolated_out), gpio_read(mod_isolated_out));
         if(gpio_read(mod_isolated_out) == 1) {
             printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             gpio_set(mod_isolated_in);
@@ -269,7 +269,7 @@ static void initialization_api_callback(uint8_t source_address,
       signpost_api_error_reply(source_address, api_type, message_type);
       return;
     }
-
+    int ret;
     switch (frame_type) {
         case NotificationFrame:
             // XXX unexpected, drop
@@ -278,8 +278,9 @@ static void initialization_api_callback(uint8_t source_address,
             switch (message_type) {
                 case InitializationKeyExchange:
                     // Prepare and reply ECDH key exchange
-                    signpost_initialization_key_exchange_respond(source_address,
+                    ret = signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
+                    printf("ret = %d", ret);
                     break;
                 //exchange module
                 //get mods

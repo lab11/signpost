@@ -36,7 +36,7 @@ uint8_t* signpost_api_addr_to_key(uint8_t addr) {
     for (size_t i = 0; i < NUM_MODULES; i++) {
         if (addr == module_info.i2c_address_mods[i] && module_info.haskey[i]) {
             uint8_t* key = module_info.keys[i];
-            SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
+            printf("key: %p: 0x%02x%02x%02x...%02x\n", key,
                     key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
             return key;
         }
@@ -70,7 +70,6 @@ int signpost_api_send(uint8_t destination_address,
                       uint8_t message_type,
                       size_t message_length,
                       uint8_t* message) {
-
     return signbus_app_send(destination_address, signpost_api_addr_to_key, frame_type, api_type,
                             message_type, message_length, message);
 }
@@ -173,22 +172,21 @@ static mbedtls_ecdh_context ecdh;
 static size_t  ecdh_param_len;
 static uint8_t ecdh_buf[ECDH_BUF_LEN];
 
-int signpost_initialization_req_priv(void);
+int signpost_initialization_request_isolation(void);
 
 static void signpost_initialization_key_exchange_callback(int len_or_rc) {
     if (len_or_rc < SUCCESS) return;
     if (incoming_api_type != InitializationApiType || incoming_message_type !=
             InitializationKeyExchange) return;
 
-
     // read params from contacted module
     if (mbedtls_ecdh_read_public(&ecdh, incoming_message,
                 incoming_message_length) < 0) {
-        printf("failed to calculate secret\n");
+        printf("failed to read public parameters\n");
         // do something meaningful
     }
 
-    uint8_t* key = signpost_api_addr_to_key(incoming_source_address);
+    uint8_t* key = module_info.keys[signpost_api_addr_to_mod_num(incoming_source_address)];
     size_t keylen;
     // generate key
     if(mbedtls_ecdh_calc_secret(&ecdh, &keylen, key, ECDH_KEY_LENGTH,
@@ -196,7 +194,6 @@ static void signpost_initialization_key_exchange_callback(int len_or_rc) {
         printf("failed to calculate secret\n");
         // do something meaningful
     }
-    printf("keylen = %d\n", keylen);
     module_info.haskey[signpost_api_addr_to_mod_num(incoming_source_address)] =
         true;
 
@@ -213,12 +210,11 @@ static void signpost_initialization_priv_callback(
         return;
     }
 
-    //printf("Controller response!\n");
     gpio_disable_interrupt(MOD_IN);
 
     // Now performing key exchange with controller
     // Spin until we are able to send
-    while(signpost_initialization_key_exchange_send(ModuleAddressController) < SUCCESS) {}
+    while(signpost_initialization_key_exchange_send(ModuleAddressController) < SUCCESS) {delay_ms(50);}
     istate = KeyExchange;
 }
 
@@ -290,20 +286,22 @@ int signpost_initialization_module_init(
     signpost_api_start_new_async_recv();
     // Request isolation from controller
     istate = WaitPriv;
-    signpost_initialization_req_priv();
+    signpost_initialization_request_isolation();
     // Spin until initialized with controller
-    while(istate != Done) {}
-    gpio_set(MOD_OUT);
+    // XXX set timeout
+    while(istate != Done) {delay_ms(50);}
+    gpio_toggle(MOD_OUT);
     SIGNBUS_DEBUG("complete\n");
     return 0;
 }
 
-int signpost_initialization_req_priv(void) {
+int signpost_initialization_request_isolation(void) {
     // Initialize Mod Out/In GPIO
     // both are active low
     gpio_interrupt_callback(signpost_initialization_priv_callback, NULL);
     gpio_enable_interrupt(MOD_IN, PullUp, FallingEdge);
     gpio_enable_output(MOD_OUT);
+    gpio_set(MOD_OUT);
     // Pull Mod_Out Low to signal controller
     // Wait on controller interrupt on MOD_IN
     gpio_clear(MOD_OUT);
@@ -342,13 +340,11 @@ int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t
 
     ret = mbedtls_ecdh_make_public(&ecdh, &ecdh_param_len, ecdh_buf, ECDH_BUF_LEN, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if(ret < SUCCESS) return ret;
-
     // get key address of contacting module
-    uint8_t* key = signpost_api_addr_to_key(source_address);
+    uint8_t* key = module_info.keys[signpost_api_addr_to_mod_num(incoming_source_address)];
     size_t keylen;
     ret = mbedtls_ecdh_calc_secret(&ecdh, &keylen, key, ECDH_KEY_LENGTH, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if(ret < SUCCESS) return ret;
-    printf("keylen = %d\n", keylen);
     module_info.haskey[signpost_api_addr_to_mod_num(source_address)] = true;
 
     return signpost_api_send(source_address,
