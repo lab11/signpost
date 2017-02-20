@@ -23,6 +23,135 @@
 #define SLAVE_READ_LEN 512
 static uint8_t slave_read_buf[SLAVE_READ_LEN] = {0};
 
+static void processing_api_callback(uint8_t source_address,
+    signbus_frame_type_t frame_type, signbus_api_type_t api_type,
+    uint8_t message_type, size_t message_length, uint8_t* message) {
+
+    static bool rpc_pending = false;
+    static uint8_t processing_src = 0x00;
+    static uint8_t processing_reason =  0x00;
+    static uint16_t payload_len;
+    static uint8_t* payload[1024];
+
+    if(api_type != ProcessingApiType) {
+        signpost_api_error_reply(source_address, api_type, message_type);
+        return;
+    }
+
+    if(frame_type == NotificationFrame) {
+        //shouldn't happen
+    } else if (frame_type == CommandFrame) {
+        if(message_type == ProcessingInitMessage) {
+            //save the message in the buffer to send to edison
+            if(!rpc_pending) {
+                payload_len = message_length;
+                if(payload_len + 2 > SLAVE_READ_LEN) {
+                    //we can't send this message - respond with error?
+                } else {
+                    memcpy(payload,message,message_length);
+                    processing_src = source_address;
+                    processing_reason = 0x00;
+                    rpc_pending = true;
+                }
+            } else {
+                //for now we are going to drop it - they can try
+                //again in a bit
+            }
+            //wakeup edison
+
+            //Edison will send a ProcessingEdisonReadReasonMessage
+            //then we can send it the src addr and the function (init or rpc)
+        } else if(message_type == ProcessingOneWayMessage) {
+            //save the message in the buffer to send to edison
+            if(!rpc_pending) {
+                payload_len = message_length;
+                if(payload_len + 2 > SLAVE_READ_LEN) {
+                    //we can't send this message - respond with error?
+                } else {
+                    memcpy(payload,message,message_length);
+                    processing_src = source_address;
+                    processing_reason = 0x01;
+                    rpc_pending = true;
+                }
+            } else {
+                //for now we are going to drop it - they can try
+                //again in a bit
+            }
+            //wakeup edison
+
+            //Edison will send a ProcessingEdisonReadReasonMessage
+            //then we can send it the src addr and the function (init or rpc)
+        } else if(message_type == ProcessingTwoWayMessage) {
+            //save the message in the buffer to send to edison
+            if(!rpc_pending) {
+                payload_len = message_length;
+                if(payload_len + 2 > SLAVE_READ_LEN) {
+                    //we can't send this message - respond with error?
+                } else {
+                    memcpy(payload,message,message_length);
+                    processing_src = source_address;
+                    processing_reason = 0x01;
+                    rpc_pending = true;
+                }
+            } else {
+                //for now we are going to drop it - they can try
+                //again in a bit
+            }
+            //wakeup edison
+
+            //Edison will send a ProcessingEdisonReadReasonMessage
+            //then we can send it the src addr and the function (init or rpc)
+        } else if(message_type == ProcessingEdisonReadMessage) {
+            //set up the read buffer with the proper stuff
+            //either 1B:SRC,1B:0x00-Init,2B:strlen,payload:str
+            //or 1B:SRC,1B:0x01-RPC,RPCPayload
+            //and with the last function
+            if(rpc_pending) {
+                slave_read_buf[0] = processing_src;
+                slave_read_buf[1] = processing_reason;
+                memcpy(slave_read_buf+2,payload,payload_len);
+                //now a slave read should happen
+            } else {
+                //edison shouldn't be away
+                //go back to sleep?
+                //we can probably response with src addr 0 or something?
+            }
+        } else if(message_type == ProcessingEdisonInitResponseMessage) {
+            if(rpc_pending){
+                signpost_processing_reply(processing_src,ProcessingInitMessage,message,1);
+                rpc_pending = false;
+            } else {
+
+            }
+        } else if(message_type == ProcessingEdisonOneWayResponseMessage) {
+            //note this one-way response happens BEFORE the edison
+            //calls the processing function (just acks it got it, crc
+            //checks etc)
+            if(rpc_pending) {
+                //the payload should just be a byte indicating success or failur
+                signpost_processing_reply(processing_src,ProcessingOneWayMessage,message,1);
+            } else {
+                //drop it I guess?
+            }
+        } else if(message_type == ProcessingEdisonOneWayDoneResponseMessage) {
+            if(rpc_pending) {
+                rpc_pending = false;
+            } else {
+                //drop it?
+            }
+        } else if(message_type == ProcessingEdisonTwoWayResponseMessage) {
+            if(rpc_pending){
+                signpost_processing_reply(processing_src,ProcessingTwoWayMessage, message,message_length);
+                rpc_pending = false;
+            } else {
+                //this shouldn't happen
+            }
+        }
+    } else {
+        //shouldn't happen
+    }
+}
+
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
@@ -94,6 +223,7 @@ static void slave_read_callback (int err) {
 }
 
 int main (void) {
+
   int err = SUCCESS;
   printf("\n[Storage Master]\n** Storage API Test **\n");
 
@@ -106,7 +236,8 @@ int main (void) {
 
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
-  static api_handler_t* handlers[] = {&storage_handler, NULL};
+  static api_handler_t processing_handler = {ProcessingApiType, processing_api_callback};
+  static api_handler_t* handlers[] = {&storage_handler, &processing_handler, NULL};
   signpost_initialization_module_init(ModuleAddressStorage, handlers);
 
   //XXX: TESTING
