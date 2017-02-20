@@ -24,5 +24,5 @@ class Signbus():
                 )
 
         # Expose the application layer send as our send
-        self.send = _app.send
+        self.send = self._app.send
 

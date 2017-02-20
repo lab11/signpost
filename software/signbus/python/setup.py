@@ -14,7 +14,7 @@ from setuptools import setup
 # but no need to make an actual package dependency
 try:
     import pypandoc
-    long_description = pypandoc.convert_file('README.md', 'rst'),
+    long_description = pypandoc.convert_file('README.md', 'rst')
 except ImportError:
     if ('upload' in sys.argv) or ('sdist' in sys.argv) or ('bdist' in sys.argv):
         raise
