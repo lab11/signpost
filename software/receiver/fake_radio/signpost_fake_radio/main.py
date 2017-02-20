@@ -79,6 +79,7 @@ class FakeRadio:
                 #it won't be valid if this fails
                 continue
 
+            buf = None
             if(byte == "#"):
                 #see if the next character is a reset
                 byte = self.sp.read(1);
@@ -97,13 +98,12 @@ class FakeRadio:
                     buf = self.sp.read(16000);
                     print(buf.decode("utf-8"))
                     pass
-
+                else:
+                    sys.stdout.write("#" + byte)
 
                 continue
-
-            #this is an actual message
-            buf = None
-            if(byte == "$"):
+            elif(byte == "$"):
+                #this is an actual message
                 #read two more bytes to get the length
                 num_bytes = struct.unpack('<H', self.sp.read(2))[0]
 
@@ -117,6 +117,7 @@ class FakeRadio:
                     print("Received buffer shorted than expected. Discarding")
                     continue
             else:
+                sys.stdout.write(byte)
                 continue
 
 
