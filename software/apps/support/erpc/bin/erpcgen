@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Intermediary script that lets us call a fixed binary path, but choose the
+# right erpcgen for the current platform
+
+erpcgen=`dirname $0`/`uname`/erpcgen
+
+if [ ! -x $erpcgen ]; then
+    echo "No erpcgen built for this platform"
+    echo 'Please go to `signpost/software/apps/support/erpc`'
+    echo "and run ./create_erpcgen"
+    exit 1
+fi
+
+exec $erpcgen "$@"

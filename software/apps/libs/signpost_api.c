@@ -10,6 +10,7 @@
 #include "tock.h"
 #include "gpio.h"
 #include "timer.h"
+#include "crc.h"
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
@@ -304,12 +305,108 @@ int signpost_storage_write_reply(uint8_t destination_address, uint8_t* record_po
 }
 
 /**************************************************************************/
+/* PROCESSING API                                                         */
+/**************************************************************************/
+static bool processing_ready;
+static void signpost_processing_callback(__attribute__((unused)) int result){
+    processing_ready = true;
+}
+int signpost_processing_init(const char* path) {
+    //form the sending message
+    uint16_t size = strlen(path);
+    uint8_t buf[size + 2];
+    buf[0] = size & 0xff;
+    buf[1] = ((size & 0xff00) > 8);
+
+    memcpy(buf+2,path,size);
+
+    incoming_active_callback = signpost_processing_callback;
+    processing_ready = false;
+
+    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+             ProcessingApiType, ProcessingInitMessage, size+2, buf);
+
+    //wait for a response
+    yield_for(&processing_ready);
+
+    return incoming_message[0];
+}
+
+int signpost_processing_oneway_send(uint8_t* buf, uint16_t len) {
+
+    //form the sending message
+    uint16_t crc  = computeCRC16(buf,len);
+    uint8_t b[len + 4];
+    b[0] = len & 0xff;
+    b[1] = ((len & 0xff00) > 8);
+    b[2] = crc & 0xff;
+    b[3] = ((crc & 0xff00) > 8);
+
+    memcpy(b+4,buf,len);
+
+    incoming_active_callback = signpost_processing_callback;
+
+    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+             ProcessingApiType, ProcessingOneWayMessage, len+2, b);
+
+    processing_ready = false;
+    //wait for a response
+    //the response is just an ack that it got there
+    yield_for(&processing_ready);
+
+    return incoming_message[0];
+}
+
+int signpost_processing_twoway_send(uint8_t* buf, uint16_t len) {
+    //form the sending message
+    uint16_t crc  = computeCRC16(buf,len);
+    uint8_t b[len + 4];
+    b[0] = len & 0xff;
+    b[1] = ((len & 0xff00) > 8);
+    b[2] = crc & 0xff;
+    b[3] = ((crc & 0xff00) > 8);
+
+    memcpy(b+4,buf,len);
+
+    incoming_active_callback = signpost_processing_callback;
+
+    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+             ProcessingApiType, ProcessingTwoWayMessage, len+4, b);
+
+    processing_ready = false;
+    //wait for a response in the next function call
+    //
+    return ProcessingSuccess;
+}
+
+int signpost_processing_twoway_receive(uint8_t* buf, uint16_t* len) {
+
+    yield_for(&processing_ready);
+
+    //get the header and confirm it matches
+    uint16_t size;
+    uint16_t crc;
+    memcpy(&size,incoming_message,2);
+    memcpy(&crc,incoming_message+2,2);
+    if(size != incoming_message_length - 4) {
+        //an error occured
+        return ProcessingSizeError;
+    }
+
+    if(crc != computeCRC16(incoming_message+4,size)) {
+        return ProcessingCRCError;
+    }
+
+    memcpy(buf,incoming_message+4,size);
+    memcpy(len,&size,2);
+
+    return ProcessingSuccess;
+}
+
+/**************************************************************************/
 /* NETWORKING API                                                         */
 /**************************************************************************/
 
-/**************************************************************************/
-/* PROCESSING API                                                         */
-/**************************************************************************/
 
 static bool networking_ready;
 static bool networking_result;
@@ -485,7 +582,6 @@ int signpost_networking_post(const char* url, http_request request, http_respons
     } else {
         memcpy(response->body,b+i,response->body_len);
     }
-
 
     return 0;
 }
