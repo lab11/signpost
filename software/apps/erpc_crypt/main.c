@@ -5,14 +5,15 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
-#include <firestorm.h>
 #include <console.h>
-#include "test_crypt.h"
+#include <gpio.h>
+#include <tock.h>
+
 #include "signpost_api.h"
+#include "test_crypt.h"
 
 
-int main () {
+int main (void) {
 
     signpost_initialization_module_init(0x35,NULL);
     signpost_processing_init("~/path/to/sign.py");
