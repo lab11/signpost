@@ -15,6 +15,7 @@
 #include "storage_master.h"
 #include "timer.h"
 #include "tock.h"
+#include "gpio.h"
 
 #include "signpost_storage.h"
 #include "signbus_io_interface.h"
@@ -22,6 +23,12 @@
 // buffer for holding i2c slave read data
 #define SLAVE_READ_LEN 512
 static uint8_t slave_read_buf[SLAVE_READ_LEN] = {0};
+
+static void edison_wakeup(void) {
+    gpio_clear(2);
+    delay_ms(100);
+    gpio_set(2);
+}
 
 static void processing_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
@@ -58,6 +65,7 @@ static void processing_api_callback(uint8_t source_address,
                 //again in a bit
             }
             //wakeup edison
+            edison_wakeup();
 
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
@@ -78,6 +86,7 @@ static void processing_api_callback(uint8_t source_address,
                 //again in a bit
             }
             //wakeup edison
+            edison_wakeup();
 
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
@@ -98,6 +107,7 @@ static void processing_api_callback(uint8_t source_address,
                 //again in a bit
             }
             //wakeup edison
+            edison_wakeup();
 
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
@@ -226,6 +236,9 @@ int main (void) {
 
   int err = SUCCESS;
   printf("\n[Storage Master]\n** Storage API Test **\n");
+
+    gpio_enable_output(2);
+    gpio_set(2);
 
   // set up the SD card and storage system
   err = storage_initialize();
