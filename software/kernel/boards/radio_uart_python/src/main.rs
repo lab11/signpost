@@ -12,7 +12,6 @@ extern crate signpost_drivers;
 extern crate signpost_hil;
 
 use signpost_drivers::gps_console;
-use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
 use kernel::hil;
@@ -69,7 +68,6 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct RadioUartPython {
-    console: &'static Console<'static, usart::USART>,
     gps_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
@@ -85,7 +83,7 @@ impl Platform for RadioUartPython {
     {
 
         match driver_num {
-            0 => f(Some(self.console)),
+            0 => f(Some(self.gps_console)),
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             13 => f(Some(self.i2c_master_slave)),
@@ -132,17 +130,6 @@ pub unsafe fn reset_handler() {
 
     set_pin_primary_functions();
 
-    //
-    // UART console
-    //
-    let console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART1,
-                     115200,
-                     &mut console::WRITE_BUF,
-                     kernel::Container::create()),
-        224/8);
-    hil::uart::UART::set_client(&usart::USART1, console);
     //as a hack we are going to use gps console because it can receive bytes
     let gps_console = static_init!(                                             
         signpost_drivers::gps_console::Console<usart::USART>,                   
@@ -259,7 +246,6 @@ pub unsafe fn reset_handler() {
     // Actual platform object
     //
     let module = RadioUartPython {
-        console: console,
         gps_console: gps_console,
         gpio: gpio,
         timer: timer,
@@ -269,7 +255,6 @@ pub unsafe fn reset_handler() {
         ipc: kernel::ipc::IPC::new(),
     };
 
-    module.console.initialize();
 	module.gps_console.initialize();
     watchdog.start();
 
