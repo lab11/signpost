@@ -11,6 +11,7 @@
 #include "gpio.h"
 #include "timer.h"
 #include "crc.h"
+#include "erpc_client_setup.h"
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
@@ -311,7 +312,10 @@ static bool processing_ready;
 static void signpost_processing_callback(__attribute__((unused)) int result){
     processing_ready = true;
 }
+
 int signpost_processing_init(const char* path) {
+    erpc_client_init(NULL);
+
     //form the sending message
     uint16_t size = strlen(path);
     uint8_t buf[size + 2];

@@ -9,15 +9,13 @@
 #include <firestorm.h>
 #include <console.h>
 #include "test_crypt.h"
-#include "erpc_client_setup.h"
-#include "erpc_transport_setup.h"
-
+#include "signpost_api.h"
 
 
 int main () {
-    erpc_transport_t transport;
-    transport = erpc_transport_i2c_master_slave_init(0x19,0x30);
-    erpc_client_init(transport);
+
+    signpost_initialization_module_init(0x35,NULL);
+    signpost_processing_init("~/path/to/sign.py");
 
     ret* signed_data;
     uint8_t data[100];
