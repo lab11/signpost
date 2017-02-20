@@ -59,9 +59,19 @@ cd toFlash
 ./flashall.sh
 ```
 
-`flashall.sh` needs to be run as root on Linux and must not be run as root on mac.
+`flashall.sh` needs to be run as root on Linux and must not be run as root on
+mac.
 
-The default username is `user` and the default password is `edison`. Root account access is disabled by default, but `user` has sudo access enabled.
+The default username is `debian` and the default password is `signpost!`. Root
+account access is disabled by default, but `user` has sudo access enabled. SSH
+access with password is enabled for the `debian` account.
+
+An `sbuser` account exists with the password `sbuser_default` and is configured with keys from the
+[swarmboxadmin](https://www.terraswarm.org/testbeds/wiki/Main/SwarmboxadminGitRepo)
+repo in accordance with these
+[directions](https://www.icyphy.org/accessors/wiki/Notes/Edison#SetUpSbuser).
+SSH access with password is disabled for the `sbuser` account and will only
+accept connections from users with the proper SSH key.
 
 ## Post-Install
 
