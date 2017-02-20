@@ -131,6 +131,11 @@ enum processing_message_type {
     ProcessingInitMessage = 0,
     ProcessingOneWayMessage = 1,
     ProcessingTwoWayMessage = 2,
+    ProcessingEdisonReadMessage = 3,
+    ProcessingEdisonInitResponseMessage = 4,
+    ProcessingEdisonOneWayResponseMessage = 5,
+    ProcessingEdisonOneWayDoneResponseMessage = 6,
+    ProcessingEdisonTwoWayResponseMessage = 7,
 };
 
 //the edison path to the python module for servicing the rpc
@@ -139,6 +144,7 @@ int signpost_processing_init(const char* path);
 int signpost_processing_oneway_send(uint8_t* buf, uint16_t len);
 int signpost_processing_twoway_send(uint8_t* buf, uint16_t len);
 int signpost_processing_twoway_receive(uint8_t* buf, uint16_t* len);
+int signpost_processing_reply(uint8_t src_addr, uint8_t message_type, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
 /* ENERGY API                                                             */
