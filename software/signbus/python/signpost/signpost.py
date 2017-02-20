@@ -62,3 +62,7 @@ class EdisonApiClient():
     def send_read_rpc(self):
         raise NotImplementedError
 
+    def read_from_slave(self, dest, count):
+        # testing. I don't care about args right this moment
+        self._signbus._net.read(dest, count)
+
