@@ -80,9 +80,9 @@ static int get_message(
         uint8_t* src_address
         );
 
-// Internal helper for supporting erpc. In the Needs Love section below.
-// Forward declaration here so callback can use it.
-static void iterate_read_buf(void);
+// Internal helper for supporting slave reads. Forward declaration here so
+// callback can use it.
+static void signbus_iterate_slave_read(void);
 
 // State for an active async event
 bool                    async_active = false;
@@ -117,7 +117,7 @@ static void i2c_master_slave_callback(
             get_message(async_recv_buf, async_recv_buflen, async_src_address);
         }
     } else if (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) {
-        iterate_read_buf();
+        signbus_iterate_slave_read();
     }
 }
 
@@ -340,85 +340,94 @@ int signbus_io_recv_async(
 
 
 
-
-
-/*****************************************************************
- * XXX Needs Love Section
+/******************************************************************************
+ * Slave Read Section
  *
  * This is the code that's responsible for supporting I2C reads.
- * This comes pretty raw from the original edison / storage master
- * stuff, designed to be called from the erpc app, so you get weird
- * behavoir like the first thing the 'set_read_buffer' does is start
- * listening as an I2C slave.
- *
- * It should all work as before, but it should also be cleaned up
- * to a more sane interface eventually. For now it's all contained
- * down here.
- */
+ * Currently, reads use the same Network Layer as the rest of signbus, but do
+ * not follow any of the higher layers of the protocol.
+ ******************************************************************************/
 
-static uint32_t readToSend;
-static uint32_t readLen;
-static Packet readPacket;
-static uint8_t* readData;
+static uint32_t slave_read_data_bytes_remaining = 0;
+static uint32_t slave_read_data_len = 0;
+static Packet readPacket = {0};
+static uint8_t* slave_read_data = NULL;
+static signbus_app_callback_t* slave_read_callback = NULL;
 
-static void iterate_read_buf(void) {
+static void signbus_iterate_slave_read(void) {
 
-    if(readToSend > 0) {
-        //set more fragments bit
-        uint8_t morePackets = 0;
-        uint16_t offset = 0;
+    // check if there is still data to send
+    if (slave_read_data_bytes_remaining > 0) {
 
-        //calculate moreFragments
-        morePackets = (readToSend > MAX_DATA_LEN);
-        //calculate offset
-        offset = (readLen-readToSend);
 
-        //set more fragments bit
-        readPacket.header.flags.is_fragment = morePackets;
+        // this message is a fragment if the entire data buffer cannot fit
+        bool is_fragment = (slave_read_data_bytes_remaining > MAX_DATA_LEN);
 
-        //set the fragment offset
+        // calculate current offset into the data buffer
+        uint16_t offset = slave_read_data_len - slave_read_data_bytes_remaining;
+
+        // set packet header values
+        readPacket.header.flags.is_fragment = is_fragment;
         readPacket.header.fragment_offset = htons(offset);
 
-        //set the data field
-        //if there are more packets write the whole packet
-        if(morePackets) {
-            memcpy(readPacket.data,
-                    readData+offset,
-                    MAX_DATA_LEN);
-        } else {
-            //if not just send the remainder of the data
-            memcpy(readPacket.data,
-                    readData+offset,
-                    readToSend);
+        // set the packet data field
+        uint32_t data_len = slave_read_data_bytes_remaining;
+        if (is_fragment) {
+            // we cannot fit the whole data buffer. Copy as much as we can
+            data_len = MAX_DATA_LEN;
         }
+        memcpy(readPacket.data, &slave_read_data[offset], data_len);
 
-        //copy the packet into the send buffer
-        memcpy(slave_read_buf,&readPacket,I2C_MAX_LEN);
+        // update bytes remaining
+        slave_read_data_bytes_remaining -= data_len;
+
+        // copy the packet into the i2c slave read buffer
+        memcpy(slave_read_buf, &readPacket, I2C_MAX_LEN);
+
+        // enable the i2c slave read
         i2c_master_slave_enable_slave_read(I2C_MAX_LEN);
 
-        //send the packet in syncronous mode
-        if(morePackets) {
-            readToSend -= MAX_DATA_LEN;
-        } else {
-            readToSend = 0;
-        }
-
     } else {
-        readToSend = readLen;
-        iterate_read_buf();
+        // all provided data has been sent! Do something about it
+        if (slave_read_callback == NULL && slave_read_data_len > 0) {
+            // do repitition of provided buffer... for legacy reasons
+            slave_read_data_bytes_remaining = slave_read_data_len;
+            signbus_iterate_slave_read();
+
+        } else {
+            // perform the callback!
+            slave_read_callback(SUCCESS);
+        }
     }
 }
 
-void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
-    //essentially call message_send on the buff but only
-    //iterate after someone has read the buffer.
-    //after the buffer has been read restart it from
-    //the beginning
-    i2c_master_slave_listen();
+// provide data for a slave read
+int signbus_io_set_read_buffer (uint8_t* data, uint32_t len) {
+    // reads work just like writing messages, but only iterate through
+    // fragments after someone has read the buffer. A callback will be sent
+    // after the entire data buffer has been read if one has been provided.
+    // It's up to the application layers to ensure that the master is reading
+    // the correct number of bytes from the slave. For legacy code reasons,
+    // after the buffer has been read, if no callback has been provided we set
+    // the next read to start from the beginning of the buffer again. It's
+    // expected that the application layer will call signbus_io_set_read_buffer
+    // from the callback to provide new data
+
+    // listen for i2c messages asynchronously
+    int err = i2c_master_slave_listen();
+    if (err < SUCCESS) {
+        return err;
+    }
+
+    // sequence number is incremented once per data
     sequence_number++;
-    readLen = len;
-    readToSend = readLen;
-    readData = data;
+
+    // keep track of data and length
+    slave_read_data_len = len;
+    slave_read_data = data;
+
+    // still need to send entire buffer
+    slave_read_data_bytes_remaining = len;
 
     //calculate the number of packets we will have to send
     uint16_t numPackets;
@@ -428,15 +437,23 @@ void signbus_io_set_read_buffer(uint8_t* data, uint32_t len) {
         numPackets = (len/MAX_DATA_LEN);
     }
 
-    //set version
+    // setup metadata for packets to be read
     readPacket.header.flags.version = 0x01;
-    //set the source
     readPacket.header.src = this_device_address;
     readPacket.header.sequence_number = htons(sequence_number);
 
     //set the total length
     readPacket.header.length = htons((numPackets*sizeof(signbus_network_header_t))+len);
 
-    iterate_read_buf();
+    // actually set up the fragmented read packet
+    signbus_iterate_slave_read();
+    return SUCCESS;
+}
+
+// provide callback to be performed when the slave read has completed all data
+// provided (possibly across multiple packets). Callback is not cleared after
+// use
+void signbus_io_set_read_callback (signbus_app_callback_t* callback) {
+    slave_read_callback = callback;
 }
 

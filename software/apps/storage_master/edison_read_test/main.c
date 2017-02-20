@@ -19,6 +19,10 @@
 #include "signpost_storage.h"
 #include "signbus_io_interface.h"
 
+// buffer for holding i2c slave read data
+#define SLAVE_READ_LEN 512
+static uint8_t slave_read_buf[SLAVE_READ_LEN] = {0};
+
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
@@ -79,8 +83,15 @@ static void storage_api_callback(uint8_t source_address,
   }
 }
 
-//XXX: TESTING
-uint8_t request_buf[20] = {12};
+static void slave_read_callback (int err) {
+  if (err < SUCCESS) {
+    printf("I2C slave read error: %d\n", err);
+  } else {
+    // slave read complete, provide a new buffer
+    printf("I2C slave read complete!\n");
+    signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
+  }
+}
 
 int main (void) {
   int err = SUCCESS;
@@ -98,17 +109,14 @@ int main (void) {
   static api_handler_t* handlers[] = {&storage_handler, NULL};
   signpost_initialization_module_init(ModuleAddressStorage, handlers);
 
+  //XXX: TESTING
+  for (int i=0; i<SLAVE_READ_LEN; i++) {
+    slave_read_buf[i] = i;
+  }
 
-  //XXX: I guess wait for an I2C read?
-  printf("Gonna supply a read buffer\n");
-  uint32_t len = 20;
-  signbus_io_set_read_buffer(request_buf, len);
-  request_buf[0] = 0x23;
-  request_buf[1] = 0x42;
-  request_buf[2] = 0x11;
-  //i2c_master_slave_set_slave_read_buffer(request_buf, len);
-  //i2c_master_slave_slave_read_ready(len);
-  printf("Supplied!\n");
+  // Setup I2C slave reads
+  signbus_io_set_read_callback(slave_read_callback);
+  signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);

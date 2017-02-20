@@ -80,9 +80,12 @@ int signbus_io_recv_async(
     uint8_t* src                      // Address received from
     );
 
-//XXX Needs love: interface for erpc
+/// API for slave reads
+
 //set the read buffer
-void signbus_io_set_read_buffer(uint8_t* data, uint32_t len);
+int signbus_io_set_read_buffer(uint8_t* data, uint32_t len);
+
+void signbus_io_set_read_callback(signbus_app_callback_t* callback);
 
 #ifdef __cplusplus
 }
