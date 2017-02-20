@@ -45,8 +45,8 @@ ERPCGEN := $(CURRENT_DIR)support/erpc/bin/erpcgen
 
 ifdef DEFINED_IF_APP_USES_ERPC
 OBJS += $(CURRENT_DIR)support/erpc/liberpc/$(TOCK_ARCH)/liberpc.a
-include $(CURRENT_DIR)support/erpc/AppLibERPC.mk
 endif
+include $(CURRENT_DIR)support/erpc/AppLibERPC.mk
 
 ERPC_BUILDDIR := build/erpc
 ERPC_CXX_SRCS += $(patsubst %.erpc,%_client.cpp,$(ERPC_SRCS))
@@ -71,6 +71,10 @@ $(C_SRCS):	| $(ERPC_H_SRCS)
 $(CXX_SRCS):	| $(ERPC_H_SRCS)
 
 
+
+# XXX(Pat)
+# Solve the absence of a path to TOCK_BOARD for now
+CHIP_LAYOUT := $(CURRENT_DIR)/../kernel/boards/$(TOCK_BOARD)/chip_layout.ld
 
 # include userland master makefile. Contains rules and flags for actually
 # 	building the application
