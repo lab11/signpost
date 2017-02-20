@@ -5,11 +5,11 @@ APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
 
 # upload programs over uart with stormloader
 .PHONY: program
-program: $(BUILDDIR)/app.bin
-	$(APP_SLOAD) $(BUILDDIR)/app.bin
+program: $(BOARD_BUILDDIR)/app.bin
+	$(APP_SLOAD) $(BOARD_BUILDDIR)/app.bin
 
 # upload programs over JTAG
 .PHONY: flash
-flash: $(BUILDDIR)/app.bin
-	$(APP_FLASH) $(BUILDDIR)/app.bin
+flash: $(BOARD_BUILDDIR)/app.bin
+	$(APP_FLASH) $(BOARD_BUILDDIR)/app.bin
 
