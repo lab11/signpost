@@ -30,8 +30,6 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./audio_module" ]; then continue; fi
 
 	# XXX Temporary
-	if [ $dir == "./erpc_crypt" ]; then skips+=($dir-JOSH); continue; fi
-	if [ $dir == "./erpc_test" ]; then skips+=($dir-JOSH); continue; fi
 	if [ $dir == "./mbedtls_aes" ]; then skips+=($dir-PAT-stacksize); continue; fi
 	if [ $dir == "./mbedtls_hash" ]; then skips+=($dir-PAT-stacksize); continue; fi
 	if [ $dir == "./mbedtls_hmac" ]; then skips+=($dir-PAT-stacksize); continue; fi
