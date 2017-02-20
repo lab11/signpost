@@ -73,7 +73,8 @@ class NetworkLayer():
         # issue the I2C transactions
         log.debug("dest {}")
         for msg in msgs:
-            log.debug("\t msg {}".format(msg))
+            log.debug("\t msg.data {} msg.read {} msg.flags".\
+                    format(msg.data, msg.read, msg.flags))
         self._i2c.transfer(dest, msgs)
 
     def recv():
