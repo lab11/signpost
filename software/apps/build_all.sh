@@ -29,11 +29,6 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./storage_master" ]; then continue; fi
 	if [ $dir == "./audio_module" ]; then continue; fi
 
-	# XXX Temporary
-	if [ $dir == "./mbedtls_aes" ]; then skips+=($dir-PAT-stacksize); continue; fi
-	if [ $dir == "./mbedtls_hash" ]; then skips+=($dir-PAT-stacksize); continue; fi
-	if [ $dir == "./mbedtls_hmac" ]; then skips+=($dir-PAT-stacksize); continue; fi
-
 	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
 	make || failures+=($dir)
