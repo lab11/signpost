@@ -269,7 +269,6 @@ static void initialization_api_callback(uint8_t source_address,
       signpost_api_error_reply(source_address, api_type, message_type);
       return;
     }
-    int ret;
     switch (frame_type) {
         case NotificationFrame:
             // XXX unexpected, drop
@@ -280,7 +279,6 @@ static void initialization_api_callback(uint8_t source_address,
                     // Prepare and reply ECDH key exchange
                     ret = signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
-                    printf("ret = %d", ret);
                     break;
                 //exchange module
                 //get mods

@@ -166,7 +166,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
 
-#define ECDH_BUF_LEN 256
+#define ECDH_BUF_LEN 72
 static initialization_state_t istate;
 static mbedtls_ecdh_context ecdh;
 static size_t  ecdh_param_len;
@@ -325,6 +325,7 @@ int signpost_initialization_key_exchange_send(uint8_t destination_address) {
     rc = mbedtls_ecdh_make_params(&ecdh, &ecdh_param_len, ecdh_buf,
             ECDH_BUF_LEN, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if (rc < 0) return rc;
+    printf("paramlen: %d\n", ecdh_param_len);
 
     // Now have a private channel with the controller
     // Key exchange with module, send ecdh params
@@ -340,6 +341,8 @@ int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t
 
     ret = mbedtls_ecdh_make_public(&ecdh, &ecdh_param_len, ecdh_buf, ECDH_BUF_LEN, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if(ret < SUCCESS) return ret;
+    printf("paramlen: %d\n", ecdh_param_len);
+
     // get key address of contacting module
     uint8_t* key = module_info.keys[signpost_api_addr_to_mod_num(incoming_source_address)];
     size_t keylen;
