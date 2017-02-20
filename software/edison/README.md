@@ -32,7 +32,8 @@ PSH KERNEL VERSION: b0182b2b
 		WR: 20104000
 ******************************
 [ ... ]
-Hit any key to stop autoboot:  0  <--- HERE! This timeout is quick! Just mash some buttons.
+*** Ready to receive application ***   <--- It will hang here for ~10s, sadly pushing buttons not yet useful (but not harmful)
+Hit any key to stop autoboot:  0  <--- HERE! This timeout is quick! Just mash enter.
 boot >
 ```
 Once we're in the bootloader, we need to set it up to accept a new image:
