@@ -112,13 +112,14 @@ int main (void) {
   static api_handler_t* handlers[] = {&networking_handler, NULL};
   signpost_initialization_module_init(ModuleAddressRadio, handlers);
 
-  message_sent = false;
+  /*message_sent = false;
   static char d1[3];
   d1[0] = '#';
   d1[1] = 'r';
   allow(DRIVER_NUM_GPS, 1, (void*)d1, 2);
   subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
-  yield_for(&message_sent);
+  yield_for(&message_sent);*/
+  printf("#r");
 
 
     //should probably actually setup a watchdog at some point
