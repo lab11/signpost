@@ -269,15 +269,23 @@ static void initialization_api_callback(uint8_t source_address,
       signpost_api_error_reply(source_address, api_type, message_type);
       return;
     }
+    int module_number;
     switch (frame_type) {
         case NotificationFrame:
             // XXX unexpected, drop
             break;
         case CommandFrame:
             switch (message_type) {
+                case InitializationDeclare:
+                    // only if we have a module isolated
+                    if (mod_isolated_out < 0) return;
+                    module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
+                    signpost_initialization_declare_respond(source_address, module_number);
+                    break;
                 case InitializationKeyExchange:
                     // Prepare and reply ECDH key exchange
-                    ret = signpost_initialization_key_exchange_respond(source_address,
+                    printf("responding\n");
+                    signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
                     break;
                 //exchange module
@@ -447,7 +455,8 @@ static void gps_callback (gps_data_t* gps_data) {
   r.body = gps_datum;
 
   http_response result;
-  int rc = signpost_networking_post(url, r, &result);
+  int rc = -1;
+      //signpost_networking_post(url, r, &result);
   if (rc < 0) {
     printf("Failed to do GPS post. return code: %d\n", rc);
   }
