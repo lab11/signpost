@@ -46,7 +46,7 @@ typedef enum initialization_state {
     Done,
 } initialization_state_t;
 
-enum initialization_message_type {
+typedef enum initialization_message_type {
    InitializationDeclare = 0,
    InitializationKeyExchange,
    InitializationGetMods,
