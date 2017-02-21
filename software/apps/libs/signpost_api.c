@@ -167,14 +167,14 @@ static void signpost_api_recv_callback(int len_or_rc) {
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
 
+int signpost_initialization_request_isolation(void);
+int signpost_initialization_declare_controller(void);
+
 #define ECDH_BUF_LEN 72
 static mbedtls_ecdh_context ecdh;
 static size_t  ecdh_param_len;
 static uint8_t ecdh_buf[ECDH_BUF_LEN];
 static bool done;
-
-int signpost_initialization_request_isolation(void);
-int signpost_initialization_declare_controller(void);
 
 static void signpost_initialization_declare_callback(int len_or_rc) {
     if (len_or_rc < SUCCESS) return;
@@ -275,12 +275,30 @@ int signpost_initialization_controller_module_init(api_handler_t** api_handlers)
     int rc = signpost_initialization_common(ModuleAddressController, api_handlers);
     if (rc < 0) return rc;
 
-    // HACK Put this here until this module init's correctly and reports its address to controller
-    //      I happen to have my test board in module 6 using address 50.
-    //module_info.i2c_address_mods[6] = 0x50;
+    // Begin listening for replies
+    signpost_api_start_new_async_recv();
+    // delay for a second to wait for storage master to init
+    delay_ms(2000);
+    SIGNBUS_DEBUG("complete\n");
+    return SUCCESS;
+}
+
+int signpost_initialization_storage_master_init(api_handler_t** api_handlers) {
+    int rc = signpost_initialization_common(ModuleAddressStorage, api_handlers);
+    if (rc < 0) return rc;
 
     // Begin listening for replies
     signpost_api_start_new_async_recv();
+
+    done = 0;
+    // spin until done exchanging with storage master
+    while(!done) {
+        printf("Waiting for initialization with controller\n");
+        // exchange keys with controller
+        while(signpost_initialization_key_exchange_send(ModuleAddressController) < SUCCESS) {delay_ms(50);}
+        delay_ms(5000);
+    }
+
 
     SIGNBUS_DEBUG("complete\n");
     return SUCCESS;
@@ -300,12 +318,6 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     while(!done) {
         printf("Waiting for initialization with controller\n");
         yield_for(&done);
-    //    if(timeout++ > 50) {
-    //        printf("WARN: timeout for isolated request, resending request\n");
-    //        istate = Start;
-    //        signpost_initialization_request_isolation();
-    //        timeout = 0;
-    //    }
     }
 
     gpio_disable_interrupt(MOD_IN);

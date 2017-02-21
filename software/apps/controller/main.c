@@ -277,9 +277,10 @@ static void initialization_api_callback(uint8_t source_address,
         case CommandFrame:
             switch (message_type) {
                 case InitializationDeclare:
-                    // only if we have a module isolated
-                    if (mod_isolated_out < 0) return;
-                    module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
+                    // only if we have a module isolated or from storage master
+                    if (mod_isolated_out < 0 && source_address != ModuleAddressStorage) return;
+                    if (source_address == ModuleAddressStorage) module_number = 4;
+                    else module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
                     signpost_initialization_declare_respond(source_address, module_number);
                     break;
                 case InitializationKeyExchange:

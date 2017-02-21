@@ -1,3 +1,5 @@
+## Pre-Install
+
 Downloading this image requires [git lfs](https://git-lfs.github.com/).
 
 Follow the instructions on that page to install and track the toFlash.tar.gz
@@ -63,8 +65,31 @@ cd toFlash
 `flashall.sh` needs to be run as root on Linux and must not be run as root on
 mac.
 
+### Installation Issues / FAQ
+
+Unfortunately, this process simply isn't the most robust. Sometimes you just have to try running
+things again, sometimes you need to plug/unplug the edison (partiuclarly the flashing interface,
+the bottom USB on the Signpost controller board). Sometimes flashall.sh will fail to reboot/catch
+the reboot of the Edison - if you're quick, you can just run it again and it'll work.
+
+**Flashing is very slow?** Some USB hubs (even 3.0 hubs) make things slow. We've had a real
+mixed bag flashing from inside a virtual machine as well. The best success is to be plugged directly
+into USB ports on your machine and flashing from a bare metal OS.
+
+**Well, how long should it take then?** Flashing from bare-metal OS X and Linux machines we find
+usually takes around 6 minutes. On the flip side from a Linux VM on a Windows host through a USB
+hub took nearly an hour.
+
+**How do I know it's working?** You should leave both terminals open. It starts with flashall
+rebooting the edision. Then there are three major flashing steps, but only the last one really
+takes a while. Terminal 1 (the serial connection) will be printing `#` characters as it flashes.
+It filles somewhere between 2-3 lines on a reasonable width terminal. If `#`'s keep printing, just
+keep waiting.
+
+## Post-Install
+
 The default username is `debian` and the default password is `signpost!`. Root
-account access is disabled by default, but `user` has sudo access enabled. SSH
+account access is disabled by default, but `debian` has sudo access enabled. SSH
 access with password is enabled for the `debian` account.
 
 An `sbuser` account exists with the password `sbuser_default` and is configured with keys from the
@@ -74,13 +99,12 @@ repo in accordance with these
 SSH access with password is disabled for the `sbuser` account and will only
 accept connections from users with the proper SSH key.
 
-## Post-Install
-
 ### Connect to WiFi:
 ```
 sudo nmcli dev wifi con "ssid" password "ssidpassword"
 ```
 
-This debian image was built using these [instructions](https://jakehewitt.github.io/custom-edison-image/), including a patched, working sleep mode, and serial line ip (slip).
+This debian image was built using these [instructions](https://jakehewitt.github.io/custom-edison-image/),
+including a patched, working sleep mode, and serial line ip (slip).
 
 This image can be customized further post-install and then [cloned](clone.md) for installation on other Edisons.

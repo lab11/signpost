@@ -7,7 +7,7 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 C_SRCS   := main.c
 INCLUDE_PATHS += .
 
-APP_HEAP_SIZE=2048
+APP_HEAP_SIZE=8192
 STACK_SIZE=4096
 
 # include makefile settings that are shared between applications

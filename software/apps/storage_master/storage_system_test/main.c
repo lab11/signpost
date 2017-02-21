@@ -81,7 +81,7 @@ static void storage_api_callback(uint8_t source_address,
       //XXX: respond with error
     }
     */
-    
+
 
     //XXX send complete response with orig_record_pointer to app
 
@@ -126,7 +126,7 @@ int main (void) {
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
   static api_handler_t* handlers[] = {&storage_handler, NULL};
-  signpost_initialization_module_init(ModuleAddressStorage, handlers);
+  signpost_initialization_storage_master_init(handlers);
 
 
   //XXX: TESTING
