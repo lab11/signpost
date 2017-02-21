@@ -230,6 +230,7 @@ static void get_energy (void) {
   energy_datum[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
   energy_datum[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
+  /*
   //make a post url
   const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/energy_datum/append";
   http_request r;
@@ -248,15 +249,16 @@ static void get_energy (void) {
   if (rc < 0) {
     printf("Failed to do post. return code: %d\n", rc);
   }
+  */
 
   //printf("Energy POST result: %d\n", result);
 
   // Only say things are working if i2c worked
-  if (result.status > 0) {
+  //if (result.status > 0) {
     // Tickle the watchdog because something good happened.
     //app_watchdog_tickle_kernel();
     watchdog_tickler(2);
-  }
+  //}
 }
 
 static void initialization_api_callback(uint8_t source_address,
@@ -438,6 +440,7 @@ static void gps_callback (gps_data_t* gps_data) {
   gps_datum[16] = (uint8_t) (gps_data->fix & 0xFF);
   gps_datum[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
 
+  /*
   //make a post url
   const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/gps_datum/append";
   http_request r;
@@ -456,16 +459,17 @@ static void gps_callback (gps_data_t* gps_data) {
   if (rc < 0) {
     printf("Failed to do GPS post. return code: %d\n", rc);
   }
+  */
 
   //printf("GPS POST result: %d\n", result);
 
   // Only say things are working if i2c worked
   // this means we got a post response- that's a win
-  if (result.status > 0) {
+  //if (result.status > 0) {
     // Tickle the watchdog because something good happened.
     //app_watchdog_tickle_kernel();
     watchdog_tickler(1);
-  }
+  //}
 }
 
 int main (void) {
