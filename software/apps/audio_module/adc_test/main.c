@@ -10,16 +10,37 @@
 #include "gpio.h"
 #include "led.h"
 #include "adc.h"
-#include "app_watchdog.h"
 #include "timer.h"
 
+#include "app_watchdog.h"
 #include "signpost_api.h"
+#include "simple_post.h"
 
 static const uint8_t i2c_address = 0x33;
 #define ZERO_MAGNITUDE 2048 // middle value for a 12-bit ADC
 
 #define SAMPLE_COUNT 64 // powers of two please!
 static uint16_t sample_buf[SAMPLE_COUNT] = {ZERO_MAGNITUDE};
+
+// only post once per LOUD event
+static bool posted = false;
+
+static void post_over_http (void) {
+  // post sensor data over HTTP and get response
+
+  // URL for an HTTP POST testing service
+  const char* url = "posttestserver.com/post.php";
+
+  // http post data
+  printf("--POSTing data--\n");
+  int response = simple_octetstream_post(url, (uint8_t*)"LOUD", 5);
+  if (response < SUCCESS) {
+    printf("Error posting: %d\n", response);
+  } else {
+    printf("\tResponse: %d\n", response);
+    posted = true;
+  }
+}
 
 int main (void) {
   int err = SUCCESS;
@@ -62,6 +83,14 @@ int main (void) {
 
     if (average_amplitude > 1000) {
       printf("LOUD %d\n", sample_index);
+
+      // also POST that it was loud
+      if (!posted) {
+        post_over_http();
+      }
+    } else {
+      // reset posted
+      posted = false;
     }
 
     // increment sample index
