@@ -1,13 +1,12 @@
 #include <stdbool.h>
 
-#include "mbedtls/ctr_drbg.h"
 #include "mbedtls/entropy.h"
 
 #include "rng.h"
 #include "signpost_entropy.h"
 
+mbedtls_ctr_drbg_context ctr_drbg_context;
 static mbedtls_entropy_context entropy_context;
-static mbedtls_ctr_drbg_context ctr_drbg_context;
 static uint8_t drbg_data[32];
 
 static int rng_wrapper(void* data __attribute__ ((unused)), uint8_t* out, size_t len, size_t* olen) {

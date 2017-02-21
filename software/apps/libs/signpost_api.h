@@ -39,6 +39,19 @@ int signpost_api_send(uint8_t destination_address,
 
 #define SIGNPOST_INITIALIZATION_NO_APIS NULL
 
+typedef enum initialization_state {
+    Start = 0,
+    Isolated,
+    KeyExchange,
+    Done,
+} initialization_state_t;
+
+typedef enum initialization_message_type {
+   InitializationDeclare = 0,
+   InitializationKeyExchange,
+   InitializationGetMods,
+} initialization_message_type_t;
+
 typedef enum module_address {
     ModuleAddressController = 0x20,
     ModuleAddressStorage = 0x21,
@@ -60,6 +73,30 @@ int signpost_initialization_module_init(
 
 // A special initialization routine for the controller module only.
 int signpost_initialization_controller_module_init(api_handler_t** api_handlers);
+
+// Send a key exchange request to another module
+// Assumes controller has already isolated source and target
+//
+// params:
+//  destination_address - The I2C address of the module to exchange keys with
+int signpost_initialization_key_exchange_send(uint8_t destination_address);
+
+// Send a response to a declare request
+// Assumes controller has already isolated source
+//
+// params:
+//  source_address  - The I2C address of the module that sent a declare request
+//  module_number   - The module slot that is currently isolated
+int signpost_initialization_declare_respond(uint8_t source_address, uint8_t module_number);
+
+// Send a response to a key exchange request
+// Assumes controller has already isolated source and target
+//
+// params:
+//  source_address  - The I2C address of the module that sent a key exchange request
+//  ecdh_params     - The buffer of ecdh params sent in the InitializationKeyExchange message
+//  len             - The length of data in ecdh_params
+int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t* ecdh_params, size_t len);
 
 /**************************************************************************/
 /* STORAGE API                                                            */
