@@ -5,6 +5,13 @@ set -x
 
 make -C erpc clean
 
+# This is a bit of a hack that should probably be revisited eventually
+if [ $(uname) == "Linux" ]; then
+  pushd erpc
+  patch mk/targets.mk < ../static_erpcgen.patch
+  popd
+fi
+
 make -j -C erpc/erpcgen
 
 make -C erpc/erpcgen PREFIX=./$(uname) install
@@ -13,4 +20,9 @@ make -C erpc/erpcgen PREFIX=./$(uname) install
 mkdir -p bin/$(uname)
 mv erpc/erpcgen/$(uname)/bin/erpcgen bin/$(uname)/
 rm -r erpc/erpcgen/$(uname)
+
+if [ $(uname) == "Linux" ]; then
+  pushd erpc
+  patch -R mk/targets.mk < ../static_erpcgen.patch
+fi
 
