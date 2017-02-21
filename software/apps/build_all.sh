@@ -25,6 +25,7 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "." ]; then continue; fi
 	if [ $dir == "./libs" ]; then continue; fi
 	if [ $dir == "./support" ]; then continue; fi
+	if [ $dir == "./tock_examples" ]; then continue; fi
 	if [ $dir == "./tests" ]; then continue; fi
 	if [ $dir == "./storage_master" ]; then continue; fi
 	if [ $dir == "./audio_module" ]; then continue; fi
