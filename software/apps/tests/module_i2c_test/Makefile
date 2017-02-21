@@ -1,4 +1,4 @@
-
+# makefile for user application
 
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -7,8 +7,6 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 C_SRCS   := $(wildcard *.c)
 INCLUDE_PATHS += .
 
-TOCK_BOARD = storage_master
-
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 
