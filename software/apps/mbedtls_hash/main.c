@@ -26,7 +26,7 @@ mbedtls_aes_context aes_context;
 unsigned char message[8192];
 unsigned char output[8192];
 
-void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
+static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     // get parameters for hash
     md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
     // clear context

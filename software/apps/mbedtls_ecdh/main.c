@@ -25,7 +25,7 @@ unsigned char buf[256];
 unsigned char buf2[256];
 
 static int pseudorandom(void * data, unsigned char * output, size_t len) {
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }
 
@@ -73,17 +73,17 @@ int main(void) {
       printf("server read and calc\n");
       ret = mbedtls_ecdh_read_public(&ecdh_1, buf, olen);
       delay_ms(250);
-      for(int i = 0; i < 5; i++)
+      for(size_t i = 0; i < 5; i++)
         ret = mbedtls_ecdh_calc_secret(&ecdh_1, &olen, buf, 256, pseudorandom, NULL);
       delay_ms(250);
 
       printf("server secret key: 0x");
-      for(int i = 0; i < olen; i++) {
+      for(size_t i = 0; i < olen; i++) {
         printf("%x", buf[i]);
       }
       printf("\n");
       printf("client secret key: 0x");
-      for(int i = 0; i < olen2; i++) {
+      for(size_t i = 0; i < olen2; i++) {
         printf("%x", buf2[i]);
       }
       printf("\n");
