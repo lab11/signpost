@@ -36,7 +36,7 @@ CPPFLAGS += $(INCLUDES)
 
 # include the library makefile. Should pull in rules to rebuild libraries
 # when needed
-include $(LIBSIGNPOST_DIR)/Makefile
+include $(LIBSIGNPOST_DIR)/LibsMakefile.mk
 
 # include mbedtls library makefile
 #include $(LIBMBEDTLS_LIB_DIR)Makefile

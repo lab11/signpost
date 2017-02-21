@@ -4,95 +4,23 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 set -e
-for dir in `find . -maxdepth 1 -type d`; do
-	if [ $dir == "." ]; then continue; fi
-	if [ $dir == "./libs" ]; then continue; fi
-	if [ $dir == "./support" ]; then continue; fi
-	if [ $dir == "./tock_examples" ]; then continue; fi
-	if [ $dir == "./tests" ]; then continue; fi
-	if [ $dir == "./2016-10" ]; then continue; fi
-	if [ $dir == "./controller" ]; then continue; fi
-	if [ $dir == "./storage_master" ]; then continue; fi
-	if [ $dir == "./audio_module" ]; then continue; fi
-	if [ $dir == "./ambient_module" ]; then continue; fi
-	if [ $dir == "./microwave_radar_module" ]; then continue; fi
-	if [ $dir == "./radio_module" ]; then continue; fi
-	if [ $dir == "./debug_radio" ]; then continue; fi
 
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
+for makefile in $(find . | grep '/Makefile$'); do
+	pushd $(dirname $makefile) > /dev/null
+
+	# Is submodule?
+	pushd $(git rev-parse --show-toplevel)/.. > /dev/null
+	is_sub=$(git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true && echo 1 || echo 0)
+	popd > /dev/null
+	if [ $is_sub == "1" ]; then
+		#echo "Skipping submodule $(dirname $makefile)"
+		popd > /dev/null
+		continue
+	fi
+
+	make clean > /dev/null || echo "${bold} ⤤ $(dirname $makefile)${normal}"
 	popd > /dev/null
 done
 
-for dir in `find tests -maxdepth 1 -type d`; do
-	if [ $dir == "tests" ]; then continue; fi
-	if [ $dir == "tests/mbedtls" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find tests/mbedtls -maxdepth 1 -type d`; do
-	if [ $dir == "tests/mbedtls" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find 2016-10 -maxdepth 1 -type d`; do
-	if [ $dir == "2016-10" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find controller -maxdepth 1 -type d`; do
-	if [ $dir == "controller" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find storage_master -maxdepth 1 -type d`; do
-	if [ $dir == "storage_master" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find audio_module -maxdepth 1 -type d`; do
-	if [ $dir == "audio_module" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find ambient_module -maxdepth 1 -type d`; do
-	if [ $dir == "ambient_module" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find microwave_radar_module -maxdepth 1 -type d`; do
-	if [ $dir == "microwave_radar_module" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find radio_module -maxdepth 1 -type d`; do
-	if [ $dir == "radio_module" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
-
-for dir in `find debug_radio -maxdepth 1 -type d`; do
-	if [ $dir == "debug_radio" ]; then continue; fi
-	pushd $dir > /dev/null
-	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
-	popd > /dev/null
-done
 
 echo "${bold}All Cleaned.${normal}"
