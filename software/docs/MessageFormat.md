@@ -149,14 +149,12 @@ Indicates the purpose of the application message
 Indicates which API this message applies to. Currently the following ApiTypes are
 well-defined:
 
-XXX TODO: Link each to their doc's
-
   - `0x01 (InitializationApiType)`: [Initialization](#0x01-initialization)
-  - `0x02 (StorageApiType)`: Storage
-  - `0x03 (NetworkingApiType)`: Networking
-  - `0x04 (ProcessingApiType)`: Processing
-  - `0x05 (EnergyApiType)`: Energy
-  - `0x06 (TimeLocationApiType)`: Time and Location
+  - `0x02 (StorageApiType)`:        [Storage](#0x02-storage)
+  - `0x03 (NetworkingApiType)`:     [Networking](#0x03-networking)
+  - `0x04 (ProcessingApiType)`:     [Processing](#0x04-processing)
+  - `0x05 (EnergyApiType)`:         [Energy](#0x05-energy)
+  - `0x06 (TimeLocationApiType)`:   [Time and Location](#0x06-time-and-location)
 
 
 ### MessageType
@@ -212,6 +210,49 @@ typedef struct api_handler {
 
 This array also MUST be static. Modules that implement no APIs MUST pass
 `SIGNPOST_INITIALIZATION_NO_APIS` instead of a list.
+
+### `0x02`: Storage
+
+#### `signpost_storage_write(uint8_t* data, size_t len, Storage_Record_t* record_pointer)`
+Write data to the Storage Master.
+
+Parameters:
+
+`data`: Data to write.
+
+`len`: Length of data.
+
+`record_pointer`: Pointer to record that will point to location of written data.
+
+Sent Message:
+
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x02     | Type: 0x00    | Data
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         Data (cont.)           variable length                        |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+Response Message:
+
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x02     | Type: 0x00    | RecordPointer |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+`RecordPointer`: Pointer to where data was written.
+
+### `0x03`: Networking
+
+### `0x04`: Processing
+
+### `0x05`: Energy
 
 ### `0x06`: Time and Location
 
