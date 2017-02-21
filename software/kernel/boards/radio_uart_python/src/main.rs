@@ -36,7 +36,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
     // how should the kernel respond when a process faults
     const FAULT_RESPONSE: kernel::process::FaultResponse = kernel::process::FaultResponse::Panic;
     #[link_section = ".app_memory"]
-    static mut APP_MEMORY: [u8; 16384] = [0; 16384];
+    static mut APP_MEMORY: [u8; 16384*2] = [0; 16384*2];
 
     static mut PROCESSES: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
@@ -111,7 +111,7 @@ unsafe fn set_pin_primary_functions() {
     PA[24].configure(Some(B)); // SCL
     PA[25].configure(Some(A)); // USB
     PA[26].configure(Some(A)); // USB
-    PA[05].configure(None); // USB
+    PA[05].configure(None);    // USB
 }
 
 /*******************************************************************************
@@ -131,15 +131,15 @@ pub unsafe fn reset_handler() {
     set_pin_primary_functions();
 
     //as a hack we are going to use gps console because it can receive bytes
-    let gps_console = static_init!(                                             
-        signpost_drivers::gps_console::Console<usart::USART>,                   
-        signpost_drivers::gps_console::Console::new(&usart::USART0,             
-                     115200,                                                      
-                     &mut gps_console::WRITE_BUF,                               
-                     &mut gps_console::READ_BUF,                                
-                     kernel::Container::create()),                              
-        288/8);                                                                 
-    hil::uart::UART::set_client(&usart::USART0, gps_console); 
+    let gps_console = static_init!(
+        signpost_drivers::gps_console::Console<usart::USART>,
+        signpost_drivers::gps_console::Console::new(&usart::USART0,
+                     115200,
+                     &mut gps_console::WRITE_BUF,
+                     &mut gps_console::READ_BUF,
+                     kernel::Container::create()),
+        288/8);
+    hil::uart::UART::set_client(&usart::USART0, gps_console);
 
     //
     // Timer
@@ -189,10 +189,10 @@ pub unsafe fn reset_handler() {
     //
     let gpio_pins = static_init!(
         [&'static sam4l::gpio::GPIOPin; 4],
-        [&sam4l::gpio::PA[05],
-         &sam4l::gpio::PA[19], // MOD_OUT
+        [&sam4l::gpio::PA[19], // MOD_OUT
          &sam4l::gpio::PA[20], // MOD_IN
-         &sam4l::gpio::PA[18]],// PPS
+         &sam4l::gpio::PA[18], // PPS
+         &sam4l::gpio::PA[05]],
         4 * 4
     );
     let gpio = static_init!(
