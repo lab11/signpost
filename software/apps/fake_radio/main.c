@@ -102,6 +102,8 @@ static void networking_api_callback(uint8_t source_address,
 
 
 int main (void) {
+  printf("\n[Debug Radio]\n** Debug Backplane App\n");
+
   /////////////////////////////
   // Signpost Module Operations
   //
@@ -121,8 +123,6 @@ int main (void) {
   yield_for(&message_sent);*/
   printf("#r");
 
-
-    //should probably actually setup a watchdog at some point
   ////////////////////////////////////////////////
   // Setup watchdog
   timer_subscribe(watchdog_timer_cb,NULL);
