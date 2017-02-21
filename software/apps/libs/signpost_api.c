@@ -311,7 +311,7 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     // Begin listening for replies
     signpost_api_start_new_async_recv();
     // Request isolation from controller
-    done = 1;
+    done = 0;
     signpost_initialization_request_isolation();
     // Spin until isolated with controller
     //int timeout = 0;
