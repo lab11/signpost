@@ -38,6 +38,7 @@ done
 
 for dir in `find tests -maxdepth 1 -type d`; do
 	if [ $dir == "tests" ]; then continue; fi
+	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
 	make -j || failures+=($dir)
 	popd > /dev/null
@@ -45,6 +46,7 @@ done
 
 for dir in `find storage_master -maxdepth 1 -type d`; do
 	if [ $dir == "storage_master" ]; then continue; fi
+	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
 	make -j || failures+=($dir)
 	popd > /dev/null
@@ -52,6 +54,7 @@ done
 
 for dir in `find audio_module -maxdepth 1 -type d`; do
 	if [ $dir == "audio_module" ]; then continue; fi
+	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
 	make -j || failures+=($dir)
 	popd > /dev/null
@@ -59,6 +62,7 @@ done
 
 for dir in `find ambient_module -maxdepth 1 -type d`; do
 	if [ $dir == "ambient_module" ]; then continue; fi
+	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
 	make -j || failures+=($dir)
 	popd > /dev/null
