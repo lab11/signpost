@@ -82,10 +82,9 @@ int main (void) {
     //printf("%d\n", average_amplitude);
 
     if (average_amplitude > 1000) {
-      printf("LOUD %d\n", sample_index);
-
       // also POST that it was loud
       if (!posted) {
+        printf("Loudness detected. Amplitude %d\n", average_amplitude);
         post_over_http();
       }
     } else {
