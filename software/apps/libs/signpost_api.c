@@ -311,7 +311,7 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     // Begin listening for replies
     signpost_api_start_new_async_recv();
     // Request isolation from controller
-    done = 0;
+    done = 1;
     signpost_initialization_request_isolation();
     // Spin until isolated with controller
     //int timeout = 0;
@@ -508,7 +508,7 @@ int signpost_processing_init(const char* path) {
     processing_ready = false;
 
     signpost_api_send(ModuleAddressStorage,  CommandFrame,
-             ProcessingApiType, ProcessingInitMessage, size+2, buf);
+             ProcessingApiType, ProcessingInitMessage, size+4, buf);
 
     //wait for a response
     yield_for(&processing_ready);
