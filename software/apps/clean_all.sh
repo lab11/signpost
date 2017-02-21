@@ -16,6 +16,9 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./audio_module" ]; then continue; fi
 	if [ $dir == "./ambient_module" ]; then continue; fi
 	if [ $dir == "./microwave_radar_module" ]; then continue; fi
+	if [ $dir == "./radio_module" ]; then continue; fi
+	if [ $dir == "./debug_radio" ]; then continue; fi
+
 	pushd $dir > /dev/null
 	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
 	popd > /dev/null
@@ -73,6 +76,20 @@ done
 
 for dir in `find microwave_radar_module -maxdepth 1 -type d`; do
 	if [ $dir == "microwave_radar_module" ]; then continue; fi
+	pushd $dir > /dev/null
+	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
+	popd > /dev/null
+done
+
+for dir in `find radio_module -maxdepth 1 -type d`; do
+	if [ $dir == "radio_module" ]; then continue; fi
+	pushd $dir > /dev/null
+	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
+	popd > /dev/null
+done
+
+for dir in `find debug_radio -maxdepth 1 -type d`; do
+	if [ $dir == "debug_radio" ]; then continue; fi
 	pushd $dir > /dev/null
 	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
 	popd > /dev/null

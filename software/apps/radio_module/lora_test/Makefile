@@ -10,5 +10,5 @@ INCLUDE_PATHS += .
 TOCK_BOARD = controller
 
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 
