@@ -250,6 +250,64 @@ Response Message:
 
 ### `0x03`: Networking
 
+#### `signpost_networking_post(const char* url, http_request request, http_response* response)`
+Send an HTTP POST to the radio module.
+
+Parameters:
+
+`url`: Destination to POST to.
+
+`request`: Request to send. Of the form:
+```c
+typedef struct{
+   uint8_t num_headers;
+   http_header* headers;
+   uint16_t body_len;
+   const uint8_t* body;
+} http_request;
+```
+`response`: Pointer to response. Of the form:
+```c
+typedef struct {
+    uint16_t status;
+    uint16_t reason_len;
+    char* reason;
+    uint8_t num_headers;
+    http_response_header* headers;
+    uint16_t body_len;
+    uint8_t* body;
+} http_response;
+```
+
+TODO finish filling this out
+Sent Message:
+
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x03     | Type: 0x00    | URLlen (LSB)
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         URLlen (MSB)  | URL           | Day           | Hour          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Minute        | Second        |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+Response Message:
+```text
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Frame: 0x01   | API: 0x03     | Type: 0x00    | URLlen (LSB)
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         URLlen (MSB)  | URL           | Day           | Hour          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Minute        | Second        |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+
 ### `0x04`: Processing
 
 ### `0x05`: Energy
