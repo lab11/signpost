@@ -5,6 +5,7 @@ from __future__ import print_function
 import argparse
 import binascii
 import os
+import re
 import struct
 import sys
 import time
@@ -242,7 +243,12 @@ class FakeRadio:
                 print("#######################################################")
                 print("Trying to post to {}".format(url))
                 print("Post headers: {}".format(headers))
-                print("Post body: {}".format(body))
+                if re.match('^[\x0a-\x7F]+$', body):
+                    # all bytes in body are printable characters
+                    print("Post body: {}".format(body))
+                else:
+                    print("Post body: <binary data, length {}>".format(len(body)))
+                    print('  ' + ' '.join(map(lambda x: str.format('{:02x}', x), body)))
                 print("")
                 try:
                     conn = httplib.HTTPConnection(base)
