@@ -3,7 +3,7 @@
 all:
 
 # set default stack and heap sizes for apps
-APP_HEAP_SIZE ?= 4096
+APP_HEAP_SIZE ?= 8192
 STACK_SIZE ?= 4096
 
 # makefile with shared settings among user applications
