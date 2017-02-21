@@ -48,22 +48,35 @@ OBJS += $(CURRENT_DIR)support/erpc/liberpc/$(TOCK_ARCH)/liberpc.a
 endif
 include $(CURRENT_DIR)support/erpc/AppLibERPC.mk
 
-ERPC_BUILDDIR := build/erpc
-ERPC_CXX_SRCS += $(patsubst %.erpc,%_client.cpp,$(ERPC_SRCS))
-ERPC_CXX_SRCS += $(patsubst %.erpc,%_server.cpp,$(ERPC_SRCS))
+ERPC_BUILDDIR := $(abspath build/erpc)
+ERPC_CXX_SRCS += $(patsubst %.erpc,$(ERPC_BUILDDIR)/%_client.cpp,$(ERPC_SRCS))
+ERPC_CXX_SRCS += $(patsubst %.erpc,$(ERPC_BUILDDIR)/%_server.cpp,$(ERPC_SRCS))
 ERPC_H_SRCS   += $(patsubst %.erpc,$(ERPC_BUILDDIR)/%.h,$(ERPC_SRCS))
 
-VPATH += $(ERPC_BUILDDIR)
+# Note to self and future: **Cannot** use VPATH with built things.
+#VPATH += $(ERPC_BUILDDIR)
 
 $(ERPC_CXX_SRCS): | $(ERPC_BUILDDIR)
 
 CPPFLAGS += -I$(ERPC_BUILDDIR)
-CXX_SRCS += $(ERPC_CXX_SRCS)
+
+ERPC_OBJS := $(patsubst $(ERPC_BUILDDIR)/%.cpp,$(BUILDDIR)/%.o,$(ERPC_CXX_SRCS))
+OBJS += $(ERPC_OBJS)
+
+$(ERPC_OBJS):	$(ERPC_H_SRCS) $(ERPC_CXX_SRCS)
+
+# Sigh. I _really_ try to avoid copying these build rules around, but it'll
+# have to do for now:
+$(BUILDDIR)/%.o: $(ERPC_BUILDDIR)/%.cpp | $(BUILDDIR)
+	$(TRACE_DEP)
+	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) -MF"$(@:.o=.d)" -MG -MM -MP -MT"$(@:.o=.d)@" -MT"$@" "$<"
+	$(TRACE_CXX)
+	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(ERPC_BUILDDIR):
 	@mkdir -p $(ERPC_BUILDDIR)
 
-$(ERPC_H_SRCS): $(ERPC_BUILDDIR)/%.h: %.erpc	| $(ERPCGEN)
+$(ERPC_H_SRCS): $(ERPC_BUILDDIR)/%.h: %.erpc	| $(ERPCGEN) $(ERPC_BUILDDIR)
 	$(ERPCGEN) -o $(ERPC_BUILDDIR) $<
 
 $(C_SRCS):	| $(ERPC_H_SRCS)
