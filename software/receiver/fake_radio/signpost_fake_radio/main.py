@@ -1,5 +1,7 @@
 #!/usr/bin/env python2
 
+from __future__ import print_function
+
 import argparse
 import binascii
 import os
@@ -15,6 +17,12 @@ try:
     import gdp
 except:
     pass
+
+try:
+    import colorama
+    print_red = lambda x: print(colorama.Fore.RED + x + colorama.Style.RESET_ALL)
+except:
+    print_red = lambda x: print(x)
 
 from _version import __version__
 
@@ -307,7 +315,7 @@ def main ():
         import gdp
     except:
         print("")
-        print("Failed to import gdp. There will be no gdp support for this session")
+        print_red("Failed to import gdp. There will be no gdp support for this session")
         print("")
         print("If you are on a debian based machine, to fix download and install:")
         print("    https://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/python-gdp_0.7.2_all.deb")
