@@ -10,6 +10,7 @@ for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "./support" ]; then continue; fi
 	if [ $dir == "./tock_examples" ]; then continue; fi
 	if [ $dir == "./tests" ]; then continue; fi
+	if [ $dir == "./2016-10" ]; then continue; fi
 	if [ $dir == "./controller" ]; then continue; fi
 	if [ $dir == "./storage_master" ]; then continue; fi
 	if [ $dir == "./audio_module" ]; then continue; fi
@@ -29,6 +30,13 @@ done
 
 for dir in `find tests/mbedtls -maxdepth 1 -type d`; do
 	if [ $dir == "tests/mbedtls" ]; then continue; fi
+	pushd $dir > /dev/null
+	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
+	popd > /dev/null
+done
+
+for dir in `find 2016-10 -maxdepth 1 -type d`; do
+	if [ $dir == "2016-10" ]; then continue; fi
 	pushd $dir > /dev/null
 	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
 	popd > /dev/null

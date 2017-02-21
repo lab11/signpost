@@ -37,13 +37,13 @@ CFLAGS += -DCOMPILE_TIME_ADDRESS="$(C_ADDRESS)"
 
 LIBRARY_PATHS += .
 
-TOCK_USERLAND_BASE_DIR := ../../kernel/tock/userland
+TOCK_USERLAND_BASE_DIR := ../../../kernel/tock/userland
 
 # Include the makefile for using BLE serialization.
 include $(TOCK_USERLAND_BASE_DIR)/libnrfserialization/Makefile.app
 
 # include makefile settings that are shared between applications
-include ../AppMakefile.mk
+include ../../AppMakefile.mk
 
 $(BUILDDIR)/main.o: .address
 
