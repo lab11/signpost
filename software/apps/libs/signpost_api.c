@@ -181,7 +181,6 @@ static void signpost_initialization_declare_callback(int len_or_rc) {
     if (incoming_api_type != InitializationApiType || incoming_message_type !=
             InitializationDeclare) return;
     //XXX reassign dynamic i2c address
-    printf("Successfully declared\n");
     // start key exchange
     while(signpost_initialization_key_exchange_send(incoming_source_address) < SUCCESS) {delay_ms(50);}
 }
@@ -210,7 +209,7 @@ static void signpost_initialization_key_exchange_callback(int len_or_rc) {
     module_info.haskey[signpost_api_addr_to_mod_num(incoming_source_address)] =
         true;
 
-    printf("key: %p: 0x%02x%02x%02x...%02x\n", key,
+    SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
             key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
 
     done = 1;
@@ -299,7 +298,7 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     // Spin until isolated with controller
     //int timeout = 0;
     while(!done) {
-        printf("Waiting\n");
+        printf("Waiting for initialization with controller\n");
         yield_for(&done);
     //    if(timeout++ > 50) {
     //        printf("WARN: timeout for isolated request, resending request\n");
@@ -360,7 +359,6 @@ int signpost_initialization_key_exchange_send(uint8_t destination_address) {
 
     // Now have a private channel with the controller
     // Key exchange with module, send ecdh params
-    printf("Send key exchange request\n");
     return signpost_api_send(destination_address, CommandFrame, InitializationApiType,
             InitializationKeyExchange, ecdh_param_len, ecdh_buf);
 }
@@ -371,7 +369,7 @@ int signpost_initialization_declare_respond(uint8_t source_address, uint8_t modu
 
     module_info.i2c_address_mods[module_number] = source_address;
 
-    printf("Responding to declare\n");
+    printf("INIT: Registered address 0x%x as module %d\n", source_address, module_number);
     // Just ack, eventually will send new address
     return signpost_api_send(source_address, ResponseFrame, InitializationApiType, InitializationDeclare, 1, &module_number);
 }
@@ -399,9 +397,8 @@ int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t
     // calculated shared secret
     ret = mbedtls_ecdh_calc_secret(&ecdh, &keylen, key, ECDH_KEY_LENGTH, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if(ret < SUCCESS) return ret;
-    printf("key: %p: 0x%02x%02x%02x...%02x\n", key,
+    SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
             key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
-    printf("responding to address 0x%x\n", source_address);
     ret = signpost_api_send(source_address,
             ResponseFrame, InitializationApiType, InitializationKeyExchange,
             ecdh_param_len, ecdh_buf);

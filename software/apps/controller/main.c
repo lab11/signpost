@@ -68,10 +68,9 @@ static void priv_timer_callback (
         ) {
     if(mod_isolated_out < 0) {
         for(size_t i = 0; i < NUM_MOD_IO; i++) {
-            printf("checking %d, %d\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]), gpio_read(MOD_OUTS[i]));
             if(gpio_read(MOD_OUTS[i]) == 0 && last_mod_isolated_out != MOD_OUTS[i]) {
 
-                printf("Woah, we got %d %d asking for some private time\n", i, MODOUT_pin_to_mod_name(MOD_OUTS[i]));
+                printf("Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]));
                 // module requesting isolation
                 mod_isolated_out = MOD_OUTS[i];
                 mod_isolated_in = MOD_INS[i];
@@ -93,7 +92,6 @@ static void priv_timer_callback (
             last_mod_isolated_out = -1;
         }
     } else {
-        printf("checkup %d, %d\n", MODOUT_pin_to_mod_name(mod_isolated_out), gpio_read(mod_isolated_out));
         if(gpio_read(mod_isolated_out) == 1) {
             printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             gpio_set(mod_isolated_in);
@@ -284,7 +282,6 @@ static void initialization_api_callback(uint8_t source_address,
                     break;
                 case InitializationKeyExchange:
                     // Prepare and reply ECDH key exchange
-                    printf("responding\n");
                     signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
                     break;
@@ -455,8 +452,7 @@ static void gps_callback (gps_data_t* gps_data) {
   r.body = gps_datum;
 
   http_response result;
-  int rc = -1;
-      //signpost_networking_post(url, r, &result);
+  int rc = signpost_networking_post(url, r, &result);
   if (rc < 0) {
     printf("Failed to do GPS post. return code: %d\n", rc);
   }
