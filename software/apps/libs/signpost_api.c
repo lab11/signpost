@@ -879,38 +879,12 @@ int signpost_energy_query_reply(uint8_t destination_address,
 
 static bool timelocation_query_answered;
 static int  timelocation_query_result;
-// static signbus_app_callback_t* timeloc_cb = NULL;
-// static signpost_timeloc_time_t* timeloc_cb_time = NULL;
-// static signpost_timeloc_location_t* timeloc_cb_location = NULL;
 
 // Callback when a response is received
 static void timelocation_callback(int result) {
     timelocation_query_answered = true;
     timelocation_query_result = result;
 }
-
-
-
-// static void energy_query_async_callback(int len_or_rc) {
-//     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
-
-//     if (len_or_rc != sizeof(signpost_energy_information_t)) {
-//         printf("%s:%d - Error: bad len, got %d, want %d\n",
-//                 __FILE__, __LINE__, len_or_rc, sizeof(signpost_energy_information_t));
-//     } else {
-//         if (energy_cb_data != NULL) {
-//             memcpy(energy_cb_data, incoming_message, len_or_rc);
-//         }
-//         energy_cb_data = NULL;
-//     }
-
-//     if (energy_cb != NULL) {
-//         // allow recursion
-//         signbus_app_callback_t* temp = energy_cb;
-//         energy_cb = NULL;
-//         temp(len_or_rc);
-//     }
-// }
 
 static int signpost_timelocation_sync(signpost_timelocation_message_type_e message_type) {
     // Variable we yield() on that is set to true when we get a response
@@ -937,6 +911,8 @@ static int signpost_timelocation_sync(signpost_timelocation_message_type_e messa
     if (incoming_message_type != message_type) {
         // We got back a different response type?
         // This is bad, and unexpected.
+        SIGNBUS_DEBUG("Wrong message type received. Expected: %d, got: %d\n",
+            message_type, incoming_message_type);
         return FAIL;
     }
 
@@ -954,6 +930,8 @@ int signpost_timelocation_get_time(signpost_timelocation_time_t* time) {
 
     // Do our due diligence
     if (incoming_message_length != sizeof(signpost_timelocation_time_t)) {
+        SIGNBUS_DEBUG("Time message wrong length. Expected: %d, got %d\n",
+            sizeof(signpost_timelocation_time_t), incoming_message_length);
         return FAIL;
     }
 
@@ -973,6 +951,8 @@ int signpost_timelocation_get_location(signpost_timelocation_location_t* locatio
 
     // Do our due diligence
     if (incoming_message_length != sizeof(signpost_timelocation_location_t)) {
+        SIGNBUS_DEBUG("Location message wrong length. Expected: %d, got %d\n",
+            sizeof(signpost_timelocation_location_t), incoming_message_length);
         return FAIL;
     }
 
@@ -992,7 +972,7 @@ int signpost_timelocation_get_location_reply(uint8_t destination_address,
         signpost_timelocation_location_t* location) {
     return signpost_api_send(destination_address,
             ResponseFrame, TimeLocationApiType, TimeLocationGetLocationMessage,
-            sizeof(signpost_timelocation_time_t), (uint8_t*) location);
+            sizeof(signpost_timelocation_location_t), (uint8_t*) location);
 }
 
 
