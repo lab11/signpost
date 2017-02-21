@@ -46,7 +46,7 @@ The protocol version in use. Currently, the only valid version is version 1.
 
   - Bit 4: Reserved
   - Bit 5: Reserved
-  - Bit 6: Reserved
+  - Bit 6: IsEncrypted - 1 if message is encrypted, 0 if clear text
   - Bit 7: IsFragment - 1 if message has more data, 0 if end of message
 
 ### Source

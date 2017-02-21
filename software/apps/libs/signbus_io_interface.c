@@ -18,7 +18,7 @@ static uint8_t packet_buf[I2C_MAX_LEN];
 
 typedef struct __attribute__((packed)) signbus_network_flags {
     unsigned int is_fragment   : 1;
-    unsigned int rsv_wire_bit6 : 1;
+    unsigned int is_encrypted  : 1;
     unsigned int rsv_wire_bit5 : 1;
     unsigned int rsv_wire_bit4 : 1;
     unsigned int version       : 4;
@@ -77,6 +77,7 @@ static uint16_t htons(uint16_t in) {
 static int get_message(
         uint8_t* recv_buf,
         size_t recv_buflen,
+        bool*   is_encrypted,
         uint8_t* src_address
         );
 
@@ -88,6 +89,7 @@ static void signbus_iterate_slave_read(void);
 bool                    async_active = false;
 uint8_t*                async_recv_buf;
 size_t                  async_recv_buflen;
+bool*                   async_encrypted;
 uint8_t*                async_src_address;
 signbus_app_callback_t* async_callback = NULL;
 
@@ -114,7 +116,7 @@ static void i2c_master_slave_callback(
         packet->new = true;
         packet->len = length;
         if (async_active) {
-            get_message(async_recv_buf, async_recv_buflen, async_src_address);
+            get_message(async_recv_buf, async_recv_buflen, async_encrypted, async_src_address);
         }
     } else if (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) {
         signbus_iterate_slave_read();
@@ -137,7 +139,7 @@ void signbus_io_init(uint8_t address) {
 
 
 // synchronous send call
-int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
+int signbus_io_send(uint8_t dest, bool encrypted, uint8_t* data, size_t len) {
     SIGNBUS_DEBUG("dest %02x data %p len %d\n", dest, data, len);
 
     sequence_number++;
@@ -152,6 +154,8 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
         numPackets = (len/MAX_DATA_LEN);
     }
 
+    //set encrypted
+    p.header.flags.is_encrypted = encrypted;
     //set version
     p.header.flags.version = 0x01;
     //set the source
@@ -216,7 +220,7 @@ int signbus_io_send(uint8_t dest, uint8_t* data, size_t len) {
 //
 // This function will return the number of bytes received or < 0 for error.
 // For async invocation, the return value is passed as the callback argument.
-static int get_message(uint8_t* data, size_t len, uint8_t* src) {
+static int get_message(uint8_t* data, size_t len, bool* encrypted, uint8_t* src) {
     uint8_t done = 0;
     size_t lengthReceived = 0;
     uint16_t message_sequence_number;
@@ -238,12 +242,12 @@ static int get_message(uint8_t* data, size_t len, uint8_t* src) {
         //copy the packet into a header struct
         Packet p;
         memcpy(&p,packet_buf,I2C_MAX_LEN);
-
         if(lengthReceived == 0) {
             //this is the first packet
             //save the message_sequence_number
             message_sequence_number = p.header.sequence_number;
             message_source_address = p.header.src;
+            *encrypted = p.header.flags.is_encrypted;
         } else {
             //this is not the first packet
             //is this the same message_sequence_number?
@@ -309,6 +313,7 @@ static int get_message(uint8_t* data, size_t len, uint8_t* src) {
 int signbus_io_recv(
         size_t recv_buflen,
         uint8_t* recv_buf,
+        bool*    encrypted,
         uint8_t* src_address
         ) {
 
@@ -318,7 +323,7 @@ int signbus_io_recv(
     rc = i2c_master_slave_listen();
     if (rc < 0) return rc;
 
-    return get_message(recv_buf, recv_buflen, src_address);
+    return get_message(recv_buf, recv_buflen, encrypted, src_address);
 }
 
 // async receive call
@@ -326,6 +331,7 @@ int signbus_io_recv_async(
         signbus_app_callback_t callback,
         size_t recv_buflen,
         uint8_t* recv_buf,
+        bool*    encrypted,
         uint8_t* src
         ) {
 
@@ -333,6 +339,7 @@ int signbus_io_recv_async(
     async_recv_buflen = recv_buflen;
     async_recv_buf = recv_buf;
     async_src_address = src;
+    async_encrypted = encrypted;
     async_active = true;
 
     return i2c_master_slave_listen();

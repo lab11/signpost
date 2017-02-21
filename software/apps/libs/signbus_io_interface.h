@@ -55,6 +55,7 @@ void signbus_io_init(
 /// Returns number of bytes sent or < 0 on error.
 int signbus_io_send(
     uint8_t dest,                     // Address to send to
+    bool encrypted,                   // Is buffer encrypted?
     uint8_t* data,                    // Buffer to send from
     size_t len                        // Number of bytes to send
     );
@@ -64,6 +65,7 @@ int signbus_io_send(
 int signbus_io_recv(
     size_t   recv_buflen,             // Buffer length
     uint8_t* recv_buf,                // Buffer to receive into
+    bool*    encrypted,               // Is buffer encrypted?
     uint8_t* src_address              // Address received from
     );
 
@@ -77,6 +79,7 @@ int signbus_io_recv_async(
     signbus_io_callback_t callback,   // Called when recv operation completes
     size_t   recv_buflen,             // Buffer length
     uint8_t* recv_buf,                // Buffer to receive into
+    bool*    encrypted,               // Is buffer encrypted?
     uint8_t* src                      // Address received from
     );
 

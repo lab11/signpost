@@ -368,6 +368,7 @@ int signpost_initialization_declare_respond(uint8_t source_address, uint8_t modu
     //XXX choose address to respond to module
 
     module_info.i2c_address_mods[module_number] = source_address;
+    module_info.haskey[module_number] = false;
 
     printf("INIT: Registered address 0x%x as module %d\n", source_address, module_number);
     // Just ack, eventually will send new address

@@ -102,6 +102,7 @@ int signbus_protocol_send(
         size_t clear_buflen
         ) {
     uint8_t* key = addr_to_key(dest);
+    bool encrypted;
 
     SIGNBUS_DEBUG("dest %02x key %p clear_buf %p clear_buflen %d\n",
             dest, key, clear_buf, clear_buflen);
@@ -132,11 +133,13 @@ int signbus_protocol_send(
         if (rc < 0) return rc;
 
         protocol_buf_used += encrypted_buf_used;
+        encrypted = 1;
     }
     // otherwise just hash over content
     else {
         memcpy(protocol_buf, clear_buf, clear_buflen);
         protocol_buf_used += clear_buflen;
+        encrypted = 0;
     }
 
     // hmac over current protocol payload
@@ -146,7 +149,7 @@ int signbus_protocol_send(
 
     // pass buffer to message
     // expects message_init to have been called by module_init
-    return signbus_io_send(dest, protocol_buf, protocol_buf_used);
+    return signbus_io_send(dest, encrypted, protocol_buf, protocol_buf_used);
 }
 
 
@@ -235,10 +238,14 @@ int signbus_protocol_recv(
 
     uint8_t protocol_buf[protocol_buflen];
 
-    int len_or_rc = signbus_io_recv(protocol_buflen, protocol_buf, sender_address);
+    // was this encrypted?
+    bool encrypted;
+
+    int len_or_rc = signbus_io_recv(protocol_buflen, protocol_buf, &encrypted, sender_address);
     if (len_or_rc < 0) return len_or_rc;
 
-    uint8_t* key = (addr_to_key == NULL) ? NULL : addr_to_key(*sender_address);
+
+    uint8_t* key = (addr_to_key == NULL || !encrypted) ? NULL : addr_to_key(*sender_address);
 
     return protocol_encrypted_buffer_received(key,
             protocol_buf, len_or_rc,
@@ -251,6 +258,7 @@ typedef struct {
     uint8_t* (*addr_to_key)(uint8_t);
     size_t buflen;
     uint8_t* buf;
+    bool encrypted;
 } prot_cb_data;
 
 static prot_cb_data cb_data;
@@ -267,7 +275,8 @@ static void protocol_async_callback(int len_or_rc) {
     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
     if (len_or_rc < 0) return cb_data.cb(len_or_rc);
 
-    uint8_t* key = (cb_data.addr_to_key == NULL) ? NULL : cb_data.addr_to_key(*cb_data.sender_address);
+    printf("RECV ENCRYPTED: %d\n", cb_data.encrypted);
+    uint8_t* key = (cb_data.addr_to_key == NULL || !cb_data.encrypted) ? NULL : cb_data.addr_to_key(*cb_data.sender_address);
 
     len_or_rc = protocol_encrypted_buffer_received(key,
             async_buf, len_or_rc,
@@ -294,5 +303,5 @@ int signbus_protocol_recv_async(
     cb_data.buf = recv_buf;
 
     return signbus_io_recv_async(protocol_async_callback,
-            async_buflen, async_buf, sender_address);
+            async_buflen, async_buf, &cb_data.encrypted, sender_address);
 }
