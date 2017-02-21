@@ -71,19 +71,25 @@ pub unsafe extern "C" fn panic_fmt(args: Arguments, file: &'static str, line: u3
 
     // blink the panic signal
     let led = &sam4l::gpio::PB[11];
+    let backplane_led = &sam4l::gpio::PB[14];
     led.enable_output();
+    backplane_led.enable_output();
     loop {
         for _ in 0..1000000 {
             led.clear();
+            backplane_led.set();
         }
         for _ in 0..100000 {
             led.set();
+            backplane_led.clear();
         }
         for _ in 0..1000000 {
             led.clear();
+            backplane_led.set();
         }
         for _ in 0..500000 {
             led.set();
+            backplane_led.clear();
         }
     }
 }

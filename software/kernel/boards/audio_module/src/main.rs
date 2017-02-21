@@ -274,13 +274,10 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 13],
+        [&'static sam4l::gpio::GPIOPin; 11],
         [&sam4l::gpio::PA[19], //Mod out
          &sam4l::gpio::PA[20], //Mod in
          &sam4l::gpio::PA[18], //PPS
-         &sam4l::gpio::PB[14], //DBG_GPIO1
-         &sam4l::gpio::PB[15], //DBG_GPIO2
-
          &sam4l::gpio::PA[10], // spec strobe
          &sam4l::gpio::PB[00], // spec reset
          &sam4l::gpio::PB[01], // spec power
@@ -293,7 +290,7 @@ pub unsafe fn reset_handler() {
 
          &sam4l::gpio::PA[15], // !FLASH_CS
          &sam4l::gpio::PB[11]], // !FLASH_RESET
-        13 * 4
+        11 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -307,16 +304,23 @@ pub unsafe fn reset_handler() {
     // LEDs
     //
     let led_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 4],
-          [&sam4l::gpio::PB[06], // LEDG1
-           &sam4l::gpio::PB[07], // LEDR1
-           &sam4l::gpio::PB[04], // LEDG2
-           &sam4l::gpio::PB[05]],// LEDR2
-           4 * 4);
+        [(&'static sam4l::gpio::GPIOPin, capsules::led::ActivationMode); 6],
+          [(&sam4l::gpio::PB[15], capsules::led::ActivationMode::ActiveHigh), //DBG_GPIO1
+           (&sam4l::gpio::PB[14], capsules::led::ActivationMode::ActiveHigh), //DBG_GPIO2
+           (&sam4l::gpio::PB[06], capsules::led::ActivationMode::ActiveLow),  // LEDG1
+           (&sam4l::gpio::PB[07], capsules::led::ActivationMode::ActiveLow),  // LEDR1
+           (&sam4l::gpio::PB[04], capsules::led::ActivationMode::ActiveLow),  // LEDG2
+           (&sam4l::gpio::PB[05], capsules::led::ActivationMode::ActiveLow)], // LEDR2
+           384/8);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
-        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
-        96/8);
+        capsules::led::LED::new(led_pins),
+        64/8);
+
+    // configure initial state for debug LEDs
+    sam4l::gpio::PB[15].clear(); // red LED off
+    sam4l::gpio::PB[14].set();   // green LED on
+
     //
     //
     // Actual platform object

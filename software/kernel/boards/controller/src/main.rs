@@ -565,15 +565,19 @@ pub unsafe fn reset_handler() {
     // LEDs
     //
     let led_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 3],
-        [&sam4l::gpio::PB[14],  // CONTROLLER_DEBUG_GPIO1
-         &sam4l::gpio::PB[15],  // CONTROLLER_DEBUG_GPIO2
-         &sam4l::gpio::PB[11]], // !CONTROLLER_LED
-        3 * 4);
+        [(&'static sam4l::gpio::GPIOPin, capsules::led::ActivationMode); 3],
+        [(&sam4l::gpio::PB[14], capsules::led::ActivationMode::ActiveHigh), // CONTROLLER_DEBUG_GPIO1
+         (&sam4l::gpio::PB[15], capsules::led::ActivationMode::ActiveHigh), // CONTROLLER_DEBUG_GPIO2
+         (&sam4l::gpio::PB[11], capsules::led::ActivationMode::ActiveLow)], // !CONTROLLER_LED
+        192/8);
     let led = static_init!(
         capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
-        capsules::led::LED::new(led_pins, capsules::led::ActivationMode::ActiveLow),
-        96/8);
+        capsules::led::LED::new(led_pins),
+        64/8);
+
+    // configure initial state for debug LEDs
+    sam4l::gpio::PB[14].clear(); // red LED off
+    sam4l::gpio::PB[15].set();   // green LED on
 
     //
     // Actual platform object
