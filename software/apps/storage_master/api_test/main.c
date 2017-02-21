@@ -92,7 +92,7 @@ int main (void) {
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
   static api_handler_t* handlers[] = {&storage_handler, NULL};
-  signpost_initialization_module_init(ModuleAddressStorage, handlers);
+  signpost_initialization_storage_master_init(handlers);
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);

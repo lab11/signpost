@@ -33,15 +33,16 @@ int main (void) {
     //receive and echo those messages
     uint8_t src;
     uint16_t len;
-    len = signbus_io_recv(1024,data,&src);
-    signbus_io_send(src,data,len);
+    bool encrypted;
+    len = signbus_io_recv(1024,data,&encrypted,&src);
+    signbus_io_send(src,0,data,len);
 
-    len = signbus_io_recv(1024,data,&src);
-    signbus_io_send(src,data,len);
+    len = signbus_io_recv(1024,data,&encrypted,&src);
+    signbus_io_send(src,0,data,len);
 
-    len = signbus_io_recv(1024,data,&src);
-    signbus_io_send(src,data,len);
+    len = signbus_io_recv(1024,data,&encrypted,&src);
+    signbus_io_send(src,0,data,len);
 
-    len = signbus_io_recv(1024,data,&src);
-    signbus_io_send(src,data,len);
+    len = signbus_io_recv(1024,data,&encrypted,&src);
+    signbus_io_send(src,0,data,len);
 }

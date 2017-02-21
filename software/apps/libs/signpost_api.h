@@ -74,6 +74,9 @@ int signpost_initialization_module_init(
 // A special initialization routine for the controller module only.
 int signpost_initialization_controller_module_init(api_handler_t** api_handlers);
 
+// A special initialization routine for the storage master module only.
+int signpost_initialization_storage_master_init(api_handler_t** api_handlers);
+
 // Send a key exchange request to another module
 // Assumes controller has already isolated source and target
 //
