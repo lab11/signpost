@@ -114,7 +114,7 @@ static void tickle_watchdog (void) {
 int main (void) {
   printf("\n[Ambient Module] Sample and Post\n");
 
-  // initiailize module as a part of the signpost bus
+  // initialize module as a part of the signpost bus
   signpost_initialization_module_init(AMBIENT_MODULE_I2C_ADDRESS, NULL);
   printf(" * Bus initialized\n");
 
