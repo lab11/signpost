@@ -21,6 +21,14 @@ done
 
 for dir in `find tests -maxdepth 1 -type d`; do
 	if [ $dir == "tests" ]; then continue; fi
+	if [ $dir == "tests/mbedtls" ]; then continue; fi
+	pushd $dir > /dev/null
+	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
+	popd > /dev/null
+done
+
+for dir in `find tests/mbedtls -maxdepth 1 -type d`; do
+	if [ $dir == "tests/mbedtls" ]; then continue; fi
 	pushd $dir > /dev/null
 	make clean > /dev/null || echo "${bold} ⤤ $dir${normal}"
 	popd > /dev/null
