@@ -169,9 +169,7 @@ enum processing_message_type {
     ProcessingOneWayMessage = 1,
     ProcessingTwoWayMessage = 2,
     ProcessingEdisonReadMessage = 3,
-    ProcessingEdisonInitResponseMessage = 4,
-    ProcessingEdisonOneWayResponseMessage = 5,
-    ProcessingEdisonTwoWayResponseMessage = 6,
+    ProcessingEdisonResponseMessage = 4,
 };
 
 //the edison path to the python module for servicing the rpc

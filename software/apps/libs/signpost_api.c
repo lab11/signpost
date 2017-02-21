@@ -501,7 +501,13 @@ int signpost_processing_init(const char* path) {
     //wait for a response
     yield_for(&processing_ready);
 
-    return incoming_message[0];
+    if(incoming_message_length >= 5) {
+        //this byte should be the return code
+        return incoming_message[4];
+    } else {
+        //an erro
+        return 1;
+    }
 }
 
 int signpost_processing_oneway_send(uint8_t* buf, uint16_t len) {

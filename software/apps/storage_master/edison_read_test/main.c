@@ -36,7 +36,7 @@ static void processing_api_callback(uint8_t source_address,
 
     static bool rpc_pending = false;
     static uint8_t processing_src = 0x00;
-    static uint8_t processing_reason =  0x00;
+    //static uint8_t processing_reason =  0x00;
     static uint16_t payload_len;
     static uint8_t* payload[1024];
 
@@ -45,19 +45,24 @@ static void processing_api_callback(uint8_t source_address,
         return;
     }
 
+    printf("got a processing callback\n");
+
     if(frame_type == NotificationFrame) {
         //shouldn't happen
     } else if (frame_type == CommandFrame) {
+        printf("type %d\n", message_type);
         if(message_type == ProcessingInitMessage) {
+
+            printf("Type Init\n");
             //save the message in the buffer to send to edison
             if(!rpc_pending) {
                 payload_len = message_length;
-                if(payload_len + 2 > SLAVE_READ_LEN) {
+                if(payload_len  > SLAVE_READ_LEN) {
                     //we can't send this message - respond with error?
                 } else {
                     memcpy(payload,message,message_length);
                     processing_src = source_address;
-                    processing_reason = 0x00;
+                    //processing_reason = 0x00;
                     rpc_pending = true;
                 }
             } else {
@@ -71,14 +76,15 @@ static void processing_api_callback(uint8_t source_address,
             //then we can send it the src addr and the function (init or rpc)
         } else if(message_type == ProcessingOneWayMessage) {
             //save the message in the buffer to send to edison
+            printf("Type - One way message\n");
             if(!rpc_pending) {
                 payload_len = message_length;
-                if(payload_len + 2 > SLAVE_READ_LEN) {
+                if(payload_len  > SLAVE_READ_LEN) {
                     //we can't send this message - respond with error?
                 } else {
                     memcpy(payload,message,message_length);
                     processing_src = source_address;
-                    processing_reason = 0x01;
+                    //processing_reason = 0x01;
                     rpc_pending = true;
                 }
             } else {
@@ -88,10 +94,13 @@ static void processing_api_callback(uint8_t source_address,
             //wakeup edison
             edison_wakeup();
 
+            static uint8_t m = 0;
+            signpost_processing_reply(processing_src,ProcessingOneWayMessage,&m,1);
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
         } else if(message_type == ProcessingTwoWayMessage) {
             //save the message in the buffer to send to edison
+            printf("Type - Two way message\n");
             if(!rpc_pending) {
                 payload_len = message_length;
                 if(payload_len + 2 > SLAVE_READ_LEN) {
@@ -99,7 +108,7 @@ static void processing_api_callback(uint8_t source_address,
                 } else {
                     memcpy(payload,message,message_length);
                     processing_src = source_address;
-                    processing_reason = 0x01;
+                    //processing_reason = 0x01;
                     rpc_pending = true;
                 }
             } else {
@@ -109,52 +118,28 @@ static void processing_api_callback(uint8_t source_address,
             //wakeup edison
             edison_wakeup();
 
+            //just respond, we've done what we can
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
         } else if(message_type == ProcessingEdisonReadMessage) {
             //set up the read buffer with the proper stuff
-            //either 1B:SRC,1B:0x00-Init,2B:strlen,payload:str
-            //or 1B:SRC,1B:0x01-RPC,RPCPayload
             //and with the last function
+            printf("Got edison read request");
             if(rpc_pending) {
-                slave_read_buf[0] = processing_src;
-                slave_read_buf[1] = processing_reason;
-                memcpy(slave_read_buf+2,payload,payload_len);
+                memcpy(slave_read_buf,payload,payload_len);
                 //now a slave read should happen
             } else {
                 //edison shouldn't be away
                 //go back to sleep?
                 //we can probably response with src addr 0 or something?
             }
-        } else if(message_type == ProcessingEdisonInitResponseMessage) {
+        } else if(message_type == ProcessingEdisonResponseMessage) {
+            printf("Got edison response");
             if(rpc_pending){
-                signpost_processing_reply(processing_src,ProcessingInitMessage,message,1);
+                signpost_processing_reply(processing_src,ProcessingEdisonResponseMessage,message,message_length);
                 rpc_pending = false;
             } else {
 
-            }
-        } else if(message_type == ProcessingEdisonOneWayResponseMessage) {
-            //note this one-way response happens BEFORE the edison
-            //calls the processing function (just acks it got it, crc
-            //checks etc)
-            if(rpc_pending) {
-                //the payload should just be a byte indicating success or failur
-                signpost_processing_reply(processing_src,ProcessingOneWayMessage,message,1);
-            } else {
-                //drop it I guess?
-            }
-        } else if(message_type == ProcessingEdisonOneWayDoneResponseMessage) {
-            if(rpc_pending) {
-                rpc_pending = false;
-            } else {
-                //drop it?
-            }
-        } else if(message_type == ProcessingEdisonTwoWayResponseMessage) {
-            if(rpc_pending){
-                signpost_processing_reply(processing_src,ProcessingTwoWayMessage, message,message_length);
-                rpc_pending = false;
-            } else {
-                //this shouldn't happen
             }
         }
     } else {
