@@ -279,7 +279,7 @@ class FakeRadio:
 ################################################################################
 
 def main ():
-    parser = argparse.ArgumentParser(add_help=False)
+    parser = argparse.ArgumentParser()
 
     # All commands need a serial port to talk to the board
     parser.add_argument('--port', '-p',
@@ -306,10 +306,15 @@ def main ():
     try:
         import gdp
     except:
-        print("Failed to import gdp. If you are on a debian based machine, please download the following files:\nhttps://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/python-gdp_0.7.2_all.deb\nhttps://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/gdp-client_0.7.2_all.deb")
-        print("sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
-        print("sudo apt-get -f install")
-        print("sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
+        print("")
+        print("Failed to import gdp. There will be no gdp support for this session")
+        print("")
+        print("If you are on a debian based machine, to fix download and install:")
+        print("    https://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/python-gdp_0.7.2_all.deb")
+        print("    https://github.com/lab11/signpost/blob/master/software/receiver/fake_radio/gdp-packages/gdp-client_0.7.2_all.deb")
+        print("    sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
+        print("    sudo apt-get -f install")
+        print("    sudo dpkg -i python-gdp_0.7.2_all.deb gdp-client_0.7.2-1_amd64.deb")
         print("We don't know how to get it to work on mac. Please contact the GDP team for support.")
 
     print("")
