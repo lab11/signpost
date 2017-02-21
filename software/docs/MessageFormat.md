@@ -151,12 +151,12 @@ well-defined:
 
 XXX TODO: Link each to their doc's
 
-  - `0x01`: Initialization
-  - `0x02`: Storage
-  - `0x03`: Networking
-  - `0x04`: Processing
-  - `0x05`: Energy
-  - `0x06`: Time and Location
+  - `0x01 (InitializationApiType)`: [Initialization](#0x01-initialization)
+  - `0x02 (StorageApiType)`: Storage
+  - `0x03 (NetworkingApiType)`: Networking
+  - `0x04 (ProcessingApiType)`: Processing
+  - `0x05 (EnergyApiType)`: Energy
+  - `0x06 (TimeLocationApiType)`: Time and Location
 
 
 ### MessageType
@@ -187,6 +187,31 @@ considered inactive and available for reuse.
 API Types
 ----------
 
+### `0x01`: Initialization
+
+#### `signpost_initialization_module_init(uint8_t i2c_address, api_handler** api_handler)`
+Initialize this module. Must be called before any other Signpost API methods.
+
+Parameters:
+
+`i2c_address`: Address to initialize this module with
+
+`api_handlers`: Array of signpost APIs that this calling module implements The
+final element of this array MUST be NULL.
+
+Elements of the array are pointers to static (pointer must be valid forever) `api_handler_t` structs:
+```c
+typedef struct api_handler {
+    signbus_api_type_t       api_type;
+    signpost_api_callback_t  callback;
+} api_handler_t;
+```
+`api_type`: One of the existing [Signpost APIs](#apitype).
+
+`callback`: A function pointer to your handler for this API.
+
+This array also MUST be static. Modules that implement no APIs MUST pass
+`SIGNPOST_INITIALIZATION_NO_APIS` instead of a list.
 
 ### `0x06`: Time and Location
 
