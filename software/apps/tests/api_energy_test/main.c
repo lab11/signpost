@@ -10,9 +10,6 @@
 
 #include "signpost_api.h"
 
-
-int counter = 0;
-
 static const uint8_t random_i2c_address = 0x50;
 
 int main (void) {
