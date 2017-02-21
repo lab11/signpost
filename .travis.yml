@@ -12,6 +12,11 @@ os:
 # Disable OS X builds for now. The SNR and delay not worth it for signpost
 # - osx
 
+addons:
+  apt:
+    packages:
+      - libboost-dev
+
 rust:
   - nightly-2017-01-25
 
