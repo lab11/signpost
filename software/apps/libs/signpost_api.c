@@ -483,11 +483,14 @@ int signpost_processing_init(const char* path) {
 
     //form the sending message
     uint16_t size = strlen(path);
-    uint8_t buf[size + 2];
+    uint16_t crc  = computeCRC16((uint8_t*)path,size);
+    uint8_t buf[size + 4];
     buf[0] = size & 0xff;
     buf[1] = ((size & 0xff00) > 8);
+    buf[2] = crc & 0xff;
+    buf[3] = ((crc & 0xff00) > 8);
 
-    memcpy(buf+2,path,size);
+    memcpy(buf+4,path,size);
 
     incoming_active_callback = signpost_processing_callback;
     processing_ready = false;
