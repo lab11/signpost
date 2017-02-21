@@ -42,7 +42,9 @@ static void storage_api_callback(uint8_t source_address,
 
     //XXX do some checking that the message type is right and all that jazz
     //XXX also figure out what module index this is, somehow
+    /*
     int module_index = 0;
+    */
 
     //XXX: rewrite this using storage_write_record()
     /*

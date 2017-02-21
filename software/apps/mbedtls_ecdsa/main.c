@@ -46,7 +46,7 @@ static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
 }
 
 static int pseudorandom(void * data, unsigned char * output, size_t len) {
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }
 
@@ -80,7 +80,7 @@ int main(void) {
       }
 
       printf("sig of len %d: 0x", sig_len);
-      for(int i = 0; i < sig_len; i++) {
+      for(size_t i = 0; i < sig_len; i++) {
         printf("%x", sig[i]);
       }
       printf("\n\n");

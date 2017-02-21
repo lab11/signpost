@@ -26,7 +26,7 @@ mbedtls_aes_context aes_context;
 unsigned char message[8192];
 unsigned char output[8192];
 
-void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
+static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     // get parameters for hash
     md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
     // clear context
@@ -47,7 +47,6 @@ int main(void) {
     printf("\n\nTest mbedtls\n");
 
     unsigned char key[32];
-    int ret;
     // Generate psuedorandom key using hash
     sha256((const unsigned char *)"key", 3, key);
 

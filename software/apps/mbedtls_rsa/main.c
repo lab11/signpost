@@ -51,7 +51,7 @@ const mbedtls_pk_info_t * pk_info;
 mbedtls_md_context_t md_context;
 const mbedtls_md_info_t * md_info;
 
-void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
+static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     // get parameters for hash
     md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
     // clear context
@@ -69,7 +69,7 @@ void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
 }
 
 static int psuedorandom(void * data, unsigned char * output, size_t len) {
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }
 
@@ -102,7 +102,7 @@ int main(void) {
       printf("ret: %x\n", ret);
       printf("sig of len %d: 0x", sig_len);
 
-      for(int i = 0; i < sig_len; i++) {
+      for(size_t i = 0; i < sig_len; i++) {
         printf(" %x ", sig[i]);
       }
       printf("\n");
