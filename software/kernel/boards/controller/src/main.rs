@@ -5,7 +5,7 @@
 
 extern crate cortexm4;
 extern crate capsules;
-#[macro_use(static_init)]
+#[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;
 
@@ -25,6 +25,7 @@ use sam4l::usart;
 #[macro_use]
 pub mod io;
 
+pub mod version;
 
 unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {
     extern "C" {
@@ -614,5 +615,10 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
+    debug!("Running {} Version {} from git {}",
+           env!("CARGO_PKG_NAME"),
+           env!("CARGO_PKG_VERSION"),
+           version::GIT_VERSION,
+           );
     kernel::main(&signpost_controller, &mut chip, load_processes(), &signpost_controller.ipc);
 }
