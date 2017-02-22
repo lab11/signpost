@@ -291,14 +291,15 @@ int signpost_initialization_storage_master_init(api_handler_t** api_handlers) {
     // Begin listening for replies
     signpost_api_start_new_async_recv();
 
-    done = 0;
-    // spin until done exchanging with storage master
-    while(!done) {
-        printf("Waiting for initialization with controller\n");
-        // exchange keys with controller
-        while(signpost_initialization_key_exchange_send(ModuleAddressController) < SUCCESS) {delay_ms(50);}
-        delay_ms(5000);
-    }
+    // XXX turn this off for now
+    //done = 0;
+    //// spin until done exchanging with storage master
+    //while(!done) {
+    //    printf("Waiting for initialization with controller\n");
+    //    // exchange keys with controller
+    //    while(signpost_initialization_key_exchange_send(ModuleAddressController) < SUCCESS) {delay_ms(50);}
+    //    delay_ms(5000);
+    //}
 
 
     SIGNBUS_DEBUG("complete\n");
