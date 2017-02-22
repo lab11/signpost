@@ -46,9 +46,16 @@ int main (void) {
   printf("[TEST] Audio ADC\n");
 
   // initialize the signpost bus
-  signpost_initialization_module_init(
-    i2c_address,
-    SIGNPOST_INITIALIZATION_NO_APIS);
+  int rc;
+  do {
+    rc = signpost_initialization_module_init(
+      i2c_address,
+      SIGNPOST_INITIALIZATION_NO_APIS);
+    if (rc < 0) {
+      printf(" - Error initializing bus (code: %d). Sleeping 5s\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   // initialize ADC
   err = adc_initialize();

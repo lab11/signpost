@@ -115,7 +115,14 @@ int main (void) {
   printf("\n[Ambient Module] Sample and Post\n");
 
   // initialize module as a part of the signpost bus
-  signpost_initialization_module_init(AMBIENT_MODULE_I2C_ADDRESS, NULL);
+  int rc;
+  do {
+    rc = signpost_initialization_module_init(AMBIENT_MODULE_I2C_ADDRESS, NULL);
+    if (rc < 0) {
+      printf(" - Error initializing bus (code %d). Sleeping for 5s\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
   printf(" * Bus initialized\n");
 
   // set up watchdog
