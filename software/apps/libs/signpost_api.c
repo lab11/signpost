@@ -295,8 +295,7 @@ int signpost_initialization_controller_module_init(api_handler_t** api_handlers)
 
     // Begin listening for replies
     signpost_api_start_new_async_recv();
-    // delay for a second to wait for storage master to init
-    delay_ms(2000);
+
     SIGNBUS_DEBUG("complete\n");
     return SUCCESS;
 }
@@ -349,11 +348,11 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
 int signpost_initialization_request_isolation(void) {
     // Initialize Mod Out/In GPIO
     // both are active low
-    gpio_interrupt_callback(signpost_initialization_isolation_callback, NULL);
-    gpio_enable_interrupt(MOD_IN, PullUp, FallingEdge);
     gpio_enable_output(MOD_OUT);
     gpio_set(MOD_OUT);
     led_off(RED_LED);
+    gpio_enable_interrupt(MOD_IN, PullUp, FallingEdge);
+    gpio_interrupt_callback(signpost_initialization_isolation_callback, NULL);
 
     // Pull Mod_Out Low to signal controller
     // Wait on controller interrupt on MOD_IN

@@ -79,13 +79,13 @@ static void check_module_initialization (void) {
         }
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
-        else if (isolated_count > 4) {
+        else if (isolated_count > 15) {
             printf("Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             gpio_set(mod_isolated_in);
             mod_isolated_out = -1;
             mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
-        } else { 
+        } else {
           isolated_count++;
         }
     }
@@ -468,6 +468,27 @@ int main (void) {
   app_watchdog_start();
 
   printf("Everything intialized\n");
+
+  delay_ms(2000);
+  // hack: initialize radio first
+  size_t j = 2;
+  printf("Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[j]));
+  // module requesting isolation
+  mod_isolated_out = MOD_OUTS[j];
+  printf("%d\n", mod_isolated_out);
+  mod_isolated_in = MOD_INS[j];
+  printf("%d\n", mod_isolated_in);
+  last_mod_isolated_out = MOD_OUTS[j];
+  isolated_count = 0;
+
+  // create private channel for this module
+  //XXX warn modules of i2c disable
+  controller_all_modules_disable_i2c();
+  controller_module_enable_i2c(MODOUT_pin_to_mod_name(mod_isolated_out));
+  // signal to module that it has a private channel
+  // XXX this should be a controller function operating on the
+  // module number, not index
+  gpio_clear(mod_isolated_in);
 
   printf("Entering loop\n");
   uint8_t index = 0;

@@ -116,6 +116,7 @@ int main (void) {
   // Install hooks for the signpost APIs we implement
   static api_handler_t networking_handler = {NetworkingApiType, networking_api_callback};
   static api_handler_t* handlers[] = {&networking_handler, NULL};
+  delay_ms(1000);
   do {
     rc = signpost_initialization_module_init(ModuleAddressRadio, handlers);
     if (rc < 0) {
