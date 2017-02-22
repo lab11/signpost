@@ -67,7 +67,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  * Setup this platform
  ******************************************************************************/
 
-struct RadioUartPython {
+struct DebugRadioModule {
     gps_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
@@ -77,7 +77,7 @@ struct RadioUartPython {
     ipc: kernel::ipc::IPC,
 }
 
-impl Platform for RadioUartPython {
+impl Platform for DebugRadioModule {
     fn with_driver<F, R>(&self, driver_num: usize, f: F) -> R
         where F: FnOnce(Option<&kernel::Driver>) -> R
     {
@@ -245,7 +245,7 @@ pub unsafe fn reset_handler() {
     //
     // Actual platform object
     //
-    let module = RadioUartPython {
+    let module = DebugRadioModule {
         gps_console: gps_console,
         gpio: gpio,
         timer: timer,

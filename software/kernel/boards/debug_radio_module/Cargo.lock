@@ -1,5 +1,5 @@
 [root]
-name = "radio_uart_python"
+name = "debug_radio_module"
 version = "0.1.0"
 dependencies = [
  "capsules 0.1.0",

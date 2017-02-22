@@ -1,7 +1,7 @@
 # Makefile for building the tock kernel for the Hail platform
 
 CHIP=sam4l
-PLATFORM=radio_uart_python
+PLATFORM=debug_radio_module
 
 include ../../../kernel/tock/Makefile.common
 

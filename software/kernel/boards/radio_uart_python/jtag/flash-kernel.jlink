@@ -1,6 +1,0 @@
-r
-loadfile target/sam4l/release/radio_uart_python.hex
-r
-g
-q
-

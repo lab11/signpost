@@ -1,4 +1,4 @@
-# Makefile for loading applications for the signpost radio_uart_python SAM4L
+# Makefile for loading applications for the signpost debug radio module SAM4L
 
 APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
 
