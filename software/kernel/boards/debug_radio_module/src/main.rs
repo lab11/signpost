@@ -257,6 +257,12 @@ pub unsafe fn reset_handler() {
     };
 
     module.gps_console.initialize();
+    // Attach the kernel debug interface to this console
+    let kc = static_init!(
+        signpost_drivers::gps_console::App,
+        signpost_drivers::gps_console::App::default(),
+        640/8);
+    kernel::debug::assign_console_driver(Some(module.gps_console), kc);
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();

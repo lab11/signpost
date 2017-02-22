@@ -339,6 +339,12 @@ pub unsafe fn reset_handler() {
     };
 
     audio_module.console.initialize();
+    // Attach the kernel debug interface to this console
+    let kc = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(audio_module.console), kc);
 
     //watchdog.start();
 
