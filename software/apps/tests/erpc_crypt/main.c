@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include <gpio.h>
+#include <timer.h>
 #include <tock.h>
 
 #include "signpost_api.h"
@@ -13,9 +14,21 @@
 
 
 int main (void) {
+    int rc;
 
-    signpost_initialization_module_init(0x35,NULL);
-    signpost_processing_init("~/path/to/sign.py");
+    do {
+        rc = signpost_initialization_module_init(0x35,NULL);
+        if (rc < 0) {
+            printf(" - Error initializing module (code: %d). Sleeping 5s.\n", rc);
+            delay_ms(5000);
+        }
+    } while (rc < 0);
+
+    rc = signpost_processing_init("~/path/to/sign.py");
+    if (rc < 0) {
+        printf(" - Error initializing signpost processing. Quitting.\n");
+        return rc;
+    }
 
     ret* signed_data;
     uint8_t data[100];
