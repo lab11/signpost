@@ -131,8 +131,20 @@ typedef struct {
    uint8_t value[8];
 } Storage_Record_t;
 
+// Write data to the Storage Master
+//
+// params:
+//  data            - Data to write
+//  len             - Length of data
+//  record_pointer  - Pointer to record that will indicate location of written data
 __attribute__((warn_unused_result))
 int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_pointer);
+
+// Storage master response to write request
+//
+// params:
+//  destination_address - Address to reply to
+//  record_pointer      - Data at record
 __attribute__((warn_unused_result))
 int signpost_storage_write_reply (uint8_t destination_address, uint8_t* record_pointer);
 
