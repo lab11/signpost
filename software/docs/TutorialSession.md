@@ -122,6 +122,8 @@ Signpost Tutorial
     The board should now have a blinking LED on the Control Module and two blinking
     LEDs near the USB ports.
 
+    ![Backplane with LEDs identified](img/controller_blink.jpg)
+
 
 ### Hello app
 
