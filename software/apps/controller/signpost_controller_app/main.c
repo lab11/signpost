@@ -37,38 +37,15 @@ uint8_t  _current_microsecond = 0;
 uint32_t _current_latitude = 0;
 uint32_t _current_longitude = 0;
 
-static void energy_timer_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-  get_energy();
-}
-
-static void gps_timer_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-  gps_sample(gps_callback);
-}
-
 int mod_isolated_out = -1;
 int mod_isolated_in = -1;
 int last_mod_isolated_out = -1;
 size_t isolated_count = 0;
 
-static void priv_timer_callback (
-        int callback_type __attribute__ ((unused)),
-        int pin_value __attribute__ ((unused)),
-        int unused __attribute__ ((unused)),
-        void* callback_args __attribute__ ((unused))
-        ) {
-    if(mod_isolated_out < 0) {
-        for(size_t i = 0; i < NUM_MOD_IO; i++) {
-            if(gpio_read(MOD_OUTS[i]) == 0 && last_mod_isolated_out != MOD_OUTS[i]) {
+static void check_module_initialization (void) {
+    if (mod_isolated_out < 0) {
+        for (size_t i = 0; i < NUM_MOD_IO; i++) {
+            if (gpio_read(MOD_OUTS[i]) == 0 && last_mod_isolated_out != MOD_OUTS[i]) {
 
                 printf("Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]));
                 // module requesting isolation
@@ -92,7 +69,7 @@ static void priv_timer_callback (
             last_mod_isolated_out = -1;
         }
     } else {
-        if(gpio_read(mod_isolated_out) == 1) {
+        if (gpio_read(mod_isolated_out) == 1) {
             printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             gpio_set(mod_isolated_in);
             mod_isolated_out = -1;
@@ -101,14 +78,15 @@ static void priv_timer_callback (
         }
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
-        else if(isolated_count > 4) {
+        else if (isolated_count > 4) {
             printf("Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             gpio_set(mod_isolated_in);
             mod_isolated_out = -1;
             mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
+        } else { 
+          isolated_count++;
         }
-        else isolated_count++;
     }
 }
 
@@ -142,7 +120,7 @@ static void watchdog_tickler (int which) {
   }
 
   if (gps_tickle && energy_tickle) {
-    //app_watchdog_tickle_kernel();
+    app_watchdog_tickle_kernel();
 
     gps_tickle = false;
     energy_tickle = false;
@@ -192,71 +170,19 @@ static void get_energy (void) {
     switch (i) {
       case 0: print_energy_data(i, fram.energy_module0); break;
       case 1: print_energy_data(i, fram.energy_module1); break;
-      case 2: print_energy_data(i, fram.energy_module2); break;
+      //case 2: print_energy_data(i, fram.energy_module2); break;
       case 3: print_energy_data(i, fram.energy_controller); break;
       case 4: print_energy_data(i, fram.energy_linux); break;
-      case 5: print_energy_data(i, fram.energy_module5); break;
-      case 6: print_energy_data(i, fram.energy_module6); break;
-      case 7: print_energy_data(i, fram.energy_module7); break;
+      //case 5: print_energy_data(i, fram.energy_module5); break;
+      //case 6: print_energy_data(i, fram.energy_module6); break;
+      //case 7: print_energy_data(i, fram.energy_module7); break;
     }
   }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
-
-  /*
-  uint8_t energy_datum[18];
-
-  // My address
-  energy_datum[0] = 0x20;
-  // Packet type. 1 == Energy Meters
-  energy_datum[1] = 0x01;
-
-  energy_datum[2]  = (uint8_t) (((fram.energy_module0 / 1000) >> 8) & 0xFF);
-  energy_datum[3]  = (uint8_t) ((fram.energy_module0 / 1000) & 0xFF);
-  energy_datum[4]  = (uint8_t) (((fram.energy_module1 / 1000) >> 8) & 0xFF);
-  energy_datum[5]  = (uint8_t) ((fram.energy_module1 / 1000) & 0xFF);
-  energy_datum[6]  = (uint8_t) (((fram.energy_module2 / 1000) >> 8) & 0xFF);
-  energy_datum[7]  = (uint8_t) ((fram.energy_module2 / 1000) & 0xFF);
-  energy_datum[8]  = (uint8_t) (((fram.energy_controller / 1000) >> 8) & 0xFF);
-  energy_datum[9]  = (uint8_t) ((fram.energy_controller / 1000) & 0xFF);
-  energy_datum[10] = (uint8_t) (((fram.energy_linux / 1000) >> 8) & 0xFF);
-  energy_datum[11] = (uint8_t) ((fram.energy_linux / 1000) & 0xFF);
-  energy_datum[12] = (uint8_t) (((fram.energy_module5 / 1000) >> 8) & 0xFF);
-  energy_datum[13] = (uint8_t) ((fram.energy_module5 / 1000) & 0xFF);
-  energy_datum[14] = (uint8_t) (((fram.energy_module6 / 1000) >> 8) & 0xFF);
-  energy_datum[15] = (uint8_t) ((fram.energy_module6 / 1000) & 0xFF);
-  energy_datum[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
-  energy_datum[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
-
-  //make a post url
-  const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/energy_datum/append";
-  http_request r;
-  //the library will automatically throw in content-length
-  //if you don't, because it's annoying to do yourself
-  r.num_headers = 1;
-  http_header h;
-  h.header = "content-type";
-  h.value = "application/octet-stream";
-  r.headers = &h;
-  r.body_len = 18;
-  r.body = energy_datum;
-  http_response result;
-
-  int rc = signpost_networking_post(url, r, &result);
-  if (rc < 0) {
-    printf("Failed to do post. return code: %d\n", rc);
-  }
-  */
-
-  //printf("Energy POST result: %d\n", result);
-
-  // Only say things are working if i2c worked
-  //if (result.status > 0) {
-    // Tickle the watchdog because something good happened.
-    //app_watchdog_tickle_kernel();
-    watchdog_tickler(2);
-  //}
+  // Tickle the watchdog because something good happened.
+  watchdog_tickler(2);
 }
 
 static void initialization_api_callback(uint8_t source_address,
@@ -436,64 +362,12 @@ static void gps_callback (gps_data_t* gps_data) {
   _current_latitude = gps_data->latitude;
   _current_longitude = gps_data->longitude;
 
-  /*
-  uint8_t gps_datum[18];
+  // Tickle the watchdog because something good happened.
+  //app_watchdog_tickle_kernel();
+  watchdog_tickler(1);
 
-  // My address
-  gps_datum[0] = 0x20;
-  // Packet type. 2 == GPS
-  gps_datum[1] = 0x02;
-  // date
-  gps_datum[2] = (uint8_t) (gps_data->day   & 0xFF);
-  gps_datum[3] = (uint8_t) (gps_data->month & 0xFF);
-  gps_datum[4] = (uint8_t) (gps_data->year  & 0xFF);
-  // time
-  gps_datum[5] = (uint8_t) (gps_data->hours   & 0xFF);
-  gps_datum[6] = (uint8_t) (gps_data->minutes & 0xFF);
-  gps_datum[7] = (uint8_t) (gps_data->seconds & 0xFF);
-  // latitude
-  gps_datum[8]  = (uint8_t) ((gps_data->latitude >> 24) & 0xFF);
-  gps_datum[9]  = (uint8_t) ((gps_data->latitude >> 16) & 0xFF);
-  gps_datum[10] = (uint8_t) ((gps_data->latitude >>  8) & 0xFF);
-  gps_datum[11] = (uint8_t) ((gps_data->latitude)       & 0xFF);
-  // longitude
-  gps_datum[12] = (uint8_t) ((gps_data->longitude >> 24) & 0xFF);
-  gps_datum[13] = (uint8_t) ((gps_data->longitude >> 16) & 0xFF);
-  gps_datum[14] = (uint8_t) ((gps_data->longitude >>  8) & 0xFF);
-  gps_datum[15] = (uint8_t) ((gps_data->longitude)       & 0xFF);
-  // quality
-  gps_datum[16] = (uint8_t) (gps_data->fix & 0xFF);
-  gps_datum[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
-
-  //make a post url
-  const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/gps_datum/append";
-  http_request r;
-  //the library will automatically throw in content-length
-  //if you don't, because it's annoying to do yourself
-  r.num_headers = 1;
-  http_header h;
-  h.header = "content-type";
-  h.value = "application/octet-stream";
-  r.headers = &h;
-  r.body_len = 18;
-  r.body = gps_datum;
-
-  http_response result;
-  int rc = signpost_networking_post(url, r, &result);
-  if (rc < 0) {
-    printf("Failed to do GPS post. return code: %d\n", rc);
-  }
-  */
-
-  //printf("GPS POST result: %d\n", result);
-
-  // Only say things are working if i2c worked
-  // this means we got a post response- that's a win
-  //if (result.status > 0) {
-    // Tickle the watchdog because something good happened.
-    //app_watchdog_tickle_kernel();
-    watchdog_tickler(1);
-  //}
+  // start sampling again to catch the next second
+  gps_sample(gps_callback);
 }
 
 int main (void) {
@@ -514,7 +388,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80003;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80004;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
@@ -532,24 +406,11 @@ int main (void) {
     fm25cl_write_sync(0, sizeof(controller_fram_t));
   }
 
-
   // Setup GPS
   // ---------
   printf("GPS\n");
   gps_init();
-
-
-  // Timers
-  // ------
-  printf("Starting timers\n");
-  timer_subscribe(energy_timer_callback, NULL);
-  bonus_timer_subscribe(gps_timer_callback, NULL);
-
-  // Start timers to read energy and GPS
-  timer_start_repeating(10000);
-  bonus_timer_start_repeating(27000);
-
-
+  gps_sample(gps_callback);
 
   //////////////////////////////////////
   // Remote System Management Operations
@@ -567,8 +428,6 @@ int main (void) {
   // Reset all of the LTC2941s
   printf("Resetting energy\n");
   signpost_energy_reset();
-
-
 
   /////////////////////////////
   // Signpost Module Operations
@@ -597,23 +456,29 @@ int main (void) {
   controller_gpio_enable_all_MODINs();
   controller_gpio_enable_all_MODOUTs(PullUp);
   controller_gpio_set_all();
-  // controller_all_modules_disable_i2c();
-  // controller_module_enable_i2c(MODULE5);
-  // controller_module_enable_i2c(MODULE0);
-
-
 
 
   ////////////////////////////////////////////////
   // Setup watchdog
-  //app_watchdog_set_kernel_timeout(30000);
-  //app_watchdog_start();
+  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_start();
 
   printf("Everything intialized\n");
 
   printf("Entering loop\n");
+  uint8_t index = 0;
   while(1) {
-    delay_ms(2000);
-    priv_timer_callback(0, 0, 0, NULL);
+    // always check for modules that need to be initialized
+    check_module_initialization();
+
+    // get energy updates every 10 seconds
+    if ((index % 10) == 0) {
+      printf("Check energy\n");
+      get_energy();
+    }
+
+    index++;
+    delay_ms(1000);
   }
 }
+
