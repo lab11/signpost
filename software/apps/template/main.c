@@ -18,6 +18,9 @@ int main(void) {
     // initialize app with
     signpost_initialization_module_init(I2C_ADDRESS, SIGNPOST_INITIALIZATION_NO_APIS);
 
-    /* YOUR CODE GOES HERE */
+    while(true) {
+        /* YOUR CODE GOES HERE */
 
+        delay_ms(1000);
+    }
 }
