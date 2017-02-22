@@ -9,6 +9,7 @@
 #include "signpost_mod_io.h"
 #include "tock.h"
 #include "gpio.h"
+#include "led.h"
 #include "timer.h"
 #include "crc.h"
 #include "erpc_client_setup.h"
@@ -322,6 +323,7 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
 
     gpio_disable_interrupt(MOD_IN);
     gpio_toggle(MOD_OUT);
+    led_toggle(RED_LED);
     SIGNBUS_DEBUG("complete\n");
     return 0;
 }
@@ -333,9 +335,13 @@ int signpost_initialization_request_isolation(void) {
     gpio_enable_interrupt(MOD_IN, PullUp, FallingEdge);
     gpio_enable_output(MOD_OUT);
     gpio_set(MOD_OUT);
+    led_off(RED_LED);
+
     // Pull Mod_Out Low to signal controller
     // Wait on controller interrupt on MOD_IN
     gpio_clear(MOD_OUT);
+    led_on(RED_LED);
+
     return SUCCESS;
 }
 
