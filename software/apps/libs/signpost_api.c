@@ -514,8 +514,10 @@ int signpost_processing_init(const char* path) {
     incoming_active_callback = signpost_processing_callback;
     processing_ready = false;
 
-    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+    int rc;
+    rc = signpost_api_send(ModuleAddressStorage,  CommandFrame,
              ProcessingApiType, ProcessingInitMessage, size+4, buf);
+    if (rc < 0) return rc;
 
     //wait for a response
     yield_for(&processing_ready);
@@ -543,8 +545,10 @@ int signpost_processing_oneway_send(uint8_t* buf, uint16_t len) {
 
     incoming_active_callback = signpost_processing_callback;
 
-    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+    int rc;
+    rc = signpost_api_send(ModuleAddressStorage,  CommandFrame,
              ProcessingApiType, ProcessingOneWayMessage, len+2, b);
+    if (rc < 0) return rc;
 
     processing_ready = false;
     //wait for a response
@@ -567,8 +571,10 @@ int signpost_processing_twoway_send(uint8_t* buf, uint16_t len) {
 
     incoming_active_callback = signpost_processing_callback;
 
-    signpost_api_send(ModuleAddressStorage,  CommandFrame,
+    int rc;
+    rc = signpost_api_send(ModuleAddressStorage,  CommandFrame,
              ProcessingApiType, ProcessingTwoWayMessage, len+4, b);
+    if (rc < 0) return rc;
 
     processing_ready = false;
     //wait for a response in the next function call
@@ -709,8 +715,10 @@ int signpost_networking_post(const char* url, http_request request, http_respons
     networking_ready = false;
 
     //call app_send
-    signpost_api_send(ModuleAddressRadio,  CommandFrame,
+    int rc;
+    rc = signpost_api_send(ModuleAddressRadio,  CommandFrame,
             NetworkingApiType, NetworkingPostMessage, send_index + 1, send);
+    if (rc < 0) return rc;
 
     //wait for a response
     yield_for(&networking_ready);
