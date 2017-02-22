@@ -259,29 +259,12 @@ static void get_energy (void) {
   //}
 }
 
-static void api_error_looper(
-    uint8_t source_address,
-    signbus_api_type_t api_type,
-    uint8_t message_type) {
-  int rc;
-  int tries = 5;
-  do {
-    rc = signpost_api_error_reply(source_address, api_type, message_type);
-    if (rc < 0) {
-      tries--;
-      printf(" - %d: Error sending signpost reply to 0x%02x (code: %d).\n", __LINE__, source_address, rc);
-      printf(" - %d: Sleeping 1s. Tries remaining %d\n", __LINE__, tries);
-      delay_ms(1000);
-    }
-  } while ( (tries > 0) && (rc < 0) );
-}
-
 static void initialization_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, __attribute__ ((unused)) size_t message_length,
     uint8_t* message) {
     if (api_type != InitializationApiType) {
-      api_error_looper(source_address, api_type, message_type);
+      signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
       return;
     }
     int module_number;
@@ -332,7 +315,7 @@ static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
   if (api_type != EnergyApiType) {
-    api_error_looper(source_address, api_type, message_type);
+    signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
   }
 
@@ -353,16 +336,16 @@ static void energy_api_callback(uint8_t source_address,
       rc = signpost_energy_query_reply(source_address, &info);
       if (rc < 0) {
         printf(" - %d: Error sending energy query reply (code: %d). Replying with fail.\n", __LINE__, rc);
-        api_error_looper(source_address, api_type, message_type);
+        signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
       }
     } else if (message_type == EnergyLevelWarning24hMessage) {
-      api_error_looper(source_address, api_type, message_type);
+      signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else if (message_type == EnergyLevelCritical24hMessage) {
-      api_error_looper(source_address, api_type, message_type);
+      signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else if (message_type == EnergyCurrentWarning60sMessage) {
-      api_error_looper(source_address, api_type, message_type);
+      signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else {
-      api_error_looper(source_address, api_type, message_type);
+      signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     }
   } else if (frame_type == ResponseFrame) {
     // XXX unexpected, drop
@@ -378,7 +361,7 @@ static void timelocation_api_callback(uint8_t source_address,
   int rc;
 
   if (api_type != TimeLocationApiType) {
-    api_error_looper(source_address, api_type, message_type);
+    signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
   }
 
@@ -397,8 +380,8 @@ static void timelocation_api_callback(uint8_t source_address,
       time.seconds = _current_second;
       rc = signpost_timelocation_get_time_reply(source_address, &time);
       if (rc < 0) {
-        printf(" - %d: Error sending TimeLocationGetTimeMessage reply (code: %d). Replying with fail.\n", __LINE__, rc);
-        api_error_looper(source_address, api_type, message_type);
+        printf(" - %d: Error sending TimeLocationGetTimeMessage reply (code: %d).\n", __LINE__, rc);
+        signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
       }
 
     } else if (message_type == TimeLocationGetLocationMessage) {
@@ -407,8 +390,8 @@ static void timelocation_api_callback(uint8_t source_address,
       location.longitude = _current_longitude;
       rc = signpost_timelocation_get_location_reply(source_address, &location);
       if (rc < 0) {
-        printf(" - %d: Error sending TimeLocationGetLocationMessage reply (code: %d). Replying with fail.\n", __LINE__, rc);
-        api_error_looper(source_address, api_type, message_type);
+        printf(" - %d: Error sending TimeLocationGetLocationMessage reply (code: %d).\n", __LINE__, rc);
+        signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
       }
     }
   } else if (frame_type == ResponseFrame) {
