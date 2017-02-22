@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo ./ft232r_prog --manufacturer Lab11 --product "Signpost-DebugBackplane-Module1"
+sudo ./ft232r_prog --manufacturer Lab11 --product "Signpost-Debug-Module1"
