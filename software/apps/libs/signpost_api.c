@@ -230,6 +230,7 @@ static void signpost_initialization_key_exchange_callback(int len_or_rc) {
     SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
             key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
 
+    printf("INIT: Initialization with module %d complete\n", signpost_api_addr_to_mod_num(incoming_source_address));
     done = 1;
 }
 
@@ -269,6 +270,7 @@ static int signpost_initialization_common(uint8_t i2c_address, api_handler_t** a
     for (int i=0; i < NUM_MODULES; i++) {
         module_info.haskey[i] = false;
         memset(module_info.keys[i], 0, ECDH_KEY_LENGTH);
+        module_info.i2c_address_mods[i] = 0xff;
     }
 
     // Save module configuration
@@ -334,7 +336,6 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     // Spin until isolated with controller
     //int timeout = 0;
     while(!done) {
-        printf("Waiting for initialization with controller\n");
         yield_for(&done);
     }
 
@@ -359,6 +360,7 @@ int signpost_initialization_request_isolation(void) {
     gpio_clear(MOD_OUT);
     led_on(RED_LED);
 
+    printf("INIT: Requested I2C isolation with controller\n");
     return SUCCESS;
 }
 
@@ -378,6 +380,7 @@ int signpost_initialization_declare_controller(void) {
 
 int signpost_initialization_key_exchange_send(uint8_t destination_address) {
     int rc;
+    printf("INIT: Granted I2C isolation and started initialization with module %d\n", signpost_api_addr_to_mod_num(destination_address));
     // set callback for handling response from controller/modules
     if (incoming_active_callback != NULL) {
         return EBUSY;
@@ -411,6 +414,8 @@ int signpost_initialization_declare_respond(uint8_t source_address, uint8_t modu
 }
 int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t* ecdh_params, size_t len) {
     int ret = SUCCESS;
+
+    printf("INIT: Initializing with module %d\n", signpost_api_addr_to_mod_num(source_address));
     // init ecdh struct for key exchange
     mbedtls_ecdh_free(&ecdh);
     mbedtls_ecdh_init(&ecdh);
