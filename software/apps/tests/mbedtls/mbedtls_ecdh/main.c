@@ -24,7 +24,8 @@ mbedtls_ecdh_context ecdh_1;
 unsigned char buf[256];
 unsigned char buf2[256];
 
-static int pseudorandom(void * data, unsigned char * output, size_t len) {
+static int pseudorandom(void* p_rng __attribute__((unused)),
+        unsigned char* output, size_t len) {
     for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }

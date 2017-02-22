@@ -45,7 +45,8 @@ static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     mbedtls_md_finish(&md_context, out);
 }
 
-static int pseudorandom(void * data, unsigned char * output, size_t len) {
+static int pseudorandom(void* p_rng __attribute__((unused)),
+        unsigned char* output, size_t len) {
     for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }

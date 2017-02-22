@@ -68,7 +68,8 @@ static void sha256(const unsigned char * in, size_t ilen, unsigned char * out) {
     mbedtls_md_finish(&md_context, out);
 }
 
-static int psuedorandom(void * data, unsigned char * output, size_t len) {
+static int pseudorandom(void* p_rng __attribute__((unused)),
+        unsigned char* output, size_t len) {
     for (size_t i = 0; i < len; i++) {
         output[i] = rand();
     }
@@ -97,7 +98,7 @@ int main(void) {
       printf("Test RSA\n");
 
       gpio_set(PIN);
-      ret = mbedtls_pk_sign(&pk, MBEDTLS_MD_SHA256, hash, 0, sig, &sig_len, psuedorandom, NULL);
+      ret = mbedtls_pk_sign(&pk, MBEDTLS_MD_SHA256, hash, 0, sig, &sig_len, pseudorandom, NULL);
       gpio_clear(PIN);
       printf("ret: %x\n", ret);
       printf("sig of len %d: 0x", sig_len);
