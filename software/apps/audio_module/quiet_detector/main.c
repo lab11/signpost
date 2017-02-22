@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,50 +13,19 @@
 #include <tock.h>
 
 #include "app_watchdog.h"
-#include "simple_post.h"
 #include "signpost_api.h"
+#include "simple_post.h"
 
-static const uint8_t i2c_address = 0x33;
 #define ZERO_MAGNITUDE 2048 // middle value for a 12-bit ADC
 
 #define SAMPLE_COUNT 64 // powers of two please!
 static uint16_t sample_buf[SAMPLE_COUNT] = {ZERO_MAGNITUDE};
 
-// only post once per LOUD event
-static bool posted = false;
-
-static void post_over_http (void) {
-  // post sensor data over HTTP and get response
-
-  // URL for an HTTP POST testing service
-  const char* url = "posttestserver.com/post.php";
-
-  // http post data
-  printf("--POSTing data--\n");
-  int response = simple_octetstream_post(url, (uint8_t*)"LOUD", 5);
-  if (response < SUCCESS) {
-    printf("Error posting: %d\n", response);
-  } else {
-    printf("\tResponse: %d\n", response);
-    posted = true;
-  }
-}
+bool wrote = false;
 
 int main (void) {
   int err = SUCCESS;
-  printf("[TEST] Audio ADC\n");
-
-  // initialize the signpost bus
-  int rc;
-  do {
-    rc = signpost_initialization_module_init(
-      i2c_address,
-      SIGNPOST_INITIALIZATION_NO_APIS);
-    if (rc < 0) {
-      printf(" - Error initializing bus (code: %d). Sleeping 5s\n", rc);
-      delay_ms(5000);
-    }
-  } while (rc < 0);
+  printf("[Audio Module] Quiet Detector\n");
 
   // initialize ADC
   err = adc_initialize();
@@ -65,6 +35,7 @@ int main (void) {
 
   printf("Sampling data\n");
   uint8_t sample_index = 0;
+  uint16_t min_amplitude = 100;
   while (true) {
 
     // read data from ADC
@@ -73,7 +44,6 @@ int main (void) {
       printf("ADC read error: %d\n", err);
     }
     uint16_t sample = err & 0xFFFF;
-    //printf("%d\n", data);
 
     // calculate amplitude of sample
     uint16_t amplitude = abs(sample-ZERO_MAGNITUDE);
@@ -85,17 +55,26 @@ int main (void) {
       amplitude_sum += sample_buf[i];
     }
     uint16_t average_amplitude = amplitude_sum / SAMPLE_COUNT;
-    //printf("%d\n", average_amplitude);
 
-    if (average_amplitude > 1000) {
-      // also POST that it was loud
-      if (!posted) {
-        printf("Loudness detected. Amplitude %d\n", average_amplitude);
-        post_over_http();
+    if (average_amplitude < 100) {
+      // also POST that it was quiet
+      if (!wrote) {
+        printf("Silence detected\n");
+        wrote = true;
+      }
+
+      // keep track of how quiet it ever gets
+      if (average_amplitude < min_amplitude) {
+        min_amplitude = average_amplitude;
       }
     } else {
-      // reset posted
-      posted = false;
+      if (wrote) {
+        printf("Min amplitude: %d\n", min_amplitude);
+      }
+
+      // reset wrote
+      wrote = false;
+      min_amplitude = 100;
     }
 
     // increment sample index

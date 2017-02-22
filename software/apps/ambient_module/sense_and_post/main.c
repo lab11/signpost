@@ -85,7 +85,7 @@ static void post_over_http (void) {
   post_over_http_successful = true;
 
   // URL for an HTTP POST testing service
-  const char* url = "posttestserver.com/post.php";
+  const char* url = "httpbin.org/post";
 
   // http post data
   printf("--POSTing data--\n");
