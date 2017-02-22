@@ -37,8 +37,10 @@ static void post_over_http (void) {
     printf("Error posting: %d\n", response);
   } else {
     printf("\tResponse: %d\n", response);
-    posted = true;
   }
+
+  // don't try again until next loud noise
+  posted = true;
 }
 
 int main (void) {

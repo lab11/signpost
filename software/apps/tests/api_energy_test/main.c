@@ -15,18 +15,20 @@ static const uint8_t random_i2c_address = 0x50;
 int main (void) {
   printf("\n\n[Test] API: Energy\n");
 
-  signpost_initialization_module_init(
+  int rc = signpost_initialization_module_init(
       random_i2c_address,
       SIGNPOST_INITIALIZATION_NO_APIS);
+  if (rc < SUCCESS) {
+    printf("Signpost initialization error: %d\n", rc);
+  }
 
-  int rc;
   signpost_energy_information_t info;
 
   while (true) {
     printf("\nQuery Energy\n");
     printf(  "============\n\n");
     rc = signpost_energy_query(&info);
-    if (rc < 0) {
+    if (rc < SUCCESS) {
       printf("Error querying energy: %d\n\n", rc);
     } else {
       printf("Energy Query Result:\n");
