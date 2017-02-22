@@ -22,10 +22,12 @@ typedef struct api_handler {
 
 // Generic method to respond to any API Command with an Error
 // Callers MUST echo back the api_type and message_type of the bad message.
+__attribute__((warn_unused_result))
 int signpost_api_error_reply(uint8_t destination_address,
         signbus_api_type_t api_type, uint8_t message_type);
 
 // API layer send call
+__attribute__((warn_unused_result))
 int signpost_api_send(uint8_t destination_address,
                       signbus_frame_type_t frame_type,
                       signbus_api_type_t api_type,
@@ -67,14 +69,17 @@ typedef enum module_address {
 //                 The final element of this array MUST be NULL.
 //                 This array MUST be static (pointer must be valid forever).
 //                 Modules that implement no APIs MUST pass SIGNPOST_INITIALIZATION_NO_APIS.
+__attribute__((warn_unused_result))
 int signpost_initialization_module_init(
         uint8_t i2c_address,
         api_handler_t** api_handlers);
 
 // A special initialization routine for the controller module only.
+__attribute__((warn_unused_result))
 int signpost_initialization_controller_module_init(api_handler_t** api_handlers);
 
 // A special initialization routine for the storage master module only.
+__attribute__((warn_unused_result))
 int signpost_initialization_storage_master_init(api_handler_t** api_handlers);
 
 // Send a key exchange request to another module
@@ -82,6 +87,7 @@ int signpost_initialization_storage_master_init(api_handler_t** api_handlers);
 //
 // params:
 //  destination_address - The I2C address of the module to exchange keys with
+__attribute__((warn_unused_result))
 int signpost_initialization_key_exchange_send(uint8_t destination_address);
 
 // Send a response to a declare request
@@ -90,6 +96,7 @@ int signpost_initialization_key_exchange_send(uint8_t destination_address);
 // params:
 //  source_address  - The I2C address of the module that sent a declare request
 //  module_number   - The module slot that is currently isolated
+__attribute__((warn_unused_result))
 int signpost_initialization_declare_respond(uint8_t source_address, uint8_t module_number);
 
 // Send a response to a key exchange request
@@ -99,6 +106,7 @@ int signpost_initialization_declare_respond(uint8_t source_address, uint8_t modu
 //  source_address  - The I2C address of the module that sent a key exchange request
 //  ecdh_params     - The buffer of ecdh params sent in the InitializationKeyExchange message
 //  len             - The length of data in ecdh_params
+__attribute__((warn_unused_result))
 int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t* ecdh_params, size_t len);
 
 /**************************************************************************/
@@ -113,7 +121,9 @@ typedef struct {
    uint8_t value[8];
 } Storage_Record_t;
 
+__attribute__((warn_unused_result))
 int signpost_storage_write (uint8_t* data, size_t len, Storage_Record_t* record_pointer);
+__attribute__((warn_unused_result))
 int signpost_storage_write_reply (uint8_t destination_address, uint8_t* record_pointer);
 
 /**************************************************************************/
@@ -153,7 +163,9 @@ typedef struct{
    const uint8_t* body;
 } http_request;
 
+__attribute__((warn_unused_result))
 int signpost_networking_post(const char* url, http_request request, http_response* response);
+__attribute__((warn_unused_result))
 int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
@@ -176,11 +188,16 @@ enum processing_message_type {
 };
 
 //the edison path to the python module for servicing the rpc
+__attribute__((warn_unused_result))
 int signpost_processing_init(const char* path);
 
+__attribute__((warn_unused_result))
 int signpost_processing_oneway_send(uint8_t* buf, uint16_t len);
+__attribute__((warn_unused_result))
 int signpost_processing_twoway_send(uint8_t* buf, uint16_t len);
+__attribute__((warn_unused_result))
 int signpost_processing_twoway_receive(uint8_t* buf, uint16_t* len);
+__attribute__((warn_unused_result))
 int signpost_processing_reply(uint8_t src_addr, uint8_t message_type, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
@@ -205,8 +222,11 @@ typedef struct __attribute__((packed)) energy_information {
 
 _Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
 
+__attribute__((warn_unused_result))
 int signpost_energy_query(signpost_energy_information_t* energy);
+__attribute__((warn_unused_result))
 int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_app_callback_t cb);
+__attribute__((warn_unused_result))
 int signpost_energy_query_reply(uint8_t destination_address, signpost_energy_information_t* info);
 
 /**************************************************************************/
@@ -233,10 +253,14 @@ typedef struct __attribute__((packed)) {
     uint32_t longitude; // Longitude in microdegrees
 } signpost_timelocation_location_t;
 
+__attribute__((warn_unused_result))
 int signpost_timelocation_get_time(signpost_timelocation_time_t* time);
+__attribute__((warn_unused_result))
 int signpost_timelocation_get_location(signpost_timelocation_location_t* location);
 
+__attribute__((warn_unused_result))
 int signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_timelocation_time_t* time);
+__attribute__((warn_unused_result))
 int signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location);
 
 
