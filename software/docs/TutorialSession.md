@@ -1,6 +1,29 @@
 Signpost Tutorial
 =================
 
+## Dealing with problems
+
+You will definitely run into problems. This is research hardware and
+software still in its infancy. We really appreciate your patience.
+
+If everything is not working, try resetting other modules and then the
+`Controller Main`. Power cycling the entire board is a valid option too.
+
+Module Initialization can take several seconds to complete. The Controller
+should print the following once Initialization for a module is complete.
+
+```
+Module 0 granted isolation
+INIT: Registered address 0x51 as module 0
+```
+
+The Green Debug LED should be on for both modules. The Red Debug LED should
+be on before Initialization has completed and off afterwards. A blinking
+pattern on the Red Debug LED signifies that the application has crashed.
+
+Let us know if you're having problems and we will help out.
+
+
 ## Get the basics working
 
 ### Toolchain setup
@@ -144,6 +167,9 @@ Signpost Tutorial
     > Problem? Try `pip install --upgrade tockloader`. Should be at least v0.4.0
 
 4. Flash the application
+
+    **Note:** we do not need to re-flash the Controller kernel. The kernel can
+    remains on the microcontroller even as apps change.
 
     ```bash
     cd signpost/software/apps/tock_examples/c_hello/
@@ -390,6 +416,209 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 
 ## Testing the Signpost APIs
+
+[API Documentation](https://github.com/lab11/signpost/blob/master/software/docs/ApiGuide.md)
+
+### Set up the Signpost platform
+
+1. Flash the Storage Master kernel
+
+    **Important** Make sure the programming knob is turned to `MEM`.
+
+    ```bash
+    cd signpost/software/kernel/boards/storage_master/
+    make flash
+    ```
+
+2. Flash the Signpost Storage Master app
+
+    ```bash
+    cd signpost/software/apps/storage_master/signpost_storage_master
+    make flash
+    ```
+
+3. View Storage Master output
+
+    Connect a USB cable to the `Memory` USB plug.
+
+    ```bash
+    tockloader listen -d storage
+    ```
+
+    Hit the `Memory` reset button. (Near the USB plug)
+
+    A message should print that the Storage Master has detected an SD card and
+    initialized it.
+
+3. Flash the Signpost Controller app
+
+    **Important** Make sure the programming knob is turned to `MAIN`.
+
+    ```bash
+    cd signpost/software/apps/controller/signpost_controller_app/
+    make flash
+    ```
+
+4. View Controller output
+
+    Connect a USB cable to the `Main` USB plug.
+
+    ```bash
+    tockloader listen -d controller
+    ```
+
+    Hit the `Controller Main` reset button.
+
+    The Controller should print GPS updates once per second. GPS doesn't get a
+    fix indoors (or without an antenna) unfortunately, but the GPS module
+    starts with a default timestamp which it updates once per second.
+    ```
+    GPS Data: 1:56:02.2000 1/6/80
+      Latitude:   0 degrees
+      Longitude:  0 degrees
+      Status:     Invalid fix
+      Satellites: 0
+    ```
+
+    **Note:** we do have some GPS antennas with long cables which you can test
+    with if they are not in use. Flag us down.
+
+    Once every ten seconds it prints an Energy use update:
+    ```
+    Energy Data
+      Module 0 energy:            0 uAh
+      Module 1 energy:            0 uAh
+      Controller energy:       5624 uAh
+      Linux energy:               0 uAh
+    ```
+
+5. Flash the Debug Radio Module kernel
+
+    **Important** Make sure the programming knob is turned to `RADIO`.
+
+    ```bash
+    cd signpost/software/kernel/boards/debug_radio_module/
+    make flash
+    ```
+
+6. Flash the Signpost Debug Radio Module app
+
+    ```bash
+    cd signpost/software/apps/debug_radio_module/signpost_debug_radio_app/
+    make flash
+    ```
+
+### Set up the Ambient Module
+
+1. Plug the Ambient Module into the Module 0 slot
+
+2. Flash the Ambient Module kernel
+
+    **Important** Make sure the programming knob is turned to `MOD0`.
+
+    ```bash
+    cd signpost/software/kernel/boards/ambient_module/
+    make flash
+    ```
+
+3. Flash the hello app
+
+    ```bash
+    cd signpost/software/apps/hello_app/
+    make flash
+    ```
+
+4. View Ambient output
+
+    Connect a USB cable to the `Module 0` USB plug.
+
+    ```bash
+    tockloader listen -d module0
+    ```
+
+    Hit the `Module 0` reset button.
+
+### Test the Time and Location API
+
+[Time and Location API docs](https://github.com/lab11/signpost/blob/master/software/docs/ApiGuide.md#time)
+
+1. Look at the example code
+
+    [API Time and Location Test](https://github.com/lab11/signpost/blob/master/software/apps/tests/api_timelocation_test/main.c)
+
+2. Flash the Time and Location test app
+
+    **Important** Make sure the programming knob is turned to `MOD0`.
+
+    ```bash
+    cd signpost/software/apps/tests/api_timelocation_test/
+    make flash
+    ```
+
+    Hit the `Module 0` reset button.
+
+3. Open serial connections
+
+    Connect USB cables to both the `Controller Main` and `Module 0` USB plugs.
+
+    In one terminal window:
+    ```bash
+    tockloader listen -d controller
+    ```
+
+    In another terminal window:
+    ```bash
+    tockloader listen -d module0
+    ```
+
+4. Data output
+
+    If everything is successful, every five seconds `Module 0` should print
+    something resembling:
+    ```
+    Query Time
+      Current time: 2080/1/6 3:38:46 with 0 satellites
+    Query Location
+      Current location:
+	Latitude:   0
+	Longitude:  0
+      With 0 satellites
+    Sleeping for 5s
+    ```
+
+### Test the Storage API
+
+[Storage API docs](https://github.com/lab11/signpost/blob/master/software/docs/ApiGuide.md#time)
+
+1. Look at the example code
+
+    [API Storage Test](https://github.com/lab11/signpost/blob/master/software/apps/tests/api_storage_test/main.c)
+
+2. Flash the Storage test app
+
+3. View Ambient output
+
+4. View the Storage Master output
+
+### Test the Networking API
+
+[Networking API docs](https://github.com/lab11/signpost/blob/master/software/docs/ApiGuide.md#networking)
+
+1. Look at the example code
+
+    **XXX: NEED TO LINK THIS**
+    [API Simple Networking Test]()
+
+2. Flash the Networking test app
+
+3. View Ambient output
+
+4. Start the Debug Radio script
+
+
+
+
+
 
 
 ## Ambient Module

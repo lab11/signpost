@@ -31,7 +31,7 @@ int main (void) {
     if (rc < SUCCESS) {
       printf("Error querying time: %d\n\n", rc);
     } else {
-      printf("  Current time: %d/%d/%d %d:%d:%d with %d satellites\n", time.year, time.month, time.day, time.hours, time.minutes, time.seconds, time.satellite_count);
+      printf("  Current time: %d/%d/%d %d:%02d:%02d with %d satellites\n", time.year, time.month, time.day, time.hours, time.minutes, time.seconds, time.satellite_count);
     }
     printf("Query Location\n");
     rc = signpost_timelocation_get_location(&location);
