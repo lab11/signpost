@@ -16,15 +16,17 @@ at the top of your application.
 
 ##Contents
 1. [Initialization](#initialization)
-2. [Networking](#networking)
-3. [Simple Networking](#simple networking)
-3. [Posting to GDP](#posting to gdp)
-4. [Energy](#energy)
-5. [Time](#time)
-6. [Location](#location)
-7. [Processing](#processing)
+2. [Storage](#storage)
+3. [Networking](#networking)
+4. [Simple Networking](#simple networking)
+5. [Posting to GDP](#posting to gdp)
+6. [Energy](#energy)
+7. [Time](#time)
+8. [Location](#location)
+9. [Processing](#processing)
 
 ##Initialization
+
 Initialization registers a signpost module with the controller and sets up
 shared symmetric keys with other modules. For now, this method could take a few seconds to run
 because it must wait for the controller to perform key
@@ -48,6 +50,28 @@ by other modules. Addresses 0x20,0x21, and 0x22 are reserved. In the future
 we plan to add automatic address resolution so conflicting is not an issue.
 
 This is the first Signpost API function every module should call.
+
+##Storage
+
+Modules can storage data on an SD card that is on the control module.
+
+They can access this SD card through the storage API. Currently modules
+can only write to the SD card in an append only log. This would be good for
+storing long term data, and allowing the Intel Edison to access and 
+process that data. In the future we plan to allow modules to
+read data from the SD card, and make the SD card format the data in
+a filesystem readable by your computer, but these are still being implemented.
+
+To store data to the SD card:
+
+```c
+uint8_t data = {0x01, 0x02, 0x03};
+Storage_Record_t record;
+int result = signpost_storage_write(data, 3, &record);
+```
+
+where record could then be used by the Intel Edison to access the data, 
+or in the future by your module to read the data.
 
 ##Networking
 
@@ -131,7 +155,7 @@ int status = simple_octetstream_post("gdp.lab11.eecs.umich.edu/gdp/v1/
 ##Time
 
 The time API returns current time. If you care about time synchronization, 
-this _should_ be correlated with the Pulse Per Second (PPS) line routed to your module. 
+this _should_ be correlated with the pulse per second (PPS) line routed to your module. 
 To get time synchronization we recommend the following procedure:
 
     1. Listen for PPS
@@ -191,6 +215,61 @@ Location is valid if satellite_count >= 4.
 
 ##Energy
 
+This API is not implemented yet (it returns junk data).
+
+Here is our API proposal:
+
+```c
+signpost_energy_information_t energy;
+int result = signpost_energy_query(&energy);
+```
+
+where the energy structure is:
+
+```c
+typedef struct __attribute__((packed)) energy_information {
+    uint32_t    energy_limit_24h_mJ;
+    uint32_t    energy_used_24h_mJ;
+    uint16_t    current_average_mJDay;
+    uint8_t     energy_limit_warning_threshold;
+    uint8_t     energy_limit_critical_threshold;
+} signpost_energy_information_t;
+```
+
+The goal of this is to tell a module if they are using too much energy. The controller
+will occasionally update energy_limit_24h_mJ based on incoming energy from
+the solar panel. A module can see how much energy it has used
+over the past 24h window and the current_average_mJDay should allow a
+module to easily compare its current usage to the limit and see if it
+will exceed the limit.
+
 ##Processing
+
+The processing API allows a module to use the Intel Edison Linux computer
+on the signpost controller. Modules can access the Intel Edison
+through an RPC Abstraction. It consists of two parts:
+
+**Note that this is not completely working, but we are close.**
+
+**Initialization**
+
+```c
+int result = signpost_processing_init("/path/to/RPC")
+```
+
+where path to RPC is the location of a python module that implements
+your RPC functions on the Intel Edison (we eventually plan to allow this to also be a remote 
+path to a server or git repo).
+
+**RPC Calls**
+
+In module code, using the RPC interface is as simple as including
+your RPC header and calling the RPC. The RPC library handles getting
+this call from your module to the Intel Edison and returning a result.
+Writing the RPC definitions
+and implementing the python module to execute the RPC is more
+than we will cover in this document. Please see the [RPC documentation](./RPCApi.md)
+for more information.
+
 
 
