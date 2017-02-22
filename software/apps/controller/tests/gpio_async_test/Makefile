@@ -8,5 +8,5 @@ C_SRCS   := $(wildcard *.c)
 INCLUDE_PATHS += .
 
 # include makefile settings that are shared between applications
-include ../../AppMakefile.mk
+include ../../../AppMakefile.mk
 
