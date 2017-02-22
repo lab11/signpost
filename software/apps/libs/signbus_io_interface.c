@@ -168,6 +168,7 @@ int signbus_io_send(uint8_t dest, bool encrypted, uint8_t* data, size_t len) {
     while(toSend > 0) {
         uint8_t morePackets = 0;
         uint16_t offset = 0;
+        int rc;
 
         //calculate moreFragments
         morePackets = (toSend > MAX_DATA_LEN);
@@ -198,13 +199,17 @@ int signbus_io_send(uint8_t dest, bool encrypted, uint8_t* data, size_t len) {
 
         //send the packet in syncronous mode
         if(morePackets) {
-            i2c_master_slave_write_sync(dest,I2C_MAX_LEN);
-            i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+            rc = i2c_master_slave_write_sync(dest,I2C_MAX_LEN);
+            if (rc < 0) return rc;
+            rc = i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+            if (rc < 0) return rc;
             toSend -= MAX_DATA_LEN;
         } else {
             SIGNBUS_DEBUG_DUMP_BUF(master_write_buf, sizeof(signbus_network_header_t)+toSend);
-            i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
-            i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+            rc = i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
+            if (rc < 0) return rc;
+            rc = i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
+            if (rc < 0) return rc;
             toSend = 0;
         }
     }

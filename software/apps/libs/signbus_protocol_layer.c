@@ -103,6 +103,7 @@ int signbus_protocol_send(
         ) {
     uint8_t* key = addr_to_key(dest);
     bool encrypted;
+    int rc;
 
     SIGNBUS_DEBUG("dest %02x key %p clear_buf %p clear_buflen %d\n",
             dest, key, clear_buf, clear_buflen);
@@ -126,7 +127,6 @@ int signbus_protocol_send(
         // encrypt buf
         size_t encrypted_buf_used;
         uint8_t* encrypted_buf = protocol_buf + MBEDTLS_MAX_IV_LENGTH;
-        int rc;
         rc = cipher(MBEDTLS_ENCRYPT, key, iv,
                 clear_buf, clear_buflen,
                 encrypted_buf, &encrypted_buf_used);
@@ -144,7 +144,8 @@ int signbus_protocol_send(
 
     // hmac over current protocol payload
     uint8_t* hmac = protocol_buf + protocol_buf_used;
-    message_digest(key, protocol_buf, protocol_buf_used, hmac);
+    rc = message_digest(key, protocol_buf, protocol_buf_used, hmac);
+    if (rc < 0) return rc;
     protocol_buf_used += SHA256_LEN;
 
     // pass buffer to message
