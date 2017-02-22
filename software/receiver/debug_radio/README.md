@@ -8,7 +8,11 @@ URL inidates the GDP url, performs a GDP append.
 
 Installation
 ===========
-sudo pip install signpost-debug-radio
+```bash
+$ pip install signpost-debug-radio
+```
+This may require sudo.
+
 
 GDP Installation
 ===============
@@ -38,8 +42,14 @@ Signpost-debug-radio will try to automatically detect if you are plugged
 into the debug-radio USB port on the debugging backplane. You can also
 specify the port name manually by running
 
+
+```bash
+$ signpost-debug-radio
 ```
-signpost-debug-radio --port <port_name>
+or to specify a port name:
+
+```bash
+$ signpost-debug-radio --port <port_name>
 ```
 
 ##Appending to GDP
@@ -57,6 +67,7 @@ will print 1) whether the log existed and 2) if the append was successful.
 Upload to PyPI
 --------------
 Internal note.
+See wiki for account information.
 
-    python3 setup.py sdist
-    twine upload dist/signpost-debug-radio-X.X.X.tar.gz
+    python3 setup.py sdist bdist_wheel
+    twine upload dist/*
