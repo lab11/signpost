@@ -22,7 +22,7 @@ mount /dev/mmcblk1p1 /media/sdcard
 
 Copy the root filesystem to the sdcard, and unmount
 ```
-dd bs=4M if=/dev/mmcblk0p8 | pv | of=/media/sdcard/signpost-X.X.X.edison.root
+dd bs=4M if=/dev/mmcblk0p8 | pv | dd of=/media/sdcard/signpost-X.X.X.edison.root
 umount /media/sdcard
 ```
 Where `X.X.X` is the version you've deemed this image.
