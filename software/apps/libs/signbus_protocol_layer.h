@@ -3,6 +3,10 @@
 #include "signbus_app_layer.h"
 #include "signbus_protocol_layer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define SHA256_LEN 32
 #define ECDH_KEY_LENGTH 32
 
@@ -63,3 +67,7 @@ int signbus_protocol_recv_async(
     size_t recv_buflen,               // Buffer length
     uint8_t* recv_buf                 // Buffer to recieve into
     );
+
+#ifdef __cplusplus
+}
+#endif

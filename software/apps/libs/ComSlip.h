@@ -72,6 +72,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef uint8_t* (*TComSlipCbByteIndication)(uint8_t* rxBuffer, uint16_t length);
 
@@ -97,7 +100,10 @@ ComSlip_SendMessage(uint8_t* msg, uint16_t msgLength);
 void
 ComSlip_ProcessRxByte(uint8_t rxData);
 
-    
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // COMSLIP_H
 

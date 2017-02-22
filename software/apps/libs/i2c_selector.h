@@ -2,6 +2,10 @@
 
 #include "tock.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DRIVER_NUM_I2C_SELECTOR 101
 
 // Set a callback for this driver.
@@ -26,3 +30,7 @@ int i2c_selector_select_channels_sync(uint32_t channels);
 int i2c_selector_disable_all_channels_sync(void);
 int i2c_selector_read_interrupts_sync(void);
 int i2c_selector_read_selected_sync(void);
+
+#ifdef __cplusplus
+}
+#endif

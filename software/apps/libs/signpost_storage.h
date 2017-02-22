@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // error for attempting to read from an invalid record
 #define ENOHEADER -100
 
@@ -55,3 +59,6 @@ int32_t storage_read_record (Storage_Record_Pointer_t record, uint8_t* buf, size
 // initializes the SD card and storage system on top of it
 int32_t storage_initialize (void);
 
+#ifdef __cplusplus
+}
+#endif

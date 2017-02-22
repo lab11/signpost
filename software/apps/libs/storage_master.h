@@ -2,6 +2,10 @@
 
 #include "gpio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 ////////
 // GPIOs
 // Enum indicies must match array in <tock>/kernel/boards/storage_master/src/main.rs
@@ -28,3 +32,7 @@ enum LED_Pin_enum {
 
 void storage_master_enable_edison (void);
 void storage_master_wakeup_edison (void);
+
+#ifdef __cplusplus
+}
+#endif

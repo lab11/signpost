@@ -4,6 +4,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum signbus_frame_type {
     NotificationFrame = 0,
     CommandFrame = 1,
@@ -69,3 +73,7 @@ int signbus_app_recv_async(
         size_t recv_buflen,                 // Size of recv buffer
         uint8_t* recv_buf                   // Buffer to recieve message into
         );
+
+#ifdef __cplusplus
+}
+#endif

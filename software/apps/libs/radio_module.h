@@ -1,5 +1,8 @@
-#ifndef RADIO_MODULE_H
-#define RADIO_MODULE_H
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #define MOD_OUT     0
 #define MOD_IN      1
@@ -20,5 +23,6 @@
 #define GSM_RESET   13
 #define GSM_POWER_INT   14
 
-
+#ifdef __cplusplus
+}
 #endif

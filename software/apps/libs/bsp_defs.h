@@ -67,6 +67,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //------------------------------------------------------------------------------
 //
 // Standard Types
@@ -173,6 +177,10 @@ typedef signed long         INT32;
         (dstPtr)[1] = HIBYTE(LOWORD(value));    \
         (dstPtr)[2] = LOBYTE(HIWORD(value));    \
         (dstPtr)[3] = HIBYTE(HIWORD(value));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  //  __BSP_DEFS_H__
         

@@ -77,6 +77,9 @@
 #include <stdint.h>
 #include "RadioDefs.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 //------------------------------------------------------------------------------
@@ -262,5 +265,8 @@ iM880A_ResetRadioConfig(void);
 TWiMODLRResult
 iM880A_ResetRequest(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

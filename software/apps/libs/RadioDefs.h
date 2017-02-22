@@ -88,6 +88,9 @@
 #define RF_FSK_DATARATE_250_KBPS 1
 #define RF_FSK_DATARATE_MAX      RF_FSK_DATARATE_250_KBPS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //------------------------------------------------------------------------------
 //  RF Deviceaddress
@@ -278,6 +281,9 @@ typedef struct RadioMsg_T
 // Default Listen Before Talk Treshold: 0dBm
 #define COMRADIO_CFG_DEFAULT_LBTTHRESHOLD        0x0000
 
+#ifdef __cplusplus
+}
+#endif
 
 //------------------------------------------------------------------------------
 // eof

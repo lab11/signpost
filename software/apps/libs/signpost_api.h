@@ -1,5 +1,4 @@
-#ifndef SIGNPOST_API_H
-#define SIGNPOST_API_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -285,6 +284,4 @@ typedef enum {
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif

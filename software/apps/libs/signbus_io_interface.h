@@ -4,6 +4,10 @@
 #include <tock.h>
 #include "signbus_app_layer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Debugging macros
 
 // Get just the filename, no path
@@ -36,10 +40,6 @@
 //We need packets
 //Here's the proposed packet structure
 //1:ver,2:total len, 3bit flag, remaind fragment offset, src
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 // Defines for testing. These are arbitrary addresses.
 #define SIGNBUS_TEST_SENDER_I2C_ADDRESS   0x32

@@ -2,6 +2,10 @@
 
 #include "gpio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define MOD0_GPIO_ASYNC_PORT_NUM 0
 #define MOD1_GPIO_ASYNC_PORT_NUM 1
 #define MOD2_GPIO_ASYNC_PORT_NUM 2
@@ -87,3 +91,7 @@ void controller_module_disable_usb (module_num_t module_number);
 void controller_all_modules_disable_power (void);
 void controller_all_modules_disable_i2c (void);
 void controller_all_modules_disable_usb (void);
+
+#ifdef __cplusplus
+}
+#endif

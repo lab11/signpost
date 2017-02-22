@@ -7,6 +7,10 @@
 
 #include "tock.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DRIVER_NUM_GPS 109
 
 typedef struct {
@@ -42,3 +46,6 @@ void gps_sample (void (*callback)(gps_data_t*));
 // read from the gps console
 void getauto(char* str, size_t max_len, subscribe_cb cb, void* userdata);
 
+#ifdef __cplusplus
+}
+#endif

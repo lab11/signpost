@@ -2,6 +2,10 @@
 
 #define DRIVER_NUM_LTC2941 102
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum {
 	InterruptPinDisabled = 0,
 	InterruptPinChargeCompleteMode = 1,
@@ -79,3 +83,7 @@ int ltc2941_set_high_threshold_sync(uint16_t threshold);
 int ltc2941_set_low_threshold_sync(uint16_t threshold);
 int ltc2941_get_charge_sync(void);
 int ltc2941_shutdown_sync(void);
+
+#ifdef __cplusplus
+}
+#endif
