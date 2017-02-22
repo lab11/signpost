@@ -150,19 +150,17 @@ static void watchdog_tickler (int which) {
 }
 
 static void print_energy_data (int module, int energy) {
-  char buf[64];
   if (module == 3) {
-    snprintf(buf, 64, "  Controller energy: %10i uAh\n", energy);
+    printf("  Controller energy: %10i uAh\n", energy);
   } else if (module == 4) {
-    snprintf(buf, 64, "  Linux energy:      %10i uAh\n", energy);
+    printf("  Linux energy:      %10i uAh\n", energy);
   } else {
-    snprintf(buf, 64, "  Module %i energy:   %10i uAh\n", module, energy);
+    printf("  Module %i energy:   %10i uAh\n", module, energy);
   }
-  putstr(buf);
 }
 
 static void get_energy (void) {
-  putstr("\n\nEnergy Data\n");
+  printf("\n\nEnergy Data\n");
 
   for (int i=0; i<8; i++) {
     uint32_t energy;
@@ -474,7 +472,7 @@ static void gps_callback (gps_data_t* gps_data) {
 }
 
 int main (void) {
-  putstr("[Controller] ** Main App **\n");
+  printf("[Controller] ** Main App **\n");
 
   ///////////////////
   // Local Operations
@@ -484,7 +482,7 @@ int main (void) {
 
   // Configure FRAM
   // --------------
-  putstr("Configuring FRAM\n");
+  printf("Configuring FRAM\n");
   fm25cl_set_read_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
@@ -510,13 +508,13 @@ int main (void) {
 
   // Setup GPS
   // ---------
-  putstr("GPS\n");
+  printf("GPS\n");
   gps_init();
 
 
   // Timers
   // ------
-  putstr("Starting timers\n");
+  printf("Starting timers\n");
   timer_subscribe(energy_timer_callback, NULL);
   bonus_timer_subscribe(gps_timer_callback, NULL);
 
@@ -536,11 +534,11 @@ int main (void) {
   // -----------------
 
   // Configure all the I2C selectors
-  putstr("Init'ing energy\n");
+  printf("Init'ing energy\n");
   signpost_energy_init();
 
   // Reset all of the LTC2941s
-  putstr("Resetting energy\n");
+  printf("Resetting energy\n");
   signpost_energy_reset();
 
 
@@ -577,9 +575,9 @@ int main (void) {
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();
 
-  putstr("Everything intialized\n");
+  printf("Everything intialized\n");
 
-  putstr("Entering loop\n");
+  printf("Entering loop\n");
   while(1) {
     delay_ms(2000);
     priv_timer_callback(0, 0, 0, NULL);
