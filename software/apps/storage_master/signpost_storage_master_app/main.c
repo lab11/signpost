@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 #include <i2c_master_slave.h>
+#include <led.h>
 #include <sdcard.h>
 #include <timer.h>
 #include <tock.h>
