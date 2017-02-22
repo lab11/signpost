@@ -5,6 +5,18 @@ PLATFORM=audio_module
 
 include ../../../kernel/tock/Makefile.common
 
+
+
+# XXX This is a bit ugly, but is a nice feature
+target/$(CHIP)/release/$(PLATFORM):	src/version.rs
+
+.PHONY: FORCE
+VCMD := echo \"pub static GIT_VERSION: &'static str = \\\"$$(git describe --always || echo notgit)\\\";\"
+src/version.rs: FORCE
+	@bash -c "cmp -s <($(VCMD)) <(test -e $@ && cat $@) || $(VCMD) > $@"
+
+
+
 TOCKLOADER=tockloader
 
 JLINK=JLinkExe

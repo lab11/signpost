@@ -25,6 +25,7 @@ use sam4l::usart;
 // For panic!()
 #[macro_use]
 pub mod io;
+pub mod version;
 
 
 unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {
@@ -361,6 +362,10 @@ pub unsafe fn reset_handler() {
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
-    debug!("Board setup complete");
+    debug!("Running {} Version {} from git {}",
+           env!("CARGO_PKG_NAME"),
+           env!("CARGO_PKG_VERSION"),
+           version::GIT_VERSION,
+           );
     kernel::main(&signpost_storage_master, &mut chip, load_processes(), &signpost_storage_master.ipc);
 }

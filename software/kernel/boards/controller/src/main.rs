@@ -24,7 +24,6 @@ use sam4l::usart;
 // For panic!()
 #[macro_use]
 pub mod io;
-
 pub mod version;
 
 unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {

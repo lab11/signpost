@@ -4,7 +4,7 @@
 
 extern crate cortexm4;
 extern crate capsules;
-#[macro_use(static_init)]
+#[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;
 
@@ -23,6 +23,7 @@ use sam4l::usart;
 // For panic!()
 #[macro_use]
 pub mod io;
+pub mod version;
 
 
 unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {
@@ -255,11 +256,16 @@ pub unsafe fn reset_handler() {
         ipc: kernel::ipc::IPC::new(),
     };
 
-	module.gps_console.initialize();
+    module.gps_console.initialize();
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
 
+    debug!("Running {} Version {} from git {}",
+           env!("CARGO_PKG_NAME"),
+           env!("CARGO_PKG_VERSION"),
+           version::GIT_VERSION,
+           );
     kernel::main(&module, &mut chip, load_processes(), &module.ipc);
 }
