@@ -30,8 +30,8 @@ impl Default for App {
     }
 }
 
-pub static mut WRITE_BUF: [u8; 200] = [0; 200];
-pub static mut READ_BUF: [u8; 500] = [0; 500];
+pub static mut WRITE_BUF: [u8; 512] = [0; 512];
+pub static mut READ_BUF: [u8; 1024] = [0; 1024];
 
 pub struct Console<'a, U: UARTAdvanced + 'a> {
     uart: &'a U,
