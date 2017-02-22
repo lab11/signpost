@@ -70,7 +70,7 @@ const char* url = "httpbin.org/post";
 http_request request;
 http_header h;
 h.header = "content-type";
-h.value = "application/octet-stream;
+h.value = "application/octet-stream";
 r.num_headers = 1;
 r.headers = &h;
 r.body_len = 20;
@@ -128,11 +128,68 @@ int status = simple_octetstream_post("gdp.lab11.eecs.umich.edu/gdp/v1/
                                       edu.umich.eecs.lab11/fake-data/append", data, 3);
 ```
 
-##Energy
-
 ##Time
 
+The time API returns current time. If you care about time synchronization, 
+this _should_ be correlated with the Pulse Per Second (PPS) line routed to your module. 
+To get time synchronization we recommend the following procedure:
+
+    1. Listen for PPS
+    2. Start timer  
+    3. Perform time request
+    4. Wait for response
+    5. If response happens in <1s, the next PPS will be response_time + 1s, otherwise, retry.
+
+This should be able to provide every module with global time sync with error 
+around the delay it takes for tock to propagate the PPS signal up to your app (which
+we believe to be much greater than error from GPS or propagation delay). Tock is
+not an RTOS. 
+
+To use the time API declare a time structure, and call the time API function:
+
+```c
+signpost_timelocation_time_t time;
+int result_code = signpost_timelocation_get_time(&time);
+```
+
+The time structure provides the fields:
+
+```c
+typedef struct __attribute__((packed)) {
+    uint16_t year;
+    uint8_t month;
+    uint8_t day;
+    uint8_t hours;
+    uint8_t minutes;
+    uint8_t seconds;
+    uint8_t satellite_count;
+} signpost_timelocation_time_t;
+```
+
+The time will be valid if satellite_count > 0.
+
 ##Location
+
+The location API provides location from the GPS. To use the location API:
+
+```c
+signpost_timelocation_location_t location;
+int result_code = signpost_timelocation_get_location(&location);
+```
+
+The location structure provides the fields:
+
+```c
+typedef struct __attribute__((packed)) {
+    float latitude;
+    float longitude;
+    uint8_t satellite_count;
+} signpost_timelocation_location_t;
+```
+
+Location is valid if satellite_count >= 4.
+
+##Energy
 
 ##Processing
 
