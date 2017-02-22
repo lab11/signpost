@@ -15,14 +15,14 @@ the APIs. To use these APIs you must
 at the top of your application.
 
 ##Contents
-1. [Initialization](#Initialization)
-2. [Networking](#Networking)
-3. [Simple Networking](#Simple Networking)
-3. [Posting to GDP](#Posting to GDP)
-4. [Energy](#Energy)
-5. [Time](#Time)
-6. [Location](#Location)
-7. [Processing](#Processing)
+1. [Initialization](#initialization)
+2. [Networking](#networking)
+3. [Simple Networking](#simple networking)
+3. [Posting to GDP](#posting to gdp)
+4. [Energy](#energy)
+5. [Time](#time)
+6. [Location](#location)
+7. [Processing](#processing)
 
 ##Initialization
 Initialization registers a signpost module with the controller and sets up
