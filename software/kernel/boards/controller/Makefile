@@ -13,7 +13,7 @@ target/$(CHIP)/release/$(PLATFORM):	src/version.rs
 .PHONY: FORCE
 VCMD := echo \"pub static GIT_VERSION: &'static str = \\\"$$(git describe --always || echo notgit)\\\";\"
 src/version.rs: FORCE
-	bash -c "diff <($(VCMD)) <(cat $@) || $(VCMD) > $@"
+	@bash -c "cmp -s <($(VCMD)) <(test -e $@ && cat $@) || $(VCMD) > $@"
 
 
 TOCKLOADER=tockloader
