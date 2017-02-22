@@ -27,6 +27,14 @@ their projects.
 
 <br />
 
+Getting Started
+---------------
+
+Clone this repo then run a `git submodule update --init --recursive`.
+
+After that, follow the instructions for [flashing individual modules](software/kernel/boards/).
+
+
 Architecture
 ------------
 
