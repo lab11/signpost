@@ -39,12 +39,11 @@ static bool post_over_http_successful = true;
 
 static void sample_sensors (void) {
   // read data from sensors and save locally
-  int err_code = SUCCESS;
   sample_sensors_successful = true;
 
   // get light
   int light = 0;
-  err_code = isl29035_read_light_intensity();
+  int err_code = isl29035_read_light_intensity();
   if (err_code < SUCCESS) {
     printf("Error reading from light sensor: %d\n", light);
   } else {
@@ -81,7 +80,6 @@ static void sample_sensors (void) {
 
 static void post_over_http (void) {
   // post sensor data over HTTP and get response
-  int err_code = SUCCESS;
   post_over_http_successful = true;
 
   // URL for an HTTP POST testing service
@@ -92,12 +90,9 @@ static void post_over_http (void) {
   int response = simple_octetstream_post(url, (uint8_t*)&samples, sizeof(Sensor_Data_t));
   if (response < SUCCESS) {
     printf("Error posting: %d\n", response);
+    post_over_http_successful = false;
   } else {
     printf("\tResponse: %d\n", response);
-  }
-
-  if (err_code != SUCCESS) {
-    post_over_http_successful = false;
   }
 }
 
@@ -126,8 +121,8 @@ int main (void) {
   printf(" * Bus initialized\n");
 
   // set up watchdog
-  // Resets after 10 seconds without a valid response
-  app_watchdog_set_kernel_timeout(10000);
+  // Resets after 30 seconds without a valid response
+  app_watchdog_set_kernel_timeout(30000);
   app_watchdog_start();
   printf(" * Watchdog started\n");
 
