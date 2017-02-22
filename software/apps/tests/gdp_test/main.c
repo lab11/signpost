@@ -15,14 +15,14 @@
 
 
 int main (void) {
-  putstr("[GDP_test] ** Main App **\n");
+  printf("[GDP_test] ** Main App **\n");
 
   /////////////////////////////
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
   signpost_initialization_module_init(0x28, NULL);
-  putstr("Initialized\n");
+  printf("Initialized\n");
   uint8_t test_data[2000];
 
   while(1) {
@@ -31,9 +31,9 @@ int main (void) {
 
       int result = simple_octetstream_post(url, test_data, 20);
       if(result == 200) {
-        putstr("Append successful\n");
+        printf("Append successful\n");
       } else {
-        putstr("Append failed\n");
+        printf("Append failed\n");
       }
 
       delay_ms(5000);

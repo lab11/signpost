@@ -31,9 +31,14 @@ int main (void) {
 
     while(1) {
         uint8_t src;
-        uint32_t len;
+        int len;
         bool enc;
+        int rc;
         len = signbus_io_recv(BUFFER_SIZE, message_buf, &enc, &src);
+        if (len < 0) {
+            printf(" - Err from signbus_io_recv %d\n", len);
+            continue;
+        }
 
         if(message_buf[0] == RPC_REQUEST) {
             //use len > 1 to make sure that someone isn't just setting
@@ -42,7 +47,11 @@ int main (void) {
                 gpio_clear(2);
                 rpc_pending = 1;
                 memcpy(request_buf, message_buf+1,len-1);
-                signbus_io_set_read_buffer(request_buf,len-1);
+                rc = signbus_io_set_read_buffer(request_buf,len-1);
+                if (rc < 0) {
+                    printf(" - signbus_io_read_buffer error %d\n", rc);
+                    continue;
+                }
                 return_address = src;
                 storage_master_wakeup_edison();
             }
@@ -51,7 +60,11 @@ int main (void) {
             gpio_set(2);
             memcpy(return_buf, message_buf+1,len-1);
             rpc_pending = 0;
-            signbus_io_send(return_address, 0, return_buf, len-1);
+            rc = signbus_io_send(return_address, 0, return_buf, len-1);
+            if (rc < 0) {
+                printf(" - signbus_io_send error %d\n", rc);
+                continue;
+            }
         }
     }
 }

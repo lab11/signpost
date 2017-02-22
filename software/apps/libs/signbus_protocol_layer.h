@@ -12,6 +12,7 @@
 /// the payload with simply be HASHed.
 ///
 /// Returns number of bytes sent, or < 0 on failure
+__attribute__((warn_unused_result))
 int signbus_protocol_send(
     uint8_t dest,                     // Address to send to
     uint8_t* (*addr_to_key)(uint8_t), // Translation function from address -> key
@@ -24,6 +25,7 @@ int signbus_protocol_send(
 ///     protocol layer will check HMAC and decrypt with AES256-CTR. If NULL, protocol
 ///     layer will simply check HASH. Must be the same key used to encrypt.
 /// Returns length of decrypted/authenticated buffer on success, < 0 on error.
+__attribute__((warn_unused_result))
 int signbus_protocol_recv(
     uint8_t *sender_address,          // I2C address of sender
     uint8_t* (*addr_to_key)(uint8_t), // Translation function from address-> key
@@ -53,6 +55,7 @@ void signbus_protocol_setup_async(
 /// len_or_rc is number of bytes received of < 0 on error.
 typedef void (*signbus_protocol_callback_t)(int len_or_rc);
 
+__attribute__((warn_unused_result))
 int signbus_protocol_recv_async(
     signbus_protocol_callback_t cb,   // Called when recv operation completes
     uint8_t* sender_address,          // I2C address of sender

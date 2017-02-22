@@ -24,6 +24,7 @@ typedef enum signbus_api_type {
 
 /// Blocking method to send a message
 /// Returns < 0 on failure.
+__attribute__((warn_unused_result))
 int signbus_app_send(
         uint8_t dest,                       // I2C address of destination
         uint8_t* (*addr_to_key)(uint8_t),   // Translation function from address -> key
@@ -36,6 +37,7 @@ int signbus_app_send(
 
 /// Blocking method to receive a message
 /// Returns < 0 on failure.
+__attribute__((warn_unused_result))
 int signbus_app_recv(
         uint8_t *sender_address,            // I2C address of sender
         uint8_t* (*addr_to_key)(uint8_t),   // Translation function from address -> key
@@ -54,6 +56,7 @@ typedef void (signbus_app_callback_t)(int);
 /// Non-blocking method to receive a message
 /// All parameters must remain valid until the callback method executes
 /// Returns < 0 on failure.
+__attribute__((warn_unused_result))
 int signbus_app_recv_async(
         signbus_app_callback_t callback,    // Function to call when message received
         uint8_t *sender_address,            // I2C address of sender

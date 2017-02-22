@@ -61,7 +61,8 @@ static void cb(int len_or_rc) {
     recent_message = true;
 
     // Listen for another message (re-using the same buffers)
-    signbus_app_recv_async(
+    int rc;
+    rc = signbus_app_recv_async(
             cb,
             &sender_address,
             addr_to_key,
@@ -73,6 +74,9 @@ static void cb(int len_or_rc) {
             1024,
             message_buffer
             );
+    if (rc < 0) {
+        printf("signbus_app_recv_async error %d\n", rc);
+    }
 }
 
 
@@ -81,10 +85,12 @@ int main(void) {
 
     printf("RECEIVER: Begin listening\n\n");
 
+    int rc;
+
     signpost_entropy_init();
     signbus_io_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS);
     signbus_protocol_setup_async(protocol_buffer, 1024);
-    signbus_app_recv_async(
+    rc = signbus_app_recv_async(
             cb,
             &sender_address,
             addr_to_key,
@@ -96,6 +102,9 @@ int main(void) {
             1024,
             message_buffer
             );
+    if (rc < 0) {
+        printf("signbus_app_recv_async error %d\n", rc);
+    }
     while(1) {
         delay_ms(INTERVAL_IN_MS);
         if (recent_message == false) {

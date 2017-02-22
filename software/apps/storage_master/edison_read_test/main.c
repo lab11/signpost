@@ -212,23 +212,25 @@ static void slave_read_callback (int err) {
   } else {
     // slave read complete, provide a new buffer
     printf("I2C slave read complete!\n");
-    signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
+    err = signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
+    if (err < 0) {
+      printf(" - signbus_io_set_read_buffer error %d\n", err);
+    }
   }
 }
 
 int main (void) {
-
-  int err = SUCCESS;
+  int rc;
   printf("\n[Storage Master]\n** Storage API Test **\n");
 
     gpio_enable_output(2);
     gpio_set(2);
 
   // set up the SD card and storage system
-  err = storage_initialize();
-  if (err != SUCCESS) {
+  rc = storage_initialize();
+  if (rc != SUCCESS) {
     printf(" - Storage initialization failed\n");
-    return err;
+    return rc;
   }
 
   // Install hooks for the signpost APIs we implement
@@ -244,7 +246,11 @@ int main (void) {
 
   // Setup I2C slave reads
   signbus_io_set_read_callback(slave_read_callback);
-  signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
+  rc = signbus_io_set_read_buffer(slave_read_buf, SLAVE_READ_LEN);
+  if (rc < 0) {
+    printf(" - Failed to setup I2C slave read buffer\n");
+    return rc;
+  }
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);

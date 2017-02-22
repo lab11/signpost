@@ -53,6 +53,7 @@ void signbus_io_init(
 
 /// synchronous send
 /// Returns number of bytes sent or < 0 on error.
+__attribute__((warn_unused_result))
 int signbus_io_send(
     uint8_t dest,                     // Address to send to
     bool encrypted,                   // Is buffer encrypted?
@@ -62,6 +63,7 @@ int signbus_io_send(
 
 /// synchronous receive
 /// Returns number of bytes recieved or < 0 on error.
+__attribute__((warn_unused_result))
 int signbus_io_recv(
     size_t   recv_buflen,             // Buffer length
     uint8_t* recv_buf,                // Buffer to receive into
@@ -75,6 +77,7 @@ typedef void (*signbus_io_callback_t)(int len_or_rc);
 
 /// async receive
 /// Returns < 0 on error.
+__attribute__((warn_unused_result))
 int signbus_io_recv_async(
     signbus_io_callback_t callback,   // Called when recv operation completes
     size_t   recv_buflen,             // Buffer length
@@ -86,6 +89,7 @@ int signbus_io_recv_async(
 /// API for slave reads
 
 //set the read buffer
+__attribute__((warn_unused_result))
 int signbus_io_set_read_buffer(uint8_t* data, uint32_t len);
 
 void signbus_io_set_read_callback(signbus_app_callback_t* callback);
