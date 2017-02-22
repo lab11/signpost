@@ -204,6 +204,7 @@ static void get_energy (void) {
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
 
+  /*
   uint8_t energy_datum[18];
 
   // My address
@@ -228,7 +229,6 @@ static void get_energy (void) {
   energy_datum[16] = (uint8_t) (((fram.energy_module7 / 1000) >> 8) & 0xFF);
   energy_datum[17] = (uint8_t) ((fram.energy_module7 / 1000) & 0xFF);
 
-  /*
   //make a post url
   const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/energy_datum/append";
   http_request r;
@@ -411,6 +411,7 @@ static void gps_callback (gps_data_t* gps_data) {
   _current_latitude = gps_data->latitude;
   _current_longitude = gps_data->longitude;
 
+  /*
   uint8_t gps_datum[18];
 
   // My address
@@ -439,7 +440,6 @@ static void gps_callback (gps_data_t* gps_data) {
   gps_datum[16] = (uint8_t) (gps_data->fix & 0xFF);
   gps_datum[17] = (uint8_t) (gps_data->satellite_count & 0xFF);
 
-  /*
   //make a post url
   const char* url = "gdp.lab11.eecs.umich.edu/gdp/v1/gps_datum/append";
   http_request r;
