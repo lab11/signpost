@@ -17,11 +17,20 @@
 int main (void) {
   printf("[GDP_test] ** Main App **\n");
 
+  int rc;
+
   /////////////////////////////
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
-  signpost_initialization_module_init(0x28, NULL);
+  do {
+    rc = signpost_initialization_module_init(0x28, NULL);
+    if (rc < 0) {
+      printf(" - Error initializing module (code: %d). Sleeping 5s.\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
+
   printf("Initialized\n");
   uint8_t test_data[2000];
 
