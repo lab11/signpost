@@ -82,7 +82,9 @@ Signpost Tutorial
  * JLink programmer
  * 2x USB micro cables
  * 5v power supply
- * Control Module (with Intel Edison and SD card)
+ * Control Module
+    - With an Intel Edison plugged into the back
+    - With an SD card in the slot on the back
  * Audio Module
  * Ambient Module
 
