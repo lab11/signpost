@@ -259,15 +259,33 @@ static void get_energy (void) {
   //}
 }
 
+static void api_error_looper(
+    uint8_t source_address,
+    signbus_api_type_t api_type,
+    uint8_t message_type) {
+  int rc;
+  int tries = 5;
+  do {
+    rc = signpost_api_error_reply(source_address, api_type, message_type);
+    if (rc < 0) {
+      tries--;
+      printf(" - %d: Error sending signpost reply to 0x%02x (code: %d).\n", __LINE__, source_address, rc);
+      printf(" - %d: Sleeping 1s. Tries remaining %d\n", __LINE__, tries);
+      delay_ms(1000);
+    }
+  } while ( (tries > 0) && (rc < 0) );
+}
+
 static void initialization_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, __attribute__ ((unused)) size_t message_length,
     uint8_t* message) {
     if (api_type != InitializationApiType) {
-      signpost_api_error_reply(source_address, api_type, message_type);
+      api_error_looper(source_address, api_type, message_type);
       return;
     }
     int module_number;
+    int rc;
     switch (frame_type) {
         case NotificationFrame:
             // XXX unexpected, drop
@@ -279,12 +297,20 @@ static void initialization_api_callback(uint8_t source_address,
                     if (mod_isolated_out < 0 && source_address != ModuleAddressStorage) return;
                     if (source_address == ModuleAddressStorage) module_number = 4;
                     else module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
-                    signpost_initialization_declare_respond(source_address, module_number);
+                    rc = signpost_initialization_declare_respond(source_address, module_number);
+                    if (rc < 0) {
+                      printf(" - %d: Error responding to initialization declare request for module %d at address 0x%02x. Dropping.\n",
+                          __LINE__, module_number, source_address);
+                    }
                     break;
                 case InitializationKeyExchange:
                     // Prepare and reply ECDH key exchange
-                    signpost_initialization_key_exchange_respond(source_address,
+                    rc = signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
+                    if (rc < 0) {
+                      printf(" - %d: Error responding to key exchange at address 0x%02x. Dropping.\n",
+                          __LINE__, source_address);
+                    }
                     break;
                 //exchange module
                 //get mods
@@ -306,9 +332,11 @@ static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
   if (api_type != EnergyApiType) {
-    signpost_api_error_reply(source_address, api_type, message_type);
+    api_error_looper(source_address, api_type, message_type);
     return;
   }
+
+  int rc;
 
   if (frame_type == NotificationFrame) {
     // XXX unexpected, drop
@@ -322,15 +350,19 @@ static void energy_api_callback(uint8_t source_address,
       info.energy_limit_warning_threshold = 5;
       info.energy_limit_critical_threshold = 6;
 
-      signpost_energy_query_reply(source_address, &info);
+      rc = signpost_energy_query_reply(source_address, &info);
+      if (rc < 0) {
+        printf(" - %d: Error sending energy query reply (code: %d). Replying with fail.\n", __LINE__, rc);
+        api_error_looper(source_address, api_type, message_type);
+      }
     } else if (message_type == EnergyLevelWarning24hMessage) {
-      signpost_api_error_reply(source_address, api_type, message_type);
+      api_error_looper(source_address, api_type, message_type);
     } else if (message_type == EnergyLevelCritical24hMessage) {
-      signpost_api_error_reply(source_address, api_type, message_type);
+      api_error_looper(source_address, api_type, message_type);
     } else if (message_type == EnergyCurrentWarning60sMessage) {
-      signpost_api_error_reply(source_address, api_type, message_type);
+      api_error_looper(source_address, api_type, message_type);
     } else {
-      signpost_api_error_reply(source_address, api_type, message_type);
+      api_error_looper(source_address, api_type, message_type);
     }
   } else if (frame_type == ResponseFrame) {
     // XXX unexpected, drop
@@ -343,8 +375,10 @@ static void energy_api_callback(uint8_t source_address,
 static void timelocation_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
+  int rc;
+
   if (api_type != TimeLocationApiType) {
-    signpost_api_error_reply(source_address, api_type, message_type);
+    api_error_looper(source_address, api_type, message_type);
     return;
   }
 
@@ -361,13 +395,21 @@ static void timelocation_api_callback(uint8_t source_address,
       time.hours = _current_hour;
       time.minutes = _current_minute;
       time.seconds = _current_second;
-      signpost_timelocation_get_time_reply(source_address, &time);
+      rc = signpost_timelocation_get_time_reply(source_address, &time);
+      if (rc < 0) {
+        printf(" - %d: Error sending TimeLocationGetTimeMessage reply (code: %d). Replying with fail.\n", __LINE__, rc);
+        api_error_looper(source_address, api_type, message_type);
+      }
 
     } else if (message_type == TimeLocationGetLocationMessage) {
       signpost_timelocation_location_t location;
       location.latitude = _current_latitude;
       location.longitude = _current_longitude;
-      signpost_timelocation_get_location_reply(source_address, &location);
+      rc = signpost_timelocation_get_location_reply(source_address, &location);
+      if (rc < 0) {
+        printf(" - %d: Error sending TimeLocationGetLocationMessage reply (code: %d). Replying with fail.\n", __LINE__, rc);
+        api_error_looper(source_address, api_type, message_type);
+      }
     }
   } else if (frame_type == ResponseFrame) {
     // XXX unexpected, drop
@@ -474,6 +516,8 @@ static void gps_callback (gps_data_t* gps_data) {
 int main (void) {
   printf("[Controller] ** Main App **\n");
 
+  int rc;
+
   ///////////////////
   // Local Operations
   // ================
@@ -553,7 +597,14 @@ int main (void) {
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
   static api_handler_t timelocation_handler = {TimeLocationApiType, timelocation_api_callback};
   static api_handler_t* handlers[] = {&init_handler, &energy_handler, &timelocation_handler, NULL};
-  signpost_initialization_controller_module_init(handlers);
+  do {
+    rc = signpost_initialization_controller_module_init(handlers);
+    if (rc < 0) {
+      printf(" - Error initializing as controller module with signpost library (code: %d)\n", rc);
+      printf("   Sleeping 5s\n");
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   // Setup backplane by enabling the modules
   controller_init_module_switches();
