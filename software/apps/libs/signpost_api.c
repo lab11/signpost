@@ -37,14 +37,11 @@ uint8_t* signpost_api_addr_to_key(uint8_t addr) {
     for (size_t i = 0; i < NUM_MODULES; i++) {
         if (addr == module_info.i2c_address_mods[i] && module_info.haskey[i]) {
             uint8_t* key = module_info.keys[i];
-            printf("key: %p: 0x%02x%02x%02x...%02x\n", key,
+            SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
                     key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
             return key;
         }
     }
-
-    printf("WARN: Encryption key lookup for I2C address 0x%02x failed.\n", addr);
-    printf("      This will likely result in a HMAC failure and a message drop.\n");
 
     SIGNBUS_DEBUG("key: NULL\n");
     return NULL;
