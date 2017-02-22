@@ -333,7 +333,7 @@ static void timelocation_api_callback(uint8_t source_address,
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
-  printf("\n\nGPS Data: %d:%d:%d.%lu %d/%d/%d\n",
+  printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
           gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
           gps_data->month, gps_data->day, gps_data->year
           );
