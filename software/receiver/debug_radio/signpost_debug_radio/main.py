@@ -44,8 +44,8 @@ class FakeRadio:
         # one to use
         if port == None:
             print('No serial port specified. Discovering attached serial devices...')
-            # Start by looking for one with "fake_radio" in the description
-            ports = list(serial.tools.list_ports.grep('fake_radio'))
+            # Start by looking for one with "Signpost-Debug-Radio" in the description
+            ports = list(serial.tools.list_ports.grep('Signpost-Debug-Radio'))
             if len(ports) > 0:
                 # Use the first one
                 print('Using "{}"'.format(ports[0]))
