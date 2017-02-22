@@ -71,11 +71,15 @@ $(ERPC_OBJS):	$(ERPC_H_SRCS) $(ERPC_CXX_SRCS)
 
 # Sigh. I _really_ try to avoid copying these build rules around, but it'll
 # have to do for now:
+#
+# XXX erpcgen-generated code generates some warnings :(
+ERPC_CPPFLAGS += -Wno-old-style-cast -Wno-zero-as-null-pointer-constant
+#
 $(BUILDDIR)/%.o: $(ERPC_BUILDDIR)/%.cpp | $(BUILDDIR)
 	$(TRACE_DEP)
-	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) -MF"$(@:.o=.d)" -MG -MM -MP -MT"$(@:.o=.d)@" -MT"$@" "$<"
+	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(ERPC_CPPFLAGS) -MF"$(@:.o=.d)" -MG -MM -MP -MT"$(@:.o=.d)@" -MT"$@" "$<"
 	$(TRACE_CXX)
-	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(ERPC_CPPFLAGS) -c -o $@ $<
 
 $(ERPC_BUILDDIR):
 	@mkdir -p $(ERPC_BUILDDIR)
