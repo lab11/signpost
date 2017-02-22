@@ -6,12 +6,12 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <timer.h>
+#include <tock.h>
+
 #include "app_watchdog.h"
 #include "signpost_api.h"
-#include "tock.h"
-#include "console.h"
 #include "simple_post.h"
-#include "timer.h"
 
 
 int main (void) {

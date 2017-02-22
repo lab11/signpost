@@ -1,16 +1,16 @@
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
-#include "tock.h"
-#include "console.h"
-#include "signpost_energy.h"
-#include "i2c_selector.h"
+#include <tock.h>
+#include <timer.h>
+
 #include "controller.h"
-#include "timer.h"
+#include "i2c_selector.h"
+#include "signpost_energy.h"
 
 static void print_data (int module, int energy) {
   char buf[64];

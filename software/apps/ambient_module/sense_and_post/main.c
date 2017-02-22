@@ -1,19 +1,19 @@
 // Runs on the ambient module. Reads sensor data and HTTP Posts it over the
 // Signpost API
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 // tock includes
-#include "led.h"
-#include "isl29035.h"
-#include "si7021.h"
-#include "timer.h"
-#include "tock.h"
+#include <isl29035.h>
+#include <led.h>
+#include <si7021.h>
+#include <timer.h>
+#include <tock.h>
 
 // signpost includes
 #include "app_watchdog.h"

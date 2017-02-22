@@ -1,16 +1,16 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-#include "console.h"
-#include "gpio.h"
-#include "i2c_master_slave.h"
+#include <gpio.h>
+#include <i2c_master_slave.h>
+#include <timer.h>
+#include <tock.h>
+
 #include "signbus_io_interface.h"
-#include "timer.h"
-#include "tock.h"
 
 int main (void) {
     uint8_t data[1024];

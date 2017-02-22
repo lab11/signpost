@@ -1,11 +1,10 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-#include <console.h>
 #include <gpio.h>
 #include <tock.h>
 

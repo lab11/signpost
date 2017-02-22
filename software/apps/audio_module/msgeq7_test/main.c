@@ -1,17 +1,15 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <unistd.h>
 
+#include <adc.h>
+#include <app_watchdog.h>
+#include <gpio.h>
+#include <led.h>
+#include <timer.h>
 #include <tock.h>
-#include <console.h>
-#include "gpio.h"
-#include "led.h"
-#include "adc.h"
-#include "app_watchdog.h"
-#include "timer.h"
 
 #include "signpost_api.h"
 

@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-#include "console.h"
-#include "gpio.h"
-#include "i2c_master_slave.h"
-#include "timer.h"
-#include "tock.h"
+#include <gpio.h>
+#include <i2c_master_slave.h>
+#include <timer.h>
+#include <tock.h>
 
 uint8_t slave_read_buf[256];
 uint8_t slave_write_buf[256];

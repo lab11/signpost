@@ -1,16 +1,15 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-//tock includes
-#include "console.h"
-#include "gpio.h"
+#include <gpio.h>
+#include <tock.h>
+
 #include "signbus_io_interface.h"
 #include "storage_master.h"
-#include "tock.h"
 
 #define BUFFER_SIZE 2048
 

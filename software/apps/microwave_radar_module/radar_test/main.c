@@ -1,14 +1,13 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-#include "adc.h"
-#include "console.h"
-#include "timer.h"
-#include "tock.h"
+#include <adc.h>
+#include <timer.h>
+#include <tock.h>
 
 #define UNUSED_PARAMETER(x) (void)(x)
 

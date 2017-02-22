@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-#include <tock.h>
-#include <console.h>
-
 #include <gpio.h>
 #include <gpio_async.h>
+#include <tock.h>
 
 #include "controller.h"
 

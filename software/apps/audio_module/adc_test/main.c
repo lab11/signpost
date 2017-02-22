@@ -1,20 +1,19 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <tock.h>
+#include <adc.h>
 #include <console.h>
-#include "gpio.h"
-#include "led.h"
-#include "adc.h"
-#include "timer.h"
+#include <gpio.h>
+#include <led.h>
+#include <timer.h>
+#include <tock.h>
 
 #include "app_watchdog.h"
-#include "signpost_api.h"
 #include "simple_post.h"
+#include "signpost_api.h"
 
 static const uint8_t i2c_address = 0x33;
 #define ZERO_MAGNITUDE 2048 // middle value for a 12-bit ADC

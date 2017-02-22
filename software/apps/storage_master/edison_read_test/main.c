@@ -6,19 +6,18 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <i2c_master_slave.h>
+#include <gpio.h>
+#include <sdcard.h>
+#include <timer.h>
+#include <tock.h>
+
 #include "app_watchdog.h"
-#include "console.h"
-#include "i2c_master_slave.h"
-#include "sdcard.h"
+#include "signbus_io_interface.h"
+#include "signpost_storage.h"
 #include "signpost_api.h"
 #include "signpost_energy.h"
 #include "storage_master.h"
-#include "timer.h"
-#include "tock.h"
-#include "gpio.h"
-
-#include "signpost_storage.h"
-#include "signbus_io_interface.h"
 
 // buffer for holding i2c slave read data
 #define SLAVE_READ_LEN 512

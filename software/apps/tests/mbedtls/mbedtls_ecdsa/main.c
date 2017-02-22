@@ -3,17 +3,17 @@
  * tock/userland/linker.ld to accomodate larger app.
  * */
 
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 
+#include <gpio.h>
+#include <timer.h>
 #include <tock.h>
-#include "firestorm.h"
-#include "gpio.h"
-#include "timer.h"
+
 #include "mbedtls/pk.h"
 #include "mbedtls/md.h"
 // Choose between curves defined in different .h files

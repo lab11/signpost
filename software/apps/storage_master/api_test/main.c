@@ -6,17 +6,16 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <i2c_master_slave.h>
+#include <sdcard.h>
+#include <timer.h>
+#include <tock.h>
+
 #include "app_watchdog.h"
-#include "console.h"
-#include "i2c_master_slave.h"
-#include "sdcard.h"
 #include "signpost_api.h"
 #include "signpost_energy.h"
-#include "storage_master.h"
-#include "timer.h"
-#include "tock.h"
-
 #include "signpost_storage.h"
+#include "storage_master.h"
 
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,

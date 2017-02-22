@@ -1,15 +1,15 @@
-#include <string.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <inttypes.h>
 
-#include "tock.h"
-#include "console.h"
-#include "timer.h"
-#include "rng.h"
+#include <rng.h>
+#include <timer.h>
+#include <tock.h>
+
 #include "signbus_app_layer.h"
 #include "signbus_protocol_layer.h"
 #include "signbus_io_interface.h"

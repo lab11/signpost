@@ -1,18 +1,17 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
+#include <gpio.h>
+#include <timer.h>
 #include <tock.h>
-#include <firestorm.h>
-#include <console.h>
-#include "test_arithmetic.h"
+
 #include "erpc_client_setup.h"
 #include "erpc_transport_setup.h"
-#include "timer.h"
-#include "gpio.h"
+#include "test_arithmetic.h"
 
 
 int main(void) {

@@ -1,14 +1,13 @@
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
-#include <console.h>
 #include <gpio.h>
+#include <timer.h>
 
 #include "gps.h"
 #include "minmea.h"
-#include "timer.h"
 
 static void gps_callback (gps_data_t* gps_data) {
     // got new gps data

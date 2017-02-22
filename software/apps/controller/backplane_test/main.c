@@ -1,4 +1,3 @@
-#include <console.h>
 #include <gpio.h>
 #include <gpio_async.h>
 #include <stdio.h>

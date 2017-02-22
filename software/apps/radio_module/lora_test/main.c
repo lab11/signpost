@@ -1,13 +1,14 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
+
+#include <timer.h>
+#include <tock.h>
 
 #include "iM880A_RadioInterface.h"
-#include "timer.h"
-#include "tock.h"
 
 const char* message = "Hello from LAB12";
 

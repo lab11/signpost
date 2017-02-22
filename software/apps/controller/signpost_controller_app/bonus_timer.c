@@ -1,4 +1,5 @@
 #include <stdint.h>
+
 #include <tock.h>
 
 #include "bonus_timer.h"

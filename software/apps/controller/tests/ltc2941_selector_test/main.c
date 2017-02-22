@@ -1,15 +1,15 @@
-#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-#include "console.h"
+#include <tock.h>
+
 #include "i2c_selector.h"
 #include "ltc2941.h"
 #include "smbus_interrupt.h"
-#include "tock.h"
 
 #define MOD0_GPIOA_PORT_NUM 0
 #define MOD1_GPIOA_PORT_NUM 1
