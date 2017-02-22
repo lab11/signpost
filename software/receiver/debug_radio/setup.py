@@ -24,7 +24,7 @@ setup(name='signpost_debug_radio',
       packages=['signpost_debug_radio'],
       entry_points={
         'console_scripts': [
-          'signpost_debug_radio = signpost_debug_radio.main:main'
+          'signpost-debug-radio = signpost_debug_radio.main:main'
         ]
       },
       install_requires=["pyserial >= 3.0.1"],
