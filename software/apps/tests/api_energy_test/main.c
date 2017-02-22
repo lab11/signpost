@@ -15,12 +15,17 @@ static const uint8_t random_i2c_address = 0x50;
 int main (void) {
   printf("\n\n[Test] API: Energy\n");
 
-  int rc = signpost_initialization_module_init(
-      random_i2c_address,
-      SIGNPOST_INITIALIZATION_NO_APIS);
-  if (rc < SUCCESS) {
-    printf("Signpost initialization error: %d\n", rc);
-  }
+  int rc;
+
+  do {
+    rc = signpost_initialization_module_init(
+        random_i2c_address,
+        SIGNPOST_INITIALIZATION_NO_APIS);
+    if (rc < 0) {
+      printf(" - Error initializing module (code %d). Sleeping 5s.\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   signpost_energy_information_t info;
 
