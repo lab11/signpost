@@ -17,6 +17,8 @@
 #include "signpost_storage.h"
 #include "storage_master.h"
 
+#define DEBUG_RED_LED 0
+
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
@@ -86,6 +88,9 @@ int main (void) {
     printf(" - Storage initialization failed\n");
     return rc;
   }
+
+  // turn off Red Led
+  led_off(DEBUG_RED_LED);
 
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
