@@ -23,7 +23,7 @@ static void storage_api_callback(uint8_t source_address,
   int err = SUCCESS;
 
   if (api_type != StorageApiType) {
-    signpost_api_error_reply(source_address, api_type, message_type);
+    signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
   }
 
@@ -78,20 +78,27 @@ static void storage_api_callback(uint8_t source_address,
 }
 
 int main (void) {
-  int err = SUCCESS;
   printf("\n[Storage Master]\n** Storage API Test **\n");
 
+  int rc;
+
   // set up the SD card and storage system
-  err = storage_initialize();
-  if (err != SUCCESS) {
+  rc = storage_initialize();
+  if (rc != SUCCESS) {
     printf(" - Storage initialization failed\n");
-    return err;
+    return rc;
   }
 
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
   static api_handler_t* handlers[] = {&storage_handler, NULL};
-  signpost_initialization_storage_master_init(handlers);
+  do {
+    rc = signpost_initialization_storage_master_init(handlers);
+    if (rc < 0) {
+      printf(" - Error initializing bus access (code: %d). Sleeping 5s\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   // Setup watchdog
   //app_watchdog_set_kernel_timeout(30000);

@@ -39,8 +39,10 @@ static void processing_api_callback(uint8_t source_address,
     static uint16_t payload_len;
     static uint8_t* payload[1024];
 
+    int rc;
+
     if(api_type != ProcessingApiType) {
-        signpost_api_error_reply(source_address, api_type, message_type);
+        signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
         return;
     }
 
@@ -94,7 +96,10 @@ static void processing_api_callback(uint8_t source_address,
             edison_wakeup();
 
             static uint8_t m = 0;
-            signpost_processing_reply(processing_src,ProcessingOneWayMessage,&m,1);
+            rc = signpost_processing_reply(processing_src,ProcessingOneWayMessage,&m,1);
+            if (rc < 0) {
+              printf("%d: JOSH! Not sure what you want to do with this.\n", __LINE__);
+            }
             //Edison will send a ProcessingEdisonReadReasonMessage
             //then we can send it the src addr and the function (init or rpc)
         } else if(message_type == ProcessingTwoWayMessage) {
@@ -135,7 +140,10 @@ static void processing_api_callback(uint8_t source_address,
         } else if(message_type == ProcessingEdisonResponseMessage) {
             printf("Got edison response");
             if(rpc_pending){
-                signpost_processing_reply(processing_src,ProcessingEdisonResponseMessage,message,message_length);
+                rc = signpost_processing_reply(processing_src,ProcessingEdisonResponseMessage,message,message_length);
+                if (rc < 0) {
+                  printf("%d: JOSH! Not sure what you want to do with this.\n", __LINE__);
+                }
                 rpc_pending = false;
             } else {
 
@@ -152,7 +160,7 @@ static void storage_api_callback(uint8_t source_address,
   int err = SUCCESS;
 
   if (api_type != StorageApiType) {
-    signpost_api_error_reply(source_address, api_type, message_type);
+    signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
   }
 
@@ -237,7 +245,13 @@ int main (void) {
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
   static api_handler_t processing_handler = {ProcessingApiType, processing_api_callback};
   static api_handler_t* handlers[] = {&storage_handler, &processing_handler, NULL};
-  signpost_initialization_module_init(ModuleAddressStorage, handlers);
+  do {
+    rc = signpost_initialization_module_init(ModuleAddressStorage, handlers);
+    if (rc < 0) {
+      printf(" - Error initializing bus access (code: %d). Sleeping 5s.\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   //XXX: TESTING
   for (int i=0; i<SLAVE_READ_LEN; i++) {
