@@ -26,7 +26,7 @@ int main (void) {
 
   uint8_t test[200];
 
-      const char* url = "posttestserver.com/post.php";
+      const char* url = "httpbin.org/post";
       http_request r;
       //the library will automatically throw in content-length
       //if you don't, because it's annoying to do yourself
