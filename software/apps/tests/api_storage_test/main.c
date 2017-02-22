@@ -19,9 +19,15 @@ int main (void) {
   int err;
   printf("[Test] API: Storage\n");
 
-  signpost_initialization_module_init(
-      i2c_address,
-      SIGNPOST_INITIALIZATION_NO_APIS);
+  do {
+    err = signpost_initialization_module_init(
+        i2c_address,
+        SIGNPOST_INITIALIZATION_NO_APIS);
+    if (err < 0) {
+      printf(" - Error initializing module (code %d). Sleeping 5s.\n", err);
+      delay_ms(5000);
+    }
+  } while (err < 0);
 
   Storage_Record_t record = {0};
   while (true) {
