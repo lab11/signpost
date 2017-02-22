@@ -179,7 +179,7 @@ class FakeRadio:
                         function = end[index3+1:]
                     except:
                         print("There was an error, aborting")
-                        printf("Do you have GDP installed?")
+                        print("Do you have GDP installed?")
                         print("#######################################################")
                         print("")
                         continue

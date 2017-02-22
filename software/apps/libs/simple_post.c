@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "tock.h"
 #include "simple_post.h"
 #include "signpost_api.h"
@@ -22,6 +23,7 @@ int simple_octetstream_post(const char* url, uint8_t* buf, uint16_t buf_len) {
 
       int result = signpost_networking_post(url, r, &r2);
       if(result != 0) {
+          printf("WARN: Simple Octet Stream Post error %d\n",result);
           return result;
       } else {
           return r2.status;
