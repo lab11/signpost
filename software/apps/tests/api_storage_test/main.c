@@ -17,7 +17,7 @@ static uint8_t data[DATA_SIZE] = {0};
 
 int main (void) {
   int err;
-  putstr("[Test] API: Storage\n");
+  printf("[Test] API: Storage\n");
 
   signpost_initialization_module_init(
       i2c_address,

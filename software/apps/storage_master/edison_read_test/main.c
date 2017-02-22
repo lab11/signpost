@@ -250,6 +250,6 @@ int main (void) {
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();
 
-  putstr("\nStorage Master initialization complete\n");
+  printf("\nStorage Master initialization complete\n");
 }
 

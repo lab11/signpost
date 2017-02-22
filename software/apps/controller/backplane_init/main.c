@@ -19,7 +19,7 @@ static void gpio_async_callback (
 
 
 int main(void) {
-    putstr("[Controller] Init Backplane\n");
+    printf("[Controller] Init Backplane\n");
 
 
     gpio_async_set_callback(gpio_async_callback, NULL);

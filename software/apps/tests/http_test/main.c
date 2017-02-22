@@ -15,14 +15,14 @@
 
 
 int main (void) {
-  putstr("[Http_test] ** Main App **\n");
+  printf("[Http_test] ** Main App **\n");
 
   /////////////////////////////
   // Signpost Module Operations
   //
   // Initializations for the rest of the signpost
   signpost_initialization_module_init(0x28, NULL);
-  putstr("Initialized\n");
+  printf("Initialized\n");
 
   uint8_t test[200];
 
@@ -57,7 +57,7 @@ int main (void) {
 
     while(1) {
         delay_ms(1000);
-        putstr("About to send\n");
+        printf("About to send\n");
         int result = signpost_networking_post(url, r, &r2);
         if(result == 0) {
             printf("Status code is: %d\n", r2.status);
@@ -82,5 +82,5 @@ int main (void) {
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();
 
-  putstr("Everything intialized\n");
+  printf("Everything intialized\n");
 }

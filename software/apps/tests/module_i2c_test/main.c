@@ -10,6 +10,7 @@ uint8_t slave_write_buf[256];
 uint8_t master_read_buf[256];
 uint8_t master_write_buf[256];
 
+/*
 // Callback when the pressure reading is ready
 static void gpio_async_callback (
         int callback_type __attribute__ ((unused)),
@@ -17,9 +18,10 @@ static void gpio_async_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-    static unsigned count = 0;
-    static int addend = 1;
+    //static unsigned count = 0;
+    //static int addend = 1;
 }
+*/
 
 // Callback when the pressure reading is ready
 static void i2c_master_slave_callback (
@@ -28,8 +30,8 @@ static void i2c_master_slave_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-    static unsigned count = 0;
-    static int addend = 1;
+    //static unsigned count = 0;
+    //static int addend = 1;
 }
 
 int main(void) {

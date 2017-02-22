@@ -23,8 +23,6 @@ uint8_t master_write_buf[256];
 
 
 static void print_data (int length) {
-  char buf[64];
-
   // Need at least two bytes to be a valid signpost message.
   if (length < 2) {
     return;
@@ -40,10 +38,9 @@ static void print_data (int length) {
     case 0x31: { // 802.15.4 scanner
       if (message_type == 1 && length == (16+2)) {
         // Got valid message from 15.4 scanner
-        putstr("Message type 1 from Scanner15.4\n");
+        printf("Message type 1 from Scanner15.4\n");
         for (int channel=11; channel<27; channel++) {
-          sprintf(buf, "  Channel %i RSSI: %i\n", channel, (int) ((int8_t) slave_write_buf[2+(channel-11)]));
-          putstr(buf);
+          printf("  Channel %i RSSI: %i\n", channel, (int) ((int8_t) slave_write_buf[2+(channel-11)]));
         }
       }
 
@@ -52,32 +49,25 @@ static void print_data (int length) {
     case 0x32: { // Ambient
       if (message_type == 1 && length == (8+2)) {
         // Got valid message from ambient
-        putstr("Message type 1 from Ambient\n");
+        printf("Message type 1 from Ambient\n");
         int temp = (int) ((int16_t) ((((uint16_t) slave_write_buf[2]) << 8) | ((uint16_t) slave_write_buf[3])));
         int humi = (int) ((int16_t) ((((uint16_t) slave_write_buf[4]) << 8) | ((uint16_t) slave_write_buf[5])));
         int ligh = (int) ((int16_t) ((((uint16_t) slave_write_buf[6]) << 8) | ((uint16_t) slave_write_buf[7])));
         int pres = (int) ((int16_t) ((((uint16_t) slave_write_buf[8]) << 8) | ((uint16_t) slave_write_buf[9])));
-        sprintf(buf, "  Temperature: %i 1/100 degrees C\n", temp);
-        putstr(buf);
-        sprintf(buf, "  Humidity: %i 0.01%%\n", humi);
-        putstr(buf);
-        sprintf(buf, "  Light: %i Lux\n", ligh);
-        putstr(buf);
-        sprintf(buf, "  Pressure: %i ubar\n", pres);
-        putstr(buf);
+        printf("  Temperature: %i 1/100 degrees C\n", temp);
+        printf("  Humidity: %i 0.01%%\n", humi);
+        printf("  Light: %i Lux\n", ligh);
+        printf("  Pressure: %i ubar\n", pres);
       }
 
       break;
     }
     default: {
-      sprintf(buf, "Different message? %i\n  ", sender_address);
-      putstr(buf);
+      printf("Different message? %i\n  ", sender_address);
       for (int i=0; i<length; i++) {
-        sprintf(buf, "0x%02x ", slave_write_buf[i]);
-        putstr(buf);
+        printf("0x%02x ", slave_write_buf[i]);
       }
-      sprintf(buf, "\n");
-      putstr(buf);
+      printf("\n");
     }
   }
 }
@@ -95,7 +85,7 @@ static void i2c_master_slave_callback (
 }
 
 int main (void) {
-  putstr("[Controller] Start!\n");
+  printf("[Controller] Start!\n");
 
   // Setup backplane
   controller_init_module_switches();
@@ -104,7 +94,7 @@ int main (void) {
   // controller_all_modules_disable_i2c();
   // controller_module_enable_i2c(MODULE5);
   // controller_module_enable_i2c(MODULE0);
-  putstr("Enabled\n");
+  printf("Enabled\n");
 
   // Setup I2C listen
   i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
@@ -116,5 +106,5 @@ int main (void) {
   i2c_master_slave_set_slave_write_buffer(slave_write_buf, 256);
 
   i2c_master_slave_listen();
-  putstr("Init complete\n");
+  printf("Init complete\n");
 }

@@ -101,6 +101,7 @@ include $(TOCK_USERLAND_BASE_DIR)/Makefile
 # Turn off some of the less critical warnings while we're developing heavily
 CPPFLAGS += -Wno-suggest-attribute=pure -Wno-suggest-attribute=const
 CPPFLAGS += -Wno-unused-macros
+CPPFLAGS += -Wno-pointer-sign
 
 CXXFLAGS += -Wno-suggest-override
 CXXFLAGS += -Wno-suggest-final-methods

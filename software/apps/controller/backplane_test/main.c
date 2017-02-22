@@ -28,12 +28,12 @@ static void gpio_async_callback (
     static unsigned count = 0;
     static int addend = 1;
 
-    putstr("callback ");
+    printf("callback ");
     unsigned i;
     for (i=0; i<count; i++) {
-        putstr("X");
+        printf("X");
     }
-    putstr("\n");
+    printf("\n");
 
     count += addend;
     if (count > 10) addend = -1;
@@ -57,7 +57,7 @@ static void i2c_master_slave_callback (
 }
 
 int main(void) {
-    putstr("Backplane Test\n");
+    printf("Backplane Test\n");
 
     delay_ms(100);
 
@@ -115,6 +115,6 @@ int main(void) {
         delay_ms(1000);
     }
 
-    putstr("Backplane Test Complete.\n");
+    printf("Backplane Test Complete.\n");
 }
 

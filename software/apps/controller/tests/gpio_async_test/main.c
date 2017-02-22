@@ -11,7 +11,7 @@
 
 
 int main (void) {
-  putstr("[GPIO Async] Test\n");
+  printf("[GPIO Async] Test\n");
 
   // Enable some outputs
   gpio_async_enable_output_sync(0, 0);
@@ -20,9 +20,5 @@ int main (void) {
   // Set one high
   gpio_async_set_sync(0, 0);
 
-  {
-    char buf[64];
-    sprintf(buf, "Set Some GPIO async\n");
-    putstr(buf);
-  }
+  printf("Set Some GPIO async\n");
 }

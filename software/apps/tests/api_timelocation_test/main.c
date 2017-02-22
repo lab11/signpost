@@ -39,8 +39,8 @@ int main (void) {
       float lat = ((float) location.latitude) / 1000000.0;
       float lon = ((float) location.longitude) / 1000000.0;
       printf("  Current location:\n");
-      printf("    Latitude:  %f %d\n", lat, location.latitude);
-      printf("    Longitude: %f %d\n", lon, location.longitude);
+      printf("    Latitude:  %f %lu\n", lat, location.latitude);
+      printf("    Longitude: %f %lu\n", lon, location.longitude);
     }
 
     printf("Sleeping for 5s\n\n");

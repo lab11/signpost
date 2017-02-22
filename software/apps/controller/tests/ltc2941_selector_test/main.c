@@ -33,13 +33,11 @@ static void callback (
 }
 
 static void print_data (int i) {
-  char buf[64];
-  sprintf(buf, "\tGot something from counter %i: 0x%02x  | 0x%02x\n\n",i, _data, _data2);
-  putstr(buf);
+  printf("\tGot something from counter %i: 0x%02x  | 0x%02x\n\n",i, _data, _data2);
 }
 
 int main (void) {
-  putstr("Welcome to Tock...lets wait for an interrupt!!\n");
+  printf("Welcome to Tock...lets wait for an interrupt!!\n");
 
 
   // Pass a callback function to the kernel
@@ -74,11 +72,11 @@ int main (void) {
 
   // Wait for interrupt, then print address of who interrupted
   // Should be 0xc8 (gauge address with a 1 tacked on the end)
-  putstr("Waiting...\n");
+  printf("Waiting...\n");
   yield();
   print_data(0);
 
-  putstr("Reading Interrupts\n");
+  printf("Reading Interrupts\n");
 
   // Query the i2c_selector driver for who interrupted
   i2c_selector_read_interrupts();

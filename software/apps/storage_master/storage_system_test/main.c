@@ -17,9 +17,14 @@
 #include "signpost_storage.h"
 #include "storage_master.h"
 
+#define UNUSED_PARAMETER(x) (void)(x)
+
 static void storage_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
+  // XXX
+  UNUSED_PARAMETER(message_length);
+  UNUSED_PARAMETER(message);
 
   if (api_type != StorageApiType) {
     signpost_api_error_reply(source_address, api_type, message_type);
@@ -190,6 +195,6 @@ int main (void) {
   //app_watchdog_set_kernel_timeout(30000);
   //app_watchdog_start();
 
-  putstr("\nStorage Master initialization complete\n");
+  printf("\nStorage Master initialization complete\n");
 }
 

@@ -22,14 +22,14 @@ static void timer_callback (
 
   if (counter < 15) {
     app_watchdog_tickle_kernel();
-    putstr("[Watchdog - app] Tickled.\n");
+    printf("[Watchdog - app] Tickled.\n");
   } else {
-    putstr("[Watchdog - app] Not going to tickle, we should restart shortly.\n");
+    printf("[Watchdog - app] Not going to tickle, we should restart shortly.\n");
   }
 }
 
 int main (void) {
-  putstr("[Watchdog - app] Test\n");
+  printf("[Watchdog - app] Test\n");
 
   // Need a timer
   timer_subscribe(timer_callback, NULL);

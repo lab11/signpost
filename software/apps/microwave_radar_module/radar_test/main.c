@@ -158,13 +158,15 @@ static void adc_callback (int callback_type, int channel, int sample, void* call
         speed_fps = calculate_radar_speed(freq);
     }
 
+    printf("motion %d - speed_fps: %lu\n", motion, speed_fps);
+
     // get new sample
     adc_single_sample(ADC_CHANNEL);
 }
 
 
 int main (void) {
-    putstr("Start Microwave Radar program. Sampling!!!\n");
+    printf("Start Microwave Radar program. Sampling!!!\n");
 
     // initialize adc
     adc_set_callback(adc_callback, NULL);
