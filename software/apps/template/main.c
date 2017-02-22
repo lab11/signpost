@@ -6,11 +6,11 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "console.h"
-#include "signbus_io_interface.h"
+#include <console.h>
+#include <timer.h>
+#include <tock.h>
+
 #include "signpost_api.h"
-#include "timer.h"
-#include "tock.h"
 
 #define I2C_ADDRESS 0x15
 
