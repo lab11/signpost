@@ -267,11 +267,13 @@ typedef struct __attribute__((packed)) {
     uint8_t  hours;
     uint8_t  minutes;
     uint8_t  seconds;
+    uint8_t  satellite_count;
 } signpost_timelocation_time_t;
 
 typedef struct __attribute__((packed)) {
     uint32_t latitude;  // Latitude in microdegrees (divide by 10^6 to get degrees)
     uint32_t longitude; // Longitude in microdegrees
+    uint8_t  satellite_count;
 } signpost_timelocation_location_t;
 
 __attribute__((warn_unused_result))

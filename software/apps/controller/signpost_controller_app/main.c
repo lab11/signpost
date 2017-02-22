@@ -33,6 +33,7 @@ uint8_t  _current_day = 0;
 uint8_t  _current_hour = 0;
 uint8_t  _current_minute = 0;
 uint8_t  _current_second = 0;
+uint8_t  _current_satellite_count = 0;
 uint8_t  _current_microsecond = 0;
 uint32_t _current_latitude = 0;
 uint32_t _current_longitude = 0;
@@ -304,6 +305,7 @@ static void timelocation_api_callback(uint8_t source_address,
       time.hours = _current_hour;
       time.minutes = _current_minute;
       time.seconds = _current_second;
+      time.satellite_count = _current_satellite_count;
       rc = signpost_timelocation_get_time_reply(source_address, &time);
       if (rc < 0) {
         printf(" - %d: Error sending TimeLocationGetTimeMessage reply (code: %d).\n", __LINE__, rc);
@@ -314,6 +316,7 @@ static void timelocation_api_callback(uint8_t source_address,
       signpost_timelocation_location_t location;
       location.latitude = _current_latitude;
       location.longitude = _current_longitude;
+      location.satellite_count = _current_satellite_count;
       rc = signpost_timelocation_get_location_reply(source_address, &location);
       if (rc < 0) {
         printf(" - %d: Error sending TimeLocationGetLocationMessage reply (code: %d).\n", __LINE__, rc);
@@ -361,6 +364,7 @@ static void gps_callback (gps_data_t* gps_data) {
   _current_microsecond = gps_data->microseconds;
   _current_latitude = gps_data->latitude;
   _current_longitude = gps_data->longitude;
+  _current_satellite_count = gps_data->satellite_count;
 
   // Tickle the watchdog because something good happened.
   //app_watchdog_tickle_kernel();
