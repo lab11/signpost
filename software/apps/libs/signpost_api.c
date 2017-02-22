@@ -66,6 +66,26 @@ int signpost_api_error_reply(uint8_t destination_address,
             ErrorFrame, api_type, message_type, 0, NULL);
 }
 
+void signpost_api_error_reply_repeating(uint8_t destination_address,
+        signbus_api_type_t api_type, uint8_t message_type,
+        bool print_warnings, bool print_on_first_send, unsigned tries) {
+   int rc;
+   if (print_warnings && print_on_first_send) {
+      printf(" - Sending API Error reply to 0x%02x for api 0x%02x and message 0x%02x.\n",
+            destination_address, api_type, message_type);
+   }
+   do {
+      rc = signpost_api_error_reply(destination_address, api_type, message_type);
+      if (rc < 0) {
+         tries--;
+         printf(" - Error sending API Error reply to 0x%02x (code: %d).\n",
+               destination_address, rc);
+         printf(" - Sleeping 1s. Tries remaining %d\n", tries);
+         delay_ms(1000);
+      }
+   } while ( (tries > 0) && (rc < 0) );
+}
+
 int signpost_api_send(uint8_t destination_address,
                       signbus_frame_type_t frame_type,
                       signbus_api_type_t api_type,
@@ -798,12 +818,16 @@ int signpost_networking_post(const char* url, http_request request, http_respons
     return 0;
 }
 
-int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response,
+void signpost_networking_post_reply(uint8_t src_addr, uint8_t* response,
                                     uint16_t response_len) {
-
-   return signpost_api_send(src_addr, ResponseFrame, NetworkingApiType,
+   int rc;
+   rc = signpost_api_send(src_addr, ResponseFrame, NetworkingApiType,
                         NetworkingPostMessage, response_len, response);
-
+   if (rc < 0) {
+      printf(" - %d: Error sending POST reply (code: %d)\n", __LINE__, rc);
+      signpost_api_error_reply_repeating(src_addr, NetworkingApiType,
+            NetworkingPostMessage, true, true, 1);
+   }
 }
 
 /**************************************************************************/

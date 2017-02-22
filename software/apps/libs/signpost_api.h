@@ -26,6 +26,17 @@ __attribute__((warn_unused_result))
 int signpost_api_error_reply(uint8_t destination_address,
         signbus_api_type_t api_type, uint8_t message_type);
 
+// Convenience method that will repeatedly try to reply with failures and
+// itself "cannot" fail (it simply eventually gives up).
+//
+// The `print_warnings` and `print_on_first_send` parameters control whether
+// this method prints to alert that a failure occured, with the former
+// controlling all prints, and the latter designed to allow callers to simply
+// directly call this method without needing to report failure themselves.
+void signpost_api_error_reply_repeating(uint8_t destination_address,
+        signbus_api_type_t api_type, uint8_t message_type,
+        bool print_warnings, bool print_on_first_send, unsigned tries);
+
 // API layer send call
 __attribute__((warn_unused_result))
 int signpost_api_send(uint8_t destination_address,
@@ -165,8 +176,7 @@ typedef struct{
 
 __attribute__((warn_unused_result))
 int signpost_networking_post(const char* url, http_request request, http_response* response);
-__attribute__((warn_unused_result))
-int signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
+void signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
 /* PROCESSING API                                                         */

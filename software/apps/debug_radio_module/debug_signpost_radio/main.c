@@ -58,7 +58,9 @@ static void networking_api_callback(uint8_t source_address,
     uint8_t message_type, size_t message_length, uint8_t* message) {
 
     if (api_type != NetworkingApiType) {
-        signpost_api_error_reply(source_address, api_type, message_type);
+        signpost_api_error_reply_repeating(
+            source_address, api_type, message_type,
+            true, true, 1);
         return;
     }
 
@@ -104,6 +106,8 @@ static void networking_api_callback(uint8_t source_address,
 int main (void) {
   printf("\n[Debug Radio]\n** Debug Backplane App\n");
 
+  int rc;
+
   /////////////////////////////
   // Signpost Module Operations
   //
@@ -112,7 +116,13 @@ int main (void) {
   // Install hooks for the signpost APIs we implement
   static api_handler_t networking_handler = {NetworkingApiType, networking_api_callback};
   static api_handler_t* handlers[] = {&networking_handler, NULL};
-  signpost_initialization_module_init(ModuleAddressRadio, handlers);
+  do {
+    rc = signpost_initialization_module_init(ModuleAddressRadio, handlers);
+    if (rc < 0) {
+      printf(" - %d: Error initializing the bus (code %d). Sleeping 5s.\n", __LINE__, rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
   /*message_sent = false;
   static char d1[3];
