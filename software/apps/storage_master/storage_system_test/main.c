@@ -27,7 +27,7 @@ static void storage_api_callback(uint8_t source_address,
   UNUSED_PARAMETER(message);
 
   if (api_type != StorageApiType) {
-    signpost_api_error_reply(source_address, api_type, message_type);
+    signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
   }
 
@@ -120,19 +120,27 @@ static void storage_api_callback(uint8_t source_address,
 }
 
 int main (void) {
-  int err = SUCCESS;
   printf("\n[Storage Master]\n** Storage API Test **\n");
 
+  int rc;
+
   // set up the SD card and storage system
-  err = storage_initialize();
-  if (err != SUCCESS) {
-    return err;
+  rc = storage_initialize();
+  if (rc != SUCCESS) {
+    printf(" - Error initializing storage (code: %d)\n", rc);
+    return rc;
   }
 
   // Install hooks for the signpost APIs we implement
   static api_handler_t storage_handler = {StorageApiType, storage_api_callback};
   static api_handler_t* handlers[] = {&storage_handler, NULL};
-  signpost_initialization_storage_master_init(handlers);
+  do {
+    rc = signpost_initialization_storage_master_init(handlers);
+    if (rc < 0) {
+      printf(" - Error initializing bus access (code: %d). Sleeping 5s.\n", rc);
+      delay_ms(5000);
+    }
+  } while (rc < 0);
 
 
   //XXX: TESTING
@@ -146,17 +154,17 @@ int main (void) {
     uint8_t buffer[100] = {0};
     for (int i=0; i<100; i++) {
       memset(buffer, i, i);
-      err = storage_write_record(write_record, buffer, i, &write_record);
-      if (err < SUCCESS) {
-        printf("Writing error: %d\n", err);
+      rc = storage_write_record(write_record, buffer, i, &write_record);
+      if (rc < SUCCESS) {
+        printf("Writing error: %d\n", rc);
         break;
       }
     }
     storage_status.status_records[module_index].curr.block = write_record.block;
     storage_status.status_records[module_index].curr.offset = write_record.offset;
-    err = storage_update_status();
-    if (err < SUCCESS) {
-      printf("Updating status error: %d\n", err);
+    rc = storage_update_status();
+    if (rc < SUCCESS) {
+      printf("Updating status rc: %d\n", rc);
     }
     printf("Complete. Final block: %lu offset: %lu\n", write_record.block, write_record.offset);
 
@@ -166,22 +174,22 @@ int main (void) {
       .block = 2,
       .offset = 0,
     };
-    err = SUCCESS;
+    rc = SUCCESS;
     size_t len = 0;
-    while (err == SUCCESS) {
-      err = storage_read_record(read_record, buffer, &len, &read_record);
-      if (err == SUCCESS) {
+    while (rc == SUCCESS) {
+      rc = storage_read_record(read_record, buffer, &len, &read_record);
+      if (rc == SUCCESS) {
         /*
         for (int j=0; j<len; j++) {
           printf("%02X ", buffer[j]);
         }
         printf("\n");
         */
-      } else if (err == ENOHEADER) {
+      } else if (rc == ENOHEADER) {
         // no more records to read
         break;
       } else {
-        printf("Reading error: %d\n", err);
+        printf("Reading error: %d\n", rc);
         break;
       }
     }
