@@ -1,16 +1,16 @@
-#include <string.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <inttypes.h>
 
-#include "tock.h"
 #include "console.h"
-#include "timer.h"
-#include "signpost_api.h"
 #include "signbus_io_interface.h"
+#include "signpost_api.h"
+#include "timer.h"
+#include "tock.h"
 
 #define I2C_ADDRESS 0x15
 
