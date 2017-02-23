@@ -57,14 +57,18 @@ modules attached to a Signpost Debug Backplane.
 4. tockloader
 
     ```bash
-    sudo pip3 install tockloader
+    (Linux): sudo pip3 install tockloader
+    (Mac): pip3 install tockloader
     ```
 
 5. signpost-debug-radio
 
     ```bash
-    sudo pip2 install signpost-debug-radio
+    (Linux) sudo pip2 install signpost-debug-radio
+    (Mac) pip2 install signpost-debug-radio
     ```
+    
+    > Note: Python2 is required only for gdp support. If you do not need gdp, pip3 is fine.
 
 6. Check that you can compile a board
 
