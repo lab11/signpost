@@ -448,7 +448,7 @@ not fit in memory at all. While this capability is key part of future Signpost
 2. Flash the Signpost Storage Master app
 
     ```bash
-    cd signpost/software/apps/storage_master/signpost_storage_master
+    cd signpost/software/apps/storage_master/signpost_storage_master_app
     make flash
     ```
 
