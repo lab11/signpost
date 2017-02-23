@@ -596,9 +596,67 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 2. Flash the Storage test app
 
-3. View Ambient output
+    **Important** Make sure the programming knob is turned to `MOD0`.
 
-4. View the Storage Master output
+    ```bash
+    cd signpost/software/apps/tests/api_storage_test/
+    make flash
+    ```
+
+    Hit the `Module 0` reset button.
+
+3. Open serial connections
+
+    Connect USB cables to both the `Memory` and `Module 0` USB plugs.
+
+    In one terminal window:
+    ```bash
+    tockloader listen -d storage
+    ```
+
+    In another terminal window:
+    ```bash
+    tockloader listen -d module0
+    ```
+
+4. Data output
+
+    If everything is successful, every seconds `Module 0` should print
+    something resembling:
+    ```
+    Writing buffer [9]*600
+    Wrote successfully! Block: 188 Offset: 358
+    ```
+
+    And the `Memory` serial interface should print something like:
+    ```
+    Complete. Final block: 218 offset: 123 Got a command message!: len = 600 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B 7B
+    Writing data
+    ```
 
 ### Test the Networking API
 
@@ -606,19 +664,73 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 1. Look at the example code
 
-    **XXX: NEED TO LINK THIS**
-    [API Simple Networking Test]()
+    [API Simple Networking Test](https://github.com/lab11/signpost/blob/master/software/apps/tests/api_simple_networking_test/main.c)
 
 2. Flash the Networking test app
 
+    **Important** Make sure the programming knob is turned to `MOD0`.
+
+    ```bash
+    cd signpost/software/apps/tests/api_simple_networking_test/
+    make flash
+    ```
+
+    Hit the `Module 0` reset button.
+
 3. View Ambient output
+
+    Connect USB cables to both the `Radio` and `Module 0` USB plugs.
+
+    In one terminal window:
+    ```bash
+    tockloader listen -d module0
+    ```
 
 4. Start the Debug Radio script
 
+    In another terminal window:
+    ```bash
+    signpost-debug-radio
+    ```
+
+5. Data output
+
+    If everything is successful, every five seconds `signpost-debug-radio`
+    should print something like:
+    ```
+    #######################################################
+    Trying to post to httpbin.org/post
+    Post headers: {u'content-length': u'20', u'content-type': u'application/octet-stream'}
+    Post body: <binary data, length 20>
+      27 03 03 00 00 40 00 20 88 69 00 20 00 bf 00 20 00 00 00 00
+
+    Post Succeeded! See response below.
+    Status: 200, Reason: OK
+    Body: {
+      "args": {}, 
+      "data": "data:application/octet-stream;base64,JwMDAABAACCIaQAgAL8AIAAAAAA=", 
+      "files": {}, 
+      "form": {}, 
+      "headers": {
+	"Accept-Encoding": "identity", 
+	"Content-Length": "20", 
+	"Content-Type": "application/octet-stream", 
+	"Host": "httpbin.org"
+      }, 
+      "json": null, 
+      "origin": "141.212.11.236", 
+      "url": "http://httpbin.org/post"
+    }
 
 
+    Sending response back to radio
+    #######################################################
+    ```
 
-
+    And the `Module 0` serial terminal should print:
+    ```
+    Append successful
+    ```
 
 
 ## Ambient Module
