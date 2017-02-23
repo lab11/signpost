@@ -57,13 +57,15 @@ modules attached to a Signpost Debug Backplane.
 4. tockloader
 
     ```bash
-    sudo pip3 install tockloader
+    
+    pip3 install tockloader
     ```
 
 5. signpost-debug-radio
 
     ```bash
-    sudo pip2 install signpost-debug-radio
+    (Linux): sudo pip2 install signpost-debug-radio
+    (Mac): pip2 install signpost-debug-radio
     ```
 
 6. Check that you can compile a board
