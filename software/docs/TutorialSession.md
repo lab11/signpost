@@ -1,30 +1,14 @@
 Signpost Tutorial
 =================
 
-## Dealing with problems
+This tutorial is intended to teach the basics of writing, building, and loading
+code on the Signpost platform, how to make use of the Tock operating system,
+and how to use the Signpost API.
 
-You will definitely run into problems. This is research hardware and
-software still in its infancy. We really appreciate your patience.
+The tutorial takes you from installing the toolchains up to writing code on
+modules attached to a Signpost Debug Backplane.
 
-If everything is not working, try resetting other modules and then the
-`Controller Main`. Power cycling the entire board is a valid option too.
-
-Module Initialization can take several seconds to complete. The Controller
-should print the following once Initialization for a module is complete.
-
-```
-Module 0 granted isolation
-INIT: Registered address 0x51 as module 0
-```
-
-The Green Debug LED should be on for both modules. The Red Debug LED should
-be on before Initialization has completed and off afterwards. A blinking
-pattern on the Red Debug LED signifies that the application has crashed.
-
-Let us know if you're having problems and we will help out.
-
-
-## Get the basics working
+## Initial Setup
 
 ### Toolchain setup
 0. Clone repository
@@ -115,8 +99,35 @@ Let us know if you're having problems and we will help out.
 
 3. Plug in Control Module
 
+    ![Control Module Installed](img/debug_backplane_controller.jpg)
+
 4. Apply power
 
+
+## Dealing with problems
+
+From here on out, you will definitely run into problems. This is research
+hardware and software still in its infancy. We really appreciate your patience.
+
+If everything is not working, try resetting modules and then the `Controller
+Main`. Power cycling the entire board is a valid option too.
+
+Module Initialization can take several seconds to complete. The Controller
+should print the following once Initialization for a module is complete.
+
+```
+Module 0 granted isolation
+INIT: Registered address 0x51 as module 0
+```
+
+The Green Debug LED should be on for both modules. The Red Debug LED should
+be on before Initialization has completed and off afterwards. A blinking
+pattern on the Red Debug LED signifies that the application has crashed.
+
+Let us know if you're having problems and we will help out.
+
+
+## Get the basics working
 
 ### Controller Kernel
 
@@ -128,7 +139,6 @@ Let us know if you're having problems and we will help out.
     cd signpost/software/kernel/boards/controller/
     make flash
     ```
-
 
 ### Blink app
 
@@ -145,8 +155,7 @@ Let us know if you're having problems and we will help out.
     The board should now have a blinking LED on the Control Module and two blinking
     LEDs near the USB ports.
 
-    ![Backplane with LEDs identified](img/controller_blink.jpg)
-
+    ![Backplane with LEDs identified](img/controller_blink.png)
 
 ### Hello app
 
@@ -510,6 +519,8 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 ### Set up the Ambient Module
 
+![Ambient Module Installed](img/debug_backplane_1mod.jpg)
+
 1. Plug the Ambient Module into the `Module 0` slot
 
 2. Flash the Ambient Module kernel
@@ -834,6 +845,8 @@ appropriate.
 
 
 ## Audio Module
+
+![Audio Module Installed](img/debug_backplane_2mod.jpg)
 
 ### Set up Audio Module
 
