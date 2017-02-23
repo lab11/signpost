@@ -57,15 +57,13 @@ modules attached to a Signpost Debug Backplane.
 4. tockloader
 
     ```bash
-    
-    pip3 install tockloader
+    sudo pip3 install tockloader
     ```
 
 5. signpost-debug-radio
 
     ```bash
-    (Linux): sudo pip2 install signpost-debug-radio
-    (Mac): pip2 install signpost-debug-radio
+    sudo pip2 install signpost-debug-radio
     ```
 
 6. Check that you can compile a board
@@ -419,7 +417,7 @@ not fit in memory at all. While this capability is key part of future Signpost
 
     ```bash
     cd signpost/software/
-    kernel/tock/userland/tools/flash/storm-flash-app.py apps/fault_test/build/audio_module/app.bin apps/tock_examples/blink/build/storm/app.bin 
+    kernel/tock/userland/tools/flash/storm-flash-app.py apps/tock_examples/blink/build/storm/app.bin apps/tock_examples/hello_app/build/storm/app.bin 
     ```
 
     Both apps should now be loaded on the module. The LEDs should blink and
