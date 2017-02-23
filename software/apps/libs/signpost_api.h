@@ -208,16 +208,45 @@ enum processing_message_type {
     ProcessingEdisonResponseMessage = 4,
 };
 
-//the edison path to the python module for servicing the rpc
+// Initialize, provide the path to the python module used by the RPC
+//
+// params:
+//  path    - linux-style path to location of python module to handle this
+//  modules rpcs (e.g. /path/to/python/module.py)
 __attribute__((warn_unused_result))
 int signpost_processing_init(const char* path);
 
+// Send an RPC with no expected response
+//
+// params:
+//  buf - buffer containing RPC to send
+//  len - length of buf
 __attribute__((warn_unused_result))
 int signpost_processing_oneway_send(uint8_t* buf, uint16_t len);
+
+// Send an RPC with an expected response
+//
+// params:
+//  buf - buffer containing RPC to send
+//  len - length of buf
 __attribute__((warn_unused_result))
 int signpost_processing_twoway_send(uint8_t* buf, uint16_t len);
+
+// Receive RPC response
+//
+// params:
+//  buf - buffer to store result
+//  len - length of buf
 __attribute__((warn_unused_result))
 int signpost_processing_twoway_receive(uint8_t* buf, uint16_t* len);
+
+// Reply from Storage Master to RPC requesting module
+//
+// params:
+//  src_addr        - address of module that originally requested the RPC
+//  message_type    - type of RPC message
+//  response        - RPC response from compute resource
+//  response_len    - len of response
 __attribute__((warn_unused_result))
 int signpost_processing_reply(uint8_t src_addr, uint8_t message_type, uint8_t* response, uint16_t response_len);
 
@@ -243,10 +272,26 @@ typedef struct __attribute__((packed)) energy_information {
 
 _Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
 
+// Query the controller for energy information
+//
+// params:
+//  energy  - an energy_information_t struct to fill
 __attribute__((warn_unused_result))
 int signpost_energy_query(signpost_energy_information_t* energy);
+
+// Query the controller for energy information, asynchronously
+//
+// params:
+//  energy  - an energy_information_t struct to fill
+//  cb      - the callback to call when energy information is collected
 __attribute__((warn_unused_result))
 int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_app_callback_t cb);
+
+// Response from the controller to the requesting module
+//
+// params:
+//  destination_address -   requesting address for this energy information
+//  info                -   energy information
 __attribute__((warn_unused_result))
 int signpost_energy_query_reply(uint8_t destination_address, signpost_energy_information_t* info);
 
@@ -276,13 +321,35 @@ typedef struct __attribute__((packed)) {
     uint8_t  satellite_count;
 } signpost_timelocation_location_t;
 
+// Get time from controller
+//
+// params:
+//  time     - signpost_timelocation_time_t struct to fill
 __attribute__((warn_unused_result))
 int signpost_timelocation_get_time(signpost_timelocation_time_t* time);
+
+// Get location from controller
+//
+// params:
+//  location - signpost_location_time_t struct to fill
 __attribute__((warn_unused_result))
 int signpost_timelocation_get_location(signpost_timelocation_location_t* location);
 
+// Controller reply to time requesting module
+//
+// params:
+//
+//  destination_address - i2c address of requesting module
+//  time                - signpost_timelocation_time_t struct to return
 __attribute__((warn_unused_result))
 int signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_timelocation_time_t* time);
+
+// Controller reply to location requesting module
+//
+// params:
+//
+//  destination_address - i2c address of requesting module
+//  location            - signpost_timelocation_location_t struct to return
 __attribute__((warn_unused_result))
 int signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location);
 

@@ -5,8 +5,8 @@ The signpost API runs on signpost modules and handles initialization while
 providing modules with access to shared services such as networking,
 storage, processing, energy, time and location. This prevents the module
 developer from needing to interact with the shared I2C bus directly, or
-knowing the message formats. This document is a simple guide to using 
-the APIs. To use these APIs you must 
+knowing the message formats. This document is a simple guide to using
+the APIs. To use these APIs you must
 
 ```c
 #include "signpost_api.h"
@@ -57,7 +57,7 @@ Modules can storage data on an SD card that is on the control module.
 
 They can access this SD card through the storage API. Currently modules
 can only write to the SD card in an append only log. This would be good for
-storing long term data, and allowing the Intel Edison to access and 
+storing long term data, and allowing the Intel Edison to access and
 process that data. In the future we plan to allow modules to
 read data from the SD card, and make the SD card format the data in
 a filesystem readable by your computer, but these are still being implemented.
@@ -70,7 +70,7 @@ Storage_Record_t record;
 int result = signpost_storage_write(data, 3, &record);
 ```
 
-where record could then be used by the Intel Edison to access the data, 
+where record could then be used by the Intel Edison to access the data,
 or in the future by your module to read the data.
 
 ##Networking
@@ -82,10 +82,10 @@ of this function is
 int signpost_networking_post(char* url, http_request request, http_response* response);
 ```
 
-where http_request is a structure containing the fields for a post and
-http_response is a structure which you provide and will be populated upon
+where `http_request` is a structure containing the fields for a post and
+`http_response` is a structure which you provide and will be populated upon
 completion of the post. Note that API will fill in
-content-length for you. A simple call to http_post would look like:
+content-length for you. A simple call to `http_post` would look like:
 
 ```c
 uint8_t test[200];
@@ -113,23 +113,23 @@ int result = signpost_networking_post(url, request, &response);
 The result is 0 on success, and negative on error.
 
 Note that the response will only populate as much as you provide (i.e. to get
-a response with multiple headers, you would need to declare multiple 
-http_response_header structures and initialize them with buffers and lengths;
+a response with multiple headers, you would need to declare multiple
+`http_response_header` structures and initialize them with buffers and lengths;
 to get a longer post body, you would need to declare a longer buffer to put that post
 body).
 
 ###Simple Networking
 
 Because the above code is both longer and more flexible than most people need,
-we created a simple wrapper around it called simple_post. To use it:
+we created a simple wrapper around it called `simple_post`. To use it:
 
 ```c
 #include "simple_post.h"
 ```
 
 Simple post only posts binary data with application/octet-stream
-content-type, which should be appropriate for most sensor data. 
-To use simple_post:
+content-type, which should be appropriate for most sensor data.
+To use `simple_post`:
 
 ```c
 uint8_t data = {0x01, 0x02, 0x03};
@@ -140,7 +140,7 @@ Where the status is the http status returned by the website, or the error
 code if negative.
 
 ###Posting to GDP
-While GDP does not currently have a rest API, your 
+While GDP does not currently have a rest API, your
 [signpost-debug-radio](../receiver/debug_radio/)
 will append to gdp if you post to the url `gdp.lab11.eecs.umich.edu/gdp/v1/<log_name>/append`
 where `<log_name>` is the name of the log. This log will be created if it does
@@ -154,20 +154,20 @@ int status = simple_octetstream_post("gdp.lab11.eecs.umich.edu/gdp/v1/
 
 ##Time
 
-The time API returns current time. If you care about time synchronization, 
-this _should_ be correlated with the pulse per second (PPS) line routed to your module. 
+The time API returns current time. If you care about time synchronization,
+this _should_ be correlated with the pulse per second (PPS) line routed to your module.
 To get time synchronization we recommend the following procedure:
 
     1. Listen for PPS
-    2. Start timer  
+    2. Start timer
     3. Perform time request
     4. Wait for response
-    5. If response happens in <1s, the next PPS will be response_time + 1s, otherwise, retry.
+    5. If response happens in <1s, the next PPS will be `response_time` + 1s, otherwise, retry.
 
-This should be able to provide every module with global time sync with error 
+This should be able to provide every module with global time sync with error
 around the delay it takes for tock to propagate the PPS signal up to your app (which
 we believe to be much greater than error from GPS or propagation delay). Tock is
-not an RTOS. 
+not an RTOS.
 
 To use the time API declare a time structure, and call the time API function:
 
@@ -190,7 +190,7 @@ typedef struct __attribute__((packed)) {
 } signpost_timelocation_time_t;
 ```
 
-The time will be valid if satellite_count > 0.
+The time will be valid if `satellite_count` > 0.
 
 ##Location
 
@@ -211,7 +211,7 @@ typedef struct __attribute__((packed)) {
 } signpost_timelocation_location_t;
 ```
 
-Location is valid if satellite_count >= 4.
+Location is valid if `satellite_count` >= 4.
 
 ##Energy
 
@@ -237,9 +237,9 @@ typedef struct __attribute__((packed)) energy_information {
 ```
 
 The goal of this is to tell a module if they are using too much energy. The controller
-will occasionally update energy_limit_24h_mJ based on incoming energy from
+will occasionally update `energy_limit_24h_mJ` based on incoming energy from
 the solar panel. A module can see how much energy it has used
-over the past 24h window and the current_average_mJDay should allow a
+over the past 24h window and the `current_average_mJDay` should allow a
 module to easily compare its current usage to the limit and see if it
 will exceed the limit.
 
@@ -251,17 +251,17 @@ through an RPC Abstraction. It consists of two parts:
 
 **Note that this is not completely working, but we are close.**
 
-**Initialization**
+#### Initialization
 
 ```c
 int result = signpost_processing_init("/path/to/RPC")
 ```
 
 where path to RPC is the location of a python module that implements
-your RPC functions on the Intel Edison (we eventually plan to allow this to also be a remote 
+your RPC functions on the Intel Edison (we eventually plan to allow this to also be a remote
 path to a server or git repo).
 
-**RPC Calls**
+#### RPC Calls
 
 In module code, using the RPC interface is as simple as including
 your RPC header and calling the RPC. The RPC library handles getting
@@ -270,6 +270,4 @@ Writing the RPC definitions
 and implementing the python module to execute the RPC is more
 than we will cover in this document. Please see the [RPC documentation](./RPCApi.md)
 for more information.
-
-
 

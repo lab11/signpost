@@ -321,14 +321,135 @@ Response Message:
 
 
 ### `0x04`: Processing
+#### Note, this API is currently **not** working.
+
+#### `signpost_processing_init(const char* path)`
+Initialize, provide the path to the python module used by the RPC
+
+parameters:
+
+`path`: linux-style path to location of python module to handle this
+            modules rpcs (e.g. `/path/to/python/module.py`)
+
+#### `signpost_processing_oneway_send(uint8_t* buf, uint16_t len)`
+Send an RPC without an expected response
+
+parameters:
+`buf`: buffer containing RPC to send
+
+`len`: length of buf
+
+#### `signpost_processing_twoway_send(uint8_t* buf, uint16_t len)`
+Send an RPC with an expected response
+
+parameters:
+`buf`: buffer containing RPC to send
+
+`len`: length of buf
+
+#### `signpost_processing_twoway_receive(uint8_t* buf, uint16_t* len)`
+
+parameters:
+`buf`: buffer to fill with RPC response
+
+`len`: length of RPC response
+
+#### `int signpost_processing_reply(uint8_t src_addr, uint8_t message_type, uint8_t* response, uint16_t response_len)`
+
+Reply from Storage Master to RPC requesting module
+
+parameters:
+`src_addr`: address of module that originally requested the RPC
+
+`message_type`: type of RPC message
+
+`response`: RPC response from compute resource
+
+`response_len`: len of response
 
 ### `0x05`: Energy
 
+#### `signpost_energy_query(signpost_energy_information_t* energy)`
+
+Query the controller for energy information
+
+parameters:
+
+`energy`: an `energy_information_t` struct to fill. Of the form:
+
+```
+typedef struct __attribute__((packed)) energy_information {
+    uint32_t    energy_limit_24h_mJ;
+    uint32_t    energy_used_24h_mJ;
+    uint16_t    current_limit_60s_mA;
+    uint16_t    current_average_60s_mA;
+    uint8_t     energy_limit_warning_threshold;
+    uint8_t     energy_limit_critical_threshold;
+} signpost_energy_information_t;
+```
+
+#### `signpost_energy_query_async(signpost_energy_information_t* energy, signbus_app_callback_t cb)`
+
+parameters:
+
+`energy`: an `energy_information_t` struct to fill
+
+`cb`: the callback to call when energy information is collected
+
+#### `signpost_energy_query_reply(uint8_t destination_address, signpost_energy_information_t* info)`
+
+parameters:
+
+`destination_address`: requesting address for this energy information
+
+`info`: energy information
+
 ### `0x06`: Time and Location
 
-#### `get_time()`
+#### `signpost_timelocation_get_time(signpost_timelocation_time_t* time)`
+Get time from controller
 
-Response message:
+parameters:
+
+`time`: `signpost_timelocation_time_t` struct to fill. Of the form:
+
+```
+typedef struct __attribute__((packed)) {
+    uint16_t year;
+    uint8_t  month;
+    uint8_t  day;
+    uint8_t  hours;
+    uint8_t  minutes;
+    uint8_t  seconds;
+    uint8_t  satellite_count;
+} signpost_timelocation_time_t;
+```
+
+
+#### `signpost_timelocation_get_location(signpost_timelocation_location_t* location)`
+Get location from controller
+
+parameters:
+
+`location`: `signpost_location_time_t` struct to fill. Of the form:
+
+```
+typedef struct __attribute__((packed)) {
+    uint32_t latitude;  // Latitude in microdegrees (divide by 10^6 to get degrees)
+    uint32_t longitude; // Longitude in microdegrees
+    uint8_t  satellite_count;
+} signpost_timelocation_location_t;
+```
+
+#### `signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_timelocation_time_t* time)`
+
+Controller reply to time requesting module
+
+parameters:
+
+`destination_address`: I<sup>2</sup>C address of requesting module
+
+`time`: `signpost_timelocation_time_t` struct to return
 
 ```text
         0                   1                   2                   3
@@ -349,9 +470,12 @@ Response message:
 - `Minute`: Current minute, 0-59.
 - `Second`: Current second, 0-59.
 
-#### `get_location()`
+#### `signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location)`
+Controller reply to location requesting module
 
-Response message:
+parameters:
+`destination_address`: I<sup>2</sup> address of requesting module
+`location`: `signpost_timelocation_location_t` struct to return
 
 ```text
         0                   1                   2                   3
@@ -364,9 +488,5 @@ Response message:
          Longitude (cont.)                             |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
-
-- `Latitude`: Latitude in microdegrees. Divide by 10^6 to get actual degrees.
-- `Longitude`: Longitude in microdegrees. Divide by 10^6 to get actual degrees.
-
 
 
