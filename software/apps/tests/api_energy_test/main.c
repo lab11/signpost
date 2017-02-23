@@ -10,7 +10,7 @@
 
 #include "signpost_api.h"
 
-static const uint8_t random_i2c_address = 0x50;
+static const uint8_t random_i2c_address = 0x40;
 
 int main (void) {
   printf("\n\n[Test] API: Energy\n");
