@@ -814,7 +814,7 @@ features.
     }
 
     int main (void) {
-      printf("\n[Ambient Module] Sample and Post\n");
+      printf("\n[Ambient Module] Test App\n");
 
       // initialize module as a part of the signpost bus
       int rc;
@@ -912,7 +912,7 @@ features.
     static const uint8_t i2c_address = 0x33;
 
     int main (void) {
-	  printf("[Audio Module] Loudness Detector\n");
+	  printf("[Audio Module] Test App\n");
 
 	  // initialize the signpost bus
 	  int rc;
