@@ -2,7 +2,7 @@ How to perform RPCs to the Intel Edison
 =======================================
 
 Modules may access the Intel Edison through RPCs. To accomplish this,
-we are using [Embedded RPC (ERPC) by nxp](www.github.com/lab11/erpc). 
+we are using [Embedded RPC (ERPC) by nxp](http://www.github.com/lab11/erpc). 
 
 Without diving into the depths of the RPC library, this is what you
 must do to send an RPC to the Intel Edison.
@@ -13,20 +13,20 @@ The IDL file describes the arguments and return parameters of an RPC. We
 use ERPCs description language for our IDLs. The [documentation and examples
 for this language](://github.com/lab11/erpc/blob/master/doc/idl_reference.md).
 
-Write an IDL file for your rpc and name it <rpc_name>.erpc.a
+Write an IDL file for your rpc and name it \<rpc_name\>.erpc.a
 
 ##2)Write the tock application using the RPC
 
-Place the <rpc_name>.erpc file in the folder for you tock application.
+Place the \<rpc_name\>.erpc file in the folder for you tock application.
 
 Then you must initialize the RPC by telling the Intel Edison where the RPC
 is in its filesystem. After initialization you can call any of the functions
-defined in your <rpc_name>.erpc directly.
+defined in your \<rpc_name\>.erpc directly.
 
 To use the RPC:
 
 ```c
-#include <rpc_name>.h
+#include \<rpc_name\>.h
 .
 .
 .
