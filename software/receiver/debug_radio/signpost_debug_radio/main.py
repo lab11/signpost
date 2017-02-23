@@ -1,6 +1,11 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
-from __future__ import print_function
+# Coerce Py2k to act more like Py3k
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+from builtins import (
+        ascii, bytes, chr, dict, filter, hex, input, int, isinstance, list, map,
+        next, object, oct, open, pow, range, round, str, super, zip,
+        )
 
 import argparse
 import binascii
@@ -9,7 +14,11 @@ import re
 import struct
 import sys
 import time
-import httplib
+
+if sys.version_info > (3,0):
+    import http.client as httplib
+else:
+    import httplib
 
 import serial
 import serial.tools.list_ports
@@ -84,7 +93,7 @@ class FakeRadio:
             try:
                 byte = by.decode("utf-8")
                 #sys.stdout.write(byte)
-            except:
+            except UnicodeDecodeError:
                 #it won't be valid if this fails
                 continue
 
@@ -108,7 +117,7 @@ class FakeRadio:
                     print(buf.decode("utf-8"))
                     pass
                 else:
-                    sys.stdout.write("#" + byte)
+                    sys.stdout.write("#" + byte.decode('utf-8'))
 
                 continue
             elif(byte == "$"):
@@ -244,9 +253,15 @@ class FakeRadio:
                 print("#######################################################")
                 print("Trying to post to {}".format(url))
                 print("Post headers: {}".format(headers))
-                if re.match('^[\x0a-\x7F]+$', body):
+                is_ascii = False
+                try:
+                    if re.match('^[\x0a-\x7F]+$', body.decode('utf-8')):
+                        is_ascii = True
+                except UnicodeDecodeError:
+                    pass
+                if is_ascii:
                     # all bytes in body are printable characters
-                    print("Post body: {}".format(body))
+                    print("Post body: {}".format(body.decode('utf-8')))
                 else:
                     print("Post body: <binary data, length {}>".format(len(body)))
                     print('  ' + ' '.join(map(lambda x: str.format('{:02x}', x), body)))
@@ -266,19 +281,21 @@ class FakeRadio:
                 print("Post Succeeded! See response below.")
                 print("Status: {}, Reason: {}".format(response.status,response.reason))
                 body = response.read();
-                print("Body: {}".format(body))
+                print("Body: {}".format(body.decode('utf-8')))
                 print("")
                 #now format the response and send it back to the radio
                 send_buf = bytearray()
                 send_buf.extend(struct.pack('<H',response.status))
                 send_buf.extend(struct.pack('<H',len(response.reason)))
-                send_buf.extend(response.reason)
+                send_buf.extend(response.reason.encode('utf-8'))
                 send_buf.extend(struct.pack('<B',len(response.getheaders())))
                 for header in response.getheaders():
-                    send_buf.extend(struct.pack('<B',len(header[0])))
-                    send_buf.extend(header[0])
-                    send_buf.extend(struct.pack('<B',len(header[1])))
-                    send_buf.extend(header[1])
+                    h0 = header[0].encode('utf-8')
+                    h1 = header[1].encode('utf-8')
+                    send_buf.extend(struct.pack('<B',len(h0)))
+                    send_buf.extend(h0)
+                    send_buf.extend(struct.pack('<B',len(h1)))
+                    send_buf.extend(h1)
                 send_buf.extend(struct.pack('<H',len(body)))
                 send_buf.extend(body)
                 self.sp.write(send_buf);
@@ -320,10 +337,14 @@ def main ():
 
     try:
         import gdp
-    except:
+    except ImportError:
         print("")
         print_red("Failed to import gdp. There will be no gdp support for this session")
         print("")
+        if sys.version_info > (3,0):
+            print_red("Warning: You are running Python3, which the gdp library does not support")
+            print("Consider running this as Python2 if you need gdp support")
+            print("")
         print("If you are on a debian based machine, to fix download and install:")
         print("    https://github.com/lab11/signpost/blob/master/software/receiver/debug_radio/gdp-packages/python-gdp_0.7.2_all.deb")
         print("    https://github.com/lab11/signpost/blob/master/software/receiver/debug_radio/gdp-packages/gdp-client_0.7.2_all.deb")

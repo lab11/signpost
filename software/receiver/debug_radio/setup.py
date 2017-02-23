@@ -1,10 +1,5 @@
 from setuptools import setup
 
-# Save people like Pat from themselves:
-import sys
-if sys.version_info > (3,0):
-    sys.exit('Sorry, python3 is not supported because of GDP')
-
 import re
 VERSIONFILE="signpost_debug_radio/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
@@ -27,5 +22,8 @@ setup(name='signpost_debug_radio',
           'signpost-debug-radio = signpost_debug_radio.main:main'
         ]
       },
-      install_requires=["pyserial >= 3.0.1"],
+      install_requires=[
+          "future >= 0.15.2",
+          "pyserial >= 3.0.1",
+          ],
      )
