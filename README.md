@@ -104,6 +104,11 @@ reliability ensurance.
 
 ### History
 
+- **Winter 2017**: Signpost v0.2 released for the
+[TerraSwarm Signpost Workshop](https://www.terraswarm.org/urbanheartbeat/wiki/Main/SignpostWorkshop).
+This workshop featured the release of the Debug Backplane, initial API
+implementations for signpost modules, and tutorials for getting started with
+the Signpost platform.
 - **Fall 2016**: Signpost v0.1 presented at [TerraSwarm Annual Review](https://www.terraswarm.org/conferences/16/annual/).
 The demo included six modules (ambient conditions, 2.4 GHz RF sensing, LoRa/BLE radios,
 ambient audio level, microwave radar, and air quality sensing from UCSD), data communication
