@@ -423,7 +423,7 @@ not fit in memory at all. While this capability is key part of future Signpost
 
     ```bash
     cd signpost/software/
-    kernel/tock/userland/tools/flash/storm-flash-app.py apps/tock_examples/blink/build/storm/app.bin apps/tock_examples/hello_app/build/storm/app.bin 
+    kernel/tock/userland/tools/flash/storm-flash-app.py apps/tock_examples/blink/build/storm/app.bin apps/hello_app/build/audio_module/app.bin 
     ```
 
     Both apps should now be loaded on the module. The LEDs should blink and
