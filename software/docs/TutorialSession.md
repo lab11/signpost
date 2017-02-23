@@ -797,7 +797,7 @@ features.
 	  int light = 0;
 	  err_code = isl29035_read_light_intensity();
 	  if (err_code < SUCCESS) {
-		printf("Error reading from light sensor: %d\n", light);
+		printf("Error reading from light sensor: %d\n", err_code);
 	  } else {
 		light = err_code;
 		err_code = SUCCESS;
