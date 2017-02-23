@@ -510,7 +510,7 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 ### Set up the Ambient Module
 
-1. Plug the Ambient Module into the Module 0 slot
+1. Plug the Ambient Module into the `Module 0` slot
 
 2. Flash the Ambient Module kernel
 
@@ -735,9 +735,213 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 ## Ambient Module
 
+### Create base app
 
-## Multiple Modules
+Let's start with an app that samples sensors periodically and add signpost
+features.
+
+1. Make a new application
+
+    ```bash
+    cd signpost/software/apps/
+    mkdir ambient_test/
+    cp template/Makefile ambient_test/
+    touch ambient_test/main.c
+    cd ambient_test/
+    ```
+
+2. Write code
+
+    Open `main.c` with your favorite text editor and make it match the following:
+
+    ```c
+    // standard library
+    #include <stdio.h>
+
+    // tock includes
+    #include <led.h>
+    #include <isl29035.h>
+    #include <si7021.h>
+    #include <timer.h>
+    #include <tock.h>
+
+    // signpost includes
+    #include "signpost_api.h"
+
+    // module-specific settings
+    #define AMBIENT_MODULE_I2C_ADDRESS 0x32
+    #define AMBIENT_LED1 2
+
+    static void sample_sensors (void) {
+	  // read data from sensors and save locally
+	  int err_code;
+
+	  // get light
+	  int light = 0;
+	  err_code = isl29035_read_light_intensity();
+	  if (err_code < SUCCESS) {
+		printf("Error reading from light sensor: %d\n", light);
+	  } else {
+		light = err_code;
+		err_code = SUCCESS;
+	  }
+
+	  // get temperature and humidity
+	  int temperature = 0;
+	  unsigned humidity = 0;
+	  int err = si7021_get_temperature_humidity_sync(&temperature, &humidity);
+	  if (err < SUCCESS) {
+		printf("Error reading from temperature/humidity sensor: %d\n", err);
+		err_code = err;
+	  }
+
+	  // print readings
+	  printf("--Sensor readings--\n");
+	  printf("\tTemperature %d (degrees C * 100)\n", temperature);
+	  printf("\tHumidity %d (%%RH * 100)\n", humidity);
+	  printf("\tLight %d (lux)\n", light);
+    }
+
+    int main (void) {
+      printf("\n[Ambient Module] Sample and Post\n");
+
+      // initialize module as a part of the signpost bus
+      int rc;
+      do {
+	    rc = signpost_initialization_module_init(AMBIENT_MODULE_I2C_ADDRESS, NULL);
+	    if (rc < 0) {
+		  printf(" - Error initializing bus (code %d). Sleeping for 5s\n", rc);
+		  delay_ms(5000);
+	    }
+      } while (rc < 0);
+      printf(" * Bus initialized\n");
+
+      // perform main application
+      while (true) {
+	    // sample from onboard sensors
+	    sample_sensors();
+
+	    // sleep for a bit
+	    delay_ms(3000);
+      }
+    }
+    ```
+
+### Add signpost APIs to it
+
+This part is more open-ended. Play around. Add some Signpost APIs as seems
+appropriate.
 
 
-## Working on the Edison
+## Audio Module
+
+### Set up Audio Module
+
+1. Plug the Audio Module into the `Module 1` slot
+
+2. Flash the Audio Module kernel
+
+    **Important** Make sure the programming knob is turned to `MOD1`.
+
+    ```bash
+    cd signpost/software/kernel/boards/audio_module/
+    make flash
+    ```
+
+3. Flash the hello app
+
+    ```bash
+    cd signpost/software/apps/hello_apps/
+    make flash
+    ```
+
+4. View Audio output
+
+    Connect a USB cable to the `Module 1` USB plug.
+
+    ```bash
+    tockloader listen -d module1
+    ```
+
+    Hit the `Module 1` reset button.
+
+### Create base app
+
+Lets start with an app that samples audio data periodically and add signpost
+features.
+
+1. Make a new application
+
+    ```bash
+    cd signpost/software/apps/
+    mkdir audio_test/
+    cp template/Makefile audio_test/
+    touch audio_test/main.c
+    cd audio_test/
+    ```
+
+2. Write code
+
+    Open `main.c` with your favorite text editor and make it match the following:
+
+    ```c
+    // standard library
+    #include <stdio.h>
+
+    // tock includes
+    #include <adc.h>
+    #include <timer.h>
+    #include <tock.h>
+
+    // signpost includes
+    #include "signpost_api.h"
+
+    static const uint8_t i2c_address = 0x33;
+
+    int main (void) {
+	  printf("[Audio Module] Loudness Detector\n");
+
+	  // initialize the signpost bus
+	  int rc;
+
+	  do {
+		rc = signpost_initialization_module_init(i2c_address, SIGNPOST_INITIALIZATION_NO_APIS);
+		if (rc < 0) {
+		  printf(" - Error initializing bus (code: %d). Sleeping 5s\n", rc);
+		  delay_ms(5000);
+		}
+	  } while (rc < 0);
+
+	  // initialize ADC
+	  int err = adc_initialize();
+	  if (err < SUCCESS) {
+		printf("ADC initialization errored: %d\n", err);
+	  }
+
+	  printf("Sampling data\n");
+	  while (true) {
+
+		// read data from ADC
+		err = adc_read_single_sample(3);
+		if (err < SUCCESS) {
+		  printf("ADC read error: %d\n", err);
+		} else {
+		  // print sample data
+		  printf("%d\n", err);
+		}
+	  }
+    }
+    ```
+
+### Add signpost APIs to it
+
+This part is more open-ended. Play around. Add some Signpost APIs as seems
+appropriate.
+
+
+## The End
+
+That's the end of this tutorial guide. Time to play around with any ideas this
+gave you. Think about what apps the Signpost APIs enable and what kind of APIs
+you need to run apps you are interested in.
 
