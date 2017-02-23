@@ -311,8 +311,10 @@ users.
     int main (void) {
 	    printf("Starting test\n");
 
-	    // dereferencing null pointer
-	    volatile int i = *(int*)0;
+	    // Tock kernel memory begins at address 0x20000000
+	    // This is a perfectly valid memory address for the CPU to read/write,
+	    // but it's invalid for our application to try to access it.
+	    volatile int i = *(int*)0x20000000;
 
 	    return 0;
     }
