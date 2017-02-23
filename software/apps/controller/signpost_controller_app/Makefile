@@ -1,5 +1,7 @@
 # makefile for user application
 
+TOCK_BOARD = controller
+
 # the current directory
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
