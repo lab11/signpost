@@ -1064,6 +1064,6 @@ int signpost_json_send(uint8_t destination_address, size_t field_count, ... ) {
     json_blob[size++] = '}';
     json_blob[size++] = '\0';
     return signpost_api_send(destination_address, NotificationFrame,
-            JsonApiType, JsonSend, size, json_blob);
+            NetworkingApiType, NetworkingSend, size, json_blob);
 }
 
