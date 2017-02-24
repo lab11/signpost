@@ -153,6 +153,7 @@ int signpost_storage_write_reply (uint8_t destination_address, uint8_t* record_p
 /**************************************************************************/
 enum networking_message_type {
     NetworkingPostMessage = 0,
+    NetworkingSend = 1
 };
 
 
@@ -187,6 +188,8 @@ typedef struct{
 
 __attribute__((warn_unused_result))
 int signpost_networking_post(const char* url, http_request request, http_response* response);
+__attribute__((warn_unused_result))
+int signpost_networking_send_bytes(uint8_t destination_address, uint8_t* data, uint16_t data_len);
 void signpost_networking_post_reply(uint8_t src_addr, uint8_t* response, uint16_t response_len);
 
 /**************************************************************************/
@@ -362,6 +365,8 @@ typedef enum {
     EdisonReadHandleMessage = 0,
     EdisonReadRPCMessage = 1,
 } signpost_edison_message_type_e;
+
+
 
 #ifdef __cplusplus
 }

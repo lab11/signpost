@@ -646,6 +646,11 @@ static void signpost_networking_post_callback(int result) {
     networking_result = result;
 }
 
+int signpost_networking_send_bytes(uint8_t destination_address, uint8_t* data, uint16_t data_len) {
+    return signpost_api_send(destination_address,
+            NotificationFrame, NetworkingApiType, NetworkingSend,
+            data_len, data);
+}
 
 int signpost_networking_post(const char* url, http_request request, http_response* response) {
 
@@ -1019,4 +1024,5 @@ int signpost_timelocation_get_location_reply(uint8_t destination_address,
 /**************************************************************************/
 /* EDISON API                                                             */
 /**************************************************************************/
+
 

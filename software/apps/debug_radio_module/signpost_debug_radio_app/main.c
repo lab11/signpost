@@ -54,24 +54,15 @@ static void watchdog_timer_cb (
 
 
 static void networking_api_callback(uint8_t source_address,
-    signbus_frame_type_t frame_type, signbus_api_type_t api_type,
-    uint8_t message_type, size_t message_length, uint8_t* message) {
+    signbus_frame_type_t frame_type, __attribute__ ((unused)) signbus_api_type_t api_type,
+    __attribute__ ((unused)) uint8_t message_type, size_t message_length, uint8_t* message) {
 
-    if (api_type != NetworkingApiType) {
-        signpost_api_error_reply_repeating(
-            source_address, api_type, message_type,
-            true, true, 1);
-        return;
-    }
 
-    src = source_address;
+  src = source_address;
 
-  if (frame_type == NotificationFrame) {
-    // XXX unexpected, drop
-  } else if (frame_type == CommandFrame) {
+  if (frame_type == NotificationFrame || frame_type == CommandFrame) {
 
-      if (message_type == NetworkingPostMessage) {
-
+    if(frame_type == CommandFrame) {
         static char d[2];
         d[0] = '$';
         message_sent = false;
@@ -79,18 +70,29 @@ static void networking_api_callback(uint8_t source_address,
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
 
+
         d[0] = message_length & 0xff;
         d[1] = ((message_length & 0xff00) >> 8);
         message_sent = false;
         allow(DRIVER_NUM_GPS, 1, (void*)d, 2);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
-
+    } else { 
+        static char d[2];
+        d[0] = '&';
         message_sent = false;
-        allow(DRIVER_NUM_GPS, 1, (void*)message, message_length);
+        allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
+    }
 
+
+    message_sent = false;
+    allow(DRIVER_NUM_GPS, 1, (void*)message, message_length);
+    subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
+    
+    if(frame_type == CommandFrame) {
+        yield_for(&message_sent);
         waiting_for_response = 1;
         getauto((char *)rx_buffer,4096, rx_callback,NULL);
     }
@@ -125,13 +127,12 @@ int main (void) {
     }
   } while (rc < 0);
 
-  /*message_sent = false;
   static char d1[3];
   d1[0] = '#';
   d1[1] = 'r';
   allow(DRIVER_NUM_GPS, 1, (void*)d1, 2);
   subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
-  yield_for(&message_sent);*/
+  yield_for(&message_sent);
   printf("#r");
 
   ////////////////////////////////////////////////
@@ -141,14 +142,4 @@ int main (void) {
   app_watchdog_set_kernel_timeout(500);
   app_watchdog_start();
 
-  /*while(1) {
-        delay_ms(2000);
-        message_sent = false;
-        static char d2[3];
-        d2[0] = '#';
-        d2[1] = 'w';
-        allow(DRIVER_NUM_GPS, 1, (void*)d2, 2);
-        subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
-        yield_for(&message_sent);
-  }*/
 }
