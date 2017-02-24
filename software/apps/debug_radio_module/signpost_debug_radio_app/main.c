@@ -77,9 +77,9 @@ static void networking_api_callback(uint8_t source_address,
         allow(DRIVER_NUM_GPS, 1, (void*)d, 2);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
         yield_for(&message_sent);
-    } else { 
+    } else {
         static char d[2];
-        d[0] = '&';
+        //d[0] = '&';
         message_sent = false;
         allow(DRIVER_NUM_GPS, 1, (void*)d, 1);
         subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
@@ -90,7 +90,7 @@ static void networking_api_callback(uint8_t source_address,
     message_sent = false;
     allow(DRIVER_NUM_GPS, 1, (void*)message, message_length);
     subscribe(DRIVER_NUM_GPS, 1, tx_callback, NULL);
-    
+
     if(frame_type == CommandFrame) {
         yield_for(&message_sent);
         waiting_for_response = 1;
