@@ -1025,4 +1025,45 @@ int signpost_timelocation_get_location_reply(uint8_t destination_address,
 /* EDISON API                                                             */
 /**************************************************************************/
 
+/**************************************************************************/
+/* JSON API                                                               */
+/**************************************************************************/
+
+// TODO figure out actual size needed
+#define MAX_JSON_BLOB_SIZE 1000
+static char json_blob[MAX_JSON_BLOB_SIZE];
+
+int signpost_json_send(uint8_t destination_address, size_t field_count, ... ) {
+    size_t size = 0;
+    json_field_t field;
+    va_list args;
+
+    // expecting "field name" + value
+    va_start(args, field_count);
+    json_blob[size++] = '{';
+    for(size_t i = 0; i < field_count; i++){
+        if(size >= MAX_JSON_BLOB_SIZE) {
+            return ESIZE;
+        }
+        if(i!=0) {
+           json_blob[size++] = ',';
+        }
+        // get field
+        field = va_arg(args, json_field_t);
+        // field name:
+        json_blob[size++] = '"';
+        strcpy(json_blob+size, field.name);
+        size+=strlen(json_blob+size);
+        json_blob[size++] = '"';
+        json_blob[size++] = ':';
+        // value:
+        // TODO assumes integer value right now
+        sprintf(json_blob+size, "%d", field.value);
+        size+=strlen(json_blob+size);
+    }
+    json_blob[size++] = '}';
+    json_blob[size++] = '\0';
+    return signpost_api_send(destination_address, NotificationFrame,
+            JsonApiType, JsonSend, size, json_blob);
+}
 

@@ -23,7 +23,8 @@ typedef enum signbus_api_type {
     EnergyApiType = 5,
     TimeLocationApiType = 6,
     EdisonApiType = 7,
-    HighestApiType = EdisonApiType,
+    JsonApiType = 8,
+    HighestApiType = JsonApiType,
 } signbus_api_type_t;
 
 /// Blocking method to send a message

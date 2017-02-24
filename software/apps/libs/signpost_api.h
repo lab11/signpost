@@ -366,7 +366,29 @@ typedef enum {
     EdisonReadRPCMessage = 1,
 } signpost_edison_message_type_e;
 
+/**************************************************************************/
+/* JSON API                                                               */
+/**************************************************************************/
 
+typedef enum {
+    JsonSend = 0,
+} signpost_json_message_type_e;
+
+typedef struct json_field {
+    const char* name;
+    int   value;
+} json_field_t;
+
+// Send JSON bytes
+//
+// params:
+//  destination_address - i2c address of module to send JSON to
+//  field_count         - number of JSON fields
+//
+//  any number of:
+//  field_name          - c string indicating the name of the field
+//  value               - integer value of the field
+int signpost_json_send(uint8_t destination_address, size_t field_count, ... );
 
 #ifdef __cplusplus
 }
