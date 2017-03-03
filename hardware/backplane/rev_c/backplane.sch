@@ -65,7 +65,9 @@
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
 <layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -90,6 +92,7 @@
 <layer number="112" name="tSilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="113" name="IDFDebug" color="7" fill="1" visible="no" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="no" active="yes"/>
+<layer number="118" name="Rect_Pads" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
@@ -98,6 +101,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="130" name="bLogo" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
@@ -134,6 +138,12 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
@@ -142,6 +152,7 @@
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
@@ -3418,10 +3429,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="-20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<hole x="-20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="-29.21" drill="2.9464"/>
-<hole x="-20.955" y="-29.21" drill="2.9464"/>
 <circle x="0" y="27.94" radius="0.254" width="0" layer="49"/>
 <pad name="1" x="11.43" y="29.21" drill="1.016" shape="square" rot="R180"/>
 <pad name="2" x="11.43" y="26.67" drill="1.016" shape="octagon" rot="R180"/>
@@ -3535,6 +3542,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0" y="-29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-26.67" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-29.21" size="1.27" layer="49" align="center">X</text>
+<pad name="MNT1" x="-20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT2" x="20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT3" x="20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT4" x="-20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
 </package>
 <package name="BACKPLANE_MODULE_20PIN">
 <wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
@@ -3577,10 +3588,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="-20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<hole x="-20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="-29.21" drill="2.9464"/>
-<hole x="-20.955" y="-29.21" drill="2.9464"/>
 <circle x="0" y="27.94" radius="0.254" width="0" layer="49"/>
 <pad name="1" x="11.43" y="29.21" drill="1.016" shape="square" rot="R180"/>
 <pad name="2" x="11.43" y="26.67" drill="1.016" shape="octagon" rot="R180"/>
@@ -3658,6 +3665,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
 <text x="-6.35" y="29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-6.35" y="26.67" size="1.27" layer="49" align="center">X</text>
+<pad name="MNT1" x="-20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT2" x="20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT4" x="20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT3" x="-20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
 </package>
 <package name="LQFP-48">
 <smd name="6" x="-0.25" y="-4.3" dx="0.3" dy="0.6" layer="1"/>
@@ -3780,10 +3791,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
 <circle x="-20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<hole x="-20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="29.21" drill="2.9464"/>
-<hole x="20.955" y="-29.21" drill="2.9464"/>
-<hole x="-20.955" y="-29.21" drill="2.9464"/>
 <circle x="0" y="27.94" radius="0.254" width="0" layer="49"/>
 <pad name="1" x="7.62" y="29.21" drill="1.016" shape="square" rot="R180"/>
 <pad name="2" x="7.62" y="26.67" drill="1.016" shape="octagon" rot="R180"/>
@@ -3848,6 +3855,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-41.402" y1="32.98069375" x2="-33.99669375" y2="40.386" width="0.127" layer="49" curve="-90"/>
 <text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
+<pad name="MNT1" x="-20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT2" x="20.955" y="29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT4" x="20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
+<pad name="MNT3" x="-20.955" y="-29.21" drill="2.9464" diameter="6.35"/>
 </package>
 <package name="TDFN4">
 <text x="0" y="1.27" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
@@ -3996,6 +4007,59 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="0.04" y="-4.5" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <text x="-2.54" y="-2.54" size="0.3048" layer="47" font="vector" ratio="11" rot="R90">0.043 / 1.1 height</text>
 </package>
+<package name="QFN-20-4MM">
+<smd name="3" x="-1.9" y="0" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="2" x="-1.9" y="0.5" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="1" x="-1.9" y="1" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<wire x1="2" y1="2" x2="-2" y2="2" width="0.127" layer="21"/>
+<wire x1="-2" y1="2" x2="-2" y2="-2" width="0.127" layer="21"/>
+<wire x1="-2" y1="-2" x2="2" y2="-2" width="0.127" layer="21"/>
+<wire x1="2" y1="-2" x2="2" y2="2" width="0.127" layer="21"/>
+<smd name="4" x="-1.9" y="-0.5" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="5" x="-1.9" y="-1" dx="0.7" dy="0.3" layer="1" roundness="100"/>
+<smd name="6" x="-1" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="7" x="-0.5" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="8" x="0" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="9" x="0.5" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="10" x="1" y="-1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R90"/>
+<smd name="11" x="1.9" y="-1" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="12" x="1.9" y="-0.5" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="13" x="1.9" y="0" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="14" x="1.9" y="0.5" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="15" x="1.9" y="1" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R180"/>
+<smd name="16" x="1" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="17" x="0.5" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="18" x="0" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="19" x="-0.5" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<smd name="20" x="-1" y="1.9" dx="0.7" dy="0.3" layer="1" roundness="100" rot="R270"/>
+<circle x="-2.25" y="2.25" radius="0.2" width="0" layer="21"/>
+<smd name="GND" x="0" y="0" dx="2.45" dy="2.45" layer="1" cream="no"/>
+<text x="0" y="2.5" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<polygon width="0" layer="31">
+<vertex x="-1.1" y="1.1"/>
+<vertex x="-0.2" y="1.1"/>
+<vertex x="-0.2" y="0.2"/>
+<vertex x="-1.1" y="0.2"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="0.2" y="1.1"/>
+<vertex x="1.1" y="1.1"/>
+<vertex x="1.1" y="0.2"/>
+<vertex x="0.2" y="0.2"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="0.2" y="-0.2"/>
+<vertex x="1.1" y="-0.2"/>
+<vertex x="1.1" y="-1.1"/>
+<vertex x="0.2" y="-1.1"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="-1.1" y="-0.2"/>
+<vertex x="-0.2" y="-0.2"/>
+<vertex x="-0.2" y="-1.1"/>
+<vertex x="-1.1" y="-1.1"/>
+</polygon>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -4031,7 +4095,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="!SMBALERT" x="17.78" y="22.86" length="middle" rot="R180"/>
 <wire x1="-12.7" y1="40.64" x2="12.7" y2="40.64" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
-<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROLLER MODULE</text>
+<text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROL MODULE</text>
 <pin name="!BACKPLANE_RESET" x="17.78" y="33.02" length="middle" rot="R180"/>
 </symbol>
 <symbol name="HEADER_POWER">
@@ -4463,7 +4527,7 @@ S high: D = D2</text>
 <wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
 <text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
-<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">CONTROLLER</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">CONTROLLER (3V3)</text>
 </symbol>
 <symbol name="VCC_LINUX">
 <pin name="VCC_LINUX" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
@@ -4497,7 +4561,7 @@ S high: D = D2</text>
 <connects>
 <connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
-<connect gate="G$1" pin="GND" pad="1 21"/>
+<connect gate="G$1" pin="GND" pad="1 21 MNT1 MNT2 MNT3 MNT4"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
 <connect gate="G$1" pin="MOD0_OUT" pad="10"/>
 <connect gate="G$1" pin="MOD1_IN" pad="11"/>
@@ -4522,7 +4586,8 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="S9197-ND , S9194-ND" constant="no"/>
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S9194-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4537,7 +4602,7 @@ S high: D = D2</text>
 <device name="" package="BACKPLANE_MODULE_20PIN">
 <connects>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
-<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="GND" pad="1 MNT1 MNT2 MNT3 MNT4"/>
 <connect gate="G$1" pin="SMBCLK" pad="5"/>
 <connect gate="G$1" pin="SMBDATA" pad="3"/>
 <connect gate="G$1" pin="VBATT+" pad="17"/>
@@ -4655,7 +4720,7 @@ S high: D = D2</text>
 <device name="" package="BACKPLANE_MODULE_14PIN">
 <connects>
 <connect gate="G$1" pin="5V" pad="2"/>
-<connect gate="G$1" pin="GND" pad="1 14"/>
+<connect gate="G$1" pin="GND" pad="1 14 MNT1 MNT2 MNT3 MNT4"/>
 <connect gate="G$1" pin="MOD_IN" pad="10"/>
 <connect gate="G$1" pin="MOD_OUT" pad="8"/>
 <connect gate="G$1" pin="PPS" pad="7"/>
@@ -4835,8 +4900,32 @@ S high: D = D2</text>
 <connect gate="G$1" pin="VCC" pad="18"/>
 </connects>
 <technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="QFN" package="QFN-20-4MM">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="4"/>
+<connect gate="G$1" pin="A0" pad="3"/>
+<connect gate="G$1" pin="A1" pad="2"/>
+<connect gate="G$1" pin="A2" pad="1"/>
+<connect gate="G$1" pin="GND" pad="17 GND"/>
+<connect gate="G$1" pin="INT" pad="7"/>
+<connect gate="G$1" pin="P0" pad="9"/>
+<connect gate="G$1" pin="P1" pad="10"/>
+<connect gate="G$1" pin="P2" pad="11"/>
+<connect gate="G$1" pin="P3" pad="12"/>
+<connect gate="G$1" pin="P4" pad="13"/>
+<connect gate="G$1" pin="P5" pad="14"/>
+<connect gate="G$1" pin="P6" pad="15"/>
+<connect gate="G$1" pin="P7" pad="16"/>
+<connect gate="G$1" pin="SCL" pad="19"/>
+<connect gate="G$1" pin="SDA" pad="20"/>
+<connect gate="G$1" pin="VCC" pad="18"/>
+</connects>
+<technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="MCP23008T-E/SOCT-ND" constant="no"/>
+<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
