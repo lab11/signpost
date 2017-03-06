@@ -6475,16 +6475,17 @@ Various fiducial points for machine vision alignment.</description>
 <part name="H18" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H19" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H20" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
+<part name="GND72" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Special Modules</text>
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
-<wire x1="243.84" y1="76.2" x2="203.2" y2="76.2" width="0.6096" layer="98"/>
-<wire x1="203.2" y1="76.2" x2="203.2" y2="20.32" width="0.6096" layer="98"/>
+<wire x1="248.92" y1="76.2" x2="198.12" y2="76.2" width="0.6096" layer="98"/>
+<wire x1="198.12" y1="76.2" x2="198.12" y2="20.32" width="0.6096" layer="98"/>
 <text x="220.98" y="71.12" size="2.54" layer="98" align="center">Fiducials</text>
-<wire x1="203.2" y1="132.08" x2="203.2" y2="76.2" width="0.6096" layer="98"/>
+<wire x1="198.12" y1="132.08" x2="198.12" y2="76.2" width="0.6096" layer="98"/>
 <text x="223.52" y="129.54" size="2.54" layer="98" align="center">Plated Mounting Holes</text>
 </plain>
 <instances>
@@ -6518,25 +6519,26 @@ Various fiducial points for machine vision alignment.</description>
 <instance part="JP5" gate="G$1" x="215.9" y="40.64"/>
 <instance part="JP6" gate="G$1" x="223.52" y="40.64"/>
 <instance part="H1" gate="G$1" x="208.28" y="121.92"/>
-<instance part="H2" gate="G$1" x="215.9" y="121.92"/>
-<instance part="H3" gate="G$1" x="223.52" y="121.92"/>
-<instance part="H4" gate="G$1" x="231.14" y="121.92"/>
+<instance part="H2" gate="G$1" x="218.44" y="121.92"/>
+<instance part="H3" gate="G$1" x="228.6" y="121.92"/>
+<instance part="H4" gate="G$1" x="238.76" y="121.92"/>
 <instance part="H5" gate="G$1" x="208.28" y="114.3"/>
-<instance part="H6" gate="G$1" x="215.9" y="114.3"/>
-<instance part="H7" gate="G$1" x="223.52" y="114.3"/>
-<instance part="H8" gate="G$1" x="231.14" y="114.3"/>
+<instance part="H6" gate="G$1" x="218.44" y="114.3"/>
+<instance part="H7" gate="G$1" x="228.6" y="114.3"/>
+<instance part="H8" gate="G$1" x="238.76" y="114.3"/>
 <instance part="H9" gate="G$1" x="208.28" y="106.68"/>
-<instance part="H10" gate="G$1" x="215.9" y="106.68"/>
-<instance part="H11" gate="G$1" x="223.52" y="106.68"/>
-<instance part="H12" gate="G$1" x="231.14" y="106.68"/>
+<instance part="H10" gate="G$1" x="218.44" y="106.68"/>
+<instance part="H11" gate="G$1" x="228.6" y="106.68"/>
+<instance part="H12" gate="G$1" x="238.76" y="106.68"/>
 <instance part="H13" gate="G$1" x="208.28" y="99.06"/>
-<instance part="H14" gate="G$1" x="215.9" y="99.06"/>
-<instance part="H15" gate="G$1" x="223.52" y="99.06"/>
-<instance part="H16" gate="G$1" x="231.14" y="99.06"/>
+<instance part="H14" gate="G$1" x="218.44" y="99.06"/>
+<instance part="H15" gate="G$1" x="228.6" y="99.06"/>
+<instance part="H16" gate="G$1" x="238.76" y="99.06"/>
 <instance part="H17" gate="G$1" x="208.28" y="91.44"/>
-<instance part="H18" gate="G$1" x="215.9" y="91.44"/>
-<instance part="H19" gate="G$1" x="223.52" y="91.44"/>
-<instance part="H20" gate="G$1" x="231.14" y="91.44"/>
+<instance part="H18" gate="G$1" x="218.44" y="91.44"/>
+<instance part="H19" gate="G$1" x="228.6" y="91.44"/>
+<instance part="H20" gate="G$1" x="238.76" y="91.44"/>
+<instance part="GND72" gate="1" x="203.2" y="81.28"/>
 </instances>
 <busses>
 </busses>
@@ -6766,6 +6768,92 @@ Various fiducial points for machine vision alignment.</description>
 <pinref part="GND70" gate="1" pin="GND"/>
 <wire x1="68.58" y1="99.06" x2="88.9" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="99.06" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="H17" gate="G$1" pin="MOUNT"/>
+<wire x1="205.74" y1="91.44" x2="203.2" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="91.44" x2="203.2" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="GND72" gate="1" pin="GND"/>
+<pinref part="H13" gate="G$1" pin="MOUNT"/>
+<wire x1="203.2" y1="86.36" x2="203.2" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="99.06" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="99.06" x2="203.2" y2="91.44" width="0.1524" layer="91"/>
+<junction x="203.2" y="91.44"/>
+<pinref part="H9" gate="G$1" pin="MOUNT"/>
+<wire x1="205.74" y1="106.68" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="106.68" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
+<junction x="203.2" y="99.06"/>
+<pinref part="H5" gate="G$1" pin="MOUNT"/>
+<wire x1="205.74" y1="114.3" x2="203.2" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="114.3" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
+<junction x="203.2" y="106.68"/>
+<pinref part="H1" gate="G$1" pin="MOUNT"/>
+<wire x1="205.74" y1="121.92" x2="203.2" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="121.92" x2="203.2" y2="114.3" width="0.1524" layer="91"/>
+<junction x="203.2" y="114.3"/>
+<pinref part="H20" gate="G$1" pin="MOUNT"/>
+<wire x1="236.22" y1="91.44" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="91.44" x2="233.68" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="86.36" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
+<junction x="203.2" y="86.36"/>
+<pinref part="H16" gate="G$1" pin="MOUNT"/>
+<wire x1="223.52" y1="86.36" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="86.36" x2="203.2" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="99.06" x2="233.68" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="99.06" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
+<junction x="233.68" y="91.44"/>
+<pinref part="H12" gate="G$1" pin="MOUNT"/>
+<wire x1="236.22" y1="106.68" x2="233.68" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="106.68" x2="233.68" y2="99.06" width="0.1524" layer="91"/>
+<junction x="233.68" y="99.06"/>
+<pinref part="H8" gate="G$1" pin="MOUNT"/>
+<wire x1="236.22" y1="114.3" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="114.3" x2="233.68" y2="106.68" width="0.1524" layer="91"/>
+<junction x="233.68" y="106.68"/>
+<pinref part="H4" gate="G$1" pin="MOUNT"/>
+<wire x1="236.22" y1="121.92" x2="233.68" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="121.92" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
+<junction x="233.68" y="114.3"/>
+<pinref part="H18" gate="G$1" pin="MOUNT"/>
+<wire x1="215.9" y1="91.44" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="91.44" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
+<junction x="213.36" y="86.36"/>
+<pinref part="H14" gate="G$1" pin="MOUNT"/>
+<wire x1="215.9" y1="99.06" x2="213.36" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="99.06" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
+<junction x="213.36" y="91.44"/>
+<pinref part="H10" gate="G$1" pin="MOUNT"/>
+<wire x1="215.9" y1="106.68" x2="213.36" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="106.68" x2="213.36" y2="99.06" width="0.1524" layer="91"/>
+<junction x="213.36" y="99.06"/>
+<pinref part="H6" gate="G$1" pin="MOUNT"/>
+<wire x1="215.9" y1="114.3" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="114.3" x2="213.36" y2="106.68" width="0.1524" layer="91"/>
+<junction x="213.36" y="106.68"/>
+<pinref part="H2" gate="G$1" pin="MOUNT"/>
+<wire x1="215.9" y1="121.92" x2="213.36" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="121.92" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
+<junction x="213.36" y="114.3"/>
+<pinref part="H19" gate="G$1" pin="MOUNT"/>
+<wire x1="226.06" y1="91.44" x2="223.52" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="91.44" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
+<junction x="223.52" y="86.36"/>
+<pinref part="H15" gate="G$1" pin="MOUNT"/>
+<wire x1="226.06" y1="99.06" x2="223.52" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="99.06" x2="223.52" y2="91.44" width="0.1524" layer="91"/>
+<junction x="223.52" y="91.44"/>
+<pinref part="H11" gate="G$1" pin="MOUNT"/>
+<wire x1="226.06" y1="106.68" x2="223.52" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="106.68" x2="223.52" y2="99.06" width="0.1524" layer="91"/>
+<junction x="223.52" y="99.06"/>
+<pinref part="H7" gate="G$1" pin="MOUNT"/>
+<wire x1="226.06" y1="114.3" x2="223.52" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="114.3" x2="223.52" y2="106.68" width="0.1524" layer="91"/>
+<junction x="223.52" y="106.68"/>
+<pinref part="H3" gate="G$1" pin="MOUNT"/>
+<wire x1="226.06" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="121.92" x2="223.52" y2="114.3" width="0.1524" layer="91"/>
+<junction x="223.52" y="114.3"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
