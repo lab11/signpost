@@ -4377,7 +4377,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
 <text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
-<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">BACKPLANE</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">BACKPLANE (3V3)</text>
 </symbol>
 <symbol name="BUFFER-LEVEL-2">
 <wire x1="0" y1="0" x2="0" y2="-1.016" width="0.127" layer="94"/>
@@ -6501,9 +6501,9 @@ Various fiducial points for machine vision alignment.</description>
 <instance part="U$39" gate="G$1" x="78.74" y="177.8"/>
 <instance part="GND70" gate="1" x="88.9" y="91.44"/>
 <instance part="GND71" gate="1" x="78.74" y="25.4"/>
-<instance part="U$40" gate="G$1" x="86.36" y="73.66"/>
-<instance part="U$41" gate="G$1" x="93.98" y="73.66"/>
-<instance part="U$42" gate="G$1" x="101.6" y="73.66"/>
+<instance part="U$40" gate="G$1" x="93.98" y="78.74"/>
+<instance part="U$41" gate="G$1" x="99.06" y="73.66"/>
+<instance part="U$42" gate="G$1" x="106.68" y="68.58"/>
 <instance part="R27" gate="G$1" x="162.56" y="157.48" rot="R270"/>
 <instance part="R46" gate="G$1" x="147.32" y="129.54" rot="R90"/>
 <instance part="R47" gate="G$1" x="154.94" y="127" rot="R90"/>
@@ -6557,8 +6557,8 @@ Various fiducial points for machine vision alignment.</description>
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_CONTROLLER"/>
 <pinref part="U$40" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="68.58" y1="71.12" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="71.12" x2="86.36" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="71.12" x2="93.98" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="71.12" x2="93.98" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC_LINUX" class="0">
@@ -6571,8 +6571,8 @@ Various fiducial points for machine vision alignment.</description>
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_LINUX"/>
 <pinref part="U$41" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="68.58" y1="68.58" x2="93.98" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="68.58" x2="93.98" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="68.58" x2="99.06" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="68.58" x2="99.06" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SMBDATA" class="0">
@@ -6892,8 +6892,8 @@ Various fiducial points for machine vision alignment.</description>
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_BACKPLANE"/>
 <pinref part="U$42" gate="G$1" pin="VCC_BACKPLANE"/>
-<wire x1="68.58" y1="66.04" x2="101.6" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="66.04" x2="101.6" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="66.04" x2="106.68" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="66.04" x2="106.68" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R48" gate="G$1" pin="2"/>
