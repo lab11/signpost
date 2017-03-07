@@ -3040,7 +3040,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <vertex x="59.944" y="170.18"/>
 <vertex x="59.944" y="174.752"/>
 <vertex x="71.12" y="185.928"/>
-<vertex x="91.44" y="185.928"/>
+<vertex x="86.614" y="185.928"/>
+<vertex x="91.44" y="181.102"/>
 <vertex x="91.44" y="155.448"/>
 <vertex x="92.456" y="154.432"/>
 <vertex x="92.456" y="103.378"/>
@@ -3775,8 +3776,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="166.624" y1="115.951" x2="178.323" y2="115.951" width="0.254" layer="1"/>
 <wire x1="178.323" y1="115.951" x2="178.704" y2="116.332" width="0.254" layer="1"/>
 <contactref element="TP25" pad="TESTPOINT"/>
-<contactref element="TP26" pad="TESTPOINT"/>
-<contactref element="TP27" pad="TESTPOINT"/>
 <contactref element="TP4" pad="TESTPOINT"/>
 <contactref element="TP7" pad="TESTPOINT"/>
 <contactref element="TP11" pad="TESTPOINT"/>
@@ -4231,6 +4230,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="144.018" y1="188.214" x2="141.986" y2="186.182" width="0.254" layer="16"/>
 <wire x1="147.066" y1="189.23" x2="145.542" y2="189.23" width="0.254" layer="16"/>
 <wire x1="145.542" y1="189.23" x2="144.018" y2="190.754" width="0.254" layer="16"/>
+<contactref element="TP26" pad="TESTPOINT"/>
+<contactref element="TP27" pad="TESTPOINT"/>
 </signal>
 <signal name="MOD6_D-_HUB-SW">
 <contactref element="D4" pad="6"/>

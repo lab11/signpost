@@ -12612,12 +12612,6 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <pinref part="TP25" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="91.44" x2="20.32" y2="91.44" width="0.1524" layer="91"/>
 <label x="22.86" y="91.44" size="1.27" layer="95" xref="yes"/>
-<wire x1="22.86" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
-<label x="22.86" y="88.9" size="1.27" layer="95" xref="yes"/>
-<wire x1="22.86" y1="86.36" x2="20.32" y2="86.36" width="0.1524" layer="91"/>
-<label x="22.86" y="86.36" size="1.27" layer="95" xref="yes"/>
-<pinref part="TP26" gate="G$1" pin="TESTPOINT"/>
-<pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
 </segment>
 <segment>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
@@ -12633,6 +12627,16 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <pinref part="TP11" gate="G$1" pin="TESTPOINT"/>
 <wire x1="22.86" y1="144.78" x2="20.32" y2="144.78" width="0.1524" layer="91"/>
 <label x="22.86" y="144.78" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP26" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91" style="longdash"/>
+<label x="22.86" y="88.9" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
+<wire x1="22.86" y1="86.36" x2="20.32" y2="86.36" width="0.1524" layer="91" style="longdash"/>
+<label x="22.86" y="86.36" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -13145,14 +13149,16 @@ that will likely shift to montoring !PWRON! for the last port</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="115,1,124.356,92.606,FRAME1,,,,,"/>
-<approved hash="115,2,124.356,92.606,FRAME2,,,,,"/>
-<approved hash="115,7,124.356,92.606,FRAME3,,,,,"/>
-<approved hash="115,4,124.356,92.606,FRAME4,,,,,"/>
-<approved hash="115,5,124.356,92.606,FRAME5,,,,,"/>
-<approved hash="115,8,124.356,92.606,FRAME6,,,,,"/>
-<approved hash="115,3,124.356,92.606,FRAME7,,,,,"/>
-<approved hash="115,6,124.356,92.606,FRAME8,,,,,"/>
+<approved hash="106,6,93.98,86.36,HUB_!PWRON5,,,,,"/>
+<approved hash="113,1,124.356,92.606,FRAME1,,,,,"/>
+<approved hash="113,2,124.356,92.606,FRAME2,,,,,"/>
+<approved hash="113,7,124.356,92.606,FRAME3,,,,,"/>
+<approved hash="113,4,124.356,92.606,FRAME4,,,,,"/>
+<approved hash="113,5,124.356,92.606,FRAME5,,,,,"/>
+<approved hash="113,8,124.356,92.606,FRAME6,,,,,"/>
+<approved hash="113,3,124.356,92.606,FRAME7,,,,,"/>
+<approved hash="113,6,124.356,92.606,FRAME8,,,,,"/>
+<approved hash="113,9,124.356,92.606,FRAME9,,,,,"/>
 </errors>
 </schematic>
 </drawing>
