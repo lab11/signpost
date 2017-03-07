@@ -9386,6 +9386,11 @@ not the modules reference</text>
 <junction x="215.9" y="40.64"/>
 <pinref part="J5" gate="G$1" pin="SWDCLK"/>
 </segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="DBG_SWDCLK"/>
+<wire x1="25.4" y1="129.54" x2="30.48" y2="129.54" width="0.1524" layer="91"/>
+<label x="30.48" y="129.54" size="1.016" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="!CONTROLLER_RESET" class="0">
 <segment>
@@ -9397,6 +9402,11 @@ not the modules reference</text>
 <wire x1="205.74" y1="33.02" x2="208.28" y2="33.02" width="0.1524" layer="91"/>
 <label x="208.28" y="33.02" size="1.27" layer="95" font="vector" xref="yes"/>
 <pinref part="J5" gate="G$1" pin="!RESET"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="DBG_!RESET"/>
+<wire x1="25.4" y1="127" x2="30.48" y2="127" width="0.1524" layer="91"/>
+<label x="30.48" y="127" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="CONTROLLER_XIN" class="0">
@@ -9510,6 +9520,11 @@ not the modules reference</text>
 <wire x1="208.28" y1="43.18" x2="208.28" y2="45.72" width="0.1524" layer="91"/>
 <junction x="208.28" y="43.18"/>
 <pinref part="J5" gate="G$1" pin="SWDIO"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="DBG_SWDIO"/>
+<wire x1="25.4" y1="132.08" x2="30.48" y2="132.08" width="0.1524" layer="91"/>
+<label x="30.48" y="132.08" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -10083,6 +10098,30 @@ not the modules reference</text>
 <pinref part="TP27" gate="G$1" pin="TESTPOINT"/>
 <wire x1="172.72" y1="116.84" x2="177.8" y2="116.84" width="0.1524" layer="91"/>
 <junction x="172.72" y="116.84"/>
+</segment>
+</net>
+<net name="DBG_GPIO1" class="0">
+<segment>
+<pinref part="U11" gate="U1" pin="PA04"/>
+<wire x1="170.18" y1="149.86" x2="177.8" y2="149.86" width="0.1524" layer="91"/>
+<label x="177.8" y="149.86" size="1.016" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="DBG_GPIO1"/>
+<wire x1="25.4" y1="121.92" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
+<label x="30.48" y="121.92" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="DBG_GPIO2" class="0">
+<segment>
+<pinref part="U11" gate="U1" pin="PA05"/>
+<wire x1="170.18" y1="147.32" x2="177.8" y2="147.32" width="0.1524" layer="91"/>
+<label x="177.8" y="147.32" size="1.016" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="DBG_GPIO2"/>
+<wire x1="25.4" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
+<label x="30.48" y="119.38" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
