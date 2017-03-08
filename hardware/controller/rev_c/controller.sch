@@ -1913,7 +1913,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-2.54" y="-29.21" size="0.6096" layer="52" rot="MR0" align="center">28</text>
 <text x="-5.08" y="-26.67" size="0.6096" layer="52" rot="MR0" align="center">29</text>
 <text x="-5.08" y="-29.21" size="0.6096" layer="52" rot="MR0" align="center">30</text>
-<text x="3.81" y="29.21" size="1.27" layer="49" align="center">X</text>
 <text x="3.81" y="26.67" size="1.27" layer="49" align="center">X</text>
 <text x="0" y="-29.21" size="1.27" layer="49" align="center">X</text>
 <text x="-5.08" y="-26.67" size="1.27" layer="49" align="center">X</text>
@@ -2035,8 +2034,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
-<pin name="VCC_CONTROLLER" x="17.78" y="38.1" length="middle" rot="R180"/>
-<pin name="VCC_LINUX" x="17.78" y="35.56" length="middle" rot="R180"/>
+<pin name="VCC_CONTROLLER" x="17.78" y="43.18" length="middle" rot="R180"/>
+<pin name="VCC_LINUX" x="17.78" y="40.64" length="middle" rot="R180"/>
 <pin name="GND" x="17.78" y="-38.1" length="middle" rot="R180"/>
 <pin name="SMBDATA" x="17.78" y="27.94" length="middle" rot="R180"/>
 <pin name="SMBCLK" x="17.78" y="25.4" length="middle" rot="R180"/>
@@ -2057,18 +2056,19 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="USB_D+" x="17.78" y="12.7" length="middle" rot="R180"/>
 <pin name="USB_D-" x="17.78" y="10.16" length="middle" rot="R180"/>
 <pin name="PPS" x="17.78" y="17.78" length="middle" rot="R180"/>
-<wire x1="12.7" y1="40.64" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="12.7" y1="45.72" x2="12.7" y2="-40.64" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="-40.64" x2="-17.78" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="-40.64" x2="-17.78" y2="40.64" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="40.64" x2="-12.7" y2="40.64" width="0.254" layer="94"/>
-<text x="-10.16" y="43.18" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<wire x1="-17.78" y1="-40.64" x2="-17.78" y2="45.72" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="45.72" x2="-12.7" y2="45.72" width="0.254" layer="94"/>
+<text x="-10.16" y="48.26" size="1.778" layer="95" align="top-left">&gt;NAME</text>
 <text x="-10.16" y="-43.18" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="!SMBALERT" x="17.78" y="22.86" length="middle" rot="R180"/>
-<wire x1="-12.7" y1="40.64" x2="12.7" y2="40.64" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="40.64" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
+<wire x1="-12.7" y1="45.72" x2="12.7" y2="45.72" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="45.72" x2="-12.7" y2="-40.64" width="0.254" layer="94" style="shortdash"/>
 <text x="-15.24" y="0" size="1.778" layer="97" ratio="12" rot="R90" align="center">SIGNPOST CONTROL MODULE</text>
-<pin name="!BACKPLANE_RESET" x="17.78" y="33.02" length="middle" rot="R180"/>
+<pin name="!BACKPLANE_RESET" x="17.78" y="35.56" length="middle" rot="R180"/>
+<pin name="!WATCHDOG" x="17.78" y="33.02" length="middle" rot="R180"/>
 </symbol>
 <symbol name="VCC_LINUX">
 <pin name="VCC_LINUX" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
@@ -2208,6 +2208,7 @@ S high: D = D2</text>
 <connect gate="CONTROLLER" pin="GND1" pad="100"/>
 <connect gate="G$1" pin="!BACKPLANE_RESET" pad="22"/>
 <connect gate="G$1" pin="!SMBALERT" pad="6"/>
+<connect gate="G$1" pin="!WATCHDOG" pad="7"/>
 <connect gate="G$1" pin="GND" pad="1 21"/>
 <connect gate="G$1" pin="MOD0_IN" pad="9"/>
 <connect gate="G$1" pin="MOD0_OUT" pad="10"/>
@@ -6254,12 +6255,11 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
 <instance part="J4" gate="G$1" x="38.1" y="127" smashed="yes">
-<attribute name="NAME" x="27.94" y="170.18" size="1.778" layer="95" align="top-left"/>
 <attribute name="VALUE" x="20.32" y="83.82" size="1.778" layer="96"/>
 </instance>
 <instance part="GND5" gate="1" x="58.42" y="83.82"/>
-<instance part="U$1" gate="G$1" x="68.58" y="167.64"/>
-<instance part="U$8" gate="G$1" x="55.88" y="167.64"/>
+<instance part="U$1" gate="G$1" x="68.58" y="172.72"/>
+<instance part="U$8" gate="G$1" x="55.88" y="172.72"/>
 <instance part="C29" gate="G$1" x="213.36" y="119.38">
 <attribute name="DIGIKEY" x="213.36" y="119.38" size="1.27" layer="96" font="vector" display="off"/>
 </instance>
@@ -6472,9 +6472,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <net name="VCC_LINUX" class="0">
 <segment>
 <pinref part="J4" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="55.88" y1="162.56" x2="68.58" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="167.64" x2="68.58" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="VCC_LINUX"/>
-<wire x1="68.58" y1="162.56" x2="68.58" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="167.64" x2="68.58" y2="172.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J7" gate="A" pin="17"/>
@@ -6483,11 +6483,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </segment>
 </net>
 <net name="VCC_CONTROLLER" class="0">
-<segment>
-<pinref part="U$8" gate="G$1" pin="VCC_CONTROLLER"/>
-<wire x1="55.88" y1="167.64" x2="55.88" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="J4" gate="G$1" pin="VCC_CONTROLLER"/>
-</segment>
 <segment>
 <pinref part="U$25" gate="G$1" pin="VCC_CONTROLLER"/>
 <pinref part="C29" gate="G$1" pin="1"/>
@@ -6498,12 +6493,17 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <wire x1="50.8" y1="40.64" x2="55.88" y2="40.64" width="0.1524" layer="91"/>
 <label x="55.88" y="40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="VCC_CONTROLLER"/>
+<pinref part="U$8" gate="G$1" pin="VCC_CONTROLLER"/>
+<wire x1="55.88" y1="170.18" x2="55.88" y2="172.72" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
 <pinref part="J4" gate="G$1" pin="!BACKPLANE_RESET"/>
-<wire x1="55.88" y1="160.02" x2="58.42" y2="160.02" width="0.1524" layer="91"/>
-<label x="58.42" y="160.02" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="55.88" y1="162.56" x2="58.42" y2="162.56" width="0.1524" layer="91"/>
+<label x="58.42" y="162.56" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <wire x1="193.04" y1="53.34" x2="195.58" y2="53.34" width="0.1524" layer="91"/>
@@ -6768,6 +6768,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="J8" gate="A" pin="4"/>
 <wire x1="121.92" y1="60.96" x2="127" y2="60.96" width="0.1524" layer="91"/>
 <label x="127" y="60.96" size="1.27" layer="95" font="vector" xref="yes"/>
+</segment>
+</net>
+<net name="!WATCHDOG" class="0">
+<segment>
+<pinref part="J4" gate="G$1" pin="!WATCHDOG"/>
+<wire x1="55.88" y1="160.02" x2="58.42" y2="160.02" width="0.1524" layer="91"/>
+<label x="58.42" y="160.02" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -7512,6 +7519,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="U5" gate="U1" pin="PB10"/>
 <wire x1="78.74" y1="104.14" x2="76.2" y2="104.14" width="0.1524" layer="91"/>
 <label x="76.2" y="104.14" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="!WATCHDOG" class="0">
+<segment>
+<pinref part="U5" gate="U1" pin="PB06"/>
+<wire x1="78.74" y1="114.3" x2="76.2" y2="114.3" width="0.1524" layer="91"/>
+<label x="76.2" y="114.3" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
