@@ -175,9 +175,9 @@
 <vertex x="76.2254" y="64.135"/>
 <vertex x="76.1238" y="64.135"/>
 </polygon>
-<text x="53.848" y="174.625" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 0</text>
-<text x="136.525" y="174.625" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 1</text>
-<text x="136.525" y="1.905" size="3.302" layer="21" font="vector" ratio="15" rot="SR0" align="center">Controller</text>
+<text x="8.001" y="133.35" size="5.08" layer="21" font="vector" ratio="15" rot="R90" align="center">Module 0</text>
+<text x="182.499" y="133.35" size="5.08" layer="21" font="vector" ratio="15" rot="R90" align="center">Module 1</text>
+<text x="182.499" y="53.975" size="5.08" layer="21" font="vector" ratio="15" rot="SR90" align="center">Controller</text>
 <wire x1="0" y1="3.237875" x2="0" y2="187.325" width="0" layer="20"/>
 <wire x1="0.254" y1="19.812" x2="27.813" y2="19.812" width="0.254" layer="21"/>
 <wire x1="36.703" y1="19.812" x2="44.958" y2="19.812" width="0.254" layer="21"/>
