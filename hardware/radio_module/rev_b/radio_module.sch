@@ -9081,11 +9081,10 @@ High-power, low thermal resistance package.</description>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
 <part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="Q6" library="fets" deviceset="SI223DDS" device=""/>
-<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
+<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="100"/>
 <part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
 <part name="Q7" library="fets" deviceset="SI223DDS" device=""/>
-<part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="100uF"/>
@@ -9142,6 +9141,9 @@ High-power, low thermal resistance package.</description>
 <part name="TP27" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP28" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP29" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="J6" library="connector" deviceset="U.FL-R-SMT" device=""/>
+<part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="0"/>
+<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="100"/>
 </parts>
 <sheets>
 <sheet>
@@ -10722,8 +10724,8 @@ This MUST be pulled up on the SARA_G3*.</text>
 <instance part="Q5" gate="G$1" x="190.5" y="154.94" smashed="yes" rot="MR180">
 <attribute name="NAME" x="195.58" y="157.48" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="GND25" gate="1" x="172.72" y="142.24"/>
-<instance part="R32" gate="G$1" x="172.72" y="152.4" rot="R90"/>
+<instance part="GND25" gate="1" x="167.64" y="142.24"/>
+<instance part="R32" gate="G$1" x="167.64" y="152.4" rot="R90"/>
 <instance part="C20" gate="G$1" x="99.06" y="132.08"/>
 <instance part="GND29" gate="1" x="210.82" y="96.52"/>
 <instance part="U3" gate="G$1" x="38.1" y="96.52" rot="MR0"/>
@@ -10737,6 +10739,9 @@ This MUST be pulled up on the SARA_G3*.</text>
 <attribute name="NAME" x="121.92" y="111.76" size="1.778" layer="95"/>
 </instance>
 <instance part="R4" gate="G$1" x="182.88" y="93.98" rot="R90"/>
+<instance part="J6" gate="G$1" x="218.44" y="116.84"/>
+<instance part="R43" gate="G$1" x="203.2" y="104.14" rot="R90"/>
+<instance part="R33" gate="G$1" x="175.26" y="154.94" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -10889,12 +10894,16 @@ This MUST be pulled up on the SARA_G3*.</text>
 <segment>
 <pinref part="R32" gate="G$1" pin="1"/>
 <pinref part="GND25" gate="1" pin="GND"/>
-<wire x1="172.72" y1="147.32" x2="172.72" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="147.32" x2="167.64" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P1" gate="G$1" pin="P$2"/>
 <pinref part="GND29" gate="1" pin="GND"/>
 <wire x1="210.82" y1="101.6" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="J6" gate="G$1" pin="P$2"/>
+<wire x1="218.44" y1="111.76" x2="218.44" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="99.06" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
+<junction x="210.82" y="99.06"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -11066,12 +11075,12 @@ This MUST be pulled up on the SARA_G3*.</text>
 </net>
 <net name="GSM_POWER_GATE" class="0">
 <segment>
-<pinref part="Q5" gate="G$1" pin="G"/>
-<wire x1="182.88" y1="154.94" x2="172.72" y2="154.94" width="0.1524" layer="91"/>
-<label x="167.64" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="162.56" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R32" gate="G$1" pin="2"/>
-<wire x1="172.72" y1="154.94" x2="167.64" y2="154.94" width="0.1524" layer="91"/>
-<junction x="172.72" y="154.94"/>
+<wire x1="167.64" y1="154.94" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="R33" gate="G$1" pin="2"/>
+<wire x1="167.64" y1="154.94" x2="172.72" y2="154.94" width="0.1524" layer="91"/>
+<junction x="167.64" y="154.94"/>
 </segment>
 </net>
 <net name="GSM_GATED" class="0">
@@ -11130,10 +11139,13 @@ This MUST be pulled up on the SARA_G3*.</text>
 <net name="N$7" class="0">
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="195.58" y1="99.06" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="99.06" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="P1" gate="G$1" pin="ANT"/>
-<wire x1="203.2" y1="106.68" x2="208.28" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="99.06" x2="198.12" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="R43" gate="G$1" pin="1"/>
+<wire x1="198.12" y1="99.06" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="116.84" x2="198.12" y2="99.06" width="0.1524" layer="91"/>
+<junction x="198.12" y="99.06"/>
+<pinref part="J6" gate="G$1" pin="ANT"/>
+<wire x1="215.9" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -11149,6 +11161,20 @@ This MUST be pulled up on the SARA_G3*.</text>
 <pinref part="U12" gate="G$1" pin="SIM_DET"/>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="175.26" y1="88.9" x2="182.88" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$30" class="0">
+<segment>
+<pinref part="P1" gate="G$1" pin="ANT"/>
+<wire x1="203.2" y1="106.68" x2="208.28" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="R43" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$31" class="0">
+<segment>
+<pinref part="R33" gate="G$1" pin="1"/>
+<pinref part="Q5" gate="G$1" pin="G"/>
+<wire x1="180.34" y1="154.94" x2="182.88" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -11173,9 +11199,9 @@ for the spi interface.</text>
 <instance part="Q6" gate="G$1" x="96.52" y="134.62" smashed="yes" rot="MR180">
 <attribute name="NAME" x="91.44" y="129.54" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="R34" gate="G$1" x="83.82" y="144.78" rot="R90"/>
-<instance part="R35" gate="G$1" x="81.28" y="129.54" rot="R90"/>
-<instance part="GND26" gate="1" x="81.28" y="114.3"/>
+<instance part="R34" gate="G$1" x="81.28" y="134.62" rot="R180"/>
+<instance part="R35" gate="G$1" x="76.2" y="129.54" rot="R90"/>
+<instance part="GND26" gate="1" x="76.2" y="116.84"/>
 </instances>
 <busses>
 </busses>
@@ -11189,7 +11215,7 @@ for the spi interface.</text>
 <segment>
 <pinref part="GND26" gate="1" pin="GND"/>
 <pinref part="R35" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="116.84" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="119.38" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="NUCLEUM_RX" class="0">
@@ -11223,28 +11249,19 @@ for the spi interface.</text>
 <net name="NUCLEUM_3V3" class="0">
 <segment>
 <label x="96.52" y="152.4" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="R34" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="149.86" x2="96.52" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="147.32" x2="83.82" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="149.86" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="Q6" gate="G$1" pin="S"/>
-<wire x1="96.52" y1="139.7" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
-<junction x="96.52" y="149.86"/>
+<wire x1="96.52" y1="139.7" x2="96.52" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="NUCLEUM_POWER_GATE" class="0">
 <segment>
-<label x="76.2" y="134.62" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="71.12" y="134.62" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R35" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="134.62" x2="81.28" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="134.62" x2="76.2" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="132.08" x2="81.28" y2="134.62" width="0.1524" layer="91"/>
-<junction x="81.28" y="134.62"/>
-<pinref part="R34" gate="G$1" pin="1"/>
-<wire x1="83.82" y1="139.7" x2="83.82" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="Q6" gate="G$1" pin="G"/>
-<wire x1="83.82" y1="134.62" x2="88.9" y2="134.62" width="0.1524" layer="91"/>
-<junction x="83.82" y="134.62"/>
+<wire x1="76.2" y1="134.62" x2="71.12" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="132.08" x2="76.2" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R34" gate="G$1" pin="2"/>
+<wire x1="76.2" y1="134.62" x2="78.74" y2="134.62" width="0.1524" layer="91"/>
+<junction x="76.2" y="134.62"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -11266,6 +11283,13 @@ for the spi interface.</text>
 <pinref part="U1" gate="G$1" pin="P10"/>
 <wire x1="142.24" y1="73.66" x2="144.78" y2="73.66" width="0.1524" layer="91"/>
 <label x="144.78" y="73.66" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="R34" gate="G$1" pin="1"/>
+<pinref part="Q6" gate="G$1" pin="G"/>
+<wire x1="86.36" y1="134.62" x2="88.9" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -11294,7 +11318,6 @@ Switch R40/R41 to be normally on.</text>
 <instance part="Q7" gate="G$1" x="137.16" y="144.78" smashed="yes" rot="MR180">
 <attribute name="NAME" x="142.24" y="142.24" size="1.778" layer="95" rot="MR180"/>
 </instance>
-<instance part="R36" gate="G$1" x="119.38" y="152.4" rot="R90"/>
 <instance part="R37" gate="G$1" x="116.84" y="134.62" rot="R90"/>
 <instance part="GND28" gate="1" x="116.84" y="124.46"/>
 <instance part="GND30" gate="1" x="220.98" y="154.94"/>
@@ -11417,19 +11440,12 @@ Switch R40/R41 to be normally on.</text>
 <net name="XDOT_3V3" class="0">
 <segment>
 <pinref part="Q7" gate="G$1" pin="S"/>
-<wire x1="137.16" y1="157.48" x2="137.16" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="R36" gate="G$1" pin="2"/>
-<wire x1="119.38" y1="154.94" x2="119.38" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="157.48" x2="137.16" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="157.48" x2="137.16" y2="160.02" width="0.1524" layer="91"/>
-<junction x="137.16" y="157.48"/>
+<wire x1="137.16" y1="160.02" x2="137.16" y2="149.86" width="0.1524" layer="91"/>
 <label x="137.16" y="160.02" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_POWER_GATE" class="0">
 <segment>
-<pinref part="R36" gate="G$1" pin="1"/>
-<wire x1="119.38" y1="144.78" x2="119.38" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="R37" gate="G$1" pin="2"/>
 <wire x1="116.84" y1="137.16" x2="116.84" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="144.78" x2="119.38" y2="144.78" width="0.1524" layer="91"/>
@@ -11437,7 +11453,6 @@ Switch R40/R41 to be normally on.</text>
 <junction x="116.84" y="144.78"/>
 <label x="109.22" y="144.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R30" gate="G$1" pin="2"/>
-<junction x="119.38" y="144.78"/>
 </segment>
 </net>
 <net name="XDOT_WAKE" class="0">
