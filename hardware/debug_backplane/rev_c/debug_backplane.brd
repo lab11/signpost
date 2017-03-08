@@ -7329,6 +7329,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="86.36" y="73.66" extent="1-16" drill="0.3048"/>
 <wire x1="86.36" y1="73.66" x2="86.36" y2="75.819" width="0.2032" layer="1"/>
 <wire x1="86.36" y1="75.819" x2="86.233" y2="75.946" width="0.2032" layer="1"/>
+<contactref element="U28" pad="10"/>
+<wire x1="75.692" y1="46.482" x2="-14.748" y2="-130.678" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="HUB_!PWRON2">
 <contactref element="U24" pad="15"/>
@@ -7357,6 +7359,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="73.025" y1="62.103" x2="73.025" y2="66.675" width="0.2032" layer="16"/>
 <wire x1="73.025" y1="66.675" x2="76.327" y2="69.977" width="0.2032" layer="16"/>
 <wire x1="76.327" y1="69.977" x2="76.327" y2="71.755" width="0.2032" layer="16"/>
+<contactref element="U28" pad="11"/>
+<wire x1="78.232" y1="46.482" x2="-13.848" y2="-129.778" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="HUB_!PWRON3">
 <contactref element="U24" pad="19"/>
@@ -7374,6 +7378,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="74.295" y1="71.12" x2="73.914" y2="71.501" width="0.2032" layer="1"/>
 <wire x1="73.914" y1="71.501" x2="73.914" y2="72.876" width="0.2032" layer="1"/>
 <wire x1="73.914" y1="72.876" x2="73.918" y2="72.88" width="0.2032" layer="1"/>
+<contactref element="U28" pad="12"/>
+<wire x1="72.898" y1="44.958" x2="-13.848" y2="-129.278" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="HUB_!PWRON4">
 <contactref element="U24" pad="23"/>
@@ -10215,27 +10221,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="U16" pad="35"/>
 <contactref element="U27" pad="2"/>
 <wire x1="25.964" y1="8.418" x2="-16.778" y2="-57.932" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="N$22">
-<contactref element="U28" pad="10"/>
-</signal>
-<signal name="N$23">
-<contactref element="U28" pad="11"/>
-</signal>
-<signal name="N$24">
-<contactref element="U28" pad="12"/>
-</signal>
-<signal name="N$29">
-<contactref element="U28" pad="13"/>
-</signal>
-<signal name="N$30">
-<contactref element="U28" pad="14"/>
-</signal>
-<signal name="N$32">
-<contactref element="U28" pad="15"/>
-</signal>
-<signal name="N$35">
-<contactref element="U28" pad="16"/>
 </signal>
 <signal name="!USB_RESET">
 <contactref element="U24" pad="6"/>
