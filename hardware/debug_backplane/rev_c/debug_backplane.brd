@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.0.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -56,7 +56,7 @@
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="10" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="13" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="3" fill="1" visible="yes" active="yes"/>
@@ -67,7 +67,7 @@
 <layer number="59" name="Invisible" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
-<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -163,202 +163,6 @@
 <wire x1="177.8" y1="174.562125" x2="174.562125" y2="177.8" width="0" layer="20" curve="90"/>
 <wire x1="174.562125" y1="177.8" x2="3.175" y2="177.8" width="0" layer="20"/>
 <wire x1="3.175" y1="177.8" x2="0" y2="174.625" width="0" layer="20" curve="90"/>
-<wire x1="113.792" y1="179.578" x2="113.792" y2="175.768" width="0.0254" layer="49"/>
-<wire x1="111.252" y1="179.578" x2="111.252" y2="175.768" width="0.0254" layer="49"/>
-<wire x1="108.712" y1="179.578" x2="108.712" y2="175.768" width="0.0254" layer="49"/>
-<wire x1="103.378" y1="178.562" x2="103.378" y2="174.498" width="0.0254" layer="49" style="dashdot"/>
-<wire x1="100.838" y1="178.562" x2="100.838" y2="174.498" width="0.0254" layer="49" style="dashdot"/>
-<wire x1="97.282" y1="178.562" x2="97.282" y2="174.498" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="94.742" y1="178.562" x2="94.742" y2="174.498" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="110.32844375" y1="188.81444375" x2="108.966" y2="187.452" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="108.966" y1="187.452" x2="104.394" y2="187.452" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="104.394" y1="187.452" x2="100.0887625" y2="183.1467625" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="114.808" y1="171.45" x2="128.778" y2="171.45" width="0.0254" layer="49"/>
-<wire x1="94.234" y1="178.562" x2="94.234" y2="174.498" width="0.0254" layer="49"/>
-<wire x1="91.694" y1="178.562" x2="91.694" y2="174.498" width="0.0254" layer="49"/>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="124.206" y="188.468"/>
-<vertex x="124.206" y="185.928"/>
-<vertex x="128.016" y="185.928"/>
-<vertex x="128.016" y="188.468"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="124.206" y="192.024"/>
-<vertex x="124.206" y="189.484"/>
-<vertex x="127.508" y="189.484"/>
-<vertex x="127.508" y="192.024"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="133.858" y="198.12"/>
-<vertex x="133.858" y="195.58"/>
-<vertex x="192.532" y="195.58"/>
-<vertex x="192.532" y="198.12"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="134.366" y="194.564"/>
-<vertex x="134.366" y="192.024"/>
-<vertex x="193.04" y="192.024"/>
-<vertex x="193.04" y="194.564"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="125.842684375" y="191.243946875"/>
-<vertex x="127.6387375" y="189.447896875"/>
-<vertex x="135.4181" y="197.227259375"/>
-<vertex x="133.62205" y="199.0233125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="128.128684375" y="188.449946875"/>
-<vertex x="128.128684375" y="185.928"/>
-<vertex x="129.1627375" y="185.928"/>
-<vertex x="136.1801" y="192.909259375"/>
-<vertex x="134.38405" y="194.7053125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="192.898684375" y="194.545946875"/>
-<vertex x="194.6947375" y="192.749896875"/>
-<vertex x="208.5701" y="206.625259375"/>
-<vertex x="206.77405" y="208.4213125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="195.692684375" y="192.005946875"/>
-<vertex x="197.4887375" y="190.209896875"/>
-<vertex x="211.3641" y="204.085259375"/>
-<vertex x="209.56805" y="205.8813125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="168.656" y="191.008"/>
-<vertex x="168.656" y="188.468"/>
-<vertex x="194.31" y="188.468"/>
-<vertex x="194.31" y="191.008"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="165.212684375" y="187.433946875"/>
-<vertex x="165.212684375" y="184.912"/>
-<vertex x="166.2467375" y="184.912"/>
-<vertex x="170.7241" y="189.353259375"/>
-<vertex x="168.92805" y="191.1493125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="142.24" y="187.452"/>
-<vertex x="142.24" y="184.912"/>
-<vertex x="165.1" y="184.912"/>
-<vertex x="165.1" y="187.452"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="198.232684375" y="189.465946875"/>
-<vertex x="200.0287375" y="187.669896875"/>
-<vertex x="213.9041" y="201.545259375"/>
-<vertex x="212.10805" y="203.3413125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="170.434" y="187.452"/>
-<vertex x="170.434" y="184.912"/>
-<vertex x="196.088" y="184.912"/>
-<vertex x="196.088" y="187.452"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="166.736684375" y="183.877946875"/>
-<vertex x="166.736684375" y="181.356"/>
-<vertex x="167.7707375" y="181.356"/>
-<vertex x="172.2481" y="185.797259375"/>
-<vertex x="170.45205" y="187.5933125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="160.02" y="183.896"/>
-<vertex x="160.02" y="181.356"/>
-<vertex x="166.624" y="181.356"/>
-<vertex x="166.624" y="183.896"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="143.256" y="179.832"/>
-<vertex x="143.256" y="177.292"/>
-<vertex x="166.624" y="177.292"/>
-<vertex x="166.624" y="179.832"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="122.428" y="175.514"/>
-<vertex x="124.968" y="175.514"/>
-<vertex x="124.968" y="185.166"/>
-<vertex x="122.428" y="185.166"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="126.245475" y="173.971946875"/>
-<vertex x="128.041528125" y="172.175896875"/>
-<vertex x="139.4693375" y="183.60370625"/>
-<vertex x="137.673284375" y="185.39975625"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="132.595475" y="175.241946875"/>
-<vertex x="134.391528125" y="173.445896875"/>
-<vertex x="143.0253375" y="182.07970625"/>
-<vertex x="141.229284375" y="183.87575625"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="138.176" y="169.164"/>
-<vertex x="140.716" y="169.164"/>
-<vertex x="140.716" y="172.72"/>
-<vertex x="138.176" y="172.72"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="130.81" y="169.164"/>
-<vertex x="133.35" y="169.164"/>
-<vertex x="133.35" y="172.72"/>
-<vertex x="130.81" y="172.72"/>
-</polygon>
-<wire x1="112.198890625" y1="183.667528125" x2="109.5048125" y2="180.97345" width="0.0254" layer="49"/>
-<wire x1="110.402840625" y1="185.463578125" x2="107.7087625" y2="182.7695" width="0.0254" layer="49"/>
-<wire x1="104.394" y1="186.69" x2="108.458" y2="186.69" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="104.394" y1="184.404" x2="108.458" y2="184.404" width="0.0254" layer="49" style="shortdash"/>
-<wire x1="106.68" y1="178.562" x2="106.68" y2="174.498" width="0.0254" layer="49"/>
-<wire x1="104.14" y1="178.562" x2="104.14" y2="174.498" width="0.0254" layer="49"/>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="111.252" y="170.688"/>
-<vertex x="111.252" y="168.148"/>
-<vertex x="123.19" y="168.148"/>
-<vertex x="123.19" y="170.688"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="111.252" y="174.244"/>
-<vertex x="111.252" y="171.704"/>
-<vertex x="123.19" y="171.704"/>
-<vertex x="123.19" y="174.244"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="107.293209375" y="174.113259375"/>
-<vertex x="105.49715625" y="172.317209375"/>
-<vertex x="108.191234375" y="169.62313125"/>
-<vertex x="109.987284375" y="171.419184375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="130.81" y="158.242"/>
-<vertex x="133.35" y="158.242"/>
-<vertex x="133.35" y="161.798"/>
-<vertex x="130.81" y="161.798"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="155.448" y="92.202"/>
-<vertex x="155.448" y="89.662"/>
-<vertex x="187.198" y="89.662"/>
-<vertex x="187.198" y="92.202"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="155.448" y="88.646"/>
-<vertex x="155.448" y="86.106"/>
-<vertex x="187.198" y="86.106"/>
-<vertex x="187.198" y="88.646"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="189.6041625" y="91.337884375"/>
-<vertex x="187.8081125" y="89.541834375"/>
-<vertex x="201.876753125" y="75.47319375"/>
-<vertex x="203.672803125" y="77.26924375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="188.0801625" y="88.035884375"/>
-<vertex x="186.2841125" y="86.239834375"/>
-<vertex x="197.304753125" y="75.21919375"/>
-<vertex x="199.100803125" y="77.01524375"/>
-</polygon>
 <polygon width="0.0254" layer="41">
 <vertex x="71.9328" y="69.6214"/>
 <vertex x="71.9328" y="69.5452"/>
@@ -371,270 +175,9 @@
 <vertex x="69.8754" y="64.135"/>
 <vertex x="69.7738" y="64.135"/>
 </polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="104.753209375" y="171.573259375"/>
-<vertex x="102.95715625" y="169.777209375"/>
-<vertex x="105.651234375" y="167.08313125"/>
-<vertex x="107.447284375" y="168.879184375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="102.975209375" y="169.795259375"/>
-<vertex x="101.17915625" y="167.999209375"/>
-<vertex x="103.873234375" y="165.30513125"/>
-<vertex x="105.669284375" y="167.101184375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="97.79" y="182.372"/>
-<vertex x="100.33" y="182.372"/>
-<vertex x="100.33" y="183.642"/>
-<vertex x="97.79" y="183.642"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="94.742" y="180.848"/>
-<vertex x="97.282" y="180.848"/>
-<vertex x="97.282" y="182.118"/>
-<vertex x="94.742" y="182.118"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="100.435209375" y="167.509259375"/>
-<vertex x="98.63915625" y="165.713209375"/>
-<vertex x="101.333234375" y="163.01913125"/>
-<vertex x="103.129284375" y="164.815184375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="96.625209375" y="166.493259375"/>
-<vertex x="94.82915625" y="164.697209375"/>
-<vertex x="97.523234375" y="162.00313125"/>
-<vertex x="99.319284375" y="163.799184375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="95.504" y="154.432"/>
-<vertex x="98.044" y="154.432"/>
-<vertex x="98.044" y="156.972"/>
-<vertex x="95.504" y="156.972"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="102.362" y="154.432"/>
-<vertex x="104.902" y="154.432"/>
-<vertex x="104.902" y="156.972"/>
-<vertex x="102.362" y="156.972"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="58.674" y="91.694"/>
-<vertex x="58.674" y="89.154"/>
-<vertex x="90.424" y="89.154"/>
-<vertex x="90.424" y="91.694"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="58.674" y="88.138"/>
-<vertex x="58.674" y="85.598"/>
-<vertex x="90.424" y="85.598"/>
-<vertex x="90.424" y="88.138"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="92.456" y="99.314"/>
-<vertex x="94.996" y="99.314"/>
-<vertex x="94.996" y="101.854"/>
-<vertex x="92.456" y="101.854"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="99.9707875" y="90.76515625"/>
-<vertex x="101.766840625" y="92.561209375"/>
-<vertex x="95.3987875" y="98.929259375"/>
-<vertex x="93.6027375" y="97.133209375"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="102.616" y="193.294"/>
-<vertex x="105.156" y="193.294"/>
-<vertex x="105.156" y="195.834"/>
-<vertex x="102.616" y="195.834"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="109.399603125" y="197.011553125"/>
-<vertex x="111.19565625" y="198.807603125"/>
-<vertex x="109.399603125" y="200.60365625"/>
-<vertex x="107.603553125" y="198.807603125"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="113.538" y="269.494"/>
-<vertex x="116.078" y="269.494"/>
-<vertex x="116.078" y="272.034"/>
-<vertex x="113.538" y="272.034"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="116.078" y="269.494"/>
-<vertex x="118.618" y="269.494"/>
-<vertex x="118.618" y="272.034"/>
-<vertex x="116.078" y="272.034"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="269.494"/>
-<vertex x="113.03" y="269.494"/>
-<vertex x="113.03" y="272.034"/>
-<vertex x="110.49" y="272.034"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="119.126" y="269.494"/>
-<vertex x="121.666" y="269.494"/>
-<vertex x="121.666" y="272.034"/>
-<vertex x="119.126" y="272.034"/>
-</polygon>
-<wire x1="3.048" y1="300.228" x2="6.35" y2="292.608" width="0.254" layer="49"/>
-<wire x1="6.35" y1="292.608" x2="6.35" y2="287.401" width="0.254" layer="49"/>
-<wire x1="6.35" y1="287.401" x2="6.35" y2="282.448" width="0.254" layer="49"/>
-<wire x1="6.35" y1="282.448" x2="3.048" y2="274.828" width="0.254" layer="49"/>
-<wire x1="0" y1="292.608" x2="6.35" y2="292.608" width="0.254" layer="49"/>
-<wire x1="6.35" y1="287.401" x2="8.89" y2="287.401" width="0.254" layer="49"/>
-<wire x1="0" y1="282.448" x2="6.35" y2="282.448" width="0.254" layer="49"/>
-<wire x1="6.35" y1="287.401" x2="3.81" y2="287.401" width="0.254" layer="49"/>
-<wire x1="-14.478" y1="300.482" x2="-11.176" y2="292.862" width="0.254" layer="49"/>
-<wire x1="-11.176" y1="292.862" x2="-11.176" y2="287.655" width="0.254" layer="49"/>
-<wire x1="-11.176" y1="287.655" x2="-11.176" y2="282.702" width="0.254" layer="49"/>
-<wire x1="-11.176" y1="282.702" x2="-14.478" y2="275.082" width="0.254" layer="49"/>
-<wire x1="-17.526" y1="292.862" x2="-11.176" y2="292.862" width="0.254" layer="49"/>
-<wire x1="-11.176" y1="287.655" x2="-8.636" y2="287.655" width="0.254" layer="49"/>
-<wire x1="-17.526" y1="282.702" x2="-11.176" y2="282.702" width="0.254" layer="49"/>
-<wire x1="-11.176" y1="287.655" x2="-13.716" y2="287.655" width="0.254" layer="49"/>
-<wire x1="102.743" y1="377.952" x2="95.123" y2="374.65" width="0.254" layer="49"/>
-<wire x1="95.123" y1="374.65" x2="89.916" y2="374.65" width="0.254" layer="49"/>
-<wire x1="89.916" y1="374.65" x2="84.963" y2="374.65" width="0.254" layer="49"/>
-<wire x1="84.963" y1="374.65" x2="77.343" y2="377.952" width="0.254" layer="49"/>
-<wire x1="95.123" y1="381" x2="95.123" y2="374.65" width="0.254" layer="49"/>
-<wire x1="89.916" y1="374.65" x2="89.916" y2="372.11" width="0.254" layer="49"/>
-<wire x1="84.963" y1="381" x2="84.963" y2="374.65" width="0.254" layer="49"/>
-<wire x1="89.916" y1="374.65" x2="89.916" y2="377.19" width="0.254" layer="49"/>
-<wire x1="176.911" y1="377.952" x2="169.291" y2="374.65" width="0.254" layer="49"/>
-<wire x1="169.291" y1="374.65" x2="164.084" y2="374.65" width="0.254" layer="49"/>
-<wire x1="164.084" y1="374.65" x2="159.131" y2="374.65" width="0.254" layer="49"/>
-<wire x1="159.131" y1="374.65" x2="151.511" y2="377.952" width="0.254" layer="49"/>
-<wire x1="169.291" y1="381" x2="169.291" y2="374.65" width="0.254" layer="49"/>
-<wire x1="164.084" y1="374.65" x2="164.084" y2="372.11" width="0.254" layer="49"/>
-<wire x1="159.131" y1="381" x2="159.131" y2="374.65" width="0.254" layer="49"/>
-<wire x1="164.084" y1="374.65" x2="164.084" y2="377.19" width="0.254" layer="49"/>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="304.546"/>
-<vertex x="113.03" y="304.546"/>
-<vertex x="113.03" y="307.086"/>
-<vertex x="110.49" y="307.086"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="289.052"/>
-<vertex x="113.03" y="289.052"/>
-<vertex x="113.03" y="291.592"/>
-<vertex x="110.49" y="291.592"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="296.672"/>
-<vertex x="113.03" y="296.672"/>
-<vertex x="113.03" y="299.212"/>
-<vertex x="110.49" y="299.212"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="44.958" y="366.014"/>
-<vertex x="47.498" y="366.014"/>
-<vertex x="47.498" y="368.554"/>
-<vertex x="44.958" y="368.554"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="197.358" y="365.76"/>
-<vertex x="199.898" y="365.76"/>
-<vertex x="199.898" y="368.3"/>
-<vertex x="197.358" y="368.3"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="320.294"/>
-<vertex x="113.03" y="320.294"/>
-<vertex x="113.03" y="322.834"/>
-<vertex x="110.49" y="322.834"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="278.892"/>
-<vertex x="113.03" y="278.892"/>
-<vertex x="113.03" y="281.432"/>
-<vertex x="110.49" y="281.432"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="110.49" y="228.092"/>
-<vertex x="113.03" y="228.092"/>
-<vertex x="113.03" y="230.632"/>
-<vertex x="110.49" y="230.632"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="113.538" y="228.092"/>
-<vertex x="116.078" y="228.092"/>
-<vertex x="116.078" y="230.632"/>
-<vertex x="113.538" y="230.632"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="116.078" y="223.774"/>
-<vertex x="118.618" y="223.774"/>
-<vertex x="118.618" y="226.314"/>
-<vertex x="116.078" y="226.314"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="119.126" y="223.774"/>
-<vertex x="121.666" y="223.774"/>
-<vertex x="121.666" y="226.314"/>
-<vertex x="119.126" y="226.314"/>
-</polygon>
-<wire x1="127" y1="0" x2="127" y2="50.8" width="0.254" layer="49"/>
 <text x="47.498" y="174.625" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 0</text>
 <text x="130.175" y="174.625" size="5.08" layer="21" font="vector" ratio="15" align="center">Module 1</text>
 <text x="130.175" y="1.905" size="3.302" layer="21" font="vector" ratio="15" rot="SR0" align="center">Controller</text>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="105.41" y="104.394"/>
-<vertex x="107.95" y="104.394"/>
-<vertex x="107.95" y="106.934"/>
-<vertex x="105.41" y="106.934"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="78.6347875" y="365.19036875"/>
-<vertex x="80.430840625" y="366.98641875"/>
-<vertex x="78.6347875" y="368.78246875"/>
-<vertex x="76.8387375" y="366.98641875"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="78.1267875" y="361.38036875"/>
-<vertex x="79.922840625" y="363.17641875"/>
-<vertex x="78.1267875" y="364.97246875"/>
-<vertex x="76.3307375" y="363.17641875"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="173.228" y="364.998"/>
-<vertex x="175.768" y="364.998"/>
-<vertex x="175.768" y="367.538"/>
-<vertex x="173.228" y="367.538"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="188.976" y="369.062"/>
-<vertex x="191.516" y="369.062"/>
-<vertex x="191.516" y="371.602"/>
-<vertex x="188.976" y="371.602"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="189.992" y="366.014"/>
-<vertex x="192.532" y="366.014"/>
-<vertex x="192.532" y="368.554"/>
-<vertex x="189.992" y="368.554"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="170.688" y="361.95"/>
-<vertex x="173.228" y="361.95"/>
-<vertex x="173.228" y="364.49"/>
-<vertex x="170.688" y="364.49"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="91.694" y="170.688"/>
-<vertex x="94.234" y="170.688"/>
-<vertex x="94.234" y="173.228"/>
-<vertex x="91.694" y="173.228"/>
-</polygon>
-<polygon width="0.0254" layer="49" spacing="0.508" pour="hatch">
-<vertex x="105.41" y="152.654"/>
-<vertex x="107.95" y="152.654"/>
-<vertex x="107.95" y="155.194"/>
-<vertex x="105.41" y="155.194"/>
-</polygon>
 <wire x1="0" y1="3.237875" x2="0" y2="174.625" width="0" layer="20"/>
 <wire x1="0.254" y1="19.812" x2="21.463" y2="19.812" width="0.254" layer="21"/>
 <wire x1="30.353" y1="19.812" x2="38.608" y2="19.812" width="0.254" layer="21"/>
@@ -3146,6 +2689,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
@@ -3239,10 +2785,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <elements>
 <element name="J1" library="signpost" package="BACKPLANE_MODULE_20PIN_10PIN_DEBUG" value="BACKPLANE_CONTROLLER_MODULE_DEBUG" x="130.175" y="53.975" smashed="yes">
 <attribute name="DIGIKEY" value="S9197-ND" x="130.175" y="53.975" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="130.175" y="20.32" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 <attribute name="DIGIKEY2" value="S9194-ND" x="130.175" y="53.975" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY3" value="S7072-ND" x="130.175" y="53.975" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY4" value="S7072-ND" x="130.175" y="53.975" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="130.175" y="20.32" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="U24" library="signpost" package="LQFP-48" value="TUSB2077A" x="67.818" y="68.58" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="296-37871-1-ND" x="67.818" y="68.58" size="1.778" layer="27" rot="R90" display="off"/>
@@ -3306,13 +2852,13 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="J2" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="130.175" y="133.35" smashed="yes">
 <attribute name="DIGIKEY" value="S9195-ND" x="130.175" y="133.35" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="130.175" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 <attribute name="DIGIKEY2" value="S7072-ND" x="130.175" y="133.35" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="130.175" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="J3" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="47.625" y="133.35" locked="yes" smashed="yes">
 <attribute name="DIGIKEY" value="S9195-ND" x="47.625" y="133.35" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="47.625" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 <attribute name="DIGIKEY2" value="S7072-ND" x="47.625" y="133.35" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="47.625" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="R55" library="passives" package="0603-RES" value="10kΩ" x="31.242" y="127.127" smashed="yes">
 <attribute name="NAME" x="31.242" y="127.889" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -3405,9 +2951,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="117.856" y="126.111" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U13" library="signpost" package="QFN-20-4MM" value="MCP23008QFN" x="48.768" y="125.222" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="48.768" y="125.222" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="48.768" y="128.016" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="48.768" y="130.302" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
-<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="48.768" y="125.222" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R91" library="passives" package="0603-RES" value="10MΩ" x="57.658" y="136.525" smashed="yes" rot="R180">
 <attribute name="NAME" x="60.452" y="137.033" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -3419,9 +2965,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="35.56" y="118.999" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U14" library="signpost" package="QFN-20-4MM" value="MCP23008QFN" x="131.953" y="126.619" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="131.953" y="126.619" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="131.953" y="129.159" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="131.953" y="131.699" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
-<attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="131.953" y="126.619" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R94" library="passives" package="0603-RES" value="10MΩ" x="139.573" y="135.001" smashed="yes" rot="R180">
 <attribute name="NAME" x="142.24" y="134.493" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -3973,18 +3519,18 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="35.306" y="7.112" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U1" library="ftdichip" package="QFN32" value="FT232RQ" x="14.732" y="14.986" smashed="yes" rot="R270">
-<attribute name="OC_NEWARK" value="91K9919" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MPN" value="FT232RQ" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MF" value="" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="OC_FARNELL" value="1146033" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="VALUE" x="10.382" y="19.036" size="1.27" layer="27" rot="R270"/>
+<attribute name="MPN" value="FT232RQ" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="12.329" y="17.855" size="1.016" layer="25" font="vector" ratio="12"/>
+<attribute name="OC_FARNELL" value="1146033" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="OC_NEWARK" value="91K9919" x="14.732" y="14.986" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="VALUE" x="10.382" y="19.036" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="J4" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="14.224" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="0" y="14.224" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="0" y="14.224" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="0" y="14.224" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="0" y="14.224" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="3.937" y="18.562" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="0" y="14.224" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="-1.9" y="14.224" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="FB1" library="passives" package="0603_CAP" value="600R" x="13.462" y="9.906" smashed="yes" rot="R180">
@@ -4003,10 +3549,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="10.287" y="13.462" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J5" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="63.754" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="12.7" y="73.914" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="12.7" y="73.914" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="12.7" y="73.914" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="12.7" y="73.914" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="3.683" y="68.092" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="12.7" y="73.914" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="-1.9" y="63.754" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C49" library="passives" package="0603_CAP" value="100nF" x="10.16" y="62.23" smashed="yes" rot="R180">
@@ -4016,12 +3562,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.621" y="60.198" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U2" library="ftdichip" package="QFN32" value="FT232RQ" x="14.478" y="65.024" smashed="yes" rot="R270">
-<attribute name="OC_NEWARK" value="91K9919" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MPN" value="FT232RQ" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MF" value="" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="OC_FARNELL" value="1146033" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="VALUE" x="10.128" y="69.074" size="1.27" layer="27" rot="R270"/>
+<attribute name="MPN" value="FT232RQ" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="11.821" y="68.02" size="1.016" layer="25" font="vector" ratio="10"/>
+<attribute name="OC_FARNELL" value="1146033" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="OC_NEWARK" value="91K9919" x="9.398" y="82.804" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="VALUE" x="10.128" y="69.074" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C50" library="passives" package="0603_CAP" value="100nF" x="10.16" y="60.706" smashed="yes" rot="R180">
 <attribute name="NAME" x="10.16" y="59.944" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -4030,10 +3576,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.748" y="59.436" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J6" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="51.816" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="-5.08" y="79.756" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="-5.08" y="79.756" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="-5.08" y="79.756" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="-5.08" y="79.756" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="3.937" y="56.281" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="-5.08" y="79.756" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="-1.9" y="51.816" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C52" library="passives" package="0603_CAP" value="100nF" x="9.906" y="50.546" smashed="yes" rot="R180">
@@ -4043,12 +3589,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.621" y="48.641" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U3" library="ftdichip" package="QFN32" value="FT232RQ" x="14.224" y="53.086" smashed="yes" rot="R270">
-<attribute name="OC_NEWARK" value="91K9919" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MPN" value="FT232RQ" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MF" value="" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="OC_FARNELL" value="1146033" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="VALUE" x="9.874" y="57.136" size="1.27" layer="27" rot="R270"/>
+<attribute name="MPN" value="FT232RQ" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="12.329" y="55.955" size="1.016" layer="25" font="vector" ratio="12"/>
+<attribute name="OC_FARNELL" value="1146033" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="OC_NEWARK" value="91K9919" x="-18.796" y="98.806" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="VALUE" x="9.874" y="57.136" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C53" library="passives" package="0603_CAP" value="100nF" x="9.906" y="49.022" smashed="yes" rot="R180">
 <attribute name="NAME" x="9.779" y="48.26" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -4113,10 +3659,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="25.019" y="54.8005" size="1.016" layer="27" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="J10" library="con-ml" package="ML20" value="" x="59.055" y="6.858" smashed="yes">
-<attribute name="OC_NEWARK" value="unknown" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
-<attribute name="MPN" value="" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MF" value="" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="MPN" value="" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="59.055" y="6.858" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="VALUE" x="60.325" y="11.938" size="1.778" layer="27" ratio="10"/>
 </element>
 <element name="S19" library="switches" package="TE_SSA12/SPDT" value="TE_SSA12/SPDT" x="52.451" y="23.114" smashed="yes">
@@ -4207,10 +3753,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="36.449" y="46.99" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J7" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="39.878" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="10.16" y="50.038" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="10.16" y="50.038" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="10.16" y="50.038" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="10.16" y="50.038" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="3.81" y="44.343" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="10.16" y="50.038" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="-1.9" y="39.878" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C55" library="passives" package="0603_CAP" value="100nF" x="9.906" y="38.354" smashed="yes" rot="R180">
@@ -4220,12 +3766,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.367" y="36.068" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U4" library="ftdichip" package="QFN32" value="FT232RQ" x="14.224" y="41.402" smashed="yes" rot="R270">
-<attribute name="OC_NEWARK" value="91K9919" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MPN" value="FT232RQ" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MF" value="" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="OC_FARNELL" value="1146033" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="VALUE" x="9.874" y="45.452" size="1.27" layer="27" rot="R270"/>
+<attribute name="MPN" value="FT232RQ" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="11.694" y="44.271" size="1.016" layer="25" font="vector" ratio="12"/>
+<attribute name="OC_FARNELL" value="1146033" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="OC_NEWARK" value="91K9919" x="6.604" y="61.722" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="VALUE" x="9.874" y="45.452" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C56" library="passives" package="0603_CAP" value="100nF" x="9.906" y="36.576" smashed="yes" rot="R180">
 <attribute name="NAME" x="9.906" y="35.814" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -4234,10 +3780,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.367" y="35.433" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J8" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="27.94" smashed="yes" rot="R270">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="-7.62" y="55.88" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="-7.62" y="55.88" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="-7.62" y="55.88" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="-7.62" y="55.88" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="3.81" y="32.151" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="-7.62" y="55.88" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="-1.9" y="27.94" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C58" library="passives" package="0603_CAP" value="100nF" x="10.16" y="25.908" smashed="yes" rot="R180">
@@ -4247,12 +3793,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="15.621" y="24.003" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U5" library="ftdichip" package="QFN32" value="FT232RQ" x="14.224" y="29.464" smashed="yes" rot="R270">
-<attribute name="OC_NEWARK" value="91K9919" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MPN" value="FT232RQ" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MF" value="" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="OC_FARNELL" value="1146033" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="VALUE" x="9.874" y="33.514" size="1.27" layer="27" rot="R270"/>
+<attribute name="MPN" value="FT232RQ" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="11.694" y="32.079" size="1.016" layer="25" font="vector" ratio="12"/>
+<attribute name="OC_FARNELL" value="1146033" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="OC_NEWARK" value="91K9919" x="-21.336" y="77.724" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="VALUE" x="9.874" y="33.514" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C59" library="passives" package="0603_CAP" value="100nF" x="10.16" y="24.384" smashed="yes" rot="R180">
 <attribute name="NAME" x="9.906" y="23.622" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -4330,10 +3876,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="87.757" y="64.77" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J9" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="80.899" y="0" smashed="yes">
-<attribute name="MOUSER" value="798-ZX62R-B-5P" x="80.899" y="0" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
-<attribute name="NEWARK" value="69W0714" x="80.899" y="0" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="DIGIKEY" value="H11574CT-ND" x="80.899" y="0" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="MOUSER" value="798-ZX62R-B-5P" x="80.899" y="0" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="NAME" x="86.995" y="0.655" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NEWARK" value="69W0714" x="80.899" y="0" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="VALUE" x="80.899" y="-1.9" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="Q1" library="fets" package="SOT353" value="DMN32D2LDF" x="85.344" y="54.737" smashed="yes" rot="R180">
