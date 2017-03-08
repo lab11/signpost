@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.0.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -4364,7 +4364,7 @@ Master</text>
 <wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
 <text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
-<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">BACKPLANE</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">BACKPLANE (3V3)</text>
 </symbol>
 <symbol name="BUFFER-LEVEL-2">
 <wire x1="0" y1="0" x2="0" y2="-1.016" width="0.127" layer="94"/>
