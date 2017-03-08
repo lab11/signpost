@@ -7239,30 +7239,6 @@ High-power, low thermal resistance package.</description>
 <library name="switches">
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Switches.</description>
 <packages>
-<package name="B3U-3000P-B">
-<smd name="1" x="-1.7" y="0" dx="0.8" dy="1.7" layer="1"/>
-<smd name="2" x="1.7" y="0" dx="0.8" dy="1.7" layer="1"/>
-<wire x1="-1.5" y1="1.25" x2="-1.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-1.25" x2="1.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-1.25" x2="1.5" y2="1.25" width="0.127" layer="21"/>
-<wire x1="1.5" y1="1.25" x2="-1.5" y2="1.25" width="0.127" layer="21"/>
-<wire x1="-0.85" y1="1.25" x2="-0.85" y2="1.65" width="0.127" layer="51"/>
-<wire x1="-0.85" y1="1.65" x2="-0.55" y2="1.95" width="0.127" layer="51"/>
-<wire x1="-0.55" y1="1.95" x2="0.55" y2="1.95" width="0.127" layer="51"/>
-<wire x1="0.55" y1="1.95" x2="0.85" y2="1.65" width="0.127" layer="51"/>
-<wire x1="0.85" y1="1.65" x2="0.85" y2="1.25" width="0.127" layer="51"/>
-<pad name="P$1" x="0" y="0" drill="0.75"/>
-<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-</package>
-<package name="B3U-1000P">
-<smd name="1" x="-1.7" y="0" dx="0.8" dy="1.7" layer="1"/>
-<smd name="2" x="1.7" y="0" dx="0.8" dy="1.7" layer="1"/>
-<wire x1="-1.5" y1="1.25" x2="-1.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-1.25" x2="1.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-1.25" x2="1.5" y2="1.25" width="0.127" layer="21"/>
-<wire x1="1.5" y1="1.25" x2="-1.5" y2="1.25" width="0.127" layer="21"/>
-<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-</package>
 <package name="TE_SSA12/SPDT">
 <description>SPDT</description>
 <wire x1="-4.3942" y1="1.7018" x2="4.3942" y2="1.7018" width="0.127" layer="21"/>
@@ -7329,6 +7305,18 @@ High-power, low thermal resistance package.</description>
 <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
 <circle x="-2.5" y="-2" radius="0.3" width="0" layer="21"/>
 <text x="-2.5" y="0" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center">&gt;NAME</text>
+</package>
+<package name="PTS645">
+<smd name="1" x="-3.975" y="2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="2" x="3.975" y="2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="3" x="3.975" y="-2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="4" x="-3.975" y="-2.25" dx="1.55" dy="1.3" layer="1"/>
+<wire x1="-3" y1="3" x2="3" y2="3" width="0.127" layer="21"/>
+<wire x1="3" y1="3" x2="3" y2="-3" width="0.127" layer="21"/>
+<wire x1="3" y1="-3" x2="-3" y2="-3" width="0.127" layer="21"/>
+<wire x1="-3" y1="-3" x2="-3" y2="3" width="0.127" layer="21"/>
+<text x="0" y="3.5" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<circle x="0" y="0" radius="1.75" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -7418,36 +7406,6 @@ High-power, low thermal resistance package.</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="B3U" prefix="S">
-<description>Switch</description>
-<gates>
-<gate name="G$1" symbol="PUSH-BUTTON-SWITCH" x="0" y="0"/>
-</gates>
-<devices>
-<device name="-3000P-B" package="B3U-3000P-B">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="SW1256CT-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="-1000P" package="B3U-1000P">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="SW1020CT-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="TE_SSA12/SPDT" prefix="S">
 <description>SWITCH SLIDE SPDT 2POS SSA SER</description>
 <gates>
@@ -7521,6 +7479,25 @@ High-power, low thermal resistance package.</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-15258-1-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PTS645SM43SMTR92" prefix="S">
+<description>Tactile Switch SPST-NO Top Actuated Surface Mount</description>
+<gates>
+<gate name="G$1" symbol="PUSH-BUTTON-SWITCH" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PTS645">
+<connects>
+<connect gate="G$1" pin="P$1" pad="1 2"/>
+<connect gate="G$1" pin="P$2" pad="3 4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="CKN9112CT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -8085,7 +8062,6 @@ Low profile connectors, straight&lt;p&gt;
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 </part>
 <part name="GND38" library="umich" deviceset="GND" device=""/>
-<part name="S3" library="switches" deviceset="B3U" device="-1000P"/>
 <part name="U1" library="ftdichip" deviceset="FT232R" device="Q"/>
 <part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
@@ -8160,8 +8136,6 @@ Low profile connectors, straight&lt;p&gt;
 <part name="GND28" library="umich" deviceset="GND" device=""/>
 <part name="S18" library="switches" deviceset="SN74AHC4066" device="-RGY"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
-<part name="S4" library="switches" deviceset="B3U" device="-1000P"/>
-<part name="S5" library="switches" deviceset="B3U" device="-1000P"/>
 <part name="FRAME13" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="GND32" library="umich" deviceset="GND" device=""/>
 <part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
@@ -8195,8 +8169,6 @@ Low profile connectors, straight&lt;p&gt;
 <part name="LED13" library="leds" deviceset="LED" device="0603"/>
 <part name="GND77" library="umich" deviceset="GND" device=""/>
 <part name="GND78" library="umich" deviceset="GND" device=""/>
-<part name="S6" library="switches" deviceset="B3U" device="-1000P"/>
-<part name="S7" library="switches" deviceset="B3U" device="-1000P"/>
 <part name="GND81" library="umich" deviceset="GND" device=""/>
 <part name="FRAME14" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U23" library="signpost" deviceset="TS3USB30E" device=""/>
@@ -8237,7 +8209,6 @@ Low profile connectors, straight&lt;p&gt;
 <part name="TP18" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R72" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$16" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="S8" library="switches" deviceset="B3U" device="-1000P"/>
 <part name="GND89" library="umich" deviceset="GND" device=""/>
 <part name="R97" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="R98" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
@@ -8299,6 +8270,12 @@ Low profile connectors, straight&lt;p&gt;
 <part name="GND48" library="umich" deviceset="GND" device=""/>
 <part name="GND61" library="umich" deviceset="GND" device=""/>
 <part name="GND65" library="umich" deviceset="GND" device=""/>
+<part name="S3" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
+<part name="S4" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
+<part name="S5" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
+<part name="S6" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
+<part name="S7" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
+<part name="S8" library="switches" deviceset="PTS645SM43SMTR92" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8325,11 +8302,11 @@ Low profile connectors, straight&lt;p&gt;
 <instance part="J1" gate="STORAGE_MASTER" x="33.02" y="15.24"/>
 <instance part="GND77" gate="1" x="106.68" y="45.72"/>
 <instance part="GND78" gate="1" x="106.68" y="5.08"/>
+<instance part="U$11" gate="G$1" x="71.12" y="177.8"/>
+<instance part="GND89" gate="1" x="93.98" y="149.86"/>
 <instance part="S6" gate="G$1" x="104.14" y="60.96" rot="R90"/>
 <instance part="S7" gate="G$1" x="104.14" y="20.32" rot="R90"/>
-<instance part="U$11" gate="G$1" x="71.12" y="177.8"/>
 <instance part="S8" gate="G$1" x="93.98" y="162.56" rot="R90"/>
-<instance part="GND89" gate="1" x="93.98" y="149.86"/>
 </instances>
 <busses>
 </busses>
@@ -8476,10 +8453,10 @@ Low profile connectors, straight&lt;p&gt;
 <wire x1="63.5" y1="58.42" x2="96.52" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="58.42" x2="96.52" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="48.26" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="S6" gate="G$1" pin="P$1"/>
 <wire x1="104.14" y1="48.26" x2="106.68" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="53.34" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
 <junction x="104.14" y="48.26"/>
+<pinref part="S6" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
 <pinref part="J1" gate="STORAGE_MASTER" pin="GND1"/>
@@ -8487,15 +8464,15 @@ Low profile connectors, straight&lt;p&gt;
 <wire x1="63.5" y1="17.78" x2="93.98" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="17.78" x2="93.98" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="7.62" x2="104.14" y2="7.62" width="0.1524" layer="91"/>
-<pinref part="S7" gate="G$1" pin="P$1"/>
 <wire x1="104.14" y1="7.62" x2="106.68" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="12.7" x2="104.14" y2="7.62" width="0.1524" layer="91"/>
 <junction x="104.14" y="7.62"/>
+<pinref part="S7" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
 <pinref part="GND89" gate="1" pin="GND"/>
-<pinref part="S8" gate="G$1" pin="P$1"/>
 <wire x1="93.98" y1="152.4" x2="93.98" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="S8" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -8591,10 +8568,10 @@ Low profile connectors, straight&lt;p&gt;
 <pinref part="J1" gate="CONTROLLER" pin="DBG_!RESET"/>
 <wire x1="63.5" y1="71.12" x2="104.14" y2="71.12" width="0.1524" layer="91"/>
 <label x="106.68" y="71.12" size="1.016" layer="95" xref="yes"/>
-<pinref part="S6" gate="G$1" pin="P$2"/>
 <wire x1="104.14" y1="71.12" x2="106.68" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="68.58" x2="104.14" y2="71.12" width="0.1524" layer="91"/>
 <junction x="104.14" y="71.12"/>
+<pinref part="S6" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="CONT0_DBG_GPIO1" class="0">
@@ -8644,10 +8621,10 @@ Low profile connectors, straight&lt;p&gt;
 <pinref part="J1" gate="STORAGE_MASTER" pin="DBG_!RESET"/>
 <wire x1="63.5" y1="30.48" x2="104.14" y2="30.48" width="0.1524" layer="91"/>
 <label x="109.22" y="30.48" size="1.016" layer="95" xref="yes"/>
-<pinref part="S7" gate="G$1" pin="P$2"/>
 <wire x1="104.14" y1="30.48" x2="109.22" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="27.94" x2="104.14" y2="30.48" width="0.1524" layer="91"/>
 <junction x="104.14" y="30.48"/>
+<pinref part="S7" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="CONT1_DBG_GPIO1" class="0">
@@ -9313,19 +9290,19 @@ Translator</text>
 <pinref part="J3" gate="G$1" pin="GND"/>
 <wire x1="91.44" y1="71.12" x2="91.44" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="S4" gate="G$1" pin="P$1"/>
 <wire x1="99.06" y1="71.12" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
 <junction x="91.44" y="71.12"/>
+<pinref part="S4" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
 <pinref part="J2" gate="G$1" pin="GND"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 <wire x1="160.02" y1="76.2" x2="187.96" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="76.2" x2="187.96" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="S5" gate="G$1" pin="P$1"/>
 <wire x1="187.96" y1="71.12" x2="187.96" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="71.12" x2="187.96" y2="71.12" width="0.1524" layer="91"/>
 <junction x="187.96" y="71.12"/>
+<pinref part="S5" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="MOD1_PPS" class="0">
@@ -9522,10 +9499,10 @@ Translator</text>
 <pinref part="J3" gate="G$1" pin="DBG_!RESET"/>
 <wire x1="63.5" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
 <label x="101.6" y="88.9" size="1.016" layer="95" xref="yes"/>
-<pinref part="S4" gate="G$1" pin="P$2"/>
 <wire x1="99.06" y1="88.9" x2="101.6" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="86.36" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
 <junction x="99.06" y="88.9"/>
+<pinref part="S4" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="MOD0_DBG_SWDCLK" class="0">
@@ -9547,10 +9524,10 @@ Translator</text>
 <pinref part="J2" gate="G$1" pin="DBG_!RESET"/>
 <wire x1="160.02" y1="88.9" x2="195.58" y2="88.9" width="0.1524" layer="91"/>
 <label x="198.12" y="88.9" size="1.016" layer="95" xref="yes"/>
-<pinref part="S5" gate="G$1" pin="P$2"/>
 <wire x1="195.58" y1="88.9" x2="198.12" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="86.36" x2="195.58" y2="88.9" width="0.1524" layer="91"/>
 <junction x="195.58" y="88.9"/>
+<pinref part="S5" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="MOD1_DBG_SWDCLK" class="0">
@@ -13950,7 +13927,6 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <attribute name="DIGIKEY" x="53.34" y="58.42" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
 <instance part="GND38" gate="1" x="48.26" y="17.78"/>
-<instance part="S3" gate="G$1" x="48.26" y="30.48" rot="R90"/>
 <instance part="U1" gate="1" x="190.5" y="124.46" rot="MR0"/>
 <instance part="C47" gate="G$1" x="218.44" y="106.68">
 <attribute name="DIGIKEY" x="218.44" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
@@ -13973,6 +13949,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="GND48" gate="1" x="210.82" y="25.4"/>
 <instance part="GND61" gate="1" x="218.44" y="25.4"/>
 <instance part="GND65" gate="1" x="167.64" y="27.94"/>
+<instance part="S3" gate="G$1" x="48.26" y="30.48" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -15011,16 +14988,6 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </nets>
 </sheet>
 </sheets>
-<errors>
-<approved hash="115,1,124.356,92.606,FRAME1,,,,,"/>
-<approved hash="115,3,124.356,92.606,FRAME2,,,,,"/>
-<approved hash="115,13,124.356,92.606,FRAME3,,,,,"/>
-<approved hash="115,9,124.356,92.606,FRAME4,,,,,"/>
-<approved hash="115,10,124.356,92.606,FRAME5,,,,,"/>
-<approved hash="115,14,124.356,92.606,FRAME6,,,,,"/>
-<approved hash="115,8,124.356,92.606,FRAME7,,,,,"/>
-<approved hash="115,11,124.356,92.606,FRAME8,,,,,"/>
-</errors>
 </schematic>
 </drawing>
 <compatibility>
