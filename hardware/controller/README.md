@@ -20,18 +20,18 @@ Physical Layout
 The Control Module has two headers that it uses to interact with the Backplane:
 a 20-pin header on top and a 10-pin header on bottom.
 
-| Description                     | Signal   | Pin |   | Pin | Signal         | Description                                 |
-|---------------------------------|----------|-----|---|-----|----------------|---------------------------------------------|
-| Ground                          | GND      | 1   |   | 2   | VCC_CONTROLLER | VCC for Controller and Storage Master (5V)  |
-| SMBus Data Line (to Backplane)  | SMBDATA  | 3   |   | 4   | VCC_LINUX      | VCC for Linux (5V)                          |
-| SMBus Clock Line (to Backplane) | SMBCLK   | 5   |   | 6   | !SMBALERT      | SMBus Alert line (active low, to Backplane) |
-|                                 | Reserved | 7   |   | 8   | Reserved       |                                             |
-| Digital output to Module 0      | MOD0_IN  | 9   |   | 10  | MOD0_IN        | Digital input from Module 0                 |
-| Digital output to Module 1      | MOD1_IN  | 11  |   | 12  | MOD1_IN        | Digital input from Module 1                 |
-| Digital output to Module 2      | MOD2_IN  | 13  |   | 14  | MOD2_IN        | Digital input from Module 2                 |
-| Digital output to Module 5      | MOD5_IN  | 15  |   | 16  | MOD5_IN        | Digital input from Module 5                 |
-| Digital output to Module 6      | MOD6_IN  | 17  |   | 18  | MOD6_IN        | Digital input from Module 6                 |
-| Digital output to Module 7      | MOD7_IN  | 19  |   | 20  | MOD7_IN        | Digital input from Module 7                 |
+| Description                                | Signal    | Pin |   | Pin | Signal         | Description                                 |
+|--------------------------------------------|-----------|-----|---|-----|----------------|---------------------------------------------|
+| Ground                                     | GND       | 1   |   | 2   | VCC_CONTROLLER | VCC for Controller and Storage Master (5V)  |
+| SMBus Data Line (to Backplane)             | SMBDATA   | 3   |   | 4   | VCC_LINUX      | VCC for Linux (5V)                          |
+| SMBus Clock Line (to Backplane)            | SMBCLK    | 5   |   | 6   | !SMBALERT      | SMBus Alert line (active low, to Backplane) |
+| Watchdog output (active low, to Backplane) | !WATCHDOG | 7   |   | 8   | Reserved       |                                             |
+| Digital output to Module 0                 | MOD0_IN   | 9   |   | 10  | MOD0_IN        | Digital input from Module 0                 |
+| Digital output to Module 1                 | MOD1_IN   | 11  |   | 12  | MOD1_IN        | Digital input from Module 1                 |
+| Digital output to Module 2                 | MOD2_IN   | 13  |   | 14  | MOD2_IN        | Digital input from Module 2                 |
+| Digital output to Module 5                 | MOD5_IN   | 15  |   | 16  | MOD5_IN        | Digital input from Module 5                 |
+| Digital output to Module 6                 | MOD6_IN   | 17  |   | 18  | MOD6_IN        | Digital input from Module 6                 |
+| Digital output to Module 7                 | MOD7_IN   | 19  |   | 20  | MOD7_IN        | Digital input from Module 7                 |
 
 | Description                  | Signal      | Pin |   | Pin | Signal           | Description                                         |
 |------------------------------|-------------|-----|---|-----|------------------|-----------------------------------------------------|
