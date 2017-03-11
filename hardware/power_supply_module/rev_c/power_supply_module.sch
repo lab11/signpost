@@ -154,7 +154,7 @@
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
 <layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
-<schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
+<schematic xreflabel="%F%N/%S" xrefpart="/%S">
 <libraries>
 <library name="supply1">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
@@ -1332,6 +1332,20 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <circle x="0.33" y="-0.44" radius="0.11661875" width="0.127" layer="21"/>
 <text x="-0.5" y="0" size="1.27" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
 </package>
+<package name="SOT-23">
+<wire x1="-1.4224" y1="0.381" x2="1.4732" y2="0.381" width="0.1524" layer="21"/>
+<wire x1="1.4732" y1="0.381" x2="1.4732" y2="-0.381" width="0.1524" layer="21"/>
+<wire x1="1.4732" y1="-0.381" x2="-1.4224" y2="-0.381" width="0.1524" layer="21"/>
+<wire x1="-1.4224" y1="-0.381" x2="-1.4224" y2="0.381" width="0.1524" layer="21"/>
+<smd name="1" x="0.9906" y="1.016" dx="0.7874" dy="0.889" layer="1"/>
+<smd name="2" x="-0.9398" y="1.016" dx="0.7874" dy="0.889" layer="1"/>
+<smd name="3" x="0.0254" y="-1.016" dx="0.7874" dy="0.889" layer="1"/>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<text x="0" y="1.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<rectangle x1="0.7874" y1="0.4318" x2="1.1684" y2="0.9398" layer="51"/>
+<rectangle x1="-1.143" y1="0.4318" x2="-0.762" y2="0.9398" layer="51"/>
+<rectangle x1="-0.1778" y1="-0.9398" x2="0.2032" y2="-0.4318" layer="51"/>
+</package>
 <package name="SOT-23-8">
 <wire x1="-1.422" y1="-0.81" x2="-1.422" y2="0.81" width="0.1524" layer="21"/>
 <wire x1="-0.428" y1="-0.81" x2="-0.522" y2="-0.81" width="0.1524" layer="21"/>
@@ -1356,20 +1370,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="2.372" y1="0.81" x2="2.372" y2="-0.81" width="0.1524" layer="21"/>
 <wire x1="2.278" y1="0.81" x2="2.372" y2="0.81" width="0.1524" layer="21"/>
 <wire x1="2.372" y1="-0.81" x2="2.278" y2="-0.81" width="0.1524" layer="21"/>
-</package>
-<package name="SOT-23">
-<wire x1="-1.4224" y1="0.381" x2="1.4732" y2="0.381" width="0.1524" layer="21"/>
-<wire x1="1.4732" y1="0.381" x2="1.4732" y2="-0.381" width="0.1524" layer="21"/>
-<wire x1="1.4732" y1="-0.381" x2="-1.4224" y2="-0.381" width="0.1524" layer="21"/>
-<wire x1="-1.4224" y1="-0.381" x2="-1.4224" y2="0.381" width="0.1524" layer="21"/>
-<smd name="1" x="0.9906" y="1.016" dx="0.7874" dy="0.889" layer="1"/>
-<smd name="2" x="-0.9398" y="1.016" dx="0.7874" dy="0.889" layer="1"/>
-<smd name="3" x="0.0254" y="-1.016" dx="0.7874" dy="0.889" layer="1"/>
-<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
-<text x="0" y="1.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<rectangle x1="0.7874" y1="0.4318" x2="1.1684" y2="0.9398" layer="51"/>
-<rectangle x1="-1.143" y1="0.4318" x2="-0.762" y2="0.9398" layer="51"/>
-<rectangle x1="-0.1778" y1="-0.9398" x2="0.2032" y2="-0.4318" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -1489,22 +1489,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <text x="-5.08" y="10.668" size="1.778" layer="95" ratio="12">&gt;NAME</text>
 <text x="-5.08" y="-14.732" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
 </symbol>
-<symbol name="MAX6752">
-<wire x1="-12.7" y1="-15.24" x2="-12.7" y2="17.78" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="17.78" x2="12.7" y2="17.78" width="0.254" layer="94"/>
-<wire x1="12.7" y1="17.78" x2="12.7" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-15.24" x2="-12.7" y2="-15.24" width="0.254" layer="94"/>
-<pin name="SET0" x="17.78" y="-5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="GND" x="-17.78" y="-10.16" visible="pin" length="middle"/>
-<pin name="SRT" x="-17.78" y="5.08" visible="pin" length="middle"/>
-<pin name="SWT" x="-17.78" y="-2.54" visible="pin" length="middle"/>
-<pin name="VCC" x="17.78" y="10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="!RESET" x="17.78" y="2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="WDI" x="-17.78" y="10.16" visible="pin" length="middle"/>
-<pin name="SET1" x="17.78" y="-10.16" visible="pin" length="middle" rot="R180"/>
-<text x="-7.62" y="17.78" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
-<text x="0" y="15.24" size="1.778" layer="95" rot="R180" align="bottom-center">MAX6752</text>
-</symbol>
 <symbol name="LM3480">
 <wire x1="-10.16" y1="5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="-10.16" y1="-5.08" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
@@ -1515,6 +1499,22 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pin name="GND" x="0" y="-10.16" visible="pin" length="middle" rot="R90"/>
 <text x="-5.08" y="5.08" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
 <text x="7.62" y="5.08" size="1.778" layer="96" align="bottom-center">&gt;VALUE</text>
+</symbol>
+<symbol name="MAX6746">
+<wire x1="-12.7" y1="-17.78" x2="-12.7" y2="15.24" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="15.24" x2="12.7" y2="15.24" width="0.254" layer="94"/>
+<wire x1="12.7" y1="15.24" x2="12.7" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-17.78" x2="-12.7" y2="-17.78" width="0.254" layer="94"/>
+<pin name="!MR" x="17.78" y="-7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="-17.78" y="-12.7" visible="pin" length="middle"/>
+<pin name="SRT" x="-17.78" y="2.54" visible="pin" length="middle"/>
+<pin name="SWT" x="-17.78" y="-5.08" visible="pin" length="middle"/>
+<pin name="VCC" x="17.78" y="7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="!RESET" x="17.78" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="WDI" x="-17.78" y="7.62" visible="pin" length="middle"/>
+<pin name="WDS" x="17.78" y="-12.7" visible="pin" length="middle" rot="R180"/>
+<text x="-7.62" y="15.24" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
+<text x="0" y="12.7" size="1.778" layer="95" rot="R180" align="bottom-center">MAX6746</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1696,31 +1696,6 @@ and Current Measurement</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MAX6752" prefix="U">
-<description>A windowed watchdog timer and voltage monitor IC</description>
-<gates>
-<gate name="G$1" symbol="MAX6752" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SOT-23-8">
-<connects>
-<connect gate="G$1" pin="!RESET" pad="7"/>
-<connect gate="G$1" pin="GND" pad="4"/>
-<connect gate="G$1" pin="SET0" pad="1"/>
-<connect gate="G$1" pin="SET1" pad="5"/>
-<connect gate="G$1" pin="SRT" pad="3"/>
-<connect gate="G$1" pin="SWT" pad="2"/>
-<connect gate="G$1" pin="VCC" pad="8"/>
-<connect gate="G$1" pin="WDI" pad="6"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="MAX6752KA31+TCT-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="TILM3480" prefix="U">
 <description>Very simple LDO 100ma 3v3</description>
 <gates>
@@ -1736,6 +1711,31 @@ and Current Measurement</description>
 <technologies>
 <technology name="3.3V">
 <attribute name="DIGIKEY" value="LM3480IM3-3.3/NOPBCT-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="MAX6746" prefix="U">
+<description>A simple watchdog timer with adjustable timeouts and reset time</description>
+<gates>
+<gate name="G$1" symbol="MAX6746" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT-23-8">
+<connects>
+<connect gate="G$1" pin="!MR" pad="1"/>
+<connect gate="G$1" pin="!RESET" pad="7"/>
+<connect gate="G$1" pin="GND" pad="4"/>
+<connect gate="G$1" pin="SRT" pad="3"/>
+<connect gate="G$1" pin="SWT" pad="2"/>
+<connect gate="G$1" pin="VCC" pad="8"/>
+<connect gate="G$1" pin="WDI" pad="6"/>
+<connect gate="G$1" pin="WDS" pad="5"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="MAX6746KA26+TCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2333,17 +2333,17 @@ High-power, low thermal resistance package.</description>
 <part name="R63" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
 <part name="R64" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
 <part name="R65" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ"/>
-<part name="U27" library="chips" deviceset="MAX6752" device=""/>
-<part name="C46" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="460nF"/>
+<part name="C46" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="474nF"/>
 <part name="C47" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="800nF"/>
 <part name="U28" library="chips" deviceset="TILM3480" device="" technology="3.3V" value="3.3V"/>
 <part name="C48" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1uF"/>
 <part name="C49" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1uF"/>
-<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580"/>
+<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580"/>
 <part name="R66" library="passives" deviceset="RESISTOR" device="0402_RES" value="1M"/>
 <part name="S1" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
+<part name="U27" library="chips" deviceset="MAX6746" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3487,11 +3487,10 @@ High-power, low thermal resistance package.</description>
 </sheet>
 <sheet>
 <plain>
-<text x="119.38" y="22.86" size="1.016" layer="98" align="bottom-center">Switch disables watchdog</text>
-<text x="71.12" y="50.8" size="1.016" layer="98" rot="R180" align="bottom-center">800nF = 4s reset period</text>
-<text x="71.12" y="30.48" size="1.016" layer="98" align="bottom-center">460nF=300s watchdog timer</text>
-<text x="106.68" y="30.48" size="1.016" layer="98" align="bottom-center">Set0=0,Set1=0--&gt;window=twd/8</text>
+<text x="73.66" y="55.88" size="1.016" layer="98" rot="R180" align="bottom-center">800nF = 4s reset period</text>
+<text x="101.6" y="30.48" size="1.016" layer="98" align="bottom-center">460nF=300s watchdog timer (extended mode)</text>
 <text x="30.48" y="177.8" size="3.81" layer="97" align="bottom-center">Monitors and Watchdog</text>
+<text x="91.44" y="50.8" size="1.016" layer="98" align="bottom-center">Connect to GND to disable WDT</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
@@ -3519,19 +3518,19 @@ High-power, low thermal resistance package.</description>
 <instance part="R63" gate="G$1" x="101.6" y="165.1" rot="R90"/>
 <instance part="R64" gate="G$1" x="109.22" y="165.1" rot="R90"/>
 <instance part="R65" gate="G$1" x="116.84" y="165.1" rot="R90"/>
-<instance part="U27" gate="G$1" x="91.44" y="48.26"/>
-<instance part="C46" gate="G$1" x="68.58" y="43.18"/>
-<instance part="C47" gate="G$1" x="60.96" y="45.72"/>
+<instance part="C46" gate="G$1" x="78.74" y="43.18"/>
+<instance part="C47" gate="G$1" x="66.04" y="45.72"/>
 <instance part="U28" gate="G$1" x="33.02" y="55.88"/>
 <instance part="C48" gate="G$1" x="15.24" y="53.34"/>
 <instance part="C49" gate="G$1" x="50.8" y="53.34"/>
-<instance part="Q1" gate="G$1" x="142.24" y="50.8" smashed="yes">
-<attribute name="NAME" x="134.62" y="55.88" size="1.778" layer="95"/>
+<instance part="Q1" gate="G$1" x="177.8" y="50.8" smashed="yes">
+<attribute name="NAME" x="170.18" y="55.88" size="1.778" layer="95"/>
 </instance>
-<instance part="R66" gate="G$1" x="132.08" y="43.18" rot="R90"/>
-<instance part="S1" gate="G$1" x="114.3" y="38.1" smashed="yes">
-<attribute name="NAME" x="111.76" y="40.64" size="1.27" layer="95"/>
+<instance part="R66" gate="G$1" x="165.1" y="43.18" rot="R90"/>
+<instance part="S1" gate="G$1" x="99.06" y="45.72" smashed="yes" rot="R180">
+<attribute name="NAME" x="101.6" y="43.18" size="1.27" layer="95" rot="R180"/>
 </instance>
+<instance part="U27" gate="G$1" x="121.92" y="50.8"/>
 </instances>
 <busses>
 </busses>
@@ -3563,8 +3562,8 @@ High-power, low thermal resistance package.</description>
 </segment>
 <segment>
 <pinref part="Q1" gate="G$1" pin="D"/>
-<wire x1="142.24" y1="55.88" x2="142.24" y2="60.96" width="0.1524" layer="91"/>
-<label x="142.24" y="60.96" size="1.016" layer="95" rot="R90" xref="yes"/>
+<wire x1="177.8" y1="55.88" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
+<label x="177.8" y="60.96" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="VBATT+" class="0">
@@ -3823,91 +3822,55 @@ High-power, low thermal resistance package.</description>
 <net name="N$41" class="0">
 <segment>
 <pinref part="C47" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="48.26" x2="60.96" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="48.26" x2="66.04" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="53.34" x2="104.14" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="U27" gate="G$1" pin="SRT"/>
-<wire x1="60.96" y1="53.34" x2="73.66" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$45" class="0">
-<segment>
-<pinref part="C46" gate="G$1" pin="1"/>
-<pinref part="U27" gate="G$1" pin="SWT"/>
-<wire x1="68.58" y1="45.72" x2="73.66" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$63" class="0">
-<segment>
-<pinref part="U27" gate="G$1" pin="VCC"/>
-<wire x1="127" y1="58.42" x2="109.22" y2="58.42" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="A"/>
-<wire x1="121.92" y1="40.64" x2="127" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="127" y1="40.64" x2="127" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="127" y1="58.42" x2="127" y2="71.12" width="0.1524" layer="91"/>
-<junction x="127" y="58.42"/>
-<pinref part="U28" gate="G$1" pin="OUT"/>
-<pinref part="C49" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="55.88" x2="50.8" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="58.42" x2="48.26" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="127" y1="71.12" x2="50.8" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="71.12" x2="50.8" y2="58.42" width="0.1524" layer="91"/>
-<junction x="50.8" y="58.42"/>
 </segment>
 </net>
 <net name="WDI" class="0">
 <segment>
+<wire x1="104.14" y1="58.42" x2="96.52" y2="58.42" width="0.1524" layer="91"/>
+<label x="96.52" y="58.42" size="1.016" layer="95" rot="R180" xref="yes"/>
 <pinref part="U27" gate="G$1" pin="WDI"/>
-<wire x1="73.66" y1="58.42" x2="66.04" y2="58.42" width="0.1524" layer="91"/>
-<label x="66.04" y="58.42" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$69" class="0">
 <segment>
-<pinref part="U27" gate="G$1" pin="!RESET"/>
 <pinref part="Q1" gate="G$1" pin="G"/>
-<wire x1="109.22" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="50.8" x2="165.1" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="R66" gate="G$1" pin="2"/>
-<wire x1="132.08" y1="50.8" x2="134.62" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="45.72" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
-<junction x="132.08" y="50.8"/>
-</segment>
-</net>
-<net name="N$72" class="0">
-<segment>
-<pinref part="S1" gate="G$1" pin="IN"/>
-<pinref part="U27" gate="G$1" pin="SET1"/>
-<wire x1="111.76" y1="38.1" x2="109.22" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="50.8" x2="170.18" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="45.72" x2="165.1" y2="50.8" width="0.1524" layer="91"/>
+<junction x="165.1" y="50.8"/>
+<pinref part="U27" gate="G$1" pin="!RESET"/>
 </segment>
 </net>
 <net name="VBATT_MONITOR_GND" class="0">
 <segment>
-<pinref part="U27" gate="G$1" pin="GND"/>
 <pinref part="C46" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="38.1" x2="68.58" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="38.1" x2="60.96" y2="38.1" width="0.1524" layer="91"/>
-<junction x="68.58" y="38.1"/>
+<wire x1="104.14" y1="38.1" x2="88.9" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="38.1" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="38.1" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
+<junction x="78.74" y="38.1"/>
 <pinref part="C47" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="38.1" x2="60.96" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="38.1" x2="60.96" y2="27.94" width="0.1524" layer="91"/>
-<junction x="60.96" y="38.1"/>
-<label x="60.96" y="22.86" size="1.016" layer="95" rot="R270" xref="yes"/>
-<wire x1="60.96" y1="27.94" x2="60.96" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="27.94" x2="121.92" y2="27.94" width="0.1524" layer="91"/>
-<junction x="60.96" y="27.94"/>
+<wire x1="66.04" y1="38.1" x2="66.04" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="38.1" x2="66.04" y2="27.94" width="0.1524" layer="91"/>
+<junction x="66.04" y="38.1"/>
+<label x="66.04" y="22.86" size="1.016" layer="95" rot="R270" xref="yes"/>
+<wire x1="66.04" y1="27.94" x2="66.04" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="27.94" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
+<junction x="66.04" y="27.94"/>
 <pinref part="Q1" gate="G$1" pin="S"/>
-<wire x1="121.92" y1="27.94" x2="124.46" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="45.72" x2="142.24" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="27.94" x2="132.08" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="45.72" x2="177.8" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="27.94" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="R66" gate="G$1" pin="1"/>
-<wire x1="132.08" y1="27.94" x2="124.46" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="38.1" x2="132.08" y2="27.94" width="0.1524" layer="91"/>
-<junction x="132.08" y="27.94"/>
-<wire x1="124.46" y1="43.18" x2="124.46" y2="27.94" width="0.1524" layer="91"/>
-<junction x="124.46" y="27.94"/>
-<pinref part="U27" gate="G$1" pin="SET0"/>
-<wire x1="124.46" y1="43.18" x2="109.22" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="B"/>
-<wire x1="121.92" y1="35.56" x2="121.92" y2="27.94" width="0.1524" layer="91"/>
-<junction x="121.92" y="27.94"/>
+<wire x1="165.1" y1="38.1" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
+<junction x="165.1" y="27.94"/>
+<pinref part="U27" gate="G$1" pin="GND"/>
+<pinref part="S1" gate="G$1" pin="A"/>
+<wire x1="91.44" y1="43.18" x2="88.9" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="43.18" x2="88.9" y2="38.1" width="0.1524" layer="91"/>
+<junction x="88.9" y="38.1"/>
 </segment>
 <segment>
 <pinref part="C32" gate="G$1" pin="2"/>
@@ -3961,6 +3924,43 @@ High-power, low thermal resistance package.</description>
 <wire x1="50.8" y1="43.18" x2="33.02" y2="43.18" width="0.1524" layer="91"/>
 <junction x="33.02" y="43.18"/>
 <label x="33.02" y="38.1" size="1.016" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="N$72" class="0">
+<segment>
+<wire x1="157.48" y1="43.18" x2="139.7" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="U27" gate="G$1" pin="!MR"/>
+<wire x1="157.48" y1="58.42" x2="139.7" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="38.1" x2="157.48" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="43.18" x2="157.48" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="58.42" x2="157.48" y2="71.12" width="0.1524" layer="91"/>
+<junction x="157.48" y="58.42"/>
+<pinref part="U28" gate="G$1" pin="OUT"/>
+<pinref part="C49" gate="G$1" pin="1"/>
+<wire x1="50.8" y1="55.88" x2="50.8" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="58.42" x2="48.26" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="71.12" x2="50.8" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="71.12" x2="50.8" y2="58.42" width="0.1524" layer="91"/>
+<junction x="50.8" y="58.42"/>
+<pinref part="U27" gate="G$1" pin="VCC"/>
+<pinref part="U27" gate="G$1" pin="WDS"/>
+<wire x1="139.7" y1="38.1" x2="157.48" y2="38.1" width="0.1524" layer="91"/>
+<junction x="157.48" y="43.18"/>
+</segment>
+</net>
+<net name="N$45" class="0">
+<segment>
+<pinref part="S1" gate="G$1" pin="B"/>
+<pinref part="C46" gate="G$1" pin="1"/>
+<wire x1="91.44" y1="48.26" x2="78.74" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="48.26" x2="78.74" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$63" class="0">
+<segment>
+<pinref part="S1" gate="G$1" pin="IN"/>
+<pinref part="U27" gate="G$1" pin="SWT"/>
+<wire x1="101.6" y1="45.72" x2="104.14" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
