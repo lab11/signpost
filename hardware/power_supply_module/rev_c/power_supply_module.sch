@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -195,7 +195,7 @@
 </packages>
 <symbols>
 <symbol name="LETTER_L">
-<frame x1="0" y1="0" x2="248.92" y2="185.42" columns="12" rows="17" layer="94" border-left="no" border-top="no" border-right="no" border-bottom="no"/>
+<frame x1="0" y1="0" x2="254" y2="190.5" columns="12" rows="17" layer="94" border-left="no" border-top="no" border-right="no" border-bottom="no"/>
 </symbol>
 <symbol name="DOCFIELD_BLANK">
 <wire x1="0" y1="0" x2="71.12" y2="0" width="0.1016" layer="94"/>
@@ -226,12 +226,12 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="LETTER_L_BLANK" prefix="FRAME" uservalue="yes">
+<deviceset name="LETTER_L_BLANK" prefix="FRAME">
 <description>LETTER landscape - Generic&lt;br/&gt;&lt;br&gt;
 To use, set global attributes TITLE, AUTHOR and REV in your schematic.</description>
 <gates>
 <gate name="G$1" symbol="LETTER_L" x="0" y="0"/>
-<gate name="G$2" symbol="DOCFIELD_BLANK" x="147.32" y="0" addlevel="must"/>
+<gate name="G$2" symbol="DOCFIELD_BLANK" x="152.4" y="0" addlevel="must"/>
 </gates>
 <devices>
 <device name="">
@@ -400,7 +400,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
 <text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<smd name="NC" x="0" y="0" dx="1.35" dy="1.65" layer="1"/>
+<smd name="NC" x="0" y="0" dx="1.35" dy="1.65" layer="1" cream="no"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
 </package>
 <package name="QFN-N20">
 <wire x1="-2.33" y1="1.83" x2="2.33" y2="1.83" width="0.127" layer="21"/>
@@ -427,9 +428,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <smd name="1" x="-2.23" y="-0.75" dx="0.28" dy="0.85" layer="1" roundness="100" rot="R90"/>
 <smd name="11" x="2.23" y="0.75" dx="0.28" dy="0.85" layer="1" roundness="100" rot="R90"/>
 <smd name="10" x="2.23" y="-0.75" dx="0.28" dy="0.85" layer="1" roundness="100" rot="R90"/>
-<smd name="P$22" x="0" y="0" dx="3.05" dy="2.05" layer="1"/>
+<smd name="P$22" x="0" y="0" dx="3.05" dy="2.05" layer="1" cream="no"/>
 <text x="-2.5" y="2.5" size="0.889" layer="25" font="vector">&gt;NAME</text>
 <circle x="-3.1496" y="-0.7366" radius="0.1295125" width="0.127" layer="21"/>
+<rectangle x1="-1" y1="-0.5" x2="1" y2="0.5" layer="31"/>
 </package>
 </packages>
 <symbols>
@@ -1186,7 +1188,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.82" y="-1.93" radius="0.086021875" width="0.127" layer="21"/>
 <text x="-2.35" y="2.29" size="0.889" layer="25">&gt;NAME</text>
-<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1"/>
+<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1" cream="no"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
 </package>
 <package name="DFN-12/3MM">
 <description>DFN-12/3MM for FTDI234XD</description>
@@ -1206,9 +1209,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <smd name="4" x="-1.45" y="-0.23" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="5" x="-1.45" y="-0.68" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="6" x="-1.45" y="-1.13" dx="0.25" dy="0.6" layer="1" rot="R90"/>
-<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1"/>
+<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1" cream="no"/>
 <circle x="-1.9926" y="1.143" radius="0.113590625" width="0" layer="21"/>
 <text x="0" y="1.651" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<rectangle x1="-0.5" y1="0.25" x2="0.5" y2="1" layer="31"/>
+<rectangle x1="-0.5" y1="-1" x2="0.5" y2="-0.25" layer="31"/>
 </package>
 <package name="SOIC-8">
 <wire x1="-2.362" y1="-1.803" x2="2.362" y2="-1.803" width="0.1524" layer="51"/>
@@ -1320,7 +1325,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="0" y1="3" x2="3" y2="3" width="0.127" layer="21"/>
 <wire x1="3" y1="3" x2="3" y2="0" width="0.127" layer="21"/>
 <wire x1="3" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
-<smd name="P$1" x="1.5" y="1.5" dx="1.65" dy="2.38" layer="1" rot="R90"/>
+<smd name="P$1" x="1.5" y="1.5" dx="1.65" dy="2.38" layer="1" rot="R90" cream="no"/>
 <smd name="P7" x="1.25" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
 <smd name="P8" x="0.75" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
 <smd name="P6" x="1.75" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
@@ -1331,6 +1336,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <smd name="P4" x="2.25" y="0.08" dx="0.675" dy="0.28" layer="1" rot="R90"/>
 <circle x="0.33" y="-0.44" radius="0.11661875" width="0.127" layer="21"/>
 <text x="-0.5" y="0" size="1.27" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
+<rectangle x1="0.5" y1="1" x2="2.5" y2="2" layer="31"/>
 </package>
 <package name="SOT-23">
 <wire x1="-1.4224" y1="0.381" x2="1.4732" y2="0.381" width="0.1524" layer="21"/>
@@ -2321,9 +2327,6 @@ High-power, low thermal resistance package.</description>
 <part name="C43" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
 <part name="U25" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
-<part name="R59" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R60" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
-<part name="R61" library="passives" deviceset="RESISTOR" device="0402_RES" value="10 kΩ"/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
 <part name="U26" library="chips" deviceset="LTC2943" device=""/>
 <part name="C45" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
@@ -3506,9 +3509,6 @@ High-power, low thermal resistance package.</description>
 <instance part="U19" gate="G$1" x="106.68" y="104.14" rot="R270"/>
 <instance part="R58" gate="G$1" x="73.66" y="83.82"/>
 <instance part="U25" gate="G$1" x="195.58" y="139.7" rot="MR0"/>
-<instance part="R59" gate="G$1" x="129.54" y="127" rot="R90"/>
-<instance part="R60" gate="G$1" x="137.16" y="127" rot="R90"/>
-<instance part="R61" gate="G$1" x="144.78" y="127" rot="R90"/>
 <instance part="GND19" gate="1" x="208.28" y="114.3"/>
 <instance part="U26" gate="G$1" x="50.8" y="157.48"/>
 <instance part="C45" gate="G$1" x="83.82" y="170.18"/>
@@ -3666,45 +3666,6 @@ High-power, low thermal resistance package.</description>
 <pinref part="C34" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="N$64" class="0">
-<segment>
-<pinref part="R59" gate="G$1" pin="1"/>
-<wire x1="129.54" y1="121.92" x2="129.54" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="119.38" x2="129.54" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="R55" gate="G$1" pin="2"/>
-<junction x="129.54" y="119.38"/>
-<wire x1="129.54" y1="119.38" x2="170.18" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="119.38" x2="170.18" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="U25" gate="G$1" pin="SD1"/>
-<wire x1="170.18" y1="147.32" x2="185.42" y2="147.32" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$65" class="0">
-<segment>
-<pinref part="R60" gate="G$1" pin="1"/>
-<wire x1="137.16" y1="121.92" x2="137.16" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="R56" gate="G$1" pin="2"/>
-<wire x1="132.08" y1="116.84" x2="137.16" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="116.84" x2="172.72" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="116.84" x2="172.72" y2="144.78" width="0.1524" layer="91"/>
-<junction x="137.16" y="116.84"/>
-<pinref part="U25" gate="G$1" pin="SC1"/>
-<wire x1="172.72" y1="144.78" x2="185.42" y2="144.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$66" class="0">
-<segment>
-<pinref part="R61" gate="G$1" pin="1"/>
-<wire x1="144.78" y1="121.92" x2="144.78" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="R57" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="114.3" x2="144.78" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="114.3" x2="175.26" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="114.3" x2="175.26" y2="142.24" width="0.1524" layer="91"/>
-<junction x="144.78" y="114.3"/>
-<pinref part="U25" gate="G$1" pin="!INT1"/>
-<wire x1="175.26" y1="142.24" x2="185.42" y2="142.24" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
 <pinref part="U25" gate="G$1" pin="VCC"/>
@@ -3737,6 +3698,11 @@ High-power, low thermal resistance package.</description>
 <wire x1="205.74" y1="152.4" x2="208.28" y2="152.4" width="0.1524" layer="91"/>
 <label x="208.28" y="152.4" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R55" gate="G$1" pin="2"/>
+<wire x1="121.92" y1="119.38" x2="144.78" y2="119.38" width="0.1524" layer="91"/>
+<label x="144.78" y="119.38" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
@@ -3744,12 +3710,22 @@ High-power, low thermal resistance package.</description>
 <wire x1="205.74" y1="149.86" x2="208.28" y2="149.86" width="0.1524" layer="91"/>
 <label x="208.28" y="149.86" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R56" gate="G$1" pin="2"/>
+<wire x1="132.08" y1="116.84" x2="144.78" y2="116.84" width="0.1524" layer="91"/>
+<label x="144.78" y="116.84" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="!INT" class="0">
 <segment>
 <pinref part="U25" gate="G$1" pin="!INT"/>
 <wire x1="205.74" y1="147.32" x2="208.28" y2="147.32" width="0.1524" layer="91"/>
 <label x="208.28" y="147.32" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R57" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="114.3" x2="144.78" y2="114.3" width="0.1524" layer="91"/>
+<label x="144.78" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
@@ -3801,22 +3777,6 @@ High-power, low thermal resistance package.</description>
 <wire x1="101.6" y1="157.48" x2="185.42" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="160.02" x2="101.6" y2="157.48" width="0.1524" layer="91"/>
 <junction x="101.6" y="157.48"/>
-</segment>
-</net>
-<net name="VCC_LINUX" class="0">
-<segment>
-<pinref part="R59" gate="G$1" pin="2"/>
-<wire x1="129.54" y1="129.54" x2="129.54" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="132.08" x2="137.16" y2="132.08" width="0.1524" layer="91"/>
-<label x="149.86" y="132.08" size="1.27" layer="95" xref="yes"/>
-<pinref part="R61" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="132.08" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="132.08" x2="149.86" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="129.54" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
-<junction x="144.78" y="132.08"/>
-<pinref part="R60" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="129.54" x2="137.16" y2="132.08" width="0.1524" layer="91"/>
-<junction x="137.16" y="132.08"/>
 </segment>
 </net>
 <net name="N$41" class="0">
@@ -3908,7 +3868,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="78.74" y1="83.82" x2="83.82" y2="83.82" width="0.1524" layer="91"/>
 <junction x="78.74" y="83.82"/>
 <junction x="83.82" y="83.82"/>
-<label x="106.68" y="83.82" size="1.016" layer="95" xref="yes"/>
+<label x="106.68" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="C48" gate="G$1" pin="2"/>
