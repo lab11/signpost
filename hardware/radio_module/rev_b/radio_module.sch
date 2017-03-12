@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.0.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9089,7 +9089,7 @@ High-power, low thermal resistance package.</description>
 <part name="GND28" library="umich" deviceset="GND" device=""/>
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="100uF"/>
 <part name="J5" library="connector" deviceset="TC2030-JLINK" device="-L"/>
-<part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL"/>
+<part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL" value="UCB_CAL100MIL"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 <part name="GND30" library="umich" deviceset="GND" device=""/>
 <part name="TP17" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -9914,7 +9914,7 @@ not the modules reference</text>
 <junction x="127" y="101.6"/>
 </segment>
 </net>
-<net name="NUCLEUM_INT1/RTS" class="0">
+<net name="NUCLEUM_INT1/CTS" class="0">
 <segment>
 <pinref part="U11" gate="U1" pin="PB06"/>
 <wire x1="129.54" y1="114.3" x2="127" y2="114.3" width="0.1524" layer="91"/>
@@ -9924,7 +9924,7 @@ not the modules reference</text>
 <junction x="127" y="114.3"/>
 </segment>
 </net>
-<net name="NUCLEUM_INT2/CTS" class="0">
+<net name="NUCLEUM_INT2/RTS" class="0">
 <segment>
 <pinref part="U11" gate="U1" pin="PB07"/>
 <wire x1="129.54" y1="111.76" x2="127" y2="111.76" width="0.1524" layer="91"/>
@@ -11271,14 +11271,14 @@ for the spi interface.</text>
 <wire x1="96.52" y1="121.92" x2="96.52" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="NUCLEUM_INT1/RTS" class="0">
+<net name="NUCLEUM_INT1/CTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="P09"/>
 <wire x1="142.24" y1="76.2" x2="144.78" y2="76.2" width="0.1524" layer="91"/>
 <label x="144.78" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="NUCLEUM_INT2/CTS" class="0">
+<net name="NUCLEUM_INT2/RTS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="P10"/>
 <wire x1="142.24" y1="73.66" x2="144.78" y2="73.66" width="0.1524" layer="91"/>
