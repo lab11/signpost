@@ -2347,6 +2347,7 @@ High-power, low thermal resistance package.</description>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U27" library="chips" deviceset="MAX6746" device=""/>
+<part name="VBATT-M" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4843,10 +4844,10 @@ High-power, low thermal resistance package.</description>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
-<instance part="VSOL+" gate="G$1" x="116.84" y="124.46"/>
-<instance part="VSOL-" gate="G$1" x="116.84" y="121.92"/>
-<instance part="VBATT+" gate="G$1" x="116.84" y="119.38"/>
-<instance part="VBATT-" gate="G$1" x="116.84" y="116.84"/>
+<instance part="VSOL+" gate="G$1" x="116.84" y="127"/>
+<instance part="VSOL-" gate="G$1" x="116.84" y="124.46"/>
+<instance part="VBATT+" gate="G$1" x="116.84" y="121.92"/>
+<instance part="VBATT-" gate="G$1" x="116.84" y="119.38"/>
 <instance part="3V3" gate="G$1" x="116.84" y="111.76"/>
 <instance part="5V_1" gate="G$1" x="116.84" y="109.22"/>
 <instance part="5V_2" gate="G$1" x="116.84" y="106.68"/>
@@ -4863,6 +4864,7 @@ High-power, low thermal resistance package.</description>
 <instance part="SDA" gate="G$1" x="116.84" y="73.66"/>
 <instance part="SCL" gate="G$1" x="116.84" y="71.12"/>
 <instance part="!INT" gate="G$1" x="116.84" y="68.58"/>
+<instance part="VBATT-M" gate="G$1" x="116.84" y="116.84"/>
 </instances>
 <busses>
 </busses>
@@ -4870,22 +4872,22 @@ High-power, low thermal resistance package.</description>
 <net name="VBATT+" class="0">
 <segment>
 <pinref part="VBATT+" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="119.38" x2="119.38" y2="119.38" width="0.1524" layer="91"/>
-<label x="121.92" y="119.38" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="121.92" x2="119.38" y2="121.92" width="0.1524" layer="91"/>
+<label x="121.92" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
 <segment>
 <pinref part="VSOL+" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="124.46" x2="119.38" y2="124.46" width="0.1524" layer="91"/>
-<label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="127" x2="119.38" y2="127" width="0.1524" layer="91"/>
+<label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL-" class="0">
 <segment>
 <pinref part="VSOL-" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="121.92" x2="119.38" y2="121.92" width="0.1524" layer="91"/>
-<label x="121.92" y="121.92" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="124.46" x2="119.38" y2="124.46" width="0.1524" layer="91"/>
+<label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -5003,7 +5005,14 @@ High-power, low thermal resistance package.</description>
 <net name="VBATT-" class="0">
 <segment>
 <pinref part="VBATT-" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="116.84" x2="119.38" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="119.38" x2="119.38" y2="119.38" width="0.1524" layer="91"/>
+<label x="121.92" y="119.38" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VBATT_MONITOR_GND" class="0">
+<segment>
+<pinref part="VBATT-M" gate="G$1" pin="TESTPOINT"/>
+<wire x1="119.38" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
 <label x="121.92" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
