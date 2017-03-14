@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -4244,7 +4244,7 @@ with External Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="UBLOX_SARA_G350">
+<deviceset name="UBLOX_SARA_G350" prefix="U">
 <description>Sara G350 2.5G Radio Module</description>
 <gates>
 <gate name="G$1" symbol="UBLOX_SARA_G350" x="0" y="0"/>
@@ -4321,7 +4321,7 @@ with External Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MODULE_GENERIC_DEBUG">
+<deviceset name="MODULE_GENERIC_DEBUG" prefix="J">
 <description>The debug version of the signpost module header</description>
 <gates>
 <gate name="G$1" symbol="HEADER_MODULE_DEBUG" x="0" y="7.62"/>
@@ -4516,7 +4516,7 @@ with External Sense Resistor</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="XDOT_MODULE">
+<deviceset name="XDOT_MODULE" prefix="U">
 <description>Multitech XDOT LoRa Module</description>
 <gates>
 <gate name="G$1" symbol="XDOT_MODULE" x="-5.08" y="5.08"/>
