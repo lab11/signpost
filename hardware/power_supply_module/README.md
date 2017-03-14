@@ -24,7 +24,7 @@ The Power Module has one header that it uses to interact with the Backplane: a 2
 | VCC for Module 2 (5V)                | VCC_MOD2   | `09` | `10` | VCC_MOD5   | VCC for Module 5 (5V)                       |
 | VCC for Module 6 (5V)                | VCC_MOD6   | `11` | `12` | VCC_MOD7   | VCC for Module 7 (5V)                       |
 | VCC for Backplane (3.3V)             | VCC_BACK   | `13` | `14` | _Reserved_ |                                             |
-|                                      | _Reserved_ | `15` | `16` | !WATCHDOG  | Watchdog input (active low, from Backplane) |
+|                                      | _Reserved_ | `15` | `16` | !WATCHDOG  | Watchdog input (active low) |
 | Positive connection from battery     | VBATT+     | `17` | `18` | VBATT-     | Negative connection from battery            |
 | Positive connection from solar panel | VSOL+      | `19` | `20` | VSOL-      | Negative connection from solar panel        |
 
