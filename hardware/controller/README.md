@@ -23,9 +23,9 @@ a 20-pin header on top and a 10-pin header on bottom.
 | Description                                | Signal    | Pin |   | Pin | Signal         | Description                                 |
 |--------------------------------------------|-----------|-----|---|-----|----------------|---------------------------------------------|
 | Ground                                     | GND       | 1   |   | 2   | VCC_CONTROLLER | VCC for Controller and Storage Master (5V)  |
-| SMBus Data Line (to Backplane)             | SMBDATA   | 3   |   | 4   | VCC_LINUX      | VCC for Linux (5V)                          |
-| SMBus Clock Line (to Backplane)            | SMBCLK    | 5   |   | 6   | !SMBALERT      | SMBus Alert line (active low, to Backplane) |
-| Watchdog output (active low, to Backplane) | !WATCHDOG | 7   |   | 8   | Reserved       |                                             |
+| SMBus Data Line                            | SMBDATA   | 3   |   | 4   | VCC_LINUX      | VCC for Linux (5V)                          |
+| SMBus Clock Line                           | SMBCLK    | 5   |   | 6   | !SMBALERT      | SMBus Alert line (active low)               |
+| Watchdog output (active low)               | !WATCHDOG | 7   |   | 8   | Reserved       |                                             |
 | Digital output to Module 0                 | MOD0_IN   | 9   |   | 10  | MOD0_IN        | Digital input from Module 0                 |
 | Digital output to Module 1                 | MOD1_IN   | 11  |   | 12  | MOD1_IN        | Digital input from Module 1                 |
 | Digital output to Module 2                 | MOD2_IN   | 13  |   | 14  | MOD2_IN        | Digital input from Module 2                 |
@@ -35,8 +35,8 @@ a 20-pin header on top and a 10-pin header on bottom.
 
 | Description                  | Signal      | Pin |   | Pin | Signal           | Description                                         |
 |------------------------------|-------------|-----|---|-----|------------------|-----------------------------------------------------|
-| Ground                       | GND         | 1   |   | 2   | !BACKPLANE_RESET | Reset line for Backplane (active low, to Backplane) |
-| I²C data line (to Modules)   | MODULES_SDA | 3   |   | 4   | MODULES_SCL      | I²C clock line                                      |
+| Ground                       | GND         | 1   |   | 2   | !BACKPLANE_RESET | Reset line for Backplane (active low)               |
+| I²C data line to Modules     | MODULES_SDA | 3   |   | 4   | MODULES_SCL      | I²C clock line to Modules                           |
 | Pulse per second from GPS    | PPS         | 5   |   | 6   | Reserved         |                                                     |
 | USB data+ (to Backplane hub) | USB_D+      | 7   |   | 8   | USB_D-           | USB data+ (to Backplane hub)                        |
 |                              | Reserved    | 9   |   | 10  | Reserved         |                                                     |
