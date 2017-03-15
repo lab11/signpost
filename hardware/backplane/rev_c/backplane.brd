@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.0.2">
+<eagle version="8.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1516,18 +1516,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <description>&lt;b&gt;Mounting Holes and Pads&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="3,0-PAD">
-<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 3.0 mm, round</description>
-<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
-<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
-<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
-<circle x="0" y="0" radius="3.556" width="1.016" layer="39"/>
-<circle x="0" y="0" radius="3.556" width="1.016" layer="40"/>
-<circle x="0" y="0" radius="3.556" width="1.016" layer="43"/>
-<circle x="0" y="0" radius="1.6" width="0.2032" layer="21"/>
-<pad name="B3,0" x="0" y="0" drill="3" diameter="5.842"/>
-<text x="-1.27" y="-3.81" size="1.27" layer="48">3,0</text>
+<package name="#4-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #4, round</description>
+<circle x="0" y="0" radius="2.9464" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="43"/>
+<pad name="B#4" x="0" y="0" drill="2.9464" diameter="5.5626"/>
+<text x="0" y="-3.302" size="1.016" layer="48" align="top-center">#4</text>
 </package>
 </packages>
 </library>
@@ -3717,26 +3713,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="JP4" library="SparkFun-Aesthetics" package="FIDUCIAL-1X2" value="FIDUCIAL1X2" x="237.998" y="358.648"/>
 <element name="JP5" library="SparkFun-Aesthetics" package="FIDUCIAL-1X2" value="FIDUCIAL1X2" x="17.018" y="211.328"/>
 <element name="JP6" library="SparkFun-Aesthetics" package="FIDUCIAL-1X2" value="FIDUCIAL1X2" x="235.712" y="175.006"/>
-<element name="H1" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="3.81" y="377.19"/>
-<element name="H2" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="89.8652" y="377.19"/>
-<element name="H3" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="164.1348" y="377.19"/>
-<element name="H4" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="250.19" y="377.19"/>
-<element name="H5" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="3.81" y="287.3756"/>
-<element name="H6" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="89.8652" y="287.3756"/>
-<element name="H7" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="164.1348" y="287.3756"/>
-<element name="H8" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="250.19" y="287.3756"/>
-<element name="H9" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="3.81" y="190.5"/>
-<element name="H10" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="89.8652" y="190.5"/>
-<element name="H11" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="164.1348" y="190.5"/>
-<element name="H12" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="250.19" y="190.5"/>
-<element name="H13" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="3.81" y="93.6244"/>
-<element name="H14" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="89.8652" y="93.6244"/>
-<element name="H15" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="164.1348" y="93.6244"/>
-<element name="H16" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="250.19" y="93.6244"/>
-<element name="H17" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="3.81" y="3.81"/>
-<element name="H18" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="89.8652" y="3.81"/>
-<element name="H19" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="164.1348" y="3.81"/>
-<element name="H20" library="holes" package="3,0-PAD" value="MOUNT-PAD-ROUND3.0" x="250.19" y="3.81"/>
 <element name="U26" library="signpost" package="QFN-20-4MM" value="MCP23008QFN" x="103.378" y="292.608" rot="R180">
 <attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="103.378" y="292.608" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
@@ -3802,6 +3778,26 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="60.96" y="154.94" size="1.016" layer="25" font="vector" ratio="12"/>
 <attribute name="NEWARK" value="71C4107" x="57.15" y="153.67" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 </element>
+<element name="H21" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="3.81" y="377.19"/>
+<element name="H22" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="377.19"/>
+<element name="H23" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="377.19"/>
+<element name="H24" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="377.19"/>
+<element name="H25" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="3.81" y="287.3756"/>
+<element name="H26" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="287.3756"/>
+<element name="H27" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="287.3756"/>
+<element name="H28" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="287.3756"/>
+<element name="H29" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="3.81" y="190.5"/>
+<element name="H30" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="190.5"/>
+<element name="H31" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="190.5"/>
+<element name="H32" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="190.5"/>
+<element name="H33" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="3.81" y="93.6244"/>
+<element name="H34" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="93.6244"/>
+<element name="H35" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="93.6244"/>
+<element name="H36" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="93.6244"/>
+<element name="H37" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="3.81" y="3.81"/>
+<element name="H38" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="3.81"/>
+<element name="H39" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="3.81"/>
+<element name="H40" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="3.81"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -5118,50 +5114,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="73.533" y1="130.048" x2="67.1576" y2="123.6726" width="0.254" layer="16"/>
 <wire x1="67.1576" y1="123.6726" x2="67.1576" y2="112.8522" width="0.254" layer="16"/>
 <wire x1="228.7524" y1="365.0234" x2="228.7524" y2="306.6034" width="0.254" layer="16"/>
-<contactref element="H17" pad="B3,0"/>
-<contactref element="H13" pad="B3,0"/>
-<contactref element="H9" pad="B3,0"/>
-<contactref element="H5" pad="B3,0"/>
-<contactref element="H1" pad="B3,0"/>
-<contactref element="H20" pad="B3,0"/>
-<contactref element="H16" pad="B3,0"/>
-<contactref element="H12" pad="B3,0"/>
-<contactref element="H8" pad="B3,0"/>
-<contactref element="H4" pad="B3,0"/>
-<contactref element="H18" pad="B3,0"/>
-<contactref element="H14" pad="B3,0"/>
-<contactref element="H10" pad="B3,0"/>
-<contactref element="H6" pad="B3,0"/>
-<contactref element="H2" pad="B3,0"/>
-<contactref element="H19" pad="B3,0"/>
-<contactref element="H15" pad="B3,0"/>
-<contactref element="H11" pad="B3,0"/>
-<contactref element="H7" pad="B3,0"/>
-<contactref element="H3" pad="B3,0"/>
-<wire x1="3.81" y1="3.81" x2="89.8652" y2="3.81" width="0.635" layer="16"/>
-<wire x1="89.8652" y1="3.81" x2="164.1348" y2="3.81" width="0.635" layer="16"/>
-<wire x1="164.1348" y1="3.81" x2="250.19" y2="3.81" width="0.635" layer="16"/>
-<wire x1="3.81" y1="93.6244" x2="3.81" y2="93.472" width="0.635" layer="16"/>
-<wire x1="3.81" y1="93.472" x2="3.81" y2="3.81" width="0.635" layer="16"/>
-<wire x1="250.19" y1="93.6244" x2="250.19" y2="3.81" width="0.635" layer="16"/>
-<wire x1="250.19" y1="190.5" x2="250.19" y2="93.6244" width="0.635" layer="16"/>
-<wire x1="250.19" y1="287.3756" x2="250.19" y2="190.5" width="0.635" layer="16"/>
-<wire x1="250.19" y1="377.19" x2="250.19" y2="287.3756" width="0.635" layer="16"/>
-<wire x1="164.1348" y1="377.19" x2="250.19" y2="377.19" width="0.635" layer="16"/>
-<wire x1="89.8652" y1="377.19" x2="164.1348" y2="377.19" width="0.635" layer="16"/>
-<wire x1="3.81" y1="377.19" x2="89.8652" y2="377.19" width="0.635" layer="16"/>
-<wire x1="3.81" y1="287.3756" x2="3.81" y2="377.19" width="0.635" layer="16"/>
-<wire x1="3.81" y1="190.5" x2="3.81" y2="287.3756" width="0.635" layer="16"/>
-<wire x1="3.81" y1="93.6244" x2="3.81" y2="190.5" width="0.635" layer="16"/>
-<wire x1="164.1348" y1="190.5" x2="164.1348" y2="195.0212" width="0.635" layer="16"/>
-<wire x1="164.1348" y1="195.0212" x2="164.084" y2="195.072" width="0.635" layer="16"/>
-<wire x1="89.8652" y1="287.3756" x2="97.1804" y2="287.3756" width="0.635" layer="16"/>
-<wire x1="97.1804" y1="287.3756" x2="97.282" y2="287.274" width="0.635" layer="16"/>
-<wire x1="164.1348" y1="287.3756" x2="162.1536" y2="287.3756" width="0.635" layer="16"/>
 <wire x1="162.1536" y1="287.3756" x2="151.13" y2="276.352" width="0.635" layer="16"/>
-<wire x1="3.81" y1="93.472" x2="5.08" y2="93.472" width="0.635" layer="16"/>
-<wire x1="5.08" y1="93.472" x2="7.366" y2="91.186" width="0.635" layer="16"/>
-<wire x1="7.366" y1="91.186" x2="25.4" y2="91.186" width="0.635" layer="16"/>
 <contactref element="U26" pad="1"/>
 <contactref element="U26" pad="2"/>
 <contactref element="U26" pad="3"/>
@@ -5331,6 +5284,52 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="161.544" y1="82.804" x2="162.306" y2="83.566" width="0.6096" layer="1"/>
 <wire x1="161.544" y1="81.918" x2="161.544" y2="82.804" width="0.6096" layer="1"/>
 <wire x1="161.544" y1="82.804" x2="160.782" y2="83.566" width="0.6096" layer="1"/>
+<contactref element="H21" pad="B#4"/>
+<contactref element="H22" pad="B#4"/>
+<contactref element="H23" pad="B#4"/>
+<contactref element="H24" pad="B#4"/>
+<contactref element="H25" pad="B#4"/>
+<contactref element="H26" pad="B#4"/>
+<contactref element="H27" pad="B#4"/>
+<contactref element="H28" pad="B#4"/>
+<contactref element="H29" pad="B#4"/>
+<contactref element="H30" pad="B#4"/>
+<contactref element="H31" pad="B#4"/>
+<contactref element="H32" pad="B#4"/>
+<contactref element="H33" pad="B#4"/>
+<contactref element="H34" pad="B#4"/>
+<contactref element="H35" pad="B#4"/>
+<contactref element="H36" pad="B#4"/>
+<contactref element="H37" pad="B#4"/>
+<contactref element="H38" pad="B#4"/>
+<contactref element="H39" pad="B#4"/>
+<contactref element="H40" pad="B#4"/>
+<wire x1="89.8652" y1="3.81" x2="3.81" y2="3.81" width="0.508" layer="16"/>
+<wire x1="89.8652" y1="3.81" x2="164.1348" y2="3.81" width="0.508" layer="16"/>
+<wire x1="186.69" y1="3.81" x2="164.1348" y2="3.81" width="0.508" layer="16"/>
+<wire x1="186.69" y1="3.81" x2="250.19" y2="3.81" width="0.508" layer="16"/>
+<wire x1="250.19" y1="3.81" x2="250.19" y2="93.6244" width="0.508" layer="16"/>
+<wire x1="250.19" y1="190.5" x2="250.19" y2="93.6244" width="0.508" layer="16"/>
+<wire x1="250.19" y1="287.3756" x2="250.19" y2="190.5" width="0.508" layer="16"/>
+<wire x1="250.19" y1="377.19" x2="250.19" y2="287.3756" width="0.508" layer="16"/>
+<wire x1="164.1348" y1="377.19" x2="250.19" y2="377.19" width="0.508" layer="16"/>
+<wire x1="89.8652" y1="377.19" x2="164.1348" y2="377.19" width="0.508" layer="16"/>
+<wire x1="89.8652" y1="377.19" x2="3.81" y2="377.19" width="0.508" layer="16"/>
+<wire x1="3.81" y1="377.19" x2="3.81" y2="287.3756" width="0.508" layer="16"/>
+<wire x1="3.81" y1="190.5" x2="3.81" y2="287.3756" width="0.508" layer="16"/>
+<wire x1="3.81" y1="3.81" x2="3.81" y2="93.6244" width="0.508" layer="16"/>
+<wire x1="3.81" y1="128.27" x2="2.54" y2="129.54" width="0.508" layer="16"/>
+<wire x1="2.54" y1="129.54" x2="2.54" y2="130.81" width="0.508" layer="16"/>
+<wire x1="2.54" y1="130.81" x2="3.81" y2="132.08" width="0.508" layer="16"/>
+<wire x1="3.81" y1="132.08" x2="3.81" y2="190.5" width="0.508" layer="16"/>
+<wire x1="3.81" y1="93.6244" x2="3.81" y2="128.27" width="0.508" layer="16"/>
+<wire x1="89.8652" y1="287.3756" x2="99.6696" y2="287.3756" width="0.508" layer="16"/>
+<wire x1="99.6696" y1="287.3756" x2="100.584" y2="288.29" width="0.508" layer="16"/>
+<wire x1="186.8424" y1="15.9766" x2="186.8424" y2="3.9624" width="0.508" layer="16"/>
+<wire x1="186.8424" y1="3.9624" x2="186.69" y2="3.81" width="0.508" layer="16"/>
+<wire x1="164.1348" y1="287.3756" x2="162.1536" y2="287.3756" width="0.508" layer="16"/>
+<wire x1="164.1348" y1="190.5" x2="164.1348" y2="194.7672" width="0.508" layer="16"/>
+<wire x1="164.1348" y1="194.7672" x2="163.83" y2="195.072" width="0.508" layer="16"/>
 </signal>
 <signal name="MOD6_D-_HUB-SW">
 <contactref element="D4" pad="6"/>

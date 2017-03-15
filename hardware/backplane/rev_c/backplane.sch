@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.0.2">
+<eagle version="8.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -5809,6 +5809,69 @@ Various fiducial points for machine vision alignment.</description>
 <circle x="0" y="0" radius="2.85" width="0.1524" layer="21"/>
 <pad name="B5,5" x="0" y="0" drill="5.5" diameter="9"/>
 </package>
+<package name="#0-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #0, round</description>
+<circle x="0" y="0" radius="1.6256" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="39"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="40"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="43"/>
+<pad name="B#0" x="0" y="0" drill="1.6256" diameter="2.9464"/>
+<text x="0" y="-2.54" size="1.016" layer="48" align="top-center">#0</text>
+</package>
+<package name="#2-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #2, round</description>
+<circle x="0" y="0" radius="2.286" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="39"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="40"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="43"/>
+<pad name="B#2" x="0" y="0" drill="2.286" diameter="4.2418"/>
+<text x="0" y="-2.54" size="1.016" layer="48" align="top-center">#2</text>
+</package>
+<package name="#3-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #3, round</description>
+<circle x="0" y="0" radius="2.6162" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="43"/>
+<pad name="B#3" x="0" y="0" drill="2.6162" diameter="4.9022"/>
+<text x="0" y="-3.048" size="1.016" layer="48" align="top-center">#3</text>
+</package>
+<package name="#4-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #4, round</description>
+<circle x="0" y="0" radius="2.9464" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="43"/>
+<pad name="B#4" x="0" y="0" drill="2.9464" diameter="5.5626"/>
+<text x="0" y="-3.302" size="1.016" layer="48" align="top-center">#4</text>
+</package>
+<package name="#5-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #5, round</description>
+<circle x="0" y="0" radius="3.2766" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="43"/>
+<pad name="B#5" x="0" y="0" drill="3.2766" diameter="6.223"/>
+<text x="0" y="-3.556" size="1.016" layer="48" align="top-center">#5</text>
+</package>
+<package name="#6-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #6, round</description>
+<circle x="0" y="0" radius="3.6068" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="39"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="40"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="43"/>
+<pad name="B#6" x="0" y="0" drill="3.6068" diameter="6.858"/>
+<text x="0" y="-3.81" size="1.016" layer="48" align="top-center">#6</text>
+</package>
+<package name="#8-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #8, round</description>
+<circle x="0" y="0" radius="4.2672" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="39"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="40"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="43"/>
+<pad name="B#8" x="0" y="0" drill="4.2672" diameter="8.1788"/>
+<text x="0" y="-4.572" size="1.016" layer="48" align="top-center">#8</text>
+</package>
 </packages>
 <symbols>
 <symbol name="MOUNT-PAD">
@@ -5904,6 +5967,62 @@ Various fiducial points for machine vision alignment.</description>
 <device name="5.5" package="5,5-PAD">
 <connects>
 <connect gate="G$1" pin="MOUNT" pad="B5,5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#0" package="#0-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#0"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#2" package="#2-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#3" package="#3-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#4" package="#4-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#5" package="#5-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#6" package="#6-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#8" package="#8-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#8"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -9839,26 +9958,6 @@ Source: AVX .. aphvc.pdf</description>
 <part name="JP4" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
 <part name="JP5" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
 <part name="JP6" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
-<part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H4" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H5" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H6" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H7" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H8" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H9" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H10" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H11" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H12" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H13" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H14" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H15" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H16" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H17" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H18" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H19" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="H20" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="GND72" library="umich" deviceset="GND" device=""/>
 <part name="U26" library="signpost" deviceset="MCP23008" device="QFN"/>
 <part name="U27" library="signpost" deviceset="MCP23008" device="QFN"/>
@@ -9890,6 +9989,26 @@ Source: AVX .. aphvc.pdf</description>
 </part>
 <part name="J8" library="headers" deviceset="SCREW-TERMINAL_2_0.100" device=""/>
 <part name="J9" library="headers" deviceset="SCREW-TERMINAL_2_0.100" device=""/>
+<part name="H21" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H22" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H23" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H24" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H25" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H26" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H27" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H28" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H29" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H30" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H31" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H32" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H33" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H34" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H35" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H36" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H37" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H38" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H39" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H40" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
 </parts>
 <sheets>
 <sheet>
@@ -9899,10 +10018,11 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="248.92" y1="76.2" x2="198.12" y2="76.2" width="0.6096" layer="98"/>
 <wire x1="198.12" y1="76.2" x2="198.12" y2="20.32" width="0.6096" layer="98"/>
 <text x="220.98" y="71.12" size="2.54" layer="98" align="center">Fiducials</text>
-<wire x1="198.12" y1="132.08" x2="198.12" y2="76.2" width="0.6096" layer="98"/>
+<wire x1="198.12" y1="134.62" x2="198.12" y2="76.2" width="0.6096" layer="98"/>
 <text x="223.52" y="129.54" size="2.54" layer="98" align="center">Plated Mounting Holes</text>
 <text x="101.6" y="91.44" size="1.778" layer="98" align="bottom-center">Solar_Input</text>
 <text x="101.6" y="71.12" size="1.778" layer="98" align="bottom-center">Battery_input</text>
+<wire x1="248.92" y1="134.62" x2="198.12" y2="134.62" width="0.6096" layer="98"/>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -9934,26 +10054,6 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="JP4" gate="G$1" x="223.52" y="50.8"/>
 <instance part="JP5" gate="G$1" x="215.9" y="40.64"/>
 <instance part="JP6" gate="G$1" x="223.52" y="40.64"/>
-<instance part="H1" gate="G$1" x="208.28" y="121.92"/>
-<instance part="H2" gate="G$1" x="218.44" y="121.92"/>
-<instance part="H3" gate="G$1" x="228.6" y="121.92"/>
-<instance part="H4" gate="G$1" x="238.76" y="121.92"/>
-<instance part="H5" gate="G$1" x="208.28" y="114.3"/>
-<instance part="H6" gate="G$1" x="218.44" y="114.3"/>
-<instance part="H7" gate="G$1" x="228.6" y="114.3"/>
-<instance part="H8" gate="G$1" x="238.76" y="114.3"/>
-<instance part="H9" gate="G$1" x="208.28" y="106.68"/>
-<instance part="H10" gate="G$1" x="218.44" y="106.68"/>
-<instance part="H11" gate="G$1" x="228.6" y="106.68"/>
-<instance part="H12" gate="G$1" x="238.76" y="106.68"/>
-<instance part="H13" gate="G$1" x="208.28" y="99.06"/>
-<instance part="H14" gate="G$1" x="218.44" y="99.06"/>
-<instance part="H15" gate="G$1" x="228.6" y="99.06"/>
-<instance part="H16" gate="G$1" x="238.76" y="99.06"/>
-<instance part="H17" gate="G$1" x="208.28" y="91.44"/>
-<instance part="H18" gate="G$1" x="218.44" y="91.44"/>
-<instance part="H19" gate="G$1" x="228.6" y="91.44"/>
-<instance part="H20" gate="G$1" x="238.76" y="91.44"/>
 <instance part="GND72" gate="1" x="203.2" y="81.28"/>
 <instance part="J8" gate="G$1" x="101.6" y="86.36" smashed="yes" rot="MR0">
 <attribute name="NAME" x="106.68" y="81.28" size="1.27" layer="95" rot="MR0"/>
@@ -9961,6 +10061,26 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="J9" gate="G$1" x="101.6" y="78.74" smashed="yes" rot="MR0">
 <attribute name="NAME" x="106.68" y="73.66" size="1.27" layer="95" rot="MR0"/>
 </instance>
+<instance part="H21" gate="G$1" x="208.28" y="121.92"/>
+<instance part="H22" gate="G$1" x="218.44" y="121.92"/>
+<instance part="H23" gate="G$1" x="228.6" y="121.92"/>
+<instance part="H24" gate="G$1" x="238.76" y="121.92"/>
+<instance part="H25" gate="G$1" x="208.28" y="114.3"/>
+<instance part="H26" gate="G$1" x="218.44" y="114.3"/>
+<instance part="H27" gate="G$1" x="228.6" y="114.3"/>
+<instance part="H28" gate="G$1" x="238.76" y="114.3"/>
+<instance part="H29" gate="G$1" x="208.28" y="106.68"/>
+<instance part="H30" gate="G$1" x="218.44" y="106.68"/>
+<instance part="H31" gate="G$1" x="228.6" y="106.68"/>
+<instance part="H32" gate="G$1" x="238.76" y="106.68"/>
+<instance part="H33" gate="G$1" x="208.28" y="99.06"/>
+<instance part="H34" gate="G$1" x="218.44" y="99.06"/>
+<instance part="H35" gate="G$1" x="228.6" y="99.06"/>
+<instance part="H36" gate="G$1" x="238.76" y="99.06"/>
+<instance part="H37" gate="G$1" x="208.28" y="91.44"/>
+<instance part="H38" gate="G$1" x="218.44" y="91.44"/>
+<instance part="H39" gate="G$1" x="228.6" y="91.44"/>
+<instance part="H40" gate="G$1" x="238.76" y="91.44"/>
 </instances>
 <busses>
 </busses>
@@ -10192,90 +10312,90 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="88.9" y1="99.06" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="H17" gate="G$1" pin="MOUNT"/>
 <wire x1="205.74" y1="91.44" x2="203.2" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="91.44" x2="203.2" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="GND72" gate="1" pin="GND"/>
-<pinref part="H13" gate="G$1" pin="MOUNT"/>
 <wire x1="203.2" y1="86.36" x2="203.2" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="99.06" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="99.06" x2="203.2" y2="91.44" width="0.1524" layer="91"/>
 <junction x="203.2" y="91.44"/>
-<pinref part="H9" gate="G$1" pin="MOUNT"/>
 <wire x1="205.74" y1="106.68" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="106.68" x2="203.2" y2="99.06" width="0.1524" layer="91"/>
 <junction x="203.2" y="99.06"/>
-<pinref part="H5" gate="G$1" pin="MOUNT"/>
 <wire x1="205.74" y1="114.3" x2="203.2" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="114.3" x2="203.2" y2="106.68" width="0.1524" layer="91"/>
 <junction x="203.2" y="106.68"/>
-<pinref part="H1" gate="G$1" pin="MOUNT"/>
 <wire x1="205.74" y1="121.92" x2="203.2" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="121.92" x2="203.2" y2="114.3" width="0.1524" layer="91"/>
 <junction x="203.2" y="114.3"/>
-<pinref part="H20" gate="G$1" pin="MOUNT"/>
 <wire x1="236.22" y1="91.44" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="91.44" x2="233.68" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="86.36" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
 <junction x="203.2" y="86.36"/>
-<pinref part="H16" gate="G$1" pin="MOUNT"/>
 <wire x1="223.52" y1="86.36" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="86.36" x2="203.2" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="99.06" x2="233.68" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="99.06" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
 <junction x="233.68" y="91.44"/>
-<pinref part="H12" gate="G$1" pin="MOUNT"/>
 <wire x1="236.22" y1="106.68" x2="233.68" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="106.68" x2="233.68" y2="99.06" width="0.1524" layer="91"/>
 <junction x="233.68" y="99.06"/>
-<pinref part="H8" gate="G$1" pin="MOUNT"/>
 <wire x1="236.22" y1="114.3" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="114.3" x2="233.68" y2="106.68" width="0.1524" layer="91"/>
 <junction x="233.68" y="106.68"/>
-<pinref part="H4" gate="G$1" pin="MOUNT"/>
 <wire x1="236.22" y1="121.92" x2="233.68" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="121.92" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
 <junction x="233.68" y="114.3"/>
-<pinref part="H18" gate="G$1" pin="MOUNT"/>
 <wire x1="215.9" y1="91.44" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="91.44" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
 <junction x="213.36" y="86.36"/>
-<pinref part="H14" gate="G$1" pin="MOUNT"/>
 <wire x1="215.9" y1="99.06" x2="213.36" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="99.06" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
 <junction x="213.36" y="91.44"/>
-<pinref part="H10" gate="G$1" pin="MOUNT"/>
 <wire x1="215.9" y1="106.68" x2="213.36" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="106.68" x2="213.36" y2="99.06" width="0.1524" layer="91"/>
 <junction x="213.36" y="99.06"/>
-<pinref part="H6" gate="G$1" pin="MOUNT"/>
 <wire x1="215.9" y1="114.3" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="114.3" x2="213.36" y2="106.68" width="0.1524" layer="91"/>
 <junction x="213.36" y="106.68"/>
-<pinref part="H2" gate="G$1" pin="MOUNT"/>
 <wire x1="215.9" y1="121.92" x2="213.36" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="121.92" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
 <junction x="213.36" y="114.3"/>
-<pinref part="H19" gate="G$1" pin="MOUNT"/>
 <wire x1="226.06" y1="91.44" x2="223.52" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="91.44" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
 <junction x="223.52" y="86.36"/>
-<pinref part="H15" gate="G$1" pin="MOUNT"/>
 <wire x1="226.06" y1="99.06" x2="223.52" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="99.06" x2="223.52" y2="91.44" width="0.1524" layer="91"/>
 <junction x="223.52" y="91.44"/>
-<pinref part="H11" gate="G$1" pin="MOUNT"/>
 <wire x1="226.06" y1="106.68" x2="223.52" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="106.68" x2="223.52" y2="99.06" width="0.1524" layer="91"/>
 <junction x="223.52" y="99.06"/>
-<pinref part="H7" gate="G$1" pin="MOUNT"/>
 <wire x1="226.06" y1="114.3" x2="223.52" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="114.3" x2="223.52" y2="106.68" width="0.1524" layer="91"/>
 <junction x="223.52" y="106.68"/>
-<pinref part="H3" gate="G$1" pin="MOUNT"/>
 <wire x1="226.06" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="121.92" x2="223.52" y2="114.3" width="0.1524" layer="91"/>
 <junction x="223.52" y="114.3"/>
+<pinref part="H21" gate="G$1" pin="MOUNT"/>
+<pinref part="H22" gate="G$1" pin="MOUNT"/>
+<pinref part="H23" gate="G$1" pin="MOUNT"/>
+<pinref part="H24" gate="G$1" pin="MOUNT"/>
+<pinref part="H25" gate="G$1" pin="MOUNT"/>
+<pinref part="H26" gate="G$1" pin="MOUNT"/>
+<pinref part="H27" gate="G$1" pin="MOUNT"/>
+<pinref part="H28" gate="G$1" pin="MOUNT"/>
+<pinref part="H29" gate="G$1" pin="MOUNT"/>
+<pinref part="H30" gate="G$1" pin="MOUNT"/>
+<pinref part="H31" gate="G$1" pin="MOUNT"/>
+<pinref part="H32" gate="G$1" pin="MOUNT"/>
+<pinref part="H33" gate="G$1" pin="MOUNT"/>
+<pinref part="H34" gate="G$1" pin="MOUNT"/>
+<pinref part="H35" gate="G$1" pin="MOUNT"/>
+<pinref part="H36" gate="G$1" pin="MOUNT"/>
+<pinref part="H37" gate="G$1" pin="MOUNT"/>
+<pinref part="H38" gate="G$1" pin="MOUNT"/>
+<pinref part="H39" gate="G$1" pin="MOUNT"/>
+<pinref part="H40" gate="G$1" pin="MOUNT"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
