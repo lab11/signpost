@@ -11,6 +11,7 @@
 // tock includes
 #include <isl29035.h>
 #include <led.h>
+#include <lps25hb.h>
 #include <si7021.h>
 #include <timer.h>
 #include <tock.h>
@@ -29,9 +30,12 @@ typedef struct {
   int light;
   int temperature;
   unsigned humidity;
+  int pressure;
   int err_code;
 } Sensor_Data_t;
 static Sensor_Data_t samples = {0};
+
+uint8_t message_buf[20] = {0};
 
 // keep track of whether functions succeeded
 static bool sample_sensors_successful = true;
@@ -40,6 +44,9 @@ static bool post_to_radio_successful = true;
 static void sample_sensors (void) {
   // read data from sensors and save locally
   sample_sensors_successful = true;
+
+  //get pressure
+  int pressure = lps25hb_get_pressure_sync();
 
   // get light
   int light = 0;
@@ -63,6 +70,7 @@ static void sample_sensors (void) {
   // print readings
   printf("--Sensor readings--\n");
   printf("\tTemperature %d (degrees C * 100)\n", temperature);
+  printf("\tPressure: %d (microbars)\n",pressure);
   printf("\tHumidity %d (%%RH * 100)\n", humidity);
   printf("\tLight %d (lux)\n", light);
 
@@ -70,7 +78,19 @@ static void sample_sensors (void) {
   samples.light = light;
   samples.temperature = temperature;
   samples.humidity = humidity;
+  samples.pressure = pressure;
   samples.err_code = err_code;
+
+  //also put them in the send buffer
+  message_buf[1] = (uint8_t) ((temperature >> 8) & 0xFF);
+  message_buf[2] = (uint8_t) (temperature & 0xFF);
+  message_buf[3] = (uint8_t) ((humidity >> 8) & 0xFF);
+  message_buf[4] = (uint8_t) (humidity & 0xFF);
+  message_buf[5] = (uint8_t) ((light >> 8) & 0xFF);
+  message_buf[6] = (uint8_t) (light & 0xFF);
+  message_buf[7] = (uint8_t) ((pressure >> 16) & 0xFF);
+  message_buf[8] = (uint8_t) ((pressure >> 8) & 0xFF);
+  message_buf[9] = (uint8_t) (pressure & 0xFF);
 
   // track success
   if (err_code != SUCCESS) {
@@ -84,10 +104,8 @@ static void post_to_radio (void) {
 
   //send radio the data
   printf("--Sendinging data--\n");
-  static uint8_t temp_buf[17];
-  temp_buf[0] = 0x02;
-  memcpy(temp_buf+1,(uint8_t*)&samples,sizeof(Sensor_Data_t));
-  int response = signpost_networking_send_bytes(ModuleAddressRadio, temp_buf, 17);
+  message_buf[0] = 0x01;
+  int response = signpost_networking_send_bytes(ModuleAddressRadio, message_buf, 10);
   if (response < SUCCESS) {
     printf("Error posting: %d\n", response);
     post_to_radio_successful = false;
