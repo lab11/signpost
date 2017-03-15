@@ -39,7 +39,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
     // how should the kernel respond when a process faults
     const FAULT_RESPONSE: kernel::process::FaultResponse = kernel::process::FaultResponse::Panic;
     #[link_section = ".app_memory"]
-    static mut APP_MEMORY: [u8; 16384] = [0; 16384];
+    static mut APP_MEMORY: [u8; 16384*2] = [0; 16384*2];
 
     static mut PROCESSES: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
@@ -320,6 +320,13 @@ pub unsafe fn reset_handler() {
         ipc: kernel::ipc::IPC::new(),
     };
 
+    let kc = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(radio_module.console), kc);
+    watchdog.start();
+
     //fix the rst line
     sam4l::gpio::PB[06].enable();
     sam4l::gpio::PB[06].enable_output();
@@ -329,8 +336,6 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[07].enable();
     sam4l::gpio::PA[07].enable_output();
     sam4l::gpio::PA[07].set();
-
-
 
     radio_module.console.initialize();
     radio_module.nrf51822.initialize();
