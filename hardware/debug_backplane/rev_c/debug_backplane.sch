@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.0.2">
+<eagle version="8.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -7266,6 +7266,357 @@ Low profile connectors, straight&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="holes">
+<description>&lt;b&gt;LAB11 - Mounting Holes and Pads&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de - Updated by Lab11&lt;/author&gt;
+&lt;p&gt;Most metric holes from the original Eagle holes.lbr - updated to add standard imperial sizes&lt;/p&gt;
+&lt;p&gt;For imperial holes, the pad hole size is set to the hole size. The pad outer diameter is set to the maximum dimension of a typical pan head for that size. Via/top/bottom restrict layers are set radius = (pan_head_diameter * 1.25) / 2&lt;/p&gt;</description>
+<packages>
+<package name="2,8-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 2.8 mm, round</description>
+<wire x1="0" y1="2.921" x2="0" y2="2.667" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.667" x2="0" y2="-2.921" width="0.0508" layer="21"/>
+<wire x1="-1.778" y1="0" x2="0" y2="-1.778" width="2.286" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="1.778" x2="1.778" y2="0" width="2.286" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="0.635" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="2.921" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.175" width="0.8128" layer="39"/>
+<circle x="0" y="0" radius="3.175" width="0.8128" layer="40"/>
+<circle x="0" y="0" radius="3.175" width="0.8128" layer="43"/>
+<circle x="0" y="0" radius="1.5" width="0.2032" layer="21"/>
+<pad name="B2,8" x="0" y="0" drill="2.8" diameter="5.334"/>
+</package>
+<package name="3,0-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 3.0 mm, round</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="39"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="40"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="43"/>
+<circle x="0" y="0" radius="1.6" width="0.2032" layer="21"/>
+<pad name="B3,0" x="0" y="0" drill="3" diameter="5.842"/>
+<text x="-1.27" y="-3.81" size="1.27" layer="48">3,0</text>
+</package>
+<package name="3,2-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 3.2 mm, round</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.683" width="1.27" layer="39"/>
+<circle x="0" y="0" radius="3.683" width="1.27" layer="40"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="43"/>
+<circle x="0" y="0" radius="1.7" width="0.1524" layer="21"/>
+<pad name="B3,2" x="0" y="0" drill="3.2" diameter="5.842"/>
+<text x="-1.27" y="-3.81" size="1.27" layer="48">3,2</text>
+</package>
+<package name="3,3-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 3.3 mm, round</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.683" width="1.27" layer="39"/>
+<circle x="0" y="0" radius="3.683" width="1.27" layer="40"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="43"/>
+<circle x="0" y="0" radius="1.7" width="0.2032" layer="21"/>
+<pad name="B3,3" x="0" y="0" drill="3.3" diameter="5.842"/>
+</package>
+<package name="3,6-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 3.6 mm, round</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.683" width="1.397" layer="39"/>
+<circle x="0" y="0" radius="3.683" width="1.397" layer="40"/>
+<circle x="0" y="0" radius="3.556" width="1.016" layer="43"/>
+<circle x="0" y="0" radius="1.9" width="0.2032" layer="21"/>
+<pad name="B3,6" x="0" y="0" drill="3.6" diameter="5.842"/>
+</package>
+<package name="4,1-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 4.1 mm, round</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.572" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="5.08" width="2" layer="43"/>
+<circle x="0" y="0" radius="2.15" width="0.2032" layer="21"/>
+<pad name="B4,1" x="0" y="0" drill="4.1" diameter="8"/>
+</package>
+<package name="4,3-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 4.3 mm, round</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="43"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="39"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="40"/>
+<circle x="0" y="0" radius="2.25" width="0.1524" layer="21"/>
+<pad name="B4,3" x="0" y="0" drill="4.3" diameter="9"/>
+</package>
+<package name="4,5-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 4.5 mm, round</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="43"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="39"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="40"/>
+<circle x="0" y="0" radius="2.35" width="0.1524" layer="21"/>
+<pad name="B4,5" x="0" y="0" drill="4.5" diameter="9"/>
+</package>
+<package name="5,0-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 5.0 mm, round</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="43"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="39"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="40"/>
+<circle x="0" y="0" radius="2.6" width="0.1524" layer="21"/>
+<pad name="B5" x="0" y="0" drill="5" diameter="9"/>
+</package>
+<package name="5,5-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; 5.5 mm, round</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="43"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="39"/>
+<circle x="0" y="0" radius="5.588" width="2" layer="40"/>
+<circle x="0" y="0" radius="2.85" width="0.1524" layer="21"/>
+<pad name="B5,5" x="0" y="0" drill="5.5" diameter="9"/>
+</package>
+<package name="#0-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #0, round</description>
+<circle x="0" y="0" radius="1.6256" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="39"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="40"/>
+<circle x="0" y="0" radius="1.8415" width="0" layer="43"/>
+<pad name="B#0" x="0" y="0" drill="1.6256" diameter="2.9464"/>
+<text x="0" y="-2.54" size="1.016" layer="48" align="top-center">#0</text>
+</package>
+<package name="#2-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #2, round</description>
+<circle x="0" y="0" radius="2.286" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="39"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="40"/>
+<circle x="0" y="0" radius="2.6416" width="0" layer="43"/>
+<pad name="B#2" x="0" y="0" drill="2.286" diameter="4.2418"/>
+<text x="0" y="-2.54" size="1.016" layer="48" align="top-center">#2</text>
+</package>
+<package name="#3-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #3, round</description>
+<circle x="0" y="0" radius="2.6162" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.0734" width="0" layer="43"/>
+<pad name="B#3" x="0" y="0" drill="2.6162" diameter="4.9022"/>
+<text x="0" y="-3.048" size="1.016" layer="48" align="top-center">#3</text>
+</package>
+<package name="#4-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #4, round</description>
+<circle x="0" y="0" radius="2.9464" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.4798" width="0" layer="43"/>
+<pad name="B#4" x="0" y="0" drill="2.9464" diameter="5.5626"/>
+<text x="0" y="-3.302" size="1.016" layer="48" align="top-center">#4</text>
+</package>
+<package name="#5-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #5, round</description>
+<circle x="0" y="0" radius="3.2766" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="39"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="40"/>
+<circle x="0" y="0" radius="3.8862" width="0" layer="43"/>
+<pad name="B#5" x="0" y="0" drill="3.2766" diameter="6.223"/>
+<text x="0" y="-3.556" size="1.016" layer="48" align="top-center">#5</text>
+</package>
+<package name="#6-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #6, round</description>
+<circle x="0" y="0" radius="3.6068" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="39"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="40"/>
+<circle x="0" y="0" radius="4.2926" width="0" layer="43"/>
+<pad name="B#6" x="0" y="0" drill="3.6068" diameter="6.858"/>
+<text x="0" y="-3.81" size="1.016" layer="48" align="top-center">#6</text>
+</package>
+<package name="#8-PAD">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt; #8, round</description>
+<circle x="0" y="0" radius="4.2672" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="39"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="40"/>
+<circle x="0" y="0" radius="5.1054" width="0" layer="43"/>
+<pad name="B#8" x="0" y="0" drill="4.2672" diameter="8.1788"/>
+<text x="0" y="-4.572" size="1.016" layer="48" align="top-center">#8</text>
+</package>
+</packages>
+<symbols>
+<symbol name="MOUNT-PAD">
+<wire x1="0.254" y1="2.032" x2="2.032" y2="0.254" width="1.016" layer="94" curve="-75.749967" cap="flat"/>
+<wire x1="-2.032" y1="0.254" x2="-0.254" y2="2.032" width="1.016" layer="94" curve="-75.749967" cap="flat"/>
+<wire x1="-2.032" y1="-0.254" x2="-0.254" y2="-2.032" width="1.016" layer="94" curve="75.749967" cap="flat"/>
+<wire x1="0.254" y1="-2.032" x2="2.032" y2="-0.254" width="1.016" layer="94" curve="75.749967" cap="flat"/>
+<circle x="0" y="0" radius="1.524" width="0.0508" layer="94"/>
+<text x="2.794" y="0.5842" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.794" y="-2.4638" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="MOUNT" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MOUNT-PAD-ROUND" prefix="H">
+<description>&lt;b&gt;MOUNTING PAD&lt;/b&gt;, round</description>
+<gates>
+<gate name="G$1" symbol="MOUNT-PAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="2.8" package="2,8-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B2,8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.0" package="3,0-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B3,0"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.2" package="3,2-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B3,2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.3" package="3,3-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B3,3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.6" package="3,6-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B3,6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.1" package="4,1-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B4,1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.3" package="4,3-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B4,3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.5" package="4,5-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B4,5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.0" package="5,0-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.5" package="5,5-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B5,5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#0" package="#0-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#0"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#2" package="#2-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#3" package="#3-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#4" package="#4-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#5" package="#5-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#6" package="#6-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="#8" package="#8-PAD">
+<connects>
+<connect gate="G$1" pin="MOUNT" pad="B#8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins and Pat Pannuto"/>
@@ -7827,12 +8178,24 @@ Low profile connectors, straight&lt;p&gt;
 <part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$22" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="JP7" library="pinhead" deviceset="PINHD-2X3" device=""/>
+<part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H4" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H5" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H6" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H7" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H8" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="GND112" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
+<description>&lt;b&gt;Controller Module &amp; Misc&lt;/b&gt;</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Special Modules</text>
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
+<text x="210.82" y="172.72" size="2.54" layer="98" align="center">Plated Mounting Holes</text>
+<text x="195.58" y="68.58" size="2.54" layer="98" align="center">Global Reset</text>
 </plain>
 <instances>
 <instance part="J1" gate="J1" x="50.8" y="137.16"/>
@@ -7869,6 +8232,15 @@ Low profile connectors, straight&lt;p&gt;
 <instance part="D11" gate="D" x="170.18" y="35.56"/>
 <instance part="D12" gate="A" x="170.18" y="30.48"/>
 <instance part="GND116" gate="1" x="213.36" y="43.18"/>
+<instance part="H1" gate="G$1" x="200.66" y="165.1"/>
+<instance part="H2" gate="G$1" x="210.82" y="165.1"/>
+<instance part="H3" gate="G$1" x="220.98" y="165.1"/>
+<instance part="H4" gate="G$1" x="200.66" y="157.48"/>
+<instance part="H5" gate="G$1" x="220.98" y="157.48"/>
+<instance part="H6" gate="G$1" x="200.66" y="149.86"/>
+<instance part="H7" gate="G$1" x="210.82" y="149.86"/>
+<instance part="H8" gate="G$1" x="220.98" y="149.86"/>
+<instance part="GND112" gate="1" x="195.58" y="139.7"/>
 </instances>
 <busses>
 </busses>
@@ -8041,6 +8413,43 @@ Low profile connectors, straight&lt;p&gt;
 <pinref part="GND116" gate="1" pin="GND"/>
 <wire x1="210.82" y1="50.8" x2="213.36" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="50.8" x2="213.36" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="H1" gate="G$1" pin="MOUNT"/>
+<pinref part="GND112" gate="1" pin="GND"/>
+<wire x1="198.12" y1="165.1" x2="195.58" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="165.1" x2="195.58" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="H4" gate="G$1" pin="MOUNT"/>
+<wire x1="195.58" y1="157.48" x2="195.58" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="149.86" x2="195.58" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="144.78" x2="195.58" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="157.48" x2="195.58" y2="157.48" width="0.1524" layer="91"/>
+<junction x="195.58" y="157.48"/>
+<pinref part="H6" gate="G$1" pin="MOUNT"/>
+<wire x1="198.12" y1="149.86" x2="195.58" y2="149.86" width="0.1524" layer="91"/>
+<junction x="195.58" y="149.86"/>
+<pinref part="H7" gate="G$1" pin="MOUNT"/>
+<wire x1="208.28" y1="149.86" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="149.86" x2="205.74" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="144.78" x2="195.58" y2="144.78" width="0.1524" layer="91"/>
+<junction x="195.58" y="144.78"/>
+<pinref part="H2" gate="G$1" pin="MOUNT"/>
+<wire x1="208.28" y1="165.1" x2="205.74" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="165.1" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
+<junction x="205.74" y="149.86"/>
+<pinref part="H8" gate="G$1" pin="MOUNT"/>
+<wire x1="218.44" y1="149.86" x2="215.9" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="149.86" x2="215.9" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="144.78" x2="205.74" y2="144.78" width="0.1524" layer="91"/>
+<junction x="205.74" y="144.78"/>
+<pinref part="H5" gate="G$1" pin="MOUNT"/>
+<wire x1="218.44" y1="157.48" x2="215.9" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="157.48" x2="215.9" y2="149.86" width="0.1524" layer="91"/>
+<junction x="215.9" y="149.86"/>
+<pinref part="H3" gate="G$1" pin="MOUNT"/>
+<wire x1="218.44" y1="165.1" x2="215.9" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="165.1" x2="215.9" y2="157.48" width="0.1524" layer="91"/>
+<junction x="215.9" y="157.48"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -8317,6 +8726,7 @@ Low profile connectors, straight&lt;p&gt;
 </nets>
 </sheet>
 <sheet>
+<description>Power Module</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Power Supply</text>
 <text x="101.6" y="182.88" size="5.08" layer="97">Coulomb Counters</text>
@@ -8955,6 +9365,7 @@ Translator</text>
 </nets>
 </sheet>
 <sheet>
+<description>Generic Module Headers</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Generic Modules</text>
 </plain>
@@ -9242,6 +9653,7 @@ Translator</text>
 </nets>
 </sheet>
 <sheet>
+<description>Octo-Prog</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Multi-Prog</text>
 <text x="167.64" y="167.64" size="5.08" layer="98" align="bottom-center">Signal Enable ICs</text>
@@ -10022,6 +10434,7 @@ Translator</text>
 </nets>
 </sheet>
 <sheet>
+<description>Module FTDI &amp; Debug</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Module Debugging</text>
 <wire x1="5.08" y1="180.34" x2="5.08" y2="22.86" width="0.254" layer="98"/>
@@ -10428,6 +10841,7 @@ Translator</text>
 </nets>
 </sheet>
 <sheet>
+<description>Controller FTDI &amp; Debug</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Controller Debugging</text>
 <text x="5.08" y="177.8" size="2.54" layer="98" align="top-left">Controller</text>
@@ -10838,6 +11252,7 @@ Translator</text>
 </nets>
 </sheet>
 <sheet>
+<description>Debug USB Hub</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Debugging USB Hub</text>
 <text x="251.46" y="180.34" size="1.778" layer="98" align="top-right">This aggregates all of the debug USB ports
@@ -11234,6 +11649,7 @@ not used for this hub</text>
 </nets>
 </sheet>
 <sheet>
+<description>GPIO Extenders for Isolation</description>
 <plain>
 <wire x1="58.42" y1="116.84" x2="22.86" y2="116.84" width="0.4064" layer="98"/>
 <wire x1="22.86" y1="116.84" x2="22.86" y2="106.68" width="0.4064" layer="98"/>
@@ -11498,6 +11914,7 @@ not used for this hub</text>
 </nets>
 </sheet>
 <sheet>
+<description>I2C &amp; Power Isolation</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Module Isolation</text>
 <text x="53.34" y="144.78" size="2.54" layer="98" align="center">I2C Isolation</text>
@@ -11812,6 +12229,7 @@ not used for this hub</text>
 </nets>
 </sheet>
 <sheet>
+<description>GPIO &amp; PPS Isolation</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Module Isolation</text>
 <text x="66.04" y="147.32" size="2.54" layer="98" align="top-center">Buffer / Level
@@ -12096,6 +12514,7 @@ Backplane &lt;-- Module</text>
 </nets>
 </sheet>
 <sheet>
+<description>Module USB Hub</description>
 <plain>
 <text x="43.688" y="67.31" size="1.27" layer="98">Status
 LEDs</text>
@@ -12783,6 +13202,7 @@ It doesn't have isolation, still needs a pullup</text>
 </nets>
 </sheet>
 <sheet>
+<description>Module USB Override Switch</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">USB SWITCH</text>
 <text x="121.92" y="139.7" size="2.54" layer="98" align="bottom-center">Allows USB port to act as host 
@@ -12942,6 +13362,7 @@ pair of signals by flipping +/-</text>
 </nets>
 </sheet>
 <sheet>
+<description>Module USB Passives; Isolation</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">USB</text>
 <text x="111.76" y="48.26" size="2.54" layer="98">Transient voltage protection</text>
@@ -13391,6 +13812,7 @@ pair of signals by flipping +/-</text>
 </nets>
 </sheet>
 <sheet>
+<description>Module USB Power Switches</description>
 <plain>
 <text x="251.46" y="181.61" size="1.778" layer="98" align="top-right">Power switches &amp; Iso Power Override</text>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">USB</text>
@@ -13663,6 +14085,7 @@ pair of signals by flipping +/-</text>
 </nets>
 </sheet>
 <sheet>
+<description>Fake Radio Module</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">The "Radio Module"</text>
 <text x="66.04" y="88.9" size="1.778" layer="98">Controller</text>
@@ -14360,6 +14783,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </nets>
 </sheet>
 <sheet>
+<description>Debugging Headers</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Debugging</text>
 <text x="149.86" y="177.8" size="2.54" layer="98" align="bottom-center">MOD0 Debugging</text>
