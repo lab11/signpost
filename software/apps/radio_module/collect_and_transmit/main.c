@@ -274,9 +274,9 @@ static void timer_callback (
     }
 
     if(i == NUMBER_OF_MODULES-1) {
-        eddystone_adv((char*)PHYSWEB_URL, NULL);
+    //    eddystone_adv((char*)PHYSWEB_URL, NULL);
     } else {
-        adv_config_data();
+     //   adv_config_data();
     }
 
     i++;
@@ -286,7 +286,21 @@ static void timer_callback (
 }
 
 int main (void) {
-    // reset the BLE radio at startup
+    printf("starting app!\n");
+    //do module initialization
+    //I did it last because as soon as we init we will start getting callbacks
+    //those callbacks depend on the setup above
+    int rc;
+
+    static api_handler_t networking_handler = {NetworkingApiType, networking_api_callback};
+    static api_handler_t* handlers[] = {&networking_handler,NULL};
+    do {
+        rc = signpost_initialization_module_init(ModuleAddressRadio,handlers);
+        if (rc<0) {
+            delay_ms(5000);
+        }
+    } while (rc<0);
+
     gpio_enable_output(BLE_POWER);
     gpio_set(BLE_POWER);
     delay_ms(10);
@@ -299,10 +313,10 @@ int main (void) {
     gpio_set(LORA_RESET);
 
     //ble
-    simple_ble_init(&ble_config);
+    //simple_ble_init(&ble_config);
 
     //setup a tock timer to
-    eddystone_adv((char *)PHYSWEB_URL,NULL);
+    //eddystone_adv((char *)PHYSWEB_URL,NULL);
 
     //zero the rest of the data array
     for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
@@ -317,10 +331,10 @@ int main (void) {
 
     //setup lora
     //register radio callbacks
-    //iM880A_Init();
-    //iM880A_RegisterRadioCallbacks(lora_rx_callback, lora_tx_callback);
+    iM880A_Init();
+    iM880A_RegisterRadioCallbacks(lora_rx_callback, lora_tx_callback);
     //configure
-    //iM880A_Configure();
+    iM880A_Configure();
 
     // Setup a watchdog
     //app_watchdog_set_kernel_timeout(10000);
@@ -329,18 +343,4 @@ int main (void) {
     //setup timer
     timer_subscribe(timer_callback, NULL);
     timer_start_repeating(300);
-
-    //do module initialization
-    //I did it last because as soon as we init we will start getting callbacks
-    //those callbacks depend on the setup above
-    /*int rc;
-
-    static api_handler_t networking_handler = {NetworkingApiType, networking_api_callback};
-    static api_handler_t* handlers[] = {&networking_handler,NULL};
-    do {
-        rc = signpost_initialization_module_init(ModuleAddressRadio,handlers);
-        if (rc<0) {
-            delay_ms(5000);
-        }
-    } while (rc<0);*/
 }
