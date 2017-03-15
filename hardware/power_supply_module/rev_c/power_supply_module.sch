@@ -387,22 +387,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="8" y="-3" size="1.016" layer="27" font="vector" ratio="10" rot="R90">&gt;VALUE</text>
 <text x="-7" y="-3" size="1.016" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
 </package>
-<package name="DFN-6-2MMX3MM">
-<smd name="1" x="-0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
-<smd name="2" x="0" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
-<smd name="3" x="0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
-<smd name="4" x="0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
-<smd name="5" x="0" y="1.425" dx="0.25" dy="0.7" layer="1"/>
-<smd name="6" x="-0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
-<wire x1="-1" y1="1.5" x2="1" y2="1.5" width="0.127" layer="21"/>
-<wire x1="1" y1="1.5" x2="1" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="1" y1="-1.5" x2="-1" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
-<circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
-<text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<smd name="NC" x="0" y="0" dx="1.35" dy="1.65" layer="1" cream="no"/>
-<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
-</package>
 <package name="QFN-N20">
 <wire x1="-2.33" y1="1.83" x2="2.33" y2="1.83" width="0.127" layer="21"/>
 <wire x1="2.33" y1="1.83" x2="2.33" y2="-1.83" width="0.127" layer="21"/>
@@ -492,20 +476,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="7.62" y1="20.32" x2="-7.62" y2="20.32" width="0.254" layer="94"/>
 <text x="-7.62" y="20.828" size="1.778" layer="95">&gt;NAME</text>
 <text x="-7.62" y="-22.86" size="1.778" layer="96">&gt;VALUE</text>
-</symbol>
-<symbol name="LTC2941-1">
-<pin name="SENSE+" x="10.16" y="7.62" length="short" direction="oc" rot="R180"/>
-<pin name="SENSE-" x="10.16" y="5.08" length="short" direction="oc" rot="R180"/>
-<pin name="SDA" x="10.16" y="0" length="short" direction="oc" rot="R180"/>
-<pin name="SCL" x="10.16" y="-2.54" length="short" direction="oc" rot="R180"/>
-<pin name="!ALERT" x="10.16" y="-5.08" length="short" direction="oc" rot="R180"/>
-<pin name="GND" x="10.16" y="-10.16" length="short" direction="oc" rot="R180"/>
-<wire x1="7.62" y1="10.16" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="7.62" y1="-12.7" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-12.7" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="10.16" x2="7.62" y2="10.16" width="0.254" layer="94"/>
-<text x="-5.08" y="10.668" size="1.778" layer="95" ratio="12">&gt;NAME</text>
-<text x="-5.08" y="-14.732" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -603,30 +573,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-20960-1-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="LTC2941" prefix="U">
-<description>I2C Battery Gas Gauge
-with External Sense Resistor</description>
-<gates>
-<gate name="G$1" symbol="LTC2941-1" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="DFN-6-2MMX3MM">
-<connects>
-<connect gate="G$1" pin="!ALERT" pad="5"/>
-<connect gate="G$1" pin="GND" pad="2"/>
-<connect gate="G$1" pin="SCL" pad="3"/>
-<connect gate="G$1" pin="SDA" pad="4"/>
-<connect gate="G$1" pin="SENSE+" pad="1"/>
-<connect gate="G$1" pin="SENSE-" pad="6"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -1190,8 +1136,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.82" y="-1.93" radius="0.086021875" width="0.127" layer="21"/>
 <text x="-2.35" y="2.29" size="0.889" layer="25">&gt;NAME</text>
-<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1" cream="no"/>
-<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
+<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1"/>
 </package>
 <package name="DFN-12/3MM">
 <description>DFN-12/3MM for FTDI234XD</description>
@@ -1211,11 +1156,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <smd name="4" x="-1.45" y="-0.23" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="5" x="-1.45" y="-0.68" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="6" x="-1.45" y="-1.13" dx="0.25" dy="0.6" layer="1" rot="R90"/>
-<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1" cream="no"/>
+<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1"/>
 <circle x="-1.9926" y="1.143" radius="0.113590625" width="0" layer="21"/>
 <text x="0" y="1.651" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<rectangle x1="-0.5" y1="0.25" x2="0.5" y2="1" layer="31"/>
-<rectangle x1="-0.5" y1="-1" x2="0.5" y2="-0.25" layer="31"/>
 </package>
 <package name="SOIC-8">
 <wire x1="-2.362" y1="-1.803" x2="2.362" y2="-1.803" width="0.1524" layer="51"/>
@@ -1323,22 +1266,21 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </polygon>
 </package>
 <package name="DFN-8">
-<wire x1="0" y1="0" x2="0" y2="3" width="0.127" layer="21"/>
-<wire x1="0" y1="3" x2="3" y2="3" width="0.127" layer="21"/>
-<wire x1="3" y1="3" x2="3" y2="0" width="0.127" layer="21"/>
-<wire x1="3" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
-<smd name="P$1" x="1.5" y="1.5" dx="1.65" dy="2.38" layer="1" rot="R90" cream="no"/>
-<smd name="P7" x="1.25" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P8" x="0.75" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P6" x="1.75" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P5" x="2.25" y="2.92" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P1" x="0.75" y="0.08" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P2" x="1.25" y="0.08" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P3" x="1.75" y="0.08" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<smd name="P4" x="2.25" y="0.08" dx="0.675" dy="0.28" layer="1" rot="R90"/>
-<circle x="0.33" y="-0.44" radius="0.11661875" width="0.127" layer="21"/>
-<text x="-0.5" y="0" size="1.27" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
-<rectangle x1="0.5" y1="1" x2="2.5" y2="2" layer="31"/>
+<wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="1.5" x2="1.5" y2="1.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="1.5" x2="1.5" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.127" layer="21"/>
+<smd name="P$1" x="0" y="0" dx="1.65" dy="2.38" layer="1" rot="R90"/>
+<smd name="P7" x="-0.25" y="1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P8" x="-0.75" y="1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P6" x="0.25" y="1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P5" x="0.75" y="1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P1" x="-0.75" y="-1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P2" x="-0.25" y="-1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P3" x="0.25" y="-1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<smd name="P4" x="0.75" y="-1.42" dx="0.675" dy="0.28" layer="1" rot="R90"/>
+<circle x="-1.17" y="-1.94" radius="0.11661875" width="0.127" layer="21"/>
+<text x="-2" y="-1.5" size="1.27" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
 </package>
 <package name="SOT-23">
 <wire x1="-1.4224" y1="0.381" x2="1.4732" y2="0.381" width="0.1524" layer="21"/>
@@ -2530,32 +2472,32 @@ High-power, low thermal resistance package.</description>
 <part name="U6" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U8" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U8" library="chips" deviceset="LTC2943" device=""/>
 <part name="FRAME5" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME6" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U9" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U9" library="chips" deviceset="LTC2943" device=""/>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U10" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U10" library="chips" deviceset="LTC2943" device=""/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U11" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U11" library="chips" deviceset="LTC2943" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="U7" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
 <part name="C15" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R5" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U12" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U12" library="chips" deviceset="LTC2943" device=""/>
 <part name="C16" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U13" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U13" library="chips" deviceset="LTC2943" device=""/>
 <part name="C17" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U14" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U14" library="chips" deviceset="LTC2943" device=""/>
 <part name="C18" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω"/>
-<part name="U15" library="signpost" deviceset="LTC2941" device=""/>
+<part name="U15" library="chips" deviceset="LTC2943" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME9" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
