@@ -14,8 +14,8 @@
 [submodule "software/apps/radio_demo/nrf5x-base"]
 	path = software/apps/2016-10/radio/nrf5x-base
 	url = https://github.com/lab11/nrf5x-base
-[submodule "software/apps/radio_demo/nrf5x-base"]
-	path = software/apps/radio_module/collect_and_send/nrf5x-base
+[submodule "software/apps/radio_module/collect_and_transmit/nrf5x-base"]
+	path = software/apps/radio_module/collect_and_transmit/nrf5x-base
 	url = https://github.com/lab11/nrf5x-base
 [submodule "software/apps/libs/erpc"]
 	path = software/apps/support/erpc/erpc
