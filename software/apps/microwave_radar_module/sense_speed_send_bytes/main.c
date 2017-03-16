@@ -37,8 +37,8 @@ uint32_t sample_state;
 const uint32_t INITIAL_VAL = 0x820;
 //const uint32_t LOWER_BOUND = 0X800;
 //const uint32_t UPPER_BOUND = 0x840;
-const uint32_t LOWER_BOUND = 0X750;
-const uint32_t UPPER_BOUND = 0x890;
+const uint32_t LOWER_BOUND = 0X7F5;
+const uint32_t UPPER_BOUND = 0x825;
 //const uint32_t NOISE_OFFSET = 4;
 const uint32_t NOISE_OFFSET = 10;
 
@@ -57,6 +57,7 @@ bool motion_since_last_transmit = false;
 uint32_t max_speed_since_last_transmit = 0;
 
 static bool detect_motion (uint32_t sample) {
+    printf("%d\n",sample);
     static uint8_t num_motion = 1;
     if ((sample > UPPER_BOUND) || (sample < LOWER_BOUND)) {
         num_motion++;
@@ -70,7 +71,7 @@ static bool detect_motion (uint32_t sample) {
         }
     }
     motion_confidence = num_motion;
-    return (num_motion > 30);
+    return (num_motion > 20);
 }
 
 static uint32_t calculate_sample_frequency (uint32_t curr_data) {
@@ -165,7 +166,7 @@ static uint32_t calculate_radar_speed (uint32_t freq) {
     uint32_t speed_fph = (freq * 5280)/31;
     uint32_t speed_mfps = (speed_fph*1000)/3600;
 
-    printf("Freq: %lu\tSpeed: %lu (milli-fps)\n", freq, speed_mfps);
+    //printf("Freq: %lu\tSpeed: %lu (milli-fps)\n", freq, speed_mfps);
 
     return speed_mfps;
 }
@@ -237,7 +238,7 @@ static void timer_callback (
         app_watchdog_tickle_kernel();
     }
 
-    printf("Motion confidence on that interval: %d\n",max_confidence);
+    //printf("Motion confidence on that interval: %d\n",max_confidence);
 
     // reset variables
     motion_since_last_transmit = false;
