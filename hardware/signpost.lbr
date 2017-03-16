@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -3277,6 +3277,61 @@ Figs 30-32</text>
 <text x="-1.27" y="-2.54" size="0.6096" layer="98">300: Push/Pull
 301: Open Coll</text>
 </symbol>
+<symbol name="VCC_MOD0">
+<pin name="VCC_MOD0" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD0 (5V)</text>
+</symbol>
+<symbol name="VCC_MOD1">
+<pin name="VCC_MOD1" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD1 (5V)</text>
+</symbol>
+<symbol name="VCC_MOD2">
+<pin name="VCC_MOD2" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD2 (5V)</text>
+</symbol>
+<symbol name="VCC_MOD5">
+<pin name="VCC_MOD5" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD5 (5V)</text>
+</symbol>
+<symbol name="VCC_MOD6">
+<pin name="VCC_MOD6" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD6 (5V)</text>
+</symbol>
+<symbol name="VCC_MOD7">
+<pin name="VCC_MOD7" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="-2.54" y="4.064" size="1.778" layer="95">VCC</text>
+<text x="0" y="2.794" size="1.016" layer="95" align="bottom-center">MOD7 (5V)</text>
+</symbol>
+<symbol name="VSOL">
+<pin name="VSOL" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="0" y="3.048" size="1.778" layer="95" align="bottom-center">VSOL</text>
+</symbol>
+<symbol name="VBAT">
+<description>Battery Positive</description>
+<pin name="VBAT+" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<wire x1="0" y1="2.54" x2="-1.016" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="1.016" y2="1.524" width="0.254" layer="94"/>
+<text x="0" y="3.048" size="1.778" layer="95" align="bottom-center">VBAT+</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="BACKPLANE_GENERIC_MODULE" prefix="J">
@@ -4628,6 +4683,110 @@ NCP302 - Digikey attr for fixed 3.0V threshold</description>
 <technology name="">
 <attribute name="DIGIKEY" value="NCP301LSN30T1GOSCT-ND" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD0">
+<description>VCC Module 0 (5V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_MOD0" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD1">
+<description>VCC Module 1 (5V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_MOD1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD2">
+<description>VCC Module 2 (5V)</description>
+<gates>
+<gate name="G$2" symbol="VCC_MOD2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD5">
+<description>VCC Module 5 (5V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_MOD5" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD6">
+<description>VCC Module 6 (5V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_MOD6" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_MOD7">
+<description>VCC Module 7 (5V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_MOD7" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_SOL">
+<description>VCC Backplane (3.3V)</description>
+<gates>
+<gate name="G$1" symbol="VSOL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC_BATT+">
+<description>VCC Backplane (3.3V)</description>
+<gates>
+<gate name="G$1" symbol="VCC_BACKPLANE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
