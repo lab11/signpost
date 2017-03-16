@@ -377,11 +377,13 @@ function parse (buf) {
 		if (message_type == 0x01) {
 			var motion = buf.readInt8(9) > 0;
 			var speed = buf.readUInt32BE(10) / 1000.0;
+			var motion_confidence = buf.readInt8(14);
 
 			return {
 				device: 'signpost_microwave_radar',
 				motion: motion,
 				'velocity_m/s': speed,
+                'motion_confidence': motion_confidence,
 				_meta: get_meta(addr)
 			}
 		}
