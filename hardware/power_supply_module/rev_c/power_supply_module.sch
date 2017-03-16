@@ -791,8 +791,8 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0" y1="2.54" x2="0" y2="0" width="0.254" layer="94" curve="-180"/>
 <wire x1="0" y1="0" x2="0" y2="-2.54" width="0.254" layer="94" curve="-180"/>
 <wire x1="0" y1="-2.54" x2="0" y2="-5.08" width="0.254" layer="94" curve="-180"/>
-<text x="-0.508" y="-2.54" size="1.27" layer="95" ratio="12" rot="R90">&gt;NAME</text>
-<text x="3.048" y="-2.54" size="1.27" layer="96" ratio="12" rot="R90">&gt;VALUE</text>
+<text x="-0.508" y="-2.54" size="1.778" layer="95" ratio="12" rot="R90">&gt;NAME</text>
+<text x="3.048" y="-2.54" size="1.778" layer="96" ratio="12" rot="R90">&gt;VALUE</text>
 </symbol>
 <symbol name="DIODE_SCHOTTKY">
 <pin name="ANODE" x="-5.08" y="0" visible="off" length="short"/>
@@ -1136,7 +1136,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.82" y="-1.93" radius="0.086021875" width="0.127" layer="21"/>
 <text x="-2.35" y="2.29" size="0.889" layer="25">&gt;NAME</text>
-<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1"/>
+<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1" cream="no"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
 </package>
 <package name="DFN-12/3MM">
 <description>DFN-12/3MM for FTDI234XD</description>
@@ -1156,9 +1157,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <smd name="4" x="-1.45" y="-0.23" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="5" x="-1.45" y="-0.68" dx="0.25" dy="0.6" layer="1" rot="R90"/>
 <smd name="6" x="-1.45" y="-1.13" dx="0.25" dy="0.6" layer="1" rot="R90"/>
-<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1"/>
+<smd name="13" x="0" y="0" dx="1.6" dy="2.5" layer="1" cream="no"/>
 <circle x="-1.9926" y="1.143" radius="0.113590625" width="0" layer="21"/>
 <text x="0" y="1.651" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<rectangle x1="-0.5" y1="0.25" x2="0.5" y2="1" layer="31"/>
+<rectangle x1="-0.5" y1="-1" x2="0.5" y2="-0.25" layer="31"/>
 </package>
 <package name="SOIC-8">
 <wire x1="-2.362" y1="-1.803" x2="2.362" y2="-1.803" width="0.1524" layer="51"/>
@@ -2452,6 +2455,155 @@ High-power, low thermal resistance package.</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="connector">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Connectors for various cable types.</description>
+<packages>
+<package name="TC2030-IDC-NL">
+<description>The TC2030-IDC-NL is our "No Legs" 6-pin Plug-of-Nails Cable</description>
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.4925" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+<wire x1="2.286" y1="-2.0447" x2="-0.979178125" y2="-2.0447" width="0.127" layer="21"/>
+<wire x1="-0.979178125" y1="-2.0447" x2="-1.531840625" y2="-1.91814375" width="0.127" layer="21" curve="-25.795946"/>
+<wire x1="-1.531840625" y1="-1.91814375" x2="-3.19733125" y2="-1.11315625" width="0.127" layer="21"/>
+<wire x1="-3.19733125" y1="-1.11315625" x2="-3.556" y2="-0.541434375" width="0.127" layer="21" curve="-64.204213"/>
+<wire x1="-3.556" y1="-0.541434375" x2="-3.556" y2="0.541434375" width="0.127" layer="21"/>
+<wire x1="-3.556" y1="0.541434375" x2="-3.19733125" y2="1.11315625" width="0.127" layer="21" curve="-64.204054"/>
+<wire x1="-3.19733125" y1="1.11315625" x2="-1.531840625" y2="1.91814375" width="0.127" layer="21"/>
+<wire x1="-1.531840625" y1="1.91814375" x2="-0.979178125" y2="2.0447" width="0.127" layer="21" curve="-25.795871"/>
+<wire x1="-0.979178125" y1="2.0447" x2="2.286" y2="2.0447" width="0.127" layer="21"/>
+<wire x1="2.286" y1="2.0447" x2="3.556" y2="0.7747" width="0.127" layer="21" curve="-90"/>
+<wire x1="3.556" y1="0.7747" x2="3.556" y2="-0.7747" width="0.127" layer="21"/>
+<wire x1="3.556" y1="-0.7747" x2="2.286" y2="-2.0447" width="0.127" layer="21" curve="-90"/>
+</package>
+<package name="TC2030-IDC">
+<description>Tag Connect TC2030-IDC</description>
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="2.54" drill="2.3749"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="0.635" y="2.54" drill="2.3749"/>
+<hole x="0.635" y="-2.54" drill="2.3749"/>
+<hole x="-2.54" y="-2.54" drill="2.3749"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="42">
+<vertex x="-3.175" y="-3.81"/>
+<vertex x="-1.905" y="-3.81"/>
+<vertex x="-1.905" y="-4.7625"/>
+<vertex x="-3.175" y="-4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="0" y="-3.81"/>
+<vertex x="1.27" y="-3.81"/>
+<vertex x="1.27" y="-4.7625"/>
+<vertex x="0" y="-4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="0" y="3.81"/>
+<vertex x="1.27" y="3.81"/>
+<vertex x="1.27" y="4.7625"/>
+<vertex x="0" y="4.7625"/>
+</polygon>
+<polygon width="0.127" layer="42">
+<vertex x="-1.905" y="3.81"/>
+<vertex x="-3.175" y="3.81"/>
+<vertex x="-3.175" y="4.7625"/>
+<vertex x="-1.905" y="4.7625"/>
+</polygon>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<text x="0" y="5.08" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-6.0325" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<wire x1="-2.54" y1="3.81" x2="2.54" y2="3.81" width="0.127" layer="25"/>
+<wire x1="4.2545" y1="2.0955" x2="4.2545" y2="-2.0955" width="0.127" layer="25"/>
+<wire x1="2.54" y1="-3.81" x2="-2.54" y2="-3.81" width="0.127" layer="25"/>
+<wire x1="-4.2545" y1="-2.0955" x2="-4.2545" y2="2.0955" width="0.127" layer="25"/>
+<wire x1="-2.54" y1="3.81" x2="-4.2545" y2="2.0955" width="0.127" layer="25" curve="90"/>
+<wire x1="4.2545" y1="2.0955" x2="2.54" y2="3.81" width="0.127" layer="25" curve="90"/>
+<wire x1="-4.2545" y1="-2.0955" x2="-2.54" y2="-3.81" width="0.127" layer="25" curve="90"/>
+<wire x1="2.54" y1="-3.81" x2="4.2545" y2="-2.0955" width="0.127" layer="25" curve="90"/>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="ARM-6PIN">
+<description>6 Pin ARM JTAG part</description>
+<pin name="VCC" x="-12.7" y="2.54" length="short"/>
+<pin name="GND" x="-12.7" y="-5.08" length="short"/>
+<pin name="TMS" x="12.7" y="2.54" length="short" rot="R180"/>
+<pin name="TCK" x="12.7" y="0" length="short" rot="R180"/>
+<pin name="TDO" x="12.7" y="-2.54" length="short" rot="R180"/>
+<pin name="!RESET" x="12.7" y="-5.08" length="short" rot="R180"/>
+<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="10.16" y2="5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
+<text x="-10.16" y="6.35" size="1.27" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-10.16" size="1.27" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TC2030-CTX" prefix="J">
+<description>Tag Connect footprint for ARM JTAG.&lt;br&gt;
+10 pin ARM Cortex Debug Connector.</description>
+<gates>
+<gate name="G$1" symbol="ARM-6PIN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-NL" package="TC2030-IDC-NL">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="TCK" pad="4"/>
+<connect gate="G$1" pin="TDO" pad="6"/>
+<connect gate="G$1" pin="TMS" pad="2"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="TC2030-IDC">
+<connects>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="TCK" pad="4"/>
+<connect gate="G$1" pin="TDO" pad="6"/>
+<connect gate="G$1" pin="TMS" pad="2"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="N. Jackson"/>
@@ -2588,7 +2740,9 @@ High-power, low thermal resistance package.</description>
 <part name="U16" library="chips" deviceset="LT3652" device=""/>
 <part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F"/>
 <part name="D2" library="passives" deviceset="DIODE_ZENER" device="SOT323"/>
-<part name="L6" library="passives" deviceset="INDUCTOR" device="IHL2525CZ"/>
+<part name="L6" library="passives" deviceset="INDUCTOR" device="IHL2525CZ" value="6.8uH">
+<attribute name="DIGIKEY" value="541-2582-1-ND"/>
+</part>
 <part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1 uF"/>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
 <part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F"/>
@@ -2645,7 +2799,7 @@ High-power, low thermal resistance package.</description>
 <part name="C48" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1uF"/>
 <part name="C49" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1uF"/>
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580"/>
-<part name="R66" library="passives" deviceset="RESISTOR" device="0402_RES" value="1M"/>
+<part name="R66" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ"/>
 <part name="S1" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
@@ -2653,16 +2807,18 @@ High-power, low thermal resistance package.</description>
 <part name="VBATT-M" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="FRAME8" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U29" library="chips" deviceset="M24C01" device="WMN"/>
-<part name="GND17" library="umich" deviceset="GND" device=""/>
+<part name="GND" library="umich" deviceset="GND" device=""/>
 <part name="SJ1" library="jumper" deviceset="SJ" device=""/>
 <part name="C50" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
 <part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H4" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
+<part name="J3" library="connector" deviceset="TC2030-CTX" device="-NL"/>
 </parts>
 <sheets>
 <sheet>
+<description>Header and Mouting holes for Power Module</description>
 <plain>
 <text x="124.46" y="170.18" size="5.08" layer="97" align="bottom-center">Power Module Header</text>
 </plain>
@@ -2688,7 +2844,8 @@ High-power, low thermal resistance package.</description>
 <wire x1="121.92" y1="63.5" x2="121.92" y2="68.58" width="0.1524" layer="91"/>
 <junction x="121.92" y="68.58"/>
 <pinref part="J1" gate="G$1" pin="VSOL-"/>
-<wire x1="119.38" y1="121.92" x2="121.92" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="121.92" x2="121.92" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="121.92" x2="121.92" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="H1" gate="G$1" pin="MOUNT"/>
 <wire x1="157.48" y1="124.46" x2="154.94" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="124.46" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
@@ -2814,12 +2971,13 @@ High-power, low thermal resistance package.</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="WDI"/>
 <wire x1="119.38" y1="101.6" x2="127" y2="101.6" width="0.1524" layer="91"/>
-<label x="127" y="101.6" size="1.016" layer="95" xref="yes"/>
+<label x="127" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
 </sheet>
 <sheet>
+<description>Regulators for 3v3 and 5v power rails</description>
 <plain>
 <text x="40.64" y="157.48" size="3.81" layer="97" align="bottom-center">3v3 Rail</text>
 <text x="40.64" y="104.14" size="3.81" layer="97" align="bottom-center">5v Rail 1</text>
@@ -3645,9 +3803,11 @@ High-power, low thermal resistance package.</description>
 <instance part="U16" gate="G$1" x="111.76" y="88.9"/>
 <instance part="D1" gate="G$1" x="152.4" y="119.38" rot="R180"/>
 <instance part="D2" gate="G$1" x="175.26" y="101.6"/>
-<instance part="L6" gate="G$1" x="160.02" y="109.22" rot="R90"/>
+<instance part="L6" gate="G$1" x="160.02" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="160.02" y="109.22" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="C29" gate="G$1" x="149.86" y="106.68"/>
-<instance part="GND13" gate="1" x="160.02" y="114.3"/>
+<instance part="GND13" gate="1" x="167.64" y="114.3"/>
 <instance part="D3" gate="G$1" x="160.02" y="101.6" smashed="yes" rot="R180">
 <attribute name="NAME" x="160.02" y="103.378" size="1.778" layer="95" ratio="12" align="bottom-center"/>
 </instance>
@@ -3686,8 +3846,8 @@ High-power, low thermal resistance package.</description>
 <net name="GND" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="ANODE"/>
-<wire x1="157.48" y1="119.38" x2="160.02" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="119.38" x2="160.02" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="119.38" x2="167.64" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="119.38" x2="167.64" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="GND13" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -3851,9 +4011,9 @@ High-power, low thermal resistance package.</description>
 <instance part="U25" gate="G$1" x="195.58" y="139.7" rot="MR0"/>
 <instance part="GND19" gate="1" x="208.28" y="114.3"/>
 <instance part="U26" gate="G$1" x="50.8" y="157.48"/>
-<instance part="C45" gate="G$1" x="83.82" y="170.18"/>
+<instance part="C45" gate="G$1" x="88.9" y="170.18"/>
 <instance part="R62" gate="G$1" x="71.12" y="167.64" rot="R90"/>
-<instance part="GND20" gate="1" x="83.82" y="162.56"/>
+<instance part="GND20" gate="1" x="88.9" y="162.56"/>
 <instance part="GND21" gate="1" x="63.5" y="142.24"/>
 <instance part="R63" gate="G$1" x="101.6" y="165.1" rot="R90"/>
 <instance part="R64" gate="G$1" x="109.22" y="165.1" rot="R90"/>
@@ -3903,7 +4063,7 @@ High-power, low thermal resistance package.</description>
 <segment>
 <pinref part="Q1" gate="G$1" pin="D"/>
 <wire x1="177.8" y1="55.88" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
-<label x="177.8" y="60.96" size="1.016" layer="95" rot="R90" xref="yes"/>
+<label x="177.8" y="60.96" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="VBATT+" class="0">
@@ -3921,7 +4081,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="15.24" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="7.62" y1="58.42" x2="7.62" y2="60.96" width="0.1524" layer="91"/>
 <junction x="15.24" y="58.42"/>
-<label x="7.62" y="60.96" size="1.016" layer="95" rot="R90" xref="yes"/>
+<label x="7.62" y="60.96" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="VSOL_SENSE" class="0">
@@ -4074,11 +4234,11 @@ High-power, low thermal resistance package.</description>
 <wire x1="60.96" y1="165.1" x2="63.5" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="165.1" x2="63.5" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="C45" gate="G$1" pin="1"/>
-<wire x1="63.5" y1="175.26" x2="83.82" y2="175.26" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="175.26" x2="83.82" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="175.26" x2="86.36" y2="175.26" width="0.1524" layer="91"/>
-<junction x="83.82" y="175.26"/>
-<label x="86.36" y="175.26" size="1.27" layer="95" xref="yes"/>
+<wire x1="63.5" y1="175.26" x2="88.9" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="175.26" x2="88.9" y2="172.72" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="175.26" x2="91.44" y2="175.26" width="0.1524" layer="91"/>
+<junction x="88.9" y="175.26"/>
+<label x="91.44" y="175.26" size="1.27" layer="95" xref="yes"/>
 <wire x1="63.5" y1="165.1" x2="66.04" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="165.1" x2="66.04" y2="170.18" width="0.1524" layer="91"/>
 <junction x="63.5" y="165.1"/>
@@ -4130,7 +4290,7 @@ High-power, low thermal resistance package.</description>
 <net name="WDI" class="0">
 <segment>
 <wire x1="104.14" y1="58.42" x2="96.52" y2="58.42" width="0.1524" layer="91"/>
-<label x="96.52" y="58.42" size="1.016" layer="95" rot="R180" xref="yes"/>
+<label x="96.52" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U27" gate="G$1" pin="WDI"/>
 </segment>
 </net>
@@ -4156,7 +4316,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="66.04" y1="38.1" x2="66.04" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="38.1" x2="66.04" y2="27.94" width="0.1524" layer="91"/>
 <junction x="66.04" y="38.1"/>
-<label x="66.04" y="22.86" size="1.016" layer="95" rot="R270" xref="yes"/>
+<label x="66.04" y="22.86" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="66.04" y1="27.94" x2="66.04" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="27.94" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
 <junction x="66.04" y="27.94"/>
@@ -4214,7 +4374,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C48" gate="G$1" pin="2"/>
 <wire x1="15.24" y1="48.26" x2="15.24" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="40.64" x2="33.02" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="40.64" x2="33.02" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="40.64" x2="33.02" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="U28" gate="G$1" pin="GND"/>
 <wire x1="33.02" y1="45.72" x2="33.02" y2="43.18" width="0.1524" layer="91"/>
 <junction x="33.02" y="40.64"/>
@@ -4223,7 +4383,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="50.8" y1="48.26" x2="50.8" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="43.18" x2="33.02" y2="43.18" width="0.1524" layer="91"/>
 <junction x="33.02" y="43.18"/>
-<label x="33.02" y="38.1" size="1.016" layer="95" rot="R270" xref="yes"/>
+<label x="33.02" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$72" class="0">
@@ -4273,7 +4433,7 @@ High-power, low thermal resistance package.</description>
 <instance part="FRAME8" gate="G$1" x="0" y="0"/>
 <instance part="FRAME8" gate="G$2" x="147.32" y="0"/>
 <instance part="U29" gate="G$1" x="124.46" y="104.14"/>
-<instance part="GND17" gate="1" x="124.46" y="83.82"/>
+<instance part="GND" gate="1" x="124.46" y="83.82"/>
 <instance part="SJ1" gate="1" x="106.68" y="106.68"/>
 <instance part="C50" gate="G$1" x="99.06" y="99.06"/>
 </instances>
@@ -4319,28 +4479,29 @@ High-power, low thermal resistance package.</description>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="C50" gate="G$1" pin="2"/>
-<wire x1="99.06" y1="93.98" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="U29" gate="G$1" pin="E2"/>
-<wire x1="114.3" y1="96.52" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="U29" gate="G$1" pin="E1"/>
-<wire x1="114.3" y1="99.06" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="99.06" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
-<junction x="111.76" y="96.52"/>
 <pinref part="U29" gate="G$1" pin="E0"/>
 <wire x1="114.3" y1="101.6" x2="111.76" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="101.6" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
-<junction x="111.76" y="99.06"/>
+<pinref part="GND" gate="1" pin="GND"/>
+<wire x1="111.76" y1="99.06" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="96.52" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="U29" gate="G$1" pin="GND"/>
-<wire x1="124.46" y1="88.9" x2="137.16" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="88.9" x2="137.16" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="96.52" x2="134.62" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="88.9" x2="124.46" y2="86.36" width="0.1524" layer="91"/>
-<junction x="124.46" y="88.9"/>
+<pinref part="C50" gate="G$1" pin="2"/>
+<wire x1="99.06" y1="93.98" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="88.9" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
 <junction x="111.76" y="88.9"/>
+<pinref part="U29" gate="G$1" pin="E1"/>
+<wire x1="114.3" y1="99.06" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
+<junction x="111.76" y="99.06"/>
+<pinref part="U29" gate="G$1" pin="E2"/>
+<wire x1="114.3" y1="96.52" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
+<junction x="111.76" y="96.52"/>
+<pinref part="U29" gate="G$1" pin="GND"/>
+<wire x1="134.62" y1="96.52" x2="137.16" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="96.52" x2="137.16" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
+<junction x="124.46" y="88.9"/>
 </segment>
 </net>
 </nets>
@@ -5269,6 +5430,7 @@ High-power, low thermal resistance package.</description>
 <instance part="5V_3" gate="G$1" x="116.84" y="104.14"/>
 <instance part="5V_4" gate="G$1" x="116.84" y="101.6"/>
 <instance part="VBATT-M" gate="G$1" x="116.84" y="116.84"/>
+<instance part="J3" gate="G$1" x="121.92" y="88.9"/>
 </instances>
 <busses>
 </busses>
@@ -5313,6 +5475,34 @@ High-power, low thermal resistance package.</description>
 <pinref part="VBATT-M" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
 <label x="121.92" y="116.84" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SCL" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="VCC"/>
+<wire x1="109.22" y1="91.44" x2="106.68" y2="91.44" width="0.1524" layer="91"/>
+<label x="106.68" y="91.44" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="SDA" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="GND"/>
+<wire x1="109.22" y1="83.82" x2="106.68" y2="83.82" width="0.1524" layer="91"/>
+<label x="106.68" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="VCC_BACKPLANE" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="TDO"/>
+<wire x1="134.62" y1="86.36" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
+<label x="137.16" y="86.36" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="!RESET"/>
+<wire x1="134.62" y1="83.82" x2="137.16" y2="83.82" width="0.1524" layer="91"/>
+<label x="137.16" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
