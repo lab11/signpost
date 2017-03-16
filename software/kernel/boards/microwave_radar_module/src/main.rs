@@ -1,31 +1,31 @@
 #![crate_name = "microwave_radar_module"]
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(asm,const_fn,lang_items)]
 
 extern crate cortexm4;
 extern crate capsules;
-#[macro_use(static_init)]
+#[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;
 
 extern crate signpost_drivers;
 extern crate signpost_hil;
 
-use capsules::console::{self, Console};
+//use capsules::console::{self, Console};
 use capsules::timer::TimerDriver;
 use sam4l::adc;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
+use kernel::hil;
 use kernel::hil::Controller;
 use kernel::{Chip, Platform};
 use kernel::mpu::MPU;
 use sam4l::usart;
-use kernel::hil;
 
 // For panic!()
 #[macro_use]
 pub mod io;
-
+pub mod version;
 
 unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'static>>] {
     extern "C" {
@@ -38,7 +38,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
     // how should the kernel respond when a process faults
     const FAULT_RESPONSE: kernel::process::FaultResponse = kernel::process::FaultResponse::Panic;
     #[link_section = ".app_memory"]
-    static mut APP_MEMORY: [u8; 16384] = [0; 16384];
+    static mut APP_MEMORY: [u8; 16384*2] = [0; 16384*2];
 
     static mut PROCESSES: [Option<kernel::process::Process<'static>>; NUM_PROCS] = [None, None];
 
@@ -70,7 +70,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
  ******************************************************************************/
 
 struct MicrowaveRadarModule {
-    console: &'static Console<'static, usart::USART>,
+    console: &'static capsules::console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
@@ -110,51 +110,16 @@ unsafe fn set_pin_primary_functions() {
 
     PA[04].configure(Some(A)); // amplified analog signal
     PA[05].configure(Some(A)); // MSGEQ7 output. Should be analog
-    PA[06].configure(None); // Unused
-    PA[07].configure(None); // Unused
     PA[08].configure(None); // PPS
     PA[09].configure(None); // MOD_IN
     PA[10].configure(None); // MOD_OUT
-    PA[11].configure(None); // Unused
-    PA[12].configure(None); // Unused
-    PA[13].configure(None); // Unused
     PA[14].configure(None); // MSGEQ7 strobe
     PA[15].configure(None); // MSGEQ7 reset
-    PA[16].configure(None); // Unused
     PA[17].configure(None); // Blink LED
-    PA[18].configure(None); // Unused
-    PA[19].configure(None); // Unused
-    PA[20].configure(None); // Unused
-    PA[21].configure(None); // Unused
-    PA[22].configure(None); // Unused
     PA[23].configure(Some(B)); // I2C SDA
     PA[24].configure(Some(B)); // I2C SCL
     PA[25].configure(Some(B)); // USART2 RX
     PA[26].configure(Some(B)); // USART2 TX
-
-    // Setup unused pins as inputs
-    sam4l::gpio::PA[06].enable();
-    sam4l::gpio::PA[06].disable_output();
-    sam4l::gpio::PA[07].enable();
-    sam4l::gpio::PA[07].disable_output();
-    sam4l::gpio::PA[11].enable();
-    sam4l::gpio::PA[11].disable_output();
-    sam4l::gpio::PA[12].enable();
-    sam4l::gpio::PA[12].disable_output();
-    sam4l::gpio::PA[13].enable();
-    sam4l::gpio::PA[13].disable_output();
-    sam4l::gpio::PA[16].enable();
-    sam4l::gpio::PA[16].disable_output();
-    sam4l::gpio::PA[18].enable();
-    sam4l::gpio::PA[18].disable_output();
-    sam4l::gpio::PA[19].enable();
-    sam4l::gpio::PA[19].disable_output();
-    sam4l::gpio::PA[20].enable();
-    sam4l::gpio::PA[20].disable_output();
-    sam4l::gpio::PA[21].enable();
-    sam4l::gpio::PA[21].disable_output();
-    sam4l::gpio::PA[22].enable();
-    sam4l::gpio::PA[22].disable_output();
 
     // Configure LEDs to be off
     sam4l::gpio::PA[17].enable();
@@ -181,10 +146,10 @@ pub unsafe fn reset_handler() {
     // UART console
     //
     let console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART2,
+        capsules::console::Console<usart::USART>,
+        capsules::console::Console::new(&usart::USART2,
                      115200,
-                     &mut console::WRITE_BUF,
+                     &mut capsules::console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
     hil::uart::UART::set_client(&usart::USART2, console);
@@ -335,10 +300,24 @@ pub unsafe fn reset_handler() {
     };
 
     microwave_radar_module.console.initialize();
+
+    // Attach the kernel debug interface to this console
+    let kc = static_init!(
+        capsules::console::App,
+        capsules::console::App::default(),
+        480/8);
+    kernel::debug::assign_console_driver(Some(microwave_radar_module.console), kc);
+
     watchdog.start();
 
     let mut chip = sam4l::chip::Sam4l::new();
     chip.mpu().enable_mpu();
+
+    debug!("Running {} Version {} from git {}",
+           env!("CARGO_PKG_NAME"),
+           env!("CARGO_PKG_VERSION"),
+           version::GIT_VERSION,
+           );
 
     kernel::main(&microwave_radar_module, &mut chip, load_processes(), &microwave_radar_module.ipc);
 }
