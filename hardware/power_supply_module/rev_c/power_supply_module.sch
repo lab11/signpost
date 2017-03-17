@@ -1060,7 +1060,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="3.2385" y1="-3.2385" x2="-3.2385" y2="-3.2385" width="0.127" layer="21"/>
 <wire x1="-3.2385" y1="-3.2385" x2="-3.2385" y2="3.2385" width="0.127" layer="21"/>
 <text x="-3.175" y="3.81" size="1.27" layer="25">&gt;NAME</text>
-<text x="-3.175" y="-5.08" size="1.27" layer="27">&gt;VALUE</text>
+<text x="-3.175" y="-5.08" size="1.27" layer="21">&gt;VALUE</text>
 </package>
 <package name="SOD123">
 <smd name="P$1" x="-1.85" y="0" dx="0.7" dy="1.2" layer="1"/>
@@ -3463,46 +3463,62 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="J1" library="signpost" deviceset="MODULE_POWER" device=""/>
 <part name="FRAME4" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U6" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
-<part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U8" library="chips" deviceset="LTC2943" device=""/>
 <part name="FRAME5" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME6" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
-<part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U9" library="chips" deviceset="LTC2943" device=""/>
-<part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U10" library="chips" deviceset="LTC2943" device=""/>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U11" library="chips" deviceset="LTC2943" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="U7" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R5" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U12" library="chips" deviceset="LTC2943" device=""/>
-<part name="C16" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C16" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U13" library="chips" deviceset="LTC2943" device=""/>
-<part name="C17" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C17" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U14" library="chips" deviceset="LTC2943" device=""/>
-<part name="C18" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C18" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
@@ -3588,89 +3604,194 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
 <part name="U4" library="chips" deviceset="TLV62130" device=""/>
-<part name="C19" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
-<part name="C21" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C22" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="R41" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>
-<part name="R42" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ"/>
-<part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ"/>
+<part name="C19" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
+<part name="C21" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C22" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF">
+<attribute name="DIGIKEY" value="490-3248-1-ND "/>
+</part>
+<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="R41" library="passives" deviceset="RESISTOR" device="0402_RES" value="750 kΩ">
+<attribute name="DIGIKEY" value="P750KJCT-ND"/>
+</part>
+<part name="R42" library="passives" deviceset="RESISTOR" device="0402_RES" value="240 kΩ">
+<attribute name="DIGIKEY" value="P240JCT-ND"/>
+</part>
+<part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<attribute name="DIGIKEY" value="P100KJCT-ND "/>
+</part>
 <part name="L4" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
 <part name="U1" library="chips" deviceset="TLV62130" device=""/>
-<part name="C1" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
-<part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C4" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>
-<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ"/>
-<part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ"/>
+<part name="C1" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
+<part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF">
+<attribute name="DIGIKEY" value="490-3248-1-ND "/>
+</part>
+<part name="C4" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<attribute name="DIGIKEY" value="P680KLCT-ND "/>
+</part>
+<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<attribute name="DIGIKEY" value="P130KLCT-ND "/>
+</part>
+<part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<attribute name="DIGIKEY" value="P100KJCT-ND "/>
+</part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="U2" library="chips" deviceset="TLV62130" device=""/>
-<part name="C5" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C8" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>
-<part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ"/>
-<part name="R38" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ"/>
+<part name="C5" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF">
+<attribute name="DIGIKEY" value="490-3248-1-ND "/>
+</part>
+<part name="C8" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<attribute name="DIGIKEY" value="P680KLCT-ND "/>
+</part>
+<part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<attribute name="DIGIKEY" value="P130KLCT-ND "/>
+</part>
+<part name="R38" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<attribute name="DIGIKEY" value="P100KJCT-ND "/>
+</part>
 <part name="L2" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
 <part name="U3" library="chips" deviceset="TLV62130" device=""/>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
-<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="R39" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>
-<part name="R40" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ"/>
-<part name="R44" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ"/>
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
+<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF">
+<attribute name="DIGIKEY" value="490-3248-1-ND "/>
+</part>
+<part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="R39" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<attribute name="DIGIKEY" value="P680KLCT-ND "/>
+</part>
+<part name="R40" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<attribute name="DIGIKEY" value="P130KLCT-ND "/>
+</part>
+<part name="R44" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<attribute name="DIGIKEY" value="P100KJCT-ND "/>
+</part>
 <part name="L3" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="U5" library="chips" deviceset="TLV62130" device=""/>
-<part name="C25" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
-<part name="C26" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C27" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF"/>
-<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="R45" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ"/>
-<part name="R46" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ"/>
-<part name="R47" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ"/>
+<part name="C25" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
+<part name="C26" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C27" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="3.3 nF">
+<attribute name="DIGIKEY" value="490-3248-1-ND "/>
+</part>
+<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="R45" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<attribute name="DIGIKEY" value="P680KLCT-ND "/>
+</part>
+<part name="R46" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<attribute name="DIGIKEY" value="P130KLCT-ND "/>
+</part>
+<part name="R47" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<attribute name="DIGIKEY" value="P100KJCT-ND "/>
+</part>
 <part name="L5" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
 <part name="U16" library="chips" deviceset="LT3652" device=""/>
-<part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F"/>
-<part name="D2" library="passives" deviceset="DIODE_ZENER" device="SOT323"/>
+<part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F">
+<attribute name="DIGIKEY" value="CMPSH1-4 CT-ND"/>
+</part>
+<part name="D2" library="passives" deviceset="DIODE_ZENER" device="SOT323">
+<attribute name="DIGIKEY" value="1727-5151-1-ND"/>
+</part>
 <part name="L6" library="passives" deviceset="INDUCTOR" device="IHL2525CZ" value="6.8uH">
 <attribute name="DIGIKEY" value="541-2582-1-ND"/>
 </part>
-<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1 uF"/>
+<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1 uF">
+<attribute name="DIGIKEY" value="490-3890-1-ND"/>
+</part>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
-<part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F"/>
-<part name="R48" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω"/>
-<part name="C30" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
+<part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F">
+<attribute name="DIGIKEY" value="CMDSH2-4L CT-ND"/>
+</part>
+<part name="R48" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
+<attribute name="DIGIKEY" value="WSLPB-.05CT-ND"/>
+</part>
+<part name="C30" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
-<part name="R49" library="passives" deviceset="RESISTOR" device="0402_RES" value="953 kΩ"/>
-<part name="R50" library="passives" deviceset="RESISTOR" device="0402_RES" value="340 kΩ"/>
+<part name="R49" library="passives" deviceset="RESISTOR" device="0402_RES" value="953 kΩ">
+<attribute name="DIGIKEY" value="P953KLCT-ND"/>
+</part>
+<part name="R50" library="passives" deviceset="RESISTOR" device="0402_RES" value="340 kΩ">
+<attribute name="DIGIKEY" value="P340KLCT-ND"/>
+</part>
 <part name="U17" library="chips" deviceset="LM234" device=""/>
-<part name="R51" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ"/>
-<part name="R52" library="passives" deviceset="RESISTOR" device="0402_RES" value="301 kΩ"/>
-<part name="R53" library="passives" deviceset="RESISTOR" device="0402_RES" value="23.2 kΩ"/>
+<part name="R51" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
+<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+</part>
+<part name="R52" library="passives" deviceset="RESISTOR" device="0402_RES" value="301 kΩ">
+<attribute name="DIGIKEY" value="P301KLCT-ND"/>
+</part>
+<part name="R53" library="passives" deviceset="RESISTOR" device="0402_RES" value="23.2 kΩ">
+<attribute name="DIGIKEY" value="311-2257-1-ND"/>
+</part>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
-<part name="C31" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF"/>
+<part name="C31" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
+<attribute name="DIGIKEY" value="490-5523-1-ND "/>
+</part>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
 <part name="U18" library="chips" deviceset="MAX17205" device=""/>
-<part name="R54" library="passives" deviceset="RESISTOR" device="0402_RES" value="50 Ω"/>
-<part name="C32" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="R55" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ"/>
-<part name="R56" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω"/>
-<part name="R57" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω"/>
-<part name="C33" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF"/>
-<part name="C34" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF"/>
+<part name="C32" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="R55" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
+<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+</part>
+<part name="R56" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
+<attribute name="DIGIKEY" value="P150LCT-ND"/>
+</part>
+<part name="R57" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
+<attribute name="DIGIKEY" value="P150LCT-ND"/>
+</part>
+<part name="C33" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
+<attribute name="DIGIKEY" value="490-3266-1-ND"/>
+</part>
+<part name="C34" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
+<attribute name="DIGIKEY" value="490-3266-1-ND"/>
+</part>
 <part name="U19" library="chips" deviceset="ESDR0502N" device=""/>
 <part name="R58" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.010 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.01CT-ND"/>
@@ -3680,20 +3801,42 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="U22" library="chips" deviceset="AP22814" device=""/>
 <part name="U23" library="chips" deviceset="AP22814" device=""/>
 <part name="U24" library="chips" deviceset="AP22814" device=""/>
-<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="C36" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C37" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="C39" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="C41" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
-<part name="C43" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF"/>
+<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="C36" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C37" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="C39" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="C41" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
+<part name="C43" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
+<attribute name="DIGIKEY" value="1276-1193-1-ND "/>
+</part>
 <part name="U25" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
 <part name="U26" library="chips" deviceset="LTC2943" device=""/>
-<part name="C45" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C45" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="R62" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.05CT-ND"/>
 </part>
@@ -3708,13 +3851,25 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="R65" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="C46" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="474 nF"/>
-<part name="C47" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="800 nF"/>
+<part name="C46" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
+<attribute name="DIGIKEY" value="490-3266-1-ND"/>
+</part>
+<part name="C47" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.82 uF">
+<attribute name="DIGIKEY" value="490-10440-1-ND"/>
+</part>
 <part name="U28" library="chips" deviceset="TILM3480" device="" technology="3.3V" value="3.3V"/>
-<part name="C48" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="C49" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
-<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580"/>
-<part name="R66" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ"/>
+<part name="C48" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="C49" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
+<part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580">
+<attribute name="DIGIKEY" value="	NTD4965NT4GOSCT-ND"/>
+</part>
+<part name="R66" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
+<attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
+</part>
 <part name="S1" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
@@ -3724,7 +3879,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="U29" library="chips" deviceset="M24C01" device="WMN"/>
 <part name="GND" library="umich" deviceset="GND" device=""/>
 <part name="SJ1" library="jumper" deviceset="SJ" device=""/>
-<part name="C50" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF"/>
+<part name="C50" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
+<attribute name="DIGIKEY" value="490-5920-1-ND "/>
+</part>
 <part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
@@ -3973,57 +4130,127 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="FRAME4" gate="G$1" x="0" y="0"/>
 <instance part="FRAME4" gate="G$2" x="147.32" y="0"/>
 <instance part="U4" gate="G$1" x="40.64" y="142.24"/>
-<instance part="C19" gate="G$1" x="5.08" y="147.32"/>
-<instance part="C21" gate="G$1" x="12.7" y="144.78"/>
-<instance part="C22" gate="G$1" x="17.78" y="137.16" rot="R90"/>
-<instance part="C23" gate="G$1" x="101.6" y="139.7" rot="R180"/>
-<instance part="R41" gate="G$1" x="88.9" y="147.32" rot="R90"/>
-<instance part="R42" gate="G$1" x="88.9" y="134.62" rot="R90"/>
-<instance part="R43" gate="G$1" x="81.28" y="147.32" rot="R90"/>
+<instance part="C19" gate="G$1" x="5.08" y="147.32">
+<attribute name="DIGIKEY" x="5.08" y="147.32" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C21" gate="G$1" x="12.7" y="144.78">
+<attribute name="DIGIKEY" x="12.7" y="144.78" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C22" gate="G$1" x="17.78" y="137.16" rot="R90">
+<attribute name="DIGIKEY" x="17.78" y="137.16" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C23" gate="G$1" x="101.6" y="139.7" rot="R180">
+<attribute name="DIGIKEY" x="101.6" y="139.7" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R41" gate="G$1" x="88.9" y="147.32" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R42" gate="G$1" x="88.9" y="134.62" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="134.62" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R43" gate="G$1" x="81.28" y="147.32" rot="R90">
+<attribute name="DIGIKEY" x="81.28" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L4" gate="G$1" x="66.04" y="152.4" rot="R90"/>
 <instance part="U1" gate="G$1" x="40.64" y="83.82"/>
-<instance part="C1" gate="G$1" x="5.08" y="88.9"/>
-<instance part="C2" gate="G$1" x="12.7" y="86.36"/>
-<instance part="C3" gate="G$1" x="17.78" y="78.74" rot="R90"/>
-<instance part="C4" gate="G$1" x="101.6" y="81.28" rot="R180"/>
-<instance part="R33" gate="G$1" x="88.9" y="88.9" rot="R90"/>
-<instance part="R34" gate="G$1" x="88.9" y="76.2" rot="R90"/>
-<instance part="R35" gate="G$1" x="81.28" y="88.9" rot="R90"/>
+<instance part="C1" gate="G$1" x="5.08" y="88.9">
+<attribute name="DIGIKEY" x="5.08" y="88.9" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C2" gate="G$1" x="12.7" y="86.36">
+<attribute name="DIGIKEY" x="12.7" y="86.36" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C3" gate="G$1" x="17.78" y="78.74" rot="R90">
+<attribute name="DIGIKEY" x="17.78" y="78.74" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C4" gate="G$1" x="101.6" y="81.28" rot="R180">
+<attribute name="DIGIKEY" x="101.6" y="81.28" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R33" gate="G$1" x="88.9" y="88.9" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="88.9" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R34" gate="G$1" x="88.9" y="76.2" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="76.2" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R35" gate="G$1" x="81.28" y="88.9" rot="R90">
+<attribute name="DIGIKEY" x="81.28" y="88.9" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L1" gate="G$1" x="66.04" y="93.98" rot="R90"/>
 <instance part="GND3" gate="1" x="15.24" y="63.5"/>
 <instance part="GND4" gate="1" x="63.5" y="63.5"/>
 <instance part="GND5" gate="1" x="15.24" y="121.92"/>
 <instance part="GND6" gate="1" x="63.5" y="121.92"/>
 <instance part="U2" gate="G$1" x="40.64" y="25.4"/>
-<instance part="C5" gate="G$1" x="5.08" y="30.48"/>
-<instance part="C6" gate="G$1" x="12.7" y="27.94"/>
-<instance part="C7" gate="G$1" x="17.78" y="20.32" rot="R90"/>
-<instance part="C8" gate="G$1" x="101.6" y="22.86" rot="R180"/>
-<instance part="R36" gate="G$1" x="88.9" y="30.48" rot="R90"/>
-<instance part="R37" gate="G$1" x="88.9" y="17.78" rot="R90"/>
-<instance part="R38" gate="G$1" x="81.28" y="30.48" rot="R90"/>
+<instance part="C5" gate="G$1" x="5.08" y="30.48">
+<attribute name="DIGIKEY" x="5.08" y="30.48" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C6" gate="G$1" x="12.7" y="27.94">
+<attribute name="DIGIKEY" x="12.7" y="27.94" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C7" gate="G$1" x="17.78" y="20.32" rot="R90">
+<attribute name="DIGIKEY" x="17.78" y="20.32" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C8" gate="G$1" x="101.6" y="22.86" rot="R180">
+<attribute name="DIGIKEY" x="101.6" y="22.86" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R36" gate="G$1" x="88.9" y="30.48" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="30.48" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R37" gate="G$1" x="88.9" y="17.78" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="17.78" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R38" gate="G$1" x="81.28" y="30.48" rot="R90">
+<attribute name="DIGIKEY" x="81.28" y="30.48" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L2" gate="G$1" x="66.04" y="35.56" rot="R90"/>
 <instance part="GND7" gate="1" x="15.24" y="5.08"/>
 <instance part="GND8" gate="1" x="63.5" y="5.08"/>
 <instance part="U3" gate="G$1" x="165.1" y="142.24"/>
-<instance part="C9" gate="G$1" x="129.54" y="147.32"/>
-<instance part="C10" gate="G$1" x="137.16" y="144.78"/>
-<instance part="C20" gate="G$1" x="142.24" y="137.16" rot="R90"/>
-<instance part="C24" gate="G$1" x="226.06" y="139.7" rot="R180"/>
-<instance part="R39" gate="G$1" x="213.36" y="147.32" rot="R90"/>
-<instance part="R40" gate="G$1" x="213.36" y="134.62" rot="R90"/>
-<instance part="R44" gate="G$1" x="205.74" y="147.32" rot="R90"/>
+<instance part="C9" gate="G$1" x="129.54" y="147.32">
+<attribute name="DIGIKEY" x="129.54" y="147.32" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C10" gate="G$1" x="137.16" y="144.78">
+<attribute name="DIGIKEY" x="137.16" y="144.78" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C20" gate="G$1" x="142.24" y="137.16" rot="R90">
+<attribute name="DIGIKEY" x="142.24" y="137.16" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C24" gate="G$1" x="226.06" y="139.7" rot="R180">
+<attribute name="DIGIKEY" x="226.06" y="139.7" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R39" gate="G$1" x="213.36" y="147.32" rot="R90">
+<attribute name="DIGIKEY" x="213.36" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R40" gate="G$1" x="213.36" y="134.62" rot="R90">
+<attribute name="DIGIKEY" x="213.36" y="134.62" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R44" gate="G$1" x="205.74" y="147.32" rot="R90">
+<attribute name="DIGIKEY" x="205.74" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L3" gate="G$1" x="190.5" y="152.4" rot="R90"/>
 <instance part="GND9" gate="1" x="139.7" y="121.92"/>
 <instance part="GND10" gate="1" x="187.96" y="121.92"/>
 <instance part="U5" gate="G$1" x="165.1" y="68.58"/>
-<instance part="C25" gate="G$1" x="129.54" y="73.66"/>
-<instance part="C26" gate="G$1" x="137.16" y="71.12"/>
-<instance part="C27" gate="G$1" x="142.24" y="63.5" rot="R90"/>
-<instance part="C28" gate="G$1" x="226.06" y="66.04" rot="R180"/>
-<instance part="R45" gate="G$1" x="213.36" y="73.66" rot="R90"/>
-<instance part="R46" gate="G$1" x="213.36" y="60.96" rot="R90"/>
-<instance part="R47" gate="G$1" x="205.74" y="73.66" rot="R90"/>
+<instance part="C25" gate="G$1" x="129.54" y="73.66">
+<attribute name="DIGIKEY" x="129.54" y="73.66" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C26" gate="G$1" x="137.16" y="71.12">
+<attribute name="DIGIKEY" x="137.16" y="71.12" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C27" gate="G$1" x="142.24" y="63.5" rot="R90">
+<attribute name="DIGIKEY" x="142.24" y="63.5" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="C28" gate="G$1" x="226.06" y="66.04" rot="R180">
+<attribute name="DIGIKEY" x="226.06" y="66.04" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="R45" gate="G$1" x="213.36" y="73.66" rot="R90">
+<attribute name="DIGIKEY" x="213.36" y="73.66" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R46" gate="G$1" x="213.36" y="60.96" rot="R90">
+<attribute name="DIGIKEY" x="213.36" y="60.96" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R47" gate="G$1" x="205.74" y="73.66" rot="R90">
+<attribute name="DIGIKEY" x="205.74" y="73.66" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="L5" gate="G$1" x="190.5" y="78.74" rot="R90"/>
 <instance part="GND11" gate="1" x="139.7" y="48.26"/>
 <instance part="GND12" gate="1" x="187.96" y="48.26"/>
@@ -4032,16 +4259,36 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U22" gate="G$1" x="88.9" y="48.26" rot="R90"/>
 <instance part="U23" gate="G$1" x="213.36" y="167.64" rot="R90"/>
 <instance part="U24" gate="G$1" x="213.36" y="91.44" rot="R90"/>
-<instance part="C35" gate="G$1" x="111.76" y="165.1" rot="R180"/>
-<instance part="C36" gate="G$1" x="104.14" y="167.64"/>
-<instance part="C37" gate="G$1" x="104.14" y="106.68"/>
-<instance part="C38" gate="G$1" x="111.76" y="104.14" rot="R180"/>
-<instance part="C39" gate="G$1" x="104.14" y="48.26"/>
-<instance part="C40" gate="G$1" x="111.76" y="45.72" rot="R180"/>
-<instance part="C41" gate="G$1" x="228.6" y="167.64"/>
-<instance part="C42" gate="G$1" x="236.22" y="165.1" rot="R180"/>
-<instance part="C43" gate="G$1" x="228.6" y="91.44"/>
-<instance part="C44" gate="G$1" x="236.22" y="88.9" rot="R180"/>
+<instance part="C35" gate="G$1" x="111.76" y="165.1" rot="R180">
+<attribute name="DIGIKEY" x="111.76" y="165.1" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C36" gate="G$1" x="104.14" y="167.64">
+<attribute name="DIGIKEY" x="104.14" y="167.64" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C37" gate="G$1" x="104.14" y="106.68">
+<attribute name="DIGIKEY" x="104.14" y="106.68" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C38" gate="G$1" x="111.76" y="104.14" rot="R180">
+<attribute name="DIGIKEY" x="111.76" y="104.14" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C39" gate="G$1" x="104.14" y="48.26">
+<attribute name="DIGIKEY" x="104.14" y="48.26" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C40" gate="G$1" x="111.76" y="45.72" rot="R180">
+<attribute name="DIGIKEY" x="111.76" y="45.72" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C41" gate="G$1" x="228.6" y="167.64">
+<attribute name="DIGIKEY" x="228.6" y="167.64" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C42" gate="G$1" x="236.22" y="165.1" rot="R180">
+<attribute name="DIGIKEY" x="236.22" y="165.1" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="C43" gate="G$1" x="228.6" y="91.44">
+<attribute name="DIGIKEY" x="228.6" y="91.44" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C44" gate="G$1" x="236.22" y="88.9" rot="R180">
+<attribute name="DIGIKEY" x="236.22" y="88.9" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 <instance part="U$12" gate="G$1" x="5.08" y="157.48"/>
 <instance part="U$13" gate="G$1" x="5.08" y="99.06"/>
 <instance part="U$14" gate="G$1" x="5.08" y="40.64"/>
@@ -4798,6 +5045,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>Solar Charger</description>
 <plain>
 <text x="27.94" y="175.26" size="5.08" layer="97" align="bottom-center">Solar Charger</text>
 </plain>
@@ -4805,27 +5053,50 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
 <instance part="FRAME2" gate="G$2" x="147.32" y="0"/>
 <instance part="U16" gate="G$1" x="111.76" y="88.9"/>
-<instance part="D1" gate="G$1" x="152.4" y="119.38" rot="R180"/>
-<instance part="D2" gate="G$1" x="175.26" y="101.6"/>
+<instance part="D1" gate="G$1" x="152.4" y="119.38" rot="R180">
+<attribute name="DIGIKEY" x="152.4" y="119.38" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
+<instance part="D2" gate="G$1" x="175.26" y="101.6">
+<attribute name="DIGIKEY" x="175.26" y="101.6" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="L6" gate="G$1" x="160.02" y="109.22" rot="R90">
 <attribute name="DIGIKEY" x="160.02" y="109.22" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C29" gate="G$1" x="149.86" y="106.68"/>
+<instance part="C29" gate="G$1" x="149.86" y="106.68">
+<attribute name="DIGIKEY" x="149.86" y="106.68" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND13" gate="1" x="167.64" y="114.3"/>
 <instance part="D3" gate="G$1" x="160.02" y="101.6" smashed="yes" rot="R180">
 <attribute name="NAME" x="160.02" y="103.378" size="1.778" layer="95" ratio="12" align="bottom-center"/>
+<attribute name="DIGIKEY" x="160.02" y="101.6" size="1.778" layer="96" rot="R180" display="off"/>
 </instance>
-<instance part="R48" gate="G$1" x="175.26" y="109.22"/>
-<instance part="C30" gate="G$1" x="190.5" y="104.14"/>
+<instance part="R48" gate="G$1" x="175.26" y="109.22">
+<attribute name="DIGIKEY" x="175.26" y="109.22" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C30" gate="G$1" x="190.5" y="104.14">
+<attribute name="DIGIKEY" x="190.5" y="104.14" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND14" gate="1" x="190.5" y="83.82"/>
-<instance part="R49" gate="G$1" x="149.86" y="93.98" rot="R90"/>
-<instance part="R50" gate="G$1" x="160.02" y="88.9"/>
+<instance part="R49" gate="G$1" x="149.86" y="93.98" rot="R90">
+<attribute name="DIGIKEY" x="149.86" y="93.98" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R50" gate="G$1" x="160.02" y="88.9">
+<attribute name="DIGIKEY" x="160.02" y="88.9" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U17" gate="G$1" x="88.9" y="109.22"/>
-<instance part="R51" gate="G$1" x="99.06" y="106.68" rot="R90"/>
-<instance part="R52" gate="G$1" x="73.66" y="109.22" rot="R90"/>
-<instance part="R53" gate="G$1" x="73.66" y="96.52" rot="R90"/>
+<instance part="R51" gate="G$1" x="99.06" y="106.68" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="106.68" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R52" gate="G$1" x="73.66" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="73.66" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R53" gate="G$1" x="73.66" y="96.52" rot="R90">
+<attribute name="DIGIKEY" x="73.66" y="96.52" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="GND15" gate="1" x="73.66" y="83.82"/>
-<instance part="C31" gate="G$1" x="66.04" y="104.14"/>
+<instance part="C31" gate="G$1" x="66.04" y="104.14">
+<attribute name="DIGIKEY" x="66.04" y="104.14" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND16" gate="1" x="124.46" y="83.82"/>
 <instance part="U$22" gate="G$1" x="190.5" y="111.76"/>
 </instances>
@@ -4994,6 +5265,8 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>Battery and Solar Monitors +
+Watchdog</description>
 <plain>
 <text x="73.66" y="55.88" size="1.016" layer="98" rot="R180" align="bottom-center">800nF = 4s reset period</text>
 <text x="101.6" y="30.48" size="1.016" layer="98" align="bottom-center">460nF=300s watchdog timer (extended mode)</text>
@@ -5004,13 +5277,24 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
 <instance part="FRAME7" gate="G$2" x="147.32" y="0"/>
 <instance part="U18" gate="G$1" x="53.34" y="109.22"/>
-<instance part="R54" gate="G$1" x="30.48" y="127" rot="R90"/>
-<instance part="C32" gate="G$1" x="30.48" y="116.84"/>
-<instance part="R55" gate="G$1" x="119.38" y="119.38"/>
-<instance part="R56" gate="G$1" x="129.54" y="116.84"/>
-<instance part="R57" gate="G$1" x="139.7" y="114.3"/>
-<instance part="C33" gate="G$1" x="83.82" y="99.06"/>
-<instance part="C34" gate="G$1" x="91.44" y="99.06"/>
+<instance part="C32" gate="G$1" x="30.48" y="116.84">
+<attribute name="DIGIKEY" x="30.48" y="116.84" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R55" gate="G$1" x="119.38" y="119.38">
+<attribute name="DIGIKEY" x="119.38" y="119.38" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R56" gate="G$1" x="129.54" y="116.84">
+<attribute name="DIGIKEY" x="129.54" y="116.84" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R57" gate="G$1" x="139.7" y="114.3">
+<attribute name="DIGIKEY" x="139.7" y="114.3" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C33" gate="G$1" x="83.82" y="99.06">
+<attribute name="DIGIKEY" x="83.82" y="99.06" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C34" gate="G$1" x="91.44" y="99.06">
+<attribute name="DIGIKEY" x="91.44" y="99.06" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U19" gate="G$1" x="106.68" y="104.14" rot="R270"/>
 <instance part="R58" gate="G$1" x="73.66" y="83.82">
 <attribute name="DIGIKEY" x="73.66" y="83.82" size="1.778" layer="96" display="off"/>
@@ -5018,7 +5302,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U25" gate="G$1" x="195.58" y="139.7" rot="MR0"/>
 <instance part="GND19" gate="1" x="208.28" y="114.3"/>
 <instance part="U26" gate="G$1" x="50.8" y="157.48"/>
-<instance part="C45" gate="G$1" x="88.9" y="170.18"/>
+<instance part="C45" gate="G$1" x="88.9" y="170.18">
+<attribute name="DIGIKEY" x="88.9" y="170.18" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R62" gate="G$1" x="71.12" y="167.64" rot="R90">
 <attribute name="DIGIKEY" x="71.12" y="167.64" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
@@ -5033,15 +5319,26 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="R65" gate="G$1" x="116.84" y="165.1" rot="R90">
 <attribute name="DIGIKEY" x="116.84" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C46" gate="G$1" x="78.74" y="43.18"/>
-<instance part="C47" gate="G$1" x="66.04" y="45.72"/>
+<instance part="C46" gate="G$1" x="78.74" y="45.72">
+<attribute name="DIGIKEY" x="78.74" y="45.72" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C47" gate="G$1" x="66.04" y="45.72">
+<attribute name="DIGIKEY" x="66.04" y="45.72" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U28" gate="G$1" x="33.02" y="55.88"/>
-<instance part="C48" gate="G$1" x="15.24" y="53.34"/>
-<instance part="C49" gate="G$1" x="50.8" y="53.34"/>
+<instance part="C48" gate="G$1" x="15.24" y="53.34">
+<attribute name="DIGIKEY" x="15.24" y="53.34" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C49" gate="G$1" x="50.8" y="53.34">
+<attribute name="DIGIKEY" x="50.8" y="53.34" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="Q1" gate="G$1" x="177.8" y="50.8" smashed="yes">
 <attribute name="NAME" x="170.18" y="55.88" size="1.778" layer="95"/>
+<attribute name="DIGIKEY" x="177.8" y="50.8" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R66" gate="G$1" x="165.1" y="43.18" rot="R90"/>
+<instance part="R66" gate="G$1" x="165.1" y="43.18" rot="R90">
+<attribute name="DIGIKEY" x="165.1" y="43.18" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 <instance part="S1" gate="G$1" x="99.06" y="45.72" smashed="yes" rot="R180">
 <attribute name="NAME" x="101.6" y="43.18" size="1.27" layer="95" rot="R180"/>
 </instance>
@@ -5049,7 +5346,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U$23" gate="G$1" x="121.92" y="172.72"/>
 <instance part="U$24" gate="G$1" x="91.44" y="177.8"/>
 <instance part="U$25" gate="G$1" x="220.98" y="160.02"/>
-<instance part="U$26" gate="G$1" x="30.48" y="132.08"/>
+<instance part="U$26" gate="G$1" x="30.48" y="124.46"/>
 <instance part="U$27" gate="G$1" x="15.24" y="60.96"/>
 <instance part="GND17" gate="1" x="185.42" y="27.94"/>
 <instance part="GND18" gate="1" x="30.48" y="78.74"/>
@@ -5101,9 +5398,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="15.24" y="58.42"/>
 </segment>
 <segment>
-<pinref part="R54" gate="G$1" pin="2"/>
+<pinref part="U18" gate="G$1" pin="VBATT"/>
+<wire x1="40.64" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="C32" gate="G$1" pin="1"/>
 <pinref part="U$26" gate="G$1" pin="VBAT+"/>
-<wire x1="30.48" y1="129.54" x2="30.48" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="119.38" x2="30.48" y2="124.46" width="0.1524" layer="91"/>
+<junction x="30.48" y="119.38"/>
 </segment>
 </net>
 <net name="VSOL_SENSE" class="0">
@@ -5116,16 +5416,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="63.5" y="162.56"/>
 <wire x1="63.5" y1="160.02" x2="66.04" y2="160.02" width="0.1524" layer="91"/>
 <label x="66.04" y="160.02" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$20" class="0">
-<segment>
-<pinref part="U18" gate="G$1" pin="VBATT"/>
-<wire x1="40.64" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="R54" gate="G$1" pin="1"/>
-<wire x1="30.48" y1="119.38" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="C32" gate="G$1" pin="1"/>
-<junction x="30.48" y="119.38"/>
 </segment>
 </net>
 <net name="N$42" class="0">
@@ -5332,16 +5622,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="VBATT_MONITOR_GND" class="0">
 <segment>
-<pinref part="C46" gate="G$1" pin="2"/>
-<wire x1="104.14" y1="38.1" x2="88.9" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="38.1" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="38.1" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
-<junction x="78.74" y="38.1"/>
 <pinref part="C47" gate="G$1" pin="2"/>
-<wire x1="66.04" y1="38.1" x2="66.04" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="38.1" x2="66.04" y2="27.94" width="0.1524" layer="91"/>
-<junction x="66.04" y="38.1"/>
+<wire x1="66.04" y1="40.64" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
 <label x="66.04" y="22.86" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="66.04" y1="38.1" x2="66.04" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="27.94" x2="66.04" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="27.94" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
 <junction x="66.04" y="27.94"/>
@@ -5352,10 +5636,17 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="165.1" y1="38.1" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
 <junction x="165.1" y="27.94"/>
 <pinref part="U27" gate="G$1" pin="GND"/>
+<wire x1="104.14" y1="38.1" x2="88.9" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="S1" gate="G$1" pin="A"/>
 <wire x1="91.44" y1="43.18" x2="88.9" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="43.18" x2="88.9" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="38.1" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
 <junction x="88.9" y="38.1"/>
+<junction x="66.04" y="38.1"/>
+<pinref part="C46" gate="G$1" pin="2"/>
+<wire x1="78.74" y1="38.1" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="40.64" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
+<junction x="78.74" y="38.1"/>
 </segment>
 <segment>
 <pinref part="C32" gate="G$1" pin="2"/>
@@ -5438,7 +5729,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="S1" gate="G$1" pin="B"/>
 <pinref part="C46" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="48.26" x2="78.74" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="48.26" x2="78.74" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$63" class="0">
@@ -5451,6 +5741,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>EEPROM ID</description>
 <plain>
 <text x="5.08" y="180.34" size="5.08" layer="97">EEPROM ID</text>
 </plain>
@@ -5460,7 +5751,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U29" gate="G$1" x="124.46" y="104.14"/>
 <instance part="GND" gate="1" x="124.46" y="83.82"/>
 <instance part="SJ1" gate="1" x="106.68" y="106.68"/>
-<instance part="C50" gate="G$1" x="99.06" y="99.06"/>
+<instance part="C50" gate="G$1" x="99.06" y="99.06">
+<attribute name="DIGIKEY" x="99.06" y="99.06" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U$28" gate="G$1" x="99.06" y="114.3"/>
 </instances>
 <busses>
@@ -5532,30 +5825,39 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>Module + System Gauges</description>
 <plain>
 <text x="7.62" y="175.26" size="5.08" layer="97">Coulomb Counters</text>
 <text x="7.62" y="170.18" size="2.54" layer="97">For MOD0-2,5</text>
 </plain>
 <instances>
 <instance part="U6" gate="G$1" x="81.28" y="99.06"/>
-<instance part="C11" gate="G$1" x="167.64" y="162.56"/>
+<instance part="C11" gate="G$1" x="167.64" y="162.56">
+<attribute name="DIGIKEY" x="167.64" y="162.56" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R1" gate="G$1" x="167.64" y="175.26" rot="R90">
 <attribute name="DIGIKEY" x="167.64" y="175.26" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U8" gate="G$1" x="203.2" y="165.1" rot="MR0"/>
 <instance part="FRAME5" gate="G$1" x="0" y="0"/>
 <instance part="FRAME5" gate="G$2" x="147.32" y="0"/>
-<instance part="C12" gate="G$1" x="167.64" y="121.92"/>
+<instance part="C12" gate="G$1" x="167.64" y="121.92">
+<attribute name="DIGIKEY" x="167.64" y="121.92" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R2" gate="G$1" x="167.64" y="134.62" rot="R90">
 <attribute name="DIGIKEY" x="167.64" y="134.62" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U9" gate="G$1" x="203.2" y="124.46" rot="MR0"/>
-<instance part="C13" gate="G$1" x="167.64" y="86.36"/>
+<instance part="C13" gate="G$1" x="167.64" y="86.36">
+<attribute name="DIGIKEY" x="167.64" y="86.36" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R3" gate="G$1" x="167.64" y="99.06" rot="R90">
 <attribute name="DIGIKEY" x="167.64" y="99.06" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U10" gate="G$1" x="203.2" y="88.9" rot="MR0"/>
-<instance part="C14" gate="G$1" x="167.64" y="50.8"/>
+<instance part="C14" gate="G$1" x="167.64" y="50.8">
+<attribute name="DIGIKEY" x="167.64" y="50.8" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R4" gate="G$1" x="167.64" y="63.5" rot="R90">
 <attribute name="DIGIKEY" x="167.64" y="63.5" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
@@ -6044,6 +6346,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>Module Gauges</description>
 <plain>
 <text x="7.62" y="175.26" size="5.08" layer="97">Coulomb Counters</text>
 <text x="7.62" y="170.18" size="2.54" layer="97">For MOD6-7, LINUX, BACKPLANE/CONTROLLER</text>
@@ -6052,22 +6355,30 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="FRAME6" gate="G$1" x="0" y="0"/>
 <instance part="FRAME6" gate="G$2" x="147.32" y="0"/>
 <instance part="U7" gate="G$1" x="81.28" y="99.06"/>
-<instance part="C15" gate="G$1" x="165.1" y="162.56"/>
+<instance part="C15" gate="G$1" x="165.1" y="162.56">
+<attribute name="DIGIKEY" x="165.1" y="162.56" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R5" gate="G$1" x="165.1" y="175.26" rot="R90">
 <attribute name="DIGIKEY" x="165.1" y="175.26" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U12" gate="G$1" x="203.2" y="165.1" rot="MR0"/>
-<instance part="C16" gate="G$1" x="165.1" y="121.92"/>
+<instance part="C16" gate="G$1" x="165.1" y="121.92">
+<attribute name="DIGIKEY" x="165.1" y="121.92" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R6" gate="G$1" x="165.1" y="134.62" rot="R90">
 <attribute name="DIGIKEY" x="165.1" y="134.62" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U13" gate="G$1" x="203.2" y="124.46" rot="MR0"/>
-<instance part="C17" gate="G$1" x="165.1" y="86.36"/>
+<instance part="C17" gate="G$1" x="165.1" y="86.36">
+<attribute name="DIGIKEY" x="165.1" y="86.36" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R7" gate="G$1" x="165.1" y="99.06" rot="R90">
 <attribute name="DIGIKEY" x="165.1" y="99.06" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U14" gate="G$1" x="203.2" y="88.9" rot="MR0"/>
-<instance part="C18" gate="G$1" x="165.1" y="50.8"/>
+<instance part="C18" gate="G$1" x="165.1" y="50.8">
+<attribute name="DIGIKEY" x="165.1" y="50.8" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="R8" gate="G$1" x="165.1" y="63.5" rot="R90">
 <attribute name="DIGIKEY" x="165.1" y="63.5" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
@@ -6557,6 +6868,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>Debug</description>
 <plain>
 <text x="124.46" y="172.72" size="5.08" layer="97" align="bottom-center">Debugging</text>
 </plain>
