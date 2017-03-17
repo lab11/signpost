@@ -3461,7 +3461,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U8" library="chips" deviceset="LTC2943" device=""/>
@@ -3470,21 +3470,21 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U9" library="chips" deviceset="LTC2943" device=""/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U10" library="chips" deviceset="LTC2943" device=""/>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R5" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U11" library="chips" deviceset="LTC2943" device=""/>
@@ -3493,28 +3493,28 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R6" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U12" library="chips" deviceset="LTC2943" device=""/>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R7" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R7" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U13" library="chips" deviceset="LTC2943" device=""/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R8" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U14" library="chips" deviceset="LTC2943" device=""/>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R9" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
+<part name="R9" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U15" library="chips" deviceset="LTC2943" device=""/>
@@ -3526,76 +3526,76 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="5V_2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="5V_3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="5V_4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R18" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R19" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R20" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R21" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R22" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R23" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R24" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R25" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R26" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R27" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R27" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R28" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R28" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R29" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R29" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R30" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R30" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R31" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R31" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R32" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R33" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R35" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R36" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R37" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R38" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R38" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
 <part name="U4" library="chips" deviceset="TLV62130" device=""/>
@@ -3611,13 +3611,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
-<part name="R61" library="passives" deviceset="RESISTOR" device="0402_RES" value="750 kΩ">
+<part name="R61" library="passives" deviceset="RESISTOR" device="0402_RES" value="750 kΩ">
 <attribute name="DIGIKEY" value="P750KJCT-ND"/>
 </part>
-<part name="R54" library="passives" deviceset="RESISTOR" device="0402_RES" value="240 kΩ">
+<part name="R54" library="passives" deviceset="RESISTOR" device="0402_RES" value="240 kΩ">
 <attribute name="DIGIKEY" value="P240JCT-ND"/>
 </part>
-<part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L4" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
@@ -3634,13 +3634,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
-<part name="R57" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<part name="R57" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
 <attribute name="DIGIKEY" value="P680KLCT-ND "/>
 </part>
-<part name="R48" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<part name="R48" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
 <attribute name="DIGIKEY" value="P130KLCT-ND "/>
 </part>
-<part name="R44" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<part name="R44" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
@@ -3661,13 +3661,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
-<part name="R58" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<part name="R58" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
 <attribute name="DIGIKEY" value="P680KLCT-ND "/>
 </part>
-<part name="R49" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<part name="R49" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
 <attribute name="DIGIKEY" value="P130KLCT-ND "/>
 </part>
-<part name="R45" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<part name="R45" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L2" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
@@ -3686,13 +3686,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
-<part name="R59" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<part name="R59" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
 <attribute name="DIGIKEY" value="P680KLCT-ND "/>
 </part>
-<part name="R50" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<part name="R50" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
 <attribute name="DIGIKEY" value="P130KLCT-ND "/>
 </part>
-<part name="R46" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<part name="R46" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L3" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
@@ -3711,13 +3711,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C45" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22 uF">
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
-<part name="R60" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
+<part name="R60" library="passives" deviceset="RESISTOR" device="0402_RES" value="680 kΩ">
 <attribute name="DIGIKEY" value="P680KLCT-ND "/>
 </part>
-<part name="R51" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
+<part name="R51" library="passives" deviceset="RESISTOR" device="0402_RES" value="130 kΩ">
 <attribute name="DIGIKEY" value="P130KLCT-ND "/>
 </part>
-<part name="R47" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
+<part name="R47" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L5" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
@@ -3740,27 +3740,27 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F">
 <attribute name="DIGIKEY" value="CMDSH2-4L CT-ND"/>
 </part>
-<part name="R10" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
+<part name="R10" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.05CT-ND"/>
 </part>
 <part name="C39" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
 <attribute name="DIGIKEY" value="490-5523-1-ND "/>
 </part>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
-<part name="R62" library="passives" deviceset="RESISTOR" device="0402_RES" value="953 kΩ">
+<part name="R62" library="passives" deviceset="RESISTOR" device="0402_RES" value="953 kΩ">
 <attribute name="DIGIKEY" value="P953KLCT-ND"/>
 </part>
-<part name="R56" library="passives" deviceset="RESISTOR" device="0402_RES" value="340 kΩ">
+<part name="R56" library="passives" deviceset="RESISTOR" device="0402_RES" value="340 kΩ">
 <attribute name="DIGIKEY" value="P340KLCT-ND"/>
 </part>
 <part name="U17" library="chips" deviceset="LM234" device=""/>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
+<part name="R12" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
-<part name="R55" library="passives" deviceset="RESISTOR" device="0402_RES" value="301 kΩ">
+<part name="R55" library="passives" deviceset="RESISTOR" device="0402_RES" value="301 kΩ">
 <attribute name="DIGIKEY" value="P301KLCT-ND"/>
 </part>
-<part name="R42" library="passives" deviceset="RESISTOR" device="0402_RES" value="23.2 kΩ">
+<part name="R42" library="passives" deviceset="RESISTOR" device="0402_RES" value="23.2 kΩ">
 <attribute name="DIGIKEY" value="311-2257-1-ND"/>
 </part>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
@@ -3772,13 +3772,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
+<part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
-<part name="R52" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
+<part name="R52" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
 <attribute name="DIGIKEY" value="P150LCT-ND"/>
 </part>
-<part name="R53" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
+<part name="R53" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
 <attribute name="DIGIKEY" value="P150LCT-ND"/>
 </part>
 <part name="C24" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
@@ -3788,7 +3788,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="490-3266-1-ND"/>
 </part>
 <part name="U19" library="chips" deviceset="ESDR0502N" device=""/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.010 Ω">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.010 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.01CT-ND"/>
 </part>
 <part name="U20" library="chips" deviceset="AP22814" device=""/>
@@ -3832,18 +3832,18 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
+<part name="R11" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
 <attribute name="DIGIKEY" value="WSLPB-.05CT-ND"/>
 </part>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
-<part name="R39" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R39" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R40" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R40" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
-<part name="R41" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
+<part name="R41" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
 <part name="C26" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
@@ -3862,7 +3862,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580">
 <attribute name="DIGIKEY" value="	NTD4965NT4GOSCT-ND"/>
 </part>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
+<part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
 <attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
 </part>
 <part name="S1" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
