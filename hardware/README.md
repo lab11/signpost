@@ -21,11 +21,15 @@ _Private bus for controller / power / backplane_
 | GPIO Extender Mod7   | MCP23008    | 0100111       | 0x27          |
 
 ### Power
-| Thing                | Part Number | Address (bin) | Address (hex) |
-|----------------------|-------------|---------------|---------------|
-| SMBUS Switch 0       | PCA9544A    | 1110000       | 0x70          |
-| SMBUS Switch 1       | PCA9544A    | 1110001       | 0x71          |
-| Coulomb Counter (x8) | LTC2941     | 1100100       | 0x64          |
+| Thing                         | Part Number | Address (bin) | Address (hex) |
+|-------------------------------|-------------|---------------|---------------|
+| SMBUS Switch 0                | PCA9544A    | 1110000       | 0x70          |
+| SMBUS Switch 1                | PCA9544A    | 1110001       | 0x71          |
+| SMBUS Switch 2                | PCA9544A    | 1110001       | 0x72          |
+| Battery Monitor               | MAX17205    | 0010000       | 0x16          |
+| Module Coulomb Counter (x8)   | LTC2943     | 1100100       | 0x64          |
+| Solar Coulomb Counter         | LTC2943     | 1100100       | 0x64          |
+| EEPROM ID                     | M24C01      | 1010000       | 0x50          |
 
 
 Signpost I2C Network
