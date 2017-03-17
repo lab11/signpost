@@ -3615,7 +3615,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="P750KJCT-ND"/>
 </part>
 <part name="R54" library="passives" deviceset="RESISTOR" device="0402_RES" value="240 kΩ">
-<attribute name="DIGIKEY" value="P240JCT-ND"/>
+<attribute name="DIGIKEY" value="P240KLCT-ND"/>
 </part>
 <part name="R43" library="passives" deviceset="RESISTOR" device="0402_RES" value="100 kΩ">
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
@@ -3860,7 +3860,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="FDD8580" value="MOSFET-NCHANNELFDD8580">
-<attribute name="DIGIKEY" value="	NTD4965NT4GOSCT-ND"/>
+<attribute name="DIGIKEY" value=" NTD4965NT4GOSCT-ND"/>
 </part>
 <part name="R14" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
 <attribute name="DIGIKEY" value="P1.00MLCT-ND"/>

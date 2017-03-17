@@ -1835,7 +1835,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="11.938" y="16.129" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R54" library="passives" package="0402_RES" value="240 kΩ" x="11.938" y="13.462" smashed="yes">
-<attribute name="DIGIKEY" value="P240JCT-ND" x="11.938" y="13.462" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="P240KLCT-ND" x="11.938" y="13.462" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="11.049" y="13.462" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="11.938" y="12.065" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -2232,7 +2232,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="9.398" y="32.131" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="Q1" library="fets" package="DPAK" value="MOSFET-NCHANNELFDD8580" x="6.477" y="43.815" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="	NTD4965NT4GOSCT-ND" x="6.477" y="43.815" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value=" NTD4965NT4GOSCT-ND" x="6.477" y="43.815" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="8.617" y="47.498" size="1.016" layer="25" ratio="12"/>
 <attribute name="VALUE" x="10.179" y="47.752" size="0.4064" layer="27" rot="R180"/>
 </element>
