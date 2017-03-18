@@ -329,7 +329,7 @@ int signpost_initialization_module_init(uint8_t i2c_address, api_handler_t** api
     if (rc < 0) return rc;
 
     //// Begin listening for replies
-    //signpost_api_start_new_async_recv();
+    signpost_api_start_new_async_recv();
     //// Request isolation from controller
     //done = 0;
     //signpost_initialization_request_isolation();
