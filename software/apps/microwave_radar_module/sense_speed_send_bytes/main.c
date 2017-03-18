@@ -55,6 +55,7 @@ uint8_t send_buf[20];
 
 bool motion_since_last_transmit = false;
 uint32_t max_speed_since_last_transmit = 0;
+bool got_sample = false;
 
 static bool detect_motion (uint32_t sample) {
     printf("%d\n",sample);
@@ -179,6 +180,7 @@ static void adc_callback (int callback_type, int channel, int sample, void* call
     UNUSED_PARAMETER(callback_type);
     UNUSED_PARAMETER(channel);
     UNUSED_PARAMETER(callback_args);
+    got_sample = true;
 
     //we essentially need a low pass filter on motion (because it goes off randomly)
     //so let's debounce it with a sliding window average
@@ -235,7 +237,10 @@ static void timer_callback (
     // write data
     int rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,7);
     if(rc >= 0) {
-        app_watchdog_tickle_kernel();
+        if(got_sample == true) {
+            app_watchdog_tickle_kernel();
+            got_sample = false;
+        }
     }
 
     //printf("Motion confidence on that interval: %d\n",max_confidence);
