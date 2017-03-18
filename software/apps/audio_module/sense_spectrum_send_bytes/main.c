@@ -66,6 +66,13 @@ int main (void) {
     } while (rc < 0);
     printf(" * Bus initialized\n");
 
+    do {
+        rc = signpost_watchdog_start();
+    } while (rc < 0);
+
+    //printf("Watchdog Started");
+
+
     gpio_enable_output(8);
     gpio_enable_output(9);
     gpio_clear(8);
@@ -135,7 +142,7 @@ int main (void) {
         }
 
         count++;
-        if(count >= 500) {
+        if((count % 500) == 0) {
             printf("About to send data\n");
             rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,15);
             printf("Send data with return code %d\n",rc);
@@ -143,6 +150,12 @@ int main (void) {
                 app_watchdog_tickle_kernel();
             }
             count = 0;
+        }
+
+        if((count % 2000) ==0) {
+            do {
+                rc = signpost_watchdog_tickle();
+            } while (rc < 0);
         }
     }
 }
