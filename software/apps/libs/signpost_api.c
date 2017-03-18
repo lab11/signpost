@@ -279,6 +279,7 @@ static int signpost_initialization_common(uint8_t i2c_address, api_handler_t** a
 
     // Populate the well-known API types with fixed addresses
     module_info.api_type_to_module_address[InitializationApiType] = ModuleAddressController;
+    module_info.api_type_to_module_address[WatchdogApiType] = ModuleAddressController;
     module_info.api_type_to_module_address[StorageApiType] = ModuleAddressStorage;
     module_info.api_type_to_module_address[NetworkingApiType] = -1; /* not supported */
     module_info.api_type_to_module_address[ProcessingApiType] = -1; /* not supported */
@@ -1020,6 +1021,53 @@ int signpost_timelocation_get_location_reply(uint8_t destination_address,
             sizeof(signpost_timelocation_location_t), (uint8_t*) location);
 }
 
+/**************************************************************************/
+/* Watchdog API                                                           */
+/**************************************************************************/
+static bool watchdog_reply;
+
+static void signpost_watchdog_cb(__attribute__ ((unused)) int result) {
+    watchdog_reply = true;
+}
+
+int signpost_watchdog_start(void) {
+    watchdog_reply = false;
+
+    int rc = signpost_api_send(ModuleAddressController, CommandFrame, WatchdogApiType,
+            WatchdogStartMessage, 0, NULL);
+    if(rc < 0) {
+        return rc;
+    }
+
+    incoming_active_callback = signpost_watchdog_cb;
+
+    yield_for(&watchdog_reply);
+
+    return 1;
+}
+
+int signpost_watchdog_tickle(void) {
+    watchdog_reply = false;
+
+    int rc = signpost_api_send(ModuleAddressController, CommandFrame, WatchdogApiType,
+            WatchdogTickleMessage, 0, NULL);
+    if(rc < 0) {
+        return rc;
+    }
+
+    incoming_active_callback = signpost_watchdog_cb;
+
+    yield_for(&watchdog_reply);
+
+    return 1;
+}
+
+int signpost_watchdog_reply(uint8_t destination_address) {
+    int rc = signpost_api_send(destination_address, ResponseFrame, WatchdogApiType,
+            WatchdogResponseMessage,0, NULL);
+
+    return rc;
+}
 
 /**************************************************************************/
 /* EDISON API                                                             */

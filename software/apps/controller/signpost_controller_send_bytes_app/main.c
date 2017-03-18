@@ -43,6 +43,10 @@ int mod_isolated_in = -1;
 int last_mod_isolated_out = -1;
 size_t isolated_count = 0;
 uint8_t currently_initializing;
+uint8_t module_init_failures[8] = {0};
+uint8_t watchdog_tickled[8] = {0};
+uint8_t watchdog_subscribed[8] = {0};
+uint8_t module_addresses[8] = {0};
 
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
@@ -79,6 +83,7 @@ static void check_module_initialization (void) {
             mod_isolated_out = -1;
             mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
+            module_init_failures[MODOUT_pin_to_mod_name(mod_isolated_out)] = 0;
         }
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
@@ -86,6 +91,14 @@ static void check_module_initialization (void) {
             printf("Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             currently_initializing = 0;
             gpio_set(mod_isolated_in);
+            module_init_failures[MODOUT_pin_to_mod_name(mod_isolated_out)]++;
+            if(module_init_failures[MODOUT_pin_to_mod_name(mod_isolated_out)] > 4) {
+                //power cycle the module
+                controller_module_disable_power(MODOUT_pin_to_mod_name(mod_isolated_out));
+                delay_ms(1000);
+                controller_module_enable_power(MODOUT_pin_to_mod_name(mod_isolated_out));
+                module_init_failures[MODOUT_pin_to_mod_name(mod_isolated_out)] = 0;
+            }
             mod_isolated_out = -1;
             mod_isolated_in  = -1;
             controller_all_modules_enable_i2c();
@@ -239,10 +252,19 @@ static void initialization_api_callback(uint8_t source_address,
             switch (message_type) {
                 case InitializationDeclare:
                     // only if we have a module isolated or from storage master
-                    if (mod_isolated_out < 0 && source_address != ModuleAddressStorage) return;
-                    if (source_address == ModuleAddressStorage) module_number = 4;
-                    else module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
+                    if (mod_isolated_out < 0 && source_address != ModuleAddressStorage) {
+                        return;
+                    }
+                    if (source_address == ModuleAddressStorage)  {
+                        module_number = 4;
+                    }
+                    else {
+                        module_number = MODOUT_pin_to_mod_name(mod_isolated_out);
+                    }
+
+                    module_addresses[module_number] = source_address;
                     rc = signpost_initialization_declare_respond(source_address, module_number);
+
                     if (rc < 0) {
                       printf(" - %d: Error responding to initialization declare request for module %d at address 0x%02x. Dropping.\n",
                           __LINE__, module_number, source_address);
@@ -365,16 +387,71 @@ static void timelocation_api_callback(uint8_t source_address,
   }
 }
 
+static void check_watchdogs(void) {
+    for(uint8_t j = 0; j < 8; j++) {
+        if(watchdog_subscribed[j] != 0) {
+            if(watchdog_tickled[j] == 0) {
+                for(uint8_t i = 0; i < 8; j++) {
+                    if(module_addresses[i] == watchdog_subscribed[j]) {
+                        printf("Watchdog Timeout %d\n",watchdog_subscribed[j]);
+                        controller_module_disable_power(i);
+                        delay_ms(300);
+                        controller_module_enable_power(i);
+                    }
+                    break;
+                }
+            } else {
+                printf("Watchdog good %d\n",watchdog_subscribed[j]);
+                watchdog_tickled[j] = 0;
+            }
+        }
+    }
+}
+
+static void watchdog_api_callback(uint8_t source_address,
+    __attribute__ ((unused)) signbus_frame_type_t frame_type, __attribute__ ((unused)) signbus_api_type_t api_type,
+    uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
+
+    printf("Got watchdog API call\n");
+
+    if(message_type == WatchdogStartMessage) {
+        int rc = signpost_watchdog_reply(source_address);
+        if(rc >= 0) {
+            for(uint8_t j = 0; j < 8; j++) {
+                if(watchdog_subscribed[j] == 0 || watchdog_subscribed[j] == source_address) {
+                    printf("Subscribed Watchdog %d\n",source_address);
+                    watchdog_subscribed[j] = source_address;
+
+                    //give them one tickle
+                    watchdog_tickled[j] = 1;
+                    break;
+                }
+            }
+        }
+    } else if(message_type == WatchdogTickleMessage)  {
+        int rc = signpost_watchdog_reply(source_address);
+        if(rc >= 0) {
+            for(uint8_t j = 0; j < 8; j++) {
+                if(watchdog_subscribed[j] == source_address) {
+                    printf("Tickled Watchdog %d\n",source_address);
+                    watchdog_tickled[j] = 1;
+                    break;
+                }
+            }
+        }
+    }
+}
+
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
-  printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
+  /*printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
           gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
           gps_data->month, gps_data->day, gps_data->year
           );
 
   printf("  Latitude:   %lu degrees\n", gps_data->latitude);
-  printf("  Longitude:  %lu degrees\n", gps_data->longitude);
+  printf("  Longitude:  %lu degrees\n", gps_data->longitude);*/
 
   const char* fix_str = "Invalid fix";
   if (gps_data->fix == 2) {
@@ -382,8 +459,8 @@ static void gps_callback (gps_data_t* gps_data) {
   } else if (gps_data->fix == 3) {
       fix_str = "3D fix";
   }
-  printf("  Status:     %s\n", fix_str);
-  printf("  Satellites: %d\n", gps_data->satellite_count);
+  //printf("  Status:     %s\n", fix_str);
+  //printf("  Satellites: %d\n", gps_data->satellite_count);
 
 
   // Save most recent GPS reading for anyone that wants location and time.
@@ -513,7 +590,8 @@ int main (void) {
   static api_handler_t init_handler   = {InitializationApiType, initialization_api_callback};
   static api_handler_t energy_handler = {EnergyApiType, energy_api_callback};
   static api_handler_t timelocation_handler = {TimeLocationApiType, timelocation_api_callback};
-  static api_handler_t* handlers[] = {&init_handler, &energy_handler, &timelocation_handler, NULL};
+  static api_handler_t watchdog_handler = {WatchdogApiType, watchdog_api_callback};
+  static api_handler_t* handlers[] = {&init_handler, &energy_handler, &timelocation_handler, &watchdog_handler, NULL};
   do {
     rc = signpost_initialization_controller_module_init(handlers);
     if (rc < 0) {
@@ -571,6 +649,13 @@ int main (void) {
     if ((index % 10) == 0) {
       printf("Check energy\n");
       get_energy();
+
+    }
+
+    if ((index % 50) == 0 && index != 0) {
+        if(mod_isolated_out < 0) {
+            check_watchdogs();
+        }
     }
 
     index++;
