@@ -68,6 +68,9 @@ int main (void) {
 
     do {
         rc = signpost_watchdog_start();
+        if(rc < 0) {
+            delay_ms(1000);
+        }
     } while (rc < 0);
 
     //printf("Watchdog Started");
@@ -155,6 +158,9 @@ int main (void) {
         if((count % 2000) ==0) {
             do {
                 rc = signpost_watchdog_tickle();
+                if(rc < 0) {
+                    delay_ms(1000);
+                }
             } while (rc < 0);
         }
     }
