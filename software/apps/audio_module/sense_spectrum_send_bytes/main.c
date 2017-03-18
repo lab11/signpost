@@ -91,10 +91,10 @@ int main (void) {
     gpio_set(9);
 
     // start up the app watchdog
-    app_watchdog_set_kernel_timeout(10000);
+    app_watchdog_set_kernel_timeout(60000);
     app_watchdog_start();
 
-    uint8_t count = 50;
+    uint16_t count = 50;
     while (1) {
         delay_ms(1);
         gpio_set(STROBE);
@@ -135,8 +135,10 @@ int main (void) {
         }
 
         count++;
-        if(count >= 50) {
+        if(count >= 500) {
+            printf("About to send data\n");
             rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,15);
+            printf("Send data with return code %d\n",rc);
             if(rc >= 0) {
                 app_watchdog_tickle_kernel();
             }

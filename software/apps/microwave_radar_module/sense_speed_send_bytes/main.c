@@ -233,7 +233,7 @@ static void timer_callback (
     send_buf[6] = max_confidence;
 
     // write data
-    int rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,6);
+    int rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,7);
     if(rc >= 0) {
         app_watchdog_tickle_kernel();
     }
@@ -276,7 +276,7 @@ int main (void) {
     adc_initialize();
 
     // Setup a watchdog
-    app_watchdog_set_kernel_timeout(10000);
+    app_watchdog_set_kernel_timeout(60000);
     app_watchdog_start();
 
     // start getting samples

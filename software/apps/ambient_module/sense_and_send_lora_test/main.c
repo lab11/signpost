@@ -140,7 +140,7 @@ int main (void) {
 
   // set up watchdog
   // Resets after 30 seconds without a valid response
-  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_set_kernel_timeout(60000);
   app_watchdog_start();
   printf(" * Watchdog started\n");
 
