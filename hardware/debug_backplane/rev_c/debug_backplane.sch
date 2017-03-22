@@ -7797,6 +7797,45 @@ Low profile connectors, straight&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="headers">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Headers for pins and wires.</description>
+<packages>
+<package name="TESTPOINT_0.040IN">
+<pad name="TESTPOINT" x="0" y="0" drill="1.016"/>
+<text x="0" y="1.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="0" y="0" radius="1.27" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TEST_POINT">
+<description>Test point.</description>
+<pin name="TESTPOINT" x="2.54" y="0" visible="off" length="short" rot="R180"/>
+<circle x="-1.27" y="0" radius="1.27" width="0.254" layer="94"/>
+<text x="-3.175" y="0" size="1.016" layer="95" ratio="12" align="center-right">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TEST_POINT_0.040IN" prefix="TP">
+<description>0.040in Test Point</description>
+<gates>
+<gate name="G$1" symbol="TEST_POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPOINT_0.040IN">
+<connects>
+<connect gate="G$1" pin="TESTPOINT" pad="TESTPOINT"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="5001K-ND"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins and Pat Pannuto"/>
@@ -8390,6 +8429,9 @@ Low profile connectors, straight&lt;p&gt;
 <part name="LED22" library="leds" deviceset="LED" device="0603"/>
 <part name="LED23" library="leds" deviceset="LED" device="0603"/>
 <part name="GND122" library="umich" deviceset="GND" device=""/>
+<part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11506,11 +11548,11 @@ behind one on-board hub for ease of use</text>
 are self-powered</text>
 <text x="81.28" y="90.678" size="1.27" layer="98">MODE -&gt; low
 6 mhz xtal</text>
-<text x="71.628" y="49.53" size="1.27" layer="98">Status
+<text x="50.8" y="49.53" size="1.27" layer="98">Status
 LEDs</text>
-<wire x1="96.52" y1="55.88" x2="68.58" y2="55.88" width="0.1524" layer="98"/>
-<wire x1="68.58" y1="55.88" x2="68.58" y2="45.72" width="0.1524" layer="98"/>
-<wire x1="68.58" y1="45.72" x2="96.52" y2="45.72" width="0.1524" layer="98"/>
+<wire x1="96.52" y1="55.88" x2="48.26" y2="55.88" width="0.1524" layer="98"/>
+<wire x1="48.26" y1="55.88" x2="48.26" y2="45.72" width="0.1524" layer="98"/>
+<wire x1="48.26" y1="45.72" x2="96.52" y2="45.72" width="0.1524" layer="98"/>
 <text x="73.66" y="105.918" size="1.27" layer="98">!GANGED! -&gt; low
 port pwr grouped</text>
 <text x="152.4" y="78.74" size="1.27" layer="98" align="top-right">Overcurrent protection is
@@ -11565,6 +11607,9 @@ not used for this hub</text>
 <instance part="U$21" gate="G$1" x="40.64" y="109.22"/>
 <instance part="U31" gate="G$1" x="27.94" y="93.98"/>
 <instance part="R47" gate="G$1" x="45.72" y="101.6" rot="R90"/>
+<instance part="TP1" gate="G$1" x="63.5" y="53.34"/>
+<instance part="TP2" gate="G$1" x="63.5" y="50.8"/>
+<instance part="TP3" gate="G$1" x="63.5" y="48.26"/>
 </instances>
 <busses>
 </busses>
@@ -11677,7 +11722,7 @@ not used for this hub</text>
 <junction x="81.28" y="73.66"/>
 </segment>
 </net>
-<net name="N$90" class="0">
+<net name="DBG_USB_XTAL1" class="0">
 <segment>
 <pinref part="C11" gate="G$1" pin="2"/>
 <pinref part="Y2" gate="G$1" pin="2"/>
@@ -11687,7 +11732,7 @@ not used for this hub</text>
 <junction x="81.28" y="83.82"/>
 </segment>
 </net>
-<net name="N$91" class="0">
+<net name="DBG_USB_XTAL2" class="0">
 <segment>
 <pinref part="R33" gate="G$1" pin="2"/>
 <wire x1="91.44" y1="73.66" x2="93.98" y2="73.66" width="0.1524" layer="91"/>
@@ -11816,7 +11861,7 @@ not used for this hub</text>
 <label x="132.08" y="88.9" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$87" class="0">
+<net name="DEBUG_HUB_!OVRCURX" class="0">
 <segment>
 <pinref part="U26" gate="G$1" pin="!OVRCUR7"/>
 <wire x1="129.54" y1="48.26" x2="132.08" y2="48.26" width="0.1524" layer="91"/>
@@ -11846,6 +11891,7 @@ not used for this hub</text>
 <pinref part="R52" gate="G$1" pin="1"/>
 <wire x1="134.62" y1="63.5" x2="132.08" y2="63.5" width="0.1524" layer="91"/>
 <junction x="132.08" y="63.5"/>
+<label x="134.62" y="40.64" size="1.27" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="3V3_UNMETERED" class="0">
@@ -11889,6 +11935,30 @@ not used for this hub</text>
 <wire x1="45.72" y1="104.14" x2="45.72" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="106.68" x2="40.64" y2="106.68" width="0.1524" layer="91"/>
 <junction x="40.64" y="106.68"/>
+</segment>
+</net>
+<net name="DBG_USB_HUBCFG" class="0">
+<segment>
+<pinref part="U26" gate="G$1" pin="HUBCFG"/>
+<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
+<wire x1="93.98" y1="53.34" x2="66.04" y2="53.34" width="0.1524" layer="91"/>
+<label x="66.04" y="53.34" size="1.27" layer="95"/>
+</segment>
+</net>
+<net name="DBG_USB_PORTPWR" class="0">
+<segment>
+<pinref part="U26" gate="G$1" pin="PORTPWR"/>
+<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
+<wire x1="93.98" y1="50.8" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
+<label x="66.04" y="50.8" size="1.27" layer="95"/>
+</segment>
+</net>
+<net name="DBG_USB_PORTDIS" class="0">
+<segment>
+<pinref part="U26" gate="G$1" pin="PORTDIS"/>
+<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
+<wire x1="93.98" y1="48.26" x2="66.04" y2="48.26" width="0.1524" layer="91"/>
+<label x="66.04" y="48.26" size="1.27" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -14839,7 +14909,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="127" y1="15.24" x2="127" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="CONTROLLER_XIN" class="0">
+<net name="FAKE_RADIO_XIN" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="2"/>
 <pinref part="C1" gate="G$1" pin="1"/>
@@ -14854,7 +14924,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <label x="101.6" y="160.02" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="CONTROLLER_XOUT" class="0">
+<net name="FAKE_RADIO_XOUT" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="1"/>
 <pinref part="C2" gate="G$1" pin="1"/>
