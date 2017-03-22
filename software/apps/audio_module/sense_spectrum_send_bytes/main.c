@@ -16,6 +16,7 @@
 #include "msgeq7.h"
 #include "i2c_master_slave.h"
 #include "timer.h"
+#include "bonus_timer.h"
 #include "signpost_api.h"
 
 #define STROBE 3
@@ -26,8 +27,8 @@
 #define BUFFER_SIZE 20
 
 uint8_t send_buf[20];
-static bool sample_done = false;
-static bool still_sampling = false;
+bool sample_done = false;
+bool still_sampling = false;
 
 //gain = 20k resistance
 #define PREAMP_GAIN 22.5
@@ -44,6 +45,10 @@ static bool still_sampling = false;
     return (uint16_t)(((20*log10(output/MAGIC_NUMBER)) + SPL - PREAMP_GAIN - MSGEQ7_GAIN)*10);
 }*/
 
+static void delay(void) {
+    for(volatile uint16_t i  = 0; i < 3000; i++);
+}
+
 
 static void adc_callback (
         int callback_type __attribute__ ((unused)),
@@ -56,9 +61,9 @@ static void adc_callback (
 
     send_buf[1+i*2] = (uint8_t)((sample >> 8) & 0xff);
     send_buf[1+i*2+1] = (uint8_t)(sample & 0xff);
-    delay_ms(1);
+    delay();
     gpio_set(STROBE);
-    delay_ms(1);
+    delay();
     gpio_clear(STROBE);
 
     if(i == 6) {
@@ -76,15 +81,15 @@ static void adc_callback (
             led_off(RED_LED);
         }
 
-        delay_ms(1);
+        delay();
         gpio_set(STROBE);
         gpio_set(RESET);
-        delay_ms(1);
+        delay();
         gpio_clear(STROBE);
-        delay_ms(1);
+        delay();
         gpio_clear(RESET);
         gpio_set(STROBE);
-        delay_ms(1);
+        delay();
         gpio_clear(STROBE);
 
         i = 0;
@@ -127,7 +132,7 @@ int main (void) {
         rc = signpost_initialization_module_init(0x33, NULL);
         if (rc < 0) {
             printf(" - Error initializing bus (code %d). Sleeping for 5s\n",rc);
-            delay_ms(5000);
+            //delay_ms(5000);
         }
     } while (rc < 0);
     printf(" * Bus initialized\n");
@@ -158,7 +163,6 @@ int main (void) {
     gpio_clear(STROBE);
     gpio_clear(RESET);
 
-    delay_ms(1000);
 
     // start up the app watchdog
     app_watchdog_set_kernel_timeout(60000);
@@ -169,8 +173,8 @@ int main (void) {
     adc_initialize();
 
     //start timer
-    timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(1500);
+    bonus_timer_subscribe(timer_callback, NULL);
+    bonus_timer_start_repeating(1500);
 
 
     while (1) {
