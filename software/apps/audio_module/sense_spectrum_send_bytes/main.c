@@ -45,10 +45,6 @@ bool still_sampling = false;
     return (uint16_t)(((20*log10(output/MAGIC_NUMBER)) + SPL - PREAMP_GAIN - MSGEQ7_GAIN)*10);
 }*/
 
-static void delay(void) {
-    for(volatile uint16_t i  = 0; i < 3000; i++);
-}
-
 
 static void adc_callback (
         int callback_type __attribute__ ((unused)),
@@ -61,9 +57,9 @@ static void adc_callback (
 
     send_buf[1+i*2] = (uint8_t)((sample >> 8) & 0xff);
     send_buf[1+i*2+1] = (uint8_t)(sample & 0xff);
-    delay();
+    delay_ms(1);
     gpio_set(STROBE);
-    delay();
+    delay_ms(1);
     gpio_clear(STROBE);
 
     if(i == 6) {
@@ -81,15 +77,15 @@ static void adc_callback (
             led_off(RED_LED);
         }
 
-        delay();
+        delay_ms(1);
         gpio_set(STROBE);
         gpio_set(RESET);
-        delay();
+        delay_ms(1);
         gpio_clear(STROBE);
-        delay();
+        delay_ms(1);
         gpio_clear(RESET);
         gpio_set(STROBE);
-        delay();
+        delay_ms(1);
         gpio_clear(STROBE);
 
         i = 0;
@@ -132,7 +128,7 @@ int main (void) {
         rc = signpost_initialization_module_init(0x33, NULL);
         if (rc < 0) {
             printf(" - Error initializing bus (code %d). Sleeping for 5s\n",rc);
-            //delay_ms(5000);
+            delay_ms(5000);
         }
     } while (rc < 0);
     printf(" * Bus initialized\n");
