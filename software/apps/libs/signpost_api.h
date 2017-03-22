@@ -356,6 +356,19 @@ int signpost_timelocation_get_time_reply(uint8_t destination_address, signpost_t
 __attribute__((warn_unused_result))
 int signpost_timelocation_get_location_reply(uint8_t destination_address, signpost_timelocation_location_t* location);
 
+/**************************************************************************/
+/* WATCHDOG API                                                           */
+/**************************************************************************/
+
+typedef enum {
+    WatchdogStartMessage = 0,
+    WatchdogTickleMessage = 1,
+    WatchdogResponseMessage = 2,
+} signpost_watchdog_message_type_e;
+
+int signpost_watchdog_start(void);
+int signpost_watchdog_tickle(void);
+int signpost_watchdog_reply(uint8_t destination_address);
 
 /**************************************************************************/
 /* EDISON API                                                             */

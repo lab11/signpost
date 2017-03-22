@@ -21,7 +21,7 @@ if ( ! ('device_group' in conf) ) {
   conf.device_group = 0x10;
 }
 if ( ! ('serial_port' in conf) ) {
-  conf.serial_port = '/dev/ttyUSB1';
+  conf.serial_port = '/dev/ttyUSB0';
 }
 if ( ! ('spreading_factor' in conf) ) {
   conf.spreading_factor = 9;
@@ -147,8 +147,6 @@ function parse (buf) {
 		return duplicate;
 	}
 
-	// Update stats
-	stats_new_packet(buf);
 
 	// Strip out address
 	var addr = '';
@@ -186,6 +184,8 @@ function parse (buf) {
 		return undefined;
 	}
 
+	// Update stats
+	stats_new_packet(buf);
 
 	if (module == 0x20) {
 		// Controller
@@ -377,7 +377,7 @@ function parse (buf) {
 		if (message_type == 0x01) {
 			var motion = buf.readInt8(9) > 0;
 			var speed = buf.readUInt32BE(10) / 1000.0;
-			var motion_confidence = buf.readInt8(14);
+			var motion_confidence = buf.readUInt8(14);
 
 			return {
 				device: 'signpost_microwave_radar',

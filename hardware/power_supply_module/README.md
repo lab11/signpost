@@ -1,15 +1,15 @@
 Power Supply Module
 ===================
 
-XXX A picture would be super nice here XXX _Neal_ XXX
+<!-- XXX A picture would be super nice here XXX _Neal_ XXX -->
 
 The power module monitors and supplies energy for all signpost subsystems.
-It tracks the amount of energy collected from the solar panel and monitors
-the energy consumed by each module. The power module can be configured
-to alert (via `!SMBALERT`) when a module or subsystem draws an excess amount
-of energy, however the controller must issue commands to cut power if needed.
-In extreme cases (i.e. shorts), the power module does include resettable fuses
-for protection.
+It tracks the amount of energy collected from the solar panel, the state of the
+battery, and monitors the energy consumed by each module. The power module can
+be configured to alert (via `!SMBALERT`) when a module or subsystem draws an
+excess amount current or energy, however the controller must issue commands to cut
+power if needed.  In extreme cases (i.e. shorts), the power module does include
+power distribution switches that will limit power output to safe ranges.
 
 Physical Layout
 ---------------
@@ -32,9 +32,11 @@ The Power Module has one header that it uses to interact with the Backplane: a 2
 Requirements / Assumptions
 --------------------------
 
-XXX Neal
+The power supply module expects a maximum battery voltage of 12.6V (three 4.2V
+cells) and a lithium ion based chemistry. Subsystem power regulation is able to
+handle higher voltages (up to 20V), but the battery monitor and charger are
+configured for a 12.6V battery and a solar panel that outputs a maximum of
+17.5V. The solar panel and battery monitor and charger circuits can be
+reprogrammed with different resistor divider networks to accommodate different
+battery and solar panel voltages.
 
-No battery -> no power.
-Battery volatage range?
-
-Solar voltage range?
