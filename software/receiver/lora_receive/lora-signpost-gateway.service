@@ -1,0 +1,13 @@
+[Unit]
+Description=Collect LoRa packets
+After=mosquitto.service
+
+[Service]
+ExecStart=/home/debian/signpost/software/receiver/lora_receive/lora-signpost-gateway.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=lora-gateway-mqtt
+
+[Install]
+WantedBy=multi-user.target

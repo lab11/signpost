@@ -1,0 +1,15 @@
+{
+  "name": "lora-signpost-gateway",
+  "version": "1.0.0",
+  "description": "LoRa to gateway",
+  "main": "lora-signpost-gateway.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brad Campbell",
+  "license": "ISC",
+  "dependencies": {
+    "iM880-serial-comm": "^3.0.0",
+    "mqtt": "^2.5.0"
+  }
+}
