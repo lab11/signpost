@@ -26,6 +26,8 @@
 #define BUFFER_SIZE 20
 
 uint8_t send_buf[20];
+static bool sample_done = false;
+static bool still_sampling = false;
 
 //gain = 20k resistance
 #define PREAMP_GAIN 22.5
@@ -43,15 +45,79 @@ uint8_t send_buf[20];
 }*/
 
 
-/*
-static void i2c_master_slave_callback(int callback_type, int length, int unused, void* callback_args) {
-    return;
-}
-*/
+static void adc_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int sample,
+        void* callback_args __attribute__ ((unused))
+        ) {
 
-/*static void  timer_callback( int callback_type , int channel, int data, void* callback_args) {
-  i2c_master_slave_write(0x22,16);
-  }*/
+    static uint8_t i = 0;
+
+    send_buf[1+i*2] = (uint8_t)((sample >> 8) & 0xff);
+    send_buf[1+i*2+1] = (uint8_t)(sample & 0xff);
+    delay_ms(1);
+    gpio_set(STROBE);
+    delay_ms(1);
+    gpio_clear(STROBE);
+
+    if(i == 6) {
+
+        if((uint16_t)((send_buf[5] << 8) + send_buf[6]) > 400) {
+            //turn on green LED
+            led_on(GREEN_LED);
+        } else {
+            led_off(GREEN_LED);
+        }
+        if((uint16_t)((send_buf[7] << 8) + send_buf[8]) > 3500) {
+            //turn on red LED
+            led_on(RED_LED);
+        } else {
+            led_off(RED_LED);
+        }
+
+        delay_ms(1);
+        gpio_set(STROBE);
+        gpio_set(RESET);
+        delay_ms(1);
+        gpio_clear(STROBE);
+        delay_ms(1);
+        gpio_clear(RESET);
+        gpio_set(STROBE);
+        delay_ms(1);
+        gpio_clear(STROBE);
+
+        i = 0;
+        still_sampling = true;
+        printf("cycled\n");
+
+    } else {
+
+        i++;
+
+    }
+
+    sample_done = true;
+}
+
+static void timer_callback (
+        int callback_type __attribute__ ((unused)),
+        int pin_value __attribute__ ((unused)),
+        int unused __attribute__ ((unused)),
+        void* callback_args __attribute__ ((unused))
+        ) {
+
+    int rc;
+    printf("About to send data to radio\n");
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,15);
+    printf("Sent data with return code %d\n\n\n",rc);
+
+    if(rc >= 0 && still_sampling == true) {
+        app_watchdog_tickle_kernel();
+        still_sampling = false;
+    }
+}
+
 
 int main (void) {
 
@@ -66,12 +132,12 @@ int main (void) {
     } while (rc < 0);
     printf(" * Bus initialized\n");
 
-    do {
+    /*do {
         rc = signpost_watchdog_start();
         if(rc < 0) {
             delay_ms(1000);
         }
-    } while (rc < 0);
+    } while (rc < 0);*/
 
     //printf("Watchdog Started");
 
@@ -83,9 +149,7 @@ int main (void) {
 
     send_buf[0] = 0x01;
 
-    //init adc
-    //adc_set_callback(adc_callback, (void*)&result);
-    adc_initialize();
+
     gpio_enable_output(STROBE);
     gpio_enable_output(RESET);
     gpio_enable_output(POWER);
@@ -94,74 +158,24 @@ int main (void) {
     gpio_clear(STROBE);
     gpio_clear(RESET);
 
-    //timer_subscribe(timer_callback, NULL);
-    //timer_start_repeating(1000);
     delay_ms(1000);
-    gpio_set(8);
-    gpio_set(9);
 
     // start up the app watchdog
     app_watchdog_set_kernel_timeout(60000);
     app_watchdog_start();
 
-    uint16_t count = 50;
+    //init adc
+    adc_set_callback(adc_callback, NULL);
+    adc_initialize();
+
+    //start timer
+    timer_subscribe(timer_callback, NULL);
+    timer_start_repeating(1500);
+
+
     while (1) {
-        delay_ms(1);
-        gpio_set(STROBE);
-        gpio_set(RESET);
-        delay_ms(1);
-        gpio_clear(STROBE);
-        delay_ms(1);
-        gpio_clear(RESET);
-        gpio_set(STROBE);
-        delay_ms(1);
-        gpio_clear(STROBE);
-
-        for(uint8_t i = 0; i < 6; i++) {
-            uint16_t data = (uint16_t)adc_read_single_sample(0);
-            send_buf[1+i*2] = (uint8_t)((data >> 8) & 0xff);
-            send_buf[1+i*2+1] = (uint8_t)(data & 0xff);
-            delay_ms(1);
-            gpio_set(STROBE);
-            delay_ms(1);
-            gpio_clear(STROBE);
-        }
-        uint16_t data = (uint16_t)adc_read_single_sample(0);
-        send_buf[13] = (uint8_t)((data >> 8) & 0xff);
-        send_buf[14] = (uint8_t)(data & 0xff);
-
-        //give some indication of volume to the user
-        if((uint16_t)((send_buf[5] << 8) + send_buf[6]) > 400) {
-            //turn on green LED
-            led_on(GREEN_LED);
-        } else {
-            led_off(GREEN_LED);
-        }
-        if((uint16_t)((send_buf[7] << 8) + send_buf[8]) > 3500) {
-            //turn on red LED
-            led_on(RED_LED);
-        } else {
-            led_off(RED_LED);
-        }
-
-        count++;
-        if((count % 500) == 0) {
-            printf("About to send data\n");
-            rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,15);
-            printf("Send data with return code %d\n",rc);
-            if(rc >= 0) {
-                app_watchdog_tickle_kernel();
-            }
-            count = 0;
-        }
-
-        if((count % 2000) ==0) {
-            do {
-                rc = signpost_watchdog_tickle();
-                if(rc < 0) {
-                    delay_ms(1000);
-                }
-            } while (rc < 0);
-        }
+        sample_done = false;
+        adc_single_sample(0);
+        yield_for(&sample_done);
     }
 }
