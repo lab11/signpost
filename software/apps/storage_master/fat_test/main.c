@@ -47,7 +47,7 @@ int main (void) {
         printf("No filesystem. Running mkfs...\n");
         {
           BYTE* work = malloc(_MAX_SS);
-          f_mkfs("", FM_ANY, 0, work, sizeof work);
+          f_mkfs("", FM_ANY, 0, work, _MAX_SS);
           free(work);
         }
         res = f_mount(&fs, "", 1);
