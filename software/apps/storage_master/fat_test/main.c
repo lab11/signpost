@@ -47,10 +47,18 @@ int main (void) {
         printf("No filesystem. Running mkfs...\n");
         {
           BYTE* work = malloc(_MAX_SS);
-          f_mkfs("", FM_ANY, 0, work, _MAX_SS);
+          res = f_mkfs("", FM_ANY, 0, work, _MAX_SS);
+          if (res != FR_OK) {
+            printf("Failed to mkfs: %d\n", res);
+            return -1;
+          }
           free(work);
         }
         res = f_mount(&fs, "", 1);
+        if (res != FR_OK) {
+          printf("Failed to mount created fs: %d\n", res);
+          return -1;
+        }
         break;
       default:
         printf("Unexpected error! %d\n", res);
