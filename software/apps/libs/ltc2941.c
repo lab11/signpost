@@ -70,14 +70,14 @@ int ltc2941_read_status_sync(void) {
     err = ltc2941_read_status();
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
 }
 
 int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat) {
-	int err;
+    int err;
     result.fired = false;
 
     err = ltc2941_set_callback(ltc2941_cb, (void*) &result);
@@ -86,7 +86,7 @@ int ltc2941_configure_sync(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat
     err = ltc2941_configure(int_pin, prescaler, vbat);
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
@@ -102,7 +102,7 @@ int ltc2941_reset_charge_sync(void) {
     err = ltc2941_reset_charge();
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
@@ -118,7 +118,7 @@ int ltc2941_set_high_threshold_sync(uint16_t threshold) {
     err = ltc2941_set_high_threshold(threshold);
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
@@ -134,7 +134,7 @@ int ltc2941_set_low_threshold_sync(uint16_t threshold) {
     err = ltc2941_set_low_threshold(threshold);
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
@@ -150,7 +150,7 @@ int ltc2941_get_charge_sync(void) {
     err = ltc2941_get_charge();
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return result.charge;
@@ -166,7 +166,7 @@ int ltc2941_shutdown_sync(void) {
     err = ltc2941_shutdown();
     if (err < 0) return err;
 
-    // Wait for the ADC callback.
+    // Wait for the callback.
     yield_for(&result.fired);
 
     return 0;
