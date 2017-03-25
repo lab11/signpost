@@ -9399,7 +9399,7 @@ Source: AVX .. aphvc.pdf</description>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Pat Pannuto"/>
-<attribute name="REV" value="B"/>
+<attribute name="REV" value="C"/>
 <attribute name="TITLE" value="Signpost Backplane"/>
 </attributes>
 <variantdefs>
@@ -10014,6 +10014,7 @@ Source: AVX .. aphvc.pdf</description>
 </parts>
 <sheets>
 <sheet>
+<description>Special Modules &amp; Misc Headers</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Special Modules</text>
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
@@ -10539,6 +10540,7 @@ Source: AVX .. aphvc.pdf</description>
 </nets>
 </sheet>
 <sheet>
+<description>Generic Modules</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Generic Modules</text>
 </plain>
@@ -11028,6 +11030,7 @@ Source: AVX .. aphvc.pdf</description>
 </nets>
 </sheet>
 <sheet>
+<description>GPIO Extenders</description>
 <plain>
 <wire x1="40.64" y1="162.56" x2="5.08" y2="162.56" width="0.4064" layer="98"/>
 <wire x1="5.08" y1="162.56" x2="5.08" y2="152.4" width="0.4064" layer="98"/>
@@ -11779,6 +11782,7 @@ of USB status</text>
 </nets>
 </sheet>
 <sheet>
+<description>I2C and Power Isolation</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Module Isolation</text>
 <text x="43.18" y="182.88" size="2.54" layer="98" align="center">I2C Isolation</text>
@@ -12673,6 +12677,7 @@ of USB status</text>
 </nets>
 </sheet>
 <sheet>
+<description>GPIO/PPS Isolation</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Module Isolation</text>
 <text x="38.1" y="182.88" size="2.54" layer="98" align="top-center">Buffer / Level
@@ -13470,6 +13475,7 @@ Backplane &lt;-- Module</text>
 </nets>
 </sheet>
 <sheet>
+<description>USB Hub</description>
 <plain>
 <text x="25.908" y="62.23" size="1.27" layer="98">Status
 LEDs</text>
@@ -14047,6 +14053,7 @@ that will likely shift to montoring !PWRON! for the last port</text>
 </nets>
 </sheet>
 <sheet>
+<description>USB Passives &amp; Data Line Iso</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">USB</text>
 <text x="111.76" y="25.4" size="2.54" layer="98">Transient voltage protection</text>
@@ -15092,6 +15099,7 @@ that will likely shift to montoring !PWRON! for the last port</text>
 </nets>
 </sheet>
 <sheet>
+<description>USB Power Iso</description>
 <plain>
 <text x="246.38" y="176.53" size="1.778" layer="98" align="top-right">Power switches &amp; Iso Power Override</text>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">USB</text>
@@ -15872,6 +15880,7 @@ that will likely shift to montoring !PWRON! for the last port</text>
 </nets>
 </sheet>
 <sheet>
+<description>Debugging Headers</description>
 <plain>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">Debugging</text>
 <text x="10.16" y="33.02" size="1.27" layer="98" rot="R90" align="bottom-center">n.b. Hub Port 5 is not used</text>
