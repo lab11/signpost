@@ -24,6 +24,10 @@ int max17205_set_callback (subscribe_cb callback, void* callback_args) {
     return subscribe(DRIVER_NUM_MAX17205, 0, callback, callback_args);
 }
 
+int max17205_read_status(void) {
+    return command(DRIVER_NUM_MAX17205, 0, 0);
+}
+
 int max17205_read_soc(void) {
     return command(DRIVER_NUM_MAX17205, 1, 0);
 }
@@ -33,7 +37,25 @@ int max17205_read_voltage_current(void) {
 }
 
 int max17205_configure_pack(void) {
-    return command(DRIVER_NUM_MAX17205, 0, 0);
+    return command(DRIVER_NUM_MAX17205, 3, 0);
+}
+
+int max17205_read_status_sync(uint16_t* status) {
+    int err;
+    result.fired = false;
+
+    err = max17205_set_callback(max17205_cb, (void*) &result);
+    if (err < 0) return err;
+
+    err = max17205_read_soc();
+    if (err < 0) return err;
+
+    // Wait for the callback.
+    yield_for(&result.fired);
+
+    *status = result.value0 & 0xFFFF;
+
+    return 0;
 }
 
 int max17205_read_soc_sync(uint16_t* percent, uint16_t* soc_mah, uint16_t* soc_mah_full) {

@@ -27,6 +27,7 @@ enum State {
     Idle,
 
     /// Simple read states
+    SetupReadStatus,
     ReadStatus,
     SetupReadSOC,
     ReadSOC,
@@ -41,7 +42,7 @@ enum State {
 }
 
 pub trait MAX17205Client {
-    //fn status(&self);
+    fn status(&self, status: u16);
     fn state_of_charge(&self, percent: u16, capacity: u16, full_capacity: u16);
     fn voltage_current(&self, voltage: u16, current: u16);
     fn done(&self);
@@ -51,7 +52,6 @@ pub struct MAX17205<'a> {
     i2c0: &'a i2c::I2CDevice,
     i2c1: &'a i2c::I2CDevice,
     state: Cell<State>,
-    //status: Cell<u8>,
     soc: Cell<u16>,
     soc_mah: Cell<u16>,
     //full_mah: Cell<u16>,
@@ -98,14 +98,16 @@ impl<'a> MAX17205<'a> {
         });
     }
 
-    //fn read_status(&self) {
-    //    self.buffer.take().map(|buffer| {
-    //        self.i2c.enable();
+    fn setup_read_status(&self) {
+        self.buffer.take().map(|buffer| {
+            self.i2c0.enable();
 
-    //       //Get status
+            buffer[0] = ((Registers::Status as u8) & 0xFF) as u8;
 
-    //    })
-    //}
+            self.i2c0.write(buffer, 2);
+            self.state.set(State::SetupReadStatus);
+        });
+    }
 
     fn setup_read_soc(&self) {
         self.buffer.take().map(|buffer| {
@@ -135,6 +137,22 @@ impl<'a> MAX17205<'a> {
 impl<'a> i2c::I2CClient for MAX17205<'a> {
     fn command_complete(&self, buffer: &'static mut [u8], _error: i2c::Error) {
         match self.state.get() {
+            State::SetupReadStatus => {
+                // Read status
+                self.i2c0.read(buffer, 2);
+                self.state.set(State::ReadStatus);
+            },
+            State::ReadStatus => {
+                let status = ((buffer[1] as u16) << 8) | (buffer[0] as u16);
+
+                self.client.get().map(|client| {
+                    client.status(status);
+                });
+
+                self.buffer.replace(buffer);
+                self.i2c0.disable();
+                self.state.set(State::Idle);
+            }
             State::SetupReadSOC => {
                 // Write of SOC memory address complete, now issue read
                 self.i2c0.read(buffer, 4);
@@ -242,6 +260,12 @@ impl<'a> MAX17205Driver<'a> {
 }
 
 impl<'a> MAX17205Client for MAX17205Driver<'a> {
+    fn status(&self, status: u16) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(0, status as usize, 0);
+        });
+    }
+
     fn state_of_charge(&self, percent: u16, capacity: u16, full_capacity: u16) {
         self.callback.get().map(|mut cb| {
             cb.schedule(1, percent as usize, (capacity as usize) << 16 | (full_capacity as usize));
@@ -277,9 +301,8 @@ impl<'a> Driver for MAX17205Driver<'a> {
 #[allow(unused_variables)]
     fn command(&self, command_num: usize, data: usize, _: AppId) -> ReturnCode {
         match command_num {
-            // configure
             0 => {
-                self.max17205.configure();
+                self.max17205.setup_read_status();
                 ReturnCode::SUCCESS
             }
 
@@ -292,6 +315,12 @@ impl<'a> Driver for MAX17205Driver<'a> {
             // get voltage & current
             2 => {
                 self.max17205.setup_read_curvolt();
+                ReturnCode::SUCCESS
+            }
+
+            // configure
+            3 => {
+                self.max17205.configure();
                 ReturnCode::SUCCESS
             }
 

@@ -13,6 +13,8 @@ extern "C" {
 //     void callback (int callback_type, int data, int data2, void* callback_args)
 //
 // callback_type is one of:
+//    0: Got the battery status. `data` is:
+//          status
 //    1: Got the state of charge. `data` is:
 //          percent charged in %/255
 //        and `data2` is the capacity and full capacity:
@@ -24,6 +26,10 @@ extern "C" {
 //          current in 156.25uA
 //     3: A write operation finished.
 int max17205_set_callback (subscribe_cb callback, void* callback_args);
+
+// Get the current status of the battery
+// Result is returned in callback.
+int max17205_read_status(void);
 
 // Get the current state of charge of the battery.
 // Result is returned in callback.
@@ -41,6 +47,7 @@ int max17205_configure_pack(void);
 //
 // Synchronous Versions
 //
+int max17205_read_status_sync(uint16_t* state);
 int max17205_read_soc_sync(uint16_t* percent, uint16_t* soc_mah, uint16_t* soc_mah_full);
 int max17205_read_voltage_current_sync(uint16_t* voltage, uint16_t* current);
 int max17205_configure_pack_sync(void);
