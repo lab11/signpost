@@ -10,7 +10,8 @@
 
 #include "controller.h"
 #include "i2c_selector.h"
-#include "signpost_energy.h"
+#include "signpost_energy_ltc2943.h"
+#include "max17205.h"
 
 static void print_data (int module, int energy) {
   int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
@@ -27,6 +28,8 @@ int main (void) {
   int energy;
 
   signpost_energy_init();
+
+  signpost_energy_reset();
 
   controller_init_module_switches();
   controller_all_modules_enable_power();
@@ -51,6 +54,13 @@ int main (void) {
     energy = signpost_energy_get_linux_energy();
     print_data(4, energy);
 
-    delay_ms(500);
+    uint16_t voltage = 0;
+    int16_t current = 0;
+    max17205_read_voltage_current_sync(&voltage,&current);
+    float v = max17205_get_voltage_mV(voltage);
+    float c = max17205_get_current_uA(current);
+    printf("Battery Voltage (mV): %d\tCurrent (uA) %d\n",(int)v,(int)c);
+
+    delay_ms(1000);
   }
 }

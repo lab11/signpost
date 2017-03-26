@@ -113,3 +113,11 @@ int max17205_configure_pack_sync(void) {
     return 0;
 }
 
+float max17205_get_voltage_mV(int vcount) {
+    return vcount*1.25;
+}
+
+float max17205_get_current_uA(int ccount) {
+    return ccount*108;
+}
+

@@ -473,11 +473,11 @@ pub unsafe fn reset_handler() {
     // monitor's memory
     let max17205_i2c0 = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x6C),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x36),
         32);
     let max17205_i2c1 = static_init!(
         capsules::virtual_i2c::I2CDevice,
-        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x16),
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x0B),
         32);
     let max17205 = static_init!(
         signpost_drivers::max17205::MAX17205<'static>,
