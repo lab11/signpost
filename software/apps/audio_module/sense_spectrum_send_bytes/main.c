@@ -45,6 +45,10 @@ bool still_sampling = false;
     return (uint16_t)(((20*log10(output/MAGIC_NUMBER)) + SPL - PREAMP_GAIN - MSGEQ7_GAIN)*10);
 }*/
 
+static void delay() {
+    for(volatile uint16_t i = 0; i < 2000; i++);
+}
+
 
 static void adc_callback (
         int callback_type __attribute__ ((unused)),
@@ -57,9 +61,9 @@ static void adc_callback (
 
     send_buf[1+i*2] = (uint8_t)((sample >> 8) & 0xff);
     send_buf[1+i*2+1] = (uint8_t)(sample & 0xff);
-    delay_ms(1);
+    delay();
     gpio_set(STROBE);
-    delay_ms(1);
+    delay();
     gpio_clear(STROBE);
 
     if(i == 6) {
@@ -77,15 +81,15 @@ static void adc_callback (
             led_off(RED_LED);
         }
 
-        delay_ms(1);
+        delay();
         gpio_set(STROBE);
         gpio_set(RESET);
-        delay_ms(1);
+        delay();
         gpio_clear(STROBE);
-        delay_ms(1);
+        delay();
         gpio_clear(RESET);
         gpio_set(STROBE);
-        delay_ms(1);
+        delay();
         gpio_clear(STROBE);
 
         i = 0;
@@ -169,8 +173,8 @@ int main (void) {
     adc_initialize();
 
     //start timer
-    bonus_timer_subscribe(timer_callback, NULL);
-    bonus_timer_start_repeating(1500);
+    timer_subscribe(timer_callback, NULL);
+    timer_start_repeating(1500);
 
 
     while (1) {
