@@ -68,6 +68,10 @@ int ltc2943_set_low_threshold(uint16_t threshold);
 // Will be returned in the callback.
 int ltc2943_get_charge(void);
 
+int ltc2943_get_voltage(void);
+
+int ltc2943_get_current(void);
+
 // Put the LTC2941 in a low power state.
 // Will trigger a `done` callback.
 int ltc2943_shutdown(void);
@@ -82,6 +86,8 @@ int ltc2943_reset_charge_sync(void);
 int ltc2943_set_high_threshold_sync(uint16_t threshold);
 int ltc2943_set_low_threshold_sync(uint16_t threshold);
 int ltc2943_get_charge_sync(void);
+int ltc2943_get_voltage_sync(void);
+int ltc2943_get_current_sync(void);
 int ltc2943_shutdown_sync(void);
 
 #ifdef __cplusplus
