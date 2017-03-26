@@ -421,12 +421,24 @@ pub unsafe fn reset_handler() {
         256/8);
     pca9544a_1_i2c.set_client(pca9544a_1);
 
+    let pca9544a_2_i2c = static_init!(
+        capsules::virtual_i2c::I2CDevice,
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x72),
+        32);
+    let pca9544a_2 = static_init!(
+        signpost_drivers::pca9544a::PCA9544A<'static>,
+        signpost_drivers::pca9544a::PCA9544A::new(pca9544a_2_i2c, &mut signpost_drivers::pca9544a::BUFFER),
+        256/8);
+    pca9544a_2_i2c.set_client(pca9544a_2);
+
+
     // Create an array of the I2C selectors so we can give them a single interface
     let i2c_selectors = static_init!(
-        [&'static signpost_drivers::pca9544a::PCA9544A; 2],
+        [&'static signpost_drivers::pca9544a::PCA9544A; 3],
         [pca9544a_0,
-         pca9544a_1],
-         64/8
+         pca9544a_1,
+         pca9544a_2],
+         96/8
     );
 
     // This provides the common interface to the I2C selectors
