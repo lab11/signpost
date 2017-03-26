@@ -49,6 +49,10 @@ static void delay() {
     for(volatile uint16_t i = 0; i < 2000; i++);
 }
 
+int bands_total[7] = {0};
+int bands_max[7] = {0};
+int bands_now[7] = {0};
+int bands_num[7] =  {0};
 
 static void adc_callback (
         int callback_type __attribute__ ((unused)),
@@ -59,8 +63,14 @@ static void adc_callback (
 
     static uint8_t i = 0;
 
-    send_buf[1+i*2] = (uint8_t)((sample >> 8) & 0xff);
-    send_buf[1+i*2+1] = (uint8_t)(sample & 0xff);
+    //send_buf[2+i*2] = (uint8_t)((sample >> 8) & 0xff);
+    //send_buf[2+i*2+1] = (uint8_t)(sample & 0xff);
+    bands_total[i] += sample;
+    if(sample > bands_max[i]) {
+        bands_max[i] = sample;
+    }
+    bands_now[i] = sample;
+    bands_num[i]++;
     delay();
     gpio_set(STROBE);
     delay();
@@ -68,13 +78,13 @@ static void adc_callback (
 
     if(i == 6) {
 
-        if((uint16_t)((send_buf[5] << 8) + send_buf[6]) > 400) {
+        if(bands_now[3] > 400) {
             //turn on green LED
             led_on(GREEN_LED);
         } else {
             led_off(GREEN_LED);
         }
-        if((uint16_t)((send_buf[7] << 8) + send_buf[8]) > 3500) {
+        if(bands_now[3] > 3500) {
             //turn on red LED
             led_on(RED_LED);
         } else {
@@ -114,8 +124,23 @@ static void timer_callback (
 
     int rc;
     printf("About to send data to radio\n");
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,15);
+
+    for(uint8_t j = 0; j < 7; j++) {
+        send_buf[2+j*2] = (uint8_t)((bands_max[j] >> 8) & 0xff);
+        send_buf[2+j*2+1] = (uint8_t)(bands_max[j] & 0xff);
+    }
+
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,16);
+    send_buf[1]++;
     printf("Sent data with return code %d\n\n\n",rc);
+
+    //reset all the variables for the next period
+    for(uint8_t j = 0; j < 7; j++) {
+        bands_total[j] = 0;
+        bands_now[j] = 0;
+        bands_max[j] = 0;
+        bands_num[j] = 0;
+    }
 
     if(rc >= 0 && still_sampling == true) {
         app_watchdog_tickle_kernel();
@@ -153,6 +178,7 @@ int main (void) {
     gpio_clear(9);
 
     send_buf[0] = 0x01;
+    send_buf[1] = 0x00;
 
 
     gpio_enable_output(STROBE);
@@ -174,7 +200,7 @@ int main (void) {
 
     //start timer
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(1500);
+    timer_start_repeating(10000);
 
 
     while (1) {

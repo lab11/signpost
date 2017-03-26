@@ -219,23 +219,19 @@ static void timer_callback (
         void* callback_args __attribute__ ((unused))
         ) {
 
-    //printf("TIMER motion: %d speed: %d (mm/s)\n", motion_since_last_transmit, max_speed_since_last_transmit);
-
-    // set i2c address and service id
-    send_buf[0] = 0x01;
-
     // set data
     // boolean, motion since last transmission
-    send_buf[1] = (motion_since_last_transmit & 0xFF);
+    send_buf[2] = (motion_since_last_transmit & 0xFF);
     // uint32_t, max speed in milli-meters per second detected since last transmission
-    send_buf[2] = ((max_speed_since_last_transmit >> 24) & 0xFF);
-    send_buf[3] = ((max_speed_since_last_transmit >> 16) & 0xFF);
-    send_buf[4] = ((max_speed_since_last_transmit >>  8) & 0xFF);
-    send_buf[5] = ((max_speed_since_last_transmit)       & 0xFF);
-    send_buf[6] = max_confidence;
+    send_buf[3] = ((max_speed_since_last_transmit >> 24) & 0xFF);
+    send_buf[4] = ((max_speed_since_last_transmit >> 16) & 0xFF);
+    send_buf[5] = ((max_speed_since_last_transmit >>  8) & 0xFF);
+    send_buf[6] = ((max_speed_since_last_transmit)       & 0xFF);
+    send_buf[7] = max_confidence;
 
     // write data
     int rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,7);
+    send_buf[1]++;
     if(rc >= 0) {
         if(got_sample == true) {
             app_watchdog_tickle_kernel();
@@ -269,12 +265,14 @@ int main (void) {
     } while (rc < 0);
     printf(" * Bus initialized\n");
 
+    send_buf[0] = 0x01;
+    send_buf[1] = 0x00;
 
     // setup timer
     // set to about two seconds, but a larger prime number so that hopefully we
     //  can avoid continually conflicting with other modules
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(2*1039);
+    timer_start_repeating(20000);
 
     // initialize adc
     adc_set_callback(adc_callback, NULL);

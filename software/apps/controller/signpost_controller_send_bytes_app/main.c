@@ -48,6 +48,9 @@ uint8_t watchdog_tickled[8] = {0};
 uint8_t watchdog_subscribed[8] = {0};
 uint8_t module_addresses[8] = {0};
 
+uint8_t gps_buf[20];
+uint8_t energy_buf[20];
+
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
         for (size_t i = 0; i < NUM_MOD_IO; i++) {
@@ -200,28 +203,27 @@ static void get_energy (void) {
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
   //send this data to the radio module
-  static uint8_t send_buf[17];
-  send_buf[0] = 0x01;
-  send_buf[1] = ((fram.energy_module0 & 0xFF00) >> 8 );
-  send_buf[2] = ((fram.energy_module0 & 0xFF));
-  send_buf[3] = ((fram.energy_module1 & 0xFF00) >> 8 );
-  send_buf[4] = ((fram.energy_module1 & 0xFF));
-  send_buf[5] = ((fram.energy_module2 & 0xFF00) >> 8 );
-  send_buf[6] = ((fram.energy_module2 & 0xFF));
-  send_buf[7] = ((fram.energy_controller & 0xFF00) >> 8 );
-  send_buf[8] = ((fram.energy_controller & 0xFF));
-  send_buf[9] = ((fram.energy_linux & 0xFF00) >> 8 );
-  send_buf[10] = ((fram.energy_linux & 0xFF));
-  send_buf[11] = ((fram.energy_module5 & 0xFF00) >> 8 );
-  send_buf[12] = ((fram.energy_module5 & 0xFF));
-  send_buf[13] = ((fram.energy_module6 & 0xFF00) >> 8 );
-  send_buf[14] = ((fram.energy_module6 & 0xFF));
-  send_buf[15] = ((fram.energy_module7 & 0xFF00) >> 8 );
-  send_buf[16] = ((fram.energy_module7 & 0xFF));
+  energy_buf[2] = ((fram.energy_module0 & 0xFF00) >> 8 );
+  energy_buf[3] = ((fram.energy_module0 & 0xFF));
+  energy_buf[4] = ((fram.energy_module1 & 0xFF00) >> 8 );
+  energy_buf[5] = ((fram.energy_module1 & 0xFF));
+  energy_buf[6] = ((fram.energy_module2 & 0xFF00) >> 8 );
+  energy_buf[7] = ((fram.energy_module2 & 0xFF));
+  energy_buf[8] = ((fram.energy_controller & 0xFF00) >> 8 );
+  energy_buf[9] = ((fram.energy_controller & 0xFF));
+  energy_buf[10] = ((fram.energy_linux & 0xFF00) >> 8 );
+  energy_buf[11] = ((fram.energy_linux & 0xFF));
+  energy_buf[12] = ((fram.energy_module5 & 0xFF00) >> 8 );
+  energy_buf[13] = ((fram.energy_module5 & 0xFF));
+  energy_buf[14] = ((fram.energy_module6 & 0xFF00) >> 8 );
+  energy_buf[15] = ((fram.energy_module6 & 0xFF));
+  energy_buf[16] = ((fram.energy_module7 & 0xFF00) >> 8 );
+  energy_buf[17] = ((fram.energy_module7 & 0xFF));
 
   int rc;
   if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,17);
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
+    energy_buf[1]++;
   } else {
     rc = 0;
   }
@@ -445,6 +447,7 @@ static void watchdog_api_callback(uint8_t source_address,
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
+    static uint8_t count = 0;
   /*printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
           gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
           gps_data->month, gps_data->day, gps_data->year
@@ -480,32 +483,31 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing) {
-    static uint8_t send_buf[17];
-    send_buf[0] = 0x02; //gps type
-    send_buf[1] = _current_day;
-    send_buf[2] = _current_month;
-    send_buf[3] = _current_year;
-    send_buf[4] = _current_hour;
-    send_buf[5] = _current_minute;
-    send_buf[6] = _current_second;
-    send_buf[7] = ((_current_latitude & 0xFF000000) >> 24);
-    send_buf[8] = ((_current_latitude & 0x00FF0000) >> 16);
-    send_buf[9] = ((_current_latitude & 0x0000FF00) >> 8);
-    send_buf[10] = ((_current_latitude & 0x000000FF));
-    send_buf[11] = ((_current_longitude & 0xFF000000) >> 24);
-    send_buf[12] = ((_current_longitude & 0x00FF0000) >> 16);
-    send_buf[13] = ((_current_longitude & 0x0000FF00) >> 8);
-    send_buf[14] = ((_current_longitude & 0x000000FF));
+  if(!currently_initializing && (count % 5) == 0) {
+    gps_buf[2] = _current_day;
+    gps_buf[3] = _current_month;
+    gps_buf[4] = _current_year;
+    gps_buf[5] = _current_hour;
+    gps_buf[6] = _current_minute;
+    gps_buf[7] = _current_second;
+    gps_buf[8] = ((_current_latitude & 0xFF000000) >> 24);
+    gps_buf[9] = ((_current_latitude & 0x00FF0000) >> 16);
+    gps_buf[10] = ((_current_latitude & 0x0000FF00) >> 8);
+    gps_buf[11] = ((_current_latitude & 0x000000FF));
+    gps_buf[12] = ((_current_longitude & 0xFF000000) >> 24);
+    gps_buf[13] = ((_current_longitude & 0x00FF0000) >> 16);
+    gps_buf[14] = ((_current_longitude & 0x0000FF00) >> 8);
+    gps_buf[15] = ((_current_longitude & 0x000000FF));
     if(_current_satellite_count >= 3) {
-      send_buf[15] = 0x02;
+      gps_buf[16] = 0x02;
     } else if (_current_satellite_count >=4) {
-      send_buf[15] = 0x03;
+      gps_buf[16] = 0x03;
     } else {
-      send_buf[15] = 0x01;
+      gps_buf[16] = 0x01;
     }
-    send_buf[16] = _current_satellite_count;
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,17);
+    gps_buf[17] = _current_satellite_count;
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,gps_buf,18);
+    gps_buf[1]++;
   } else {
       rc = 0;
   }
@@ -518,6 +520,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   watchdog_tickler(1);
 
+    count++;
   // start sampling again to catch the next second
   gps_sample(gps_callback);
 }
@@ -532,6 +535,11 @@ int main (void) {
   // ================
   //
   // Initializations that only touch the controller board
+  energy_buf[0] = 0x01;
+  energy_buf[1] = 0x00;
+
+  gps_buf[0] = 0x02;
+  gps_buf[1] = 0x00;
 
   // Configure FRAM
   // --------------

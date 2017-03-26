@@ -82,15 +82,15 @@ static void sample_sensors (void) {
   samples.err_code = err_code;
 
   //also put them in the send buffer
-  message_buf[1] = (uint8_t) ((temperature >> 8) & 0xFF);
-  message_buf[2] = (uint8_t) (temperature & 0xFF);
-  message_buf[3] = (uint8_t) ((humidity >> 8) & 0xFF);
-  message_buf[4] = (uint8_t) (humidity & 0xFF);
-  message_buf[5] = (uint8_t) ((light >> 8) & 0xFF);
-  message_buf[6] = (uint8_t) (light & 0xFF);
-  message_buf[7] = (uint8_t) ((pressure >> 16) & 0xFF);
-  message_buf[8] = (uint8_t) ((pressure >> 8) & 0xFF);
-  message_buf[9] = (uint8_t) (pressure & 0xFF);
+  message_buf[2] = (uint8_t) ((temperature >> 8) & 0xFF);
+  message_buf[3] = (uint8_t) (temperature & 0xFF);
+  message_buf[4] = (uint8_t) ((humidity >> 8) & 0xFF);
+  message_buf[5] = (uint8_t) (humidity & 0xFF);
+  message_buf[6] = (uint8_t) ((light >> 8) & 0xFF);
+  message_buf[7] = (uint8_t) (light & 0xFF);
+  message_buf[8] = (uint8_t) ((pressure >> 16) & 0xFF);
+  message_buf[9] = (uint8_t) ((pressure >> 8) & 0xFF);
+  message_buf[10] = (uint8_t) (pressure & 0xFF);
 
   // track success
   if (err_code != SUCCESS) {
@@ -104,8 +104,8 @@ static void post_to_radio (void) {
 
   //send radio the data
   printf("--Sendinging data--\n");
-  message_buf[0] = 0x01;
-  int response = signpost_networking_send_bytes(ModuleAddressRadio, message_buf, 10);
+  int response = signpost_networking_send_bytes(ModuleAddressRadio, message_buf, 11);
+  message_buf[1]++;
   if (response < SUCCESS) {
     printf("Error posting: %d\n", response);
     post_to_radio_successful = false;
@@ -138,6 +138,8 @@ int main (void) {
   } while (rc < 0);
   printf(" * Bus initialized\n");
 
+  message_buf[0] = 0x01;
+  message_buf[1] = 0x00;
   // set up watchdog
   // Resets after 30 seconds without a valid response
   app_watchdog_set_kernel_timeout(60000);
@@ -159,7 +161,7 @@ int main (void) {
     printf("\n");
 
     // sleep for a bit
-    delay_ms(3000);
+    delay_ms(10000);
   }
 }
 
