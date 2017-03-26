@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -10459,6 +10459,7 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="68.58" y1="76.2" x2="88.9" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="76.2" x2="88.9" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="78.74" x2="93.98" y2="78.74" width="0.1524" layer="91"/>
+<label x="71.12" y="76.454" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="VSOL-" class="0">
@@ -10468,6 +10469,7 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="68.58" y1="73.66" x2="91.44" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="73.66" x2="91.44" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="76.2" x2="93.98" y2="76.2" width="0.1524" layer="91"/>
+<label x="71.12" y="73.914" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -10567,6 +10569,7 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="J4" gate="G$1" pin="VBATT+"/>
 <pinref part="J9" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="71.12" x2="93.98" y2="71.12" width="0.1524" layer="91"/>
+<label x="71.12" y="71.374" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="VBATT-" class="0">
@@ -10574,6 +10577,7 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="J4" gate="G$1" pin="VBATT-"/>
 <pinref part="J9" gate="G$1" pin="2"/>
 <wire x1="68.58" y1="68.58" x2="93.98" y2="68.58" width="0.1524" layer="91"/>
+<label x="71.12" y="68.834" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="!WATCHDOG" class="0">
@@ -16789,7 +16793,6 @@ that will likely shift to montoring !PWRON! for the last port</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="106,6,93.98,86.36,HUB_!PWRON5,,,,,"/>
 <approved hash="113,1,124.356,92.606,FRAME1,,,,,"/>
 <approved hash="113,2,124.356,92.606,FRAME2,,,,,"/>
 <approved hash="113,7,124.356,92.606,FRAME3,,,,,"/>
