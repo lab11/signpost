@@ -47,7 +47,7 @@ int max17205_read_status_sync(uint16_t* status) {
     err = max17205_set_callback(max17205_cb, (void*) &result);
     if (err < 0) return err;
 
-    err = max17205_read_soc();
+    err = max17205_read_status();
     if (err < 0) return err;
 
     // Wait for the callback.
@@ -72,7 +72,7 @@ int max17205_read_soc_sync(uint16_t* percent, uint16_t* soc_mah, uint16_t* soc_m
     yield_for(&result.fired);
 
     *percent = result.value0 & 0xFFFF;
-    *soc_mah = result.value1 & 0xFFFF0000 >> 16;
+    *soc_mah = (result.value1 & 0xFFFF0000) >> 16;
     *soc_mah_full = result.value1 & 0xFFFF;
 
     return 0;
