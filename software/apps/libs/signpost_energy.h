@@ -5,7 +5,7 @@ extern "C" {
 #endif
 
 // qlsb = 0.0625mAh with 0.017 Ohm sense resistor
-#define POWER_MODULE_PRESCALER 32
+#define POWER_MODULE_PRESCALER 256
 // rsense = 0.017 Ohm
 #define POWER_MODULE_RSENSE 17
 

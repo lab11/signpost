@@ -10,6 +10,7 @@ extern crate signpost_hil;
 pub mod mcp23008;
 pub mod pca9544a;
 pub mod ltc2941;
+pub mod max17205;
 
 pub mod lps331ap;
 

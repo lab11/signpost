@@ -79,6 +79,7 @@ struct SignpostController {
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
     coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
+    battery_monitor: &'static signpost_drivers::max17205::MAX17205Driver<'static>,
     fram: &'static capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     app_watchdog: &'static signpost_drivers::app_watchdog::AppWatchdog<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
@@ -102,6 +103,7 @@ impl Platform for SignpostController {
             100 => f(Some(self.gpio_async)),
             101 => f(Some(self.coulomb_counter_i2c_selector)),
             102 => f(Some(self.coulomb_counter_generic)),
+            110 => f(Some(self.battery_monitor)),
             103 => f(Some(self.fram)),
             104 => f(Some(self.smbus_interrupt)),
             108 => f(Some(self.app_watchdog)),
@@ -463,6 +465,36 @@ pub unsafe fn reset_handler() {
     ltc2941.set_client(ltc2941_driver);
 
     //
+    // Battery Monitor
+    //
+
+    // Setup driver for battery monitor
+    // We use two i2c addresses in order to address the full range of the
+    // monitor's memory
+    let max17205_i2c0 = static_init!(
+        capsules::virtual_i2c::I2CDevice,
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x6C),
+        32);
+    let max17205_i2c1 = static_init!(
+        capsules::virtual_i2c::I2CDevice,
+        capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x16),
+        32);
+    let max17205 = static_init!(
+        signpost_drivers::max17205::MAX17205<'static>,
+        signpost_drivers::max17205::MAX17205::new(max17205_i2c0, max17205_i2c1, &mut signpost_drivers::max17205::BUFFER),
+        320/8);
+    max17205_i2c0.set_client(max17205);
+    max17205_i2c1.set_client(max17205);
+
+    // Create the object that provides an interface for the battery monitor
+    // for applications.
+    let max17205_driver = static_init!(
+        signpost_drivers::max17205::MAX17205Driver<'static>,
+        signpost_drivers::max17205::MAX17205Driver::new(max17205),
+        192/8);
+    max17205.set_client(max17205_driver);
+
+    //
     // SPI - Shared by FRAM and Storage Master
     //
     let mux_spi = static_init!(
@@ -592,6 +624,7 @@ pub unsafe fn reset_handler() {
         gpio_async: gpio_async,
         coulomb_counter_i2c_selector: i2c_selector,
         coulomb_counter_generic: ltc2941_driver,
+        battery_monitor: max17205_driver,
         smbus_interrupt: smbusint_driver,
         fram: fm25cl_driver,
         i2c_master_slave: i2c_modules,
