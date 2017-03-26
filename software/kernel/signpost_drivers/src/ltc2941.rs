@@ -18,6 +18,10 @@ enum Registers {
     ChargeThresholdHighLSB = 0x05,
     ChargeThresholdLowMSB = 0x06,
     ChargeThresholdLowLSB = 0x07,
+    VoltageMSB = 0x08,
+    VoltageLSB = 0x09,
+    CurrentMSB = 0x0E,
+    CurrentLSB = 0x0F,
 }
 
 #[derive(Clone,Copy,PartialEq)]
@@ -27,6 +31,10 @@ enum State {
     /// Simple read states
     ReadStatus,
     ReadCharge,
+    SetupVoltageRead,
+    ReadVoltage,
+    SetupCurrentRead,
+    ReadCurrent,
     ReadShutdown,
 
     Done,
@@ -54,6 +62,8 @@ pub trait LTC2941Client {
     fn interrupt(&self);
     fn status(&self, undervolt_lockout: bool, vbat_alert: bool, charge_alert_low: bool, charge_alert_high: bool, accumulated_charge_overflow: bool, chip: ChipModel);
     fn charge(&self, charge: u16);
+    fn voltage(&self, voltage: u16);
+    fn current(&self, current: u16);
     fn done(&self);
 }
 
@@ -166,6 +176,27 @@ impl<'a> LTC2941<'a> {
         });
     }
 
+    //get the voltage at sense+
+    fn get_voltage(&self) {
+        self.buffer.take().map(|buffer| {
+            self.i2c.enable();
+            
+            buffer[0] = Registers::VoltageMSB as u8;
+            self.i2c.write(buffer, 1);
+            self.state.set(State::SetupVoltageRead);
+        });
+    }
+    ///get the current sensed by the resistor
+    fn get_current(&self) {
+        self.buffer.take().map(|buffer| {
+            self.i2c.enable();
+            
+            buffer[0] = Registers::CurrentMSB as u8;
+            self.i2c.write(buffer, 1);
+            self.state.set(State::SetupCurrentRead);
+        });
+    }
+
     /// Put the LTC2941 in a low power state.
     fn shutdown(&self) {
         self.buffer.take().map(|buffer| {
@@ -209,6 +240,40 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 let charge = ((buffer[2] as u16) << 8) | (buffer[3] as u16);
                 self.client.get().map(|client| {
                     client.charge(charge);
+                });
+
+                self.buffer.replace(buffer);
+                self.i2c.disable();
+                self.state.set(State::Idle);
+            },
+            State::SetupVoltageRead => {
+                self.buffer.take().map(|buffer| {
+                    self.i2c.read(buffer, 2);
+                    self.state.set(State::ReadVoltage);
+                });
+            },
+            State::ReadVoltage => {
+                // TODO: Actually calculate charge!!!!!
+                let voltage = ((buffer[0] as u16) << 8) | (buffer[1] as u16);
+                self.client.get().map(|client| {
+                    client.voltage(voltage);
+                });
+
+                self.buffer.replace(buffer);
+                self.i2c.disable();
+                self.state.set(State::Idle);
+            },
+            State::SetupCurrentRead => {
+                self.buffer.take().map(|buffer| {
+                    self.i2c.read(buffer, 2);
+                    self.state.set(State::ReadCurrent);
+                });
+            },
+            State::ReadCurrent => {
+                // TODO: Actually calculate charge!!!!!
+                let current = ((buffer[0] as u16) << 8) | (buffer[1] as u16);
+                self.client.get().map(|client| {
+                    client.current(current);
                 });
 
                 self.buffer.replace(buffer);
@@ -281,6 +346,18 @@ impl<'a> LTC2941Client for LTC2941Driver<'a> {
     fn charge(&self, charge: u16) {
         self.callback.get().map(|mut cb| {
             cb.schedule(2, charge as usize, 0);
+        });
+    }
+
+    fn voltage(&self, voltage: u16) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(4, voltage as usize, 0);
+        });
+    }
+
+    fn current(&self, current: u16) {
+        self.callback.get().map(|mut cb| {
+            cb.schedule(5, current as usize, 0);
         });
     }
 
@@ -362,6 +439,16 @@ impl<'a> Driver for LTC2941Driver<'a> {
             // shutdown
             6 => {
                 self.ltc2941.shutdown();
+                ReturnCode::SUCCESS
+            }
+
+            7 => {
+                self.ltc2941.get_voltage();
+                ReturnCode::SUCCESS
+            }
+
+            8 => {
+                self.ltc2941.get_current();
                 ReturnCode::SUCCESS
             }
 
