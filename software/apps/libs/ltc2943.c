@@ -232,3 +232,11 @@ int ltc2943_shutdown_sync(void) {
 
     return 0;
 }
+
+int ltc2943_convert_to_voltage_mv (int v) {
+    return 23.6*(v/(float)0xFFFF)*1000;
+}
+
+int ltc2943_convert_to_current_ua (int c, int Rsense) {
+    return (60.0/Rsense)*((c-0x7FFF)/(float)0x7FFF)*1000;
+}

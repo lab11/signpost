@@ -92,6 +92,9 @@ int ltc2943_get_voltage_sync(void);
 int ltc2943_get_current_sync(void);
 int ltc2943_shutdown_sync(void);
 
+int ltc2943_convert_to_voltage_mv(int v);
+int ltc2943_convert_to_current_ua(int c, int Rsense);
+
 #ifdef __cplusplus
 }
 #endif
