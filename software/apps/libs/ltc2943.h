@@ -6,11 +6,13 @@
 extern "C" {
 #endif
 
+#ifndef LTC2941_H
 typedef enum {
 	InterruptPinDisabled = 0,
 	InterruptPinChargeCompleteMode = 1,
 	InterruptPinAlertMode = 2,
 } interrupt_pin_conf_e;
+#endif
 
 typedef enum {
 	ADCSleep = 0,
