@@ -53,13 +53,17 @@ int main (void) {
 
     energy = signpost_energy_get_linux_energy();
     print_data(4, energy);
+    
+    int b_voltage = signpost_energy_get_battery_voltage();
+    int b_current = signpost_energy_get_battery_current();
 
-    uint16_t voltage = 0;
-    int16_t current = 0;
-    max17205_read_voltage_current_sync(&voltage,&current);
-    float v = max17205_get_voltage_mV(voltage);
-    float c = max17205_get_current_uA(current);
-    printf("Battery Voltage (mV): %d\tCurrent (uA) %d\n",(int)v,(int)c);
+    int s_voltage = signpost_energy_get_solar_voltage();
+    int s_current = signpost_energy_get_solar_current();
+    
+    float v = max17205_get_voltage_mV(b_voltage);
+    float c = max17205_get_current_uA(b_current);
+    printf("Battery Voltage (mV): %d\tCurrent (uA): %d\n",(int)v,(int)c);
+    printf("Solar Voltage: %d\tCurrent: %d\n",s_voltage,s_current);
 
     delay_ms(1000);
   }

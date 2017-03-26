@@ -75,6 +75,14 @@ int ltc2943_get_charge(void) {
     return command(DRIVER_NUM_LTC2941, 5, 0);
 }
 
+int ltc2943_get_voltage(void) {
+    return command(DRIVER_NUM_LTC2941, 7, 0);
+}
+
+int ltc2943_get_current(void) {
+    return command(DRIVER_NUM_LTC2941, 8, 0);
+}
+
 int ltc2943_shutdown(void) {
     return command(DRIVER_NUM_LTC2941, 6, 0);
 }
@@ -169,6 +177,38 @@ int ltc2943_get_charge_sync(void) {
     if (err < 0) return err;
 
     err = ltc2943_get_charge();
+    if (err < 0) return err;
+
+    // Wait for the callback.
+    yield_for(&result.fired);
+
+    return result.charge;
+}
+
+int ltc2943_get_voltage_sync(void) {
+	int err;
+    result.fired = false;
+
+    err = ltc2943_set_callback(ltc2943_cb, (void*) &result);
+    if (err < 0) return err;
+
+    err = ltc2943_get_voltage();
+    if (err < 0) return err;
+
+    // Wait for the callback.
+    yield_for(&result.fired);
+
+    return result.charge;
+}
+
+int ltc2943_get_current_sync(void) {
+	int err;
+    result.fired = false;
+
+    err = ltc2943_set_callback(ltc2943_cb, (void*) &result);
+    if (err < 0) return err;
+
+    err = ltc2943_get_current();
     if (err < 0) return err;
 
     // Wait for the callback.
