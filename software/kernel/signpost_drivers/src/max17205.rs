@@ -115,7 +115,7 @@ impl<'a> MAX17205<'a> {
 
             // Get SOC mAh and percentage
             // Write reqcap address
-            buffer[0] = ((Registers::RepSOC as u8) & 0xFF) as u8;
+            buffer[0] = ((Registers::RepCap as u8) & 0xFF) as u8;
             self.i2c0.write(buffer, 1);
             self.state.set(State::SetupReadSOC);
         });
