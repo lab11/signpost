@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LTC2941_H
+#define LTC2941_H
+
 
 #define DRIVER_NUM_LTC2941 102
 
@@ -86,4 +88,6 @@ int ltc2941_shutdown_sync(void);
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
