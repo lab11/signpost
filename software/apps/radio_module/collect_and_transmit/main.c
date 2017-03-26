@@ -342,5 +342,5 @@ int main (void) {
 
     //setup timer
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(300);
+    timer_start_repeating(2000);
 }
