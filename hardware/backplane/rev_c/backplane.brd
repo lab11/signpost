@@ -1324,6 +1324,20 @@ Input</text>
 <vertex x="-1.1" y="-1.1"/>
 </polygon>
 </package>
+<package name="SOT23-5">
+<smd name="3" x="-0.95" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="2" x="0" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="1" x="0.95" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="4" x="-0.95" y="-1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="5" x="0.95" y="-1.2" dx="0.7" dy="1" layer="1"/>
+<wire x1="-1.5" y1="0.75" x2="1.5" y2="0.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="0.75" x2="1.5" y2="-0.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="-0.75" x2="-1.5" y2="-0.75" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-0.75" x2="-1.5" y2="0.75" width="0.127" layer="21"/>
+<text x="-2.032" y="0" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="2.032" y="0" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center">&gt;VALUE</text>
+<circle x="1.7" y="1" radius="0.1" width="0.127" layer="21"/>
+</package>
 </packages>
 </library>
 <library name="passives">
@@ -3796,6 +3810,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="H38" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="89.8652" y="3.81"/>
 <element name="H39" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="164.1348" y="3.81"/>
 <element name="H40" library="holes" package="#4-PAD" value="MOUNT-PAD-ROUND#4" x="250.19" y="3.81"/>
+<element name="U33" library="signpost" package="SOT23-5" value="NCP301LSN30" x="154.94" y="192.278" rot="R90">
+<attribute name="DIGIKEY" value="NCP301LSN30T1GOSCT-ND" x="154.94" y="192.278" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+</element>
+<element name="R84" library="passives" package="0603-RES" value="1.5kΩ" x="150.876" y="192.532" smashed="yes" rot="R270">
+<attribute name="NAME" x="150.876" y="191.262" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -5369,6 +5389,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="25.2476" y1="365.0234" x2="25.2476" y2="306.6034" width="0.508" layer="16"/>
 <wire x1="25.2476" y1="268.1478" x2="25.2476" y2="306.6034" width="0.508" layer="16"/>
 <wire x1="67.1576" y1="268.1478" x2="67.1576" y2="306.6034" width="0.508" layer="16"/>
+<contactref element="U33" pad="3"/>
+<via x="152.654" y="190.246" extent="1-16" drill="0.6"/>
+<wire x1="152.654" y1="190.754" x2="152.654" y2="190.246" width="0.254" layer="1"/>
+<wire x1="153.74" y1="191.328" x2="153.228" y2="191.328" width="0.254" layer="1"/>
+<wire x1="153.228" y1="191.328" x2="152.654" y2="190.754" width="0.254" layer="1"/>
+<wire x1="152.654" y1="190.246" x2="152.654" y2="194.564" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD6_D-_HUB-SW">
 <contactref element="D4" pad="6"/>
@@ -6350,7 +6376,8 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="144.018" y1="188.854" x2="144.018" y2="186.578" width="0.254" layer="1"/>
 <wire x1="144.018" y1="186.578" x2="144.414" y2="186.182" width="0.254" layer="1"/>
 <wire x1="147.574" y1="190.754" x2="145.918" y2="190.754" width="0.254" layer="1"/>
-<wire x1="148.336" y1="194.564" x2="148.336" y2="191.516" width="0.254" layer="1"/>
+<wire x1="148.336" y1="194.564" x2="148.336" y2="192.786" width="0.254" layer="1"/>
+<wire x1="148.336" y1="192.786" x2="148.336" y2="191.516" width="0.254" layer="1"/>
 <wire x1="147.574" y1="190.754" x2="148.336" y2="191.516" width="0.254" layer="1"/>
 <wire x1="145.918" y1="190.254" x2="147.074" y2="190.254" width="0.254" layer="1"/>
 <wire x1="147.074" y1="190.254" x2="147.574" y2="190.754" width="0.254" layer="1"/>
@@ -6363,6 +6390,14 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="119.646" y1="191.25" x2="119.634" y2="191.262" width="0.254" layer="1"/>
 <wire x1="120.378" y1="191.75" x2="119.654" y2="191.75" width="0.254" layer="1"/>
 <wire x1="119.654" y1="191.75" x2="119.634" y2="191.77" width="0.254" layer="1"/>
+<contactref element="U33" pad="2"/>
+<contactref element="R84" pad="2"/>
+<wire x1="152.146" y1="192.278" x2="153.74" y2="192.278" width="0.254" layer="1"/>
+<wire x1="150.876" y1="191.882" x2="151.75" y2="191.882" width="0.254" layer="1"/>
+<wire x1="151.75" y1="191.882" x2="152.146" y2="192.278" width="0.254" layer="1"/>
+<wire x1="148.336" y1="192.786" x2="149.098" y2="192.024" width="0.254" layer="1"/>
+<wire x1="149.098" y1="192.024" x2="150.734" y2="192.024" width="0.254" layer="1"/>
+<wire x1="150.734" y1="192.024" x2="150.876" y2="191.882" width="0.254" layer="1"/>
 </signal>
 <signal name="USB_SUSPEND_STATUS">
 <contactref element="U1" pad="1"/>
@@ -11330,6 +11365,17 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="144.272" y="194.056" extent="1-16" drill="0.6"/>
 <wire x1="143.518" y1="192.654" x2="143.518" y2="193.302" width="0.254" layer="1"/>
 <wire x1="143.518" y1="193.302" x2="144.272" y2="194.056" width="0.254" layer="1"/>
+<contactref element="U33" pad="1"/>
+<contactref element="R84" pad="1"/>
+<wire x1="144.272" y1="194.056" x2="146.812" y2="194.056" width="0.254" layer="1"/>
+<wire x1="146.812" y1="194.056" x2="147.32" y2="193.548" width="0.254" layer="1"/>
+<via x="147.32" y="193.548" extent="1-16" drill="0.6"/>
+<wire x1="147.32" y1="193.548" x2="149.352" y2="193.548" width="0.254" layer="16"/>
+<via x="149.352" y="193.548" extent="1-16" drill="0.6"/>
+<wire x1="150.876" y1="193.182" x2="149.718" y2="193.182" width="0.254" layer="1"/>
+<wire x1="149.718" y1="193.182" x2="149.352" y2="193.548" width="0.254" layer="1"/>
+<wire x1="153.74" y1="193.228" x2="150.922" y2="193.228" width="0.254" layer="1"/>
+<wire x1="150.922" y1="193.228" x2="150.876" y2="193.182" width="0.254" layer="1"/>
 </signal>
 <signal name="!WATCHDOG">
 <contactref element="J4" pad="16"/>

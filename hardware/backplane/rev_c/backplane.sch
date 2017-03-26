@@ -4058,6 +4058,20 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <vertex x="-1.1" y="-1.1"/>
 </polygon>
 </package>
+<package name="SOT23-5">
+<smd name="3" x="-0.95" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="2" x="0" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="1" x="0.95" y="1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="4" x="-0.95" y="-1.2" dx="0.7" dy="1" layer="1"/>
+<smd name="5" x="0.95" y="-1.2" dx="0.7" dy="1" layer="1"/>
+<wire x1="-1.5" y1="0.75" x2="1.5" y2="0.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="0.75" x2="1.5" y2="-0.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="-0.75" x2="-1.5" y2="-0.75" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-0.75" x2="-1.5" y2="0.75" width="0.127" layer="21"/>
+<text x="-2.032" y="0" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="2.032" y="0" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center">&gt;VALUE</text>
+<circle x="1.7" y="1" radius="0.1" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -4549,6 +4563,19 @@ S high: D = D2</text>
 <text x="-2.54" y="7.366" size="1.778" layer="95" ratio="12" align="top-left">&gt;NAME</text>
 <text x="-2.54" y="-5.588" size="1.778" layer="96" ratio="12" align="top-left">&gt;VALUE</text>
 </symbol>
+<symbol name="NCP300/1">
+<pin name="VCC" x="10.16" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="10.16" y="-5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="!RST" x="10.16" y="0" visible="pin" length="middle" rot="R180"/>
+<wire x1="-2.54" y1="7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="-2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-7.62" x2="-2.54" y2="7.62" width="0.254" layer="94"/>
+<text x="-2.54" y="10.16" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-2.54" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-1.27" y="-2.54" size="0.6096" layer="98">300: Push/Pull
+301: Open Coll</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="BACKPLANE_CONTROLLER_MODULE" prefix="J">
@@ -4976,6 +5003,26 @@ S high: D = D2</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="AP2401MP-13DICT-ND " constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="NCP301LSN30" prefix="U">
+<description>Power-on-reset. LSN30 -&gt; Fixed 3V (for 90% of 3.3V) detector. Fixed ~100us power_on -&gt; deassert reset. 301 -&gt; Open Collector !RST.</description>
+<gates>
+<gate name="G$1" symbol="NCP300/1" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT23-5">
+<connects>
+<connect gate="G$1" pin="!RST" pad="1"/>
+<connect gate="G$1" pin="GND" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="NCP301LSN30T1GOSCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -10011,6 +10058,10 @@ Source: AVX .. aphvc.pdf</description>
 <part name="H38" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
 <part name="H39" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
 <part name="H40" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="U33" library="signpost" deviceset="NCP301LSN30" device=""/>
+<part name="GND145" library="umich" deviceset="GND" device=""/>
+<part name="U$53" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="R84" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 </parts>
 <sheets>
 <sheet>
@@ -13477,52 +13528,52 @@ Backplane &lt;-- Module</text>
 <sheet>
 <description>USB Hub</description>
 <plain>
-<text x="25.908" y="62.23" size="1.27" layer="98">Status
+<text x="38.608" y="67.31" size="1.27" layer="98">Status
 LEDs</text>
-<wire x1="50.8" y1="68.58" x2="22.86" y2="68.58" width="0.1524" layer="98"/>
-<wire x1="22.86" y1="68.58" x2="22.86" y2="58.42" width="0.1524" layer="98"/>
-<wire x1="22.86" y1="58.42" x2="50.8" y2="58.42" width="0.1524" layer="98"/>
-<text x="76.2" y="162.56" size="1.27" layer="98">Downstream ports draw
+<wire x1="63.5" y1="73.66" x2="35.56" y2="73.66" width="0.1524" layer="98"/>
+<wire x1="35.56" y1="73.66" x2="35.56" y2="63.5" width="0.1524" layer="98"/>
+<wire x1="35.56" y1="63.5" x2="63.5" y2="63.5" width="0.1524" layer="98"/>
+<text x="88.9" y="167.64" size="1.27" layer="98">Downstream ports draw
 VBUS from the "cable"</text>
-<text x="35.56" y="114.3" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
+<text x="48.26" y="119.38" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
 !GANGED -&gt; high, OVR per port
 EECLK must be NC</text>
-<text x="45.72" y="103.378" size="1.27" layer="98">MODE -&gt; low
+<text x="58.42" y="108.458" size="1.27" layer="98">MODE -&gt; low
 6 mhz xtal</text>
 <text x="246.38" y="182.88" size="5.08" layer="98" align="top-right">USB</text>
 <text x="246.38" y="176.53" size="1.778" layer="98" align="top-right">Hub</text>
-<text x="66.04" y="45.72" size="2.032" layer="98" align="center-left">Tie unused ports to GND</text>
-<text x="66.04" y="43.18" size="0.762" layer="98">https://e2e.ti.com/support/interface/digital_interface/f/130/p/367935/1295211#1295211</text>
-<wire x1="63.5" y1="48.26" x2="63.5" y2="7.62" width="0.3048" layer="98"/>
-<wire x1="63.5" y1="7.62" x2="106.68" y2="7.62" width="0.3048" layer="98"/>
-<wire x1="106.68" y1="7.62" x2="106.68" y2="48.26" width="0.3048" layer="98"/>
-<wire x1="106.68" y1="48.26" x2="63.5" y2="48.26" width="0.3048" layer="98"/>
+<text x="78.74" y="50.8" size="2.032" layer="98" align="center-left">Tie unused ports to GND</text>
+<text x="78.74" y="48.26" size="0.762" layer="98">https://e2e.ti.com/support/interface/digital_interface/f/130/p/367935/1295211#1295211</text>
+<wire x1="76.2" y1="53.34" x2="76.2" y2="12.7" width="0.3048" layer="98"/>
+<wire x1="76.2" y1="12.7" x2="119.38" y2="12.7" width="0.3048" layer="98"/>
+<wire x1="119.38" y1="12.7" x2="119.38" y2="53.34" width="0.3048" layer="98"/>
+<wire x1="119.38" y1="53.34" x2="76.2" y2="53.34" width="0.3048" layer="98"/>
 <wire x1="190.5" y1="137.16" x2="152.4" y2="137.16" width="0.4064" layer="98"/>
 <wire x1="152.4" y1="137.16" x2="152.4" y2="127" width="0.4064" layer="98"/>
 <wire x1="152.4" y1="127" x2="190.5" y2="127" width="0.4064" layer="98"/>
 <text x="157.48" y="132.08" size="2.54" layer="98" align="center">Addr
 3</text>
-<wire x1="109.22" y1="119.38" x2="134.62" y2="119.38" width="0.254" layer="98" style="shortdash"/>
-<wire x1="134.62" y1="119.38" x2="134.62" y2="60.96" width="0.254" layer="98" style="shortdash"/>
-<wire x1="134.62" y1="60.96" x2="121.92" y2="48.26" width="0.254" layer="98" style="shortdash"/>
-<wire x1="121.92" y1="48.26" x2="109.22" y2="48.26" width="0.254" layer="98" style="shortdash"/>
-<wire x1="109.22" y1="48.26" x2="111.76" y2="50.8" width="0.254" layer="98"/>
-<wire x1="109.22" y1="48.26" x2="111.76" y2="45.72" width="0.254" layer="98"/>
-<text x="114.3" y="149.86" size="2.54" layer="98" align="center-left">--&gt; Mod1</text>
-<text x="114.3" y="142.24" size="2.54" layer="98" align="center-left">--&gt; Mod0</text>
-<text x="114.3" y="134.62" size="2.54" layer="98" align="center-left">--&gt; Mod2</text>
-<text x="114.3" y="127" size="2.54" layer="98" align="center-left">--&gt; Mod6</text>
-<text x="114.3" y="111.76" size="2.54" layer="98" align="center-left">--&gt; Mod7</text>
-<text x="114.3" y="104.14" size="2.54" layer="98" align="center-left">--&gt; Mod5</text>
-<text x="22.86" y="45.72" size="1.27" layer="98" align="top-left">PORTPWR: Any port powered.
+<wire x1="121.92" y1="124.46" x2="147.32" y2="124.46" width="0.254" layer="98" style="shortdash"/>
+<wire x1="147.32" y1="124.46" x2="147.32" y2="66.04" width="0.254" layer="98" style="shortdash"/>
+<wire x1="147.32" y1="66.04" x2="134.62" y2="53.34" width="0.254" layer="98" style="shortdash"/>
+<wire x1="134.62" y1="53.34" x2="121.92" y2="53.34" width="0.254" layer="98" style="shortdash"/>
+<wire x1="121.92" y1="53.34" x2="124.46" y2="55.88" width="0.254" layer="98"/>
+<wire x1="121.92" y1="53.34" x2="124.46" y2="50.8" width="0.254" layer="98"/>
+<text x="127" y="154.94" size="2.54" layer="98" align="center-left">--&gt; Mod1</text>
+<text x="127" y="147.32" size="2.54" layer="98" align="center-left">--&gt; Mod0</text>
+<text x="127" y="139.7" size="2.54" layer="98" align="center-left">--&gt; Mod2</text>
+<text x="127" y="132.08" size="2.54" layer="98" align="center-left">--&gt; Mod6</text>
+<text x="127" y="116.84" size="2.54" layer="98" align="center-left">--&gt; Mod7</text>
+<text x="127" y="109.22" size="2.54" layer="98" align="center-left">--&gt; Mod5</text>
+<text x="35.56" y="50.8" size="1.27" layer="98" align="top-left">PORTPWR: Any port powered.
 When any port is powered on,
 PORTPWR is high. When all
 ports are off, PORTPWR is low.</text>
-<text x="22.86" y="35.56" size="1.27" layer="98" align="top-left">PORTDIS: LED indicator control
+<text x="35.56" y="40.64" size="1.27" layer="98" align="top-left">PORTDIS: LED indicator control
 When no port is disabled, PORTDIS
 is high. When any port is disabled,
 PORTDIS is low.</text>
-<text x="22.86" y="55.88" size="1.27" layer="98" align="top-left">HUBCFG: Hub configured.
+<text x="35.56" y="60.96" size="1.27" layer="98" align="top-left">HUBCFG: Hub configured.
 When the hub is configured,
 HUBCFG is high. When the hub
 is not configured, HUBCFG is low.</text>
@@ -13537,34 +13588,35 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <instances>
 <instance part="FRAME8" gate="G$1" x="0" y="0"/>
 <instance part="FRAME8" gate="G$2" x="147.32" y="0"/>
-<instance part="U1" gate="G$1" x="76.2" y="106.68"/>
-<instance part="R25" gate="G$1" x="53.34" y="149.86" rot="R90"/>
-<instance part="GND15" gate="1" x="55.88" y="71.12"/>
-<instance part="Y1" gate="G$1" x="45.72" y="91.44" rot="R90"/>
-<instance part="C1" gate="G$1" x="35.56" y="96.52" rot="R90">
-<attribute name="DIGIKEY" x="35.56" y="96.52" size="1.778" layer="96" rot="R90" display="off"/>
+<instance part="U1" gate="G$1" x="88.9" y="111.76"/>
+<instance part="R25" gate="G$1" x="66.04" y="154.94" rot="R90"/>
+<instance part="GND15" gate="1" x="68.58" y="76.2"/>
+<instance part="Y1" gate="G$1" x="58.42" y="96.52" rot="R90"/>
+<instance part="C1" gate="G$1" x="48.26" y="101.6" rot="R90">
+<attribute name="DIGIKEY" x="48.26" y="101.6" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C2" gate="G$1" x="35.56" y="86.36" rot="R90">
-<attribute name="DIGIKEY" x="35.56" y="86.36" size="1.778" layer="96" rot="R90" display="off"/>
+<instance part="C2" gate="G$1" x="48.26" y="91.44" rot="R90">
+<attribute name="DIGIKEY" x="48.26" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="GND16" gate="1" x="30.48" y="81.28"/>
-<instance part="R26" gate="G$1" x="53.34" y="86.36"/>
-<instance part="U$50" gate="G$1" x="53.34" y="132.08"/>
-<instance part="GND109" gate="1" x="25.4" y="111.76"/>
-<instance part="C94" gate="G$1" x="30.48" y="121.92" rot="R180"/>
-<instance part="C63" gate="G$1" x="22.86" y="121.92" smashed="yes" rot="R180">
-<attribute name="NAME" x="24.13" y="123.19" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
-<attribute name="VALUE" x="22.352" y="118.618" size="1.778" layer="96" ratio="12" rot="R90" align="bottom-center"/>
-</instance>
-<instance part="R64" gate="G$1" x="88.9" y="38.1"/>
-<instance part="R65" gate="G$1" x="88.9" y="30.48"/>
-<instance part="GND142" gate="1" x="93.98" y="25.4"/>
-<instance part="R51" gate="G$1" x="88.9" y="12.7"/>
-<instance part="U$51" gate="G$1" x="93.98" y="15.24"/>
+<instance part="GND16" gate="1" x="43.18" y="86.36"/>
+<instance part="R26" gate="G$1" x="66.04" y="91.44"/>
+<instance part="U$50" gate="G$1" x="27.94" y="139.7"/>
+<instance part="GND109" gate="1" x="30.48" y="116.84"/>
+<instance part="C94" gate="G$1" x="35.56" y="127" rot="R180"/>
+<instance part="C63" gate="G$1" x="27.94" y="127" rot="R180"/>
+<instance part="R64" gate="G$1" x="101.6" y="43.18"/>
+<instance part="R65" gate="G$1" x="101.6" y="35.56"/>
+<instance part="GND142" gate="1" x="106.68" y="30.48"/>
+<instance part="R51" gate="G$1" x="101.6" y="17.78"/>
+<instance part="U$51" gate="G$1" x="106.68" y="20.32"/>
 <instance part="U32" gate="G$1" x="198.12" y="134.62"/>
 <instance part="GND143" gate="1" x="213.36" y="116.84"/>
 <instance part="C101" gate="G$1" x="175.26" y="147.32" rot="R270"/>
 <instance part="GND144" gate="1" x="165.1" y="142.24"/>
+<instance part="U33" gate="G$1" x="5.08" y="106.68"/>
+<instance part="GND145" gate="1" x="22.86" y="93.98"/>
+<instance part="U$53" gate="G$1" x="17.78" y="124.46"/>
+<instance part="R84" gate="G$1" x="22.86" y="116.84" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -13572,52 +13624,52 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="GND" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!BUSPWR"/>
-<wire x1="93.98" y1="154.94" x2="96.52" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="154.94" x2="96.52" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="167.64" x2="91.44" y2="167.64" width="0.1524" layer="91"/>
-<label x="91.44" y="167.64" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="106.68" y1="160.02" x2="109.22" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="160.02" x2="109.22" y2="172.72" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="172.72" x2="104.14" y2="172.72" width="0.1524" layer="91"/>
+<label x="104.14" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="GND"/>
 <pinref part="GND15" gate="1" pin="GND"/>
-<wire x1="58.42" y1="76.2" x2="55.88" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="76.2" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="81.28" x2="68.58" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="81.28" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="MODE"/>
-<wire x1="58.42" y1="101.6" x2="55.88" y2="101.6" width="0.1524" layer="91"/>
-<label x="55.88" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="71.12" y1="106.68" x2="68.58" y2="106.68" width="0.1524" layer="91"/>
+<label x="68.58" y="106.68" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
-<wire x1="30.48" y1="83.82" x2="30.48" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="88.9" x2="43.18" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="30.48" y1="86.36" x2="33.02" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="91.44" x2="45.72" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="33.02" y1="96.52" x2="30.48" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="96.52" x2="30.48" y2="86.36" width="0.1524" layer="91"/>
-<junction x="30.48" y="86.36"/>
+<wire x1="45.72" y1="101.6" x2="43.18" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="101.6" x2="43.18" y2="91.44" width="0.1524" layer="91"/>
+<junction x="43.18" y="91.44"/>
 </segment>
 <segment>
 <pinref part="GND109" gate="1" pin="GND"/>
 <pinref part="C94" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="114.3" x2="25.4" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="116.84" x2="30.48" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="116.84" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="119.38" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="121.92" x2="35.56" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="C63" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="116.84" x2="22.86" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="116.84" x2="22.86" y2="119.38" width="0.1524" layer="91"/>
-<junction x="25.4" y="116.84"/>
+<wire x1="30.48" y1="121.92" x2="27.94" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="121.92" x2="27.94" y2="124.46" width="0.1524" layer="91"/>
+<junction x="30.48" y="121.92"/>
 </segment>
 <segment>
 <pinref part="R65" gate="G$1" pin="2"/>
 <pinref part="GND142" gate="1" pin="GND"/>
-<wire x1="91.44" y1="30.48" x2="93.98" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="30.48" x2="93.98" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="35.56" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="35.56" x2="106.68" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="R64" gate="G$1" pin="2"/>
-<wire x1="91.44" y1="38.1" x2="93.98" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="38.1" x2="93.98" y2="30.48" width="0.1524" layer="91"/>
-<junction x="93.98" y="30.48"/>
+<wire x1="104.14" y1="43.18" x2="106.68" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="43.18" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
+<junction x="106.68" y="35.56"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="A2"/>
@@ -13636,63 +13688,68 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <wire x1="170.18" y1="147.32" x2="165.1" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="147.32" x2="165.1" y2="144.78" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U33" gate="G$1" pin="GND"/>
+<pinref part="GND145" gate="1" pin="GND"/>
+<wire x1="15.24" y1="101.6" x2="22.86" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="101.6" x2="22.86" y2="96.52" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="CONT_USB+" class="0">
 <segment>
-<wire x1="53.34" y1="142.24" x2="45.72" y2="142.24" width="0.1524" layer="91"/>
-<label x="45.72" y="142.24" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="66.04" y1="147.32" x2="58.42" y2="147.32" width="0.1524" layer="91"/>
+<label x="58.42" y="147.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U1" gate="G$1" pin="DP0"/>
 <pinref part="R25" gate="G$1" pin="1"/>
-<wire x1="58.42" y1="142.24" x2="53.34" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="142.24" x2="53.34" y2="144.78" width="0.1524" layer="91"/>
-<junction x="53.34" y="142.24"/>
+<wire x1="71.12" y1="147.32" x2="66.04" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="147.32" x2="66.04" y2="149.86" width="0.1524" layer="91"/>
+<junction x="66.04" y="147.32"/>
 </segment>
 </net>
 <net name="CONT_USB-" class="0">
 <segment>
-<label x="45.72" y="139.7" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="58.42" y="144.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U1" gate="G$1" pin="DM0"/>
-<wire x1="45.72" y1="139.7" x2="58.42" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="144.78" x2="71.12" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP0PUR"/>
 <pinref part="R25" gate="G$1" pin="2"/>
-<wire x1="58.42" y1="154.94" x2="53.34" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="154.94" x2="53.34" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="160.02" x2="66.04" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="160.02" x2="66.04" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!EXTMEM"/>
-<wire x1="58.42" y1="124.46" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
-<label x="55.88" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="71.12" y1="129.54" x2="68.58" y2="129.54" width="0.1524" layer="91"/>
+<label x="68.58" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="EEDATA/!GANGED"/>
-<wire x1="58.42" y1="121.92" x2="55.88" y2="121.92" width="0.1524" layer="91"/>
-<label x="55.88" y="121.92" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="71.12" y1="127" x2="68.58" y2="127" width="0.1524" layer="91"/>
+<label x="68.58" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U$50" gate="G$1" pin="VCC_BACKPLANE"/>
 <pinref part="C94" gate="G$1" pin="2"/>
-<wire x1="53.34" y1="132.08" x2="53.34" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="139.7" x2="27.94" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="VCC"/>
-<wire x1="53.34" y1="129.54" x2="30.48" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="129.54" x2="30.48" y2="127" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="129.54" x2="53.34" y2="129.54" width="0.1524" layer="91"/>
-<junction x="53.34" y="129.54"/>
-<wire x1="30.48" y1="129.54" x2="22.86" y2="129.54" width="0.1524" layer="91"/>
-<junction x="30.48" y="129.54"/>
+<wire x1="35.56" y1="134.62" x2="35.56" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="134.62" x2="27.94" y2="134.62" width="0.1524" layer="91"/>
+<junction x="27.94" y="134.62"/>
+<wire x1="35.56" y1="134.62" x2="27.94" y2="134.62" width="0.1524" layer="91"/>
+<junction x="35.56" y="134.62"/>
 <pinref part="C63" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="129.54" x2="22.86" y2="127" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="134.62" x2="27.94" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R51" gate="G$1" pin="2"/>
 <pinref part="U$51" gate="G$1" pin="VCC_BACKPLANE"/>
-<wire x1="91.44" y1="12.7" x2="93.98" y2="12.7" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="12.7" x2="93.98" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="17.78" x2="106.68" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="17.78" x2="106.68" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="A0"/>
@@ -13715,6 +13772,17 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <wire x1="185.42" y1="152.4" x2="182.88" y2="152.4" width="0.1524" layer="91"/>
 <label x="182.88" y="152.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U33" gate="G$1" pin="VCC"/>
+<pinref part="U$53" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="15.24" y1="111.76" x2="17.78" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="111.76" x2="17.78" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="121.92" x2="17.78" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="R84" gate="G$1" pin="2"/>
+<wire x1="17.78" y1="121.92" x2="22.86" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="121.92" x2="22.86" y2="119.38" width="0.1524" layer="91"/>
+<junction x="17.78" y="121.92"/>
+</segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -13726,136 +13794,136 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="USB_SUSPEND_STATUS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="SUSPND"/>
-<wire x1="58.42" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
-<label x="55.88" y="109.22" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="71.12" y1="114.3" x2="68.58" y2="114.3" width="0.1524" layer="91"/>
+<label x="68.58" y="114.3" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
 <pinref part="Y1" gate="G$1" pin="1"/>
-<wire x1="40.64" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="91.44" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="R26" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
-<junction x="45.72" y="86.36"/>
+<wire x1="60.96" y1="91.44" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
+<junction x="58.42" y="91.44"/>
 </segment>
 </net>
 <net name="N$73" class="0">
 <segment>
 <pinref part="C1" gate="G$1" pin="2"/>
 <pinref part="Y1" gate="G$1" pin="2"/>
-<wire x1="40.64" y1="96.52" x2="45.72" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="101.6" x2="58.42" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="XTAL1"/>
-<wire x1="58.42" y1="96.52" x2="45.72" y2="96.52" width="0.1524" layer="91"/>
-<junction x="45.72" y="96.52"/>
+<wire x1="71.12" y1="101.6" x2="58.42" y2="101.6" width="0.1524" layer="91"/>
+<junction x="58.42" y="101.6"/>
 </segment>
 </net>
 <net name="N$74" class="0">
 <segment>
 <pinref part="R26" gate="G$1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="XTAL2"/>
-<wire x1="55.88" y1="86.36" x2="58.42" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="91.44" x2="71.12" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="HUB_DP1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP1"/>
-<wire x1="96.52" y1="149.86" x2="93.98" y2="149.86" width="0.1524" layer="91"/>
-<label x="96.52" y="149.86" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="154.94" x2="106.68" y2="154.94" width="0.1524" layer="91"/>
+<label x="109.22" y="154.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM1"/>
-<wire x1="96.52" y1="147.32" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
-<label x="96.52" y="147.32" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="152.4" x2="106.68" y2="152.4" width="0.1524" layer="91"/>
+<label x="109.22" y="152.4" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP2" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP2"/>
-<wire x1="96.52" y1="142.24" x2="93.98" y2="142.24" width="0.1524" layer="91"/>
-<label x="96.52" y="142.24" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="147.32" x2="106.68" y2="147.32" width="0.1524" layer="91"/>
+<label x="109.22" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM2" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM2"/>
-<wire x1="96.52" y1="139.7" x2="93.98" y2="139.7" width="0.1524" layer="91"/>
-<label x="96.52" y="139.7" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="144.78" x2="106.68" y2="144.78" width="0.1524" layer="91"/>
+<label x="109.22" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP3" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP3"/>
-<wire x1="96.52" y1="134.62" x2="93.98" y2="134.62" width="0.1524" layer="91"/>
-<label x="96.52" y="134.62" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="139.7" x2="106.68" y2="139.7" width="0.1524" layer="91"/>
+<label x="109.22" y="139.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM3" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM3"/>
-<wire x1="96.52" y1="132.08" x2="93.98" y2="132.08" width="0.1524" layer="91"/>
-<label x="96.52" y="132.08" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="137.16" x2="106.68" y2="137.16" width="0.1524" layer="91"/>
+<label x="109.22" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP4" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP4"/>
-<wire x1="96.52" y1="127" x2="93.98" y2="127" width="0.1524" layer="91"/>
-<label x="96.52" y="127" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="132.08" x2="106.68" y2="132.08" width="0.1524" layer="91"/>
+<label x="109.22" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM4" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM4"/>
-<wire x1="96.52" y1="124.46" x2="93.98" y2="124.46" width="0.1524" layer="91"/>
-<label x="96.52" y="124.46" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="129.54" x2="106.68" y2="129.54" width="0.1524" layer="91"/>
+<label x="109.22" y="129.54" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP5" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP5"/>
-<wire x1="96.52" y1="119.38" x2="93.98" y2="119.38" width="0.1524" layer="91"/>
-<label x="96.52" y="119.38" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="124.46" x2="106.68" y2="124.46" width="0.1524" layer="91"/>
+<label x="109.22" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R64" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="38.1" x2="83.82" y2="38.1" width="0.1524" layer="91"/>
-<label x="81.28" y="38.1" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="93.98" y1="43.18" x2="96.52" y2="43.18" width="0.1524" layer="91"/>
+<label x="93.98" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM5" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM5"/>
-<wire x1="96.52" y1="116.84" x2="93.98" y2="116.84" width="0.1524" layer="91"/>
-<label x="96.52" y="116.84" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="121.92" x2="106.68" y2="121.92" width="0.1524" layer="91"/>
+<label x="109.22" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R65" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="30.48" x2="83.82" y2="30.48" width="0.1524" layer="91"/>
-<label x="81.28" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="93.98" y1="35.56" x2="96.52" y2="35.56" width="0.1524" layer="91"/>
+<label x="93.98" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP6" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP6"/>
-<wire x1="96.52" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
-<label x="96.52" y="111.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="116.84" x2="106.68" y2="116.84" width="0.1524" layer="91"/>
+<label x="109.22" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM6" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM6"/>
-<wire x1="96.52" y1="109.22" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
-<label x="96.52" y="109.22" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="114.3" x2="106.68" y2="114.3" width="0.1524" layer="91"/>
+<label x="109.22" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON1"/>
-<wire x1="93.98" y1="96.52" x2="96.52" y2="96.52" width="0.1524" layer="91"/>
-<label x="96.52" y="96.52" size="1.27" layer="95" xref="yes"/>
+<wire x1="106.68" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
+<label x="109.22" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P1"/>
@@ -13866,8 +13934,8 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!PWRON2" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON2"/>
-<wire x1="96.52" y1="93.98" x2="93.98" y2="93.98" width="0.1524" layer="91"/>
-<label x="96.52" y="93.98" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="99.06" x2="106.68" y2="99.06" width="0.1524" layer="91"/>
+<label x="109.22" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P2"/>
@@ -13878,8 +13946,8 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!PWRON3" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON3"/>
-<wire x1="96.52" y1="91.44" x2="93.98" y2="91.44" width="0.1524" layer="91"/>
-<label x="96.52" y="91.44" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="96.52" x2="106.68" y2="96.52" width="0.1524" layer="91"/>
+<label x="109.22" y="96.52" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P3"/>
@@ -13890,8 +13958,8 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!PWRON4" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON4"/>
-<wire x1="96.52" y1="88.9" x2="93.98" y2="88.9" width="0.1524" layer="91"/>
-<label x="96.52" y="88.9" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="93.98" x2="106.68" y2="93.98" width="0.1524" layer="91"/>
+<label x="109.22" y="93.98" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P4"/>
@@ -13902,15 +13970,15 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!PWRON5" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON5"/>
-<wire x1="96.52" y1="86.36" x2="93.98" y2="86.36" width="0.1524" layer="91"/>
-<label x="96.52" y="86.36" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="91.44" x2="106.68" y2="91.44" width="0.1524" layer="91"/>
+<label x="109.22" y="91.44" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON6" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON6"/>
-<wire x1="96.52" y1="83.82" x2="93.98" y2="83.82" width="0.1524" layer="91"/>
-<label x="96.52" y="83.82" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="88.9" x2="106.68" y2="88.9" width="0.1524" layer="91"/>
+<label x="109.22" y="88.9" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P6"/>
@@ -13921,69 +13989,69 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!OVRCUR1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR1"/>
-<wire x1="96.52" y1="76.2" x2="93.98" y2="76.2" width="0.1524" layer="91"/>
-<label x="96.52" y="76.2" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="81.28" x2="106.68" y2="81.28" width="0.1524" layer="91"/>
+<label x="109.22" y="81.28" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR2" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR2"/>
-<wire x1="96.52" y1="73.66" x2="93.98" y2="73.66" width="0.1524" layer="91"/>
-<label x="96.52" y="73.66" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="78.74" x2="106.68" y2="78.74" width="0.1524" layer="91"/>
+<label x="109.22" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR3" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR3"/>
-<wire x1="96.52" y1="71.12" x2="93.98" y2="71.12" width="0.1524" layer="91"/>
-<label x="96.52" y="71.12" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="76.2" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
+<label x="109.22" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR4" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR4"/>
-<wire x1="96.52" y1="68.58" x2="93.98" y2="68.58" width="0.1524" layer="91"/>
-<label x="96.52" y="68.58" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="73.66" x2="106.68" y2="73.66" width="0.1524" layer="91"/>
+<label x="109.22" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR5" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR5"/>
-<wire x1="96.52" y1="66.04" x2="93.98" y2="66.04" width="0.1524" layer="91"/>
-<label x="96.52" y="66.04" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="71.12" x2="106.68" y2="71.12" width="0.1524" layer="91"/>
+<label x="109.22" y="71.12" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R51" gate="G$1" pin="1"/>
-<wire x1="83.82" y1="12.7" x2="81.28" y2="12.7" width="0.1524" layer="91"/>
-<label x="81.28" y="12.7" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="96.52" y1="17.78" x2="93.98" y2="17.78" width="0.1524" layer="91"/>
+<label x="93.98" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR6" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR6"/>
-<wire x1="96.52" y1="63.5" x2="93.98" y2="63.5" width="0.1524" layer="91"/>
-<label x="96.52" y="63.5" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="68.58" x2="106.68" y2="68.58" width="0.1524" layer="91"/>
+<label x="109.22" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DP7" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DP7"/>
-<wire x1="96.52" y1="104.14" x2="93.98" y2="104.14" width="0.1524" layer="91"/>
-<label x="96.52" y="104.14" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="109.22" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
+<label x="109.22" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_DM7" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="DM7"/>
-<wire x1="96.52" y1="101.6" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
-<label x="96.52" y="101.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="106.68" x2="106.68" y2="106.68" width="0.1524" layer="91"/>
+<label x="109.22" y="106.68" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_!PWRON7" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!PWRON7"/>
-<wire x1="96.52" y1="81.28" x2="93.98" y2="81.28" width="0.1524" layer="91"/>
-<label x="96.52" y="81.28" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="86.36" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
+<label x="109.22" y="86.36" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P7"/>
@@ -13994,15 +14062,15 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_!OVRCUR7" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!OVRCUR7"/>
-<wire x1="96.52" y1="60.96" x2="93.98" y2="60.96" width="0.1524" layer="91"/>
-<label x="96.52" y="60.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="66.04" x2="106.68" y2="66.04" width="0.1524" layer="91"/>
+<label x="109.22" y="66.04" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_CFG" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="HUBCFG"/>
-<wire x1="55.88" y1="66.04" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
-<label x="55.88" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="68.58" y1="71.12" x2="71.12" y2="71.12" width="0.1524" layer="91"/>
+<label x="68.58" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P5"/>
@@ -14013,15 +14081,15 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="HUB_PORTPWR" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PORTPWR"/>
-<wire x1="55.88" y1="63.5" x2="58.42" y2="63.5" width="0.1524" layer="91"/>
-<label x="55.88" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="68.58" y1="68.58" x2="71.12" y2="68.58" width="0.1524" layer="91"/>
+<label x="68.58" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="HUB_PORTDIS" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PORTDIS"/>
-<wire x1="55.88" y1="60.96" x2="58.42" y2="60.96" width="0.1524" layer="91"/>
-<label x="55.88" y="60.96" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="68.58" y1="66.04" x2="71.12" y2="66.04" width="0.1524" layer="91"/>
+<label x="68.58" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SMBDATA" class="0">
@@ -14041,8 +14109,15 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <net name="!USB_RESET" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="!RESET"/>
-<wire x1="55.88" y1="111.76" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
-<label x="55.88" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="71.12" y1="116.84" x2="38.1" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="116.84" x2="38.1" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U33" gate="G$1" pin="!RST"/>
+<wire x1="38.1" y1="106.68" x2="22.86" y2="106.68" width="0.1524" layer="91"/>
+<label x="58.42" y="116.84" size="1.27" layer="95"/>
+<pinref part="R84" gate="G$1" pin="1"/>
+<wire x1="22.86" y1="106.68" x2="15.24" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="111.76" x2="22.86" y2="106.68" width="0.1524" layer="91"/>
+<junction x="22.86" y="106.68"/>
 </segment>
 <segment>
 <pinref part="U32" gate="G$1" pin="P0"/>
