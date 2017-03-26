@@ -7838,6 +7838,67 @@ Low profile connectors, straight&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="SparkFun-Aesthetics">
+<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
+In this library you'll find non-functional items- supply symbols, logos, notations, frame blocks, etc.&lt;br&gt;&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; CC v3.0 Share-Alike You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="FIDUCIAL-1.5X3">
+<circle x="0" y="0" radius="0.9055" width="1.27" layer="29"/>
+<smd name="1" x="0" y="0" dx="1.5" dy="1.5" layer="1" roundness="100" cream="no"/>
+</package>
+<package name="FIDUCIAL-1X2">
+<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
+</package>
+<package name="FIDUCIAL-1X2.5">
+<circle x="0" y="0" radius="0.9" width="1.27" layer="29"/>
+<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
+</package>
+<package name="MICRO-FIDUCIAL">
+<smd name="1" x="0" y="0" dx="0.635" dy="0.635" layer="1" roundness="100" cream="no"/>
+</package>
+</packages>
+<symbols>
+<symbol name="FIDUCIAL">
+<wire x1="-0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
+<wire x1="0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.254" layer="94"/>
+<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="FIDUCIAL" prefix="JP">
+<description>&lt;b&gt;Fiducial Alignment Points&lt;/b&gt;
+Various fiducial points for machine vision alignment.</description>
+<gates>
+<gate name="G$1" symbol="FIDUCIAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="1.5X3" package="FIDUCIAL-1.5X3">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="1X2" package="FIDUCIAL-1X2">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="1X2.5" package="FIDUCIAL-1X2.5">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="UFIDUCIAL" package="MICRO-FIDUCIAL">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins and Pat Pannuto"/>
@@ -8434,6 +8495,12 @@ Low profile connectors, straight&lt;p&gt;
 <part name="U9" library="chips" deviceset="LTC2943" device=""/>
 <part name="U10" library="chips" deviceset="LTC2943" device=""/>
 <part name="U11" library="chips" deviceset="LTC2943" device=""/>
+<part name="JP15" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="JP21" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="JP22" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="JP23" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="JP24" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="JP25" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
 </parts>
 <sheets>
 <sheet>
@@ -8443,6 +8510,12 @@ Low profile connectors, straight&lt;p&gt;
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
 <text x="210.82" y="172.72" size="2.54" layer="98" align="center">Plated Mounting Holes</text>
 <text x="195.58" y="68.58" size="2.54" layer="98" align="center">Global Reset</text>
+<text x="203.2" y="129.54" size="2.54" layer="98" align="center">Fiducials</text>
+<wire x1="254" y1="175.26" x2="190.5" y2="175.26" width="0.254" layer="98"/>
+<wire x1="190.5" y1="175.26" x2="190.5" y2="134.62" width="0.254" layer="98"/>
+<wire x1="190.5" y1="134.62" x2="254" y2="134.62" width="0.254" layer="98"/>
+<wire x1="190.5" y1="134.62" x2="190.5" y2="106.68" width="0.254" layer="98"/>
+<wire x1="190.5" y1="106.68" x2="254" y2="106.68" width="0.254" layer="98"/>
 </plain>
 <instances>
 <instance part="J1" gate="J1" x="50.8" y="137.16"/>
@@ -8488,6 +8561,12 @@ Low profile connectors, straight&lt;p&gt;
 <instance part="D3" gate="A" x="170.18" y="30.48"/>
 <instance part="D2" gate="C" x="170.18" y="40.64"/>
 <instance part="D2" gate="D" x="170.18" y="35.56"/>
+<instance part="JP15" gate="G$1" x="198.12" y="124.46"/>
+<instance part="JP21" gate="G$1" x="205.74" y="124.46"/>
+<instance part="JP22" gate="G$1" x="198.12" y="119.38"/>
+<instance part="JP23" gate="G$1" x="205.74" y="119.38"/>
+<instance part="JP24" gate="G$1" x="198.12" y="114.3"/>
+<instance part="JP25" gate="G$1" x="205.74" y="114.3"/>
 </instances>
 <busses>
 </busses>
