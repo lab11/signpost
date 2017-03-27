@@ -845,11 +845,17 @@ static bool energy_query_ready;
 static int  energy_query_result;
 static signbus_app_callback_t* energy_cb = NULL;
 static signpost_energy_information_t* energy_cb_data = NULL;
+static bool energy_report_received;
 
 static void energy_query_sync_callback(int result) {
     SIGNBUS_DEBUG("result %d\n", result);
     energy_query_ready = true;
     energy_query_result = result;
+}
+
+
+static void signpost_energy_report_callback(__attribute__ ((unused)) int result) {
+    energy_report_received = true;
 }
 
 int signpost_energy_query(signpost_energy_information_t* energy) {
@@ -912,11 +918,35 @@ int signpost_energy_query_async(
     return SUCCESS;
 }
 
+int signpost_energy_report(signpost_energy_report_t* report) {
+    int rc;
+    rc = signpost_api_send(ModuleAddressController,
+            CommandFrame, EnergyApiType, EnergyReportMessage,
+            report->num_reports*2+1, (uint8_t*)report);
+    if (rc < 0) return rc;
+
+    incoming_active_callback = signpost_energy_report_callback;
+    energy_report_received = false;
+    yield_for(&energy_report_received);
+
+    memcpy(report, incoming_message, incoming_message[0]*2 +1);
+
+    return SUCCESS;    
+}
+
 int signpost_energy_query_reply(uint8_t destination_address,
         signpost_energy_information_t* info) {
     return signpost_api_send(destination_address,
             ResponseFrame, EnergyApiType, EnergyQueryMessage,
             sizeof(signpost_energy_information_t), (uint8_t*) info);
+}
+
+int signpost_energy_report_reply(uint8_t destination_address,
+        signpost_energy_report_t* report) {
+
+    return signpost_api_send(destination_address, 
+            ResponseFrame, EnergyApiType, EnergyReportMessage,
+            report->num_reports*2+1, (uint8_t*) report);
 }
 
 /**************************************************************************/

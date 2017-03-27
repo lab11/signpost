@@ -262,6 +262,7 @@ enum energy_message_type {
     EnergyLevelWarning24hMessage = 1,
     EnergyLevelCritical24hMessage = 2,
     EnergyCurrentWarning60sMessage = 3,
+    EnergyReportMessage = 4,
 };
 
 typedef struct __attribute__((packed)) energy_information {
@@ -273,6 +274,16 @@ typedef struct __attribute__((packed)) energy_information {
     uint8_t     energy_limit_critical_threshold;
 } signpost_energy_information_t;
 
+typedef struct __attribute__((packed)) energy_report_module {
+    uint8_t module_address; //module i2c address
+    uint8_t module_percent; //an integer percent 0-100 that  the module has used
+} signpost_energy_report_module_t;
+
+typedef struct __attribute__((packed)) energy_report {
+    uint8_t num_reports;
+    signpost_energy_report_module_t* reports;
+} signpost_energy_report_t;
+
 _Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
 
 // Query the controller for energy information
@@ -281,6 +292,12 @@ _Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure s
 //  energy  - an energy_information_t struct to fill
 __attribute__((warn_unused_result))
 int signpost_energy_query(signpost_energy_information_t* energy);
+
+// Tell the controller about modules who have used energy
+// params: a struct of module addresses and energy percents of yours they have used
+// This will distribute energy since the last report to the modules that have used
+// that energy.
+int signpost_energy_report(signpost_energy_report_t* report);
 
 // Query the controller for energy information, asynchronously
 //
@@ -297,6 +314,11 @@ int signpost_energy_query_async(signpost_energy_information_t* energy, signbus_a
 //  info                -   energy information
 __attribute__((warn_unused_result))
 int signpost_energy_query_reply(uint8_t destination_address, signpost_energy_information_t* info);
+
+//response from controller to  requesting module
+//this acks the percentages assigned to each module
+//reports a module integer percent of 0 on failure
+int signpost_energy_report_reply(uint8_t destination_address, signpost_energy_report_t* report_response);
 
 /**************************************************************************/
 /* TIME & LOCATION API                                                    */
