@@ -25,6 +25,8 @@ enum Registers {
 #[allow(dead_code)]
 enum State {
     Idle,
+    /// Config state
+    ConfigNext,
 
     /// Simple read states
     SetupReadStatus,
@@ -48,10 +50,14 @@ pub trait MAX17205Client {
     fn done(&self);
 }
 
+pub static CONFIG_REGISTERS: [u8; 13] = [0xA0, 0xA1, 0xA2, 0xA3, 0xA5, 0xA8, 0xA9, 0xB3, 0xB5, 0xB7, 0xB8, 0xB9, 0xBA];
+pub static CONFIG_VALUES: [u16; 13] = [0x3C00, 0x1B80, 0x0B04, 0x0885, 0x5190, 0xB9B0, 0x4650, 0x4650, 0x0A03, 0x2241,0x0100,0x0006,0xFF14];
+
 pub struct MAX17205<'a> {
     i2c0: &'a i2c::I2CDevice,
     i2c1: &'a i2c::I2CDevice,
     state: Cell<State>,
+    config_counter: Cell<u8>,
     soc: Cell<u16>,
     soc_mah: Cell<u16>,
     //full_mah: Cell<u16>,
@@ -71,6 +77,7 @@ impl<'a> MAX17205<'a> {
             i2c0: i2c0,
             i2c1: i2c1,
             state: Cell::new(State::Idle),
+            config_counter: Cell::new(0),
             soc: Cell::new(0),
             soc_mah: Cell::new(0),
             voltage: Cell::new(0),
@@ -87,14 +94,14 @@ impl<'a> MAX17205<'a> {
         self.buffer.take().map(|buffer| {
             self.i2c1.enable();
 
-            let packcfg = 0x0A03; //See PackCfg (59) and typical circuit (28)
             // Memory address (always lower byte, but I2C address is different)
-            buffer[0] = ((Registers::nPackCfg as u8) & 0xFF) as u8;
-            buffer[1] = (packcfg & 0xFF) as u8;
-            buffer[2] = ((packcfg >> 8) & 0xFF) as u8;
+            buffer[0] = CONFIG_REGISTERS[self.config_counter.get() as usize];
+            buffer[1] = (CONFIG_VALUES[self.config_counter.get() as usize] & 0xFF) as u8;
+            buffer[2] = ((CONFIG_VALUES[self.config_counter.get() as usize] >> 8) & 0xFF) as u8;
 
             self.i2c1.write(buffer, 3);
-            self.state.set(State::Done);
+            self.config_counter.set(self.config_counter.get()+1);
+            self.state.set(State::ConfigNext);
         });
     }
 
@@ -136,7 +143,23 @@ impl<'a> MAX17205<'a> {
 
 impl<'a> i2c::I2CClient for MAX17205<'a> {
     fn command_complete(&self, buffer: &'static mut [u8], _error: i2c::Error) {
+        
         match self.state.get() {
+            State::ConfigNext => {
+
+                // Memory address (always lower byte, but I2C address is different)
+                buffer[0] = CONFIG_REGISTERS[self.config_counter.get() as usize];
+                buffer[1] = (CONFIG_VALUES[self.config_counter.get() as usize] & 0xFF) as u8;
+                buffer[2] = ((CONFIG_VALUES[self.config_counter.get() as usize] >> 8) & 0xFF) as u8;
+
+                self.i2c1.write(buffer, 3);
+                self.config_counter.set(self.config_counter.get()+1);
+                if self.config_counter.get() == CONFIG_REGISTERS.len() as u8 {
+                    self.state.set(State::Done);
+                } else {
+                    self.state.set(State::ConfigNext);
+                }
+            }
             State::SetupReadStatus => {
                 // Read status
                 self.i2c0.read(buffer, 2);
