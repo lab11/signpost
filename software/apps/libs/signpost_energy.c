@@ -70,15 +70,15 @@ int signpost_energy_get_battery_current_ua (void) {
 int signpost_energy_get_solar_voltage_mv (void) {
     //selector #3 slot 1
     i2c_selector_select_channels_sync(0x100);
-
-    return ltc2943_get_voltage_sync();
+    
+    return ltc2943_convert_to_voltage_mv(ltc2943_get_voltage_sync());
 }
 
 int signpost_energy_get_solar_current_ua (void) {
     //selector #3 slot 1
     i2c_selector_select_channels_sync(0x100);
 
-    return ltc2943_get_current_sync();
+    return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),50);
 }
 
 void signpost_energy_reset (void) {
