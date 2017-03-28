@@ -14,8 +14,11 @@ void signpost_energy_init (void);
 void signpost_energy_init_ltc2943 (void);
 
 int signpost_energy_get_controller_energy (void);
+int signpost_energy_get_controller_current_ua (void);
 int signpost_energy_get_linux_energy (void);
+int signpost_energy_get_linux_current_ua (void);
 int signpost_energy_get_module_energy (int module_num);
+int signpost_energy_get_module_current_ua (int module_num);
 int signpost_energy_get_battery_voltage_mv (void);
 int signpost_energy_get_battery_current_ua (void);
 int signpost_energy_get_solar_voltage_mv (void);
