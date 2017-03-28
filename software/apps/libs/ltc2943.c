@@ -238,5 +238,5 @@ int ltc2943_convert_to_voltage_mv (int v) {
 }
 
 int ltc2943_convert_to_current_ua (int c, int Rsense) {
-    return (60.0/Rsense)*((c-0x7FFF)/(float)0x7FFF)*1000;
+    return (int)((60.0/Rsense)*((c-0x7FFF)/(float)0x7FFF)*1000000.0);
 }
