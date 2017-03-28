@@ -50,6 +50,7 @@ uint8_t module_addresses[8] = {0};
 
 uint8_t gps_buf[20];
 uint8_t energy_buf[20];
+uint8_t batsol_buf[20];
 
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
@@ -202,6 +203,13 @@ static void get_energy (void) {
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
+  int battery_voltage = signpost_energy_get_battery_voltage_mv();
+  int battery_current = signpost_energy_get_battery_current_ua();
+  int solar_voltage = signpost_energy_get_solar_voltage_mv();
+  int solar_current = signpost_energy_get_solar_current_ua();
+  printf("Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
+  printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
+
   //send this data to the radio module
   energy_buf[2] = ((fram.energy_module0 & 0xFF00) >> 8 );
   energy_buf[3] = ((fram.energy_module0 & 0xFF));
@@ -220,10 +228,26 @@ static void get_energy (void) {
   energy_buf[16] = ((fram.energy_module7 & 0xFF00) >> 8 );
   energy_buf[17] = ((fram.energy_module7 & 0xFF));
 
+  batsol_buf[2] = ((battery_voltage & 0xFF00) >> 8);
+  batsol_buf[3] = ((battery_voltage & 0xFF));
+  batsol_buf[4] = ((battery_current & 0xFF00) >> 8);
+  batsol_buf[5] = ((battery_current & 0xFF));
+  batsol_buf[6] = ((solar_voltage & 0xFF00) >> 8);
+  batsol_buf[7] = ((solar_voltage & 0xFF));
+  batsol_buf[8] = ((solar_current & 0xFF00) >> 8);
+  batsol_buf[9] = ((solar_current & 0xFF));
+
   int rc;
   if(!currently_initializing) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
     energy_buf[1]++;
+  } else {
+    rc = 0;
+  }
+
+  if(!currently_initializing) {
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,8);
+    batsol_buf[1]++;
   } else {
     rc = 0;
   }
@@ -456,12 +480,12 @@ static void gps_callback (gps_data_t* gps_data) {
   printf("  Latitude:   %lu degrees\n", gps_data->latitude);
   printf("  Longitude:  %lu degrees\n", gps_data->longitude);*/
 
-  const char* fix_str = "Invalid fix";
-  if (gps_data->fix == 2) {
-      fix_str = "2D fix";
-  } else if (gps_data->fix == 3) {
-      fix_str = "3D fix";
-  }
+  //const char* fix_str = "Invalid fix";
+  //if (gps_data->fix == 2) {
+  //    fix_str = "2D fix";
+  //} else if (gps_data->fix == 3) {
+  //    fix_str = "3D fix";
+  //}
   //printf("  Status:     %s\n", fix_str);
   //printf("  Satellites: %d\n", gps_data->satellite_count);
 
@@ -540,6 +564,9 @@ int main (void) {
 
   gps_buf[0] = 0x02;
   gps_buf[1] = 0x00;
+
+  batsol_buf[0] = 0x03;
+  batsol_buf[1] = 0x00;
 
   // Configure FRAM
   // --------------
