@@ -50,8 +50,10 @@ pub trait MAX17205Client {
     fn done(&self);
 }
 
-pub static CONFIG_REGISTERS: [u8; 13] = [0xA0, 0xA1, 0xA2, 0xA3, 0xA5, 0xA8, 0xA9, 0xB3, 0xB5, 0xB7, 0xB8, 0xB9, 0xBA];
-pub static CONFIG_VALUES: [u16; 13] = [0x3C00, 0x1B80, 0x0B04, 0x0885, 0x5190, 0xB9B0, 0x4650, 0x4650, 0x0A03, 0x2241,0x0100,0x0006,0xFF14];
+pub static CONFIG_REGISTERS: [u8; 12] = [0xA0, 0xA1, 0xA2, 0xA3, 0xA5, 0xA8, 0xA9, 0xB3, 0xB5, 0xB7, 0xB8, 0xB9];
+pub static CONFIG_VALUES: [u16; 12] = [0x3C00, 0x1B80, 0x0B04, 0x0885, 0x5190, 0xB9B0, 0x4650, 0x4650, 0x0A03, 0x2241,0x0100,0x0006];
+//pub static CONFIG_REGISTERS: [u8; 9] = [0x12, 0x22, 0x32, 0x42, 0x23, 0x36, 0x35, 0x18, 0xBD];
+//pub static CONFIG_VALUES: [u16; 9] = [0x3C00, 0x1B80, 0x0B04, 0x0885, 0x5190, 0xB9B0, 0x4650, 0x4650, 0x0A03];
 
 pub struct MAX17205<'a> {
     i2c0: &'a i2c::I2CDevice,
@@ -147,17 +149,35 @@ impl<'a> i2c::I2CClient for MAX17205<'a> {
         match self.state.get() {
             State::ConfigNext => {
 
-                // Memory address (always lower byte, but I2C address is different)
-                buffer[0] = CONFIG_REGISTERS[self.config_counter.get() as usize];
-                buffer[1] = (CONFIG_VALUES[self.config_counter.get() as usize] & 0xFF) as u8;
-                buffer[2] = ((CONFIG_VALUES[self.config_counter.get() as usize] >> 8) & 0xFF) as u8;
+                if self.config_counter.get() < CONFIG_REGISTERS.len() as u8 {
+                    // Memory address (always lower byte, but I2C address is different)
+                    buffer[0] = CONFIG_REGISTERS[self.config_counter.get() as usize];
+                    buffer[1] = (CONFIG_VALUES[self.config_counter.get() as usize] & 0xFF) as u8;
+                    buffer[2] = ((CONFIG_VALUES[self.config_counter.get() as usize] >> 8) & 0xFF) as u8;
 
-                self.i2c1.write(buffer, 3);
-                self.config_counter.set(self.config_counter.get()+1);
-                if self.config_counter.get() == CONFIG_REGISTERS.len() as u8 {
-                    self.state.set(State::Done);
-                } else {
+                    self.i2c1.write(buffer, 3);
+                    self.config_counter.set(self.config_counter.get()+1);
                     self.state.set(State::ConfigNext);
+
+                } else if self.config_counter.get() == CONFIG_REGISTERS.len() as u8 {
+                    self.i2c0.enable();
+
+                    // Memory address (always lower byte, but I2C address is different)
+                    buffer[0] = 0x00;
+                    buffer[1] = 0x00;
+                    buffer[2] = 0x00;
+
+                    self.i2c0.write(buffer, 3);
+                    self.config_counter.set(self.config_counter.get()+1);
+                    self.state.set(State::ConfigNext);
+                } else {
+
+                    buffer[0] = 0xBB;
+                    buffer[1] = 0x00;
+                    buffer[2] = 0x01;
+                    self.i2c0.write(buffer, 3);
+                    self.config_counter.set(self.config_counter.get()+1);
+                    self.state.set(State::Done);
                 }
             }
             State::SetupReadStatus => {
