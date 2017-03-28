@@ -42,7 +42,7 @@ static int get_ltc_energy (int selector_mask) {
 static int get_ltc_current_ua (int selector_mask) {
     i2c_selector_select_channels_sync(selector_mask);
 
-    return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),50);
+    return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),17);
 }
 
 int signpost_energy_get_controller_energy (void) {
@@ -128,7 +128,7 @@ int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler) {
         return ltc_energy * (((85*50)/rsense)*M)/128;
 
     } else {
-        return ltc_energy * (((340*50)/rsense)*prescaler)/4096.0;
+        return (int)(ltc_energy * (float)(340.0)*(50.0/rsense)*(prescaler/4096.0));
     }
 }
 
