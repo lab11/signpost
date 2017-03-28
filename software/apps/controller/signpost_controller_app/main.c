@@ -18,7 +18,6 @@
 #include "minmea.h"
 #include "signpost_api.h"
 #include "signpost_energy.h"
-#include "max17205.h"
 
 #include "bonus_timer.h"
 
@@ -139,12 +138,6 @@ static void print_energy_data (int module, int energy) {
   }
 }
 
-static void print_battery_data (int percent, int soc_mah, int soc_mah_full, int voltage, int current) {
-    printf("  Battery state of charge: %u%%, %u/%u mAh\n", percent, soc_mah, soc_mah_full);
-    printf("  Battery voltage: %d * 1.25 mV\n", voltage);
-    printf("  Battery current: %d * 156.25 uA\n", current);
-}
-
 static void get_energy (void) {
   printf("\n\nEnergy Data\n");
 
@@ -188,12 +181,6 @@ static void get_energy (void) {
   }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
-
-  printf("\n\nBattery Data\n");
-  uint16_t percent, soc_mah, soc_mah_full, batt_voltage, batt_current;
-  max17205_read_soc_sync(&percent, &soc_mah, &soc_mah_full);
-  max17205_read_voltage_current_sync(&batt_voltage, &batt_current);
-  print_battery_data(percent/255, soc_mah/2, soc_mah_full/2, batt_voltage, batt_current);
 
   // Tickle the watchdog because something good happened.
   watchdog_tickler(2);
@@ -441,10 +428,6 @@ int main (void) {
   // Configure all the I2C selectors
   printf("Init'ing energy\n");
   signpost_energy_init();
-
-  // Configure Battery
-  printf("Init'ing battery\n");
-  max17205_configure_pack_sync();
 
   // Reset all of the LTC2941s
   printf("Resetting energy\n");
