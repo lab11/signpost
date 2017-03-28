@@ -12,19 +12,20 @@
 #include "i2c_selector.h"
 #include "signpost_energy.h"
 
-static void print_data (int module, int energy) {
+static void print_data (int module, int energy, int current) {
   int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER_LTC2943);
   if (module == 3) {
-    printf("Controller energy: %i uAh\n", int_energy);
+    printf("Controller energy: %i uAh\tcurrent: %i uA\n", int_energy, current);
   } else if (module == 4) {
-    printf("Linux energy: %i uAh\n", int_energy);
+    printf("Linux energy: %i uAh\t\tcurrent: %i uA\n", int_energy, current);
   } else {
-    printf("Module %i energy: %i uAh\n", module, int_energy);
+    printf("Module %i energy: %i uAh\t\tcurrent: %i uA\n", module, int_energy, current);
   }
 }
 
 int main (void) {
   int energy;
+  int current;
 
   signpost_energy_init_ltc2943();
 
@@ -44,14 +45,17 @@ int main (void) {
       if (i == 3 || i == 4) continue;
 
       energy = signpost_energy_get_module_energy(i);
-      print_data(i, energy);
+      current = signpost_energy_get_module_current_ua(i);
+      print_data(i, energy, current);
     }
 
     energy = signpost_energy_get_controller_energy();
-    print_data(3, energy);
+    current = signpost_energy_get_controller_current_ua();
+    print_data(3, energy, current);
 
     energy = signpost_energy_get_linux_energy();
-    print_data(4, energy);
+    current = signpost_energy_get_linux_current_ua();
+    print_data(4, energy, current);
 
     int v = signpost_energy_get_battery_voltage_mv();
     int c = signpost_energy_get_battery_current_ua();
@@ -59,8 +63,8 @@ int main (void) {
     int s_voltage = signpost_energy_get_solar_voltage_mv();
     int s_current = signpost_energy_get_solar_current_ua();
 
-    printf("Battery Voltage (mV): %d\tCurrent (uA): %d\n",(int)v,(int)c);
-    printf("Solar Voltage (mV): %d\tCurrent (uA): %d\n",s_voltage,s_current);
+    printf("Battery Voltage (mV): %d\tcurrent (uA): %d\n",(int)v,(int)c);
+    printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",s_voltage,s_current);
 
     delay_ms(1000);
   }
