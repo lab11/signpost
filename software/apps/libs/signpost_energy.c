@@ -13,7 +13,7 @@ void signpost_energy_init (void) {
         i2c_selector_select_channels_sync(1<<i);
         ltc2941_configure_sync(InterruptPinAlertMode, POWER_MODULE_PRESCALER, VbatAlertOff);
     }
-    
+
     is_ltc2943 = 0;
     // set all channels open for Alert Response
     i2c_selector_select_channels_sync(0xFF);
@@ -21,14 +21,14 @@ void signpost_energy_init (void) {
 
 void signpost_energy_init_ltc2943 (void) {
     // configure each ltc with the correct prescaler
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         i2c_selector_select_channels_sync(1<<i);
-        ltc2943_configure_sync(InterruptPinAlertMode, POWER_MODULE_PRESCALER, ADCScan);
+        ltc2943_configure_sync(InterruptPinAlertMode, POWER_MODULE_PRESCALER_LTC2943, ADCScan);
     }
-    
+
     is_ltc2943 = 1;
     // set all channels open for Alert Response
-    i2c_selector_select_channels_sync(0xFF);
+    i2c_selector_select_channels_sync(0x1FF);
 }
 
 static int get_ltc_energy (int selector_mask) {
@@ -70,7 +70,7 @@ int signpost_energy_get_battery_current_ua (void) {
 int signpost_energy_get_solar_voltage_mv (void) {
     //selector #3 slot 1
     i2c_selector_select_channels_sync(0x100);
-    
+
     return ltc2943_convert_to_voltage_mv(ltc2943_get_voltage_sync());
 }
 
@@ -87,6 +87,12 @@ void signpost_energy_reset (void) {
 
 		ltc2941_reset_charge_sync();
 	}
+
+    if(is_ltc2943 ==1) {
+		i2c_selector_select_channels_sync(0x100);
+
+		ltc2941_reset_charge_sync();
+    }
 }
 
 __attribute__((const))
@@ -103,7 +109,7 @@ int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler) {
         // Note that decimal values will be floored
         return ltc_energy * (((85*50)/rsense)*M)/128;
 
-    } else { 
+    } else {
         return ltc_energy * (((340*50)/rsense)*prescaler)/4096.0;
     }
 }
