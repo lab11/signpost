@@ -207,8 +207,8 @@ static void get_energy (void) {
   int battery_current = signpost_energy_get_battery_current_ua();
   int solar_voltage = signpost_energy_get_solar_voltage_mv();
   int solar_current = signpost_energy_get_solar_current_ua();
-  printf("Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
-  printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
+  printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
+  printf("  Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
 
   //send this data to the radio module
   energy_buf[2] = ((fram.energy_module0 & 0xFF00) >> 8 );
@@ -244,6 +244,8 @@ static void get_energy (void) {
   } else {
     rc = 0;
   }
+
+  delay_ms(100);
 
   if(!currently_initializing) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,8);
