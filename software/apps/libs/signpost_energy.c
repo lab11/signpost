@@ -39,16 +39,34 @@ static int get_ltc_energy (int selector_mask) {
 	return ltc2941_get_charge_sync();
 }
 
+static int get_ltc_current_ua (int selector_mask) {
+    i2c_selector_select_channels_sync(selector_mask);
+
+    return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),50);
+}
+
 int signpost_energy_get_controller_energy (void) {
 	return get_ltc_energy(0x1);
+}
+
+int signpost_energy_get_controller_current_ua (void) {
+    return get_ltc_current_ua(0x1);
 }
 
 int signpost_energy_get_linux_energy (void) {
 	return get_ltc_energy(0x2);
 }
 
+int signpost_energy_get_linux_current_ua (void) {
+    return get_ltc_current_ua(0x2);
+}
+
 int signpost_energy_get_module_energy (int module_num) {
 	return get_ltc_energy(module_num_to_selector_mask[module_num]);
+}
+
+int signpost_energy_get_module_current_ua (int module_num) {
+    return get_ltc_current_ua(module_num_to_selector_mask[module_num]);
 }
 
 int signpost_energy_get_battery_voltage_mv (void) {
