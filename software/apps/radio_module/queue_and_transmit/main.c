@@ -44,15 +44,9 @@
 };*/
 
 //definitions for the i2c
-#define BUFFER_SIZE 20
+#define BUFFER_SIZE 21
 #define ADDRESS_SIZE 6
 #define NUMBER_OF_MODULES 8
-
-//i2c buffers
-uint8_t slave_write_buf[BUFFER_SIZE];
-uint8_t slave_read_buf[BUFFER_SIZE];
-uint8_t master_read_buf[BUFFER_SIZE];
-uint8_t master_write_buf[BUFFER_SIZE];
 
 //array of the data we're going to send on the radios
 //make a queue of 30 deep
@@ -62,6 +56,10 @@ uint8_t queue_head = 0;
 uint8_t queue_tail = 0;
 uint32_t lora_packets_sent = 1;
 uint32_t lora_last_packets_sent = 0;
+uint8_t module_num_map[NUMBER_OF_MODULES] = {0};
+uint8_t number_of_modules = 0;
+uint8_t module_packet_count[NUMBER_OF_MODULES] = {0};
+uint8_t status_send_buf[20] = {0};
 
 static void increment_queue_pointer(uint8_t* p) {
     if(*p == (QUEUE_SIZE -1)) {
@@ -116,25 +114,44 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
     }
 }*/
 
+static void count_module_packet(uint8_t module_address) {
+    for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+        if(module_num_map[i] == 0) {
+            module_num_map[i] = module_address;
+            module_packet_count[i]++;
+            number_of_modules++;
+            break;
+        } else if(module_num_map[i] == module_address) {
+            module_packet_count[i]++;
+            break;
+        }
+    }
+}
+
+static int8_t add_buffer_to_queue(uint8_t addr, uint8_t* buffer, uint8_t len) {
+    uint8_t temp_tail = queue_tail;
+    increment_queue_pointer(&temp_tail);
+    if(temp_tail == queue_head) {
+        return -1;
+    } else {
+        data_queue[queue_tail][0] = addr;
+        if(len  <= BUFFER_SIZE -1) {
+            memcpy(data_queue[queue_tail]+1, buffer, len);
+        } else {
+            memcpy(data_queue[queue_tail]+1, buffer, BUFFER_SIZE-1);
+        }
+        increment_queue_pointer(&queue_tail);
+        return 0;
+    }
+}
+
 static void networking_api_callback(uint8_t source_address,
         signbus_frame_type_t frame_type, __attribute ((unused)) signbus_api_type_t api_type,
         uint8_t message_type, size_t message_length, uint8_t* message) {
 
     if (frame_type == NotificationFrame || frame_type == CommandFrame) {
         if(message_type == NetworkingSend) {
-            uint8_t temp_tail = queue_tail;
-            increment_queue_pointer(&temp_tail);
-            if(temp_tail == queue_head) {
-                //don't do anything - it's full
-            } else {
-                data_queue[queue_tail][0] = source_address;
-                if(message_length  <= BUFFER_SIZE -1) {
-                    memcpy(data_queue[queue_tail]+1, message, message_length);
-                } else {
-                    memcpy(data_queue[queue_tail]+1, message, BUFFER_SIZE-1);
-                }
-                increment_queue_pointer(&queue_tail);
-            }
+            add_buffer_to_queue(source_address, message, message_length);
         }
     }
 }
@@ -178,6 +195,7 @@ static void timer_callback (
     void * callback_args __attribute__ ((unused))) {
 
     static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
+    static uint8_t send_counter = 0;
 
     if(queue_head != queue_tail) {
 
@@ -188,6 +206,9 @@ static void timer_callback (
         } else {
             lora_last_packets_sent = lora_packets_sent;
         }
+
+        //count the packet
+        count_module_packet(data_queue[queue_head][0]);
 
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
@@ -202,6 +223,44 @@ static void timer_callback (
         }
         increment_queue_pointer(&queue_head);
     }
+
+    send_counter++;
+
+    //every minute put a status packet on the queue
+    //also send an energy report to the controller
+    if(send_counter == 30) {
+        //increment the sequence number
+        status_send_buf[1]++;
+        status_send_buf[2] = number_of_modules;
+
+        //copy the modules and their send numbers into the buffer
+        uint8_t i = 0;
+        for(; i < NUMBER_OF_MODULES; i++){
+            if(module_num_map[i] != 0) {
+                status_send_buf[3+ i*2] = module_num_map[i];
+                status_send_buf[3+ i*2 + 1] = module_packet_count[i];
+            } else {
+                break;
+            }
+        }
+
+        if(queue_tail >= queue_head) {
+            status_send_buf[3+i*2] = queue_tail-queue_head;
+        } else {
+            status_send_buf[3+i*2] = QUEUE_SIZE-queue_head-queue_tail;
+        }
+
+        add_buffer_to_queue(0x22, status_send_buf, BUFFER_SIZE);
+
+        //reset send_counter
+        send_counter = 0;
+
+        //reset_packet_send_bufs
+        for(i = 0; i < NUMBER_OF_MODULES; i++) {
+            module_packet_count[i] = 0;
+        }
+    }
+
 }
 
 int main (void) {
@@ -231,6 +290,8 @@ int main (void) {
     delay_ms(50);
     gpio_set(LORA_RESET);
 
+    status_send_buf[0] = 0x01;
+    status_send_buf[1] = 0;
     //ble
     //simple_ble_init(&ble_config);
 
