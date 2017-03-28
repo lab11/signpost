@@ -12,22 +12,21 @@
 #include "i2c_selector.h"
 #include "signpost_energy.h"
 
-static void print_data (int module, int energy, int current) {
+static void print_data (int module, int energy) {
   int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER_LTC2943);
   if (module == 3) {
-    printf("Controller energy: %i uAh\tcurrent: %i uA\n", int_energy, current);
+    printf("Controller energy: %i uAh\n", int_energy);
   } else if (module == 4) {
-    printf("Linux energy: %i uAh\t\tcurrent: %i uA\n", int_energy, current);
+    printf("Linux energy: %i uAh\n", int_energy);
   } else {
-    printf("Module %i energy: %i uAh\t\tcurrent: %i uA\n", module, int_energy, current);
+    printf("Module %i energy: %i uAh\n", module, int_energy);
   }
 }
 
 int main (void) {
   int energy;
-  int current;
 
-  signpost_energy_init_ltc2943();
+  signpost_energy_init();
 
   signpost_energy_reset();
 
@@ -45,26 +44,14 @@ int main (void) {
       if (i == 3 || i == 4) continue;
 
       energy = signpost_energy_get_module_energy(i);
-      current = signpost_energy_get_module_current_ua(i);
-      print_data(i, energy, current);
+      print_data(i, energy);
     }
 
     energy = signpost_energy_get_controller_energy();
-    current = signpost_energy_get_controller_current_ua();
-    print_data(3, energy, current);
+    print_data(3, energy);
 
     energy = signpost_energy_get_linux_energy();
-    current = signpost_energy_get_linux_current_ua();
-    print_data(4, energy, current);
-
-    int v = signpost_energy_get_battery_voltage_mv();
-    int c = signpost_energy_get_battery_current_ua();
-
-    int s_voltage = signpost_energy_get_solar_voltage_mv();
-    int s_current = signpost_energy_get_solar_current_ua();
-
-    printf("Battery Voltage (mV): %d\tcurrent (uA): %d\n",(int)v,(int)c);
-    printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",s_voltage,s_current);
+    print_data(4, energy);
 
     delay_ms(1000);
   }
