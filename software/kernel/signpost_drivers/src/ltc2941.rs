@@ -6,7 +6,7 @@ use kernel::hil::i2c;
 use kernel::{AppId, Callback, Driver};
 use kernel::returncode::ReturnCode;
 
-pub static mut BUFFER: [u8; 8] = [0; 8];
+pub static mut BUFFER: [u8; 20] = [0; 20];
 
 #[allow(dead_code)]
 enum Registers {
@@ -31,9 +31,7 @@ enum State {
     /// Simple read states
     ReadStatus,
     ReadCharge,
-    SetupVoltageRead,
     ReadVoltage,
-    SetupCurrentRead,
     ReadCurrent,
     ReadShutdown,
 
@@ -181,9 +179,8 @@ impl<'a> LTC2941<'a> {
         self.buffer.take().map(|buffer| {
             self.i2c.enable();
             
-            buffer[0] = Registers::VoltageMSB as u8;
-            self.i2c.write(buffer, 1);
-            self.state.set(State::SetupVoltageRead);
+            self.i2c.read(buffer, 10);
+            self.state.set(State::ReadVoltage);
         });
     }
     ///get the current sensed by the resistor
@@ -191,9 +188,8 @@ impl<'a> LTC2941<'a> {
         self.buffer.take().map(|buffer| {
             self.i2c.enable();
             
-            buffer[0] = Registers::CurrentMSB as u8;
-            self.i2c.write(buffer, 1);
-            self.state.set(State::SetupCurrentRead);
+            self.i2c.read(buffer, 16);
+            self.state.set(State::ReadCurrent);
         });
     }
 
@@ -246,15 +242,9 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 self.i2c.disable();
                 self.state.set(State::Idle);
             },
-            State::SetupVoltageRead => {
-                self.buffer.take().map(|buffer| {
-                    self.i2c.read(buffer, 2);
-                    self.state.set(State::ReadVoltage);
-                });
-            },
             State::ReadVoltage => {
                 // TODO: Actually calculate charge!!!!!
-                let voltage = ((buffer[0] as u16) << 8) | (buffer[1] as u16);
+                let voltage = ((buffer[8] as u16) << 8) | (buffer[9] as u16);
                 self.client.get().map(|client| {
                     client.voltage(voltage);
                 });
@@ -263,15 +253,9 @@ impl<'a> i2c::I2CClient for LTC2941<'a> {
                 self.i2c.disable();
                 self.state.set(State::Idle);
             },
-            State::SetupCurrentRead => {
-                self.buffer.take().map(|buffer| {
-                    self.i2c.read(buffer, 2);
-                    self.state.set(State::ReadCurrent);
-                });
-            },
             State::ReadCurrent => {
                 // TODO: Actually calculate charge!!!!!
-                let current = ((buffer[0] as u16) << 8) | (buffer[1] as u16);
+                let current = ((buffer[14] as u16) << 8) | (buffer[15] as u16);
                 self.client.get().map(|client| {
                     client.current(current);
                 });

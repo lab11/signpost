@@ -10,11 +10,10 @@
 
 #include "controller.h"
 #include "i2c_selector.h"
-#include "signpost_energy_ltc2943.h"
-#include "max17205.h"
+#include "signpost_energy.h"
 
 static void print_data (int module, int energy) {
-  int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+  int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER_LTC2943);
   if (module == 3) {
     printf("Controller energy: %i uAh\n", int_energy);
   } else if (module == 4) {
@@ -27,7 +26,7 @@ static void print_data (int module, int energy) {
 int main (void) {
   int energy;
 
-  signpost_energy_init();
+  signpost_energy_init_ltc2943();
 
   signpost_energy_reset();
 
@@ -54,12 +53,14 @@ int main (void) {
     energy = signpost_energy_get_linux_energy();
     print_data(4, energy);
 
-    uint16_t voltage = 0;
-    int16_t current = 0;
-    max17205_read_voltage_current_sync(&voltage,&current);
-    float v = max17205_get_voltage_mV(voltage);
-    float c = max17205_get_current_uA(current);
-    printf("Battery Voltage (mV): %d\tCurrent (uA) %d\n",(int)v,(int)c);
+    int v = signpost_energy_get_battery_voltage_mv();
+    int c = signpost_energy_get_battery_current_ua();
+
+    int s_voltage = signpost_energy_get_solar_voltage_mv();
+    int s_current = signpost_energy_get_solar_current_ua();
+
+    printf("Battery Voltage (mV): %d\tCurrent (uA): %d\n",(int)v,(int)c);
+    printf("Solar Voltage (mV): %d\tCurrent (uA): %d\n",s_voltage,s_current);
 
     delay_ms(1000);
   }

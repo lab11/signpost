@@ -6,11 +6,13 @@
 extern "C" {
 #endif
 
+#ifndef LTC2941_H
 typedef enum {
 	InterruptPinDisabled = 0,
 	InterruptPinChargeCompleteMode = 1,
 	InterruptPinAlertMode = 2,
 } interrupt_pin_conf_e;
+#endif
 
 typedef enum {
 	ADCSleep = 0,
@@ -68,6 +70,10 @@ int ltc2943_set_low_threshold(uint16_t threshold);
 // Will be returned in the callback.
 int ltc2943_get_charge(void);
 
+int ltc2943_get_voltage(void);
+
+int ltc2943_get_current(void);
+
 // Put the LTC2941 in a low power state.
 // Will trigger a `done` callback.
 int ltc2943_shutdown(void);
@@ -82,7 +88,12 @@ int ltc2943_reset_charge_sync(void);
 int ltc2943_set_high_threshold_sync(uint16_t threshold);
 int ltc2943_set_low_threshold_sync(uint16_t threshold);
 int ltc2943_get_charge_sync(void);
+int ltc2943_get_voltage_sync(void);
+int ltc2943_get_current_sync(void);
 int ltc2943_shutdown_sync(void);
+
+int ltc2943_convert_to_voltage_mv(int v);
+int ltc2943_convert_to_current_ua(int c, int Rsense);
 
 #ifdef __cplusplus
 }
