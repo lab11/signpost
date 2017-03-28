@@ -52,15 +52,15 @@ int main (void) {
 
     energy = signpost_energy_get_linux_energy();
     print_data(4, energy);
-    
+
     int v = signpost_energy_get_battery_voltage_mv();
     int c = signpost_energy_get_battery_current_ua();
 
     int s_voltage = signpost_energy_get_solar_voltage_mv();
     int s_current = signpost_energy_get_solar_current_ua();
-    
+
     printf("Battery Voltage (mV): %d\tCurrent (uA): %d\n",(int)v,(int)c);
-    printf("Solar Voltage: %d\tCurrent: %d\n",s_voltage,s_current);
+    printf("Solar Voltage (mV): %d\tCurrent (uA): %d\n",s_voltage,s_current);
 
     delay_ms(1000);
   }
