@@ -52,6 +52,7 @@ uint8_t module_addresses[8] = {0};
 uint8_t gps_buf[20];
 uint8_t energy_buf[20];
 uint8_t batsol_buf[20];
+uint8_t num_inited = 0;
 
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
@@ -223,7 +224,7 @@ static void get_energy (void) {
   energy_buf[17] = ((fram.energy_module7 & 0xFF));
 
   int rc;
-  if(!currently_initializing) {
+  if(!currently_initializing && num_inited > 1) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
     energy_buf[1]++;
   } else {
@@ -269,7 +270,7 @@ static void get_batsol (void) {
   batsol_buf[18] = ((battery_full & 0xFF));
 
   int rc;
-  if(!currently_initializing) {
+  if(!currently_initializing && num_inited > 1) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,19);
     batsol_buf[1]++;
   } else {
@@ -323,6 +324,7 @@ static void initialization_api_callback(uint8_t source_address,
                     // Prepare and reply ECDH key exchange
                     rc = signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
+                    num_inited++;
                     if (rc < 0) {
                       printf(" - %d: Error responding to key exchange at address 0x%02x. Dropping.\n",
                           __LINE__, source_address);
@@ -530,7 +532,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 30) == 0) {
+  if(!currently_initializing && (count % 30) == 0 && count != 0 && num_inited > 1) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -671,22 +673,23 @@ int main (void) {
 
   ////////////////////////////////////////////////
   // Setup watchdog
-  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_set_kernel_timeout(180000);
   app_watchdog_start();
 
   printf("Everything intialized\n");
 
   printf("Entering loop\n");
-  uint16_t index = 0;
+
+  delay_ms(3000);
+
+  uint16_t index = 1;
   while(1) {
     // always check for modules that need to be initialized
     check_module_initialization();
 
     // get energy updates every 10 seconds
     if ((index % 60) == 0) {
-      printf("Check energy\n");
       get_energy();
-
     }
 
     if((index % 60) == 30) {
