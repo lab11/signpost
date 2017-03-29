@@ -21,6 +21,7 @@ int signpost_energy_get_module_energy (int module_num);
 int signpost_energy_get_module_current_ua (int module_num);
 int signpost_energy_get_battery_voltage_mv (void);
 int signpost_energy_get_battery_current_ua (void);
+int signpost_energy_get_battery_energy (void);
 int signpost_energy_get_solar_voltage_mv (void);
 int signpost_energy_get_solar_current_ua (void);
 void signpost_energy_reset (void);

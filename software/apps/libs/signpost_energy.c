@@ -87,6 +87,13 @@ int signpost_energy_get_battery_current_ua (void) {
     return (int)c;
 }
 
+int signpost_energy_get_battery_energy (void) {
+    uint16_t coulomb_volts;
+    max17205_read_coulomb_sync(&coulomb_volts);
+    float coulombs = coulomb_volts/0.01;
+    return (int)coulombs;
+}
+
 int signpost_energy_get_solar_voltage_mv (void) {
     //selector #3 slot 1
     i2c_selector_select_channels_sync(0x100);
