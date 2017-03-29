@@ -530,7 +530,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 10) == 0) {
+  if(!currently_initializing && (count % 30) == 0) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -677,19 +677,19 @@ int main (void) {
   printf("Everything intialized\n");
 
   printf("Entering loop\n");
-  uint8_t index = 0;
+  uint16_t index = 0;
   while(1) {
     // always check for modules that need to be initialized
     check_module_initialization();
 
     // get energy updates every 10 seconds
-    if ((index % 10) == 0) {
+    if ((index % 60) == 0) {
       printf("Check energy\n");
       get_energy();
 
     }
 
-    if((index %10) == 5) {
+    if((index % 60) == 30) {
       get_batsol();
     }
 
