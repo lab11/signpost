@@ -247,7 +247,7 @@ static void timer_callback (
         if(queue_tail >= queue_head) {
             status_send_buf[3+i*2] = queue_tail-queue_head;
         } else {
-            status_send_buf[3+i*2] = QUEUE_SIZE-queue_head-queue_tail;
+            status_send_buf[3+i*2] = QUEUE_SIZE-(queue_head-queue_tail);
         }
 
         add_buffer_to_queue(0x22, status_send_buf, BUFFER_SIZE);
