@@ -59,11 +59,12 @@ int main (void) {
 
     int v = signpost_energy_get_battery_voltage_mv();
     int c = signpost_energy_get_battery_current_ua();
+    int e = signpost_energy_get_battery_energy();
 
     int s_voltage = signpost_energy_get_solar_voltage_mv();
     int s_current = signpost_energy_get_solar_current_ua();
 
-    printf("Battery Voltage (mV): %d\tcurrent (uA): %d\n",(int)v,(int)c);
+    printf("Battery Voltage (mV): %d\tcurrent (uA): %d\tenergy (uAh):%d\n",(int)v,(int)c,(int)e);
     printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",s_voltage,s_current);
 
     delay_ms(1000);

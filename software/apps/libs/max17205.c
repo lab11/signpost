@@ -36,6 +36,10 @@ int max17205_read_voltage_current(void) {
     return command(DRIVER_NUM_MAX17205, 2, 0);
 }
 
+int max17205_read_coulomb(void) {
+    return command(DRIVER_NUM_MAX17205, 4, 0);
+}
+
 int max17205_configure_pack(void) {
     return command(DRIVER_NUM_MAX17205, 3, 0);
 }
@@ -93,6 +97,24 @@ int max17205_read_voltage_current_sync(uint16_t* voltage, uint16_t* current) {
 
     *voltage = result.value0 & 0xFFFF;
     *current = result.value1 & 0xFFFF;
+
+    return 0;
+}
+
+int max17205_read_coulomb_sync(uint16_t* coulomb) {
+    int err;
+    result.fired = false;
+
+    err = max17205_set_callback(max17205_cb, (void*) &result);
+    if (err < 0) return err;
+
+    err = max17205_read_coulomb();
+    if (err < 0) return err;
+
+    // Wait for the callback.
+    yield_for(&result.fired);
+
+    *coulomb = result.value0 & 0xFFFF;
 
     return 0;
 }
