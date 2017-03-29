@@ -61,6 +61,11 @@ uint8_t number_of_modules = 0;
 uint8_t module_packet_count[NUMBER_OF_MODULES] = {0};
 uint8_t status_send_buf[20] = {0};
 
+//these structures for reporting energy to the controller
+signpost_energy_report_module_t energy_report_module[NUMBER_OF_MODULES];
+signpost_energy_report_t energy_report;
+
+
 static void increment_queue_pointer(uint8_t* p) {
     if(*p == (QUEUE_SIZE -1)) {
         *p = 0;
@@ -234,22 +239,45 @@ static void timer_callback (
         status_send_buf[2] = number_of_modules;
 
         //copy the modules and their send numbers into the buffer
+        //at the same time total up the packets sent
         uint8_t i = 0;
+        uint16_t packets_total = 0;
         for(; i < NUMBER_OF_MODULES; i++){
             if(module_num_map[i] != 0) {
                 status_send_buf[3+ i*2] = module_num_map[i];
+                energy_report_module[i].module_address = module_num_map[i];
                 status_send_buf[3+ i*2 + 1] = module_packet_count[i];
+                packets_total = module_packet_count[i];
+            } else {
+                break;
+            }
+        }
+        
+        //now figure out the percentages for each module
+        for(i = 0; i < NUMBER_OF_MODULES; i++){
+            if(module_num_map[i] != 0) {
+                energy_report_module[i].module_percent = 
+                        (uint8_t)module_packet_count[i]/(float)packets_total;
             } else {
                 break;
             }
         }
 
+        //now pack it into an energy report structure
+        energy_report.num_reports = number_of_modules;
+        energy_report.reports = energy_report_module;
+
+        //send it to the controller
+        signpost_energy_report(&energy_report);
+ 
+        //calculate and add the queue size in the status packet
         if(queue_tail >= queue_head) {
             status_send_buf[3+i*2] = queue_tail-queue_head;
         } else {
             status_send_buf[3+i*2] = QUEUE_SIZE-(queue_head-queue_tail);
         }
-
+    
+        //put it in the send buffer
         add_buffer_to_queue(0x22, status_send_buf, BUFFER_SIZE);
 
         //reset send_counter
