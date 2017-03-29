@@ -30,7 +30,7 @@ void signpost_energy_init_ltc2943 (void) {
     // set all channels open for Alert Response
     i2c_selector_select_channels_sync(0x1FF);
 
-    max17205_configure_pack_sync();
+    //max17205_configure_pack_sync();
 }
 
 static int get_ltc_energy (int selector_mask) {
@@ -88,10 +88,28 @@ int signpost_energy_get_battery_current_ua (void) {
 }
 
 int signpost_energy_get_battery_energy (void) {
-    uint16_t coulomb_volts;
-    max17205_read_coulomb_sync(&coulomb_volts);
-    float coulombs = coulomb_volts/0.01;
-    return (int)coulombs;
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_capacity_uAh(charge);
+}
+
+int signpost_energy_get_battery_percent (void) {
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_percentage_mP(percent);
+    return (int)((((float)percent)/26000.0)*100000.0);
+}
+
+int signpost_energy_get_battery_capacity (void) {
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_capacity_uAh(full);
 }
 
 int signpost_energy_get_solar_voltage_mv (void) {

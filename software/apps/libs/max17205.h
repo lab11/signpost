@@ -58,6 +58,8 @@ int max17205_configure_pack_sync(void);
 
 float max17205_get_voltage_mV(int vcount);
 float max17205_get_current_uA(int ccount);
+float max17205_get_percentage_mP(int percent);
+float max17205_get_capacity_uAh(int cap);
 
 #ifdef __cplusplus
 }

@@ -143,3 +143,10 @@ float max17205_get_current_uA(int ccount) {
     return ccount*108;
 }
 
+float max17205_get_percentage_mP(int percent) {
+    return ((float)percent/26000.0)*100000.0;
+}
+
+float max17205_get_capacity_uAh(int cap) {
+    return (float)cap*(5.0/.01);
+}
