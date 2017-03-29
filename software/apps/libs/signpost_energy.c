@@ -101,7 +101,6 @@ int signpost_energy_get_battery_percent (void) {
     uint16_t full;
     max17205_read_soc_sync(&percent, &charge, &full);
     return max17205_get_percentage_mP(percent);
-    return (int)((((float)percent)/26000.0)*100000.0);
 }
 
 int signpost_energy_get_battery_capacity (void) {
