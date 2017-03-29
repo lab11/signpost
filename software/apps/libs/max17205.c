@@ -40,10 +40,6 @@ int max17205_read_coulomb(void) {
     return command(DRIVER_NUM_MAX17205, 4, 0);
 }
 
-int max17205_configure_pack(void) {
-    return command(DRIVER_NUM_MAX17205, 3, 0);
-}
-
 int max17205_read_status_sync(uint16_t* status) {
     int err;
     result.fired = false;
@@ -115,22 +111,6 @@ int max17205_read_coulomb_sync(uint16_t* coulomb) {
     yield_for(&result.fired);
 
     *coulomb = result.value0 & 0xFFFF;
-
-    return 0;
-}
-
-int max17205_configure_pack_sync(void) {
-    int err;
-    result.fired = false;
-
-    err = max17205_set_callback(max17205_cb, (void*) &result);
-    if (err < 0) return err;
-
-    err = max17205_configure_pack();
-    if (err < 0) return err;
-
-    // Wait for the callback.
-    yield_for(&result.fired);
 
     return 0;
 }
