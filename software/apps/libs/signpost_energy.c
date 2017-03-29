@@ -29,6 +29,8 @@ void signpost_energy_init_ltc2943 (void) {
     is_ltc2943 = 1;
     // set all channels open for Alert Response
     i2c_selector_select_channels_sync(0x1FF);
+
+    max17205_configure_pack_sync();
 }
 
 static int get_ltc_energy (int selector_mask) {
