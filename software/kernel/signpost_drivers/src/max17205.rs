@@ -19,6 +19,7 @@ enum Registers {
     nRSense     = 0x1CF, // Sense resistor
     Batt        = 0x0DA, // Pack voltage, LSB = 1.25mV
     Current     = 0x00A, // Instantaneous current, LSB = 156.25 uA
+    Coulomb     = 0x04D,
 }
 
 #[derive(Clone,Copy,PartialEq)]
@@ -29,6 +30,8 @@ enum State {
     ConfigNext,
 
     /// Simple read states
+    SetupReadCoulomb,
+    ReadCoulomb,
     SetupReadStatus,
     ReadStatus,
     SetupReadSOC,
@@ -47,6 +50,7 @@ pub trait MAX17205Client {
     fn status(&self, status: u16);
     fn state_of_charge(&self, percent: u16, capacity: u16, full_capacity: u16);
     fn voltage_current(&self, voltage: u16, current: u16);
+    fn coulomb(&self, coulomb: u16);
     fn done(&self);
 }
 
@@ -139,6 +143,18 @@ impl<'a> MAX17205<'a> {
             buffer[0] = ((Registers::Batt as u8) & 0xFF) as u8;
             self.i2c0.write(buffer, 1);
             self.state.set(State::SetupReadVolt);
+        });
+    }
+
+    fn setup_read_coulomb(&self) {
+        self.buffer.take().map(|buffer| {
+            self.i2c0.enable();
+
+            // Get current and voltage
+            // Write Batt address
+            buffer[0] = ((Registers::Coulomb as u8) & 0xFF) as u8;
+            self.i2c0.write(buffer, 1);
+            self.state.set(State::SetupReadCoulomb);
         });
     }
 }
@@ -235,6 +251,23 @@ impl<'a> i2c::I2CClient for MAX17205<'a> {
                 self.i2c0.disable();
                 self.state.set(State::Idle);
             },
+            State::SetupReadCoulomb => {
+                // Write of voltage memory address complete, now issue read
+                self.i2c0.read(buffer, 2);
+                self.state.set(State::ReadCoulomb);
+            },
+            State::ReadCoulomb => {
+                // Read of voltage memory address complete
+                let coulomb = ((buffer[1] as u16) << 8) | (buffer[0] as u16);
+
+                self.client.get().map(|client| {
+                    client.coulomb(coulomb);
+                });
+
+                self.buffer.replace(buffer);
+                self.i2c0.disable();
+                self.state.set(State::Idle);
+            },
             State::SetupReadVolt => {
                 // Write of voltage memory address complete, now issue read
                 self.i2c0.read(buffer, 2);
@@ -321,6 +354,12 @@ impl<'a> MAX17205Client for MAX17205Driver<'a> {
         });
     }
 
+    fn coulomb(&self, coulomb: u16) { 
+        self.callback.get().map(|mut cb| {
+            cb.schedule(4, coulomb as usize, 0);
+        });
+    }
+
     fn done(&self) {
         self.callback.get().map(|mut cb| {
             cb.schedule(3, 0, 0);
@@ -364,6 +403,11 @@ impl<'a> Driver for MAX17205Driver<'a> {
             // configure
             3 => {
                 self.max17205.configure();
+                ReturnCode::SUCCESS
+            }
+
+            4 => {
+                self.max17205.setup_read_coulomb();
                 ReturnCode::SUCCESS
             }
 
