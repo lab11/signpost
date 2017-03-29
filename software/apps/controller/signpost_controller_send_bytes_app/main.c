@@ -482,7 +482,7 @@ static void watchdog_api_callback(uint8_t source_address,
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
-    static uint8_t count = 0;
+  static uint8_t count = 0;
   /*printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
           gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
           gps_data->month, gps_data->day, gps_data->year
@@ -518,7 +518,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 5) == 0) {
+  if(!currently_initializing && (count % 10) == 0) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -555,7 +555,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   watchdog_tickler(1);
 
-    count++;
+  count++;
   // start sampling again to catch the next second
   gps_sample(gps_callback);
 }
@@ -674,8 +674,11 @@ int main (void) {
     if ((index % 10) == 0) {
       printf("Check energy\n");
       get_energy();
-      get_batsol();
 
+    }
+
+    if((index %10) == 5) {
+      get_batsol();
     }
 
     if ((index % 50) == 0 && index != 0) {
