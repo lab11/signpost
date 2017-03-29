@@ -22,6 +22,7 @@
 #include "bonus_timer.h"
 
 static void get_energy (void);
+static void get_batsol (void);
 static void gps_callback (gps_data_t* gps_data);
 
 uint8_t fm25cl_read_buf[256];
@@ -203,13 +204,6 @@ static void get_energy (void) {
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
-  int battery_voltage = signpost_energy_get_battery_voltage_mv();
-  int battery_current = signpost_energy_get_battery_current_ua();
-  int solar_voltage = signpost_energy_get_solar_voltage_mv();
-  int solar_current = signpost_energy_get_solar_current_ua();
-  printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
-  printf("  Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
-
   //send this data to the radio module
   energy_buf[2] = ((fram.energy_module0 & 0xFF00) >> 8 );
   energy_buf[3] = ((fram.energy_module0 & 0xFF));
@@ -228,6 +222,31 @@ static void get_energy (void) {
   energy_buf[16] = ((fram.energy_module7 & 0xFF00) >> 8 );
   energy_buf[17] = ((fram.energy_module7 & 0xFF));
 
+  int rc;
+  if(!currently_initializing) {
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
+    energy_buf[1]++;
+  } else {
+    rc = 0;
+  }
+
+  if(rc >= 0) {
+    // Tickle the watchdog because something good happened.
+  }
+
+  watchdog_tickler(2);
+
+}
+
+static void get_batsol (void) {
+  int battery_voltage = signpost_energy_get_battery_voltage_mv();
+  int battery_current = signpost_energy_get_battery_current_ua();
+  int solar_voltage = signpost_energy_get_solar_voltage_mv();
+  int solar_current = signpost_energy_get_solar_current_ua();
+  printf("\n\nBattery and Solar Panel Data\n");
+  printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
+  printf("  Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
+
   batsol_buf[2] = ((battery_voltage & 0xFF00) >> 8);
   batsol_buf[3] = ((battery_voltage & 0xFF));
   batsol_buf[4] = ((battery_current & 0xFF00) >> 8);
@@ -238,15 +257,6 @@ static void get_energy (void) {
   batsol_buf[9] = ((solar_current & 0xFF));
 
   int rc;
-  if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
-    energy_buf[1]++;
-  } else {
-    rc = 0;
-  }
-
-  delay_ms(100);
-
   if(!currently_initializing) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,8);
     batsol_buf[1]++;
@@ -259,7 +269,6 @@ static void get_energy (void) {
   }
 
   watchdog_tickler(2);
-
 }
 
 static void initialization_api_callback(uint8_t source_address,
@@ -655,27 +664,6 @@ int main (void) {
 
   printf("Everything intialized\n");
 
-  delay_ms(2000);
-  // hack: initialize radio first
-  size_t j = 2;
-  printf("Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[j]));
-  // module requesting isolation
-  mod_isolated_out = MOD_OUTS[j];
-  printf("%d\n", mod_isolated_out);
-  mod_isolated_in = MOD_INS[j];
-  printf("%d\n", mod_isolated_in);
-  last_mod_isolated_out = MOD_OUTS[j];
-  isolated_count = 0;
-
-  // create private channel for this module
-  //XXX warn modules of i2c disable
-  controller_all_modules_disable_i2c();
-  controller_module_enable_i2c(MODOUT_pin_to_mod_name(mod_isolated_out));
-  // signal to module that it has a private channel
-  // XXX this should be a controller function operating on the
-  // module number, not index
-  gpio_clear(mod_isolated_in);
-
   printf("Entering loop\n");
   uint8_t index = 0;
   while(1) {
@@ -686,6 +674,7 @@ int main (void) {
     if ((index % 10) == 0) {
       printf("Check energy\n");
       get_energy();
+      get_batsol();
 
     }
 
