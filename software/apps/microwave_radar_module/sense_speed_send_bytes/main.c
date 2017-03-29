@@ -244,7 +244,6 @@ static void timer_callback (
     // reset variables
     motion_since_last_transmit = false;
     max_confidence = 0;
-    motion_confidence = 0;
     max_speed_since_last_transmit = 0;
 }
 
