@@ -241,6 +241,9 @@ static void get_energy (void) {
 static void get_batsol (void) {
   int battery_voltage = signpost_energy_get_battery_voltage_mv();
   int battery_current = signpost_energy_get_battery_current_ua();
+  uint8_t battery_percent = (uint8_t)(signpost_energy_get_battery_percent()/1000.0);
+  uint16_t battery_full = (uint16_t)(signpost_energy_get_battery_capacity()/1000.0);
+  uint16_t battery_energy = (uint16_t)(signpost_energy_get_battery_energy()/1000.0);
   int solar_voltage = signpost_energy_get_solar_voltage_mv();
   int solar_current = signpost_energy_get_solar_current_ua();
   printf("\n\nBattery and Solar Panel Data\n");
@@ -259,10 +262,15 @@ static void get_batsol (void) {
   batsol_buf[11] = ((solar_current & 0xFF0000) >> 16);
   batsol_buf[12] = ((solar_current & 0xFF00) >> 8);
   batsol_buf[13] = ((solar_current & 0xFF));
+  batsol_buf[14] = battery_percent;
+  batsol_buf[15] = ((battery_energy & 0xFF00) >> 8);
+  batsol_buf[16] = ((battery_energy & 0xFF));
+  batsol_buf[17] = ((battery_full & 0xFF00) >> 8);
+  batsol_buf[18] = ((battery_full & 0xFF));
 
   int rc;
   if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,14);
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,19);
     batsol_buf[1]++;
   } else {
     rc = 0;
