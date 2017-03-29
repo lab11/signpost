@@ -249,16 +249,20 @@ static void get_batsol (void) {
 
   batsol_buf[2] = ((battery_voltage & 0xFF00) >> 8);
   batsol_buf[3] = ((battery_voltage & 0xFF));
-  batsol_buf[4] = ((battery_current & 0xFF00) >> 8);
-  batsol_buf[5] = ((battery_current & 0xFF));
-  batsol_buf[6] = ((solar_voltage & 0xFF00) >> 8);
-  batsol_buf[7] = ((solar_voltage & 0xFF));
-  batsol_buf[8] = ((solar_current & 0xFF00) >> 8);
-  batsol_buf[9] = ((solar_current & 0xFF));
+  batsol_buf[4] = ((battery_current & 0xFF000000) >> 24);
+  batsol_buf[5] = ((battery_current & 0xFF0000) >> 16);
+  batsol_buf[6] = ((battery_current & 0xFF00) >> 8);
+  batsol_buf[7] = ((battery_current & 0xFF));
+  batsol_buf[8] = ((solar_voltage & 0xFF00) >> 8);
+  batsol_buf[9] = ((solar_voltage & 0xFF));
+  batsol_buf[10] = ((solar_current & 0xFF000000) >> 24);
+  batsol_buf[11] = ((solar_current & 0xFF0000) >> 16);
+  batsol_buf[12] = ((solar_current & 0xFF00) >> 8);
+  batsol_buf[13] = ((solar_current & 0xFF));
 
   int rc;
   if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,8);
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,14);
     batsol_buf[1]++;
   } else {
     rc = 0;
@@ -621,7 +625,7 @@ int main (void) {
 
   // Configure all the I2C selectors
   printf("Init'ing energy\n");
-  signpost_energy_init();
+  signpost_energy_init_ltc2943();
 
   // Reset all of the LTC2941s
   printf("Resetting energy\n");
