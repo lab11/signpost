@@ -12,8 +12,16 @@ extern "C" {
 // rsense = 0.017 Ohm
 #define POWER_MODULE_RSENSE 17
 
+typedef struct energy_remaining {
+    int controller_energy_remaining;
+    int module_energy_remaining[8];
+} signpost_energy_remaining_t;
+
 void signpost_energy_init (void);
-void signpost_energy_init_ltc2943 (void);
+
+//initialize the remaining values
+//if r == NULL then initialize from battery capacity
+void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r);
 
 //this zeros the coulomb counters for each counter
 void signpost_energy_reset_all_energy (void);

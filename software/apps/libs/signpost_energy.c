@@ -53,7 +53,7 @@ void signpost_energy_init (void) {
     i2c_selector_select_channels_sync(0xFF);
 }
 
-void signpost_energy_init_ltc2943 (void) {
+void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r) {
     // configure each ltc with the correct prescaler
     for (int i = 0; i < 9; i++) {
         i2c_selector_select_channels_sync(1<<i);
@@ -64,17 +64,29 @@ void signpost_energy_init_ltc2943 (void) {
     // set all channels open for Alert Response
     i2c_selector_select_channels_sync(0x1FF);
 
-    //initialize all of the energy remainings
-    //...We really should do this in a nonvolatile way
-    int battery_remaining = signpost_energy_get_battery_energy_remaining();
-    controller_energy_remaining = battery_remaining*0.4;
-    for(uint8_t i = 0; i < 8; i++) {
-        if(i == 4 || i == 3) {
+    if(r == NULL) {
+        //initialize all of the energy remainings
+        //...We really should do this in a nonvolatile way
+        int battery_remaining = signpost_energy_get_battery_energy_remaining();
+        controller_energy_remaining = battery_remaining*0.4;
+        for(uint8_t i = 0; i < 8; i++) {
+            if(i == 4 || i == 3) {
 
-        } else {
-            module_energy_remaining[i] = battery_remaining*0.1;
+            } else {
+                module_energy_remaining[i] = battery_remaining*0.1;
+            }
+        }
+    } else {
+        controller_energy_remaining = r->controller_energy_remaining;
+        for(uint8_t i = 0; i < 8; i++) {
+            if(i == 3 || i ==4) {
+
+            } else {
+                module_energy_remaining[i] = r->module_energy_remaining[i];
+            }
         }
     }
+    
     
     //reset all of the coulomb counters for the algorithm to work
     signpost_energy_reset_all_energy();

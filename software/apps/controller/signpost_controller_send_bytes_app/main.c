@@ -623,7 +623,7 @@ int main (void) {
 
   // Configure all the I2C selectors
   printf("Init'ing energy\n");
-  signpost_energy_init_ltc2943();
+  signpost_energy_init_ltc2943(NULL);
 
   /////////////////////////////
   // Signpost Module Operations
