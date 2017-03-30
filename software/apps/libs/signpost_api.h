@@ -266,10 +266,8 @@ enum energy_message_type {
 };
 
 typedef struct __attribute__((packed)) energy_information {
-    uint32_t    energy_limit_24h_mJ;
-    uint32_t    energy_used_24h_mJ;
-    uint16_t    current_limit_60s_mA;
-    uint16_t    current_average_60s_mA;
+    uint32_t    energy_limit_mAh;
+    uint16_t    current_average_600s_mA;
     uint8_t     energy_limit_warning_threshold;
     uint8_t     energy_limit_critical_threshold;
 } signpost_energy_information_t;
