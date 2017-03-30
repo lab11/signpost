@@ -26,6 +26,7 @@
 #include "radio_module.h"
 #include "gpio.h"
 #include "RadioDefs.h"
+#include "crc.h"
 
 //definitions for the ble
 #define DEVICE_NAME "Signpost"
@@ -194,7 +195,7 @@ static void timer_callback (
     int unused __attribute__ ((unused)),
     void * callback_args __attribute__ ((unused))) {
 
-    static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
+    static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE + 2];
     static uint8_t send_counter = 0;
 
     if(queue_head != queue_tail) {
@@ -213,7 +214,10 @@ static void timer_callback (
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
         memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_queue[queue_head], BUFFER_SIZE);
-        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+        uint16_t crc = computeCRC16(LoRa_send_buffer, ADDRESS_SIZE+BUFFER_SIZE);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)((crc & 0xFF00) >> 8);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)(crc & 0xFF);
+        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE+2);
 
         //parse the HCI layer error codes
         if(status != 0) {
