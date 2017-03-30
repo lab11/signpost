@@ -168,11 +168,11 @@ static void get_energy (void) {
     uint32_t* last_reading = &energy_last_readings[i];
 
     if (i == 3) {
-      energy = signpost_ltc_to_uAh(signpost_energy_get_controller_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+      energy = signpost_energy_get_controller_energy();
     } else if (i == 4) {
-      energy = signpost_ltc_to_uAh(signpost_energy_get_linux_energy(), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+      energy = signpost_energy_get_linux_energy();
     } else {
-      energy = signpost_ltc_to_uAh(signpost_energy_get_module_energy(i), POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER);
+      energy = signpost_energy_get_module_energy(i);
     }
 
     uint32_t diff = energy - *last_reading;
@@ -240,9 +240,9 @@ static void get_energy (void) {
 
 static void get_batsol (void) {
   int battery_voltage = signpost_energy_get_battery_voltage_mv();
-  int battery_current = signpost_energy_get_battery_current_ua();
+  int battery_current = signpost_energy_get_battery_current();
   int solar_voltage = signpost_energy_get_solar_voltage_mv();
-  int solar_current = signpost_energy_get_solar_current_ua();
+  int solar_current = signpost_energy_get_solar_current();
   printf("\n\nBattery and Solar Panel Data\n");
   printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
   printf("  Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
@@ -351,10 +351,8 @@ static void energy_api_callback(uint8_t source_address,
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
-      info.energy_limit_24h_mJ = 1;
-      info.energy_used_24h_mJ = 2;
-      info.current_limit_60s_mA = 3;
-      info.current_average_60s_mA = 4;
+      info.energy_limit_mAh = 1;
+      info.current_average_mA = 1;
       info.energy_limit_warning_threshold = 5;
       info.energy_limit_critical_threshold = 6;
 
@@ -626,10 +624,6 @@ int main (void) {
   // Configure all the I2C selectors
   printf("Init'ing energy\n");
   signpost_energy_init_ltc2943();
-
-  // Reset all of the LTC2941s
-  printf("Resetting energy\n");
-  signpost_energy_reset();
 
   /////////////////////////////
   // Signpost Module Operations

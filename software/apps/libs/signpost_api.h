@@ -267,7 +267,7 @@ enum energy_message_type {
 
 typedef struct __attribute__((packed)) energy_information {
     uint32_t    energy_limit_mAh;
-    uint16_t    current_average_600s_mA;
+    uint16_t    current_average_mA;
     uint8_t     energy_limit_warning_threshold;
     uint8_t     energy_limit_critical_threshold;
 } signpost_energy_information_t;
@@ -282,7 +282,7 @@ typedef struct __attribute__((packed)) energy_report {
     signpost_energy_report_module_t* reports;
 } signpost_energy_report_t;
 
-_Static_assert(sizeof(signpost_energy_information_t) == 14, "On-wire structure size");
+_Static_assert(sizeof(signpost_energy_information_t) == 8, "On-wire structure size");
 
 // Query the controller for energy information
 //
