@@ -30,6 +30,7 @@ static int solar_energy;
 static int linux_energy;
 static int battery_energy_remaining;
 
+static int module_energy_used[8] = {0};
 static unsigned int last_time = 0;
 
 #define BATTERY_CAPACITY 9000000
@@ -282,6 +283,7 @@ void signpost_energy_update_energy (void) {
         } else {
             module_energy[i] = signpost_energy_get_module_energy(i);
             total_energy_used += module_energy[i];
+            module_energy_used[i] += module_energy[i];
         }
     }
     battery_energy_remaining = signpost_energy_get_battery_energy_remaining();
@@ -369,3 +371,15 @@ void signpost_energy_update_energy (void) {
     battery_last_energy_remaining = battery_energy_remaining; 
 }
 
+void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signpost_energy_report_t* report) {
+    int energy = module_energy_used[source_module_slot];
+    int other_energy = 0;
+    uint8_t num_reports = report->num_reports;
+    for(uint8_t j = 0; j < num_reports; j++) {
+        module_energy_remaining[report->reports[j].module_address] -= (int)(energy*(report->reports[j].module_percent/100.0));
+        module_energy_used[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+        other_energy += (int)(energy*report->reports[j].module_percent/100.0);
+    }
+    module_energy_remaining[source_module_slot] += other_energy;
+    module_energy_used[source_module_slot] = 0;
+}

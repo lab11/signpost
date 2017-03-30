@@ -58,9 +58,7 @@ void signpost_energy_update_energy (void);
 
 //this function should be called to distribute the energy of one module 
 //to other modules - primarily for the radio right now
-int signpost_energy_update_energy_from_report(uint8_t source_module_slot, signpost_energy_report_t* report);
-
-int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler);
+void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signpost_energy_report_t* report);
 
 #ifdef __cplusplus
 }
