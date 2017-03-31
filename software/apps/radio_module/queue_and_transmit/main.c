@@ -216,7 +216,7 @@ static void timer_callback (
         memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_queue[queue_head], BUFFER_SIZE);
         uint16_t crc = computeCRC16(LoRa_send_buffer, ADDRESS_SIZE+BUFFER_SIZE);
         LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)((crc & 0xFF00) >> 8);
-        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)(crc & 0xFF);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE+1] = (uint8_t)(crc & 0xFF);
         uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE+2);
 
         //parse the HCI layer error codes
