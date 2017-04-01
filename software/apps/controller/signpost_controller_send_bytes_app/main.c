@@ -116,14 +116,7 @@ static void check_module_initialization (void) {
 
 typedef struct {
   uint32_t magic;
-  uint32_t energy_controller;
-  uint32_t energy_linux;
-  uint32_t energy_module0;
-  uint32_t energy_module1;
-  uint32_t energy_module2;
-  uint32_t energy_module5;
-  uint32_t energy_module6;
-  uint32_t energy_module7;
+  signpost_energy_remaining_t energy;
 } controller_fram_t;
 
 // Keep track of the last time we got data from the ltc chips
@@ -150,77 +143,36 @@ static void watchdog_tickler (int which) {
   }
 }
 
-static void print_energy_data (int module, int energy) {
-  if (module == 3) {
-    printf("  Controller energy: %10i uAh\n", energy);
-  } else if (module == 4) {
-    printf("  Linux energy:      %10i uAh\n", energy);
-  } else {
-    printf("  Module %i energy:   %10i uAh\n", module, energy);
-  }
-}
 
 static void get_energy (void) {
   printf("\n\nEnergy Data\n");
 
-  for (int i=0; i<8; i++) {
-    uint32_t energy;
-    uint32_t* last_reading = &energy_last_readings[i];
-
-    if (i == 3) {
-      energy = signpost_energy_get_controller_energy();
-    } else if (i == 4) {
-      energy = signpost_energy_get_linux_energy();
-    } else {
-      energy = signpost_energy_get_module_energy(i);
+  //read the energy remaining data
+    fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
+    for(uint8_t i = 0; i < 8; i++) {
+        if(i == 3 || i == 4) continue;
+        fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
     }
-
-    uint32_t diff = energy - *last_reading;
-    *last_reading = energy;
-
-    switch (i) {
-      case 0: fram.energy_module0 += diff; break;
-      case 1: fram.energy_module1 += diff; break;
-      case 2: fram.energy_module2 += diff; break;
-      case 3: fram.energy_controller += diff; break;
-      case 4: fram.energy_linux += diff; break;
-      case 5: fram.energy_module5 += diff; break;
-      case 6: fram.energy_module6 += diff; break;
-      case 7: fram.energy_module7 += diff; break;
-    }
-
-    // Test print
-    switch (i) {
-      case 0: print_energy_data(i, fram.energy_module0); break;
-      case 1: print_energy_data(i, fram.energy_module1); break;
-      //case 2: print_energy_data(i, fram.energy_module2); break;
-      case 3: print_energy_data(i, fram.energy_controller); break;
-      case 4: print_energy_data(i, fram.energy_linux); break;
-      //case 5: print_energy_data(i, fram.energy_module5); break;
-      //case 6: print_energy_data(i, fram.energy_module6); break;
-      //case 7: print_energy_data(i, fram.energy_module7); break;
-    }
-  }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
   //send this data to the radio module
-  energy_buf[2] = ((fram.energy_module0 & 0xFF00) >> 8 );
-  energy_buf[3] = ((fram.energy_module0 & 0xFF));
-  energy_buf[4] = ((fram.energy_module1 & 0xFF00) >> 8 );
-  energy_buf[5] = ((fram.energy_module1 & 0xFF));
-  energy_buf[6] = ((fram.energy_module2 & 0xFF00) >> 8 );
-  energy_buf[7] = ((fram.energy_module2 & 0xFF));
-  energy_buf[8] = ((fram.energy_controller & 0xFF00) >> 8 );
-  energy_buf[9] = ((fram.energy_controller & 0xFF));
-  energy_buf[10] = ((fram.energy_linux & 0xFF00) >> 8 );
-  energy_buf[11] = ((fram.energy_linux & 0xFF));
-  energy_buf[12] = ((fram.energy_module5 & 0xFF00) >> 8 );
-  energy_buf[13] = ((fram.energy_module5 & 0xFF));
-  energy_buf[14] = ((fram.energy_module6 & 0xFF00) >> 8 );
-  energy_buf[15] = ((fram.energy_module6 & 0xFF));
-  energy_buf[16] = ((fram.energy_module7 & 0xFF00) >> 8 );
-  energy_buf[17] = ((fram.energy_module7 & 0xFF));
+  energy_buf[2] = ((fram.energy.module_energy_remaining[0] & 0xFF00) >> 8 );
+  energy_buf[3] = ((fram.energy.module_energy_remaining[0] & 0xFF));
+  energy_buf[4] = ((fram.energy.module_energy_remaining[1] & 0xFF00) >> 8 );
+  energy_buf[5] = ((fram.energy.module_energy_remaining[1] & 0xFF));
+  energy_buf[6] = ((fram.energy.module_energy_remaining[2] & 0xFF00) >> 8 );
+  energy_buf[7] = ((fram.energy.module_energy_remaining[2] & 0xFF));
+  energy_buf[8] = ((fram.energy.controller_energy_remaining & 0xFF00) >> 8 );
+  energy_buf[9] = ((fram.energy.controller_energy_remaining & 0xFF));
+  energy_buf[10] = 0;
+  energy_buf[11] = 0;
+  energy_buf[12] = ((fram.energy.module_energy_remaining[5] & 0xFF00) >> 8 );
+  energy_buf[13] = ((fram.energy.module_energy_remaining[5] & 0xFF));
+  energy_buf[14] = ((fram.energy.module_energy_remaining[6] & 0xFF00) >> 8 );
+  energy_buf[15] = ((fram.energy.module_energy_remaining[6] & 0xFF));
+  energy_buf[16] = ((fram.energy.module_energy_remaining[7] & 0xFF00) >> 8 );
+  energy_buf[17] = ((fram.energy.module_energy_remaining[7] & 0xFF));
 
   int rc;
   if(!currently_initializing) {
@@ -592,17 +544,19 @@ int main (void) {
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
+    // Initialize the energy algorithm with those values
+    signpost_energy_init_ltc2943(&fram.energy);
   } else {
     // Initialize this
     fram.magic = FRAM_MAGIC_VALUE;
-    fram.energy_controller = 0;
-    fram.energy_linux = 0;
-    fram.energy_module0 = 0;
-    fram.energy_module1 = 0;
-    fram.energy_module2 = 0;
-    fram.energy_module5 = 0;
-    fram.energy_module6 = 0;
-    fram.energy_module7 = 0;
+
+    //let the energy algorithm figure out how to initialize all the energies
+    signpost_energy_init_ltc2943(NULL);
+
+    fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
+    for(uint8_t i = 0; i < 8; i++) {
+        fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
+    }
     fm25cl_write_sync(0, sizeof(controller_fram_t));
   }
 
@@ -621,9 +575,6 @@ int main (void) {
   // Energy Management
   // -----------------
 
-  // Configure all the I2C selectors
-  printf("Init'ing energy\n");
-  signpost_energy_init_ltc2943(NULL);
 
   /////////////////////////////
   // Signpost Module Operations
