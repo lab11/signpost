@@ -239,9 +239,9 @@ static void get_energy (void) {
 }
 
 static void get_batsol (void) {
-  int battery_voltage = signpost_energy_get_battery_voltage_mv();
+  int battery_voltage = signpost_energy_get_battery_voltage();
   int battery_current = signpost_energy_get_battery_current();
-  int solar_voltage = signpost_energy_get_solar_voltage_mv();
+  int solar_voltage = signpost_energy_get_solar_voltage();
   int solar_current = signpost_energy_get_solar_current();
   printf("\n\nBattery and Solar Panel Data\n");
   printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);

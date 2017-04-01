@@ -249,7 +249,7 @@ int signpost_energy_get_solar_average_current (void) {
 /////////////////////////////////////////////////////////////////////
 // These functions give you voltages for battery and solar
 // ///////////////////////////////////////////////////////////////////
-int signpost_energy_get_battery_voltage_mv (void) {
+int signpost_energy_get_battery_voltage (void) {
     uint16_t voltage;
     int16_t current;
     max17205_read_voltage_current_sync(&voltage,&current);
@@ -259,7 +259,7 @@ int signpost_energy_get_battery_voltage_mv (void) {
 
 
 
-int signpost_energy_get_solar_voltage_mv (void) {
+int signpost_energy_get_solar_voltage (void) {
     //selector #3 slot 1
     i2c_selector_select_channels_sync(0x100);
 

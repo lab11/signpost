@@ -58,13 +58,13 @@ int signpost_energy_get_battery_average_current (void);
 int signpost_energy_get_solar_average_current (void);
 
 //these functions tell you instantaneous current and voltage for the battery and solar panel
-int signpost_energy_get_battery_voltage_mv (void);
-int signpost_energy_get_solar_voltage_mv (void);
+int signpost_energy_get_battery_voltage (void);
+int signpost_energy_get_solar_voltage (void);
 
 //this function should be called every 600s to update energy capacities
 void signpost_energy_update_energy (void);
 
-//this function should be called to distribute the energy of one module 
+//this function should be called to distribute the energy of one module
 //to other modules - primarily for the radio right now
 void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signpost_energy_report_t* report);
 
