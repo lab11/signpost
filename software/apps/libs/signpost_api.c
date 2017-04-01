@@ -29,9 +29,6 @@ static struct module_struct {
 } module_info = {.i2c_address_mods = {ModuleAddressController, ModuleAddressStorage, ModuleAddressRadio}};
 
 
-uint8_t* signpost_api_addr_to_key(uint8_t addr);
-int      signpost_api_addr_to_mod_num(uint8_t addr);
-
 // Translate module address to pairwise key
 uint8_t* signpost_api_addr_to_key(uint8_t addr) {
     for (size_t i = 0; i < NUM_MODULES; i++) {

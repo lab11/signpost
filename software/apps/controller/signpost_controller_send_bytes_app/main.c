@@ -53,17 +53,6 @@ uint8_t gps_buf[20];
 uint8_t energy_buf[20];
 uint8_t batsol_buf[20];
 
-static uint8_t module_address_to_slot(uint8_t address) {
-    for(uint8_t i = 0; i < 8; i++) {
-        if(module_addresses[i] == address) {
-            return i;
-        } else if (module_addresses[i] == 0) {
-            return 8;
-        }
-    }
-    return 8;
-}
-
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
         for (size_t i = 0; i < NUM_MOD_IO; i++) {
@@ -315,9 +304,9 @@ static void energy_api_callback(uint8_t source_address,
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
       info.energy_limit_mAh = (int)(signpost_energy_get_module_energy_remaining(
-                                    module_address_to_slot(source_address))/1000.0);
+                                    signpost_api_addr_to_mod_num(source_address))/1000.0);
       info.current_average_mA = (int)(signpost_energy_get_module_average_current(
-                                    module_address_to_slot(source_address))/1000.0);
+                                    signpost_api_addr_to_mod_num(source_address))/1000.0);
       info.energy_limit_warning_threshold = ((info.energy_limit_mAh/info.current_average_mA) < 24);
       info.energy_limit_critical_threshold = ((info.energy_limit_mAh/info.current_average_mA) < 6);
 
@@ -335,11 +324,11 @@ static void energy_api_callback(uint8_t source_address,
 
         //now we should convert the report module addresses to module slot numbers
         for(uint8_t i = 0; i < report.num_reports; i++) {
-            report.reports[i].module_address = module_address_to_slot(report.reports[i].module_address);
+            report.reports[i].module_address = signpost_api_addr_to_mod_num(report.reports[i].module_address);
         }
 
         //now send the report to the energy
-        signpost_energy_update_energy_from_report(module_address_to_slot(source_address), &report);
+        signpost_energy_update_energy_from_report(signpost_api_addr_to_mod_num(source_address), &report);
 
         //reply to the report
         signpost_energy_report_reply(source_address, &report);

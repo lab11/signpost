@@ -45,6 +45,9 @@ int signpost_api_send(uint8_t destination_address,
                       size_t message_length,
                       uint8_t* message);
 
+uint8_t* signpost_api_addr_to_key(uint8_t addr);
+int signpost_api_addr_to_mod_num(uint8_t addr);
+
 /**************************************************************************/
 /* INITIALIZATION API                                                     */
 /**************************************************************************/
