@@ -52,6 +52,21 @@ uint8_t module_addresses[8] = {0};
 uint8_t gps_buf[20];
 uint8_t energy_buf[20];
 uint8_t batsol_buf[20];
+int32_t module_duty_cycle[8] = {-1};
+
+static void check_module_duty_cycle(void) {
+    for(uint8_t i = 0; i < 8; i++) {
+        if(module_duty_cycle[i] == 0) {
+            //turn them back on
+            controller_module_enable_power(i);
+
+            //set it back to -1
+            module_duty_cycle[i] = -1;
+        } else if(module_duty_cycle[i] > 0) {
+            module_duty_cycle[i]--;
+        }
+    }
+}
 
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
@@ -332,6 +347,22 @@ static void energy_api_callback(uint8_t source_address,
 
         //reply to the report
         signpost_energy_report_reply(source_address, &report);
+    } else if (message_type == EnergyDutyCycleMessage) {
+        //this is a duty cycle message
+        //
+        //how long does the module want to be duty cycled?
+        uint32_t time;
+        memcpy(&time, message, 4);
+
+        //what module slot wants to be duty cycled?
+        uint8_t mod = signpost_api_addr_to_mod_num(source_address);
+
+        //set up the value for the timer to check
+        module_duty_cycle[mod] = (int)(time/1000.0);
+
+        //turn it off
+        controller_module_disable_power(mod);
+
     } else if (message_type == EnergyLevelWarning24hMessage) {
       signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else if (message_type == EnergyLevelCritical24hMessage) {
@@ -638,6 +669,9 @@ int main (void) {
     // always check for modules that need to be initialized
     check_module_initialization();
 
+    //check for any modules that need to be turned back on
+    check_module_duty_cycle();
+
     // get energy updates every 10 seconds
     if ((index % 10) == 0) {
       printf("Check energy\n");
@@ -654,6 +688,8 @@ int main (void) {
             check_watchdogs();
         }
     }
+
+
 
     index++;
     delay_ms(1000);
