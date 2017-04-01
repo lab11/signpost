@@ -53,6 +53,17 @@ uint8_t gps_buf[20];
 uint8_t energy_buf[20];
 uint8_t batsol_buf[20];
 
+static uint8_t module_address_to_slot(uint8_t address) {
+    for(uint8_t i = 0; i < 8; i++) {
+        if(module_addresses[i] == address) {
+            return i;
+        } else if (module_addresses[i] == 0) {
+            return 8;
+        }
+    }
+    return 8;
+}
+
 static void check_module_initialization (void) {
     if (mod_isolated_out < 0) {
         for (size_t i = 0; i < NUM_MOD_IO; i++) {
@@ -290,7 +301,7 @@ static void initialization_api_callback(uint8_t source_address,
 
 static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
-    uint8_t message_type, __attribute__ ((unused)) size_t message_length, __attribute__ ((unused)) uint8_t* message) {
+    uint8_t message_type, size_t message_length, uint8_t* message) {
   if (api_type != EnergyApiType) {
     signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
@@ -303,16 +314,35 @@ static void energy_api_callback(uint8_t source_address,
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
-      info.energy_limit_mAh = 1;
-      info.current_average_mA = 1;
-      info.energy_limit_warning_threshold = 5;
-      info.energy_limit_critical_threshold = 6;
+      info.energy_limit_mAh = (int)(signpost_energy_get_module_energy_remaining(
+                                    module_address_to_slot(source_address))/1000.0);
+      info.current_average_mA = (int)(signpost_energy_get_module_average_current(
+                                    module_address_to_slot(source_address))/1000.0);
+      info.energy_limit_warning_threshold = ((info.energy_limit_mAh/info.current_average_mA) < 24);
+      info.energy_limit_critical_threshold = ((info.energy_limit_mAh/info.current_average_mA) < 6);
 
       rc = signpost_energy_query_reply(source_address, &info);
       if (rc < 0) {
         printf(" - %d: Error sending energy query reply (code: %d). Replying with fail.\n", __LINE__, rc);
         signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
       }
+    } else if (message_type == EnergyReportMessage) {
+        //this is for the radio to report other module's energy usage
+
+        //first we should get the message and unpack it
+        signpost_energy_report_t report;
+        memcpy(&report, message, message_length);
+
+        //now we should convert the report module addresses to module slot numbers
+        for(uint8_t i = 0; i < report.num_reports; i++) {
+            report.reports[i].module_address = module_address_to_slot(report.reports[i].module_address);
+        }
+
+        //now send the report to the energy
+        signpost_energy_update_energy_from_report(module_address_to_slot(source_address), &report);
+
+        //reply to the report
+        signpost_energy_report_reply(source_address, &report);
     } else if (message_type == EnergyLevelWarning24hMessage) {
       signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else if (message_type == EnergyLevelCritical24hMessage) {
