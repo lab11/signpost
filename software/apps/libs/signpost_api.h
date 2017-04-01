@@ -263,6 +263,7 @@ enum energy_message_type {
     EnergyLevelCritical24hMessage = 2,
     EnergyCurrentWarning60sMessage = 3,
     EnergyReportMessage = 4,
+    EnergyDutyCycleMessage = 5,
 };
 
 typedef struct __attribute__((packed)) energy_information {
@@ -290,6 +291,12 @@ _Static_assert(sizeof(signpost_energy_information_t) == 8, "On-wire structure si
 //  energy  - an energy_information_t struct to fill
 __attribute__((warn_unused_result))
 int signpost_energy_query(signpost_energy_information_t* energy);
+
+// Tell the controller to turn me off then on again in X time
+// params:
+//  time - time in milliseconds to turn on again
+int signpost_energy_duty_cycle(uint32_t time_ms);
+
 
 // Tell the controller about modules who have used energy
 // params: a struct of module addresses and energy percents of yours they have used

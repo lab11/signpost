@@ -873,6 +873,12 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
     return energy_query_result;
 }
 
+int signpost_energy_duty_cycle(uint32_t time_ms) {
+    return signpost_api_send(ModuleAddressController,
+            NotificationFrame, EnergyApiType, EnergyDutyCycleMessage,
+            4, (uint8_t*)&time_ms);
+}
+
 static void energy_query_async_callback(int len_or_rc) {
     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
 
@@ -931,7 +937,7 @@ int signpost_energy_report(signpost_energy_report_t* report) {
 
     memcpy(report, incoming_message, incoming_message[0]*2 +1);
 
-    return SUCCESS;    
+    return SUCCESS;
 }
 
 int signpost_energy_query_reply(uint8_t destination_address,
@@ -944,7 +950,7 @@ int signpost_energy_query_reply(uint8_t destination_address,
 int signpost_energy_report_reply(uint8_t destination_address,
         signpost_energy_report_t* report) {
 
-    return signpost_api_send(destination_address, 
+    return signpost_api_send(destination_address,
             ResponseFrame, EnergyApiType, EnergyReportMessage,
             report->num_reports*2+1, (uint8_t*) report);
 }
