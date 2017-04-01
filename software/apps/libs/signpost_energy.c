@@ -13,24 +13,25 @@ static uint8_t is_ltc2943 = 0;
 //These are the RAM variables that we update
 //We are going to store them in nonvolatile memory too
 /////////////////////////////////////////////////////
-static int module_energy_remaining[8] = {0};
 static int controller_energy_remaining = 0;
 
 static int battery_last_energy_remaining = 0;
 
-static int module_average_current[8] = {0};
 static int controller_average_current = 0;
 static int linux_average_current = 0;
 static int battery_average_current = 0;
 static int solar_average_current = 0;
 
-static int module_energy[8] = {0};
 static int controller_energy;
 static int solar_energy;
 static int linux_energy;
 static int battery_energy_remaining;
 
-static int module_energy_used[8] = {0};
+static int total_energy_used_since_update = 0;
+static int module_average_current[8] = {0};
+static int module_energy_remaining[8] = {0};
+static int module_energy_used_since_update[8] = {0};
+static int module_energy_used_since_report[8] = {0};
 static unsigned int last_time = 0;
 
 #define BATTERY_CAPACITY 9000000
@@ -86,8 +87,8 @@ void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r) {
             }
         }
     }
-    
-    
+
+
     //reset all of the coulomb counters for the algorithm to work
     signpost_energy_reset_all_energy();
 
@@ -282,20 +283,19 @@ void signpost_energy_update_energy (void) {
     }
     last_time = time_now;
 
-    static int total_energy_used = 0;
     //now let's read all the coulomb counters
     linux_energy = signpost_energy_get_linux_energy();
-    total_energy_used += linux_energy;
+    total_energy_used_since_update += linux_energy;
     controller_energy = signpost_energy_get_controller_energy();
-    total_energy_used += controller_energy;
+    total_energy_used_since_update += controller_energy;
     solar_energy = signpost_energy_get_solar_energy();
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) {
 
         } else {
-            module_energy[i] = signpost_energy_get_module_energy(i);
-            total_energy_used += module_energy[i];
-            module_energy_used[i] += module_energy[i];
+            module_energy_used_since_update[i] += signpost_energy_get_module_energy(i);
+            module_energy_used_since_report[i] += signpost_energy_get_module_energy(i);
+            total_energy_used_since_update += module_energy_used_since_update[i];
         }
     }
     battery_energy_remaining = signpost_energy_get_battery_energy_remaining();
@@ -311,7 +311,7 @@ void signpost_energy_update_energy (void) {
         if(i == 3 || i == 4) {
 
         } else {
-            module_average_current[i] = (module_energy[i]*3600)/time;
+            module_average_current[i] = (module_energy_used_since_update[i]*3600)/time;
         }
     }
     battery_average_current = ((battery_last_energy_remaining-battery_energy_remaining)*3600)/time;
@@ -324,8 +324,9 @@ void signpost_energy_update_energy (void) {
         if(i == 3 || i == 4) {
 
         } else {
-            module_energy_remaining[i] -= module_energy[i];
+            module_energy_remaining[i] -= module_energy_used_since_update[i];
         }
+        module_energy_used_since_update[i] = 0;
     }
 
     //now we need to figure out how much energy (if any) we got
@@ -333,12 +334,12 @@ void signpost_energy_update_energy (void) {
     // technically battery_energy_remaining = battery_last_energy_remaining - total_energy_used + solar_energy
     // This isn't going to be true due to efficiency losses and such
     // But what we can do:
-    if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used) {
+    if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used_since_update) {
         //we have surplus!! let's distribute it
-        int surplus = battery_energy_remaining - (battery_last_energy_remaining - total_energy_used);
+        int surplus = battery_energy_remaining - (battery_last_energy_remaining - total_energy_used_since_update);
         int controller_surplus = (int)(surplus * 0.4);
         int module_surplus = (int)(surplus * 0.1);
-        
+
         controller_energy_remaining += controller_surplus;
         if(controller_energy_remaining > MAX_CONTROLLER_ENERGY_REMAINING) {
             module_surplus += (int)((controller_energy_remaining - MAX_CONTROLLER_ENERGY_REMAINING)/6.0);
@@ -377,21 +378,40 @@ void signpost_energy_update_energy (void) {
         }
     } else {
         //efficiency losses - we should probably also distribute those losses (or charge them to the controller?)
-        controller_energy_remaining -= ((battery_last_energy_remaining - total_energy_used) - battery_energy_remaining);
+        controller_energy_remaining -= ((battery_last_energy_remaining - total_energy_used_since_update) - battery_energy_remaining);
     }
 
-    battery_last_energy_remaining = battery_energy_remaining; 
+    total_energy_used_since_update = 0;
+    battery_last_energy_remaining = battery_energy_remaining;
 }
 
 void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signpost_energy_report_t* report) {
-    int energy = module_energy_used[source_module_slot];
-    int other_energy = 0;
+    //read the source module's energy
+    int used_since_update = signpost_energy_get_module_energy(source_module_slot);
+
+    //add it to that used since update
+    total_energy_used_since_update += used_since_update;
+
+    //reset that slot
+    signpost_energy_reset_module_energy(source_module_slot);
+
+    //add the energy to the total energy used since last report
+    module_energy_used_since_report[source_module_slot] += used_since_update;
+
+    //also add it to the total energy used by the module since the last update
+    module_energy_used_since_update[source_module_slot] += used_since_update;
+
+    //copy to local variable because it's easier
+    int energy = module_energy_used_since_report[source_module_slot];
+
     uint8_t num_reports = report->num_reports;
     for(uint8_t j = 0; j < num_reports; j++) {
-        module_energy_remaining[report->reports[j].module_address] -= (int)(energy*(report->reports[j].module_percent/100.0));
-        module_energy_used[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
-        other_energy += (int)(energy*report->reports[j].module_percent/100.0);
+        //take the energy since last report, add/subtract it from all the totals
+        module_energy_used_since_report[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+        module_energy_used_since_update[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+
+        module_energy_used_since_update[source_module_slot] -= (int)(energy*(report->reports[j].module_percent/100.0));
     }
-    module_energy_remaining[source_module_slot] += other_energy;
-    module_energy_used[source_module_slot] = 0;
+
+    module_energy_used_since_report[source_module_slot] = 0;
 }
