@@ -1,7 +1,6 @@
-#include <firestorm.h>
 #include <tock.h>
-#include <i2c_selector.h>
 
+#include "i2c_selector.h"
 #include "smbus_interrupt.h"
 
 #define DRIVER_NUM_SMBUSINT 104

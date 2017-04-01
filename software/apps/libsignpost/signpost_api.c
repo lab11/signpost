@@ -7,7 +7,6 @@
 #include "signpost_api.h"
 #include "signpost_entropy.h"
 #include "signpost_mod_io.h"
-#include "tock.h"
 #include "gpio.h"
 #include "led.h"
 #include "timer.h"

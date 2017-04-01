@@ -1,10 +1,11 @@
 #include <stdint.h>
 #include <stdbool.h>
-#include <firestorm.h>
-#include <msgeq7.h>
-#include <gpio.h>
+
 #include <adc.h>
+#include <gpio.h>
 #include <timer.h>
+
+#include "msgeq7.h"
 
 static uint8_t strobe;
 static uint8_t reset;

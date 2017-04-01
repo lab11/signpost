@@ -3,7 +3,7 @@
 CHIP=sam4l
 PLATFORM=storage_master
 
-include ../../../kernel/tock/Makefile.common
+include ../../../kernel/tock/boards/Makefile.common
 
 
 
