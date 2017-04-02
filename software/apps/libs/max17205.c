@@ -40,10 +40,6 @@ int max17205_read_coulomb(void) {
     return command(DRIVER_NUM_MAX17205, 4, 0);
 }
 
-int max17205_configure_pack(void) {
-    return command(DRIVER_NUM_MAX17205, 3, 0);
-}
-
 int max17205_read_status_sync(uint16_t* status) {
     int err;
     result.fired = false;
@@ -119,22 +115,6 @@ int max17205_read_coulomb_sync(uint16_t* coulomb) {
     return 0;
 }
 
-int max17205_configure_pack_sync(void) {
-    int err;
-    result.fired = false;
-
-    err = max17205_set_callback(max17205_cb, (void*) &result);
-    if (err < 0) return err;
-
-    err = max17205_configure_pack();
-    if (err < 0) return err;
-
-    // Wait for the callback.
-    yield_for(&result.fired);
-
-    return 0;
-}
-
 float max17205_get_voltage_mV(int vcount) {
     return vcount*1.25;
 }
@@ -143,3 +123,10 @@ float max17205_get_current_uA(int ccount) {
     return ccount*108;
 }
 
+float max17205_get_percentage_mP(int percent) {
+    return ((float)percent/26000.0)*100000.0;
+}
+
+float max17205_get_capacity_uAh(int cap) {
+    return (float)cap*(5.0/.01);
+}
