@@ -191,7 +191,7 @@ static void get_energy (void) {
 
   int rc;
   if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
+    //rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
     energy_buf[1]++;
   } else {
     rc = 0;
@@ -229,7 +229,7 @@ static void get_batsol (void) {
 
   int rc;
   if(!currently_initializing) {
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,14);
+    //rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,14);
     batsol_buf[1]++;
   } else {
     rc = 0;
@@ -306,6 +306,9 @@ static void initialization_api_callback(uint8_t source_address,
 static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
+
+    printf("received energy api callback of type %d\n",message_type);
+
   if (api_type != EnergyApiType) {
     signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     return;
@@ -314,7 +317,26 @@ static void energy_api_callback(uint8_t source_address,
   int rc;
 
   if (frame_type == NotificationFrame) {
-    // XXX unexpected, drop
+      if(message_type == EnergyDutyCycleMessage) {
+        printf("received duty cycle request\n");
+        //this is a duty cycle message
+        //
+        //how long does the module want to be duty cycled?
+        uint32_t time;
+        memcpy(&time, message, 4);
+
+        //what module slot wants to be duty cycled?
+        uint8_t mod = signpost_api_addr_to_mod_num(source_address);
+
+        int timer = (int)(time/1000.0);
+        printf("Requested duty cycle for %ds\n",timer);
+        //set up the value for the timer to check
+        module_duty_cycle[mod] = (int)(time/1000.0);
+
+        //turn it off
+        printf("Turning off module %d\n", mod);
+        controller_module_disable_power(mod);
+      }
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
@@ -347,22 +369,6 @@ static void energy_api_callback(uint8_t source_address,
 
         //reply to the report
         signpost_energy_report_reply(source_address, &report);
-    } else if (message_type == EnergyDutyCycleMessage) {
-        //this is a duty cycle message
-        //
-        //how long does the module want to be duty cycled?
-        uint32_t time;
-        memcpy(&time, message, 4);
-
-        //what module slot wants to be duty cycled?
-        uint8_t mod = signpost_api_addr_to_mod_num(source_address);
-
-        //set up the value for the timer to check
-        module_duty_cycle[mod] = (int)(time/1000.0);
-
-        //turn it off
-        controller_module_disable_power(mod);
-
     } else if (message_type == EnergyLevelWarning24hMessage) {
       signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
     } else if (message_type == EnergyLevelCritical24hMessage) {
@@ -486,7 +492,7 @@ static void watchdog_api_callback(uint8_t source_address,
 static void gps_callback (gps_data_t* gps_data) {
   // Got new gps data
 
-  static uint8_t count = 0;
+  static uint32_t count = 0;
   /*printf("\n\nGPS Data: %d:%02d:%02d.%lu %d/%d/%d\n",
           gps_data->hours, gps_data->minutes, gps_data->seconds, gps_data->microseconds,
           gps_data->month, gps_data->day, gps_data->year
@@ -522,7 +528,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 10) == 0) {
+  if(!currently_initializing && (count % 30) == 0 && count != 0) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -545,7 +551,7 @@ static void gps_callback (gps_data_t* gps_data) {
       gps_buf[16] = 0x01;
     }
     gps_buf[17] = _current_satellite_count;
-    rc = signpost_networking_send_bytes(ModuleAddressRadio,gps_buf,18);
+    //rc = signpost_networking_send_bytes(ModuleAddressRadio,gps_buf,18);
     gps_buf[1]++;
   } else {
       rc = 0;
@@ -658,13 +664,17 @@ int main (void) {
 
   ////////////////////////////////////////////////
   // Setup watchdog
-  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_set_kernel_timeout(180000);
   app_watchdog_start();
 
   printf("Everything intialized\n");
 
+
   printf("Entering loop\n");
-  uint8_t index = 0;
+
+  delay_ms(3000);
+
+  uint32_t index = 1;
   while(1) {
     // always check for modules that need to be initialized
     check_module_initialization();
@@ -673,13 +683,13 @@ int main (void) {
     check_module_duty_cycle();
 
     // get energy updates every 10 seconds
-    if ((index % 10) == 0) {
+    if ((index % 60) == 0) {
       printf("Check energy\n");
       get_energy();
 
     }
 
-    if((index %10) == 5) {
+    if((index %60) == 30) {
       get_batsol();
     }
 
