@@ -19,6 +19,8 @@
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
+#define PERFORM_KEY_EXCHANGE
+
 static struct module_struct {
     uint8_t                 i2c_address;
     api_handler_t**         api_handlers;
@@ -186,6 +188,7 @@ int signpost_initialization_request_isolation(void);
 int signpost_initialization_declare_controller(void);
 
 #define ECDH_BUF_LEN 72
+
 static mbedtls_ecdh_context ecdh;
 static size_t  ecdh_param_len;
 static uint8_t ecdh_buf[ECDH_BUF_LEN];
@@ -205,16 +208,20 @@ static void signpost_initialization_key_exchange_callback(int len_or_rc) {
             InitializationKeyExchange) return;
 
     // read params from contacted module
+#ifdef PERFORM_KEY_EXCHANGE
     if (mbedtls_ecdh_read_public(&ecdh, incoming_message,
                 incoming_message_length) < 0) {
         printf("failed to read public parameters\n");
         // do something meaningful
     }
+#endif
 
     uint8_t  module_number = signpost_api_addr_to_mod_num(incoming_source_address);
     if (module_number == 0xff) return;
+
+#ifdef PERFORM_KEY_EXCHANGE
     uint8_t* key = module_info.keys[module_number];
-    size_t keylen;
+    size_t keylen = 32;
     // generate key
     if(mbedtls_ecdh_calc_secret(&ecdh, &keylen, key, ECDH_KEY_LENGTH,
                 mbedtls_ctr_drbg_random, &ctr_drbg_context) < 0) {
@@ -226,6 +233,11 @@ static void signpost_initialization_key_exchange_callback(int len_or_rc) {
 
     SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
             key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
+#else
+    module_info.haskey[signpost_api_addr_to_mod_num(incoming_source_address)] =
+        false;
+#endif
+
 
     printf("INIT: Initialization with module %d complete\n", signpost_api_addr_to_mod_num(incoming_source_address));
     done = 1;
@@ -377,7 +389,6 @@ int signpost_initialization_declare_controller(void) {
 }
 
 int signpost_initialization_key_exchange_send(uint8_t destination_address) {
-    int rc;
     printf("INIT: Granted I2C isolation and started initialization with module %d\n", signpost_api_addr_to_mod_num(destination_address));
     // set callback for handling response from controller/modules
     if (incoming_active_callback != NULL) {
@@ -386,12 +397,15 @@ int signpost_initialization_key_exchange_send(uint8_t destination_address) {
     incoming_active_callback = signpost_initialization_key_exchange_callback;
 
     // Prepare for ECDH key exchange
+#ifdef PERFORM_KEY_EXCHANGE
+    int rc;
     mbedtls_ecdh_init(&ecdh);
     rc = mbedtls_ecp_group_load(&ecdh.grp,MBEDTLS_ECP_DP_SECP256R1);
     if (rc < 0) return rc;
     rc = mbedtls_ecdh_make_params(&ecdh, &ecdh_param_len, ecdh_buf,
-            ECDH_BUF_LEN, mbedtls_ctr_drbg_random, &ctr_drbg_context);
+           ECDH_BUF_LEN, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if (rc < 0) return rc;
+#endif
 
     // Now have a private channel with the controller
     // Key exchange with module, send ecdh params
@@ -415,12 +429,13 @@ int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t
 
     printf("INIT: Initializing with module %d\n", signpost_api_addr_to_mod_num(source_address));
     // init ecdh struct for key exchange
+#ifdef PERFORM_KEY_EXCHANGE
     mbedtls_ecdh_free(&ecdh);
     mbedtls_ecdh_init(&ecdh);
     ret = mbedtls_ecp_group_load(&ecdh.grp, MBEDTLS_ECP_DP_SECP256R1);
     if(ret < SUCCESS) return ret;
 
-    // read params from contacting module
+     //read params from contacting module
     ret = mbedtls_ecdh_read_params(&ecdh, (const uint8_t **) &ecdh_params, ecdh_params+len);
     if(ret < SUCCESS) return ret;
 
@@ -432,17 +447,27 @@ int signpost_initialization_key_exchange_respond(uint8_t source_address, uint8_t
     uint8_t  module_number = signpost_api_addr_to_mod_num(incoming_source_address);
     if (module_number == 0xff) return FAIL;
     uint8_t* key = module_info.keys[module_number];
-    size_t keylen;
+    size_t keylen = 32;
     // calculated shared secret
     ret = mbedtls_ecdh_calc_secret(&ecdh, &keylen, key, ECDH_KEY_LENGTH, mbedtls_ctr_drbg_random, &ctr_drbg_context);
     if(ret < SUCCESS) return ret;
     SIGNBUS_DEBUG("key: %p: 0x%02x%02x%02x...%02x\n", key,
             key[0], key[1], key[2], key[ECDH_KEY_LENGTH-1]);
+
     ret = signpost_api_send(source_address,
             ResponseFrame, InitializationApiType, InitializationKeyExchange,
             ecdh_param_len, ecdh_buf);
 
     module_info.haskey[signpost_api_addr_to_mod_num(source_address)] = true;
+
+#else
+    ret = signpost_api_send(source_address,
+            ResponseFrame, InitializationApiType, InitializationKeyExchange,
+            ecdh_param_len, ecdh_buf);
+
+    module_info.haskey[signpost_api_addr_to_mod_num(source_address)] = false;
+
+#endif
 
     return ret;
 }
