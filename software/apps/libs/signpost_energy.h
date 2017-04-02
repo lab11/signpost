@@ -57,6 +57,10 @@ int signpost_energy_get_module_average_current (int module_num);
 int signpost_energy_get_battery_average_current (void);
 int signpost_energy_get_solar_average_current (void);
 
+//some other battery support functions
+int signpost_energy_get_battery_capacity (void);
+int signpost_energy_get_battery_percent (void);
+
 //these functions tell you instantaneous current and voltage for the battery and solar panel
 int signpost_energy_get_battery_voltage (void);
 int signpost_energy_get_solar_voltage (void);

@@ -214,10 +214,27 @@ int signpost_energy_get_module_energy_remaining (int module_num) {
 }
 
 int signpost_energy_get_battery_energy_remaining (void) {
-    uint16_t coulomb_volts;
-    max17205_read_coulomb_sync(&coulomb_volts);
-    float coulombs = coulomb_volts/0.01;
-    return (int)coulombs;
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_capacity_uAh(charge);
+}
+
+int signpost_energy_get_battery_capacity (void) {
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_capacity_uAh(full);
+}
+
+int signpost_energy_get_battery_percent (void) {
+    uint16_t percent;
+    uint16_t charge;
+    uint16_t full;
+    max17205_read_soc_sync(&percent, &charge, &full);
+    return max17205_get_percentage_mP(percent);
 }
 
 ////////////////////////////////////////////////////////////////////////////
