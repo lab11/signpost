@@ -3,7 +3,7 @@
 
 uint16_t computeCRC16(const uint8_t *data, uint32_t lengthInBytes)
 {
-    uint32_t crc = 0x1d0f;
+    uint32_t crc = 0xFFFF;
 
     uint32_t j;
     for (j = 0; j < lengthInBytes; ++j)

@@ -26,6 +26,7 @@
 #include "radio_module.h"
 #include "gpio.h"
 #include "RadioDefs.h"
+#include "crc.h"
 
 //definitions for the ble
 #define DEVICE_NAME "Signpost"
@@ -62,7 +63,6 @@ uint8_t module_packet_count[NUMBER_OF_MODULES] = {0};
 uint8_t status_send_buf[20] = {0};
 
 //these structures for reporting energy to the controller
-signpost_energy_report_module_t energy_report_module[NUMBER_OF_MODULES];
 signpost_energy_report_t energy_report;
 
 
@@ -199,7 +199,7 @@ static void timer_callback (
     int unused __attribute__ ((unused)),
     void * callback_args __attribute__ ((unused))) {
 
-    static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE];
+    static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE + 2];
     static uint8_t send_counter = 0;
 
     if(queue_head != queue_tail) {
@@ -218,7 +218,10 @@ static void timer_callback (
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
         memcpy(LoRa_send_buffer+ADDRESS_SIZE, data_queue[queue_head], BUFFER_SIZE);
-        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE);
+        uint16_t crc = computeCRC16(LoRa_send_buffer, ADDRESS_SIZE+BUFFER_SIZE);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)((crc & 0xFF00) >> 8);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE+1] = (uint8_t)(crc & 0xFF);
+        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE+2);
 
         //parse the HCI layer error codes
         if(status != 0) {
@@ -245,19 +248,19 @@ static void timer_callback (
         for(; i < NUMBER_OF_MODULES; i++){
             if(module_num_map[i] != 0) {
                 status_send_buf[3+ i*2] = module_num_map[i];
-                energy_report_module[i].module_address = module_num_map[i];
+                energy_report.reports[i].module_address = module_num_map[i];
                 status_send_buf[3+ i*2 + 1] = module_packet_count[i];
-                packets_total = module_packet_count[i];
+                packets_total += module_packet_count[i];
             } else {
                 break;
             }
         }
-        
+
         //now figure out the percentages for each module
         for(i = 0; i < NUMBER_OF_MODULES; i++){
             if(module_num_map[i] != 0) {
-                energy_report_module[i].module_percent = 
-                        (uint8_t)module_packet_count[i]/(float)packets_total;
+                energy_report.reports[i].module_percent =
+                        (uint8_t)(module_packet_count[i]/(float)packets_total);
             } else {
                 break;
             }
@@ -265,18 +268,17 @@ static void timer_callback (
 
         //now pack it into an energy report structure
         energy_report.num_reports = number_of_modules;
-        energy_report.reports = energy_report_module;
 
         //send it to the controller
         signpost_energy_report(&energy_report);
- 
+
         //calculate and add the queue size in the status packet
         if(queue_tail >= queue_head) {
             status_send_buf[3+i*2] = queue_tail-queue_head;
         } else {
             status_send_buf[3+i*2] = QUEUE_SIZE-(queue_head-queue_tail);
         }
-    
+
         //put it in the send buffer
         add_buffer_to_queue(0x22, status_send_buf, BUFFER_SIZE);
 
