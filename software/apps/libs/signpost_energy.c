@@ -171,7 +171,7 @@ void signpost_energy_reset_linux_energy (void) {
 // ///////////////////////////////////////////////
 int signpost_energy_get_controller_energy (void) {
     int c = get_ltc_energy(0x1);
-    printf("Controller Energy Read: %d\n", c);
+    printf("ENERGY: Controller Energy Read: %d\n", c);
 	return (int)(ltc_to_uAh(get_ltc_energy(0x1),17)*CONTROLLER_VOLTAGE);
 }
 int signpost_energy_get_linux_energy (void) {
@@ -314,10 +314,10 @@ void signpost_energy_update_energy (void) {
 
     //now let's read all the coulomb counters
     linux_energy = signpost_energy_get_linux_energy();
-    printf("Linux used %d uWh since last update\n",signpost_energy_get_linux_energy());
+    printf("ENERGY: Linux used %d uWh since last update\n",signpost_energy_get_linux_energy());
     total_energy_used_since_update += linux_energy;
     controller_energy = signpost_energy_get_controller_energy();
-    printf("Controller used %d uWh since last update\n",signpost_energy_get_controller_energy());
+    printf("ENERGY: Controller used %d uWh since last update\n",signpost_energy_get_controller_energy());
     total_energy_used_since_update += controller_energy;
     solar_energy = signpost_energy_get_solar_energy();
     for(uint8_t i = 0; i < 8; i++) {
@@ -327,11 +327,11 @@ void signpost_energy_update_energy (void) {
             module_energy_used_since_update[i] += signpost_energy_get_module_energy(i);
             module_energy_used_since_report[i] += signpost_energy_get_module_energy(i);
             total_energy_used_since_update += module_energy_used_since_update[i];
-            printf("Module %d used %d uWh since last update\n",i,module_energy_used_since_update[i]);
+            printf("ENERGY: Module %d used %d uWh since last update\n",i,module_energy_used_since_update[i]);
         }
     }
     battery_energy_remaining = signpost_energy_get_battery_energy_remaining();
-    printf("Battery has %d uWh remaining\n",signpost_energy_get_battery_energy_remaining());
+    printf("ENERGY: Battery has %d uWh remaining\n",signpost_energy_get_battery_energy_remaining());
 
 
 
@@ -365,7 +365,7 @@ void signpost_energy_update_energy (void) {
         module_energy_used_since_update[i] = 0;
     }
 
-    printf("Total energy since update: %d uWh\n", total_energy_used_since_update);
+    printf("ENERGY: Total energy since update: %d uWh\n", total_energy_used_since_update);
 
     //now we need to figure out how much energy (if any) we got
     //This needs to be distributed among the modules
