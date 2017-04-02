@@ -160,7 +160,6 @@ static void watchdog_tickler (int which) {
 
 
 static void get_energy (void) {
-  printf("\n\nEnergy Data\n");
 
   //read the energy remaining data
     fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
@@ -189,6 +188,16 @@ static void get_energy (void) {
   energy_buf[16] = ((fram.energy.module_energy_remaining[7] & 0xFF00) >> 8 );
   energy_buf[17] = ((fram.energy.module_energy_remaining[7] & 0xFF));
 
+  printf("/**************************************/\n");
+  printf("\tModule 0 energy remaining %d uAh\n",fram.energy.module_energy_remaining[0]);
+  printf("\tModule 1 energy remaining %d uAh\n",fram.energy.module_energy_remaining[1]);
+  printf("\tModule 2 energy remaining %d uAh\n",fram.energy.module_energy_remaining[2]);
+  printf("\tModule 5 energy remaining %d uAh\n",fram.energy.module_energy_remaining[5]);
+  printf("\tModule 6 energy remaining %d uAh\n",fram.energy.module_energy_remaining[6]);
+  printf("\tModule 7 energy remaining %d uAh\n",fram.energy.module_energy_remaining[7]);
+  printf("\tController energy remaining %d uAh\n",fram.energy.controller_energy_remaining);
+  printf("/**************************************/\n");
+
   int rc;
   if(!currently_initializing) {
     //rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
@@ -208,11 +217,14 @@ static void get_energy (void) {
 static void get_batsol (void) {
   int battery_voltage = signpost_energy_get_battery_voltage();
   int battery_current = signpost_energy_get_battery_current();
+  int battery_remaining = signpost_energy_get_battery_energy_remaining();
   int solar_voltage = signpost_energy_get_solar_voltage();
   int solar_current = signpost_energy_get_solar_current();
-  printf("\n\nBattery and Solar Panel Data\n");
-  printf("  Battery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
-  printf("  Solar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
+  printf("/**************************************/\n");
+  printf("\tBattery Voltage (mV): %d\tcurrent (uA): %d\n",battery_voltage,battery_current);
+  printf("\tBattery remaining (uAh): %d\n",battery_remaining);
+  printf("\tSolar Voltage (mV): %d\tcurrent (uA): %d\n",solar_voltage,solar_current);
+  printf("/**************************************/\n");
 
   batsol_buf[2] = ((battery_voltage & 0xFF00) >> 8);
   batsol_buf[3] = ((battery_voltage & 0xFF));
@@ -596,12 +608,23 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80004;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80006;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
     // Initialize the energy algorithm with those values
     signpost_energy_init_ltc2943(&fram.energy);
+
+    printf("Energy remaining values saved in fram\n");
+    printf("/**************************************/\n");
+    printf("\tModule 0 energy remaining %d uAh\n",fram.energy.module_energy_remaining[0]);
+    printf("\tModule 1 energy remaining %d uAh\n",fram.energy.module_energy_remaining[1]);
+    printf("\tModule 2 energy remaining %d uAh\n",fram.energy.module_energy_remaining[2]);
+    printf("\tModule 5 energy remaining %d uAh\n",fram.energy.module_energy_remaining[5]);
+    printf("\tModule 6 energy remaining %d uAh\n",fram.energy.module_energy_remaining[6]);
+    printf("\tModule 7 energy remaining %d uAh\n",fram.energy.module_energy_remaining[7]);
+    printf("\tController energy remaining %d uAh\n",fram.energy.controller_energy_remaining);
+    printf("/**************************************/\n");
   } else {
     // Initialize this
     fram.magic = FRAM_MAGIC_VALUE;
@@ -614,6 +637,18 @@ int main (void) {
         fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
     }
     fm25cl_write_sync(0, sizeof(controller_fram_t));
+
+    printf("Energy remaining values initialized from battery capacity\n");
+    printf("/**************************************/\n");
+    printf("\tModule 0 energy remaining %d uAh\n",fram.energy.module_energy_remaining[0]);
+    printf("\tModule 1 energy remaining %d uAh\n",fram.energy.module_energy_remaining[1]);
+    printf("\tModule 2 energy remaining %d uAh\n",fram.energy.module_energy_remaining[2]);
+    printf("\tModule 5 energy remaining %d uAh\n",fram.energy.module_energy_remaining[5]);
+    printf("\tModule 6 energy remaining %d uAh\n",fram.energy.module_energy_remaining[6]);
+    printf("\tModule 7 energy remaining %d uAh\n",fram.energy.module_energy_remaining[7]);
+    printf("\tController energy remaining %d uAh\n",fram.energy.controller_energy_remaining);
+    printf("/**************************************/\n");
+
   }
 
   // Setup GPS
