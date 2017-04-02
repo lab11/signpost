@@ -308,7 +308,7 @@ void signpost_energy_update_energy (void) {
     if(time_now < last_time) {
         time = (unsigned int)(((0xFFFFFFFF - last_time) + time_now)/16000.0);
     } else {
-        time = (unsigned int)((last_time-time_now)/16000.0);
+        time = (unsigned int)((time_now-last_time)/16000.0);
     }
     last_time = time_now;
 
