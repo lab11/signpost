@@ -100,6 +100,10 @@ void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r) {
 
     //read the timer so the first iteration works out
     last_time = timer_read();
+
+    //read the battery now so that the first interation works
+    int bat = signpost_energy_get_battery_energy_remaining();
+    battery_last_energy_remaining = bat;
 }
 
 ////////////////////////////////////////////////
@@ -361,12 +365,14 @@ void signpost_energy_update_energy (void) {
         module_energy_used_since_update[i] = 0;
     }
 
+    printf("Total energy since update: %d uWh\n", total_energy_used_since_update);
+
     //now we need to figure out how much energy (if any) we got
     //This needs to be distributed among the modules
     // technically battery_energy_remaining = battery_last_energy_remaining - total_energy_used + solar_energy
     // This isn't going to be true due to efficiency losses and such
     // But what we can do:
-    /*if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used_since_update) {
+    if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used_since_update) {
         //we have surplus!! let's distribute it
         int surplus = battery_energy_remaining - (battery_last_energy_remaining - total_energy_used_since_update);
         int controller_surplus = (int)(surplus * 0.4);
@@ -411,7 +417,7 @@ void signpost_energy_update_energy (void) {
     } else {
         //efficiency losses - we should probably also distribute those losses (or charge them to the controller?)
         controller_energy_remaining -= ((battery_last_energy_remaining - total_energy_used_since_update) - battery_energy_remaining);
-    }*/
+    }
 
     total_energy_used_since_update = 0;
     battery_last_energy_remaining = battery_energy_remaining;
