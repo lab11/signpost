@@ -148,20 +148,17 @@ int main (void) {
 
   printf(" * Initialization complete\n\n");
 
-  // perform main application
-  while (true) {
-    // sample from onboard sensors
-    sample_sensors();
+  // sample from onboard sensors
+  sample_sensors();
 
-    // send HTTP POST over Signpost API
-    post_to_radio();
+  // send HTTP POST over Signpost API
+  post_to_radio();
 
-    // check the watchdog
-    tickle_watchdog();
-    printf("\n");
-
-    // sleep for a bit
-    delay_ms(10000);
+  //tell the controlelr to duty cycle for 60s
+  printf("requesting duty cycle\n");
+  while(true) {
+    signpost_energy_duty_cycle(60000);
+    delay_ms(1000);
   }
 }
 
