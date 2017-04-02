@@ -105,7 +105,6 @@ static void adc_callback (
 
         i = 0;
         still_sampling = true;
-        printf("cycled\n");
 
     } else {
 
@@ -125,7 +124,7 @@ static void timer_callback (
 
     static int index = 1;
     int rc;
-    printf("About to send data to radio\n");
+    //printf("About to send data to radio\n");
 
     for(uint8_t j = 0; j < 7; j++) {
         send_buf[2+j*2] = (uint8_t)((bands_max[j] >> 8) & 0xff);
@@ -133,8 +132,10 @@ static void timer_callback (
     }
 
     rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,16);
+    rc = 1;
     send_buf[1]++;
-    printf("Sent data with return code %d\n\n\n",rc);
+    //printf("Sent data with return code %d\n\n\n",rc);
+
 
     //reset all the variables for the next period
     for(uint8_t j = 0; j < 7; j++) {
@@ -152,9 +153,10 @@ static void timer_callback (
     //this is how we will do energy adaptivity
     //every 10 minutes do an energy query
     //If we are using too much energy then back off
-    if(index > (600.0/(send_callback_ms/1000))) {
+    if(index > (70.0/(send_callback_ms/1000.0))) {
         signpost_energy_information_t e;
         rc = signpost_energy_query(&e);
+        printf("Received return code %d\n",rc);
         if(rc < 0) {
             return;
         }
@@ -166,6 +168,12 @@ static void timer_callback (
         } else {
             send_callback_ms = send_callback_ms/2;
         }
+
+        if(send_callback_ms < 1000) {
+            send_callback_ms = 1000;
+        }
+
+        printf("setting timer to %d\n",send_callback_ms);
         timer_start_repeating(send_callback_ms);
         index = 0;
     } else {
