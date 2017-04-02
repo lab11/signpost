@@ -73,7 +73,7 @@ static void check_module_initialization (void) {
         for (size_t i = 0; i < NUM_MOD_IO; i++) {
             if (gpio_read(MOD_OUTS[i]) == 0 && last_mod_isolated_out != MOD_OUTS[i]) {
 
-                printf("Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]));
+                printf("ISOLATION: Module %d granted isolation\n", MODOUT_pin_to_mod_name(MOD_OUTS[i]));
                 currently_initializing = 1;
                 // module requesting isolation
                 mod_isolated_out = MOD_OUTS[i];
@@ -97,7 +97,7 @@ static void check_module_initialization (void) {
         }
     } else {
         if (gpio_read(mod_isolated_out) == 1) {
-            printf("Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
+            printf("ISOLATION: Module %d done with isolation\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             currently_initializing = 0;
             gpio_set(mod_isolated_in);
             mod_isolated_out = -1;
@@ -108,7 +108,7 @@ static void check_module_initialization (void) {
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
         else if (isolated_count > 15) {
-            printf("Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
+            printf("ISOLATION: Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             currently_initializing = 0;
             gpio_set(mod_isolated_in);
             module_init_failures[MODOUT_pin_to_mod_name(mod_isolated_out)]++;
@@ -319,7 +319,7 @@ static void energy_api_callback(uint8_t source_address,
     signbus_frame_type_t frame_type, signbus_api_type_t api_type,
     uint8_t message_type, size_t message_length, uint8_t* message) {
 
-    printf("received energy api callback of type %d\n",message_type);
+  printf("CALLBACK_ENERGY: received energy api callback of type %d\n",message_type);
 
   if (api_type != EnergyApiType) {
     signpost_api_error_reply_repeating(source_address, api_type, message_type, true, true, 1);
@@ -330,7 +330,7 @@ static void energy_api_callback(uint8_t source_address,
 
   if (frame_type == NotificationFrame) {
       if(message_type == EnergyDutyCycleMessage) {
-        printf("received duty cycle request\n");
+        printf("CALLBACK_ENERGY: received duty cycle request\n");
         //this is a duty cycle message
         //
         //how long does the module want to be duty cycled?
@@ -341,21 +341,25 @@ static void energy_api_callback(uint8_t source_address,
         uint8_t mod = signpost_api_addr_to_mod_num(source_address);
 
         int timer = (int)(time/1000.0);
-        printf("Requested duty cycle for %ds\n",timer);
+        printf("CALLBACK_ENERGY: Requested duty cycle for %ds\n",timer);
         //set up the value for the timer to check
         module_duty_cycle[mod] = (int)(time/1000.0);
 
         //turn it off
-        printf("Turning off module %d\n", mod);
+        printf("CALLBACK_ENERGY: Turning off module %d\n", mod);
         controller_module_disable_power(mod);
       }
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
-      info.energy_limit_mWh = (int)(signpost_energy_get_module_energy_remaining(
+      int limit = (int)(signpost_energy_get_module_energy_remaining(
                                     signpost_api_addr_to_mod_num(source_address))/1000.0);
-      info.average_power_mW = (int)(signpost_energy_get_module_average_power(
+      printf("CALLBACK_ENERGY: Calculated energy limit to be %d\n",limit);
+      info.energy_limit_mWh = limit;
+      int average = (int)(signpost_energy_get_module_average_power(
                                     signpost_api_addr_to_mod_num(source_address))/1000.0);
+      printf("CALLBACK_ENERGY: Calculated average energy to be %d\n",average);
+      info.average_power_mW = average;
       info.energy_limit_warning_threshold = ((info.energy_limit_mWh/info.average_power_mW) < 24);
       info.energy_limit_critical_threshold = ((info.energy_limit_mWh/info.average_power_mW) < 6);
 
@@ -608,7 +612,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A8000e;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80002;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
@@ -725,7 +729,7 @@ int main (void) {
 
     // get energy updates every 10 seconds
     if ((index % 60) == 0) {
-      printf("Check energy\n");
+      printf("CONTROLLER_STATE: Check energy\n");
       get_energy();
 
     }
@@ -741,11 +745,9 @@ int main (void) {
     }
 
     if ((index % 60) == 0) {
-        printf("updating energy remaining\n");
+        printf("CONTROLLER_STATE: updating energy remaining\n");
         signpost_energy_update_energy();
     }
-
-
 
     index++;
     delay_ms(1000);
