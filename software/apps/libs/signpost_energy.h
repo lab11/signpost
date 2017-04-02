@@ -8,7 +8,7 @@ extern "C" {
 
 // qlsb = 0.0625mAh with 0.017 Ohm sense resistor
 #define POWER_MODULE_PRESCALER 32
-#define POWER_MODULE_PRESCALER_LTC2943 256
+#define POWER_MODULE_PRESCALER_LTC2943 64
 // rsense = 0.017 Ohm
 #define POWER_MODULE_RSENSE 17
 
@@ -51,11 +51,11 @@ int signpost_energy_get_battery_energy_remaining (void);
 
 //these functions tell you the average current for each module over the last update period
 //this is what is returned to the module on an energy query
-int signpost_energy_get_controller_average_current (void);
-int signpost_energy_get_linux_average_current (void);
-int signpost_energy_get_module_average_current (int module_num);
-int signpost_energy_get_battery_average_current (void);
-int signpost_energy_get_solar_average_current (void);
+int signpost_energy_get_controller_average_power (void);
+int signpost_energy_get_linux_average_power (void);
+int signpost_energy_get_module_average_power (int module_num);
+int signpost_energy_get_battery_average_power (void);
+int signpost_energy_get_solar_average_power (void);
 
 //some other battery support functions
 int signpost_energy_get_battery_capacity (void);

@@ -5,6 +5,7 @@
 #include "signpost_api.h"
 #include "max17205.h"
 #include "timer.h"
+#include <stdio.h>
 
 static uint8_t module_num_to_selector_mask[8] = {0x4, 0x8, 0x10, 0, 0, 0x20, 0x40, 0x80};
 static uint8_t is_ltc2943 = 0;
@@ -17,10 +18,10 @@ static int controller_energy_remaining = 0;
 
 static int battery_last_energy_remaining = 0;
 
-static int controller_average_current = 0;
-static int linux_average_current = 0;
-static int battery_average_current = 0;
-static int solar_average_current = 0;
+static int controller_average_power = 0;
+static int linux_average_power = 0;
+static int battery_average_power = 0;
+static int solar_average_power = 0;
 
 static int controller_energy;
 static int solar_energy;
@@ -28,13 +29,18 @@ static int linux_energy;
 static int battery_energy_remaining;
 
 static int total_energy_used_since_update = 0;
-static int module_average_current[8] = {0};
+static int module_average_power[8] = {0};
 static int module_energy_remaining[8] = {0};
 static int module_energy_used_since_update[8] = {0};
 static int module_energy_used_since_report[8] = {0};
 static unsigned int last_time = 0;
 
-#define BATTERY_CAPACITY 9000000
+#define MODULE_VOLTAGE 5
+#define LINUX_VOLTAGE 5
+#define CONTROLLER_VOLTAGE 3.3
+#define BATTERY_VOLTAGE_NOM 11.1
+
+#define BATTERY_CAPACITY 9000000*11.1
 #define MAX_CONTROLLER_ENERGY_REMAINING BATTERY_CAPACITY*0.4
 #define MAX_MODULE_ENERGY_REMAINING BATTERY_CAPACITY*0.1
 
@@ -160,13 +166,15 @@ void signpost_energy_reset_linux_energy (void) {
 // Raw coulomb counter read functions
 // ///////////////////////////////////////////////
 int signpost_energy_get_controller_energy (void) {
-	return ltc_to_uAh(get_ltc_energy(0x1),17);
+    int c = get_ltc_energy(0x1);
+    printf("Controller Energy Read: %d\n", c);
+	return (int)(ltc_to_uAh(get_ltc_energy(0x1),17)*CONTROLLER_VOLTAGE);
 }
 int signpost_energy_get_linux_energy (void) {
-	return ltc_to_uAh(get_ltc_energy(0x2),17);
+	return ltc_to_uAh(get_ltc_energy(0x2),17)*LINUX_VOLTAGE;
 }
 int signpost_energy_get_module_energy (int module_num) {
-	return ltc_to_uAh(get_ltc_energy(module_num_to_selector_mask[module_num]),17);
+	return ltc_to_uAh(get_ltc_energy(module_num_to_selector_mask[module_num]),17)*MODULE_VOLTAGE;
 }
 int signpost_energy_get_solar_energy (void) {
 	return ltc_to_uAh(get_ltc_energy(0x100),50);
@@ -218,7 +226,7 @@ int signpost_energy_get_battery_energy_remaining (void) {
     uint16_t charge;
     uint16_t full;
     max17205_read_soc_sync(&percent, &charge, &full);
-    return max17205_get_capacity_uAh(charge);
+    return max17205_get_capacity_uAh(charge)*BATTERY_VOLTAGE_NOM;
 }
 
 int signpost_energy_get_battery_capacity (void) {
@@ -242,24 +250,24 @@ int signpost_energy_get_battery_percent (void) {
 // This is updated at every call to the update function
 // /////////////////////////////////////////////////////////////////////////
 
-int signpost_energy_get_controller_average_current (void) {
-    return controller_average_current;
+int signpost_energy_get_controller_average_power (void) {
+    return controller_average_power;
 }
 
-int signpost_energy_get_linux_average_current(void) {
-    return linux_average_current;
+int signpost_energy_get_linux_average_power(void) {
+    return linux_average_power;
 }
 
-int signpost_energy_get_module_average_current (int module_num) {
-    return module_average_current[module_num];
+int signpost_energy_get_module_average_power (int module_num) {
+    return module_average_power[module_num];
 }
 
-int signpost_energy_get_battery_average_current (void) {
-    return battery_average_current;
+int signpost_energy_get_battery_average_power (void) {
+    return battery_average_power;
 }
 
-int signpost_energy_get_solar_average_current (void) {
-    return solar_average_current;
+int signpost_energy_get_solar_average_power (void) {
+    return solar_average_power;
 }
 
 
@@ -302,8 +310,10 @@ void signpost_energy_update_energy (void) {
 
     //now let's read all the coulomb counters
     linux_energy = signpost_energy_get_linux_energy();
+    printf("Linux used %d uWh since last update\n",signpost_energy_get_linux_energy());
     total_energy_used_since_update += linux_energy;
     controller_energy = signpost_energy_get_controller_energy();
+    printf("Controller used %d uWh since last update\n",signpost_energy_get_controller_energy());
     total_energy_used_since_update += controller_energy;
     solar_energy = signpost_energy_get_solar_energy();
     for(uint8_t i = 0; i < 8; i++) {
@@ -313,25 +323,30 @@ void signpost_energy_update_energy (void) {
             module_energy_used_since_update[i] += signpost_energy_get_module_energy(i);
             module_energy_used_since_report[i] += signpost_energy_get_module_energy(i);
             total_energy_used_since_update += module_energy_used_since_update[i];
+            printf("Module %d used %d uWh since last update\n",i,module_energy_used_since_update[i]);
         }
     }
     battery_energy_remaining = signpost_energy_get_battery_energy_remaining();
+    printf("Battery has %d uWh remaining\n",signpost_energy_get_battery_energy_remaining());
+
+
 
     //reset all of the coulomb counters so we can use them next time
     signpost_energy_reset_all_energy();
 
     //update all the averages over the amount of time used
-    linux_average_current = (linux_energy*3600)/time;
-    controller_average_current = (controller_energy*3600)/time;
-    solar_average_current = (solar_energy*3600)/time;
+    linux_average_power = (int)(linux_energy*3600)/time;
+    controller_average_power = (int)(controller_energy*3600)/time;
+    solar_average_power = (solar_energy*3600)/time;
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) {
 
         } else {
-            module_average_current[i] = (module_energy_used_since_update[i]*3600)/time;
+            module_average_power[i] = (module_energy_used_since_update[i]*3600)/time;
         }
     }
-    battery_average_current = ((battery_last_energy_remaining-battery_energy_remaining)*3600)/time;
+
+    battery_average_power = ((battery_last_energy_remaining-battery_energy_remaining)*3600)/time;
 
 
     //Now we should subtract all of the energies from what the modules had before
@@ -351,7 +366,7 @@ void signpost_energy_update_energy (void) {
     // technically battery_energy_remaining = battery_last_energy_remaining - total_energy_used + solar_energy
     // This isn't going to be true due to efficiency losses and such
     // But what we can do:
-    if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used_since_update) {
+    /*if(battery_energy_remaining > battery_last_energy_remaining - total_energy_used_since_update) {
         //we have surplus!! let's distribute it
         int surplus = battery_energy_remaining - (battery_last_energy_remaining - total_energy_used_since_update);
         int controller_surplus = (int)(surplus * 0.4);
@@ -396,7 +411,7 @@ void signpost_energy_update_energy (void) {
     } else {
         //efficiency losses - we should probably also distribute those losses (or charge them to the controller?)
         controller_energy_remaining -= ((battery_last_energy_remaining - total_energy_used_since_update) - battery_energy_remaining);
-    }
+    }*/
 
     total_energy_used_since_update = 0;
     battery_last_energy_remaining = battery_energy_remaining;
