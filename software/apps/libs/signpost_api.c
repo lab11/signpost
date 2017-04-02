@@ -886,6 +886,7 @@ int signpost_energy_query(signpost_energy_information_t* energy) {
     {
         int rc = signpost_energy_query_async(energy, energy_query_sync_callback);
         if (rc != 0) {
+            printf("ERROR: Energy query failed with return code %d\n",rc);
             return rc;
         }
     }
@@ -902,6 +903,7 @@ int signpost_energy_duty_cycle(uint32_t time_ms) {
 }
 
 static void energy_query_async_callback(int len_or_rc) {
+
     SIGNBUS_DEBUG("len_or_rc %d\n", len_or_rc);
 
     if (len_or_rc != sizeof(signpost_energy_information_t)) {
@@ -924,15 +926,18 @@ static void energy_query_async_callback(int len_or_rc) {
 
 int signpost_energy_query_async(
         signpost_energy_information_t* energy,
-        signbus_app_callback_t cb
-        ) {
+        signbus_app_callback_t cb) {
+
     if (incoming_active_callback != NULL) {
         // XXX: Consider multiplexing based on API
-        return -EBUSY;
+        printf("ERROR: Energy query callback busy!\n");
+        return EBUSY;
     }
     if (energy_cb != NULL) {
-        return -EBUSY;
+        printf("ERROR: Energy query callback busy!\n");
+        return EBUSY;
     }
+
     incoming_active_callback = energy_query_async_callback;
     energy_cb_data = energy;
     energy_cb = cb;
@@ -941,7 +946,15 @@ int signpost_energy_query_async(
     rc = signpost_api_send(ModuleAddressController,
             CommandFrame, EnergyApiType, EnergyQueryMessage,
             0, NULL);
-    if (rc < 0) return rc;
+
+    if (rc < 0) {
+        printf("ERROR: Energy api send returned with code %d\n",rc);
+        //abort the transaction
+        energy_cb_data = NULL;
+        incoming_active_callback = NULL;
+        energy_cb = NULL;
+        return rc;
+    };
 
     return SUCCESS;
 }
