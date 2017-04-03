@@ -382,6 +382,7 @@ void signpost_energy_update_energy (void) {
         controller_energy_remaining += controller_surplus;
         if(controller_energy_remaining > MAX_CONTROLLER_ENERGY_REMAINING) {
             module_surplus += (int)((controller_energy_remaining - MAX_CONTROLLER_ENERGY_REMAINING)/6.0);
+            controller_energy_remaining = MAX_CONTROLLER_ENERGY_REMAINNIG;
         }
 
         //this is a two pass algorithm which can be games. Really it would take n passes to do it right
@@ -389,10 +390,12 @@ void signpost_energy_update_energy (void) {
         //modules going to be full anyways?
         int spill_over = 0;
         uint8_t spill_elgible_count = 0;
-        for(uint8_t i = 0; i < 8; i++) {
-            if(i == 3 || i == 4) {
+        while(module_surplus > 0) {
 
-            } else {
+            //try to distribute the energy
+            for(uint8_t i = 0; i < 8; i++) {
+                if(i == 3 || i == 4)  continue;
+
                 if(module_energy_remaining[i] + module_surplus > MAX_MODULE_ENERGY_REMAINING) {
                     spill_over += (module_energy_remaining[i] + module_surplus) - MAX_MODULE_ENERGY_REMAINING;
                     module_energy_remaining[i] = MAX_MODULE_ENERGY_REMAINING;
@@ -401,20 +404,16 @@ void signpost_energy_update_energy (void) {
                     spill_elgible_count++;
                 }
             }
-        }
 
-        spill_over = spill_over/spill_elgible_count;
-        for(uint8_t i = 0; i < 8; i++) {
-            if(i == 3 || i == 4) {
-
+            //if everything is full give to controller, else distribute again
+            if(spill_elgible_count == 0) {
+                module_surplus = 0;
+                controller_energy_remaining += spill_over;
             } else {
-                if(module_energy_remaining[i] >= MAX_MODULE_ENERGY_REMAINING) {
-
-                } else {
-                    module_energy_remaining[i] += spill_over;
-                }
+                module_surplus = spill_over/spill_elgible_count;
             }
         }
+
     } else {
         //efficiency losses - we should probably also distribute those losses (or charge them to the controller?)
         controller_energy_remaining -= ((battery_last_energy_remaining - total_energy_used_since_update) - battery_energy_remaining);
