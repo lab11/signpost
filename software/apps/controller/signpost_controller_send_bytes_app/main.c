@@ -617,7 +617,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80002;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80003;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
@@ -749,7 +749,7 @@ int main (void) {
         }
     }
 
-    if ((index % 60) == 0) {
+    if ((index % 600) == 0) {
         printf("CONTROLLER_STATE: updating energy remaining\n");
         signpost_energy_update_energy();
     }
