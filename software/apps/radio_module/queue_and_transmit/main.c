@@ -120,7 +120,14 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
 }*/
 
 static void count_module_packet(uint8_t module_address) {
+
+    if(module_address == 0x0) {
+        //this was an error
+        return;
+    }
+
     for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+
         if(module_num_map[i] == 0) {
             module_num_map[i] = module_address;
             module_packet_count[i]++;
@@ -260,7 +267,7 @@ static void timer_callback (
         for(i = 0; i < NUMBER_OF_MODULES; i++){
             if(module_num_map[i] != 0) {
                 energy_report.reports[i].module_percent =
-                        (uint8_t)(module_packet_count[i]/(float)packets_total);
+                        (uint8_t)((module_packet_count[i]/(float)packets_total)*100);
             } else {
                 break;
             }
