@@ -370,6 +370,7 @@ static void energy_api_callback(uint8_t source_address,
       }
     } else if (message_type == EnergyReportMessage) {
         //this is for the radio to report other module's energy usage
+        printf("CALLBACK_ENERGY: Received energy report from 0x%.2x\n", source_address);
 
         //first we should get the message and unpack it
         signpost_energy_report_t report;
@@ -377,6 +378,10 @@ static void energy_api_callback(uint8_t source_address,
 
         //now we should convert the report module addresses to module slot numbers
         for(uint8_t i = 0; i < report.num_reports; i++) {
+            printf("CALLBACK_ENERGY: Reported module address 0x%.2x in module slot %d for %d%% of energy\n",
+                    report.reports[i].module_address,
+                    signpost_api_addr_to_mod_num(report.reports[i].module_address),
+                    report.reports[i].module_percent);
             report.reports[i].module_address = signpost_api_addr_to_mod_num(report.reports[i].module_address);
         }
 

@@ -283,7 +283,7 @@ typedef struct __attribute__((packed)) energy_report_module {
 
 typedef struct __attribute__((packed)) energy_report {
     uint8_t num_reports;
-    signpost_energy_report_module_t* reports;
+    signpost_energy_report_module_t reports[8];
 } signpost_energy_report_t;
 
 _Static_assert(sizeof(signpost_energy_information_t) == 8, "On-wire structure size");
