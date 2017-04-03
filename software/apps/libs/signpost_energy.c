@@ -35,11 +35,6 @@ static int module_energy_used_since_update[8] = {0};
 static int module_energy_used_since_report[8] = {0};
 static unsigned int last_time = 0;
 
-#define MODULE_VOLTAGE 5
-#define LINUX_VOLTAGE 5
-#define CONTROLLER_VOLTAGE 3.3
-#define BATTERY_VOLTAGE_NOM 11.1
-
 #define BATTERY_CAPACITY 9000000*11.1
 #define MAX_CONTROLLER_ENERGY_REMAINING BATTERY_CAPACITY*0.4
 #define MAX_MODULE_ENERGY_REMAINING BATTERY_CAPACITY*0.1
@@ -238,7 +233,7 @@ int signpost_energy_get_battery_capacity (void) {
     uint16_t charge;
     uint16_t full;
     max17205_read_soc_sync(&percent, &charge, &full);
-    return max17205_get_capacity_uAh(full);
+    return max17205_get_capacity_uAh(full)*BATTERY_VOLTAGE_NOM;
 }
 
 int signpost_energy_get_battery_percent (void) {
@@ -316,8 +311,8 @@ void signpost_energy_update_energy (void) {
     linux_energy = signpost_energy_get_linux_energy();
     printf("ENERGY: Linux used %d uWh since last update\n",signpost_energy_get_linux_energy());
     total_energy_used_since_update += linux_energy;
-    controller_energy = signpost_energy_get_controller_energy();
-    printf("ENERGY: Controller used %d uWh since last update\n",signpost_energy_get_controller_energy());
+    controller_energy += signpost_energy_get_controller_energy();
+    printf("ENERGY: Controller used %d uWh since last update\n", controller_energy);
     total_energy_used_since_update += controller_energy;
     solar_energy = signpost_energy_get_solar_energy();
     for(uint8_t i = 0; i < 8; i++) {
@@ -445,10 +440,17 @@ void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signp
     uint8_t num_reports = report->num_reports;
     for(uint8_t j = 0; j < num_reports; j++) {
         //take the energy since last report, add/subtract it from all the totals
-        module_energy_used_since_report[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
-        module_energy_used_since_update[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+        if(report->reports[j].module_address == 3) {
+            controller_energy += (int)(energy*report->reports[j].module_percent/100.0);
 
-        module_energy_used_since_update[source_module_slot] -= (int)(energy*(report->reports[j].module_percent/100.0));
+            module_energy_used_since_update[source_module_slot] -= (int)(energy*(report->reports[j].module_percent/100.0));
+        } else {
+            module_energy_used_since_report[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+            module_energy_used_since_update[report->reports[j].module_address] += (int)(energy*report->reports[j].module_percent/100.0);
+
+            module_energy_used_since_update[source_module_slot] -= (int)(energy*(report->reports[j].module_percent/100.0));
+
+        }
     }
 
     module_energy_used_since_report[source_module_slot] = 0;

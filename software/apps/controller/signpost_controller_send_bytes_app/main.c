@@ -199,8 +199,8 @@ static void get_energy (void) {
   printf("/**************************************/\n");
 
   int rc;
-  if(!currently_initializing) {
-    //rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
+  if(!currently_initializing && num_inited > 1) {
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
     energy_buf[1]++;
   } else {
     rc = 0;
@@ -238,10 +238,15 @@ static void get_batsol (void) {
   batsol_buf[11] = ((solar_current & 0xFF0000) >> 16);
   batsol_buf[12] = ((solar_current & 0xFF00) >> 8);
   batsol_buf[13] = ((solar_current & 0xFF));
+  batsol_buf[14] = battery_percent;
+  batsol_buf[15] = ((battery_energy & 0xFF00) >> 8);
+  batsol_buf[16] = ((battery_energy & 0xFF));
+  batsol_buf[17] = ((battery_full & 0xFF00) >> 8);
+  batsol_buf[18] = ((battery_full & 0xFF));
 
   int rc;
-  if(!currently_initializing) {
-    //rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,14);
+  if(!currently_initializing && num_inited > 1) {
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,19);
     batsol_buf[1]++;
   } else {
     rc = 0;
@@ -294,6 +299,7 @@ static void initialization_api_callback(uint8_t source_address,
                     // Prepare and reply ECDH key exchange
                     rc = signpost_initialization_key_exchange_respond(source_address,
                             message, message_length);
+                    num_inited++;
                     if (rc < 0) {
                       printf(" - %d: Error responding to key exchange at address 0x%02x. Dropping.\n",
                           __LINE__, source_address);
@@ -549,7 +555,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 30) == 0 && count != 0) {
+  if(!currently_initializing && (count % 30) == 0 && count != 0 && num_inited > 1) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -572,7 +578,7 @@ static void gps_callback (gps_data_t* gps_data) {
       gps_buf[16] = 0x01;
     }
     gps_buf[17] = _current_satellite_count;
-    //rc = signpost_networking_send_bytes(ModuleAddressRadio,gps_buf,18);
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,gps_buf,18);
     gps_buf[1]++;
   } else {
       rc = 0;
@@ -617,7 +623,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80003;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80004;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.

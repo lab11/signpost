@@ -12,6 +12,12 @@ extern "C" {
 // rsense = 0.017 Ohm
 #define POWER_MODULE_RSENSE 17
 
+#define MODULE_VOLTAGE 5
+#define LINUX_VOLTAGE 5
+#define CONTROLLER_VOLTAGE 3.3
+#define BATTERY_VOLTAGE_NOM 11.1
+
+
 typedef struct energy_remaining {
     int controller_energy_remaining;
     int module_energy_remaining[8];
