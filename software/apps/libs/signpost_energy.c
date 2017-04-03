@@ -112,10 +112,16 @@ static int get_ltc_energy (int selector_mask) {
 	return ltc2941_get_charge_sync();
 }
 
-static int get_ltc_current_ua (int selector_mask) {
+static int get_ltc_module_current_ua (int selector_mask) {
     i2c_selector_select_channels_sync(selector_mask);
 
     return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),17);
+}
+
+static int get_ltc_solar_current_ua (int selector_mask) {
+    i2c_selector_select_channels_sync(selector_mask);
+
+    return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),50);
 }
 
 static void reset_ltc_energy (int selector_mask) {
@@ -184,19 +190,19 @@ int signpost_energy_get_solar_energy (void) {
 // /////////////////////////////////////////////////////
 
 int signpost_energy_get_controller_current (void) {
-    return get_ltc_current_ua(0x1);
+    return get_ltc_module_current_ua(0x1);
 }
 
 int signpost_energy_get_linux_current (void) {
-    return get_ltc_current_ua(0x2);
+    return get_ltc_module_current_ua(0x2);
 }
 
 int signpost_energy_get_module_current (int module_num) {
-    return get_ltc_current_ua(module_num_to_selector_mask[module_num]);
+    return get_ltc_module_current_ua(module_num_to_selector_mask[module_num]);
 }
 
 int signpost_energy_get_solar_current (void) {
-    return get_ltc_current_ua(0x100);
+    return get_ltc_solar_current_ua(0x100);
 }
 
 int signpost_energy_get_battery_current (void) {
