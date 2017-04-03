@@ -152,7 +152,13 @@ int main (void) {
   sample_sensors();
 
   // send HTTP POST over Signpost API
-  post_to_radio();
+    do {
+        post_to_radio();
+        if(post_to_radio_successful == false) {
+            delay_ms(1000);
+        }
+
+    } while(post_to_radio_successful == false);
 
   //tell the controlelr to duty cycle for 60s
   printf("requesting duty cycle\n");
