@@ -23,7 +23,7 @@ static int linux_average_power = 0;
 static int battery_average_power = 0;
 static int solar_average_power = 0;
 
-static int controller_energy;
+static int controller_energy_used_since_update = 0;
 static int solar_energy;
 static int linux_energy;
 static int battery_energy_remaining;
@@ -317,9 +317,9 @@ void signpost_energy_update_energy (void) {
     linux_energy = signpost_energy_get_linux_energy();
     printf("ENERGY: Linux used %d uWh since last update\n",signpost_energy_get_linux_energy());
     total_energy_used_since_update += linux_energy;
-    controller_energy += signpost_energy_get_controller_energy();
-    printf("ENERGY: Controller used %d uWh since last update\n", controller_energy);
-    total_energy_used_since_update += controller_energy;
+    controller_energy_used_since_update += signpost_energy_get_controller_energy();
+    printf("ENERGY: Controller used %d uWh since last update\n", controller_energy_used_since_update);
+    total_energy_used_since_update += controller_energy_used_since_update;
     solar_energy = signpost_energy_get_solar_energy();
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) {
@@ -341,7 +341,7 @@ void signpost_energy_update_energy (void) {
 
     //update all the averages over the amount of time used
     linux_average_power = (int)(linux_energy*3600)/time;
-    controller_average_power = (int)(controller_energy*3600)/time;
+    controller_average_power = (int)(controller_energy_used_since_update*3600)/time;
     solar_average_power = (solar_energy*3600)/time;
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) {
@@ -355,7 +355,7 @@ void signpost_energy_update_energy (void) {
 
 
     //Now we should subtract all of the energies from what the modules had before
-    controller_energy_remaining -= controller_energy;
+    controller_energy_remaining -= controller_energy_used_since_update;
     controller_energy_remaining -= linux_energy;
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) {
@@ -365,6 +365,8 @@ void signpost_energy_update_energy (void) {
         }
         module_energy_used_since_update[i] = 0;
     }
+
+    controller_energy_used_since_update = 0;
 
     printf("ENERGY: Total energy since update: %d uWh\n", total_energy_used_since_update);
 
@@ -382,7 +384,7 @@ void signpost_energy_update_energy (void) {
         controller_energy_remaining += controller_surplus;
         if(controller_energy_remaining > MAX_CONTROLLER_ENERGY_REMAINING) {
             module_surplus += (int)((controller_energy_remaining - MAX_CONTROLLER_ENERGY_REMAINING)/6.0);
-            controller_energy_remaining = MAX_CONTROLLER_ENERGY_REMAINNIG;
+            controller_energy_remaining = MAX_CONTROLLER_ENERGY_REMAINING;
         }
 
         //this is a two pass algorithm which can be games. Really it would take n passes to do it right
@@ -446,7 +448,7 @@ void signpost_energy_update_energy_from_report(uint8_t source_module_slot, signp
     for(uint8_t j = 0; j < num_reports; j++) {
         //take the energy since last report, add/subtract it from all the totals
         if(report->reports[j].module_address == 3) {
-            controller_energy += (int)(energy*report->reports[j].module_percent/100.0);
+            controller_energy_used_since_update += (int)(energy*report->reports[j].module_percent/100.0);
 
             module_energy_used_since_update[source_module_slot] -= (int)(energy*(report->reports[j].module_percent/100.0));
         } else {
