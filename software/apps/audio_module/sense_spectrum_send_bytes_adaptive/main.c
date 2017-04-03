@@ -153,7 +153,7 @@ static void timer_callback (
     //this is how we will do energy adaptivity
     //every 10 minutes do an energy query
     //If we are using too much energy then back off
-    if(index > (70.0/(send_callback_ms/1000.0))) {
+    if(index > (1200.0/(send_callback_ms/1000.0))) {
         signpost_energy_information_t e;
         rc = signpost_energy_query(&e);
         printf("Received return code %d\n",rc);
@@ -164,9 +164,9 @@ static void timer_callback (
         printf("Energy limit %d\n", e.energy_limit_mWh);
         printf("Energy average %d\n", e.average_power_mW);
         if(e.energy_limit_mWh/e.average_power_mW < 48) {
-            send_callback_ms = send_callback_ms*2;
+            send_callback_ms += 1000;
         } else {
-            send_callback_ms = send_callback_ms/2;
+            send_callback_ms -= 1000;
         }
 
         if(send_callback_ms < 1000) {
