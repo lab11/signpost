@@ -207,23 +207,29 @@ static void watchdog_tickler (int which) {
 
 static void get_energy_average (void) {
 
-  //send this data to the radio module
-  energy_av_buf[2] = (((signpost_energy_get_module_average_power(0)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[3] = (((signpost_energy_get_module_average_power(0)/1000) & 0xFF));
-  energy_av_buf[4] = (((signpost_energy_get_module_average_power(1)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[5] = (((signpost_energy_get_module_average_power(1)/1000) & 0xFF));
-  energy_av_buf[6] = (((signpost_energy_get_module_average_power(2)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[7] = (((signpost_energy_get_module_average_power(2)/1000) & 0xFF));
-  energy_av_buf[8] = (((signpost_energy_get_controller_average_power()/1000) & 0xFF00) >> 8 );
-  energy_av_buf[9] = (((signpost_energy_get_controller_average_power()/1000) & 0xFF));
+  int c_power = signpost_energy_get_controller_average_power()/1000;
+  if(c_power <= 0) {
+      c_power = 0;
+  }
+
+  energy_av_buf[8] = (((c_power) & 0xFF00) >> 8 );
+  energy_av_buf[9] = (((c_power) & 0xFF));
   energy_av_buf[10] = 0;
   energy_av_buf[11] = 0;
-  energy_av_buf[12] = (((signpost_energy_get_module_average_power(5)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[13] = (((signpost_energy_get_module_average_power(5)/1000) & 0xFF));
-  energy_av_buf[14] = (((signpost_energy_get_module_average_power(6)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[15] = (((signpost_energy_get_module_average_power(6)/1000) & 0xFF));
-  energy_av_buf[16] = (((signpost_energy_get_module_average_power(7)/1000) & 0xFF00) >> 8 );
-  energy_av_buf[17] = (((signpost_energy_get_module_average_power(7)/1000) & 0xFF));
+
+  //send this data to the radio module
+  for(uint8_t i = 0; i < 8; i++) {
+      if(i==3 || i == 4) continue;
+
+      int mod_energy = signpost_energy_get_module_average_power(i)/1000;
+
+      if(mod_energy < = 0) {
+          mod_energy = 0;
+      }
+
+      energy_av_buf[2+i*2] = (((mod_energy) & 0xFF00) >> 8);
+      energy_av_buf[2+i*2+1] = (((mod_energy) & 0xFF));
+  }
 
   int rc;
   if(!currently_initializing && num_inited > 1) {
