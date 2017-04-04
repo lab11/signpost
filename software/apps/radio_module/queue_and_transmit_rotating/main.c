@@ -62,6 +62,10 @@ uint8_t number_of_modules = 0;
 uint8_t module_packet_count[NUMBER_OF_MODULES] = {0};
 uint8_t status_send_buf[20] = {0};
 
+//these structures for reporting energy to the controller
+signpost_energy_report_t energy_report;
+
+//these structs are for rotating lora
 #define TIMER_INTERVAL 2000
 #define NUM_LORA_SETTINGS 5
 #define NUM_SWITCH_MINUTES 2
@@ -122,7 +126,14 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
 }*/
 
 static void count_module_packet(uint8_t module_address) {
+
+    if(module_address == 0x0) {
+        //this was an error
+        return;
+    }
+
     for(uint8_t i = 0; i < NUMBER_OF_MODULES; i++) {
+
         if(module_num_map[i] == 0) {
             module_num_map[i] = module_address;
             module_packet_count[i]++;
@@ -195,8 +206,7 @@ void ble_evt_user_handler (ble_evt_t* p_ble_evt __attribute__ ((unused))) {
     //and maybe this
 }
 
-bool timer_called = false;
-
+static bool timer_called;
 static void timer_callback (
     int callback_type __attribute__ ((unused)),
     int length __attribute__ ((unused)),
@@ -204,7 +214,6 @@ static void timer_callback (
     void * callback_args __attribute__ ((unused))) {
 
     timer_called = true;
-
     static uint8_t LoRa_send_buffer[ADDRESS_SIZE + BUFFER_SIZE + 2];
     static uint8_t send_counter = 0;
 
@@ -248,22 +257,44 @@ static void timer_callback (
         status_send_buf[2] = number_of_modules;
 
         //copy the modules and their send numbers into the buffer
+        //at the same time total up the packets sent
         uint8_t i = 0;
+        uint16_t packets_total = 0;
         for(; i < NUMBER_OF_MODULES; i++){
             if(module_num_map[i] != 0) {
                 status_send_buf[3+ i*2] = module_num_map[i];
+                energy_report.reports[i].module_address = module_num_map[i];
                 status_send_buf[3+ i*2 + 1] = module_packet_count[i];
+                packets_total += module_packet_count[i];
             } else {
                 break;
             }
         }
 
+        //now figure out the percentages for each module
+        for(i = 0; i < NUMBER_OF_MODULES; i++){
+            if(module_num_map[i] != 0) {
+                energy_report.reports[i].module_percent =
+                        (uint8_t)((module_packet_count[i]/(float)packets_total)*100);
+            } else {
+                break;
+            }
+        }
+
+        //now pack it into an energy report structure
+        energy_report.num_reports = number_of_modules;
+
+        //send it to the controller
+        signpost_energy_report(&energy_report);
+
+        //calculate and add the queue size in the status packet
         if(queue_tail >= queue_head) {
             status_send_buf[3+i*2] = queue_tail-queue_head;
         } else {
             status_send_buf[3+i*2] = QUEUE_SIZE-(queue_head-queue_tail);
         }
 
+        //put it in the send buffer
         add_buffer_to_queue(0x22, status_send_buf, BUFFER_SIZE);
 
         //reset send_counter
@@ -324,11 +355,11 @@ int main (void) {
     iM880A_RegisterRadioCallbacks(lora_rx_callback, lora_tx_callback);
     //configure
     //iM880A_Configure();
-
     iM880A_ChangeConfiguration(lora_settings_spread[0],
                                 lora_settings_band[0],
                                 RF_LORA_FEC_4_5,
                                 20);
+
     // Setup a watchdog
     //app_watchdog_set_kernel_timeout(10000);
     //app_watchdog_start();
