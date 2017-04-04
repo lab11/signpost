@@ -80,7 +80,7 @@ static void check_module_energy_remaining(void) {
     //now after updating energy we should disable the modules that
     //have used too much energy - also add them to a disabled list
     for(uint8_t i = 0; i < 8; i++) {
-        if(i==3 || i == 4) continue;
+        if(i==3 || i == 4 || i == 1) continue;
 
         if(signpost_energy_get_module_energy_remaining(i) < 0) {
             module_disabled[i] = 1;
@@ -223,7 +223,7 @@ static void get_energy_average (void) {
 
       int mod_energy = signpost_energy_get_module_average_power(i)/1000;
 
-      if(mod_energy < = 0) {
+      if(mod_energy <= 0) {
           mod_energy = 0;
       }
 
