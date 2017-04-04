@@ -166,7 +166,7 @@ int main (void) {
   //tell the controlelr to duty cycle for 60s
   printf("requesting duty cycle\n");
   while(true) {
-    signpost_energy_duty_cycle(60000);
+    signpost_energy_duty_cycle(600000);
     delay_ms(1000);
   }
 }
