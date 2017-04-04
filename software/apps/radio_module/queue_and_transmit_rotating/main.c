@@ -369,8 +369,8 @@ int main (void) {
     timer_start_repeating(TIMER_INTERVAL);
 
     int milliseconds_until_update = 0;
-    int last_time;
-    int time_now;
+    int last_time = timer_read();
+    int time_now = last_time;
     unsigned int time_passed;
     uint8_t next_lora_setting = 0;
     bool not_updated = true;
@@ -394,9 +394,9 @@ int main (void) {
 
             if(rc < 0) {
                 //this is a bad time - lets just try again in a bit
-                milliseconds_until_update = 60000;
+                milliseconds_until_update = 10000;
             } else {
-                if(time.satellite_count >= 3) {
+                if(time.satellite_count >= 1) {
                     //good time - calc seconds until next marker
                     int mins = NUM_SWITCH_MINUTES - 1 - (time.minutes % NUM_SWITCH_MINUTES);
                     int seconds = 60 - time.seconds;
@@ -405,12 +405,11 @@ int main (void) {
                     not_updated = true;
                     next_lora_setting = ((time.minutes+mins+1)/NUM_SWITCH_MINUTES) % NUM_LORA_SETTINGS;
                 } else {
-                    milliseconds_until_update = 60000;
+                    milliseconds_until_update = 10000;
                 }
             }
         }
 
-        last_time = timer_read();
         timer_called = false;
         yield_for(&timer_called);
         time_now = timer_read();
@@ -420,7 +419,7 @@ int main (void) {
         } else {
             time_passed = (unsigned int)((time_now - last_time)/16.0);
         }
-
+        last_time = time_now;
         milliseconds_until_update -= time_passed;
     }
 }
