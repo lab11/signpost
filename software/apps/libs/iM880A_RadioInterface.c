@@ -347,6 +347,44 @@ iM880A_Configure(void)
     return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_SET_RADIO_CONFIG_REQ, (unsigned char*)&configBuffer, offset);
 }
 
+TWiMODLRResult
+iM880A_ChangeConfiguration(uint8_t spreading_factor, uint8_t bandwidth,
+                            uint8_t error_code, uint8_t tx_power)
+{
+    uint8_t offset=0;
+
+    configBuffer[offset++]   = 0x00;                                        // NVM Flag - change config only temporary
+    configBuffer[offset++]   = COMRADIO_CFG_DEFAULT_RFRADIOMODE;            // 0
+    configBuffer[offset++]   = COMRADIO_CFG_DEFAULT_RXGROUPADDRESS;         // 1
+    configBuffer[offset++]   = COMRADIO_CFG_DEFAULT_TXGROUPADDRESS;         // 2
+    HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_RFDEVICEADDRESS);    // 3
+    offset += 2;
+    HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_TXADDRESS);          // 5
+    offset += 2;
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFRADIOMODULATION;       // 7
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFCHANNEL_LSB;           // 8
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFCHANNEL_MID;           // 9
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFCHANNEL_MSB;           // 10
+    configBuffer[offset++]  = bandwidth;                                    // 11
+    configBuffer[offset++]  = spreading_factor;                             // 12
+    configBuffer[offset++]  = error_code;                                   // 13
+    configBuffer[offset++]  = tx_power;                                     // 14
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFTXOPTIONS;             // 15
+    configBuffer[offset++]  = COMRADIO_CFG_DEFAULT_RFRXOPTIONS;             // 16
+    HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_RFRXWINDOW);         // 17
+    offset += 2;
+    configBuffer[offset++] = COMRADIO_CFG_DEFAULT_LEDCONTROL;               // 19
+    configBuffer[offset++] = COMRADIO_CFG_DEFAULT_MISCOPTIONS;              // 20
+
+    configBuffer[offset++] = COMRADIO_CFG_DEFAULT_FSK_DATARATE;             // 21
+    configBuffer[offset++] = COMRADIO_CFG_DEFAULT_POWERSAVINGMODE;          // 22
+    HTON16(&configBuffer[offset], COMRADIO_CFG_DEFAULT_LBTTHRESHOLD);       // 23
+    offset += 2;
+
+    // Set Configuration
+    return iM880A_SendHCIMessage(DEVMGMT_SAP_ID, DEVMGMT_MSG_SET_RADIO_CONFIG_REQ, (unsigned char*)&configBuffer, offset);
+}
+
 
 //------------------------------------------------------------------------------
 //

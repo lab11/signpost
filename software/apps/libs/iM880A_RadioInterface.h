@@ -247,6 +247,10 @@ iM880A_RegisterRadioCallbacks(TRadioInterfaceCbRxIndication cbRxInd,
 TWiMODLRResult
 iM880A_Configure(void);
 
+TWiMODLRResult
+iM880A_ChangeConfiguration(uint8_t spreading_factor, uint8_t bandwidth,
+                            uint8_t error_code, uint8_t tx_power);
+
 TWiMDLRResultcodes
 iM880A_SendRadioTelegram(uint8_t* payload, uint16_t length);
 
