@@ -271,7 +271,7 @@ int main (void) {
     // set to about two seconds, but a larger prime number so that hopefully we
     //  can avoid continually conflicting with other modules
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(20000);
+    timer_start_repeating(10000);
 
     // initialize adc
     adc_set_callback(adc_callback, NULL);
