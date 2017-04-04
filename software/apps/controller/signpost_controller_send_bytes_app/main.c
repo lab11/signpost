@@ -21,7 +21,8 @@
 
 #include "bonus_timer.h"
 
-static void get_energy (void);
+static void get_energy_remaining (void);
+static void get_energy_average (void);
 static void get_batsol (void);
 static void gps_callback (gps_data_t* gps_data);
 
@@ -51,6 +52,7 @@ uint8_t module_addresses[8] = {0};
 
 uint8_t gps_buf[20];
 uint8_t energy_buf[20];
+uint8_t energy_av_buf[20];
 uint8_t batsol_buf[20];
 int32_t module_duty_cycle[8] = {-1};
 uint8_t num_inited = 0;
@@ -203,7 +205,43 @@ static void watchdog_tickler (int which) {
 }
 
 
-static void get_energy (void) {
+static void get_energy_average (void) {
+
+  //send this data to the radio module
+  energy_av_buf[2] = (((signpost_energy_get_module_average_power(0)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[3] = (((signpost_energy_get_module_average_power(0)/1000) & 0xFF));
+  energy_av_buf[4] = (((signpost_energy_get_module_average_power(1)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[5] = (((signpost_energy_get_module_average_power(1)/1000) & 0xFF));
+  energy_av_buf[6] = (((signpost_energy_get_module_average_power(2)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[7] = (((signpost_energy_get_module_average_power(2)/1000) & 0xFF));
+  energy_av_buf[8] = (((signpost_energy_get_controller_average_power()/1000) & 0xFF00) >> 8 );
+  energy_av_buf[9] = (((signpost_energy_get_controller_average_power()/1000) & 0xFF));
+  energy_av_buf[10] = 0;
+  energy_av_buf[11] = 0;
+  energy_av_buf[12] = (((signpost_energy_get_module_average_power(5)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[13] = (((signpost_energy_get_module_average_power(5)/1000) & 0xFF));
+  energy_av_buf[14] = (((signpost_energy_get_module_average_power(6)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[15] = (((signpost_energy_get_module_average_power(6)/1000) & 0xFF));
+  energy_av_buf[16] = (((signpost_energy_get_module_average_power(7)/1000) & 0xFF00) >> 8 );
+  energy_av_buf[17] = (((signpost_energy_get_module_average_power(7)/1000) & 0xFF));
+
+  int rc;
+  if(!currently_initializing && num_inited > 1) {
+    rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_av_buf,18);
+    energy_av_buf[1]++;
+  } else {
+    rc = 0;
+  }
+
+  if(rc >= 0) {
+    // Tickle the watchdog because something good happened.
+  }
+
+  watchdog_tickler(2);
+
+}
+
+static void get_energy_remaining (void) {
 
   //read the energy remaining data
     fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
@@ -657,6 +695,9 @@ int main (void) {
   energy_buf[0] = 0x01;
   energy_buf[1] = 0x00;
 
+  energy_av_buf[0] = 0x04;
+  energy_av_buf[1] = 0x00;
+
   gps_buf[0] = 0x02;
   gps_buf[1] = 0x00;
 
@@ -670,7 +711,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80005;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80006;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
@@ -791,12 +832,16 @@ int main (void) {
     // get energy updates every 10 seconds
     if ((index % 60) == 0) {
       printf("CONTROLLER_STATE: Check energy\n");
-      get_energy();
-
+      get_energy_remaining();
     }
 
-    if((index %60) == 30) {
+    if((index %60) == 20) {
       get_batsol();
+    }
+
+    if ((index % 60) == 40) {
+      printf("CONTROLLER_STATE: Check energy\n");
+      get_energy_average();
     }
 
     if ((index % 50) == 0 && index != 0) {
@@ -805,7 +850,7 @@ int main (void) {
         }
     }
 
-    if ((index % 600) == 0) {
+    if ((index % 300) == 0) {
         printf("CONTROLLER_STATE: updating energy remaining\n");
         signpost_energy_update_energy();
 
