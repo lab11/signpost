@@ -254,6 +254,9 @@ static void get_energy_remaining (void) {
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) continue;
         fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
+        if(fram.energy.module_energy_remaining[i] < 0) {
+            fram.energy.module_energy_remaining[i] = 0;
+        }
     }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
@@ -717,7 +720,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80006;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80005;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.

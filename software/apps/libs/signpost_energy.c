@@ -347,7 +347,11 @@ void signpost_energy_update_energy (void) {
         if(i == 3 || i == 4) {
 
         } else {
-            module_average_power[i] = (module_energy_used_since_update[i]*3600)/time;
+            if(module_energy_used_since_update[i] < 0) {
+                module_average_power[i] = 0;
+            } else {
+                module_average_power[i] = (module_energy_used_since_update[i]*3600)/time;
+            }
         }
     }
 
