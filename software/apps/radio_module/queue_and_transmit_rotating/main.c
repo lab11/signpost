@@ -66,7 +66,7 @@ uint8_t status_send_buf[20] = {0};
 signpost_energy_report_t energy_report;
 
 //these structs are for rotating lora
-#define TIMER_INTERVAL 1000
+#define TIMER_INTERVAL 500
 #define NUM_LORA_SETTINGS 5
 #define NUM_SWITCH_MINUTES 2
 uint8_t current_lora_setting;
@@ -252,13 +252,37 @@ static void timer_callback (
         }
 
         increment_queue_pointer(&queue_head);
+    } else {
+        count_module_packet(0x22);
+        static uint8_t test_buf[BUFFER_SIZE];
+        test_buf[0] = 0x22;
+        test_buf[1] = 0x02;
+        test_buf[2] = sn;
+        test_buf[3] = 't';
+
+        //send the packet
+        memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
+        memcpy(LoRa_send_buffer+ADDRESS_SIZE, test_buf , BUFFER_SIZE);
+        uint16_t crc = computeCRC16(LoRa_send_buffer, ADDRESS_SIZE+BUFFER_SIZE);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE] = (uint8_t)((crc & 0xFF00) >> 8);
+        LoRa_send_buffer[ADDRESS_SIZE+BUFFER_SIZE+1] = (uint8_t)(crc & 0xFF);
+        uint16_t status = iM880A_SendRadioTelegram(LoRa_send_buffer,BUFFER_SIZE+ADDRESS_SIZE+2);
+
+        //parse the HCI layer error codes
+        if(status != 0) {
+            //error
+            //putstr("lora error! Resetting...\n");
+            //app_watchdog_reset_app();
+        } else {
+            sn++;
+        }
     }
 
     send_counter++;
 
     //every minute put a status packet on the queue
     //also send an energy report to the controller
-    if(send_counter == 30) {
+    if(send_counter == 60) {
         //increment the sequence number
         status_send_buf[1]++;
         status_send_buf[2] = number_of_modules;
