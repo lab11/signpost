@@ -29,7 +29,7 @@
 uint8_t send_buf[20];
 bool sample_done = false;
 bool still_sampling = false;
-int send_callback_ms = 10000;
+int duty_cycle_ms = 10000;
 
 //gain = 20k resistance
 #define PREAMP_GAIN 22.5
@@ -54,6 +54,7 @@ int bands_total[7] = {0};
 int bands_max[7] = {0};
 int bands_now[7] = {0};
 int bands_num[7] =  {0};
+bool duty_cycle = false;
 
 static void adc_callback (
         int callback_type __attribute__ ((unused)),
@@ -122,7 +123,6 @@ static void timer_callback (
         void* callback_args __attribute__ ((unused))
         ) {
 
-    static int index = 1;
     int rc;
     //printf("About to send data to radio\n");
 
@@ -133,7 +133,8 @@ static void timer_callback (
 
     rc = signpost_networking_send_bytes(ModuleAddressRadio,send_buf,16);
     rc = 1;
-    send_buf[1]++;
+    //something randomish
+    send_buf[1] = send_buf[11];
     //printf("Sent data with return code %d\n\n\n",rc);
 
 
@@ -150,41 +151,47 @@ static void timer_callback (
         still_sampling = false;
     }
 
-    //this is how we will do energy adaptivity
-    //every 10 minutes do an energy query
-    //If we are using too much energy then back off
-    if(index > (1200.0/(send_callback_ms/1000.0))) {
-        signpost_energy_information_t e;
+    printf("Setting to start duty cycle\n");
+
+    //do an energy query
+    signpost_energy_information_t e;
+
+    do {
         rc = signpost_energy_query(&e);
         printf("Received return code %d\n",rc);
         if(rc < 0) {
-            return;
+            delay_ms(1000);
         }
 
-        printf("Energy limit %d\n", e.energy_limit_mWh);
-        printf("Energy average %d\n", e.average_power_mW);
-        if(e.energy_limit_mWh/e.average_power_mW < 48) {
-            send_callback_ms += 1000;
-        } else {
-            send_callback_ms -= 1000;
-        }
+    } while (rc < 0);
 
-        if(send_callback_ms < 1000) {
-            send_callback_ms = 1000;
-        }
+    //adjust duty cycle
+    printf("Energy limit %d\n", e.energy_limit_mWh);
+    printf("Energy average %d\n", e.average_power_mW);
 
-        printf("setting timer to %d\n",send_callback_ms);
-        timer_start_repeating(send_callback_ms);
-        index = 0;
-    } else {
-        index++;
+    duty_cycle_ms = ((10000*160*72)/e.energy_limit_mWh);
+
+    if(duty_cycle_ms > 50000) {
+        duty_cycle_ms = 50000;
+    } else if (duty_cycle_ms < 5000) {
+        duty_cycle_ms = 5000;
     }
+
+    printf("set duty cycle to: %d\n",duty_cycle_ms);
+
+    while(1) {
+        rc = signpost_energy_duty_cycle(duty_cycle_ms);
+        printf("Received return code %d\n",rc);
+        delay_ms(1000);
+    }
+
 }
 
 
 int main (void) {
 
     //initialize the signpost API
+
     int rc;
     do {
         rc = signpost_initialization_module_init(0x33, NULL);
@@ -194,15 +201,6 @@ int main (void) {
         }
     } while (rc < 0);
     printf(" * Bus initialized\n");
-
-    /*do {
-        rc = signpost_watchdog_start();
-        if(rc < 0) {
-            delay_ms(1000);
-        }
-    } while (rc < 0);*/
-
-    //printf("Watchdog Started");
 
 
     gpio_enable_output(8);
@@ -222,18 +220,21 @@ int main (void) {
     gpio_clear(STROBE);
     gpio_clear(RESET);
 
+    app_watchdog_set_kernel_timeout(30000);
+    app_watchdog_start();
 
     // start up the app watchdog
-    app_watchdog_set_kernel_timeout(60000);
-    app_watchdog_start();
 
     //init adc
     adc_set_callback(adc_callback, NULL);
     adc_initialize();
 
     //start timer
+    duty_cycle = false;
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(send_callback_ms);
+
+    printf("Starting timer\n");
+    timer_oneshot(10000);
 
     while (1) {
         sample_done = false;
