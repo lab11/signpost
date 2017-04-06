@@ -69,6 +69,7 @@ signpost_energy_report_t energy_report;
 #define TIMER_INTERVAL 2000
 #define NUM_LORA_SETTINGS 5
 #define NUM_SWITCH_MINUTES 2
+uint8_t current_lora_setting;
 uint8_t lora_settings_spread[NUM_LORA_SETTINGS] = {RF_LORA_SF_7,RF_LORA_SF_8,RF_LORA_SF_9,RF_LORA_SF_10,RF_LORA_SF_8};
 uint8_t lora_settings_band[NUM_LORA_SETTINGS] = {RF_LORA_CHANNEL_BW_125K,RF_LORA_CHANNEL_BW_125K,RF_LORA_CHANNEL_BW_125K,RF_LORA_CHANNEL_BW_125K,RF_LORA_CHANNEL_BW_500K};
 
@@ -207,6 +208,7 @@ void ble_evt_user_handler (ble_evt_t* p_ble_evt __attribute__ ((unused))) {
 }
 
 static bool timer_called;
+static uint8_t sn = 0;
 static void timer_callback (
     int callback_type __attribute__ ((unused)),
     int length __attribute__ ((unused)),
@@ -229,6 +231,9 @@ static void timer_callback (
 
         //count the packet
         count_module_packet(data_queue[queue_head][0]);
+
+        data_queue[queue_head][2] = sn;
+        sn++;
 
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
@@ -373,6 +378,7 @@ int main (void) {
     int time_now = last_time;
     unsigned int time_passed;
     uint8_t next_lora_setting = 0;
+    current_lora_setting = 0;
     bool not_updated = true;
 
     while(true) {
@@ -383,6 +389,7 @@ int main (void) {
                                         RF_LORA_FEC_4_5,
                                         20);
 
+            current_lora_setting = next_lora_setting;
             not_updated = false;
         }
 
