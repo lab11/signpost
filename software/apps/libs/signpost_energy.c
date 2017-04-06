@@ -55,7 +55,7 @@ void signpost_energy_init (void) {
     i2c_selector_select_channels_sync(0xFF);
 }
 
-void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r) {
+void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r, signpost_average_power_t* p) {
     // configure each ltc with the correct prescaler
     for (int i = 0; i < 9; i++) {
         i2c_selector_select_channels_sync(1<<i);
@@ -85,6 +85,27 @@ void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r) {
 
             } else {
                 module_energy_remaining[i] = r->module_energy_remaining[i];
+            }
+        }
+    }
+
+    if(p == NULL) {
+        //initialize all of the energy remainings
+        controller_average_power = 0;
+        for(uint8_t i = 0; i < 8; i++) {
+            if(i == 4 || i == 3) {
+
+            } else {
+                module_average_power[i] = 0;
+            }
+        }
+    } else {
+        controller_average_power = p->controller_average_power;
+        for(uint8_t i = 0; i < 8; i++) {
+            if(i == 3 || i ==4) {
+
+            } else {
+                module_average_power[i] = p->module_average_power[i];
             }
         }
     }

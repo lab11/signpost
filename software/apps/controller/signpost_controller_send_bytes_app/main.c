@@ -178,6 +178,7 @@ static void check_module_initialization (void) {
 typedef struct {
   uint32_t magic;
   signpost_energy_remaining_t energy;
+  signpost_average_power_t power;
 } controller_fram_t;
 
 // Keep track of the last time we got data from the ltc chips
@@ -206,6 +207,14 @@ static void watchdog_tickler (int which) {
 
 
 static void get_energy_average (void) {
+
+    fram.power.controller_average_power = signpost_energy_get_controller_average_power();
+    for(uint8_t i = 0; i < 8; i++) {
+        if(i == 3 || i == 4) continue;
+        fram.power.module_average_power[i] = signpost_energy_get_module_average_power(i);
+    }
+
+  fm25cl_write_sync(0, sizeof(controller_fram_t));
 
   int c_power = signpost_energy_get_controller_average_power()/1000;
   if(c_power <= 0) {
@@ -720,12 +729,12 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80005;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80006;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
     // Initialize the energy algorithm with those values
-    signpost_energy_init_ltc2943(&fram.energy);
+    signpost_energy_init_ltc2943(&fram.energy, &fram.power);
 
     int bat = signpost_energy_get_battery_energy_remaining();
 
@@ -745,11 +754,13 @@ int main (void) {
     fram.magic = FRAM_MAGIC_VALUE;
 
     //let the energy algorithm figure out how to initialize all the energies
-    signpost_energy_init_ltc2943(NULL);
+    signpost_energy_init_ltc2943(NULL, NULL);
 
     fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
+    fram.power.controller_average_power = 0;
     for(uint8_t i = 0; i < 8; i++) {
         fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
+        fram.power.module_average_power[i] = 0;
     }
     fm25cl_write_sync(0, sizeof(controller_fram_t));
 
@@ -853,11 +864,11 @@ int main (void) {
       get_energy_average();
     }
 
-    if ((index % 50) == 0 && index != 0) {
+    /*if ((index % 50) == 0 && index != 0) {
         if(mod_isolated_out < 0) {
             check_watchdogs();
         }
-    }
+    }*/
 
     if ((index % 300) == 0) {
         printf("CONTROLLER_STATE: updating energy remaining\n");
