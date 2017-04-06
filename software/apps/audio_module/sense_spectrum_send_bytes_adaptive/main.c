@@ -16,7 +16,6 @@
 #include "msgeq7.h"
 #include "i2c_master_slave.h"
 #include "timer.h"
-#include "bonus_timer.h"
 #include "signpost_api.h"
 
 #define STROBE 3
@@ -29,7 +28,9 @@
 uint8_t send_buf[20];
 bool sample_done = false;
 bool still_sampling = false;
-int duty_cycle_ms = 10000;
+int time_on;
+int time_off;
+#define TIMER_INTERVAL 5000
 
 //gain = 20k resistance
 #define PREAMP_GAIN 22.5
@@ -122,7 +123,8 @@ static void timer_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-
+    
+    static int count = 0;
     int rc;
     //printf("About to send data to radio\n");
 
@@ -151,39 +153,18 @@ static void timer_callback (
         still_sampling = false;
     }
 
-    printf("Setting to start duty cycle\n");
 
-    //do an energy query
-    signpost_energy_information_t e;
 
-    do {
-        rc = signpost_energy_query(&e);
-        printf("Received return code %d\n",rc);
-        if(rc < 0) {
+    if(count*TIMER_INTERVAL > time_on) {
+        while(1) {
+            rc = signpost_energy_duty_cycle(time_off);
+            printf("Received return code %d\n",rc);
             delay_ms(1000);
         }
-
-    } while (rc < 0);
-
-    //adjust duty cycle
-    printf("Energy limit %d\n", e.energy_limit_mWh);
-    printf("Energy average %d\n", e.average_power_mW);
-
-    duty_cycle_ms = ((10000*160*72)/e.energy_limit_mWh);
-
-    if(duty_cycle_ms > 50000) {
-        duty_cycle_ms = 50000;
-    } else if (duty_cycle_ms < 5000) {
-        duty_cycle_ms = 5000;
+    } else {
+        count++;
     }
-
-    printf("set duty cycle to: %d\n",duty_cycle_ms);
-
-    while(1) {
-        rc = signpost_energy_duty_cycle(duty_cycle_ms);
-        printf("Received return code %d\n",rc);
-        delay_ms(1000);
-    }
+    
 
 }
 
@@ -201,6 +182,33 @@ int main (void) {
         }
     } while (rc < 0);
     printf(" * Bus initialized\n");
+
+    //let's calculate on percentage up front
+    //do an energy query
+    signpost_energy_information_t e;
+    do {
+        rc = signpost_energy_query(&e);
+        printf("Received return code %d\n",rc);
+        if(rc < 0) {
+            delay_ms(1000);
+        }
+
+    } while (rc < 0);
+   
+    //now use this to calculate the time we should be on and off 
+    float on_percent = (e.energy_limit_mWh/9900.0);
+    float adjustment = (e.energy_limit_mWh/(float)e.average_power_mW) - 48;
+    if(adjustment > 20) adjustment = 20;
+    if(adjustment < -20) adjustment = -20;
+    on_percent += (adjustment/100);  
+    if(on_percent > 1) on_percent = 1;
+    if(on_percent < 0) on_percent = 0;
+
+    time_on = on_percent*60000;
+    time_off = (1-on_percent)*60000;
+    
+    if(time_on < 1000) time_on = 1000;
+    if(time_off < 5000) time_off = 5000;
 
 
     gpio_enable_output(8);
@@ -234,7 +242,7 @@ int main (void) {
     timer_subscribe(timer_callback, NULL);
 
     printf("Starting timer\n");
-    timer_oneshot(10000);
+    timer_start_repeating(TIMER_INTERVAL);
 
     while (1) {
         sample_done = false;
