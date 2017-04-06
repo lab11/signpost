@@ -152,7 +152,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
 
     if ( (incoming_frame_type == NotificationFrame) || (incoming_frame_type == CommandFrame) ) {
         api_handler_t** handler = module_info.api_handlers;
-        while (handler != NULL) {
+        while (*handler != NULL) {
             if ((*handler)->api_type == incoming_api_type) {
                 (*handler)->callback(incoming_source_address,
                         incoming_frame_type, incoming_api_type, incoming_message_type,
