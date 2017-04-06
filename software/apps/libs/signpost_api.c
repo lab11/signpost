@@ -19,7 +19,7 @@
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
-#define PERFORM_KEY_EXCHANGE
+//#define PERFORM_KEY_EXCHANGE
 
 static struct module_struct {
     uint8_t                 i2c_address;
@@ -151,7 +151,7 @@ static void signpost_api_recv_callback(int len_or_rc) {
 
     if ( (incoming_frame_type == NotificationFrame) || (incoming_frame_type == CommandFrame) ) {
         api_handler_t** handler = module_info.api_handlers;
-        while (handler != NULL) {
+        while (*handler != NULL) {
             if ((*handler)->api_type == incoming_api_type) {
                 (*handler)->callback(incoming_source_address,
                         incoming_frame_type, incoming_api_type, incoming_message_type,
@@ -188,7 +188,6 @@ int signpost_initialization_request_isolation(void);
 int signpost_initialization_declare_controller(void);
 
 #define ECDH_BUF_LEN 72
-
 static mbedtls_ecdh_context ecdh;
 static size_t  ecdh_param_len;
 static uint8_t ecdh_buf[ECDH_BUF_LEN];
@@ -389,6 +388,7 @@ int signpost_initialization_declare_controller(void) {
 }
 
 int signpost_initialization_key_exchange_send(uint8_t destination_address) {
+    int rc;
     printf("INIT: Granted I2C isolation and started initialization with module %d\n", signpost_api_addr_to_mod_num(destination_address));
     // set callback for handling response from controller/modules
     if (incoming_active_callback != NULL) {
@@ -398,7 +398,6 @@ int signpost_initialization_key_exchange_send(uint8_t destination_address) {
 
     // Prepare for ECDH key exchange
 #ifdef PERFORM_KEY_EXCHANGE
-    int rc;
     mbedtls_ecdh_init(&ecdh);
     rc = mbedtls_ecp_group_load(&ecdh.grp,MBEDTLS_ECP_DP_SECP256R1);
     if (rc < 0) return rc;
