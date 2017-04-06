@@ -6,7 +6,7 @@ TOCK_BOARD = controller
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 STACK_SIZE=4096
-APP_HEAP_SIZE=4096
+APP_HEAP_SIZE=16384
 
 # files needed for this code
 C_SRCS   := main.c

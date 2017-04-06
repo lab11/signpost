@@ -171,7 +171,7 @@ int main (void) {
 
   ////////////////////////////////////////////////
   // Setup watchdog
-  app_watchdog_set_kernel_timeout(30000);
+  app_watchdog_set_kernel_timeout(10000);
   app_watchdog_start();
 
   printf("Everything intialized\n");
@@ -183,7 +183,7 @@ int main (void) {
     // always check for modules that need to be initialized
     check_module_initialization();
 
-    delay_ms(1000);
+    delay_ms(100);
 
     app_watchdog_tickle_kernel();
   }

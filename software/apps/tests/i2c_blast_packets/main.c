@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "led.h"
 #include "timer.h"
 #include "tock.h"
 
@@ -18,7 +19,7 @@
 #endif
 
 #ifndef MODULE_ID
-#define MODULE_ID 1
+#define MODULE_ID 0x42
 #endif
 
 // This is a bit of a hack
@@ -27,9 +28,11 @@ uint8_t* signpost_api_addr_to_key(uint8_t addr);
 int main(void) {
     printf("\n###\n\n\ni2c blast\n");
 
+    led_on(0);
+
     int rc;
     do {
-        rc = signpost_initialization_module_init(SIGNBUS_TEST_RECEIVER_I2C_ADDRESS, SIGNPOST_INITIALIZATION_NO_APIS);
+        rc = signpost_initialization_module_init(MODULE_ID, SIGNPOST_INITIALIZATION_NO_APIS);
         if (rc < 0) {
             printf(" - Error initializing module (code: %d). Sleeping 5s.\n", rc);
             delay_ms(5000);
@@ -39,13 +42,30 @@ int main(void) {
     char send_buf[256];
     memset(send_buf, MODULE_ID, 256);
 
+    led_off(0);
+
+    // This is a bit hacky, but work around some stability issues a bit by not
+    // blasting messages until everyone's initialized
+    for (int i = 0; i < (2 * 10); i++) {
+      if (i % 2) {
+        led_on(0);
+      } else {
+        led_off(0);
+      }
+      delay_ms(500);
+    }
+
+    led_on(0);
+    printf("BLASTOFF!\n");
+
     while(1) {
         rc = signbus_app_send(ModuleAddressController, signpost_api_addr_to_key,
-                NotificationFrame, 0, 0, MESSAGE_LENGTH, send_buf);
+                NotificationFrame, 0xbe, 0xef, MESSAGE_LENGTH, send_buf);
         if (rc < 0) {
             printf("Error sending (code: %d)\n", rc);
         }
 
+        delay_ms(10);
         //printf("Sent a thing\n");
     }
 }
