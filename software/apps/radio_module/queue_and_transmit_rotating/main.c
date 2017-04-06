@@ -66,7 +66,7 @@ uint8_t status_send_buf[20] = {0};
 signpost_energy_report_t energy_report;
 
 //these structs are for rotating lora
-#define TIMER_INTERVAL 2000
+#define TIMER_INTERVAL 1000
 #define NUM_LORA_SETTINGS 5
 #define NUM_SWITCH_MINUTES 2
 uint8_t current_lora_setting;
@@ -102,7 +102,7 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
     if(status == DEVMGMT_STATUS_OK) {
         lora_packets_sent++;
     } else {
-        putstr("Lora error, resetting...");
+        //putstr("Lora error, resetting...");
         //app_watchdog_reset_app();
     }
 }
@@ -191,7 +191,7 @@ void ble_address_set(void) {
 
 void ble_error(uint32_t error_code __attribute__ ((unused))) {
     //this has to be here too
-    putstr("ble error, resetting...");
+    //putstr("ble error, resetting...");
     //app_watchdog_reset_app();
 }
 
@@ -223,7 +223,7 @@ static void timer_callback (
 
         if(lora_last_packets_sent == lora_packets_sent) {
             //error
-            putstr("lora error! Reseting..\n");
+            //putstr("lora error! Reseting..\n");
             //app_watchdog_reset_app();
         } else {
             lora_last_packets_sent = lora_packets_sent;
@@ -233,7 +233,6 @@ static void timer_callback (
         count_module_packet(data_queue[queue_head][0]);
 
         data_queue[queue_head][2] = sn;
-        sn++;
 
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
@@ -246,9 +245,12 @@ static void timer_callback (
         //parse the HCI layer error codes
         if(status != 0) {
             //error
-            putstr("lora error! Resetting...\n");
+            //putstr("lora error! Resetting...\n");
             //app_watchdog_reset_app();
+        } else {
+            sn++;
         }
+
         increment_queue_pointer(&queue_head);
     }
 
@@ -384,16 +386,20 @@ int main (void) {
     while(true) {
         if(milliseconds_until_update <= 0 && not_updated){
             //update the radio parameters
-            iM880A_ChangeConfiguration(lora_settings_spread[next_lora_setting],
+            int stat = iM880A_ChangeConfiguration(lora_settings_spread[next_lora_setting],
                                         lora_settings_band[next_lora_setting],
                                         RF_LORA_FEC_4_5,
                                         20);
 
-            current_lora_setting = next_lora_setting;
-            not_updated = false;
+            if(stat != 0) {
+
+            } else {
+                current_lora_setting = next_lora_setting;
+                not_updated = false;
+            }
         }
 
-        if(milliseconds_until_update <= 0) {
+        if(milliseconds_until_update <= 0 && not_updated == false) {
             //calculate the time until the next update
             //call the gps time function
             signpost_timelocation_time_t time;
