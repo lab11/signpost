@@ -54,6 +54,10 @@ static uint16_t sequence_number = 0;
 static new_packet np = { .new = false };
 
 
+static bool master_write_yield_flag = false;
+static int  master_write_len_or_rc = 0;
+
+
 __attribute__((const))
 static uint16_t htons(uint16_t in) {
     return (((in & 0x00FF) << 8) | ((in & 0xFF00) >> 8));
@@ -105,12 +109,16 @@ static void i2c_master_slave_callback(
         __attribute__ ((unused)) void* callback_args) {
     SIGNBUS_DEBUG("type %d-%s length %d cb args %p\n",
             callback_type,
+            (callback_type == TOCK_I2C_CB_MASTER_WRITE) ? "MASTER_WRITE" :
             (callback_type == TOCK_I2C_CB_SLAVE_WRITE) ? "SLAVE_WRITE" :
             (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) ? "SLAVE_READ_COMPLETE" :
             "UNKNOWN",
             length, callback_args);
 
-    if(callback_type == TOCK_I2C_CB_SLAVE_WRITE) {
+    if (callback_type == TOCK_I2C_CB_MASTER_WRITE) {
+        master_write_yield_flag = true;
+        master_write_len_or_rc = length;
+    } else if (callback_type == TOCK_I2C_CB_SLAVE_WRITE) {
         memcpy(packet_buf, slave_write_buf, length);
         new_packet* packet = (new_packet*) &np;
         packet->new = true;
@@ -197,19 +205,25 @@ int signbus_io_send(uint8_t dest, bool encrypted, uint8_t* data, size_t len) {
         //copy the packet into the send buffer
         memcpy(master_write_buf,&p,I2C_MAX_LEN);
 
-        //send the packet in syncronous mode
+        //send the packet
+        master_write_yield_flag = false;
         if(morePackets) {
-            rc = i2c_master_slave_write_sync(dest,I2C_MAX_LEN);
+            rc = i2c_master_slave_write(dest,I2C_MAX_LEN);
             if (rc < 0) return rc;
-            rc = i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
-            if (rc < 0) return rc;
+
+            yield_for(&master_write_yield_flag);
+            if (master_write_len_or_rc < 0) return master_write_len_or_rc;
+
             toSend -= MAX_DATA_LEN;
         } else {
             SIGNBUS_DEBUG_DUMP_BUF(master_write_buf, sizeof(signbus_network_header_t)+toSend);
-            rc = i2c_master_slave_write_sync(dest,sizeof(signbus_network_header_t)+toSend);
+
+            rc = i2c_master_slave_write(dest,sizeof(signbus_network_header_t)+toSend);
             if (rc < 0) return rc;
-            rc = i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
-            if (rc < 0) return rc;
+
+            yield_for(&master_write_yield_flag);
+            if (master_write_len_or_rc < 0) return master_write_len_or_rc;
+
             toSend = 0;
         }
     }
