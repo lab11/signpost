@@ -21,6 +21,13 @@
 /// receive into our buffer, so that the decryption routine writes into the
 /// final destination buffer.
 
+static uint8_t debug_hmac_hash_override[SHA256_LEN] = {
+    0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,
+    0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,
+    0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,
+    0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,
+};
+
 static const mbedtls_md_info_t * md_info;
 static mbedtls_md_context_t md_context;
 static const mbedtls_cipher_info_t * cipher_info;
@@ -89,6 +96,9 @@ static int message_digest(uint8_t* key, uint8_t* in, size_t inlen, uint8_t* out)
         ret = mbedtls_md_finish(&md_context, out);
         if(ret<0) return ret;
     }
+
+    // override
+    memcpy(out, debug_hmac_hash_override, SHA256_LEN);
 
     mbedtls_md_free(&md_context);
 
