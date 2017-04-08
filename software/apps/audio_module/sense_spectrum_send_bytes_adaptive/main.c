@@ -123,7 +123,7 @@ static void timer_callback (
         int unused __attribute__ ((unused)),
         void* callback_args __attribute__ ((unused))
         ) {
-    
+
     static int count = 0;
     int rc;
     //printf("About to send data to radio\n");
@@ -164,7 +164,7 @@ static void timer_callback (
     } else {
         count++;
     }
-    
+
 
 }
 
@@ -194,19 +194,23 @@ int main (void) {
         }
 
     } while (rc < 0);
-   
-    //now use this to calculate the time we should be on and off 
+
+    //now use this to calculate the time we should be on and off
     float on_percent = (e.energy_limit_mWh/9900.0);
-    float adjustment = (e.energy_limit_mWh/(float)e.average_power_mW) - 48;
+    float adjustment = 0;
+    if(e.average_power_mW > 1) {
+        adjustment = (e.energy_limit_mWh/(float)e.average_power_mW) - 48;
+    }
+
     if(adjustment > 20) adjustment = 20;
     if(adjustment < -20) adjustment = -20;
-    on_percent += (adjustment/100);  
+    on_percent += (adjustment/100);
     if(on_percent > 1) on_percent = 1;
     if(on_percent < 0) on_percent = 0;
 
     time_on = on_percent*60000;
     time_off = (1-on_percent)*60000;
-    
+
     if(time_on < 1000) time_on = 1000;
     if(time_off < 5000) time_off = 5000;
 
