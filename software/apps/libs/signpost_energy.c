@@ -127,6 +127,10 @@ void signpost_energy_init_ltc2943 (signpost_energy_remaining_t* r, signpost_aver
 // ////////////////////////////////////////////
 static int get_ltc_energy (int selector_mask) {
 	// Select correct LTC2941
+    if(selector_mask == 0x40) {
+        return 0;
+    }
+
 	i2c_selector_select_channels_sync(selector_mask);
 
 	// Get charge
@@ -134,18 +138,24 @@ static int get_ltc_energy (int selector_mask) {
 }
 
 static int get_ltc_module_current_ua (int selector_mask) {
+    if(selector_mask == 0x40) return 0;
+
     i2c_selector_select_channels_sync(selector_mask);
 
     return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),17);
 }
 
 static int get_ltc_solar_current_ua (int selector_mask) {
+
     i2c_selector_select_channels_sync(selector_mask);
 
     return ltc2943_convert_to_current_ua(ltc2943_get_current_sync(),50);
 }
 
 static void reset_ltc_energy (int selector_mask) {
+
+    if(selector_mask == 0x40) return;
+
     i2c_selector_select_channels_sync(selector_mask);
 	ltc2941_reset_charge_sync();
 }
