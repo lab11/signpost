@@ -153,7 +153,7 @@ static void check_module_initialization (void) {
         }
         // this module took too long to talk to controller
         // XXX need more to police bad modules (repeat offenders)
-        else if (isolated_count > 15) {
+        else if (isolated_count > 5) {
             printf("ISOLATION: Module %d took too long\n", MODOUT_pin_to_mod_name(mod_isolated_out));
             currently_initializing = 0;
             gpio_set(mod_isolated_in);
@@ -241,7 +241,7 @@ static void get_energy_average (void) {
   }
 
   int rc;
-  if(!currently_initializing && num_inited > 1) {
+  if(!currently_initializing && num_inited > 0) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_av_buf,18);
     energy_av_buf[1]++;
   } else {
@@ -299,7 +299,7 @@ static void get_energy_remaining (void) {
   printf("/**************************************/\n");
 
   int rc;
-  if(!currently_initializing && num_inited > 1) {
+  if(!currently_initializing && num_inited > 0) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,energy_buf,18);
     energy_buf[1]++;
   } else {
@@ -347,7 +347,7 @@ static void get_batsol (void) {
   batsol_buf[18] = ((battery_full & 0xFF));
 
   int rc;
-  if(!currently_initializing && num_inited > 1) {
+  if(!currently_initializing && num_inited > 0) {
     rc = signpost_networking_send_bytes(ModuleAddressRadio,batsol_buf,19);
     batsol_buf[1]++;
   } else {
@@ -658,7 +658,7 @@ static void gps_callback (gps_data_t* gps_data) {
 
   //send a gps reading to the radio so that it can transmit it
   int rc;
-  if(!currently_initializing && (count % 30) == 0 && count != 0 && num_inited > 1) {
+  if(!currently_initializing && (count % 30) == 0 && count != 0 && num_inited > 0) {
     gps_buf[2] = _current_day;
     gps_buf[3] = _current_month;
     gps_buf[4] = _current_year;
@@ -729,7 +729,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80006;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A80009;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
