@@ -252,7 +252,7 @@ static void timer_callback (
         }
 
         increment_queue_pointer(&queue_head);
-    } else {
+    } /*else {
         count_module_packet(0x22);
         static uint8_t test_buf[BUFFER_SIZE];
         test_buf[0] = 0x22;
@@ -276,7 +276,7 @@ static void timer_callback (
         } else {
             sn++;
         }
-    }
+    }*/
 
     send_counter++;
 
