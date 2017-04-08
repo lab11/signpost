@@ -58,6 +58,8 @@ int32_t module_duty_cycle[8] = {-1};
 uint8_t num_inited = 0;
 uint8_t module_disabled[8] = {0};
 
+#define USE_PRESETS
+
 static void enable_all_enabled_i2c(void) {
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) continue;
@@ -729,7 +731,7 @@ int main (void) {
   fm25cl_set_write_buffer((uint8_t*) &fram, sizeof(controller_fram_t));
 
   // Read FRAM to see if anything is stored there
-  const unsigned FRAM_MAGIC_VALUE = 0x49A80009;
+  const unsigned FRAM_MAGIC_VALUE = 0x49A8000A;
   fm25cl_read_sync(0, sizeof(controller_fram_t));
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
@@ -753,8 +755,37 @@ int main (void) {
     // Initialize this
     fram.magic = FRAM_MAGIC_VALUE;
 
+#ifdef USE_PRESETS
+    int bat = signpost_energy_get_battery_energy_remaining();
+    int total = 0;
+    fram.energy.module_energy_remaining[0] = 0;
+    total += fram.energy.module_energy_remaining[0];
+    fram.energy.module_energy_remaining[1] = 9810;
+    total += fram.energy.module_energy_remaining[1];
+    fram.energy.module_energy_remaining[2] = 9840;
+    total += fram.energy.module_energy_remaining[2];
+    fram.energy.module_energy_remaining[5] = 4540;
+    total += fram.energy.module_energy_remaining[5];
+    fram.energy.module_energy_remaining[6] = 0;
+    total += fram.energy.module_energy_remaining[6];
+    fram.energy.module_energy_remaining[7] = 1560;
+    total += fram.energy.module_energy_remaining[7];
+
+    if(bat - total > 10000) {
+        //this worked
+        fram.energy.controller_energy_remaining = bat - total;
+        fm25cl_write_sync(0, sizeof(controller_fram_t));
+        signpost_energy_init_ltc2943(&fram.energy, NULL);
+    } else {
+        //this didn't work - screw it
+        signpost_energy_init_ltc2943(NULL, NULL);
+    }
+
+#else
     //let the energy algorithm figure out how to initialize all the energies
     signpost_energy_init_ltc2943(NULL, NULL);
+#endif
+
 
     fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
     fram.power.controller_average_power = 0;
@@ -763,8 +794,6 @@ int main (void) {
         fram.power.module_average_power[i] = 0;
     }
     fm25cl_write_sync(0, sizeof(controller_fram_t));
-
-    int bat = signpost_energy_get_battery_energy_remaining();
 
     printf("Energy remaining values initialized from battery capacity\n");
     printf("/**************************************/\n");
