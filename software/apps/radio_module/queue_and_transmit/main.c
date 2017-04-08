@@ -95,7 +95,7 @@ static void lora_tx_callback(TRadioMsg* message __attribute__ ((unused)),
     if(status == DEVMGMT_STATUS_OK) {
         lora_packets_sent++;
     } else {
-        putstr("Lora error, resetting...");
+        //putstr("Lora error, resetting...");
         //app_watchdog_reset_app();
     }
 }
@@ -184,7 +184,7 @@ void ble_address_set(void) {
 
 void ble_error(uint32_t error_code __attribute__ ((unused))) {
     //this has to be here too
-    putstr("ble error, resetting...");
+    //putstr("ble error, resetting...");
     //app_watchdog_reset_app();
 }
 
@@ -200,6 +200,7 @@ void ble_evt_user_handler (ble_evt_t* p_ble_evt __attribute__ ((unused))) {
     //and maybe this
 }
 
+static uint8_t sn = 0;
 static void timer_callback (
     int callback_type __attribute__ ((unused)),
     int length __attribute__ ((unused)),
@@ -213,7 +214,7 @@ static void timer_callback (
 
         if(lora_last_packets_sent == lora_packets_sent) {
             //error
-            putstr("lora error! Reseting..\n");
+            //putstr("lora error! Reseting..\n");
             //app_watchdog_reset_app();
         } else {
             lora_last_packets_sent = lora_packets_sent;
@@ -221,6 +222,8 @@ static void timer_callback (
 
         //count the packet
         count_module_packet(data_queue[queue_head][0]);
+
+        data_queue[queue_head][2] = sn;
 
         //send the packet
         memcpy(LoRa_send_buffer, address, ADDRESS_SIZE);
@@ -233,8 +236,10 @@ static void timer_callback (
         //parse the HCI layer error codes
         if(status != 0) {
             //error
-            putstr("lora error! Resetting...\n");
+            //putstr("lora error! Resetting...\n");
             //app_watchdog_reset_app();
+        } else {
+            sn++;
         }
         increment_queue_pointer(&queue_head);
     }
@@ -354,5 +359,5 @@ int main (void) {
 
     //setup timer
     timer_subscribe(timer_callback, NULL);
-    timer_start_repeating(2000);
+    timer_start_repeating(1000);
 }
