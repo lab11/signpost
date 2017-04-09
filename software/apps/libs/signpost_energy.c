@@ -402,6 +402,7 @@ void signpost_energy_update_energy (void) {
     }
 
     controller_energy_used_since_update = 0;
+    linux_energy = 0;
 
     printf("ENERGY: Total energy since update: %d uWh\n", total_energy_used_since_update);
 
@@ -425,9 +426,9 @@ void signpost_energy_update_energy (void) {
         //this is a two pass algorithm which can be games. Really it would take n passes to do it right
         //I don't want to code the npass algorithm really, when are all the
         //modules going to be full anyways?
-        int spill_over = 0;
-        uint8_t spill_elgible_count = 0;
         while(module_surplus > 0) {
+            int spill_over = 0;
+            uint8_t spill_elgible_count = 0;
 
             //try to distribute the energy
             for(uint8_t i = 0; i < 8; i++) {
