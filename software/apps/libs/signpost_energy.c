@@ -426,20 +426,23 @@ void signpost_energy_update_energy (void) {
         //this is a two pass algorithm which can be games. Really it would take n passes to do it right
         //I don't want to code the npass algorithm really, when are all the
         //modules going to be full anyways?
+        uint8_t spill_elgible[8] = {1};
         while(module_surplus > 0) {
             int spill_over = 0;
             uint8_t spill_elgible_count = 0;
 
             //try to distribute the energy
             for(uint8_t i = 0; i < 8; i++) {
-                if(i == 3 || i == 4)  continue;
+                if(i == 3 || i == 4 || spill_elgible[i] == 0)  continue;
 
                 if(module_energy_remaining[i] + module_surplus > MAX_MODULE_ENERGY_REMAINING) {
                     spill_over += (module_energy_remaining[i] + module_surplus) - MAX_MODULE_ENERGY_REMAINING;
                     module_energy_remaining[i] = MAX_MODULE_ENERGY_REMAINING;
+                    spill_elgible[i] = 0;
                 } else {
                     module_energy_remaining[i] += module_surplus;
                     spill_elgible_count++;
+                    spill_elgible[i] = 1;
                 }
             }
 
