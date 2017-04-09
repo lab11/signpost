@@ -758,17 +758,17 @@ int main (void) {
 #ifdef USE_PRESETS
     int bat = signpost_energy_get_battery_energy_remaining();
     int total = 0;
-    fram.energy.module_energy_remaining[0] = 0;
+    fram.energy.module_energy_remaining[0] = 1500000;
     total += fram.energy.module_energy_remaining[0];
-    fram.energy.module_energy_remaining[1] = 9810;
+    fram.energy.module_energy_remaining[1] = 9900000;
     total += fram.energy.module_energy_remaining[1];
-    fram.energy.module_energy_remaining[2] = 9840;
+    fram.energy.module_energy_remaining[2] = 9900000;
     total += fram.energy.module_energy_remaining[2];
-    fram.energy.module_energy_remaining[5] = 4540;
+    fram.energy.module_energy_remaining[5] = 6240000;
     total += fram.energy.module_energy_remaining[5];
-    fram.energy.module_energy_remaining[6] = 0;
+    fram.energy.module_energy_remaining[6] = 1500000;
     total += fram.energy.module_energy_remaining[6];
-    fram.energy.module_energy_remaining[7] = 1560;
+    fram.energy.module_energy_remaining[7] = 2560000;
     total += fram.energy.module_energy_remaining[7];
 
     if(bat - total > 10000) {
