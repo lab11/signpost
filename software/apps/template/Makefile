@@ -15,7 +15,6 @@ C_SRCS   := $(wildcard *.c)
 CXX_SRCS := $(wildcard *.cc) $(wildcard *.cpp) $(wildcard *.cxx)
 
 # If your app requires additional search paths for header files, add them here
-# INCLUDE_PATHS +=
 
 # include makefile settings that are shared between applications
 include ../AppMakefile.mk

@@ -27,8 +27,6 @@ APP_SRCS += bignum.c
 #APP_SRCS += pkcs5.c
 
 # files needed for this code
-INCLUDE_PATHS += .
-INCLUDE_PATHS += ../../../libs/mbedtls/include/
 
 SOURCE_PATHS += .
 SOURCE_PATHS += ../../../libs/mbedtls/library/
