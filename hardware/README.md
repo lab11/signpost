@@ -19,6 +19,8 @@ _Private bus for controller / power / backplane_
 | GPIO Extender Mod5   | MCP23008    | 0100101       | 0x25          |
 | GPIO Extender Mod6   | MCP23008    | 0100110       | 0x26          |
 | GPIO Extender Mod7   | MCP23008    | 0100111       | 0x27          |
+| EEPROM ID            | M24C01      | 1010001       | 0x51          |
+
 
 ### Power
 | Thing                         | Part Number | Address (bin) | Address (hex) |
