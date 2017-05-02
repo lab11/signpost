@@ -487,7 +487,7 @@
 <wire x1="127" y1="0" x2="127" y2="50.8" width="0.254" layer="49"/>
 <text x="127" y="16.256" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Signpost Backplane</text>
 <text x="127" y="8.636" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Pat Pannuto</text>
-<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev C. 2017-03-25</text>
+<text x="127" y="5.334" size="2.54" layer="21" font="vector" ratio="12" align="bottom-center">Rev C. 2017-05-02</text>
 <text x="59.182" y="197.612" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">VCC_MODn_METERED</text>
 <text x="76.2" y="182.118" size="1.016" layer="21" font="vector" ratio="20" align="bottom-center">GND</text>
 <wire x1="79.756" y1="187.96" x2="77.724" y2="187.96" width="0.254" layer="21"/>
@@ -667,7 +667,7 @@ DIS</text>
 <vertex x="41.0427875" y="371.11205"/>
 <vertex x="39.2467375" y="369.316"/>
 </polygon>
-<text x="218.694" y="207.264" size="0.762" layer="21" font="vector" ratio="12" align="center-left">2017-03-25</text>
+<text x="218.694" y="207.264" size="0.762" layer="21" font="vector" ratio="12" align="center-left">2017-05-02</text>
 <wire x1="33.401" y1="146.05" x2="33.528" y2="146.05" width="0.254" layer="20"/>
 <wire x1="33.528" y1="146.05" x2="58.801" y2="146.05" width="0.254" layer="20"/>
 <wire x1="33.401" y1="127" x2="58.801" y2="127" width="0.254" layer="20"/>
