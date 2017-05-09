@@ -8701,6 +8701,12 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
+<part name="SJ2" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
+<part name="SJ3" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
+<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP5" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP6" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9946,17 +9952,16 @@ Translator</text>
 <instance part="S4" gate="G$1" x="195.58" y="78.74" rot="R90"/>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
 <instance part="FRAME2" gate="G$2" x="152.4" y="0"/>
+<instance part="SJ2" gate="1" x="73.66" y="144.78"/>
+<instance part="SJ3" gate="1" x="170.18" y="144.78"/>
+<instance part="TP4" gate="G$1" x="66.04" y="149.86" rot="R270"/>
+<instance part="TP5" gate="G$1" x="81.28" y="149.86" rot="R270"/>
+<instance part="TP6" gate="G$1" x="162.56" y="149.86" rot="R270"/>
+<instance part="TP7" gate="G$1" x="177.8" y="149.86" rot="R270"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="MOD1_5V" class="0">
-<segment>
-<wire x1="160.02" y1="139.7" x2="165.1" y2="139.7" width="0.1524" layer="91"/>
-<label x="165.1" y="139.7" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="5V"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND24" gate="1" pin="GND"/>
@@ -10026,13 +10031,6 @@ Translator</text>
 <pinref part="J2" gate="G$1" pin="VCCIO"/>
 <wire x1="165.1" y1="137.16" x2="160.02" y2="137.16" width="0.1524" layer="91"/>
 <label x="165.1" y="137.16" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD0_5V" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="5V"/>
-<wire x1="63.5" y1="139.7" x2="68.58" y2="139.7" width="0.1524" layer="91"/>
-<label x="68.58" y="139.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_VCCIO" class="0">
@@ -10216,6 +10214,52 @@ Translator</text>
 <pinref part="J2" gate="G$1" pin="DBG_SWDIO"/>
 <wire x1="160.02" y1="93.98" x2="165.1" y2="93.98" width="0.1524" layer="91"/>
 <label x="165.1" y="93.98" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD0_5V_HEADER" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="5V"/>
+<pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
+<wire x1="63.5" y1="139.7" x2="66.04" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="139.7" x2="66.04" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="SJ2" gate="1" pin="1"/>
+<wire x1="66.04" y1="144.78" x2="66.04" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="144.78" x2="66.04" y2="144.78" width="0.1524" layer="91"/>
+<junction x="66.04" y="144.78"/>
+</segment>
+</net>
+<net name="MOD0_5V" class="0">
+<segment>
+<pinref part="SJ2" gate="1" pin="2"/>
+<wire x1="78.74" y1="144.78" x2="81.28" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
+<wire x1="81.28" y1="144.78" x2="83.82" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="147.32" x2="81.28" y2="144.78" width="0.1524" layer="91"/>
+<junction x="81.28" y="144.78"/>
+<label x="83.82" y="144.78" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="MOD1_5V_HEADER" class="0">
+<segment>
+<pinref part="J2" gate="G$1" pin="5V"/>
+<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
+<wire x1="160.02" y1="139.7" x2="162.56" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="139.7" x2="162.56" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="SJ3" gate="1" pin="1"/>
+<wire x1="162.56" y1="144.78" x2="162.56" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="144.78" x2="162.56" y2="144.78" width="0.1524" layer="91"/>
+<junction x="162.56" y="144.78"/>
+</segment>
+</net>
+<net name="MOD1_5V" class="0">
+<segment>
+<pinref part="SJ3" gate="1" pin="2"/>
+<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
+<wire x1="175.26" y1="144.78" x2="177.8" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="144.78" x2="177.8" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="144.78" x2="180.34" y2="144.78" width="0.1524" layer="91"/>
+<junction x="177.8" y="144.78"/>
+<label x="180.34" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
