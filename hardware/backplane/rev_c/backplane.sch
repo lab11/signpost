@@ -10240,26 +10240,26 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="J8" library="headers" deviceset="SCREW-TERMINAL_2_0.100" device=""/>
 <part name="J9" library="headers" deviceset="SCREW-TERMINAL_2_0.100" device=""/>
-<part name="H21" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H22" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H23" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H24" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H25" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H26" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H27" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H28" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H29" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H30" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H31" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H32" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H33" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H34" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H35" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H36" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H37" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H38" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H39" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
-<part name="H40" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H4" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H5" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H6" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H7" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H8" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H9" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H10" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H11" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H12" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H13" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H14" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H15" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H16" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H17" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H18" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H19" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
+<part name="H20" library="holes" deviceset="MOUNT-PAD-ROUND" device="#4"/>
 <part name="U33" library="signpost" deviceset="NCP301LSN30" device=""/>
 <part name="GND145" library="umich" deviceset="GND" device=""/>
 <part name="U$53" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
@@ -10325,26 +10325,26 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="J9" gate="G$1" x="101.6" y="71.12" smashed="yes" rot="MR0">
 <attribute name="NAME" x="106.68" y="66.04" size="1.27" layer="95" rot="MR0"/>
 </instance>
-<instance part="H21" gate="G$1" x="208.28" y="121.92"/>
-<instance part="H22" gate="G$1" x="218.44" y="121.92"/>
-<instance part="H23" gate="G$1" x="228.6" y="121.92"/>
-<instance part="H24" gate="G$1" x="238.76" y="121.92"/>
-<instance part="H25" gate="G$1" x="208.28" y="114.3"/>
-<instance part="H26" gate="G$1" x="218.44" y="114.3"/>
-<instance part="H27" gate="G$1" x="228.6" y="114.3"/>
-<instance part="H28" gate="G$1" x="238.76" y="114.3"/>
-<instance part="H29" gate="G$1" x="208.28" y="106.68"/>
-<instance part="H30" gate="G$1" x="218.44" y="106.68"/>
-<instance part="H31" gate="G$1" x="228.6" y="106.68"/>
-<instance part="H32" gate="G$1" x="238.76" y="106.68"/>
-<instance part="H33" gate="G$1" x="208.28" y="99.06"/>
-<instance part="H34" gate="G$1" x="218.44" y="99.06"/>
-<instance part="H35" gate="G$1" x="228.6" y="99.06"/>
-<instance part="H36" gate="G$1" x="238.76" y="99.06"/>
-<instance part="H37" gate="G$1" x="208.28" y="91.44"/>
-<instance part="H38" gate="G$1" x="218.44" y="91.44"/>
-<instance part="H39" gate="G$1" x="228.6" y="91.44"/>
-<instance part="H40" gate="G$1" x="238.76" y="91.44"/>
+<instance part="H1" gate="G$1" x="208.28" y="121.92"/>
+<instance part="H2" gate="G$1" x="218.44" y="121.92"/>
+<instance part="H3" gate="G$1" x="228.6" y="121.92"/>
+<instance part="H4" gate="G$1" x="238.76" y="121.92"/>
+<instance part="H5" gate="G$1" x="208.28" y="114.3"/>
+<instance part="H6" gate="G$1" x="218.44" y="114.3"/>
+<instance part="H7" gate="G$1" x="228.6" y="114.3"/>
+<instance part="H8" gate="G$1" x="238.76" y="114.3"/>
+<instance part="H9" gate="G$1" x="208.28" y="106.68"/>
+<instance part="H10" gate="G$1" x="218.44" y="106.68"/>
+<instance part="H11" gate="G$1" x="228.6" y="106.68"/>
+<instance part="H12" gate="G$1" x="238.76" y="106.68"/>
+<instance part="H13" gate="G$1" x="208.28" y="99.06"/>
+<instance part="H14" gate="G$1" x="218.44" y="99.06"/>
+<instance part="H15" gate="G$1" x="228.6" y="99.06"/>
+<instance part="H16" gate="G$1" x="238.76" y="99.06"/>
+<instance part="H17" gate="G$1" x="208.28" y="91.44"/>
+<instance part="H18" gate="G$1" x="218.44" y="91.44"/>
+<instance part="H19" gate="G$1" x="228.6" y="91.44"/>
+<instance part="H20" gate="G$1" x="238.76" y="91.44"/>
 </instances>
 <busses>
 </busses>
@@ -10640,26 +10640,26 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <wire x1="226.06" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="121.92" x2="223.52" y2="114.3" width="0.1524" layer="91"/>
 <junction x="223.52" y="114.3"/>
-<pinref part="H21" gate="G$1" pin="MOUNT"/>
-<pinref part="H22" gate="G$1" pin="MOUNT"/>
-<pinref part="H23" gate="G$1" pin="MOUNT"/>
-<pinref part="H24" gate="G$1" pin="MOUNT"/>
-<pinref part="H25" gate="G$1" pin="MOUNT"/>
-<pinref part="H26" gate="G$1" pin="MOUNT"/>
-<pinref part="H27" gate="G$1" pin="MOUNT"/>
-<pinref part="H28" gate="G$1" pin="MOUNT"/>
-<pinref part="H29" gate="G$1" pin="MOUNT"/>
-<pinref part="H30" gate="G$1" pin="MOUNT"/>
-<pinref part="H31" gate="G$1" pin="MOUNT"/>
-<pinref part="H32" gate="G$1" pin="MOUNT"/>
-<pinref part="H33" gate="G$1" pin="MOUNT"/>
-<pinref part="H34" gate="G$1" pin="MOUNT"/>
-<pinref part="H35" gate="G$1" pin="MOUNT"/>
-<pinref part="H36" gate="G$1" pin="MOUNT"/>
-<pinref part="H37" gate="G$1" pin="MOUNT"/>
-<pinref part="H38" gate="G$1" pin="MOUNT"/>
-<pinref part="H39" gate="G$1" pin="MOUNT"/>
-<pinref part="H40" gate="G$1" pin="MOUNT"/>
+<pinref part="H1" gate="G$1" pin="MOUNT"/>
+<pinref part="H2" gate="G$1" pin="MOUNT"/>
+<pinref part="H3" gate="G$1" pin="MOUNT"/>
+<pinref part="H4" gate="G$1" pin="MOUNT"/>
+<pinref part="H5" gate="G$1" pin="MOUNT"/>
+<pinref part="H6" gate="G$1" pin="MOUNT"/>
+<pinref part="H7" gate="G$1" pin="MOUNT"/>
+<pinref part="H8" gate="G$1" pin="MOUNT"/>
+<pinref part="H9" gate="G$1" pin="MOUNT"/>
+<pinref part="H10" gate="G$1" pin="MOUNT"/>
+<pinref part="H11" gate="G$1" pin="MOUNT"/>
+<pinref part="H12" gate="G$1" pin="MOUNT"/>
+<pinref part="H13" gate="G$1" pin="MOUNT"/>
+<pinref part="H14" gate="G$1" pin="MOUNT"/>
+<pinref part="H15" gate="G$1" pin="MOUNT"/>
+<pinref part="H16" gate="G$1" pin="MOUNT"/>
+<pinref part="H17" gate="G$1" pin="MOUNT"/>
+<pinref part="H18" gate="G$1" pin="MOUNT"/>
+<pinref part="H19" gate="G$1" pin="MOUNT"/>
+<pinref part="H20" gate="G$1" pin="MOUNT"/>
 </segment>
 </net>
 <net name="VSOL+" class="0">
