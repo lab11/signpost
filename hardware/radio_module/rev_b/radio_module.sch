@@ -10006,7 +10006,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 </part>
 <part name="GND17" library="umich" deviceset="GND" device=""/>
 <part name="J3" library="connector" deviceset="MOLEX_73251-135X" device=""/>
-<part name="J5" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
+<part name="J8" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
 <part name="R34" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND "/>
@@ -10182,7 +10182,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <part name="C38" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="100uF">
 <attribute name="DIGIKEY" value="490-13981-1-ND"/>
 </part>
-<part name="J6" library="connector" deviceset="TC2030-JLINK" device="-L"/>
+<part name="J9" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="U$1" library="logos" deviceset="UCB_CAL" device="100MIL" value="UCB_CAL100MIL"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 <part name="GND30" library="umich" deviceset="GND" device=""/>
@@ -10215,11 +10215,11 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND "/>
 </part>
 <part name="U11" library="signpost" deviceset="XDOT_MODULE" device=""/>
-<part name="J8" library="connector" deviceset="U.FL-R-SMT" device=""/>
+<part name="J11" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="100">
 <attribute name="DIGIKEY" value="311-100LRCT-ND"/>
 </part>
-<part name="J9" library="connector" deviceset="U.FL-R-SMT" device=""/>
+<part name="J12" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="0">
 <attribute name="DIGIKEY" value="311-0.0JRCT-ND"/>
 </part>
@@ -10278,7 +10278,9 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="RHM12.0KCDCT-ND"/>
 </part>
 <part name="GND55" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="LED3" library="SparkFun-LED" deviceset="LED" device="0603" value="BLUE"/>
+<part name="LED3" library="SparkFun-LED" deviceset="LED" device="0603" value="BLUE">
+<attribute name="DIGIKEY" value="511-1578-1-ND "/>
+</part>
 <part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
 </part>
@@ -10290,7 +10292,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="490-6269-1-ND"/>
 </part>
 <part name="GND56" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="J7" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
+<part name="J10" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
 <part name="GND57" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="X5" library="crystals" deviceset="ABS05-32.768KHZ" device="-9-T"/>
@@ -10307,9 +10309,15 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 </part>
 <part name="GND59" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device=""/>
-<part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device=""/>
-<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X5" device=""/>
+<part name="J5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="">
+<attribute name="DIGIKEY" value="952-2123-ND"/>
+</part>
+<part name="J6" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="">
+<attribute name="DIGIKEY" value="952-2123-ND"/>
+</part>
+<part name="J7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X5" device="">
+<attribute name="DIGIKEY" value="609-3243-ND"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -10403,7 +10411,7 @@ not the modules reference</text>
 <attribute name="NAME" x="1.4986" y="36.83" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="1.778" y="41.91" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="J6" gate="G$1" x="193.04" y="38.1"/>
+<instance part="J9" gate="G$1" x="193.04" y="38.1"/>
 <instance part="U$1" gate="G$1" x="238.76" y="177.8"/>
 <instance part="R1" gate="G$1" x="205.74" y="152.4" rot="R90">
 <attribute name="DIGIKEY" x="205.74" y="152.4" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
@@ -10440,7 +10448,7 @@ not the modules reference</text>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="180.34" y1="33.02" x2="175.26" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="33.02" x2="175.26" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="J6" gate="G$1" pin="GND"/>
+<pinref part="J9" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="GND"/>
@@ -10533,7 +10541,7 @@ not the modules reference</text>
 <wire x1="215.9" y1="40.64" x2="218.44" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="40.64" x2="215.9" y2="45.72" width="0.1524" layer="91"/>
 <junction x="215.9" y="40.64"/>
-<pinref part="J6" gate="G$1" pin="SWDCLK"/>
+<pinref part="J9" gate="G$1" pin="SWDCLK"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="DBG_SWDCLK"/>
@@ -10550,7 +10558,7 @@ not the modules reference</text>
 <segment>
 <wire x1="205.74" y1="33.02" x2="208.28" y2="33.02" width="0.1524" layer="91"/>
 <label x="208.28" y="33.02" size="1.27" layer="95" font="vector" xref="yes"/>
-<pinref part="J6" gate="G$1" pin="!RESET"/>
+<pinref part="J9" gate="G$1" pin="!RESET"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="DBG_!RESET"/>
@@ -10668,7 +10676,7 @@ not the modules reference</text>
 <wire x1="208.28" y1="43.18" x2="218.44" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="43.18" x2="208.28" y2="45.72" width="0.1524" layer="91"/>
 <junction x="208.28" y="43.18"/>
-<pinref part="J6" gate="G$1" pin="SWDIO"/>
+<pinref part="J9" gate="G$1" pin="SWDIO"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="DBG_SWDIO"/>
@@ -10721,7 +10729,7 @@ not the modules reference</text>
 <wire x1="180.34" y1="43.18" x2="175.26" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="43.18" x2="175.26" y2="53.34" width="0.1524" layer="91"/>
 <label x="175.26" y="53.34" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="J6" gate="G$1" pin="VCC"/>
+<pinref part="J9" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
 <pinref part="R34" gate="G$1" pin="2"/>
@@ -11917,7 +11925,7 @@ prevent glitching</text>
 <attribute name="NAME" x="121.92" y="111.76" size="1.778" layer="95"/>
 <attribute name="DIGIKEY" x="116.84" y="109.22" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="J9" gate="G$1" x="218.44" y="116.84"/>
+<instance part="J12" gate="G$1" x="218.44" y="116.84"/>
 <instance part="R2" gate="G$1" x="203.2" y="104.14" rot="R90">
 <attribute name="DIGIKEY" x="203.2" y="104.14" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
@@ -12085,7 +12093,7 @@ prevent glitching</text>
 <pinref part="J2" gate="G$1" pin="P$2"/>
 <pinref part="GND29" gate="1" pin="GND"/>
 <wire x1="210.82" y1="101.6" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="J9" gate="G$1" pin="P$2"/>
+<pinref part="J12" gate="G$1" pin="P$2"/>
 <wire x1="218.44" y1="111.76" x2="218.44" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="99.06" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
 <junction x="210.82" y="99.06"/>
@@ -12318,7 +12326,7 @@ prevent glitching</text>
 </net>
 <net name="N$7" class="0">
 <segment>
-<pinref part="J9" gate="G$1" pin="ANT"/>
+<pinref part="J12" gate="G$1" pin="ANT"/>
 <wire x1="215.9" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="198.12" y1="114.3" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
@@ -12435,6 +12443,7 @@ for the spi interface.</text>
 <instance part="LED3" gate="G$1" x="17.78" y="86.36" smashed="yes">
 <attribute name="NAME" x="16.256" y="86.868" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="20.955" y="81.788" size="1.778" layer="96" rot="R90"/>
+<attribute name="DIGIKEY" x="17.78" y="86.36" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R16" gate="G$1" x="17.78" y="96.52" rot="R270">
 <attribute name="DIGIKEY" x="17.78" y="96.52" size="1.27" layer="96" rot="R270" display="off"/>
@@ -12447,7 +12456,7 @@ for the spi interface.</text>
 <attribute name="DIGIKEY" x="175.26" y="50.8" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND56" gate="1" x="175.26" y="30.48"/>
-<instance part="J7" gate="G$1" x="129.54" y="139.7"/>
+<instance part="J10" gate="G$1" x="129.54" y="139.7"/>
 <instance part="GND57" gate="1" x="114.3" y="129.54"/>
 <instance part="P+4" gate="VCC" x="114.3" y="149.86"/>
 <instance part="X5" gate="G$1" x="129.54" y="111.76"/>
@@ -12543,7 +12552,7 @@ for the spi interface.</text>
 <wire x1="175.26" y1="33.02" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J7" gate="G$1" pin="GND"/>
+<pinref part="J10" gate="G$1" pin="GND"/>
 <wire x1="116.84" y1="134.62" x2="114.3" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="134.62" x2="114.3" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="GND57" gate="1" pin="GND"/>
@@ -12641,7 +12650,7 @@ for the spi interface.</text>
 <junction x="73.66" y="149.86"/>
 </segment>
 <segment>
-<pinref part="J7" gate="G$1" pin="VCC"/>
+<pinref part="J10" gate="G$1" pin="VCC"/>
 <wire x1="116.84" y1="144.78" x2="114.3" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="144.78" x2="114.3" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
@@ -12780,7 +12789,7 @@ for the spi interface.</text>
 <junction x="50.8" y="66.04"/>
 </segment>
 <segment>
-<pinref part="J7" gate="G$1" pin="SWDCLK"/>
+<pinref part="J10" gate="G$1" pin="SWDCLK"/>
 <wire x1="142.24" y1="142.24" x2="144.78" y2="142.24" width="0.1524" layer="91"/>
 <label x="144.78" y="142.24" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12796,7 +12805,7 @@ for the spi interface.</text>
 <junction x="40.64" y="68.58"/>
 </segment>
 <segment>
-<pinref part="J7" gate="G$1" pin="SWDIO"/>
+<pinref part="J10" gate="G$1" pin="SWDIO"/>
 <wire x1="142.24" y1="144.78" x2="144.78" y2="144.78" width="0.1524" layer="91"/>
 <label x="144.78" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12880,7 +12889,7 @@ for the spi interface.</text>
 </instance>
 <instance part="GND17" gate="1" x="218.44" y="68.58"/>
 <instance part="J3" gate="G$1" x="220.98" y="167.64"/>
-<instance part="J5" gate="G$1" x="27.94" y="152.4"/>
+<instance part="J8" gate="G$1" x="27.94" y="152.4"/>
 <instance part="Q6" gate="G$1" x="137.16" y="144.78" smashed="yes" rot="MR180">
 <attribute name="NAME" x="142.24" y="142.24" size="1.778" layer="95" rot="MR180"/>
 </instance>
@@ -12890,7 +12899,7 @@ for the spi interface.</text>
 <instance part="GND28" gate="1" x="116.84" y="124.46"/>
 <instance part="GND30" gate="1" x="220.98" y="154.94"/>
 <instance part="U11" gate="G$1" x="160.02" y="83.82"/>
-<instance part="J8" gate="G$1" x="203.2" y="167.64" rot="MR0"/>
+<instance part="J11" gate="G$1" x="203.2" y="167.64" rot="MR0"/>
 <instance part="R8" gate="G$1" x="121.92" y="144.78" rot="R180">
 <attribute name="DIGIKEY" x="121.92" y="144.78" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
@@ -12913,7 +12922,7 @@ for the spi interface.</text>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
 <wire x1="10.16" y1="147.32" x2="10.16" y2="144.78" width="0.1524" layer="91"/>
-<pinref part="J5" gate="G$1" pin="GND"/>
+<pinref part="J8" gate="G$1" pin="GND"/>
 <wire x1="10.16" y1="147.32" x2="15.24" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -12925,7 +12934,7 @@ for the spi interface.</text>
 <pinref part="GND30" gate="1" pin="GND"/>
 <pinref part="J3" gate="G$1" pin="P$2"/>
 <wire x1="220.98" y1="157.48" x2="220.98" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="J8" gate="G$1" pin="P$2"/>
+<pinref part="J11" gate="G$1" pin="P$2"/>
 <wire x1="220.98" y1="160.02" x2="220.98" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="162.56" x2="203.2" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="160.02" x2="220.98" y2="160.02" width="0.1524" layer="91"/>
@@ -12948,14 +12957,14 @@ for the spi interface.</text>
 <segment>
 <pinref part="J3" gate="G$1" pin="ANT"/>
 <wire x1="205.74" y1="167.64" x2="218.44" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="J8" gate="G$1" pin="ANT"/>
+<pinref part="J11" gate="G$1" pin="ANT"/>
 </segment>
 </net>
 <net name="XDOT_GATED" class="0">
 <segment>
 <wire x1="10.16" y1="157.48" x2="10.16" y2="162.56" width="0.1524" layer="91"/>
 <label x="10.16" y="162.56" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="J5" gate="G$1" pin="VCC"/>
+<pinref part="J8" gate="G$1" pin="VCC"/>
 <wire x1="10.16" y1="157.48" x2="15.24" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -12971,7 +12980,7 @@ for the spi interface.</text>
 </net>
 <net name="XDOT_SWDIO" class="0">
 <segment>
-<pinref part="J5" gate="G$1" pin="SWDIO"/>
+<pinref part="J8" gate="G$1" pin="SWDIO"/>
 <wire x1="40.64" y1="157.48" x2="45.72" y2="157.48" width="0.1524" layer="91"/>
 <label x="45.72" y="157.48" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12983,7 +12992,7 @@ for the spi interface.</text>
 </net>
 <net name="XDOT_SWCLK" class="0">
 <segment>
-<pinref part="J5" gate="G$1" pin="SWDCLK"/>
+<pinref part="J8" gate="G$1" pin="SWDCLK"/>
 <wire x1="40.64" y1="154.94" x2="45.72" y2="154.94" width="0.1524" layer="91"/>
 <label x="45.72" y="154.94" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12995,7 +13004,7 @@ for the spi interface.</text>
 </net>
 <net name="!XDOT_RESET" class="0">
 <segment>
-<pinref part="J5" gate="G$1" pin="!RESET"/>
+<pinref part="J8" gate="G$1" pin="!RESET"/>
 <wire x1="40.64" y1="147.32" x2="45.72" y2="147.32" width="0.1524" layer="91"/>
 <label x="45.72" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -13103,189 +13112,195 @@ for the spi interface.</text>
 <text x="111.76" y="111.76" size="2.032" layer="96" align="bottom-center">Xdot Debug</text>
 </plain>
 <instances>
-<instance part="JP1" gate="A" x="109.22" y="160.02"/>
-<instance part="JP2" gate="A" x="109.22" y="127"/>
-<instance part="JP3" gate="A" x="109.22" y="99.06"/>
+<instance part="J5" gate="A" x="109.22" y="160.02">
+<attribute name="DIGIKEY" x="109.22" y="160.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="J6" gate="A" x="109.22" y="127">
+<attribute name="DIGIKEY" x="109.22" y="127" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="J7" gate="A" x="109.22" y="99.06">
+<attribute name="DIGIKEY" x="109.22" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GSM_POWER_GATE" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="1"/>
+<pinref part="J6" gate="A" pin="1"/>
 <wire x1="106.68" y1="132.08" x2="99.06" y2="132.08" width="0.1524" layer="91"/>
 <label x="99.06" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_RTS" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="2"/>
+<pinref part="J6" gate="A" pin="2"/>
 <wire x1="114.3" y1="132.08" x2="121.92" y2="132.08" width="0.1524" layer="91"/>
 <label x="121.92" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_RST" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="5"/>
+<pinref part="J6" gate="A" pin="5"/>
 <wire x1="106.68" y1="127" x2="99.06" y2="127" width="0.1524" layer="91"/>
 <label x="99.06" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_POWER" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="7"/>
+<pinref part="J6" gate="A" pin="7"/>
 <wire x1="106.68" y1="124.46" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
 <label x="99.06" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_RX" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="4"/>
+<pinref part="J6" gate="A" pin="4"/>
 <wire x1="114.3" y1="129.54" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <label x="121.92" y="129.54" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_POWER_GATE" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="1"/>
+<pinref part="J5" gate="A" pin="1"/>
 <wire x1="106.68" y1="165.1" x2="99.06" y2="165.1" width="0.1524" layer="91"/>
 <label x="99.06" y="165.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_INT1/CTS" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="3"/>
+<pinref part="J5" gate="A" pin="3"/>
 <wire x1="106.68" y1="162.56" x2="99.06" y2="162.56" width="0.1524" layer="91"/>
 <label x="99.06" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_SWDIO/!RESET" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="5"/>
+<pinref part="J5" gate="A" pin="5"/>
 <wire x1="106.68" y1="160.02" x2="99.06" y2="160.02" width="0.1524" layer="91"/>
 <label x="99.06" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_BOOT" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="7"/>
+<pinref part="J5" gate="A" pin="7"/>
 <wire x1="106.68" y1="157.48" x2="99.06" y2="157.48" width="0.1524" layer="91"/>
 <label x="99.06" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_INT2/RTS" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="2"/>
+<pinref part="J5" gate="A" pin="2"/>
 <wire x1="114.3" y1="165.1" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
 <label x="121.92" y="165.1" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_RX" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="4"/>
+<pinref part="J5" gate="A" pin="4"/>
 <wire x1="114.3" y1="162.56" x2="121.92" y2="162.56" width="0.1524" layer="91"/>
 <label x="121.92" y="162.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_TX" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="6"/>
+<pinref part="J5" gate="A" pin="6"/>
 <wire x1="114.3" y1="160.02" x2="121.92" y2="160.02" width="0.1524" layer="91"/>
 <label x="121.92" y="160.02" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="8"/>
+<pinref part="J5" gate="A" pin="8"/>
 <wire x1="114.3" y1="157.48" x2="121.92" y2="157.48" width="0.1524" layer="91"/>
 <label x="121.92" y="157.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="A" pin="8"/>
+<pinref part="J6" gate="A" pin="8"/>
 <wire x1="114.3" y1="124.46" x2="121.92" y2="124.46" width="0.1524" layer="91"/>
 <label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_POWER_GATE" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="1"/>
+<pinref part="J7" gate="A" pin="1"/>
 <wire x1="106.68" y1="104.14" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
 <label x="99.06" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_INT1" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="7"/>
+<pinref part="J7" gate="A" pin="7"/>
 <wire x1="106.68" y1="96.52" x2="99.06" y2="96.52" width="0.1524" layer="91"/>
 <label x="99.06" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_RTS" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="2"/>
+<pinref part="J7" gate="A" pin="2"/>
 <wire x1="114.3" y1="104.14" x2="121.92" y2="104.14" width="0.1524" layer="91"/>
 <label x="121.92" y="104.14" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_RX" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="4"/>
+<pinref part="J7" gate="A" pin="4"/>
 <wire x1="114.3" y1="101.6" x2="121.92" y2="101.6" width="0.1524" layer="91"/>
 <label x="121.92" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_TX" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="6"/>
+<pinref part="J7" gate="A" pin="6"/>
 <wire x1="114.3" y1="99.06" x2="121.92" y2="99.06" width="0.1524" layer="91"/>
 <label x="121.92" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_CTS" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="3"/>
+<pinref part="J7" gate="A" pin="3"/>
 <wire x1="106.68" y1="101.6" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
 <label x="99.06" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="!XDOT_RESET" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="5"/>
+<pinref part="J7" gate="A" pin="5"/>
 <wire x1="106.68" y1="99.06" x2="99.06" y2="99.06" width="0.1524" layer="91"/>
 <label x="99.06" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_WAKE" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="9"/>
+<pinref part="J7" gate="A" pin="9"/>
 <wire x1="106.68" y1="93.98" x2="99.06" y2="93.98" width="0.1524" layer="91"/>
 <label x="99.06" y="93.98" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_DBG_UART_TX" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="8"/>
+<pinref part="J7" gate="A" pin="8"/>
 <wire x1="114.3" y1="96.52" x2="121.92" y2="96.52" width="0.1524" layer="91"/>
 <label x="121.92" y="96.52" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="XDOT_DBG_UART_RX" class="0">
 <segment>
-<pinref part="JP3" gate="A" pin="10"/>
+<pinref part="J7" gate="A" pin="10"/>
 <wire x1="114.3" y1="93.98" x2="121.92" y2="93.98" width="0.1524" layer="91"/>
 <label x="121.92" y="93.98" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_TX" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="6"/>
+<pinref part="J6" gate="A" pin="6"/>
 <wire x1="114.3" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
 <label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GSM_CTS" class="0">
 <segment>
-<pinref part="JP2" gate="A" pin="3"/>
+<pinref part="J6" gate="A" pin="3"/>
 <wire x1="106.68" y1="129.54" x2="99.06" y2="129.54" width="0.1524" layer="91"/>
 <label x="99.06" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
