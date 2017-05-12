@@ -10793,21 +10793,21 @@ not the modules reference</text>
 <label x="30.48" y="147.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="GSM_RX" class="0">
+<net name="GSM_TX" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA11"/>
 <label x="177.8" y="132.08" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="132.08" x2="177.8" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_TX" class="0">
+<net name="XDOT_TX" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA19"/>
 <label x="177.8" y="111.76" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="111.76" x2="177.8" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RX" class="0">
+<net name="XDOT_RX" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA20"/>
 <label x="177.8" y="109.22" size="1.27" layer="95" xref="yes"/>
@@ -11067,14 +11067,14 @@ not the modules reference</text>
 <label x="121.92" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="GSM_RTS" class="0">
+<net name="GSM_CTS" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA08"/>
 <label x="177.8" y="139.7" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="139.7" x2="177.8" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GSM_CTS" class="0">
+<net name="GSM_RTS" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA09"/>
 <label x="177.8" y="137.16" size="1.27" layer="95" xref="yes"/>
@@ -11166,21 +11166,21 @@ not the modules reference</text>
 <wire x1="205.74" y1="106.68" x2="170.18" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GSM_TX" class="0">
+<net name="GSM_RX" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA12"/>
 <label x="177.8" y="129.54" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="129.54" x2="177.8" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RTS" class="0">
+<net name="XDOT_RTS" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA22"/>
 <label x="177.8" y="104.14" size="1.27" layer="95" xref="yes"/>
 <wire x1="170.18" y1="104.14" x2="177.8" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_CTS" class="0">
+<net name="XDOT_CTS" class="0">
 <segment>
 <pinref part="U6" gate="U1" pin="PA17"/>
 <label x="177.8" y="116.84" size="1.27" layer="95" xref="yes"/>
@@ -11822,6 +11822,10 @@ prevent glitching</text>
 <text x="2.54" y="137.16" size="2.54" layer="97">Level Translator, GSM_INT = 1.8V</text>
 <text x="71.12" y="96.52" size="1.27" layer="97">UART lines for commands</text>
 <text x="71.12" y="71.12" size="1.27" layer="97">Connector for FW upgrade</text>
+<text x="22.86" y="78.74" size="1.27" layer="97" align="bottom-center">I switch labels here to be consistent</text>
+<wire x1="15.24" y1="81.28" x2="15.24" y2="86.36" width="0.254" layer="96"/>
+<wire x1="12.7" y1="83.82" x2="15.24" y2="86.36" width="0.254" layer="96"/>
+<wire x1="15.24" y1="86.36" x2="17.78" y2="83.82" width="0.254" layer="96"/>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -12224,14 +12228,14 @@ prevent glitching</text>
 <pinref part="U9" gate="G$1" pin="A4"/>
 </segment>
 </net>
-<net name="GSM_TX" class="0">
+<net name="GSM_RX" class="0">
 <segment>
 <wire x1="25.4" y1="93.98" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
 <label x="22.86" y="93.98" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U9" gate="G$1" pin="B3"/>
 </segment>
 </net>
-<net name="GSM_RX" class="0">
+<net name="GSM_TX" class="0">
 <segment>
 <wire x1="25.4" y1="91.44" x2="22.86" y2="91.44" width="0.1524" layer="91"/>
 <label x="22.86" y="91.44" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -12299,14 +12303,14 @@ prevent glitching</text>
 <pinref part="U9" gate="G$1" pin="A1"/>
 </segment>
 </net>
-<net name="GSM_RTS" class="0">
+<net name="GSM_CTS" class="0">
 <segment>
 <wire x1="25.4" y1="99.06" x2="22.86" y2="99.06" width="0.1524" layer="91"/>
 <label x="22.86" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U9" gate="G$1" pin="B1"/>
 </segment>
 </net>
-<net name="GSM_CTS" class="0">
+<net name="GSM_RTS" class="0">
 <segment>
 <wire x1="25.4" y1="96.52" x2="22.86" y2="96.52" width="0.1524" layer="91"/>
 <label x="22.86" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -13041,28 +13045,28 @@ for the spi interface.</text>
 <wire x1="142.24" y1="83.82" x2="134.62" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_TX" class="0">
+<net name="XDOT_TX" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="UART1_TX"/>
 <wire x1="142.24" y1="78.74" x2="134.62" y2="78.74" width="0.1524" layer="91"/>
 <label x="134.62" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RX" class="0">
+<net name="XDOT_RX" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="UART1_RX"/>
 <wire x1="142.24" y1="76.2" x2="134.62" y2="76.2" width="0.1524" layer="91"/>
 <label x="134.62" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_CTS" class="0">
+<net name="XDOT_CTS" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="UART1_CTS"/>
 <wire x1="142.24" y1="73.66" x2="134.62" y2="73.66" width="0.1524" layer="91"/>
 <label x="134.62" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RTS" class="0">
+<net name="XDOT_RTS" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="UART1_RTS"/>
 <wire x1="142.24" y1="71.12" x2="134.62" y2="71.12" width="0.1524" layer="91"/>
@@ -13108,60 +13112,39 @@ for the spi interface.</text>
 <busses>
 </busses>
 <nets>
-<net name="N$19" class="0">
+<net name="GSM_POWER_GATE" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="1"/>
 <wire x1="106.68" y1="132.08" x2="99.06" y2="132.08" width="0.1524" layer="91"/>
 <label x="99.06" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$35" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="3"/>
-<wire x1="106.68" y1="129.54" x2="99.06" y2="129.54" width="0.1524" layer="91"/>
-<label x="99.06" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="N$39" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="5"/>
-<wire x1="106.68" y1="127" x2="99.06" y2="127" width="0.1524" layer="91"/>
-<label x="99.06" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="N$42" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="7"/>
-<wire x1="106.68" y1="124.46" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
-<label x="99.06" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="N$43" class="0">
+<net name="GSM_RTS" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="2"/>
 <wire x1="114.3" y1="132.08" x2="121.92" y2="132.08" width="0.1524" layer="91"/>
 <label x="121.92" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$45" class="0">
+<net name="GSM_RST" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="5"/>
+<wire x1="106.68" y1="127" x2="99.06" y2="127" width="0.1524" layer="91"/>
+<label x="99.06" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="GSM_POWER" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="7"/>
+<wire x1="106.68" y1="124.46" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
+<label x="99.06" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="GSM_RX" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="4"/>
 <wire x1="114.3" y1="129.54" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <label x="121.92" y="129.54" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$46" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="6"/>
-<wire x1="114.3" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
-<label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$47" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="8"/>
-<wire x1="114.3" y1="124.46" x2="121.92" y2="124.46" width="0.1524" layer="91"/>
-<label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="NRF_POWER_GATE" class="0">
@@ -13219,6 +13202,11 @@ for the spi interface.</text>
 <wire x1="114.3" y1="157.48" x2="121.92" y2="157.48" width="0.1524" layer="91"/>
 <label x="121.92" y="157.48" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="8"/>
+<wire x1="114.3" y1="124.46" x2="121.92" y2="124.46" width="0.1524" layer="91"/>
+<label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="XDOT_POWER_GATE" class="0">
 <segment>
@@ -13234,28 +13222,28 @@ for the spi interface.</text>
 <label x="99.06" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RTS" class="0">
+<net name="XDOT_RTS" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="2"/>
 <wire x1="114.3" y1="104.14" x2="121.92" y2="104.14" width="0.1524" layer="91"/>
 <label x="121.92" y="104.14" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_RX" class="0">
+<net name="XDOT_RX" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="4"/>
 <wire x1="114.3" y1="101.6" x2="121.92" y2="101.6" width="0.1524" layer="91"/>
 <label x="121.92" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_TX" class="0">
+<net name="XDOT_TX" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="6"/>
 <wire x1="114.3" y1="99.06" x2="121.92" y2="99.06" width="0.1524" layer="91"/>
 <label x="121.92" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="XDOT_HOST_UART_CTS" class="0">
+<net name="XDOT_CTS" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="3"/>
 <wire x1="106.68" y1="101.6" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
@@ -13288,6 +13276,20 @@ for the spi interface.</text>
 <pinref part="JP3" gate="A" pin="10"/>
 <wire x1="114.3" y1="93.98" x2="121.92" y2="93.98" width="0.1524" layer="91"/>
 <label x="121.92" y="93.98" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="GSM_TX" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="6"/>
+<wire x1="114.3" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
+<label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="GSM_CTS" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="3"/>
+<wire x1="106.68" y1="129.54" x2="99.06" y2="129.54" width="0.1524" layer="91"/>
+<label x="99.06" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
