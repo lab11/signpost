@@ -3551,7 +3551,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
 <circle x="-1.82" y="-1.93" radius="0.086021875" width="0.127" layer="21"/>
 <text x="-2.35" y="2.29" size="0.889" layer="25">&gt;NAME</text>
-<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1"/>
+<smd name="GND" x="0" y="0" dx="1.63" dy="1.63" layer="1" cream="no"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="31"/>
 </package>
 <package name="QFN-64-9MM">
 <smd name="1" x="-4.525" y="3.75" dx="0.75" dy="0.28" layer="1" roundness="100"/>
@@ -9189,31 +9190,12 @@ High-power, low thermal resistance package.</description>
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
-<symbol name="VCC">
-<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 </symbols>
 <devicesets>
 <deviceset name="GND" prefix="GND">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="VCC" prefix="P+">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="VCC" symbol="VCC" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -10232,7 +10214,6 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <part name="C21" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND46" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="1nF">
 <attribute name="DIGIKEY" value="490-1303-1-ND"/>
@@ -10294,7 +10275,6 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <part name="GND56" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="J10" library="connector" deviceset="TC2030-JLINK" device="-NL"/>
 <part name="GND57" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="X5" library="crystals" deviceset="ABS05-32.768KHZ" device="-9-T"/>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="12pF">
 <attribute name="DIGIKEY" value="490-6197-1-ND"/>
@@ -10308,7 +10288,6 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="RHM150CDCT-ND"/>
 </part>
 <part name="GND59" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="J5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="">
 <attribute name="DIGIKEY" value="952-2123-ND"/>
 </part>
@@ -10318,6 +10297,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <part name="J7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X5" device="">
 <attribute name="DIGIKEY" value="609-3243-ND"/>
 </part>
+<part name="FRAME6" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11824,7 +11804,7 @@ prevent glitching</text>
 <text x="12.7" y="55.88" size="2.54" layer="97">Network Indicator LED</text>
 <wire x1="0" y1="63.5" x2="66.04" y2="63.5" width="0.1524" layer="97"/>
 <wire x1="66.04" y1="63.5" x2="66.04" y2="0" width="0.1524" layer="97"/>
-<wire x1="66.04" y1="185.42" x2="66.04" y2="71.12" width="0.1524" layer="97"/>
+<wire x1="66.04" y1="190.5" x2="66.04" y2="71.12" width="0.1524" layer="97"/>
 <wire x1="66.04" y1="71.12" x2="0" y2="71.12" width="0.1524" layer="97"/>
 <text x="2.54" y="137.16" size="2.54" layer="97">Level Translator, GSM_INT = 1.8V</text>
 <text x="71.12" y="96.52" size="1.27" layer="97">UART lines for commands</text>
@@ -12289,6 +12269,7 @@ prevent glitching</text>
 <junction x="185.42" y="137.16"/>
 <pinref part="Q4" gate="G$1" pin="D"/>
 <wire x1="190.5" y1="137.16" x2="190.5" y2="149.86" width="0.1524" layer="91"/>
+<label x="152.4" y="137.16" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="2"/>
@@ -12394,7 +12375,6 @@ for the spi interface.</text>
 <instance part="C21" gate="G$1" x="66.04" y="144.78">
 <attribute name="DIGIKEY" x="66.04" y="144.78" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="P+2" gate="VCC" x="73.66" y="154.94"/>
 <instance part="GND46" gate="1" x="60.96" y="132.08"/>
 <instance part="C14" gate="G$1" x="88.9" y="144.78">
 <attribute name="DIGIKEY" x="88.9" y="144.78" size="1.778" layer="96" display="off"/>
@@ -12458,7 +12438,6 @@ for the spi interface.</text>
 <instance part="GND56" gate="1" x="175.26" y="30.48"/>
 <instance part="J10" gate="G$1" x="129.54" y="139.7"/>
 <instance part="GND57" gate="1" x="114.3" y="129.54"/>
-<instance part="P+4" gate="VCC" x="114.3" y="149.86"/>
 <instance part="X5" gate="G$1" x="129.54" y="111.76"/>
 <instance part="C6" gate="G$1" x="121.92" y="106.68">
 <attribute name="DIGIKEY" x="121.92" y="106.68" size="1.778" layer="96" display="off"/>
@@ -12472,7 +12451,6 @@ for the spi interface.</text>
 <attribute name="DIGIKEY" x="40.64" y="58.42" size="1.27" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND59" gate="1" x="40.64" y="30.48"/>
-<instance part="P+5" gate="VCC" x="17.78" y="106.68"/>
 </instances>
 <busses>
 </busses>
@@ -12640,7 +12618,6 @@ for the spi interface.</text>
 <wire x1="73.66" y1="152.4" x2="73.66" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="149.86" x2="66.04" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="149.86" x2="66.04" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="P+2" gate="VCC" pin="VCC"/>
 <pinref part="C32" gate="G$1" pin="1"/>
 <wire x1="55.88" y1="147.32" x2="55.88" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="149.86" x2="66.04" y2="149.86" width="0.1524" layer="91"/>
@@ -12648,17 +12625,18 @@ for the spi interface.</text>
 <pinref part="U13" gate="G$1" pin="VDD"/>
 <wire x1="73.66" y1="127" x2="73.66" y2="149.86" width="0.1524" layer="91"/>
 <junction x="73.66" y="149.86"/>
+<label x="73.66" y="152.4" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
 <pinref part="J10" gate="G$1" pin="VCC"/>
 <wire x1="116.84" y1="144.78" x2="114.3" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="144.78" x2="114.3" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="P+4" gate="VCC" pin="VCC"/>
+<label x="114.3" y="147.32" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R16" gate="G$1" pin="1"/>
 <wire x1="17.78" y1="101.6" x2="17.78" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="P+5" gate="VCC" pin="VCC"/>
+<label x="17.78" y="104.14" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
 <pinref part="Q5" gate="G$1" pin="D"/>
@@ -13121,6 +13099,8 @@ for the spi interface.</text>
 <instance part="J7" gate="A" x="109.22" y="99.06">
 <attribute name="DIGIKEY" x="109.22" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
+<instance part="FRAME6" gate="G$1" x="0" y="0"/>
+<instance part="FRAME6" gate="G$2" x="152.4" y="0"/>
 </instances>
 <busses>
 </busses>
@@ -13316,6 +13296,9 @@ for the spi interface.</text>
 <approved hash="104,1,129.54,152.4,U6,VDDIO,3V3,,,"/>
 <approved hash="104,1,129.54,81.28,U6,GNDANA,GND,,,"/>
 <approved hash="104,1,129.54,149.86,U6,VLCDIN,3V3,,,"/>
+<approved hash="113,6,110.448,162.691,J5,,,,,"/>
+<approved hash="113,6,110.448,129.671,J6,,,,,"/>
+<approved hash="113,6,110.448,100.461,J7,,,,,"/>
 <approved hash="115,5,137.16,138.43,XDOT_GATED,,,,,"/>
 </errors>
 </schematic>
