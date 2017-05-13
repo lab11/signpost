@@ -10869,14 +10869,14 @@ not the modules reference</text>
 </net>
 <net name="PPS" class="0">
 <segment>
-<pinref part="U6" gate="U1" pin="PB04"/>
-<label x="121.92" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
-<wire x1="129.54" y1="119.38" x2="121.92" y2="119.38" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="J1" gate="G$1" pin="PPS"/>
 <wire x1="25.4" y1="170.18" x2="30.48" y2="170.18" width="0.1524" layer="91"/>
 <label x="30.48" y="170.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U6" gate="U1" pin="PA10"/>
+<label x="177.8" y="134.62" size="1.27" layer="95" xref="yes"/>
+<wire x1="170.18" y1="134.62" x2="177.8" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MOD_IN" class="0">
@@ -11042,9 +11042,9 @@ not the modules reference</text>
 </net>
 <net name="!XDOT_RESET" class="0">
 <segment>
-<pinref part="U6" gate="U1" pin="PA10"/>
-<label x="177.8" y="134.62" size="1.27" layer="95" xref="yes"/>
-<wire x1="170.18" y1="134.62" x2="177.8" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="U6" gate="U1" pin="PB04"/>
+<label x="121.92" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="129.54" y1="119.38" x2="121.92" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="XDOT_INT1" class="0">
