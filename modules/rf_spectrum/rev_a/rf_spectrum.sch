@@ -2173,6 +2173,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <technology name="">
 <attribute name="DIGIKEY1" value="S9170-ND" constant="no"/>
 <attribute name="DIGIKEY2" value="WM17450-ND" constant="no"/>
+<attribute name="MF1" value="Sullins" constant="no"/>
+<attribute name="MF2" value="Molex" constant="no"/>
+<attribute name="MFN1" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
+<attribute name="MFN2" value="0015912080" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2206,7 +2210,10 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <connect gate="G$1" pin="RF_TX" pad="P$39"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="MF" value="RFExplorer" constant="no"/>
+<attribute name="MFN" value="MWSUB3G" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -2407,6 +2414,8 @@ RF Switch</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-35978-1-ND" constant="no"/>
+<attribute name="MF" value="Texas Instruments" constant="no"/>
+<attribute name="MFN" value="TLV62130RGTR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2431,7 +2440,9 @@ RF Switch</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="863-1056-1-ND" value="" constant="no"/>
+<attribute name="DIGIKEY" value="863-1056-1-ND" constant="no"/>
+<attribute name="MF" value="Skworks Solutions" constant="no"/>
+<attribute name="MFN" value="SKY13317-373LF" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2725,6 +2736,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="WM9357-ND" constant="no"/>
+<attribute name="MF" value="Molex" constant="no"/>
+<attribute name="MFN" value="0732511350" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2744,6 +2757,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="H122041-ND" constant="no"/>
+<attribute name="MF" value="Hirose" constant="no"/>
+<attribute name="MFN" value="U.FL-R-SMT-1(01)" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3177,6 +3192,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11899-1-ND" constant="no"/>
+<attribute name="MF" value="Abracon" constant="no"/>
+<attribute name="MFN" value="ABS05-32.768KHZ-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3188,6 +3205,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11897-1-ND" constant="no"/>
+<attribute name="MF" value="Abracon" constant="no"/>
+<attribute name="MFN" value="ABS05-32.768KHZ-9-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3269,6 +3288,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="SW1020CT-ND" constant="no"/>
+<attribute name="MF" value="Omron" constant="no"/>
+<attribute name="MFN" value="B3U-1000P" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3875,15 +3896,43 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="J3" library="signpost" deviceset="MODULE_GENERIC_DEBUG" device="SMT" value="MODULE_GENERIC_DEBUGSMT"/>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U4" library="chips" deviceset="TLV62130" device=""/>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="10uF"/>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="3.3nF"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22uF"/>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="10uF">
+<attribute name="DIGIKEY" value="490-6405-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM188R60J106ME47J"/>
+</part>
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM188R71C104KA01D"/>
+</part>
+<part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="3.3nF">
+<attribute name="DIGIKEY" value="490-1503-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM188R71H332KA01D"/>
+</part>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22uF">
+<attribute name="DIGIKEY" value="490-7611-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM188R60J226MEA0D"/>
+</part>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k"/>
-<part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k"/>
-<part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k"/>
+<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k">
+<attribute name="DIGIKEY" value="311-750KGRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="311-750KGRCT-ND"/>
+</part>
+<part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k">
+<attribute name="DIGIKEY" value="311-240KGRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0603JR-07240KL"/>
+</part>
+<part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
+<attribute name="DIGIKEY" value="311-100KGRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0603JR-07100KL"/>
+</part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
@@ -3892,62 +3941,122 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="GND1" library="umich" deviceset="GND" device=""/>
 <part name="U2" library="chips" deviceset="SKY13317" device=""/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="220pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1293-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H221JA01D"/>
 </part>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
-<part name="U3" library="chips" deviceset="STM32L432KC" device=""/>
+<part name="U3" library="chips" deviceset="STM32L432KC" device="">
+<attribute name="MF" value="STM"/>
+</part>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7uF">
-<attribute name="DIGIKEY" value="490-13252-1-ND"/>
+<attribute name="DIGIKEY" value="490-5915-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM155R60J475ME47D"/>
 </part>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6328-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM155R71C104KA88J"/>
 </part>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6328-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM155R71C104KA88J"/>
 </part>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="10nF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-4516-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM155R71H103KA88D"/>
 </part>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="1uF">
-<attribute name="DIGIKEY" value="490-13252-1-ND"/>
+<attribute name="DIGIKEY" value="490-1320-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM155R60J105KE19D"/>
 </part>
-<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
+<attribute name="DIGIKEY" value="RHM10KCECT-ND"/>
+<attribute name="MF" value="Rohm"/>
+<attribute name="MFN" value="MCR01MRTJ103"/>
+</part>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
-<part name="X1" library="crystals" deviceset="ABS05-32.768KHZ" device="-9-T"/>
+<part name="X1" library="crystals" deviceset="ABS05-32.768KHZ" device="-T" value="ABS05-32.768KHZ-T"/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.3pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6243-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H4R3BA01D"/>
 </part>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.3pF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-6243-1-ND"/>
+<attribute name="MF" value="Murata"/>
+<attribute name="MFN" value="GRM1555C1H4R3BA01D"/>
 </part>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
-<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k"/>
-<part name="D1" library="leds" deviceset="LED" device="0603" value="GREEN"/>
-<part name="D2" library="leds" deviceset="LED" device="0603" value="RED"/>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k"/>
+<part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402FR-07100KL"/>
+</part>
+<part name="D1" library="leds" deviceset="LED" device="0603" value="GREEN">
+<attribute name="DIGIKEY" value="160-1446-1-ND"/>
+<attribute name="MF" value="Lite-ON"/>
+<attribute name="MFN" value="LTST-C191KGKT"/>
+</part>
+<part name="D2" library="leds" deviceset="LED" device="0603" value="RED">
+<attribute name="DIGIKEY" value="160-1447-1-ND"/>
+<attribute name="MF" value="Lite-On"/>
+<attribute name="MFN" value="LTST-C191KRKT"/>
+</part>
+<part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402JR-071KL"/>
+</part>
+<part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
+<attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402JR-071KL"/>
+</part>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="A1" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="A2" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="A3" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="ADBG" library="connector" deviceset="MOLEX_73251-135X" device=""/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="0"/>
+<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="0">
+<attribute name="DIGIKEY" value="311-0.0JRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402JR-070RL"/>
+</part>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
-<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH"/>
-<part name="J2" library="SparkFun-Connectors" deviceset="M04" device="PTH"/>
+<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH">
+<attribute name="DIGIKEY" value="WM8086-ND"/>
+<attribute name="MF" value="Molex"/>
+<attribute name="MFN" value="0901200764"/>
+</part>
+<part name="J2" library="SparkFun-Connectors" deviceset="M04" device="PTH">
+<attribute name="DIGIKEY" value="WM8086-ND"/>
+<attribute name="MF" value="Molex"/>
+<attribute name="MFN" value="0901200764"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -3962,51 +4071,115 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="GND19" gate="1" x="175.26" y="43.18"/>
 <instance part="J3" gate="G$1" x="22.86" y="157.48"/>
 <instance part="U4" gate="G$1" x="50.8" y="30.48"/>
-<instance part="C14" gate="G$1" x="15.24" y="35.56"/>
-<instance part="C9" gate="G$1" x="22.86" y="33.02"/>
-<instance part="C7" gate="G$1" x="27.94" y="20.32" rot="R180"/>
-<instance part="C15" gate="G$1" x="111.76" y="27.94" rot="R180"/>
+<instance part="C14" gate="G$1" x="15.24" y="35.56">
+<attribute name="DIGIKEY" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C9" gate="G$1" x="22.86" y="33.02">
+<attribute name="DIGIKEY" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C7" gate="G$1" x="27.94" y="20.32" rot="R180">
+<attribute name="DIGIKEY" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MF" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MFN" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+</instance>
+<instance part="C15" gate="G$1" x="111.76" y="27.94" rot="R180">
+<attribute name="DIGIKEY" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MF" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MFN" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND18" gate="1" x="25.4" y="10.16"/>
 <instance part="GND21" gate="1" x="73.66" y="10.16"/>
-<instance part="R8" gate="G$1" x="99.06" y="35.56" rot="R90"/>
-<instance part="R7" gate="G$1" x="99.06" y="22.86" rot="R90"/>
-<instance part="R5" gate="G$1" x="91.44" y="35.56" rot="R90"/>
+<instance part="R8" gate="G$1" x="99.06" y="35.56" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="R7" gate="G$1" x="99.06" y="22.86" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="R5" gate="G$1" x="91.44" y="35.56" rot="R90">
+<attribute name="DIGIKEY" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="L1" gate="G$1" x="76.2" y="40.64" rot="R90"/>
 <instance part="GND12" gate="1" x="48.26" y="109.22"/>
 <instance part="GND16" gate="1" x="210.82" y="25.4"/>
 <instance part="S1" gate="G$1" x="210.82" y="38.1" rot="R90"/>
-<instance part="U3" gate="G$1" x="180.34" y="116.84"/>
+<instance part="U3" gate="G$1" x="180.34" y="116.84">
+<attribute name="MF" x="180.34" y="116.84" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="C13" gate="G$1" x="132.08" y="165.1">
 <attribute name="DIGIKEY" x="132.08" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C10" gate="G$1" x="139.7" y="165.1">
 <attribute name="DIGIKEY" x="139.7" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C11" gate="G$1" x="147.32" y="165.1">
 <attribute name="DIGIKEY" x="147.32" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C8" gate="G$1" x="147.32" y="149.86">
 <attribute name="DIGIKEY" x="147.32" y="149.86" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND5" gate="1" x="132.08" y="137.16"/>
 <instance part="C12" gate="G$1" x="139.7" y="149.86">
 <attribute name="DIGIKEY" x="139.7" y="149.86" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="R2" gate="G$1" x="226.06" y="132.08" rot="R90"/>
+<instance part="R4" gate="G$1" x="226.06" y="132.08" rot="R90">
+<attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND6" gate="1" x="149.86" y="88.9"/>
 <instance part="X1" gate="G$1" x="101.6" y="132.08" rot="R270"/>
 <instance part="C1" gate="G$1" x="96.52" y="121.92" rot="R270">
 <attribute name="DIGIKEY" x="96.52" y="121.92" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MF" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MFN" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="C2" gate="G$1" x="96.52" y="142.24" rot="R270">
 <attribute name="DIGIKEY" x="96.52" y="142.24" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MF" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MFN" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND7" gate="1" x="88.9" y="116.84"/>
 <instance part="GND8" gate="1" x="226.06" y="121.92"/>
-<instance part="D1" gate="G$1" x="127" y="101.6" rot="R270"/>
-<instance part="D2" gate="G$1" x="134.62" y="101.6" rot="R270"/>
-<instance part="R3" gate="G$1" x="127" y="111.76" rot="R90"/>
-<instance part="R4" gate="G$1" x="134.62" y="111.76" rot="R90"/>
+<instance part="D1" gate="G$1" x="127" y="101.6" rot="R270">
+<attribute name="DIGIKEY" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MF" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MFN" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+</instance>
+<instance part="D2" gate="G$1" x="134.62" y="101.6" rot="R270">
+<attribute name="DIGIKEY" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MF" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MFN" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+</instance>
+<instance part="R2" gate="G$1" x="127" y="111.76" rot="R90">
+<attribute name="DIGIKEY" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="R3" gate="G$1" x="134.62" y="111.76" rot="R90">
+<attribute name="DIGIKEY" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND9" gate="1" x="127" y="91.44"/>
 </instances>
 <busses>
@@ -4109,11 +4282,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="88.9" y1="121.92" x2="88.9" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="121.92" x2="88.9" y2="121.92" width="0.1524" layer="91"/>
 <junction x="88.9" y="121.92"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="1"/>
-<pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="226.06" y1="127" x2="226.06" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="CATHODE"/>
@@ -4478,7 +4646,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <net name="N$11" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="PH3/BOOT0"/>
-<pinref part="R2" gate="G$1" pin="2"/>
+<pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="203.2" y1="137.16" x2="226.06" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="137.16" x2="226.06" y2="134.62" width="0.1524" layer="91"/>
 </segment>
@@ -4517,7 +4685,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="U3" gate="G$1" pin="PB0"/>
 <wire x1="157.48" y1="119.38" x2="127" y2="119.38" width="0.1524" layer="91"/>
 <label x="124.46" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="R3" gate="G$1" pin="2"/>
+<pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="127" y1="119.38" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="127" y1="114.3" x2="127" y2="119.38" width="0.1524" layer="91"/>
 <junction x="127" y="119.38"/>
@@ -4533,7 +4701,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="U3" gate="G$1" pin="PB1"/>
 <wire x1="157.48" y1="116.84" x2="134.62" y2="116.84" width="0.1524" layer="91"/>
 <label x="124.46" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="R4" gate="G$1" pin="2"/>
+<pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="134.62" y1="116.84" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="114.3" x2="134.62" y2="116.84" width="0.1524" layer="91"/>
 <junction x="134.62" y="116.84"/>
@@ -4549,15 +4717,22 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <net name="N$12" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="ANODE"/>
-<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="127" y1="104.14" x2="127" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="R3" class="0">
 <segment>
 <pinref part="D2" gate="G$1" pin="ANODE"/>
-<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="134.62" y1="104.14" x2="134.62" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="R4" class="0">
+<segment>
+<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="226.06" y1="127" x2="226.06" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -4573,28 +4748,52 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U2" gate="G$1" x="157.48" y="116.84"/>
 <instance part="C3" gate="G$1" x="137.16" y="134.62" rot="R90">
 <attribute name="DIGIKEY" x="137.16" y="134.62" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="C6" gate="G$1" x="162.56" y="154.94" rot="R180">
 <attribute name="DIGIKEY" x="162.56" y="154.94" size="1.27" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MF" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MFN" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
 <instance part="C4" gate="G$1" x="187.96" y="127" rot="R270">
 <attribute name="DIGIKEY" x="187.96" y="127" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MF" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MFN" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="C5" gate="G$1" x="162.56" y="104.14">
 <attribute name="DIGIKEY" x="162.56" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND2" gate="1" x="149.86" y="83.82"/>
 <instance part="GND3" gate="1" x="203.2" y="114.3"/>
 <instance part="GND4" gate="1" x="170.18" y="154.94"/>
-<instance part="R6" gate="G$1" x="60.96" y="124.46" rot="R90"/>
+<instance part="R6" gate="G$1" x="60.96" y="124.46" rot="R90">
+<attribute name="DIGIKEY" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="A1" gate="G$1" x="170.18" y="167.64"/>
 <instance part="A2" gate="G$1" x="203.2" y="127"/>
 <instance part="A3" gate="G$1" x="162.56" y="91.44" rot="R270"/>
 <instance part="ADBG" gate="G$1" x="134.62" y="152.4"/>
-<instance part="R1" gate="G$1" x="127" y="144.78" rot="R90"/>
+<instance part="R1" gate="G$1" x="127" y="144.78" rot="R90">
+<attribute name="DIGIKEY" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND10" gate="1" x="134.62" y="142.24"/>
-<instance part="J1" gate="G$1" x="78.74" y="55.88"/>
-<instance part="J2" gate="G$1" x="116.84" y="55.88"/>
+<instance part="J1" gate="G$1" x="78.74" y="55.88">
+<attribute name="DIGIKEY" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="J2" gate="G$1" x="116.84" y="55.88">
+<attribute name="DIGIKEY" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
