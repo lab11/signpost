@@ -15,5 +15,5 @@
 	path = software/apps/support/erpc/erpc
 	url = https://github.com/lab11/erpc
 [submodule "software/apps/libs/mbedtls"]
-	path = software/apps/libs/mbedtls
+	path = software/apps/support/mbedtls/mbedtls
 	url = https://github.com/lab11/mbedtls

@@ -12,7 +12,6 @@
 #include "i2c_selector.h"
 #include "signpost_energy.h"
 
-
 int main (void) {
   int energy;
   int current;
@@ -53,6 +52,7 @@ int main (void) {
     int s_current = signpost_energy_get_solar_current();
 
     printf("Battery Voltage (mV): %d\tcurrent (uA): %d\tenergy (uAh):%d\n",(int)v,(int)c,(int)e);
+    printf("Battery Percent: %d\tcapacity (uAh): %d\n",(int)p,(int)cap);
     printf("Solar Voltage (mV): %d\tcurrent (uA): %d\n",s_voltage,s_current);
 
     delay_ms(1000);

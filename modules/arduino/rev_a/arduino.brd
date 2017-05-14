@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.1.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -1832,6 +1832,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
@@ -1952,27 +1955,27 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="31.75" y="-0.635" size="1.27" layer="27"/>
 </element>
 <element name="F1" library="rcl" package="L1812" value="500mA" x="17.145" y="18.415" smashed="yes">
+<attribute name="DIGIKEY" value="MF-MSMF050-2CT-ND" x="17.145" y="18.415" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="16.51" y="20.574" size="1.016" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="14.351" y="20.066" size="1.27" layer="27"/>
-<attribute name="DIGIKEY" value="MF-MSMF050-2CT-ND" x="17.145" y="18.415" size="1.778" layer="27" display="off"/>
 </element>
 <element name="L" library="led" package="CHIP-LED0805" value="YELLOW" x="36.576" y="22.86" smashed="yes" rot="R90">
 <attribute name="NAME" x="36.576" y="21.59" size="1.27" layer="25" font="vector" ratio="15" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="37.846" y="25.4" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="U1" library="atmel" package="QFN32" value="ATMEGA8U2-MU" x="21.59" y="34.925" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="ATMEGA8U2-MURCT-ND" x="21.59" y="34.925" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="20.584" y="35" size="1.016" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="25.94" y="30.875" size="1.27" layer="27" rot="R90"/>
-<attribute name="DIGIKEY" value="ATMEGA8U2-MURCT-ND" x="21.59" y="34.925" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="J3" library="pinhead" package="2X03" value="ICSP_PROG" x="18.288" y="46.228" smashed="yes" rot="R180">
 <attribute name="NAME" x="21.082" y="46.863" size="1.016" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="22.098" y="50.673" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="Y2" library="SmartPrj" package="RESONATOR" value="16MHz" x="45.466" y="38.608" smashed="yes">
+<attribute name="DIGIKEY" value="490-1198-1-ND" x="45.466" y="38.608" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="43.481" y="38.555" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="44.016" y="36.92" size="0.3556" layer="27"/>
-<attribute name="DIGIKEY" value="490-1198-1-ND" x="45.466" y="38.608" size="1.778" layer="27" display="off"/>
 </element>
 <element name="RESET-PROG-EN" library="jumper" package="SJ" value="" x="36.83" y="12.192" smashed="yes" rot="R90">
 <attribute name="VALUE" x="36.83" y="12.5921" size="0.02" layer="27" rot="R90"/>
@@ -2016,9 +2019,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="445-9077-1-ND" x="-3.175" y="78.74" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="J2" library="connector" package="USB_MICRO_B-HIROSE-ZX62-B-5PA(11)" value="MICRO_USB_B_HIROSE_ZX62-B-5PA(11)" x="42.545" y="-6.35">
+<attribute name="DIGIKEY" value="H11634CT-ND" x="18.415" y="-33.655" size="1.778" layer="27" display="off"/>
 <attribute name="MOUSER" value="798-ZX62-B-5PA11" x="18.415" y="-33.655" size="1.778" layer="27" display="off"/>
 <attribute name="NEWARK" value="86P8793" x="18.415" y="-33.655" size="1.778" layer="27" display="off"/>
-<attribute name="DIGIKEY" value="H11634CT-ND" x="18.415" y="-33.655" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D2" library="passives" package="0402_DIODE" value="DIODE" x="36.195" y="-0.9525" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="P18981CT-ND" x="61.595" y="-12.3825" size="1.778" layer="27" rot="R90" display="off"/>
@@ -2375,6 +2378,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="S1" pad="12"/>
 <contactref element="J2" pad="5"/>
 <via x="34.163" y="6.096" extent="1-16" drill="0.6096" shape="octagon"/>
+<contactref element="U6" pad="1"/>
 </signal>
 <signal name="AREF" class="4">
 <contactref element="J-ARD-IOH" pad="8"/>
@@ -3418,7 +3422,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="8.89" y1="15.875" x2="6.35" y2="13.335" width="0.508" layer="1"/>
 <wire x1="6.35" y1="13.335" x2="6.35" y2="12.065" width="0.508" layer="1"/>
 <contactref element="U6" pad="8"/>
-<contactref element="U6" pad="2"/>
 <contactref element="U6" pad="3"/>
 <contactref element="U5" pad="8"/>
 <contactref element="C12" pad="1"/>
@@ -3487,7 +3490,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="40.498" y1="10.4244" x2="40.498" y2="10.8204" width="0.254" layer="1"/>
 <wire x1="40.498" y1="10.8204" x2="40.498" y2="12.188" width="0.254" layer="1"/>
 <wire x1="40.498" y1="12.188" x2="40.514" y2="12.204" width="0.254" layer="1"/>
-<wire x1="40.614" y1="16.76" x2="41.656" y2="16.76" width="0.254" layer="1"/>
 <wire x1="41.656" y1="16.76" x2="43.714" y2="16.76" width="0.254" layer="1"/>
 <wire x1="40.614" y1="16.26" x2="41.156" y2="16.26" width="0.254" layer="1"/>
 <wire x1="41.156" y1="16.26" x2="41.656" y2="16.76" width="0.254" layer="1"/>
@@ -3602,16 +3604,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="60.608" y1="26.528" x2="62.462" y2="26.528" width="0.254" layer="1"/>
 <wire x1="62.462" y1="26.528" x2="63.64" y2="25.35" width="0.254" layer="1"/>
 </signal>
-<signal name="N$8">
-<contactref element="U5" pad="7"/>
-<contactref element="U6" pad="1"/>
-<wire x1="40.514" y1="12.704" x2="39.62" y2="12.704" width="0.254" layer="1"/>
-<wire x1="39.62" y1="12.704" x2="39.37" y2="12.954" width="0.254" layer="1"/>
-<wire x1="39.37" y1="12.954" x2="39.37" y2="16.764" width="0.254" layer="1"/>
-<wire x1="39.37" y1="16.764" x2="39.878" y2="17.272" width="0.254" layer="1"/>
-<wire x1="40.614" y1="17.26" x2="39.89" y2="17.26" width="0.254" layer="1"/>
-<wire x1="39.89" y1="17.26" x2="39.878" y2="17.272" width="0.254" layer="1"/>
-</signal>
 <signal name="N$13">
 <contactref element="U6" pad="5"/>
 <contactref element="U5" pad="6"/>
@@ -3643,6 +3635,15 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="46.99" y1="0" x2="48.26" y2="1.27" width="0.508" layer="1"/>
 <wire x1="48.26" y1="1.27" x2="48.26" y2="6.604" width="0.508" layer="1"/>
 </signal>
+<signal name="N$10">
+<contactref element="U6" pad="2"/>
+<contactref element="U5" pad="7"/>
+<wire x1="40.514" y1="12.704" x2="39.62" y2="12.704" width="0.254" layer="1"/>
+<wire x1="39.37" y1="12.954" x2="39.62" y2="12.704" width="0.254" layer="1"/>
+<wire x1="40.614" y1="16.76" x2="39.62" y2="16.76" width="0.254" layer="1"/>
+<wire x1="39.62" y1="16.76" x2="39.37" y2="16.51" width="0.254" layer="1"/>
+<wire x1="39.37" y1="16.51" x2="39.37" y2="12.954" width="0.254" layer="1"/>
+</signal>
 </signals>
 <errors>
 <approved hash="4,1,0e3f7f80872fffe5"/>
@@ -3663,16 +3664,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="19,1,f0405e4c5ebcf0b0"/>
 <approved hash="19,1,42cdeab6d1093917"/>
 <approved hash="19,16,a85900e9b4b831e4"/>
-<approved hash="2,20,5cf33bcad9ee929b"/>
-<approved hash="4,1,39b94b014f53e6e3"/>
-<approved hash="4,1,af4bde81432e3290"/>
-<approved hash="4,1,e75e2680032ea284"/>
-<approved hash="4,1,c9d03b0f0f1dc68a"/>
-<approved hash="19,1,7870167c167c7870"/>
-<approved hash="4,1,9ebf24bdfeca46c7"/>
-<approved hash="4,1,084cb24150ca65b4"/>
-<approved hash="4,1,4058fa40f0cad5a0"/>
-<approved hash="4,1,6ed6d4f39eca26ae"/>
 <approved hash="19,1,70b2debedf3c7130"/>
 <approved hash="19,1,f0b65eba5ebcf0b0"/>
 <approved hash="19,1,1527d2822fd8fe48"/>
@@ -3684,8 +3675,29 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="19,1,cb67af0d91baf5d0"/>
 <approved hash="19,1,00337a34f2445c26"/>
 <approved hash="19,1,deea4483051c1f1e"/>
-<approved hash="4,1,6e100df09fcd342e"/>
+<approved hash="2,20,5cf33bcad9ee929b"/>
+<approved hash="4,1,39b94b014f53e6e3"/>
+<approved hash="4,1,af4bde81432e3290"/>
+<approved hash="4,1,e75e2680032ea284"/>
+<approved hash="4,1,c9d03b0f0f1dc68a"/>
+<approved hash="19,1,7870167c167c7870"/>
+<approved hash="4,1,9ebf24bdfeca46c7"/>
+<approved hash="4,1,084cb24150ca65b4"/>
+<approved hash="4,1,4058fa40f0cad5a0"/>
+<approved hash="4,1,6ed6d4f39eca26ae"/>
+<approved hash="19,1,86802a8e2a888686"/>
+<approved hash="19,1,86852a8b2b088706"/>
+<approved hash="19,1,1127caf20df8e648"/>
+<approved hash="19,1,824655b66b38bcc8"/>
+<approved hash="19,1,59d47eb3d341bc5a"/>
+<approved hash="19,1,11e2316c112b1217"/>
+<approved hash="19,1,95041c1c13be67b2"/>
+<approved hash="19,1,aec2d75645a59c93"/>
+<approved hash="19,1,b31d8319bdae8daa"/>
+<approved hash="19,1,063b713dfd335e46"/>
+<approved hash="19,1,d9e3468b7b7c6469"/>
 <approved hash="4,1,73a56647eca93148"/>
+<approved hash="4,1,6e100df09fcd342e"/>
 <approved hash="4,16,73a56647eca93148"/>
 <approved hash="4,16,6e100df09fcd342e"/>
 </errors>

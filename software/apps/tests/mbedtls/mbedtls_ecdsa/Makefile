@@ -27,8 +27,6 @@ APP_SRCS += pkcs5.c
 APP_SRCS += hmac_drbg.c
 
 # files needed for this code
-INCLUDE_PATHS += .
-INCLUDE_PATHS += ../../../libs/mbedtls/include/
 
 SOURCE_PATHS += .
 SOURCE_PATHS += ../../../libs/mbedtls/library/

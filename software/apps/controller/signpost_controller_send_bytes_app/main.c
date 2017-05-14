@@ -249,6 +249,7 @@ static void get_energy_average (void) {
   } else {
     rc = 0;
   }
+}
 
   if(rc >= 0) {
     // Tickle the watchdog because something good happened.
@@ -269,6 +270,19 @@ static void get_energy_remaining (void) {
             fram.energy.module_energy_remaining[i] = 0;
         }
     }
+
+    // Test print
+    switch (i) {
+      case 0: print_energy_data(i, fram.energy_module0); break;
+      case 1: print_energy_data(i, fram.energy_module1); break;
+      //case 2: print_energy_data(i, fram.energy_module2); break;
+      case 3: print_energy_data(i, fram.energy_controller); break;
+      case 4: print_energy_data(i, fram.energy_linux); break;
+      //case 5: print_energy_data(i, fram.energy_module5); break;
+      //case 6: print_energy_data(i, fram.energy_module6); break;
+      //case 7: print_energy_data(i, fram.energy_module7); break;
+    }
+  }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
@@ -824,6 +838,7 @@ int main (void) {
 
   // Energy Management
   // -----------------
+
 
 
   /////////////////////////////

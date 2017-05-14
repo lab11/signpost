@@ -15,8 +15,6 @@ APP_SRCS += sha256.c
 APP_SRCS += aes.c
 
 # files needed for this code
-INCLUDE_PATHS += .
-INCLUDE_PATHS += ../../../libs/mbedtls/include/
 
 SOURCE_PATHS += .
 SOURCE_PATHS += ../../../libs/mbedtls/library/

@@ -7,7 +7,6 @@ APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 # files needed for this code
 C_SRCS   := $(wildcard *.c)
-INCLUDE_PATHS += .
 
 STACK_SIZE = 8192
 

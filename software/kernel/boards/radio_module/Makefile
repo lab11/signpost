@@ -3,7 +3,7 @@
 CHIP=sam4l
 PLATFORM=radio_module
 
-include ../../../kernel/tock/Makefile.common
+include ../../../kernel/tock/boards/Makefile.common
 
 
 

@@ -49,6 +49,12 @@
 #define ADDRESS_SIZE 6
 #define NUMBER_OF_MODULES 8
 
+//i2c buffers
+uint8_t slave_write_buf[BUFFER_SIZE];
+uint8_t slave_read_buf[BUFFER_SIZE];
+uint8_t master_read_buf[BUFFER_SIZE];
+uint8_t master_write_buf[BUFFER_SIZE];
+
 //array of the data we're going to send on the radios
 //make a queue of 30 deep
 #define QUEUE_SIZE 30

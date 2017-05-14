@@ -3,7 +3,7 @@
 CHIP=sam4l
 PLATFORM=microwave_radar_module
 
-include ../../../kernel/tock/Makefile.common
+include ../../../kernel/tock/boards/Makefile.common
 
 
 
