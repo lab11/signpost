@@ -9604,7 +9604,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U23" pad="8"/>
 <contactref element="C58" pad="1"/>
 <contactref element="R67" pad="1"/>
-<wire x1="185.42" y1="5.08" x2="185.42" y2="28.448" width="2.54" layer="16"/>
 <polygon width="0.2032" layer="16" isolate="0.3048" rank="2">
 <vertex x="111.76" y="100.457"/>
 <vertex x="111.76" y="112.395"/>
@@ -9722,7 +9721,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <vertex x="0" y="193.04"/>
 </polygon>
 <wire x1="5.08" y1="172.72" x2="5.08" y2="180.34" width="1.27" layer="1"/>
-<wire x1="185.42" y1="172.72" x2="185.42" y2="180.34" width="1.27" layer="16"/>
+<wire x1="185.42" y1="180.34" x2="185.42" y2="172.72" width="2.54" layer="16"/>
 <contactref element="Q2" pad="S"/>
 <contactref element="Q3" pad="S"/>
 <contactref element="Q4" pad="S"/>
@@ -10492,8 +10491,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="148.082" y="34.798" extent="1-16" drill="1.2"/>
 <wire x1="148.082" y1="34.798" x2="148.082" y2="34.163" width="2.54" layer="1"/>
 <wire x1="148.082" y1="34.163" x2="157.48" y2="24.765" width="2.54" layer="1"/>
-<wire x1="185.42" y1="28.448" x2="185.42" y2="88.9" width="2.54" layer="16"/>
-<wire x1="185.42" y1="88.9" x2="185.42" y2="172.72" width="2.54" layer="16"/>
 <via x="44.958" y="57.912" extent="1-16" drill="0.3048"/>
 <wire x1="44.958" y1="57.912" x2="45.212" y2="58.166" width="0.508" layer="1"/>
 <wire x1="45.212" y1="58.166" x2="48.506" y2="58.166" width="0.508" layer="1"/>
@@ -10581,6 +10578,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="19.05" y1="154.178" x2="19.05" y2="134.112" width="0.508" layer="16"/>
 <wire x1="19.05" y1="131.826" x2="19.05" y2="134.112" width="0.508" layer="16"/>
 <wire x1="25.4" y1="125.476" x2="19.05" y2="131.826" width="0.508" layer="16"/>
+<wire x1="185.42" y1="178.308" x2="185.42" y2="172.72" width="2.54" layer="1"/>
+<wire x1="185.42" y1="88.9" x2="185.42" y2="28.448" width="2.54" layer="1"/>
+<wire x1="185.42" y1="28.448" x2="185.42" y2="5.08" width="2.54" layer="1"/>
+<wire x1="185.42" y1="172.72" x2="185.42" y2="88.9" width="2.54" layer="16"/>
+<wire x1="185.42" y1="88.9" x2="185.42" y2="28.448" width="2.54" layer="16"/>
+<wire x1="185.42" y1="28.448" x2="185.42" y2="5.08" width="2.54" layer="16"/>
+<wire x1="185.42" y1="172.72" x2="185.42" y2="88.9" width="2.54" layer="1"/>
 </signal>
 <signal name="CONT_USB+">
 <contactref element="J1" pad="27"/>
@@ -18878,32 +18882,32 @@ We've spent an enormous amount of time creating and checking these footprints an
 <approved hash="19,1,3745ae4532435023"/>
 <approved hash="19,1,3281ad3931fb54c3"/>
 <approved hash="19,1,2e2e509f8d975426"/>
-<approved hash="19,1,4453b9216ffb7e69"/>
 <approved hash="19,1,a0c983295141b961"/>
-<approved hash="19,1,e8cddc28d66cd28e"/>
+<approved hash="19,1,4453b9216ffb7e69"/>
 <approved hash="19,1,034a35e10aa30c0f"/>
-<approved hash="19,1,44638dd7d129c687"/>
+<approved hash="19,1,e8cddc28d66cd28e"/>
 <approved hash="19,1,223fd069b34fb823"/>
+<approved hash="19,1,44638dd7d129c687"/>
 <approved hash="19,1,5b9c81a9ccc5f4d3"/>
-<approved hash="5,1,0dd4c524ed1f05ed"/>
-<approved hash="19,1,325c8d72e4235f0c"/>
 <approved hash="5,1,5fc5c1faf8b48471"/>
-<approved hash="5,1,14a6dc5af4611c9f"/>
-<approved hash="19,1,3780963cfe515bec"/>
 <approved hash="5,1,e4cf0c31240aecf6"/>
 <approved hash="19,1,162a4e35a0ebfcf5"/>
-<approved hash="19,1,81aa169c06654158"/>
-<approved hash="19,1,89511befd9109ba5"/>
-<approved hash="19,1,98e815f407a15ab6"/>
+<approved hash="5,1,14a6dc5af4611c9f"/>
+<approved hash="19,1,3780963cfe515bec"/>
+<approved hash="5,1,0dd4c524ed1f05ed"/>
+<approved hash="19,1,325c8d72e4235f0c"/>
 <approved hash="19,1,932719d3da888077"/>
+<approved hash="19,1,98e815f407a15ab6"/>
+<approved hash="19,1,89511befd9109ba5"/>
+<approved hash="19,1,81aa169c06654158"/>
 <approved hash="19,1,8d9ea24311593c77"/>
 <approved hash="19,1,17af08eca1e68d93"/>
 <approved hash="19,1,1cb0a60faa7dbba3"/>
 <approved hash="19,1,1f507c02e1cdfa65"/>
 <approved hash="19,1,59829c8ec5abb759"/>
 <approved hash="19,1,d952543906736ee7"/>
-<approved hash="19,1,1815ade23aa13f50"/>
 <approved hash="19,1,7392c42ae66fe1d1"/>
+<approved hash="19,1,1815ade23aa13f50"/>
 <approved hash="19,1,cf39268c7a764dde"/>
 <approved hash="19,1,a9647b331816337c"/>
 <approved hash="19,1,b732cfa2b1a485e8"/>
