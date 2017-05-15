@@ -4167,6 +4167,15 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="GND26" library="signpost" deviceset="MONITOR_GND" device=""/>
 <part name="RESET" library="switches" deviceset="PTS810SJ" device=""/>
 <part name="GND13" library="signpost" deviceset="MONITOR_GND" device=""/>
+<part name="R63" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
+<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+</part>
+<part name="R64" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
+<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+</part>
+<part name="U$47" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="CHRG_FAULT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="CHRG" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5318,24 +5327,31 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="R56" gate="G$1" x="160.02" y="88.9">
 <attribute name="DIGIKEY" x="160.02" y="88.9" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="U17" gate="G$1" x="88.9" y="109.22"/>
-<instance part="R12" gate="G$1" x="99.06" y="106.68" rot="R90">
-<attribute name="DIGIKEY" x="99.06" y="106.68" size="1.778" layer="96" rot="R90" display="off"/>
+<instance part="U17" gate="G$1" x="71.12" y="109.22"/>
+<instance part="R12" gate="G$1" x="81.28" y="106.68" rot="R90">
+<attribute name="DIGIKEY" x="81.28" y="106.68" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="R55" gate="G$1" x="73.66" y="109.22" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
+<instance part="R55" gate="G$1" x="55.88" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="55.88" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="R42" gate="G$1" x="73.66" y="96.52" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="96.52" size="1.778" layer="96" rot="R90" display="off"/>
+<instance part="R42" gate="G$1" x="55.88" y="96.52" rot="R90">
+<attribute name="DIGIKEY" x="55.88" y="96.52" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C40" gate="G$1" x="66.04" y="104.14">
-<attribute name="DIGIKEY" x="66.04" y="104.14" size="1.778" layer="96" display="off"/>
+<instance part="C40" gate="G$1" x="48.26" y="104.14">
+<attribute name="DIGIKEY" x="48.26" y="104.14" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="U$22" gate="G$1" x="190.5" y="111.76"/>
-<instance part="GND23" gate="G$1" x="73.66" y="81.28"/>
+<instance part="GND23" gate="G$1" x="55.88" y="81.28"/>
 <instance part="GND24" gate="G$1" x="124.46" y="81.28"/>
 <instance part="GND25" gate="G$1" x="190.5" y="81.28"/>
 <instance part="GND13" gate="G$1" x="167.64" y="116.84"/>
+<instance part="R63" gate="G$1" x="88.9" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="88.9" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R64" gate="G$1" x="99.06" y="109.22" rot="R90">
+<attribute name="DIGIKEY" x="99.06" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="U$47" gate="G$1" x="93.98" y="121.92"/>
 </instances>
 <busses>
 </busses>
@@ -5421,62 +5437,62 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="VINREG" class="0">
 <segment>
-<wire x1="73.66" y1="101.6" x2="88.9" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="101.6" x2="71.12" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="U17" gate="G$1" pin="V-"/>
 <pinref part="R55" gate="G$1" pin="1"/>
-<wire x1="73.66" y1="104.14" x2="73.66" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="104.14" x2="55.88" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="R42" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="101.6" x2="73.66" y2="99.06" width="0.1524" layer="91"/>
-<junction x="73.66" y="101.6"/>
+<wire x1="55.88" y1="101.6" x2="55.88" y2="99.06" width="0.1524" layer="91"/>
+<junction x="55.88" y="101.6"/>
 <pinref part="R12" gate="G$1" pin="1"/>
-<wire x1="88.9" y1="101.6" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
-<junction x="88.9" y="101.6"/>
+<wire x1="71.12" y1="101.6" x2="81.28" y2="101.6" width="0.1524" layer="91"/>
+<junction x="71.12" y="101.6"/>
 <pinref part="U16" gate="G$1" pin="VIN_REG"/>
-<wire x1="99.06" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
-<junction x="99.06" y="101.6"/>
+<wire x1="81.28" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
+<junction x="81.28" y="101.6"/>
 </segment>
 </net>
 <net name="VSOL_SENSE" class="0">
 <segment>
-<wire x1="63.5" y1="116.84" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="116.84" x2="48.26" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="U17" gate="G$1" pin="V+"/>
-<wire x1="66.04" y1="116.84" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="116.84" x2="88.9" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="116.84" x2="88.9" y2="116.84" width="0.1524" layer="91"/>
-<junction x="88.9" y="116.84"/>
+<wire x1="48.26" y1="116.84" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
+<junction x="71.12" y="116.84"/>
+<wire x1="104.14" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="116.84" x2="104.14" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="U16" gate="G$1" pin="VIN"/>
 <wire x1="104.14" y1="104.14" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
-<label x="63.5" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="45.72" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R55" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="111.76" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
-<junction x="73.66" y="116.84"/>
+<wire x1="55.88" y1="111.76" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
+<junction x="55.88" y="116.84"/>
 <pinref part="U16" gate="G$1" pin="!SHDN"/>
 <wire x1="109.22" y1="99.06" x2="104.14" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="99.06" x2="104.14" y2="104.14" width="0.1524" layer="91"/>
 <junction x="104.14" y="104.14"/>
 <pinref part="C40" gate="G$1" pin="1"/>
-<wire x1="66.04" y1="106.68" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
-<junction x="66.04" y="116.84"/>
+<wire x1="48.26" y1="106.68" x2="48.26" y2="116.84" width="0.1524" layer="91"/>
+<junction x="48.26" y="116.84"/>
 </segment>
 </net>
 <net name="N$59" class="0">
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
 <pinref part="U17" gate="G$1" pin="R"/>
-<wire x1="99.06" y1="109.22" x2="96.52" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="109.22" x2="78.74" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MONITOR_GND" class="0">
 <segment>
 <pinref part="R42" gate="G$1" pin="1"/>
-<wire x1="73.66" y1="83.82" x2="73.66" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="83.82" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="U16" gate="G$1" pin="TIMER"/>
-<wire x1="109.22" y1="91.44" x2="73.66" y2="91.44" width="0.1524" layer="91"/>
-<junction x="73.66" y="91.44"/>
+<wire x1="109.22" y1="91.44" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
+<junction x="55.88" y="91.44"/>
 <pinref part="C40" gate="G$1" pin="2"/>
-<wire x1="66.04" y1="99.06" x2="66.04" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="91.44" x2="73.66" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="99.06" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="91.44" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="GND23" gate="G$1" pin="MONITOR_GND"/>
 </segment>
 <segment>
@@ -5498,6 +5514,37 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="157.48" y1="121.92" x2="167.64" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="121.92" x2="167.64" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="GND13" gate="G$1" pin="MONITOR_GND"/>
+</segment>
+</net>
+<net name="CHRG" class="0">
+<segment>
+<pinref part="U16" gate="G$1" pin="!CHRG"/>
+<pinref part="R64" gate="G$1" pin="1"/>
+<wire x1="109.22" y1="96.52" x2="99.06" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="96.52" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
+<label x="99.06" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="CHRG_FAULT" class="0">
+<segment>
+<pinref part="U16" gate="G$1" pin="!FAULT"/>
+<pinref part="R63" gate="G$1" pin="1"/>
+<wire x1="109.22" y1="93.98" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="93.98" x2="88.9" y2="104.14" width="0.1524" layer="91"/>
+<label x="88.9" y="93.98" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="VCC_BACKPLANE" class="0">
+<segment>
+<pinref part="R64" gate="G$1" pin="2"/>
+<wire x1="99.06" y1="111.76" x2="99.06" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="119.38" x2="93.98" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="R63" gate="G$1" pin="2"/>
+<wire x1="93.98" y1="119.38" x2="88.9" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="119.38" x2="88.9" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="119.38" x2="93.98" y2="121.92" width="0.1524" layer="91"/>
+<junction x="93.98" y="119.38"/>
+<pinref part="U$47" gate="G$1" pin="VCC_BACKPLANE"/>
 </segment>
 </net>
 </nets>
@@ -7127,14 +7174,16 @@ Watchdog</description>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
-<instance part="3V3" gate="G$1" x="116.84" y="111.76"/>
-<instance part="5V_1" gate="G$1" x="116.84" y="109.22"/>
-<instance part="5V_2" gate="G$1" x="116.84" y="106.68"/>
-<instance part="5V_3" gate="G$1" x="116.84" y="104.14"/>
-<instance part="5V_4" gate="G$1" x="116.84" y="101.6"/>
-<instance part="VBATT-M" gate="G$1" x="116.84" y="116.84"/>
+<instance part="3V3" gate="G$1" x="116.84" y="127"/>
+<instance part="5V_1" gate="G$1" x="116.84" y="124.46"/>
+<instance part="5V_2" gate="G$1" x="116.84" y="121.92"/>
+<instance part="5V_3" gate="G$1" x="116.84" y="119.38"/>
+<instance part="5V_4" gate="G$1" x="116.84" y="116.84"/>
+<instance part="VBATT-M" gate="G$1" x="116.84" y="132.08"/>
 <instance part="J3" gate="G$1" x="121.92" y="73.66"/>
 <instance part="JP1" gate="G$1" x="114.3" y="88.9"/>
+<instance part="CHRG_FAULT" gate="G$1" x="116.84" y="111.76"/>
+<instance part="CHRG" gate="G$1" x="116.84" y="109.22"/>
 </instances>
 <busses>
 </busses>
@@ -7142,43 +7191,43 @@ Watchdog</description>
 <net name="VCC_3V3" class="0">
 <segment>
 <pinref part="3V3" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="111.76" x2="119.38" y2="111.76" width="0.1524" layer="91"/>
-<label x="121.92" y="111.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="127" x2="119.38" y2="127" width="0.1524" layer="91"/>
+<label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_1" class="0">
 <segment>
 <pinref part="5V_1" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="109.22" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
-<label x="121.92" y="109.22" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="124.46" x2="119.38" y2="124.46" width="0.1524" layer="91"/>
+<label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_2" class="0">
 <segment>
 <pinref part="5V_2" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="106.68" x2="119.38" y2="106.68" width="0.1524" layer="91"/>
-<label x="121.92" y="106.68" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="121.92" x2="119.38" y2="121.92" width="0.1524" layer="91"/>
+<label x="121.92" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_3" class="0">
 <segment>
 <pinref part="5V_3" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="104.14" x2="119.38" y2="104.14" width="0.1524" layer="91"/>
-<label x="121.92" y="104.14" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="119.38" x2="119.38" y2="119.38" width="0.1524" layer="91"/>
+<label x="121.92" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_4" class="0">
 <segment>
 <pinref part="5V_4" gate="G$1" pin="TESTPOINT"/>
-<wire x1="121.92" y1="101.6" x2="119.38" y2="101.6" width="0.1524" layer="91"/>
-<label x="121.92" y="101.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="116.84" x2="119.38" y2="116.84" width="0.1524" layer="91"/>
+<label x="121.92" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MONITOR_GND" class="0">
 <segment>
 <pinref part="VBATT-M" gate="G$1" pin="TESTPOINT"/>
-<wire x1="119.38" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
-<label x="121.92" y="116.84" size="1.27" layer="95" xref="yes"/>
+<wire x1="119.38" y1="132.08" x2="121.92" y2="132.08" width="0.1524" layer="91"/>
+<label x="121.92" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -7233,6 +7282,20 @@ Watchdog</description>
 <pinref part="JP1" gate="G$1" pin="4"/>
 <wire x1="119.38" y1="93.98" x2="121.92" y2="93.98" width="0.1524" layer="91"/>
 <label x="121.92" y="93.98" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="CHRG_FAULT" class="0">
+<segment>
+<pinref part="CHRG_FAULT" gate="G$1" pin="TESTPOINT"/>
+<wire x1="119.38" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
+<label x="121.92" y="111.76" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="CHRG" class="0">
+<segment>
+<pinref part="CHRG" gate="G$1" pin="TESTPOINT"/>
+<wire x1="119.38" y1="109.22" x2="121.92" y2="109.22" width="0.1524" layer="91"/>
+<label x="121.92" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
