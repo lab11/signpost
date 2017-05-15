@@ -163,102 +163,102 @@
 <wire x1="-13" y1="8" x2="13" y2="8" width="0.127" layer="21"/>
 <wire x1="13" y1="8" x2="13" y2="-8" width="0.127" layer="21"/>
 <wire x1="13" y1="-8" x2="-13" y2="-8" width="0.127" layer="21"/>
-<smd name="P$1" x="-11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$2" x="-9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$3" x="-8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$4" x="-7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$5" x="-6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$6" x="-5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$7" x="-4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$8" x="-3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$9" x="-2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$10" x="-1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$11" x="0" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$12" x="1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$13" x="2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$14" x="3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$15" x="4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$16" x="5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$17" x="6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$18" x="7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$19" x="8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$20" x="9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$21" x="11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$22" x="11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$23" x="11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$24" x="11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$25" x="11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$26" x="11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$27" x="11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$28" x="11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$29" x="11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$30" x="11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$31" x="11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$32" x="11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$33" x="11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$34" x="9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$35" x="8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$36" x="7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$37" x="6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$38" x="5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$39" x="4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$40" x="3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$41" x="2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$42" x="1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$43" x="0" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$44" x="-1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$45" x="-2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$46" x="-3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$47" x="-4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$48" x="-5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$49" x="-6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$50" x="-7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$51" x="-8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$52" x="-9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$53" x="-11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
-<smd name="P$54" x="-11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$55" x="-11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$56" x="-11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$57" x="-11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$58" x="-11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$59" x="-11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$60" x="-11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$61" x="-11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$62" x="-11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$63" x="-11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P$64" x="-11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
-<smd name="P96" x="10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P90" x="8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P84" x="6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P82" x="3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P95" x="10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P94" x="10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P93" x="10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P92" x="10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P91" x="10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P89" x="8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P88" x="8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P86" x="8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P87" x="8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P85" x="8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P83" x="6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P81" x="3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P70" x="-10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P76" x="-8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P78" x="-6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P80" x="-3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P69" x="-10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P68" x="-10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P67" x="-10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P66" x="-10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P65" x="-10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P75" x="-8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P74" x="-8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P73" x="-8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P72" x="-8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P71" x="-8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P77" x="-6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
-<smd name="P79" x="-3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="1" x="-11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="2" x="-9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="3" x="-8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="4" x="-7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="5" x="-6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="6" x="-5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="7" x="-4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="8" x="-3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="9" x="-2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="10" x="-1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="11" x="0" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="12" x="1.1" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="13" x="2.2" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="14" x="3.3" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="15" x="4.4" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="16" x="5.5" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="17" x="6.6" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="18" x="7.7" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="19" x="8.8" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="20" x="9.9" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="21" x="11" y="-6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="22" x="11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="23" x="11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="24" x="11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="25" x="11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="26" x="11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="27" x="11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="28" x="11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="29" x="11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="30" x="11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="31" x="11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="32" x="11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="33" x="11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="34" x="9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="35" x="8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="36" x="7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="37" x="6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="38" x="5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="39" x="4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="40" x="3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="41" x="2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="42" x="1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="43" x="0" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="44" x="-1.1" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="45" x="-2.2" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="46" x="-3.3" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="47" x="-4.4" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="48" x="-5.5" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="49" x="-6.6" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="50" x="-7.7" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="51" x="-8.8" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="52" x="-9.9" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="53" x="-11" y="6.95" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="54" x="-11.95" y="5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="55" x="-11.95" y="4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="56" x="-11.95" y="3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="57" x="-11.95" y="2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="58" x="-11.95" y="1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="59" x="-11.95" y="0" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="60" x="-11.95" y="-1.1" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="61" x="-11.95" y="-2.2" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="62" x="-11.95" y="-3.3" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="63" x="-11.95" y="-4.4" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="64" x="-11.95" y="-5.5" dx="1.5" dy="0.8" layer="1" rot="R180"/>
+<smd name="96" x="10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="90" x="8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="84" x="6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="82" x="3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="95" x="10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="94" x="10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="93" x="10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="92" x="10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="91" x="10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="89" x="8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="88" x="8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="86" x="8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="87" x="8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="85" x="8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="83" x="6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="81" x="3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="70" x="-10.25" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="76" x="-8.45" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="78" x="-6.65" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="80" x="-3.05" y="5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="69" x="-10.25" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="68" x="-10.25" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="67" x="-10.25" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="66" x="-10.25" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="65" x="-10.25" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="75" x="-8.45" y="3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="74" x="-8.45" y="1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="73" x="-8.45" y="-1.05" dx="1.1" dy="1.1" layer="1"/>
+<smd name="72" x="-8.45" y="-3.15" dx="1.1" dy="1.1" layer="1"/>
+<smd name="71" x="-8.45" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="77" x="-6.65" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
+<smd name="79" x="-3.05" y="-5.25" dx="1.1" dy="1.1" layer="1"/>
 <smd name="1IND" x="-12.1" y="-7" dx="0.6" dy="0.6" layer="1"/>
 <text x="-12.7" y="8.89" size="1.27" layer="25">&gt;NAME</text>
 <circle x="-12.2428" y="-8.7884" radius="0.239621875" width="0.254" layer="25"/>
@@ -857,45 +857,45 @@
 <devices>
 <device name="" package="UBLOX_SARA_G3">
 <connects>
-<connect gate="G$1" pin="ANT" pad="P$56"/>
-<connect gate="G$1" pin="ANT_DET" pad="P$62"/>
-<connect gate="G$1" pin="CTS" pad="P$11"/>
-<connect gate="G$1" pin="DCD" pad="P$8"/>
-<connect gate="G$1" pin="DSR" pad="P$6"/>
-<connect gate="G$1" pin="DTR" pad="P$9"/>
-<connect gate="G$1" pin="GND" pad="P$1 P$3 P$5 P$14 P$20 P$21 P$22 P$30 P$32 P$33 P$43 P$50 P$54 P$55 P$57 P$58 P$59 P$60 P$61 P$63 P$64 P65 P66 P67 P68 P69 P70 P71 P72 P73 P74 P75 P76 P77 P78 P79 P80 P81 P82 P83 P84 P85 P86 P87 P88 P89 P90 P91 P92 P93 P94 P95 P96"/>
-<connect gate="G$1" pin="GPIO1" pad="P$16"/>
-<connect gate="G$1" pin="GPIO2" pad="P$23"/>
-<connect gate="G$1" pin="GPIO3" pad="P$24"/>
-<connect gate="G$1" pin="GPIO4" pad="P$25"/>
-<connect gate="G$1" pin="I2S_CLK" pad="P$36"/>
-<connect gate="G$1" pin="I2S_RXD" pad="P$37"/>
-<connect gate="G$1" pin="I2S_TXD" pad="P$35"/>
-<connect gate="G$1" pin="I2S_WA" pad="P$34"/>
-<connect gate="G$1" pin="MIC_BIAS" pad="P$46"/>
-<connect gate="G$1" pin="MIC_GND" pad="P$47"/>
-<connect gate="G$1" pin="MIC_N" pad="P$48"/>
-<connect gate="G$1" pin="MIC_P" pad="P$49"/>
-<connect gate="G$1" pin="PWR_ON" pad="P$15"/>
-<connect gate="G$1" pin="RESET_N" pad="P$18"/>
-<connect gate="G$1" pin="RI" pad="P$7"/>
-<connect gate="G$1" pin="RTS" pad="P$10"/>
-<connect gate="G$1" pin="RXD" pad="P$13"/>
-<connect gate="G$1" pin="RXD_AUX" pad="P$28"/>
-<connect gate="G$1" pin="SCL" pad="P$27"/>
-<connect gate="G$1" pin="SDA" pad="P$26"/>
-<connect gate="G$1" pin="SIM_CLK" pad="P$38"/>
-<connect gate="G$1" pin="SIM_DET" pad="P$42"/>
-<connect gate="G$1" pin="SIM_IO" pad="P$39"/>
-<connect gate="G$1" pin="SIM_RST" pad="P$40"/>
-<connect gate="G$1" pin="SPK_N" pad="P$45"/>
-<connect gate="G$1" pin="SPK_P" pad="P$44"/>
-<connect gate="G$1" pin="TXD" pad="P$12"/>
-<connect gate="G$1" pin="TXD_AUX" pad="P$29"/>
-<connect gate="G$1" pin="VCC" pad="P$51 P$52 P$53"/>
-<connect gate="G$1" pin="VSIM" pad="P$41"/>
-<connect gate="G$1" pin="V_BCKP" pad="P$2"/>
-<connect gate="G$1" pin="V_INT" pad="P$4"/>
+<connect gate="G$1" pin="ANT" pad="56"/>
+<connect gate="G$1" pin="ANT_DET" pad="62"/>
+<connect gate="G$1" pin="CTS" pad="11"/>
+<connect gate="G$1" pin="DCD" pad="8"/>
+<connect gate="G$1" pin="DSR" pad="6"/>
+<connect gate="G$1" pin="DTR" pad="9"/>
+<connect gate="G$1" pin="GND" pad="1 3 5 14 20 21 22 30 32 33 43 50 54 55 57 58 59 60 61 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96"/>
+<connect gate="G$1" pin="GPIO1" pad="16"/>
+<connect gate="G$1" pin="GPIO2" pad="23"/>
+<connect gate="G$1" pin="GPIO3" pad="24"/>
+<connect gate="G$1" pin="GPIO4" pad="25"/>
+<connect gate="G$1" pin="I2S_CLK" pad="36"/>
+<connect gate="G$1" pin="I2S_RXD" pad="37"/>
+<connect gate="G$1" pin="I2S_TXD" pad="35"/>
+<connect gate="G$1" pin="I2S_WA" pad="34"/>
+<connect gate="G$1" pin="MIC_BIAS" pad="46"/>
+<connect gate="G$1" pin="MIC_GND" pad="47"/>
+<connect gate="G$1" pin="MIC_N" pad="48"/>
+<connect gate="G$1" pin="MIC_P" pad="49"/>
+<connect gate="G$1" pin="PWR_ON" pad="15"/>
+<connect gate="G$1" pin="RESET_N" pad="18"/>
+<connect gate="G$1" pin="RI" pad="7"/>
+<connect gate="G$1" pin="RTS" pad="10"/>
+<connect gate="G$1" pin="RXD" pad="13"/>
+<connect gate="G$1" pin="RXD_AUX" pad="28"/>
+<connect gate="G$1" pin="SCL" pad="27"/>
+<connect gate="G$1" pin="SDA" pad="26"/>
+<connect gate="G$1" pin="SIM_CLK" pad="38"/>
+<connect gate="G$1" pin="SIM_DET" pad="42"/>
+<connect gate="G$1" pin="SIM_IO" pad="39"/>
+<connect gate="G$1" pin="SIM_RST" pad="40"/>
+<connect gate="G$1" pin="SPK_N" pad="45"/>
+<connect gate="G$1" pin="SPK_P" pad="44"/>
+<connect gate="G$1" pin="TXD" pad="12"/>
+<connect gate="G$1" pin="TXD_AUX" pad="29"/>
+<connect gate="G$1" pin="VCC" pad="51 52 53"/>
+<connect gate="G$1" pin="VSIM" pad="41"/>
+<connect gate="G$1" pin="V_BCKP" pad="2"/>
+<connect gate="G$1" pin="V_INT" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -961,6 +961,10 @@
 <technology name="">
 <attribute name="DIGIKEY1" value="S9170-ND" constant="no"/>
 <attribute name="DIGIKEY2" value="WM17450-ND" constant="no"/>
+<attribute name="MF1" value="Sullins" constant="no"/>
+<attribute name="MF2" value="Molex" constant="no"/>
+<attribute name="MFN1" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
+<attribute name="MFN2" value="0015912080" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2958,6 +2962,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="WM9357-ND" constant="no"/>
+<attribute name="MF" value="Molex" constant="no"/>
+<attribute name="MFN" value="0732511350" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3023,6 +3029,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="H122041-ND" constant="no"/>
+<attribute name="MF" value="Hirose" constant="no"/>
+<attribute name="MFN" value="U.FL-R-SMT-1(01)" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3378,7 +3386,7 @@ SMT</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="RESISTOR" prefix="R" uservalue="yes">
+<deviceset name="RESISTOR" prefix="R">
 <description>&lt;b&gt;Resistor&lt;/b&gt;
 Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</description>
 <gates>
@@ -3475,6 +3483,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="541-1322-1-ND" constant="no"/>
+<attribute name="MF" value="Vishay Dale" constant="no"/>
+<attribute name="MFN" value="IHLP1212BZER2R2M11" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4085,6 +4095,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-35978-1-ND" constant="no"/>
+<attribute name="MF" value="Texas Instruments" constant="no"/>
+<attribute name="MFN" value="TLV62130RGTR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4938,6 +4950,8 @@ High-power, low thermal resistance package.</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11899-1-ND" constant="no"/>
+<attribute name="MF" value="Abracon" constant="no"/>
+<attribute name="MFN" value="ABS05-32.768KHZ-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4949,6 +4963,8 @@ High-power, low thermal resistance package.</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11897-1-ND" constant="no"/>
+<attribute name="MF" value="Abracon" constant="no"/>
+<attribute name="MFN" value="ABS05-32.768KHZ-9-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -9550,6 +9566,8 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="SW1020CT-ND" constant="no"/>
+<attribute name="MF" value="Omron" constant="no"/>
+<attribute name="MFN" value="B3U-1000P" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -11801,14 +11819,13 @@ not the modules reference</text>
 <plain>
 <text x="33.02" y="10.16" size="2.54" layer="97">Pull down to 
 prevent glitching</text>
-<text x="12.7" y="55.88" size="2.54" layer="97">Network Indicator LED</text>
-<wire x1="0" y1="63.5" x2="66.04" y2="63.5" width="0.1524" layer="97"/>
-<wire x1="66.04" y1="63.5" x2="66.04" y2="0" width="0.1524" layer="97"/>
+<text x="10.16" y="60.96" size="2.54" layer="97">Network Indicator LED</text>
+<wire x1="0" y1="66.04" x2="66.04" y2="66.04" width="0.1524" layer="97"/>
+<wire x1="66.04" y1="66.04" x2="66.04" y2="0" width="0.1524" layer="97"/>
 <wire x1="66.04" y1="190.5" x2="66.04" y2="71.12" width="0.1524" layer="97"/>
 <wire x1="66.04" y1="71.12" x2="0" y2="71.12" width="0.1524" layer="97"/>
 <text x="2.54" y="137.16" size="2.54" layer="97">Level Translator, GSM_INT = 1.8V</text>
 <text x="71.12" y="96.52" size="1.27" layer="97">UART lines for commands</text>
-<text x="71.12" y="71.12" size="1.27" layer="97">Connector for FW upgrade</text>
 <text x="22.86" y="78.74" size="1.27" layer="97" align="bottom-center">I switch labels here to be consistent</text>
 <wire x1="15.24" y1="81.28" x2="15.24" y2="86.36" width="0.254" layer="96"/>
 <wire x1="12.7" y1="83.82" x2="15.24" y2="86.36" width="0.254" layer="96"/>
@@ -11851,17 +11868,25 @@ prevent glitching</text>
 <instance part="R33" gate="G$1" x="109.22" y="132.08" rot="R90">
 <attribute name="DIGIKEY" x="109.22" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="C9" gate="G$1" x="198.12" y="66.04">
+<instance part="C9" gate="G$1" x="198.12" y="66.04" smashed="yes">
 <attribute name="DIGIKEY" x="198.12" y="66.04" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="NAME" x="195.58" y="68.58" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="VALUE" x="195.58" y="60.96" size="1.778" layer="96" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="C10" gate="G$1" x="193.04" y="68.58">
+<instance part="C10" gate="G$1" x="193.04" y="68.58" smashed="yes">
 <attribute name="DIGIKEY" x="193.04" y="68.58" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="NAME" x="190.5" y="71.12" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="VALUE" x="190.5" y="63.5" size="1.778" layer="96" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="C11" gate="G$1" x="187.96" y="71.12">
+<instance part="C11" gate="G$1" x="187.96" y="71.12" smashed="yes">
 <attribute name="DIGIKEY" x="187.96" y="71.12" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="NAME" x="185.42" y="73.66" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="VALUE" x="185.42" y="66.04" size="1.778" layer="96" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
-<instance part="C12" gate="G$1" x="182.88" y="73.66">
+<instance part="C12" gate="G$1" x="182.88" y="73.66" smashed="yes">
 <attribute name="DIGIKEY" x="182.88" y="73.66" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="NAME" x="180.34" y="76.2" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="VALUE" x="180.34" y="68.58" size="1.778" layer="96" ratio="12" rot="R270" align="bottom-center"/>
 </instance>
 <instance part="GND6" gate="1" x="99.06" y="121.92"/>
 <instance part="C39" gate="G$1" x="162.56" y="132.08">
@@ -12686,17 +12711,17 @@ for the spi interface.</text>
 <pinref part="C14" gate="G$1" pin="1"/>
 <wire x1="88.9" y1="147.32" x2="88.9" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="154.94" x2="35.56" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="154.94" x2="35.56" y2="162.56" width="0.1524" layer="91"/>
 <pinref part="U13" gate="G$1" pin="AVDD"/>
-<wire x1="35.56" y1="160.02" x2="27.94" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="160.02" x2="78.74" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="160.02" x2="78.74" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="162.56" x2="78.74" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="162.56" x2="78.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="149.86" x2="78.74" y2="127" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="149.86" x2="78.74" y2="149.86" width="0.1524" layer="91"/>
 <junction x="78.74" y="149.86"/>
 <pinref part="C30" gate="G$1" pin="1"/>
-<wire x1="27.94" y1="152.4" x2="27.94" y2="160.02" width="0.1524" layer="91"/>
-<junction x="27.94" y="160.02"/>
+<wire x1="27.94" y1="152.4" x2="27.94" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="162.56" x2="35.56" y2="162.56" width="0.1524" layer="91"/>
+<junction x="35.56" y="162.56"/>
 </segment>
 </net>
 <net name="DCC1" class="0">
@@ -12848,7 +12873,6 @@ for the spi interface.</text>
 <wire x1="68.58" y1="185.42" x2="68.58" y2="134.62" width="0.1524" layer="97"/>
 <wire x1="68.58" y1="134.62" x2="0" y2="134.62" width="0.1524" layer="97"/>
 <text x="12.7" y="177.8" size="1.27" layer="97">To Program the STM32L on the Module</text>
-<text x="111.76" y="129.54" size="1.27" layer="97">DNP</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0"/>
