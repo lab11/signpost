@@ -32,14 +32,14 @@ int main (void) {
       if (i == 3 || i == 4) continue;
 
         energy = signpost_energy_get_module_energy(i);
-        printf("Module %i energy: %i uAh\n", i, energy);
+        printf("Module %i energy: %i uWh\n", i, energy);
     }
 
     energy = signpost_energy_get_controller_energy();
-    printf("Controller energy: %i uAh\n", energy);
+    printf("Controller energy: %i uWh\n", energy);
 
     energy = signpost_energy_get_linux_energy();
-    printf("Linux energy: %i uAh\n", energy);
+    printf("Linux energy: %i uWh\n", energy);
 
     delay_ms(1000);
   }
