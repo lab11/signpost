@@ -4078,7 +4078,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="C27" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.82 uF">
 <attribute name="DIGIKEY" value="490-10440-1-ND"/>
 </part>
-<part name="U28" library="chips" deviceset="TILM3480" device="" technology="3.3V" value="3.3V"/>
+<part name="U28" library="chips" deviceset="TILM3480" device="" technology="3.3V" value="3.3V">
+<attribute name="DIGIKEY" value="ZMR330FCT-ND"/>
+</part>
 <part name="C21" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
@@ -4095,7 +4097,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="FRAME3" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME7" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U27" library="chips" deviceset="MAX6746" device=""/>
-<part name="VBATT-M" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="MON_GND" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="FRAME8" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U29" library="chips" deviceset="M24C01" device="WMN"/>
 <part name="GND" library="umich" deviceset="GND" device=""/>
@@ -4174,7 +4176,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
 <part name="U$47" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="CHRG_FAULT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="FAULT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="CHRG" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
@@ -7179,10 +7181,10 @@ Watchdog</description>
 <instance part="5V_2" gate="G$1" x="116.84" y="121.92"/>
 <instance part="5V_3" gate="G$1" x="116.84" y="119.38"/>
 <instance part="5V_4" gate="G$1" x="116.84" y="116.84"/>
-<instance part="VBATT-M" gate="G$1" x="116.84" y="132.08"/>
+<instance part="MON_GND" gate="G$1" x="116.84" y="132.08"/>
 <instance part="J3" gate="G$1" x="121.92" y="73.66"/>
 <instance part="JP1" gate="G$1" x="114.3" y="88.9"/>
-<instance part="CHRG_FAULT" gate="G$1" x="116.84" y="111.76"/>
+<instance part="FAULT" gate="G$1" x="116.84" y="111.76"/>
 <instance part="CHRG" gate="G$1" x="116.84" y="109.22"/>
 </instances>
 <busses>
@@ -7225,7 +7227,7 @@ Watchdog</description>
 </net>
 <net name="MONITOR_GND" class="0">
 <segment>
-<pinref part="VBATT-M" gate="G$1" pin="TESTPOINT"/>
+<pinref part="MON_GND" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="132.08" x2="121.92" y2="132.08" width="0.1524" layer="91"/>
 <label x="121.92" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -7286,7 +7288,7 @@ Watchdog</description>
 </net>
 <net name="CHRG_FAULT" class="0">
 <segment>
-<pinref part="CHRG_FAULT" gate="G$1" pin="TESTPOINT"/>
+<pinref part="FAULT" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
 <label x="121.92" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
