@@ -6263,6 +6263,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$30" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 <part name="U4" library="signpost" deviceset="NCP301LSN30" device=""/>
 <part name="U$31" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
+<part name="R28" library="passives" deviceset="RESISTOR" device="0402_RES" value="100kΩ">
+<attribute name="DIGIKEY" value="1276-3432-1-ND"/>
+</part>
+<part name="GND42" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8338,6 +8342,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <label x="134.62" y="139.7" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 </net>
+<net name="PPS" class="0">
+<segment>
+<pinref part="U6" gate="U1" pin="PB08"/>
+<wire x1="91.44" y1="109.22" x2="88.9" y2="109.22" width="0.1524" layer="91"/>
+<label x="88.9" y="109.22" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -8393,7 +8404,7 @@ disabled by the Storage Master.</text>
 <attribute name="DIGIKEY" x="76.2" y="81.28" size="1.27" layer="96" font="vector" rot="MR0" display="off"/>
 </instance>
 <instance part="U$14" gate="G$1" x="93.98" y="111.76"/>
-<instance part="GND22" gate="1" x="58.42" y="63.5" rot="MR0"/>
+<instance part="GND22" gate="1" x="58.42" y="55.88" rot="MR0"/>
 <instance part="U$15" gate="G$1" x="58.42" y="111.76"/>
 <instance part="GND23" gate="1" x="30.48" y="35.56" rot="MR0"/>
 <instance part="VR1" gate="G$1" x="111.76" y="144.78"/>
@@ -8432,6 +8443,10 @@ disabled by the Storage Master.</text>
 <instance part="U$27" gate="G$1" x="215.9" y="162.56"/>
 <instance part="SW1" gate="G$1" x="220.98" y="139.7" rot="R270"/>
 <instance part="GND39" gate="1" x="220.98" y="127"/>
+<instance part="R28" gate="G$1" x="93.98" y="63.5" rot="MR270">
+<attribute name="DIGIKEY" x="93.98" y="63.5" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
+</instance>
+<instance part="GND42" gate="1" x="93.98" y="55.88" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -8528,7 +8543,7 @@ disabled by the Storage Master.</text>
 <pinref part="U10" gate="G$1" pin="GND"/>
 <pinref part="GND22" gate="1" pin="GND"/>
 <wire x1="60.96" y1="68.58" x2="58.42" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="68.58" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="68.58" x2="58.42" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R5" gate="G$1" pin="2"/>
@@ -8576,6 +8591,11 @@ disabled by the Storage Master.</text>
 <pinref part="GND39" gate="1" pin="GND"/>
 <wire x1="220.98" y1="129.54" x2="220.98" y2="132.08" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R28" gate="G$1" pin="2"/>
+<pinref part="GND42" gate="1" pin="GND"/>
+<wire x1="93.98" y1="58.42" x2="93.98" y2="60.96" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="LINUX_ENABLE_POWER" class="0">
 <segment>
@@ -8605,6 +8625,8 @@ disabled by the Storage Master.</text>
 <wire x1="93.98" y1="109.22" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="109.22" x2="99.06" y2="106.68" width="0.1524" layer="91"/>
 <junction x="93.98" y="109.22"/>
+<pinref part="R28" gate="G$1" pin="1"/>
+<junction x="93.98" y="68.58"/>
 </segment>
 </net>
 <net name="N$34" class="0">
