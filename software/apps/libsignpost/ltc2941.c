@@ -8,6 +8,7 @@ struct ltc2941_data {
 };
 
 static struct ltc2941_data result = { .fired = false, .charge = 0 };
+static uint16_t ltc2941_prescaler;
 
 // Internal callback for faking synchronous reads
 static void ltc2941_cb(__attribute__ ((unused)) int callback_type,
@@ -28,6 +29,7 @@ int ltc2941_read_status(void) {
 }
 
 int ltc2941_configure(interrupt_pin_conf_e int_pin, uint8_t prescaler, vbat_alert_e vbat) {
+    ltc2941_prescaler = prescaler;
     uint8_t M = 0;
         // ltc2941 expects log_2 of prescaler value
         for(int i = 0; i < 8; i++) {
@@ -171,3 +173,10 @@ int ltc2941_shutdown_sync(void) {
 
     return 0;
 }
+
+int ltc2941_convert_to_coulomb_uah(int c, int Rsense) {
+    return (int)(c * (float)(85.0)*(50.0/Rsense)*(ltc2941_prescaler/128.0));
+}
+
+
+

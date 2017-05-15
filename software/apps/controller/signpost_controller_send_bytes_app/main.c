@@ -17,7 +17,8 @@
 #include "gps.h"
 #include "minmea.h"
 #include "signpost_api.h"
-#include "signpost_energy.h"
+#include "signpost_energy_policy.h"
+#include "signpost_energy_monitors.h"
 
 #include "bonus_timer.h"
 
@@ -84,7 +85,7 @@ static void check_module_energy_remaining(void) {
     for(uint8_t i = 0; i < 8; i++) {
         if(i==3 || i == 4 || i == 1) continue;
 
-        if(signpost_energy_get_module_energy_remaining(i) < 0) {
+        if(signpost_energy_policy_get_module_energy_remaining(i) < 0) {
             module_disabled[i] = 1;
             controller_module_disable_power(i);
             controller_module_disable_i2c(i);
@@ -210,15 +211,15 @@ static void watchdog_tickler (int which) {
 
 static void get_energy_average (void) {
 
-    fram.power.controller_average_power = signpost_energy_get_controller_average_power();
+    fram.power.controller_average_power = signpost_energy_policy_get_controller_average_power();
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) continue;
-        fram.power.module_average_power[i] = signpost_energy_get_module_average_power(i);
+        fram.power.module_average_power[i] = signpost_energy_policy_get_module_average_power(i);
     }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
-  int c_power = signpost_energy_get_controller_average_power()/1000;
+  int c_power = signpost_energy_policy_get_controller_average_power()/1000;
   if(c_power <= 0) {
       c_power = 0;
   }
@@ -232,7 +233,7 @@ static void get_energy_average (void) {
   for(uint8_t i = 0; i < 8; i++) {
       if(i==3 || i == 4) continue;
 
-      int mod_energy = signpost_energy_get_module_average_power(i)/1000;
+      int mod_energy = signpost_energy_policy_get_module_average_power(i)/1000;
 
       if(mod_energy <= 0) {
           mod_energy = 0;
@@ -249,7 +250,7 @@ static void get_energy_average (void) {
   } else {
     rc = 0;
   }
-}
+
 
   if(rc >= 0) {
     // Tickle the watchdog because something good happened.
@@ -261,28 +262,15 @@ static void get_energy_average (void) {
 
 static void get_energy_remaining (void) {
 
-  //read the energy remaining data
-    fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
+    //read the energy remaining data
+    fram.energy.controller_energy_remaining = signpost_energy_policy_get_controller_energy_remaining();
     for(uint8_t i = 0; i < 8; i++) {
         if(i == 3 || i == 4) continue;
-        fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
+        fram.energy.module_energy_remaining[i] = signpost_energy_policy_get_module_energy_remaining(i);
         if(fram.energy.module_energy_remaining[i] < 0) {
             fram.energy.module_energy_remaining[i] = 0;
         }
     }
-
-    // Test print
-    switch (i) {
-      case 0: print_energy_data(i, fram.energy_module0); break;
-      case 1: print_energy_data(i, fram.energy_module1); break;
-      //case 2: print_energy_data(i, fram.energy_module2); break;
-      case 3: print_energy_data(i, fram.energy_controller); break;
-      case 4: print_energy_data(i, fram.energy_linux); break;
-      //case 5: print_energy_data(i, fram.energy_module5); break;
-      //case 6: print_energy_data(i, fram.energy_module6); break;
-      //case 7: print_energy_data(i, fram.energy_module7); break;
-    }
-  }
 
   fm25cl_write_sync(0, sizeof(controller_fram_t));
 
@@ -333,7 +321,7 @@ static void get_energy_remaining (void) {
 static void get_batsol (void) {
   int battery_voltage = signpost_energy_get_battery_voltage();
   int battery_current = signpost_energy_get_battery_current();
-  int battery_energy = (int)((signpost_energy_get_battery_energy_remaining()/BATTERY_VOLTAGE_NOM)/1000.0);
+  int battery_energy = (int)((signpost_energy_get_battery_energy()/BATTERY_VOLTAGE_NOM)/1000.0);
   int battery_percent = (int)(signpost_energy_get_battery_percent()/1000.0);
   int battery_full = (int)((signpost_energy_get_battery_capacity()/BATTERY_VOLTAGE_NOM)/1000.0);
   int solar_voltage = signpost_energy_get_solar_voltage();
@@ -477,11 +465,11 @@ static void energy_api_callback(uint8_t source_address,
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
-      int limit = (int)(signpost_energy_get_module_energy_remaining(
+      int limit = (int)(signpost_energy_policy_get_module_energy_remaining(
                                     signpost_api_addr_to_mod_num(source_address))/1000.0);
       printf("CALLBACK_ENERGY: Calculated energy limit to be %d\n",limit);
       info.energy_limit_mWh = limit;
-      int average = (int)(signpost_energy_get_module_average_power(
+      int average = (int)(signpost_energy_policy_get_module_average_power(
                                     signpost_api_addr_to_mod_num(source_address))/1000.0);
       printf("CALLBACK_ENERGY: Calculated average energy to be %d\n",average);
       info.average_power_mW = average;
@@ -511,7 +499,7 @@ static void energy_api_callback(uint8_t source_address,
         }
 
         //now send the report to the energy
-        signpost_energy_update_energy_from_report(signpost_api_addr_to_mod_num(source_address), &report);
+        signpost_energy_policy_update_energy_from_report(signpost_api_addr_to_mod_num(source_address), &report);
 
         //reply to the report
         signpost_energy_report_reply(source_address, &report);
@@ -750,9 +738,9 @@ int main (void) {
   if (fram.magic == FRAM_MAGIC_VALUE) {
     // Great. We have saved data.
     // Initialize the energy algorithm with those values
-    signpost_energy_init_ltc2943(&fram.energy, &fram.power);
+    signpost_energy_policy_init(&fram.energy, &fram.power);
 
-    int bat = signpost_energy_get_battery_energy_remaining();
+    int bat = signpost_energy_get_battery_energy();
 
     printf("Energy remaining values saved in fram\n");
     printf("/**************************************/\n");
@@ -770,7 +758,7 @@ int main (void) {
     fram.magic = FRAM_MAGIC_VALUE;
 
 #ifdef USE_PRESETS
-    int bat = signpost_energy_get_battery_energy_remaining();
+    int bat = signpost_energy_get_battery_energy();
     int total = 0;
     fram.energy.module_energy_remaining[0] = 1500000;
     total += fram.energy.module_energy_remaining[0];
@@ -789,22 +777,22 @@ int main (void) {
         //this worked
         fram.energy.controller_energy_remaining = bat - total;
         fm25cl_write_sync(0, sizeof(controller_fram_t));
-        signpost_energy_init_ltc2943(&fram.energy, NULL);
+        signpost_energy_policy_init(&fram.energy, NULL);
     } else {
         //this didn't work - screw it
-        signpost_energy_init_ltc2943(NULL, NULL);
+        signpost_energy_policy_init(NULL, NULL);
     }
 
 #else
     //let the energy algorithm figure out how to initialize all the energies
-    signpost_energy_init_ltc2943(NULL, NULL);
+    signpost_energy_policy_init(NULL, NULL);
 #endif
 
 
-    fram.energy.controller_energy_remaining = signpost_energy_get_controller_energy_remaining();
+    fram.energy.controller_energy_remaining = signpost_energy_policy_get_controller_energy_remaining();
     fram.power.controller_average_power = 0;
     for(uint8_t i = 0; i < 8; i++) {
-        fram.energy.module_energy_remaining[i] = signpost_energy_get_module_energy_remaining(i);
+        fram.energy.module_energy_remaining[i] = signpost_energy_policy_get_module_energy_remaining(i);
         fram.power.module_average_power[i] = 0;
     }
     fm25cl_write_sync(0, sizeof(controller_fram_t));
@@ -916,7 +904,7 @@ int main (void) {
 
     if ((index % 300) == 0) {
         printf("CONTROLLER_STATE: updating energy remaining\n");
-        signpost_energy_update_energy();
+        signpost_energy_policy_update_energy();
 
         check_module_energy_remaining();
     }

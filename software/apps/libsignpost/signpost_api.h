@@ -4,6 +4,7 @@
 extern "C" {
 #endif
 
+#include <stdbool.h>
 #include <stdint.h>
 #include "signbus_app_layer.h"
 #include "signbus_protocol_layer.h"

@@ -86,6 +86,8 @@ int ltc2941_set_low_threshold_sync(uint16_t threshold);
 int ltc2941_get_charge_sync(void);
 int ltc2941_shutdown_sync(void);
 
+int ltc2941_convert_to_coulomb_uah(int c, int Rsense);
+
 #ifdef __cplusplus
 }
 #endif

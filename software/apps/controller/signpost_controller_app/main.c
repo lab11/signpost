@@ -17,7 +17,8 @@
 #include "gps.h"
 #include "minmea.h"
 #include "signpost_api.h"
-#include "signpost_energy.h"
+#include "signpost_energy_monitors.h"
+#include "signpost_energy_policy.h"
 
 #include "bonus_timer.h"
 
@@ -253,10 +254,8 @@ static void energy_api_callback(uint8_t source_address,
   } else if (frame_type == CommandFrame) {
     if (message_type == EnergyQueryMessage) {
       signpost_energy_information_t info;
-      info.energy_limit_mAh = 3;
-      info.current_average_mA = 4;
-      info.energy_limit_warning_threshold = 5;
-      info.energy_limit_critical_threshold = 6;
+      info.energy_limit_mWh = 0;
+      info.average_power_mW = 0;
 
       rc = signpost_energy_query_reply(source_address, &info);
       if (rc < 0) {

@@ -9,8 +9,7 @@
 #include <timer.h>
 
 #include "controller.h"
-#include "i2c_selector.h"
-#include "signpost_energy.h"
+#include "signpost_energy_monitors.h"
 
 int main (void) {
   int energy;

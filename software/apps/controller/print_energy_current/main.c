@@ -10,13 +10,13 @@
 
 #include "controller.h"
 #include "i2c_selector.h"
-#include "signpost_energy.h"
+#include "signpost_energy_monitors.h"
 
 int main (void) {
   int energy;
   int current;
 
-  signpost_energy_init_ltc2943(NULL);
+  signpost_energy_init_ltc2943();
 
   controller_init_module_switches();
   controller_all_modules_enable_power();
@@ -46,7 +46,9 @@ int main (void) {
 
     int v = signpost_energy_get_battery_voltage();
     int c = signpost_energy_get_battery_current();
-    int e = signpost_energy_get_battery_energy_remaining();
+    int e = signpost_energy_get_battery_energy();
+    int p = signpost_energy_get_battery_percent();
+    int cap = signpost_energy_get_battery_capacity();
 
     int s_voltage = signpost_energy_get_solar_voltage();
     int s_current = signpost_energy_get_solar_current();

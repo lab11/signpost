@@ -94,6 +94,7 @@ int ltc2943_shutdown_sync(void);
 
 int ltc2943_convert_to_voltage_mv(int v);
 int ltc2943_convert_to_current_ua(int c, int Rsense);
+int ltc2943_convert_to_coulomb_uah(int c, int Rsense);
 
 #ifdef __cplusplus
 }

@@ -8,6 +8,7 @@ struct ltc2943_data {
 };
 
 static struct ltc2943_data result = { .fired = false, .charge = 0 };
+static uint16_t ltc2943_prescaler;
 
 // Internal callback for faking synchronous reads
 static void ltc2943_cb(__attribute__ ((unused)) int callback_type,
@@ -29,6 +30,7 @@ int ltc2943_read_status(void) {
 
 int ltc2943_configure(interrupt_pin_conf_e int_pin, uint16_t prescaler, adc_mode_e adc) {
         uint8_t M = 0;
+        ltc2943_prescaler = prescaler;
         switch(prescaler) {
             case 1:
                 M = 0;
@@ -239,4 +241,8 @@ int ltc2943_convert_to_voltage_mv (int v) {
 
 int ltc2943_convert_to_current_ua (int c, int Rsense) {
     return (int)((60.0/Rsense)*((c-0x7FFF)/(float)0x7FFF)*1000000.0);
+}
+
+int ltc2943_convert_to_coulomb_uah (int c, int Rsense) {
+    return (int)(c * (float)(340.0)*(50.0/Rsense)*(ltc2943_prescaler/4096.0));
 }
