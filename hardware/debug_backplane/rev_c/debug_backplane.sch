@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.1.1">
+<eagle version="8.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -17076,6 +17076,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <approved hash="106,11,111.76,91.44,HUB_!PWRON5,,,,,"/>
 <approved hash="106,11,111.76,88.9,HUB_!PWRON6,,,,,"/>
 <approved hash="106,11,111.76,86.36,HUB_!PWRON7,,,,,"/>
+<approved hash="106,4,63.5,71.12,JTAG_5V,,,,,"/>
+<approved hash="106,4,63.5,68.58,JTAG_DBGRQ,,,,,"/>
+<approved hash="106,4,63.5,50.8,JTAG_NTRST,,,,,"/>
+<approved hash="106,4,63.5,60.96,JTAG_RTCK,,,,,"/>
+<approved hash="106,4,63.5,63.5,JTAG_SWO/TDO,,,,,"/>
+<approved hash="106,4,63.5,53.34,JTAG_TDI,,,,,"/>
 <approved hash="106,17,144.78,144.78,MOD0_HDR_RSV_PIN3,,,,,"/>
 <approved hash="106,17,144.78,137.16,MOD0_HDR_RSV_PIN9,,,,,"/>
 <approved hash="106,17,213.36,144.78,MOD1_HDR_RSV_PIN3,,,,,"/>

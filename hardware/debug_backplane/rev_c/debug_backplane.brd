@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.1.1">
+<eagle version="8.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -264,7 +264,7 @@ DATA</text>
 <text x="15.24" y="187.198" size="0.889" layer="21" font="vector" ratio="12" rot="R210" align="center-right">GND</text>
 <text x="15.24" y="181.102" size="0.889" layer="21" font="vector" ratio="12" rot="R330" align="center-left">GND</text>
 <text x="168.91" y="175.768" size="1.27" layer="21" font="vector" ratio="12" align="center">USB Debugging</text>
-<text x="77.47" y="35.56" size="1.27" layer="21" font="vector" ratio="12">March 2017</text>
+<text x="89.154" y="37.338" size="1.27" layer="21" font="vector" ratio="12" align="center-right">May 2017</text>
 <circle x="20.32" y="40.64" radius="5.720640625" width="0.2032" layer="51"/>
 <text x="18.034" y="74.676" size="2.54" layer="21" font="vector" ratio="12" rot="SR0" align="bottom-center">5V</text>
 <text x="11.43" y="94.234" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">DNP: Overvoltage
@@ -12074,6 +12074,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="131.572" y="62.992" extent="1-16" drill="0.4064"/>
 <wire x1="131.572" y1="62.992" x2="153.924" y2="62.992" width="0.508" layer="16"/>
 <via x="153.924" y="62.992" extent="1-16" drill="0.4064"/>
+<wire x1="109.474" y1="84.9939" x2="109.474" y2="86.106" width="0.508" layer="1"/>
 </signal>
 <signal name="MOD0_ISO_I2C">
 <contactref element="U6" pad="5"/>
@@ -18838,28 +18839,36 @@ We've spent an enormous amount of time creating and checking these footprints an
 <approved hash="19,1,aad4bed3b53895c7"/>
 <approved hash="19,1,e51e22622102e67e"/>
 <approved hash="19,1,27d6c7e8c986d845"/>
-<approved hash="19,1,4453b9216ffb7e69"/>
-<approved hash="19,1,a0c983295141b961"/>
-<approved hash="19,1,e8cddc28d66cd28e"/>
-<approved hash="19,1,034a35e10aa30c0f"/>
-<approved hash="19,1,223fd069b34fb823"/>
-<approved hash="19,1,44638dd7d129c687"/>
 <approved hash="19,1,3745ae4532435023"/>
 <approved hash="19,1,3281ad3931fb54c3"/>
 <approved hash="19,1,2e2e509f8d975426"/>
+<approved hash="19,1,a0c983295141b961"/>
+<approved hash="19,1,4453b9216ffb7e69"/>
+<approved hash="19,1,e8cddc28d66cd28e"/>
+<approved hash="19,1,034a35e10aa30c0f"/>
+<approved hash="19,1,44638dd7d129c687"/>
+<approved hash="19,1,223fd069b34fb823"/>
+<approved hash="5,1,0dd4c524ed1f05ed"/>
+<approved hash="19,1,325c8d72e4235f0c"/>
+<approved hash="5,1,5fc5c1faf8b48471"/>
+<approved hash="5,1,14a6dc5af4611c9f"/>
+<approved hash="19,1,3780963cfe515bec"/>
+<approved hash="5,1,e4cf0c31240aecf6"/>
+<approved hash="19,1,162a4e35a0ebfcf5"/>
 <approved hash="19,1,89511befd9109ba5"/>
 <approved hash="19,1,81aa169c06654158"/>
 <approved hash="19,1,98e815f407a15ab6"/>
 <approved hash="19,1,932719d3da888077"/>
+<approved hash="19,1,8d9ea24311593c77"/>
 <approved hash="19,1,17af08eca1e68d93"/>
 <approved hash="19,1,1cb0a60faa7dbba3"/>
 <approved hash="19,1,1f507c02e1cdfa65"/>
 <approved hash="19,1,59829c8ec5abb759"/>
 <approved hash="19,1,d952543906736ee7"/>
-<approved hash="19,1,1815ade23aa13f50"/>
 <approved hash="19,1,7392c42ae66fe1d1"/>
-<approved hash="19,1,a9647b331816337c"/>
+<approved hash="19,1,1815ade23aa13f50"/>
 <approved hash="19,1,cf39268c7a764dde"/>
+<approved hash="19,1,a9647b331816337c"/>
 <approved hash="19,1,b732cfa2b1a485e8"/>
 </errors>
 </board>
