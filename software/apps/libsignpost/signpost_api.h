@@ -265,6 +265,7 @@ int signpost_processing_reply(uint8_t src_addr, uint8_t message_type, uint8_t* r
 /* ENERGY API                                                             */
 /**************************************************************************/
 
+//message types
 enum energy_message_type {
     EnergyQueryMessage = 0,
     EnergyLevelWarning24hMessage = 1,
@@ -274,6 +275,7 @@ enum energy_message_type {
     EnergyDutyCycleMessage = 5,
 };
 
+//information sent to a module from the controller
 typedef struct __attribute__((packed)) energy_information {
     uint32_t    energy_limit_mWh;
     uint16_t    average_power_mW;
@@ -281,17 +283,21 @@ typedef struct __attribute__((packed)) energy_information {
     uint8_t     energy_limit_critical_threshold;
 } signpost_energy_information_t;
 
+_Static_assert(sizeof(signpost_energy_information_t) == 8, "On-wire structure size");
+
+//a mechanism for modules to report energy usage from other modules
+//this structure is for each module
 typedef struct __attribute__((packed)) energy_report_module {
     uint8_t module_address; //module i2c address
     uint8_t module_percent; //an integer percent 0-100 that  the module has used
 } signpost_energy_report_module_t;
 
+//we make an array of them to report full usage
 typedef struct __attribute__((packed)) energy_report {
     uint8_t num_reports;
     signpost_energy_report_module_t reports[8];
 } signpost_energy_report_t;
 
-_Static_assert(sizeof(signpost_energy_information_t) == 8, "On-wire structure size");
 
 // Query the controller for energy information
 //
