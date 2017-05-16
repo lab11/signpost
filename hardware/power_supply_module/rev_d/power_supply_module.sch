@@ -3033,110 +3033,34 @@ High-power, low thermal resistance package.</description>
 <wire x1="3.556" y1="0.7747" x2="3.556" y2="-0.7747" width="0.127" layer="21"/>
 <wire x1="3.556" y1="-0.7747" x2="2.286" y2="-2.0447" width="0.127" layer="21" curve="-90"/>
 </package>
-<package name="TC2030-IDC">
-<description>Tag Connect TC2030-IDC</description>
-<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<hole x="-2.54" y="2.54" drill="2.3749"/>
-<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
-<hole x="0.635" y="2.54" drill="2.3749"/>
-<hole x="0.635" y="-2.54" drill="2.3749"/>
-<hole x="-2.54" y="-2.54" drill="2.3749"/>
-<hole x="-2.54" y="0" drill="1.016"/>
-<hole x="2.54" y="1.016" drill="1.016"/>
-<hole x="2.54" y="-1.016" drill="1.016"/>
-<polygon width="0.127" layer="42">
-<vertex x="-3.175" y="-3.81"/>
-<vertex x="-1.905" y="-3.81"/>
-<vertex x="-1.905" y="-4.7625"/>
-<vertex x="-3.175" y="-4.7625"/>
-</polygon>
-<polygon width="0.127" layer="42">
-<vertex x="0" y="-3.81"/>
-<vertex x="1.27" y="-3.81"/>
-<vertex x="1.27" y="-4.7625"/>
-<vertex x="0" y="-4.7625"/>
-</polygon>
-<polygon width="0.127" layer="42">
-<vertex x="0" y="3.81"/>
-<vertex x="1.27" y="3.81"/>
-<vertex x="1.27" y="4.7625"/>
-<vertex x="0" y="4.7625"/>
-</polygon>
-<polygon width="0.127" layer="42">
-<vertex x="-1.905" y="3.81"/>
-<vertex x="-3.175" y="3.81"/>
-<vertex x="-3.175" y="4.7625"/>
-<vertex x="-1.905" y="4.7625"/>
-</polygon>
-<polygon width="0.127" layer="39">
-<vertex x="-1.27" y="0.635"/>
-<vertex x="1.27" y="0.635"/>
-<vertex x="1.27" y="-0.635"/>
-<vertex x="-1.27" y="-0.635"/>
-</polygon>
-<text x="0" y="5.08" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-6.0325" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
-<wire x1="-2.54" y1="3.81" x2="2.54" y2="3.81" width="0.127" layer="25"/>
-<wire x1="4.2545" y1="2.0955" x2="4.2545" y2="-2.0955" width="0.127" layer="25"/>
-<wire x1="2.54" y1="-3.81" x2="-2.54" y2="-3.81" width="0.127" layer="25"/>
-<wire x1="-4.2545" y1="-2.0955" x2="-4.2545" y2="2.0955" width="0.127" layer="25"/>
-<wire x1="-2.54" y1="3.81" x2="-4.2545" y2="2.0955" width="0.127" layer="25" curve="90"/>
-<wire x1="4.2545" y1="2.0955" x2="2.54" y2="3.81" width="0.127" layer="25" curve="90"/>
-<wire x1="-4.2545" y1="-2.0955" x2="-2.54" y2="-3.81" width="0.127" layer="25" curve="90"/>
-<wire x1="2.54" y1="-3.81" x2="4.2545" y2="-2.0955" width="0.127" layer="25" curve="90"/>
-<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
-</package>
 </packages>
 <symbols>
-<symbol name="ARM-6PIN">
-<description>6 Pin ARM JTAG part</description>
-<pin name="VCC" x="-12.7" y="2.54" length="short"/>
-<pin name="GND" x="-12.7" y="-5.08" length="short"/>
-<pin name="TMS" x="12.7" y="2.54" length="short" rot="R180"/>
-<pin name="TCK" x="12.7" y="0" length="short" rot="R180"/>
-<pin name="TDO" x="12.7" y="-2.54" length="short" rot="R180"/>
-<pin name="!RESET" x="12.7" y="-5.08" length="short" rot="R180"/>
-<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-7.62" x2="10.16" y2="5.08" width="0.254" layer="94"/>
-<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
-<text x="-10.16" y="6.35" size="1.27" layer="95">&gt;NAME</text>
-<text x="-10.16" y="-10.16" size="1.27" layer="96">&gt;VALUE</text>
+<symbol name="TC2030-FTDI-I2C">
+<pin name="VCC" x="-10.16" y="2.54" length="short"/>
+<pin name="GND" x="-10.16" y="-2.54" length="short"/>
+<pin name="SCL" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="SDA" x="10.16" y="-2.54" length="short" rot="R180"/>
+<wire x1="-7.62" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<text x="-7.62" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-7.62" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="TC2030-CTX" prefix="J">
-<description>Tag Connect footprint for ARM JTAG.&lt;br&gt;
-10 pin ARM Cortex Debug Connector.</description>
+<deviceset name="TC2030-FTDI-I2C" prefix="J">
+<description>UMFT200XD FTDI to I2C pogo pin adapter.</description>
 <gates>
-<gate name="G$1" symbol="ARM-6PIN" x="0" y="0"/>
+<gate name="G$1" symbol="TC2030-FTDI-I2C" x="0" y="0"/>
 </gates>
 <devices>
-<device name="-NL" package="TC2030-IDC-NL">
+<device name="" package="TC2030-IDC-NL">
 <connects>
-<connect gate="G$1" pin="!RESET" pad="3"/>
-<connect gate="G$1" pin="GND" pad="5"/>
-<connect gate="G$1" pin="TCK" pad="4"/>
-<connect gate="G$1" pin="TDO" pad="6"/>
-<connect gate="G$1" pin="TMS" pad="2"/>
-<connect gate="G$1" pin="VCC" pad="1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="" package="TC2030-IDC">
-<connects>
-<connect gate="G$1" pin="!RESET" pad="3"/>
-<connect gate="G$1" pin="GND" pad="5"/>
-<connect gate="G$1" pin="TCK" pad="4"/>
-<connect gate="G$1" pin="TDO" pad="6"/>
-<connect gate="G$1" pin="TMS" pad="2"/>
-<connect gate="G$1" pin="VCC" pad="1"/>
+<connect gate="G$1" pin="GND" pad="3"/>
+<connect gate="G$1" pin="SCL" pad="1"/>
+<connect gate="G$1" pin="SDA" pad="5"/>
+<connect gate="G$1" pin="VCC" pad="6"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3674,7 +3598,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="N. Jackson"/>
-<attribute name="REV" value="A"/>
+<attribute name="REV" value="D"/>
 <attribute name="TITLE" value="Power Supply Module"/>
 </attributes>
 <variantdefs>
@@ -4109,7 +4033,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="H2" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H3" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
 <part name="H4" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.0"/>
-<part name="J3" library="connector" deviceset="TC2030-CTX" device="-NL"/>
+<part name="J3" library="connector" deviceset="TC2030-FTDI-I2C" device=""/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M04" device="PTH"/>
 <part name="U$2" library="signpost" deviceset="VCC_MOD0" device=""/>
 <part name="U$3" library="signpost" deviceset="VCC_MOD1" device=""/>
@@ -7182,7 +7106,7 @@ Watchdog</description>
 <instance part="5V_3" gate="G$1" x="116.84" y="119.38"/>
 <instance part="5V_4" gate="G$1" x="116.84" y="116.84"/>
 <instance part="MON_GND" gate="G$1" x="116.84" y="132.08"/>
-<instance part="J3" gate="G$1" x="121.92" y="73.66"/>
+<instance part="J3" gate="G$1" x="121.92" y="71.12"/>
 <instance part="JP1" gate="G$1" x="114.3" y="88.9"/>
 <instance part="FAULT" gate="G$1" x="116.84" y="111.76"/>
 <instance part="CHRG" gate="G$1" x="116.84" y="109.22"/>
@@ -7232,37 +7156,16 @@ Watchdog</description>
 <label x="121.92" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="SCL" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="VCC"/>
-<wire x1="109.22" y1="76.2" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
-<label x="106.68" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="SDA" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="GND"/>
-<wire x1="109.22" y1="68.58" x2="106.68" y2="68.58" width="0.1524" layer="91"/>
-<label x="106.68" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="VCC_BACKPLANE" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="TDO"/>
-<wire x1="134.62" y1="71.12" x2="137.16" y2="71.12" width="0.1524" layer="91"/>
-<label x="137.16" y="71.12" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
 <net name="GND" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="!RESET"/>
-<wire x1="134.62" y1="68.58" x2="137.16" y2="68.58" width="0.1524" layer="91"/>
-<label x="137.16" y="68.58" size="1.27" layer="95" xref="yes"/>
-</segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
 <wire x1="119.38" y1="86.36" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
 <label x="121.92" y="86.36" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="GND"/>
+<wire x1="111.76" y1="68.58" x2="109.22" y2="68.58" width="0.1524" layer="91"/>
+<label x="109.22" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="VBAT-" class="0">
@@ -7298,6 +7201,27 @@ Watchdog</description>
 <pinref part="CHRG" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="109.22" x2="121.92" y2="109.22" width="0.1524" layer="91"/>
 <label x="121.92" y="109.22" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="VCC_BACKPLANE" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="VCC"/>
+<wire x1="111.76" y1="73.66" x2="109.22" y2="73.66" width="0.1524" layer="91"/>
+<label x="109.22" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="SCL" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="SCL"/>
+<wire x1="132.08" y1="73.66" x2="134.62" y2="73.66" width="0.1524" layer="91"/>
+<label x="134.62" y="73.66" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SDA" class="0">
+<segment>
+<pinref part="J3" gate="G$1" pin="SDA"/>
+<wire x1="132.08" y1="68.58" x2="134.62" y2="68.58" width="0.1524" layer="91"/>
+<label x="134.62" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
