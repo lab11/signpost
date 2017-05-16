@@ -10251,8 +10251,6 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 </part>
 <part name="C30" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="1uF">
 <attribute name="DIGIKEY" value="490-1320-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R60J105KE19D"/>
 </part>
 <part name="X4" library="crystals" deviceset="TXC-8Y" device="" value="16MHz">
 <attribute name="DIGIKEY" value="887-2003-1-ND"/>
@@ -10269,8 +10267,6 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 </part>
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47nF">
 <attribute name="DIGIKEY" value="490-3254-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R71E473KA88D"/>
 </part>
 <part name="GND51" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND52" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -12423,8 +12419,6 @@ for the spi interface.</text>
 </instance>
 <instance part="C30" gate="G$1" x="27.94" y="149.86">
 <attribute name="DIGIKEY" x="27.94" y="149.86" size="1.778" layer="96" display="off"/>
-<attribute name="MF" x="27.94" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="27.94" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="X4" gate="G$1" x="157.48" y="111.76">
 <attribute name="DIGIKEY" x="157.48" y="111.76" size="1.778" layer="96" display="off"/>
@@ -12441,8 +12435,6 @@ for the spi interface.</text>
 </instance>
 <instance part="C20" gate="G$1" x="106.68" y="50.8">
 <attribute name="DIGIKEY" x="106.68" y="50.8" size="1.778" layer="96" display="off"/>
-<attribute name="MF" x="106.68" y="50.8" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="106.68" y="50.8" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND51" gate="1" x="106.68" y="30.48"/>
 <instance part="GND52" gate="1" x="116.84" y="30.48"/>

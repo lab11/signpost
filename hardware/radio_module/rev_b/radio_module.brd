@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.005" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2106,19 +2106,19 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="25.019" y="42.291" size="0.8128" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C9" library="passives" package="0402_CAP" value="47pF" x="5.461" y="44.069" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="491-6241-1-ND " x="5.461" y="44.069" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND" x="5.461" y="44.069" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="4.191" y="44.45" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C10" library="passives" package="0402_CAP" value="47pF" x="5.461" y="42.672" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="491-6241-1-ND " x="5.461" y="42.672" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="42.672" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.937" y="43.053" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C11" library="passives" package="0402_CAP" value="47pF" x="5.461" y="38.481" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="491-6241-1-ND " x="5.461" y="38.481" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="38.481" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.937" y="38.735" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C12" library="passives" package="0402_CAP" value="47pF" x="5.461" y="35.687" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="491-6241-1-ND " x="5.461" y="35.687" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="35.687" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.81" y="35.941" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C39" library="passives" package="1210_CAP" value="220uF" x="4.826" y="24.003" smashed="yes">
@@ -2310,7 +2310,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="NAME" x="18.402" y="61.065" size="0.635" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="U6" library="chips" package="QFN-64-9MM" value="SAM4LC8BA" x="36.449" y="39.497" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="ATSAM4LC8BA-MURCT-ND" x="36.449" y="39.497" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="ATSAM4LC8BA-MU" x="36.449" y="39.497" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="32.385" y="44.624" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="36.449" y="45.497" size="0.8128" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
@@ -2580,7 +2580,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="53.247253125" y="39.6395375" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C30" library="passives" package="0402_CAP" value="1uF" x="54.644253125" y="41.5445375" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="1276-1513-1-ND" x="54.644253125" y="41.5445375" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value="490-1320-1-ND" x="54.644253125" y="41.5445375" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="54.631553125" y="42.4462375" size="0.635" layer="25" font="vector" ratio="12" rot="R270" align="center-right"/>
 <attribute name="VALUE" x="56.041253125" y="41.5445375" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
@@ -2604,7 +2604,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="63.661253125" y="44.3385375" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C20" library="passives" package="0402_CAP" value="47nF" x="64.956653125" y="37.8869375" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="491-6241-1-ND" x="64.956653125" y="37.8869375" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="490-3254-1-ND" x="64.956653125" y="37.8869375" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="64.5766625" y="36.635653125" size="0.635" layer="25" font="vector" ratio="12" align="center-left"/>
 <attribute name="VALUE" x="63.559653125" y="37.8869375" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
