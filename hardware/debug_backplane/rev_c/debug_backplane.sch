@@ -4826,6 +4826,39 @@ Round side is up.</description>
 <wire x1="2.8" y1="1.499" x2="2.8" y2="0" width="0" layer="46"/>
 <wire x1="2.8" y1="0" x2="5.08" y2="0" width="0" layer="46"/>
 </package>
+<package name="TC2030-IDC-NL">
+<description>The TC2030-IDC-NL is our "No Legs" 6-pin Plug-of-Nails Cable</description>
+<smd name="1" x="-1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="3" x="0" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="5" x="1.27" y="-0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="6" x="1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="4" x="0" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<smd name="2" x="-1.27" y="0.635" dx="0.7874" dy="0.7874" layer="1" roundness="100" cream="no"/>
+<hole x="-2.54" y="0" drill="1.016"/>
+<hole x="2.54" y="1.016" drill="1.016"/>
+<hole x="2.54" y="-1.016" drill="1.016"/>
+<polygon width="0.127" layer="39">
+<vertex x="-1.27" y="0.635"/>
+<vertex x="1.27" y="0.635"/>
+<vertex x="1.27" y="-0.635"/>
+<vertex x="-1.27" y="-0.635"/>
+</polygon>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.4925" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+<circle x="-1.27" y="-0.635" radius="0.635" width="0.127" layer="21"/>
+<wire x1="2.286" y1="-2.0447" x2="-0.979178125" y2="-2.0447" width="0.127" layer="21"/>
+<wire x1="-0.979178125" y1="-2.0447" x2="-1.531840625" y2="-1.91814375" width="0.127" layer="21" curve="-25.795946"/>
+<wire x1="-1.531840625" y1="-1.91814375" x2="-3.19733125" y2="-1.11315625" width="0.127" layer="21"/>
+<wire x1="-3.19733125" y1="-1.11315625" x2="-3.556" y2="-0.541434375" width="0.127" layer="21" curve="-64.204213"/>
+<wire x1="-3.556" y1="-0.541434375" x2="-3.556" y2="0.541434375" width="0.127" layer="21"/>
+<wire x1="-3.556" y1="0.541434375" x2="-3.19733125" y2="1.11315625" width="0.127" layer="21" curve="-64.204054"/>
+<wire x1="-3.19733125" y1="1.11315625" x2="-1.531840625" y2="1.91814375" width="0.127" layer="21"/>
+<wire x1="-1.531840625" y1="1.91814375" x2="-0.979178125" y2="2.0447" width="0.127" layer="21" curve="-25.795871"/>
+<wire x1="-0.979178125" y1="2.0447" x2="2.286" y2="2.0447" width="0.127" layer="21"/>
+<wire x1="2.286" y1="2.0447" x2="3.556" y2="0.7747" width="0.127" layer="21" curve="-90"/>
+<wire x1="3.556" y1="0.7747" x2="3.556" y2="-0.7747" width="0.127" layer="21"/>
+<wire x1="3.556" y1="-0.7747" x2="2.286" y2="-2.0447" width="0.127" layer="21" curve="-90"/>
+</package>
 </packages>
 <symbols>
 <symbol name="BARREL-JACK">
@@ -4850,6 +4883,18 @@ Round side is up.</description>
 <pin name="D+" x="-7.62" y="0" visible="pin" length="middle" function="dot"/>
 <pin name="ID" x="-7.62" y="-2.54" visible="pin" length="middle" function="dot"/>
 <pin name="GND" x="-7.62" y="-5.08" visible="pin" length="middle" function="dot"/>
+</symbol>
+<symbol name="TC2030-FTDI-I2C">
+<pin name="VCC" x="-10.16" y="2.54" length="short"/>
+<pin name="GND" x="-10.16" y="-2.54" length="short"/>
+<pin name="SCL" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="SDA" x="10.16" y="-2.54" length="short" rot="R180"/>
+<wire x1="-7.62" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<text x="-7.62" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-7.62" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -4896,6 +4941,25 @@ Rounded side is up.</description>
 <attribute name="MOUSER" value="798-ZX62R-B-5P" constant="no"/>
 <attribute name="NEWARK" value="69W0714" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TC2030-FTDI-I2C" prefix="J">
+<description>UMFT200XD FTDI to I2C pogo pin adapter.</description>
+<gates>
+<gate name="G$1" symbol="TC2030-FTDI-I2C" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TC2030-IDC-NL">
+<connects>
+<connect gate="G$1" pin="GND" pad="3"/>
+<connect gate="G$1" pin="SCL" pad="1"/>
+<connect gate="G$1" pin="SDA" pad="5"/>
+<connect gate="G$1" pin="VCC" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -8713,6 +8777,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="J4" library="connector" deviceset="TC2030-FTDI-I2C" device=""/>
+<part name="U$74" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="GND129" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15729,6 +15796,8 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <sheet>
 <description>ID EEPROM</description>
 <plain>
+<text x="119.38" y="157.48" size="1.778" layer="97" align="bottom-center">FTDI &lt;&gt; I2C Header
+For commissioning EEPROM</text>
 </plain>
 <instances>
 <instance part="FRAME17" gate="G$1" x="0" y="0"/>
@@ -15744,6 +15813,9 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="C63" gate="G$1" x="86.36" y="96.52">
 <attribute name="DIGIKEY" x="86.36" y="96.52" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
+<instance part="J4" gate="G$1" x="116.84" y="147.32"/>
+<instance part="U$74" gate="G$1" x="96.52" y="152.4"/>
+<instance part="GND129" gate="1" x="96.52" y="139.7"/>
 </instances>
 <busses>
 </busses>
@@ -15754,12 +15826,22 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="129.54" y1="111.76" x2="127" y2="111.76" width="0.1524" layer="91"/>
 <label x="129.54" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="SDA"/>
+<wire x1="129.54" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91"/>
+<label x="129.54" y="144.78" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="SMBCLK" class="0">
 <segment>
 <pinref part="U29" gate="G$1" pin="SCL"/>
 <wire x1="129.54" y1="109.22" x2="127" y2="109.22" width="0.1524" layer="91"/>
 <label x="129.54" y="109.22" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="SCL"/>
+<wire x1="129.54" y1="149.86" x2="127" y2="149.86" width="0.1524" layer="91"/>
+<label x="129.54" y="149.86" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -15784,6 +15866,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="104.14" y1="99.06" x2="104.14" y2="96.52" width="0.1524" layer="91"/>
 <junction x="104.14" y="96.52"/>
 </segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="GND"/>
+<pinref part="GND129" gate="1" pin="GND"/>
+<wire x1="106.68" y1="144.78" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="144.78" x2="96.52" y2="142.24" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
 <segment>
@@ -15802,6 +15890,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="SJ1" gate="1" pin="1"/>
 <wire x1="91.44" y1="106.68" x2="86.36" y2="106.68" width="0.1524" layer="91"/>
 <junction x="86.36" y="106.68"/>
+</segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="VCC"/>
+<pinref part="U$74" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="106.68" y1="149.86" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="149.86" x2="96.52" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$45" class="0">
