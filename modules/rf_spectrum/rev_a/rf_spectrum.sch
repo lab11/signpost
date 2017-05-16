@@ -1892,56 +1892,56 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
 </package>
 <package name="MWSUB3G">
-<smd name="P$1" x="4" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$2" x="7" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$3" x="10" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$4" x="13" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$5" x="16" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$6" x="22" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$7" x="28" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$8" x="34" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$9" x="40" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$10" x="46" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
-<smd name="P$11" x="51.8" y="3" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="1" x="4" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="2" x="7" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="3" x="10" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="4" x="13" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="5" x="16" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="6" x="22" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="7" x="28" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="8" x="34" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="9" x="40" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="10" x="46" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
+<smd name="11" x="51.8" y="3" dx="2.4" dy="1.3" layer="1" rot="R180"/>
 <wire x1="0" y1="0" x2="0" y2="42" width="0.127" layer="21"/>
 <wire x1="0" y1="42" x2="52" y2="42" width="0.127" layer="21"/>
 <wire x1="52" y1="42" x2="52" y2="0" width="0.127" layer="21"/>
 <wire x1="52" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
-<smd name="P$12" x="51.8" y="6" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$13" x="51.8" y="9" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$14" x="51.8" y="12" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$15" x="51.8" y="15" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$16" x="51.8" y="18" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$17" x="51.8" y="21" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$18" x="51.8" y="24" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$19" x="51.8" y="27" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$20" x="51.8" y="30" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$21" x="51.8" y="33" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$22" x="51.8" y="36" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$23" x="51.8" y="39" dx="2.4" dy="1.3" layer="1" rot="R180"/>
-<smd name="P$24" x="46" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$25" x="40" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$26" x="34" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$27" x="28" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$28" x="22" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$29" x="16" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$30" x="13" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$31" x="10" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$32" x="7" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$33" x="4" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
-<smd name="P$34" x="0.2" y="39" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$35" x="0.2" y="36" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$36" x="0.2" y="33" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$37" x="0.2" y="30" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$38" x="0.2" y="27" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$39" x="0.2" y="24" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$40" x="0.2" y="21" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$41" x="0.2" y="18" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$42" x="0.2" y="15" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$43" x="0.2" y="12" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$44" x="0.2" y="9" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$45" x="0.2" y="6" dx="2.4" dy="1.3" layer="1"/>
-<smd name="P$46" x="0.2" y="3" dx="2.4" dy="1.3" layer="1"/>
+<smd name="12" x="51.8" y="6" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="13" x="51.8" y="9" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="14" x="51.8" y="12" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="15" x="51.8" y="15" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="16" x="51.8" y="18" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="17" x="51.8" y="21" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="18" x="51.8" y="24" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="19" x="51.8" y="27" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="20" x="51.8" y="30" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="21" x="51.8" y="33" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="22" x="51.8" y="36" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="23" x="51.8" y="39" dx="2.4" dy="1.3" layer="1" rot="R180"/>
+<smd name="24" x="46" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="25" x="40" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="26" x="34" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="27" x="28" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="28" x="22" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="29" x="16" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="30" x="13" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="31" x="10" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="32" x="7" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="33" x="4" y="41.8" dx="2.4" dy="1.3" layer="1" rot="R270"/>
+<smd name="34" x="0.2" y="39" dx="2.4" dy="1.3" layer="1"/>
+<smd name="35" x="0.2" y="36" dx="2.4" dy="1.3" layer="1"/>
+<smd name="36" x="0.2" y="33" dx="2.4" dy="1.3" layer="1"/>
+<smd name="37" x="0.2" y="30" dx="2.4" dy="1.3" layer="1"/>
+<smd name="38" x="0.2" y="27" dx="2.4" dy="1.3" layer="1"/>
+<smd name="39" x="0.2" y="24" dx="2.4" dy="1.3" layer="1"/>
+<smd name="40" x="0.2" y="21" dx="2.4" dy="1.3" layer="1"/>
+<smd name="41" x="0.2" y="18" dx="2.4" dy="1.3" layer="1"/>
+<smd name="42" x="0.2" y="15" dx="2.4" dy="1.3" layer="1"/>
+<smd name="43" x="0.2" y="12" dx="2.4" dy="1.3" layer="1"/>
+<smd name="44" x="0.2" y="9" dx="2.4" dy="1.3" layer="1"/>
+<smd name="45" x="0.2" y="6" dx="2.4" dy="1.3" layer="1"/>
+<smd name="46" x="0.2" y="3" dx="2.4" dy="1.3" layer="1"/>
 <circle x="4" y="-3" radius="1" width="0.127" layer="21"/>
 <text x="2" y="45" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 </package>
@@ -2092,24 +2092,24 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-15.24" y1="27.94" x2="12.7" y2="27.94" width="0.254" layer="94"/>
 <wire x1="12.7" y1="27.94" x2="12.7" y2="-22.86" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-22.86" x2="-15.24" y2="-22.86" width="0.254" layer="94"/>
-<pin name="GND" x="-20.32" y="-17.78" visible="pin" length="middle"/>
-<pin name="RFGPIO0" x="17.78" y="7.62" visible="pin" length="middle" rot="R180"/>
-<pin name="RFIN" x="17.78" y="15.24" visible="pin" length="middle" rot="R180"/>
-<pin name="RFGPIO1" x="17.78" y="5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="GPIO7" x="-20.32" y="-12.7" visible="pin" length="middle"/>
-<pin name="GPIO2" x="-20.32" y="0" visible="pin" length="middle"/>
-<pin name="GPIO4" x="-20.32" y="-5.08" visible="pin" length="middle"/>
-<pin name="GPIO5" x="-20.32" y="-7.62" visible="pin" length="middle"/>
-<pin name="LED" x="17.78" y="-2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="GPIO1" x="-20.32" y="2.54" visible="pin" length="middle"/>
-<pin name="GPIO0" x="-20.32" y="5.08" visible="pin" length="middle"/>
-<pin name="RF_RX" x="-20.32" y="12.7" visible="pin" length="middle"/>
-<pin name="RF_TX" x="-20.32" y="15.24" visible="pin" length="middle"/>
-<pin name="GPIO3" x="-20.32" y="-2.54" visible="pin" length="middle"/>
-<pin name="GPIO6" x="-20.32" y="-10.16" visible="pin" length="middle"/>
-<pin name="!RESET" x="-20.32" y="22.86" visible="pin" length="middle"/>
-<pin name="DC3V3" x="-20.32" y="25.4" visible="pin" length="middle"/>
-<pin name="RFGPIO2" x="17.78" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="-20.32" y="-17.78" length="middle"/>
+<pin name="RFGPIO0" x="17.78" y="7.62" length="middle" rot="R180"/>
+<pin name="RFIN" x="17.78" y="15.24" length="middle" rot="R180"/>
+<pin name="RFGPIO1" x="17.78" y="5.08" length="middle" rot="R180"/>
+<pin name="GPIO7" x="-20.32" y="-12.7" length="middle"/>
+<pin name="GPIO2" x="-20.32" y="0" length="middle"/>
+<pin name="GPIO4" x="-20.32" y="-5.08" length="middle"/>
+<pin name="GPIO5" x="-20.32" y="-7.62" length="middle"/>
+<pin name="LED" x="17.78" y="-2.54" length="middle" rot="R180"/>
+<pin name="GPIO1" x="-20.32" y="2.54" length="middle"/>
+<pin name="GPIO0" x="-20.32" y="5.08" length="middle"/>
+<pin name="RF_RX" x="-20.32" y="12.7" length="middle"/>
+<pin name="RF_TX" x="-20.32" y="15.24" length="middle"/>
+<pin name="GPIO3" x="-20.32" y="-2.54" length="middle"/>
+<pin name="GPIO6" x="-20.32" y="-10.16" length="middle"/>
+<pin name="!RESET" x="-20.32" y="22.86" length="middle"/>
+<pin name="DC3V3" x="-20.32" y="25.4" length="middle"/>
+<pin name="RFGPIO2" x="17.78" y="2.54" length="middle" rot="R180"/>
 <text x="-12.7" y="30.48" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="5.08" y="22.86" size="1.778" layer="95" ratio="12" align="bottom-center">MWSUB3G</text>
 </symbol>
@@ -2190,24 +2190,24 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <devices>
 <device name="" package="MWSUB3G">
 <connects>
-<connect gate="G$1" pin="!RESET" pad="P$44"/>
-<connect gate="G$1" pin="DC3V3" pad="P$31 P$32 P$33"/>
-<connect gate="G$1" pin="GND" pad="P$5 P$6 P$7 P$8 P$9 P$10 P$11 P$12 P$13 P$14 P$15 P$16 P$18 P$20 P$21 P$22 P$24 P$26 P$27 P$28 P$29 P$34 P$43 P$45 P$46"/>
-<connect gate="G$1" pin="GPIO0" pad="P$40"/>
-<connect gate="G$1" pin="GPIO1" pad="P$41"/>
-<connect gate="G$1" pin="GPIO2" pad="P$3"/>
-<connect gate="G$1" pin="GPIO3" pad="P$37"/>
-<connect gate="G$1" pin="GPIO4" pad="P$2"/>
-<connect gate="G$1" pin="GPIO5" pad="P$1"/>
-<connect gate="G$1" pin="GPIO6" pad="P$35"/>
-<connect gate="G$1" pin="GPIO7" pad="P$4"/>
-<connect gate="G$1" pin="LED" pad="P$42"/>
-<connect gate="G$1" pin="RFGPIO0" pad="P$19"/>
-<connect gate="G$1" pin="RFGPIO1" pad="P$23"/>
-<connect gate="G$1" pin="RFGPIO2" pad="P$25"/>
-<connect gate="G$1" pin="RFIN" pad="P$17"/>
-<connect gate="G$1" pin="RF_RX" pad="P$38"/>
-<connect gate="G$1" pin="RF_TX" pad="P$39"/>
+<connect gate="G$1" pin="!RESET" pad="44"/>
+<connect gate="G$1" pin="DC3V3" pad="31 32 33"/>
+<connect gate="G$1" pin="GND" pad="5 6 7 8 9 10 11 12 13 14 15 16 18 20 21 22 24 26 27 28 29 34 43 45 46"/>
+<connect gate="G$1" pin="GPIO0" pad="40"/>
+<connect gate="G$1" pin="GPIO1" pad="41"/>
+<connect gate="G$1" pin="GPIO2" pad="3"/>
+<connect gate="G$1" pin="GPIO3" pad="37"/>
+<connect gate="G$1" pin="GPIO4" pad="2"/>
+<connect gate="G$1" pin="GPIO5" pad="1"/>
+<connect gate="G$1" pin="GPIO6" pad="35"/>
+<connect gate="G$1" pin="GPIO7" pad="4"/>
+<connect gate="G$1" pin="LED" pad="42"/>
+<connect gate="G$1" pin="RFGPIO0" pad="19"/>
+<connect gate="G$1" pin="RFGPIO1" pad="23"/>
+<connect gate="G$1" pin="RFGPIO2" pad="25"/>
+<connect gate="G$1" pin="RFIN" pad="17"/>
+<connect gate="G$1" pin="RF_RX" pad="38"/>
+<connect gate="G$1" pin="RF_TX" pad="39"/>
 </connects>
 <technologies>
 <technology name="">
@@ -2254,7 +2254,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0" y1="1.5" x2="1.5" y2="1.5" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="1.5" x2="1.5" y2="0" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="0" x2="0" y2="0" width="0.1016" layer="21"/>
-<smd name="P$1" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
+<smd name="PAD" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
 <smd name="1" x="0.025" y="1.35" dx="0.35" dy="0.2" layer="1"/>
 <smd name="2" x="0.025" y="0.95" dx="0.35" dy="0.2" layer="1"/>
 <smd name="3" x="0.025" y="0.55" dx="0.35" dy="0.2" layer="1"/>
@@ -2271,39 +2271,39 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="2.5" y1="2.5" x2="2.5" y2="-2.5" width="0.1" layer="21"/>
 <wire x1="2.5" y1="-2.5" x2="-2.5" y2="-2.5" width="0.1" layer="21"/>
 <wire x1="-2.5" y1="-2.5" x2="-2.5" y2="2.5" width="0.1" layer="21"/>
-<smd name="P$1" x="-2.5" y="1.75" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$2" x="-2.5" y="1.25" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$3" x="-2.5" y="0.75" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$4" x="-2.5" y="0.25" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$5" x="-2.5" y="-0.25" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$6" x="-2.5" y="-0.75" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$7" x="-2.5" y="-1.25" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$8" x="-2.5" y="-1.75" dx="0.6" dy="0.3" layer="1"/>
-<smd name="P$9" x="-1.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$10" x="-1.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$11" x="-0.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$12" x="-0.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$13" x="0.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$14" x="0.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$15" x="1.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$16" x="1.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
-<smd name="P$17" x="2.5" y="-1.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$18" x="2.5" y="-1.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$19" x="2.5" y="-0.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$20" x="2.5" y="-0.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$21" x="2.5" y="0.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$22" x="2.5" y="0.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$24" x="2.5" y="1.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
-<smd name="P$25" x="1.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$26" x="1.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$27" x="0.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$28" x="0.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$29" x="-0.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$30" x="-0.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$31" x="-1.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$32" x="-1.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
-<smd name="P$33" x="0" y="0" dx="3.45" dy="3.45" layer="1" thermals="no" cream="no"/>
-<smd name="P$23" x="2.5" y="1.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="1" x="-2.5" y="1.75" dx="0.6" dy="0.3" layer="1"/>
+<smd name="2" x="-2.5" y="1.25" dx="0.6" dy="0.3" layer="1"/>
+<smd name="3" x="-2.5" y="0.75" dx="0.6" dy="0.3" layer="1"/>
+<smd name="4" x="-2.5" y="0.25" dx="0.6" dy="0.3" layer="1"/>
+<smd name="5" x="-2.5" y="-0.25" dx="0.6" dy="0.3" layer="1"/>
+<smd name="6" x="-2.5" y="-0.75" dx="0.6" dy="0.3" layer="1"/>
+<smd name="7" x="-2.5" y="-1.25" dx="0.6" dy="0.3" layer="1"/>
+<smd name="8" x="-2.5" y="-1.75" dx="0.6" dy="0.3" layer="1"/>
+<smd name="9" x="-1.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="10" x="-1.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="11" x="-0.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="12" x="-0.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="13" x="0.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="14" x="0.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="15" x="1.25" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="16" x="1.75" y="-2.5" dx="0.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="17" x="2.5" y="-1.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="18" x="2.5" y="-1.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="19" x="2.5" y="-0.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="20" x="2.5" y="-0.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="21" x="2.5" y="0.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="22" x="2.5" y="0.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="24" x="2.5" y="1.75" dx="0.6" dy="0.3" layer="1" rot="R180"/>
+<smd name="25" x="1.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="26" x="1.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="27" x="0.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="28" x="0.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="29" x="-0.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="30" x="-0.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="31" x="-1.25" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="32" x="-1.75" y="2.5" dx="0.6" dy="0.3" layer="1" rot="R270"/>
+<smd name="THERMAL" x="0" y="0" dx="3.45" dy="3.45" layer="1" thermals="no" cream="no"/>
+<smd name="23" x="2.5" y="1.25" dx="0.6" dy="0.3" layer="1" rot="R180"/>
 <circle x="-3" y="2.3" radius="0.14141875" width="0.1" layer="21"/>
 <text x="0" y="2.9" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 <rectangle x1="-1.5" y1="-1.6" x2="-0.2" y2="-0.2" layer="31"/>
@@ -2338,14 +2338,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-5.08" y1="25.4" x2="15.24" y2="25.4" width="0.254" layer="94"/>
 <wire x1="15.24" y1="25.4" x2="15.24" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="15.24" y1="-2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
-<pin name="RFC" x="-10.16" y="17.78" visible="pin" length="middle"/>
-<pin name="V1" x="-10.16" y="12.7" visible="pin" length="middle"/>
-<pin name="V2" x="-10.16" y="10.16" visible="pin" length="middle"/>
-<pin name="V3" x="-10.16" y="7.62" visible="pin" length="middle"/>
-<pin name="RF1" x="5.08" y="30.48" visible="pin" length="middle" rot="R270"/>
-<pin name="RF2" x="20.32" y="10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="RF3" x="5.08" y="-7.62" visible="pin" length="middle" rot="R90"/>
-<pin name="GND" x="0" y="-7.62" visible="pin" length="middle" rot="R90"/>
+<pin name="RFC" x="-10.16" y="17.78" length="middle"/>
+<pin name="V1" x="-10.16" y="12.7" length="middle"/>
+<pin name="V2" x="-10.16" y="10.16" length="middle"/>
+<pin name="V3" x="-10.16" y="7.62" length="middle"/>
+<pin name="RF1" x="5.08" y="30.48" length="middle" rot="R270"/>
+<pin name="RF2" x="20.32" y="10.16" length="middle" rot="R180"/>
+<pin name="RF3" x="5.08" y="-7.62" length="middle" rot="R90"/>
+<pin name="GND" x="0" y="-7.62" length="middle" rot="R90"/>
 <text x="-5.08" y="27.94" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="7.62" y="12.7" size="1.778" layer="95" ratio="12" align="bottom-center">SKY13317
 RF Switch</text>
@@ -2355,36 +2355,36 @@ RF Switch</text>
 <wire x1="-17.78" y1="-25.4" x2="17.78" y2="-25.4" width="0.254" layer="94"/>
 <wire x1="17.78" y1="-25.4" x2="17.78" y2="25.4" width="0.254" layer="94"/>
 <wire x1="17.78" y1="25.4" x2="-17.78" y2="25.4" width="0.254" layer="94"/>
-<pin name="VDD" x="-22.86" y="22.86" visible="pin" length="middle"/>
-<pin name="VSS" x="-22.86" y="-22.86" visible="pin" length="middle"/>
-<pin name="VDDA/VREF" x="-22.86" y="20.32" visible="pin" length="middle"/>
-<pin name="PC14/OSC32IN" x="-22.86" y="12.7" visible="pin" length="middle"/>
-<pin name="PC15/OSC32OUT" x="-22.86" y="10.16" visible="pin" length="middle"/>
-<pin name="!RST" x="22.86" y="22.86" visible="pin" length="middle" rot="R180"/>
-<pin name="PH3/BOOT0" x="22.86" y="20.32" visible="pin" length="middle" rot="R180"/>
-<pin name="PA0/CLKIN" x="22.86" y="15.24" visible="pin" length="middle" rot="R180"/>
-<pin name="PA1" x="22.86" y="12.7" visible="pin" length="middle" rot="R180"/>
-<pin name="PA2" x="22.86" y="10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="PA3" x="22.86" y="7.62" visible="pin" length="middle" rot="R180"/>
-<pin name="PA4" x="22.86" y="5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="PA5" x="22.86" y="2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="PA6" x="22.86" y="0" visible="pin" length="middle" rot="R180"/>
-<pin name="PA7" x="22.86" y="-2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="PA8" x="22.86" y="-5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="PA9" x="22.86" y="-7.62" visible="pin" length="middle" rot="R180"/>
-<pin name="PA10" x="22.86" y="-10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="PA11" x="22.86" y="-12.7" visible="pin" length="middle" rot="R180"/>
-<pin name="PA12" x="22.86" y="-15.24" visible="pin" length="middle" rot="R180"/>
-<pin name="PA13/SWDIO" x="22.86" y="-17.78" visible="pin" length="middle" rot="R180"/>
-<pin name="PA14/SWDCLK" x="22.86" y="-20.32" visible="pin" length="middle" rot="R180"/>
-<pin name="PB0" x="-22.86" y="2.54" visible="pin" length="middle"/>
-<pin name="PB1" x="-22.86" y="0" visible="pin" length="middle"/>
-<pin name="PB3/JTDO/SWO" x="-22.86" y="-2.54" visible="pin" length="middle"/>
-<pin name="PB4/!JTRST" x="-22.86" y="-5.08" visible="pin" length="middle"/>
-<pin name="PB5" x="-22.86" y="-7.62" visible="pin" length="middle"/>
-<pin name="PB6" x="-22.86" y="-10.16" visible="pin" length="middle"/>
-<pin name="PB7" x="-22.86" y="-12.7" visible="pin" length="middle"/>
-<pin name="PA15/JTDI" x="22.86" y="-22.86" visible="pin" length="middle" rot="R180"/>
+<pin name="VDD" x="-22.86" y="22.86" length="middle"/>
+<pin name="VSS" x="-22.86" y="-22.86" length="middle"/>
+<pin name="VDDA/VREF" x="-22.86" y="20.32" length="middle"/>
+<pin name="PC14/OSC32IN" x="-22.86" y="12.7" length="middle"/>
+<pin name="PC15/OSC32OUT" x="-22.86" y="10.16" length="middle"/>
+<pin name="!RST" x="22.86" y="22.86" length="middle" rot="R180"/>
+<pin name="PH3/BOOT0" x="22.86" y="20.32" length="middle" rot="R180"/>
+<pin name="PA0/CLKIN" x="22.86" y="15.24" length="middle" rot="R180"/>
+<pin name="PA1" x="22.86" y="12.7" length="middle" rot="R180"/>
+<pin name="PA2" x="22.86" y="10.16" length="middle" rot="R180"/>
+<pin name="PA3" x="22.86" y="7.62" length="middle" rot="R180"/>
+<pin name="PA4" x="22.86" y="5.08" length="middle" rot="R180"/>
+<pin name="PA5" x="22.86" y="2.54" length="middle" rot="R180"/>
+<pin name="PA6" x="22.86" y="0" length="middle" rot="R180"/>
+<pin name="PA7" x="22.86" y="-2.54" length="middle" rot="R180"/>
+<pin name="PA8" x="22.86" y="-5.08" length="middle" rot="R180"/>
+<pin name="PA9" x="22.86" y="-7.62" length="middle" rot="R180"/>
+<pin name="PA10" x="22.86" y="-10.16" length="middle" rot="R180"/>
+<pin name="PA11" x="22.86" y="-12.7" length="middle" rot="R180"/>
+<pin name="PA12" x="22.86" y="-15.24" length="middle" rot="R180"/>
+<pin name="PA13/SWDIO" x="22.86" y="-17.78" length="middle" rot="R180"/>
+<pin name="PA14/SWDCLK" x="22.86" y="-20.32" length="middle" rot="R180"/>
+<pin name="PB0" x="-22.86" y="2.54" length="middle"/>
+<pin name="PB1" x="-22.86" y="0" length="middle"/>
+<pin name="PB3/JTDO/SWO" x="-22.86" y="-2.54" length="middle"/>
+<pin name="PB4/!JTRST" x="-22.86" y="-5.08" length="middle"/>
+<pin name="PB5" x="-22.86" y="-7.62" length="middle"/>
+<pin name="PB6" x="-22.86" y="-10.16" length="middle"/>
+<pin name="PB7" x="-22.86" y="-12.7" length="middle"/>
+<pin name="PA15/JTDI" x="22.86" y="-22.86" length="middle" rot="R180"/>
 <text x="-7.62" y="-27.94" size="1.778" layer="96" ratio="12" align="bottom-center">STM32L432KC</text>
 <text x="-12.7" y="25.4" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 </symbol>
@@ -2429,7 +2429,7 @@ RF Switch</text>
 <devices>
 <device name="" package="XDFN-8">
 <connects>
-<connect gate="G$1" pin="GND" pad="P$1"/>
+<connect gate="G$1" pin="GND" pad="PAD"/>
 <connect gate="G$1" pin="RF1" pad="4"/>
 <connect gate="G$1" pin="RF2" pad="5"/>
 <connect gate="G$1" pin="RF3" pad="8"/>
@@ -2456,36 +2456,36 @@ RF Switch</text>
 <devices>
 <device name="" package="UQFN-32">
 <connects>
-<connect gate="G$1" pin="!RST" pad="P$4"/>
-<connect gate="G$1" pin="PA0/CLKIN" pad="P$6"/>
-<connect gate="G$1" pin="PA1" pad="P$7"/>
-<connect gate="G$1" pin="PA10" pad="P$20"/>
-<connect gate="G$1" pin="PA11" pad="P$21"/>
-<connect gate="G$1" pin="PA12" pad="P$22"/>
-<connect gate="G$1" pin="PA13/SWDIO" pad="P$23"/>
-<connect gate="G$1" pin="PA14/SWDCLK" pad="P$24"/>
-<connect gate="G$1" pin="PA15/JTDI" pad="P$25"/>
-<connect gate="G$1" pin="PA2" pad="P$8"/>
-<connect gate="G$1" pin="PA3" pad="P$9"/>
-<connect gate="G$1" pin="PA4" pad="P$10"/>
-<connect gate="G$1" pin="PA5" pad="P$11"/>
-<connect gate="G$1" pin="PA6" pad="P$12"/>
-<connect gate="G$1" pin="PA7" pad="P$13"/>
-<connect gate="G$1" pin="PA8" pad="P$18"/>
-<connect gate="G$1" pin="PA9" pad="P$19"/>
-<connect gate="G$1" pin="PB0" pad="P$14"/>
-<connect gate="G$1" pin="PB1" pad="P$15"/>
-<connect gate="G$1" pin="PB3/JTDO/SWO" pad="P$26"/>
-<connect gate="G$1" pin="PB4/!JTRST" pad="P$27"/>
-<connect gate="G$1" pin="PB5" pad="P$28"/>
-<connect gate="G$1" pin="PB6" pad="P$29"/>
-<connect gate="G$1" pin="PB7" pad="P$30"/>
-<connect gate="G$1" pin="PC14/OSC32IN" pad="P$2"/>
-<connect gate="G$1" pin="PC15/OSC32OUT" pad="P$3"/>
-<connect gate="G$1" pin="PH3/BOOT0" pad="P$31"/>
-<connect gate="G$1" pin="VDD" pad="P$1 P$17"/>
-<connect gate="G$1" pin="VDDA/VREF" pad="P$5"/>
-<connect gate="G$1" pin="VSS" pad="P$16 P$32 P$33"/>
+<connect gate="G$1" pin="!RST" pad="4"/>
+<connect gate="G$1" pin="PA0/CLKIN" pad="6"/>
+<connect gate="G$1" pin="PA1" pad="7"/>
+<connect gate="G$1" pin="PA10" pad="20"/>
+<connect gate="G$1" pin="PA11" pad="21"/>
+<connect gate="G$1" pin="PA12" pad="22"/>
+<connect gate="G$1" pin="PA13/SWDIO" pad="23"/>
+<connect gate="G$1" pin="PA14/SWDCLK" pad="24"/>
+<connect gate="G$1" pin="PA15/JTDI" pad="25"/>
+<connect gate="G$1" pin="PA2" pad="8"/>
+<connect gate="G$1" pin="PA3" pad="9"/>
+<connect gate="G$1" pin="PA4" pad="10"/>
+<connect gate="G$1" pin="PA5" pad="11"/>
+<connect gate="G$1" pin="PA6" pad="12"/>
+<connect gate="G$1" pin="PA7" pad="13"/>
+<connect gate="G$1" pin="PA8" pad="18"/>
+<connect gate="G$1" pin="PA9" pad="19"/>
+<connect gate="G$1" pin="PB0" pad="14"/>
+<connect gate="G$1" pin="PB1" pad="15"/>
+<connect gate="G$1" pin="PB3/JTDO/SWO" pad="26"/>
+<connect gate="G$1" pin="PB4/!JTRST" pad="27"/>
+<connect gate="G$1" pin="PB5" pad="28"/>
+<connect gate="G$1" pin="PB6" pad="29"/>
+<connect gate="G$1" pin="PB7" pad="30"/>
+<connect gate="G$1" pin="PC14/OSC32IN" pad="2"/>
+<connect gate="G$1" pin="PC15/OSC32OUT" pad="3"/>
+<connect gate="G$1" pin="PH3/BOOT0" pad="31"/>
+<connect gate="G$1" pin="VDD" pad="1 17"/>
+<connect gate="G$1" pin="VDDA/VREF" pad="5"/>
+<connect gate="G$1" pin="VSS" pad="16 32 THERMAL"/>
 </connects>
 <technologies>
 <technology name="">
@@ -3097,6 +3097,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="541-1322-1-ND" constant="no"/>
+<attribute name="MF" value="Vishay Dale" constant="no"/>
+<attribute name="MFN" value="IHLP1212BZER2R2M11" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3880,8 +3882,8 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins"/>
-<attribute name="REV" value="B"/>
-<attribute name="TITLE" value="AUDIO SPECTRUM MODULE"/>
+<attribute name="REV" value="A"/>
+<attribute name="TITLE" value="RF Spectrum Module"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -3918,12 +3920,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </part>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
-<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k">
+<part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k">
 <attribute name="DIGIKEY" value="311-750KGRCT-ND"/>
 <attribute name="MF" value="Yageo"/>
 <attribute name="MFN" value="311-750KGRCT-ND"/>
 </part>
-<part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k">
+<part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k">
 <attribute name="DIGIKEY" value="311-240KGRCT-ND"/>
 <attribute name="MF" value="Yageo"/>
 <attribute name="MFN" value="RC0603JR-07240KL"/>
@@ -4057,6 +4059,11 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" value="Molex"/>
 <attribute name="MFN" value="0901200764"/>
 </part>
+<part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
+<attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402FR-07100KL"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -4066,7 +4073,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
-<instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
+<instance part="FRAME1" gate="G$2" x="152.4" y="0"/>
 <instance part="J4" gate="G$1" x="193.04" y="53.34"/>
 <instance part="GND19" gate="1" x="175.26" y="43.18"/>
 <instance part="J3" gate="G$1" x="22.86" y="157.48"/>
@@ -4093,12 +4100,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </instance>
 <instance part="GND18" gate="1" x="25.4" y="10.16"/>
 <instance part="GND21" gate="1" x="73.66" y="10.16"/>
-<instance part="R8" gate="G$1" x="99.06" y="35.56" rot="R90">
+<instance part="R9" gate="G$1" x="99.06" y="35.56" rot="R90">
 <attribute name="DIGIKEY" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MF" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MFN" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="R7" gate="G$1" x="99.06" y="22.86" rot="R90">
+<instance part="R8" gate="G$1" x="99.06" y="22.86" rot="R90">
 <attribute name="DIGIKEY" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MF" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MFN" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
@@ -4225,7 +4232,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="73.66" y1="15.24" x2="73.66" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="15.24" x2="73.66" y2="15.24" width="0.1524" layer="91"/>
 <junction x="73.66" y="15.24"/>
-<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="1"/>
 <wire x1="73.66" y1="17.78" x2="99.06" y2="17.78" width="0.1524" layer="91"/>
 <junction x="73.66" y="17.78"/>
 <pinref part="C15" gate="G$1" pin="1"/>
@@ -4311,7 +4318,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="86.36" y1="40.64" x2="91.44" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="40.64" x2="91.44" y2="38.1" width="0.1524" layer="91"/>
 <junction x="86.36" y="40.64"/>
-<pinref part="R8" gate="G$1" pin="2"/>
+<pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="99.06" y1="38.1" x2="99.06" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="40.64" x2="91.44" y2="40.64" width="0.1524" layer="91"/>
 <junction x="91.44" y="40.64"/>
@@ -4411,8 +4418,8 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="N$37" class="0">
 <segment>
-<pinref part="R7" gate="G$1" pin="2"/>
-<pinref part="R8" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="2"/>
+<pinref part="R9" gate="G$1" pin="1"/>
 <wire x1="99.06" y1="25.4" x2="99.06" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G$1" pin="FB"/>
 <wire x1="66.04" y1="25.4" x2="99.06" y2="25.4" width="0.1524" layer="91"/>
@@ -4742,7 +4749,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
-<instance part="FRAME2" gate="G$2" x="147.32" y="0"/>
+<instance part="FRAME2" gate="G$2" x="152.4" y="0"/>
 <instance part="U1" gate="G$1" x="106.68" y="119.38"/>
 <instance part="GND1" gate="1" x="78.74" y="91.44"/>
 <instance part="U2" gate="G$1" x="157.48" y="116.84"/>
@@ -4769,10 +4776,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="GND2" gate="1" x="149.86" y="83.82"/>
 <instance part="GND3" gate="1" x="203.2" y="114.3"/>
 <instance part="GND4" gate="1" x="170.18" y="154.94"/>
-<instance part="R6" gate="G$1" x="60.96" y="124.46" rot="R90">
-<attribute name="DIGIKEY" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="60.96" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<instance part="R6" gate="G$1" x="60.96" y="129.54" rot="R90">
+<attribute name="DIGIKEY" x="60.96" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="60.96" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="60.96" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="A1" gate="G$1" x="170.18" y="167.64"/>
 <instance part="A2" gate="G$1" x="203.2" y="127"/>
@@ -4793,6 +4800,11 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
 <attribute name="MF" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
 <attribute name="MFN" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="R7" gate="G$1" x="53.34" y="129.54" rot="R90">
+<attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -4850,9 +4862,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="76.2" y="152.4" size="1.016" layer="95" rot="R90" xref="yes"/>
 <pinref part="R6" gate="G$1" pin="2"/>
 <wire x1="76.2" y1="147.32" x2="76.2" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="127" x2="60.96" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="132.08" x2="60.96" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="147.32" x2="76.2" y2="147.32" width="0.1524" layer="91"/>
 <junction x="76.2" y="147.32"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="53.34" y1="132.08" x2="53.34" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="147.32" x2="60.96" y2="147.32" width="0.1524" layer="91"/>
+<junction x="60.96" y="147.32"/>
 </segment>
 </net>
 <net name="RF_TX" class="0">
@@ -4894,8 +4910,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <net name="RF_GPIO2" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="GPIO2"/>
-<wire x1="86.36" y1="119.38" x2="81.28" y2="119.38" width="0.1524" layer="91"/>
-<label x="81.28" y="119.38" size="1.016" layer="95" rot="R180" xref="yes"/>
+<wire x1="86.36" y1="119.38" x2="53.34" y2="119.38" width="0.1524" layer="91"/>
+<label x="50.8" y="119.38" size="1.016" layer="95" rot="R180" xref="yes"/>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="53.34" y1="119.38" x2="50.8" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="124.46" x2="53.34" y2="119.38" width="0.1524" layer="91"/>
+<junction x="53.34" y="119.38"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
@@ -4907,10 +4927,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="U1" gate="G$1" pin="GPIO3"/>
 <wire x1="86.36" y1="116.84" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
-<label x="55.88" y="116.84" size="1.016" layer="95" rot="R180" xref="yes"/>
+<label x="50.8" y="116.84" size="1.016" layer="95" rot="R180" xref="yes"/>
 <pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="116.84" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="119.38" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="116.84" x2="50.8" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="124.46" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
 <junction x="60.96" y="116.84"/>
 </segment>
 <segment>
