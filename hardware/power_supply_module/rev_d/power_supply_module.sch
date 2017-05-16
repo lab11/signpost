@@ -3597,7 +3597,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </library>
 </libraries>
 <attributes>
-<attribute name="AUTHOR" value="N. Jackson"/>
+<attribute name="AUTHOR" value="Neal Jackson"/>
 <attribute name="REV" value="D"/>
 <attribute name="TITLE" value="Power Supply Module"/>
 </attributes>

@@ -202,10 +202,10 @@ Neal Jackson
 <text x="22.352" y="58.166" size="0.6096" layer="25" font="vector" ratio="12" rot="R45" align="top-center">VSOL-</text>
 <text x="3.302" y="30.48" size="1.016" layer="25" font="vector" ratio="12" align="top-center">ON</text>
 <text x="5.334" y="34.29" size="0.8128" layer="25" font="vector" ratio="12" rot="R90" align="top-center">Watchdog Enable</text>
-<text x="4.826" y="27.686" size="0.8128" layer="25" ratio="12" align="center-left">VBAT+</text>
-<text x="4.826" y="25.146" size="0.8128" layer="25" ratio="12" align="center-left">VBAT-</text>
-<text x="4.826" y="22.606" size="0.8128" layer="25" ratio="12" align="center-left">VSOL+</text>
-<text x="4.826" y="20.066" size="0.8128" layer="25" ratio="12" align="center-left">GND</text>
+<text x="4.826" y="27.686" size="1.016" layer="25" ratio="12" align="center-left">VBAT+</text>
+<text x="4.826" y="25.146" size="1.016" layer="25" ratio="12" align="center-left">VBAT-</text>
+<text x="4.826" y="22.606" size="1.016" layer="25" ratio="12" align="center-left">VSOL+</text>
+<text x="4.826" y="20.066" size="1.016" layer="25" ratio="12" align="center-left">GND</text>
 <text x="34.925" y="47.752" size="1.016" layer="25" ratio="12" align="bottom-center">SMBUS
 Header</text>
 <wire x1="16.51" y1="52.324" x2="16.51" y2="51.562" width="0.1524" layer="41"/>
@@ -2124,12 +2124,12 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="R12" library="passives" package="0402_RES" value="1 kΩ" x="10.668" y="26.67" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="P1.0KJCT-ND" x="10.668" y="26.67" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="10.414" y="27.305" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="10.795" y="28.448" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="10.668" y="28.067" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R55" library="passives" package="0805_RES" value="301 kΩ" x="14.478" y="28.956" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="P301KDATR-ND" x="14.478" y="28.956" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="11.811" y="29.464" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="12.573" y="29.718" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="14.478" y="30.353" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R42" library="passives" package="0805_RES" value="23.2 kΩ" x="14.478" y="26.67" smashed="yes">
@@ -2282,7 +2282,7 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="C26" library="passives" package="0402_CAP" value="0.47 uF" x="7.112" y="32.258" smashed="yes">
 <attribute name="DIGIKEY" value="490-3266-1-ND" x="7.112" y="32.258" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="9.652" y="31.623" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="8.128" y="30.607" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C27" library="passives" package="0402_CAP" value="0.82 uF" x="12.7" y="36.322" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-10440-1-ND" x="12.7" y="36.322" size="1.778" layer="27" rot="R270" display="off"/>
@@ -2319,10 +2319,10 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="14.605" y="38.862" size="1.016" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="11.684" y="38.989" size="1.27" layer="27" font="vector" rot="R270"/>
 </element>
-<element name="MON_GND" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="9.398" y="17.018" smashed="yes">
-<attribute name="DIGIKEY" value="5001K-ND" x="9.398" y="17.018" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="9.398" y="18.542" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
-<attribute name="VALUE" x="9.398" y="14.478" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
+<element name="MON_GND" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="9.652" y="16.764" smashed="yes">
+<attribute name="DIGIKEY" value="5001K-ND" x="9.652" y="16.764" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="9.652" y="18.288" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="9.652" y="14.224" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U29" library="chips" package="SOIC-8" value="M24C01WMN" x="51.308" y="50.546" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="497-8631-1-ND" x="51.308" y="50.546" size="1.778" layer="27" rot="R270" display="off"/>
@@ -2349,7 +2349,7 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="RESET" library="switches" package="PTS810SJ" value="PTS810SJ" x="9.144" y="37.084" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="CKN10504CT-ND" x="9.144" y="37.084" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="11.074" y="37.084" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="9.652" y="34.392" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="7.294" y="37.084" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R63" library="passives" package="0402_RES" value="1 MΩ" x="18.288" y="26.924" smashed="yes" rot="R180">
@@ -5061,7 +5061,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="RESET" pad="3"/>
 <contactref element="RESET" pad="4"/>
 <via x="6.858" y="37.338" extent="1-16" drill="0.35"/>
-<via x="9.652" y="33.274" extent="1-16" drill="0.35"/>
+<via x="9.652" y="33.02" extent="1-16" drill="0.35"/>
 <contactref element="D1" pad="P$1"/>
 <wire x1="22.606" y1="28.448" x2="22.606" y2="30.48" width="1.27" layer="1"/>
 <wire x1="22.606" y1="28.448" x2="22.606" y2="26.162" width="1.27" layer="1"/>
@@ -5215,31 +5215,31 @@ Quickturn PCB 4 Layer .DRU</description>
 <approved hash="19,1,37b88bd688cb34a5"/>
 <approved hash="19,1,08b0b4de88d734b9"/>
 <approved hash="19,1,2a50963e8813347d"/>
-<approved hash="19,1,6e230caf08ab6a27"/>
 <approved hash="19,1,69e70b6b097b6bf7"/>
+<approved hash="19,1,6e230caf08ab6a27"/>
 <approved hash="19,1,65d5d759d9596bd5"/>
-<approved hash="19,1,aa2124ad20a1ae2d"/>
 <approved hash="19,1,ade523692171affd"/>
+<approved hash="19,1,aa2124ad20a1ae2d"/>
 <approved hash="5,1,23614c4dacd29e5f"/>
-<approved hash="5,1,2863504fbb3a8ab5"/>
-<approved hash="5,1,2863504fbb3a8ab5"/>
-<approved hash="5,1,2863504fbb3a8ab5"/>
-<approved hash="5,1,6e6f61c09e389047"/>
 <approved hash="5,1,28a021c0701847dc"/>
+<approved hash="5,1,6e6f61c09e389047"/>
+<approved hash="5,1,2863504fbb3a8ab5"/>
+<approved hash="5,1,2863504fbb3a8ab5"/>
+<approved hash="5,1,2863504fbb3a8ab5"/>
 <approved hash="5,1,2fbac098afc04652"/>
-<approved hash="5,1,9493f2c0913e695d"/>
 <approved hash="5,1,d9b8fe76ca3e8543"/>
+<approved hash="5,1,9493f2c0913e695d"/>
 <approved hash="5,1,ba06ba27d2d9c386"/>
 <approved hash="5,1,247ba187a1942a68"/>
 <approved hash="5,1,8e01a906f1123ee7"/>
 <approved hash="5,1,4f5de3c917a442f3"/>
-<approved hash="19,1,ade3236f21afaf23"/>
 <approved hash="19,1,a3e72d6b2f4fa1c3"/>
+<approved hash="19,1,ade3236f21afaf23"/>
 <approved hash="19,1,efea0d660c86ee0a"/>
 <approved hash="19,1,a7e7356b374da5c1"/>
 <approved hash="19,1,a9e33b6f39adab21"/>
-<approved hash="19,1,4eb1545f485a52b4"/>
 <approved hash="19,1,52b5485b49795397"/>
+<approved hash="19,1,4eb1545f485a52b4"/>
 <approved hash="5,1,e97dac53dbb63551"/>
 <approved hash="5,1,9974ab93a707c941"/>
 <approved hash="5,1,16b60788d05a7c85"/>
@@ -5251,13 +5251,13 @@ Quickturn PCB 4 Layer .DRU</description>
 <approved hash="5,1,a89306cd3942aae4"/>
 <approved hash="5,1,1ba25a40f16c9470"/>
 <approved hash="5,1,c0e8f73f56eeb3ef"/>
-<approved hash="19,1,a6e60d6a0f52a4de"/>
 <approved hash="19,1,a8e2036e01b2aa3e"/>
+<approved hash="19,1,a6e60d6a0f52a4de"/>
 <approved hash="19,1,64ed09610880650c"/>
-<approved hash="19,1,a2e02d6c2f49a0c5"/>
 <approved hash="19,1,ace4236821a9ae25"/>
-<approved hash="5,1,df70adafaee5e061"/>
+<approved hash="19,1,a2e02d6c2f49a0c5"/>
 <approved hash="5,1,e791aaa7e0741c61"/>
+<approved hash="5,1,df70adafaee5e061"/>
 <approved hash="5,1,38701e948049e553"/>
 <approved hash="5,1,87a0e827682987a0"/>
 <approved hash="5,1,d1c3b17d896fd943"/>
@@ -5266,22 +5266,22 @@ Quickturn PCB 4 Layer .DRU</description>
 <approved hash="5,1,2970b2690bf16b1d"/>
 <approved hash="5,1,5749311bd054aaf8"/>
 <approved hash="5,1,82e56862e86e82e7"/>
-<approved hash="5,1,d282413cbc917f84"/>
 <approved hash="5,1,8ec347a3fe48822b"/>
-<approved hash="5,1,e9263045bf433cd8"/>
+<approved hash="5,1,d282413cbc917f84"/>
 <approved hash="5,1,bd9fdda545c36d7e"/>
+<approved hash="5,1,e9263045bf433cd8"/>
 <approved hash="5,1,209b2ba4f5c7c3d0"/>
-<approved hash="19,1,a827d2abd1bcab30"/>
 <approved hash="19,1,a863d2efd3eca960"/>
+<approved hash="19,1,a827d2abd1bcab30"/>
 <approved hash="19,1,675b09d708d6665a"/>
-<approved hash="19,1,ac6262ee63ebad67"/>
 <approved hash="19,1,ac2662aa61bbaf37"/>
+<approved hash="19,1,ac6262ee63ebad67"/>
 <approved hash="5,1,b9108bdffa905159"/>
 <approved hash="5,1,b9518c47fc21ad69"/>
 <approved hash="5,1,6315efbb20766126"/>
 <approved hash="5,1,05c4e843880d0584"/>
-<approved hash="5,1,51a3b31d23250664"/>
 <approved hash="5,1,6fe2b45b149bfa8a"/>
+<approved hash="5,1,51a3b31d23250664"/>
 <approved hash="19,1,6ee0f46cf0896a05"/>
 <approved hash="19,1,6b24f1a8f0696ae5"/>
 <approved hash="19,1,483cc6b0c7b3493f"/>
