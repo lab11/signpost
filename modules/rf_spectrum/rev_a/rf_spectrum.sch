@@ -4049,11 +4049,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MFN" value="RC0402JR-070RL"/>
 </part>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
-<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH">
-<attribute name="DIGIKEY" value="WM8086-ND"/>
-<attribute name="MF" value="Molex"/>
-<attribute name="MFN" value="0901200764"/>
-</part>
 <part name="J2" library="SparkFun-Connectors" deviceset="M04" device="PTH">
 <attribute name="DIGIKEY" value="WM8086-ND"/>
 <attribute name="MF" value="Molex"/>
@@ -4064,6 +4059,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" value="Yageo"/>
 <attribute name="MFN" value="RC0402FR-07100KL"/>
 </part>
+<part name="JP1" library="SparkFun-Connectors" deviceset="M04" device="PTH"/>
 </parts>
 <sheets>
 <sheet>
@@ -4791,11 +4787,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MFN" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND10" gate="1" x="134.62" y="142.24"/>
-<instance part="J1" gate="G$1" x="78.74" y="55.88">
-<attribute name="DIGIKEY" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-</instance>
 <instance part="J2" gate="G$1" x="116.84" y="55.88">
 <attribute name="DIGIKEY" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
 <attribute name="MF" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
@@ -4806,6 +4797,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MFN" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
+<instance part="JP1" gate="G$1" x="76.2" y="55.88"/>
 </instances>
 <busses>
 </busses>
@@ -4878,9 +4870,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="134.62" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J1" gate="G$1" pin="3"/>
-<wire x1="83.82" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
 <label x="86.36" y="58.42" size="1.27" layer="95" xref="yes"/>
+<pinref part="JP1" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="RF_RX" class="0">
@@ -4890,9 +4882,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="132.08" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J1" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <label x="86.36" y="55.88" size="1.27" layer="95" xref="yes"/>
+<pinref part="JP1" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="!RF_RESET" class="0">
@@ -4902,9 +4894,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="142.24" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J1" gate="G$1" pin="4"/>
-<wire x1="83.82" y1="60.96" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="60.96" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
 <label x="86.36" y="60.96" size="1.27" layer="95" xref="yes"/>
+<pinref part="JP1" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="RF_GPIO2" class="0">
@@ -4918,9 +4910,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="53.34" y="119.38"/>
 </segment>
 <segment>
-<pinref part="J1" gate="G$1" pin="1"/>
-<wire x1="83.82" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
 <label x="86.36" y="53.34" size="1.27" layer="95" xref="yes"/>
+<pinref part="JP1" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RF_GPIO3" class="0">
