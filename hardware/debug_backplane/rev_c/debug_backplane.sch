@@ -3883,7 +3883,7 @@ DigiKey RB521ZS8A30TE61CT-ND</description>
 </symbols>
 <devicesets>
 <deviceset name="CAPACITOR" prefix="C" uservalue="yes">
-<description>0402 Capacitor</description>
+<description>SMD Capacitor</description>
 <gates>
 <gate name="G$1" symbol="CAPACITOR" x="0" y="0"/>
 </gates>
@@ -4467,6 +4467,25 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <rectangle x1="0.4572" y1="1.8542" x2="0.8128" y2="2.8702" layer="51"/>
 <rectangle x1="1.7272" y1="1.8542" x2="2.0828" y2="2.8702" layer="51"/>
 </package>
+<package name="SOT-23-8">
+<wire x1="-1.45" y1="-0.83" x2="-1.45" y2="0.83" width="0.1524" layer="21"/>
+<wire x1="-1.3" y1="-0.83" x2="-1.45" y2="-0.83" width="0.1524" layer="21"/>
+<wire x1="-1.45" y1="0.83" x2="-1.3" y2="0.83" width="0.1524" layer="21"/>
+<circle x="-1.675" y="-1.5" radius="0.1" width="0.1524" layer="21"/>
+<smd name="1" x="-0.975" y="-1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="2" x="-0.325" y="-1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="3" x="0.325" y="-1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="6" x="0.325" y="1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="7" x="-0.325" y="1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="8" x="-0.975" y="1.17" dx="0.42" dy="1.3" layer="1"/>
+<text x="-2.23" y="2.54" size="1.27" layer="25" font="vector">&gt;NAME</text>
+<text x="-2.23" y="-3.81" size="1.27" layer="27" font="vector">&gt;VALUE</text>
+<smd name="5" x="0.975" y="1.17" dx="0.42" dy="1.3" layer="1"/>
+<smd name="4" x="0.975" y="-1.17" dx="0.42" dy="1.3" layer="1"/>
+<wire x1="1.45" y1="0.83" x2="1.45" y2="-0.83" width="0.1524" layer="21"/>
+<wire x1="1.3" y1="0.83" x2="1.45" y2="0.83" width="0.1524" layer="21"/>
+<wire x1="1.45" y1="-0.83" x2="1.3" y2="-0.83" width="0.1524" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="MAX8887">
@@ -4579,6 +4598,22 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <text x="-7.62" y="11.176" size="1.778" layer="95">&gt;NAME</text>
 <text x="-7.62" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="10.16" y="-7.62" length="short" rot="R180"/>
+</symbol>
+<symbol name="MAX6746">
+<wire x1="-12.7" y1="-17.78" x2="-12.7" y2="15.24" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="15.24" x2="12.7" y2="15.24" width="0.254" layer="94"/>
+<wire x1="12.7" y1="15.24" x2="12.7" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-17.78" x2="-12.7" y2="-17.78" width="0.254" layer="94"/>
+<pin name="!MR" x="17.78" y="-7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="-17.78" y="-12.7" visible="pin" length="middle"/>
+<pin name="SRT" x="-17.78" y="2.54" visible="pin" length="middle"/>
+<pin name="SWT" x="-17.78" y="-5.08" visible="pin" length="middle"/>
+<pin name="VCC" x="17.78" y="7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="!RESET" x="17.78" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="WDI" x="-17.78" y="7.62" visible="pin" length="middle"/>
+<pin name="WDS" x="17.78" y="-12.7" visible="pin" length="middle" rot="R180"/>
+<text x="-7.62" y="15.24" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
+<text x="0" y="12.7" size="1.778" layer="95" rot="R180" align="bottom-center">MAX6746</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -4735,6 +4770,29 @@ and Current Measurement</description>
 <technology name="">
 <attribute name="DIGIKEY" value="497-8631-1-ND" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="MAX6746" prefix="U">
+<description>A simple watchdog timer with adjustable timeouts and reset time</description>
+<gates>
+<gate name="G$1" symbol="MAX6746" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT-23-8">
+<connects>
+<connect gate="G$1" pin="!MR" pad="1"/>
+<connect gate="G$1" pin="!RESET" pad="7"/>
+<connect gate="G$1" pin="GND" pad="4"/>
+<connect gate="G$1" pin="SRT" pad="3"/>
+<connect gate="G$1" pin="SWT" pad="2"/>
+<connect gate="G$1" pin="VCC" pad="8"/>
+<connect gate="G$1" pin="WDI" pad="6"/>
+<connect gate="G$1" pin="WDS" pad="5"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -8502,7 +8560,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$11" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="R49" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$16" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="GND89" library="umich" deviceset="GND" device=""/>
 <part name="R68" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="R69" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="GND90" library="umich" deviceset="GND" device=""/>
@@ -8520,7 +8577,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND96" library="umich" deviceset="GND" device=""/>
 <part name="D23" library="leds" deviceset="LED" device="0603"/>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="1kΩ"/>
+<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="470Ω"/>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0603_RES" value="0Ω - DNP"/>
 <part name="U26" library="signpost" deviceset="TUSB2077A" device=""/>
 <part name="R33" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
@@ -8780,6 +8837,25 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="J4" library="connector" deviceset="TC2030-FTDI-I2C" device=""/>
 <part name="U$74" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND129" library="umich" deviceset="GND" device=""/>
+<part name="FRAME18" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
+<part name="S23" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
+<part name="U30" library="chips" deviceset="MAX6746" device=""/>
+<part name="GND130" library="umich" deviceset="GND" device=""/>
+<part name="U$75" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
+<part name="GND131" library="umich" deviceset="GND" device=""/>
+<part name="Q7" library="fets" deviceset="DMN32D2LDF" device=""/>
+<part name="GND132" library="umich" deviceset="GND" device=""/>
+<part name="D36" library="leds" deviceset="LED" device="0603"/>
+<part name="U$76" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
+<part name="GND89" library="umich" deviceset="GND" device=""/>
+<part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="470Ω"/>
+<part name="R86" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
+<part name="C76" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.82uF">
+<attribute name="DIGIKEY" value="	490-11493-1-ND"/>
+</part>
+<part name="C77" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.47uF">
+<attribute name="DIGIKEY" value="490-1539-1-ND"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -8788,7 +8864,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Special Modules</text>
 <text x="147.32" y="175.26" size="2.54" layer="98" align="center">Pull-up/downs</text>
 <text x="210.82" y="172.72" size="2.54" layer="98" align="center">Plated Mounting Holes</text>
-<text x="195.58" y="68.58" size="2.54" layer="98" align="center">Global Reset</text>
 <text x="203.2" y="129.54" size="2.54" layer="98" align="center">Fiducials</text>
 <wire x1="254" y1="175.26" x2="190.5" y2="175.26" width="0.254" layer="98"/>
 <wire x1="190.5" y1="175.26" x2="190.5" y2="134.62" width="0.254" layer="98"/>
@@ -8814,15 +8889,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="GND77" gate="1" x="106.68" y="43.18"/>
 <instance part="GND78" gate="1" x="106.68" y="5.08"/>
 <instance part="U$11" gate="G$1" x="93.98" y="180.34"/>
-<instance part="GND89" gate="1" x="93.98" y="142.24"/>
 <instance part="S5" gate="G$1" x="104.14" y="55.88" rot="R90"/>
 <instance part="S6" gate="G$1" x="104.14" y="17.78" rot="R90"/>
-<instance part="S8" gate="G$1" x="93.98" y="154.94" rot="R90"/>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="152.4" y="0"/>
-<instance part="S20" gate="G$1" x="203.2" y="50.8"/>
-<instance part="D2" gate="A" x="170.18" y="50.8"/>
-<instance part="GND116" gate="1" x="213.36" y="43.18"/>
 <instance part="H1" gate="G$1" x="200.66" y="165.1"/>
 <instance part="H2" gate="G$1" x="210.82" y="165.1"/>
 <instance part="H3" gate="G$1" x="220.98" y="165.1"/>
@@ -8832,14 +8902,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="H7" gate="G$1" x="210.82" y="149.86"/>
 <instance part="H8" gate="G$1" x="220.98" y="149.86"/>
 <instance part="GND112" gate="1" x="195.58" y="139.7"/>
-<instance part="D1" gate="D" x="170.18" y="55.88"/>
-<instance part="D1" gate="C" x="170.18" y="60.96"/>
-<instance part="D1" gate="B" x="170.18" y="66.04"/>
-<instance part="D1" gate="A" x="170.18" y="71.12"/>
-<instance part="D2" gate="B" x="170.18" y="45.72"/>
-<instance part="D3" gate="A" x="170.18" y="30.48"/>
-<instance part="D2" gate="C" x="170.18" y="40.64"/>
-<instance part="D2" gate="D" x="170.18" y="35.56"/>
 <instance part="JP15" gate="G$1" x="198.12" y="124.46"/>
 <instance part="JP21" gate="G$1" x="205.74" y="124.46"/>
 <instance part="JP22" gate="G$1" x="198.12" y="119.38"/>
@@ -9007,17 +9069,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="S6" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
-<pinref part="GND89" gate="1" pin="GND"/>
-<wire x1="93.98" y1="144.78" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="S8" gate="G$1" pin="P$1"/>
-</segment>
-<segment>
-<pinref part="S20" gate="G$1" pin="P$2"/>
-<pinref part="GND116" gate="1" pin="GND"/>
-<wire x1="210.82" y1="50.8" x2="213.36" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="50.8" x2="213.36" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="H1" gate="G$1" pin="MOUNT"/>
 <pinref part="GND112" gate="1" pin="GND"/>
 <wire x1="198.12" y1="165.1" x2="195.58" y2="165.1" width="0.1524" layer="91"/>
@@ -9098,24 +9149,15 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </net>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
-<label x="96.52" y="165.1" size="1.27" layer="95" xref="yes"/>
+<label x="71.12" y="165.1" size="1.27" layer="95" xref="yes"/>
 <pinref part="J1" gate="J1" pin="!BACKPLANE_RESET"/>
-<wire x1="96.52" y1="165.1" x2="93.98" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="S8" gate="G$1" pin="P$2"/>
-<wire x1="93.98" y1="165.1" x2="68.58" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="162.56" x2="93.98" y2="165.1" width="0.1524" layer="91"/>
-<junction x="93.98" y="165.1"/>
+<wire x1="71.12" y1="165.1" x2="68.58" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="162.56" y1="152.4" x2="160.02" y2="152.4" width="0.1524" layer="91"/>
 <label x="160.02" y="152.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R41" gate="G$1" pin="1"/>
 <wire x1="162.56" y1="152.4" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="162.56" y1="30.48" x2="165.1" y2="30.48" width="0.1524" layer="91"/>
-<label x="162.56" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D3" gate="A" pin="ANODE"/>
 </segment>
 </net>
 <net name="CONT_MOD2_IN" class="0">
@@ -9162,11 +9204,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <wire x1="104.14" y1="63.5" x2="104.14" y2="66.04" width="0.1524" layer="91"/>
 <junction x="104.14" y="66.04"/>
 <pinref part="S5" gate="G$1" pin="P$2"/>
-</segment>
-<segment>
-<wire x1="160.02" y1="60.96" x2="165.1" y2="60.96" width="0.1524" layer="91"/>
-<label x="160.02" y="60.96" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D1" gate="C" pin="ANODE"/>
 </segment>
 </net>
 <net name="CONT0_DBG_GPIO1" class="0">
@@ -9221,11 +9258,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <junction x="104.14" y="27.94"/>
 <pinref part="S6" gate="G$1" pin="P$2"/>
 </segment>
-<segment>
-<wire x1="162.56" y1="55.88" x2="165.1" y2="55.88" width="0.1524" layer="91"/>
-<label x="162.56" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D1" gate="D" pin="ANODE"/>
-</segment>
 </net>
 <net name="CONT1_DBG_GPIO1" class="0">
 <segment>
@@ -9246,88 +9278,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="J1" gate="J1" pin="!WATCHDOG"/>
 <wire x1="71.12" y1="162.56" x2="68.58" y2="162.56" width="0.1524" layer="91"/>
 <label x="71.12" y="162.56" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="MOD0_DBG_!RESET" class="0">
-<segment>
-<label x="162.56" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D1" gate="A" pin="ANODE"/>
-<wire x1="162.56" y1="71.12" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MOD1_DBG_!RESET" class="0">
-<segment>
-<label x="162.56" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D1" gate="B" pin="ANODE"/>
-<wire x1="162.56" y1="66.04" x2="165.1" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="RADIO_!RESET" class="0">
-<segment>
-<pinref part="D2" gate="A" pin="ANODE"/>
-<wire x1="162.56" y1="50.8" x2="165.1" y2="50.8" width="0.1524" layer="91"/>
-<label x="162.56" y="50.8" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="USB_!RESET" class="0">
-<segment>
-<wire x1="162.56" y1="45.72" x2="165.1" y2="45.72" width="0.1524" layer="91"/>
-<label x="162.56" y="45.72" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D2" gate="B" pin="ANODE"/>
-</segment>
-</net>
-<net name="!POWER_ON_RESET" class="0">
-<segment>
-<wire x1="162.56" y1="35.56" x2="165.1" y2="35.56" width="0.1524" layer="91"/>
-<label x="162.56" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D2" gate="D" pin="ANODE"/>
-</segment>
-</net>
-<net name="FTDI_!RESET" class="0">
-<segment>
-<wire x1="162.56" y1="40.64" x2="165.1" y2="40.64" width="0.1524" layer="91"/>
-<label x="162.56" y="40.64" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="D2" gate="C" pin="ANODE"/>
-</segment>
-</net>
-<net name="MASTER_!RESET" class="0">
-<segment>
-<pinref part="S20" gate="G$1" pin="P$1"/>
-<pinref part="D2" gate="A" pin="CATHODE"/>
-<wire x1="195.58" y1="50.8" x2="177.8" y2="50.8" width="0.1524" layer="91"/>
-<label x="180.34" y="50.8" size="1.27" layer="95"/>
-<wire x1="177.8" y1="50.8" x2="175.26" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="71.12" x2="177.8" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="71.12" x2="177.8" y2="66.04" width="0.1524" layer="91"/>
-<junction x="177.8" y="50.8"/>
-<wire x1="177.8" y1="66.04" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="60.96" x2="177.8" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="55.88" x2="177.8" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="66.04" x2="177.8" y2="66.04" width="0.1524" layer="91"/>
-<junction x="177.8" y="66.04"/>
-<wire x1="175.26" y1="60.96" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
-<junction x="177.8" y="60.96"/>
-<wire x1="175.26" y1="55.88" x2="177.8" y2="55.88" width="0.1524" layer="91"/>
-<junction x="177.8" y="55.88"/>
-<wire x1="175.26" y1="30.48" x2="177.8" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="30.48" x2="177.8" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="35.56" x2="177.8" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="40.64" x2="177.8" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="45.72" x2="177.8" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="45.72" x2="177.8" y2="45.72" width="0.1524" layer="91"/>
-<junction x="177.8" y="45.72"/>
-<wire x1="175.26" y1="40.64" x2="177.8" y2="40.64" width="0.1524" layer="91"/>
-<junction x="177.8" y="40.64"/>
-<wire x1="175.26" y1="35.56" x2="177.8" y2="35.56" width="0.1524" layer="91"/>
-<junction x="177.8" y="35.56"/>
-<pinref part="D1" gate="D" pin="CATHODE"/>
-<pinref part="D1" gate="C" pin="CATHODE"/>
-<pinref part="D1" gate="B" pin="CATHODE"/>
-<pinref part="D1" gate="A" pin="CATHODE"/>
-<pinref part="D2" gate="B" pin="CATHODE"/>
-<pinref part="D3" gate="A" pin="CATHODE"/>
-<pinref part="D2" gate="C" pin="CATHODE"/>
-<pinref part="D2" gate="D" pin="CATHODE"/>
 </segment>
 </net>
 <net name="CONT_MOD5_IN" class="0">
@@ -9406,6 +9356,297 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <wire x1="116.84" y1="172.72" x2="116.84" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="172.72" x2="116.84" y2="172.72" width="0.1524" layer="91"/>
 <junction x="116.84" y="172.72"/>
+</segment>
+</net>
+</nets>
+</sheet>
+<sheet>
+<description>Watchdog &amp; Reset Network</description>
+<plain>
+<text x="134.62" y="81.28" size="2.54" layer="98" align="center">Global Reset</text>
+<text x="55.88" y="137.16" size="1.016" layer="98" rot="R180" align="bottom-center">800nF = 4s reset period</text>
+<text x="83.82" y="111.76" size="1.016" layer="98" align="bottom-center">460nF=300s watchdog timer (extended mode)</text>
+<text x="73.66" y="132.08" size="1.016" layer="98" align="bottom-center">Connect to GND to disable WDT</text>
+</plain>
+<instances>
+<instance part="FRAME18" gate="G$1" x="0" y="0"/>
+<instance part="FRAME18" gate="G$2" x="152.4" y="0"/>
+<instance part="S20" gate="G$1" x="142.24" y="63.5"/>
+<instance part="D2" gate="A" x="109.22" y="63.5"/>
+<instance part="GND116" gate="1" x="152.4" y="55.88"/>
+<instance part="D1" gate="D" x="109.22" y="68.58"/>
+<instance part="D1" gate="C" x="109.22" y="73.66"/>
+<instance part="D1" gate="B" x="109.22" y="78.74"/>
+<instance part="D1" gate="A" x="109.22" y="83.82"/>
+<instance part="D2" gate="B" x="109.22" y="58.42"/>
+<instance part="D3" gate="A" x="109.22" y="43.18"/>
+<instance part="D2" gate="C" x="109.22" y="53.34"/>
+<instance part="D2" gate="D" x="109.22" y="48.26"/>
+<instance part="S23" gate="G$1" x="81.28" y="127" smashed="yes" rot="R180">
+<attribute name="NAME" x="83.82" y="124.46" size="1.27" layer="95" rot="R180"/>
+</instance>
+<instance part="U30" gate="G$1" x="104.14" y="132.08"/>
+<instance part="GND130" gate="1" x="180.34" y="106.68"/>
+<instance part="U$75" gate="G$1" x="124.46" y="149.86"/>
+<instance part="GND131" gate="1" x="48.26" y="109.22"/>
+<instance part="Q7" gate="G$1" x="177.8" y="132.08" rot="MR0"/>
+<instance part="GND132" gate="1" x="152.4" y="106.68"/>
+<instance part="D3" gate="D" x="182.88" y="149.86" rot="R270"/>
+<instance part="S8" gate="G$1" x="132.08" y="114.3" rot="R90"/>
+<instance part="D36" gate="G$1" x="175.26" y="157.48" rot="R270"/>
+<instance part="U$76" gate="G$1" x="175.26" y="165.1"/>
+<instance part="GND89" gate="1" x="132.08" y="101.6"/>
+<instance part="R85" gate="G$1" x="175.26" y="149.86" rot="R90"/>
+<instance part="R86" gate="G$1" x="152.4" y="124.46" rot="R90"/>
+<instance part="C76" gate="G$1" x="48.26" y="127">
+<attribute name="DIGIKEY" x="48.26" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C77" gate="G$1" x="60.96" y="127">
+<attribute name="DIGIKEY" x="60.96" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+</instances>
+<busses>
+</busses>
+<nets>
+<net name="GND" class="0">
+<segment>
+<pinref part="S20" gate="G$1" pin="P$2"/>
+<pinref part="GND116" gate="1" pin="GND"/>
+<wire x1="149.86" y1="63.5" x2="152.4" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="63.5" x2="152.4" y2="58.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U30" gate="G$1" pin="GND"/>
+<pinref part="GND131" gate="1" pin="GND"/>
+<wire x1="86.36" y1="119.38" x2="71.12" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="119.38" x2="60.96" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="119.38" x2="48.26" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="119.38" x2="48.26" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="119.38" x2="48.26" y2="121.92" width="0.1524" layer="91"/>
+<junction x="48.26" y="119.38"/>
+<wire x1="60.96" y1="119.38" x2="60.96" y2="121.92" width="0.1524" layer="91"/>
+<junction x="60.96" y="119.38"/>
+<pinref part="S23" gate="G$1" pin="A"/>
+<wire x1="73.66" y1="124.46" x2="71.12" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="124.46" x2="71.12" y2="119.38" width="0.1524" layer="91"/>
+<junction x="71.12" y="119.38"/>
+<pinref part="C76" gate="G$1" pin="2"/>
+<pinref part="C77" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="GND132" gate="1" pin="GND"/>
+<wire x1="152.4" y1="119.38" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="R86" gate="G$1" pin="1"/>
+</segment>
+<segment>
+<pinref part="Q7" gate="G$1" pin="S"/>
+<pinref part="GND130" gate="1" pin="GND"/>
+<wire x1="180.34" y1="121.92" x2="180.34" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND89" gate="1" pin="GND"/>
+<pinref part="S8" gate="G$1" pin="P$1"/>
+<wire x1="132.08" y1="104.14" x2="132.08" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="!BACKPLANE_RESET" class="0">
+<segment>
+<wire x1="101.6" y1="43.18" x2="104.14" y2="43.18" width="0.1524" layer="91"/>
+<label x="101.6" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D3" gate="A" pin="ANODE"/>
+</segment>
+<segment>
+<pinref part="D3" gate="D" pin="ANODE"/>
+<wire x1="185.42" y1="157.48" x2="182.88" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="157.48" x2="182.88" y2="154.94" width="0.1524" layer="91"/>
+<label x="185.42" y="157.48" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="CONT0_!RESET" class="0">
+<segment>
+<wire x1="99.06" y1="73.66" x2="104.14" y2="73.66" width="0.1524" layer="91"/>
+<label x="99.06" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D1" gate="C" pin="ANODE"/>
+</segment>
+</net>
+<net name="CONT1_!RESET" class="0">
+<segment>
+<wire x1="101.6" y1="68.58" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
+<label x="101.6" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D1" gate="D" pin="ANODE"/>
+</segment>
+</net>
+<net name="MOD0_DBG_!RESET" class="0">
+<segment>
+<label x="101.6" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D1" gate="A" pin="ANODE"/>
+<wire x1="101.6" y1="83.82" x2="104.14" y2="83.82" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="MOD1_DBG_!RESET" class="0">
+<segment>
+<label x="101.6" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D1" gate="B" pin="ANODE"/>
+<wire x1="101.6" y1="78.74" x2="104.14" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RADIO_!RESET" class="0">
+<segment>
+<pinref part="D2" gate="A" pin="ANODE"/>
+<wire x1="101.6" y1="63.5" x2="104.14" y2="63.5" width="0.1524" layer="91"/>
+<label x="101.6" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="USB_!RESET" class="0">
+<segment>
+<wire x1="101.6" y1="58.42" x2="104.14" y2="58.42" width="0.1524" layer="91"/>
+<label x="101.6" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D2" gate="B" pin="ANODE"/>
+</segment>
+</net>
+<net name="!POWER_ON_RESET" class="0">
+<segment>
+<wire x1="101.6" y1="48.26" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
+<label x="101.6" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D2" gate="D" pin="ANODE"/>
+</segment>
+</net>
+<net name="FTDI_!RESET" class="0">
+<segment>
+<wire x1="101.6" y1="53.34" x2="104.14" y2="53.34" width="0.1524" layer="91"/>
+<label x="101.6" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="D2" gate="C" pin="ANODE"/>
+</segment>
+</net>
+<net name="MASTER_!RESET" class="0">
+<segment>
+<pinref part="S20" gate="G$1" pin="P$1"/>
+<pinref part="D2" gate="A" pin="CATHODE"/>
+<wire x1="134.62" y1="63.5" x2="116.84" y2="63.5" width="0.1524" layer="91"/>
+<label x="119.38" y="63.5" size="1.27" layer="95"/>
+<wire x1="116.84" y1="63.5" x2="114.3" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="83.82" x2="116.84" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="83.82" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
+<junction x="116.84" y="63.5"/>
+<wire x1="116.84" y1="78.74" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="73.66" x2="116.84" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="68.58" x2="116.84" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="78.74" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
+<junction x="116.84" y="78.74"/>
+<wire x1="114.3" y1="73.66" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
+<junction x="116.84" y="73.66"/>
+<wire x1="114.3" y1="68.58" x2="116.84" y2="68.58" width="0.1524" layer="91"/>
+<junction x="116.84" y="68.58"/>
+<wire x1="114.3" y1="43.18" x2="116.84" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="43.18" x2="116.84" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="48.26" x2="116.84" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="53.34" x2="116.84" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="58.42" x2="116.84" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="58.42" x2="116.84" y2="58.42" width="0.1524" layer="91"/>
+<junction x="116.84" y="58.42"/>
+<wire x1="114.3" y1="53.34" x2="116.84" y2="53.34" width="0.1524" layer="91"/>
+<junction x="116.84" y="53.34"/>
+<wire x1="114.3" y1="48.26" x2="116.84" y2="48.26" width="0.1524" layer="91"/>
+<junction x="116.84" y="48.26"/>
+<pinref part="D1" gate="D" pin="CATHODE"/>
+<pinref part="D1" gate="C" pin="CATHODE"/>
+<pinref part="D1" gate="B" pin="CATHODE"/>
+<pinref part="D1" gate="A" pin="CATHODE"/>
+<pinref part="D2" gate="B" pin="CATHODE"/>
+<pinref part="D3" gate="A" pin="CATHODE"/>
+<pinref part="D2" gate="C" pin="CATHODE"/>
+<pinref part="D2" gate="D" pin="CATHODE"/>
+</segment>
+</net>
+<net name="WDT_ON" class="0">
+<segment>
+<pinref part="S23" gate="G$1" pin="B"/>
+<wire x1="73.66" y1="129.54" x2="60.96" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="C77" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="WDT_CTRL" class="0">
+<segment>
+<pinref part="S23" gate="G$1" pin="IN"/>
+<pinref part="U30" gate="G$1" pin="SWT"/>
+<wire x1="83.82" y1="127" x2="86.36" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="!WATCHDOG" class="0">
+<segment>
+<pinref part="U30" gate="G$1" pin="WDI"/>
+<wire x1="83.82" y1="139.7" x2="86.36" y2="139.7" width="0.1524" layer="91"/>
+<label x="83.82" y="139.7" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="3V3_UNMETERED" class="0">
+<segment>
+<pinref part="U30" gate="G$1" pin="VCC"/>
+<pinref part="U$75" gate="G$1" pin="3V3_UNMETERED"/>
+<wire x1="121.92" y1="139.7" x2="124.46" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="U30" gate="G$1" pin="WDS"/>
+<wire x1="124.46" y1="139.7" x2="124.46" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="119.38" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="119.38" x2="124.46" y2="139.7" width="0.1524" layer="91"/>
+<junction x="124.46" y="139.7"/>
+</segment>
+<segment>
+<pinref part="U$76" gate="G$1" pin="3V3_UNMETERED"/>
+<pinref part="D36" gate="G$1" pin="ANODE"/>
+<wire x1="175.26" y1="165.1" x2="175.26" y2="160.02" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$65" class="0">
+<segment>
+<pinref part="U30" gate="G$1" pin="SRT"/>
+<wire x1="86.36" y1="134.62" x2="48.26" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="134.62" x2="48.26" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="C76" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="N$79" class="0">
+<segment>
+<pinref part="U30" gate="G$1" pin="!MR"/>
+<wire x1="121.92" y1="124.46" x2="132.08" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="124.46" x2="132.08" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="S8" gate="G$1" pin="P$2"/>
+</segment>
+</net>
+<net name="N$78" class="0">
+<segment>
+<pinref part="U30" gate="G$1" pin="!RESET"/>
+<wire x1="121.92" y1="132.08" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="132.08" x2="152.4" y2="127" width="0.1524" layer="91"/>
+<pinref part="Q7" gate="G$1" pin="G1"/>
+<wire x1="167.64" y1="132.08" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
+<junction x="152.4" y="132.08"/>
+<pinref part="Q7" gate="G$1" pin="G2"/>
+<wire x1="165.1" y1="132.08" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="127" x2="165.1" y2="127" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="127" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
+<junction x="165.1" y="132.08"/>
+<pinref part="R86" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$80" class="0">
+<segment>
+<pinref part="D36" gate="G$1" pin="CATHODE"/>
+<wire x1="175.26" y1="154.94" x2="175.26" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="R85" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$81" class="0">
+<segment>
+<pinref part="R85" gate="G$1" pin="1"/>
+<pinref part="Q7" gate="G$1" pin="D1"/>
+<wire x1="175.26" y1="144.78" x2="175.26" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$82" class="0">
+<segment>
+<pinref part="D3" gate="D" pin="CATHODE"/>
+<pinref part="Q7" gate="G$1" pin="D2"/>
+<wire x1="182.88" y1="144.78" x2="182.88" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -17112,94 +17353,94 @@ For commissioning EEPROM</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,15,58.42,114.3,U16,VDDCORE,N$39,,,"/>
-<approved hash="104,15,58.42,111.76,U16,VDDOUT,N$44,,,"/>
-<approved hash="104,15,58.42,132.08,U16,VDDIN,3V3_UNMETERED,,,"/>
-<approved hash="104,15,58.42,121.92,U16,VDDANA,N$38,,,"/>
-<approved hash="104,15,58.42,129.54,U16,VDDIO,3V3_UNMETERED,,,"/>
-<approved hash="104,15,58.42,93.98,U16,GNDANA,GND,,,"/>
-<approved hash="104,15,58.42,127,U16,VLCDIN,3V3_UNMETERED,,,"/>
-<approved hash="104,15,205.74,149.86,U1,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,15,205.74,137.16,U1,OSCI,,,,"/>
-<approved hash="202,15,177.8,142.24,U1,!CTS,,,,"/>
-<approved hash="202,15,177.8,137.16,U1,!DSR,,,,"/>
-<approved hash="202,15,177.8,134.62,U1,!DCD,,,,"/>
-<approved hash="202,15,177.8,132.08,U1,!RI,,,,"/>
-<approved hash="104,15,205.74,147.32,U1,VCCIO,3V3_UNMETERED,,,"/>
-<approved hash="104,5,55.88,162.56,U2,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,5,55.88,149.86,U2,OSCI,,,,"/>
-<approved hash="202,5,83.82,154.94,U2,!CTS,,,,"/>
-<approved hash="202,5,83.82,149.86,U2,!DSR,,,,"/>
-<approved hash="202,5,83.82,147.32,U2,!DCD,,,,"/>
-<approved hash="202,5,83.82,144.78,U2,!RI,,,,"/>
-<approved hash="104,5,55.88,160.02,U2,VCCIO,MOD0_VCCIO,,,"/>
-<approved hash="104,5,180.34,162.56,U3,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,5,180.34,149.86,U3,OSCI,,,,"/>
-<approved hash="202,5,208.28,154.94,U3,!CTS,,,,"/>
-<approved hash="202,5,208.28,149.86,U3,!DSR,,,,"/>
-<approved hash="202,5,208.28,147.32,U3,!DCD,,,,"/>
-<approved hash="202,5,208.28,144.78,U3,!RI,,,,"/>
-<approved hash="104,5,180.34,160.02,U3,VCCIO,MOD1_VCCIO,,,"/>
-<approved hash="104,6,73.66,165.1,U4,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,6,73.66,152.4,U4,OSCI,,,,"/>
-<approved hash="202,6,101.6,157.48,U4,!CTS,,,,"/>
-<approved hash="202,6,101.6,152.4,U4,!DSR,,,,"/>
-<approved hash="202,6,101.6,149.86,U4,!DCD,,,,"/>
-<approved hash="202,6,101.6,147.32,U4,!RI,,,,"/>
-<approved hash="104,6,73.66,162.56,U4,VCCIO,VCC_BACKPLANE,,,"/>
-<approved hash="104,6,203.2,165.1,U5,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,6,203.2,152.4,U5,OSCI,,,,"/>
-<approved hash="202,6,231.14,157.48,U5,!CTS,,,,"/>
-<approved hash="202,6,231.14,152.4,U5,!DSR,,,,"/>
-<approved hash="202,6,231.14,149.86,U5,!DCD,,,,"/>
-<approved hash="202,6,231.14,147.32,U5,!RI,,,,"/>
-<approved hash="104,6,203.2,162.56,U5,VCCIO,VCC_BACKPLANE,,,"/>
-<approved hash="202,12,147.32,86.36,Q1,G1,,,,"/>
-<approved hash="104,15,205.74,81.28,U27,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,15,205.74,68.58,U27,OSCI,,,,"/>
-<approved hash="202,15,177.8,73.66,U27,!CTS,,,,"/>
-<approved hash="202,15,177.8,68.58,U27,!DSR,,,,"/>
-<approved hash="202,15,177.8,66.04,U27,!DCD,,,,"/>
-<approved hash="202,15,177.8,63.5,U27,!RI,,,,"/>
-<approved hash="104,15,205.74,78.74,U27,VCCIO,3V3_UNMETERED,,,"/>
-<approved hash="106,17,43.18,114.3,CONT_HDR_BOT_RSV_PIN6,,,,,"/>
-<approved hash="106,17,38.1,106.68,CONT_HDR_BOT_RSV_PIN9,,,,,"/>
-<approved hash="106,17,38.1,104.14,CONT_HDR_BOT_RSV_PIN10,,,,,"/>
-<approved hash="106,17,43.18,147.32,CONT_HDR_TOP_RSV_PIN8,,,,,"/>
-<approved hash="106,11,111.76,93.98,HUB_!PWRON4,,,,,"/>
-<approved hash="106,11,111.76,91.44,HUB_!PWRON5,,,,,"/>
-<approved hash="106,11,111.76,88.9,HUB_!PWRON6,,,,,"/>
-<approved hash="106,11,111.76,86.36,HUB_!PWRON7,,,,,"/>
-<approved hash="106,4,63.5,71.12,JTAG_5V,,,,,"/>
-<approved hash="106,4,63.5,68.58,JTAG_DBGRQ,,,,,"/>
-<approved hash="106,4,63.5,50.8,JTAG_NTRST,,,,,"/>
-<approved hash="106,4,63.5,60.96,JTAG_RTCK,,,,,"/>
-<approved hash="106,4,63.5,63.5,JTAG_SWO/TDO,,,,,"/>
-<approved hash="106,4,63.5,53.34,JTAG_TDI,,,,,"/>
-<approved hash="106,17,144.78,144.78,MOD0_HDR_RSV_PIN3,,,,,"/>
-<approved hash="106,17,144.78,137.16,MOD0_HDR_RSV_PIN9,,,,,"/>
-<approved hash="106,17,213.36,144.78,MOD1_HDR_RSV_PIN3,,,,,"/>
-<approved hash="106,17,213.36,137.16,MOD1_HDR_RSV_PIN9,,,,,"/>
-<approved hash="113,4,55.88,61.1547,J10,,,,,"/>
-<approved hash="113,17,148.548,166.501,JP1,,,,,"/>
-<approved hash="113,17,217.128,166.501,JP2,,,,,"/>
-<approved hash="113,17,148.548,143.641,JP4,,,,,"/>
-<approved hash="113,17,217.128,143.641,JP5,,,,,"/>
-<approved hash="113,17,212.048,29.3412,JP8,,,,,"/>
-<approved hash="113,17,39.3277,174.121,JP11,,,,,"/>
-<approved hash="113,17,39.3277,144.911,JP12,,,,,"/>
-<approved hash="113,17,135.848,40.7712,JP16,,,,,"/>
-<approved hash="113,17,129.303,87.4988,JP17,,,,,"/>
-<approved hash="113,17,195.343,87.4988,JP18,,,,,"/>
-<approved hash="113,17,24.0877,40.7712,JP19,,,,,"/>
-<approved hash="113,17,67.2677,40.7712,JP20,,,,,"/>
-<approved hash="113,17,148.548,120.781,JP3,,,,,"/>
-<approved hash="113,17,217.128,120.781,JP6,,,,,"/>
-<approved hash="113,17,39.3277,90.3012,JP9,,,,,"/>
-<approved hash="113,17,39.3277,69.9812,JP10,,,,,"/>
-<approved hash="113,17,212.048,44.5812,JP7,,,,,"/>
-<approved hash="113,17,38.3371,106.811,JP13,,,,,"/>
-<approved hash="113,17,39.3277,118.241,JP14,,,,,"/>
+<approved hash="104,16,58.42,114.3,U16,VDDCORE,N$39,,,"/>
+<approved hash="104,16,58.42,111.76,U16,VDDOUT,N$44,,,"/>
+<approved hash="104,16,58.42,132.08,U16,VDDIN,3V3_UNMETERED,,,"/>
+<approved hash="104,16,58.42,121.92,U16,VDDANA,N$38,,,"/>
+<approved hash="104,16,58.42,129.54,U16,VDDIO,3V3_UNMETERED,,,"/>
+<approved hash="104,16,58.42,93.98,U16,GNDANA,GND,,,"/>
+<approved hash="104,16,58.42,127,U16,VLCDIN,3V3_UNMETERED,,,"/>
+<approved hash="104,16,205.74,149.86,U1,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,16,205.74,137.16,U1,OSCI,,,,"/>
+<approved hash="202,16,177.8,142.24,U1,!CTS,,,,"/>
+<approved hash="202,16,177.8,137.16,U1,!DSR,,,,"/>
+<approved hash="202,16,177.8,134.62,U1,!DCD,,,,"/>
+<approved hash="202,16,177.8,132.08,U1,!RI,,,,"/>
+<approved hash="104,16,205.74,147.32,U1,VCCIO,3V3_UNMETERED,,,"/>
+<approved hash="104,6,55.88,162.56,U2,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,6,55.88,149.86,U2,OSCI,,,,"/>
+<approved hash="202,6,83.82,154.94,U2,!CTS,,,,"/>
+<approved hash="202,6,83.82,149.86,U2,!DSR,,,,"/>
+<approved hash="202,6,83.82,147.32,U2,!DCD,,,,"/>
+<approved hash="202,6,83.82,144.78,U2,!RI,,,,"/>
+<approved hash="104,6,55.88,160.02,U2,VCCIO,MOD0_VCCIO,,,"/>
+<approved hash="104,6,180.34,162.56,U3,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,6,180.34,149.86,U3,OSCI,,,,"/>
+<approved hash="202,6,208.28,154.94,U3,!CTS,,,,"/>
+<approved hash="202,6,208.28,149.86,U3,!DSR,,,,"/>
+<approved hash="202,6,208.28,147.32,U3,!DCD,,,,"/>
+<approved hash="202,6,208.28,144.78,U3,!RI,,,,"/>
+<approved hash="104,6,180.34,160.02,U3,VCCIO,MOD1_VCCIO,,,"/>
+<approved hash="104,7,73.66,165.1,U4,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,7,73.66,152.4,U4,OSCI,,,,"/>
+<approved hash="202,7,101.6,157.48,U4,!CTS,,,,"/>
+<approved hash="202,7,101.6,152.4,U4,!DSR,,,,"/>
+<approved hash="202,7,101.6,149.86,U4,!DCD,,,,"/>
+<approved hash="202,7,101.6,147.32,U4,!RI,,,,"/>
+<approved hash="104,7,73.66,162.56,U4,VCCIO,VCC_BACKPLANE,,,"/>
+<approved hash="104,7,203.2,165.1,U5,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,7,203.2,152.4,U5,OSCI,,,,"/>
+<approved hash="202,7,231.14,157.48,U5,!CTS,,,,"/>
+<approved hash="202,7,231.14,152.4,U5,!DSR,,,,"/>
+<approved hash="202,7,231.14,149.86,U5,!DCD,,,,"/>
+<approved hash="202,7,231.14,147.32,U5,!RI,,,,"/>
+<approved hash="104,7,203.2,162.56,U5,VCCIO,VCC_BACKPLANE,,,"/>
+<approved hash="202,13,147.32,86.36,Q1,G1,,,,"/>
+<approved hash="104,16,205.74,81.28,U27,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,16,205.74,68.58,U27,OSCI,,,,"/>
+<approved hash="202,16,177.8,73.66,U27,!CTS,,,,"/>
+<approved hash="202,16,177.8,68.58,U27,!DSR,,,,"/>
+<approved hash="202,16,177.8,66.04,U27,!DCD,,,,"/>
+<approved hash="202,16,177.8,63.5,U27,!RI,,,,"/>
+<approved hash="104,16,205.74,78.74,U27,VCCIO,3V3_UNMETERED,,,"/>
+<approved hash="106,18,43.18,114.3,CONT_HDR_BOT_RSV_PIN6,,,,,"/>
+<approved hash="106,18,38.1,106.68,CONT_HDR_BOT_RSV_PIN9,,,,,"/>
+<approved hash="106,18,38.1,104.14,CONT_HDR_BOT_RSV_PIN10,,,,,"/>
+<approved hash="106,18,43.18,147.32,CONT_HDR_TOP_RSV_PIN8,,,,,"/>
+<approved hash="106,12,111.76,93.98,HUB_!PWRON4,,,,,"/>
+<approved hash="106,12,111.76,91.44,HUB_!PWRON5,,,,,"/>
+<approved hash="106,12,111.76,88.9,HUB_!PWRON6,,,,,"/>
+<approved hash="106,12,111.76,86.36,HUB_!PWRON7,,,,,"/>
+<approved hash="106,5,63.5,71.12,JTAG_5V,,,,,"/>
+<approved hash="106,5,63.5,68.58,JTAG_DBGRQ,,,,,"/>
+<approved hash="106,5,63.5,50.8,JTAG_NTRST,,,,,"/>
+<approved hash="106,5,63.5,60.96,JTAG_RTCK,,,,,"/>
+<approved hash="106,5,63.5,63.5,JTAG_SWO/TDO,,,,,"/>
+<approved hash="106,5,63.5,53.34,JTAG_TDI,,,,,"/>
+<approved hash="106,18,144.78,144.78,MOD0_HDR_RSV_PIN3,,,,,"/>
+<approved hash="106,18,144.78,137.16,MOD0_HDR_RSV_PIN9,,,,,"/>
+<approved hash="106,18,213.36,144.78,MOD1_HDR_RSV_PIN3,,,,,"/>
+<approved hash="106,18,213.36,137.16,MOD1_HDR_RSV_PIN9,,,,,"/>
+<approved hash="113,5,55.88,61.1547,J10,,,,,"/>
+<approved hash="113,18,148.548,166.501,JP1,,,,,"/>
+<approved hash="113,18,217.128,166.501,JP2,,,,,"/>
+<approved hash="113,18,148.548,143.641,JP4,,,,,"/>
+<approved hash="113,18,217.128,143.641,JP5,,,,,"/>
+<approved hash="113,18,212.048,29.3412,JP8,,,,,"/>
+<approved hash="113,18,39.3277,174.121,JP11,,,,,"/>
+<approved hash="113,18,39.3277,144.911,JP12,,,,,"/>
+<approved hash="113,18,135.848,40.7712,JP16,,,,,"/>
+<approved hash="113,18,129.303,87.4988,JP17,,,,,"/>
+<approved hash="113,18,195.343,87.4988,JP18,,,,,"/>
+<approved hash="113,18,24.0877,40.7712,JP19,,,,,"/>
+<approved hash="113,18,67.2677,40.7712,JP20,,,,,"/>
+<approved hash="113,18,148.548,120.781,JP3,,,,,"/>
+<approved hash="113,18,217.128,120.781,JP6,,,,,"/>
+<approved hash="113,18,39.3277,90.3012,JP9,,,,,"/>
+<approved hash="113,18,39.3277,69.9812,JP10,,,,,"/>
+<approved hash="113,18,212.048,44.5812,JP7,,,,,"/>
+<approved hash="113,18,38.3371,106.811,JP13,,,,,"/>
+<approved hash="113,18,39.3277,118.241,JP14,,,,,"/>
 </errors>
 </schematic>
 </drawing>
