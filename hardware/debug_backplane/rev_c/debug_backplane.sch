@@ -4486,6 +4486,21 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <wire x1="1.3" y1="0.83" x2="1.45" y2="0.83" width="0.1524" layer="21"/>
 <wire x1="1.45" y1="-0.83" x2="1.3" y2="-0.83" width="0.1524" layer="21"/>
 </package>
+<package name="DFN-6-2MMX3MM">
+<smd name="1" x="-0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="2" x="0" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="3" x="0.5" y="-1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="4" x="0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="5" x="0" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<smd name="6" x="-0.5" y="1.425" dx="0.25" dy="0.7" layer="1"/>
+<wire x1="-1" y1="1.5" x2="1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="1.5" x2="1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="1" y1="-1.5" x2="-1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
+<circle x="-1.25" y="-1.75" radius="0.15" width="0" layer="21"/>
+<text x="0" y="2" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<smd name="NC" x="0" y="0" dx="1.35" dy="1.65" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="MAX8887">
@@ -4793,6 +4808,30 @@ and Current Measurement</description>
 </connects>
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LTC2941" prefix="U">
+<description>I2C Battery Gas Gauge
+with External Sense Resistor</description>
+<gates>
+<gate name="G$1" symbol="LTC2941-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DFN-6-2MMX3MM">
+<connects>
+<connect gate="G$1" pin="!ALERT" pad="5"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="SCL" pad="3"/>
+<connect gate="G$1" pin="SDA" pad="4"/>
+<connect gate="G$1" pin="SENSE+" pad="1"/>
+<connect gate="G$1" pin="SENSE-" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -8802,7 +8841,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="U8" library="chips" deviceset="LTC2943" device=""/>
 <part name="U9" library="chips" deviceset="LTC2943" device=""/>
 <part name="U10" library="chips" deviceset="LTC2943" device=""/>
 <part name="U11" library="chips" deviceset="LTC2943" device=""/>
@@ -8856,6 +8894,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C77" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.47uF">
 <attribute name="DIGIKEY" value="490-1539-1-ND"/>
 </part>
+<part name="U8" library="chips" deviceset="LTC2941" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9723,10 +9762,10 @@ Translator</text>
 <instance part="C15" gate="G$1" x="101.6" y="119.38"/>
 <instance part="C16" gate="G$1" x="111.76" y="76.2"/>
 <instance part="C17" gate="G$1" x="111.76" y="33.02"/>
-<instance part="U8" gate="G$1" x="137.16" y="165.1" rot="MR0"/>
 <instance part="U9" gate="G$1" x="137.16" y="121.92" rot="MR0"/>
 <instance part="U10" gate="G$1" x="137.16" y="78.74" rot="MR0"/>
 <instance part="U11" gate="G$1" x="137.16" y="35.56" rot="MR0"/>
+<instance part="U8" gate="G$1" x="137.16" y="165.1" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -10045,10 +10084,10 @@ Translator</text>
 <pinref part="C15" gate="G$1" pin="2"/>
 <pinref part="C16" gate="G$1" pin="2"/>
 <pinref part="C17" gate="G$1" pin="2"/>
-<pinref part="U8" gate="G$1" pin="GND"/>
 <pinref part="U11" gate="G$1" pin="GND"/>
 <pinref part="U10" gate="G$1" pin="GND"/>
 <pinref part="U9" gate="G$1" pin="GND"/>
+<pinref part="U8" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U12" gate="G$1" pin="GND"/>
