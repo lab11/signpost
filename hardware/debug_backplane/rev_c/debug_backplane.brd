@@ -220,7 +220,7 @@ ROLLER</text>
 <text x="105.41" y="164.592" size="1.27" layer="21" font="vector" ratio="12" rot="SR0" align="bottom-center">ENABLED</text>
 <text x="36.83" y="35.56" size="1.524" layer="21" font="vector" ratio="12">Joshua Adkins
 Pat Pannuto</text>
-<text x="38.227" y="42.037" size="2.54" layer="21" font="vector" ratio="12">Signpost Debug Backplane</text>
+<text x="38.227" y="42.037" size="2.54" layer="21" font="vector" ratio="15">Signpost Debug Backplane</text>
 <wire x1="89.662" y1="39.751" x2="89.662" y2="35.179" width="0.254" layer="21"/>
 <wire x1="89.662" y1="35.179" x2="93.091" y2="35.179" width="0.254" layer="21"/>
 <wire x1="93.091" y1="35.179" x2="93.091" y2="39.751" width="0.254" layer="21"/>
@@ -331,7 +331,7 @@ Protection Bypass</text>
 <wire x1="27.94" y1="15.24" x2="27.94" y2="0" width="0.254" layer="21" style="shortdash"/>
 <wire x1="0" y1="22.86" x2="25.4" y2="22.86" width="0.508" layer="21"/>
 <wire x1="25.4" y1="22.86" x2="25.4" y2="0" width="0.508" layer="21"/>
-<text x="12.7" y="20.32" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">Module USB Host</text>
+<text x="12.7" y="20.32" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">Module USB Host</text>
 <text x="15.24" y="10.16" size="1.27" layer="21" font="vector" ratio="12" align="center">Connect your
 computer here
 to act as the
@@ -473,7 +473,7 @@ Debug</text>
 <wire x1="35.56" y1="45.72" x2="93.98" y2="45.72" width="0.6096" layer="21"/>
 <wire x1="93.98" y1="45.72" x2="93.98" y2="34.29" width="0.6096" layer="21"/>
 <wire x1="93.98" y1="34.29" x2="35.56" y2="34.29" width="0.6096" layer="21"/>
-<text x="20.574" y="80.772" size="1.778" layer="21" font="vector" ratio="12" rot="SR0" align="center">Main
+<text x="20.574" y="80.772" size="1.778" layer="21" font="vector" ratio="15" rot="SR0" align="center">Main
 Power</text>
 <wire x1="0" y1="73.66" x2="25.4" y2="73.66" width="0.508" layer="21"/>
 <wire x1="25.4" y1="73.66" x2="25.4" y2="85.09" width="0.508" layer="21"/>
@@ -481,13 +481,13 @@ Power</text>
 <wire x1="17.78" y1="85.09" x2="17.78" y2="93.98" width="0.508" layer="21"/>
 <wire x1="17.78" y1="93.98" x2="15.24" y2="96.52" width="0.508" layer="21"/>
 <wire x1="15.24" y1="96.52" x2="0" y2="96.52" width="0.508" layer="21"/>
-<text x="15.24" y="70.612" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">USB Serial</text>
+<text x="15.24" y="70.612" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">USB Serial</text>
 <text x="15.24" y="64.516" size="1.27" layer="21" font="vector" ratio="12" align="center">Connect your
 computer here
 to access the
 serial debug for
 all modules</text>
-<text x="18.288" y="55.372" size="1.778" layer="21" font="vector" ratio="12" align="bottom-center">JTAG</text>
+<text x="18.288" y="55.372" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">JTAG</text>
 <wire x1="16.256" y1="27.686" x2="16.256" y2="26.924" width="0.508" layer="21"/>
 <wire x1="16.256" y1="26.924" x2="18.796" y2="26.924" width="0.508" layer="21"/>
 <wire x1="18.796" y1="26.924" x2="18.796" y2="27.686" width="0.508" layer="21"/>
@@ -549,7 +549,7 @@ Reset</text>
 <text x="170.18" y="181.102" size="0.889" layer="21" font="vector" ratio="12" rot="R150" align="center-right">CONFIG</text>
 <text x="172.72" y="181.102" size="0.889" layer="21" font="vector" ratio="12" rot="R150" align="center-right">SUSPEND</text>
 <text x="175.26" y="181.102" size="0.889" layer="21" font="vector" ratio="12" rot="R150" align="center-right">!RST</text>
-<text x="-22.86" y="59.182" size="0.762" layer="21" font="vector" ratio="12" align="top-left">Upstream
+<text x="-22.86" y="59.182" size="0.762" layer="51" font="vector" ratio="12" align="top-left">Upstream
   - Controller or PC
 Port 1
   - Module 1
@@ -557,7 +557,7 @@ Port 2
   - Module 0
 Port 3
   - Fake Radio</text>
-<text x="-22.86" y="60.96" size="1.016" layer="21" font="vector" ratio="12" align="top-left">Module USB Network</text>
+<text x="-22.86" y="60.96" size="1.016" layer="51" font="vector" ratio="12" align="top-left">Module USB Network</text>
 <wire x1="121.285" y1="12.065" x2="125.095" y2="12.065" width="0.254" layer="49"/>
 <wire x1="125.095" y1="12.065" x2="125.095" y2="12.7" width="0.254" layer="49"/>
 <text x="44.45" y="175.768" size="1.27" layer="21" font="vector" ratio="12" align="center">Mod0
