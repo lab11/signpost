@@ -2128,12 +2128,12 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="VALUE" x="10.668" y="28.067" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R57" library="passives" package="0805_RES" value="301 kΩ" x="14.478" y="28.956" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="P301KDATR-ND" x="14.478" y="28.956" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="P301KDACT-ND" x="14.478" y="28.956" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="12.573" y="29.718" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="14.478" y="30.353" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R44" library="passives" package="0805_RES" value="23.2 kΩ" x="14.478" y="26.67" smashed="yes">
-<attribute name="DIGIKEY" value="P23.2KDATR-ND" x="14.478" y="26.67" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="P23.2KDACT-ND" x="14.478" y="26.67" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.827" y="26.924" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="14.478" y="25.273" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -2151,7 +2151,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="13.589" y="51.562" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R54" library="passives" package="0402_RES" value="150 Ω" x="18.796" y="46.228" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND" x="18.796" y="46.228" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="P150LCT-ND" x="18.796" y="46.228" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="20.828" y="45.593" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="17.399" y="46.228" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
@@ -2161,7 +2161,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="VALUE" x="16.129" y="43.942" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R13" library="passives" package="0402_RES" value="1 kΩ" x="14.986" y="46.482" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="P150LCT-ND" x="14.986" y="46.482" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="P1.0KJCT-ND" x="14.986" y="46.482" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="14.605" y="46.482" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="13.589" y="46.482" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
@@ -2353,12 +2353,12 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="VALUE" x="7.294" y="37.084" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R15" library="passives" package="0402_RES" value="1 MΩ" x="18.288" y="26.924" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND" x="18.288" y="26.924" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="P1.00MLCT-ND" x="18.288" y="26.924" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="17.399" y="27.94" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="18.288" y="28.321" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R16" library="passives" package="0402_RES" value="1 MΩ" x="18.288" y="28.702" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND" x="18.288" y="28.702" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="P1.00MLCT-ND" x="18.288" y="28.702" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="17.272" y="29.337" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="18.288" y="30.099" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>

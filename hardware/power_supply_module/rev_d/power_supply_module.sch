@@ -3911,10 +3911,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
 <part name="R57" library="passives" deviceset="RESISTOR" device="0805_RES" value="301 kΩ">
-<attribute name="DIGIKEY" value="P301KDATR-ND"/>
+<attribute name="DIGIKEY" value="P301KDACT-ND"/>
 </part>
 <part name="R44" library="passives" deviceset="RESISTOR" device="0805_RES" value="23.2 kΩ">
-<attribute name="DIGIKEY" value="P23.2KDATR-ND"/>
+<attribute name="DIGIKEY" value="P23.2KDACT-ND"/>
 </part>
 <part name="C40" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
 <attribute name="DIGIKEY" value="490-5523-1-ND "/>
@@ -3924,13 +3924,13 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
 </part>
 <part name="R54" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+<attribute name="DIGIKEY" value="P150LCT-ND"/>
 </part>
 <part name="R55" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
 <attribute name="DIGIKEY" value="P150LCT-ND"/>
 </part>
 <part name="R13" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 kΩ">
-<attribute name="DIGIKEY" value="P150LCT-ND"/>
+<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
 <part name="C24" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.47 uF">
 <attribute name="DIGIKEY" value="490-3266-1-ND"/>
@@ -4094,10 +4094,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="RESET" library="switches" deviceset="PTS810SJ" device=""/>
 <part name="GND13" library="signpost" deviceset="MONITOR_GND" device=""/>
 <part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+<attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
 </part>
 <part name="R16" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
-<attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
+<attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
 </part>
 <part name="U$47" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="FAULT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
