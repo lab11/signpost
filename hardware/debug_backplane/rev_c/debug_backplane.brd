@@ -8708,20 +8708,25 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="D16" library="leds" package="LED-0603" value="LED0603" x="63.5" y="8.128" rot="R270"/>
 <element name="D17" library="leds" package="LED-0603" value="LED0603" x="76.2" y="8.128" rot="R270"/>
 <element name="D18" library="leds" package="LED-0603" value="LED0603" x="88.9" y="8.128" rot="R270"/>
-<element name="S14" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="34.29" y="30.48" rot="R180">
+<element name="S14" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="34.29" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="34.29" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="36.322" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
-<element name="S15" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="46.99" y="30.48" rot="R180">
+<element name="S15" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="46.99" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="46.99" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="49.022" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
-<element name="S18" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="85.09" y="30.48" rot="R180">
+<element name="S18" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="85.09" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="85.09" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="87.122" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
-<element name="S16" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="59.69" y="30.48" rot="R180">
+<element name="S16" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="59.69" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="59.69" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="61.722" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
-<element name="S17" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="72.39" y="30.48" rot="R180">
+<element name="S17" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="72.39" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="72.39" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="NAME" x="74.422" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
 <element name="C54" library="passives" package="0603_CAP" value="100nF" x="46.228" y="59.69" smashed="yes">
 <attribute name="NAME" x="46.736" y="58.928" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
