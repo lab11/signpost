@@ -3994,11 +3994,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" value="Murata"/>
 <attribute name="MFN" value="GRM155R60J105KE19D"/>
 </part>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
-<attribute name="DIGIKEY" value="RHM10KCECT-ND"/>
-<attribute name="MF" value="Rohm"/>
-<attribute name="MFN" value="MCR01MRTJ103"/>
-</part>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="X1" library="crystals" deviceset="ABS05-32.768KHZ" device="-T" value="ABS05-32.768KHZ-T"/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.3pF">
@@ -4012,7 +4007,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MFN" value="GRM1555C1H4R3BA01D"/>
 </part>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
-<part name="GND8" library="umich" deviceset="GND" device=""/>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
 <attribute name="MF" value="Yageo"/>
@@ -4059,7 +4053,17 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" value="Yageo"/>
 <attribute name="MFN" value="RC0402FR-07100KL"/>
 </part>
-<part name="JP1" library="SparkFun-Connectors" deviceset="M04" device="PTH"/>
+<part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
+<attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
+<attribute name="MF" value="Yageo"/>
+<attribute name="MFN" value="RC0402JR-071KL"/>
+</part>
+<part name="GND8" library="umich" deviceset="GND" device=""/>
+<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH">
+<attribute name="DIGIKEY" value="WM8086-ND"/>
+<attribute name="MF" value="Molex"/>
+<attribute name="MFN" value="0901200764"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -4144,11 +4148,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 <attribute name="MFN" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="R4" gate="G$1" x="226.06" y="132.08" rot="R90">
-<attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="226.06" y="132.08" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-</instance>
 <instance part="GND6" gate="1" x="149.86" y="88.9"/>
 <instance part="X1" gate="G$1" x="101.6" y="132.08" rot="R270"/>
 <instance part="C1" gate="G$1" x="96.52" y="121.92" rot="R270">
@@ -4162,7 +4161,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MFN" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND7" gate="1" x="88.9" y="116.84"/>
-<instance part="GND8" gate="1" x="226.06" y="121.92"/>
 <instance part="D1" gate="G$1" x="127" y="101.6" rot="R270">
 <attribute name="DIGIKEY" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="MF" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
@@ -4184,6 +4182,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MFN" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND9" gate="1" x="127" y="91.44"/>
+<instance part="R4" gate="G$1" x="226.06" y="129.54" rot="R90">
+<attribute name="DIGIKEY" x="226.06" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MF" x="226.06" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MFN" x="226.06" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
+<instance part="GND8" gate="1" x="226.06" y="119.38"/>
 </instances>
 <busses>
 </busses>
@@ -4295,6 +4299,11 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="127" y1="96.52" x2="134.62" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="96.52" x2="134.62" y2="99.06" width="0.1524" layer="91"/>
 <junction x="127" y="96.52"/>
+</segment>
+<segment>
+<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="226.06" y1="124.46" x2="226.06" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -4482,14 +4491,14 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="40.64" y="154.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U3" gate="G$1" pin="PA9"/>
-<wire x1="203.2" y1="109.22" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
-<label x="208.28" y="109.22" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
 <pinref part="U3" gate="G$1" pin="PA7"/>
 <wire x1="203.2" y1="114.3" x2="208.28" y2="114.3" width="0.1524" layer="91"/>
 <label x="208.28" y="114.3" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="PA9"/>
+<wire x1="203.2" y1="109.22" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
+<label x="208.28" y="109.22" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="USB+" class="0">
@@ -4649,9 +4658,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <net name="N$11" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="PH3/BOOT0"/>
-<pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="203.2" y1="137.16" x2="226.06" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="137.16" x2="226.06" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="226.06" y1="132.08" x2="226.06" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DBG_TX" class="0">
@@ -4731,13 +4740,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="134.62" y1="104.14" x2="134.62" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="R4" class="0">
-<segment>
-<pinref part="R4" gate="G$1" pin="1"/>
-<pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="226.06" y1="127" x2="226.06" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-</net>
 </nets>
 </sheet>
 <sheet>
@@ -4797,7 +4799,11 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MF" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="MFN" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="JP1" gate="G$1" x="76.2" y="55.88"/>
+<instance part="J1" gate="G$1" x="78.74" y="55.88">
+<attribute name="DIGIKEY" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MF" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MFN" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4870,9 +4876,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="134.62" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="81.28" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
 <label x="86.36" y="58.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="JP1" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="RF_RX" class="0">
@@ -4882,9 +4888,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="132.08" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="81.28" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <label x="86.36" y="55.88" size="1.27" layer="95" xref="yes"/>
-<pinref part="JP1" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="!RF_RESET" class="0">
@@ -4894,9 +4900,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="81.28" y="142.24" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="81.28" y1="60.96" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="60.96" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
 <label x="86.36" y="60.96" size="1.27" layer="95" xref="yes"/>
-<pinref part="JP1" gate="G$1" pin="4"/>
+<pinref part="J1" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="RF_GPIO2" class="0">
@@ -4910,9 +4916,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="53.34" y="119.38"/>
 </segment>
 <segment>
-<wire x1="81.28" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
 <label x="86.36" y="53.34" size="1.27" layer="95" xref="yes"/>
-<pinref part="JP1" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RF_GPIO3" class="0">
