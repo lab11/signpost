@@ -189,7 +189,7 @@
 <text x="29.083" y="60.706" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">GND</text>
 <text x="36.703" y="65.659" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">PPS</text>
 <text x="39.116" y="65.659" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">SCL</text>
-<text x="41.783" y="60.706" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">VCIO</text>
+<text x="41.783" y="60.706" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">VCCIO</text>
 <text x="44.323" y="60.706" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">5V</text>
 <text x="44.323" y="65.659" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">GND</text>
 <text x="28.956" y="65.659" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center">VBUS</text>
@@ -240,7 +240,7 @@
 <wire x1="0" y1="1.5" x2="1.5" y2="1.5" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="1.5" x2="1.5" y2="0" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="0" x2="0" y2="0" width="0.1016" layer="21"/>
-<smd name="PAD" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$1" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
 <smd name="1" x="0.025" y="1.35" dx="0.35" dy="0.2" layer="1"/>
 <smd name="2" x="0.025" y="0.95" dx="0.35" dy="0.2" layer="1"/>
 <smd name="3" x="0.025" y="0.55" dx="0.35" dy="0.2" layer="1"/>
@@ -1217,7 +1217,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" shape="square" rot="R90"/>
 <pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="3" x="5.08" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.524" shape="octagon" rot="R90"/>
 <text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="7.366" y1="-0.254" x2="7.874" y2="0.254" layer="51"/>
@@ -1418,8 +1418,6 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="U4" library="chips" package="TQFN-16/3MM" value="TLV62130" x="8.636" y="46.228" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="16.256" y="38.608" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="8.636" y="46.228" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="8.636" y="46.228" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="10.4526" y="48.891" size="0.635" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="C14" library="passives" package="0603_CAP" value="10uF" x="10.668" y="42.672" smashed="yes" rot="R270">
@@ -1466,15 +1464,11 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L1" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="13.208" y="46.482" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="-24.892" y="56.642" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="13.208" y="46.482" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="13.208" y="46.482" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="11.824" y="48.536" size="0.635" layer="25" font="vector" ratio="12"/>
 </element>
 <element name="U$2" library="logos" package="UCB_CAL_50MIL" value="" x="13.083540625" y="18.138140625" smashed="yes"/>
 <element name="S1" library="switches" package="B3U-1000P" value="B3U-1000P" x="4.572" y="25.146" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="SW1020CT-ND" x="4.572" y="25.146" size="0.889" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
-<attribute name="MF" value="Omron" x="4.572" y="25.146" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MFN" value="B3U-1000P" x="4.572" y="25.146" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U1" library="signpost" package="MWSUB3G" value="MWSUB3G" x="17.653" y="56.896" smashed="yes" rot="R270">
 <attribute name="MF" value="RFExplorer" x="17.653" y="56.896" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1482,9 +1476,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="59.277" y="57.065" size="0.635" layer="21" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U2" library="chips" package="XDFN-8" value="SKY13317" x="64.0842" y="37.846" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="863-1056-1-ND" x="64.0842" y="37.846" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MF" value="Skworks Solutions" x="64.0842" y="37.846" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MFN" value="SKY13317-373LF" x="64.0842" y="37.846" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="863-1056-1-ND" value="" x="64.0842" y="37.846" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="62.0142" y="38.9428" size="0.635" layer="21" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C3" library="passives" package="0402_CAP" value="47pF" x="62.738" y="34.036" smashed="yes" rot="R90">
@@ -1549,8 +1541,6 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="X1" library="crystals" package="ABS05" value="ABS05-32.768KHZ-T" x="5.334" y="36.83" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="535-11899-1-ND" x="5.334" y="36.83" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MF" value="Abracon" x="5.334" y="36.83" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="ABS05-32.768KHZ-T" x="5.334" y="36.83" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="4.1656" y="37.0982" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="3.634" y="36.83" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
@@ -1603,26 +1593,18 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="A1" library="connector" package="U.FL_SMT" value="U.FL-R-SMT" x="68.58" y="32.258" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H122041-ND" x="68.58" y="32.258" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MF" value="Hirose" x="68.58" y="32.258" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="U.FL-R-SMT-1(01)" x="68.58" y="32.258" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="68.072" y="35.179" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="A2" library="connector" package="U.FL_SMT" value="U.FL-R-SMT" x="68.58" y="39.37" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H122041-ND" x="68.58" y="39.37" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MF" value="Hirose" x="68.58" y="39.37" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="U.FL-R-SMT-1(01)" x="68.58" y="39.37" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="68.072" y="42.291" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="A3" library="connector" package="U.FL_SMT" value="U.FL-R-SMT" x="68.58" y="45.974" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H122041-ND" x="68.58" y="45.974" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="MF" value="Hirose" x="68.58" y="45.974" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="U.FL-R-SMT-1(01)" x="68.58" y="45.974" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="68.072" y="48.895" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="ADBG" library="connector" package="SMA-J/PCB" value="MOLEX_73251-135X" x="66.548" y="24.8666" smashed="yes">
 <attribute name="DIGIKEY" value="WM9357-ND" x="66.548" y="24.8666" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
-<attribute name="MF" value="Molex" x="66.548" y="24.8666" size="1.778" layer="27" display="off"/>
-<attribute name="MFN" value="0732511350" x="66.548" y="24.8666" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="68.834" y="28.448" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="66.548" y="19.7866" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -1713,7 +1695,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="U1" pad="18"/>
 <contactref element="U1" pad="34"/>
 <contactref element="U1" pad="29"/>
-<contactref element="U2" pad="PAD"/>
+<contactref element="U2" pad="P$1"/>
 <contactref element="C13" pad="2"/>
 <contactref element="C10" pad="2"/>
 <contactref element="C11" pad="2"/>
@@ -2129,7 +2111,31 @@ Quickturn PCB 4 Layer .DRU</description>
 <signal name="USB-">
 <contactref element="J3" pad="12"/>
 <contactref element="U3" pad="21"/>
-<wire x1="31.496" y1="62.23" x2="31.496" y2="38.989" width="0.2032" layer="1"/>
+<wire x1="31.496" y1="62.23" x2="31.496" y2="50.86993125" width="0.2032" layer="1"/>
+<wire x1="31.496" y1="50.86993125" x2="31.7881" y2="50.57783125" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.7881" y1="50.57783125" x2="31.88316875" y2="50.57783125" width="0.2032" layer="1"/>
+<wire x1="31.88316875" y1="50.57783125" x2="32.17526875" y2="50.28573125" width="0.2032" layer="1" curve="-90"/>
+<wire x1="32.17526875" y1="50.28573125" x2="32.17526875" y2="49.550384375" width="0.2032" layer="1"/>
+<wire x1="32.17526875" y1="49.550384375" x2="31.88316875" y2="49.258284375" width="0.2032" layer="1" curve="-90"/>
+<wire x1="31.88316875" y1="49.258284375" x2="31.7881" y2="49.258284375" width="0.2032" layer="1"/>
+<wire x1="31.7881" y1="49.258284375" x2="31.496" y2="48.966184375" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.496" y1="48.966184375" x2="31.496" y2="48.2308375" width="0.2032" layer="1"/>
+<wire x1="31.496" y1="48.2308375" x2="31.7881" y2="47.9387375" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.7881" y1="47.9387375" x2="31.88316875" y2="47.9387375" width="0.2032" layer="1"/>
+<wire x1="31.88316875" y1="47.9387375" x2="32.17526875" y2="47.6466375" width="0.2032" layer="1" curve="-90"/>
+<wire x1="32.17526875" y1="47.6466375" x2="32.17526875" y2="46.91129375" width="0.2032" layer="1"/>
+<wire x1="32.17526875" y1="46.91129375" x2="31.88316875" y2="46.61919375" width="0.2032" layer="1" curve="-90"/>
+<wire x1="31.88316875" y1="46.61919375" x2="31.7881" y2="46.61919375" width="0.2032" layer="1"/>
+<wire x1="31.7881" y1="46.61919375" x2="31.496" y2="46.32709375" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.496" y1="46.32709375" x2="31.496" y2="45.591746875" width="0.2032" layer="1"/>
+<wire x1="31.496" y1="45.591746875" x2="31.7881" y2="45.299646875" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.7881" y1="45.299646875" x2="31.88316875" y2="45.299646875" width="0.2032" layer="1"/>
+<wire x1="31.88316875" y1="45.299646875" x2="32.17526875" y2="45.007546875" width="0.2032" layer="1" curve="-90"/>
+<wire x1="32.17526875" y1="45.007546875" x2="32.17526875" y2="44.2722" width="0.2032" layer="1"/>
+<wire x1="32.17526875" y1="44.2722" x2="31.88316875" y2="43.9801" width="0.2032" layer="1" curve="-90"/>
+<wire x1="31.88316875" y1="43.9801" x2="31.7881" y2="43.9801" width="0.2032" layer="1"/>
+<wire x1="31.7881" y1="43.9801" x2="31.496" y2="43.688" width="0.2032" layer="1" curve="90"/>
+<wire x1="31.496" y1="43.688" x2="31.496" y2="38.989" width="0.2032" layer="1"/>
 <wire x1="31.496" y1="38.989" x2="30.226" y2="37.719" width="0.2032" layer="1"/>
 <wire x1="16.764" y1="37.719" x2="30.226" y2="37.719" width="0.2032" layer="1"/>
 <wire x1="12.66" y1="35.175" x2="14.22" y2="35.175" width="0.2032" layer="1"/>
@@ -2729,17 +2735,17 @@ Quickturn PCB 4 Layer .DRU</description>
 <approved hash="4,1,ad401b84949e2c58"/>
 <approved hash="4,1,4ee35c65a0f4b07c"/>
 <approved hash="4,1,b531a4ab593a4882"/>
-<approved hash="19,1,d07d068b01a9d75f"/>
-<approved hash="19,1,55a7035100f15607"/>
 <approved hash="19,1,c85c1eaa01ced738"/>
+<approved hash="19,1,55a7035100f15607"/>
+<approved hash="19,1,d07d068b01a9d75f"/>
 <approved hash="19,1,315be72df8482e3e"/>
-<approved hash="19,1,aca0fad6f977af01"/>
 <approved hash="19,1,297aff0cf82f2e59"/>
+<approved hash="19,1,aca0fad6f977af01"/>
 <approved hash="19,1,a375d683d1a3a455"/>
-<approved hash="19,1,bb54cea2d1c4a432"/>
 <approved hash="19,1,26afd359d0fb250d"/>
-<approved hash="4,1,22b00128feb9dd03"/>
+<approved hash="19,1,bb54cea2d1c4a432"/>
 <approved hash="4,1,da4ef8e6067726d1"/>
+<approved hash="4,1,22b00128feb9dd03"/>
 <approved hash="5,1,c20ba54722e90165"/>
 <approved hash="5,1,554afe340a44fe65"/>
 </errors>

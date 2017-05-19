@@ -2111,7 +2111,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="DC3V3" x="-20.32" y="25.4" length="middle"/>
 <pin name="RFGPIO2" x="17.78" y="2.54" length="middle" rot="R180"/>
 <text x="-12.7" y="30.48" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
-<text x="5.08" y="22.86" size="1.778" layer="95" ratio="12" align="bottom-center">MWSUB3G</text>
+<text x="-7.62" y="-25.4" size="1.778" layer="95" ratio="12" align="bottom-center">MWSUB3G</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -2254,7 +2254,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0" y1="1.5" x2="1.5" y2="1.5" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="1.5" x2="1.5" y2="0" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="0" x2="0" y2="0" width="0.1016" layer="21"/>
-<smd name="PAD" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$1" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
 <smd name="1" x="0.025" y="1.35" dx="0.35" dy="0.2" layer="1"/>
 <smd name="2" x="0.025" y="0.95" dx="0.35" dy="0.2" layer="1"/>
 <smd name="3" x="0.025" y="0.55" dx="0.35" dy="0.2" layer="1"/>
@@ -2338,14 +2338,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-5.08" y1="25.4" x2="15.24" y2="25.4" width="0.254" layer="94"/>
 <wire x1="15.24" y1="25.4" x2="15.24" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="15.24" y1="-2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
-<pin name="RFC" x="-10.16" y="17.78" length="middle"/>
-<pin name="V1" x="-10.16" y="12.7" length="middle"/>
-<pin name="V2" x="-10.16" y="10.16" length="middle"/>
-<pin name="V3" x="-10.16" y="7.62" length="middle"/>
-<pin name="RF1" x="5.08" y="30.48" length="middle" rot="R270"/>
-<pin name="RF2" x="20.32" y="10.16" length="middle" rot="R180"/>
-<pin name="RF3" x="5.08" y="-7.62" length="middle" rot="R90"/>
-<pin name="GND" x="0" y="-7.62" length="middle" rot="R90"/>
+<pin name="RFC" x="-10.16" y="17.78" visible="pin" length="middle"/>
+<pin name="V1" x="-10.16" y="12.7" visible="pin" length="middle"/>
+<pin name="V2" x="-10.16" y="10.16" visible="pin" length="middle"/>
+<pin name="V3" x="-10.16" y="7.62" visible="pin" length="middle"/>
+<pin name="RF1" x="5.08" y="30.48" visible="pin" length="middle" rot="R270"/>
+<pin name="RF2" x="20.32" y="10.16" visible="pin" length="middle" rot="R180"/>
+<pin name="RF3" x="5.08" y="-7.62" visible="pin" length="middle" rot="R90"/>
+<pin name="GND" x="0" y="-7.62" visible="pin" length="middle" rot="R90"/>
 <text x="-5.08" y="27.94" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="7.62" y="12.7" size="1.778" layer="95" ratio="12" align="bottom-center">SKY13317
 RF Switch</text>
@@ -2414,8 +2414,6 @@ RF Switch</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-35978-1-ND" constant="no"/>
-<attribute name="MF" value="Texas Instruments" constant="no"/>
-<attribute name="MFN" value="TLV62130RGTR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2429,7 +2427,7 @@ RF Switch</text>
 <devices>
 <device name="" package="XDFN-8">
 <connects>
-<connect gate="G$1" pin="GND" pad="PAD"/>
+<connect gate="G$1" pin="GND" pad="P$1"/>
 <connect gate="G$1" pin="RF1" pad="4"/>
 <connect gate="G$1" pin="RF2" pad="5"/>
 <connect gate="G$1" pin="RF3" pad="8"/>
@@ -2440,9 +2438,7 @@ RF Switch</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="863-1056-1-ND" constant="no"/>
-<attribute name="MF" value="Skworks Solutions" constant="no"/>
-<attribute name="MFN" value="SKY13317-373LF" constant="no"/>
+<attribute name="863-1056-1-ND" value="" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2736,8 +2732,6 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="WM9357-ND" constant="no"/>
-<attribute name="MF" value="Molex" constant="no"/>
-<attribute name="MFN" value="0732511350" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2757,8 +2751,6 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="H122041-ND" constant="no"/>
-<attribute name="MF" value="Hirose" constant="no"/>
-<attribute name="MFN" value="U.FL-R-SMT-1(01)" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2939,7 +2931,7 @@ SMT</description>
 </symbols>
 <devicesets>
 <deviceset name="CAPACITOR" prefix="C" uservalue="yes">
-<description>SMD Capacitor</description>
+<description>0402 Capacitor</description>
 <gates>
 <gate name="G$1" symbol="CAPACITOR" x="0" y="0"/>
 </gates>
@@ -3000,7 +2992,7 @@ SMT</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="RESISTOR" prefix="R">
+<deviceset name="RESISTOR" prefix="R" uservalue="yes">
 <description>&lt;b&gt;Resistor&lt;/b&gt;
 Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</description>
 <gates>
@@ -3097,8 +3089,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="541-1322-1-ND" constant="no"/>
-<attribute name="MF" value="Vishay Dale" constant="no"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3194,8 +3184,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11899-1-ND" constant="no"/>
-<attribute name="MF" value="Abracon" constant="no"/>
-<attribute name="MFN" value="ABS05-32.768KHZ-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3207,8 +3195,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11897-1-ND" constant="no"/>
-<attribute name="MF" value="Abracon" constant="no"/>
-<attribute name="MFN" value="ABS05-32.768KHZ-9-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3290,8 +3276,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="SW1020CT-ND" constant="no"/>
-<attribute name="MF" value="Omron" constant="no"/>
-<attribute name="MFN" value="B3U-1000P" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3391,7 +3375,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" shape="square" rot="R90"/>
 <pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="3" x="5.08" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.524" shape="octagon" rot="R90"/>
 <text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="7.366" y1="-0.254" x2="7.874" y2="0.254" layer="51"/>
@@ -4067,6 +4051,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </parts>
 <sheets>
 <sheet>
+<description>MCU, powersupply, module header</description>
 <plain>
 <text x="170.18" y="35.56" size="1.778" layer="98">JLINK Programming Header</text>
 <text x="144.78" y="132.08" size="1.016" layer="98" align="bottom-center">LFOSC can auto trim HFRC OSC to 0.25%</text>
@@ -4498,7 +4483,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="U3" gate="G$1" pin="PA9"/>
 <wire x1="203.2" y1="109.22" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
-<label x="208.28" y="109.22" size="1.016" layer="95" xref="yes"/>
+<label x="208.28" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="USB+" class="0">
@@ -4743,6 +4728,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </nets>
 </sheet>
 <sheet>
+<description>RF spectrum and switch</description>
 <plain>
 </plain>
 <instances>
