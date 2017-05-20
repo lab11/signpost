@@ -1,5 +1,24 @@
-*.s#*
-*.b#*
-*.l#*
 _saved*
+*.*#*
+*.bot
+*.bsk
+*.bsp
+*.centroid
+*.drd
+*.dri
+*.gpi
+*.info
+*.oln
+*.slk
+*.smb
+*.smt
+*.top
+*.tsp
+*.png
+*.L1
+*.L2
+*.L3
+*.L4
+*.tps
+*.bps
 
