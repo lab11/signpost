@@ -13,7 +13,6 @@ extern crate signpost_drivers;
 extern crate signpost_hil;
 
 use capsules::console::{self, Console};
-use signpost_drivers::gps_console;
 use capsules::nrf51822_serialization::{self, Nrf51822Serialization};
 use capsules::timer::TimerDriver;
 use capsules::virtual_alarm::{MuxAlarm, VirtualMuxAlarm};
@@ -73,10 +72,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 
 struct RadioModule {
     console: &'static Console<'static, usart::USART>,
-    lora_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
-    three_g_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
-    led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
     timer: &'static TimerDriver<'static, VirtualMuxAlarm<'static, sam4l::ast::Ast<'static>>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
     nrf51822: &'static Nrf51822Serialization<'static, usart::USART>,
@@ -95,13 +91,10 @@ impl Platform for RadioModule {
             1 => f(Some(self.gpio)),
             3 => f(Some(self.timer)),
             5 => f(Some(self.nrf51822)),
-            8 => f(Some(self.led)),
             13 => f(Some(self.i2c_master_slave)),
             14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
-            201 => f(Some(self.lora_console)),
-            202 => f(Some(self.three_g_console)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -112,51 +105,58 @@ impl Platform for RadioModule {
 
 unsafe fn set_pin_primary_functions() {
     use sam4l::gpio::{PA,PB};
-    use sam4l::gpio::PeripheralFunction::{A, B, C};
+    use sam4l::gpio::PeripheralFunction::{A, C};
 
-    PB[00].configure(Some(A));  //SDA
-    PB[01].configure(Some(A));  //SCL
-    PB[02].configure(None);     //NRF Reset
-    PB[03].configure(None);     //MOD_OUT
-    PB[04].configure(None);     //XDOT_RESET
-    PB[05].configure(None);     //MOD_IN
-    PB[06].configure(Some(A));  //NRF_INT1/CTS
-    PB[07].configure(Some(A));  //NRF_INT2/RTS
-    PB[08].configure(None);     //NRF Boot
-    PB[09].configure(Some(A));  //NRF TX
-    PB[10].configure(Some(A));  //NRF RX
-    PB[11].configure(None);     //NRF Power Gate
-    PB[12].configure(None);     //smbus alert
-    PB[13].configure(None);     //XDOT_Int1
-    PB[14].configure(Some(C));  //sda for smbus
-    PB[15].configure(Some(C));  //scl for smbus
-
-    
-    PA[04].configure(None);     //DBG GPIO1
-    PA[05].configure(None);     //DBG GPIO2
-    PA[06].configure(None);     //XDOT Power Gate
-    PA[07].configure(None);     //3G Power Gate
-    PA[08].configure(Some(A));  //3G CTS
-    PA[09].configure(Some(A));  //3G RTS
-    PA[10].configure(None);     //PPS
-    PA[11].configure(Some(A));  //3G Tx
-    PA[12].configure(Some(A));  //3G Rx
-    PA[13].configure(None);     //3G Reset
-    PA[14].configure(None);     //3G Power signal
-    PA[15].configure(Some(A));  //DBG rx
-    PA[16].configure(Some(A));  //DBG tx
-    PA[17].configure(Some(A));  //XDOT CTS
-    PA[18].configure(None);     //XDOT WAKE
-    PA[19].configure(Some(A));  //xDOT Tx
-    PA[20].configure(Some(A));  //XDOT Rx
-    PA[21].configure(None);     //LED 1
-    PA[22].configure(Some(B));  //XDOT RTS
-    PA[23].configure(None);     //LED 2
-    PA[24].configure(None);     //LED 3
-    PA[25].configure(Some(A));  //USB
-    PA[26].configure(Some(A));  //USB
+    //backplane communication
+    PB[00].configure(Some(A)); //SDA
+    PB[01].configure(Some(A)); //SCL
+    PB[04].configure(None); //PPS
+    PB[03].configure(None); //MOD_OUT
+    PB[05].configure(None); //MOD_IN
+    PA[25].configure(Some(A)); //USB
+    PA[26].configure(Some(A)); //USB
 
 
+    //Nucleum Signals
+    PB[02].configure(None); //Nucleum Reset
+    PB[06].configure(None); //RTS
+    PB[07].configure(Some(A)); //CTS
+    PB[08].configure(None); //Boot
+    PB[09].configure(Some(A)); //TX
+    PB[10].configure(Some(A)); //RX
+    PB[11].configure(None); //Power Gate
+    PB[13].configure(Some(C)); //CS
+
+    //LoRa Signals
+    PA[04].configure(None); //Int1
+    PA[05].configure(None); //Int2
+    PA[06].configure(None); //Power Gate
+    PA[17].configure(None); //Reset
+    PA[18].configure(None); //Boot
+    PA[19].configure(Some(A)); //Tx
+    PA[20].configure(Some(A)); //Rx
+    PA[24].configure(Some(A)); //CS
+
+    //GSM Signals
+    PA[07].configure(None); //Power Gate
+    PA[08].configure(Some(A)); //RTS //can't be used, forgot crossover
+    PA[09].configure(Some(A)); //CTS
+    PA[10].configure(None); //GPIO
+    PA[11].configure(Some(A)); //Tx
+    PA[12].configure(Some(A)); //Rx
+    PA[13].configure(None); //Reset
+    PA[14].configure(None); //Power signal
+    //gsm/multipurpose uart out
+    PA[15].configure(Some(A)); //aux tx
+    PA[16].configure(Some(A)); //aux rx
+
+    //shared signals
+    PA[21].configure(Some(A)); //Miso
+    PA[22].configure(Some(A)); //Mosi
+    PA[23].configure(Some(A)); //Sclk
+    PB[12].configure(None); //smbus alert
+    PB[14].configure(Some(C)); //sda for smbus
+    PB[15].configure(Some(C)); //scl for smbus
 }
 
 /*******************************************************************************
@@ -179,40 +179,12 @@ pub unsafe fn reset_handler() {
     //
     let console = static_init!(
         Console<usart::USART>,
-        Console::new(&usart::USART1,
+        Console::new(&usart::USART2,
                      115200,
                      &mut console::WRITE_BUF,
                      kernel::Container::create()),
         224/8);
-    hil::uart::UART::set_client(&usart::USART1, console);
-
-    //
-    // LoRa console
-    //
-    let lora_console = static_init!(
-        signpost_drivers::gps_console::Console<usart::USART>,
-        signpost_drivers::gps_console::Console::new(&usart::USART2,
-                    115200,
-                    &mut gps_console::WRITE_BUF,
-                    &mut gps_console::READ_BUF,
-                    kernel::Container::create()),
-        288/8);
-    hil::uart::UART::set_client(&usart::USART2, lora_console);
-
-    //
-    // 3G console
-    //
-    let three_g_console = static_init!(
-        signpost_drivers::gps_console::Console<usart::USART>,
-        signpost_drivers::gps_console::Console::new(&usart::USART0,
-                    115200,
-                    &mut gps_console::WRITE_BUF,
-                    &mut gps_console::READ_BUF,
-                    kernel::Container::create()),
-        288/8);
-    hil::uart::UART::set_client(&usart::USART0, three_g_console);
-
-        
+    hil::uart::UART::set_client(&usart::USART2, console);
 
     let nrf_serialization = static_init!(
         Nrf51822Serialization<usart::USART>,
@@ -269,22 +241,23 @@ pub unsafe fn reset_handler() {
     // Remaining GPIO pins
     //
     let gpio_pins = static_init!(
-        [&'static sam4l::gpio::GPIOPin; 14],
+        [&'static sam4l::gpio::GPIOPin; 15],
         [&sam4l::gpio::PB[03], //MOD_OUT
          &sam4l::gpio::PB[05], //MOD_IN
-         &sam4l::gpio::PA[10], //PPS
-         &sam4l::gpio::PB[02], //NRF RESET
-         &sam4l::gpio::PB[08], //NRF BOOT
-         &sam4l::gpio::PB[11], //NRF POWERGATE
-         &sam4l::gpio::PA[13], //LORA INT1
-         &sam4l::gpio::PB[08], //NRF BOOT
+         &sam4l::gpio::PB[04], //PPS
+         &sam4l::gpio::PB[02], //NUCLEUM RESET
+         &sam4l::gpio::PB[08], //NUCLEUM BOOT
+         &sam4l::gpio::PB[11], //NUCLEUM POWERGATE
+         &sam4l::gpio::PA[04], //LORA INT1
+         &sam4l::gpio::PA[05], //LORA INT2
          &sam4l::gpio::PA[06], //LORA POWERGATE
-         &sam4l::gpio::PB[04], //LORA RESET
+         &sam4l::gpio::PA[17], //LORA RESET
          &sam4l::gpio::PA[18], //LORA BOOT
          &sam4l::gpio::PA[07], //GSM POWERGATE
+         &sam4l::gpio::PA[10], //GSM GPIO
          &sam4l::gpio::PA[13], //GSM RESET
          &sam4l::gpio::PA[14]],//GSM POWER
-        14 * 4
+        15 * 4
     );
     let gpio = static_init!(
         capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
@@ -293,27 +266,6 @@ pub unsafe fn reset_handler() {
     for pin in gpio_pins.iter() {
         pin.set_client(gpio);
     }
-
-    //
-    //LEDs/
-    //
-    let led_pins = static_init!(
-        [(&'static sam4l::gpio::GPIOPin, capsules::led::ActivationMode); 5],
-          [(&sam4l::gpio::PA[04], capsules::led::ActivationMode::ActiveHigh), //DBG_GPIO1
-           (&sam4l::gpio::PA[05], capsules::led::ActivationMode::ActiveHigh), //DBG_GPIO2
-           (&sam4l::gpio::PA[21], capsules::led::ActivationMode::ActiveLow),  // LED1
-           (&sam4l::gpio::PA[23], capsules::led::ActivationMode::ActiveLow),  // LED2
-           (&sam4l::gpio::PA[24], capsules::led::ActivationMode::ActiveLow)],  // LED3
-           320/8);
-    let led = static_init!(
-        capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
-        capsules::led::LED::new(led_pins),
-        64/8);
-
-    // configure initial state for debug LEDs
-    sam4l::gpio::PA[05].clear(); // red LED off
-    sam4l::gpio::PA[04].set();   // green LED on
-
 
     //
     // App Watchdog
@@ -359,10 +311,7 @@ pub unsafe fn reset_handler() {
     //
     let radio_module = RadioModule {
         console: console,
-        lora_console: lora_console,
-        three_g_console: three_g_console,
         gpio: gpio,
-        led: led,
         timer: timer,
         i2c_master_slave: i2c_modules,
         nrf51822:nrf_serialization,
@@ -378,7 +327,7 @@ pub unsafe fn reset_handler() {
     kernel::debug::assign_console_driver(Some(radio_module.console), kc);
     watchdog.start();
 
-    //fix the rts line
+    //fix the rst line
     sam4l::gpio::PB[06].enable();
     sam4l::gpio::PB[06].enable_output();
     sam4l::gpio::PB[06].clear();
@@ -389,8 +338,6 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[07].set();
 
     radio_module.console.initialize();
-    radio_module.lora_console.initialize();
-    radio_module.three_g_console.initialize();
     radio_module.nrf51822.initialize();
     watchdog.start();
 
