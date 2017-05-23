@@ -8,7 +8,6 @@
 
 #include <tock.h>
 #include <console.h>
-#include "firestorm.h"
 #include "gpio.h"
 #include "led.h"
 #include "adc.h"
