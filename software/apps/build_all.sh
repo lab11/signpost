@@ -13,17 +13,16 @@ teal=$(tput setaf 6)
 white=$(tput setaf 7)
 grey=$(tput setaf 8)
 
-# Don't fail on build failure, for now:
-#set -e
+set -e
+set -u
+set -o pipefail
 
 # Instead collect and print a list
 declare -a failures
 
-declare -a skips
-
-
 for makefile in $(find . | grep '/Makefile$'); do
 	pushd $(dirname $makefile) > /dev/null
+	name=$(dirname $makefile)
 
 	# Is submodule?
 	pushd $(git rev-parse --show-toplevel)/.. > /dev/null
@@ -35,19 +34,10 @@ for makefile in $(find . | grep '/Makefile$'); do
 		continue
 	fi
 
-	echo "${bold}${blue}Compiling${teal} $(dirname $makefile)${normal}"
-	#make -j || echo "${bold} ⤤ $(dirname $makefile)${normal}"
-	make -j || failures+=($dir)
+	echo "${bold}${blue}Compiling${teal} $name${normal}"
+	make -j || { echo "${bold} ⤤ $name${normal}" ; echo "" ; failures+=("$name");}
 	popd > /dev/null
 done
-
-if [ ${#skips[@]} -gt 0 ]; then
-	echo ""
-	echo "${bold}${pink}Skipped:${normal}"
-	for skip in ${skips[@]}; do
-		echo $skip
-	done
-fi
 
 if [ ${#failures[@]} -gt 0 ]; then
 	echo ""
