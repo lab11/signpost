@@ -1,15 +1,21 @@
-# Makefile for loading applications for the signpost radio_module
+# Makefile for loading applications for tockloader-compliant signpost modules
 
-APP_SLOAD = $(TOCK_USERLAND_BASE_DIR)/tools/program/storm.py
-APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
+$(call check_defined, BUILDDIR)
+$(call check_defined, PACKAGE_NAME)
 
-# upload programs over uart with stormloader
+APP_TOCKLOADER ?= tockloader
+
+# Upload programs over UART with tockloader
+ifdef PORT
+  TOCKLOADER_GENERAL_FLAGS += --port $(PORT)
+endif
+
 .PHONY: program
-program: $(BOARD_BUILDDIR)/app.bin
-	$(APP_SLOAD) $(BOARD_BUILDDIR)/app.bin
+program: $(BUILDDIR)/$(PACKAGE_NAME).tab
+	@echo "\n Cannot program Signpost modules over USB. Use \`make flash\` and JTAG."
 
-# upload programs over JTAG
+# Upload programs over JTAG
 .PHONY: flash
-flash: $(BOARD_BUILDDIR)/app.bin
-	$(APP_FLASH) $(BOARD_BUILDDIR)/app.bin
+flash: $(BUILDDIR)/$(PACKAGE_NAME).tab
+	$(APP_TOCKLOADER) $(TOCKLOADER_GENERAL_FLAGS) install --jtag $<
 

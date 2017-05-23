@@ -1,6 +1,0 @@
-r
-loadfile target/sam4l/release/audio_module.hex
-r
-g
-q
-

@@ -12,6 +12,7 @@ set -e
 
 for dir in `find . -maxdepth 1 -type d`; do
 	if [ $dir == "." ]; then continue; fi
+	if [ $dir == "./bootloader" ]; then continue; fi
 	if [ $dir == "./old_revisions" ]; then continue; fi
 	echo "${bold}${blue}Compiling${black} $dir${normal}"
 	pushd $dir > /dev/null
