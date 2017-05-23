@@ -44,7 +44,7 @@ bool still_sampling = false;
     return (uint16_t)(((20*log10(output/MAGIC_NUMBER)) + SPL - PREAMP_GAIN - MSGEQ7_GAIN)*10);
 }*/
 
-static void delay() {
+static void delay(void) {
     for(volatile uint16_t i = 0; i < 2000; i++);
 }
 
