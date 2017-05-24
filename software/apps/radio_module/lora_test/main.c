@@ -28,7 +28,9 @@ int main (void) {
     xdot_set_txpwr(20);
 
     while(1) {
+        xdot_wake();
         xdot_send((uint8_t*)"Hi From Lab11",13);
+        xdot_sleep();
         delay_ms(5000);
     }
 }

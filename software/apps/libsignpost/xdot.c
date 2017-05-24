@@ -7,11 +7,14 @@
 #include "tock.h"
 #include "console.h"
 #include "led.h"
+#include "gpio.h"
 #include "timer.h"
 #include "xdot.h"
 #include "multi_console.h"
 
 #define LORA_CONSOLE 109
+
+#define LORA_WAKE_PIN 10
 
 #define RESPONSE_BUF_SIZE 200
 
@@ -64,6 +67,8 @@ static int wait_for_response(void) {
 }
 
 int xdot_init(void) {
+    gpio_enable_output(LORA_WAKE_PIN);
+
     const char* cmd = "ATE0\n";
     console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
     return wait_for_response();
@@ -232,4 +237,22 @@ int xdot_send(uint8_t* buf, uint8_t len) {
     console_write(LORA_CONSOLE, buf, len);
     console_write(LORA_CONSOLE, (uint8_t*)"\n", 1);
     return wait_for_response();
+}
+
+int xdot_sleep(void) {
+    char cmd[15];
+    sprintf(cmd, "AT+WM=1\n");
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    wait_for_response();
+
+    sprintf(cmd, "AT+sleep\n");
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    return wait_for_response();
+}
+
+int xdot_wake(void) {
+    gpio_toggle(LORA_WAKE_PIN);
+    gpio_toggle(LORA_WAKE_PIN);
+
+    for(volatile uint32_t i = 0; i < 15000; i++);
 }

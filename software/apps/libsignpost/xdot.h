@@ -33,4 +33,6 @@ int xdot_set_ack(uint8_t ack);
 int xdot_send(uint8_t* buf, uint8_t len);
 
 int xdot_reset(void);
+int xdot_sleep(void);
+int xdot_wake(void);
 int xdot_save_settings(void);
