@@ -1,15 +1,7 @@
-# Makefile for loading applications for the signpost controller
+# Makefile for loading applications for tockloader-compliant signpost modules
 
-APP_SLOAD = $(TOCK_USERLAND_BASE_DIR)/tools/program/storm.py
-APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
+# the current directory
+SIGNPOST_PLATFORM_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-# upload programs over uart with stormloader
-.PHONY: program
-program: $(BOARD_BUILDDIR)/app.bin
-	$(APP_SLOAD) $(BOARD_BUILDDIR)/app.bin
-
-# upload programs over JTAG
-.PHONY: flash
-flash: $(BOARD_BUILDDIR)/app.bin
-	$(APP_FLASH) $(BOARD_BUILDDIR)/app.bin
+include $(SIGNPOST_PLATFORM_DIR)/../Signpost-SAM4L-app.mk
 
