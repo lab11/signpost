@@ -73,7 +73,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 
 struct RadioModule {
     console: &'static Console<'static, usart::USART>,
-    lora_console: &'static Console<'static, usart::USART>,
+    lora_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     three_g_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
@@ -190,12 +190,13 @@ pub unsafe fn reset_handler() {
     // LoRa console
     //
     let lora_console = static_init!(
-        Console<usart::USART>,
-        Console::new(&usart::USART2,
+        signpost_drivers::gps_console::Console<usart::USART>,
+        signpost_drivers::gps_console::Console::new(&usart::USART2,
                     115200,
-                    &mut console::WRITE_BUF,
+                    &mut gps_console::WRITE_BUF,
+                    &mut gps_console::READ_BUF,
                     kernel::Container::create()),
-        224/8);
+        288/8);
     hil::uart::UART::set_client(&usart::USART2, lora_console);
 
     //
