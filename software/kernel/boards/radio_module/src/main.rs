@@ -73,7 +73,7 @@ unsafe fn load_processes() -> &'static mut [Option<kernel::process::Process<'sta
 
 struct RadioModule {
     console: &'static Console<'static, usart::USART>,
-    lora_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
+    lora_console: &'static Console<'static, usart::USART>,
     three_g_console: &'static signpost_drivers::gps_console::Console<'static, usart::USART>,
     gpio: &'static capsules::gpio::GPIO<'static, sam4l::gpio::GPIOPin>,
     led: &'static capsules::led::LED<'static, sam4l::gpio::GPIOPin>,
@@ -100,8 +100,8 @@ impl Platform for RadioModule {
             14 => f(Some(self.rng)),
 
             108 => f(Some(self.app_watchdog)),
-            201 => f(Some(self.lora_console)),
-            202 => f(Some(self.three_g_console)),
+            109 => f(Some(self.lora_console)),
+            110 => f(Some(self.three_g_console)),
 
             0xff => f(Some(&self.ipc)),
             _ => f(None)
@@ -190,13 +190,12 @@ pub unsafe fn reset_handler() {
     // LoRa console
     //
     let lora_console = static_init!(
-        signpost_drivers::gps_console::Console<usart::USART>,
-        signpost_drivers::gps_console::Console::new(&usart::USART2,
+        Console<usart::USART>,
+        Console::new(&usart::USART2,
                     115200,
-                    &mut gps_console::WRITE_BUF,
-                    &mut gps_console::READ_BUF,
+                    &mut console::WRITE_BUF,
                     kernel::Container::create()),
-        288/8);
+        224/8);
     hil::uart::UART::set_client(&usart::USART2, lora_console);
 
     //
@@ -379,17 +378,17 @@ pub unsafe fn reset_handler() {
     watchdog.start();
 
     //fix the rts line
-    sam4l::gpio::PB[06].enable();
+    /*sam4l::gpio::PB[06].enable();
     sam4l::gpio::PB[06].enable_output();
     sam4l::gpio::PB[06].clear();
 
     //turn off gsm power
     sam4l::gpio::PA[07].enable();
     sam4l::gpio::PA[07].enable_output();
-    sam4l::gpio::PA[07].set();
+    sam4l::gpio::PA[07].set();*/
 
-    radio_module.console.initialize();
     radio_module.lora_console.initialize();
+    radio_module.console.initialize();
     radio_module.three_g_console.initialize();
     radio_module.nrf51822.initialize();
     watchdog.start();
