@@ -8,6 +8,8 @@
 #define XDOT_INVALID_PARAM -3
 #define XDOT_MSG_TOO_LONG -4
 
+int xdot_init(void);
+
 //8 byte AppEUI, 16 byte AppKey
 int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey);
 
