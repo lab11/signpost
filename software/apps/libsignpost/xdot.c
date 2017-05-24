@@ -20,17 +20,17 @@ static int check_buffer(uint8_t* buf, int len) {
     //did it end in OK or ERROR?
     if(len >= 5) {
         if(strncmp(buf+len-5,"OK\r\r\n",5)) {
-            return 0;
+            return XDOT_SUCCESS;
         }
     }
 
     if(len >= 8) {
         if(strncmp(buf+len-8,"ERROR\r\r\n",8)) { 
-            return 1;
+            return XDOT_ERROR;
         }
     } 
 
-    return -1;
+    return XDOT_NO_RESPONSE;
 }
 
 static int wait_for_response(void) { 
@@ -40,7 +40,7 @@ static int wait_for_response(void) {
     
     int check = check_buffer(response_buffer, len);
 
-    if(check == 0 || check == 1) {
+    if(check == XDOT_SUCCESS || check == XDOT_ERROR) {
         response_len = len;
         return check;
     }
@@ -114,7 +114,7 @@ int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
     console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
     delay_ms(5000);
 
-    return 0;
+    return XDOT_SUCCESS;
 }
 
 int xdot_get_txdr(void) {
@@ -123,7 +123,7 @@ int xdot_get_txdr(void) {
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
     int ret = wait_for_response();
 
-    if(ret == -1) {
+    if(ret == XDOT_NO_RESPONSE || ret == XDOT_ERROR) {
         return ret;
     }
 
@@ -135,46 +135,46 @@ int xdot_get_txdr(void) {
             snprintf(c,1,"%s",(char*)response_buffer);
             int a = atoi(c);
             if(a == 0) {
-                return -1;
+                return XDOT_ERROR;
             } else {
                 return a;
             }
         }
     } else {
-        return -1;
+        return XDOT_NO_RESPONSE;
     }
 }
 
 int xdot_set_txdr(uint8_t dr) {
 
     if(dr > 4) {
-        return -1;
+        return XDOT_INVALID_PARAM;
     }
 
     char cmd[15];
     sprintf(cmd, "AT+TXDR=%d\n", dr);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
 
-    return 0;
+    return XDOT_SUCCESS;
 }
 
 int xdot_set_adr(uint8_t adr) {
 
     if(adr > 1) {
-        return -1;
+        return XDOT_INVALID_PARAM;
     }
 
     char cmd[15];
     sprintf(cmd, "AT+ADR=%d\n", adr);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
 
-    return 0;
+    return XDOT_SUCCESS;
 }
 
 int xdot_set_txpwr(uint8_t tx) {
 
     if(tx > 20) {
-        return -1;
+        return XDOT_INVALID_PARAM;
     }
 
     char cmd[15];
@@ -186,14 +186,28 @@ int xdot_set_txpwr(uint8_t tx) {
 int xdot_set_ack(uint8_t ack) {
 
     if(ack != 0 && ack != 1) {
-        return -1;
+        return XDOT_INVALID_PARAM;
     }
 
     char cmd[15];
     sprintf(cmd, "AT+ACK=%d\n",ack);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
 
-    return 0;
+    return XDOT_SUCCESS;
+}
+
+int xdot_save_settings(void) {
+    char cmd[15];
+    sprintf(cmd, "AT&W");
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    return XDOT_SUCCESS;
+}
+
+int xdot_reset(void) {
+    char cmd[15];
+    sprintf(cmd, "ATZ");
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    return XDOT_SUCCESS;
 }
 
 int xdot_send(uint8_t* buf, uint8_t len) {
@@ -202,5 +216,5 @@ int xdot_send(uint8_t* buf, uint8_t len) {
     console_write(LORA_CONSOLE, buf, len);
     console_write(LORA_CONSOLE, (uint8_t*)"\n", 1);
 
-    return 0;
+    return XDOT_SUCCESS;
 }

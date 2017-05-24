@@ -2,6 +2,12 @@
 
 #include <stdint.h>
 
+#define XDOT_SUCCESS 0
+#define XDOT_ERROR -1
+#define XDOT_NO_RESPONSE -2
+#define XDOT_INVALID_PARAM -3
+#define XDOT_MSG_TOO_LONG -4
+
 //8 byte AppEUI, 16 byte AppKey
 int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey);
 
@@ -23,3 +29,6 @@ int xdot_set_ack(uint8_t ack);
 
 //sends binary buffer
 int xdot_send(uint8_t* buf, uint8_t len);
+
+int xdot_reset(void);
+int xdot_save_settings(void);
