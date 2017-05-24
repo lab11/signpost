@@ -8,6 +8,12 @@ int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey);
 //dr >= 0 and dr<=4
 int xdot_set_txdr(uint8_t dr);
 
+//0<=txpwr<=20
+int xdot_set_txpwr(uint8_t tx);
+
+//0 or 1
+int xdot_set_adr(uint8_t adr);
+
 //ack=0 || ack=1
 int xdot_set_ack(uint8_t ack);
 

@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include "tock.h"
@@ -8,6 +9,50 @@
 #include "multi_console.h"
 
 #define LORA_CONSOLE 109
+
+#define RESPONSE_BUF_SIZE 200
+
+static uint8_t response_buffer[RESPONSE_BUF_SIZE];
+static int response_len;
+
+static int check_buffer(uint8_t* buf, int len) {
+    //did it end in OK or ERROR?
+    if(len >= 5) {
+        if(strncmp(buf+len-5,"OK\r\r\n",5)) {
+            return 0;
+        }
+    }
+
+    if(len >= 8) {
+        if(strncmp(buf+len-8,"ERROR\r\r\n",8)) { 
+            return 1;
+        }
+    } 
+
+    return -1;
+}
+
+static int wait_for_response(void) { 
+
+    //try to wait for the respone once
+    int len = console_read(LORA_CONSOLE, response_buffer, RESPONSE_BUF_SIZE);
+    
+    int check = check_buffer(response_buffer, len);
+
+    if(check == 0 || check == 1) {
+        response_len = len;
+        return check;
+    }
+
+    //we didn't find the response the first time so try again
+    response_len = len;
+    len = console_read(LORA_CONSOLE, response_buffer+len, RESPONSE_BUF_SIZE-len);
+    response_len += len;
+    check = check_buffer(response_buffer,response_len);
+    
+    return check;
+}
+
 
 int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
     const char* cmd = "AT\n";
@@ -82,6 +127,31 @@ int xdot_set_txdr(uint8_t dr) {
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
 
     return 0;
+}
+
+int xdot_set_adr(uint8_t adr) {
+
+    if(adr > 1) {
+        return -1;
+    }
+
+    char cmd[15];
+    sprintf(cmd, "AT+ADR=%d\n", adr);
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+
+    return 0;
+}
+
+int xdot_set_txpwr(uint8_t tx) {
+
+    if(tx > 20) {
+        return -1;
+    }
+
+    char cmd[15];
+    sprintf(cmd, "AT+TXP=%d\n", tx);
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    return wait_for_response();
 }
 
 int xdot_set_ack(uint8_t ack) {
