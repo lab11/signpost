@@ -34,7 +34,7 @@ try:
 except:
     print_red = lambda x: print(x)
 
-from _version import __version__
+from ._version import __version__
 
 
 ################################################################################
