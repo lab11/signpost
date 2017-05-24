@@ -4,14 +4,14 @@
 CHIP = sam4l
 
 # include the base Tock kernel makefile
-include $(SIGNPOST_PLATFORM_DIR)/../../../kernel/tock/boards/Makefile.common
+include $(SIGNPOST_BOARDS_DIR)/../tock/boards/Makefile.common
 
 # XXX This is a bit ugly, but is a nice feature
-$(SIGNPOST_PLATFORM_DIR)/target/$(CHIP)/release/$(PLATFORM):	$(SIGNPOST_PLATFORM_DIR)/src/version.rs
+target/$(CHIP)/release/$(PLATFORM):	src/version.rs
 
 .PHONY: FORCE
 VCMD := echo \"pub static GIT_VERSION: &'static str = \\\"$$(git describe --always || echo notgit)\\\";\"
-$(SIGNPOST_PLATFORM_DIR)/src/version.rs: FORCE
+src/version.rs: FORCE
 	@bash -c "cmp -s <($(VCMD)) <(test -e $@ && cat $@) || $(VCMD) > $@"
 
 TOCKLOADER=tockloader
@@ -19,7 +19,7 @@ TOCKLOADER=tockloader
 # Where in the SAM4L flash to load the kernel with `tockloader`
 KERNEL_ADDRESS=0x10000
 
-BOOTLOADER_FILE = $(SIGNPOST_PLATFORM_DIR)/../bootloader/justjump_bootloader.bin
+BOOTLOADER_FILE = $(SIGNPOST_BOARDS_DIR)/bootloader/justjump_bootloader.bin
 
 # Upload programs over uart with tockloader
 ifdef PORT
@@ -30,20 +30,20 @@ TOCKLOADER_JTAG_FLAGS = --jtag --board $(PLATFORM) --arch cortex-m4 --jtag-devic
 
 # upload kernel over USB, unsupported
 .PHONY: program
-program: $(SIGNPOST_PLATFORM_DIR)/target/sam4l/release/$(PLATFORM).bin
+program: target/sam4l/release/$(PLATFORM).bin
 	@echo "\nCannot program Signpost modules over USB. Use \`make flash\` and JTAG."
 
 # upload kernel over JTAG
 .PHONY: flash
-flash: $(SIGNPOST_PLATFORM_DIR)/target/sam4l/release/$(PLATFORM).bin
+flash: target/sam4l/release/$(PLATFORM).bin
 	$(Q)$(MAKE) flash-kernel || ($(MAKE) flash-bootloader && $(MAKE) flash-kernel)
 
 .PHONY: flash-kernel
-flash-kernel: $(SIGNPOST_PLATFORM_DIR)/target/sam4l/release/$(PLATFORM).bin
+flash-kernel: target/sam4l/release/$(PLATFORM).bin
 	$(Q)$(TOCKLOADER) $(TOCKLOADER_GENERAL_FLAGS) flash --address $(KERNEL_ADDRESS) --jtag $<
 
 .PHONY: flash-debug
-flash-debug: $(SIGNPOST_PLATFORM_DIR)/target/sam4l/debug/$(PLATFORM).bin
+flash-debug: target/sam4l/debug/$(PLATFORM).bin
 	$(Q)$(TOCKLOADER) $(TOCKLOADER_GENERAL_FLAGS) flash --address $(KERNEL_ADDRESS) --jtag $<
 
 # Command to flash the bootloader. Flashes the bootloader onto the SAM4L. Also
