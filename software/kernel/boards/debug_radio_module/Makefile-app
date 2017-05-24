@@ -1,9 +1,7 @@
-# Makefile for loading applications for the signpost debug radio module SAM4L
+# Makefile for loading applications for tockloader-compliant signpost modules
 
-APP_FLASH = $(TOCK_USERLAND_BASE_DIR)/tools/flash/storm-flash-app.py
+# point to the signpost `boards/` directory
+SIGNPOST_BOARDS_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/../
 
-# upload programs over JTAG
-.PHONY: flash
-flash: $(BOARD_BUILDDIR)/app.bin
-	$(APP_FLASH) $(BOARD_BUILDDIR)/app.bin
+include $(SIGNPOST_BOARDS_DIR)/Signpost-SAM4L-app.mk
 

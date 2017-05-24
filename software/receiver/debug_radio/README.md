@@ -69,5 +69,5 @@ Upload to PyPI
 Internal note.
 See wiki for account information.
 
-    python3 setup.py sdist bdist_wheel
+    python setup.py sdist bdist_wheel
     twine upload dist/*
