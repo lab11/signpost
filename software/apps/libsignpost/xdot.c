@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
@@ -114,6 +115,34 @@ int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
     delay_ms(5000);
 
     return 0;
+}
+
+int xdot_get_txdr(void) {
+    char cmd[15];
+    sprintf(cmd, "AT+TXDR?\n");
+    console_write(LORA_CONSOLE, cmd, strlen(cmd));
+    int ret = wait_for_response();
+
+    if(ret == -1) {
+        return ret;
+    }
+
+    if(response_len >= 1) {
+        if(response_buffer[0] == '0') {
+            return 0;
+        } else {
+            char c[2];
+            snprintf(c,1,"%s",(char*)response_buffer);
+            int a = atoi(c);
+            if(a == 0) {
+                return -1;
+            } else {
+                return a;
+            }
+        }
+    } else {
+        return -1;
+    }
 }
 
 int xdot_set_txdr(uint8_t dr) {
