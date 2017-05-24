@@ -1,13 +1,14 @@
-# makefile for user application
+# Makefile for user application
 
-# the current directory
+# Specify this directory relative to the current application.
 APP_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-# files needed for this code
-C_SRCS   := $(wildcard *.c)
+# Which files to compile.
+C_SRCS := $(wildcard *.c)
 
-TOCK_BOARD = controller
+LIBRARY_PATHS += .
+
+TOCK_USERLAND_BASE_DIR := ../../../kernel/tock/userland
 
 # include makefile settings that are shared between applications
 include ../../AppMakefile.mk
-
