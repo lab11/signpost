@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "xdot.h"
 #include "multi_console.h"
+#include "at_command.h"
 
 #define LORA_CONSOLE 109
 
@@ -18,70 +19,21 @@
 
 #define RESPONSE_BUF_SIZE 200
 
-static uint8_t response_buffer[RESPONSE_BUF_SIZE];
-static int response_len;
 
-
-static int check_buffer(uint8_t* buf, int len) {
-    //did it end in OK or ERROR?
-    if(len >= 4) {
-        if(!strncmp(buf+len-4,"OK\r\n",4)) {
-            return XDOT_SUCCESS;
-        }
-    }
-
-    if(len >= 7) {
-        if(!strncmp(buf+len-7,"ERROR\r\n",7)) {
-            return XDOT_ERROR;
-        }
-    }
-
-    return XDOT_NO_RESPONSE;
-}
-
-//this really should have a timeout on it - we are bound to get stuck
-static int wait_for_response(void) {
-
-    //try to wait for the respone once
-    int len = console_read(LORA_CONSOLE, response_buffer, RESPONSE_BUF_SIZE);
-    response_len = len;
-    int check = check_buffer(response_buffer, len);
-    if(check == XDOT_SUCCESS || check == XDOT_ERROR) {
-        return check;
-    }
-
-    //we didn't find the response the first time so try again
-    len = console_read(LORA_CONSOLE, response_buffer+len, RESPONSE_BUF_SIZE-len);
-    response_len += len;
-    check = check_buffer(response_buffer,response_len);
-    if(check == XDOT_SUCCESS || check == XDOT_ERROR) {
-        return check;
-    }
-
-    //we didn't find the response the seond time so try again
-    len = console_read(LORA_CONSOLE, response_buffer+len, RESPONSE_BUF_SIZE-len);
-    response_len += len;
-    check = check_buffer(response_buffer,response_len);
-
-    return check;
-}
 
 int xdot_init(void) {
     gpio_enable_output(LORA_WAKE_PIN);
 
-    const char* cmd = "ATE0\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    return wait_for_response();
+    at_send(LORA_CONSOLE, "ATE0\n");
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
-    const char* cmd = "AT\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE, "AT\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
-    cmd = "AT+NJM=1\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE, "AT+NJM=1\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
     static char c[200];
 
@@ -96,8 +48,8 @@ int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
     }
     sprintf(cpt, "\n");
     len += 1;
-    console_write(LORA_CONSOLE, c, len);
-    wait_for_response();
+    at_send_buf(LORA_CONSOLE,c,len);
+    at_wait_for_response(LORA_CONSOLE,3);
 
     len = 0;
     strcpy(c, "AT+NK=0,");
@@ -110,26 +62,22 @@ int xdot_join_network(uint8_t* AppEUI, uint8_t* AppKey) {
     }
     sprintf(cpt, "\n");
     len += 1;
-    console_write(LORA_CONSOLE, c, len);
-    wait_for_response();
+    at_send_buf(LORA_CONSOLE,c,len);
+    at_wait_for_response(LORA_CONSOLE,3);
 
-    cmd = "AT+PN=1\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE,"AT+PN=1\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
-    cmd = "AT+FSB=1\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE,"AT+FSB=1\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
-    cmd = "AT&W\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE,"AT&W\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
     xdot_reset();
 
-    cmd = "AT+JOIN\n";
-    console_write(LORA_CONSOLE, (uint8_t*)cmd, strlen(cmd));
-    wait_for_response();
+    at_send(LORA_CONSOLE,"AT+JOIN\n");
+    at_wait_for_response(LORA_CONSOLE,3);
 
     return XDOT_SUCCESS;
 }
@@ -138,27 +86,25 @@ int xdot_get_txdr(void) {
     char cmd[15];
     sprintf(cmd, "AT+TXDR?\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    int ret = wait_for_response();
 
-    if(ret == XDOT_NO_RESPONSE || ret == XDOT_ERROR) {
+    uint8_t buf[200];
+    int ret = at_get_response(LORA_CONSOLE, 3, buf, 200);
+
+    if(ret <= 0) {
         return ret;
     }
 
-    if(response_len >= 1) {
-        if(response_buffer[0] == '0') {
-            return 0;
-        } else {
-            char c[2];
-            snprintf(c,1,"%s",(char*)response_buffer);
-            int a = atoi(c);
-            if(a == 0) {
-                return XDOT_ERROR;
-            } else {
-                return a;
-            }
-        }
+    if(buf[0] == '0') {
+        return 0;
     } else {
-        return XDOT_NO_RESPONSE;
+        char c[2];
+        snprintf(c,1,"%s",(char*)buf);
+        int a = atoi(c);
+        if(a == 0) {
+            return XDOT_ERROR;
+        } else {
+            return a;
+        }
     }
 }
 
@@ -171,7 +117,7 @@ int xdot_set_txdr(uint8_t dr) {
     char cmd[15];
     sprintf(cmd, "AT+TXDR=%d\n", dr);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_set_adr(uint8_t adr) {
@@ -183,7 +129,7 @@ int xdot_set_adr(uint8_t adr) {
     char cmd[15];
     sprintf(cmd, "AT+ADR=%d\n", adr);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_set_txpwr(uint8_t tx) {
@@ -195,7 +141,7 @@ int xdot_set_txpwr(uint8_t tx) {
     char cmd[15];
     sprintf(cmd, "AT+TXP=%d\n", tx);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_set_ack(uint8_t ack) {
@@ -207,27 +153,27 @@ int xdot_set_ack(uint8_t ack) {
     char cmd[15];
     sprintf(cmd, "AT+ACK=%d\n",ack);
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_save_settings(void) {
     char cmd[15];
     sprintf(cmd, "AT&W\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_reset(void) {
     char cmd[15];
     sprintf(cmd, "ATZ\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    wait_for_response();
+    at_wait_for_response(LORA_CONSOLE,3);
 
     for(volatile uint32_t i = 0; i < 1500000; i++);
 
     sprintf(cmd, "AT\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 
 }
 
@@ -236,18 +182,18 @@ int xdot_send(uint8_t* buf, uint8_t len) {
     console_write(LORA_CONSOLE, (uint8_t*)cmd , strlen(cmd));
     console_write(LORA_CONSOLE, buf, len);
     console_write(LORA_CONSOLE, (uint8_t*)"\n", 1);
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_sleep(void) {
     char cmd[15];
     sprintf(cmd, "AT+WM=1\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    wait_for_response();
+    at_wait_for_response(LORA_CONSOLE,3);
 
     sprintf(cmd, "AT+sleep\n");
     console_write(LORA_CONSOLE, cmd, strlen(cmd));
-    return wait_for_response();
+    return at_wait_for_response(LORA_CONSOLE,3);
 }
 
 int xdot_wake(void) {
@@ -255,4 +201,6 @@ int xdot_wake(void) {
     gpio_toggle(LORA_WAKE_PIN);
 
     for(volatile uint32_t i = 0; i < 15000; i++);
+
+    return XDOT_SUCCESS;
 }
