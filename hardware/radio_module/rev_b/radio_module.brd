@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -2079,7 +2079,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="4.191" y="45.339" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C8" library="passives" package="0603_CAP" value="33pF" x="12.065" y="22.098" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="490-6241-1-ND " x="12.065" y="22.098" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="712-1342-1-ND" x="12.065" y="22.098" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="12.1285" y="20.2565" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R17" library="passives" package="0402_RES" value="10k" x="29.845" y="28.829" smashed="yes" rot="R270">
@@ -2205,7 +2205,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="39.116" y="33.147" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="FB1" library="passives" package="0402_CAP" value="1.5k" x="36.703" y="46.609" smashed="yes">
-<attribute name="DIGIKEY" value="490-5216-1-ND" x="-3.937" y="37.719" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="445-2158-1-ND" x="-3.937" y="37.719" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="38.608" y="46.228" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="L5" library="signpost" package="1212" value="22uH" x="45.339" y="37.592" smashed="yes" rot="R270">
@@ -2500,15 +2500,15 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="VALUE" x="32.92" y="32.246" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="Q1" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="24.13" y="21.59" smashed="yes">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND " x="24.13" y="21.59" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND" x="24.13" y="21.59" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="25.4" y="22.606" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="Q2" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="25.7175" y="46.228" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND " x="25.7175" y="46.228" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND" x="25.7175" y="46.228" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="24.3205" y="46.863" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="Q3" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="25.7175" y="49.657" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND " x="25.7175" y="49.657" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND" x="25.7175" y="49.657" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="24.3205" y="50.927" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U11" library="signpost" package="XDOT_MODULE" value="XDOT_MODULE" x="50.038" y="2.54" smashed="yes" rot="R90">
