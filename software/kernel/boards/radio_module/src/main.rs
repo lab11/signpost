@@ -136,7 +136,7 @@ unsafe fn set_pin_primary_functions() {
     PA[05].configure(None);     //DBG GPIO2
     PA[06].configure(None);     //XDOT Power Gate
     PA[07].configure(None);     //3G Power Gate
-    PA[08].configure(Some(A));  //3G CTS
+    PA[08].configure(None);  //3G CTS
     PA[09].configure(Some(A));  //3G RTS
     PA[10].configure(None);     //PPS
     PA[11].configure(Some(A));  //3G Tx
@@ -280,7 +280,7 @@ pub unsafe fn reset_handler() {
          &sam4l::gpio::PB[08], //NRF BOOT
          &sam4l::gpio::PA[06], //LORA POWERGATE
          &sam4l::gpio::PB[04], //LORA RESET
-         &sam4l::gpio::PA[18], //LORA BOOT
+         &sam4l::gpio::PA[18], //LORA WAKE
          &sam4l::gpio::PA[07], //GSM POWERGATE
          &sam4l::gpio::PA[13], //GSM RESET
          &sam4l::gpio::PA[14]],//GSM POWER
@@ -387,6 +387,21 @@ pub unsafe fn reset_handler() {
     sam4l::gpio::PA[07].enable();
     sam4l::gpio::PA[07].enable_output();
     sam4l::gpio::PA[07].set();*/
+
+    //clear gsm cts
+    sam4l::gpio::PA[08].enable();
+    sam4l::gpio::PA[08].enable_output();
+    sam4l::gpio::PA[08].clear();
+
+    //clear gsm RST
+    sam4l::gpio::PA[13].enable();
+    sam4l::gpio::PA[13].enable_output();
+    sam4l::gpio::PA[13].clear();
+
+    //clear gsm poweron
+    sam4l::gpio::PA[14].enable();
+    sam4l::gpio::PA[14].enable_output();
+    sam4l::gpio::PA[14].clear();
 
     radio_module.lora_console.initialize();
     radio_module.console.initialize();
