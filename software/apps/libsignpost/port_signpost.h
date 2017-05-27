@@ -37,7 +37,7 @@ void port_signpost_init(uint8_t i2c_address);
 //it should return the length of the message successfully sent on the bus
 //If the bus returns an error, use the appropriate error code
 //defined in this file
-int port_signpost_i2c_master_write(uint8_t* buf, int len);
+int port_signpost_i2c_master_write(uint8_t addr, uint8_t* buf, int len);
 
 //This function is sets up the asynchronous i2c receive interface
 //When this function is called start listening on the i2c bus for
