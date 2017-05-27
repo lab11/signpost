@@ -6,6 +6,7 @@
 #define SARA_U260_INVALIDPARAM -2
 #define SARA_U260_NO_SERVICE -3
 
+int sara_u260_init(void);
 int sara_u260_basic_http_post(const char* url, const char* path, uint8_t* buf, size_t len);
 int sara_u260_authenticated_http_post(const char* url, const char* path, uint8_t* buf,
                                         size_t len, const char* username, const char* password);

@@ -197,7 +197,7 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                                 receive_len = buffer.len();
                             }*/
                             //XXX: this could receive more than the app buffer...
-                            self.uart.receive_automatic(buffer, 100);
+                            self.uart.receive_automatic(buffer, 250);
                         });
 
                         app_buf
