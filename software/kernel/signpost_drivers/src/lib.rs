@@ -21,3 +21,5 @@ pub mod app_watchdog;
 pub mod watchdog_kernel;
 
 pub mod gps_console;
+pub mod sara_u260;
+pub mod xdot;
