@@ -12,6 +12,10 @@ From a high level you will need to provide:
     - Asynchronous callback for falling edge of the Mod-in pin
     - Currently the signpost libraries assume printf functionality
         - This is assumed to be provided through <stdio.h>
+    - A way to wait on a variable reference
+        -This could be as simple as looping until it changes or 
+        -Could be more complex like going to sleep
+        -It is assumed the variable will change due to an interrupt context
 
 To provide this functionality please implement the following interface
 for each platform*/
@@ -52,3 +56,8 @@ void port_signpost_mod_out_clear(void);
 //This function is used to get the input interrupt for the falling edge of
 //mod-in
 void port_signpost_mod_in_falling_edge_listen(port_signpost_mod_in_falling_edge_callback cb);
+
+//This is a way to wait on a variable in a platform specific way
+void port_signpost_wait_for(void* wait_on_true);
+
+
