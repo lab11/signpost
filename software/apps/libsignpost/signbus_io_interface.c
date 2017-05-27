@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "i2c_master_slave.h"
 #include "signbus_io_interface.h"
 #include "tock.h"
+#include "port_signpost.h"
 
 #pragma GCC diagnostic ignored "-Wstack-usage="
 
@@ -53,11 +53,6 @@ static uint8_t this_device_address;
 static uint16_t sequence_number = 0;
 static new_packet np = { .new = false };
 
-
-static bool master_write_yield_flag = false;
-static int  master_write_len_or_rc = 0;
-
-
 __attribute__((const))
 static uint16_t htons(uint16_t in) {
     return (((in & 0x00FF) << 8) | ((in & 0xFF00) >> 8));
@@ -102,7 +97,7 @@ static bool async = false;
 
 // Kernel callback for I2C events
 // n.b. currently only sync send is implemented, so only recv callbacks here
-static void i2c_master_slave_callback(
+/*static void i2c_master_slave_callback(
         int callback_type,
         int length,
         int unused __attribute__ ((unused)),
@@ -129,6 +124,18 @@ static void i2c_master_slave_callback(
     } else if (callback_type == TOCK_I2C_CB_SLAVE_READ_COMPLETE) {
         signbus_iterate_slave_read();
     }
+}*/
+
+void signbus_io_slave_write_callback(int len_or_rc) {
+    if(len_or_rc >= 0) {
+        memcpy(packet_buf, slave_write_buf, len_or_rc);
+        new_packet* packet = (new_packet*) &np;
+        packet->new = true;
+        packet->len = len_or_rc;
+        if (async_active) {
+            get_message(async_recv_buf, async_recv_buflen, async_encrypted, async_src_address);
+        }
+    }
 }
 
 
@@ -137,12 +144,13 @@ static void i2c_master_slave_callback(
 ///
 /// MUST be called before any other methods.
 void signbus_io_init(uint8_t address) {
-    i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
+    /*i2c_master_slave_set_slave_write_buffer(slave_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_master_write_buffer(master_write_buf, I2C_MAX_LEN);
     i2c_master_slave_set_slave_read_buffer(slave_read_buf, I2C_MAX_LEN);
     i2c_master_slave_set_callback(i2c_master_slave_callback, NULL);
     i2c_master_slave_set_slave_address(address);
-    this_device_address = address;
+    this_device_address = address;*/
+    port_signpost_init(address);
 }
 
 
@@ -206,23 +214,18 @@ int signbus_io_send(uint8_t dest, bool encrypted, uint8_t* data, size_t len) {
         memcpy(master_write_buf,&p,I2C_MAX_LEN);
 
         //send the packet
-        master_write_yield_flag = false;
         if(morePackets) {
-            rc = i2c_master_slave_write(dest,I2C_MAX_LEN);
-            if (rc < 0) return rc;
+            rc = port_signpost_i2c_master_write(dest,master_write_buf,I2C_MAX_LEN);
 
-            yield_for(&master_write_yield_flag);
-            if (master_write_len_or_rc < 0) return master_write_len_or_rc;
+            if (rc < 0) return rc;
 
             toSend -= MAX_DATA_LEN;
         } else {
             SIGNBUS_DEBUG_DUMP_BUF(master_write_buf, sizeof(signbus_network_header_t)+toSend);
 
-            rc = i2c_master_slave_write(dest,sizeof(signbus_network_header_t)+toSend);
-            if (rc < 0) return rc;
+            rc = port_signpost_i2c_master_write(dest,master_write_buf,sizeof(signbus_network_header_t)+toSend);
 
-            yield_for(&master_write_yield_flag);
-            if (master_write_len_or_rc < 0) return master_write_len_or_rc;
+            if (rc < 0) return rc;
 
             toSend = 0;
         }
