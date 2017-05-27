@@ -17,3 +17,6 @@
 [submodule "software/apps/libs/mbedtls"]
 	path = software/apps/support/mbedtls/mbedtls
 	url = https://github.com/lab11/mbedtls
+[submodule "software/apps/support/mbed/mbed-os"]
+	path = software/apps/support/mbed/mbed-os
+	url = https://github.com/ARMmbed/mbed-os
