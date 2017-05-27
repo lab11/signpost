@@ -1,0 +1,93 @@
+################################################################################
+## Linux flavored Makefile for getting Mbed code onto microcontrollers
+################################################################################
+
+# Set toolchain path if arm-none-eabi- binaries are not in user path
+# TOOLCHAIN_PATH ?=
+TERMINAL ?= gnome-terminal -e
+
+ifdef SEGGER_SERIAL
+JLINKEXE_OPTION = -SelectEmuBySn $(SEGGER_SERIAL)
+JLINKGDBSERVER_OPTION = -select USB=$(SEGGER_SERIAL)
+JLINKRTTCLIENT_OPTION = -select USB=$(SEGGER_SERIAL)
+endif
+
+MAKE_BUILD_FOLDER = mkdir -p $(OUTPUT_PATH)
+
+JLINK = -JLinkExe $(JLINK_OPTIONS) $(JLINKEXE_OPTION)
+JLINKGDBSERVER = JLinkGDBServer $(JLINK_OPTIONS) $(JLINKGDBSERVER_OPTION)
+JLINKRTTCLIENT = JLinkRTTClient $(JLINK_OPTIONS) $(JLINKRTTCLIENT_OPTION)
+
+clean:
+	rm -rf $(OUTPUT_PATH)
+	rm -f *.jlink
+	rm -f JLink.log
+	rm -f .gdbinit
+
+flash: all flash.jlink 
+	$(JLINK) $(OUTPUT_PATH)flash.jlink
+
+flash.jlink:
+	$(MAKE_BUILD_FOLDER)
+	printf "r\n" > $(OUTPUT_PATH)flash.jlink
+	printf "loadbin $(OUTPUT_PATH)/$(OUTPUT_BIN), FLASH_START_ADDRESS \nr\ng\nexit\n" >> $(OUTPUT_PATH)flash.jlink
+
+recover: recover.jlink erase-all.jlink pin-reset.jlink
+	$(MAKE_BUILD_FOLDER)
+	$(JLINK) $(OUTPUT_PATH)recover.jlink
+	$(JLINK) $(OUTPUT_PATH)erase-all.jlink
+	$(JLINK) $(OUTPUT_PATH)pin-reset.jlink
+
+#recover.jlink:
+#	$(MAKE_BUILD_FOLDER)
+#	printf "si 0\nt0\nsleep 1\ntck1\nsleep 1\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\nt0\nsleep 2\nt1\nsleep 2\ntck0\nsleep 100\nsi 1\nr\nexit\n" > $(OUTPUT_PATH)recover.jlink
+#
+#pin-reset.jlink:
+#	$(MAKE_BUILD_FOLDER)
+#	printf "w4 40000544 1\nr\nexit\n" > $(OUTPUT_PATH)pin-reset.jlink
+#
+#pin-reset: pin-reset.jlink
+#	$(MAKE_BUILD_FOLDER)
+#	$(JLINK) $(OUTPUT_PATH)pin-reset.jlink
+#
+
+reset: reset.jlink
+	$(MAKE_BUILD_FOLDER)
+	$(JLINK) $(OUTPUT_PATH)reset.jlink
+
+reset.jlink:
+	$(MAKE_BUILD_FOLDER)
+	printf "r\ng\nexit\n" > $(OUTPUT_PATH)reset.jlink
+
+erase: erase.jlink
+	$(MAKE_BUILD_FOLDER)
+	$(JLINK) $(OUTPUT_PATH)erase.jlink
+
+erase.jlink:
+	$(MAKE_BUILD_FOLDER)
+	printf "erase\nexit\n" > $(OUTPUT_PATH)erase.jlink
+
+#I don't know how to make these portable but they would be nice to add
+#erase-all: erase-all.jlink
+#	$(MAKE_BUILD_FOLDER)
+#	$(JLINK) $(OUTPUT_PATH)erase-all.jlink
+#
+#erase-all.jlink:
+#	# Write to NVMC to enable erase, do erase all, wait for completion. reset
+#	$(MAKE_BUILD_FOLDER)
+#	printf "w4 4001e504 2\nw4 4001e50c 1\nsleep 100\nr\nexit\n" > $(OUTPUT_PATH)erase-all.jlink
+
+#startdebug: debug-gdbinit
+#	$(TERMINAL) "$(JLINKGDBSERVER) -port $(GDB_PORT_NUMBER)"
+#	sleep 1
+#	$(TERMINAL) "$(GDB) $(ELF)"
+#
+#startrtt:
+#	$(TERMINAL) "JLinkExe -device nrf51822 -if swd -speed 1000 -AutoConnect 1"
+#	sleep 1
+#	$(TERMINAL) "$(JLINKRTTCLIENT)"
+#
+#debug-gdbinit:
+#	printf "target remote localhost:$(GDB_PORT_NUMBER)\nload\nmon reset\nbreak main\n" > .gdbinit
+#
+.PHONY: flash erase-all startdebug flash.jlink
