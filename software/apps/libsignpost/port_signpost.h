@@ -43,7 +43,7 @@ int port_signpost_i2c_master_write(uint8_t* buf, int len);
 //When this function is called start listening on the i2c bus for
 //The address specified in init
 //Place data in the buffer no longer than the max len
-void port_signpost_i2c_slave_listen(port_signpost_i2c_slave_write_callback cb, uint8_t* buf, int max_len)
+void port_signpost_i2c_slave_listen(port_signpost_i2c_slave_write_callback cb, uint8_t* buf, int max_len);
 
 //These functions are used to control the mod_out pin
 void port_signpost_mod_out_set(void);
