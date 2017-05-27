@@ -2138,7 +2138,9 @@ and Current Measurement</description>
 <connect gate="G$1" pin="WDS" pad="5"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="MAX6746KA29+TCT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -3358,7 +3360,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Neal Jackson"/>
-<attribute name="REV" value="D"/>
+<attribute name="REV" value="E"/>
 <attribute name="TITLE" value="Power Supply Module"/>
 </attributes>
 <variantdefs>
