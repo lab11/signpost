@@ -31,6 +31,6 @@ int main (void) {
         xdot_wake();
         xdot_send((uint8_t*)"Hi From Lab11",13);
         xdot_sleep();
-        delay_ms(5000);
+        delay_ms(1000);
     }
 }
