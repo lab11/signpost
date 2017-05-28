@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <string.h>
 #include <stdio.h>
 #include "sara_u260.h"
 #include "tock.h"
@@ -16,6 +17,8 @@ int sara_u260_init(void) {
     int ret = at_wait_for_response(SARA_CONSOLE,3);
     if(ret >= AT_SUCCESS) {
         return SARA_U260_SUCCESS;
+    } else {
+        return SARA_U260_ERROR;
     }
 }
 
@@ -150,11 +153,68 @@ int sara_u260_basic_http_post(const char* url, const char* path, uint8_t* buf, s
     return ret;
 }
 
-int sara_u260_authenticated_http_post(const char* url, const char* path, uint8_t* buf,
-                                        size_t len, const char* username, const char* password) {
-
-}
-
 int sara_u260_get_post_response(uint8_t* buf, size_t max_len) {
-
+    return sara_u260_get_post_partial_response(buf, 0, max_len);
 }
+
+int sara_u260_get_post_partial_response(uint8_t* buf, size_t offset, size_t max_len) {
+    char c[60];
+    sprintf(c, "AT+URDBLOCK=\"postresult.txt\",%d,%d\r",offset,max_len);
+    at_send_buf(SARA_CONSOLE,c,strlen(c));
+
+    int len = max_len+100;
+    uint8_t* tbuf = (uint8_t*)malloc(max_len*sizeof(uint8_t)+100);
+    int ret = at_get_response(SARA_CONSOLE,3,tbuf,len);
+    len = ret;
+
+    if(ret < 0) {
+        return SARA_U260_ERROR;
+    }
+
+    //okay we actually got some data, let's copy it into the buffer
+    //first find the length
+    int c1 = 0;
+    int c2 = 0;
+    for(int i = 0; i < len; i++) {
+        if(tbuf[i] == ',') {
+            if(c1 == 0) {
+                c1 = i;
+            } else if(c2 == 0) {
+                c2 = i;
+                break;
+            } else {
+                break;
+            }
+        }
+    }
+
+    if(c1 == 0 || c2 ==0) {
+        return SARA_U260_ERROR;
+    }
+
+    char dl[10] = {0};
+    memcpy(dl,tbuf+c1+1,c2-c1-1);
+    int dlen = atoi(dl);
+
+    if(dlen >=0 && (size_t)dlen >= max_len) {
+        return SARA_U260_ERROR;
+    }
+
+    //now manually memcpy out the data into tbuf (because there could be nulls)
+    memcpy(buf,tbuf+(len - 7 - dlen),dlen);
+
+    return dlen;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

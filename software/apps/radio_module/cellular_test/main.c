@@ -23,5 +23,25 @@ int main (void) {
     delay_ms(1000);
 
     uint8_t buf[5] = {'L','a','b','1','1'};
-    sara_u260_basic_http_post("httpbin.org","/post",buf,5);
+    printf("Posting...\n");
+    int ret = sara_u260_basic_http_post("httpbin.org","/post",buf,5);
+
+    if(ret == SARA_U260_NO_SERVICE) {
+        printf("No Service! try again in a bit.\n");
+    }
+
+    delay_ms(10000);
+
+    if(ret >= 0) {
+        uint8_t dbuf[500] = {0};
+        printf("Getting response\n");
+        int l = sara_u260_get_post_response(dbuf, 499);
+        if(l < 0) {
+            printf("Did not get response\n");
+        } else {
+            dbuf[l] = 0;
+            printf("Got resposne of length %d: \n",l);
+            printf("%s\n", (char*)dbuf);
+        }
+    }
 }
