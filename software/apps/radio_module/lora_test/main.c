@@ -12,8 +12,6 @@
 #include "xdot.h"
 #include "led.h"
 
-#define LORA_CONSOLE 109
-
 int main (void) {
     printf("Starting Lora Test\n");
 
