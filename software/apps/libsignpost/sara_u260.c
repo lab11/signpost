@@ -76,7 +76,8 @@ static int sara_u260_setup_packet_switch(void) {
 }
 
 static int sara_u260_del_file(const char* fname) {
-    char c[50];
+
+    char* c = (char*)malloc(strlen(fname)*sizeof(char)+17);
     int clen = sprintf(c, "AT+UDELFILE=\"%s\"\r", fname);
     at_send_buf(SARA_CONSOLE, c, clen);
     int ret = at_wait_for_response(SARA_CONSOLE,3);
@@ -90,7 +91,7 @@ static int sara_u260_del_file(const char* fname) {
 
 static int sara_u260_write_to_file(const char* fname, uint8_t* buf, size_t len) {
 
-    char c[50];
+    char* c = (char*)malloc(strlen(fname)*sizeof(char)+17);
     int clen = sprintf(c, "AT+UDWNFILE=\"%s\",%d\r", fname, len);
     at_send_buf(SARA_CONSOLE, c, clen);
     at_wait_for_custom_response(SARA_CONSOLE,3,"\n>");
@@ -205,16 +206,3 @@ int sara_u260_get_post_partial_response(uint8_t* buf, size_t offset, size_t max_
 
     return dlen;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
