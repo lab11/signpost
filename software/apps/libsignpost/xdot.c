@@ -146,7 +146,7 @@ int xdot_set_txpwr(uint8_t tx) {
 
 int xdot_set_ack(uint8_t ack) {
 
-    if(ack != 0 && ack != 1) {
+    if(ack < 0 || ack > 8) {
         return XDOT_INVALID_PARAM;
     }
 
