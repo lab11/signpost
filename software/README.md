@@ -1,6 +1,10 @@
 Signpost Software
 =================
 
+This repository holds all of the software for the [Signpost City-Scale
+sensing project](https://github.com/lab11/signpost). Please see that 
+repository for more information. 
+
 Software for the Signpost platform and its modules.
 
 Although not a requirement for modules, most hardware on signpost uses the
@@ -36,3 +40,12 @@ Various methods for collecting data from Signposts.
 
 Tools for interacting directly with the I2C bus on a Signpost Backplane.
 
+## Summon
+
+A Summon interface for the Signpost project
+
+## License
+
+This repository inherits its licensed from the parent project. Please
+see the [signpost repository](https://github.com/lab11/signpost#license) for
+the license statement.
