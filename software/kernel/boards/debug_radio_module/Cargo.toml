@@ -7,18 +7,13 @@ authors = ["Brad Campbell <bradjc@umich.edu>"]
 panic = "abort"
 lto = true
 opt-level = 0
-debug = false
-# Would prefer to have debug symbols, but there is a Rust bug
-#	https://github.com/rust-lang/rust/issues/25270
-#	https://github.com/rust-lang/rust/issues/34434
-#debug = true
+debug = true
 
 [profile.release]
 panic = "abort"
 lto = true
 
 [dependencies]
-rust-libcore = "*"
 cortexm4 = { path = "../../tock/arch/cortex-m4" }
 capsules = { path = "../../tock/capsules" }
 sam4l = { path = "../../tock/chips/sam4l" }

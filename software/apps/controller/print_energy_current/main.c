@@ -13,7 +13,7 @@
 #include "signpost_energy.h"
 
 static void print_data (int module, int energy, int current) {
-  int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE, POWER_MODULE_PRESCALER_LTC2943);
+  int int_energy = signpost_ltc_to_uAh(energy, POWER_MODULE_RSENSE);
   if (module == 3) {
     printf("Controller energy: %i uAh\tcurrent: %i uA\n", int_energy, current);
   } else if (module == 4) {

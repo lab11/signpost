@@ -1,9 +1,10 @@
 #![no_std]
 #![no_main]
-#![feature(const_fn,lang_items)]
+#![feature(compiler_builtins_lib,const_fn,lang_items)]
 
-extern crate cortexm4;
 extern crate capsules;
+extern crate compiler_builtins;
+extern crate cortexm4;
 #[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;
