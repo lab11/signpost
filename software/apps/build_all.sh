@@ -34,6 +34,12 @@ for makefile in $(find . | grep '/Makefile$'); do
 		continue
 	fi
 
+    if [ $name == "./tests/erpc_test" -o $name == "./tests/erpc_crypt" ]; then
+		#echo "Skipping $(dirname $makefile)"
+		popd > /dev/null
+		continue
+	fi
+
 	echo "${bold}${blue}Compiling${teal} $name${normal}"
 	make -j || { echo "${bold} ⤤ $name${normal}" ; echo "" ; failures+=("$name");}
 	popd > /dev/null

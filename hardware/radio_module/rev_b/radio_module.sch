@@ -9945,7 +9945,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="PESD0402-140CT-ND "/>
 </part>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="33pF">
-<attribute name="DIGIKEY" value="490-6241-1-ND "/>
+<attribute name="DIGIKEY" value="712-1342-1-ND"/>
 </part>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
@@ -10040,7 +10040,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0402" value="1.5k">
-<attribute name="DIGIKEY" value="490-5216-1-ND"/>
+<attribute name="DIGIKEY" value="445-2158-1-ND"/>
 </part>
 <part name="L5" library="signpost" deviceset="LHQ3NP" device="" value="22uH"/>
 <part name="C27" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
@@ -10208,13 +10208,13 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
 </part>
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND "/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND"/>
 </part>
 <part name="Q2" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND "/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND"/>
 </part>
 <part name="Q3" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
-<attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND "/>
+<attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND"/>
 </part>
 <part name="U11" library="signpost" deviceset="XDOT_MODULE" device=""/>
 <part name="J11" library="connector" deviceset="U.FL-R-SMT" device=""/>
