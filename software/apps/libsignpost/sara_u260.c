@@ -81,6 +81,10 @@ static int sara_u260_del_file(const char* fname) {
     int clen = sprintf(c, "AT+UDELFILE=\"%s\"\r", fname);
     at_send_buf(SARA_CONSOLE, c, clen);
     int ret = at_wait_for_response(SARA_CONSOLE,3);
+    
+    if(c) {
+        free(c);
+    }
 
     if(ret >= 0) {
         return SARA_U260_SUCCESS;
@@ -103,6 +107,10 @@ static int sara_u260_write_to_file(const char* fname, uint8_t* buf, size_t len) 
         } else {
             at_send_buf(SARA_CONSOLE, buf+i, len-i);
         }
+    }
+
+    if(c) {
+        free(c);
     }
 
     int ret = at_wait_for_response(SARA_CONSOLE,3);
@@ -169,6 +177,10 @@ int sara_u260_get_post_partial_response(uint8_t* buf, size_t offset, size_t max_
     len = ret;
 
     if(ret < 0) {
+        if(tbuf) {
+            free(tbuf);
+        }
+
         return SARA_U260_ERROR;
     }
 
@@ -190,6 +202,9 @@ int sara_u260_get_post_partial_response(uint8_t* buf, size_t offset, size_t max_
     }
 
     if(c1 == 0 || c2 ==0) {
+        if(tbuf) {
+            free(tbuf);
+        }
         return SARA_U260_ERROR;
     }
 
@@ -198,11 +213,18 @@ int sara_u260_get_post_partial_response(uint8_t* buf, size_t offset, size_t max_
     int dlen = atoi(dl);
 
     if(dlen >=0 && (size_t)dlen >= max_len) {
+        if(tbuf) {
+            free(tbuf);
+        }
         return SARA_U260_ERROR;
     }
 
     //now manually memcpy out the data into tbuf (because there could be nulls)
     memcpy(buf,tbuf+(len - 7 - dlen),dlen);
+
+    if(tbuf) {
+        free(tbuf);
+    }
 
     return dlen;
 }

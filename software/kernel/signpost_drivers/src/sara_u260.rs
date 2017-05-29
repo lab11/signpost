@@ -197,6 +197,10 @@ impl<'a, U: UARTAdvanced> Driver for Console<'a, U> {
                                 receive_len = buffer.len();
                             }*/
                             //XXX: this could receive more than the app buffer...
+                            /*This changed from the original call in gps_console
+                            because the sarau260 has strange and variable
+                            timing between its chunks. I increased it to
+                            account for the greatest of these timings*/
                             self.uart.receive_automatic(buffer, 250);
                         });
 
