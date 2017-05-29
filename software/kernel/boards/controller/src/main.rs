@@ -1,10 +1,11 @@
 #![crate_name = "controller"]
 #![no_std]
 #![no_main]
-#![feature(asm,const_fn,lang_items)]
+#![feature(asm,compiler_builtins_lib,const_fn,lang_items)]
 
-extern crate cortexm4;
 extern crate capsules;
+extern crate compiler_builtins;
+extern crate cortexm4;
 #[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;
@@ -78,7 +79,7 @@ struct SignpostController {
     smbus_interrupt: &'static signpost_drivers::smbus_interrupt::SMBUSIntDriver<'static>,
     gpio_async: &'static signpost_drivers::gpio_async::GPIOAsync<'static, signpost_drivers::mcp23008::MCP23008<'static>>,
     coulomb_counter_i2c_selector: &'static signpost_drivers::i2c_selector::I2CSelector<'static, signpost_drivers::pca9544a::PCA9544A<'static>>,
-    coulomb_counter_generic: &'static signpost_drivers::ltc2941::LTC2941Driver<'static>,
+    coulomb_counter_generic: &'static capsules::ltc294x::LTC294XDriver<'static>,
     battery_monitor: &'static signpost_drivers::max17205::MAX17205Driver<'static>,
     fram: &'static capsules::fm25cl::FM25CLDriver<'static, capsules::virtual_spi::VirtualSpiMasterDevice<'static, usart::USART>>,
     i2c_master_slave: &'static capsules::i2c_master_slave_driver::I2CMasterSlaveDriver<'static>,
@@ -458,23 +459,23 @@ pub unsafe fn reset_handler() {
     // Setup the driver for the coulomb counter. We only use one because
     // they all share the same address, so one driver can be used for any
     // of them based on which port is selected on the i2c selector.
-    let ltc2941_i2c = static_init!(
+    let ltc294x_i2c = static_init!(
         capsules::virtual_i2c::I2CDevice,
         capsules::virtual_i2c::I2CDevice::new(i2c_mux_smbus, 0x64),
         32);
-    let ltc2941 = static_init!(
-        signpost_drivers::ltc2941::LTC2941<'static>,
-        signpost_drivers::ltc2941::LTC2941::new(ltc2941_i2c, None, &mut signpost_drivers::ltc2941::BUFFER),
+    let ltc294x = static_init!(
+        capsules::ltc294x::LTC294X<'static>,
+        capsules::ltc294x::LTC294X::new(ltc294x_i2c, None, &mut capsules::ltc294x::BUFFER),
         288/8);
-    ltc2941_i2c.set_client(ltc2941);
+    ltc294x_i2c.set_client(ltc294x);
 
     // Create the object that provides an interface for the coulomb counter
     // for applications.
-    let ltc2941_driver = static_init!(
-        signpost_drivers::ltc2941::LTC2941Driver<'static>,
-        signpost_drivers::ltc2941::LTC2941Driver::new(ltc2941),
+    let ltc294x_driver = static_init!(
+        capsules::ltc294x::LTC294XDriver<'static>,
+        capsules::ltc294x::LTC294XDriver::new(ltc294x),
         192/8);
-    ltc2941.set_client(ltc2941_driver);
+    ltc294x.set_client(ltc294x_driver);
 
     //
     // Battery Monitor
@@ -635,7 +636,7 @@ pub unsafe fn reset_handler() {
         bonus_timer: bonus_timer,
         gpio_async: gpio_async,
         coulomb_counter_i2c_selector: i2c_selector,
-        coulomb_counter_generic: ltc2941_driver,
+        coulomb_counter_generic: ltc294x_driver,
         battery_monitor: max17205_driver,
         smbus_interrupt: smbusint_driver,
         fram: fm25cl_driver,

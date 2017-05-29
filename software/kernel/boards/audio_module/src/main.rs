@@ -1,10 +1,11 @@
 #![crate_name = "audio_module"]
 #![no_std]
 #![no_main]
-#![feature(asm,const_fn,lang_items)]
+#![feature(asm,compiler_builtins_lib,const_fn,lang_items)]
 
-extern crate cortexm4;
 extern crate capsules;
+extern crate compiler_builtins;
+extern crate cortexm4;
 #[macro_use(debug,static_init)]
 extern crate kernel;
 extern crate sam4l;

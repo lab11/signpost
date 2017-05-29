@@ -8,7 +8,7 @@
 #include <tock.h>
 
 #include "i2c_selector.h"
-#include "ltc2941.h"
+#include "ltc294x.h"
 #include "smbus_interrupt.h"
 
 #define MOD0_GPIOA_PORT_NUM 0
@@ -43,26 +43,26 @@ int main (void) {
   // Pass a callback function to the kernel
   smbus_interrupt_set_callback(callback, NULL);
   i2c_selector_set_callback(callback, NULL);
-  ltc2941_set_callback(callback, NULL);
+  ltc294x_set_callback(callback, NULL);
 
   // Read from first selector, channel 3 (1000)
   i2c_selector_select_channels(0x08);
   yield();
 
   // Reset charge
-  ltc2941_reset_charge();
+  ltc294x_reset_charge();
   yield();
   // And tell it any interrupt that may have existed has been handled
   smbus_interrupt_issue_alert_response();
   yield();
 
   // Read status, first byte should be 0x00
-  ltc2941_read_status();
+  ltc294x_read_status();
   yield();
   print_data(0);
 
   // Set high threshold really low so we get a fast interrupt
-  ltc2941_set_high_threshold(0x0000);
+  ltc294x_set_high_threshold(0x0000);
   yield();
 
   // Open all channels so any gauge can interrupt and respond to SMBUS Alert Response
@@ -87,16 +87,16 @@ int main (void) {
   yield();
 
   // Reset charge and handle interrupt
-  ltc2941_reset_charge();
+  ltc294x_reset_charge();
   yield();
   smbus_interrupt_issue_alert_response();
   yield();
 
   // Read status twice
-  ltc2941_read_status();
+  ltc294x_read_status();
   yield();
   print_data(0);
-  ltc2941_read_status();
+  ltc294x_read_status();
   yield();
   print_data(0);
 }

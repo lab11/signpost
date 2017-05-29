@@ -5,7 +5,7 @@ extern "C" {
 #endif
 
 // qlsb = 0.0625mAh with 0.017 Ohm sense resistor
-#define POWER_MODULE_PRESCALER 32
+#define POWER_MODULE_PRESCALER_LTC2941 32
 #define POWER_MODULE_PRESCALER_LTC2943 256
 // rsense = 0.017 Ohm
 #define POWER_MODULE_RSENSE 17
@@ -28,7 +28,7 @@ int signpost_energy_get_solar_voltage_mv (void);
 int signpost_energy_get_solar_current_ua (void);
 void signpost_energy_reset (void);
 
-int signpost_ltc_to_uAh (int ltc_energy, int rsense, int prescaler);
+int signpost_ltc_to_uAh (int ltc_energy, int rsense);
 
 #ifdef __cplusplus
 }

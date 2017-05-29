@@ -2,12 +2,13 @@
 
 # define a chip
 CHIP = sam4l
+TARGET = thumbv7em-none-eabi
 
 # include the base Tock kernel makefile
 include $(SIGNPOST_BOARDS_DIR)/../tock/boards/Makefile.common
 
 # XXX This is a bit ugly, but is a nice feature
-target/$(CHIP)/release/$(PLATFORM):	src/version.rs
+target/$(TARGET)/release/$(PLATFORM):	src/version.rs
 
 .PHONY: FORCE
 VCMD := echo \"pub static GIT_VERSION: &'static str = \\\"$$(git describe --always || echo notgit)\\\";\"
@@ -30,20 +31,20 @@ TOCKLOADER_JTAG_FLAGS = --jtag --board $(PLATFORM) --arch cortex-m4 --jtag-devic
 
 # upload kernel over USB, unsupported
 .PHONY: program
-program: target/sam4l/release/$(PLATFORM).bin
+program: target/$(TARGET)/release/$(PLATFORM).bin
 	@echo "\nCannot program Signpost modules over USB. Use \`make flash\` and JTAG."
 
 # upload kernel over JTAG
 .PHONY: flash
-flash: target/sam4l/release/$(PLATFORM).bin
+flash: target/$(TARGET)/release/$(PLATFORM).bin
 	$(Q)$(MAKE) flash-kernel || ($(MAKE) flash-bootloader && $(MAKE) flash-kernel)
 
 .PHONY: flash-kernel
-flash-kernel: target/sam4l/release/$(PLATFORM).bin
+flash-kernel: target/$(TARGET)/release/$(PLATFORM).bin
 	$(Q)$(TOCKLOADER) $(TOCKLOADER_GENERAL_FLAGS) flash --address $(KERNEL_ADDRESS) --jtag $<
 
 .PHONY: flash-debug
-flash-debug: target/sam4l/debug/$(PLATFORM).bin
+flash-debug: target/$(TARGET)/debug/$(PLATFORM).bin
 	$(Q)$(TOCKLOADER) $(TOCKLOADER_GENERAL_FLAGS) flash --address $(KERNEL_ADDRESS) --jtag $<
 
 # Command to flash the bootloader. Flashes the bootloader onto the SAM4L. Also
