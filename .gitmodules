@@ -8,12 +8,6 @@
 [submodule "modules/spectrum154/contiki/atum"]
 	path = modules/spectrum154/contiki/atum
 	url = https://github.com/lab11/atum
-[submodule "software/kernel/tock"]
-	path = software/kernel/tock
-	url = https://github.com/helena-project/tock
-[submodule "software/apps/libs/erpc"]
-	path = software/apps/support/erpc/erpc
-	url = https://github.com/lab11/erpc
-[submodule "software/apps/libs/mbedtls"]
-	path = software/apps/support/mbedtls/mbedtls
-	url = https://github.com/lab11/mbedtls
+[submodule "signpost-software"]
+	path = signpost-software
+	url = https://github.com/lab11/signpost-software
