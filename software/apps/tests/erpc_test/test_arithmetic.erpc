@@ -1,6 +1,0 @@
-program test_arithmetic
-
-interface Arithmetic {
-    add(float a, float b) -> float
-    sub(float a, float b) -> float
-}

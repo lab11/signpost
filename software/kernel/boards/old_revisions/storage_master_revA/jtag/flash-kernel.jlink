@@ -1,6 +1,0 @@
-r
-loadfile target/sam4l/release/storage_master.hex
-r
-g
-q
-
