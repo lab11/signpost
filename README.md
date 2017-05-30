@@ -1,7 +1,7 @@
 Signpost
 ========
 
-[![Build Status](https://travis-ci.org/lab11/signpost-software.svg?branch=master)](https://travis-ci.org/lab11/signpost-softw are)
+[![Build Status](https://travis-ci.org/lab11/signpost-software.svg?branch=master)](https://travis-ci.org/lab11/signpost-software)
 
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_on_sign_full_666x1000.jpg" alt="Signpost" width="31%" align="left" />
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_close_up_662x1000.jpg" align="left" width="31%" />
