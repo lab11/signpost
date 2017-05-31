@@ -638,7 +638,7 @@ not fit in memory at all. While this capability is key part of future Signpost
 
 4. Data output
 
-    If everything is successful, every seconds `Module 0` should print
+    If everything is successful, every second `Module 0` should print
     something resembling:
     ```
     Writing buffer [9]*600
