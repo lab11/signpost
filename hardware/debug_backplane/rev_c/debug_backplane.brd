@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.0">
+<eagle version="8.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9231,7 +9231,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="79.248" y="49.022" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C76" library="passives" package="0603_CAP" value="0.82uF" x="84.074" y="46.736" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="	490-11493-1-ND" x="84.074" y="46.736" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value=" 490-11493-1-ND" x="84.074" y="46.736" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="84.455" y="47.371" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C77" library="passives" package="0603_CAP" value="0.47uF" x="86.614" y="60.706" smashed="yes" rot="R180">
@@ -9253,7 +9253,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="R57" pad="1"/>
 <contactref element="R58" pad="1"/>
 <contactref element="C73" pad="2"/>
-<contactref element="U24" pad="10"/>
 <contactref element="U24" pad="5"/>
 <contactref element="U24" pad="24"/>
 <contactref element="U24" pad="43"/>
@@ -10196,9 +10195,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="46.468" y1="52.818" x2="45.974" y2="52.324" width="0.254" layer="1"/>
 <via x="45.974" y="52.324" extent="1-16" drill="0.3048"/>
 <wire x1="87.01" y1="70.358" x2="87.757" y2="70.358" width="0.254" layer="1"/>
-<wire x1="87.866" y1="79.728" x2="87.404" y2="79.728" width="0.254" layer="1"/>
-<wire x1="87.404" y1="79.728" x2="86.868" y2="80.264" width="0.254" layer="1"/>
-<via x="86.868" y="80.264" extent="1-16" drill="0.3048"/>
 <wire x1="83.89493125" y1="90.17" x2="83.89493125" y2="89.58706875" width="0.254" layer="1"/>
 <wire x1="83.89493125" y1="89.58706875" x2="84.328" y2="89.154" width="0.254" layer="1"/>
 <via x="100.076" y="60.96" extent="1-16" drill="0.3048"/>
@@ -10883,7 +10879,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </polygon>
 <contactref element="U15" pad="20"/>
 <contactref element="R3" pad="1"/>
-<wire x1="88.9" y1="78.74" x2="90.155" y2="78.74" width="0.254" layer="1"/>
+<wire x1="89.68165625" y1="78.74" x2="88.9" y2="78.74" width="0.254" layer="1"/>
+<wire x1="89.68165625" y1="78.74" x2="90.155" y2="78.74" width="0.254" layer="1"/>
 <wire x1="88.9" y1="78.74" x2="88.646" y2="78.74" width="0.254" layer="1"/>
 <wire x1="138.303" y1="124.719" x2="138.303" y2="123.302" width="0.254" layer="1"/>
 <wire x1="138.303" y1="123.302" x2="137.81" y2="122.809" width="0.254" layer="1"/>
@@ -11245,6 +11242,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="171.196" y1="15.113" x2="170.053" y2="13.97" width="0.508" layer="1"/>
 <wire x1="167.64" y1="50.038" x2="167.64" y2="22.352" width="0.508" layer="1"/>
 <contactref element="U8" pad="6"/>
+<contactref element="U24" pad="10"/>
+<wire x1="87.866" y1="79.728" x2="88.69365625" y2="79.728" width="0.254" layer="1"/>
+<wire x1="88.69365625" y1="79.728" x2="89.68165625" y2="78.74" width="0.254" layer="1"/>
 </signal>
 <signal name="USB_SUSPEND_STATUS">
 <contactref element="U24" pad="1"/>

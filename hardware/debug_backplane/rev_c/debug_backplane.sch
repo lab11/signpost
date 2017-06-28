@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.0">
+<eagle version="8.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -8889,12 +8889,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="470Ω"/>
 <part name="R86" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="C76" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.82uF">
-<attribute name="DIGIKEY" value="	490-11493-1-ND"/>
+<attribute name="DIGIKEY" value=" 490-11493-1-ND"/>
 </part>
 <part name="C77" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.47uF">
 <attribute name="DIGIKEY" value="490-1539-1-ND"/>
 </part>
 <part name="U8" library="chips" deviceset="LTC2941" device=""/>
+<part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13812,8 +13813,9 @@ LEDs</text>
 <wire x1="68.58" y1="73.66" x2="40.64" y2="73.66" width="0.1524" layer="98"/>
 <wire x1="40.64" y1="73.66" x2="40.64" y2="63.5" width="0.1524" layer="98"/>
 <wire x1="40.64" y1="63.5" x2="68.58" y2="63.5" width="0.1524" layer="98"/>
-<text x="93.98" y="167.64" size="1.27" layer="98">Downstream ports draw
-VBUS from the "cable"</text>
+<text x="88.9" y="167.64" size="1.27" layer="98">This hub &amp;downstream ports
+are "externally" powered
+(not limited to 500mA from host)</text>
 <text x="53.34" y="119.38" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
 !GANGED -&gt; high, OVR per port
 EECLK must be NC</text>
@@ -13899,18 +13901,12 @@ It doesn't have isolation, still needs a pullup</text>
 <instance part="U32" gate="G$1" x="5.08" y="111.76"/>
 <instance part="R52" gate="G$1" x="22.86" y="119.38" rot="R90"/>
 <instance part="U$22" gate="G$1" x="17.78" y="127"/>
+<instance part="U$77" gate="G$1" x="114.3" y="172.72"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<pinref part="U24" gate="G$1" pin="!BUSPWR"/>
-<wire x1="111.76" y1="160.02" x2="114.3" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="160.02" x2="114.3" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="172.72" x2="109.22" y2="172.72" width="0.1524" layer="91"/>
-<label x="109.22" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 <segment>
 <pinref part="U24" gate="G$1" pin="GND"/>
 <pinref part="GND15" gate="1" pin="GND"/>
@@ -14099,6 +14095,12 @@ It doesn't have isolation, still needs a pullup</text>
 <wire x1="22.86" y1="124.46" x2="17.78" y2="124.46" width="0.1524" layer="91"/>
 <junction x="17.78" y="124.46"/>
 <pinref part="U$22" gate="G$1" pin="VCC_BACKPLANE"/>
+</segment>
+<segment>
+<pinref part="U$77" gate="G$1" pin="VCC_BACKPLANE"/>
+<wire x1="114.3" y1="172.72" x2="114.3" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="U24" gate="G$1" pin="!BUSPWR"/>
+<wire x1="114.3" y1="160.02" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
