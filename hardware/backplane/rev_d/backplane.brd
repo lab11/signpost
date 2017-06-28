@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.1.1">
+<eagle version="8.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3889,7 +3889,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="R60" pad="1"/>
 <contactref element="R57" pad="1"/>
 <contactref element="R58" pad="1"/>
-<contactref element="U1" pad="10"/>
 <contactref element="U1" pad="5"/>
 <contactref element="U1" pad="24"/>
 <contactref element="U1" pad="43"/>
@@ -5305,9 +5304,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="118.828" y1="183.686" x2="118.999" y2="183.515" width="0.254" layer="1"/>
 <wire x1="120.378" y1="189.75" x2="121.297" y2="189.75" width="0.254" layer="1"/>
 <wire x1="121.297" y1="189.75" x2="121.666" y2="190.119" width="0.254" layer="1"/>
-<wire x1="120.378" y1="192.25" x2="121.638" y2="192.25" width="0.254" layer="1"/>
-<wire x1="121.638" y1="192.25" x2="121.92" y2="192.532" width="0.254" layer="1"/>
-<via x="121.92" y="192.532" extent="1-16" drill="0.6"/>
 <wire x1="143.518" y1="188.854" x2="143.518" y2="186.586" width="0.254" layer="1"/>
 <wire x1="143.518" y1="186.586" x2="143.114" y2="186.182" width="0.254" layer="1"/>
 <via x="141.986" y="186.182" extent="1-16" drill="0.6"/>
@@ -6488,6 +6484,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="145.346" y1="284.168" x2="145.796" y2="283.718" width="0.254" layer="1"/>
 <wire x1="145.796" y1="283.718" x2="150.1648" y2="283.718" width="0.254" layer="1"/>
 <wire x1="150.1648" y1="283.718" x2="150.2918" y2="283.845" width="0.254" layer="1"/>
+<contactref element="U1" pad="10"/>
+<wire x1="120.378" y1="192.25" x2="121.13" y2="192.25" width="0.254" layer="1"/>
+<wire x1="121.13" y1="192.25" x2="121.158" y2="192.278" width="0.254" layer="1"/>
 </signal>
 <signal name="USB_SUSPEND_STATUS">
 <contactref element="U1" pad="1"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.1.1">
+<eagle version="8.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -10272,6 +10272,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$54" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND147" library="umich" deviceset="GND" device=""/>
 <part name="GND148" library="umich" deviceset="GND" device=""/>
+<part name="U$55" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13747,8 +13748,9 @@ LEDs</text>
 <wire x1="63.5" y1="73.66" x2="35.56" y2="73.66" width="0.1524" layer="98"/>
 <wire x1="35.56" y1="73.66" x2="35.56" y2="63.5" width="0.1524" layer="98"/>
 <wire x1="35.56" y1="63.5" x2="63.5" y2="63.5" width="0.1524" layer="98"/>
-<text x="88.9" y="167.64" size="1.27" layer="98">Downstream ports draw
-VBUS from the "cable"</text>
+<text x="83.82" y="167.64" size="1.27" layer="98">This hub &amp; downstream ports
+are "externally" powered
+(not limited to 500mA from host)</text>
 <text x="48.26" y="119.38" size="1.27" layer="98">!EXTMEM -&gt; high, no mem
 !GANGED -&gt; high, OVR per port
 EECLK must be NC</text>
@@ -13831,18 +13833,12 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <instance part="GND145" gate="1" x="22.86" y="93.98"/>
 <instance part="U$53" gate="G$1" x="17.78" y="124.46"/>
 <instance part="R52" gate="G$1" x="22.86" y="116.84" rot="R90"/>
+<instance part="U$55" gate="G$1" x="111.76" y="172.72"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<pinref part="U1" gate="G$1" pin="!BUSPWR"/>
-<wire x1="106.68" y1="160.02" x2="109.22" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="160.02" x2="109.22" y2="172.72" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="172.72" x2="104.14" y2="172.72" width="0.1524" layer="91"/>
-<label x="104.14" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="GND"/>
 <pinref part="GND15" gate="1" pin="GND"/>
@@ -13996,6 +13992,12 @@ that will likely shift to montoring !PWRON! for the last port</text>
 <wire x1="17.78" y1="121.92" x2="22.86" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="22.86" y1="121.92" x2="22.86" y2="119.38" width="0.1524" layer="91"/>
 <junction x="17.78" y="121.92"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="!BUSPWR"/>
+<wire x1="106.68" y1="160.02" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="160.02" x2="111.76" y2="172.72" width="0.1524" layer="91"/>
+<pinref part="U$55" gate="G$1" pin="VCC_BACKPLANE"/>
 </segment>
 </net>
 <net name="!BACKPLANE_RESET" class="0">
