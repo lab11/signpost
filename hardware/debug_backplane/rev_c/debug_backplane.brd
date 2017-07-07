@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -639,6 +639,7 @@ Header</text>
 <wire x1="79.607221875" y1="59.69" x2="78.74" y2="58.822778125" width="0.508" layer="21" curve="90"/>
 <wire x1="78.74" y1="58.822778125" x2="78.74" y2="51.667221875" width="0.508" layer="21"/>
 <wire x1="78.74" y1="51.667221875" x2="79.607221875" y2="50.8" width="0.508" layer="21" curve="90"/>
+<text x="42.164" y="56.388" size="1.016" layer="21" font="vector" ratio="12" align="top-center">!PWRON</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -9136,14 +9137,20 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="163.068" y="111.5695" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="163.3855" y="113.03" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
-<element name="TP1" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="82.296">
+<element name="TP1" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="82.296" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="50.8" y="82.296" size="1.016" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="48.26" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="50.8" y="79.756" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP2" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="79.756">
+<element name="TP2" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="79.756" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="50.8" y="79.756" size="1.016" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="48.26" y="77.978" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="VALUE" x="50.8" y="77.216" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="TP3" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="77.216">
+<element name="TP3" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="50.8" y="77.216" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="50.8" y="77.216" size="1.016" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="NAME" x="50.8" y="75.692" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="50.8" y="74.676" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U9" library="chips" package="DFN-8" value="LTC2943" x="20.574" y="87.376" rot="R270">
 <attribute name="DIGIKEY" value=" LTC2943IDD#PBF-ND" x="20.574" y="87.376" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
@@ -9241,6 +9248,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="U8" library="chips" package="DFN-6-2MMX3MM" value="LTC2941" x="29.464" y="89.408" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" x="29.464" y="89.408" size="1.016" layer="27" font="vector" ratio="15" rot="R270" display="off"/>
 <attribute name="NAME" x="29.464" y="88.17" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+</element>
+<element name="TP12" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="42.164" y="58.166">
+<attribute name="DIGIKEY" value="5001K-ND" x="42.164" y="58.166" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 </element>
 </elements>
 <signals>
@@ -17175,9 +17185,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="31.75" y1="62.23" x2="35.56" y2="62.23" width="0.254" layer="1"/>
 <wire x1="35.56" y1="62.23" x2="36.576" y2="61.214" width="0.254" layer="1"/>
 <via x="36.576" y="61.214" extent="1-16" drill="0.3048"/>
-<wire x1="36.576" y1="61.214" x2="38.608" y2="61.214" width="0.254" layer="16"/>
-<wire x1="38.608" y1="61.214" x2="41.148" y2="58.674" width="0.254" layer="16"/>
-<via x="41.148" y="58.674" extent="1-16" drill="0.3048"/>
+<wire x1="36.576" y1="61.214" x2="41.656" y2="61.214" width="0.254" layer="16"/>
+<wire x1="41.656" y1="61.214" x2="44.196" y2="58.674" width="0.254" layer="16"/>
+<via x="44.196" y="58.674" extent="1-16" drill="0.3048"/>
 <contactref element="D2" pad="4A"/>
 <via x="55.118" y="58.674" extent="1-16" drill="0.3048"/>
 <wire x1="55.118" y1="58.674" x2="58.928" y2="58.674" width="0.254" layer="16"/>
@@ -17193,7 +17203,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="48.28253125" y1="58.7248" x2="48.74546875" y2="58.7248" width="0.254" layer="1"/>
 <wire x1="48.74546875" y1="58.7248" x2="48.79626875" y2="58.674" width="0.254" layer="1"/>
 <wire x1="48.79626875" y1="58.674" x2="55.118" y2="58.674" width="0.254" layer="1"/>
-<wire x1="41.148" y1="58.674" x2="48.23173125" y2="58.674" width="0.254" layer="1"/>
+<wire x1="44.196" y1="58.674" x2="48.23173125" y2="58.674" width="0.254" layer="1"/>
 </signal>
 <signal name="DBG_USB_DP1">
 <contactref element="U26" pad="14"/>
@@ -17235,9 +17245,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U5" pad="14"/>
 <wire x1="36.802" y1="57.93" x2="36.802" y2="57.432" width="0.254" layer="1"/>
 <wire x1="36.802" y1="57.432" x2="37.084" y2="57.15" width="0.254" layer="1"/>
-<wire x1="37.084" y1="57.15" x2="42.164" y2="57.15" width="0.254" layer="1"/>
-<wire x1="42.164" y1="57.15" x2="44.958" y2="54.356" width="0.254" layer="1"/>
-<wire x1="44.958" y1="54.356" x2="45.948" y2="54.356" width="0.254" layer="1"/>
+<wire x1="37.084" y1="57.15" x2="40.894" y2="57.15" width="0.254" layer="1"/>
+<wire x1="40.894" y1="57.15" x2="43.688" y2="54.356" width="0.254" layer="1"/>
+<wire x1="43.688" y1="54.356" x2="45.948" y2="54.356" width="0.254" layer="1"/>
 <wire x1="45.948" y1="54.356" x2="45.96" y2="54.368" width="0.254" layer="1"/>
 </signal>
 <signal name="DBG_USB_DM3">
@@ -17245,9 +17255,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U5" pad="15"/>
 <wire x1="36.302" y1="57.93" x2="36.302" y2="57.17" width="0.254" layer="1"/>
 <wire x1="36.302" y1="57.17" x2="36.83" y2="56.642" width="0.254" layer="1"/>
-<wire x1="36.83" y1="56.642" x2="41.91" y2="56.642" width="0.254" layer="1"/>
-<wire x1="41.91" y1="56.642" x2="44.704" y2="53.848" width="0.254" layer="1"/>
-<wire x1="44.704" y1="53.848" x2="45.94" y2="53.848" width="0.254" layer="1"/>
+<wire x1="36.83" y1="56.642" x2="40.64" y2="56.642" width="0.254" layer="1"/>
+<wire x1="40.64" y1="56.642" x2="43.434" y2="53.848" width="0.254" layer="1"/>
+<wire x1="43.434" y1="53.848" x2="45.94" y2="53.848" width="0.254" layer="1"/>
 <wire x1="45.94" y1="53.848" x2="45.96" y2="53.868" width="0.254" layer="1"/>
 </signal>
 <signal name="DBG_USB_DP4">
@@ -18929,6 +18939,16 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="80.518" y="48.006" extent="1-16" drill="0.3048"/>
 <wire x1="80.518" y1="48.006" x2="81.326" y2="48.006" width="0.254" layer="1"/>
 <wire x1="81.326" y1="48.006" x2="81.392" y2="48.072" width="0.254" layer="1"/>
+</signal>
+<signal name="DBG_USB_!PWRON">
+<contactref element="TP12" pad="TESTPOINT"/>
+<contactref element="U26" pad="11"/>
+<wire x1="30.752" y1="59.98" x2="31.532" y2="59.98" width="0.254" layer="1"/>
+<wire x1="31.532" y1="59.98" x2="31.75" y2="60.198" width="0.254" layer="1"/>
+<wire x1="31.75" y1="60.198" x2="36.322" y2="60.198" width="0.254" layer="1"/>
+<wire x1="37.846" y1="58.674" x2="41.656" y2="58.674" width="0.254" layer="1"/>
+<wire x1="41.656" y1="58.674" x2="42.164" y2="58.166" width="0.254" layer="1"/>
+<wire x1="36.322" y1="60.198" x2="37.846" y2="58.674" width="0.254" layer="1"/>
 </signal>
 </signals>
 <errors>

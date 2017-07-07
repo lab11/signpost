@@ -8896,6 +8896,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="U8" library="chips" deviceset="LTC2941" device=""/>
 <part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -12327,6 +12328,7 @@ not used for this hub</text>
 <instance part="TP1" gate="G$1" x="63.5" y="53.34"/>
 <instance part="TP2" gate="G$1" x="63.5" y="50.8"/>
 <instance part="TP3" gate="G$1" x="63.5" y="48.26"/>
+<instance part="TP12" gate="G$1" x="134.62" y="83.82" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -12676,6 +12678,13 @@ not used for this hub</text>
 <pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
 <wire x1="93.98" y1="48.26" x2="66.04" y2="48.26" width="0.1524" layer="91"/>
 <label x="66.04" y="48.26" size="1.27" layer="95"/>
+</segment>
+</net>
+<net name="DBG_USB_!PWRON" class="0">
+<segment>
+<pinref part="TP12" gate="G$1" pin="TESTPOINT"/>
+<pinref part="U26" gate="G$1" pin="!PWRON1"/>
+<wire x1="132.08" y1="83.82" x2="129.54" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
