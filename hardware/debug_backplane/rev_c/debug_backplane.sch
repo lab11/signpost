@@ -8756,17 +8756,17 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R24" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 </part>
-<part name="R25" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
-<attribute name="DIGIKEY" value="Y9102CT-ND"/>
+<part name="R25" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
+<attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
-<part name="R26" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
-<attribute name="DIGIKEY" value="Y9102CT-ND"/>
+<part name="R26" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
+<attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
-<part name="R27" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
-<attribute name="DIGIKEY" value="Y9102CT-ND"/>
+<part name="R27" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
+<attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
-<part name="R28" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
-<attribute name="DIGIKEY" value="Y9102CT-ND"/>
+<part name="R28" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
+<attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF"/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>

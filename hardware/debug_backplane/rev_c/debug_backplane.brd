@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -9001,17 +9001,17 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="100.838" y="154.432" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="100.838" y="154.432" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="R25" library="passives" package="ARRAY-CONVEX-0603-4" value="1kΩ" x="33.528" y="88.392" rot="R90">
-<attribute name="DIGIKEY" value="Y9102CT-ND" x="33.528" y="88.392" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<element name="R25" library="passives" package="ARRAY-CONVEX-0603-4" value="1.8kΩ" x="33.528" y="88.392" rot="R90">
+<attribute name="DIGIKEY" value="Y9182CT-ND" x="33.528" y="88.392" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
-<element name="R26" library="passives" package="ARRAY-CONVEX-0603-4" value="1kΩ" x="24.892" y="88.392" rot="R90">
-<attribute name="DIGIKEY" value="Y9102CT-ND" x="19.812" y="82.042" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<element name="R26" library="passives" package="ARRAY-CONVEX-0603-4" value="1.8kΩ" x="24.892" y="88.392" rot="R90">
+<attribute name="DIGIKEY" value="Y9182CT-ND" x="19.812" y="82.042" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
-<element name="R27" library="passives" package="ARRAY-CONVEX-0603-4" value="1kΩ" x="41.91" y="88.138" rot="R90">
-<attribute name="DIGIKEY" value="Y9102CT-ND" x="36.83" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<element name="R27" library="passives" package="ARRAY-CONVEX-0603-4" value="1.8kΩ" x="41.91" y="88.138" rot="R90">
+<attribute name="DIGIKEY" value="Y9182CT-ND" x="36.83" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
-<element name="R28" library="passives" package="ARRAY-CONVEX-0603-4" value="1kΩ" x="50.8" y="88.138" rot="R90">
-<attribute name="DIGIKEY" value="Y9102CT-ND" x="45.72" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<element name="R28" library="passives" package="ARRAY-CONVEX-0603-4" value="1.8kΩ" x="50.8" y="88.138" rot="R90">
+<attribute name="DIGIKEY" value="Y9182CT-ND" x="45.72" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
 <element name="C13" library="passives" package="0603_CAP" value="0.01uF" x="27.686" y="85.344"/>
 <element name="C14" library="passives" package="0603_CAP" value="0.1uF" x="33.528" y="91.948" smashed="yes">
