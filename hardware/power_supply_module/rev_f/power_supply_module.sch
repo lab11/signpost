@@ -3638,7 +3638,7 @@ High-power, low thermal resistance package.</description>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Neal Jackson"/>
-<attribute name="REV" value="E"/>
+<attribute name="REV" value="F"/>
 <attribute name="TITLE" value="Power Supply Module"/>
 </attributes>
 <variantdefs>
