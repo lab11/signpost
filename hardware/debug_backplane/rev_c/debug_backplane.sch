@@ -8492,7 +8492,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C46" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="FB6" library="passives" deviceset="FERRITE_BEAD" device="0603" value="1.5kR">
+<part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0603" value="1.5kR">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L1" library="signpost" deviceset="LHQ3NP" device="" value="22uH"/>
@@ -15428,7 +15428,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="C46" gate="G$1" x="10.16" y="129.54">
 <attribute name="DIGIKEY" x="10.16" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="FB6" gate="G$1" x="35.56" y="129.54" rot="R90">
+<instance part="FB1" gate="G$1" x="35.56" y="129.54" rot="R90">
 <attribute name="DIGIKEY" x="35.56" y="129.54" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
 <instance part="L1" gate="G$1" x="48.26" y="114.3" rot="R90"/>
@@ -15686,7 +15686,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="C43" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="119.38" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
 <junction x="35.56" y="121.92"/>
-<pinref part="FB6" gate="G$1" pin="P$1"/>
+<pinref part="FB1" gate="G$1" pin="P$1"/>
 <wire x1="35.56" y1="124.46" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="U16" gate="U1" pin="VDDANA"/>
 </segment>
@@ -15761,7 +15761,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="C44" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="132.08" x2="25.4" y2="137.16" width="0.1524" layer="91"/>
 <junction x="25.4" y="137.16"/>
-<pinref part="FB6" gate="G$1" pin="P$2"/>
+<pinref part="FB1" gate="G$1" pin="P$2"/>
 <wire x1="35.56" y1="137.16" x2="35.56" y2="134.62" width="0.1524" layer="91"/>
 <junction x="35.56" y="137.16"/>
 <wire x1="55.88" y1="162.56" x2="55.88" y2="137.16" width="0.1524" layer="91"/>
