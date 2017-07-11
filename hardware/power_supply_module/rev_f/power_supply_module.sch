@@ -3638,7 +3638,7 @@ High-power, low thermal resistance package.</description>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Neal Jackson"/>
-<attribute name="REV" value="E"/>
+<attribute name="REV" value="F"/>
 <attribute name="TITLE" value="Power Supply Module"/>
 </attributes>
 <variantdefs>
@@ -4146,6 +4146,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
 <part name="U$48" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
+<part name="!RESET" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5231,7 +5232,7 @@ High-power, low thermal resistance package.</description>
 <junction x="246.38" y="180.34"/>
 </segment>
 </net>
-<net name="ENABLE" class="0">
+<net name="!RESET" class="0">
 <segment>
 <pinref part="U5" gate="G$1" pin="EN"/>
 <wire x1="160.02" y1="68.58" x2="157.48" y2="68.58" width="0.1524" layer="91"/>
@@ -6004,18 +6005,6 @@ Backplane to GND.</text>
 <wire x1="170.18" y1="43.18" x2="170.18" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="ENABLE" class="0">
-<segment>
-<wire x1="139.7" y1="50.8" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U27" gate="G$1" pin="!RESET"/>
-<wire x1="180.34" y1="63.5" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="63.5" x2="182.88" y2="63.5" width="0.1524" layer="91"/>
-<label x="182.88" y="63.5" size="1.27" layer="95" xref="yes"/>
-<pinref part="U30" gate="G$1" pin="A"/>
-<wire x1="200.66" y1="50.8" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
-<junction x="180.34" y="50.8"/>
-</segment>
-</net>
 <net name="N$77" class="0">
 <segment>
 <pinref part="Q1" gate="G$1" pin="S"/>
@@ -6036,6 +6025,18 @@ Backplane to GND.</text>
 <pinref part="R70" gate="G$1" pin="1"/>
 <pinref part="U30" gate="G$1" pin="Y"/>
 <wire x1="220.98" y1="50.8" x2="218.44" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="!RESET" class="0">
+<segment>
+<wire x1="139.7" y1="50.8" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U27" gate="G$1" pin="!RESET"/>
+<wire x1="180.34" y1="63.5" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="63.5" x2="182.88" y2="63.5" width="0.1524" layer="91"/>
+<label x="182.88" y="63.5" size="1.27" layer="95" xref="yes"/>
+<pinref part="U30" gate="G$1" pin="A"/>
+<wire x1="200.66" y1="50.8" x2="180.34" y2="50.8" width="0.1524" layer="91"/>
+<junction x="180.34" y="50.8"/>
 </segment>
 </net>
 </nets>
@@ -7184,6 +7185,7 @@ Backplane to GND.</text>
 <instance part="JP1" gate="G$1" x="114.3" y="88.9"/>
 <instance part="FAULT" gate="G$1" x="116.84" y="111.76"/>
 <instance part="CHRG" gate="G$1" x="116.84" y="109.22"/>
+<instance part="!RESET" gate="G$1" x="116.84" y="106.68"/>
 </instances>
 <busses>
 </busses>
@@ -7289,6 +7291,13 @@ Backplane to GND.</text>
 <pinref part="J3" gate="G$1" pin="SDA"/>
 <wire x1="132.08" y1="68.58" x2="134.62" y2="68.58" width="0.1524" layer="91"/>
 <label x="134.62" y="68.58" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="!RESET" class="0">
+<segment>
+<pinref part="!RESET" gate="G$1" pin="TESTPOINT"/>
+<wire x1="119.38" y1="106.68" x2="121.92" y2="106.68" width="0.1524" layer="91"/>
+<label x="121.92" y="106.68" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
