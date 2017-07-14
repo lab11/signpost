@@ -8334,6 +8334,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="104.14" y="109.22" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R11" library="passives" package="0603-RES" value="50Ω" x="87.122" y="102.362" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="RHM49.9BJCT-ND" x="87.122" y="102.362" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="87.249" y="100.203" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R12" library="passives" package="0603-RES" value="50Ω" x="87.122" y="109.728" smashed="yes" rot="R90">
@@ -8478,6 +8479,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="106.934" y="108.839" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R5" library="passives" package="0402_RES-HIGH_SPEED" value="27Ω" x="84.836" y="91.44" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="541-27JCT-ND" x="84.836" y="91.44" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="84.455" y="92.456" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R6" library="passives" package="0402_RES-HIGH_SPEED" value="27Ω" x="85.852" y="91.44" smashed="yes" rot="R270">
@@ -8548,6 +8550,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="41.442" y="84.034" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R1" library="passives" package="0805_RES" value="0.017Ω" x="29.718" y="91.948" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="WSLPB-.017CT-ND" x="29.718" y="91.948" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="29.718" y="93.98" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="29.718" y="93.948" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>

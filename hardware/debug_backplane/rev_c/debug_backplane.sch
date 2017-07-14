@@ -8336,7 +8336,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$19" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="U$20" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="U$25" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
+<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
+<attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
+</part>
 <part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="R13" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="R14" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
@@ -8416,7 +8418,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND118" library="umich" deviceset="GND" device=""/>
 <part name="GND119" library="umich" deviceset="GND" device=""/>
 <part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
+<part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
+<attribute name="DIGIKEY" value="541-27JCT-ND"/>
+</part>
 <part name="R6" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R7" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R8" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
@@ -8452,7 +8456,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="U$6" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="U15" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω"/>
+<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω">
+<attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
+</part>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω"/>
 <part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω"/>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω"/>
@@ -9710,7 +9716,9 @@ Translator</text>
 </plain>
 <instances>
 <instance part="U15" gate="G$1" x="33.02" y="88.9"/>
-<instance part="R1" gate="G$1" x="101.6" y="175.26" rot="R90"/>
+<instance part="R1" gate="G$1" x="101.6" y="175.26" rot="R90">
+<attribute name="DIGIKEY" x="101.6" y="175.26" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="R2" gate="G$1" x="101.6" y="132.08" rot="R90"/>
 <instance part="R3" gate="G$1" x="111.76" y="88.9" rot="R90"/>
 <instance part="R4" gate="G$1" x="111.76" y="45.72" rot="R90"/>
@@ -14701,6 +14709,7 @@ pair of signals by flipping +/-</text>
 <instance part="R11" gate="G$1" x="226.06" y="124.46" smashed="yes">
 <attribute name="NAME" x="218.44" y="122.1486" size="1.778" layer="95"/>
 <attribute name="VALUE" x="227.33" y="122.428" size="1.778" layer="96"/>
+<attribute name="DIGIKEY" x="226.06" y="124.46" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R12" gate="G$1" x="226.06" y="121.92" smashed="yes">
 <attribute name="NAME" x="218.44" y="119.6086" size="1.778" layer="95"/>
@@ -14720,7 +14729,9 @@ pair of signals by flipping +/-</text>
 <instance part="GND118" gate="1" x="172.72" y="132.08"/>
 <instance part="GND119" gate="1" x="172.72" y="106.68"/>
 <instance part="C40" gate="G$1" x="177.8" y="111.76" rot="R90"/>
-<instance part="R5" gate="G$1" x="53.34" y="129.54"/>
+<instance part="R5" gate="G$1" x="53.34" y="129.54">
+<attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="R6" gate="G$1" x="63.5" y="124.46"/>
 <instance part="R7" gate="G$1" x="53.34" y="104.14"/>
 <instance part="R8" gate="G$1" x="63.5" y="99.06"/>
