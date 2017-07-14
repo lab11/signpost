@@ -8769,10 +8769,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF"/>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="U$23" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$69" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$70" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>

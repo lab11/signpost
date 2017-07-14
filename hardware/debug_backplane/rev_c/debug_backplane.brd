@@ -9015,14 +9015,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="Y9182CT-ND" x="45.72" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
 <element name="C13" library="passives" package="0603_CAP" value="0.01uF" x="27.686" y="85.344"/>
-<element name="C14" library="passives" package="0603_CAP" value="0.1uF" x="33.528" y="91.948" smashed="yes">
+<element name="C14" library="passives" package="0603_CAP" value="100nF" x="33.528" y="91.948" smashed="yes">
 <attribute name="NAME" x="33.02" y="92.964" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C15" library="passives" package="0603_CAP" value="0.1uF" x="23.368" y="91.948" smashed="yes" rot="R270">
+<element name="C15" library="passives" package="0603_CAP" value="100nF" x="23.368" y="91.948" smashed="yes" rot="R270">
 <attribute name="NAME" x="22.606" y="91.948" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="C16" library="passives" package="0603_CAP" value="0.1uF" x="41.402" y="91.694"/>
-<element name="C17" library="passives" package="0603_CAP" value="0.1uF" x="50.038" y="91.694"/>
+<element name="C16" library="passives" package="0603_CAP" value="100nF" x="41.402" y="91.694"/>
+<element name="C17" library="passives" package="0603_CAP" value="100nF" x="50.038" y="91.694"/>
 <element name="S20" library="switches" package="PTS645" value="PTS645SM43SMTR92" x="58.42" y="53.34" rot="R180">
 <attribute name="DIGIKEY" value="CKN9112CT-ND" x="58.42" y="53.34" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 </element>
