@@ -8523,26 +8523,32 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="135.255" y="136.144" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="D4" library="leds" package="LED-0603" value="LED0603" x="85.598" y="162.56" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="85.598" y="162.56" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="85.598" y="161.0995" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="85.598" y="161.7345" size="1.016" layer="27" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="D5" library="leds" package="LED-0603" value="LED0603" x="85.598" y="160.02" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="85.598" y="160.02" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="85.598" y="158.623" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="85.598" y="159.1945" size="1.016" layer="27" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="D6" library="leds" package="LED-0603" value="LED0603" x="85.598" y="157.48" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="85.598" y="157.48" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="85.598" y="156.083" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="85.598" y="156.6545" size="1.016" layer="27" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="D7" library="leds" package="LED-0603" value="LED0603" x="105.029" y="162.56" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="105.029" y="162.56" size="1.778" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="105.029" y="161.163" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="105.029" y="163.3855" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
 <element name="D8" library="leds" package="LED-0603" value="LED0603" x="105.029" y="160.02" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="105.029" y="160.02" size="1.778" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="105.029" y="158.623" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="105.029" y="160.8455" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
 <element name="D9" library="leds" package="LED-0603" value="LED0603" x="105.029" y="157.48" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="105.029" y="157.48" size="1.778" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="105.029" y="156.083" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="105.029" y="158.3055" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
@@ -8690,10 +8696,18 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="43.448" y="67.532" size="1.27" layer="27"/>
 </element>
 <element name="C53" library="passives" package="0603_CAP" value="100nF" x="52.832" y="73.152" rot="R90"/>
-<element name="D10" library="leds" package="LED-0603" value="LED0603" x="38.1" y="5.588" rot="R270"/>
-<element name="D11" library="leds" package="LED-0603" value="LED0603" x="38.1" y="3.048" rot="R270"/>
-<element name="D12" library="leds" package="LED-0603" value="LED0603" x="50.8" y="5.588" rot="R270"/>
-<element name="D13" library="leds" package="LED-0603" value="LED0603" x="50.8" y="3.048" rot="R270"/>
+<element name="D10" library="leds" package="LED-0603" value="LED0603" x="38.1" y="5.588" rot="R270">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="38.1" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D11" library="leds" package="LED-0603" value="LED0603" x="38.1" y="3.048" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="38.1" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D12" library="leds" package="LED-0603" value="LED0603" x="50.8" y="5.588" rot="R270">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="50.8" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D13" library="leds" package="LED-0603" value="LED0603" x="50.8" y="3.048" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="50.8" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
 <element name="J10" library="con-ml" package="ML20" value="" x="6.35" y="40.64" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
@@ -8709,11 +8723,21 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="S11" library="switches" package="RM-SWITCH" value="RM106772BCB" x="20.32" y="40.64" rot="R45">
 <attribute name="DIGIKEY" value="CKN10703-ND" x="20.32" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R45" display="off"/>
 </element>
-<element name="D14" library="leds" package="LED-0603" value="LED0603" x="38.1" y="8.128" rot="R270"/>
-<element name="D15" library="leds" package="LED-0603" value="LED0603" x="50.8" y="8.128" rot="R270"/>
-<element name="D16" library="leds" package="LED-0603" value="LED0603" x="63.5" y="8.128" rot="R270"/>
-<element name="D17" library="leds" package="LED-0603" value="LED0603" x="76.2" y="8.128" rot="R270"/>
-<element name="D18" library="leds" package="LED-0603" value="LED0603" x="88.9" y="8.128" rot="R270"/>
+<element name="D14" library="leds" package="LED-0603" value="LED0603" x="38.1" y="8.128" rot="R270">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="38.1" y="8.128" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D15" library="leds" package="LED-0603" value="LED0603" x="50.8" y="8.128" rot="R270">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="50.8" y="8.128" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D16" library="leds" package="LED-0603" value="LED0603" x="63.5" y="8.128" rot="R270">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="63.5" y="8.128" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D17" library="leds" package="LED-0603" value="LED0603" x="76.2" y="8.128" rot="R270">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="76.2" y="8.128" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D18" library="leds" package="LED-0603" value="LED0603" x="88.9" y="8.128" rot="R270">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="88.9" y="8.128" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
 <element name="S14" library="switches" package="S-PVQFN-N14-3.5MM" value="SN74AHC4066-RGY" x="34.29" y="30.48" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="34.29" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="36.322" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
@@ -8762,10 +8786,18 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="C57" library="passives" package="0603_CAP" value="100nF" x="50.292" y="50.546" smashed="yes">
 <attribute name="NAME" x="50.292" y="49.784" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="D19" library="leds" package="LED-0603" value="LED0603" x="63.5" y="5.588" rot="R270"/>
-<element name="D20" library="leds" package="LED-0603" value="LED0603" x="63.5" y="3.048" rot="R270"/>
-<element name="D21" library="leds" package="LED-0603" value="LED0603" x="76.2" y="5.588" rot="R270"/>
-<element name="D22" library="leds" package="LED-0603" value="LED0603" x="76.2" y="3.048" rot="R270"/>
+<element name="D19" library="leds" package="LED-0603" value="LED0603" x="63.5" y="5.588" rot="R270">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="63.5" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D20" library="leds" package="LED-0603" value="LED0603" x="63.5" y="3.048" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="63.5" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D21" library="leds" package="LED-0603" value="LED0603" x="76.2" y="5.588" rot="R270">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="76.2" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D22" library="leds" package="LED-0603" value="LED0603" x="76.2" y="3.048" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="76.2" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
 <element name="U23" library="signpost" package="UQFN-10" value="TS3USB30E" x="93.472" y="72.771" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="296-24684-1-ND" x="93.472" y="72.771" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="95.885" y="72.771" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
@@ -8827,6 +8859,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="16.891" y="84.836" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="D23" library="leds" package="LED-0603" value="LED0603" x="22.352" y="76.2" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="22.352" y="76.2" size="1.778" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="22.352" y="76.8985" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="22.352" y="77.0255" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
@@ -8976,8 +9009,12 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="76.708" y="16.51" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="78.74" y="17.78" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="D24" library="leds" package="LED-0603" value="LED0603" x="88.9" y="5.588" rot="R270"/>
-<element name="D25" library="leds" package="LED-0603" value="LED0603" x="88.9" y="3.048" rot="R270"/>
+<element name="D24" library="leds" package="LED-0603" value="LED0603" x="88.9" y="5.588" rot="R270">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="88.9" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
+<element name="D25" library="leds" package="LED-0603" value="LED0603" x="88.9" y="3.048" rot="R270">
+<attribute name="DIGIKEY" value="160-1446-1-ND" x="88.9" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
+</element>
 <element name="R75" library="passives" package="0603-RES" value="1MΩ" x="82.804" y="17.78" smashed="yes" rot="R90">
 <attribute name="NAME" x="82.804" y="16.51" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
@@ -9104,6 +9141,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="172.72" y="107.95" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="D26" library="leds" package="LED-0603" value="LED0603" x="27.94" y="113.03" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="27.94" y="113.03" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="27.94" y="111.5695" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="28.7655" y="113.03" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
@@ -9113,18 +9151,22 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="21.082" y="120.65" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="D27" library="leds" package="LED-0603" value="LED0603" x="27.94" y="102.87" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="27.94" y="102.87" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="27.94" y="104.3305" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="28.7655" y="102.87" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D28" library="leds" package="LED-0603" value="LED0603" x="17.78" y="102.87" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="17.78" y="102.87" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="17.78" y="101.4095" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="18.6055" y="102.87" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D29" library="leds" package="LED-0603" value="LED0603" x="17.78" y="113.03" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="17.78" y="113.03" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="17.78" y="111.5695" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="18.6055" y="113.03" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D30" library="leds" package="LED-0603" value="LED0603" x="172.72" y="113.03" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="172.72" y="113.03" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="172.72" y="111.5695" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="173.5455" y="113.03" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
@@ -9134,14 +9176,17 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="165.862" y="120.65" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="D31" library="leds" package="LED-0603" value="LED0603" x="172.72" y="102.87" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="172.72" y="102.87" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="172.72" y="101.4095" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="173.5455" y="102.87" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D32" library="leds" package="LED-0603" value="LED0603" x="162.56" y="102.87" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="162.56" y="102.87" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="163.068" y="101.4095" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="163.3855" y="102.87" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D33" library="leds" package="LED-0603" value="LED0603" x="162.56" y="113.03" smashed="yes">
+<attribute name="DIGIKEY" value="160-1827-1-ND" x="162.56" y="113.03" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="163.068" y="111.5695" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="163.3855" y="113.03" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
@@ -9237,6 +9282,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="83.8325" y="49.022" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
 <element name="D36" library="leds" package="LED-0603" value="LED0603" x="81.026" y="53.594" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="160-1447-1-ND" x="81.026" y="53.594" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="81.026" y="54.2925" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="81.026" y="54.4195" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
