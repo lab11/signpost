@@ -8362,6 +8362,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="69.088" y="130.302" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R78" library="passives" package="0603-RES" value="10MΩ" x="69.977" y="130.048" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="RHM10MDCT-ND" x="69.977" y="130.048" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="71.12" y="131.318" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R79" library="passives" package="0603-RES" value="10MΩ" x="67.564" y="130.048" smashed="yes" rot="R270">
@@ -8791,6 +8792,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="82.804" y="85.217" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R67" library="passives" package="0603-RES" value="1MΩ" x="32.004" y="17.78" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="RHM1MDCT-ND" x="32.004" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="32.004" y="16.51" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R68" library="passives" package="0603-RES" value="1MΩ" x="29.464" y="17.78" smashed="yes" rot="R90">

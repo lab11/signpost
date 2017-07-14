@@ -8351,7 +8351,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U13" library="signpost" deviceset="MCP23008" device="QFN" value="MCP23008QFN"/>
 <part name="GND64" library="umich" deviceset="GND" device=""/>
 <part name="U$32" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="R78" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ"/>
+<part name="R78" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
+<attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
+</part>
 <part name="R79" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ"/>
 <part name="R80" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ"/>
 <part name="U14" library="signpost" deviceset="MCP23008" device="QFN" value="MCP23008QFN"/>
@@ -8607,7 +8609,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$11" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="U$16" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
+<part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
+<attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
+</part>
 <part name="R68" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="GND90" library="umich" deviceset="GND" device=""/>
 <part name="R69" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
@@ -11492,7 +11496,9 @@ Translator</text>
 <instance part="GND13" gate="1" x="205.74" y="33.02"/>
 <instance part="D12" gate="G$1" x="200.66" y="78.74" rot="R270"/>
 <instance part="D13" gate="G$1" x="208.28" y="78.74" rot="R270"/>
-<instance part="R67" gate="G$1" x="43.18" y="40.64" rot="R90"/>
+<instance part="R67" gate="G$1" x="43.18" y="40.64" rot="R90">
+<attribute name="DIGIKEY" x="43.18" y="40.64" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="R68" gate="G$1" x="53.34" y="40.64" rot="R90"/>
 <instance part="GND90" gate="1" x="53.34" y="27.94"/>
 <instance part="R69" gate="G$1" x="167.64" y="40.64" rot="R90"/>
@@ -12730,6 +12736,7 @@ not used for this hub</text>
 <instance part="R78" gate="G$1" x="66.04" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="65.8114" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="65.786" y="100.076" size="1.778" layer="96" rot="R90"/>
+<attribute name="DIGIKEY" x="66.04" y="99.06" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R79" gate="G$1" x="68.58" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="68.3514" y="91.44" size="1.778" layer="95" rot="R90"/>
