@@ -8463,8 +8463,12 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U12" library="chips" deviceset="MAX8887" device="EZK33+T"/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
-<part name="C64" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF"/>
-<part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF"/>
+<part name="C64" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
+<attribute name="DIGIKEY" value="490-10451-1-ND"/>
+</part>
+<part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
+<attribute name="DIGIKEY" value="490-10451-1-ND"/>
+</part>
 <part name="J11" library="connector" deviceset="PJ-102AH" device=""/>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="U16" library="chips" deviceset="SAM4LC8AA" device=""/>
@@ -8768,7 +8772,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R28" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
-<part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF"/>
+<part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF">
+<attribute name="DIGIKEY" value="490-1313-1-ND"/>
+</part>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
 <part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
@@ -9717,8 +9723,12 @@ Translator</text>
 <instance part="U12" gate="G$1" x="205.74" y="76.2"/>
 <instance part="GND10" gate="1" x="205.74" y="55.88"/>
 <instance part="R47" gate="G$1" x="185.42" y="76.2" rot="R90"/>
-<instance part="C64" gate="G$1" x="177.8" y="76.2"/>
-<instance part="C65" gate="G$1" x="228.6" y="76.2"/>
+<instance part="C64" gate="G$1" x="177.8" y="76.2">
+<attribute name="DIGIKEY" x="177.8" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C65" gate="G$1" x="228.6" y="76.2">
+<attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="J11" gate="G$1" x="167.64" y="127"/>
 <instance part="GND11" gate="1" x="177.8" y="111.76"/>
 <instance part="U25" gate="G$1" x="195.58" y="119.38"/>
@@ -9759,7 +9769,9 @@ Translator</text>
 </instance>
 <instance part="R28" gate="B" x="66.04" y="35.56" rot="R90"/>
 <instance part="R28" gate="C" x="81.28" y="35.56" rot="R90"/>
-<instance part="C13" gate="G$1" x="220.98" y="71.12"/>
+<instance part="C13" gate="G$1" x="220.98" y="71.12">
+<attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="C14" gate="G$1" x="101.6" y="162.56"/>
 <instance part="C15" gate="G$1" x="101.6" y="119.38"/>
 <instance part="C16" gate="G$1" x="111.76" y="76.2"/>

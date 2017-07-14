@@ -8572,9 +8572,11 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="30.734" y="83.947" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C64" library="passives" package="0603_CAP" value="2.2uF" x="32.512" y="81.28" smashed="yes">
+<attribute name="DIGIKEY" value="490-10451-1-ND" x="32.512" y="81.28" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="32.512" y="79.505" size="1.016" layer="25" font="vector" ratio="12" rot="SR0" align="bottom-center"/>
 </element>
 <element name="C65" library="passives" package="0603_CAP" value="2.2uF" x="26.924" y="79.248" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="490-10451-1-ND" x="26.924" y="79.248" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="29.718" y="78.74" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="J11" library="connector" package="PJ-102AH" value="PJ-102AH" x="10.795" y="80.01" smashed="yes" rot="R90">
@@ -9014,7 +9016,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R28" library="passives" package="ARRAY-CONVEX-0603-4" value="1.8kΩ" x="50.8" y="88.138" rot="R90">
 <attribute name="DIGIKEY" value="Y9182CT-ND" x="45.72" y="81.788" size="1.016" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 </element>
-<element name="C13" library="passives" package="0603_CAP" value="0.01uF" x="27.686" y="85.344"/>
+<element name="C13" library="passives" package="0603_CAP" value="0.01uF" x="27.686" y="85.344">
+<attribute name="DIGIKEY" value="490-1313-1-ND" x="27.686" y="85.344" size="1.778" layer="27" display="off"/>
+</element>
 <element name="C14" library="passives" package="0603_CAP" value="100nF" x="33.528" y="91.948" smashed="yes">
 <attribute name="NAME" x="33.02" y="92.964" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
