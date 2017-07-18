@@ -8672,7 +8672,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND94" library="umich" deviceset="GND" device=""/>
 <part name="GND95" library="umich" deviceset="GND" device=""/>
 <part name="U25" library="chips" deviceset="LTC4360" device=""/>
-<part name="Q10" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD"/>
+<part name="Q8" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
+<attribute name="DIGIKEY" value="SI2302CDS-T1-E3DKR-ND"/>
+</part>
 <part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND96" library="umich" deviceset="GND" device=""/>
 <part name="D23" library="leds" deviceset="LED" device="0603">
@@ -9816,8 +9818,9 @@ Translator</text>
 <instance part="J7" gate="G$1" x="167.64" y="127"/>
 <instance part="GND11" gate="1" x="177.8" y="111.76"/>
 <instance part="U25" gate="G$1" x="195.58" y="119.38"/>
-<instance part="Q10" gate="G$1" x="213.36" y="139.7" smashed="yes" rot="R90">
+<instance part="Q8" gate="G$1" x="213.36" y="139.7" smashed="yes" rot="R90">
 <attribute name="NAME" x="209.55" y="138.43" size="1.778" layer="95" rot="R180"/>
+<attribute name="DIGIKEY" x="213.36" y="139.7" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="C70" gate="G$1" x="236.22" y="129.54"/>
 <instance part="GND96" gate="1" x="236.22" y="119.38"/>
@@ -10351,7 +10354,7 @@ Translator</text>
 <pinref part="U25" gate="G$1" pin="OUT"/>
 <wire x1="210.82" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="220.98" y1="124.46" x2="220.98" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="Q10" gate="G$1" pin="S"/>
+<pinref part="Q8" gate="G$1" pin="S"/>
 <wire x1="220.98" y1="139.7" x2="218.44" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="220.98" y1="139.7" x2="226.06" y2="139.7" width="0.1524" layer="91"/>
 <junction x="220.98" y="139.7"/>
@@ -10396,7 +10399,7 @@ Translator</text>
 <wire x1="177.8" y1="129.54" x2="180.34" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="129.54" x2="177.8" y2="139.7" width="0.1524" layer="91"/>
 <junction x="177.8" y="129.54"/>
-<pinref part="Q10" gate="G$1" pin="D"/>
+<pinref part="Q8" gate="G$1" pin="D"/>
 <wire x1="177.8" y1="139.7" x2="198.12" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="R85" gate="G$1" pin="2"/>
 <wire x1="198.12" y1="139.7" x2="208.28" y2="139.7" width="0.1524" layer="91"/>
@@ -10408,7 +10411,7 @@ Translator</text>
 <net name="OVERVOLT_PROT_CTL" class="0">
 <segment>
 <pinref part="U25" gate="G$1" pin="GATE"/>
-<pinref part="Q10" gate="G$1" pin="G"/>
+<pinref part="Q8" gate="G$1" pin="G"/>
 <wire x1="210.82" y1="129.54" x2="213.36" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="129.54" x2="213.36" y2="132.08" width="0.1524" layer="91"/>
 </segment>

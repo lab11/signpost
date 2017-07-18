@@ -8864,7 +8864,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="LTC4360CSC8-1#TRMPBFCT-ND" x="14.986" y="90.932" size="2.54" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="15.494" y="89.259" size="1.016" layer="21" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="Q10" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="11.43" y="87.757" smashed="yes" rot="R180">
+<element name="Q8" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="11.43" y="87.757" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="SI2302CDS-T1-E3DKR-ND" x="11.43" y="87.757" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="9.652" y="88.011" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C70" library="passives" package="0603_CAP" value="4.7uF" x="16.764" y="87.122" smashed="yes" rot="R270">
@@ -14768,7 +14769,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="R46" pad="2"/>
 <contactref element="C64" pad="1"/>
 <contactref element="U25" pad="7"/>
-<contactref element="Q10" pad="2"/>
+<contactref element="Q8" pad="2"/>
 <contactref element="C70" pad="1"/>
 <contactref element="D23" pad="A"/>
 <contactref element="R85" pad="1"/>
@@ -17157,7 +17158,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="VCC_BARRELJACK">
 <contactref element="J7" pad="1"/>
 <contactref element="U25" pad="1"/>
-<contactref element="Q10" pad="3"/>
+<contactref element="Q8" pad="3"/>
 <contactref element="R85" pad="2"/>
 <polygon width="0.127" layer="1" isolate="0.254" rank="2">
 <vertex x="10.16" y="77.47"/>
@@ -17183,7 +17184,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </signal>
 <signal name="OVERVOLT_PROT_CTL">
 <contactref element="U25" pad="8"/>
-<contactref element="Q10" pad="1"/>
+<contactref element="Q8" pad="1"/>
 <wire x1="12.38" y1="88.757" x2="12.843" y2="88.757" width="0.254" layer="1"/>
 <wire x1="12.843" y1="88.757" x2="13.462" y2="88.138" width="0.254" layer="1"/>
 <via x="13.462" y="88.138" extent="1-16" drill="0.4064"/>
