@@ -8621,7 +8621,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="VALUE" x="60.198" y="78.788" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R85" library="passives" package="0603-RES" value="DNP" x="53.848" y="79.248" smashed="yes" rot="R90">
-<attribute name="NAME" x="53.34" y="81.534" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="53.594" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C43" library="passives" package="0603_CAP" value="100nF" x="67.31" y="66.294" smashed="yes">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="19.05" y="109.474" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
@@ -8656,9 +8656,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="490-13252-1-ND" x="48.006" y="33.782" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="60.706" y="75.184" size="1.016" layer="25" font="vector" ratio="12" rot="SR0" align="bottom-center"/>
 </element>
-<element name="R48" library="passives" package="0603-RES" value="10kΩ" x="55.88" y="79.248" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="1276-3431-1-ND" x="66.04" y="109.728" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NAME" x="55.88" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<element name="R48" library="passives" package="0603-RES" value="10kΩ" x="56.134" y="79.248" smashed="yes" rot="R270">
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="66.294" y="109.728" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="NAME" x="56.388" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R64" library="passives" package="0603-RES" value="100kΩ" x="62.992" y="68.072" smashed="yes">
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="47.752" y="80.772" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
@@ -15318,10 +15318,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="R48" pad="2"/>
 <wire x1="63.048" y1="76.172" x2="62.004" y2="76.172" width="0.254" layer="1"/>
 <wire x1="62.004" y1="76.172" x2="60.706" y2="77.47" width="0.254" layer="1"/>
-<wire x1="60.706" y1="77.47" x2="56.388" y2="77.47" width="0.254" layer="1"/>
-<wire x1="56.388" y1="77.47" x2="55.88" y2="77.978" width="0.254" layer="1"/>
-<wire x1="55.88" y1="77.978" x2="55.88" y2="78.598" width="0.254" layer="1"/>
-<wire x1="55.88" y1="78.598" x2="53.848" y2="78.598" width="0.254" layer="1"/>
+<wire x1="60.706" y1="77.47" x2="56.642" y2="77.47" width="0.254" layer="1"/>
+<wire x1="56.642" y1="77.47" x2="56.134" y2="77.978" width="0.254" layer="1"/>
+<wire x1="56.134" y1="77.978" x2="56.134" y2="78.598" width="0.254" layer="1"/>
+<wire x1="56.134" y1="78.598" x2="53.848" y2="78.598" width="0.254" layer="1"/>
 </signal>
 <signal name="N$38">
 <contactref element="C43" pad="1"/>

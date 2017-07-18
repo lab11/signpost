@@ -15540,7 +15540,6 @@ pair of signals by flipping +/-</text>
 <description>Fake Radio Module</description>
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">The "Radio Module"</text>
-<text x="66.04" y="88.9" size="1.778" layer="98">Controller</text>
 <wire x1="152.4" y1="20.32" x2="152.4" y2="157.48" width="0.6096" layer="98"/>
 <wire x1="152.4" y1="157.48" x2="180.34" y2="157.48" width="0.6096" layer="98"/>
 <wire x1="180.34" y1="157.48" x2="180.34" y2="170.18" width="0.6096" layer="98"/>
