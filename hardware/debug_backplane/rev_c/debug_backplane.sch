@@ -8298,7 +8298,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R57" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
-<part name="R26" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
+<part name="R26" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ">
+<attribute name="DIGIKEY" value="311-1.5KGRCT-ND"/>
+</part>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
 <part name="Y1" library="crystals" deviceset="ABMM" device=""/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
@@ -14000,7 +14002,9 @@ It doesn't have isolation, still needs a pullup</text>
 </plain>
 <instances>
 <instance part="U24" gate="G$1" x="93.98" y="111.76"/>
-<instance part="R26" gate="G$1" x="71.12" y="154.94" rot="R90"/>
+<instance part="R26" gate="G$1" x="71.12" y="154.94" rot="R90">
+<attribute name="DIGIKEY" x="71.12" y="154.94" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND15" gate="1" x="73.66" y="76.2"/>
 <instance part="Y1" gate="G$1" x="63.5" y="96.52" rot="R90"/>
 <instance part="C3" gate="G$1" x="53.34" y="101.6" rot="R90">

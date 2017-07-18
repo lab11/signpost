@@ -8242,6 +8242,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="72.136" y="89.789" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R26" library="passives" package="0603-RES" value="1.5kΩ" x="90.424" y="74.93" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="311-1.5KGRCT-ND" x="90.424" y="74.93" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="90.424" y="74.168" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="Y1" library="crystals" package="ABMM" value="ABMM" x="83.566" y="66.04" smashed="yes">
