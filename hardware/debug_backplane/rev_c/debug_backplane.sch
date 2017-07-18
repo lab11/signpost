@@ -8289,7 +8289,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND1" library="umich" deviceset="GND" device=""/>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
-<part name="R53" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
+<part name="R53" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
+<attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
+</part>
 <part name="R54" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="R55" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
 <part name="R56" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ"/>
@@ -8391,7 +8393,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND80" library="umich" deviceset="GND" device=""/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF">
+<attribute name="DIGIKEY" value="1276-2087-1-ND"/>
+</part>
 <part name="GND73" library="umich" deviceset="GND" device=""/>
 <part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
@@ -8444,7 +8448,9 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R8" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R9" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R10" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
+<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF">
+<attribute name="DIGIKEY" value="490-5868-1-ND"/>
+</part>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
@@ -13386,7 +13392,9 @@ not used for this hub</text>
 <instance part="GND80" gate="1" x="20.32" y="99.06"/>
 <instance part="C14" gate="G$1" x="27.94" y="134.62" rot="R270"/>
 <instance part="C15" gate="G$1" x="27.94" y="104.14" rot="R270"/>
-<instance part="C68" gate="G$1" x="154.94" y="116.84"/>
+<instance part="C68" gate="G$1" x="154.94" y="116.84">
+<attribute name="DIGIKEY" x="154.94" y="116.84" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="GND73" gate="1" x="154.94" y="106.68"/>
 <instance part="C16" gate="G$1" x="218.44" y="119.38"/>
 <instance part="C69" gate="G$1" x="154.94" y="93.98"/>
@@ -14821,7 +14829,9 @@ pair of signals by flipping +/-</text>
 <instance part="D35" gate="G$1" x="129.54" y="68.58" rot="R270"/>
 <instance part="D36" gate="G$1" x="129.54" y="119.38" rot="R270"/>
 <instance part="GND2" gate="1" x="33.02" y="106.68"/>
-<instance part="R53" gate="G$1" x="68.58" y="119.38" rot="R90"/>
+<instance part="R53" gate="G$1" x="68.58" y="119.38" rot="R90">
+<attribute name="DIGIKEY" x="68.58" y="119.38" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+</instance>
 <instance part="R54" gate="G$1" x="76.2" y="119.38" rot="R90"/>
 <instance part="R55" gate="G$1" x="68.58" y="93.98" rot="R90"/>
 <instance part="R56" gate="G$1" x="76.2" y="93.98" rot="R90"/>
@@ -14866,7 +14876,9 @@ pair of signals by flipping +/-</text>
 <instance part="R8" gate="G$1" x="63.5" y="99.06"/>
 <instance part="R9" gate="G$1" x="53.34" y="78.74"/>
 <instance part="R10" gate="G$1" x="63.5" y="73.66"/>
-<instance part="C3" gate="G$1" x="45.72" y="119.38"/>
+<instance part="C3" gate="G$1" x="45.72" y="119.38">
+<attribute name="DIGIKEY" x="45.72" y="119.38" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 <instance part="C4" gate="G$1" x="55.88" y="119.38"/>
 <instance part="C5" gate="G$1" x="45.72" y="93.98"/>
 <instance part="C6" gate="G$1" x="55.88" y="93.98"/>

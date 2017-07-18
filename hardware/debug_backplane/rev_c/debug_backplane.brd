@@ -8222,6 +8222,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="114.046" y="134.493" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R53" library="passives" package="0603-RES" value="15kΩ" x="89.916" y="104.267" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="RHM15.0KCFCT-ND" x="89.916" y="104.267" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="90.17" y="105.41" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R54" library="passives" package="0603-RES" value="15kΩ" x="89.916" y="108.077" smashed="yes" rot="R270">
@@ -8406,6 +8407,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="135.89" y="130.937" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C68" library="passives" package="0603_CAP" value="4.7uF" x="75.184" y="133.604" smashed="yes">
+<attribute name="DIGIKEY" value="1276-2087-1-ND" x="75.184" y="133.604" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="75.184" y="131.826" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C16" library="passives" package="0603_CAP" value="0.1uF" x="73.406" y="139.446" smashed="yes" rot="R180">
@@ -8507,6 +8509,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="74.041" y="89.154" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C3" library="passives" package="0402_CAP" value="22pF" x="84.328" y="90.17" smashed="yes" rot="R180">
+<attribute name="DIGIKEY" value="490-5868-1-ND" x="84.328" y="90.17" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="84.328" y="91.44" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C4" library="passives" package="0402_CAP" value="22pF" x="86.36" y="90.17" smashed="yes">
