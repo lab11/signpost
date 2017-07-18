@@ -8297,8 +8297,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
 <part name="R27" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
-<part name="J2" library="signpost" deviceset="BACKPLANE_GENERIC_MODULE_DEBUG" device=""/>
 <part name="J3" library="signpost" deviceset="BACKPLANE_GENERIC_MODULE_DEBUG" device=""/>
+<part name="J2" library="signpost" deviceset="BACKPLANE_GENERIC_MODULE_DEBUG" device=""/>
 <part name="R34" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R35" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="R36" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
@@ -10427,8 +10427,8 @@ Translator</text>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Generic Modules</text>
 </plain>
 <instances>
-<instance part="J2" gate="G$1" x="149.86" y="119.38"/>
-<instance part="J3" gate="G$1" x="53.34" y="119.38"/>
+<instance part="J3" gate="G$1" x="149.86" y="119.38"/>
+<instance part="J2" gate="G$1" x="53.34" y="119.38"/>
 <instance part="GND24" gate="1" x="91.44" y="66.04"/>
 <instance part="GND25" gate="1" x="187.96" y="66.04"/>
 <instance part="S3" gate="G$1" x="99.06" y="78.74" rot="R90"/>
@@ -10449,7 +10449,7 @@ Translator</text>
 <segment>
 <pinref part="GND24" gate="1" pin="GND"/>
 <wire x1="91.44" y1="76.2" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="J3" gate="G$1" pin="GND"/>
+<pinref part="J2" gate="G$1" pin="GND"/>
 <wire x1="91.44" y1="71.12" x2="91.44" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="71.12" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
@@ -10457,7 +10457,7 @@ Translator</text>
 <pinref part="S3" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="GND"/>
+<pinref part="J3" gate="G$1" pin="GND"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 <wire x1="160.02" y1="76.2" x2="187.96" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="76.2" x2="187.96" y2="71.12" width="0.1524" layer="91"/>
@@ -10471,187 +10471,187 @@ Translator</text>
 <segment>
 <wire x1="160.02" y1="132.08" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
 <label x="165.1" y="132.08" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="PPS"/>
+<pinref part="J3" gate="G$1" pin="PPS"/>
 </segment>
 </net>
 <net name="MOD1_SDA" class="0">
 <segment>
 <wire x1="160.02" y1="119.38" x2="165.1" y2="119.38" width="0.1524" layer="91"/>
 <label x="165.1" y="119.38" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="SDA"/>
+<pinref part="J3" gate="G$1" pin="SDA"/>
 </segment>
 </net>
 <net name="MOD1_SCL" class="0">
 <segment>
 <wire x1="160.02" y1="116.84" x2="165.1" y2="116.84" width="0.1524" layer="91"/>
 <label x="165.1" y="116.84" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="SCL"/>
+<pinref part="J3" gate="G$1" pin="SCL"/>
 </segment>
 </net>
 <net name="MOD1_USB+" class="0">
 <segment>
 <wire x1="160.02" y1="109.22" x2="165.1" y2="109.22" width="0.1524" layer="91"/>
 <label x="165.1" y="109.22" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="USB_D+"/>
+<pinref part="J3" gate="G$1" pin="USB_D+"/>
 </segment>
 </net>
 <net name="MOD1_USB-" class="0">
 <segment>
 <wire x1="160.02" y1="106.68" x2="165.1" y2="106.68" width="0.1524" layer="91"/>
 <label x="165.1" y="106.68" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="USB_D-"/>
+<pinref part="J3" gate="G$1" pin="USB_D-"/>
 </segment>
 </net>
 <net name="MOD1_USB_VBUS" class="0">
 <segment>
 <wire x1="160.02" y1="111.76" x2="165.1" y2="111.76" width="0.1524" layer="91"/>
 <label x="165.1" y="111.76" size="1.27" layer="95" xref="yes"/>
-<pinref part="J2" gate="G$1" pin="USB_VBUS"/>
+<pinref part="J3" gate="G$1" pin="USB_VBUS"/>
 </segment>
 </net>
 <net name="MOD1_VCCIO" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="VCCIO"/>
+<pinref part="J3" gate="G$1" pin="VCCIO"/>
 <wire x1="165.1" y1="137.16" x2="160.02" y2="137.16" width="0.1524" layer="91"/>
 <label x="165.1" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_VCCIO" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="VCCIO"/>
+<pinref part="J2" gate="G$1" pin="VCCIO"/>
 <wire x1="68.58" y1="137.16" x2="63.5" y2="137.16" width="0.1524" layer="91"/>
 <label x="68.58" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_PPS" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="PPS"/>
+<pinref part="J2" gate="G$1" pin="PPS"/>
 <wire x1="68.58" y1="132.08" x2="63.5" y2="132.08" width="0.1524" layer="91"/>
 <label x="68.58" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_SDA" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="SDA"/>
+<pinref part="J2" gate="G$1" pin="SDA"/>
 <wire x1="68.58" y1="119.38" x2="63.5" y2="119.38" width="0.1524" layer="91"/>
 <label x="68.58" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_SCL" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="SCL"/>
+<pinref part="J2" gate="G$1" pin="SCL"/>
 <wire x1="68.58" y1="116.84" x2="63.5" y2="116.84" width="0.1524" layer="91"/>
 <label x="68.58" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_USB_VBUS" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="USB_VBUS"/>
+<pinref part="J2" gate="G$1" pin="USB_VBUS"/>
 <wire x1="68.58" y1="111.76" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
 <label x="68.58" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_USB+" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="USB_D+"/>
+<pinref part="J2" gate="G$1" pin="USB_D+"/>
 <wire x1="68.58" y1="109.22" x2="63.5" y2="109.22" width="0.1524" layer="91"/>
 <label x="68.58" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_USB-" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="USB_D-"/>
+<pinref part="J2" gate="G$1" pin="USB_D-"/>
 <wire x1="68.58" y1="106.68" x2="63.5" y2="106.68" width="0.1524" layer="91"/>
 <label x="68.58" y="106.68" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_IN" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="MOD_IN"/>
+<pinref part="J2" gate="G$1" pin="MOD_IN"/>
 <wire x1="68.58" y1="127" x2="63.5" y2="127" width="0.1524" layer="91"/>
 <label x="68.58" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_OUT" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="MOD_OUT"/>
+<pinref part="J2" gate="G$1" pin="MOD_OUT"/>
 <wire x1="68.58" y1="124.46" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
 <label x="68.58" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_IN" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="MOD_IN"/>
+<pinref part="J3" gate="G$1" pin="MOD_IN"/>
 <wire x1="165.1" y1="127" x2="160.02" y2="127" width="0.1524" layer="91"/>
 <label x="165.1" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_OUT" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="MOD_OUT"/>
+<pinref part="J3" gate="G$1" pin="MOD_OUT"/>
 <wire x1="165.1" y1="124.46" x2="160.02" y2="124.46" width="0.1524" layer="91"/>
 <label x="165.1" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_TX" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_TX"/>
+<pinref part="J2" gate="G$1" pin="DBG_TX"/>
 <wire x1="63.5" y1="101.6" x2="68.58" y2="101.6" width="0.1524" layer="91"/>
 <label x="68.58" y="101.6" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_RX" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_RX"/>
+<pinref part="J2" gate="G$1" pin="DBG_RX"/>
 <wire x1="63.5" y1="99.06" x2="68.58" y2="99.06" width="0.1524" layer="91"/>
 <label x="68.58" y="99.06" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_GPIO1" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_GPIO1"/>
+<pinref part="J2" gate="G$1" pin="DBG_GPIO1"/>
 <wire x1="63.5" y1="83.82" x2="68.58" y2="83.82" width="0.1524" layer="91"/>
 <label x="68.58" y="83.82" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_GPIO2" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_GPIO2"/>
+<pinref part="J2" gate="G$1" pin="DBG_GPIO2"/>
 <wire x1="63.5" y1="81.28" x2="68.58" y2="81.28" width="0.1524" layer="91"/>
 <label x="68.58" y="81.28" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_TX" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_TX"/>
+<pinref part="J3" gate="G$1" pin="DBG_TX"/>
 <wire x1="160.02" y1="101.6" x2="165.1" y2="101.6" width="0.1524" layer="91"/>
 <label x="165.1" y="101.6" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_RX" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_RX"/>
+<pinref part="J3" gate="G$1" pin="DBG_RX"/>
 <wire x1="160.02" y1="99.06" x2="165.1" y2="99.06" width="0.1524" layer="91"/>
 <label x="165.1" y="99.06" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_GPIO1" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_GPIO1"/>
+<pinref part="J3" gate="G$1" pin="DBG_GPIO1"/>
 <wire x1="160.02" y1="83.82" x2="165.1" y2="83.82" width="0.1524" layer="91"/>
 <label x="165.1" y="83.82" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_GPIO2" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_GPIO2"/>
+<pinref part="J3" gate="G$1" pin="DBG_GPIO2"/>
 <wire x1="160.02" y1="81.28" x2="165.1" y2="81.28" width="0.1524" layer="91"/>
 <label x="165.1" y="81.28" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_!RESET" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_!RESET"/>
+<pinref part="J2" gate="G$1" pin="DBG_!RESET"/>
 <wire x1="63.5" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
 <label x="101.6" y="88.9" size="1.016" layer="95" xref="yes"/>
 <wire x1="99.06" y1="88.9" x2="101.6" y2="88.9" width="0.1524" layer="91"/>
@@ -10662,21 +10662,21 @@ Translator</text>
 </net>
 <net name="MOD0_DBG_SWDCLK" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_SWDCLK"/>
+<pinref part="J2" gate="G$1" pin="DBG_SWDCLK"/>
 <wire x1="63.5" y1="91.44" x2="68.58" y2="91.44" width="0.1524" layer="91"/>
 <label x="68.58" y="91.44" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_DBG_SWDIO" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="DBG_SWDIO"/>
+<pinref part="J2" gate="G$1" pin="DBG_SWDIO"/>
 <wire x1="63.5" y1="93.98" x2="68.58" y2="93.98" width="0.1524" layer="91"/>
 <label x="68.58" y="93.98" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_!RESET" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_!RESET"/>
+<pinref part="J3" gate="G$1" pin="DBG_!RESET"/>
 <wire x1="160.02" y1="88.9" x2="195.58" y2="88.9" width="0.1524" layer="91"/>
 <label x="198.12" y="88.9" size="1.016" layer="95" xref="yes"/>
 <wire x1="195.58" y1="88.9" x2="198.12" y2="88.9" width="0.1524" layer="91"/>
@@ -10687,21 +10687,21 @@ Translator</text>
 </net>
 <net name="MOD1_DBG_SWDCLK" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_SWDCLK"/>
+<pinref part="J3" gate="G$1" pin="DBG_SWDCLK"/>
 <wire x1="160.02" y1="91.44" x2="165.1" y2="91.44" width="0.1524" layer="91"/>
 <label x="165.1" y="91.44" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD1_DBG_SWDIO" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="DBG_SWDIO"/>
+<pinref part="J3" gate="G$1" pin="DBG_SWDIO"/>
 <wire x1="160.02" y1="93.98" x2="165.1" y2="93.98" width="0.1524" layer="91"/>
 <label x="165.1" y="93.98" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="MOD0_5V_HEADER" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="5V"/>
+<pinref part="J2" gate="G$1" pin="5V"/>
 <pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
 <wire x1="63.5" y1="139.7" x2="66.04" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="139.7" x2="66.04" y2="144.78" width="0.1524" layer="91"/>
@@ -10724,7 +10724,7 @@ Translator</text>
 </net>
 <net name="MOD1_5V_HEADER" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="5V"/>
+<pinref part="J3" gate="G$1" pin="5V"/>
 <pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
 <wire x1="160.02" y1="139.7" x2="162.56" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="139.7" x2="162.56" y2="144.78" width="0.1524" layer="91"/>

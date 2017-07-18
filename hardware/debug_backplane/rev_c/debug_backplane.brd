@@ -8193,6 +8193,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY2" value="S9194-ND" x="136.525" y="53.975" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY3" value="S7072-ND" x="136.525" y="53.975" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY4" value="S7072-ND" x="136.525" y="53.975" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="136.525" y="75.565" size="2.54" layer="25" font="vector" ratio="12" align="center"/>
 <attribute name="VALUE" x="136.525" y="20.32" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="U24" library="signpost" package="LQFP-48" value="TUSB2077A" x="83.566" y="77.978" smashed="yes" rot="R90">
@@ -8255,14 +8256,16 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R27" library="passives" package="0603-RES" value="1.5kΩ" x="83.82" y="70.866" smashed="yes" rot="R90">
 <attribute name="NAME" x="83.82" y="73.025" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="J2" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="136.525" y="133.35" smashed="yes">
+<element name="J3" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="136.525" y="133.35" smashed="yes">
 <attribute name="DIGIKEY" value="S9195-ND" x="136.525" y="133.35" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY2" value="S7072-ND" x="136.525" y="133.35" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="136.525" y="154.94" size="2.54" layer="25" font="vector" ratio="12" align="center"/>
 <attribute name="VALUE" x="136.525" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
-<element name="J3" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="53.975" y="133.35" locked="yes" smashed="yes">
+<element name="J2" library="signpost" package="BACKPLANE_MODULE_14PIN_8PIN" value="BACKPLANE_GENERIC_MODULE_DEBUG" x="53.975" y="133.35" locked="yes" smashed="yes">
 <attribute name="DIGIKEY" value="S9195-ND" x="53.975" y="133.35" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY2" value="S7072-ND" x="53.975" y="133.35" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="53.975" y="154.94" size="2.54" layer="25" font="vector" ratio="12" align="center"/>
 <attribute name="VALUE" x="53.975" y="99.695" size="2.54" layer="51" font="vector" ratio="12" align="top-center"/>
 </element>
 <element name="R34" library="passives" package="0603-RES" value="10kΩ" x="52.578" y="127.127" smashed="yes">
@@ -9564,12 +9567,12 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="C49" pad="2"/>
 <contactref element="C48" pad="2"/>
 <contactref element="U1" pad="26"/>
-<contactref element="J3" pad="14"/>
-<contactref element="J3" pad="15"/>
-<contactref element="J3" pad="1"/>
 <contactref element="J2" pad="14"/>
 <contactref element="J2" pad="15"/>
 <contactref element="J2" pad="1"/>
+<contactref element="J3" pad="14"/>
+<contactref element="J3" pad="15"/>
+<contactref element="J3" pad="1"/>
 <contactref element="U2" pad="4"/>
 <contactref element="U2" pad="17"/>
 <contactref element="U2" pad="20"/>
@@ -9641,14 +9644,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U13" pad="GND"/>
 <contactref element="J1" pad="100"/>
 <contactref element="J1" pad="200"/>
-<contactref element="J2" pad="MNT1"/>
-<contactref element="J2" pad="MNT2"/>
-<contactref element="J2" pad="MNT3"/>
-<contactref element="J2" pad="MNT4"/>
 <contactref element="J3" pad="MNT1"/>
 <contactref element="J3" pad="MNT2"/>
 <contactref element="J3" pad="MNT3"/>
 <contactref element="J3" pad="MNT4"/>
+<contactref element="J2" pad="MNT1"/>
+<contactref element="J2" pad="MNT2"/>
+<contactref element="J2" pad="MNT3"/>
+<contactref element="J2" pad="MNT4"/>
 <polygon width="0.2032" layer="16" isolate="0.254" rank="2">
 <vertex x="111.76" y="77.978"/>
 <vertex x="111.76" y="86.995"/>
@@ -11427,7 +11430,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="144.78" y="144.526" extent="1-16" drill="0.4064"/>
 </signal>
 <signal name="MOD1_PPS">
-<contactref element="J2" pad="7"/>
+<contactref element="J3" pad="7"/>
 <contactref element="U18" pad="6"/>
 <wire x1="126.234" y1="136.932" x2="126.234" y2="137.537" width="0.254" layer="1"/>
 <wire x1="126.234" y1="137.537" x2="127" y2="138.303" width="0.254" layer="1"/>
@@ -11460,7 +11463,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="167.64" y1="152.908" x2="168.91" y2="154.178" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_SDA">
-<contactref element="J2" pad="6"/>
+<contactref element="J3" pad="6"/>
 <contactref element="U7" pad="7"/>
 <wire x1="138.557" y1="134.737" x2="138.557" y2="136.129" width="0.2032" layer="1"/>
 <contactref element="R38" pad="2"/>
@@ -11497,7 +11500,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="138.557" y1="137.668" x2="138.572" y2="137.653" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_SCL">
-<contactref element="J2" pad="5"/>
+<contactref element="J3" pad="5"/>
 <contactref element="U7" pad="6"/>
 <wire x1="139.177" y1="135.24" x2="138.957" y2="135.02" width="0.2032" layer="1"/>
 <wire x1="138.957" y1="134.737" x2="138.957" y2="135.02" width="0.2032" layer="1"/>
@@ -11522,7 +11525,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="139.207" y1="138.938" x2="139.207" y2="155.971" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_USB+">
-<contactref element="J2" pad="11"/>
+<contactref element="J3" pad="11"/>
 <contactref element="U22" pad="1"/>
 <wire x1="104.34" y1="107.33" x2="104.34" y2="108.023" width="0.2032" layer="1"/>
 <wire x1="104.34" y1="108.023" x2="107.569" y2="111.252" width="0.2032" layer="1"/>
@@ -11552,7 +11555,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="130.302" y1="161.417" x2="131.445" y2="162.56" width="0.2032" layer="1"/>
 </signal>
 <signal name="MOD1_USB-">
-<contactref element="J2" pad="12"/>
+<contactref element="J3" pad="12"/>
 <contactref element="U22" pad="7"/>
 <wire x1="131.445" y1="160.02" x2="131.445" y2="154.559" width="0.2032" layer="1"/>
 <wire x1="104.34" y1="105.98" x2="104.34" y2="105.083" width="0.2032" layer="1"/>
@@ -11567,7 +11570,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="122.809" y1="145.923" x2="131.445" y2="154.559" width="0.2032" layer="1"/>
 </signal>
 <signal name="MOD1_USB_VBUS">
-<contactref element="J2" pad="13"/>
+<contactref element="J3" pad="13"/>
 <contactref element="S2" pad="6"/>
 <contactref element="S2" pad="7"/>
 <contactref element="C73" pad="1"/>
@@ -11608,7 +11611,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="117.348" y1="129.667" x2="117.673" y2="129.342" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_VCCIO">
-<contactref element="J3" pad="4"/>
+<contactref element="J2" pad="4"/>
 <contactref element="U6" pad="8"/>
 <contactref element="U17" pad="8"/>
 <contactref element="U19" pad="8"/>
@@ -11702,7 +11705,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="54.241" y1="136.767" x2="54.61" y2="136.398" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_SCL">
-<contactref element="J3" pad="5"/>
+<contactref element="J2" pad="5"/>
 <contactref element="R37" pad="2"/>
 <contactref element="U6" pad="6"/>
 <wire x1="68.58" y1="139.842" x2="68.722" y2="139.7" width="0.254" layer="1"/>
@@ -11736,7 +11739,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="67.056" y1="143.764" x2="59.944" y2="150.876" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_SDA">
-<contactref element="J3" pad="6"/>
+<contactref element="J2" pad="6"/>
 <contactref element="R36" pad="2"/>
 <contactref element="U6" pad="7"/>
 <wire x1="68.072" y1="137.668" x2="67.96" y2="137.556" width="0.254" layer="1"/>
@@ -11768,7 +11771,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="59.944" y1="152.4" x2="55.245" y2="152.4" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_VCCIO">
-<contactref element="J2" pad="4"/>
+<contactref element="J3" pad="4"/>
 <contactref element="U18" pad="8"/>
 <contactref element="U20" pad="8"/>
 <contactref element="U7" pad="8"/>
@@ -12021,7 +12024,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="50.546" y1="149.606" x2="51.308" y2="148.844" width="0.508" layer="16"/>
 </signal>
 <signal name="MOD0_PPS">
-<contactref element="J3" pad="7"/>
+<contactref element="J2" pad="7"/>
 <contactref element="U17" pad="6"/>
 <wire x1="53.975" y1="162.56" x2="52.832" y2="161.417" width="0.254" layer="1"/>
 <contactref element="JP1" pad="10"/>
@@ -12047,7 +12050,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="52.832" y1="145.034" x2="52.832" y2="149.86" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_USB_VBUS">
-<contactref element="J3" pad="13"/>
+<contactref element="J2" pad="13"/>
 <contactref element="S1" pad="6"/>
 <contactref element="S1" pad="7"/>
 <contactref element="C72" pad="1"/>
@@ -12084,7 +12087,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </polygon>
 </signal>
 <signal name="MOD0_USB+">
-<contactref element="J3" pad="11"/>
+<contactref element="J2" pad="11"/>
 <contactref element="U21" pad="1"/>
 <wire x1="86.668" y1="105.522" x2="86.668" y2="104.194" width="0.2032" layer="1"/>
 <wire x1="85.852" y1="103.378" x2="83.82" y2="103.378" width="0.254" layer="1"/>
@@ -12096,7 +12099,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="81.534" y1="147.066" x2="62.992" y2="165.608" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_USB-">
-<contactref element="J3" pad="12"/>
+<contactref element="J2" pad="12"/>
 <contactref element="U21" pad="7"/>
 <wire x1="86.668" y1="106.872" x2="86.668" y2="107.896" width="0.2032" layer="1"/>
 <wire x1="86.668" y1="107.896" x2="85.598" y2="108.966" width="0.254" layer="1"/>
@@ -12110,7 +12113,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="82.042" y1="147.32" x2="63.246" y2="166.116" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_IN">
-<contactref element="J3" pad="10"/>
+<contactref element="J2" pad="10"/>
 <contactref element="U17" pad="7"/>
 <contactref element="JP1" pad="7"/>
 <contactref element="JP4" pad="10"/>
@@ -12133,7 +12136,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="51.562" y1="145.034" x2="51.562" y2="150.622" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_OUT">
-<contactref element="J3" pad="8"/>
+<contactref element="J2" pad="8"/>
 <contactref element="U19" pad="7"/>
 <wire x1="53.975" y1="160.02" x2="53.975" y2="151.2824" width="0.254" layer="1"/>
 <wire x1="60.456" y1="137.44" x2="60.452" y2="137.444" width="0.2032" layer="1"/>
@@ -12160,7 +12163,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="53.975" y1="145.669" x2="57.658" y2="141.986" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_IN">
-<contactref element="J2" pad="10"/>
+<contactref element="J3" pad="10"/>
 <contactref element="U18" pad="7"/>
 <wire x1="125.734" y1="136.932" x2="125.734" y2="138.299" width="0.254" layer="1"/>
 <wire x1="125.734" y1="138.299" x2="125.73" y2="138.303" width="0.254" layer="1"/>
@@ -12188,7 +12191,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="134.112" y1="155.702" x2="133.985" y2="155.702" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_OUT">
-<contactref element="J2" pad="8"/>
+<contactref element="J3" pad="8"/>
 <contactref element="U20" pad="7"/>
 <wire x1="131.576" y1="136.932" x2="131.576" y2="139.831" width="0.254" layer="1"/>
 <wire x1="131.576" y1="139.831" x2="136.525" y2="144.78" width="0.254" layer="1"/>
@@ -14945,7 +14948,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="27.036" y1="84.016" x2="27.806" y2="83.246" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_DBG_TX">
-<contactref element="J3" pad="17"/>
+<contactref element="J2" pad="17"/>
 <contactref element="U2" pad="2"/>
 <contactref element="JP3" pad="4"/>
 <wire x1="44.45" y1="182.88" x2="37.592" y2="176.022" width="0.254" layer="1"/>
@@ -14979,7 +14982,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="27.94" y1="100.584" x2="36.83" y2="100.584" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_DBG_RX">
-<contactref element="J3" pad="18"/>
+<contactref element="J2" pad="18"/>
 <contactref element="U2" pad="30"/>
 <contactref element="JP3" pad="3"/>
 <wire x1="44.45" y1="185.42" x2="43.18" y2="184.15" width="0.254" layer="1"/>
@@ -15011,7 +15014,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="23.876" y1="89.154" x2="29.21" y2="94.488" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD0_DBG_GPIO1">
-<contactref element="J3" pad="16"/>
+<contactref element="J2" pad="16"/>
 <contactref element="R67" pad="2"/>
 <contactref element="Q2" pad="G1"/>
 <wire x1="33.848" y1="18.43" x2="32.004" y2="18.43" width="0.254" layer="1"/>
@@ -15057,7 +15060,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="30.4292" y1="16.7132" x2="30.4292" y2="17.7292" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_DBG_GPIO2">
-<contactref element="J3" pad="19"/>
+<contactref element="J2" pad="19"/>
 <contactref element="R68" pad="2"/>
 <contactref element="Q2" pad="G2"/>
 <wire x1="33.848" y1="17.13" x2="34.402" y2="17.13" width="0.254" layer="1"/>
@@ -15107,7 +15110,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="8.128" y1="100.838" x2="6.858" y2="99.568" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_DBG_TX">
-<contactref element="J2" pad="17"/>
+<contactref element="J3" pad="17"/>
 <contactref element="U3" pad="2"/>
 <contactref element="JP6" pad="4"/>
 <wire x1="154.94" y1="182.88" x2="154.94" y2="175.768" width="0.254" layer="1"/>
@@ -15140,7 +15143,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="67.056" y1="95.504" x2="144.9832" y2="95.504" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_DBG_RX">
-<contactref element="J2" pad="18"/>
+<contactref element="J3" pad="18"/>
 <contactref element="U3" pad="30"/>
 <contactref element="JP6" pad="3"/>
 <wire x1="154.94" y1="185.42" x2="153.67" y2="184.15" width="0.254" layer="1"/>
@@ -15176,7 +15179,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="68.072" y1="94.996" x2="144.018" y2="94.996" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_DBG_GPIO1">
-<contactref element="J2" pad="16"/>
+<contactref element="J3" pad="16"/>
 <contactref element="R69" pad="2"/>
 <contactref element="Q3" pad="G1"/>
 <contactref element="JP6" pad="5"/>
@@ -15210,7 +15213,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="44.704" y1="18.43" x2="45.72" y2="18.43" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_DBG_GPIO2">
-<contactref element="J2" pad="19"/>
+<contactref element="J3" pad="19"/>
 <contactref element="R70" pad="2"/>
 <contactref element="Q3" pad="G2"/>
 <wire x1="42.164" y1="18.43" x2="42.164" y2="19.05" width="0.254" layer="1"/>
@@ -15439,7 +15442,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="69.298" y1="70.402" x2="69.596" y2="70.104" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_DBG_!RESET">
-<contactref element="J3" pad="20"/>
+<contactref element="J2" pad="20"/>
 <contactref element="S14" pad="9"/>
 <contactref element="S3" pad="3"/>
 <contactref element="S3" pad="4"/>
@@ -15508,7 +15511,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="61.468" y1="45.466" x2="61.468" y2="57.12173125" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD0_DBG_SWDCLK">
-<contactref element="J3" pad="21"/>
+<contactref element="J2" pad="21"/>
 <contactref element="S14" pad="3"/>
 <wire x1="34.79" y1="32.205" x2="34.79" y2="34.298" width="0.254" layer="1"/>
 <wire x1="34.79" y1="34.298" x2="34.29" y2="34.798" width="0.254" layer="1"/>
@@ -15558,7 +15561,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="49.2977875" y1="105.156" x2="56.769" y2="105.156" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_DBG_SWDIO">
-<contactref element="J3" pad="22"/>
+<contactref element="J2" pad="22"/>
 <contactref element="S14" pad="2"/>
 <wire x1="35.29" y1="32.205" x2="35.29" y2="35.0172" width="0.254" layer="1"/>
 <wire x1="35.29" y1="35.0172" x2="35.052" y2="35.2552" width="0.254" layer="1"/>
@@ -15606,7 +15609,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="49.13996875" y1="105.537" x2="48.387" y2="104.78403125" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_DBG_!RESET">
-<contactref element="J2" pad="20"/>
+<contactref element="J3" pad="20"/>
 <contactref element="S15" pad="9"/>
 <contactref element="S4" pad="3"/>
 <contactref element="S4" pad="4"/>
@@ -15675,7 +15678,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="62.23" y1="45.466" x2="62.23" y2="41.147996875" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD1_DBG_SWDCLK">
-<contactref element="J2" pad="21"/>
+<contactref element="J3" pad="21"/>
 <contactref element="S15" pad="3"/>
 <wire x1="140.335" y1="104.14" x2="140.335" y2="104.013" width="0.254" layer="1"/>
 <wire x1="140.335" y1="104.013" x2="140.97" y2="103.378" width="0.254" layer="1"/>
@@ -15709,7 +15712,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="102.616" y1="43.688" x2="102.616" y2="85.344" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD1_DBG_SWDIO">
-<contactref element="J2" pad="22"/>
+<contactref element="J3" pad="22"/>
 <contactref element="S15" pad="2"/>
 <wire x1="141.986" y1="87.63" x2="141.732" y2="87.376" width="0.254" layer="16"/>
 <via x="141.986" y="87.63" extent="1-16" drill="0.4064"/>
@@ -18827,7 +18830,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="148.209" y1="67.495" x2="148.082" y2="67.622" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD0_5V_HEADER">
-<contactref element="J3" pad="2"/>
+<contactref element="J2" pad="2"/>
 <contactref element="TP4" pad="TESTPOINT"/>
 <contactref element="SJ2" pad="1"/>
 <wire x1="61.595" y1="160.02" x2="61.595" y2="157.353" width="0.508" layer="16"/>
@@ -18841,7 +18844,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="32.512" y1="155.194" x2="33.274" y2="155.194" width="0.508" layer="1"/>
 </signal>
 <signal name="MOD1_5V_HEADER">
-<contactref element="J2" pad="2"/>
+<contactref element="J3" pad="2"/>
 <contactref element="TP6" pad="TESTPOINT"/>
 <contactref element="SJ3" pad="1"/>
 <wire x1="166.37" y1="149.9561" x2="168.0519" y2="149.9561" width="0.508" layer="1"/>
