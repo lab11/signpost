@@ -8500,10 +8500,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="C66" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
-<attribute name="DIGIKEY" value="490-10451-1-ND"/>
+<attribute name="DIGIKEY" value="490-3296-1-ND"/>
 </part>
 <part name="C67" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
-<attribute name="DIGIKEY" value="490-10451-1-ND"/>
+<attribute name="DIGIKEY" value="490-3296-1-ND"/>
 </part>
 <part name="J7" library="connector" deviceset="PJ-102AH" device=""/>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
@@ -8519,16 +8519,16 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
 <part name="C39" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0603" value="1.5kR">
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
@@ -8547,10 +8547,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND38" library="umich" deviceset="GND" device=""/>
 <part name="U1" library="ftdichip" deviceset="FT232R" device="Q"/>
 <part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="GND39" library="umich" deviceset="GND" device=""/>
 <part name="GND44" library="umich" deviceset="GND" device=""/>
@@ -8708,10 +8708,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND55" library="umich" deviceset="GND" device=""/>
 <part name="U6" library="ftdichip" deviceset="FT232R" device="Q"/>
 <part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C56" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="GND46" library="umich" deviceset="GND" device=""/>
 <part name="GND48" library="umich" deviceset="GND" device=""/>
@@ -8836,7 +8836,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 </part>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF">
-<attribute name="DIGIKEY" value="490-1313-1-ND"/>
+<attribute name="DIGIKEY" value="490-1512-1-ND"/>
 </part>
 <part name="C58" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C59" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
@@ -8943,7 +8943,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND127" library="umich" deviceset="GND" device=""/>
 <part name="GND128" library="umich" deviceset="GND" device=""/>
 <part name="C62" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="SJ2" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
 <part name="SJ3" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
@@ -8986,7 +8986,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DIGIKEY" value="490-1532-1-ND"/>
 </part>
 <part name="C73" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="6.8uF">
 <attribute name="DIGIKEY" value="445-7490-1-ND"/>
