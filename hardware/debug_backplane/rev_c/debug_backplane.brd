@@ -2552,7 +2552,7 @@ Low profile connectors, straight&lt;p&gt;
 </polygon>
 </package>
 <package name="UCB_CAL_200MIL">
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="0.1483375"/>
 <vertex x="3.126865625" y="0.716534375"/>
 <vertex x="3.08445" y="0.71881875"/>
@@ -2612,7 +2612,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="3.058034375" y="0.1516375"/>
 <vertex x="3.127375" y="0.14808125"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="4.13385"/>
 <vertex x="5.482209375" y="3.454653125"/>
 <vertex x="5.52285" y="3.529075"/>
@@ -2671,7 +2671,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="5.509640625" y="4.162553125"/>
 <vertex x="5.482715625" y="4.134359375"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="4.13385"/>
 <vertex x="5.4182" y="4.067046875"/>
 <vertex x="5.331078125" y="3.968496875"/>
@@ -2805,7 +2805,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="5.482971875" y="3.4544"/>
 <vertex x="5.482971875" y="4.133596875"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="1.222246875"/>
 <vertex x="5.482209375" y="0.91236875"/>
 <vertex x="5.531484375" y="0.9072875"/>
@@ -2831,7 +2831,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="5.51853125" y="1.190496875"/>
 <vertex x="5.48195625" y="1.22275625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="0.306578125"/>
 <vertex x="5.482209375" y="0.720596875"/>
 <vertex x="5.376290625" y="0.676403125"/>
@@ -2876,7 +2876,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="5.39076875" y="0.270509375"/>
 <vertex x="5.4824625" y="0.307340625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="1.207515625"/>
 <vertex x="3.126865625" y="1.5168875"/>
 <vertex x="3.122040625" y="1.510284375"/>
@@ -3025,7 +3025,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="3.074034375" y="1.162559375"/>
 <vertex x="3.12610625" y="1.207515625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="5.12013125"/>
 <vertex x="3.126865625" y="4.878325"/>
 <vertex x="3.146934375" y="4.87476875"/>
@@ -3050,7 +3050,7 @@ Low profile connectors, straight&lt;p&gt;
 <vertex x="3.133215625" y="5.120640625"/>
 <vertex x="3.127121875" y="5.12013125"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="4.037075"/>
 <vertex x="3.126865625" y="4.388359375"/>
 <vertex x="3.051684375" y="4.34213125"/>
