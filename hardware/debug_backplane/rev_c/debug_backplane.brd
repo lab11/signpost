@@ -8614,7 +8614,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="490-8230-1-ND" x="94.488" y="25.654" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="61.214" y="79.502" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="Y3" library="crystals" package="FHXXX" value="16MHz" x="60.198" y="81.788" smashed="yes">
+<element name="Y3" library="crystals" package="FHXXX" value="FH1600015" x="60.198" y="81.788" smashed="yes">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" x="34.798" y="79.248" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MANUFACTURER" value="Diodes Incorporated" x="60.198" y="81.788" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="FH1600015" x="60.198" y="81.788" size="1.778" layer="27" display="off"/>

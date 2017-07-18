@@ -8512,7 +8512,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
 <attribute name="DIGIKEY" value="490-8230-1-ND"/>
 </part>
-<part name="Y3" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
+<part name="Y3" library="crystals" deviceset="FH1600015" device=""/>
 <part name="GND34" library="umich" deviceset="GND" device=""/>
 <part name="R84" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
@@ -17630,7 +17630,7 @@ For commissioning EEPROM</text>
 <approved hash="106,18,144.78,137.16,MOD0_HDR_RSV_PIN9,,,,,"/>
 <approved hash="106,18,213.36,144.78,MOD1_HDR_RSV_PIN3,,,,,"/>
 <approved hash="106,18,213.36,137.16,MOD1_HDR_RSV_PIN9,,,,,"/>
-<approved hash="113,5,55.88,61.1547,J10,,,,,"/>
+<approved hash="113,5,55.88,61.1547,J5,,,,,"/>
 <approved hash="113,18,148.548,166.501,JP1,,,,,"/>
 <approved hash="113,18,217.128,166.501,JP2,,,,,"/>
 <approved hash="113,18,148.548,143.641,JP4,,,,,"/>
