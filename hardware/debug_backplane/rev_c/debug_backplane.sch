@@ -8673,7 +8673,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND95" library="umich" deviceset="GND" device=""/>
 <part name="U25" library="chips" deviceset="LTC4360" device=""/>
 <part name="Q8" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
-<attribute name="DIGIKEY" value="SI2302CDS-T1-E3DKR-ND"/>
+<attribute name="DIGIKEY" value="SI2302CDS-T1-E3CT-ND"/>
 </part>
 <part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND96" library="umich" deviceset="GND" device=""/>

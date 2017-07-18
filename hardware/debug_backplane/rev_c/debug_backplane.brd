@@ -8865,7 +8865,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="15.494" y="89.259" size="1.016" layer="21" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="Q8" library="fets" package="SOT23-3" value="MOSFET-NCHANNELSMD" x="11.43" y="87.757" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="SI2302CDS-T1-E3DKR-ND" x="11.43" y="87.757" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="SI2302CDS-T1-E3CT-ND" x="11.43" y="87.757" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="9.652" y="88.011" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C70" library="passives" package="0603_CAP" value="4.7uF" x="16.764" y="87.122" smashed="yes" rot="R270">
