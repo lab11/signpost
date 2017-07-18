@@ -8606,11 +8606,11 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="70.739" y="69.524" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C1" library="passives" package="0603_CAP" value="8pF" x="62.992" y="82.55" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" value="490-8230-1-ND" x="4.572" y="52.07" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value="490-9670-1-ND" x="4.572" y="52.07" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="62.992" y="83.82" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C2" library="passives" package="0603_CAP" value="8pF" x="58.928" y="78.994" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="490-8230-1-ND" x="94.488" y="25.654" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="490-9670-1-ND" x="94.488" y="25.654" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="61.214" y="79.502" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="Y3" library="crystals" package="FHXXX" value="FH1600015" x="60.198" y="81.788" smashed="yes">

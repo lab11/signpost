@@ -8509,10 +8509,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="U23" library="chips" deviceset="SAM4LC8AA" device=""/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
-<attribute name="DIGIKEY" value="490-8230-1-ND"/>
+<attribute name="DIGIKEY" value="490-9670-1-ND"/>
 </part>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
-<attribute name="DIGIKEY" value="490-8230-1-ND"/>
+<attribute name="DIGIKEY" value="490-9670-1-ND"/>
 </part>
 <part name="Y3" library="crystals" deviceset="FH1600015" device=""/>
 <part name="GND34" library="umich" deviceset="GND" device=""/>
