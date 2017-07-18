@@ -8534,12 +8534,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <attribute name="DIGIKEY" value="490-5216-1-ND"/>
 </part>
 <part name="L1" library="signpost" deviceset="LHQ3NP" device="" value="22uH"/>
-<part name="C47" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
-</part>
-<part name="C69" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7uF">
-<attribute name="DIGIKEY" value="490-13252-1-ND"/>
-</part>
 <part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 </part>
@@ -8991,6 +8985,12 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
+<part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+</part>
+<part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="6.8uF">
+<attribute name="DIGIKEY" value="445-7490-1-ND"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -15559,29 +15559,23 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="Y3" gate="G$1" x="160.02" y="172.72" rot="R90"/>
 <instance part="GND34" gate="1" x="170.18" y="162.56"/>
 <instance part="R85" gate="G$1" x="129.54" y="162.56" rot="R90"/>
-<instance part="GND35" gate="1" x="7.62" y="88.9"/>
-<instance part="C43" gate="G$1" x="35.56" y="116.84">
-<attribute name="DIGIKEY" x="35.56" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
+<instance part="GND35" gate="1" x="5.08" y="88.9"/>
+<instance part="C43" gate="G$1" x="30.48" y="116.84">
+<attribute name="DIGIKEY" x="30.48" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C44" gate="G$1" x="25.4" y="129.54">
-<attribute name="DIGIKEY" x="25.4" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
+<instance part="C44" gate="G$1" x="22.86" y="129.54">
+<attribute name="DIGIKEY" x="22.86" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C45" gate="G$1" x="17.78" y="129.54">
-<attribute name="DIGIKEY" x="17.78" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
+<instance part="C45" gate="G$1" x="15.24" y="129.54">
+<attribute name="DIGIKEY" x="15.24" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C46" gate="G$1" x="10.16" y="129.54">
-<attribute name="DIGIKEY" x="10.16" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
+<instance part="C46" gate="G$1" x="7.62" y="129.54">
+<attribute name="DIGIKEY" x="7.62" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="FB1" gate="G$1" x="35.56" y="129.54" rot="R90">
-<attribute name="DIGIKEY" x="35.56" y="129.54" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+<instance part="FB1" gate="G$1" x="30.48" y="129.54" rot="R90">
+<attribute name="DIGIKEY" x="30.48" y="129.54" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
-<instance part="L1" gate="G$1" x="48.26" y="114.3" rot="R90"/>
-<instance part="C47" gate="G$1" x="50.8" y="106.68">
-<attribute name="DIGIKEY" x="50.8" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
-</instance>
-<instance part="C69" gate="G$1" x="43.18" y="106.68">
-<attribute name="DIGIKEY" x="43.18" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
-</instance>
+<instance part="L1" gate="G$1" x="48.26" y="111.76" rot="R270"/>
 <instance part="R48" gate="G$1" x="129.54" y="149.86" rot="R90">
 <attribute name="DIGIKEY" x="129.54" y="149.86" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
 </instance>
@@ -15633,7 +15627,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <attribute name="DIGIKEY" x="121.92" y="48.26" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R22" gate="B" x="129.54" y="48.26" rot="R90"/>
-<instance part="U$3" gate="G$1" x="7.62" y="139.7"/>
+<instance part="U$3" gate="G$1" x="5.08" y="139.7"/>
 <instance part="U$9" gate="G$1" x="129.54" y="175.26"/>
 <instance part="U$63" gate="G$1" x="241.3" y="152.4"/>
 <instance part="U$64" gate="G$1" x="231.14" y="152.4"/>
@@ -15641,6 +15635,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="U$66" gate="G$1" x="243.84" y="83.82"/>
 <instance part="U$67" gate="G$1" x="124.46" y="76.2"/>
 <instance part="U$68" gate="G$1" x="17.78" y="66.04"/>
+<instance part="C47" gate="G$1" x="43.18" y="104.14">
+<attribute name="DIGIKEY" x="43.18" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
+</instance>
+<instance part="C69" gate="G$1" x="35.56" y="104.14">
+<attribute name="DIGIKEY" x="35.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15660,38 +15660,38 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </segment>
 <segment>
 <pinref part="GND35" gate="1" pin="GND"/>
-<wire x1="7.62" y1="91.44" x2="7.62" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="91.44" x2="5.08" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="93.98" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="93.98" x2="50.8" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="93.98" x2="43.18" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="93.98" x2="43.18" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="93.98" x2="35.56" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="93.98" x2="25.4" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="93.98" x2="17.78" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="93.98" x2="10.16" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="93.98" x2="30.48" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="93.98" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="93.98" x2="15.24" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="93.98" x2="7.62" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="96.52" x2="55.88" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="96.52" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
 <junction x="55.88" y="93.98"/>
 <pinref part="C46" gate="G$1" pin="2"/>
-<wire x1="10.16" y1="124.46" x2="10.16" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="124.46" x2="7.62" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="C45" gate="G$1" pin="2"/>
-<wire x1="17.78" y1="124.46" x2="17.78" y2="93.98" width="0.1524" layer="91"/>
-<junction x="17.78" y="93.98"/>
+<wire x1="15.24" y1="124.46" x2="15.24" y2="93.98" width="0.1524" layer="91"/>
+<junction x="15.24" y="93.98"/>
 <pinref part="C44" gate="G$1" pin="2"/>
-<wire x1="25.4" y1="124.46" x2="25.4" y2="93.98" width="0.1524" layer="91"/>
-<junction x="25.4" y="93.98"/>
+<wire x1="22.86" y1="124.46" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
+<junction x="22.86" y="93.98"/>
 <pinref part="C43" gate="G$1" pin="2"/>
-<wire x1="35.56" y1="111.76" x2="35.56" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="111.76" x2="30.48" y2="93.98" width="0.1524" layer="91"/>
+<junction x="30.48" y="93.98"/>
+<wire x1="35.56" y1="99.06" x2="35.56" y2="93.98" width="0.1524" layer="91"/>
 <junction x="35.56" y="93.98"/>
-<pinref part="C69" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="101.6" x2="43.18" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="99.06" x2="43.18" y2="93.98" width="0.1524" layer="91"/>
 <junction x="43.18" y="93.98"/>
-<pinref part="C47" gate="G$1" pin="2"/>
-<wire x1="50.8" y1="101.6" x2="50.8" y2="93.98" width="0.1524" layer="91"/>
-<junction x="50.8" y="93.98"/>
-<wire x1="7.62" y1="93.98" x2="10.16" y2="93.98" width="0.1524" layer="91"/>
-<junction x="10.16" y="93.98"/>
+<wire x1="5.08" y1="93.98" x2="7.62" y2="93.98" width="0.1524" layer="91"/>
+<junction x="7.62" y="93.98"/>
 <pinref part="U16" gate="U1" pin="GND"/>
 <pinref part="U16" gate="U1" pin="GNDANA"/>
+<pinref part="C47" gate="G$1" pin="2"/>
+<pinref part="C69" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="R48" gate="G$1" pin="1"/>
@@ -15830,36 +15830,13 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </net>
 <net name="N$38" class="0">
 <segment>
-<wire x1="58.42" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="121.92" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="C43" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="119.38" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
-<junction x="35.56" y="121.92"/>
+<wire x1="30.48" y1="119.38" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
+<junction x="30.48" y="121.92"/>
 <pinref part="FB1" gate="G$1" pin="P$1"/>
-<wire x1="35.56" y1="124.46" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="124.46" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="U16" gate="U1" pin="VDDANA"/>
-</segment>
-</net>
-<net name="N$44" class="0">
-<segment>
-<pinref part="L1" gate="G$1" pin="1"/>
-<wire x1="58.42" y1="111.76" x2="50.8" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="111.76" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="111.76" x2="40.64" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="111.76" x2="40.64" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="C69" gate="G$1" pin="1"/>
-<wire x1="43.18" y1="109.22" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
-<junction x="43.18" y="111.76"/>
-<pinref part="C47" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="109.22" x2="50.8" y2="111.76" width="0.1524" layer="91"/>
-<junction x="50.8" y="111.76"/>
-<pinref part="U16" gate="U1" pin="VDDOUT"/>
-</segment>
-</net>
-<net name="N$39" class="0">
-<segment>
-<pinref part="L1" gate="G$1" pin="2"/>
-<wire x1="55.88" y1="114.3" x2="58.42" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="U16" gate="U1" pin="VDDCORE"/>
 </segment>
 </net>
 <net name="N$40" class="0">
@@ -15895,23 +15872,23 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <junction x="55.88" y="129.54"/>
 <wire x1="55.88" y1="132.08" x2="55.88" y2="137.16" width="0.1524" layer="91"/>
 <junction x="55.88" y="132.08"/>
-<wire x1="55.88" y1="137.16" x2="35.56" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="137.16" x2="25.4" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="137.16" x2="17.78" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="137.16" x2="10.16" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="137.16" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="137.16" x2="30.48" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="137.16" x2="22.86" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="137.16" x2="15.24" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="137.16" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="137.16" x2="5.08" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="C46" gate="G$1" pin="1"/>
-<wire x1="10.16" y1="132.08" x2="10.16" y2="137.16" width="0.1524" layer="91"/>
-<junction x="10.16" y="137.16"/>
+<wire x1="7.62" y1="132.08" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
+<junction x="7.62" y="137.16"/>
 <pinref part="C45" gate="G$1" pin="1"/>
-<wire x1="17.78" y1="132.08" x2="17.78" y2="137.16" width="0.1524" layer="91"/>
-<junction x="17.78" y="137.16"/>
+<wire x1="15.24" y1="132.08" x2="15.24" y2="137.16" width="0.1524" layer="91"/>
+<junction x="15.24" y="137.16"/>
 <pinref part="C44" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="132.08" x2="25.4" y2="137.16" width="0.1524" layer="91"/>
-<junction x="25.4" y="137.16"/>
+<wire x1="22.86" y1="132.08" x2="22.86" y2="137.16" width="0.1524" layer="91"/>
+<junction x="22.86" y="137.16"/>
 <pinref part="FB1" gate="G$1" pin="P$2"/>
-<wire x1="35.56" y1="137.16" x2="35.56" y2="134.62" width="0.1524" layer="91"/>
-<junction x="35.56" y="137.16"/>
+<wire x1="30.48" y1="137.16" x2="30.48" y2="134.62" width="0.1524" layer="91"/>
+<junction x="30.48" y="137.16"/>
 <wire x1="55.88" y1="162.56" x2="55.88" y2="137.16" width="0.1524" layer="91"/>
 <junction x="55.88" y="137.16"/>
 <pinref part="U16" gate="U1" pin="VDDIN"/>
@@ -15920,7 +15897,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U16" gate="U1" pin="VLCD"/>
 <wire x1="58.42" y1="162.56" x2="55.88" y2="162.56" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="3V3_UNMETERED"/>
-<wire x1="7.62" y1="139.7" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="139.7" x2="5.08" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R64" gate="G$1" pin="2"/>
@@ -16228,6 +16205,31 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U27" gate="1" pin="!RESET"/>
 <wire x1="208.28" y1="73.66" x2="205.74" y2="73.66" width="0.1524" layer="91"/>
 <label x="208.28" y="73.66" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="RADIO_VDDCORE" class="0">
+<segment>
+<pinref part="C47" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="106.68" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="C69" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="109.22" x2="38.1" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="109.22" x2="35.56" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="109.22" x2="35.56" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U16" gate="U1" pin="VDDCORE"/>
+<wire x1="58.42" y1="114.3" x2="38.1" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="114.3" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
+<junction x="38.1" y="109.22"/>
+<pinref part="L1" gate="G$1" pin="2"/>
+<wire x1="38.1" y1="111.76" x2="38.1" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="111.76" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
+<junction x="38.1" y="111.76"/>
+</segment>
+</net>
+<net name="RADIO_VDDOUT" class="0">
+<segment>
+<pinref part="U16" gate="U1" pin="VDDOUT"/>
+<pinref part="L1" gate="G$1" pin="1"/>
+<wire x1="58.42" y1="111.76" x2="55.88" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -17563,8 +17565,8 @@ For commissioning EEPROM</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,16,58.42,114.3,U16,VDDCORE,N$39,,,"/>
-<approved hash="104,16,58.42,111.76,U16,VDDOUT,N$44,,,"/>
+<approved hash="104,16,58.42,114.3,U16,VDDCORE,RADIO_VDDCORE,,,"/>
+<approved hash="104,16,58.42,111.76,U16,VDDOUT,RADIO_VDDOUT,,,"/>
 <approved hash="104,16,58.42,132.08,U16,VDDIN,3V3_UNMETERED,,,"/>
 <approved hash="104,16,58.42,121.92,U16,VDDANA,N$38,,,"/>
 <approved hash="104,16,58.42,129.54,U16,VDDIO,3V3_UNMETERED,,,"/>
