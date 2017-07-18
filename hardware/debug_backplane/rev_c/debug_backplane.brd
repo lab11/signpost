@@ -8199,14 +8199,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="83.566" y="83.947" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="86.614" y="77.978" size="0.8128" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="D34" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="64.516" y="86.741" smashed="yes">
+<element name="D35" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="64.516" y="86.741" smashed="yes">
 <attribute name="DIGIKEY" value="296-6596-1-ND" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Texas Instruments" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="SN75240PWR" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="64.516" y="88.519" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="64.516" y="82.931" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="D35" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="95.504" y="106.426" smashed="yes">
+<element name="D36" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="95.504" y="106.426" smashed="yes">
 <attribute name="DIGIKEY" value="296-6596-1-ND" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Texas Instruments" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="SN75240PWR" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
@@ -9312,7 +9312,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="84.328" y="49.284" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="83.8325" y="49.022" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>
-<element name="D36" library="leds" package="LED-0603" value="LED0603" x="81.026" y="53.594" smashed="yes" rot="R90">
+<element name="D34" library="leds" package="LED-0603" value="LED0603" x="81.026" y="53.594" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="160-1447-1-ND" x="81.026" y="53.594" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="81.026" y="54.2925" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="81.026" y="54.4195" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
@@ -9427,14 +9427,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="C32" pad="2"/>
 <contactref element="C33" pad="2"/>
 <contactref element="C34" pad="2"/>
+<contactref element="D36" pad="1"/>
+<contactref element="D36" pad="5"/>
+<contactref element="D36" pad="7"/>
+<contactref element="D36" pad="3"/>
 <contactref element="D35" pad="1"/>
 <contactref element="D35" pad="5"/>
 <contactref element="D35" pad="7"/>
 <contactref element="D35" pad="3"/>
-<contactref element="D34" pad="1"/>
-<contactref element="D34" pad="5"/>
-<contactref element="D34" pad="7"/>
-<contactref element="D34" pad="3"/>
 <contactref element="C35" pad="1"/>
 <contactref element="C36" pad="1"/>
 <contactref element="C3" pad="2"/>
@@ -10853,7 +10853,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="MOD0_D+_HUB-SW">
 <contactref element="R53" pad="2"/>
 <contactref element="U21" pad="3"/>
-<contactref element="D35" pad="4"/>
+<contactref element="D36" pad="4"/>
 <contactref element="R5" pad="1"/>
 <wire x1="91.227" y1="105.451" x2="92.604" y2="105.451" width="0.254" layer="1"/>
 <wire x1="91.227" y1="105.451" x2="91.059" y2="105.283" width="0.254" layer="1"/>
@@ -10871,7 +10871,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="MOD1_D+_HUB-SW">
 <contactref element="R55" pad="2"/>
 <contactref element="U22" pad="3"/>
-<contactref element="D35" pad="8"/>
+<contactref element="D36" pad="8"/>
 <wire x1="101.6" y1="107.696" x2="102.216" y2="107.08" width="0.254" layer="1"/>
 <wire x1="103.24" y1="107.08" x2="102.216" y2="107.08" width="0.2032" layer="1"/>
 <contactref element="R7" pad="1"/>
@@ -10889,7 +10889,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="MOD0_D-_HUB-SW">
 <contactref element="R54" pad="2"/>
 <contactref element="U21" pad="5"/>
-<contactref element="D35" pad="2"/>
+<contactref element="D36" pad="2"/>
 <wire x1="87.768" y1="106.572" x2="88.284" y2="106.572" width="0.254" layer="1"/>
 <contactref element="R6" pad="1"/>
 <wire x1="91.369" y1="106.751" x2="92.604" y2="106.751" width="0.254" layer="1"/>
@@ -10907,7 +10907,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="MOD1_D-_HUB-SW">
 <contactref element="R56" pad="2"/>
 <contactref element="U22" pad="5"/>
-<contactref element="D35" pad="6"/>
+<contactref element="D36" pad="6"/>
 <wire x1="103.24" y1="106.28" x2="102.216" y2="106.28" width="0.2032" layer="1"/>
 <contactref element="R8" pad="1"/>
 <wire x1="99.385" y1="106.101" x2="98.404" y2="106.101" width="0.254" layer="1"/>
@@ -14715,7 +14715,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="60.198" y1="67.056" x2="60.96" y2="67.056" width="0.254" layer="1"/>
 <contactref element="U30" pad="8"/>
 <contactref element="U30" pad="5"/>
-<contactref element="D36" pad="A"/>
+<contactref element="D34" pad="A"/>
 <wire x1="89.8242" y1="48.727" x2="88.8" y2="48.727" width="0.254" layer="1"/>
 <wire x1="89.8242" y1="48.727" x2="89.8652" y2="48.768" width="0.254" layer="1"/>
 <via x="89.8652" y="48.768" extent="1-16" drill="0.3048"/>
@@ -14734,7 +14734,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="R57" pad="2"/>
 <contactref element="R9" pad="1"/>
 <contactref element="U16" pad="47"/>
-<contactref element="D34" pad="6"/>
+<contactref element="D35" pad="6"/>
 <wire x1="72.136" y1="86.487" x2="73.73493125" y2="86.487" width="0.254" layer="1"/>
 <wire x1="72.136" y1="86.248" x2="72.136" y2="86.487" width="0.254" layer="1"/>
 <wire x1="71.968" y1="86.416" x2="72.136" y2="86.248" width="0.254" layer="1"/>
@@ -14749,7 +14749,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="R58" pad="2"/>
 <contactref element="R10" pad="1"/>
 <contactref element="U16" pad="46"/>
-<contactref element="D34" pad="8"/>
+<contactref element="D35" pad="8"/>
 <wire x1="73.64893125" y1="87.716" x2="73.73493125" y2="87.63" width="0.254" layer="1"/>
 <wire x1="72.136" y1="87.716" x2="67.416" y2="87.716" width="0.254" layer="1"/>
 <wire x1="72.136" y1="87.716" x2="73.64893125" y2="87.716" width="0.254" layer="1"/>
@@ -18969,7 +18969,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="87.63" y1="49.022" x2="86.36" y2="50.292" width="0.254" layer="1"/>
 </signal>
 <signal name="N$80">
-<contactref element="D36" pad="C"/>
+<contactref element="D34" pad="C"/>
 <contactref element="R16" pad="2"/>
 <wire x1="80.376" y1="46.736" x2="80.01" y2="46.736" width="0.254" layer="1"/>
 <wire x1="80.01" y1="46.736" x2="79.248" y2="47.498" width="0.254" layer="1"/>

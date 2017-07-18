@@ -8279,8 +8279,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <parts>
 <part name="J1" library="signpost" deviceset="BACKPLANE_CONTROLLER_MODULE_DEBUG" device=""/>
 <part name="U24" library="signpost" deviceset="TUSB2077A" device=""/>
-<part name="D34" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D35" library="signpost" deviceset="SN75240-TSSOP" device=""/>
+<part name="D36" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="C74" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
 <attribute name="DIGIKEY" value="1276-3367-1-ND"/>
 </part>
@@ -8968,7 +8968,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND131" library="umich" deviceset="GND" device=""/>
 <part name="Q7" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="GND132" library="umich" deviceset="GND" device=""/>
-<part name="D36" library="leds" deviceset="LED" device="0603">
+<part name="D34" library="leds" deviceset="LED" device="0603">
 <attribute name="DIGIKEY" value="160-1447-1-ND"/>
 </part>
 <part name="U$76" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
@@ -9528,7 +9528,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="GND132" gate="1" x="152.4" y="106.68"/>
 <instance part="D3" gate="D" x="182.88" y="149.86" rot="R270"/>
 <instance part="S8" gate="G$1" x="132.08" y="114.3" rot="R90"/>
-<instance part="D36" gate="G$1" x="175.26" y="157.48" rot="R270">
+<instance part="D34" gate="G$1" x="175.26" y="157.48" rot="R270">
 <attribute name="DIGIKEY" x="175.26" y="157.48" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="U$76" gate="G$1" x="175.26" y="165.1"/>
@@ -9729,7 +9729,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </segment>
 <segment>
 <pinref part="U$76" gate="G$1" pin="3V3_UNMETERED"/>
-<pinref part="D36" gate="G$1" pin="ANODE"/>
+<pinref part="D34" gate="G$1" pin="ANODE"/>
 <wire x1="175.26" y1="165.1" x2="175.26" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9767,7 +9767,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </net>
 <net name="N$80" class="0">
 <segment>
-<pinref part="D36" gate="G$1" pin="CATHODE"/>
+<pinref part="D34" gate="G$1" pin="CATHODE"/>
 <wire x1="175.26" y1="154.94" x2="175.26" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="R16" gate="G$1" pin="2"/>
 </segment>
@@ -14818,8 +14818,8 @@ pair of signals by flipping +/-</text>
 <text x="251.46" y="181.61" size="1.778" layer="98" align="top-right">Passives, Data Iso</text>
 </plain>
 <instances>
-<instance part="D34" gate="G$1" x="129.54" y="68.58" rot="R270"/>
-<instance part="D35" gate="G$1" x="129.54" y="119.38" rot="R270"/>
+<instance part="D35" gate="G$1" x="129.54" y="68.58" rot="R270"/>
+<instance part="D36" gate="G$1" x="129.54" y="119.38" rot="R270"/>
 <instance part="GND2" gate="1" x="33.02" y="106.68"/>
 <instance part="R53" gate="G$1" x="68.58" y="119.38" rot="R90"/>
 <instance part="R54" gate="G$1" x="76.2" y="119.38" rot="R90"/>
@@ -14886,7 +14886,7 @@ pair of signals by flipping +/-</text>
 <wire x1="68.58" y1="121.92" x2="68.58" y2="129.54" width="0.1524" layer="91"/>
 <label x="71.12" y="129.54" size="1.27" layer="95"/>
 <pinref part="U21" gate="G$1" pin="D+"/>
-<pinref part="D35" gate="G$1" pin="D"/>
+<pinref part="D36" gate="G$1" pin="D"/>
 <wire x1="127" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="116.84" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <junction x="121.92" y="129.54"/>
@@ -14903,7 +14903,7 @@ pair of signals by flipping +/-</text>
 <wire x1="76.2" y1="121.92" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
 <label x="71.12" y="124.46" size="1.27" layer="95"/>
 <pinref part="U21" gate="G$1" pin="D-"/>
-<pinref part="D35" gate="G$1" pin="C"/>
+<pinref part="D36" gate="G$1" pin="C"/>
 <wire x1="137.16" y1="116.84" x2="142.24" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="116.84" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
 <junction x="142.24" y="124.46"/>
@@ -14919,7 +14919,7 @@ pair of signals by flipping +/-</text>
 <label x="71.12" y="104.14" size="1.27" layer="95"/>
 <wire x1="68.58" y1="104.14" x2="139.7" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="U22" gate="G$1" pin="D+"/>
-<pinref part="D35" gate="G$1" pin="A"/>
+<pinref part="D36" gate="G$1" pin="A"/>
 <wire x1="139.7" y1="104.14" x2="193.04" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="119.38" x2="139.7" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="119.38" x2="139.7" y2="104.14" width="0.1524" layer="91"/>
@@ -14936,7 +14936,7 @@ pair of signals by flipping +/-</text>
 <label x="71.12" y="99.06" size="1.27" layer="95"/>
 <pinref part="U22" gate="G$1" pin="D-"/>
 <wire x1="76.2" y1="99.06" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="D35" gate="G$1" pin="B"/>
+<pinref part="D36" gate="G$1" pin="B"/>
 <wire x1="124.46" y1="99.06" x2="193.04" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="127" y1="119.38" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="119.38" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
@@ -15041,12 +15041,12 @@ pair of signals by flipping +/-</text>
 <junction x="233.68" y="121.92"/>
 </segment>
 <segment>
-<pinref part="D35" gate="G$1" pin="GND"/>
+<pinref part="D36" gate="G$1" pin="GND"/>
 <pinref part="GND14" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="GND117" gate="1" pin="GND"/>
-<pinref part="D34" gate="G$1" pin="GND"/>
+<pinref part="D35" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C35" gate="G$1" pin="1"/>
@@ -15196,7 +15196,7 @@ pair of signals by flipping +/-</text>
 <wire x1="124.46" y1="78.74" x2="147.32" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="78.74" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
 <junction x="68.58" y="78.74"/>
-<pinref part="D34" gate="G$1" pin="B"/>
+<pinref part="D35" gate="G$1" pin="B"/>
 <wire x1="127" y1="68.58" x2="124.46" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="68.58" x2="124.46" y2="78.74" width="0.1524" layer="91"/>
 <junction x="124.46" y="78.74"/>
@@ -15213,7 +15213,7 @@ pair of signals by flipping +/-</text>
 <wire x1="139.7" y1="73.66" x2="147.32" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="73.66" x2="76.2" y2="73.66" width="0.1524" layer="91"/>
 <junction x="76.2" y="73.66"/>
-<pinref part="D34" gate="G$1" pin="A"/>
+<pinref part="D35" gate="G$1" pin="A"/>
 <wire x1="137.16" y1="68.58" x2="139.7" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="68.58" x2="139.7" y2="73.66" width="0.1524" layer="91"/>
 <junction x="139.7" y="73.66"/>
