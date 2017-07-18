@@ -8686,8 +8686,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="D23" library="leds" deviceset="LED" device="0603">
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
 </part>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0603_RES" value="470Ω"/>
-<part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
+<part name="R15" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="U26" library="signpost" deviceset="TUSB2077A" device=""/>
 <part name="R28" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND99" library="umich" deviceset="GND" device=""/>
@@ -8980,7 +8979,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="U$76" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="GND89" library="umich" deviceset="GND" device=""/>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="470Ω"/>
+<part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="R77" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
 <part name="C76" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.82uF">
 <attribute name="DIGIKEY" value=" 490-11493-1-ND"/>
@@ -8991,6 +8990,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U8" library="chips" deviceset="LTC2941" device=""/>
 <part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="R86" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 </parts>
 <sheets>
 <sheet>
@@ -9793,12 +9793,13 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <plain>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Power Supply</text>
 <text x="101.6" y="182.88" size="5.08" layer="97">Coulomb Counters</text>
-<text x="208.28" y="160.02" size="5.08" layer="98" align="bottom-center">5V Barrel Jack</text>
+<text x="208.28" y="149.86" size="5.08" layer="98" align="bottom-center">5V Barrel Jack</text>
 <text x="205.74" y="91.44" size="5.08" layer="98" align="bottom-center">3V3 Regulator</text>
 <text x="25.4" y="124.46" size="5.08" layer="98" align="bottom-center">Address
 Translator</text>
-<text x="210.82" y="154.94" size="1.016" layer="98" align="bottom-center">DNP Bypass</text>
 <text x="195.58" y="114.3" size="1.27" layer="98" align="bottom-center">Overvoltage protection</text>
+<text x="223.52" y="111.76" size="1.016" layer="98" align="bottom-center">(5V - 2V) / 30mA = 100Ω
+Have a bunch of other 50Ω</text>
 </plain>
 <instances>
 <instance part="U15" gate="G$1" x="33.02" y="88.9"/>
@@ -9834,7 +9835,6 @@ Translator</text>
 <attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="R15" gate="G$1" x="226.06" y="124.46" rot="R90"/>
-<instance part="R85" gate="G$1" x="210.82" y="149.86" rot="R180"/>
 <instance part="FRAME10" gate="G$1" x="0" y="0"/>
 <instance part="FRAME10" gate="G$2" x="152.4" y="0"/>
 <instance part="U$37" gate="G$1" x="63.5" y="182.88"/>
@@ -9875,6 +9875,7 @@ Translator</text>
 <instance part="U10" gate="G$1" x="137.16" y="78.74" rot="MR0"/>
 <instance part="U11" gate="G$1" x="137.16" y="35.56" rot="MR0"/>
 <instance part="U8" gate="G$1" x="137.16" y="165.1" rot="MR0"/>
+<instance part="R86" gate="G$1" x="218.44" y="119.38"/>
 </instances>
 <busses>
 </busses>
@@ -10365,18 +10366,13 @@ Translator</text>
 <wire x1="220.98" y1="139.7" x2="226.06" y2="139.7" width="0.1524" layer="91"/>
 <junction x="220.98" y="139.7"/>
 <pinref part="C70" gate="G$1" pin="1"/>
-<wire x1="226.06" y1="139.7" x2="231.14" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="139.7" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="139.7" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="139.7" x2="238.76" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="132.08" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
 <junction x="236.22" y="139.7"/>
 <pinref part="D23" gate="G$1" pin="ANODE"/>
 <wire x1="226.06" y1="139.7" x2="226.06" y2="134.62" width="0.1524" layer="91"/>
 <junction x="226.06" y="139.7"/>
-<pinref part="R85" gate="G$1" pin="1"/>
-<wire x1="215.9" y1="149.86" x2="231.14" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="149.86" x2="231.14" y2="139.7" width="0.1524" layer="91"/>
-<junction x="231.14" y="139.7"/>
 <pinref part="U$38" gate="G$1" pin="5V_UNMETERED"/>
 <wire x1="238.76" y1="142.24" x2="238.76" y2="139.7" width="0.1524" layer="91"/>
 </segment>
@@ -10406,12 +10402,7 @@ Translator</text>
 <wire x1="177.8" y1="129.54" x2="177.8" y2="139.7" width="0.1524" layer="91"/>
 <junction x="177.8" y="129.54"/>
 <pinref part="Q8" gate="G$1" pin="D"/>
-<wire x1="177.8" y1="139.7" x2="198.12" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="R85" gate="G$1" pin="2"/>
-<wire x1="198.12" y1="139.7" x2="208.28" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="149.86" x2="198.12" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="149.86" x2="198.12" y2="139.7" width="0.1524" layer="91"/>
-<junction x="198.12" y="139.7"/>
+<wire x1="177.8" y1="139.7" x2="208.28" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="OVERVOLT_PROT_CTL" class="0">
@@ -10422,18 +10413,25 @@ Translator</text>
 <wire x1="213.36" y1="129.54" x2="213.36" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$84" class="0">
-<segment>
-<pinref part="U25" gate="G$1" pin="!PWRGD"/>
-<pinref part="R15" gate="G$1" pin="1"/>
-<wire x1="210.82" y1="119.38" x2="226.06" y2="119.38" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$85" class="0">
 <segment>
 <pinref part="D23" gate="G$1" pin="CATHODE"/>
 <pinref part="R15" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="129.54" x2="226.06" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$83" class="0">
+<segment>
+<pinref part="U25" gate="G$1" pin="!PWRGD"/>
+<pinref part="R86" gate="G$1" pin="1"/>
+<wire x1="210.82" y1="119.38" x2="213.36" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$84" class="0">
+<segment>
+<pinref part="R86" gate="G$1" pin="2"/>
+<pinref part="R15" gate="G$1" pin="1"/>
+<wire x1="220.98" y1="119.38" x2="226.06" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
