@@ -8203,11 +8203,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="D34" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="64.516" y="86.741" smashed="yes">
 <attribute name="DIGIKEY" value="296-6596-1-ND" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="SN75240PWR" x="64.516" y="86.741" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="64.516" y="88.519" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="64.516" y="82.931" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="D35" library="signpost" package="TSSOP-8" value="SN75240-TSSOP" x="95.504" y="106.426" smashed="yes">
 <attribute name="DIGIKEY" value="296-6596-1-ND" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="SN75240PWR" x="95.504" y="106.426" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="95.504" y="108.204" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="95.504" y="102.616" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -8818,6 +8822,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Q1" library="fets" package="SOT353" value="DMN32D2LDF" x="90.932" y="65.278" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="90.932" y="65.278" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="90.932" y="65.278" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="90.932" y="65.278" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C58" library="passives" package="0603_CAP" value="100nF" x="93.98" y="69.469" rot="R90"/>
 <element name="R65" library="passives" package="0603-RES" value="100kΩ" x="94.107" y="65.405" rot="R90"/>
@@ -8961,15 +8967,23 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Q2" library="fets" package="SOT353" value="DMN32D2LDF" x="34.798" y="17.78" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="34.798" y="17.78" size="1.27" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="34.798" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="34.798" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Q3" library="fets" package="SOT353" value="DMN32D2LDF" x="47.498" y="17.78" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="47.498" y="17.78" size="1.27" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="47.498" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="47.498" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Q4" library="fets" package="SOT353" value="DMN32D2LDF" x="60.198" y="17.78" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="60.198" y="17.78" size="1.27" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="60.198" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="60.198" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Q5" library="fets" package="SOT353" value="DMN32D2LDF" x="72.898" y="17.78" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="72.898" y="17.78" size="1.27" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="72.898" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="72.898" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="JP1" library="pinhead" package="2X05" value="" x="22.86" y="159.258" smashed="yes" rot="R270">
 <attribute name="NAME" x="22.86" y="166.243" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -9029,6 +9043,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Q6" library="fets" package="SOT353" value="DMN32D2LDF" x="85.598" y="17.78" rot="R90">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="85.598" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="85.598" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="85.598" y="17.78" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R21" library="passives" package="ARRAY-CONVEX-0603-4" value="1kΩ" x="89.662" y="17.78" smashed="yes">
 <attribute name="DIGIKEY" value="Y9102CT-ND" x="68.58" y="30.226" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
@@ -9088,12 +9104,18 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="D1" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="58.166" y="62.992">
 <attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="58.166" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Rohm Semiconductor" x="58.166" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RB521ZS8A30TE61" x="58.166" y="62.992" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D2" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="60.96" y="62.992">
 <attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="60.96" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Rohm Semiconductor" x="60.96" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RB521ZS8A30TE61" x="60.96" y="62.992" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D3" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="63.754" y="62.992">
 <attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="63.754" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Rohm Semiconductor" x="63.754" y="62.992" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RB521ZS8A30TE61" x="63.754" y="62.992" size="1.778" layer="27" display="off"/>
 </element>
 <element name="JP19" library="pinhead" package="2X10" value="" x="136.525" y="13.97"/>
 <element name="JP20" library="pinhead" package="2X10" value="" x="113.03" y="184.15" smashed="yes">
@@ -9290,6 +9312,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Q7" library="fets" package="SOT353" value="DMN32D2LDF" x="82.042" y="49.022" smashed="yes">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" x="76.260959375" y="57.1855625" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="82.042" y="49.022" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="DMN32D2LDF-7" x="82.042" y="49.022" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="84.328" y="49.284" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="83.8325" y="49.022" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="top-center"/>
 </element>

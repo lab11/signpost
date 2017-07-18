@@ -3608,6 +3608,8 @@ Figs 30-32</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-6596-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" constant="no"/>
+<attribute name="MPN" value="SN75240PWR" constant="no"/>
 </technology>
 </technologies>
 </device>

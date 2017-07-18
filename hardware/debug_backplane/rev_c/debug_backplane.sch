@@ -3150,6 +3150,8 @@ S high: D = D2</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-6596-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" constant="no"/>
+<attribute name="MPN" value="SN75240PWR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4092,6 +4094,8 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Rohm Semiconductor" constant="no"/>
+<attribute name="MPN" value="RB521ZS8A30TE61" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -6140,6 +6144,8 @@ High-power, low thermal resistance package.</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="DMN32D2LDF-7DICT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" constant="no"/>
+<attribute name="MPN" value="DMN32D2LDF-7" constant="no"/>
 </technology>
 </technologies>
 </device>
