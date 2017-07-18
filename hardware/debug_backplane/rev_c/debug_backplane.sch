@@ -4088,7 +4088,9 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <connect gate="D" pin="CATHODE" pad="4K"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>

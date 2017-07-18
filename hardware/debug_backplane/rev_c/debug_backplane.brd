@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -9080,9 +9080,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R62" library="passives" package="ARRAY-CONVEX-0603-4" value="15kΩ" x="75.946" y="72.898" rot="R270">
 <attribute name="DIGIKEY" value="Y9153CT-ND" x="75.946" y="72.898" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 </element>
-<element name="D1" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="58.166" y="62.992"/>
-<element name="D2" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="60.96" y="62.992"/>
-<element name="D3" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="63.754" y="62.992"/>
+<element name="D1" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="58.166" y="62.992">
+<attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="58.166" y="62.992" size="1.778" layer="27" display="off"/>
+</element>
+<element name="D2" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="60.96" y="62.992">
+<attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="60.96" y="62.992" size="1.778" layer="27" display="off"/>
+</element>
+<element name="D3" library="passives" package="HMD8" value="DIODE_SCHOTTKY_ARRAY-4HMD8" x="63.754" y="62.992">
+<attribute name="DIGIKEY" value="RB521ZS8A30TE61CT-ND" x="63.754" y="62.992" size="1.778" layer="27" display="off"/>
+</element>
 <element name="JP19" library="pinhead" package="2X10" value="" x="136.525" y="13.97"/>
 <element name="JP20" library="pinhead" package="2X10" value="" x="113.03" y="184.15" smashed="yes">
 <attribute name="VALUE" x="100.33" y="179.705" size="1.27" layer="27"/>
