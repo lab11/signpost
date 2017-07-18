@@ -8389,26 +8389,26 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="GND79" library="umich" deviceset="GND" device=""/>
 <part name="GND80" library="umich" deviceset="GND" device=""/>
-<part name="C18" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C19" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C18" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C19" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C66" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND73" library="umich" deviceset="GND" device=""/>
-<part name="C20" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C20" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C67" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND74" library="umich" deviceset="GND" device=""/>
 <part name="GND85" library="umich" deviceset="GND" device=""/>
 <part name="GND86" library="umich" deviceset="GND" device=""/>
 <part name="GND91" library="umich" deviceset="GND" device=""/>
 <part name="GND92" library="umich" deviceset="GND" device=""/>
-<part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="S1" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="S2" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="GND97" library="umich" deviceset="GND" device=""/>
@@ -8419,23 +8419,23 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$50" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND109" library="umich" deviceset="GND" device=""/>
 <part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND110" library="umich" deviceset="GND" device=""/>
-<part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND113" library="umich" deviceset="GND" device=""/>
-<part name="C33" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C34" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C36" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C37" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C33" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C34" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C36" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C37" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="GND117" library="umich" deviceset="GND" device=""/>
-<part name="C39" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C39" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND118" library="umich" deviceset="GND" device=""/>
 <part name="GND119" library="umich" deviceset="GND" device=""/>
-<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 </part>
@@ -8450,8 +8450,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
-<part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND124" library="umich" deviceset="GND" device=""/>
 <part name="GND125" library="umich" deviceset="GND" device=""/>
 <part name="GND126" library="umich" deviceset="GND" device=""/>
@@ -8518,16 +8518,16 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND34" library="umich" deviceset="GND" device=""/>
 <part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
-<part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C45" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C45" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C46" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C46" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0603" value="1.5kR">
@@ -8546,10 +8546,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND38" library="umich" deviceset="GND" device=""/>
 <part name="U1" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C48" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C48" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C49" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C49" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND39" library="umich" deviceset="GND" device=""/>
@@ -8557,16 +8557,16 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND45" library="umich" deviceset="GND" device=""/>
 <part name="GND49" library="umich" deviceset="GND" device=""/>
 <part name="GND33" library="umich" deviceset="GND" device=""/>
-<part name="C50" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C50" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U2" library="ftdichip" deviceset="FT232R" device="Q"/>
 <part name="GND50" library="umich" deviceset="GND" device=""/>
-<part name="C51" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C51" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND51" library="umich" deviceset="GND" device=""/>
 <part name="GND53" library="umich" deviceset="GND" device=""/>
 <part name="GND54" library="umich" deviceset="GND" device=""/>
-<part name="C52" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C52" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U3" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C53" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C53" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND60" library="umich" deviceset="GND" device=""/>
 <part name="GND62" library="umich" deviceset="GND" device=""/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
@@ -8615,15 +8615,15 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="S17" library="switches" deviceset="SN74AHC4066" device="-RGY"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 <part name="GND32" library="umich" deviceset="GND" device=""/>
-<part name="C54" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C54" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U4" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND63" library="umich" deviceset="GND" device=""/>
 <part name="GND66" library="umich" deviceset="GND" device=""/>
 <part name="GND67" library="umich" deviceset="GND" device=""/>
-<part name="C56" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C56" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U5" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C57" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C57" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND69" library="umich" deviceset="GND" device=""/>
 <part name="GND72" library="umich" deviceset="GND" device=""/>
 <part name="GND75" library="umich" deviceset="GND" device=""/>
@@ -8649,7 +8649,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="Q1" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="GND83" library="umich" deviceset="GND" device=""/>
 <part name="GND84" library="umich" deviceset="GND" device=""/>
-<part name="C58" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C58" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND87" library="umich" deviceset="GND" device=""/>
 <part name="R66" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ"/>
 <part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ"/>
@@ -8685,7 +8685,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND99" library="umich" deviceset="GND" device=""/>
 <part name="C71" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C59" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C59" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="Y2" library="crystals" deviceset="ABMM" device=""/>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
 <attribute name="DIGIKEY" value="1276-1023-1-ND"/>
@@ -8707,10 +8707,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND37" library="umich" deviceset="GND" device=""/>
 <part name="GND55" library="umich" deviceset="GND" device=""/>
 <part name="U27" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C60" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C60" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C61" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C61" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND46" library="umich" deviceset="GND" device=""/>
@@ -8727,7 +8727,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND68" library="umich" deviceset="GND" device=""/>
 <part name="U$24" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND71" library="umich" deviceset="GND" device=""/>
-<part name="C62" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C62" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="Q2" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="Q3" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="Q4" library="fets" deviceset="DMN32D2LDF" device=""/>
@@ -8838,10 +8838,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF">
 <attribute name="DIGIKEY" value="490-1313-1-ND"/>
 </part>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
-<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF"/>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U$23" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$69" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$70" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
@@ -8942,7 +8942,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND123" library="umich" deviceset="GND" device=""/>
 <part name="GND127" library="umich" deviceset="GND" device=""/>
 <part name="GND128" library="umich" deviceset="GND" device=""/>
-<part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="SJ2" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
@@ -8985,7 +8985,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
-<part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="100nF">
+<part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="6.8uF">

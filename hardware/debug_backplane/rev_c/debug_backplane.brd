@@ -8399,46 +8399,46 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R44" library="passives" package="0603-RES" value="10kΩ" x="159.766" y="69.85" rot="R270"/>
 <element name="R45" library="passives" package="0603-RES" value="10kΩ" x="127.635" y="64.135" rot="R270"/>
 <element name="R46" library="passives" package="0603-RES" value="10kΩ" x="130.175" y="64.135" rot="R270"/>
-<element name="C18" library="passives" package="0603_CAP" value="100nF" x="65.786" y="133.985" smashed="yes" rot="R270">
+<element name="C18" library="passives" package="0603_CAP" value="0.1uF" x="65.786" y="133.985" smashed="yes" rot="R270">
 <attribute name="NAME" x="65.405" y="131.826" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C19" library="passives" package="0603_CAP" value="100nF" x="135.763" y="133.096" smashed="yes" rot="R270">
+<element name="C19" library="passives" package="0603_CAP" value="0.1uF" x="135.763" y="133.096" smashed="yes" rot="R270">
 <attribute name="NAME" x="135.89" y="130.937" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C66" library="passives" package="0603_CAP" value="4.7uF" x="75.184" y="133.604" smashed="yes">
 <attribute name="NAME" x="75.184" y="131.826" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C20" library="passives" package="0603_CAP" value="100nF" x="73.406" y="139.446" smashed="yes" rot="R180">
+<element name="C20" library="passives" package="0603_CAP" value="0.1uF" x="73.406" y="139.446" smashed="yes" rot="R180">
 <attribute name="NAME" x="73.406" y="141.224" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C67" library="passives" package="0603_CAP" value="4.7uF" x="144.78" y="132.588" smashed="yes">
 <attribute name="NAME" x="144.78" y="131.826" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C21" library="passives" package="0603_CAP" value="100nF" x="143.383" y="137.795" smashed="yes" rot="R180">
+<element name="C21" library="passives" package="0603_CAP" value="0.1uF" x="143.383" y="137.795" smashed="yes" rot="R180">
 <attribute name="NAME" x="143.383" y="139.573" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C22" library="passives" package="0603_CAP" value="100nF" x="52.578" y="133.731" smashed="yes" rot="R90">
+<element name="C22" library="passives" package="0603_CAP" value="0.1uF" x="52.578" y="133.731" smashed="yes" rot="R90">
 <attribute name="NAME" x="52.451" y="132.334" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C23" library="passives" package="0603_CAP" value="100nF" x="123.19" y="134.366" smashed="yes" rot="R90">
+<element name="C23" library="passives" package="0603_CAP" value="0.1uF" x="123.19" y="134.366" smashed="yes" rot="R90">
 <attribute name="NAME" x="123.19" y="133.096" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C24" library="passives" package="0603_CAP" value="100nF" x="58.42" y="133.731" smashed="yes" rot="R270">
+<element name="C24" library="passives" package="0603_CAP" value="0.1uF" x="58.42" y="133.731" smashed="yes" rot="R270">
 <attribute name="NAME" x="58.547" y="131.318" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C25" library="passives" package="0603_CAP" value="100nF" x="129.286" y="132.842" smashed="yes" rot="R270">
+<element name="C25" library="passives" package="0603_CAP" value="0.1uF" x="129.286" y="132.842" smashed="yes" rot="R270">
 <attribute name="NAME" x="129.286" y="130.556" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C26" library="passives" package="0603_CAP" value="100nF" x="51.943" y="137.414" smashed="yes" rot="R180">
+<element name="C26" library="passives" package="0603_CAP" value="0.1uF" x="51.943" y="137.414" smashed="yes" rot="R180">
 <attribute name="NAME" x="51.943" y="139.446" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C27" library="passives" package="0603_CAP" value="100nF" x="123.19" y="137.16" smashed="yes" rot="R180">
+<element name="C27" library="passives" package="0603_CAP" value="0.1uF" x="123.19" y="137.16" smashed="yes" rot="R180">
 <attribute name="NAME" x="123.19" y="138.938" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C28" library="passives" package="0603_CAP" value="100nF" x="58.166" y="137.414" smashed="yes" rot="R180">
+<element name="C28" library="passives" package="0603_CAP" value="0.1uF" x="58.166" y="137.414" smashed="yes" rot="R180">
 <attribute name="NAME" x="58.166" y="139.446" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C29" library="passives" package="0603_CAP" value="100nF" x="129.032" y="136.652" smashed="yes" rot="R180">
+<element name="C29" library="passives" package="0603_CAP" value="0.1uF" x="129.032" y="136.652" smashed="yes" rot="R180">
 <attribute name="NAME" x="129.032" y="135.89" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="S1" library="signpost" package="MSOP-8EP" value="AP2401MP" x="49.022" y="125.222" smashed="yes">
@@ -8454,37 +8454,37 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="C68" library="passives" package="0603_CAP" value="4.7uF" x="91.186" y="80.264" smashed="yes" rot="R180">
 <attribute name="NAME" x="91.186" y="81.026" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C30" library="passives" package="0603_CAP" value="100nF" x="91.186" y="78.359" smashed="yes" rot="R180">
+<element name="C30" library="passives" package="0603_CAP" value="0.1uF" x="91.186" y="78.359" smashed="yes" rot="R180">
 <attribute name="NAME" x="91.186" y="77.597" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C31" library="passives" package="0603_CAP" value="100nF" x="68.199" y="121.031" smashed="yes" rot="R180">
+<element name="C31" library="passives" package="0603_CAP" value="0.1uF" x="68.199" y="121.031" smashed="yes" rot="R180">
 <attribute name="NAME" x="67.183" y="119.253" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C32" library="passives" package="0603_CAP" value="100nF" x="137.16" y="122.809" smashed="yes" rot="R180">
+<element name="C32" library="passives" package="0603_CAP" value="0.1uF" x="137.16" y="122.809" smashed="yes" rot="R180">
 <attribute name="NAME" x="137.16" y="122.047" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C33" library="passives" package="0603_CAP" value="100nF" x="47.117" y="135.382" smashed="yes" rot="R180">
+<element name="C33" library="passives" package="0603_CAP" value="0.1uF" x="47.117" y="135.382" smashed="yes" rot="R180">
 <attribute name="NAME" x="47.117" y="136.271" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C34" library="passives" package="0603_CAP" value="100nF" x="115.57" y="136.906" smashed="yes" rot="R180">
+<element name="C34" library="passives" package="0603_CAP" value="0.1uF" x="115.57" y="136.906" smashed="yes" rot="R180">
 <attribute name="NAME" x="115.697" y="138.684" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C35" library="passives" package="0603_CAP" value="100nF" x="53.34" y="123.317" smashed="yes" rot="R90">
+<element name="C35" library="passives" package="0603_CAP" value="0.1uF" x="53.34" y="123.317" smashed="yes" rot="R90">
 <attribute name="NAME" x="53.086" y="122.174" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C36" library="passives" package="0603_CAP" value="100nF" x="121.666" y="123.571" smashed="yes" rot="R90">
+<element name="C36" library="passives" package="0603_CAP" value="0.1uF" x="121.666" y="123.571" smashed="yes" rot="R90">
 <attribute name="NAME" x="121.539" y="125.857" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C37" library="passives" package="0603_CAP" value="100nF" x="48.133" y="121.285" smashed="yes" rot="R180">
+<element name="C37" library="passives" package="0603_CAP" value="0.1uF" x="48.133" y="121.285" smashed="yes" rot="R180">
 <attribute name="NAME" x="48.133" y="120.269" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C38" library="passives" package="0603_CAP" value="100nF" x="116.586" y="122.301" smashed="yes" rot="R180">
+<element name="C38" library="passives" package="0603_CAP" value="0.1uF" x="116.586" y="122.301" smashed="yes" rot="R180">
 <attribute name="NAME" x="114.046" y="122.809" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C39" library="passives" package="0603_CAP" value="100nF" x="84.074" y="105.918" smashed="yes" rot="R90">
+<element name="C39" library="passives" package="0603_CAP" value="0.1uF" x="84.074" y="105.918" smashed="yes" rot="R90">
 <attribute name="NAME" x="81.915" y="106.426" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C40" library="passives" package="0603_CAP" value="100nF" x="106.934" y="107.442" smashed="yes" rot="R270">
+<element name="C40" library="passives" package="0603_CAP" value="0.1uF" x="106.934" y="107.442" smashed="yes" rot="R270">
 <attribute name="NAME" x="106.934" y="108.839" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R5" library="passives" package="0402_RES-HIGH_SPEED" value="27Ω" x="84.836" y="91.44" smashed="yes" rot="R270">
@@ -8524,10 +8524,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="C10" library="passives" package="0402_CAP" value="22pF" x="75.692" y="88.138" smashed="yes" rot="R90">
 <attribute name="NAME" x="77.597" y="87.376" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C41" library="passives" package="0603_CAP" value="100nF" x="64.897" y="136.144" smashed="yes" rot="R180">
+<element name="C41" library="passives" package="0603_CAP" value="0.1uF" x="64.897" y="136.144" smashed="yes" rot="R180">
 <attribute name="NAME" x="64.389" y="137.922" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C42" library="passives" package="0603_CAP" value="100nF" x="135.255" y="135.382" smashed="yes" rot="R180">
+<element name="C42" library="passives" package="0603_CAP" value="0.1uF" x="135.255" y="135.382" smashed="yes" rot="R180">
 <attribute name="NAME" x="135.255" y="136.144" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="D4" library="leds" package="LED-0603" value="LED0603" x="85.598" y="162.56" smashed="yes" rot="R270">
@@ -8623,18 +8623,18 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R85" library="passives" package="0603-RES" value="DNP" x="53.848" y="79.248" smashed="yes" rot="R90">
 <attribute name="NAME" x="53.594" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C43" library="passives" package="0603_CAP" value="100nF" x="67.31" y="66.294" smashed="yes">
+<element name="C43" library="passives" package="0603_CAP" value="0.1uF" x="67.31" y="66.294" smashed="yes">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="19.05" y="109.474" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="NAME" x="67.183" y="65.532" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C44" library="passives" package="0603_CAP" value="100nF" x="60.452" y="70.866" smashed="yes" rot="R270">
+<element name="C44" library="passives" package="0603_CAP" value="0.1uF" x="60.452" y="70.866" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="98.552" y="124.206" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="60.452" y="69.85" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C45" library="passives" package="0603_CAP" value="100nF" x="72.898" y="73.66">
+<element name="C45" library="passives" package="0603_CAP" value="0.1uF" x="72.898" y="73.66">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="14.478" y="106.68" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 </element>
-<element name="C46" library="passives" package="0603_CAP" value="100nF" x="71.374" y="81.026" smashed="yes" rot="R90">
+<element name="C46" library="passives" package="0603_CAP" value="0.1uF" x="71.374" y="81.026" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="35.814" y="65.786" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="70.612" y="81.026" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
@@ -8668,15 +8668,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="41.148" y="50.8" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="VALUE" x="45.198" y="55.15" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="C48" library="passives" package="0603_CAP" value="100nF" x="36.83" y="49.53" smashed="yes" rot="R180">
+<element name="C48" library="passives" package="0603_CAP" value="0.1uF" x="36.83" y="49.53" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="36.83" y="49.53" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="36.576" y="48.768" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C49" library="passives" package="0603_CAP" value="100nF" x="36.576" y="52.832" smashed="yes" rot="R270">
+<element name="C49" library="passives" package="0603_CAP" value="0.1uF" x="36.576" y="52.832" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="36.576" y="52.832" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="36.576" y="54.102" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C50" library="passives" package="0603_CAP" value="100nF" x="42.926" y="70.866" smashed="yes" rot="R90">
+<element name="C50" library="passives" package="0603_CAP" value="0.1uF" x="42.926" y="70.866" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.926" y="69.596" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U2" library="ftdichip" package="QFN32" value="FT232RQ" x="38.608" y="73.406" smashed="yes">
@@ -8687,10 +8687,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="20.828" y="68.326" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="VALUE" x="34.558" y="69.056" size="1.27" layer="27"/>
 </element>
-<element name="C51" library="passives" package="0603_CAP" value="100nF" x="43.18" y="74.676" smashed="yes" rot="R90">
+<element name="C51" library="passives" package="0603_CAP" value="0.1uF" x="43.18" y="74.676" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.418" y="75.184" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="C52" library="passives" package="0603_CAP" value="100nF" x="52.832" y="70.104" rot="R90"/>
+<element name="C52" library="passives" package="0603_CAP" value="0.1uF" x="52.832" y="70.104" rot="R90"/>
 <element name="U3" library="ftdichip" package="QFN32" value="FT232RQ" x="47.498" y="71.882" smashed="yes">
 <attribute name="MF" value="" x="1.778" y="38.862" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MPN" value="FT232RQ" x="1.778" y="38.862" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
@@ -8699,7 +8699,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="1.778" y="38.862" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="VALUE" x="43.448" y="67.532" size="1.27" layer="27"/>
 </element>
-<element name="C53" library="passives" package="0603_CAP" value="100nF" x="52.832" y="73.152" rot="R90"/>
+<element name="C53" library="passives" package="0603_CAP" value="0.1uF" x="52.832" y="73.152" rot="R90"/>
 <element name="D10" library="leds" package="LED-0603" value="LED0603" x="38.1" y="5.588" rot="R270">
 <attribute name="DIGIKEY" value="160-1447-1-ND" x="38.1" y="5.588" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 </element>
@@ -8763,7 +8763,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="296-15258-1-ND" x="72.39" y="30.48" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="74.422" y="29.932" size="1.016" layer="25" font="vector" ratio="12" align="center-left"/>
 </element>
-<element name="C54" library="passives" package="0603_CAP" value="100nF" x="46.228" y="59.69" smashed="yes">
+<element name="C54" library="passives" package="0603_CAP" value="0.1uF" x="46.228" y="59.69" smashed="yes">
 <attribute name="NAME" x="46.736" y="58.928" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U4" library="ftdichip" package="QFN32" value="FT232RQ" x="48.26" y="64.516" smashed="yes" rot="R270">
@@ -8774,10 +8774,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="40.64" y="84.836" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="43.91" y="68.566" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="C55" library="passives" package="0603_CAP" value="100nF" x="50.038" y="59.69" smashed="yes">
+<element name="C55" library="passives" package="0603_CAP" value="0.1uF" x="50.038" y="59.69" smashed="yes">
 <attribute name="NAME" x="50.546" y="58.928" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C56" library="passives" package="0603_CAP" value="100nF" x="46.736" y="50.546" smashed="yes">
+<element name="C56" library="passives" package="0603_CAP" value="0.1uF" x="46.736" y="50.546" smashed="yes">
 <attribute name="NAME" x="46.736" y="49.784" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="U5" library="ftdichip" package="QFN32" value="FT232RQ" x="48.26" y="55.118" smashed="yes" rot="R270">
@@ -8788,7 +8788,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="12.7" y="103.378" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="43.91" y="59.168" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="C57" library="passives" package="0603_CAP" value="100nF" x="50.292" y="50.546" smashed="yes">
+<element name="C57" library="passives" package="0603_CAP" value="0.1uF" x="50.292" y="50.546" smashed="yes">
 <attribute name="NAME" x="50.292" y="49.784" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="D19" library="leds" package="LED-0603" value="LED0603" x="63.5" y="5.588" rot="R270">
@@ -8820,7 +8820,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="MANUFACTURER" value="Diodes Incorporated" x="90.932" y="65.278" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="DMN32D2LDF-7" x="90.932" y="65.278" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="C58" library="passives" package="0603_CAP" value="100nF" x="93.98" y="69.469" rot="R90"/>
+<element name="C58" library="passives" package="0603_CAP" value="0.1uF" x="93.98" y="69.469" rot="R90"/>
 <element name="R66" library="passives" package="0603-RES" value="100kΩ" x="94.107" y="65.405" rot="R90"/>
 <element name="R67" library="passives" package="0603-RES" value="100kΩ" x="89.408" y="72.517" smashed="yes">
 <attribute name="NAME" x="89.408" y="71.755" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -8883,7 +8883,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="C71" library="passives" package="0603_CAP" value="4.7uF" x="26.416" y="68.072" smashed="yes" rot="R270">
 <attribute name="NAME" x="27.178" y="68.072" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="C59" library="passives" package="0603_CAP" value="100nF" x="28.956" y="68.072" smashed="yes" rot="R270">
+<element name="C59" library="passives" package="0603_CAP" value="0.1uF" x="28.956" y="68.072" smashed="yes" rot="R270">
 <attribute name="NAME" x="29.718" y="68.072" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="Y2" library="crystals" package="ABMM" value="ABMM" x="30.226" y="75.184" smashed="yes" rot="R180">
@@ -8922,11 +8922,11 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="OC_NEWARK" value="91K9919" x="32.004" y="51.816" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="36.054" y="56.166" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="C60" library="passives" package="0603_CAP" value="100nF" x="27.432" y="50.8" smashed="yes" rot="R180">
+<element name="C60" library="passives" package="0603_CAP" value="0.1uF" x="27.432" y="50.8" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="26.416" y="50.8" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="27.432" y="51.562" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C61" library="passives" package="0603_CAP" value="100nF" x="27.432" y="53.848" smashed="yes" rot="R270">
+<element name="C61" library="passives" package="0603_CAP" value="0.1uF" x="27.432" y="53.848" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="23.622" y="56.388" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="27.432" y="55.118" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -8957,7 +8957,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="MCP23008-E/ML-ND" x="80.01" y="91.948" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="78.74" y="89.448" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C62" library="passives" package="0603_CAP" value="100nF" x="80.01" y="97.79" smashed="yes" rot="R90">
+<element name="C62" library="passives" package="0603_CAP" value="0.1uF" x="80.01" y="97.79" smashed="yes" rot="R90">
 <attribute name="NAME" x="80.01" y="99.06" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="Q2" library="fets" package="SOT353" value="DMN32D2LDF" x="34.798" y="17.78" rot="R90">
@@ -9077,14 +9077,14 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="C13" library="passives" package="0603_CAP" value="0.01uF" x="27.686" y="85.344">
 <attribute name="DIGIKEY" value="490-1313-1-ND" x="27.686" y="85.344" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C14" library="passives" package="0603_CAP" value="100nF" x="33.528" y="91.948" smashed="yes">
+<element name="C14" library="passives" package="0603_CAP" value="0.1uF" x="33.528" y="91.948" smashed="yes">
 <attribute name="NAME" x="33.02" y="92.964" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="C15" library="passives" package="0603_CAP" value="100nF" x="23.368" y="91.948" smashed="yes" rot="R270">
+<element name="C15" library="passives" package="0603_CAP" value="0.1uF" x="23.368" y="91.948" smashed="yes" rot="R270">
 <attribute name="NAME" x="22.606" y="91.948" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="C16" library="passives" package="0603_CAP" value="100nF" x="41.402" y="91.694"/>
-<element name="C17" library="passives" package="0603_CAP" value="100nF" x="50.038" y="91.694"/>
+<element name="C16" library="passives" package="0603_CAP" value="0.1uF" x="41.402" y="91.694"/>
+<element name="C17" library="passives" package="0603_CAP" value="0.1uF" x="50.038" y="91.694"/>
 <element name="S20" library="switches" package="PTS645" value="PTS645SM43SMTR92" x="58.42" y="53.34" rot="R180">
 <attribute name="DIGIKEY" value="CKN9112CT-ND" x="58.42" y="53.34" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 </element>
@@ -9256,7 +9256,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="497-8631-1-ND" x="148.844" y="61.976" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 </element>
 <element name="SJ1" library="SparkFun-Passives" package="SJ_2S-NO" value="SOLDERJUMPERNO" x="148.082" y="68.072" rot="R270"/>
-<element name="C63" library="passives" package="0603_CAP" value="100nF" x="143.764" y="65.532" rot="R180">
+<element name="C63" library="passives" package="0603_CAP" value="0.1uF" x="143.764" y="65.532" rot="R180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="143.764" y="65.532" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 </element>
 <element name="SJ2" library="SparkFun-Passives" package="SJ_2S" value="SOLDERJUMPERNC" x="24.13" y="150.368" rot="R90"/>
@@ -9341,7 +9341,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R17" library="passives" package="0603-RES" value="50Ω" x="12.7" y="86.868" smashed="yes" rot="R270">
 <attribute name="NAME" x="12.192" y="85.598" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="C47" library="passives" package="0603_CAP" value="100nF" x="56.134" y="76.2" smashed="yes" rot="R180">
+<element name="C47" library="passives" package="0603_CAP" value="0.1uF" x="56.134" y="76.2" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="56.134" y="76.2" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="53.848" y="76.708" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
