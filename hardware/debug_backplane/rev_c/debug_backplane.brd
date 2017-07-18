@@ -8649,7 +8649,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="53.943" y="72.898" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R48" library="passives" package="0603-RES" value="10kΩ" x="56.134" y="79.248" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" value="1276-3431-1-ND" x="66.294" y="109.728" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="DIGIKEY" value="P10KGCT-ND" x="66.294" y="109.728" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="56.388" y="80.518" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R64" library="passives" package="0603-RES" value="100kΩ" x="62.992" y="68.072" smashed="yes">

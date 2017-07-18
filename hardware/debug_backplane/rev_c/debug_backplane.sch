@@ -8535,7 +8535,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="L1" library="signpost" deviceset="LHQ3NP" device="" value="22uH"/>
 <part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
-<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+<attribute name="DIGIKEY" value="P10KGCT-ND"/>
 </part>
 <part name="GND36" library="umich" deviceset="GND" device=""/>
 <part name="R64" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ">
