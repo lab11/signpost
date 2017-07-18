@@ -4220,12 +4220,14 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-10156-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Abracon LLC" constant="no"/>
+<attribute name="MPN" value="ABMM-6.000MHZ-B2-T" constant="no"/>
 </technology>
 </technologies>
 </device>
 </devices>
 </deviceset>
-<deviceset name="FH1600015" prefix="X" uservalue="yes">
+<deviceset name="FH1600015" prefix="Y">
 <description>Pericom Type FH 16 MHz 2.5 x 2.0 mm</description>
 <gates>
 <gate name="G$1" symbol="CRYSTAL-GND" x="0" y="0"/>
@@ -4240,6 +4242,8 @@ Example part: RB521ZS8A30TE61CT-ND</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" constant="no"/>
+<attribute name="MPN" value="FH1600015" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -8508,7 +8512,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
 <attribute name="DIGIKEY" value="490-8230-1-ND"/>
 </part>
-<part name="X1" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
+<part name="Y3" library="crystals" deviceset="FH1600015" device="" value="16MHz"/>
 <part name="GND34" library="umich" deviceset="GND" device=""/>
 <part name="R84" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
@@ -15551,10 +15555,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="C2" gate="G$1" x="165.1" y="167.64" rot="R90">
 <attribute name="DIGIKEY" x="165.1" y="167.64" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="X1" gate="G$1" x="160.02" y="172.72" smashed="yes" rot="R90">
-<attribute name="NAME" x="154.94" y="175.26" size="1.27" layer="95" rot="R180"/>
-<attribute name="VALUE" x="154.94" y="172.72" size="1.27" layer="96" rot="R180"/>
-</instance>
+<instance part="Y3" gate="G$1" x="160.02" y="172.72" rot="R90"/>
 <instance part="GND34" gate="1" x="170.18" y="162.56"/>
 <instance part="R84" gate="G$1" x="129.54" y="162.56" rot="R90"/>
 <instance part="GND35" gate="1" x="7.62" y="88.9"/>
@@ -15645,7 +15646,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="GND"/>
+<pinref part="Y3" gate="G$1" pin="GND"/>
 <wire x1="165.1" y1="172.72" x2="170.18" y2="172.72" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="170.18" y1="172.72" x2="170.18" y2="177.8" width="0.1524" layer="91"/>
@@ -15787,7 +15788,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </net>
 <net name="FAKE_RADIO_XIN" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="2"/>
+<pinref part="Y3" gate="G$1" pin="2"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="160.02" y1="177.8" x2="162.56" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="177.8" x2="160.02" y2="177.8" width="0.1524" layer="91"/>
@@ -15802,7 +15803,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </net>
 <net name="FAKE_RADIO_XOUT" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="1"/>
+<pinref part="Y3" gate="G$1" pin="1"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="162.56" y1="167.64" x2="160.02" y2="167.64" width="0.1524" layer="91"/>
 <junction x="160.02" y="167.64"/>

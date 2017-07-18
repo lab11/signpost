@@ -8246,6 +8246,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Y1" library="crystals" package="ABMM" value="ABMM" x="83.566" y="66.04" smashed="yes">
 <attribute name="DIGIKEY" value="535-10156-1-ND" x="83.566" y="66.04" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Abracon LLC" x="83.566" y="66.04" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="ABMM-6.000MHZ-B2-T" x="83.566" y="66.04" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="83.566" y="68.834" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="79.756" y="60.96" size="1.27" layer="27" font="vector" ratio="12"/>
 </element>
@@ -8612,8 +8614,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="490-8230-1-ND" x="94.488" y="25.654" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="NAME" x="61.214" y="79.502" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="X1" library="crystals" package="FHXXX" value="16MHz" x="60.198" y="81.788" smashed="yes">
+<element name="Y3" library="crystals" package="FHXXX" value="16MHz" x="60.198" y="81.788" smashed="yes">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" x="34.798" y="79.248" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated" x="60.198" y="81.788" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="FH1600015" x="60.198" y="81.788" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="60.198" y="83.312" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="60.198" y="78.788" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
@@ -8896,6 +8900,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="Y2" library="crystals" package="ABMM" value="ABMM" x="30.226" y="75.184" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="535-10156-1-ND" x="30.226" y="75.184" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MANUFACTURER" value="Abracon LLC" x="30.226" y="75.184" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="ABMM-6.000MHZ-B2-T" x="30.226" y="75.184" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="31.75" y="77.978" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="30.226" y="78.232" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
@@ -9576,8 +9582,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U16" pad="THERMAL"/>
 <contactref element="U16" pad="48"/>
 <contactref element="U16" pad="30"/>
-<contactref element="X1" pad="2"/>
-<contactref element="X1" pad="4"/>
+<contactref element="Y3" pad="2"/>
+<contactref element="Y3" pad="4"/>
 <contactref element="C1" pad="2"/>
 <contactref element="C2" pad="2"/>
 <contactref element="C46" pad="2"/>
@@ -15290,7 +15296,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="98.298" y1="1.27" x2="47.498" y2="1.27" width="0.254" layer="16"/>
 </signal>
 <signal name="FAKE_RADIO_XIN">
-<contactref element="X1" pad="3"/>
+<contactref element="Y3" pad="3"/>
 <contactref element="C1" pad="1"/>
 <contactref element="U16" pad="1"/>
 <wire x1="63.048" y1="81.732" x2="63.048" y2="77.172" width="0.254" layer="1"/>
@@ -15301,7 +15307,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="63.216" y1="81.9" x2="63.048" y2="81.732" width="0.254" layer="1"/>
 </signal>
 <signal name="FAKE_RADIO_XOUT">
-<contactref element="X1" pad="1"/>
+<contactref element="Y3" pad="1"/>
 <contactref element="C2" pad="1"/>
 <contactref element="U16" pad="2"/>
 <wire x1="62.23" y1="76.708" x2="63.012" y2="76.708" width="0.254" layer="1"/>
