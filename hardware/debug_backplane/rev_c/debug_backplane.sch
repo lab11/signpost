@@ -17577,13 +17577,13 @@ For commissioning EEPROM</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,16,58.42,114.3,U16,VDDCORE,RADIO_VDDCORE,,,"/>
-<approved hash="104,16,58.42,111.76,U16,VDDOUT,RADIO_VDDOUT,,,"/>
-<approved hash="104,16,58.42,132.08,U16,VDDIN,3V3_UNMETERED,,,"/>
-<approved hash="104,16,58.42,121.92,U16,VDDANA,N$38,,,"/>
-<approved hash="104,16,58.42,129.54,U16,VDDIO,3V3_UNMETERED,,,"/>
-<approved hash="104,16,58.42,93.98,U16,GNDANA,GND,,,"/>
-<approved hash="104,16,58.42,127,U16,VLCDIN,3V3_UNMETERED,,,"/>
+<approved hash="104,16,58.42,114.3,U23,VDDCORE,RADIO_VDDCORE,,,"/>
+<approved hash="104,16,58.42,111.76,U23,VDDOUT,RADIO_VDDOUT,,,"/>
+<approved hash="104,16,58.42,132.08,U23,VDDIN,3V3_UNMETERED,,,"/>
+<approved hash="104,16,58.42,121.92,U23,VDDANA,N$38,,,"/>
+<approved hash="104,16,58.42,129.54,U23,VDDIO,3V3_UNMETERED,,,"/>
+<approved hash="104,16,58.42,93.98,U23,GNDANA,GND,,,"/>
+<approved hash="104,16,58.42,127,U23,VLCDIN,3V3_UNMETERED,,,"/>
 <approved hash="104,16,205.74,149.86,U1,VCC,5V_UNMETERED,,,"/>
 <approved hash="202,16,205.74,137.16,U1,OSCI,,,,"/>
 <approved hash="202,16,177.8,142.24,U1,!CTS,,,,"/>
@@ -17620,13 +17620,13 @@ For commissioning EEPROM</text>
 <approved hash="202,7,231.14,147.32,U5,!RI,,,,"/>
 <approved hash="104,7,203.2,162.56,U5,VCCIO,VCC_BACKPLANE,,,"/>
 <approved hash="202,13,147.32,86.36,Q1,G1,,,,"/>
-<approved hash="104,16,205.74,81.28,U27,VCC,5V_UNMETERED,,,"/>
-<approved hash="202,16,205.74,68.58,U27,OSCI,,,,"/>
-<approved hash="202,16,177.8,73.66,U27,!CTS,,,,"/>
-<approved hash="202,16,177.8,68.58,U27,!DSR,,,,"/>
-<approved hash="202,16,177.8,66.04,U27,!DCD,,,,"/>
-<approved hash="202,16,177.8,63.5,U27,!RI,,,,"/>
-<approved hash="104,16,205.74,78.74,U27,VCCIO,3V3_UNMETERED,,,"/>
+<approved hash="104,16,205.74,81.28,U6,VCC,5V_UNMETERED,,,"/>
+<approved hash="202,16,205.74,68.58,U6,OSCI,,,,"/>
+<approved hash="202,16,177.8,73.66,U6,!CTS,,,,"/>
+<approved hash="202,16,177.8,68.58,U6,!DSR,,,,"/>
+<approved hash="202,16,177.8,66.04,U6,!DCD,,,,"/>
+<approved hash="202,16,177.8,63.5,U6,!RI,,,,"/>
+<approved hash="104,16,205.74,78.74,U6,VCCIO,3V3_UNMETERED,,,"/>
 <approved hash="106,18,43.18,114.3,CONT_HDR_BOT_RSV_PIN6,,,,,"/>
 <approved hash="106,18,38.1,106.68,CONT_HDR_BOT_RSV_PIN9,,,,,"/>
 <approved hash="106,18,38.1,104.14,CONT_HDR_BOT_RSV_PIN10,,,,,"/>
@@ -17645,7 +17645,7 @@ For commissioning EEPROM</text>
 <approved hash="106,18,144.78,137.16,MOD0_HDR_RSV_PIN9,,,,,"/>
 <approved hash="106,18,213.36,144.78,MOD1_HDR_RSV_PIN3,,,,,"/>
 <approved hash="106,18,213.36,137.16,MOD1_HDR_RSV_PIN9,,,,,"/>
-<approved hash="113,5,55.88,61.1547,J5,,,,,"/>
+<approved hash="113,5,55.88,61.1547,J6,,,,,"/>
 <approved hash="113,18,148.548,166.501,JP1,,,,,"/>
 <approved hash="113,18,217.128,166.501,JP2,,,,,"/>
 <approved hash="113,18,148.548,143.641,JP4,,,,,"/>
