@@ -8281,10 +8281,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U24" library="signpost" deviceset="TUSB2077A" device=""/>
 <part name="D34" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D35" library="signpost" deviceset="SN75240-TSSOP" device=""/>
-<part name="C72" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<part name="C74" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
 <attribute name="DIGIKEY" value="1276-3367-1-ND"/>
 </part>
-<part name="C73" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
+<part name="C75" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="150uF">
 <attribute name="DIGIKEY" value="1276-3367-1-ND"/>
 </part>
 <part name="GND1" library="umich" deviceset="GND" device=""/>
@@ -8303,10 +8303,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND15" library="umich" deviceset="GND" device=""/>
 <part name="Y1" library="crystals" deviceset="ABMM" device=""/>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
 <attribute name="DIGIKEY" value="1276-1023-1-ND"/>
 </part>
-<part name="C4" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
+<part name="C10" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
 <attribute name="DIGIKEY" value="1276-1023-1-ND"/>
 </part>
 <part name="GND16" library="umich" deviceset="GND" device=""/>
@@ -8389,26 +8389,26 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
 <part name="GND79" library="umich" deviceset="GND" device=""/>
 <part name="GND80" library="umich" deviceset="GND" device=""/>
-<part name="C18" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C19" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C66" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND73" library="umich" deviceset="GND" device=""/>
-<part name="C20" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C67" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND74" library="umich" deviceset="GND" device=""/>
 <part name="GND85" library="umich" deviceset="GND" device=""/>
 <part name="GND86" library="umich" deviceset="GND" device=""/>
 <part name="GND91" library="umich" deviceset="GND" device=""/>
 <part name="GND92" library="umich" deviceset="GND" device=""/>
+<part name="C18" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C19" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C20" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C21" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C22" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C23" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C24" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C25" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="S1" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="S2" library="signpost" deviceset="AP2401MP" device=""/>
 <part name="GND97" library="umich" deviceset="GND" device=""/>
@@ -8418,24 +8418,24 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND104" library="umich" deviceset="GND" device=""/>
 <part name="U$50" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND109" library="umich" deviceset="GND" device=""/>
-<part name="C68" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C26" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND110" library="umich" deviceset="GND" device=""/>
+<part name="C27" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="GND113" library="umich" deviceset="GND" device=""/>
+<part name="C29" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C32" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="GND113" library="umich" deviceset="GND" device=""/>
 <part name="C33" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="C34" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C36" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C37" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
 <part name="GND117" library="umich" deviceset="GND" device=""/>
-<part name="C39" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C35" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND118" library="umich" deviceset="GND" device=""/>
 <part name="GND119" library="umich" deviceset="GND" device=""/>
-<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C36" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 </part>
@@ -8444,14 +8444,14 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="R8" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R9" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
 <part name="R10" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω"/>
+<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
+<part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
-<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="22pF"/>
-<part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C37" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C38" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND124" library="umich" deviceset="GND" device=""/>
 <part name="GND125" library="umich" deviceset="GND" device=""/>
 <part name="GND126" library="umich" deviceset="GND" device=""/>
@@ -8499,10 +8499,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U12" library="chips" deviceset="MAX8887" device="EZK33+T"/>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
 <part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
-<part name="C64" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
+<part name="C66" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
 <attribute name="DIGIKEY" value="490-10451-1-ND"/>
 </part>
-<part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
+<part name="C67" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
 <attribute name="DIGIKEY" value="490-10451-1-ND"/>
 </part>
 <part name="J7" library="connector" deviceset="PJ-102AH" device=""/>
@@ -8518,16 +8518,16 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND34" library="umich" deviceset="GND" device=""/>
 <part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
 <part name="GND35" library="umich" deviceset="GND" device=""/>
-<part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C39" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C40" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C45" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C41" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C46" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C42" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="FB1" library="passives" deviceset="FERRITE_BEAD" device="0603" value="1.5kR">
@@ -8546,10 +8546,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND38" library="umich" deviceset="GND" device=""/>
 <part name="U1" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C48" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C43" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C49" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C44" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND39" library="umich" deviceset="GND" device=""/>
@@ -8557,16 +8557,16 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND45" library="umich" deviceset="GND" device=""/>
 <part name="GND49" library="umich" deviceset="GND" device=""/>
 <part name="GND33" library="umich" deviceset="GND" device=""/>
-<part name="C50" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C45" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U2" library="ftdichip" deviceset="FT232R" device="Q"/>
 <part name="GND50" library="umich" deviceset="GND" device=""/>
-<part name="C51" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C46" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND51" library="umich" deviceset="GND" device=""/>
 <part name="GND53" library="umich" deviceset="GND" device=""/>
 <part name="GND54" library="umich" deviceset="GND" device=""/>
-<part name="C52" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U3" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C53" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C48" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND60" library="umich" deviceset="GND" device=""/>
 <part name="GND62" library="umich" deviceset="GND" device=""/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
@@ -8615,15 +8615,15 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="S17" library="switches" deviceset="SN74AHC4066" device="-RGY"/>
 <part name="GND29" library="umich" deviceset="GND" device=""/>
 <part name="GND32" library="umich" deviceset="GND" device=""/>
-<part name="C54" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C49" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U4" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C50" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND63" library="umich" deviceset="GND" device=""/>
 <part name="GND66" library="umich" deviceset="GND" device=""/>
 <part name="GND67" library="umich" deviceset="GND" device=""/>
-<part name="C56" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C51" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U5" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C57" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C52" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND69" library="umich" deviceset="GND" device=""/>
 <part name="GND72" library="umich" deviceset="GND" device=""/>
 <part name="GND75" library="umich" deviceset="GND" device=""/>
@@ -8649,7 +8649,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="Q1" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="GND83" library="umich" deviceset="GND" device=""/>
 <part name="GND84" library="umich" deviceset="GND" device=""/>
-<part name="C58" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C53" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="GND87" library="umich" deviceset="GND" device=""/>
 <part name="R66" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ"/>
 <part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ"/>
@@ -8675,7 +8675,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="Q8" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
 <attribute name="DIGIKEY" value="SI2302CDS-T1-E3CT-ND"/>
 </part>
-<part name="C70" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C71" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
 <part name="GND96" library="umich" deviceset="GND" device=""/>
 <part name="D23" library="leds" deviceset="LED" device="0603">
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
@@ -8684,8 +8684,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="U26" library="signpost" deviceset="TUSB2077A" device=""/>
 <part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND99" library="umich" deviceset="GND" device=""/>
-<part name="C71" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
-<part name="C59" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C72" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF"/>
+<part name="C54" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="Y2" library="crystals" deviceset="ABMM" device=""/>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
 <attribute name="DIGIKEY" value="1276-1023-1-ND"/>
@@ -8707,10 +8707,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND37" library="umich" deviceset="GND" device=""/>
 <part name="GND55" library="umich" deviceset="GND" device=""/>
 <part name="U27" library="ftdichip" deviceset="FT232R" device="Q"/>
-<part name="C60" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C55" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C61" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C56" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="GND46" library="umich" deviceset="GND" device=""/>
@@ -8727,7 +8727,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND68" library="umich" deviceset="GND" device=""/>
 <part name="U$24" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND71" library="umich" deviceset="GND" device=""/>
-<part name="C62" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C57" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="Q2" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="Q3" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="Q4" library="fets" deviceset="DMN32D2LDF" device=""/>
@@ -8838,10 +8838,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.01uF">
 <attribute name="DIGIKEY" value="490-1313-1-ND"/>
 </part>
-<part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C16" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
-<part name="C17" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C58" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C59" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C60" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
+<part name="C61" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF"/>
 <part name="U$23" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$69" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
 <part name="U$70" library="signpost" deviceset="VCC_3V3_UNMETERED" device=""/>
@@ -8942,7 +8942,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND123" library="umich" deviceset="GND" device=""/>
 <part name="GND127" library="umich" deviceset="GND" device=""/>
 <part name="GND128" library="umich" deviceset="GND" device=""/>
-<part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C62" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
 <part name="SJ2" library="SparkFun-Passives" deviceset="SOLDERJUMPER" device="NC"/>
@@ -8975,20 +8975,20 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND89" library="umich" deviceset="GND" device=""/>
 <part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
 <part name="R78" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ"/>
-<part name="C76" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.82uF">
+<part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.82uF">
 <attribute name="DIGIKEY" value=" 490-11493-1-ND"/>
 </part>
-<part name="C77" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.47uF">
+<part name="C64" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.47uF">
 <attribute name="DIGIKEY" value="490-1539-1-ND"/>
 </part>
 <part name="U8" library="chips" deviceset="LTC2941" device=""/>
 <part name="U$77" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="TP12" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω"/>
-<part name="C47" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
+<part name="C63" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
 </part>
-<part name="C69" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="6.8uF">
+<part name="C73" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="6.8uF">
 <attribute name="DIGIKEY" value="445-7490-1-ND"/>
 </part>
 </parts>
@@ -9535,10 +9535,10 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <instance part="GND89" gate="1" x="132.08" y="101.6"/>
 <instance part="R16" gate="G$1" x="175.26" y="149.86" rot="R90"/>
 <instance part="R78" gate="G$1" x="152.4" y="124.46" rot="R90"/>
-<instance part="C76" gate="G$1" x="48.26" y="127">
+<instance part="C65" gate="G$1" x="48.26" y="127">
 <attribute name="DIGIKEY" x="48.26" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C77" gate="G$1" x="60.96" y="127">
+<instance part="C64" gate="G$1" x="60.96" y="127">
 <attribute name="DIGIKEY" x="60.96" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 </instances>
@@ -9567,8 +9567,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <wire x1="73.66" y1="124.46" x2="71.12" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="124.46" x2="71.12" y2="119.38" width="0.1524" layer="91"/>
 <junction x="71.12" y="119.38"/>
-<pinref part="C76" gate="G$1" pin="2"/>
-<pinref part="C77" gate="G$1" pin="2"/>
+<pinref part="C65" gate="G$1" pin="2"/>
+<pinref part="C64" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND132" gate="1" pin="GND"/>
@@ -9699,7 +9699,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <segment>
 <pinref part="S23" gate="G$1" pin="B"/>
 <wire x1="73.66" y1="129.54" x2="60.96" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="C77" gate="G$1" pin="1"/>
+<pinref part="C64" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="WDT_CTRL" class="0">
@@ -9738,7 +9738,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <pinref part="U30" gate="G$1" pin="SRT"/>
 <wire x1="86.36" y1="134.62" x2="48.26" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="134.62" x2="48.26" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="C76" gate="G$1" pin="1"/>
+<pinref part="C65" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$79" class="0">
@@ -9816,10 +9816,10 @@ Have a bunch of other 50Ω</text>
 <instance part="U12" gate="G$1" x="205.74" y="76.2"/>
 <instance part="GND10" gate="1" x="205.74" y="55.88"/>
 <instance part="R47" gate="G$1" x="185.42" y="76.2" rot="R90"/>
-<instance part="C64" gate="G$1" x="177.8" y="76.2">
+<instance part="C66" gate="G$1" x="177.8" y="76.2">
 <attribute name="DIGIKEY" x="177.8" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C65" gate="G$1" x="228.6" y="76.2">
+<instance part="C67" gate="G$1" x="228.6" y="76.2">
 <attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="J7" gate="G$1" x="167.64" y="127"/>
@@ -9829,7 +9829,7 @@ Have a bunch of other 50Ω</text>
 <attribute name="NAME" x="209.55" y="138.43" size="1.778" layer="95" rot="R180"/>
 <attribute name="DIGIKEY" x="213.36" y="139.7" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="C70" gate="G$1" x="236.22" y="129.54"/>
+<instance part="C71" gate="G$1" x="236.22" y="129.54"/>
 <instance part="GND96" gate="1" x="236.22" y="119.38"/>
 <instance part="D23" gate="G$1" x="226.06" y="132.08" rot="R270">
 <attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
@@ -9867,10 +9867,10 @@ Have a bunch of other 50Ω</text>
 <instance part="C13" gate="G$1" x="220.98" y="71.12">
 <attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C14" gate="G$1" x="101.6" y="162.56"/>
-<instance part="C15" gate="G$1" x="101.6" y="119.38"/>
-<instance part="C16" gate="G$1" x="111.76" y="76.2"/>
-<instance part="C17" gate="G$1" x="111.76" y="33.02"/>
+<instance part="C58" gate="G$1" x="101.6" y="162.56"/>
+<instance part="C59" gate="G$1" x="101.6" y="119.38"/>
+<instance part="C60" gate="G$1" x="111.76" y="76.2"/>
+<instance part="C61" gate="G$1" x="111.76" y="33.02"/>
 <instance part="U9" gate="G$1" x="137.16" y="121.92" rot="MR0"/>
 <instance part="U10" gate="G$1" x="137.16" y="78.74" rot="MR0"/>
 <instance part="U11" gate="G$1" x="137.16" y="35.56" rot="MR0"/>
@@ -9892,7 +9892,7 @@ Have a bunch of other 50Ω</text>
 <pinref part="U$14" gate="G$1" pin="VCC_LINUX"/>
 <wire x1="101.6" y1="124.46" x2="93.98" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="124.46" x2="93.98" y2="127" width="0.1524" layer="91"/>
-<pinref part="C15" gate="G$1" pin="1"/>
+<pinref part="C59" gate="G$1" pin="1"/>
 <pinref part="U9" gate="G$1" pin="SENSE-"/>
 </segment>
 </net>
@@ -9935,7 +9935,7 @@ Have a bunch of other 50Ω</text>
 <pinref part="U$13" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="101.6" y1="167.64" x2="91.44" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="167.64" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="C14" gate="G$1" pin="1"/>
+<pinref part="C58" gate="G$1" pin="1"/>
 <pinref part="U8" gate="G$1" pin="SENSE-"/>
 </segment>
 </net>
@@ -9950,7 +9950,7 @@ Have a bunch of other 50Ω</text>
 <wire x1="111.76" y1="81.28" x2="111.76" y2="83.82" width="0.1524" layer="91"/>
 <junction x="111.76" y="81.28"/>
 <wire x1="111.76" y1="78.74" x2="111.76" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="C16" gate="G$1" pin="1"/>
+<pinref part="C60" gate="G$1" pin="1"/>
 <pinref part="U10" gate="G$1" pin="SENSE-"/>
 </segment>
 </net>
@@ -9965,7 +9965,7 @@ Have a bunch of other 50Ω</text>
 <wire x1="111.76" y1="38.1" x2="111.76" y2="40.64" width="0.1524" layer="91"/>
 <junction x="111.76" y="38.1"/>
 <wire x1="111.76" y1="35.56" x2="111.76" y2="38.1" width="0.1524" layer="91"/>
-<pinref part="C17" gate="G$1" pin="1"/>
+<pinref part="C61" gate="G$1" pin="1"/>
 <pinref part="U11" gate="G$1" pin="SENSE-"/>
 </segment>
 </net>
@@ -10190,10 +10190,10 @@ Have a bunch of other 50Ω</text>
 <wire x1="22.86" y1="86.36" x2="20.32" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="86.36" x2="20.32" y2="83.82" width="0.1524" layer="91"/>
 <junction x="20.32" y="83.82"/>
-<pinref part="C14" gate="G$1" pin="2"/>
-<pinref part="C15" gate="G$1" pin="2"/>
-<pinref part="C16" gate="G$1" pin="2"/>
-<pinref part="C17" gate="G$1" pin="2"/>
+<pinref part="C58" gate="G$1" pin="2"/>
+<pinref part="C59" gate="G$1" pin="2"/>
+<pinref part="C60" gate="G$1" pin="2"/>
+<pinref part="C61" gate="G$1" pin="2"/>
 <pinref part="U11" gate="G$1" pin="GND"/>
 <pinref part="U10" gate="G$1" pin="GND"/>
 <pinref part="U9" gate="G$1" pin="GND"/>
@@ -10203,7 +10203,7 @@ Have a bunch of other 50Ω</text>
 <pinref part="U12" gate="G$1" pin="GND"/>
 <pinref part="GND10" gate="1" pin="GND"/>
 <wire x1="205.74" y1="66.04" x2="205.74" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="C64" gate="G$1" pin="2"/>
+<pinref part="C66" gate="G$1" pin="2"/>
 <wire x1="205.74" y1="63.5" x2="205.74" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="60.96" x2="205.74" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="71.12" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
@@ -10212,7 +10212,7 @@ Have a bunch of other 50Ω</text>
 <wire x1="220.98" y1="66.04" x2="220.98" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="220.98" y1="63.5" x2="205.74" y2="63.5" width="0.1524" layer="91"/>
 <junction x="205.74" y="63.5"/>
-<pinref part="C65" gate="G$1" pin="2"/>
+<pinref part="C67" gate="G$1" pin="2"/>
 <wire x1="228.6" y1="71.12" x2="228.6" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="228.6" y1="63.5" x2="220.98" y2="63.5" width="0.1524" layer="91"/>
 <junction x="220.98" y="63.5"/>
@@ -10232,7 +10232,7 @@ Have a bunch of other 50Ω</text>
 <junction x="177.8" y="119.38"/>
 </segment>
 <segment>
-<pinref part="C70" gate="G$1" pin="2"/>
+<pinref part="C71" gate="G$1" pin="2"/>
 <pinref part="GND96" gate="1" pin="GND"/>
 <wire x1="236.22" y1="124.46" x2="236.22" y2="121.92" width="0.1524" layer="91"/>
 </segment>
@@ -10264,7 +10264,7 @@ Have a bunch of other 50Ω</text>
 </segment>
 <segment>
 <pinref part="U12" gate="G$1" pin="OUT"/>
-<pinref part="C65" gate="G$1" pin="1"/>
+<pinref part="C67" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="78.74" x2="228.6" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="228.6" y1="78.74" x2="236.22" y2="78.74" width="0.1524" layer="91"/>
 <junction x="228.6" y="78.74"/>
@@ -10353,7 +10353,7 @@ Have a bunch of other 50Ω</text>
 <wire x1="175.26" y1="78.74" x2="175.26" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="R47" gate="G$1" pin="2"/>
 <junction x="185.42" y="78.74"/>
-<pinref part="C64" gate="G$1" pin="1"/>
+<pinref part="C66" gate="G$1" pin="1"/>
 <junction x="177.8" y="78.74"/>
 <pinref part="U$41" gate="G$1" pin="5V_UNMETERED"/>
 </segment>
@@ -10365,7 +10365,7 @@ Have a bunch of other 50Ω</text>
 <wire x1="220.98" y1="139.7" x2="218.44" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="220.98" y1="139.7" x2="226.06" y2="139.7" width="0.1524" layer="91"/>
 <junction x="220.98" y="139.7"/>
-<pinref part="C70" gate="G$1" pin="1"/>
+<pinref part="C71" gate="G$1" pin="1"/>
 <wire x1="226.06" y1="139.7" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="139.7" x2="238.76" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="132.08" x2="236.22" y2="139.7" width="0.1524" layer="91"/>
@@ -11566,16 +11566,16 @@ Have a bunch of other 50Ω</text>
 </plain>
 <instances>
 <instance part="GND33" gate="1" x="45.72" y="106.68"/>
-<instance part="C50" gate="G$1" x="45.72" y="116.84"/>
+<instance part="C45" gate="G$1" x="45.72" y="116.84"/>
 <instance part="U2" gate="1" x="68.58" y="139.7"/>
 <instance part="GND50" gate="1" x="53.34" y="106.68"/>
-<instance part="C51" gate="G$1" x="30.48" y="154.94"/>
+<instance part="C46" gate="G$1" x="30.48" y="154.94"/>
 <instance part="GND51" gate="1" x="30.48" y="144.78"/>
 <instance part="GND53" gate="1" x="91.44" y="106.68"/>
 <instance part="GND54" gate="1" x="170.18" y="106.68"/>
-<instance part="C52" gate="G$1" x="170.18" y="116.84"/>
+<instance part="C47" gate="G$1" x="170.18" y="116.84"/>
 <instance part="U3" gate="1" x="193.04" y="139.7"/>
-<instance part="C53" gate="G$1" x="154.94" y="154.94"/>
+<instance part="C48" gate="G$1" x="154.94" y="154.94"/>
 <instance part="GND60" gate="1" x="154.94" y="144.78"/>
 <instance part="GND62" gate="1" x="215.9" y="106.68"/>
 <instance part="GND12" gate="1" x="81.28" y="33.02"/>
@@ -11623,12 +11623,12 @@ Have a bunch of other 50Ω</text>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="C51" gate="G$1" pin="2"/>
+<pinref part="C46" gate="G$1" pin="2"/>
 <pinref part="GND51" gate="1" pin="GND"/>
 <wire x1="30.48" y1="149.86" x2="30.48" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C50" gate="G$1" pin="2"/>
+<pinref part="C45" gate="G$1" pin="2"/>
 <pinref part="GND33" gate="1" pin="GND"/>
 <wire x1="45.72" y1="111.76" x2="45.72" y2="109.22" width="0.1524" layer="91"/>
 </segment>
@@ -11651,12 +11651,12 @@ Have a bunch of other 50Ω</text>
 <junction x="91.44" y="119.38"/>
 </segment>
 <segment>
-<pinref part="C53" gate="G$1" pin="2"/>
+<pinref part="C48" gate="G$1" pin="2"/>
 <pinref part="GND60" gate="1" pin="GND"/>
 <wire x1="154.94" y1="149.86" x2="154.94" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C52" gate="G$1" pin="2"/>
+<pinref part="C47" gate="G$1" pin="2"/>
 <pinref part="GND54" gate="1" pin="GND"/>
 <wire x1="170.18" y1="111.76" x2="170.18" y2="109.22" width="0.1524" layer="91"/>
 </segment>
@@ -11767,7 +11767,7 @@ Have a bunch of other 50Ω</text>
 <segment>
 <pinref part="U2" gate="1" pin="VCC"/>
 <wire x1="30.48" y1="162.56" x2="55.88" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="C51" gate="G$1" pin="1"/>
+<pinref part="C46" gate="G$1" pin="1"/>
 <wire x1="30.48" y1="157.48" x2="30.48" y2="162.56" width="0.1524" layer="91"/>
 <junction x="30.48" y="162.56"/>
 <pinref part="U$31" gate="G$1" pin="5V_UNMETERED"/>
@@ -11776,7 +11776,7 @@ Have a bunch of other 50Ω</text>
 <segment>
 <pinref part="U3" gate="1" pin="VCC"/>
 <wire x1="154.94" y1="162.56" x2="180.34" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="C53" gate="G$1" pin="1"/>
+<pinref part="C48" gate="G$1" pin="1"/>
 <wire x1="154.94" y1="157.48" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
 <pinref part="U$34" gate="G$1" pin="5V_UNMETERED"/>
 <wire x1="154.94" y1="165.1" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
@@ -11785,7 +11785,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="N$34" class="0">
 <segment>
-<pinref part="C50" gate="G$1" pin="1"/>
+<pinref part="C45" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="119.38" x2="45.72" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="U2" gate="1" pin="3V3OUT"/>
 <wire x1="55.88" y1="134.62" x2="45.72" y2="134.62" width="0.1524" layer="91"/>
@@ -11793,7 +11793,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="N$51" class="0">
 <segment>
-<pinref part="C52" gate="G$1" pin="1"/>
+<pinref part="C47" gate="G$1" pin="1"/>
 <wire x1="170.18" y1="119.38" x2="170.18" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="U3" gate="1" pin="3V3OUT"/>
 <wire x1="180.34" y1="134.62" x2="170.18" y2="134.62" width="0.1524" layer="91"/>
@@ -11983,15 +11983,15 @@ Have a bunch of other 50Ω</text>
 </plain>
 <instances>
 <instance part="GND32" gate="1" x="63.5" y="109.22"/>
-<instance part="C54" gate="G$1" x="63.5" y="119.38"/>
+<instance part="C49" gate="G$1" x="63.5" y="119.38"/>
 <instance part="U4" gate="1" x="86.36" y="142.24"/>
-<instance part="C55" gate="G$1" x="53.34" y="119.38"/>
+<instance part="C50" gate="G$1" x="53.34" y="119.38"/>
 <instance part="GND63" gate="1" x="53.34" y="109.22"/>
 <instance part="GND66" gate="1" x="109.22" y="111.76"/>
 <instance part="GND67" gate="1" x="193.04" y="109.22"/>
-<instance part="C56" gate="G$1" x="193.04" y="119.38"/>
+<instance part="C51" gate="G$1" x="193.04" y="119.38"/>
 <instance part="U5" gate="1" x="215.9" y="142.24"/>
-<instance part="C57" gate="G$1" x="182.88" y="119.38"/>
+<instance part="C52" gate="G$1" x="182.88" y="119.38"/>
 <instance part="GND69" gate="1" x="182.88" y="109.22"/>
 <instance part="GND72" gate="1" x="238.76" y="109.22"/>
 <instance part="GND75" gate="1" x="109.22" y="33.02"/>
@@ -12040,12 +12040,12 @@ Have a bunch of other 50Ω</text>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="C55" gate="G$1" pin="2"/>
+<pinref part="C50" gate="G$1" pin="2"/>
 <pinref part="GND63" gate="1" pin="GND"/>
 <wire x1="53.34" y1="114.3" x2="53.34" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C54" gate="G$1" pin="2"/>
+<pinref part="C49" gate="G$1" pin="2"/>
 <pinref part="GND32" gate="1" pin="GND"/>
 <wire x1="63.5" y1="114.3" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
 </segment>
@@ -12068,12 +12068,12 @@ Have a bunch of other 50Ω</text>
 <junction x="109.22" y="121.92"/>
 </segment>
 <segment>
-<pinref part="C57" gate="G$1" pin="2"/>
+<pinref part="C52" gate="G$1" pin="2"/>
 <pinref part="GND69" gate="1" pin="GND"/>
 <wire x1="182.88" y1="114.3" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C56" gate="G$1" pin="2"/>
+<pinref part="C51" gate="G$1" pin="2"/>
 <pinref part="GND67" gate="1" pin="GND"/>
 <wire x1="193.04" y1="114.3" x2="193.04" y2="111.76" width="0.1524" layer="91"/>
 </segment>
@@ -12142,7 +12142,7 @@ Have a bunch of other 50Ω</text>
 <segment>
 <pinref part="U4" gate="1" pin="VCC"/>
 <wire x1="53.34" y1="165.1" x2="73.66" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="C55" gate="G$1" pin="1"/>
+<pinref part="C50" gate="G$1" pin="1"/>
 <wire x1="53.34" y1="121.92" x2="53.34" y2="165.1" width="0.1524" layer="91"/>
 <junction x="53.34" y="165.1"/>
 <pinref part="U$57" gate="G$1" pin="5V_UNMETERED"/>
@@ -12152,7 +12152,7 @@ Have a bunch of other 50Ω</text>
 <segment>
 <pinref part="U5" gate="1" pin="VCC"/>
 <wire x1="182.88" y1="165.1" x2="203.2" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="C57" gate="G$1" pin="1"/>
+<pinref part="C52" gate="G$1" pin="1"/>
 <wire x1="182.88" y1="121.92" x2="182.88" y2="165.1" width="0.1524" layer="91"/>
 <junction x="182.88" y="165.1"/>
 <pinref part="U$58" gate="G$1" pin="5V_UNMETERED"/>
@@ -12272,7 +12272,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="CONT1_VCCIO" class="0">
 <segment>
-<pinref part="C56" gate="G$1" pin="1"/>
+<pinref part="C51" gate="G$1" pin="1"/>
 <wire x1="193.04" y1="121.92" x2="193.04" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="U5" gate="1" pin="3V3OUT"/>
 <wire x1="203.2" y1="137.16" x2="193.04" y2="137.16" width="0.1524" layer="91"/>
@@ -12280,7 +12280,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="CONT0_VCCIO" class="0">
 <segment>
-<pinref part="C54" gate="G$1" pin="1"/>
+<pinref part="C49" gate="G$1" pin="1"/>
 <wire x1="63.5" y1="121.92" x2="63.5" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="U4" gate="1" pin="3V3OUT"/>
 <wire x1="73.66" y1="137.16" x2="63.5" y2="137.16" width="0.1524" layer="91"/>
@@ -12420,8 +12420,8 @@ not used for this hub</text>
 <instance part="U26" gate="G$1" x="111.76" y="93.98"/>
 <instance part="R29" gate="G$1" x="86.36" y="137.16" rot="R90"/>
 <instance part="GND99" gate="1" x="60.96" y="99.06"/>
-<instance part="C71" gate="G$1" x="66.04" y="109.22" rot="R180"/>
-<instance part="C59" gate="G$1" x="58.42" y="109.22" smashed="yes" rot="R180">
+<instance part="C72" gate="G$1" x="66.04" y="109.22" rot="R180"/>
+<instance part="C54" gate="G$1" x="58.42" y="109.22" smashed="yes" rot="R180">
 <attribute name="NAME" x="59.69" y="110.49" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="57.912" y="105.918" size="1.778" layer="96" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
@@ -12464,11 +12464,11 @@ not used for this hub</text>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND99" gate="1" pin="GND"/>
-<pinref part="C71" gate="G$1" pin="1"/>
+<pinref part="C72" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="101.6" x2="60.96" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="104.14" x2="66.04" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="104.14" x2="66.04" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="C59" gate="G$1" pin="1"/>
+<pinref part="C54" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="104.14" x2="58.42" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="104.14" x2="58.42" y2="106.68" width="0.1524" layer="91"/>
 <junction x="60.96" y="104.14"/>
@@ -12756,11 +12756,11 @@ not used for this hub</text>
 </segment>
 <segment>
 <pinref part="U26" gate="G$1" pin="VCC"/>
-<pinref part="C71" gate="G$1" pin="2"/>
+<pinref part="C72" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="116.84" x2="88.9" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="116.84" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="116.84" x2="66.04" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="C59" gate="G$1" pin="2"/>
+<pinref part="C54" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="116.84" x2="58.42" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="116.84" x2="58.42" y2="114.3" width="0.1524" layer="91"/>
 <junction x="66.04" y="116.84"/>
@@ -12865,8 +12865,8 @@ not used for this hub</text>
 <attribute name="VALUE" x="195.326" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND110" gate="1" x="15.24" y="121.92"/>
-<instance part="C31" gate="G$1" x="25.4" y="127" rot="R270"/>
-<instance part="C32" gate="G$1" x="149.86" y="127" rot="R270"/>
+<instance part="C27" gate="G$1" x="25.4" y="127" rot="R270"/>
+<instance part="C28" gate="G$1" x="149.86" y="127" rot="R270"/>
 <instance part="GND113" gate="1" x="139.7" y="121.92"/>
 <instance part="GND81" gate="1" x="187.96" y="86.36"/>
 <instance part="FRAME7" gate="G$1" x="0" y="0"/>
@@ -12925,7 +12925,7 @@ not used for this hub</text>
 <pinref part="U$32" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="38.1" y1="124.46" x2="35.56" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="124.46" x2="35.56" y2="127" width="0.1524" layer="91"/>
-<pinref part="C31" gate="G$1" pin="1"/>
+<pinref part="C27" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="127" x2="35.56" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="127" x2="35.56" y2="127" width="0.1524" layer="91"/>
 <junction x="35.56" y="127"/>
@@ -12935,7 +12935,7 @@ not used for this hub</text>
 <pinref part="U$33" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="162.56" y1="124.46" x2="160.02" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="124.46" x2="160.02" y2="127" width="0.1524" layer="91"/>
-<pinref part="C32" gate="G$1" pin="1"/>
+<pinref part="C28" gate="G$1" pin="1"/>
 <wire x1="160.02" y1="127" x2="160.02" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="127" x2="160.02" y2="127" width="0.1524" layer="91"/>
 <junction x="160.02" y="127"/>
@@ -12992,13 +12992,13 @@ not used for this hub</text>
 <label x="160.02" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="C31" gate="G$1" pin="2"/>
+<pinref part="C27" gate="G$1" pin="2"/>
 <pinref part="GND110" gate="1" pin="GND"/>
 <wire x1="20.32" y1="127" x2="15.24" y2="127" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="127" x2="15.24" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C32" gate="G$1" pin="2"/>
+<pinref part="C28" gate="G$1" pin="2"/>
 <pinref part="GND113" gate="1" pin="GND"/>
 <wire x1="144.78" y1="127" x2="139.7" y2="127" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="127" x2="139.7" y2="124.46" width="0.1524" layer="91"/>
@@ -13384,16 +13384,16 @@ not used for this hub</text>
 <instance part="GND47" gate="1" x="218.44" y="83.82"/>
 <instance part="GND79" gate="1" x="20.32" y="129.54"/>
 <instance part="GND80" gate="1" x="20.32" y="99.06"/>
-<instance part="C18" gate="G$1" x="27.94" y="134.62" rot="R270"/>
-<instance part="C19" gate="G$1" x="27.94" y="104.14" rot="R270"/>
-<instance part="C66" gate="G$1" x="154.94" y="116.84"/>
+<instance part="C14" gate="G$1" x="27.94" y="134.62" rot="R270"/>
+<instance part="C15" gate="G$1" x="27.94" y="104.14" rot="R270"/>
+<instance part="C68" gate="G$1" x="154.94" y="116.84"/>
 <instance part="GND73" gate="1" x="154.94" y="106.68"/>
-<instance part="C20" gate="G$1" x="218.44" y="119.38"/>
-<instance part="C67" gate="G$1" x="154.94" y="93.98"/>
-<instance part="C21" gate="G$1" x="218.44" y="96.52"/>
+<instance part="C16" gate="G$1" x="218.44" y="119.38"/>
+<instance part="C69" gate="G$1" x="154.94" y="93.98"/>
+<instance part="C17" gate="G$1" x="218.44" y="96.52"/>
 <instance part="GND74" gate="1" x="154.94" y="83.82"/>
-<instance part="C41" gate="G$1" x="66.04" y="137.16"/>
-<instance part="C42" gate="G$1" x="66.04" y="106.68"/>
+<instance part="C37" gate="G$1" x="66.04" y="137.16"/>
+<instance part="C38" gate="G$1" x="66.04" y="106.68"/>
 <instance part="FRAME4" gate="G$1" x="0" y="0"/>
 <instance part="FRAME4" gate="G$2" x="152.4" y="0"/>
 </instances>
@@ -13406,7 +13406,7 @@ not used for this hub</text>
 <wire x1="210.82" y1="111.76" x2="218.44" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="111.76" x2="218.44" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="GND18" gate="1" pin="GND"/>
-<pinref part="C20" gate="G$1" pin="2"/>
+<pinref part="C16" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="114.3" x2="218.44" y2="111.76" width="0.1524" layer="91"/>
 <junction x="218.44" y="111.76"/>
 </segment>
@@ -13415,7 +13415,7 @@ not used for this hub</text>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="58.42" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="91.44" x2="60.96" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="C42" gate="G$1" pin="2"/>
+<pinref part="C38" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="101.6" x2="66.04" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
 <junction x="60.96" y="91.44"/>
@@ -13425,7 +13425,7 @@ not used for this hub</text>
 <pinref part="GND17" gate="1" pin="GND"/>
 <wire x1="58.42" y1="121.92" x2="60.96" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="121.92" x2="60.96" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="C41" gate="G$1" pin="2"/>
+<pinref part="C37" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="132.08" x2="66.04" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="121.92" x2="60.96" y2="121.92" width="0.1524" layer="91"/>
 <junction x="60.96" y="121.92"/>
@@ -13435,30 +13435,30 @@ not used for this hub</text>
 <wire x1="218.44" y1="88.9" x2="210.82" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="GND47" gate="1" pin="GND"/>
 <wire x1="218.44" y1="88.9" x2="218.44" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="C21" gate="G$1" pin="2"/>
+<pinref part="C17" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="91.44" x2="218.44" y2="88.9" width="0.1524" layer="91"/>
 <junction x="218.44" y="88.9"/>
 </segment>
 <segment>
-<pinref part="C18" gate="G$1" pin="2"/>
+<pinref part="C14" gate="G$1" pin="2"/>
 <pinref part="GND79" gate="1" pin="GND"/>
 <wire x1="22.86" y1="134.62" x2="20.32" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="134.62" x2="20.32" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C19" gate="G$1" pin="2"/>
+<pinref part="C15" gate="G$1" pin="2"/>
 <pinref part="GND80" gate="1" pin="GND"/>
 <wire x1="22.86" y1="104.14" x2="20.32" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="104.14" x2="20.32" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C66" gate="G$1" pin="2"/>
+<pinref part="C68" gate="G$1" pin="2"/>
 <pinref part="GND73" gate="1" pin="GND"/>
 <wire x1="154.94" y1="111.76" x2="154.94" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND74" gate="1" pin="GND"/>
-<pinref part="C67" gate="G$1" pin="2"/>
+<pinref part="C69" gate="G$1" pin="2"/>
 <wire x1="154.94" y1="86.36" x2="154.94" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -13469,7 +13469,7 @@ not used for this hub</text>
 <wire x1="182.88" y1="114.3" x2="182.88" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="124.46" x2="154.94" y2="124.46" width="0.1524" layer="91"/>
 <label x="152.4" y="124.46" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="C66" gate="G$1" pin="1"/>
+<pinref part="C68" gate="G$1" pin="1"/>
 <wire x1="154.94" y1="124.46" x2="152.4" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="119.38" x2="154.94" y2="124.46" width="0.1524" layer="91"/>
 <junction x="154.94" y="124.46"/>
@@ -13489,7 +13489,7 @@ not used for this hub</text>
 <wire x1="213.36" y1="116.84" x2="213.36" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="124.46" x2="218.44" y2="124.46" width="0.1524" layer="91"/>
 <label x="220.98" y="124.46" size="1.27" layer="95" xref="yes"/>
-<pinref part="C20" gate="G$1" pin="1"/>
+<pinref part="C16" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="121.92" x2="218.44" y2="124.46" width="0.1524" layer="91"/>
 <junction x="218.44" y="124.46"/>
@@ -13553,7 +13553,7 @@ not used for this hub</text>
 <wire x1="81.28" y1="142.24" x2="86.36" y2="142.24" width="0.1524" layer="91"/>
 <junction x="81.28" y="142.24"/>
 <label x="86.36" y="142.24" size="1.27" layer="95" xref="yes"/>
-<pinref part="C41" gate="G$1" pin="1"/>
+<pinref part="C37" gate="G$1" pin="1"/>
 <wire x1="66.04" y1="139.7" x2="66.04" y2="142.24" width="0.1524" layer="91"/>
 <junction x="66.04" y="142.24"/>
 </segment>
@@ -13572,7 +13572,7 @@ not used for this hub</text>
 <wire x1="60.96" y1="111.76" x2="66.04" y2="111.76" width="0.1524" layer="91"/>
 <label x="86.36" y="111.76" size="1.27" layer="95" xref="yes"/>
 <pinref part="U7" gate="G$1" pin="VCC_B"/>
-<pinref part="C42" gate="G$1" pin="1"/>
+<pinref part="C38" gate="G$1" pin="1"/>
 <wire x1="66.04" y1="111.76" x2="73.66" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="111.76" x2="81.28" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="111.76" x2="86.36" y2="111.76" width="0.1524" layer="91"/>
@@ -13625,7 +13625,7 @@ not used for this hub</text>
 <pinref part="U$1" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="43.18" y1="134.62" x2="38.1" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="134.62" x2="38.1" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="C18" gate="G$1" pin="1"/>
+<pinref part="C14" gate="G$1" pin="1"/>
 <wire x1="30.48" y1="134.62" x2="38.1" y2="134.62" width="0.1524" layer="91"/>
 <junction x="38.1" y="134.62"/>
 </segment>
@@ -13634,7 +13634,7 @@ not used for this hub</text>
 <pinref part="U$2" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="43.18" y1="104.14" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="104.14" x2="38.1" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="C19" gate="G$1" pin="1"/>
+<pinref part="C15" gate="G$1" pin="1"/>
 <wire x1="30.48" y1="104.14" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
 <junction x="38.1" y="104.14"/>
 </segment>
@@ -13647,7 +13647,7 @@ not used for this hub</text>
 <wire x1="213.36" y1="101.6" x2="213.36" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="93.98" x2="210.82" y2="93.98" width="0.1524" layer="91"/>
 <label x="220.98" y="101.6" size="1.27" layer="95" xref="yes"/>
-<pinref part="C21" gate="G$1" pin="1"/>
+<pinref part="C17" gate="G$1" pin="1"/>
 <wire x1="218.44" y1="99.06" x2="218.44" y2="101.6" width="0.1524" layer="91"/>
 <junction x="218.44" y="101.6"/>
 </segment>
@@ -13660,7 +13660,7 @@ not used for this hub</text>
 <wire x1="182.88" y1="101.6" x2="182.88" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="91.44" x2="185.42" y2="91.44" width="0.1524" layer="91"/>
 <label x="152.4" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="C67" gate="G$1" pin="1"/>
+<pinref part="C69" gate="G$1" pin="1"/>
 <wire x1="154.94" y1="96.52" x2="154.94" y2="101.6" width="0.1524" layer="91"/>
 <junction x="154.94" y="101.6"/>
 </segment>
@@ -13703,14 +13703,14 @@ Backplane &lt;-- Module</text>
 <instance part="GND86" gate="1" x="121.92" y="93.98"/>
 <instance part="GND91" gate="1" x="33.02" y="119.38"/>
 <instance part="GND92" gate="1" x="33.02" y="93.98"/>
-<instance part="C22" gate="G$1" x="43.18" y="127" rot="R270"/>
-<instance part="C23" gate="G$1" x="43.18" y="101.6" rot="R270"/>
-<instance part="C24" gate="G$1" x="132.08" y="127" rot="R270"/>
-<instance part="C25" gate="G$1" x="132.08" y="101.6" rot="R270"/>
-<instance part="C26" gate="G$1" x="93.98" y="119.38"/>
-<instance part="C27" gate="G$1" x="93.98" y="93.98"/>
-<instance part="C28" gate="G$1" x="182.88" y="119.38"/>
-<instance part="C29" gate="G$1" x="182.88" y="93.98"/>
+<instance part="C18" gate="G$1" x="43.18" y="127" rot="R270"/>
+<instance part="C19" gate="G$1" x="43.18" y="101.6" rot="R270"/>
+<instance part="C20" gate="G$1" x="132.08" y="127" rot="R270"/>
+<instance part="C21" gate="G$1" x="132.08" y="101.6" rot="R270"/>
+<instance part="C22" gate="G$1" x="93.98" y="119.38"/>
+<instance part="C23" gate="G$1" x="93.98" y="93.98"/>
+<instance part="C24" gate="G$1" x="182.88" y="119.38"/>
+<instance part="C25" gate="G$1" x="182.88" y="93.98"/>
 <instance part="FRAME5" gate="G$1" x="0" y="0"/>
 <instance part="FRAME5" gate="G$2" x="152.4" y="0"/>
 </instances>
@@ -13723,7 +13723,7 @@ Backplane &lt;-- Module</text>
 <pinref part="GND30" gate="1" pin="GND"/>
 <wire x1="71.12" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="C26" gate="G$1" pin="2"/>
+<pinref part="C22" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="114.3" width="0.1524" layer="91"/>
 <junction x="93.98" y="111.76"/>
 </segment>
@@ -13732,7 +13732,7 @@ Backplane &lt;-- Module</text>
 <pinref part="GND31" gate="1" pin="GND"/>
 <wire x1="71.12" y1="86.36" x2="93.98" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="86.36" x2="93.98" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="C27" gate="G$1" pin="2"/>
+<pinref part="C23" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="86.36" x2="93.98" y2="88.9" width="0.1524" layer="91"/>
 <junction x="93.98" y="86.36"/>
 </segment>
@@ -13741,7 +13741,7 @@ Backplane &lt;-- Module</text>
 <pinref part="GND40" gate="1" pin="GND"/>
 <wire x1="160.02" y1="86.36" x2="182.88" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="86.36" x2="182.88" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="C29" gate="G$1" pin="2"/>
+<pinref part="C25" gate="G$1" pin="2"/>
 <wire x1="182.88" y1="86.36" x2="182.88" y2="88.9" width="0.1524" layer="91"/>
 <junction x="182.88" y="86.36"/>
 </segment>
@@ -13750,7 +13750,7 @@ Backplane &lt;-- Module</text>
 <pinref part="GND41" gate="1" pin="GND"/>
 <wire x1="160.02" y1="111.76" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="111.76" x2="182.88" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="C28" gate="G$1" pin="2"/>
+<pinref part="C24" gate="G$1" pin="2"/>
 <wire x1="182.88" y1="114.3" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
 <junction x="182.88" y="111.76"/>
 </segment>
@@ -13767,25 +13767,25 @@ Backplane &lt;-- Module</text>
 <wire x1="139.7" y1="114.3" x2="139.7" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C22" gate="G$1" pin="2"/>
+<pinref part="C18" gate="G$1" pin="2"/>
 <pinref part="GND91" gate="1" pin="GND"/>
 <wire x1="38.1" y1="127" x2="33.02" y2="127" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="127" x2="33.02" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C23" gate="G$1" pin="2"/>
+<pinref part="C19" gate="G$1" pin="2"/>
 <pinref part="GND92" gate="1" pin="GND"/>
 <wire x1="38.1" y1="101.6" x2="33.02" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="101.6" x2="33.02" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C25" gate="G$1" pin="2"/>
+<pinref part="C21" gate="G$1" pin="2"/>
 <pinref part="GND86" gate="1" pin="GND"/>
 <wire x1="127" y1="101.6" x2="121.92" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="101.6" x2="121.92" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C24" gate="G$1" pin="2"/>
+<pinref part="C20" gate="G$1" pin="2"/>
 <pinref part="GND85" gate="1" pin="GND"/>
 <wire x1="127" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="127" x2="121.92" y2="121.92" width="0.1524" layer="91"/>
@@ -13796,7 +13796,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U17" gate="G$1" pin="VCC_B"/>
 <wire x1="96.52" y1="124.46" x2="93.98" y2="124.46" width="0.1524" layer="91"/>
 <label x="96.52" y="124.46" size="1.27" layer="95" xref="yes"/>
-<pinref part="C26" gate="G$1" pin="1"/>
+<pinref part="C22" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="124.46" x2="71.12" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="121.92" x2="93.98" y2="124.46" width="0.1524" layer="91"/>
 <junction x="93.98" y="124.46"/>
@@ -13805,7 +13805,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U19" gate="G$1" pin="VCC_B"/>
 <wire x1="160.02" y1="124.46" x2="182.88" y2="124.46" width="0.1524" layer="91"/>
 <label x="185.42" y="124.46" size="1.27" layer="95" xref="yes"/>
-<pinref part="C28" gate="G$1" pin="1"/>
+<pinref part="C24" gate="G$1" pin="1"/>
 <wire x1="182.88" y1="124.46" x2="185.42" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="121.92" x2="182.88" y2="124.46" width="0.1524" layer="91"/>
 <junction x="182.88" y="124.46"/>
@@ -13854,7 +13854,7 @@ Backplane &lt;-- Module</text>
 <wire x1="58.42" y1="127" x2="58.42" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="127" x2="58.42" y2="127" width="0.1524" layer="91"/>
 <junction x="58.42" y="127"/>
-<pinref part="C22" gate="G$1" pin="1"/>
+<pinref part="C18" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="127" x2="58.42" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13866,7 +13866,7 @@ Backplane &lt;-- Module</text>
 <wire x1="60.96" y1="88.9" x2="58.42" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="88.9" x2="58.42" y2="101.6" width="0.1524" layer="91"/>
 <junction x="58.42" y="101.6"/>
-<pinref part="C23" gate="G$1" pin="1"/>
+<pinref part="C19" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="101.6" x2="58.42" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13874,7 +13874,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U$18" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="149.86" y1="127" x2="147.32" y2="127" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="127" x2="147.32" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="1"/>
+<pinref part="C20" gate="G$1" pin="1"/>
 <wire x1="134.62" y1="127" x2="147.32" y2="127" width="0.1524" layer="91"/>
 <junction x="147.32" y="127"/>
 </segment>
@@ -13883,7 +13883,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U$17" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="149.86" y1="101.6" x2="147.32" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="101.6" x2="147.32" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="C25" gate="G$1" pin="1"/>
+<pinref part="C21" gate="G$1" pin="1"/>
 <wire x1="134.62" y1="101.6" x2="147.32" y2="101.6" width="0.1524" layer="91"/>
 <junction x="147.32" y="101.6"/>
 </segment>
@@ -13907,7 +13907,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U18" gate="G$1" pin="VCC_B"/>
 <wire x1="96.52" y1="99.06" x2="93.98" y2="99.06" width="0.1524" layer="91"/>
 <label x="96.52" y="99.06" size="1.27" layer="95" xref="yes"/>
-<pinref part="C27" gate="G$1" pin="1"/>
+<pinref part="C23" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="99.06" x2="71.12" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="96.52" x2="93.98" y2="99.06" width="0.1524" layer="91"/>
 <junction x="93.98" y="99.06"/>
@@ -13916,7 +13916,7 @@ Backplane &lt;-- Module</text>
 <pinref part="U20" gate="G$1" pin="VCC_B"/>
 <wire x1="185.42" y1="99.06" x2="182.88" y2="99.06" width="0.1524" layer="91"/>
 <label x="185.42" y="99.06" size="1.27" layer="95" xref="yes"/>
-<pinref part="C29" gate="G$1" pin="1"/>
+<pinref part="C25" gate="G$1" pin="1"/>
 <wire x1="182.88" y1="99.06" x2="160.02" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="99.06" x2="182.88" y2="96.52" width="0.1524" layer="91"/>
 <junction x="182.88" y="99.06"/>
@@ -14005,18 +14005,18 @@ It doesn't have isolation, still needs a pullup</text>
 </instance>
 <instance part="GND15" gate="1" x="73.66" y="76.2"/>
 <instance part="Y1" gate="G$1" x="63.5" y="96.52" rot="R90"/>
-<instance part="C3" gate="G$1" x="53.34" y="101.6" rot="R90">
+<instance part="C9" gate="G$1" x="53.34" y="101.6" rot="R90">
 <attribute name="DIGIKEY" x="53.34" y="101.6" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C4" gate="G$1" x="53.34" y="91.44" rot="R90">
+<instance part="C10" gate="G$1" x="53.34" y="91.44" rot="R90">
 <attribute name="DIGIKEY" x="53.34" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="GND16" gate="1" x="48.26" y="86.36"/>
 <instance part="R28" gate="G$1" x="71.12" y="91.44"/>
 <instance part="U$50" gate="G$1" x="35.56" y="137.16"/>
 <instance part="GND109" gate="1" x="38.1" y="116.84"/>
-<instance part="C68" gate="G$1" x="43.18" y="127" rot="R180"/>
-<instance part="C30" gate="G$1" x="35.56" y="127" smashed="yes" rot="R180">
+<instance part="C70" gate="G$1" x="43.18" y="127" rot="R180"/>
+<instance part="C26" gate="G$1" x="35.56" y="127" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.83" y="128.27" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="35.052" y="123.698" size="1.778" layer="96" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
@@ -14034,7 +14034,7 @@ It doesn't have isolation, still needs a pullup</text>
 <instance part="GND68" gate="1" x="93.98" y="12.7"/>
 <instance part="U$24" gate="G$1" x="66.04" y="45.72"/>
 <instance part="GND71" gate="1" x="45.72" y="38.1"/>
-<instance part="C62" gate="G$1" x="55.88" y="43.18" rot="R270"/>
+<instance part="C57" gate="G$1" x="55.88" y="43.18" rot="R270"/>
 <instance part="FRAME8" gate="G$1" x="0" y="0"/>
 <instance part="FRAME8" gate="G$2" x="152.4" y="0"/>
 <instance part="R61" gate="D" x="233.68" y="139.7"/>
@@ -14077,20 +14077,20 @@ It doesn't have isolation, still needs a pullup</text>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
 <wire x1="48.26" y1="88.9" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="C4" gate="G$1" pin="1"/>
+<pinref part="C10" gate="G$1" pin="1"/>
 <wire x1="48.26" y1="91.44" x2="50.8" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="1"/>
+<pinref part="C9" gate="G$1" pin="1"/>
 <wire x1="50.8" y1="101.6" x2="48.26" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="101.6" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
 <junction x="48.26" y="91.44"/>
 </segment>
 <segment>
 <pinref part="GND109" gate="1" pin="GND"/>
-<pinref part="C68" gate="G$1" pin="1"/>
+<pinref part="C70" gate="G$1" pin="1"/>
 <wire x1="38.1" y1="119.38" x2="38.1" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="121.92" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="121.92" x2="43.18" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="C30" gate="G$1" pin="1"/>
+<pinref part="C26" gate="G$1" pin="1"/>
 <wire x1="38.1" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="121.92" x2="35.56" y2="124.46" width="0.1524" layer="91"/>
 <junction x="38.1" y="121.92"/>
@@ -14147,7 +14147,7 @@ It doesn't have isolation, still needs a pullup</text>
 <wire x1="93.98" y1="17.78" x2="93.98" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C62" gate="G$1" pin="2"/>
+<pinref part="C57" gate="G$1" pin="2"/>
 <pinref part="GND71" gate="1" pin="GND"/>
 <wire x1="50.8" y1="43.18" x2="45.72" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="43.18" x2="45.72" y2="40.64" width="0.1524" layer="91"/>
@@ -14213,7 +14213,7 @@ It doesn't have isolation, still needs a pullup</text>
 <pinref part="U$24" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="68.58" y1="40.64" x2="66.04" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="40.64" x2="66.04" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="C62" gate="G$1" pin="1"/>
+<pinref part="C57" gate="G$1" pin="1"/>
 <wire x1="66.04" y1="43.18" x2="66.04" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="43.18" x2="66.04" y2="43.18" width="0.1524" layer="91"/>
 <junction x="66.04" y="43.18"/>
@@ -14229,8 +14229,8 @@ It doesn't have isolation, still needs a pullup</text>
 <label x="66.04" y="27.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="C30" gate="G$1" pin="2"/>
-<pinref part="C68" gate="G$1" pin="2"/>
+<pinref part="C26" gate="G$1" pin="2"/>
+<pinref part="C70" gate="G$1" pin="2"/>
 <wire x1="43.18" y1="134.62" x2="43.18" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="134.62" x2="35.56" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="134.62" x2="35.56" y2="132.08" width="0.1524" layer="91"/>
@@ -14275,7 +14275,7 @@ It doesn't have isolation, still needs a pullup</text>
 </net>
 <net name="N$14" class="0">
 <segment>
-<pinref part="C4" gate="G$1" pin="2"/>
+<pinref part="C10" gate="G$1" pin="2"/>
 <pinref part="Y1" gate="G$1" pin="1"/>
 <wire x1="58.42" y1="91.44" x2="63.5" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="R28" gate="G$1" pin="1"/>
@@ -14285,7 +14285,7 @@ It doesn't have isolation, still needs a pullup</text>
 </net>
 <net name="N$73" class="0">
 <segment>
-<pinref part="C3" gate="G$1" pin="2"/>
+<pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="Y1" gate="G$1" pin="2"/>
 <wire x1="58.42" y1="101.6" x2="63.5" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="U24" gate="G$1" pin="XTAL1"/>
@@ -14667,7 +14667,7 @@ pair of signals by flipping +/-</text>
 <instance part="Q1" gate="G$1" x="137.16" y="86.36"/>
 <instance part="GND83" gate="1" x="134.62" y="71.12"/>
 <instance part="GND84" gate="1" x="109.22" y="91.44"/>
-<instance part="C58" gate="G$1" x="58.42" y="104.14" smashed="yes" rot="R180">
+<instance part="C53" gate="G$1" x="58.42" y="104.14" smashed="yes" rot="R180">
 <attribute name="NAME" x="59.69" y="105.41" size="1.778" layer="95" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="57.912" y="100.838" size="1.778" layer="96" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
@@ -14725,7 +14725,7 @@ pair of signals by flipping +/-</text>
 </segment>
 <segment>
 <pinref part="U23" gate="G$1" pin="!OE"/>
-<pinref part="C58" gate="G$1" pin="1"/>
+<pinref part="C53" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="96.52" x2="58.42" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="96.52" x2="58.42" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="GND87" gate="1" pin="GND"/>
@@ -14772,7 +14772,7 @@ pair of signals by flipping +/-</text>
 </segment>
 <segment>
 <pinref part="U23" gate="G$1" pin="VCC"/>
-<pinref part="C58" gate="G$1" pin="2"/>
+<pinref part="C53" gate="G$1" pin="2"/>
 <wire x1="81.28" y1="111.76" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="111.76" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="U$61" gate="G$1" pin="3V3_UNMETERED"/>
@@ -14854,10 +14854,10 @@ pair of signals by flipping +/-</text>
 </instance>
 <instance part="GND14" gate="1" x="132.08" y="109.22"/>
 <instance part="GND117" gate="1" x="132.08" y="58.42"/>
-<instance part="C39" gate="G$1" x="177.8" y="137.16" rot="R90"/>
+<instance part="C35" gate="G$1" x="177.8" y="137.16" rot="R90"/>
 <instance part="GND118" gate="1" x="172.72" y="132.08"/>
 <instance part="GND119" gate="1" x="172.72" y="106.68"/>
-<instance part="C40" gate="G$1" x="177.8" y="111.76" rot="R90"/>
+<instance part="C36" gate="G$1" x="177.8" y="111.76" rot="R90"/>
 <instance part="R5" gate="G$1" x="53.34" y="129.54">
 <attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
@@ -14866,12 +14866,12 @@ pair of signals by flipping +/-</text>
 <instance part="R8" gate="G$1" x="63.5" y="99.06"/>
 <instance part="R9" gate="G$1" x="53.34" y="78.74"/>
 <instance part="R10" gate="G$1" x="63.5" y="73.66"/>
-<instance part="C5" gate="G$1" x="45.72" y="119.38"/>
-<instance part="C6" gate="G$1" x="55.88" y="119.38"/>
-<instance part="C7" gate="G$1" x="45.72" y="93.98"/>
-<instance part="C8" gate="G$1" x="55.88" y="93.98"/>
-<instance part="C9" gate="G$1" x="45.72" y="68.58"/>
-<instance part="C10" gate="G$1" x="55.88" y="68.58"/>
+<instance part="C3" gate="G$1" x="45.72" y="119.38"/>
+<instance part="C4" gate="G$1" x="55.88" y="119.38"/>
+<instance part="C5" gate="G$1" x="45.72" y="93.98"/>
+<instance part="C6" gate="G$1" x="55.88" y="93.98"/>
+<instance part="C7" gate="G$1" x="45.72" y="68.58"/>
+<instance part="C8" gate="G$1" x="55.88" y="68.58"/>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
 <instance part="FRAME3" gate="G$2" x="152.4" y="0"/>
 </instances>
@@ -14963,8 +14963,8 @@ pair of signals by flipping +/-</text>
 <wire x1="68.58" y1="111.76" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="111.76" x2="76.2" y2="114.3" width="0.1524" layer="91"/>
 <junction x="68.58" y="111.76"/>
-<pinref part="C5" gate="G$1" pin="2"/>
-<pinref part="C6" gate="G$1" pin="2"/>
+<pinref part="C3" gate="G$1" pin="2"/>
+<pinref part="C4" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
@@ -14982,8 +14982,8 @@ pair of signals by flipping +/-</text>
 <wire x1="68.58" y1="86.36" x2="76.2" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="86.36" x2="76.2" y2="88.9" width="0.1524" layer="91"/>
 <junction x="68.58" y="86.36"/>
-<pinref part="C7" gate="G$1" pin="2"/>
-<pinref part="C8" gate="G$1" pin="2"/>
+<pinref part="C5" gate="G$1" pin="2"/>
+<pinref part="C6" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
@@ -15001,8 +15001,8 @@ pair of signals by flipping +/-</text>
 <wire x1="68.58" y1="60.96" x2="76.2" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="60.96" x2="76.2" y2="63.5" width="0.1524" layer="91"/>
 <junction x="68.58" y="60.96"/>
-<pinref part="C9" gate="G$1" pin="2"/>
-<pinref part="C10" gate="G$1" pin="2"/>
+<pinref part="C7" gate="G$1" pin="2"/>
+<pinref part="C8" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="U22" gate="G$1" pin="GND"/>
@@ -15049,13 +15049,13 @@ pair of signals by flipping +/-</text>
 <pinref part="D34" gate="G$1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="C39" gate="G$1" pin="1"/>
+<pinref part="C35" gate="G$1" pin="1"/>
 <pinref part="GND118" gate="1" pin="GND"/>
 <wire x1="175.26" y1="137.16" x2="172.72" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="137.16" x2="172.72" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C40" gate="G$1" pin="1"/>
+<pinref part="C36" gate="G$1" pin="1"/>
 <pinref part="GND119" gate="1" pin="GND"/>
 <wire x1="175.26" y1="111.76" x2="172.72" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="111.76" x2="172.72" y2="109.22" width="0.1524" layer="91"/>
@@ -15071,7 +15071,7 @@ pair of signals by flipping +/-</text>
 <junction x="45.72" y="129.54"/>
 <label x="27.94" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R5" gate="G$1" pin="P$2"/>
-<pinref part="C5" gate="G$1" pin="1"/>
+<pinref part="C3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_DM2" class="0">
@@ -15082,7 +15082,7 @@ pair of signals by flipping +/-</text>
 <pinref part="R6" gate="G$1" pin="P$2"/>
 <wire x1="58.42" y1="124.46" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
 <junction x="55.88" y="124.46"/>
-<pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="C4" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_DM1" class="0">
@@ -15093,7 +15093,7 @@ pair of signals by flipping +/-</text>
 <pinref part="R8" gate="G$1" pin="P$2"/>
 <wire x1="58.42" y1="99.06" x2="55.88" y2="99.06" width="0.1524" layer="91"/>
 <junction x="55.88" y="99.06"/>
-<pinref part="C8" gate="G$1" pin="1"/>
+<pinref part="C6" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_DP1" class="0">
@@ -15106,7 +15106,7 @@ pair of signals by flipping +/-</text>
 <pinref part="R7" gate="G$1" pin="P$2"/>
 <wire x1="48.26" y1="104.14" x2="45.72" y2="104.14" width="0.1524" layer="91"/>
 <junction x="45.72" y="104.14"/>
-<pinref part="C7" gate="G$1" pin="1"/>
+<pinref part="C5" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_DM3" class="0">
@@ -15117,7 +15117,7 @@ pair of signals by flipping +/-</text>
 <pinref part="R10" gate="G$1" pin="P$2"/>
 <wire x1="58.42" y1="73.66" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
 <junction x="55.88" y="73.66"/>
-<pinref part="C10" gate="G$1" pin="1"/>
+<pinref part="C8" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_DP3" class="0">
@@ -15130,7 +15130,7 @@ pair of signals by flipping +/-</text>
 <pinref part="R9" gate="G$1" pin="P$2"/>
 <wire x1="48.26" y1="78.74" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
 <junction x="45.72" y="78.74"/>
-<pinref part="C9" gate="G$1" pin="1"/>
+<pinref part="C7" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -15139,7 +15139,7 @@ pair of signals by flipping +/-</text>
 <pinref part="U$19" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="193.04" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="132.08" x2="190.5" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="C39" gate="G$1" pin="2"/>
+<pinref part="C35" gate="G$1" pin="2"/>
 <wire x1="182.88" y1="137.16" x2="185.42" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="137.16" x2="185.42" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
@@ -15153,7 +15153,7 @@ pair of signals by flipping +/-</text>
 <wire x1="190.5" y1="106.68" x2="185.42" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="106.68" x2="185.42" y2="111.76" width="0.1524" layer="91"/>
 <junction x="190.5" y="106.68"/>
-<pinref part="C40" gate="G$1" pin="2"/>
+<pinref part="C36" gate="G$1" pin="2"/>
 <wire x1="185.42" y1="111.76" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -15270,10 +15270,10 @@ pair of signals by flipping +/-</text>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">USB</text>
 </plain>
 <instances>
-<instance part="C72" gate="G$1" x="195.58" y="111.76">
+<instance part="C74" gate="G$1" x="195.58" y="111.76">
 <attribute name="DIGIKEY" x="195.58" y="111.76" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C73" gate="G$1" x="195.58" y="86.36">
+<instance part="C75" gate="G$1" x="195.58" y="86.36">
 <attribute name="DIGIKEY" x="195.58" y="86.36" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND1" gate="1" x="195.58" y="99.06"/>
@@ -15294,12 +15294,12 @@ pair of signals by flipping +/-</text>
 <instance part="U$45" gate="G$1" x="109.22" y="101.6"/>
 <instance part="GND103" gate="1" x="27.94" y="111.76"/>
 <instance part="GND104" gate="1" x="27.94" y="86.36"/>
-<instance part="C33" gate="G$1" x="187.96" y="111.76"/>
-<instance part="C34" gate="G$1" x="187.96" y="86.36"/>
-<instance part="C35" gate="G$1" x="38.1" y="119.38" rot="R270"/>
-<instance part="C36" gate="G$1" x="38.1" y="93.98" rot="R270"/>
-<instance part="C37" gate="G$1" x="144.78" y="127"/>
-<instance part="C38" gate="G$1" x="144.78" y="101.6"/>
+<instance part="C29" gate="G$1" x="187.96" y="111.76"/>
+<instance part="C30" gate="G$1" x="187.96" y="86.36"/>
+<instance part="C31" gate="G$1" x="38.1" y="119.38" rot="R270"/>
+<instance part="C32" gate="G$1" x="38.1" y="93.98" rot="R270"/>
+<instance part="C33" gate="G$1" x="144.78" y="127"/>
+<instance part="C34" gate="G$1" x="144.78" y="101.6"/>
 <instance part="FRAME6" gate="G$1" x="0" y="0"/>
 <instance part="FRAME6" gate="G$2" x="152.4" y="0"/>
 </instances>
@@ -15315,10 +15315,10 @@ pair of signals by flipping +/-</text>
 <wire x1="195.58" y1="116.84" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="114.3" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
 <junction x="187.96" y="116.84"/>
-<pinref part="C72" gate="G$1" pin="1"/>
+<pinref part="C74" gate="G$1" pin="1"/>
 <wire x1="195.58" y1="116.84" x2="195.58" y2="114.3" width="0.1524" layer="91"/>
 <junction x="195.58" y="116.84"/>
-<pinref part="C33" gate="G$1" pin="1"/>
+<pinref part="C29" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="MOD1_USB_VBUS" class="0">
@@ -15330,15 +15330,15 @@ pair of signals by flipping +/-</text>
 <wire x1="195.58" y1="91.44" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="88.9" x2="187.96" y2="91.44" width="0.1524" layer="91"/>
 <junction x="187.96" y="91.44"/>
-<pinref part="C73" gate="G$1" pin="1"/>
+<pinref part="C75" gate="G$1" pin="1"/>
 <wire x1="195.58" y1="88.9" x2="195.58" y2="91.44" width="0.1524" layer="91"/>
 <junction x="195.58" y="91.44"/>
-<pinref part="C34" gate="G$1" pin="1"/>
+<pinref part="C30" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="C72" gate="G$1" pin="2"/>
+<pinref part="C74" gate="G$1" pin="2"/>
 <wire x1="177.8" y1="111.76" x2="180.34" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="111.76" x2="180.34" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="104.14" x2="187.96" y2="104.14" width="0.1524" layer="91"/>
@@ -15350,10 +15350,10 @@ pair of signals by flipping +/-</text>
 <pinref part="S1" gate="G$1" pin="GND"/>
 <wire x1="187.96" y1="106.68" x2="187.96" y2="104.14" width="0.1524" layer="91"/>
 <junction x="187.96" y="104.14"/>
-<pinref part="C33" gate="G$1" pin="2"/>
+<pinref part="C29" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C73" gate="G$1" pin="2"/>
+<pinref part="C75" gate="G$1" pin="2"/>
 <wire x1="195.58" y1="81.28" x2="195.58" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="GND9" gate="1" pin="GND"/>
 <wire x1="195.58" y1="78.74" x2="187.96" y2="78.74" width="0.1524" layer="91"/>
@@ -15365,7 +15365,7 @@ pair of signals by flipping +/-</text>
 <pinref part="S2" gate="G$1" pin="GND"/>
 <wire x1="187.96" y1="78.74" x2="187.96" y2="81.28" width="0.1524" layer="91"/>
 <junction x="187.96" y="78.74"/>
-<pinref part="C34" gate="G$1" pin="2"/>
+<pinref part="C30" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="S9" gate="G$1" pin="GND"/>
@@ -15382,24 +15382,24 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="GND97" gate="1" pin="GND"/>
 <wire x1="144.78" y1="119.38" x2="144.78" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="C37" gate="G$1" pin="2"/>
+<pinref part="C33" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND98" gate="1" pin="GND"/>
 <wire x1="144.78" y1="93.98" x2="144.78" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="C38" gate="G$1" pin="2"/>
+<pinref part="C34" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND104" gate="1" pin="GND"/>
 <wire x1="33.02" y1="93.98" x2="27.94" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="93.98" x2="27.94" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="C36" gate="G$1" pin="2"/>
+<pinref part="C32" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="GND103" gate="1" pin="GND"/>
 <wire x1="33.02" y1="119.38" x2="27.94" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="119.38" x2="27.94" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="C35" gate="G$1" pin="2"/>
+<pinref part="C31" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="MOD0_5V_METERED" class="0">
@@ -15412,7 +15412,7 @@ pair of signals by flipping +/-</text>
 <wire x1="144.78" y1="132.08" x2="142.24" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="129.54" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <junction x="144.78" y="132.08"/>
-<pinref part="C37" gate="G$1" pin="1"/>
+<pinref part="C33" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="HUB_!OVRCUR2" class="0">
@@ -15447,7 +15447,7 @@ pair of signals by flipping +/-</text>
 <wire x1="144.78" y1="106.68" x2="142.24" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="104.14" x2="144.78" y2="106.68" width="0.1524" layer="91"/>
 <junction x="144.78" y="106.68"/>
-<pinref part="C38" gate="G$1" pin="1"/>
+<pinref part="C34" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="VCC_BACKPLANE" class="0">
@@ -15463,7 +15463,7 @@ pair of signals by flipping +/-</text>
 <junction x="55.88" y="116.84"/>
 <wire x1="40.64" y1="119.38" x2="55.88" y2="119.38" width="0.1524" layer="91"/>
 <junction x="55.88" y="119.38"/>
-<pinref part="C35" gate="G$1" pin="1"/>
+<pinref part="C31" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="S10" gate="G$1" pin="VCC"/>
@@ -15477,7 +15477,7 @@ pair of signals by flipping +/-</text>
 <junction x="55.88" y="91.44"/>
 <wire x1="40.64" y1="93.98" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
 <junction x="55.88" y="93.98"/>
-<pinref part="C36" gate="G$1" pin="1"/>
+<pinref part="C32" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="U$25" gate="G$1" pin="VCC_BACKPLANE"/>
@@ -15560,16 +15560,16 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="GND34" gate="1" x="170.18" y="162.56"/>
 <instance part="R85" gate="G$1" x="129.54" y="162.56" rot="R90"/>
 <instance part="GND35" gate="1" x="5.08" y="88.9"/>
-<instance part="C43" gate="G$1" x="30.48" y="116.84">
+<instance part="C39" gate="G$1" x="30.48" y="116.84">
 <attribute name="DIGIKEY" x="30.48" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C44" gate="G$1" x="22.86" y="129.54">
+<instance part="C40" gate="G$1" x="22.86" y="129.54">
 <attribute name="DIGIKEY" x="22.86" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C45" gate="G$1" x="15.24" y="129.54">
+<instance part="C41" gate="G$1" x="15.24" y="129.54">
 <attribute name="DIGIKEY" x="15.24" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C46" gate="G$1" x="7.62" y="129.54">
+<instance part="C42" gate="G$1" x="7.62" y="129.54">
 <attribute name="DIGIKEY" x="7.62" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="FB1" gate="G$1" x="30.48" y="129.54" rot="R90">
@@ -15588,10 +15588,10 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </instance>
 <instance part="GND38" gate="1" x="20.32" y="17.78"/>
 <instance part="U1" gate="1" x="193.04" y="127" rot="MR0"/>
-<instance part="C48" gate="G$1" x="228.6" y="106.68">
+<instance part="C43" gate="G$1" x="228.6" y="106.68">
 <attribute name="DIGIKEY" x="228.6" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C49" gate="G$1" x="213.36" y="106.68">
+<instance part="C44" gate="G$1" x="213.36" y="106.68">
 <attribute name="DIGIKEY" x="213.36" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND39" gate="1" x="208.28" y="93.98"/>
@@ -15599,10 +15599,10 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="GND45" gate="1" x="228.6" y="93.98"/>
 <instance part="GND49" gate="1" x="170.18" y="96.52"/>
 <instance part="U27" gate="1" x="193.04" y="58.42" rot="MR0"/>
-<instance part="C60" gate="G$1" x="228.6" y="38.1">
+<instance part="C55" gate="G$1" x="228.6" y="38.1">
 <attribute name="DIGIKEY" x="228.6" y="38.1" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C61" gate="G$1" x="213.36" y="38.1">
+<instance part="C56" gate="G$1" x="213.36" y="38.1">
 <attribute name="DIGIKEY" x="213.36" y="38.1" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND46" gate="1" x="208.28" y="25.4"/>
@@ -15635,10 +15635,10 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="U$66" gate="G$1" x="243.84" y="83.82"/>
 <instance part="U$67" gate="G$1" x="124.46" y="76.2"/>
 <instance part="U$68" gate="G$1" x="17.78" y="66.04"/>
-<instance part="C47" gate="G$1" x="43.18" y="104.14">
+<instance part="C63" gate="G$1" x="43.18" y="104.14">
 <attribute name="DIGIKEY" x="43.18" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="C69" gate="G$1" x="35.56" y="104.14">
+<instance part="C73" gate="G$1" x="35.56" y="104.14">
 <attribute name="DIGIKEY" x="35.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 </instances>
@@ -15671,15 +15671,15 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="58.42" y1="96.52" x2="55.88" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="96.52" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
 <junction x="55.88" y="93.98"/>
-<pinref part="C46" gate="G$1" pin="2"/>
+<pinref part="C42" gate="G$1" pin="2"/>
 <wire x1="7.62" y1="124.46" x2="7.62" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="C45" gate="G$1" pin="2"/>
+<pinref part="C41" gate="G$1" pin="2"/>
 <wire x1="15.24" y1="124.46" x2="15.24" y2="93.98" width="0.1524" layer="91"/>
 <junction x="15.24" y="93.98"/>
-<pinref part="C44" gate="G$1" pin="2"/>
+<pinref part="C40" gate="G$1" pin="2"/>
 <wire x1="22.86" y1="124.46" x2="22.86" y2="93.98" width="0.1524" layer="91"/>
 <junction x="22.86" y="93.98"/>
-<pinref part="C43" gate="G$1" pin="2"/>
+<pinref part="C39" gate="G$1" pin="2"/>
 <wire x1="30.48" y1="111.76" x2="30.48" y2="93.98" width="0.1524" layer="91"/>
 <junction x="30.48" y="93.98"/>
 <wire x1="35.56" y1="99.06" x2="35.56" y2="93.98" width="0.1524" layer="91"/>
@@ -15690,8 +15690,8 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <junction x="7.62" y="93.98"/>
 <pinref part="U16" gate="U1" pin="GND"/>
 <pinref part="U16" gate="U1" pin="GNDANA"/>
-<pinref part="C47" gate="G$1" pin="2"/>
-<pinref part="C69" gate="G$1" pin="2"/>
+<pinref part="C63" gate="G$1" pin="2"/>
+<pinref part="C73" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="R48" gate="G$1" pin="1"/>
@@ -15710,12 +15710,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="208.28" y1="109.22" x2="208.28" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C49" gate="G$1" pin="2"/>
+<pinref part="C44" gate="G$1" pin="2"/>
 <pinref part="GND44" gate="1" pin="GND"/>
 <wire x1="213.36" y1="101.6" x2="213.36" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C48" gate="G$1" pin="2"/>
+<pinref part="C43" gate="G$1" pin="2"/>
 <pinref part="GND45" gate="1" pin="GND"/>
 <wire x1="228.6" y1="101.6" x2="228.6" y2="96.52" width="0.1524" layer="91"/>
 </segment>
@@ -15744,12 +15744,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="208.28" y1="40.64" x2="208.28" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C61" gate="G$1" pin="2"/>
+<pinref part="C56" gate="G$1" pin="2"/>
 <pinref part="GND48" gate="1" pin="GND"/>
 <wire x1="213.36" y1="33.02" x2="213.36" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C60" gate="G$1" pin="2"/>
+<pinref part="C55" gate="G$1" pin="2"/>
 <pinref part="GND61" gate="1" pin="GND"/>
 <wire x1="228.6" y1="33.02" x2="228.6" y2="27.94" width="0.1524" layer="91"/>
 </segment>
@@ -15831,7 +15831,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <net name="N$38" class="0">
 <segment>
 <wire x1="58.42" y1="121.92" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="C43" gate="G$1" pin="1"/>
+<pinref part="C39" gate="G$1" pin="1"/>
 <wire x1="30.48" y1="119.38" x2="30.48" y2="121.92" width="0.1524" layer="91"/>
 <junction x="30.48" y="121.92"/>
 <pinref part="FB1" gate="G$1" pin="P$1"/>
@@ -15877,13 +15877,13 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <wire x1="22.86" y1="137.16" x2="15.24" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="137.16" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="7.62" y1="137.16" x2="5.08" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="C46" gate="G$1" pin="1"/>
+<pinref part="C42" gate="G$1" pin="1"/>
 <wire x1="7.62" y1="132.08" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
 <junction x="7.62" y="137.16"/>
-<pinref part="C45" gate="G$1" pin="1"/>
+<pinref part="C41" gate="G$1" pin="1"/>
 <wire x1="15.24" y1="132.08" x2="15.24" y2="137.16" width="0.1524" layer="91"/>
 <junction x="15.24" y="137.16"/>
-<pinref part="C44" gate="G$1" pin="1"/>
+<pinref part="C40" gate="G$1" pin="1"/>
 <wire x1="22.86" y1="132.08" x2="22.86" y2="137.16" width="0.1524" layer="91"/>
 <junction x="22.86" y="137.16"/>
 <pinref part="FB1" gate="G$1" pin="P$2"/>
@@ -15987,7 +15987,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U1" gate="1" pin="3V3OUT"/>
 <wire x1="213.36" y1="121.92" x2="205.74" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="121.92" x2="213.36" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="C49" gate="G$1" pin="1"/>
+<pinref part="C44" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RADIO_UPLINK_RX" class="0">
@@ -16057,7 +16057,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <segment>
 <pinref part="U27" gate="1" pin="VCC"/>
 <wire x1="228.6" y1="81.28" x2="205.74" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="C60" gate="G$1" pin="1"/>
+<pinref part="C55" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="40.64" x2="228.6" y2="81.28" width="0.1524" layer="91"/>
 <junction x="228.6" y="81.28"/>
 <pinref part="U$65" gate="G$1" pin="5V_UNMETERED"/>
@@ -16067,7 +16067,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <segment>
 <pinref part="U1" gate="1" pin="VCC"/>
 <wire x1="228.6" y1="149.86" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="C48" gate="G$1" pin="1"/>
+<pinref part="C43" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="109.22" x2="228.6" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="149.86" x2="228.6" y2="149.86" width="0.1524" layer="91"/>
 <junction x="228.6" y="149.86"/>
@@ -16080,7 +16080,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U27" gate="1" pin="3V3OUT"/>
 <wire x1="213.36" y1="53.34" x2="205.74" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="53.34" x2="213.36" y2="40.64" width="0.1524" layer="91"/>
-<pinref part="C61" gate="G$1" pin="1"/>
+<pinref part="C56" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RADIO_DEBUG_RX" class="0">
@@ -16209,9 +16209,9 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </net>
 <net name="RADIO_VDDCORE" class="0">
 <segment>
-<pinref part="C47" gate="G$1" pin="1"/>
+<pinref part="C63" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="106.68" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="C69" gate="G$1" pin="1"/>
+<pinref part="C73" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="109.22" x2="38.1" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="109.22" x2="35.56" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="109.22" x2="35.56" y2="106.68" width="0.1524" layer="91"/>
@@ -16251,7 +16251,7 @@ For commissioning EEPROM</text>
 <instance part="GND123" gate="1" x="86.36" y="86.36"/>
 <instance part="GND127" gate="1" x="104.14" y="86.36"/>
 <instance part="GND128" gate="1" x="129.54" y="86.36"/>
-<instance part="C63" gate="G$1" x="86.36" y="96.52">
+<instance part="C62" gate="G$1" x="86.36" y="96.52">
 <attribute name="DIGIKEY" x="86.36" y="96.52" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="J8" gate="G$1" x="116.84" y="147.32"/>
@@ -16293,7 +16293,7 @@ For commissioning EEPROM</text>
 <wire x1="129.54" y1="96.52" x2="129.54" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C63" gate="G$1" pin="2"/>
+<pinref part="C62" gate="G$1" pin="2"/>
 <pinref part="GND123" gate="1" pin="GND"/>
 <wire x1="86.36" y1="91.44" x2="86.36" y2="88.9" width="0.1524" layer="91"/>
 </segment>
@@ -16320,7 +16320,7 @@ For commissioning EEPROM</text>
 <pinref part="U$73" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="106.68" y1="111.76" x2="86.36" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="111.76" x2="86.36" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="C63" gate="G$1" pin="1"/>
+<pinref part="C62" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="99.06" x2="86.36" y2="101.6" width="0.1524" layer="91"/>
 <junction x="86.36" y="111.76"/>
 <pinref part="U29" gate="G$1" pin="E0"/>
