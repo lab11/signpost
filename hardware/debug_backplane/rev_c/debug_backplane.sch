@@ -8491,7 +8491,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="C65" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="2.2uF">
 <attribute name="DIGIKEY" value="490-10451-1-ND"/>
 </part>
-<part name="J11" library="connector" deviceset="PJ-102AH" device=""/>
+<part name="J7" library="connector" deviceset="PJ-102AH" device=""/>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="U16" library="chips" deviceset="SAM4LC8AA" device=""/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="8pF">
@@ -8575,7 +8575,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="D13" library="leds" deviceset="LED" device="0603">
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
 </part>
-<part name="J10" library="con-ml" deviceset="ML20" device=""/>
+<part name="J5" library="con-ml" deviceset="ML20" device=""/>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
 <part name="S19" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
 <part name="S11" library="switches" deviceset="RM106772BCB" device=""/>
@@ -8636,7 +8636,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND78" library="umich" deviceset="GND" device=""/>
 <part name="GND81" library="umich" deviceset="GND" device=""/>
 <part name="U23" library="signpost" deviceset="TS3USB30E" device=""/>
-<part name="J9" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
+<part name="J4" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
 <part name="GND82" library="umich" deviceset="GND" device=""/>
 <part name="Q1" library="fets" deviceset="DMN32D2LDF" device=""/>
 <part name="GND83" library="umich" deviceset="GND" device=""/>
@@ -8687,7 +8687,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND100" library="umich" deviceset="GND" device=""/>
 <part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND101" library="umich" deviceset="GND" device=""/>
-<part name="J12" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
+<part name="J6" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
 <part name="GND102" library="umich" deviceset="GND" device=""/>
 <part name="GND105" library="umich" deviceset="GND" device=""/>
 <part name="R49" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
@@ -8948,7 +8948,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="TP9" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP10" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP11" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="J4" library="connector" deviceset="TC2030-FTDI-I2C" device=""/>
+<part name="J8" library="connector" deviceset="TC2030-FTDI-I2C" device=""/>
 <part name="U$74" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="GND129" library="umich" deviceset="GND" device=""/>
 <part name="FRAME18" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
@@ -9805,7 +9805,7 @@ Translator</text>
 <instance part="C65" gate="G$1" x="228.6" y="76.2">
 <attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="J11" gate="G$1" x="167.64" y="127"/>
+<instance part="J7" gate="G$1" x="167.64" y="127"/>
 <instance part="GND11" gate="1" x="177.8" y="111.76"/>
 <instance part="U25" gate="G$1" x="195.58" y="119.38"/>
 <instance part="Q10" gate="G$1" x="213.36" y="139.7" smashed="yes" rot="R90">
@@ -10201,7 +10201,7 @@ Translator</text>
 <pinref part="C13" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="J11" gate="G$1" pin="GND"/>
+<pinref part="J7" gate="G$1" pin="GND"/>
 <pinref part="GND11" gate="1" pin="GND"/>
 <wire x1="175.26" y1="124.46" x2="177.8" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="124.46" x2="177.8" y2="119.38" width="0.1524" layer="91"/>
@@ -10382,7 +10382,7 @@ Translator</text>
 </net>
 <net name="VCC_BARRELJACK" class="0">
 <segment>
-<pinref part="J11" gate="G$1" pin="VCC"/>
+<pinref part="J7" gate="G$1" pin="VCC"/>
 <pinref part="U25" gate="G$1" pin="IN"/>
 <wire x1="175.26" y1="129.54" x2="177.8" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="129.54" x2="180.34" y2="129.54" width="0.1524" layer="91"/>
@@ -10757,7 +10757,7 @@ Translator</text>
 <text x="55.88" y="27.94" size="5.08" layer="98" align="bottom-center">Ties SWDIO to Reset</text>
 </plain>
 <instances>
-<instance part="J10" gate="1" x="55.88" y="60.96"/>
+<instance part="J5" gate="1" x="55.88" y="60.96"/>
 <instance part="GND20" gate="1" x="43.18" y="40.64"/>
 <instance part="S19" gate="G$1" x="50.8" y="17.78"/>
 <instance part="S14" gate="G$1" x="144.78" y="154.94"/>
@@ -10867,11 +10867,11 @@ Translator</text>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="20"/>
+<pinref part="J5" gate="1" pin="20"/>
 <pinref part="GND20" gate="1" pin="GND"/>
 <wire x1="48.26" y1="71.12" x2="43.18" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="71.12" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="J10" gate="1" pin="18"/>
+<pinref part="J5" gate="1" pin="18"/>
 <wire x1="43.18" y1="68.58" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="66.04" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="63.5" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
@@ -10882,25 +10882,25 @@ Translator</text>
 <wire x1="43.18" y1="50.8" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
 <junction x="43.18" y="68.58"/>
-<pinref part="J10" gate="1" pin="16"/>
+<pinref part="J5" gate="1" pin="16"/>
 <wire x1="48.26" y1="66.04" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
 <junction x="43.18" y="66.04"/>
-<pinref part="J10" gate="1" pin="14"/>
+<pinref part="J5" gate="1" pin="14"/>
 <wire x1="48.26" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <junction x="43.18" y="63.5"/>
-<pinref part="J10" gate="1" pin="12"/>
+<pinref part="J5" gate="1" pin="12"/>
 <wire x1="48.26" y1="60.96" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
 <junction x="43.18" y="60.96"/>
-<pinref part="J10" gate="1" pin="10"/>
+<pinref part="J5" gate="1" pin="10"/>
 <wire x1="48.26" y1="58.42" x2="43.18" y2="58.42" width="0.1524" layer="91"/>
 <junction x="43.18" y="58.42"/>
-<pinref part="J10" gate="1" pin="8"/>
+<pinref part="J5" gate="1" pin="8"/>
 <wire x1="48.26" y1="55.88" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
 <junction x="43.18" y="55.88"/>
-<pinref part="J10" gate="1" pin="6"/>
+<pinref part="J5" gate="1" pin="6"/>
 <wire x1="48.26" y1="53.34" x2="43.18" y2="53.34" width="0.1524" layer="91"/>
 <junction x="43.18" y="53.34"/>
-<pinref part="J10" gate="1" pin="4"/>
+<pinref part="J5" gate="1" pin="4"/>
 <wire x1="48.26" y1="50.8" x2="43.18" y2="50.8" width="0.1524" layer="91"/>
 <junction x="43.18" y="50.8"/>
 </segment>
@@ -11023,49 +11023,49 @@ Translator</text>
 </net>
 <net name="JTAG_5V" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="19"/>
+<pinref part="J5" gate="1" pin="19"/>
 <wire x1="63.5" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
 <label x="66.04" y="71.12" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_DBGRQ" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="17"/>
+<pinref part="J5" gate="1" pin="17"/>
 <wire x1="63.5" y1="68.58" x2="66.04" y2="68.58" width="0.1524" layer="91"/>
 <label x="66.04" y="68.58" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_SWO/TDO" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="13"/>
+<pinref part="J5" gate="1" pin="13"/>
 <wire x1="63.5" y1="63.5" x2="66.04" y2="63.5" width="0.1524" layer="91"/>
 <label x="66.04" y="63.5" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_RTCK" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="11"/>
+<pinref part="J5" gate="1" pin="11"/>
 <wire x1="63.5" y1="60.96" x2="66.04" y2="60.96" width="0.1524" layer="91"/>
 <label x="66.04" y="60.96" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_TDI" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="5"/>
+<pinref part="J5" gate="1" pin="5"/>
 <wire x1="63.5" y1="53.34" x2="66.04" y2="53.34" width="0.1524" layer="91"/>
 <label x="66.04" y="53.34" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_NTRST" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="3"/>
+<pinref part="J5" gate="1" pin="3"/>
 <wire x1="63.5" y1="50.8" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
 <label x="66.04" y="50.8" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_VTREF" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="1"/>
+<pinref part="J5" gate="1" pin="1"/>
 <wire x1="63.5" y1="48.26" x2="66.04" y2="48.26" width="0.1524" layer="91"/>
 <label x="66.04" y="48.26" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11315,7 +11315,7 @@ Translator</text>
 </net>
 <net name="JTAG_!RESET" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="15"/>
+<pinref part="J5" gate="1" pin="15"/>
 <wire x1="63.5" y1="66.04" x2="66.04" y2="66.04" width="0.1524" layer="91"/>
 <label x="66.04" y="66.04" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11352,7 +11352,7 @@ Translator</text>
 </net>
 <net name="JTAG_SWDCLK" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="9"/>
+<pinref part="J5" gate="1" pin="9"/>
 <wire x1="63.5" y1="58.42" x2="66.04" y2="58.42" width="0.1524" layer="91"/>
 <label x="66.04" y="58.42" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11384,7 +11384,7 @@ Translator</text>
 </net>
 <net name="JTAG_SWDIO" class="0">
 <segment>
-<pinref part="J10" gate="1" pin="7"/>
+<pinref part="J5" gate="1" pin="7"/>
 <wire x1="63.5" y1="55.88" x2="66.04" y2="55.88" width="0.1524" layer="91"/>
 <label x="66.04" y="55.88" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -12420,7 +12420,7 @@ not used for this hub</text>
 <instance part="GND100" gate="1" x="66.04" y="68.58"/>
 <instance part="R29" gate="G$1" x="88.9" y="73.66"/>
 <instance part="GND101" gate="1" x="91.44" y="58.42"/>
-<instance part="J12" gate="G$1" x="7.62" y="172.72" smashed="yes" rot="MR0">
+<instance part="J6" gate="G$1" x="7.62" y="172.72" smashed="yes" rot="MR0">
 <attribute name="NAME" x="12.7" y="181.61" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="GND102" gate="1" x="88.9" y="104.14"/>
@@ -12486,7 +12486,7 @@ not used for this hub</text>
 <wire x1="88.9" y1="109.22" x2="88.9" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J12" gate="G$1" pin="GND"/>
+<pinref part="J6" gate="G$1" pin="GND"/>
 <wire x1="15.24" y1="167.64" x2="17.78" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="167.64" x2="17.78" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="GND105" gate="1" pin="GND"/>
@@ -12527,7 +12527,7 @@ not used for this hub</text>
 <label x="81.28" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J12" gate="G$1" pin="D+"/>
+<pinref part="J6" gate="G$1" pin="D+"/>
 <wire x1="17.78" y1="172.72" x2="15.24" y2="172.72" width="0.1524" layer="91"/>
 <label x="17.78" y="172.72" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12539,7 +12539,7 @@ not used for this hub</text>
 <label x="81.28" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J12" gate="G$1" pin="D-"/>
+<pinref part="J6" gate="G$1" pin="D-"/>
 <wire x1="17.78" y1="175.26" x2="15.24" y2="175.26" width="0.1524" layer="91"/>
 <label x="17.78" y="175.26" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -14645,7 +14645,7 @@ pair of signals by flipping +/-</text>
 </plain>
 <instances>
 <instance part="U23" gate="G$1" x="93.98" y="106.68"/>
-<instance part="J9" gate="G$1" x="177.8" y="109.22"/>
+<instance part="J4" gate="G$1" x="177.8" y="109.22"/>
 <instance part="GND82" gate="1" x="165.1" y="99.06"/>
 <instance part="Q1" gate="G$1" x="137.16" y="86.36"/>
 <instance part="GND83" gate="1" x="134.62" y="71.12"/>
@@ -14668,7 +14668,7 @@ pair of signals by flipping +/-</text>
 <nets>
 <net name="MOD_USB_OVERRIDE_DP" class="0">
 <segment>
-<pinref part="J9" gate="G$1" pin="D+"/>
+<pinref part="J4" gate="G$1" pin="D+"/>
 <wire x1="132.08" y1="106.68" x2="134.62" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="109.22" x2="170.18" y2="109.22" width="0.1524" layer="91"/>
 <label x="109.22" y="106.68" size="1.27" layer="95"/>
@@ -14679,7 +14679,7 @@ pair of signals by flipping +/-</text>
 <net name="MOD_USB_OVERRIDE_DM" class="0">
 <segment>
 <wire x1="165.1" y1="106.68" x2="165.1" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="J9" gate="G$1" pin="D-"/>
+<pinref part="J4" gate="G$1" pin="D-"/>
 <wire x1="165.1" y1="111.76" x2="170.18" y2="111.76" width="0.1524" layer="91"/>
 <label x="109.22" y="109.22" size="1.27" layer="95"/>
 <pinref part="U23" gate="G$1" pin="D1+"/>
@@ -14692,7 +14692,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="GND82" gate="1" pin="GND"/>
 <wire x1="165.1" y1="101.6" x2="165.1" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="J9" gate="G$1" pin="GND"/>
+<pinref part="J4" gate="G$1" pin="GND"/>
 <wire x1="165.1" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -14723,7 +14723,7 @@ pair of signals by flipping +/-</text>
 </net>
 <net name="MOD_USB_OVERRIDE_5V" class="0">
 <segment>
-<pinref part="J9" gate="G$1" pin="+5V"/>
+<pinref part="J4" gate="G$1" pin="+5V"/>
 <wire x1="170.18" y1="114.3" x2="157.48" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="114.3" x2="149.86" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="114.3" x2="149.86" y2="81.28" width="0.1524" layer="91"/>
@@ -16239,7 +16239,7 @@ For commissioning EEPROM</text>
 <instance part="C63" gate="G$1" x="86.36" y="96.52">
 <attribute name="DIGIKEY" x="86.36" y="96.52" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="J4" gate="G$1" x="116.84" y="147.32"/>
+<instance part="J8" gate="G$1" x="116.84" y="147.32"/>
 <instance part="U$74" gate="G$1" x="96.52" y="152.4"/>
 <instance part="GND129" gate="1" x="96.52" y="139.7"/>
 </instances>
@@ -16253,7 +16253,7 @@ For commissioning EEPROM</text>
 <label x="129.54" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="SDA"/>
+<pinref part="J8" gate="G$1" pin="SDA"/>
 <wire x1="129.54" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91"/>
 <label x="129.54" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16265,7 +16265,7 @@ For commissioning EEPROM</text>
 <label x="129.54" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="SCL"/>
+<pinref part="J8" gate="G$1" pin="SCL"/>
 <wire x1="129.54" y1="149.86" x2="127" y2="149.86" width="0.1524" layer="91"/>
 <label x="129.54" y="149.86" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16293,7 +16293,7 @@ For commissioning EEPROM</text>
 <junction x="104.14" y="96.52"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="GND"/>
+<pinref part="J8" gate="G$1" pin="GND"/>
 <pinref part="GND129" gate="1" pin="GND"/>
 <wire x1="106.68" y1="144.78" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="144.78" x2="96.52" y2="142.24" width="0.1524" layer="91"/>
@@ -16318,7 +16318,7 @@ For commissioning EEPROM</text>
 <junction x="86.36" y="106.68"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="VCC"/>
+<pinref part="J8" gate="G$1" pin="VCC"/>
 <pinref part="U$74" gate="G$1" pin="VCC_BACKPLANE"/>
 <wire x1="106.68" y1="149.86" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="149.86" x2="96.52" y2="152.4" width="0.1524" layer="91"/>

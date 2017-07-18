@@ -487,7 +487,7 @@ computer here
 to access the
 serial debug for
 all modules</text>
-<text x="18.288" y="55.372" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">JTAG</text>
+<text x="19.05" y="55.372" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">JTAG</text>
 <wire x1="16.256" y1="27.686" x2="16.256" y2="26.924" width="0.508" layer="21"/>
 <wire x1="16.256" y1="26.924" x2="18.796" y2="26.924" width="0.508" layer="21"/>
 <wire x1="18.796" y1="26.924" x2="18.796" y2="27.686" width="0.508" layer="21"/>
@@ -500,7 +500,7 @@ all modules</text>
 <wire x1="25.4" y1="58.42" x2="25.4" y2="49.53" width="0.508" layer="21"/>
 <wire x1="25.4" y1="49.53" x2="25.4" y2="31.75" width="0.508" layer="21" curve="-180"/>
 <wire x1="25.4" y1="22.86" x2="25.4" y2="31.75" width="0.508" layer="21"/>
-<text x="18.288" y="52.07" size="1.27" layer="21" font="vector" ratio="12" align="center">Select a
+<text x="19.05" y="52.07" size="1.27" layer="21" font="vector" ratio="12" align="center">Select a
 module to
 program</text>
 <text x="76.2" y="187.198" size="0.889" layer="21" font="vector" ratio="12" rot="R210" align="center-right">!WTCHDG</text>
@@ -8592,7 +8592,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="490-10451-1-ND" x="26.924" y="79.248" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="29.718" y="78.74" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="J11" library="connector" package="PJ-102AH" value="PJ-102AH" x="10.795" y="80.01" smashed="yes" rot="R90">
+<element name="J7" library="connector" package="PJ-102AH" value="PJ-102AH" x="10.795" y="80.01" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="CP-102AH-ND" x="10.795" y="80.01" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="NAME" x="1.524" y="85.52" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
@@ -8711,9 +8711,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="D13" library="leds" package="LED-0603" value="LED0603" x="50.8" y="3.048" rot="R270">
 <attribute name="DIGIKEY" value="160-1446-1-ND" x="50.8" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 </element>
-<element name="J10" library="con-ml" package="ML20" value="" x="6.35" y="40.64" smashed="yes" rot="R270">
+<element name="J5" library="con-ml" package="ML20" value="" x="6.35" y="40.64" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="NAME" x="11.43" y="57.15" size="1.016" layer="25" font="vector" ratio="12" rot="R270"/>
 <attribute name="OC_FARNELL" value="unknown" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="VALUE" x="11.43" y="39.37" size="1.778" layer="27" ratio="10" rot="R270"/>
@@ -8806,7 +8807,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="NAME" x="95.885" y="72.771" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="96.012" y="72.771" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="J9" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="14.478" smashed="yes" rot="R270">
+<element name="J4" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="14.478" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H11574CT-ND" x="0" y="14.478" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MOUSER" value="798-ZX62R-B-5P" x="0" y="14.478" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="0.655" y="8.382" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
@@ -8900,7 +8901,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R29" library="passives" package="0603-RES" value="1.5kΩ" x="34.29" y="69.342" smashed="yes" rot="R270">
 <attribute name="NAME" x="34.29" y="68.072" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="J12" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="66.04" smashed="yes" rot="R270">
+<element name="J6" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="66.04" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H11574CT-ND" x="0" y="66.04" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MOUSER" value="798-ZX62R-B-5P" x="0" y="66.04" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="4.572" y="60.218" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -9275,7 +9276,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <attribute name="DIGIKEY" value="5001K-ND" x="106.426" y="85.852" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="VALUE" x="106.426" y="83.312" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="J4" library="connector" package="TC2030-IDC-NL" value="TC2030-FTDI-I2C" x="169.418" y="15.24" rot="R270"/>
+<element name="J8" library="connector" package="TC2030-IDC-NL" value="TC2030-FTDI-I2C" x="169.418" y="15.24" rot="R270"/>
 <element name="S23" library="switches" package="TE_SSA12/SPDT" value="TE_SSA12/SPDT" x="83.8962" y="57.439559375" smashed="yes">
 <attribute name="DIGIKEY" value="450-1602-ND" x="75.22718125" y="69.71791875" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="NAME" x="83.8962" y="60.233559375" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -9543,7 +9544,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U12" pad="2"/>
 <contactref element="C64" pad="2"/>
 <contactref element="C65" pad="2"/>
-<contactref element="J11" pad="2"/>
+<contactref element="J7" pad="2"/>
 <contactref element="U16" pad="6"/>
 <contactref element="U16" pad="THERMAL"/>
 <contactref element="U16" pad="48"/>
@@ -9585,15 +9586,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="C53" pad="2"/>
 <contactref element="C52" pad="2"/>
 <contactref element="U3" pad="26"/>
-<contactref element="J10" pad="20"/>
-<contactref element="J10" pad="18"/>
-<contactref element="J10" pad="16"/>
-<contactref element="J10" pad="14"/>
-<contactref element="J10" pad="12"/>
-<contactref element="J10" pad="10"/>
-<contactref element="J10" pad="8"/>
-<contactref element="J10" pad="6"/>
-<contactref element="J10" pad="4"/>
+<contactref element="J5" pad="20"/>
+<contactref element="J5" pad="18"/>
+<contactref element="J5" pad="16"/>
+<contactref element="J5" pad="14"/>
+<contactref element="J5" pad="12"/>
+<contactref element="J5" pad="10"/>
+<contactref element="J5" pad="8"/>
+<contactref element="J5" pad="6"/>
+<contactref element="J5" pad="4"/>
 <contactref element="S14" pad="7"/>
 <contactref element="S15" pad="7"/>
 <contactref element="S18" pad="7"/>
@@ -9793,7 +9794,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="68.588" y1="123.322" x2="68.588" y2="122.817" width="0.254" layer="1"/>
 <wire x1="68.588" y1="122.817" x2="68.326" y2="122.555" width="0.254" layer="1"/>
 <wire x1="68.326" y1="122.555" x2="66.929" y2="122.555" width="0.254" layer="1"/>
-<contactref element="J9" pad="5"/>
+<contactref element="J4" pad="5"/>
 <contactref element="U23" pad="4"/>
 <contactref element="Q1" pad="S"/>
 <contactref element="U23" pad="8"/>
@@ -9859,7 +9860,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U26" pad="5"/>
 <contactref element="U26" pad="48"/>
 <contactref element="U26" pad="8"/>
-<contactref element="J12" pad="5"/>
+<contactref element="J6" pad="5"/>
 <contactref element="R59" pad="2"/>
 <contactref element="R58" pad="2"/>
 <contactref element="U2" pad="24"/>
@@ -10763,7 +10764,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="185.42" y1="88.9" x2="185.42" y2="28.448" width="2.54" layer="16"/>
 <wire x1="185.42" y1="28.448" x2="185.42" y2="5.08" width="2.54" layer="16"/>
 <wire x1="185.42" y1="172.72" x2="185.42" y2="88.9" width="2.54" layer="1"/>
-<contactref element="J4" pad="3"/>
+<contactref element="J8" pad="3"/>
 <wire x1="168.783" y1="15.24" x2="168.656" y2="15.24" width="0.254" layer="1"/>
 <wire x1="168.656" y1="15.24" x2="166.878" y2="17.018" width="0.254" layer="1"/>
 <via x="166.878" y="17.018" extent="1-16" drill="0.3048"/>
@@ -11303,7 +11304,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="103.886" y1="80.772" x2="106.426" y2="80.772" width="2.54" layer="1"/>
 <wire x1="106.426" y1="80.772" x2="108.6159" y2="80.772" width="0.762" layer="1"/>
 <wire x1="108.6159" y1="80.772" x2="109.474" y2="79.9139" width="0.762" layer="1"/>
-<contactref element="J4" pad="6"/>
+<contactref element="J8" pad="6"/>
 <wire x1="159.766" y1="68.072" x2="164.592" y2="68.072" width="0.508" layer="16"/>
 <wire x1="164.592" y1="68.072" x2="166.37" y2="69.85" width="0.508" layer="16"/>
 <wire x1="166.37" y1="69.85" x2="167.132" y2="69.85" width="0.508" layer="16"/>
@@ -13140,7 +13141,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="153.162" y1="73.914" x2="154.686" y2="73.914" width="0.254" layer="1"/>
 <wire x1="150.749" y1="64.5922" x2="150.749" y2="71.501" width="0.254" layer="1"/>
 <wire x1="150.749" y1="71.501" x2="153.162" y2="73.914" width="0.254" layer="1"/>
-<contactref element="J4" pad="5"/>
+<contactref element="J8" pad="5"/>
 <wire x1="162.814" y1="73.914" x2="164.592" y2="73.914" width="0.254" layer="16"/>
 <via x="164.592" y="73.914" extent="1-16" drill="0.3048"/>
 <wire x1="164.592" y1="73.914" x2="164.846" y2="73.66" width="0.254" layer="1"/>
@@ -13238,7 +13239,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="149.479" y1="64.5922" x2="149.479" y2="71.247" width="0.254" layer="1"/>
 <wire x1="152.4" y1="74.168" x2="149.479" y2="71.247" width="0.254" layer="1"/>
 <wire x1="157.226" y1="74.3712" x2="157.226" y2="70.5" width="0.254" layer="1"/>
-<contactref element="J4" pad="1"/>
+<contactref element="J8" pad="1"/>
 <wire x1="166.624" y1="77.47" x2="165.354" y2="76.2" width="0.254" layer="1"/>
 <wire x1="165.354" y1="70.104" x2="166.624" y2="68.834" width="0.254" layer="1"/>
 <via x="166.624" y="68.834" extent="1-16" drill="0.3048"/>
@@ -15812,25 +15813,25 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="51.162" y1="12.046" x2="49.022" y2="9.906" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_5V">
-<contactref element="J10" pad="19"/>
+<contactref element="J5" pad="19"/>
 </signal>
 <signal name="JTAG_DBGRQ">
-<contactref element="J10" pad="17"/>
+<contactref element="J5" pad="17"/>
 </signal>
 <signal name="JTAG_SWO/TDO">
-<contactref element="J10" pad="13"/>
+<contactref element="J5" pad="13"/>
 </signal>
 <signal name="JTAG_RTCK">
-<contactref element="J10" pad="11"/>
+<contactref element="J5" pad="11"/>
 </signal>
 <signal name="JTAG_TDI">
-<contactref element="J10" pad="5"/>
+<contactref element="J5" pad="5"/>
 </signal>
 <signal name="JTAG_NTRST">
-<contactref element="J10" pad="3"/>
+<contactref element="J5" pad="3"/>
 </signal>
 <signal name="JTAG_VTREF">
-<contactref element="J10" pad="1"/>
+<contactref element="J5" pad="1"/>
 <contactref element="S14" pad="11"/>
 <contactref element="S15" pad="11"/>
 <contactref element="S16" pad="11"/>
@@ -16092,7 +16093,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="20.828" y1="38.100071875" x2="21.336071875" y2="37.592" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_!RESET">
-<contactref element="J10" pad="15"/>
+<contactref element="J5" pad="15"/>
 <contactref element="S19" pad="1"/>
 <contactref element="S14" pad="8"/>
 <contactref element="S15" pad="8"/>
@@ -16128,7 +16129,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="83.353" y1="29.718" x2="83.365" y2="29.73" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_SWDCLK">
-<contactref element="J10" pad="9"/>
+<contactref element="J5" pad="9"/>
 <contactref element="S14" pad="4"/>
 <contactref element="S15" pad="4"/>
 <contactref element="S18" pad="4"/>
@@ -16160,7 +16161,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="16.51" y="34.036" extent="1-16" drill="0.3048"/>
 </signal>
 <signal name="JTAG_SWDIO">
-<contactref element="J10" pad="7"/>
+<contactref element="J5" pad="7"/>
 <contactref element="S19" pad="IN"/>
 <contactref element="S14" pad="1"/>
 <contactref element="S15" pad="1"/>
@@ -17049,7 +17050,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="93.872" y1="75.546" x2="92.69" y2="76.728" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD_USB_OVERRIDE_DP">
-<contactref element="J9" pad="3"/>
+<contactref element="J4" pad="3"/>
 <wire x1="4.125" y1="14.478" x2="5.588" y2="14.478" width="0.254" layer="1"/>
 <wire x1="5.588" y1="14.478" x2="5.842" y2="14.732" width="0.254" layer="1"/>
 <via x="5.842" y="14.732" extent="1-16" drill="0.4064"/>
@@ -17066,7 +17067,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="92.964" y1="17.526" x2="92.964" y2="68.326" width="0.254" layer="16"/>
 </signal>
 <signal name="MOD_USB_OVERRIDE_DM">
-<contactref element="J9" pad="2"/>
+<contactref element="J4" pad="2"/>
 <via x="5.842" y="13.716" extent="1-16" drill="0.4064"/>
 <contactref element="U23" pad="1"/>
 <via x="95.25" y="71.882" extent="1-16" drill="0.4064"/>
@@ -17081,7 +17082,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="5.73" y1="13.828" x2="5.842" y2="13.716" width="0.254" layer="1"/>
 </signal>
 <signal name="MOD_USB_OVERRIDE_5V">
-<contactref element="J9" pad="1"/>
+<contactref element="J4" pad="1"/>
 <contactref element="Q1" pad="G2"/>
 <contactref element="R66" pad="2"/>
 <via x="6.604" y="12.7" extent="1-16" drill="0.4064"/>
@@ -17128,7 +17129,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="93.872" y1="71.482" x2="95.25" y2="70.104" width="0.254" layer="1"/>
 </signal>
 <signal name="VCC_BARRELJACK">
-<contactref element="J11" pad="1"/>
+<contactref element="J7" pad="1"/>
 <contactref element="U25" pad="1"/>
 <contactref element="Q10" pad="3"/>
 <contactref element="R85" pad="2"/>
@@ -17188,7 +17189,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="DBG_USB_DP0">
 <contactref element="U26" pad="3"/>
 <contactref element="R28" pad="1"/>
-<contactref element="J12" pad="3"/>
+<contactref element="J6" pad="3"/>
 <wire x1="5.334" y1="66.04" x2="4.125" y2="66.04" width="0.254" layer="1"/>
 <wire x1="28.448" y1="63.98" x2="30.752" y2="63.98" width="0.254" layer="1"/>
 <wire x1="28.448" y1="63.98" x2="7.394" y2="63.98" width="0.254" layer="1"/>
@@ -17198,7 +17199,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </signal>
 <signal name="DBG_USB_DM0">
 <contactref element="U26" pad="4"/>
-<contactref element="J12" pad="2"/>
+<contactref element="J6" pad="2"/>
 <wire x1="7.132" y1="63.48" x2="30.752" y2="63.48" width="0.254" layer="1"/>
 <wire x1="4.125" y1="65.39" x2="5.222" y2="65.39" width="0.254" layer="1"/>
 <wire x1="5.222" y1="65.39" x2="7.132" y2="63.48" width="0.254" layer="1"/>
