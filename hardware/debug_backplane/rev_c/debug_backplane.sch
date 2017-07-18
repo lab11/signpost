@@ -3496,6 +3496,8 @@ S high: D = D2</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="490-5350-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Murata" constant="no"/>
+<attribute name="MPN" value="LQH3NPN220MJ0L" constant="no"/>
 </technology>
 </technologies>
 </device>

@@ -8637,6 +8637,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 </element>
 <element name="L1" library="signpost" package="1212" value="22uH" x="56.896" y="74.676" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="490-5350-1-ND" x="39.116" y="41.656" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Murata" x="56.896" y="74.676" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="LQH3NPN220MJ0L" x="56.896" y="74.676" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="56.896" y="77.883" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C47" library="passives" package="0402_CAP" value="100nF" x="59.436" y="73.406" smashed="yes" rot="R270">
