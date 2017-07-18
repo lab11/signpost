@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -8712,7 +8712,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="D13" library="leds" package="LED-0603" value="LED0603" x="50.8" y="3.048" rot="R270">
 <attribute name="DIGIKEY" value="160-1446-1-ND" x="50.8" y="3.048" size="1.778" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center" display="off"/>
 </element>
-<element name="J5" library="con-ml" package="ML20" value="" x="6.35" y="40.64" smashed="yes" rot="R270">
+<element name="J6" library="con-ml" package="ML20" value="" x="6.35" y="40.64" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="6.35" y="40.64" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="NAME" x="11.43" y="57.15" size="1.016" layer="25" font="vector" ratio="12" rot="R270"/>
@@ -8904,7 +8904,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <element name="R30" library="passives" package="0603-RES" value="1.5kΩ" x="34.29" y="69.342" smashed="yes" rot="R270">
 <attribute name="NAME" x="34.29" y="68.072" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="J6" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="66.04" smashed="yes" rot="R270">
+<element name="J5" library="connector" package="USB_MICRO_B-HIROSE-ZX62R-B-5P" value="MICRO_USB_B_HIROSE_ZX62R-B-5P" x="0" y="66.04" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="H11574CT-ND" x="0" y="66.04" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MOUSER" value="798-ZX62R-B-5P" x="0" y="66.04" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="4.572" y="60.218" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
@@ -9616,15 +9616,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="C48" pad="2"/>
 <contactref element="C47" pad="2"/>
 <contactref element="U3" pad="26"/>
-<contactref element="J5" pad="20"/>
-<contactref element="J5" pad="18"/>
-<contactref element="J5" pad="16"/>
-<contactref element="J5" pad="14"/>
-<contactref element="J5" pad="12"/>
-<contactref element="J5" pad="10"/>
-<contactref element="J5" pad="8"/>
-<contactref element="J5" pad="6"/>
-<contactref element="J5" pad="4"/>
+<contactref element="J6" pad="20"/>
+<contactref element="J6" pad="18"/>
+<contactref element="J6" pad="16"/>
+<contactref element="J6" pad="14"/>
+<contactref element="J6" pad="12"/>
+<contactref element="J6" pad="10"/>
+<contactref element="J6" pad="8"/>
+<contactref element="J6" pad="6"/>
+<contactref element="J6" pad="4"/>
 <contactref element="S14" pad="7"/>
 <contactref element="S15" pad="7"/>
 <contactref element="S18" pad="7"/>
@@ -9890,7 +9890,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <contactref element="U26" pad="5"/>
 <contactref element="U26" pad="48"/>
 <contactref element="U26" pad="8"/>
-<contactref element="J6" pad="5"/>
+<contactref element="J5" pad="5"/>
 <contactref element="R60" pad="2"/>
 <contactref element="R59" pad="2"/>
 <contactref element="U2" pad="24"/>
@@ -15823,25 +15823,25 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="51.162" y1="12.046" x2="49.022" y2="9.906" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_5V">
-<contactref element="J5" pad="19"/>
+<contactref element="J6" pad="19"/>
 </signal>
 <signal name="JTAG_DBGRQ">
-<contactref element="J5" pad="17"/>
+<contactref element="J6" pad="17"/>
 </signal>
 <signal name="JTAG_SWO/TDO">
-<contactref element="J5" pad="13"/>
+<contactref element="J6" pad="13"/>
 </signal>
 <signal name="JTAG_RTCK">
-<contactref element="J5" pad="11"/>
+<contactref element="J6" pad="11"/>
 </signal>
 <signal name="JTAG_TDI">
-<contactref element="J5" pad="5"/>
+<contactref element="J6" pad="5"/>
 </signal>
 <signal name="JTAG_NTRST">
-<contactref element="J5" pad="3"/>
+<contactref element="J6" pad="3"/>
 </signal>
 <signal name="JTAG_VTREF">
-<contactref element="J5" pad="1"/>
+<contactref element="J6" pad="1"/>
 <contactref element="S14" pad="11"/>
 <contactref element="S15" pad="11"/>
 <contactref element="S16" pad="11"/>
@@ -16103,7 +16103,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="20.828" y1="38.100071875" x2="21.336071875" y2="37.592" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_!RESET">
-<contactref element="J5" pad="15"/>
+<contactref element="J6" pad="15"/>
 <contactref element="S19" pad="1"/>
 <contactref element="S14" pad="8"/>
 <contactref element="S15" pad="8"/>
@@ -16139,7 +16139,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="83.353" y1="29.718" x2="83.365" y2="29.73" width="0.254" layer="1"/>
 </signal>
 <signal name="JTAG_SWDCLK">
-<contactref element="J5" pad="9"/>
+<contactref element="J6" pad="9"/>
 <contactref element="S14" pad="4"/>
 <contactref element="S15" pad="4"/>
 <contactref element="S18" pad="4"/>
@@ -16171,7 +16171,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <via x="16.51" y="34.036" extent="1-16" drill="0.3048"/>
 </signal>
 <signal name="JTAG_SWDIO">
-<contactref element="J5" pad="7"/>
+<contactref element="J6" pad="7"/>
 <contactref element="S19" pad="IN"/>
 <contactref element="S14" pad="1"/>
 <contactref element="S15" pad="1"/>
@@ -17181,7 +17181,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <signal name="DBG_USB_DP0">
 <contactref element="U26" pad="3"/>
 <contactref element="R29" pad="1"/>
-<contactref element="J6" pad="3"/>
+<contactref element="J5" pad="3"/>
 <wire x1="5.334" y1="66.04" x2="4.125" y2="66.04" width="0.254" layer="1"/>
 <wire x1="28.448" y1="63.98" x2="30.752" y2="63.98" width="0.254" layer="1"/>
 <wire x1="28.448" y1="63.98" x2="7.394" y2="63.98" width="0.254" layer="1"/>
@@ -17191,7 +17191,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </signal>
 <signal name="DBG_USB_DM0">
 <contactref element="U26" pad="4"/>
-<contactref element="J6" pad="2"/>
+<contactref element="J5" pad="2"/>
 <wire x1="7.132" y1="63.48" x2="30.752" y2="63.48" width="0.254" layer="1"/>
 <wire x1="4.125" y1="65.39" x2="5.222" y2="65.39" width="0.254" layer="1"/>
 <wire x1="5.222" y1="65.39" x2="7.132" y2="63.48" width="0.254" layer="1"/>

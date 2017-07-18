@@ -8583,7 +8583,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="D13" library="leds" deviceset="LED" device="0603">
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
 </part>
-<part name="J5" library="con-ml" deviceset="ML20" device=""/>
+<part name="J6" library="con-ml" deviceset="ML20" device=""/>
 <part name="GND20" library="umich" deviceset="GND" device=""/>
 <part name="S19" library="switches" deviceset="TE_SSA12/SPDT" device=""/>
 <part name="S11" library="switches" deviceset="RM106772BCB" device=""/>
@@ -8696,7 +8696,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND100" library="umich" deviceset="GND" device=""/>
 <part name="R30" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ"/>
 <part name="GND101" library="umich" deviceset="GND" device=""/>
-<part name="J6" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
+<part name="J5" library="connector" deviceset="MICRO_USB_B_HIROSE_ZX62R-B-5P" device=""/>
 <part name="GND102" library="umich" deviceset="GND" device=""/>
 <part name="GND105" library="umich" deviceset="GND" device=""/>
 <part name="R50" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ"/>
@@ -10772,7 +10772,7 @@ Have a bunch of other 50Ω</text>
 <text x="55.88" y="27.94" size="5.08" layer="98" align="bottom-center">Ties SWDIO to Reset</text>
 </plain>
 <instances>
-<instance part="J5" gate="1" x="55.88" y="60.96"/>
+<instance part="J6" gate="1" x="55.88" y="60.96"/>
 <instance part="GND20" gate="1" x="43.18" y="40.64"/>
 <instance part="S19" gate="G$1" x="50.8" y="17.78"/>
 <instance part="S14" gate="G$1" x="144.78" y="154.94"/>
@@ -10882,11 +10882,11 @@ Have a bunch of other 50Ω</text>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="20"/>
+<pinref part="J6" gate="1" pin="20"/>
 <pinref part="GND20" gate="1" pin="GND"/>
 <wire x1="48.26" y1="71.12" x2="43.18" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="71.12" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="J5" gate="1" pin="18"/>
+<pinref part="J6" gate="1" pin="18"/>
 <wire x1="43.18" y1="68.58" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="66.04" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="63.5" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
@@ -10897,25 +10897,25 @@ Have a bunch of other 50Ω</text>
 <wire x1="43.18" y1="50.8" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
 <junction x="43.18" y="68.58"/>
-<pinref part="J5" gate="1" pin="16"/>
+<pinref part="J6" gate="1" pin="16"/>
 <wire x1="48.26" y1="66.04" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
 <junction x="43.18" y="66.04"/>
-<pinref part="J5" gate="1" pin="14"/>
+<pinref part="J6" gate="1" pin="14"/>
 <wire x1="48.26" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <junction x="43.18" y="63.5"/>
-<pinref part="J5" gate="1" pin="12"/>
+<pinref part="J6" gate="1" pin="12"/>
 <wire x1="48.26" y1="60.96" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
 <junction x="43.18" y="60.96"/>
-<pinref part="J5" gate="1" pin="10"/>
+<pinref part="J6" gate="1" pin="10"/>
 <wire x1="48.26" y1="58.42" x2="43.18" y2="58.42" width="0.1524" layer="91"/>
 <junction x="43.18" y="58.42"/>
-<pinref part="J5" gate="1" pin="8"/>
+<pinref part="J6" gate="1" pin="8"/>
 <wire x1="48.26" y1="55.88" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
 <junction x="43.18" y="55.88"/>
-<pinref part="J5" gate="1" pin="6"/>
+<pinref part="J6" gate="1" pin="6"/>
 <wire x1="48.26" y1="53.34" x2="43.18" y2="53.34" width="0.1524" layer="91"/>
 <junction x="43.18" y="53.34"/>
-<pinref part="J5" gate="1" pin="4"/>
+<pinref part="J6" gate="1" pin="4"/>
 <wire x1="48.26" y1="50.8" x2="43.18" y2="50.8" width="0.1524" layer="91"/>
 <junction x="43.18" y="50.8"/>
 </segment>
@@ -11038,49 +11038,49 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="JTAG_5V" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="19"/>
+<pinref part="J6" gate="1" pin="19"/>
 <wire x1="63.5" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
 <label x="66.04" y="71.12" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_DBGRQ" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="17"/>
+<pinref part="J6" gate="1" pin="17"/>
 <wire x1="63.5" y1="68.58" x2="66.04" y2="68.58" width="0.1524" layer="91"/>
 <label x="66.04" y="68.58" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_SWO/TDO" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="13"/>
+<pinref part="J6" gate="1" pin="13"/>
 <wire x1="63.5" y1="63.5" x2="66.04" y2="63.5" width="0.1524" layer="91"/>
 <label x="66.04" y="63.5" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_RTCK" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="11"/>
+<pinref part="J6" gate="1" pin="11"/>
 <wire x1="63.5" y1="60.96" x2="66.04" y2="60.96" width="0.1524" layer="91"/>
 <label x="66.04" y="60.96" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_TDI" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="5"/>
+<pinref part="J6" gate="1" pin="5"/>
 <wire x1="63.5" y1="53.34" x2="66.04" y2="53.34" width="0.1524" layer="91"/>
 <label x="66.04" y="53.34" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_NTRST" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="3"/>
+<pinref part="J6" gate="1" pin="3"/>
 <wire x1="63.5" y1="50.8" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
 <label x="66.04" y="50.8" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTAG_VTREF" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="1"/>
+<pinref part="J6" gate="1" pin="1"/>
 <wire x1="63.5" y1="48.26" x2="66.04" y2="48.26" width="0.1524" layer="91"/>
 <label x="66.04" y="48.26" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11330,7 +11330,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="JTAG_!RESET" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="15"/>
+<pinref part="J6" gate="1" pin="15"/>
 <wire x1="63.5" y1="66.04" x2="66.04" y2="66.04" width="0.1524" layer="91"/>
 <label x="66.04" y="66.04" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11367,7 +11367,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="JTAG_SWDCLK" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="9"/>
+<pinref part="J6" gate="1" pin="9"/>
 <wire x1="63.5" y1="58.42" x2="66.04" y2="58.42" width="0.1524" layer="91"/>
 <label x="66.04" y="58.42" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -11399,7 +11399,7 @@ Have a bunch of other 50Ω</text>
 </net>
 <net name="JTAG_SWDIO" class="0">
 <segment>
-<pinref part="J5" gate="1" pin="7"/>
+<pinref part="J6" gate="1" pin="7"/>
 <wire x1="63.5" y1="55.88" x2="66.04" y2="55.88" width="0.1524" layer="91"/>
 <label x="66.04" y="55.88" size="1.016" layer="95" xref="yes"/>
 </segment>
@@ -12435,7 +12435,7 @@ not used for this hub</text>
 <instance part="GND100" gate="1" x="66.04" y="68.58"/>
 <instance part="R30" gate="G$1" x="88.9" y="73.66"/>
 <instance part="GND101" gate="1" x="91.44" y="58.42"/>
-<instance part="J6" gate="G$1" x="7.62" y="172.72" smashed="yes" rot="MR0">
+<instance part="J5" gate="G$1" x="7.62" y="172.72" smashed="yes" rot="MR0">
 <attribute name="NAME" x="12.7" y="181.61" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="GND102" gate="1" x="88.9" y="104.14"/>
@@ -12501,7 +12501,7 @@ not used for this hub</text>
 <wire x1="88.9" y1="109.22" x2="88.9" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J6" gate="G$1" pin="GND"/>
+<pinref part="J5" gate="G$1" pin="GND"/>
 <wire x1="15.24" y1="167.64" x2="17.78" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="167.64" x2="17.78" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="GND105" gate="1" pin="GND"/>
@@ -12542,7 +12542,7 @@ not used for this hub</text>
 <label x="81.28" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J6" gate="G$1" pin="D+"/>
+<pinref part="J5" gate="G$1" pin="D+"/>
 <wire x1="17.78" y1="172.72" x2="15.24" y2="172.72" width="0.1524" layer="91"/>
 <label x="17.78" y="172.72" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -12554,7 +12554,7 @@ not used for this hub</text>
 <label x="81.28" y="127" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J6" gate="G$1" pin="D-"/>
+<pinref part="J5" gate="G$1" pin="D-"/>
 <wire x1="17.78" y1="175.26" x2="15.24" y2="175.26" width="0.1524" layer="91"/>
 <label x="17.78" y="175.26" size="1.27" layer="95" xref="yes"/>
 </segment>
