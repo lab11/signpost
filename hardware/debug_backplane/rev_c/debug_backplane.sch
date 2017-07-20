@@ -719,7 +719,7 @@ and Current Measurement</description>
 </devices>
 </deviceset>
 <deviceset name="M24C01" prefix="U">
-<description>1K I2C&#8482; Serial EEPROM</description>
+<description>1K I2C™ Serial EEPROM</description>
 <gates>
 <gate name="G$1" symbol="M24" x="0" y="0"/>
 </gates>
@@ -802,8 +802,8 @@ and Current Measurement</description>
 <connect gate="U1" pin="BIASL" pad="29"/>
 <connect gate="U1" pin="CAPH" pad="25"/>
 <connect gate="U1" pin="CAPL" pad="26"/>
-<connect gate="U1" pin="GNDANA" pad="17"/>
 <connect gate="U1" pin="GND" pad="6 30 48 THERMAL"/>
+<connect gate="U1" pin="GNDANA" pad="17"/>
 <connect gate="U1" pin="PA00" pad="1"/>
 <connect gate="U1" pin="PA01" pad="2"/>
 <connect gate="U1" pin="PA02" pad="3"/>
@@ -837,8 +837,8 @@ and Current Measurement</description>
 <connect gate="U1" pin="VDDIN" pad="8"/>
 <connect gate="U1" pin="VDDIO" pad="40 45"/>
 <connect gate="U1" pin="VDDOUT" pad="7"/>
-<connect gate="U1" pin="VLCDIN" pad="31"/>
 <connect gate="U1" pin="VLCD" pad="27"/>
+<connect gate="U1" pin="VLCDIN" pad="31"/>
 <connect gate="U1" pin="XIN32" pad="13"/>
 <connect gate="U1" pin="XOUT32" pad="14"/>
 </connects>
@@ -1030,6 +1030,7 @@ Low profile connectors, straight&lt;p&gt;
 <devices>
 <device name="" package="ML20">
 <connects>
+<connect gate="1" pin="1" pad="1"/>
 <connect gate="1" pin="10" pad="10"/>
 <connect gate="1" pin="11" pad="11"/>
 <connect gate="1" pin="12" pad="12"/>
@@ -1040,9 +1041,8 @@ Low profile connectors, straight&lt;p&gt;
 <connect gate="1" pin="17" pad="17"/>
 <connect gate="1" pin="18" pad="18"/>
 <connect gate="1" pin="19" pad="19"/>
-<connect gate="1" pin="1" pad="1"/>
-<connect gate="1" pin="20" pad="20"/>
 <connect gate="1" pin="2" pad="2"/>
+<connect gate="1" pin="20" pad="20"/>
 <connect gate="1" pin="3" pad="3"/>
 <connect gate="1" pin="4" pad="4"/>
 <connect gate="1" pin="5" pad="5"/>
@@ -2428,10 +2428,10 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 <connect gate="1" pin="CBUS2" pad="13"/>
 <connect gate="1" pin="CBUS3" pad="14"/>
 <connect gate="1" pin="CBUS4" pad="12"/>
+<connect gate="1" pin="GND" pad="7"/>
 <connect gate="1" pin="GND@1" pad="18"/>
 <connect gate="1" pin="GND@2" pad="21"/>
 <connect gate="1" pin="GND@A" pad="25"/>
-<connect gate="1" pin="GND" pad="7"/>
 <connect gate="1" pin="OSCI" pad="27"/>
 <connect gate="1" pin="OSCO" pad="28"/>
 <connect gate="1" pin="RXD" pad="5"/>
@@ -2439,8 +2439,8 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 <connect gate="1" pin="TXD" pad="1"/>
 <connect gate="1" pin="USBDM" pad="16"/>
 <connect gate="1" pin="USBDP" pad="15"/>
-<connect gate="1" pin="VCCIO" pad="4"/>
 <connect gate="1" pin="VCC" pad="20"/>
+<connect gate="1" pin="VCCIO" pad="4"/>
 </connects>
 <technologies>
 <technology name="">
@@ -2466,10 +2466,10 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 <connect gate="1" pin="CBUS2" pad="10"/>
 <connect gate="1" pin="CBUS3" pad="11"/>
 <connect gate="1" pin="CBUS4" pad="9"/>
+<connect gate="1" pin="GND" pad="4"/>
 <connect gate="1" pin="GND@1" pad="17"/>
 <connect gate="1" pin="GND@2" pad="20"/>
 <connect gate="1" pin="GND@A" pad="24"/>
-<connect gate="1" pin="GND" pad="4"/>
 <connect gate="1" pin="OSCI" pad="27"/>
 <connect gate="1" pin="OSCO" pad="28"/>
 <connect gate="1" pin="RXD" pad="2"/>
@@ -2477,8 +2477,8 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 <connect gate="1" pin="TXD" pad="30"/>
 <connect gate="1" pin="USBDM" pad="15"/>
 <connect gate="1" pin="USBDP" pad="14"/>
-<connect gate="1" pin="VCCIO" pad="1"/>
 <connect gate="1" pin="VCC" pad="19"/>
+<connect gate="1" pin="VCCIO" pad="1"/>
 </connects>
 <technologies>
 <technology name="">
@@ -2885,6 +2885,8 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 </library>
 <library name="lab11-frames">
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Frames and information fields for schematics.</description>
+<packages>
+</packages>
 <symbols>
 <symbol name="DOCFIELD_M">
 <wire x1="0" y1="0" x2="0" y2="5.08" width="0.1016" layer="94"/>
@@ -4476,7 +4478,7 @@ http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</description>
 <text x="94.01175" y="11.755121875" size="2.54" layer="94" font="vector" align="bottom-center">&gt;REV</text>
 </symbol>
 <symbol name="LETTER_L">
-<frame x1="0" y1="0" x2="254" y2="190.5" columns="12" rows="17" layer="94" border-left="no" border-right="no" border-top="no" border-bottom="no"/>
+<frame x1="0" y1="0" x2="254" y2="190.5" columns="12" rows="17" layer="94" border-left="no" border-top="no" border-right="no" border-bottom="no"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -5888,6 +5890,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <devices>
 <device name="/90" package="2X10/90">
 <connects>
+<connect gate="A" pin="1" pad="1"/>
 <connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="11" pad="11"/>
 <connect gate="A" pin="12" pad="12"/>
@@ -5898,9 +5901,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <connect gate="A" pin="17" pad="17"/>
 <connect gate="A" pin="18" pad="18"/>
 <connect gate="A" pin="19" pad="19"/>
-<connect gate="A" pin="1" pad="1"/>
-<connect gate="A" pin="20" pad="20"/>
 <connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="20" pad="20"/>
 <connect gate="A" pin="3" pad="3"/>
 <connect gate="A" pin="4" pad="4"/>
 <connect gate="A" pin="5" pad="5"/>
@@ -5915,6 +5917,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </device>
 <device name="" package="2X10">
 <connects>
+<connect gate="A" pin="1" pad="1"/>
 <connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="11" pad="11"/>
 <connect gate="A" pin="12" pad="12"/>
@@ -5925,9 +5928,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <connect gate="A" pin="17" pad="17"/>
 <connect gate="A" pin="18" pad="18"/>
 <connect gate="A" pin="19" pad="19"/>
-<connect gate="A" pin="1" pad="1"/>
-<connect gate="A" pin="20" pad="20"/>
 <connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="20" pad="20"/>
 <connect gate="A" pin="3" pad="3"/>
 <connect gate="A" pin="4" pad="4"/>
 <connect gate="A" pin="5" pad="5"/>
@@ -6022,8 +6024,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <devices>
 <device name="/90" package="2X05/90">
 <connects>
-<connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="2" pad="2"/>
 <connect gate="A" pin="3" pad="3"/>
 <connect gate="A" pin="4" pad="4"/>
@@ -6039,8 +6041,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </device>
 <device name="" package="2X05">
 <connects>
-<connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="10" pad="10"/>
 <connect gate="A" pin="2" pad="2"/>
 <connect gate="A" pin="3" pad="3"/>
 <connect gate="A" pin="4" pad="4"/>
@@ -7365,10 +7367,10 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
+<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
 <attribute name="DIGIKEY2" value="S9194-ND" constant="no"/>
 <attribute name="DIGIKEY3" value="S7072-ND" constant="no"/>
 <attribute name="DIGIKEY4" value="S7072-ND" constant="no"/>
-<attribute name="DIGIKEY" value="S9197-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -7403,8 +7405,8 @@ S high: D = D2</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY2" value="S7072-ND" constant="no"/>
 <attribute name="DIGIKEY" value="S9195-ND" constant="no"/>
+<attribute name="DIGIKEY2" value="S7072-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -7565,11 +7567,11 @@ S high: D = D2</text>
 <devices>
 <device name="QFN-N20" package="QFN-N20">
 <connects>
+<connect gate="G$1" pin="!INT" pad="17"/>
 <connect gate="G$1" pin="!INT0" pad="4"/>
 <connect gate="G$1" pin="!INT1" pad="7"/>
 <connect gate="G$1" pin="!INT2" pad="11"/>
 <connect gate="G$1" pin="!INT3" pad="14"/>
-<connect gate="G$1" pin="!INT" pad="17"/>
 <connect gate="G$1" pin="A0" pad="1"/>
 <connect gate="G$1" pin="A1" pad="2"/>
 <connect gate="G$1" pin="A2" pad="3"/>
@@ -7594,11 +7596,11 @@ S high: D = D2</text>
 </device>
 <device name="" package="SO20L">
 <connects>
+<connect gate="G$1" pin="!INT" pad="17"/>
 <connect gate="G$1" pin="!INT0" pad="4"/>
 <connect gate="G$1" pin="!INT1" pad="7"/>
 <connect gate="G$1" pin="!INT2" pad="11"/>
 <connect gate="G$1" pin="!INT3" pad="14"/>
-<connect gate="G$1" pin="!INT" pad="17"/>
 <connect gate="G$1" pin="A0" pad="1"/>
 <connect gate="G$1" pin="A1" pad="2"/>
 <connect gate="G$1" pin="A2" pad="3"/>
@@ -7842,6 +7844,8 @@ S high: D = D2</text>
  The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
  In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
  &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
 <symbols>
 <symbol name="GND">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
@@ -8235,6 +8239,8 @@ S high: D = D2</text>
 </devicesets>
 </library>
 <library name="umich">
+<packages>
+</packages>
 <symbols>
 <symbol name="GND">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
@@ -8264,9 +8270,11 @@ S high: D = D2</text>
 <attribute name="REV" value="C"/>
 <attribute name="TITLE" value="Signpost Debug Backplane"/>
 </attributes>
-<variantdefs/>
+<variantdefs>
+</variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0"/>
+<class number="0" name="default" width="0" drill="0">
+</class>
 </classes>
 <parts>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22pF">
@@ -8969,7 +8977,6 @@ S high: D = D2</text>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
 <part name="GND130" library="umich" deviceset="GND" device=""/>
 <part name="GND131" library="umich" deviceset="GND" device=""/>
-<part name="GND132" library="umich" deviceset="GND" device=""/>
 <part name="GND133" library="umich" deviceset="GND" device=""/>
 <part name="GND134" library="umich" deviceset="GND" device=""/>
 <part name="GND135" library="umich" deviceset="GND" device=""/>
@@ -9125,506 +9132,500 @@ S high: D = D2</text>
 <attribute name="MANUFACTURER" value="Vishay Siliconix"/>
 <attribute name="MPN" value="SI2302CDS-T1-E3"/>
 </part>
-<part name="R10" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="CRCW040227R0JNED"/>
 </part>
-<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R11" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R12" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R13" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R13" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R14" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R14" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R15" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R15" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R16" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50&#937;">
+<part name="R17" library="passives" deviceset="RESISTOR" device="0603_RES" value="50Ω">
 <attribute name="DESCRIPTION" value="RES SMD 49.9 OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM49.9BJCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="TRR03EZPF49R9"/>
 </part>
-<part name="R18" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R18" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R19" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R19" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017&#937;">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω">
 <attribute name="DESCRIPTION" value="RES SMD 0.017 OHM 1% 1/2W 0805"/>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="WSLP0805R0170FEB"/>
 </part>
-<part name="R20" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R20" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R21" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R21" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R22" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R22" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R23" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R23" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R24" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R24" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R25" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R25" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R26" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1k&#937;">
+<part name="R26" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9102CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V102JV"/>
 </part>
-<part name="R27" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k&#937;">
+<part name="R27" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1.5K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="311-1.5KGRCT-ND"/>
 <attribute name="MANUFACTURER" value="Yageo"/>
 <attribute name="MPN" value="RC0603JR-071K5L"/>
 </part>
-<part name="R28" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k&#937;">
+<part name="R28" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1.5K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="311-1.5KGRCT-ND"/>
 <attribute name="MANUFACTURER" value="Yageo"/>
 <attribute name="MPN" value="RC0603JR-071K5L"/>
 </part>
-<part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k&#937;">
+<part name="R29" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1.5K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="311-1.5KGRCT-ND"/>
 <attribute name="MANUFACTURER" value="Yageo"/>
 <attribute name="MPN" value="RC0603JR-071K5L"/>
 </part>
-<part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017&#937;">
+<part name="R2" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω">
 <attribute name="DESCRIPTION" value="RES SMD 0.017 OHM 1% 1/2W 0805"/>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="WSLP0805R0170FEB"/>
 </part>
-<part name="R30" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k&#937;">
+<part name="R30" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1.5K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="311-1.5KGRCT-ND"/>
 <attribute name="MANUFACTURER" value="Yageo"/>
 <attribute name="MPN" value="RC0603JR-071K5L"/>
 </part>
-<part name="R31" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8k&#937;">
+<part name="R31" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1.8K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V182JV"/>
 </part>
-<part name="R32" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8k&#937;">
+<part name="R32" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1.8K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V182JV"/>
 </part>
-<part name="R33" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8k&#937;">
+<part name="R33" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1.8K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V182JV"/>
 </part>
-<part name="R34" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8k&#937;">
+<part name="R34" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="1.8kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 1.8K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9182CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V182JV"/>
 </part>
-<part name="R35" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R35" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R36" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R36" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R37" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R37" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R38" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R38" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R39" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R39" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017&#937;">
+<part name="R3" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω">
 <attribute name="DESCRIPTION" value="RES SMD 0.017 OHM 1% 1/2W 0805"/>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="WSLP0805R0170FEB"/>
 </part>
-<part name="R40" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R40" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R41" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R41" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R42" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R42" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R43" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R43" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R44" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R44" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R45" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R45" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R46" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R47" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R48" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R49" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R49" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017&#937;">
+<part name="R4" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.017Ω">
 <attribute name="DESCRIPTION" value="RES SMD 0.017 OHM 1% 1/2W 0805"/>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="WSLP0805R0170FEB"/>
 </part>
-<part name="R50" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R50" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R51" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R51" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R52" library="passives" deviceset="RESISTOR" device="0603_RES" value="10k&#937;">
+<part name="R52" library="passives" deviceset="RESISTOR" device="0603_RES" value="10kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 5% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="P10KGCT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="ERJ-3GEYJ103V"/>
 </part>
-<part name="R53" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R53" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R54" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R54" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R55" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R55" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R56" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R56" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R57" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R57" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R58" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R58" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R59" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R59" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R5" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R6" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="CRCW040227R0JNED"/>
 </part>
-<part name="R60" library="passives" deviceset="RESISTOR" device="0603_RES" value="15k&#937;">
+<part name="R60" library="passives" deviceset="RESISTOR" device="0603_RES" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 15K OHM 1% 1/10W 0603"/>
 <attribute name="DIGIKEY" value="RHM15.0KCFCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="MCR03ERTF1502"/>
 </part>
-<part name="R61" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15k&#937;">
+<part name="R61" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 15K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9153CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V153JV"/>
 </part>
-<part name="R62" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15k&#937;">
+<part name="R62" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 15K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9153CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V153JV"/>
 </part>
-<part name="R63" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15k&#937;">
+<part name="R63" library="passives" deviceset="RESISTOR-ARRAY-4" device="1206" value="15kΩ">
 <attribute name="DESCRIPTION" value="RES ARRAY 4 RES 15K OHM 1206"/>
 <attribute name="DIGIKEY" value="Y9153CT-ND"/>
 <attribute name="MANUFACTURER" value="Panasonic"/>
 <attribute name="MPN" value="EXB-38V153JV"/>
 </part>
-<part name="R64" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k&#937;">
+<part name="R64" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F104CS"/>
 </part>
-<part name="R65" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k&#937;">
+<part name="R65" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F104CS"/>
 </part>
-<part name="R66" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k&#937;">
+<part name="R66" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F104CS"/>
 </part>
-<part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k&#937;">
+<part name="R67" library="passives" deviceset="RESISTOR" device="0603_RES" value="100kΩ">
 <attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="1276-3432-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F104CS"/>
 </part>
-<part name="R68" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R68" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R69" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R69" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R6" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R7" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="CRCW040227R0JNED"/>
 </part>
-<part name="R70" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R70" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R71" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R71" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R72" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R72" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R73" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R73" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R74" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R74" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R75" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R75" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R76" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R76" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R77" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
+<part name="R77" library="passives" deviceset="RESISTOR" device="0603_RES" value="1MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ105"/>
 </part>
-<part name="R78" library="passives" deviceset="RESISTOR" device="0603_RES" value="1M&#937;">
-<attribute name="DESCRIPTION" value="RES SMD 1M OHM 5% 1/4W 0603"/>
-<attribute name="DIGIKEY" value="RHM1MDCT-ND"/>
-<attribute name="MANUFACTURER" value="Rohm"/>
-<attribute name="MPN" value="ESR03EZPJ105"/>
-</part>
-<part name="R79" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R78" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R7" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R8" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="CRCW040227R0JNED"/>
 </part>
-<part name="R80" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R79" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R81" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R80" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R82" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R81" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R83" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R82" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R84" library="passives" deviceset="RESISTOR" device="0603_RES" value="10M&#937;">
+<part name="R83" library="passives" deviceset="RESISTOR" device="0603_RES" value="10MΩ">
 <attribute name="DESCRIPTION" value="RES SMD 10M OHM 5% 1/4W 0603"/>
 <attribute name="DIGIKEY" value="RHM10MDCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
 <attribute name="MPN" value="ESR03EZPJ106"/>
 </part>
-<part name="R85" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
-<part name="R8" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R84" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP"/>
+<part name="R9" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
 <attribute name="MPN" value="CRCW040227R0JNED"/>
 </part>
-<part name="R9" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27&#937;">
+<part name="R10" library="passives" deviceset="RESISTOR-HIGH_SPEED" device="0402" value="27Ω">
 <attribute name="DESCRIPTION" value="RES SMD 27 OHM 5% 1/16W 0402"/>
 <attribute name="DIGIKEY" value="541-27JCT-ND"/>
 <attribute name="MANUFACTURER" value="Vishay Dale"/>
@@ -9838,7 +9839,8 @@ S high: D = D2</text>
 <instance part="U$44" gate="G$1" x="162.56" y="106.68"/>
 <instance part="U$52" gate="G$1" x="162.56" y="165.1"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -10292,10 +10294,10 @@ S high: D = D2</text>
 </plain>
 <instances>
 <instance part="C64" gate="G$1" x="60.96" y="127">
-<attribute name="DIGIKEY" x="60.96" y="127" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="60.96" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C65" gate="G$1" x="48.26" y="127">
-<attribute name="DIGIKEY" x="48.26" y="127" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="48.26" y="127" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D1" gate="A" x="109.22" y="83.82"/>
 <instance part="D1" gate="B" x="109.22" y="78.74"/>
@@ -10306,7 +10308,7 @@ S high: D = D2</text>
 <instance part="D2" gate="C" x="109.22" y="53.34"/>
 <instance part="D2" gate="D" x="109.22" y="48.26"/>
 <instance part="D34" gate="G$1" x="175.26" y="157.48" rot="R270">
-<attribute name="DIGIKEY" x="175.26" y="157.48" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="175.26" y="157.48" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D3" gate="A" x="109.22" y="43.18"/>
 <instance part="D3" gate="D" x="182.88" y="149.86" rot="R270"/>
@@ -10315,11 +10317,9 @@ S high: D = D2</text>
 <instance part="GND116" gate="1" x="152.4" y="55.88"/>
 <instance part="GND130" gate="1" x="180.34" y="106.68"/>
 <instance part="GND131" gate="1" x="48.26" y="109.22"/>
-<instance part="GND132" gate="1" x="152.4" y="106.68"/>
 <instance part="GND89" gate="1" x="132.08" y="101.6"/>
 <instance part="Q7" gate="G$1" x="177.8" y="132.08" rot="MR0"/>
 <instance part="R16" gate="G$1" x="175.26" y="149.86" rot="R90"/>
-<instance part="R78" gate="G$1" x="152.4" y="124.46" rot="R90"/>
 <instance part="S20" gate="G$1" x="142.24" y="63.5"/>
 <instance part="S23" gate="G$1" x="81.28" y="127" smashed="yes" rot="R180">
 <attribute name="NAME" x="83.82" y="124.46" size="1.27" layer="95" rot="R180"/>
@@ -10329,7 +10329,8 @@ S high: D = D2</text>
 <instance part="U$76" gate="G$1" x="175.26" y="165.1"/>
 <instance part="U15" gate="G$1" x="104.14" y="132.08"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -10422,11 +10423,6 @@ S high: D = D2</text>
 <junction x="71.12" y="119.38"/>
 </segment>
 <segment>
-<pinref part="GND132" gate="1" pin="GND"/>
-<pinref part="R78" gate="G$1" pin="1"/>
-<wire x1="152.4" y1="119.38" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND130" gate="1" pin="GND"/>
 <pinref part="Q7" gate="G$1" pin="S"/>
 <wire x1="180.34" y1="121.92" x2="180.34" y2="109.22" width="0.1524" layer="91"/>
@@ -10503,15 +10499,11 @@ S high: D = D2</text>
 <segment>
 <pinref part="Q7" gate="G$1" pin="G1"/>
 <pinref part="Q7" gate="G$1" pin="G2"/>
-<pinref part="R78" gate="G$1" pin="2"/>
 <pinref part="U15" gate="G$1" pin="!RESET"/>
-<wire x1="121.92" y1="132.08" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="132.08" x2="152.4" y2="127" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="132.08" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="127" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="132.08" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="127" x2="165.1" y2="127" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="132.08" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
-<junction x="152.4" y="132.08"/>
 <junction x="165.1" y="132.08"/>
 </segment>
 </net>
@@ -10581,29 +10573,29 @@ S high: D = D2</text>
 <text x="195.58" y="114.3" size="1.27" layer="98" align="bottom-center">Overvoltage protection</text>
 <text x="205.74" y="91.44" size="5.08" layer="98" align="bottom-center">3V3 Regulator</text>
 <text x="208.28" y="149.86" size="5.08" layer="98" align="bottom-center">5V Barrel Jack</text>
-<text x="223.52" y="111.76" size="1.016" layer="98" align="bottom-center">(5V - 2V) / 30mA = 100&#937;
-Have a bunch of other 50&#937;</text>
+<text x="223.52" y="111.76" size="1.016" layer="98" align="bottom-center">(5V - 2V) / 30mA = 100Ω
+Have a bunch of other 50Ω</text>
 <text x="25.4" y="124.46" size="5.08" layer="98" align="bottom-center">Address
 Translator</text>
 <text x="251.46" y="187.96" size="5.08" layer="98" align="top-right">Power Supply</text>
 </plain>
 <instances>
 <instance part="C13" gate="G$1" x="220.98" y="71.12">
-<attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C58" gate="G$1" x="101.6" y="162.56"/>
 <instance part="C59" gate="G$1" x="101.6" y="119.38"/>
 <instance part="C60" gate="G$1" x="111.76" y="76.2"/>
 <instance part="C61" gate="G$1" x="111.76" y="33.02"/>
 <instance part="C66" gate="G$1" x="177.8" y="76.2">
-<attribute name="DIGIKEY" x="177.8" y="76.2" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="177.8" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C67" gate="G$1" x="228.6" y="76.2">
-<attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C71" gate="G$1" x="236.22" y="129.54"/>
 <instance part="D23" gate="G$1" x="226.06" y="132.08" rot="R270">
-<attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="226.06" y="132.08" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME10" gate="G$1" x="0" y="0"/>
 <instance part="FRAME10" gate="G$2" x="152.4" y="0"/>
@@ -10613,32 +10605,32 @@ Translator</text>
 <instance part="GND96" gate="1" x="236.22" y="119.38"/>
 <instance part="J7" gate="G$1" x="167.64" y="127"/>
 <instance part="Q8" gate="G$1" x="213.36" y="139.7" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" x="213.36" y="139.7" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="213.36" y="139.7" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="209.55" y="138.43" size="1.778" layer="95" rot="R180"/>
 </instance>
 <instance part="R15" gate="G$1" x="226.06" y="124.46" rot="R90"/>
 <instance part="R17" gate="G$1" x="218.44" y="119.38"/>
 <instance part="R1" gate="G$1" x="101.6" y="175.26" rot="R90">
-<attribute name="DIGIKEY" x="101.6" y="175.26" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="101.6" y="175.26" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R2" gate="G$1" x="101.6" y="132.08" rot="R90"/>
 <instance part="R31" gate="A" x="73.66" y="167.64" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="167.64" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="73.66" y="167.64" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R31" gate="B" x="66.04" y="167.64" rot="R90"/>
 <instance part="R31" gate="C" x="81.28" y="167.64" rot="R90"/>
 <instance part="R32" gate="A" x="73.66" y="124.46" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="124.46" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="73.66" y="124.46" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R32" gate="B" x="66.04" y="124.46" rot="R90"/>
 <instance part="R32" gate="C" x="81.28" y="124.46" rot="R90"/>
 <instance part="R33" gate="A" x="73.66" y="81.28" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="81.28" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="73.66" y="81.28" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R33" gate="B" x="66.04" y="81.28" rot="R90"/>
 <instance part="R33" gate="C" x="81.28" y="81.28" rot="R90"/>
 <instance part="R34" gate="A" x="73.66" y="35.56" rot="R90">
-<attribute name="DIGIKEY" x="73.66" y="35.56" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="73.66" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R34" gate="B" x="66.04" y="35.56" rot="R90"/>
 <instance part="R34" gate="C" x="81.28" y="35.56" rot="R90"/>
@@ -10663,7 +10655,8 @@ Translator</text>
 <instance part="U22" gate="G$1" x="33.02" y="88.9"/>
 <instance part="U9" gate="G$1" x="137.16" y="165.1" rot="MR0"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!SMBALERT" class="0">
 <segment>
@@ -11242,7 +11235,8 @@ Translator</text>
 <instance part="TP6" gate="G$1" x="162.56" y="149.86" rot="R270"/>
 <instance part="TP7" gate="G$1" x="177.8" y="149.86" rot="R270"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="GND" class="0">
 <segment>
@@ -11557,23 +11551,23 @@ Translator</text>
 </plain>
 <instances>
 <instance part="D14" gate="G$1" x="53.34" y="147.32" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" x="53.34" y="147.32" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="53.34" y="147.32" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="53.34" y="152.4" size="1.778" layer="95" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
 <instance part="D15" gate="G$1" x="55.88" y="147.32" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" x="55.88" y="147.32" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="55.88" y="147.32" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="55.88" y="152.4" size="1.778" layer="95" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
 <instance part="D16" gate="G$1" x="58.42" y="147.32" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" x="58.42" y="147.32" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="58.42" y="147.32" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="58.42" y="152.4" size="1.778" layer="95" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
 <instance part="D17" gate="G$1" x="60.96" y="147.32" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" x="60.96" y="147.32" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="60.96" y="147.32" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="60.96" y="152.4" size="1.778" layer="95" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
 <instance part="D18" gate="G$1" x="63.5" y="147.32" smashed="yes" rot="R270">
-<attribute name="DIGIKEY" x="63.5" y="147.32" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="63.5" y="147.32" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 <attribute name="NAME" x="63.5" y="152.4" size="1.778" layer="95" ratio="12" rot="R90" align="bottom-center"/>
 </instance>
 <instance part="FRAME15" gate="G$1" x="0" y="0"/>
@@ -11661,7 +11655,8 @@ Translator</text>
 <instance part="U$55" gate="G$1" x="177.8" y="154.94"/>
 <instance part="U$56" gate="G$1" x="180.34" y="60.96"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="3V3_UNMETERED" class="0">
 <segment>
@@ -12353,16 +12348,16 @@ Translator</text>
 <instance part="C47" gate="G$1" x="170.18" y="116.84"/>
 <instance part="C48" gate="G$1" x="154.94" y="154.94"/>
 <instance part="D10" gate="G$1" x="76.2" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="76.2" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="76.2" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D11" gate="G$1" x="83.82" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="83.82" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="83.82" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D12" gate="G$1" x="200.66" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="200.66" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="200.66" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D13" gate="G$1" x="208.28" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="208.28" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="208.28" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME12" gate="G$1" x="0" y="0"/>
 <instance part="FRAME12" gate="G$2" x="152.4" y="0"/>
@@ -12381,15 +12376,15 @@ Translator</text>
 <instance part="Q2" gate="G$1" x="78.74" y="50.8" rot="MR0"/>
 <instance part="Q3" gate="G$1" x="203.2" y="50.8" rot="MR0"/>
 <instance part="R18" gate="A" x="76.2" y="68.58" rot="R90">
-<attribute name="DIGIKEY" x="76.2" y="68.58" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="76.2" y="68.58" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R18" gate="B" x="83.82" y="68.58" rot="R90"/>
 <instance part="R19" gate="A" x="200.66" y="68.58" rot="R90">
-<attribute name="DIGIKEY" x="200.66" y="68.58" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="200.66" y="68.58" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R19" gate="B" x="208.28" y="68.58" rot="R90"/>
 <instance part="R68" gate="G$1" x="43.18" y="40.64" rot="R90">
-<attribute name="DIGIKEY" x="43.18" y="40.64" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="43.18" y="40.64" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R69" gate="G$1" x="53.34" y="40.64" rot="R90"/>
 <instance part="R70" gate="G$1" x="167.64" y="40.64" rot="R90"/>
@@ -12401,7 +12396,8 @@ Translator</text>
 <instance part="U2" gate="1" x="68.58" y="139.7"/>
 <instance part="U3" gate="1" x="193.04" y="139.7"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="3V3_UNMETERED" class="0">
 <segment>
@@ -12769,16 +12765,16 @@ Translator</text>
 <instance part="C51" gate="G$1" x="193.04" y="119.38"/>
 <instance part="C52" gate="G$1" x="182.88" y="119.38"/>
 <instance part="D19" gate="G$1" x="104.14" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="104.14" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="104.14" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D20" gate="G$1" x="111.76" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="111.76" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="111.76" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D21" gate="G$1" x="233.68" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="233.68" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="233.68" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D22" gate="G$1" x="241.3" y="78.74" rot="R270">
-<attribute name="DIGIKEY" x="241.3" y="78.74" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="241.3" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME13" gate="G$1" x="0" y="0"/>
 <instance part="FRAME13" gate="G$2" x="152.4" y="0"/>
@@ -12797,11 +12793,11 @@ Translator</text>
 <instance part="Q4" gate="G$1" x="106.68" y="50.8" rot="MR0"/>
 <instance part="Q5" gate="G$1" x="236.22" y="50.8" rot="MR0"/>
 <instance part="R20" gate="A" x="104.14" y="68.58" rot="R90">
-<attribute name="DIGIKEY" x="104.14" y="68.58" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="104.14" y="68.58" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R20" gate="B" x="111.76" y="68.58" rot="R90"/>
 <instance part="R21" gate="A" x="233.68" y="68.58" rot="R90">
-<attribute name="DIGIKEY" x="233.68" y="68.58" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="233.68" y="68.58" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R21" gate="B" x="241.3" y="68.58" rot="R90"/>
 <instance part="R72" gate="G$1" x="68.58" y="40.64" rot="R90"/>
@@ -12817,7 +12813,8 @@ Translator</text>
 <instance part="U4" gate="1" x="86.36" y="142.24"/>
 <instance part="U5" gate="1" x="215.9" y="142.24"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="3V3_UNMETERED" class="0">
 <segment>
@@ -13239,7 +13236,8 @@ port pwr grouped</text>
 <instance part="U32" gate="G$1" x="111.76" y="93.98"/>
 <instance part="Y2" gate="G$1" x="81.28" y="78.74" rot="R90"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!POWER_ON_RESET" class="0">
 <segment>
@@ -13617,28 +13615,28 @@ port pwr grouped</text>
 <instance part="C27" gate="G$1" x="25.4" y="127" rot="R270"/>
 <instance part="C28" gate="G$1" x="149.86" y="127" rot="R270"/>
 <instance part="D26" gate="G$1" x="101.6" y="99.06">
-<attribute name="DIGIKEY" x="101.6" y="99.06" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="101.6" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D27" gate="G$1" x="101.6" y="91.44">
-<attribute name="DIGIKEY" x="101.6" y="91.44" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="101.6" y="91.44" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D28" gate="G$1" x="101.6" y="83.82">
-<attribute name="DIGIKEY" x="101.6" y="83.82" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="101.6" y="83.82" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D29" gate="G$1" x="101.6" y="76.2">
-<attribute name="DIGIKEY" x="101.6" y="76.2" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="101.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D30" gate="G$1" x="228.6" y="99.06">
-<attribute name="DIGIKEY" x="228.6" y="99.06" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D31" gate="G$1" x="228.6" y="91.44">
-<attribute name="DIGIKEY" x="228.6" y="91.44" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="91.44" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D32" gate="G$1" x="228.6" y="83.82">
-<attribute name="DIGIKEY" x="228.6" y="83.82" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="83.82" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D33" gate="G$1" x="228.6" y="76.2">
-<attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="76.2" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME7" gate="G$1" x="0" y="0"/>
 <instance part="FRAME7" gate="G$2" x="152.4" y="0"/>
@@ -13651,39 +13649,39 @@ port pwr grouped</text>
 <instance part="GND64" gate="1" x="63.5" y="86.36"/>
 <instance part="GND81" gate="1" x="187.96" y="86.36"/>
 <instance part="R25" gate="A" x="111.76" y="99.06">
-<attribute name="DIGIKEY" x="111.76" y="99.06" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="111.76" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R25" gate="B" x="111.76" y="91.44"/>
 <instance part="R25" gate="C" x="111.76" y="83.82"/>
 <instance part="R25" gate="D" x="111.76" y="76.2"/>
 <instance part="R26" gate="A" x="238.76" y="99.06">
-<attribute name="DIGIKEY" x="238.76" y="99.06" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="238.76" y="99.06" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R26" gate="B" x="238.76" y="91.44"/>
 <instance part="R26" gate="C" x="238.76" y="83.82"/>
 <instance part="R26" gate="D" x="238.76" y="76.2"/>
-<instance part="R79" gate="G$1" x="66.04" y="99.06" smashed="yes" rot="R90">
-<attribute name="DIGIKEY" x="66.04" y="99.06" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<instance part="R78" gate="G$1" x="66.04" y="99.06" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" x="66.04" y="99.06" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 <attribute name="NAME" x="65.8114" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="65.786" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R80" gate="G$1" x="68.58" y="99.06" smashed="yes" rot="R90">
+<instance part="R79" gate="G$1" x="68.58" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="68.3514" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="68.326" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R81" gate="G$1" x="71.12" y="99.06" smashed="yes" rot="R90">
+<instance part="R80" gate="G$1" x="71.12" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="70.8914" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="70.866" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R82" gate="G$1" x="190.5" y="99.06" smashed="yes" rot="R90">
+<instance part="R81" gate="G$1" x="190.5" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="190.2714" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="190.246" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R83" gate="G$1" x="193.04" y="99.06" smashed="yes" rot="R90">
+<instance part="R82" gate="G$1" x="193.04" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="192.8114" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="192.786" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R84" gate="G$1" x="195.58" y="99.06" smashed="yes" rot="R90">
+<instance part="R83" gate="G$1" x="195.58" y="99.06" smashed="yes" rot="R90">
 <attribute name="NAME" x="195.3514" y="91.44" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="195.326" y="100.076" size="1.778" layer="96" rot="R90"/>
 </instance>
@@ -13696,7 +13694,8 @@ port pwr grouped</text>
 <instance part="U17" gate="G$1" x="48.26" y="114.3"/>
 <instance part="U18" gate="G$1" x="172.72" y="114.3"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -13766,9 +13765,9 @@ port pwr grouped</text>
 </segment>
 <segment>
 <pinref part="GND64" gate="1" pin="GND"/>
+<pinref part="R78" gate="G$1" pin="1"/>
 <pinref part="R79" gate="G$1" pin="1"/>
 <pinref part="R80" gate="G$1" pin="1"/>
-<pinref part="R81" gate="G$1" pin="1"/>
 <pinref part="U17" gate="G$1" pin="GND"/>
 <wire x1="60.96" y1="101.6" x2="63.5" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="101.6" x2="63.5" y2="91.44" width="0.1524" layer="91"/>
@@ -13807,9 +13806,9 @@ port pwr grouped</text>
 </segment>
 <segment>
 <pinref part="GND81" gate="1" pin="GND"/>
+<pinref part="R81" gate="G$1" pin="1"/>
 <pinref part="R82" gate="G$1" pin="1"/>
 <pinref part="R83" gate="G$1" pin="1"/>
-<pinref part="R84" gate="G$1" pin="1"/>
 <pinref part="U18" gate="G$1" pin="GND"/>
 <wire x1="185.42" y1="101.6" x2="187.96" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="101.6" x2="187.96" y2="91.44" width="0.1524" layer="91"/>
@@ -13904,7 +13903,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD0_ISO_P0" class="0">
 <segment>
-<pinref part="R79" gate="G$1" pin="2"/>
+<pinref part="R78" gate="G$1" pin="2"/>
 <pinref part="S21" gate="G$1" pin="4TA"/>
 <pinref part="U17" gate="G$1" pin="P0"/>
 <wire x1="60.96" y1="124.46" x2="66.04" y2="124.46" width="0.1524" layer="91"/>
@@ -13915,7 +13914,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD0_ISO_P1" class="0">
 <segment>
-<pinref part="R80" gate="G$1" pin="2"/>
+<pinref part="R79" gate="G$1" pin="2"/>
 <pinref part="S21" gate="G$1" pin="3TA"/>
 <pinref part="U17" gate="G$1" pin="P1"/>
 <wire x1="60.96" y1="121.92" x2="68.58" y2="121.92" width="0.1524" layer="91"/>
@@ -13927,7 +13926,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD0_ISO_P2" class="0">
 <segment>
-<pinref part="R81" gate="G$1" pin="2"/>
+<pinref part="R80" gate="G$1" pin="2"/>
 <pinref part="S21" gate="G$1" pin="2TA"/>
 <pinref part="U17" gate="G$1" pin="P2"/>
 <wire x1="60.96" y1="119.38" x2="71.12" y2="119.38" width="0.1524" layer="91"/>
@@ -13982,7 +13981,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD1_ISO_P0" class="0">
 <segment>
-<pinref part="R82" gate="G$1" pin="2"/>
+<pinref part="R81" gate="G$1" pin="2"/>
 <pinref part="S22" gate="G$1" pin="4TA"/>
 <pinref part="U18" gate="G$1" pin="P0"/>
 <wire x1="185.42" y1="124.46" x2="190.5" y2="124.46" width="0.1524" layer="91"/>
@@ -13993,7 +13992,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD1_ISO_P1" class="0">
 <segment>
-<pinref part="R83" gate="G$1" pin="2"/>
+<pinref part="R82" gate="G$1" pin="2"/>
 <pinref part="S22" gate="G$1" pin="3TA"/>
 <pinref part="U18" gate="G$1" pin="P1"/>
 <wire x1="185.42" y1="121.92" x2="193.04" y2="121.92" width="0.1524" layer="91"/>
@@ -14005,7 +14004,7 @@ port pwr grouped</text>
 </net>
 <net name="MOD1_ISO_P2" class="0">
 <segment>
-<pinref part="R84" gate="G$1" pin="2"/>
+<pinref part="R83" gate="G$1" pin="2"/>
 <pinref part="S22" gate="G$1" pin="2TA"/>
 <pinref part="U18" gate="G$1" pin="P2"/>
 <wire x1="185.42" y1="119.38" x2="195.58" y2="119.38" width="0.1524" layer="91"/>
@@ -14154,7 +14153,7 @@ port pwr grouped</text>
 <instance part="C37" gate="G$1" x="66.04" y="137.16"/>
 <instance part="C38" gate="G$1" x="66.04" y="106.68"/>
 <instance part="C68" gate="G$1" x="154.94" y="116.84">
-<attribute name="DIGIKEY" x="154.94" y="116.84" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="154.94" y="116.84" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C69" gate="G$1" x="154.94" y="93.98"/>
 <instance part="FRAME4" gate="G$1" x="0" y="0"/>
@@ -14178,7 +14177,8 @@ port pwr grouped</text>
 <instance part="U7" gate="G$1" x="50.8" y="127"/>
 <instance part="U8" gate="G$1" x="50.8" y="96.52"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="GND" class="0">
 <segment>
@@ -14494,7 +14494,8 @@ Backplane --&gt; Module</text>
 <instance part="U26" gate="G$1" x="154.94" y="121.92"/>
 <instance part="U27" gate="G$1" x="154.94" y="96.52"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="CONT_MOD0_IN" class="0">
 <segment>
@@ -14803,7 +14804,7 @@ are "externally" powered
 <instance part="GND68" gate="1" x="93.98" y="12.7"/>
 <instance part="GND71" gate="1" x="45.72" y="38.1"/>
 <instance part="R27" gate="G$1" x="71.12" y="154.94" rot="R90">
-<attribute name="DIGIKEY" x="71.12" y="154.94" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="71.12" y="154.94" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R28" gate="G$1" x="71.12" y="91.44"/>
 <instance part="R49" gate="G$1" x="190.5" y="71.12"/>
@@ -14813,13 +14814,13 @@ are "externally" powered
 <instance part="R61" gate="C" x="190.5" y="165.1"/>
 <instance part="R61" gate="D" x="233.68" y="139.7"/>
 <instance part="R62" gate="A" x="233.68" y="157.48">
-<attribute name="DIGIKEY" x="233.68" y="157.48" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="233.68" y="157.48" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R62" gate="B" x="233.68" y="165.1"/>
 <instance part="R62" gate="C" x="190.5" y="96.52"/>
 <instance part="R62" gate="D" x="190.5" y="114.3"/>
 <instance part="R63" gate="A" x="190.5" y="121.92">
-<attribute name="DIGIKEY" x="190.5" y="121.92" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="190.5" y="121.92" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R63" gate="B" x="233.68" y="96.52"/>
 <instance part="R63" gate="C" x="233.68" y="114.3"/>
@@ -14838,7 +14839,8 @@ are "externally" powered
 <instance part="U31" gate="G$1" x="93.98" y="111.76"/>
 <instance part="Y1" gate="G$1" x="63.5" y="96.52" rot="R90"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -15458,7 +15460,8 @@ pair of signals by flipping +/-</text>
 <instance part="U$62" gate="G$1" x="139.7" y="121.92"/>
 <instance part="U30" gate="G$1" x="93.98" y="106.68"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="3V3_UNMETERED" class="0">
 <segment>
@@ -15598,7 +15601,7 @@ pair of signals by flipping +/-</text>
 <instance part="C35" gate="G$1" x="177.8" y="137.16" rot="R90"/>
 <instance part="C36" gate="G$1" x="177.8" y="111.76" rot="R90"/>
 <instance part="C3" gate="G$1" x="45.72" y="119.38">
-<attribute name="DIGIKEY" x="45.72" y="119.38" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="45.72" y="119.38" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C4" gate="G$1" x="55.88" y="119.38"/>
 <instance part="C5" gate="G$1" x="45.72" y="93.98"/>
@@ -15618,9 +15621,9 @@ pair of signals by flipping +/-</text>
 <instance part="GND56" gate="1" x="233.68" y="86.36"/>
 <instance part="GND57" gate="1" x="233.68" y="111.76"/>
 <instance part="GND8" gate="1" x="33.02" y="55.88"/>
-<instance part="R10" gate="G$1" x="63.5" y="73.66"/>
+<instance part="R5" gate="G$1" x="63.5" y="73.66"/>
 <instance part="R11" gate="G$1" x="226.06" y="124.46" smashed="yes">
-<attribute name="DIGIKEY" x="226.06" y="124.46" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="226.06" y="124.46" size="1.016" layer="96" align="bottom-center" display="off"/>
 <attribute name="NAME" x="218.44" y="122.1486" size="1.778" layer="95"/>
 <attribute name="VALUE" x="227.33" y="122.428" size="1.778" layer="96"/>
 </instance>
@@ -15637,26 +15640,27 @@ pair of signals by flipping +/-</text>
 <attribute name="VALUE" x="227.33" y="94.488" size="1.778" layer="96"/>
 </instance>
 <instance part="R53" gate="G$1" x="68.58" y="119.38" rot="R90">
-<attribute name="DIGIKEY" x="68.58" y="119.38" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="68.58" y="119.38" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R54" gate="G$1" x="76.2" y="119.38" rot="R90"/>
 <instance part="R55" gate="G$1" x="68.58" y="93.98" rot="R90"/>
 <instance part="R56" gate="G$1" x="76.2" y="93.98" rot="R90"/>
 <instance part="R57" gate="G$1" x="68.58" y="68.58" rot="R90"/>
 <instance part="R58" gate="G$1" x="76.2" y="68.58" rot="R90"/>
-<instance part="R5" gate="G$1" x="53.34" y="129.54">
-<attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" display="off" align="bottom-center"/>
+<instance part="R6" gate="G$1" x="53.34" y="129.54">
+<attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
-<instance part="R6" gate="G$1" x="63.5" y="124.46"/>
-<instance part="R7" gate="G$1" x="53.34" y="104.14"/>
-<instance part="R8" gate="G$1" x="63.5" y="99.06"/>
-<instance part="R9" gate="G$1" x="53.34" y="78.74"/>
+<instance part="R7" gate="G$1" x="63.5" y="124.46"/>
+<instance part="R8" gate="G$1" x="53.34" y="104.14"/>
+<instance part="R9" gate="G$1" x="63.5" y="99.06"/>
+<instance part="R10" gate="G$1" x="53.34" y="78.74"/>
 <instance part="U$19" gate="G$1" x="190.5" y="134.62"/>
 <instance part="U$20" gate="G$1" x="190.5" y="109.22"/>
 <instance part="U28" gate="G$1" x="205.74" y="127"/>
 <instance part="U29" gate="G$1" x="205.74" y="101.6"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="GND" class="0">
 <segment>
@@ -15776,7 +15780,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DM1" class="0">
 <segment>
 <pinref part="C6" gate="G$1" pin="1"/>
-<pinref part="R8" gate="G$1" pin="P$2"/>
+<pinref part="R9" gate="G$1" pin="P$2"/>
 <wire x1="27.94" y1="99.06" x2="55.88" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="99.06" x2="55.88" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="99.06" x2="55.88" y2="99.06" width="0.1524" layer="91"/>
@@ -15787,7 +15791,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DM2" class="0">
 <segment>
 <pinref part="C4" gate="G$1" pin="1"/>
-<pinref part="R6" gate="G$1" pin="P$2"/>
+<pinref part="R7" gate="G$1" pin="P$2"/>
 <wire x1="27.94" y1="124.46" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="121.92" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="124.46" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
@@ -15798,7 +15802,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DM3" class="0">
 <segment>
 <pinref part="C8" gate="G$1" pin="1"/>
-<pinref part="R10" gate="G$1" pin="P$2"/>
+<pinref part="R5" gate="G$1" pin="P$2"/>
 <wire x1="27.94" y1="73.66" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="73.66" x2="55.88" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="73.66" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
@@ -15809,7 +15813,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DP1" class="0">
 <segment>
 <pinref part="C5" gate="G$1" pin="1"/>
-<pinref part="R7" gate="G$1" pin="P$2"/>
+<pinref part="R8" gate="G$1" pin="P$2"/>
 <wire x1="43.18" y1="101.6" x2="27.94" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="104.14" x2="43.18" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="104.14" x2="45.72" y2="104.14" width="0.1524" layer="91"/>
@@ -15822,7 +15826,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DP2" class="0">
 <segment>
 <pinref part="C3" gate="G$1" pin="1"/>
-<pinref part="R5" gate="G$1" pin="P$2"/>
+<pinref part="R6" gate="G$1" pin="P$2"/>
 <wire x1="27.94" y1="127" x2="43.18" y2="127" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="129.54" x2="43.18" y2="127" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="121.92" x2="45.72" y2="129.54" width="0.1524" layer="91"/>
@@ -15835,7 +15839,7 @@ pair of signals by flipping +/-</text>
 <net name="HUB_DP3" class="0">
 <segment>
 <pinref part="C7" gate="G$1" pin="1"/>
-<pinref part="R9" gate="G$1" pin="P$2"/>
+<pinref part="R10" gate="G$1" pin="P$2"/>
 <wire x1="43.18" y1="76.2" x2="27.94" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="78.74" x2="43.18" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="78.74" x2="43.18" y2="78.74" width="0.1524" layer="91"/>
@@ -15849,7 +15853,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="D36" gate="G$1" pin="D"/>
 <pinref part="R53" gate="G$1" pin="2"/>
-<pinref part="R5" gate="G$1" pin="P$1"/>
+<pinref part="R6" gate="G$1" pin="P$1"/>
 <pinref part="U28" gate="G$1" pin="D+"/>
 <wire x1="121.92" y1="116.84" x2="121.92" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="129.54" x2="193.04" y2="129.54" width="0.1524" layer="91"/>
@@ -15866,7 +15870,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="D36" gate="G$1" pin="C"/>
 <pinref part="R54" gate="G$1" pin="2"/>
-<pinref part="R6" gate="G$1" pin="P$1"/>
+<pinref part="R7" gate="G$1" pin="P$1"/>
 <pinref part="U28" gate="G$1" pin="D-"/>
 <wire x1="137.16" y1="116.84" x2="142.24" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="116.84" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
@@ -15904,7 +15908,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="D36" gate="G$1" pin="A"/>
 <pinref part="R55" gate="G$1" pin="2"/>
-<pinref part="R7" gate="G$1" pin="P$1"/>
+<pinref part="R8" gate="G$1" pin="P$1"/>
 <pinref part="U29" gate="G$1" pin="D+"/>
 <wire x1="137.16" y1="119.38" x2="139.7" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="104.14" x2="193.04" y2="104.14" width="0.1524" layer="91"/>
@@ -15921,7 +15925,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="D36" gate="G$1" pin="B"/>
 <pinref part="R56" gate="G$1" pin="2"/>
-<pinref part="R8" gate="G$1" pin="P$1"/>
+<pinref part="R9" gate="G$1" pin="P$1"/>
 <pinref part="U29" gate="G$1" pin="D-"/>
 <wire x1="124.46" y1="119.38" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="99.06" x2="193.04" y2="99.06" width="0.1524" layer="91"/>
@@ -15959,7 +15963,7 @@ pair of signals by flipping +/-</text>
 <segment>
 <pinref part="D35" gate="G$1" pin="B"/>
 <pinref part="R57" gate="G$1" pin="2"/>
-<pinref part="R9" gate="G$1" pin="P$1"/>
+<pinref part="R10" gate="G$1" pin="P$1"/>
 <wire x1="124.46" y1="68.58" x2="124.46" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="78.74" x2="147.32" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="127" y1="68.58" x2="124.46" y2="68.58" width="0.1524" layer="91"/>
@@ -15975,7 +15979,7 @@ pair of signals by flipping +/-</text>
 <net name="MOD2_USB-" class="0">
 <segment>
 <pinref part="D35" gate="G$1" pin="A"/>
-<pinref part="R10" gate="G$1" pin="P$1"/>
+<pinref part="R5" gate="G$1" pin="P$1"/>
 <pinref part="R58" gate="G$1" pin="2"/>
 <wire x1="137.16" y1="68.58" x2="139.7" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="68.58" x2="139.7" y2="73.66" width="0.1524" layer="91"/>
@@ -16083,7 +16087,8 @@ pair of signals by flipping +/-</text>
 <instance part="U$27" gate="G$1" x="55.88" y="96.52"/>
 <instance part="U$45" gate="G$1" x="109.22" y="101.6"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="GND" class="0">
 <segment>
@@ -16329,46 +16334,46 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </plain>
 <instances>
 <instance part="C1" gate="G$1" x="165.1" y="177.8" rot="R90">
-<attribute name="DIGIKEY" x="165.1" y="177.8" size="1.27" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="165.1" y="177.8" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="C2" gate="G$1" x="165.1" y="167.64" rot="R90">
-<attribute name="DIGIKEY" x="165.1" y="167.64" size="1.27" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="165.1" y="167.64" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="C39" gate="G$1" x="30.48" y="116.84">
-<attribute name="DIGIKEY" x="30.48" y="116.84" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="30.48" y="116.84" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C40" gate="G$1" x="22.86" y="129.54">
-<attribute name="DIGIKEY" x="22.86" y="129.54" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="22.86" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C41" gate="G$1" x="15.24" y="129.54">
-<attribute name="DIGIKEY" x="15.24" y="129.54" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="15.24" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C42" gate="G$1" x="7.62" y="129.54">
-<attribute name="DIGIKEY" x="7.62" y="129.54" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="7.62" y="129.54" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C43" gate="G$1" x="228.6" y="106.68">
-<attribute name="DIGIKEY" x="228.6" y="106.68" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C44" gate="G$1" x="213.36" y="106.68">
-<attribute name="DIGIKEY" x="213.36" y="106.68" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="213.36" y="106.68" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C55" gate="G$1" x="228.6" y="38.1">
-<attribute name="DIGIKEY" x="228.6" y="38.1" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="228.6" y="38.1" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C56" gate="G$1" x="213.36" y="38.1">
-<attribute name="DIGIKEY" x="213.36" y="38.1" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="213.36" y="38.1" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C63" gate="G$1" x="43.18" y="104.14">
-<attribute name="DIGIKEY" x="43.18" y="104.14" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="43.18" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C73" gate="G$1" x="35.56" y="104.14">
-<attribute name="DIGIKEY" x="35.56" y="104.14" size="1.016" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="35.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="D24" gate="G$1" x="121.92" y="66.04" rot="R270">
-<attribute name="DIGIKEY" x="121.92" y="66.04" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="121.92" y="66.04" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D25" gate="G$1" x="129.54" y="66.04" rot="R270">
-<attribute name="DIGIKEY" x="129.54" y="66.04" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="129.54" y="66.04" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="FB1" gate="G$1" x="30.48" y="129.54" rot="R90">
 <attribute name="DIGIKEY" x="30.48" y="129.54" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
@@ -16392,7 +16397,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="L1" gate="G$1" x="48.26" y="111.76" rot="R270"/>
 <instance part="Q6" gate="G$1" x="124.46" y="30.48" rot="MR0"/>
 <instance part="R22" gate="A" x="121.92" y="48.26" rot="R90">
-<attribute name="DIGIKEY" x="121.92" y="48.26" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="121.92" y="48.26" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R22" gate="B" x="129.54" y="48.26" rot="R90"/>
 <instance part="R48" gate="G$1" x="129.54" y="149.86" rot="R90">
@@ -16406,7 +16411,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 </instance>
 <instance part="R76" gate="G$1" x="88.9" y="20.32" rot="R90"/>
 <instance part="R77" gate="G$1" x="96.52" y="20.32" rot="R90"/>
-<instance part="R85" gate="G$1" x="129.54" y="162.56" rot="R90"/>
+<instance part="R84" gate="G$1" x="129.54" y="162.56" rot="R90"/>
 <instance part="S7" gate="G$1" x="20.32" y="30.48" rot="R90"/>
 <instance part="U$3" gate="G$1" x="5.08" y="139.7"/>
 <instance part="U$63" gate="G$1" x="241.3" y="152.4"/>
@@ -16421,11 +16426,12 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <instance part="U6" gate="1" x="193.04" y="58.42" rot="MR0"/>
 <instance part="Y3" gate="G$1" x="160.02" y="172.72" rot="R90"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="3V3_UNMETERED" class="0">
 <segment>
-<pinref part="R85" gate="G$1" pin="2"/>
+<pinref part="R84" gate="G$1" pin="2"/>
 <pinref part="U$9" gate="G$1" pin="3V3_UNMETERED"/>
 <wire x1="129.54" y1="175.26" x2="129.54" y2="165.1" width="0.1524" layer="91"/>
 </segment>
@@ -16524,7 +16530,7 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <net name="CONTROLLER_BUCK/LDO_N" class="0">
 <segment>
 <pinref part="R48" gate="G$1" pin="2"/>
-<pinref part="R85" gate="G$1" pin="1"/>
+<pinref part="R84" gate="G$1" pin="1"/>
 <pinref part="U23" gate="U1" pin="PA02"/>
 <wire x1="129.54" y1="154.94" x2="129.54" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="154.94" x2="129.54" y2="157.48" width="0.1524" layer="91"/>
@@ -17020,7 +17026,7 @@ For commissioning EEPROM</text>
 </plain>
 <instances>
 <instance part="C62" gate="G$1" x="86.36" y="96.52">
-<attribute name="DIGIKEY" x="86.36" y="96.52" size="1.27" layer="96" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="86.36" y="96.52" size="1.27" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME17" gate="G$1" x="0" y="0"/>
 <instance part="FRAME17" gate="G$2" x="152.4" y="0"/>
@@ -17036,7 +17042,8 @@ For commissioning EEPROM</text>
 <instance part="U$74" gate="G$1" x="96.52" y="152.4"/>
 <instance part="U14" gate="G$1" x="116.84" y="104.14"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="GND" class="0">
 <segment>
@@ -17151,22 +17158,22 @@ For commissioning EEPROM</text>
 </plain>
 <instances>
 <instance part="D4" gate="G$1" x="139.7" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="139.7" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="139.7" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D5" gate="G$1" x="147.32" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="147.32" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="147.32" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D6" gate="G$1" x="154.94" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="154.94" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="154.94" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D7" gate="G$1" x="205.74" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="205.74" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="205.74" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D8" gate="G$1" x="213.36" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="213.36" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="213.36" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D9" gate="G$1" x="220.98" y="81.28" rot="R270">
-<attribute name="DIGIKEY" x="220.98" y="81.28" size="1.016" layer="96" rot="R270" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="220.98" y="81.28" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="152.4" y="0"/>
@@ -17196,17 +17203,18 @@ For commissioning EEPROM</text>
 <instance part="JP8" gate="A" x="210.82" y="27.94"/>
 <instance part="JP9" gate="A" x="38.1" y="88.9"/>
 <instance part="R23" gate="A" x="139.7" y="73.66" rot="R90">
-<attribute name="DIGIKEY" x="139.7" y="73.66" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="139.7" y="73.66" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R23" gate="B" x="147.32" y="73.66" rot="R90"/>
 <instance part="R23" gate="C" x="154.94" y="73.66" rot="R90"/>
 <instance part="R24" gate="A" x="220.98" y="71.12" rot="R90">
-<attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" rot="R90" display="off" align="bottom-center"/>
+<attribute name="DIGIKEY" x="220.98" y="71.12" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R24" gate="B" x="213.36" y="71.12" rot="R90"/>
 <instance part="R24" gate="C" x="205.74" y="71.12" rot="R90"/>
 </instances>
-<busses/>
+<busses>
+</busses>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
@@ -18433,7 +18441,7 @@ For commissioning EEPROM</text>
 </schematic>
 </drawing>
 <compatibility>
-<note minversion="6.2.2" version="6.3" severity="warning">
+<note version="6.3" minversion="6.2.2" severity="warning">
 Since Version 6.2.2 text objects can contain more than one line,
 which will not be processed correctly with this version.
 </note>
