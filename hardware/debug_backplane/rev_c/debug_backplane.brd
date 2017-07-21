@@ -18690,13 +18690,6 @@ Master</text>
 <wire x1="80.01" y1="46.736" x2="79.248" y2="47.498" width="0.254" layer="1"/>
 <wire x1="80.376" y1="46.736" x2="80.01" y2="46.736" width="0.254" layer="1"/>
 </signal>
-<signal name="N$81">
-<contactref element="Q7" pad="D1"/>
-<contactref element="R16" pad="1"/>
-<wire x1="82.296" y1="46.736" x2="81.676" y2="46.736" width="0.254" layer="1"/>
-<wire x1="82.692" y1="47.132" x2="82.296" y2="46.736" width="0.254" layer="1"/>
-<wire x1="82.692" y1="48.072" x2="82.692" y2="47.132" width="0.254" layer="1"/>
-</signal>
 <signal name="N$83">
 <contactref element="R17" pad="1"/>
 <contactref element="U13" pad="5"/>
@@ -20119,13 +20112,6 @@ Master</text>
 <wire x1="87.264" y1="58.318159375" x2="86.3854" y2="57.439559375" width="0.254" layer="1"/>
 <wire x1="87.264" y1="60.706" x2="87.264" y2="58.318159375" width="0.254" layer="1"/>
 </signal>
-<signal name="WATCHDOG_!RESET">
-<contactref element="U15" pad="7"/>
-<contactref element="Q7" pad="G1"/>
-<contactref element="Q7" pad="G2"/>
-<wire x1="82.692" y1="49.972" x2="88.8" y2="48.077" width="0" layer="19" extent="1-1"/>
-<wire x1="81.392" y1="49.972" x2="82.692" y2="49.972" width="0" layer="19" extent="1-1"/>
-</signal>
 <signal name="3V3_WATCHDOGGED">
 <contactref element="S24" pad="1"/>
 <contactref element="R1" pad="2"/>
@@ -20202,14 +20188,26 @@ Master</text>
 <wire x1="19.05" y1="88.9" x2="20.574" y2="90.794" width="0" layer="19" extent="1-1"/>
 <wire x1="-18.03" y1="-33.745" x2="18.3" y2="88.126" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="N$39">
-<contactref element="Q7" pad="D2"/>
+<signal name="N$44">
+<contactref element="U15" pad="7"/>
+<contactref element="Q7" pad="G1"/>
+<wire x1="82.692" y1="49.972" x2="88.8" y2="48.077" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$78">
 <contactref element="R85" pad="1"/>
+<contactref element="Q7" pad="D1"/>
+<contactref element="Q7" pad="G2"/>
+<wire x1="82.692" y1="48.072" x2="81.392" y2="49.972" width="0" layer="19" extent="1-1"/>
+<wire x1="-20.97" y1="-40.64" x2="82.692" y2="48.072" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$39">
+<contactref element="R16" pad="1"/>
+<contactref element="Q7" pad="D2"/>
 <contactref element="S25" pad="4"/>
 <contactref element="S24" pad="4"/>
-<wire x1="-18.03" y1="-24.675" x2="81.392" y2="48.072" width="0" layer="19" extent="1-1"/>
+<wire x1="81.392" y1="48.072" x2="81.676" y2="46.736" width="0" layer="19" extent="1-1"/>
+<wire x1="-18.03" y1="-24.675" x2="81.676" y2="46.736" width="0" layer="19" extent="1-1"/>
 <wire x1="-18.03" y1="-32.295" x2="-18.03" y2="-24.675" width="0" layer="19" extent="1-1"/>
-<wire x1="-20.97" y1="-40.64" x2="-18.03" y2="-32.295" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>

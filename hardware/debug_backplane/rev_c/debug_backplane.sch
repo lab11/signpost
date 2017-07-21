@@ -10321,34 +10321,34 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <instance part="D2" gate="B" x="109.22" y="58.42"/>
 <instance part="D2" gate="C" x="109.22" y="53.34"/>
 <instance part="D2" gate="D" x="109.22" y="48.26"/>
-<instance part="D34" gate="G$1" x="172.72" y="157.48" rot="R270">
-<attribute name="DIGIKEY" x="172.72" y="157.48" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<instance part="D34" gate="G$1" x="165.1" y="157.48" rot="R270">
+<attribute name="DIGIKEY" x="165.1" y="157.48" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D3" gate="A" x="109.22" y="43.18"/>
 <instance part="FRAME18" gate="G$1" x="0" y="0"/>
 <instance part="FRAME18" gate="G$2" x="152.4" y="0"/>
 <instance part="GND116" gate="1" x="152.4" y="55.88"/>
-<instance part="GND130" gate="1" x="177.8" y="116.84"/>
+<instance part="GND130" gate="1" x="162.56" y="116.84"/>
 <instance part="GND131" gate="1" x="48.26" y="109.22"/>
 <instance part="GND89" gate="1" x="132.08" y="101.6"/>
-<instance part="Q7" gate="G$1" x="175.26" y="132.08" rot="MR0"/>
-<instance part="R16" gate="G$1" x="172.72" y="149.86" rot="R90"/>
+<instance part="Q7" gate="G$1" x="160.02" y="132.08" rot="MR0"/>
+<instance part="R16" gate="G$1" x="165.1" y="149.86" rot="R90"/>
 <instance part="S20" gate="G$1" x="142.24" y="63.5"/>
 <instance part="S23" gate="G$1" x="81.28" y="127" smashed="yes" rot="R180">
 <attribute name="NAME" x="83.82" y="124.46" size="1.27" layer="95" rot="R180"/>
 </instance>
 <instance part="S8" gate="G$1" x="132.08" y="114.3" rot="R90"/>
 <instance part="U$75" gate="G$1" x="124.46" y="149.86"/>
-<instance part="U$76" gate="G$1" x="172.72" y="167.64"/>
+<instance part="U$76" gate="G$1" x="162.56" y="167.64"/>
 <instance part="U15" gate="G$1" x="104.14" y="132.08"/>
-<instance part="S24" gate="G$1" x="213.36" y="160.02"/>
-<instance part="S25" gate="G$1" x="213.36" y="144.78"/>
-<instance part="GND132" gate="1" x="228.6" y="154.94"/>
-<instance part="GND136" gate="1" x="228.6" y="139.7"/>
-<instance part="U$78" gate="G$1" x="198.12" y="165.1"/>
-<instance part="U$79" gate="G$1" x="198.12" y="149.86"/>
-<instance part="R85" gate="G$1" x="180.34" y="160.02" rot="R90">
-<attribute name="DIGIKEY" x="180.34" y="160.02" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<instance part="S24" gate="G$1" x="203.2" y="149.86"/>
+<instance part="S25" gate="G$1" x="203.2" y="134.62"/>
+<instance part="GND132" gate="1" x="218.44" y="144.78"/>
+<instance part="GND136" gate="1" x="218.44" y="129.54"/>
+<instance part="U$78" gate="G$1" x="187.96" y="154.94"/>
+<instance part="U$79" gate="G$1" x="187.96" y="139.7"/>
+<instance part="R85" gate="G$1" x="157.48" y="149.86" rot="R90">
+<attribute name="DIGIKEY" x="157.48" y="149.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -10389,18 +10389,19 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <segment>
 <pinref part="D34" gate="G$1" pin="ANODE"/>
 <pinref part="U$76" gate="G$1" pin="3V3_UNMETERED"/>
-<wire x1="172.72" y1="167.64" x2="172.72" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="167.64" x2="162.56" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="165.1" x2="165.1" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="165.1" x2="165.1" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="R85" gate="G$1" pin="2"/>
-<wire x1="172.72" y1="165.1" x2="172.72" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="162.56" x2="180.34" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="165.1" x2="172.72" y2="165.1" width="0.1524" layer="91"/>
-<junction x="172.72" y="165.1"/>
+<wire x1="162.56" y1="165.1" x2="157.48" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="165.1" x2="157.48" y2="152.4" width="0.1524" layer="91"/>
+<junction x="162.56" y="165.1"/>
 </segment>
 <segment>
 <pinref part="S24" gate="G$1" pin="VSUPP"/>
 <pinref part="U$78" gate="G$1" pin="3V3_UNMETERED"/>
-<wire x1="200.66" y1="162.56" x2="198.12" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="162.56" x2="198.12" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="152.4" x2="187.96" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="152.4" x2="187.96" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CONT0_!RESET" class="0">
@@ -10452,7 +10453,7 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <segment>
 <pinref part="GND130" gate="1" pin="GND"/>
 <pinref part="Q7" gate="G$1" pin="S"/>
-<wire x1="177.8" y1="121.92" x2="177.8" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="121.92" x2="162.56" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND89" gate="1" pin="GND"/>
@@ -10462,14 +10463,14 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <segment>
 <pinref part="S25" gate="G$1" pin="GND"/>
 <pinref part="GND136" gate="1" pin="GND"/>
-<wire x1="226.06" y1="144.78" x2="228.6" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="144.78" x2="228.6" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="134.62" x2="218.44" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="134.62" x2="218.44" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="S24" gate="G$1" pin="GND"/>
 <pinref part="GND132" gate="1" pin="GND"/>
-<wire x1="226.06" y1="160.02" x2="228.6" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="160.02" x2="228.6" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="149.86" x2="218.44" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="149.86" x2="218.44" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MASTER_!RESET" class="0">
@@ -10546,14 +10547,7 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <segment>
 <pinref part="D34" gate="G$1" pin="CATHODE"/>
 <pinref part="R16" gate="G$1" pin="2"/>
-<wire x1="172.72" y1="154.94" x2="172.72" y2="152.4" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$81" class="0">
-<segment>
-<pinref part="Q7" gate="G$1" pin="D1"/>
-<pinref part="R16" gate="G$1" pin="1"/>
-<wire x1="172.72" y1="144.78" x2="172.72" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="154.94" x2="165.1" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RADIO_!RESET" class="0">
@@ -10584,54 +10578,63 @@ watchdog's !RESET! control for use with our existing load switch IC</text>
 <wire x1="73.66" y1="129.54" x2="60.96" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="WATCHDOG_!RESET" class="0">
-<segment>
-<pinref part="U15" gate="G$1" pin="!RESET"/>
-<wire x1="121.92" y1="132.08" x2="162.56" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="Q7" gate="G$1" pin="G1"/>
-<pinref part="Q7" gate="G$1" pin="G2"/>
-<wire x1="162.56" y1="132.08" x2="165.1" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="127" x2="162.56" y2="127" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="127" x2="162.56" y2="132.08" width="0.1524" layer="91"/>
-<junction x="162.56" y="132.08"/>
-</segment>
-</net>
 <net name="5V_UNMETERED" class="0">
 <segment>
 <pinref part="S25" gate="G$1" pin="VSUPP"/>
 <pinref part="U$79" gate="G$1" pin="5V_UNMETERED"/>
-<wire x1="200.66" y1="147.32" x2="198.12" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="147.32" x2="198.12" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="137.16" x2="187.96" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="137.16" x2="187.96" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3V3_WATCHDOGGED" class="0">
 <segment>
 <pinref part="S24" gate="G$1" pin="VLOAD"/>
-<wire x1="228.6" y1="165.1" x2="226.06" y2="165.1" width="0.1524" layer="91"/>
-<label x="228.6" y="165.1" size="1.016" layer="95" xref="yes"/>
+<wire x1="218.44" y1="154.94" x2="215.9" y2="154.94" width="0.1524" layer="91"/>
+<label x="218.44" y="154.94" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="5V_WATCHDOGGED" class="0">
 <segment>
 <pinref part="S25" gate="G$1" pin="VLOAD"/>
-<wire x1="228.6" y1="149.86" x2="226.06" y2="149.86" width="0.1524" layer="91"/>
-<label x="228.6" y="149.86" size="1.016" layer="95" xref="yes"/>
+<wire x1="218.44" y1="139.7" x2="215.9" y2="139.7" width="0.1524" layer="91"/>
+<label x="218.44" y="139.7" size="1.016" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$44" class="0">
+<segment>
+<pinref part="U15" gate="G$1" pin="!RESET"/>
+<pinref part="Q7" gate="G$1" pin="G1"/>
+<wire x1="121.92" y1="132.08" x2="149.86" y2="132.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$78" class="0">
+<segment>
+<pinref part="R85" gate="G$1" pin="1"/>
+<pinref part="Q7" gate="G$1" pin="D1"/>
+<wire x1="157.48" y1="144.78" x2="157.48" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="142.24" x2="157.48" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="142.24" x2="147.32" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="142.24" x2="147.32" y2="127" width="0.1524" layer="91"/>
+<junction x="157.48" y="142.24"/>
+<pinref part="Q7" gate="G$1" pin="G2"/>
+<wire x1="147.32" y1="127" x2="149.86" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$39" class="0">
 <segment>
+<pinref part="R16" gate="G$1" pin="1"/>
 <pinref part="Q7" gate="G$1" pin="D2"/>
-<pinref part="R85" gate="G$1" pin="1"/>
-<wire x1="180.34" y1="139.7" x2="180.34" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="144.78" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="S25" gate="G$1" pin="EN"/>
-<wire x1="180.34" y1="144.78" x2="180.34" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="200.66" y1="144.78" x2="190.5" y2="144.78" width="0.1524" layer="91"/>
-<junction x="180.34" y="144.78"/>
+<wire x1="165.1" y1="142.24" x2="165.1" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="190.5" y1="134.62" x2="180.34" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="S24" gate="G$1" pin="EN"/>
-<wire x1="190.5" y1="144.78" x2="180.34" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="200.66" y1="160.02" x2="190.5" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="160.02" x2="190.5" y2="144.78" width="0.1524" layer="91"/>
-<junction x="190.5" y="144.78"/>
+<wire x1="190.5" y1="149.86" x2="180.34" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="149.86" x2="180.34" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="142.24" x2="180.34" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="142.24" x2="180.34" y2="142.24" width="0.1524" layer="91"/>
+<junction x="165.1" y="142.24"/>
+<junction x="180.34" y="142.24"/>
 </segment>
 </net>
 </nets>
