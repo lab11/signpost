@@ -3870,7 +3870,7 @@ Basic 0.1" spaced jumper. Use with breakaway headers.</description>
 <attribute name="DIGIKEY" value="490-1494-1-ND"/>
 </part>
 <part name="R15" library="passives" deviceset="RESISTOR" device="0603_RES" value="200k">
-<attribute name="DIGIKEY" value="RHM200KCFCT-ND"/>
+<attribute name="DIGIKEY" value="311-200KGRCT-ND"/>
 </part>
 <part name="C16" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-10777-1-ND"/>
