@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1932,7 +1932,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="38.1" y1="66.04" x2="38.1" y2="63.5" width="0.2032" layer="1"/>
 <wire x1="38.1" y1="63.5" x2="39.37" y2="62.23" width="0.2032" layer="1"/>
 </signal>
-<signal name="+3V3">
+<signal name="3V3">
 <contactref element="J2" pad="4"/>
 <contactref element="J1" pad="1"/>
 <contactref element="U1" pad="27"/>
@@ -2078,8 +2078,10 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="44.196" y1="23.114" x2="43.942" y2="23.368" width="0.2032" layer="1"/>
 <wire x1="43.942" y1="23.368" x2="43.942" y2="23.80106875" width="0.2032" layer="1"/>
 <wire x1="43.942" y1="23.80106875" x2="44.01693125" y2="23.876" width="0.2032" layer="1"/>
+<wire x1="34.798" y1="44.704" x2="34.051" y2="45.466" width="0" layer="19" extent="1-1"/>
+<wire x1="36.656" y1="45.386" x2="38.1" y2="44.704" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="+5V">
+<signal name="5V">
 <contactref element="J2" pad="2"/>
 <wire x1="44.45" y1="55.372" x2="42.672" y2="53.594" width="0.762" layer="1"/>
 <wire x1="44.45" y1="55.372" x2="44.45" y2="62.23" width="0.762" layer="1"/>
@@ -2125,6 +2127,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="26.924" y1="48.006" x2="27.94" y2="48.006" width="0.762" layer="1"/>
 <wire x1="23.368" y1="52.65293125" x2="23.368" y2="51.114096875" width="0.254" layer="1"/>
 <wire x1="23.368" y1="51.114096875" x2="23.428096875" y2="51.054" width="0.254" layer="1"/>
+<wire x1="30.828" y1="47.764" x2="30.828" y2="48.264" width="0" layer="19" extent="1-1"/>
+<wire x1="30.828" y1="48.764" x2="30.828" y2="48.264" width="0" layer="19" extent="1-1"/>
+<wire x1="27.94" y1="48.006" x2="27.94" y2="48.514" width="0" layer="19" extent="1-1"/>
+<wire x1="31.508" y1="47.084" x2="30.828" y2="47.764" width="0" layer="19" extent="1-1"/>
+<wire x1="29.21" y1="47.228" x2="29.718" y2="46.99" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PPS">
 <contactref element="J2" pad="7"/>
