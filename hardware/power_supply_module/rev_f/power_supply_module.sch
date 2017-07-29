@@ -975,16 +975,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <rectangle x1="-0.4" y1="-0.625" x2="0.4" y2="0.625" layer="21"/>
 <text x="0" y="0.892" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 </package>
-<package name="VLF3012A">
-<smd name="P$1" x="-1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
-<smd name="P$2" x="1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
-<wire x1="-1.4" y1="1.3" x2="-1.4" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-1.4" y1="-1.3" x2="1.4" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="1.4" y1="-1.3" x2="1.4" y2="1.3" width="0.127" layer="21"/>
-<wire x1="1.4" y1="1.3" x2="-1.4" y2="1.3" width="0.127" layer="21"/>
-<text x="-2.55" y="1.78" size="1.016" layer="25">&gt;NAME</text>
-<text x="-2.72" y="-2.77" size="1.016" layer="25">&gt;VALUE</text>
-</package>
 <package name="XFL4015">
 <description>Coilcraft XFL4015 series inductor package</description>
 <smd name="1" x="-1.1811" y="0" dx="0.9652" dy="3.4036" layer="1"/>
@@ -1062,14 +1052,34 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-3.175" y="3.81" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.175" y="-5.08" size="1.27" layer="27">&gt;VALUE</text>
 </package>
+<package name="VLF3012A">
+<smd name="P$1" x="-1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
+<smd name="P$2" x="1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
+<wire x1="-1.4" y1="1.3" x2="-1.4" y2="-1.3" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="-1.3" x2="1.4" y2="-1.3" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-1.3" x2="1.4" y2="1.3" width="0.127" layer="21"/>
+<wire x1="1.4" y1="1.3" x2="-1.4" y2="1.3" width="0.127" layer="21"/>
+<text x="-0.01" y="1.78" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0.074" y="-2.77" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
+</package>
 <package name="SOD123">
-<smd name="P$1" x="-1.85" y="0" dx="0.7" dy="1.2" layer="1"/>
-<smd name="P$2" x="1.85" y="0" dx="0.7" dy="1.2" layer="1"/>
-<wire x1="-0.5" y1="0.5" x2="0.5" y2="0" width="0.127" layer="51"/>
-<wire x1="0.5" y1="0" x2="-0.5" y2="-0.5" width="0.127" layer="51"/>
-<wire x1="-0.5" y1="-0.5" x2="-0.5" y2="0.5" width="0.127" layer="51"/>
-<wire x1="0.5" y1="0.5" x2="0.5" y2="-0.5" width="0.127" layer="51"/>
-<text x="-2" y="1" size="1" layer="25" font="vector" ratio="12">&gt;NAME</text>
+<smd name="A" x="-1.85" y="0" dx="0.8" dy="1.2" layer="1"/>
+<smd name="K" x="1.85" y="0" dx="0.8" dy="1.2" layer="1"/>
+<wire x1="-0.9" y1="0.5" x2="0.1" y2="0" width="0.127" layer="51"/>
+<wire x1="0.1" y1="0" x2="-0.9" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="-0.9" y1="-0.5" x2="-0.9" y2="0.5" width="0.127" layer="51"/>
+<wire x1="0.1" y1="0.5" x2="0.1" y2="-0.5" width="0.127" layer="51"/>
+<text x="0" y="1.016" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<wire x1="-1.35" y1="0.8" x2="1.35" y2="0.8" width="0.127" layer="21"/>
+<wire x1="1.35" y1="0.8" x2="1.35" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="1.35" y1="-0.8" x2="-1.35" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="-1.35" y1="-0.8" x2="-1.35" y2="0.8" width="0.127" layer="21"/>
+<polygon width="0.127" layer="21">
+<vertex x="0.6" y="0.8"/>
+<vertex x="1" y="0.8"/>
+<vertex x="1" y="-0.8"/>
+<vertex x="0.6" y="-0.8"/>
+</polygon>
 </package>
 </packages>
 <symbols>
@@ -1206,7 +1216,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </device>
 </devices>
 </deviceset>
-<deviceset name="RESISTOR" prefix="R">
+<deviceset name="RESISTOR" prefix="R" uservalue="yes">
 <description>&lt;b&gt;Resistor&lt;/b&gt;
 Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</description>
 <gates>
@@ -1274,6 +1284,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="445-3225-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="TDK Corporation" constant="no"/>
+<attribute name="MPN" value="VLF3012AT-4R7MR74" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -1303,8 +1315,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="541-1322-1-ND" constant="no"/>
-<attribute name="MF" value="Vishay Dale" constant="no"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" constant="no"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" constant="no"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -1360,9 +1372,22 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technology name=""/>
 </technologies>
 </device>
+<device name="MBR0520LT1G" package="SOD123">
+<connects>
+<connect gate="G$1" pin="ANODE" pad="A"/>
+<connect gate="G$1" pin="CATHODE" pad="K"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="MBR0520LT1GOSCT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="ON Semiconductor" constant="no"/>
+<attribute name="MPN" value="MBR0520LT1G" constant="no"/>
+</technology>
+</technologies>
+</device>
 </devices>
 </deviceset>
-<deviceset name="DIODE_ZENER" prefix="D" uservalue="yes">
+<deviceset name="DIODE_ZENER" prefix="D">
 <gates>
 <gate name="G$1" symbol="DIODE_ZENER" x="0" y="0"/>
 </gates>
@@ -1387,8 +1412,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </device>
 <device name="SOD123" package="SOD123">
 <connects>
-<connect gate="G$1" pin="ANODE" pad="P$1"/>
-<connect gate="G$1" pin="CATHODE" pad="P$2"/>
+<connect gate="G$1" pin="ANODE" pad="A"/>
+<connect gate="G$1" pin="CATHODE" pad="K"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1877,8 +1902,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-35978-1-ND" constant="no"/>
-<attribute name="MF" value="Texas Instruments" constant="no"/>
-<attribute name="MFN" value="TLV62130RGTR" constant="no"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" constant="no"/>
+<attribute name="MPN" value="TLV62130RGTR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2163,7 +2188,7 @@ SCHMITT-TRIGGER INVERTER GATE</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="GND" prefix="GND">
+<deviceset name="GND" prefix="SUPPLY">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
@@ -3683,7 +3708,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U11" library="chips" deviceset="LTC2943" device=""/>
-<part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U7" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
@@ -3713,14 +3738,14 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="WSLPB-.017CT-ND"/>
 </part>
 <part name="U15" library="chips" deviceset="LTC2943" device=""/>
-<part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY25" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="FRAME9" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
-<part name="3V3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="5V_1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="5V_2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="5V_3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="5V_4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP4" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP5" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="R17" library="passives" deviceset="RESISTOR" device="0402_RES" value="2 kΩ">
 <attribute name="DIGIKEY" value="P2.00KLCT-ND"/>
 </part>
@@ -3839,10 +3864,10 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
-<part name="GND3" library="umich" deviceset="GND" device=""/>
-<part name="GND4" library="umich" deviceset="GND" device=""/>
-<part name="GND5" library="umich" deviceset="GND" device=""/>
-<part name="GND6" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U2" library="chips" deviceset="TLV62130" device=""/>
 <part name="C36" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
 <attribute name="DIGIKEY" value="490-5523-1-ND "/>
@@ -3866,8 +3891,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L2" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
-<part name="GND7" library="umich" deviceset="GND" device=""/>
-<part name="GND8" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U3" library="chips" deviceset="TLV62130" device=""/>
 <part name="C37" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
 <attribute name="DIGIKEY" value="490-5523-1-ND "/>
@@ -3891,8 +3916,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L3" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
-<part name="GND9" library="umich" deviceset="GND" device=""/>
-<part name="GND10" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U5" library="chips" deviceset="TLV62130" device=""/>
 <part name="C38" library="passives" deviceset="CAPACITOR" device="0805_CAP" value="10 uF">
 <attribute name="DIGIKEY" value="490-5523-1-ND "/>
@@ -3916,8 +3941,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P100KJCT-ND "/>
 </part>
 <part name="L5" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2 uH"/>
-<part name="GND11" library="umich" deviceset="GND" device=""/>
-<part name="GND12" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U16" library="chips" deviceset="LT3652" device=""/>
 <part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="SOT-23F">
 <attribute name="DIGIKEY" value="CMPSH1-4 CT-ND"/>
@@ -3931,7 +3956,7 @@ High-power, low thermal resistance package.</description>
 <part name="C28" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="1 uF">
 <attribute name="DIGIKEY" value="490-1543-1-ND"/>
 </part>
-<part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOD323" value="DIODE_SCHOTTKYSOD323">
+<part name="D3" library="passives" deviceset="DIODE_SCHOTTKY" device="SOD323" value="None">
 <attribute name="DIGIKEY" value="CMDSH2-4L CT-ND"/>
 </part>
 <part name="R10" library="passives" deviceset="RESISTOR" device="0805_RES" value="0.05 Ω">
@@ -4018,7 +4043,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="1276-1193-1-ND "/>
 </part>
 <part name="U25" library="signpost" deviceset="PCA9544A" device="QFN-N20" value="PCA9544AQFN-N20"/>
-<part name="GND19" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U26" library="chips" deviceset="LTC2943" device=""/>
 <part name="C20" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
@@ -4057,7 +4082,7 @@ High-power, low thermal resistance package.</description>
 <part name="U27" library="chips" deviceset="MAX6746" device=""/>
 <part name="FRAME8" library="lab11-frames" deviceset="LETTER_L_BLANK" device=""/>
 <part name="U29" library="chips" deviceset="M24C01" device="WMN"/>
-<part name="GND" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device=""/>
 <part name="C23" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="0.1 uF">
 <attribute name="DIGIKEY" value="490-5920-1-ND "/>
@@ -4094,7 +4119,7 @@ High-power, low thermal resistance package.</description>
 <part name="U$25" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="U$26" library="signpost" deviceset="VCC_BATT+" device=""/>
 <part name="U$27" library="signpost" deviceset="VCC_BATT+" device=""/>
-<part name="GND18" library="signpost" deviceset="VBAT-" device=""/>
+<part name="SUPPLY22" library="signpost" deviceset="VBAT-" device=""/>
 <part name="GND22" library="signpost" deviceset="VBAT-" device=""/>
 <part name="U$28" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
 <part name="U$29" library="signpost" deviceset="VCC_3V3" device=""/>
@@ -4115,7 +4140,7 @@ High-power, low thermal resistance package.</description>
 <part name="U$44" library="signpost" deviceset="VCC_5V_3" device=""/>
 <part name="U$45" library="signpost" deviceset="VCC_5V_4" device=""/>
 <part name="U$46" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="RESET" library="switches" deviceset="PTS810SJ" device=""/>
+<part name="S2" library="switches" deviceset="PTS810SJ" device=""/>
 <part name="R15" library="passives" deviceset="RESISTOR" device="0402_RES" value="1 MΩ">
 <attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
 </part>
@@ -4123,21 +4148,21 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P1.00MLCT-ND"/>
 </part>
 <part name="U$47" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="FAULT" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
-<part name="CHRG" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP6" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP7" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="SUPPLY1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="GND13" library="umich" deviceset="GND" device=""/>
-<part name="GND23" library="umich" deviceset="GND" device=""/>
-<part name="GND24" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND25" library="umich" deviceset="GND" device=""/>
-<part name="GND14" library="umich" deviceset="GND" device=""/>
-<part name="GND15" library="umich" deviceset="GND" device=""/>
-<part name="GND16" library="umich" deviceset="GND" device=""/>
-<part name="GND17" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R70" library="passives" deviceset="RESISTOR" device="0402_RES" value="150 Ω">
 <attribute name="DIGIKEY" value="P150LCT-ND"/>
 </part>
-<part name="GND21" library="umich" deviceset="GND" device=""/>
+<part name="SUPPLY18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U30" library="chips" deviceset="SN74AUP1T14DCKR" device=""/>
 <part name="Q1" library="fets" deviceset="MOSFET-NCHANNEL" device="SMD">
 <attribute name="DIGIKEY" value="2N7002LT1GOSCT-ND"/>
@@ -4146,7 +4171,7 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" value="P1.0KJCT-ND"/>
 </part>
 <part name="U$48" library="signpost" deviceset="VCC_BACKPLANE" device=""/>
-<part name="!RESET" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP8" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4390,10 +4415,10 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="91.44" y="88.9" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="L1" gate="G$1" x="76.2" y="93.98" rot="R90"/>
-<instance part="GND3" gate="1" x="15.24" y="63.5"/>
-<instance part="GND4" gate="1" x="73.66" y="63.5"/>
-<instance part="GND5" gate="1" x="15.24" y="121.92"/>
-<instance part="GND6" gate="1" x="73.66" y="121.92"/>
+<instance part="SUPPLY7" gate="1" x="15.24" y="63.5"/>
+<instance part="SUPPLY8" gate="1" x="73.66" y="63.5"/>
+<instance part="SUPPLY2" gate="1" x="15.24" y="121.92"/>
+<instance part="SUPPLY4" gate="1" x="73.66" y="121.92"/>
 <instance part="U2" gate="G$1" x="50.8" y="25.4"/>
 <instance part="C36" gate="G$1" x="5.08" y="30.48">
 <attribute name="DIGIKEY" x="5.08" y="30.48" size="1.778" layer="96" display="off"/>
@@ -4417,8 +4442,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="91.44" y="30.48" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="L2" gate="G$1" x="76.2" y="35.56" rot="R90"/>
-<instance part="GND7" gate="1" x="15.24" y="5.08"/>
-<instance part="GND8" gate="1" x="73.66" y="5.08"/>
+<instance part="SUPPLY11" gate="1" x="15.24" y="5.08"/>
+<instance part="SUPPLY12" gate="1" x="73.66" y="5.08"/>
 <instance part="U3" gate="G$1" x="175.26" y="142.24"/>
 <instance part="C37" gate="G$1" x="129.54" y="147.32">
 <attribute name="DIGIKEY" x="129.54" y="147.32" size="1.778" layer="96" display="off"/>
@@ -4442,8 +4467,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="215.9" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="L3" gate="G$1" x="200.66" y="152.4" rot="R90"/>
-<instance part="GND9" gate="1" x="139.7" y="121.92"/>
-<instance part="GND10" gate="1" x="198.12" y="121.92"/>
+<instance part="SUPPLY5" gate="1" x="139.7" y="121.92"/>
+<instance part="SUPPLY6" gate="1" x="198.12" y="121.92"/>
 <instance part="U5" gate="G$1" x="175.26" y="68.58"/>
 <instance part="C38" gate="G$1" x="129.54" y="73.66">
 <attribute name="DIGIKEY" x="129.54" y="73.66" size="1.778" layer="96" display="off"/>
@@ -4467,8 +4492,8 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="215.9" y="73.66" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="L5" gate="G$1" x="200.66" y="78.74" rot="R90"/>
-<instance part="GND11" gate="1" x="139.7" y="48.26"/>
-<instance part="GND12" gate="1" x="198.12" y="48.26"/>
+<instance part="SUPPLY9" gate="1" x="139.7" y="48.26"/>
+<instance part="SUPPLY10" gate="1" x="198.12" y="48.26"/>
 <instance part="U20" gate="G$1" x="99.06" y="167.64" rot="R90"/>
 <instance part="U21" gate="G$1" x="99.06" y="106.68" rot="R90"/>
 <instance part="U22" gate="G$1" x="99.06" y="48.26" rot="R90"/>
@@ -4539,7 +4564,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="5.08" y1="132.08" x2="5.08" y2="137.16" width="0.1524" layer="91"/>
 <junction x="15.24" y="132.08"/>
 <junction x="5.08" y="137.16"/>
-<pinref part="GND5" gate="1" pin="GND"/>
+<pinref part="SUPPLY2" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U4" gate="G$1" pin="AGND"/>
@@ -4557,7 +4582,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="111.76" y1="137.16" x2="111.76" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="129.54" x2="99.06" y2="129.54" width="0.1524" layer="91"/>
 <junction x="99.06" y="129.54"/>
-<pinref part="GND6" gate="1" pin="GND"/>
+<pinref part="SUPPLY4" gate="1" pin="GND"/>
 <pinref part="U20" gate="G$1" pin="GND"/>
 <wire x1="104.14" y1="157.48" x2="114.3" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="157.48" x2="121.92" y2="157.48" width="0.1524" layer="91"/>
@@ -4591,7 +4616,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="5.08" y1="73.66" x2="5.08" y2="78.74" width="0.1524" layer="91"/>
 <junction x="15.24" y="73.66"/>
 <junction x="5.08" y="78.74"/>
-<pinref part="GND3" gate="1" pin="GND"/>
+<pinref part="SUPPLY7" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="AGND"/>
@@ -4609,7 +4634,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="111.76" y1="78.74" x2="111.76" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="71.12" x2="99.06" y2="71.12" width="0.1524" layer="91"/>
 <junction x="99.06" y="71.12"/>
-<pinref part="GND4" gate="1" pin="GND"/>
+<pinref part="SUPPLY8" gate="1" pin="GND"/>
 <pinref part="U21" gate="G$1" pin="GND"/>
 <wire x1="104.14" y1="96.52" x2="114.3" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="96.52" x2="121.92" y2="96.52" width="0.1524" layer="91"/>
@@ -4643,7 +4668,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="5.08" y1="15.24" x2="5.08" y2="20.32" width="0.1524" layer="91"/>
 <junction x="15.24" y="15.24"/>
 <junction x="5.08" y="20.32"/>
-<pinref part="GND7" gate="1" pin="GND"/>
+<pinref part="SUPPLY11" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U2" gate="G$1" pin="AGND"/>
@@ -4661,7 +4686,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="111.76" y1="20.32" x2="111.76" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="12.7" x2="99.06" y2="12.7" width="0.1524" layer="91"/>
 <junction x="99.06" y="12.7"/>
-<pinref part="GND8" gate="1" pin="GND"/>
+<pinref part="SUPPLY12" gate="1" pin="GND"/>
 <pinref part="U22" gate="G$1" pin="GND"/>
 <wire x1="104.14" y1="38.1" x2="114.3" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="38.1" x2="121.92" y2="38.1" width="0.1524" layer="91"/>
@@ -4695,7 +4720,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="129.54" y1="132.08" x2="129.54" y2="137.16" width="0.1524" layer="91"/>
 <junction x="139.7" y="132.08"/>
 <junction x="129.54" y="137.16"/>
-<pinref part="GND9" gate="1" pin="GND"/>
+<pinref part="SUPPLY5" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="AGND"/>
@@ -4713,7 +4738,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="236.22" y1="137.16" x2="236.22" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="129.54" x2="223.52" y2="129.54" width="0.1524" layer="91"/>
 <junction x="223.52" y="129.54"/>
-<pinref part="GND10" gate="1" pin="GND"/>
+<pinref part="SUPPLY6" gate="1" pin="GND"/>
 <pinref part="U23" gate="G$1" pin="GND"/>
 <pinref part="C18" gate="G$1" pin="2"/>
 <wire x1="228.6" y1="157.48" x2="238.76" y2="157.48" width="0.1524" layer="91"/>
@@ -4747,7 +4772,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="129.54" y1="58.42" x2="129.54" y2="63.5" width="0.1524" layer="91"/>
 <junction x="139.7" y="58.42"/>
 <junction x="129.54" y="63.5"/>
-<pinref part="GND11" gate="1" pin="GND"/>
+<pinref part="SUPPLY9" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U5" gate="G$1" pin="AGND"/>
@@ -4765,7 +4790,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="236.22" y1="63.5" x2="236.22" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="236.22" y1="55.88" x2="223.52" y2="55.88" width="0.1524" layer="91"/>
 <junction x="223.52" y="55.88"/>
-<pinref part="GND12" gate="1" pin="GND"/>
+<pinref part="SUPPLY10" gate="1" pin="GND"/>
 <pinref part="U24" gate="G$1" pin="GND"/>
 <wire x1="228.6" y1="81.28" x2="238.76" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="C19" gate="G$1" pin="2"/>
@@ -5316,9 +5341,9 @@ High-power, low thermal resistance package.</description>
 <attribute name="DIGIKEY" x="99.06" y="109.22" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U$47" gate="G$1" x="93.98" y="121.92"/>
-<instance part="GND13" gate="1" x="55.88" y="81.28"/>
-<instance part="GND23" gate="1" x="124.46" y="81.28"/>
-<instance part="GND24" gate="1" x="190.5" y="81.28"/>
+<instance part="SUPPLY13" gate="1" x="55.88" y="81.28"/>
+<instance part="SUPPLY14" gate="1" x="124.46" y="81.28"/>
+<instance part="SUPPLY15" gate="1" x="190.5" y="81.28"/>
 <instance part="GND25" gate="1" x="167.64" y="116.84"/>
 </instances>
 <busses>
@@ -5486,7 +5511,7 @@ High-power, low thermal resistance package.</description>
 <segment>
 <pinref part="U16" gate="G$1" pin="GND"/>
 <wire x1="124.46" y1="83.82" x2="124.46" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="GND23" gate="1" pin="GND"/>
+<pinref part="SUPPLY14" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C39" gate="G$1" pin="2"/>
@@ -5495,7 +5520,7 @@ High-power, low thermal resistance package.</description>
 <wire x1="162.56" y1="88.9" x2="190.5" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="83.82" x2="190.5" y2="88.9" width="0.1524" layer="91"/>
 <junction x="190.5" y="88.9"/>
-<pinref part="GND24" gate="1" pin="GND"/>
+<pinref part="SUPPLY15" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="ANODE"/>
@@ -5512,7 +5537,7 @@ High-power, low thermal resistance package.</description>
 <pinref part="C40" gate="G$1" pin="2"/>
 <wire x1="48.26" y1="99.06" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="91.44" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="GND13" gate="1" pin="GND"/>
+<pinref part="SUPPLY13" gate="1" pin="GND"/>
 </segment>
 </net>
 </nets>
@@ -5557,7 +5582,7 @@ Backplane to GND.</text>
 <attribute name="DIGIKEY" x="73.66" y="83.82" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="U25" gate="G$1" x="195.58" y="139.7" rot="MR0"/>
-<instance part="GND19" gate="1" x="208.28" y="114.3"/>
+<instance part="SUPPLY17" gate="1" x="208.28" y="114.3"/>
 <instance part="U26" gate="G$1" x="50.8" y="157.48"/>
 <instance part="C20" gate="G$1" x="88.9" y="170.18">
 <attribute name="DIGIKEY" x="88.9" y="170.18" size="1.778" layer="96" display="off"/>
@@ -5597,16 +5622,16 @@ Backplane to GND.</text>
 <instance part="U$25" gate="G$1" x="220.98" y="160.02"/>
 <instance part="U$26" gate="G$1" x="30.48" y="124.46"/>
 <instance part="U$27" gate="G$1" x="15.24" y="60.96"/>
-<instance part="GND18" gate="G$1" x="30.48" y="78.74"/>
-<instance part="RESET" gate="G$1" x="170.18" y="33.02" rot="R270"/>
-<instance part="GND14" gate="1" x="66.04" y="17.78"/>
-<instance part="GND15" gate="1" x="33.02" y="33.02"/>
-<instance part="GND16" gate="1" x="106.68" y="78.74"/>
-<instance part="GND17" gate="1" x="63.5" y="142.24"/>
+<instance part="SUPPLY22" gate="G$1" x="30.48" y="78.74"/>
+<instance part="S2" gate="G$1" x="170.18" y="33.02" rot="R270"/>
+<instance part="SUPPLY21" gate="1" x="66.04" y="17.78"/>
+<instance part="SUPPLY20" gate="1" x="33.02" y="33.02"/>
+<instance part="SUPPLY19" gate="1" x="106.68" y="78.74"/>
+<instance part="SUPPLY16" gate="1" x="63.5" y="142.24"/>
 <instance part="R70" gate="G$1" x="226.06" y="50.8">
 <attribute name="DIGIKEY" x="226.06" y="50.8" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="GND21" gate="1" x="30.48" y="104.14"/>
+<instance part="SUPPLY18" gate="1" x="30.48" y="104.14"/>
 <instance part="U30" gate="G$1" x="205.74" y="50.8"/>
 <instance part="Q1" gate="G$1" x="238.76" y="50.8" smashed="yes">
 <attribute name="NAME" x="234.95" y="54.61" size="1.778" layer="95"/>
@@ -5633,7 +5658,7 @@ Backplane to GND.</text>
 <pinref part="U25" gate="G$1" pin="GND"/>
 <wire x1="205.74" y1="121.92" x2="208.28" y2="121.92" width="0.1524" layer="91"/>
 <junction x="208.28" y="121.92"/>
-<pinref part="GND19" gate="1" pin="GND"/>
+<pinref part="SUPPLY17" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C20" gate="G$1" pin="2"/>
@@ -5660,10 +5685,10 @@ Backplane to GND.</text>
 <wire x1="78.74" y1="38.1" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="40.64" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
 <junction x="78.74" y="38.1"/>
-<pinref part="RESET" gate="G$1" pin="P$2"/>
+<pinref part="S2" gate="G$1" pin="P$2"/>
 <wire x1="170.18" y1="25.4" x2="170.18" y2="22.86" width="0.1524" layer="91"/>
 <junction x="170.18" y="22.86"/>
-<pinref part="GND14" gate="1" pin="GND"/>
+<pinref part="SUPPLY21" gate="1" pin="GND"/>
 <wire x1="223.52" y1="38.1" x2="200.66" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R66" gate="G$1" pin="1"/>
 <pinref part="U30" gate="G$1" pin="GND"/>
@@ -5684,7 +5709,7 @@ Backplane to GND.</text>
 <wire x1="50.8" y1="48.26" x2="50.8" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="43.18" x2="33.02" y2="43.18" width="0.1524" layer="91"/>
 <junction x="33.02" y="43.18"/>
-<pinref part="GND15" gate="1" pin="GND"/>
+<pinref part="SUPPLY20" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C24" gate="G$1" pin="2"/>
@@ -5706,13 +5731,13 @@ Backplane to GND.</text>
 <junction x="83.82" y="83.82"/>
 <wire x1="106.68" y1="81.28" x2="106.68" y2="83.82" width="0.1524" layer="91"/>
 <junction x="106.68" y="83.82"/>
-<pinref part="GND16" gate="1" pin="GND"/>
+<pinref part="SUPPLY19" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U26" gate="G$1" pin="GND"/>
 <wire x1="60.96" y1="147.32" x2="63.5" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="144.78" x2="63.5" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="GND17" gate="1" pin="GND"/>
+<pinref part="SUPPLY16" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C14" gate="G$1" pin="2"/>
@@ -5730,7 +5755,7 @@ Backplane to GND.</text>
 <wire x1="38.1" y1="109.22" x2="30.48" y2="109.22" width="0.1524" layer="91"/>
 <junction x="38.1" y="109.22"/>
 <junction x="30.48" y="109.22"/>
-<pinref part="GND21" gate="1" pin="GND"/>
+<pinref part="SUPPLY18" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="VBAT+" class="0">
@@ -5805,7 +5830,7 @@ Backplane to GND.</text>
 <wire x1="66.04" y1="83.82" x2="68.58" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="83.82" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
 <junction x="66.04" y="83.82"/>
-<pinref part="GND18" gate="G$1" pin="VBAT-"/>
+<pinref part="SUPPLY22" gate="G$1" pin="VBAT-"/>
 <wire x1="30.48" y1="81.28" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -6000,7 +6025,7 @@ Backplane to GND.</text>
 <net name="N$20" class="0">
 <segment>
 <pinref part="U27" gate="G$1" pin="!MR"/>
-<pinref part="RESET" gate="G$1" pin="P$1"/>
+<pinref part="S2" gate="G$1" pin="P$1"/>
 <wire x1="139.7" y1="43.18" x2="170.18" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="43.18" x2="170.18" y2="40.64" width="0.1524" layer="91"/>
 </segment>
@@ -6050,7 +6075,7 @@ Backplane to GND.</text>
 <instance part="FRAME8" gate="G$1" x="0" y="0"/>
 <instance part="FRAME8" gate="G$2" x="147.32" y="0"/>
 <instance part="U29" gate="G$1" x="124.46" y="104.14"/>
-<instance part="GND" gate="1" x="124.46" y="83.82"/>
+<instance part="SUPPLY23" gate="1" x="124.46" y="83.82"/>
 <instance part="SJ1" gate="1" x="106.68" y="106.68"/>
 <instance part="C23" gate="G$1" x="99.06" y="99.06">
 <attribute name="DIGIKEY" x="99.06" y="99.06" size="1.778" layer="96" display="off"/>
@@ -6101,7 +6126,7 @@ Backplane to GND.</text>
 <pinref part="U29" gate="G$1" pin="E0"/>
 <wire x1="114.3" y1="101.6" x2="111.76" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="101.6" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="GND" gate="1" pin="GND"/>
+<pinref part="SUPPLY23" gate="1" pin="GND"/>
 <wire x1="111.76" y1="99.06" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="96.52" x2="111.76" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
@@ -6163,7 +6188,7 @@ Backplane to GND.</text>
 <attribute name="DIGIKEY" x="167.64" y="63.5" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U11" gate="G$1" x="203.2" y="53.34" rot="MR0"/>
-<instance part="GND1" gate="1" x="190.5" y="27.94"/>
+<instance part="SUPPLY24" gate="1" x="190.5" y="27.94"/>
 <instance part="R17" gate="G$1" x="121.92" y="167.64" rot="R90">
 <attribute name="DIGIKEY" x="121.92" y="167.64" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
@@ -6502,7 +6527,7 @@ Backplane to GND.</text>
 <wire x1="190.5" y1="78.74" x2="193.04" y2="78.74" width="0.1524" layer="91"/>
 <junction x="190.5" y="43.18"/>
 <wire x1="190.5" y1="43.18" x2="190.5" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="GND1" gate="1" pin="GND"/>
+<pinref part="SUPPLY24" gate="1" pin="GND"/>
 <pinref part="U6" gate="G$1" pin="GND"/>
 <wire x1="190.5" y1="33.02" x2="190.5" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="81.28" x2="68.58" y2="81.28" width="0.1524" layer="91"/>
@@ -6684,7 +6709,7 @@ Backplane to GND.</text>
 <attribute name="DIGIKEY" x="165.1" y="63.5" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="U15" gate="G$1" x="203.2" y="53.34" rot="MR0"/>
-<instance part="GND2" gate="1" x="190.5" y="27.94"/>
+<instance part="SUPPLY25" gate="1" x="190.5" y="27.94"/>
 <instance part="R29" gate="G$1" x="121.92" y="91.44" rot="R90">
 <attribute name="DIGIKEY" x="121.92" y="91.44" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
@@ -6989,7 +7014,7 @@ Backplane to GND.</text>
 <wire x1="190.5" y1="78.74" x2="193.04" y2="78.74" width="0.1524" layer="91"/>
 <junction x="190.5" y="43.18"/>
 <wire x1="190.5" y1="43.18" x2="190.5" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="SUPPLY25" gate="1" pin="GND"/>
 <pinref part="U7" gate="G$1" pin="GND"/>
 <wire x1="190.5" y1="33.02" x2="190.5" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="81.28" x2="68.58" y2="81.28" width="0.1524" layer="91"/>
@@ -7176,51 +7201,51 @@ Backplane to GND.</text>
 <instances>
 <instance part="FRAME9" gate="G$1" x="0" y="0"/>
 <instance part="FRAME9" gate="G$2" x="147.32" y="0"/>
-<instance part="3V3" gate="G$1" x="116.84" y="127"/>
-<instance part="5V_1" gate="G$1" x="116.84" y="124.46"/>
-<instance part="5V_2" gate="G$1" x="116.84" y="121.92"/>
-<instance part="5V_3" gate="G$1" x="116.84" y="119.38"/>
-<instance part="5V_4" gate="G$1" x="116.84" y="116.84"/>
+<instance part="TP1" gate="G$1" x="116.84" y="127"/>
+<instance part="TP2" gate="G$1" x="116.84" y="124.46"/>
+<instance part="TP3" gate="G$1" x="116.84" y="121.92"/>
+<instance part="TP4" gate="G$1" x="116.84" y="119.38"/>
+<instance part="TP5" gate="G$1" x="116.84" y="116.84"/>
 <instance part="J3" gate="G$1" x="121.92" y="71.12"/>
 <instance part="JP1" gate="G$1" x="114.3" y="88.9"/>
-<instance part="FAULT" gate="G$1" x="116.84" y="111.76"/>
-<instance part="CHRG" gate="G$1" x="116.84" y="109.22"/>
-<instance part="!RESET" gate="G$1" x="116.84" y="106.68"/>
+<instance part="TP6" gate="G$1" x="116.84" y="111.76"/>
+<instance part="TP7" gate="G$1" x="116.84" y="109.22"/>
+<instance part="TP8" gate="G$1" x="116.84" y="106.68"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VCC_3V3" class="0">
 <segment>
-<pinref part="3V3" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP1" gate="G$1" pin="TESTPOINT"/>
 <wire x1="121.92" y1="127" x2="119.38" y2="127" width="0.1524" layer="91"/>
 <label x="121.92" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_1" class="0">
 <segment>
-<pinref part="5V_1" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP2" gate="G$1" pin="TESTPOINT"/>
 <wire x1="121.92" y1="124.46" x2="119.38" y2="124.46" width="0.1524" layer="91"/>
 <label x="121.92" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_2" class="0">
 <segment>
-<pinref part="5V_2" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP3" gate="G$1" pin="TESTPOINT"/>
 <wire x1="121.92" y1="121.92" x2="119.38" y2="121.92" width="0.1524" layer="91"/>
 <label x="121.92" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_3" class="0">
 <segment>
-<pinref part="5V_3" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP4" gate="G$1" pin="TESTPOINT"/>
 <wire x1="121.92" y1="119.38" x2="119.38" y2="119.38" width="0.1524" layer="91"/>
 <label x="121.92" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VCC_5V_4" class="0">
 <segment>
-<pinref part="5V_4" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP5" gate="G$1" pin="TESTPOINT"/>
 <wire x1="121.92" y1="116.84" x2="119.38" y2="116.84" width="0.1524" layer="91"/>
 <label x="121.92" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -7260,14 +7285,14 @@ Backplane to GND.</text>
 </net>
 <net name="CHRG_FAULT" class="0">
 <segment>
-<pinref part="FAULT" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP6" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
 <label x="121.92" y="111.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="CHRG" class="0">
 <segment>
-<pinref part="CHRG" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP7" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="109.22" x2="121.92" y2="109.22" width="0.1524" layer="91"/>
 <label x="121.92" y="109.22" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -7295,7 +7320,7 @@ Backplane to GND.</text>
 </net>
 <net name="!RESET" class="0">
 <segment>
-<pinref part="!RESET" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP8" gate="G$1" pin="TESTPOINT"/>
 <wire x1="119.38" y1="106.68" x2="121.92" y2="106.68" width="0.1524" layer="91"/>
 <label x="121.92" y="106.68" size="1.27" layer="95" xref="yes"/>
 </segment>

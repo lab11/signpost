@@ -255,6 +255,7 @@ Header</text>
 <wire x1="53.34" y1="22.098" x2="54.102" y2="22.098" width="0.1524" layer="41"/>
 <wire x1="45.974" y1="19.685" x2="46.609" y2="19.685" width="0.1524" layer="41"/>
 <text x="3.302" y="40.132" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="top-center">OFF</text>
+<text x="4.064" y="45.974" size="0.8128" layer="25" font="vector" ratio="12" rot="R180" align="top-center">Reset</text>
 </plain>
 <libraries>
 <library name="signpost">
@@ -497,7 +498,7 @@ Header</text>
 <description>&lt;b&gt;LAB11&lt;/b&gt; - Logos for PCBs.</description>
 <packages>
 <package name="UCB_CAL_200MIL">
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="0.1483375"/>
 <vertex x="3.126865625" y="0.716534375"/>
 <vertex x="3.08445" y="0.71881875"/>
@@ -557,7 +558,7 @@ Header</text>
 <vertex x="3.058034375" y="0.1516375"/>
 <vertex x="3.127375" y="0.14808125"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="4.13385"/>
 <vertex x="5.482209375" y="3.454653125"/>
 <vertex x="5.52285" y="3.529075"/>
@@ -616,7 +617,7 @@ Header</text>
 <vertex x="5.509640625" y="4.162553125"/>
 <vertex x="5.482715625" y="4.134359375"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="4.13385"/>
 <vertex x="5.4182" y="4.067046875"/>
 <vertex x="5.331078125" y="3.968496875"/>
@@ -750,7 +751,7 @@ Header</text>
 <vertex x="5.482971875" y="3.4544"/>
 <vertex x="5.482971875" y="4.133596875"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="1.222246875"/>
 <vertex x="5.482209375" y="0.91236875"/>
 <vertex x="5.531484375" y="0.9072875"/>
@@ -776,7 +777,7 @@ Header</text>
 <vertex x="5.51853125" y="1.190496875"/>
 <vertex x="5.48195625" y="1.22275625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="5.482209375" y="0.306578125"/>
 <vertex x="5.482209375" y="0.720596875"/>
 <vertex x="5.376290625" y="0.676403125"/>
@@ -821,7 +822,7 @@ Header</text>
 <vertex x="5.39076875" y="0.270509375"/>
 <vertex x="5.4824625" y="0.307340625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="1.207515625"/>
 <vertex x="3.126865625" y="1.5168875"/>
 <vertex x="3.122040625" y="1.510284375"/>
@@ -970,7 +971,7 @@ Header</text>
 <vertex x="3.074034375" y="1.162559375"/>
 <vertex x="3.12610625" y="1.207515625"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="5.12013125"/>
 <vertex x="3.126865625" y="4.878325"/>
 <vertex x="3.146934375" y="4.87476875"/>
@@ -995,7 +996,7 @@ Header</text>
 <vertex x="3.133215625" y="5.120640625"/>
 <vertex x="3.127121875" y="5.12013125"/>
 </polygon>
-<polygon width="0" layer="21">
+<polygon width="0.0254" layer="21">
 <vertex x="3.126865625" y="4.037075"/>
 <vertex x="3.126865625" y="4.388359375"/>
 <vertex x="3.051684375" y="4.34213125"/>
@@ -1737,27 +1738,27 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="DIGIKEY" value=" LTC2943IDD#PBF-ND" x="15.748" y="48.006" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="54.388" y="38.227" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="3V3" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="26.924" y="21.336" smashed="yes" rot="R90">
+<element name="TP1" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="26.924" y="21.336" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="5001K-ND" x="26.924" y="16.256" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="29.718" y="22.098" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="29.464" y="21.336" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="5V_1" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="26.924" y="18.796" smashed="yes" rot="R90">
+<element name="TP2" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="26.924" y="18.796" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="5001K-ND" x="26.924" y="9.271" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="30.48" y="18.542" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="29.464" y="18.796" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="5V_2" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="27.432" y="13.462" smashed="yes">
+<element name="TP3" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="27.432" y="13.462" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="13.462" y="13.462" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="27.432" y="14.986" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="27.432" y="10.922" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="5V_3" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="42.672" y="10.668" smashed="yes" rot="R90">
+<element name="TP4" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="42.672" y="10.668" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="5001K-ND" x="42.672" y="-7.747" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="43.18" y="12.192" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="45.212" y="10.668" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
-<element name="5V_4" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="57.404" y="16.256" smashed="yes" rot="R180">
+<element name="TP5" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="57.404" y="16.256" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="5001K-ND" x="62.484" y="16.256" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="57.15" y="14.986" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="57.404" y="18.796" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
@@ -1885,8 +1886,8 @@ Quickturn PCB 4 Layer .DRU</description>
 <element name="U$1" library="logos" package="UCB_CAL_200MIL" value="" x="38.862" y="42.164" smashed="yes"/>
 <element name="U4" library="chips" package="TQFN-16/3MM" value="TLV62130" x="14.478" y="11.43" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="20.828" y="5.08" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="14.478" y="11.43" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="14.478" y="11.43" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="14.478" y="11.43" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="TLV62130RGTR" x="14.478" y="11.43" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="15.558" y="9.648" size="1.016" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="C34" library="passives" package="0805_CAP" value="10 uF" x="16.764" y="8.001" smashed="yes" rot="R180">
@@ -1922,14 +1923,14 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L4" library="passives" package="IHL-1212BZ-11" value="2.2 uH" x="16.256" y="15.748" smashed="yes">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="6.096" y="-12.192" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="16.256" y="15.748" size="1.778" layer="27" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="16.256" y="15.748" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="16.256" y="15.748" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" x="16.256" y="15.748" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="15.38" y="17.548" size="1.016" layer="25" font="vector" ratio="12"/>
 </element>
 <element name="U1" library="chips" package="TQFN-16/3MM" value="TLV62130" x="22.098" y="5.588" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="28.448" y="-0.762" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="22.098" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="22.098" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="22.098" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="TLV62130RGTR" x="22.098" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="23.178" y="3.552" size="1.016" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="C35" library="passives" package="0805_CAP" value="10 uF" x="24.384" y="2.54" smashed="yes" rot="R180">
@@ -1965,14 +1966,14 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L1" library="passives" package="IHL-1212BZ-11" value="2.2 uH" x="23.876" y="9.906" smashed="yes">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="13.716" y="-18.034" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="23.876" y="9.906" size="1.778" layer="27" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="23.876" y="9.906" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="23.876" y="9.906" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" x="23.876" y="9.906" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="23.254" y="11.96" size="1.016" layer="25" font="vector" ratio="12"/>
 </element>
 <element name="U2" library="chips" package="TQFN-16/3MM" value="TLV62130" x="29.972" y="5.588" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="36.322" y="-0.762" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="29.972" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="29.972" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="29.972" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="TLV62130RGTR" x="29.972" y="5.588" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="30.798" y="3.552" size="1.016" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="C36" library="passives" package="0805_CAP" value="10 uF" x="32.258" y="2.54" smashed="yes" rot="R180">
@@ -2008,14 +2009,14 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L2" library="passives" package="IHL-1212BZ-11" value="2.2 uH" x="31.75" y="9.906" smashed="yes">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="21.59" y="-18.034" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="31.75" y="9.906" size="1.778" layer="27" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="31.75" y="9.906" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="31.75" y="9.906" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" x="31.75" y="9.906" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="34.058" y="11.036" size="1.016" layer="25" font="vector" ratio="12" rot="R270"/>
 </element>
 <element name="U3" library="chips" package="TQFN-16/3MM" value="TLV62130" x="41.402" y="4.826" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="47.752" y="11.176" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="41.402" y="4.826" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="41.402" y="4.826" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="41.402" y="4.826" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="TLV62130RGTR" x="41.402" y="4.826" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="41.592" y="7.116" size="1.016" layer="25" font="vector" ratio="12"/>
 </element>
 <element name="C37" library="passives" package="0805_CAP" value="10 uF" x="44.45" y="7.112" smashed="yes" rot="R270">
@@ -2051,14 +2052,14 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L3" library="passives" package="IHL-1212BZ-11" value="2.2 uH" x="37.084" y="6.604" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="65.024" y="-3.556" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="37.084" y="6.604" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="37.084" y="6.604" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="37.084" y="6.604" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" x="37.084" y="6.604" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="35.284" y="6.236" size="1.016" layer="25" font="vector" ratio="12" rot="R90"/>
 </element>
 <element name="U5" library="chips" package="TQFN-16/3MM" value="TLV62130" x="53.594" y="9.652" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="59.944" y="16.002" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MF" value="Texas Instruments" x="53.594" y="9.652" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MFN" value="TLV62130RGTR" x="53.594" y="9.652" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" x="53.594" y="9.652" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="TLV62130RGTR" x="53.594" y="9.652" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="54.038" y="11.942" size="1.016" layer="25" font="vector" ratio="12"/>
 </element>
 <element name="C38" library="passives" package="0805_CAP" value="10 uF" x="56.642" y="11.938" smashed="yes" rot="R270">
@@ -2094,8 +2095,8 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="L5" library="passives" package="IHL-1212BZ-11" value="2.2 uH" x="49.276" y="11.43" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="77.216" y="1.27" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MF" value="Vishay Dale" x="49.276" y="11.43" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MFN" value="IHLP1212BZER2R2M11" x="49.276" y="11.43" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="49.276" y="11.43" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" x="49.276" y="11.43" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="47.476" y="10.3" size="1.016" layer="25" font="vector" ratio="12" rot="R90"/>
 </element>
 <element name="U16" library="chips" package="DFN-12/3MM" value="LT3652" x="22.606" y="28.448" smashed="yes">
@@ -2106,7 +2107,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="DIGIKEY" value="CMPSH1-4 CT-ND" x="23.114" y="33.274" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="25.146" y="34.004" size="1.016" layer="21" ratio="12" align="bottom-center"/>
 </element>
-<element name="D2" library="passives" package="SOD323" value="" x="26.924" y="26.416" smashed="yes">
+<element name="D2" library="passives" package="SOD323" value="DIODE_ZENERSOT323" x="26.924" y="26.416" smashed="yes">
 <attribute name="DIGIKEY" value="1727-5151-1-ND" x="26.924" y="26.416" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="27.686" y="25.17" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
@@ -2118,7 +2119,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="DIGIKEY" value="490-1543-1-ND" x="26.162" y="31.75" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="26.162" y="32.512" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="D3" library="passives" package="SOD323" value="DIODE_SCHOTTKYSOD323" x="26.924" y="29.21" smashed="yes" rot="R270">
+<element name="D3" library="passives" package="SOD323" value="None" x="26.924" y="29.21" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="CMDSH2-4L CT-ND" x="26.924" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="25.94" y="30.226" size="1.016" layer="21" ratio="12" rot="R90" align="bottom-center"/>
 </element>
@@ -2327,6 +2328,7 @@ Quickturn PCB 4 Layer .DRU</description>
 </element>
 <element name="S1" library="switches" package="TE_SSA12/SPDT" value="TE_SSA12/SPDT" x="3.302" y="35.306" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="450-1602-ND" x="-4.318" y="53.086" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
+<attribute name="NAME" x="1.27" y="35.306" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="0.127" y="35.306" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="U27" library="chips" package="SOT-23-8" value="MAX6746" x="9.144" y="32.258" smashed="yes" rot="R270">
@@ -2357,9 +2359,9 @@ Quickturn PCB 4 Layer .DRU</description>
 <element name="JP1" library="SparkFun-Connectors" package="1X04" value="" x="3.302" y="20.066" smashed="yes" rot="R90">
 <attribute name="VALUE" x="6.477" y="18.796" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="RESET" library="switches" package="PTS810SJ" value="PTS810SJ" x="4.064" y="43.942" smashed="yes">
+<element name="S2" library="switches" package="PTS810SJ" value="PTS810SJ" x="4.064" y="43.942" smashed="yes">
 <attribute name="DIGIKEY" value="CKN10504CT-ND" x="4.064" y="43.942" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="4.318" y="46.126" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="1.118" y="43.942" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="4.064" y="42.092" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R15" library="passives" package="0402_RES" value="1 MΩ" x="18.288" y="26.924" smashed="yes" rot="R180">
@@ -2372,12 +2374,12 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="17.399" y="28.956" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="18.288" y="30.099" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
-<element name="FAULT" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="19.304" y="23.622" smashed="yes">
+<element name="TP6" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="19.304" y="23.622" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="18.796" y="23.622" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="19.558" y="22.098" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="19.304" y="21.082" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
-<element name="CHRG" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="19.304" y="31.75" smashed="yes">
+<element name="TP7" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="19.304" y="31.75" smashed="yes">
 <attribute name="DIGIKEY" value="5001K-ND" x="18.796" y="31.75" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="19.304" y="33.274" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="19.304" y="29.21" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
@@ -2401,7 +2403,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="23.241" y="36.83" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="21.209" y="36.576" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="!RESET" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="14.732" y="38.608">
+<element name="TP8" library="headers" package="TESTPOINT_0.040IN" value="TEST_POINT_0.040IN" x="14.732" y="38.608">
 <attribute name="DIGIKEY" value="5001K-ND" x="14.732" y="38.608" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
@@ -2886,8 +2888,8 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="U27" pad="4"/>
 <contactref element="S1" pad="1"/>
 <contactref element="C26" pad="2"/>
-<contactref element="RESET" pad="3"/>
-<contactref element="RESET" pad="4"/>
+<contactref element="S2" pad="3"/>
+<contactref element="S2" pad="4"/>
 <contactref element="C21" pad="2"/>
 <contactref element="U28" pad="3"/>
 <contactref element="C22" pad="2"/>
@@ -3056,7 +3058,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="R3" pad="2"/>
 <wire x1="46.251" y1="18.935" x2="46.256" y2="17.67" width="0.4064" layer="1"/>
 <wire x1="46.256" y1="17.67" x2="45.731" y2="17.145" width="0.4064" layer="1"/>
-<contactref element="5V_1" pad="TESTPOINT"/>
+<contactref element="TP2" pad="TESTPOINT"/>
 <contactref element="R20" pad="2"/>
 <contactref element="R21" pad="2"/>
 <contactref element="R22" pad="2"/>
@@ -3621,7 +3623,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="U8" pad="1"/>
 <contactref element="R2" pad="2"/>
 <wire x1="39.635" y1="17.145" x2="40.16" y2="17.67" width="0.4064" layer="1"/>
-<contactref element="3V3" pad="TESTPOINT"/>
+<contactref element="TP1" pad="TESTPOINT"/>
 <contactref element="R19" pad="2"/>
 <contactref element="R18" pad="2"/>
 <contactref element="R17" pad="2"/>
@@ -4873,7 +4875,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="R4" pad="2"/>
 <contactref element="U11" pad="P1"/>
 <contactref element="R5" pad="2"/>
-<contactref element="5V_2" pad="TESTPOINT"/>
+<contactref element="TP3" pad="TESTPOINT"/>
 <contactref element="R23" pad="2"/>
 <contactref element="R24" pad="2"/>
 <contactref element="R25" pad="2"/>
@@ -4942,7 +4944,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="R8" pad="2"/>
 <contactref element="U15" pad="P1"/>
 <contactref element="R9" pad="2"/>
-<contactref element="5V_4" pad="TESTPOINT"/>
+<contactref element="TP5" pad="TESTPOINT"/>
 <contactref element="R38" pad="2"/>
 <contactref element="R39" pad="2"/>
 <contactref element="R40" pad="2"/>
@@ -5016,7 +5018,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <contactref element="U12" pad="P1"/>
 <contactref element="R6" pad="2"/>
 <wire x1="53.224" y1="19.558" x2="53.749" y2="20.083" width="0.4064" layer="1"/>
-<contactref element="5V_3" pad="TESTPOINT"/>
+<contactref element="TP4" pad="TESTPOINT"/>
 <contactref element="R35" pad="2"/>
 <contactref element="R36" pad="2"/>
 <contactref element="R37" pad="2"/>
@@ -5087,15 +5089,15 @@ Quickturn PCB 4 Layer .DRU</description>
 </signal>
 <signal name="N$20">
 <contactref element="U27" pad="1"/>
-<contactref element="RESET" pad="2"/>
-<contactref element="RESET" pad="1"/>
+<contactref element="S2" pad="2"/>
+<contactref element="S2" pad="1"/>
 <wire x1="5.08" y1="45.142" x2="1.989" y2="45.142" width="0.254" layer="1"/>
 <wire x1="5.08" y1="45.142" x2="6.139" y2="45.142" width="0.254" layer="1"/>
 <wire x1="7.974" y1="33.233" x2="5.08" y2="36.127" width="0.254" layer="1"/>
 <wire x1="5.08" y1="36.127" x2="5.08" y2="45.142" width="0.254" layer="1"/>
 </signal>
 <signal name="CHRG_FAULT">
-<contactref element="FAULT" pad="TESTPOINT"/>
+<contactref element="TP6" pad="TESTPOINT"/>
 <contactref element="U16" pad="5"/>
 <contactref element="R15" pad="1"/>
 <wire x1="21.156" y1="27.768" x2="19.56506875" y2="27.768" width="0.254" layer="1"/>
@@ -5104,7 +5106,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <wire x1="19.304" y1="26.34106875" x2="18.72106875" y2="26.924" width="0.254" layer="1"/>
 </signal>
 <signal name="CHRG">
-<contactref element="CHRG" pad="TESTPOINT"/>
+<contactref element="TP7" pad="TESTPOINT"/>
 <contactref element="U16" pad="4"/>
 <contactref element="R16" pad="1"/>
 <wire x1="21.156" y1="28.218" x2="19.20506875" y2="28.218" width="0.254" layer="1"/>
@@ -5142,7 +5144,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <wire x1="16.89693125" y1="34.87293125" x2="16.398" y2="34.374" width="0.254" layer="1"/>
 </signal>
 <signal name="!RESET">
-<contactref element="!RESET" pad="TESTPOINT"/>
+<contactref element="TP8" pad="TESTPOINT"/>
 <contactref element="U27" pad="7"/>
 <contactref element="U30" pad="2"/>
 <contactref element="U2" pad="13"/>
