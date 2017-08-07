@@ -2060,7 +2060,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <via x="31.4452" y="45.8216" extent="1-16" drill="0.3048"/>
 <via x="23.0632" y="39.7764" extent="1-16" drill="0.3048"/>
 <via x="7.7978" y="27.178" extent="1-16" drill="0.3048"/>
-<via x="17.5514" y="24.892" extent="1-16" drill="0.3048"/>
+<via x="15.5194" y="24.892" extent="1-16" drill="0.3048"/>
 <via x="40.005" y="51.181" extent="1-16" drill="0.3048"/>
 <via x="37.4904" y="41.5036" extent="1-16" drill="0.3048"/>
 <via x="60.6298" y="20.7772" extent="1-16" drill="0.3048"/>
@@ -2664,6 +2664,16 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </signal>
 <signal name="SPEC_RESET">
 <contactref element="U4" pad="7"/>
+<contactref element="TP7" pad="TESTPOINT"/>
+<contactref element="U9" pad="11"/>
+<via x="43.4848" y="27.7114" extent="1-16" drill="0.3048"/>
+<wire x1="43.4848" y1="27.7114" x2="29.8958" y2="27.8638" width="0.254" layer="16"/>
+<wire x1="29.8958" y1="27.8638" x2="28.9052" y2="26.8732" width="0.254" layer="16"/>
+<wire x1="48.6118" y1="27.8838" x2="43.6572" y2="27.8838" width="0.254" layer="1"/>
+<wire x1="43.6572" y1="27.8838" x2="43.4848" y2="27.7114" width="0.254" layer="1"/>
+<wire x1="28.9052" y1="26.8732" x2="25.908" y2="23.876" width="0.2032" layer="1"/>
+<wire x1="18.796" y1="23.876" x2="15.494" y2="27.178" width="0.2032" layer="1"/>
+<wire x1="25.908" y1="23.876" x2="18.796" y2="23.876" width="0.2032" layer="1"/>
 </signal>
 <signal name="SPEC_GATED">
 <contactref element="R29" pad="1"/>
@@ -3371,15 +3381,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="30.988" y1="52.0192" x2="30.988" y2="53.7822" width="0.254" layer="1"/>
 <wire x1="30.988" y1="53.7822" x2="31.115" y2="53.9092" width="0.254" layer="1"/>
 <wire x1="30.988" y1="52.0192" x2="31.6531" y2="51.3541" width="0.254" layer="1"/>
-</signal>
-<signal name="N$22">
-<contactref element="TP7" pad="TESTPOINT"/>
-<contactref element="U9" pad="11"/>
-<via x="43.4848" y="27.7114" extent="1-16" drill="0.3048"/>
-<wire x1="43.4848" y1="27.7114" x2="29.8958" y2="27.8638" width="0.254" layer="16"/>
-<wire x1="29.8958" y1="27.8638" x2="28.9052" y2="26.8732" width="0.254" layer="16"/>
-<wire x1="48.6118" y1="27.8838" x2="43.6572" y2="27.8838" width="0.254" layer="1"/>
-<wire x1="43.6572" y1="27.8838" x2="43.4848" y2="27.7114" width="0.254" layer="1"/>
 </signal>
 <signal name="N$24">
 <contactref element="U9" pad="12"/>
