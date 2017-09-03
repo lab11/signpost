@@ -2287,6 +2287,80 @@ Master</text>
 <text x="2.032" y="0" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center">&gt;VALUE</text>
 <circle x="1.7" y="1" radius="0.1" width="0.127" layer="21"/>
 </package>
+<package name="SIGNPOST_MODULE_HEADER">
+<circle x="0" y="0" radius="0.254" width="0" layer="49"/>
+<pad name="1" x="7.62" y="1.27" drill="0.9906" shape="square" rot="R180"/>
+<pad name="2" x="7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="4" x="5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="5" x="2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="6" x="2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="7" x="0" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="8" x="0" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="9" x="-2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="10" x="-2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="11" x="-5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="12" x="-5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="13" x="-7.62" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="14" x="-7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<text x="7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">1</text>
+<text x="7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">2</text>
+<text x="5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">3</text>
+<text x="5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">4</text>
+<text x="2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">5</text>
+<text x="2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">6</text>
+<text x="0" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">7</text>
+<text x="0" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">8</text>
+<text x="-2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">9</text>
+<text x="-2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">10</text>
+<text x="-5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">11</text>
+<text x="-5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">12</text>
+<text x="-7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">13</text>
+<text x="-7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">14</text>
+<wire x1="11.43" y1="-2.9972" x2="11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="11.43" y1="2.9972" x2="1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="2.9972" x2="1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="4.0132" x2="-1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="4.0132" x2="-1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="2.9972" x2="-11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="2.9972" x2="-11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="-2.9972" x2="11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-2.2479" y1="4.3942" x2="-12.6365" y2="4.3942" width="0.127" layer="22"/>
+<wire x1="-12.6365" y1="4.3942" x2="-12.6365" y2="-4.3942" width="0.127" layer="22"/>
+<wire x1="-12.6365" y1="-4.3942" x2="12.6365" y2="-4.3942" width="0.127" layer="22"/>
+<wire x1="12.6365" y1="-4.3942" x2="12.6365" y2="4.3942" width="0.127" layer="22"/>
+<wire x1="12.6365" y1="4.3942" x2="2.2479" y2="4.3942" width="0.127" layer="22"/>
+<text x="5.08" y="1.27" size="1.27" layer="49" align="center">X</text>
+<text x="-2.54" y="1.27" size="1.27" layer="49" align="center">X</text>
+</package>
+<package name="SIGNPOST_DEBUG_HEADER">
+<pad name="20" x="1.27" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="19" x="1.27" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="17" x="-1.27" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="18" x="-1.27" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="16" x="-3.81" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="15" x="-3.81" y="-1.27" drill="0.9906" shape="square" rot="R180"/>
+<wire x1="-6.35" y1="-2.54" x2="-6.35" y2="2.54" width="0.127" layer="22"/>
+<wire x1="-6.35" y1="2.54" x2="6.35" y2="2.54" width="0.127" layer="22"/>
+<wire x1="6.35" y1="2.54" x2="6.35" y2="-2.54" width="0.127" layer="22"/>
+<wire x1="6.35" y1="-2.54" x2="-6.35" y2="-2.54" width="0.127" layer="22"/>
+<pad name="21" x="3.81" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="22" x="3.81" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+</package>
+<package name="SIGNPOST_DEBUG_HEADER_SMT">
+<wire x1="-5.3594" y1="-4.37388125" x2="-5.3594" y2="4.51611875" width="0.127" layer="22"/>
+<wire x1="-5.3594" y1="4.51611875" x2="5.0546" y2="4.51611875" width="0.127" layer="22"/>
+<wire x1="5.0546" y1="4.51611875" x2="5.0546" y2="-4.37388125" width="0.127" layer="22"/>
+<wire x1="5.0546" y1="-4.37388125" x2="-5.3594" y2="-4.37388125" width="0.127" layer="22"/>
+<smd name="16" x="-3.8354" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="18" x="-1.2954" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="20" x="1.2446" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="22" x="3.7846" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="21" x="3.7846" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="19" x="1.2446" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="17" x="-1.2954" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="15" x="-3.8354" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+</package>
 </packages>
 <symbols>
 <symbol name="HEADER_CONTROL">
@@ -4951,6 +5025,82 @@ NCP302 - Digikey attr for fixed 3.0V threshold</description>
 <device name="">
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SIGNPOST_MODULE_HEADER" prefix="J">
+<description>The 14 pin signpost module header</description>
+<gates>
+<gate name="G$1" symbol="HEADER_MODULE" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="SIGNPOST_MODULE_HEADER">
+<connects>
+<connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1 14"/>
+<connect gate="G$1" pin="MOD_IN" pad="10"/>
+<connect gate="G$1" pin="MOD_OUT" pad="8"/>
+<connect gate="G$1" pin="PPS" pad="7"/>
+<connect gate="G$1" pin="SCL" pad="5"/>
+<connect gate="G$1" pin="SDA" pad="6"/>
+<connect gate="G$1" pin="USB_D+" pad="11"/>
+<connect gate="G$1" pin="USB_D-" pad="12"/>
+<connect gate="G$1" pin="USB_VBUS" pad="13"/>
+<connect gate="G$1" pin="VCCIO" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="S9170-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Sullins Connector" constant="no"/>
+<attribute name="MPN" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SIGNPOST_DEBUG_HEADER" prefix="J">
+<description>The 8 Pin signpost Debug Header</description>
+<gates>
+<gate name="G$1" symbol="HEADER_DEBUG" x="-10.16" y="-15.24"/>
+</gates>
+<devices>
+<device name="" package="SIGNPOST_DEBUG_HEADER">
+<connects>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
+<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
+<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
+<connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
+<connect gate="G$1" pin="DBG_TX" pad="17"/>
+<connect gate="G$1" pin="GND1" pad="15"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="S2221EC-04-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Sullins Connector" constant="no"/>
+<attribute name="MPN" value="PRPC004DFBN-RC" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="SMT" package="SIGNPOST_DEBUG_HEADER_SMT">
+<connects>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
+<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
+<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
+<connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
+<connect gate="G$1" pin="DBG_TX" pad="17"/>
+<connect gate="G$1" pin="GND1" pad="15"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="WM17450-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Molex" constant="no"/>
+<attribute name="MPN" value="0015912080" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
