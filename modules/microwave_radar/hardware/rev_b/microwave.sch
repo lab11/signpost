@@ -4480,7 +4480,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </sheet>
 <sheet>
 <plain>
-<text x="38.1" y="86.36" size="1.778" layer="98">Source and GND for OP284E op amp</text>
+<text x="22.86" y="144.78" size="1.778" layer="98">Source and GND for OP284E op amp</text>
 <text x="76.2" y="-2.54" size="1.778" layer="98">amplifying circuit</text>
 <text x="83.82" y="139.7" size="1.778" layer="98">microwave sensor</text>
 </plain>
@@ -4815,7 +4815,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </sheet>
 <sheet>
 <plain>
-<text x="76.2" y="109.22" size="1.778" layer="98">Switching regulator from 5V to 3.3 V</text>
+<text x="15.24" y="160.02" size="1.778" layer="98">Switching regulator from 5V to 3.3 V</text>
 <text x="78.74" y="17.78" size="1.778" layer="98">SEVEN BAND GRAPHIC EQUALIZER</text>
 </plain>
 <instances>
