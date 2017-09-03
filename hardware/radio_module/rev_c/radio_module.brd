@@ -2087,15 +2087,15 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="NAME" x="4.191" y="44.45" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C10" library="passives" package="0402_CAP" value="47pF" x="5.461" y="42.672" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="42.672" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND" x="5.461" y="42.672" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.937" y="43.053" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C11" library="passives" package="0402_CAP" value="47pF" x="5.461" y="38.481" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="38.481" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND" x="5.461" y="38.481" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.937" y="38.735" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C12" library="passives" package="0402_CAP" value="47pF" x="5.461" y="35.687" smashed="yes" rot="R180">
-<attribute name="DIGIKEY" value="490-6241-1-ND " x="5.461" y="35.687" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
+<attribute name="DIGIKEY" value="490-6241-1-ND" x="5.461" y="35.687" size="1.778" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center" display="off"/>
 <attribute name="NAME" x="3.81" y="35.941" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C39" library="passives" package="1210_CAP" value="220uF" x="4.826" y="24.003" smashed="yes">

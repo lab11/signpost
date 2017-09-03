@@ -9839,13 +9839,13 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <attribute name="DIGIKEY" value="490-6241-1-ND"/>
 </part>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-6241-1-ND "/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
 </part>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-6241-1-ND "/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
 </part>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
-<attribute name="DIGIKEY" value="490-6241-1-ND "/>
+<attribute name="DIGIKEY" value="490-6241-1-ND"/>
 </part>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="C39" library="passives" deviceset="CAPACITOR" device="1210_CAP" value="220uF">
