@@ -4577,10 +4577,10 @@ with External Sense Resistor</description>
 <technology name="">
 <attribute name="DIGIKEY1" value="S9170-ND" constant="no"/>
 <attribute name="DIGIKEY2" value="WM17450-ND" constant="no"/>
-<attribute name="MF1" value="Sullins" constant="no"/>
-<attribute name="MF2" value="Molex" constant="no"/>
-<attribute name="MFN1" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
-<attribute name="MFN2" value="0015912080" constant="no"/>
+<attribute name="MANUFACTURER1" value="Sullins" constant="no"/>
+<attribute name="MANUFACTURER2" value="Molex" constant="no"/>
+<attribute name="MPN1" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
+<attribute name="MPN2" value="0015912080" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4714,8 +4714,8 @@ with External Sense Resistor</description>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="MF" value="RFExplorer" constant="no"/>
-<attribute name="MFN" value="MWSUB3G" constant="no"/>
+<attribute name="MANUFACTURER" value="RFExplorer" constant="no"/>
+<attribute name="MPN" value="MWSUB3G" constant="no"/>
 </technology>
 </technologies>
 </device>
