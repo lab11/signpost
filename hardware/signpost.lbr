@@ -3175,7 +3175,7 @@ S high: D = D2</text>
 <pin name="ANT_DET" x="25.4" y="2.54" length="middle" rot="R180"/>
 <pin name="PWR_ON" x="-25.4" y="22.86" length="middle"/>
 <pin name="RESET_N" x="-25.4" y="20.32" length="middle"/>
-<text x="-5.08" y="7.62" size="1.27" layer="95">SARA_G350</text>
+<text x="-7.62" y="7.62" size="1.27" layer="95">SARA_G350/U260</text>
 <text x="-20.32" y="30.48" size="1.27" layer="95">&gt;NAME</text>
 </symbol>
 <symbol name="SIM">
@@ -4312,6 +4312,8 @@ with Internal Sense Resistor</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-20960-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="TI" constant="no"/>
+<attribute name="MPN" value="PCA9544ARGYR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4432,6 +4434,8 @@ with External Sense Resistor</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="LTC2941IDCB#TRMPBFCT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="LTC" constant="no"/>
+<attribute name="MPN" value="LTC2941IDCB#TRMPBF" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4486,7 +4490,10 @@ with External Sense Resistor</description>
 <connect gate="G$1" pin="V_INT" pad="4"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="MANUFACTURER" value="UBLOX" constant="no"/>
+<attribute name="MPN" value="SARA_U260" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -4509,6 +4516,8 @@ with External Sense Resistor</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="732-5954-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Wurth" constant="no"/>
+<attribute name="MPN" value="693043020611" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4763,7 +4772,10 @@ with External Sense Resistor</description>
 <connect gate="G$1" pin="WAKE" pad="P$34"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="MANUFACTURER" value="Multitech" constant="no"/>
+<attribute name="MPN" value="MTXDOT-NA1-A00-1" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
