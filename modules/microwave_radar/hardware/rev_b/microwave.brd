@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -157,32 +157,32 @@
 </layers>
 <board>
 <plain>
-<text x="19.812" y="8.255" size="0.889" layer="21" font="vector">Yifan Hao
+<text x="19.812" y="8.255" size="0.889" layer="21" font="vector" ratio="12">Yifan Hao
 Joshua Adkins
 July 2017</text>
 <wire x1="26.162" y1="4.953" x2="28.702" y2="4.953" width="0.3048" layer="21"/>
 <wire x1="26.162" y1="8.001" x2="26.162" y2="4.953" width="0.3048" layer="21"/>
-<text x="26.543" y="5.207" size="2.54" layer="21" font="vector">B</text>
+<text x="26.543" y="5.207" size="2.54" layer="21" font="vector" ratio="12">B</text>
 <wire x1="28.702" y1="4.953" x2="28.702" y2="8.001" width="0.3048" layer="21"/>
 <text x="28.702" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">GND</text>
 <wire x1="28.702" y1="8.001" x2="26.162" y2="8.001" width="0.3048" layer="21"/>
-<text x="33.782" y="61.214" size="0.889" layer="21" font="vector" rot="SR270">IN</text>
-<text x="36.068" y="2.921" size="1.27" layer="21" font="vector" align="bottom-center">Signpost Microwave Radar Module</text>
-<text x="36.322" y="61.214" size="0.889" layer="21" font="vector" rot="SR270">OUT</text>
-<text x="36.322" y="68.072" size="0.889" layer="21" font="vector" rot="SR270">PPS</text>
-<text x="38.862" y="61.214" size="0.889" layer="21" font="vector" rot="SR270">SDA</text>
-<text x="38.862" y="68.072" size="0.889" layer="21" font="vector" rot="SR270">SCL</text>
-<text x="41.402" y="61.214" size="0.889" layer="21" font="vector" rot="SR270">VCCIO</text>
-<text x="43.942" y="61.214" size="0.889" layer="21" font="vector" rot="SR270">5V</text>
+<text x="33.782" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">IN</text>
+<text x="36.068" y="2.921" size="1.27" layer="21" font="vector" ratio="12" align="bottom-center">Signpost Microwave Radar Module</text>
+<text x="36.322" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">OUT</text>
+<text x="36.322" y="68.072" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">PPS</text>
+<text x="38.862" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">SDA</text>
+<text x="38.862" y="68.072" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">SCL</text>
+<text x="41.402" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">VCCIO</text>
+<text x="43.942" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">5V</text>
 <text x="43.942" y="68.072" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">GND</text>
-<text x="7.8994" y="26.1874" size="0.889" layer="21" font="vector">IF</text>
-<text x="7.8994" y="28.7782" size="0.889" layer="21" font="vector">MSGEQ_OUT</text>
-<text x="7.8994" y="33.8582" size="0.889" layer="21" font="vector">GND</text>
-<text x="7.8994" y="36.3728" size="0.889" layer="21" font="vector">3V3</text>
-<text x="7.9756" y="31.369" size="0.889" layer="21" font="vector">AMP_OUT</text>
-<text x="8.0264" y="38.9128" size="0.889" layer="21" font="vector">RX</text>
-<text x="8.0264" y="41.275" size="0.889" layer="21" font="vector">TX</text>
-<text x="8.0264" y="43.815" size="0.889" layer="21" font="vector">5V</text>
+<text x="7.8994" y="26.1874" size="0.889" layer="21" font="vector" ratio="12">IF</text>
+<text x="7.8994" y="28.7782" size="0.889" layer="21" font="vector" ratio="12">MSGEQ_OUT</text>
+<text x="7.8994" y="33.8582" size="0.889" layer="21" font="vector" ratio="12">GND</text>
+<text x="7.8994" y="36.3728" size="0.889" layer="21" font="vector" ratio="12">3V3</text>
+<text x="7.9756" y="31.369" size="0.889" layer="21" font="vector" ratio="12">AMP_OUT</text>
+<text x="8.0264" y="38.9128" size="0.889" layer="21" font="vector" ratio="12">RX</text>
+<text x="8.0264" y="41.275" size="0.889" layer="21" font="vector" ratio="12">TX</text>
+<text x="8.0264" y="43.815" size="0.889" layer="21" font="vector" ratio="12">5V</text>
 <text x="31.75" y="68.072" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">USB</text>
 <text x="30.988" y="66.548" size="0.889" layer="21" font="vector" ratio="12">+</text>
 <text x="31.75" y="61.214" size="0.889" layer="21" font="vector" ratio="12" rot="SR270">USB</text>
@@ -1478,195 +1478,195 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="490-1532-1-ND" x="47.244" y="4.826" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="47.244" y="4.826" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM188R71C104KA01D" x="47.244" y="4.826" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="45.085" y="5.207" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="45.085" y="5.207" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C11" library="passives" package="0402_CAP" value="100nF" x="46.228" y="37.338" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="46.228" y="37.338" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="46.228" y="37.338" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="46.228" y="37.338" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="46.228" y="37.338" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="46.2788" y="36.9316" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="46.2788" y="36.9316" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C12" library="passives" package="0402_CAP" value="100nF" x="42.418" y="39.116" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="42.418" y="39.116" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="42.418" y="39.116" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="42.418" y="39.116" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="42.418" y="39.116" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="42.3926" y="37.7952" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="42.3926" y="37.7952" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C13" library="passives" package="0402_CAP" value="100nF" x="50.292" y="32.004" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="50.292" y="32.004" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="50.292" y="32.004" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="50.292" y="32.004" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="50.292" y="32.004" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="50.6984" y="33.2994" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="50.6984" y="33.2994" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C14" library="passives" package="0402_CAP" value="100nF" x="44.45" y="24.892" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="44.45" y="24.892" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="44.45" y="24.892" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="44.45" y="24.892" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="44.45" y="24.892" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="46.482" y="24.511" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="46.482" y="24.257" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C15" library="passives" package="0402_CAP" value="100nF" x="36.576" y="32.512" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="36.576" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="36.576" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="36.576" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="36.576" y="32.512" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="38.227" y="33.0708" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="38.227" y="33.0708" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C16" library="passives" package="0402_CAP" value="100nF" x="16.51" y="55.88" smashed="yes" rot="R270">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402" x="16.51" y="55.88" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-10777-1-ND" x="16.51" y="55.88" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="16.51" y="55.88" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71A104JA01D" x="16.51" y="55.88" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="17.272" y="56.769" size="1.016" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="17.272" y="56.769" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C17" library="passives" package="0402_CAP" value="4.7uF" x="23.622" y="19.05" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 4.7UF 6.3V X5R 0402" x="23.622" y="19.05" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="1276-1481-1-ND" x="23.622" y="19.05" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="23.622" y="19.05" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CL05A475KQ5NRNC" x="23.622" y="19.05" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="23.622" y="17.6784" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="23.622" y="17.6784" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C18" library="passives" package="0402_CAP" value="4.7uF" x="21.844" y="15.24" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 4.7UF 6.3V X5R 0402" x="21.844" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="1276-1481-1-ND" x="21.844" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="21.844" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CL05A475KQ5NRNC" x="21.844" y="15.24" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="21.844" y="13.8176" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="21.844" y="13.8176" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C19" library="passives" package="0402_CAP" value="4.7uF" x="25.908" y="20.828" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 4.7UF 6.3V X5R 0402" x="25.908" y="20.828" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="1276-1481-1-ND" x="25.908" y="20.828" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="25.908" y="20.828" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CL05A475KQ5NRNC" x="25.908" y="20.828" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="25.908" y="19.939" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="25.908" y="19.939" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C1" library="passives" package="0402_CAP" value="8pF" x="38.608" y="38.862" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 8PF 50V C0G/NP0 0402" x="38.608" y="38.862" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-8230-1-ND" x="38.608" y="38.862" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="38.608" y="38.862" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM1555C1H8R0BA01D" x="38.608" y="38.862" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="38.5318" y="40.1066" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="38.5318" y="40.1066" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C22" library="passives" package="0603_CAP" value="6.8uF" x="35.052" y="32.512" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 6.8UF 10V X5R 0603" x="35.052" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="445-7484-1-ND" x="35.052" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="TDK" x="35.052" y="32.512" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="C1608X5R1A685K080AC" x="35.052" y="32.512" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="35.2552" y="31.369" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="35.2552" y="31.369" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C23" library="passives" package="0805_CAP" value="10uF" x="29.21" y="46.228" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 10UF 10V X5R 0805" x="29.21" y="46.228" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="399-4925-1-ND" x="29.21" y="46.228" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="KEMET" x="29.21" y="46.228" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="C0805C106K8PACTU" x="29.21" y="46.228" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="28.067" y="46.228" size="0.889" layer="25" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="28.067" y="46.228" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C24" library="passives" package="0603_CAP" value="22uF" x="33.401" y="45.466" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 22UF 6.3V X5R 0603" x="33.401" y="45.466" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="311-1815-1-ND" x="33.401" y="45.466" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="33.401" y="45.466" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CC0603MRX5R5BB226" x="33.401" y="45.466" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="33.655" y="44.577" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="33.655" y="44.577" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C25" library="passives" package="1210_CAP" value="100uF" x="30.48" y="25.4" smashed="yes" rot="R270">
 <attribute name="DESCRIPTION" value="CAP CER 100UF 6.3V 20% X5R 1210" x="30.48" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-3390-1-ND" x="30.48" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="30.48" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM32ER60J107ME20L" x="30.48" y="25.4" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="30.48" y="27.051" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="30.48" y="27.051" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C2" library="passives" package="0402_CAP" value="8pF" x="35.306" y="36.322" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 8PF 50V C0G/NP0 0402" x="35.306" y="36.322" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-8230-1-ND" x="35.306" y="36.322" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="35.306" y="36.322" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM1555C1H8R0BA01D" x="35.306" y="36.322" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="35.1282" y="38.0746" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="35.1282" y="38.0746" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C3" library="passives" package="0603_CAP" value="33pF" x="52.324" y="4.826" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 33PF 50V C0G/NP0 0603" x="52.324" y="4.826" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-1415-1-ND" x="52.324" y="4.826" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="52.324" y="4.826" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM1885C1H330JA01D" x="52.324" y="4.826" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="50.419" y="5.207" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="50.419" y="5.207" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C4" library="passives" package="0603_CAP" value="1nF" x="36.068" y="13.97" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 1000PF 50V X7R 0603" x="36.068" y="13.97" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-1494-1-ND" x="36.068" y="13.97" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="36.068" y="13.97" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM188R71H102KA01D" x="36.068" y="13.97" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="36.068" y="13.208" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="36.068" y="13.208" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="C5" library="passives" package="0402_CAP" value="2.2nF" x="26.162" y="14.224" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 2200PF 6.3V 10% X7R 0402" x="26.162" y="14.224" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-11418-1-ND" x="26.162" y="14.224" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="26.162" y="14.224" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R70J222KA01D" x="26.162" y="14.224" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="26.2382" y="14.6812" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="26.2382" y="14.6812" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C6" library="passives" package="0402_CAP" value="2.2nF" x="33.02" y="12.446" smashed="yes">
 <attribute name="DESCRIPTION" value="CAP CER 2200PF 6.3V 10% X7R 0402" x="33.02" y="12.446" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-11418-1-ND" x="33.02" y="12.446" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="33.02" y="12.446" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R70J222KA01D" x="33.02" y="12.446" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="31.5722" y="11.9634" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="31.5722" y="11.9634" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C7" library="passives" package="0402_CAP" value="3.3nF" x="31.75" y="51.181" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 3300PF 50V 10% X7R 0402" x="31.75" y="51.181" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-3248-1-ND" x="31.75" y="51.181" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="31.75" y="51.181" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71H332KA01D" x="31.75" y="51.181" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="31.75" y="51.816" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="31.75" y="51.562" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C8" library="passives" package="0402_CAP" value="0.1uF" x="28.956" y="50.038" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402" x="28.956" y="50.038" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-6328-1-ND" x="28.956" y="50.038" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="28.956" y="50.038" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM155R71C104KA88J" x="28.956" y="50.038" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="28.321" y="50.292" size="0.889" layer="25" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="28.321" y="50.292" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="C10" library="passives" package="0603_CAP" value="0.1uF" x="56.896" y="10.414" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0603" x="56.896" y="10.414" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-1532-1-ND" x="56.896" y="10.414" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="56.896" y="10.414" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="GRM188R71C104KA01D" x="56.896" y="10.414" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="59.309" y="10.922" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="59.309" y="10.922" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="FB1" library="passives" package="0402_CAP" value="1.5k" x="44.45" y="23.876" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="FERRITE BEAD 1.5 KOHM 0603 1LN" x="44.45" y="23.876" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="490-5216-1-ND" x="44.45" y="23.876" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="44.45" y="23.876" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="BLM18HE152SN1D" x="44.45" y="23.876" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="46.6852" y="24.003" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="46.5582" y="23.876" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="J3" library="connector" package="TC2030-IDC" value="TC2030-JLINK-L" x="64.77" y="36.83" smashed="yes" rot="R180">
-<attribute name="NAME" x="61.468" y="42.418" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="61.468" y="42.418" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="64.77" y="42.8625" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X08" package3d_urn="urn:adsk.eagle:package:22409/2" value="" x="5.9182" y="35.4838" smashed="yes" rot="R270">
-<attribute name="NAME" x="4.699" y="46.1264" size="0.889" layer="25" font="vector"/>
+<attribute name="NAME" x="4.699" y="46.1264" size="0.889" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="2.7432" y="45.6438" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="L1" library="passives" package="IHL-1212BZ-11" value="2.2uH" x="36.576" y="46.736" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="541-1322-1-ND" x="36.576" y="46.736" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Vishay Dale" x="36.576" y="46.736" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="IHLP1212BZER2R2M11" x="36.576" y="46.736" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="37.706" y="44.428" size="0.889" layer="25" font="vector" rot="R180"/>
+<attribute name="NAME" x="37.706" y="44.428" size="0.889" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="L2" library="signpost" package="1212" value="22uH" x="32.258" y="32.004" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="490-5350-1-ND" x="32.258" y="32.004" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Murata" x="32.258" y="32.004" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="LQH3NPN220MJ0L" x="32.258" y="32.004" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="29.464" y="30.448" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="29.464" y="30.448" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="LED1" library="leds" package="LED-0603" value="LED0603" x="57.0738" y="13.5128" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="LED GREEN CLEAR 0603 SMD" x="57.0738" y="13.5128" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="160-1446-1-ND" x="57.0738" y="13.5128" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Lite-On" x="57.0738" y="13.5128" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="LTST-C191KGKT" x="57.0738" y="13.5128" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="57.3024" y="15.2019" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="57.3024" y="15.2019" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="57.0738" y="14.3383" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="top-center"/>
 </element>
 <element name="R7" library="passives" package="0402_RES" value="100k" x="25.4" y="25.4" smashed="yes" rot="R270">
@@ -1674,7 +1674,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="25.4" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="25.4" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="25.4" y="25.4" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="23.7236" y="25.1206" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="23.7236" y="25.1206" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="24.003" y="25.4" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R8" library="passives" package="0402_RES" value="100k" x="27.94" y="22.86" smashed="yes" rot="R90">
@@ -1682,7 +1682,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="27.94" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="27.94" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="27.94" y="22.86" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="29.718" y="23.241" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="29.718" y="23.241" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="29.337" y="22.86" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R9" library="passives" package="0402_RES" value="100k" x="18.796" y="32.258" smashed="yes" rot="R90">
@@ -1690,7 +1690,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="18.796" y="32.258" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="18.796" y="32.258" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="18.796" y="32.258" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="17.272" y="32.766" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="17.272" y="32.766" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="20.193" y="32.258" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R10" library="passives" package="0402_RES" value="100k" x="35.56" y="49.657" smashed="yes">
@@ -1698,7 +1698,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="35.56" y="49.657" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="35.56" y="49.657" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="35.56" y="49.657" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="38.1" y="49.022" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="38.1" y="49.022" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="35.56" y="48.26" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R14" library="passives" package="0603-RES" value="200k" x="56.896" y="11.938" smashed="yes">
@@ -1706,14 +1706,14 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="311-200KGRCT-ND" x="56.896" y="11.938" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="56.896" y="11.938" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC0603JR-07200KL" x="56.896" y="11.938" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="55.626" y="11.938" size="0.889" layer="25" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="55.626" y="11.938" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R15" library="passives" package="0402_RES" value="240k" x="34.29" y="51.054" smashed="yes" rot="R270">
 <attribute name="DESCRIPTION" value="RES SMD 240K OHM 1% 1/10W 0402" x="34.29" y="51.054" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="P240KLCT-ND" x="34.29" y="51.054" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Panasonic" x="34.29" y="51.054" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="ERJ-2RKF2403X" x="34.29" y="51.054" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="34.29" y="51.943" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="34.29" y="51.943" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="32.893" y="51.054" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R16" library="passives" package="0402_RES" value="330k" x="25.4" y="22.86" smashed="yes" rot="R90">
@@ -1721,7 +1721,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-4244-1-ND" x="25.4" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="25.4" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F334CS" x="25.4" y="22.86" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="23.7998" y="23.0886" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="23.7998" y="23.0886" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="26.797" y="22.86" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R17" library="passives" package="0402_RES" value="750k" x="35.56" y="51.054" smashed="yes" rot="R90">
@@ -1729,7 +1729,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="P750KLCT-ND" x="35.56" y="51.054" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Panasonic" x="35.56" y="51.054" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="ERJ-2RKF7503X" x="35.56" y="51.054" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="37.592" y="50.8" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="37.211" y="50.292" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="36.957" y="51.054" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R18" library="passives" package="0402_RES" value="1M" x="27.94" y="14.732" smashed="yes" rot="R90">
@@ -1737,7 +1737,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="27.94" y="14.732" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="27.94" y="14.732" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="27.94" y="14.732" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="28.8036" y="13.7668" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="28.8036" y="13.7668" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="29.337" y="14.732" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R2" library="passives" package="0402_RES" value="1k" x="59.3852" y="14.0462" smashed="yes" rot="R270">
@@ -1745,7 +1745,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3430-1-ND" x="59.3852" y="14.0462" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="59.3852" y="14.0462" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F102CS" x="59.3852" y="14.0462" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="59.9186" y="14.4018" size="0.889" layer="25" font="vector" rot="R270" align="bottom-center"/>
+<attribute name="NAME" x="59.9186" y="14.4018" size="0.889" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="57.9882" y="14.0462" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R19" library="passives" package="0402_RES" value="1M" x="33.02" y="13.97" smashed="yes" rot="R180">
@@ -1753,7 +1753,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="33.02" y="13.97" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="33.02" y="13.97" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="33.02" y="13.97" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="33.02" y="15.367" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="33.02" y="15.367" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="33.02" y="15.367" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R3" library="passives" package="0402_RES" value="8.2k" x="27.432" y="21.336" smashed="yes" rot="R180">
@@ -1761,7 +1761,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="311-8.20KLRCT-ND" x="27.432" y="21.336" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="27.432" y="21.336" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC0402FR-078K2L" x="27.432" y="21.336" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="26.8478" y="22.5806" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="26.8478" y="22.5806" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="27.432" y="22.733" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R4" library="passives" package="0402_RES" value="10k" x="24.13" y="15.24" smashed="yes" rot="R180">
@@ -1769,7 +1769,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="24.13" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="24.13" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F103CS" x="24.13" y="15.24" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="24.2062" y="14.5796" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="24.2062" y="14.5796" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="24.13" y="16.637" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R5" library="passives" package="0402_RES" value="10k" x="31.242" y="34.798" smashed="yes" rot="R180">
@@ -1777,7 +1777,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="31.242" y="34.798" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="31.242" y="34.798" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F103CS" x="31.242" y="34.798" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="31.242" y="36.195" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="31.242" y="36.195" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="31.242" y="36.195" size="1.016" layer="27" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R6" library="passives" package="0402_RES" value="12k" x="16.51" y="15.24" smashed="yes" rot="R90">
@@ -1785,7 +1785,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-4122-1-ND" x="16.51" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="16.51" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F123CS" x="16.51" y="15.24" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="15.9004" y="15.4686" size="0.889" layer="25" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="15.9004" y="15.4686" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="17.907" y="15.24" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R11" library="passives" package="0402_RES" value="100k" x="62.484" y="29.21" smashed="yes" rot="R270">
@@ -1793,7 +1793,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="62.484" y="29.21" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="62.484" y="29.21" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="62.484" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="63.5" y="30.099" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="63.5" y="30.099" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="61.087" y="29.21" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R12" library="passives" package="0402_RES" value="100k" x="60.96" y="29.21" smashed="yes" rot="R270">
@@ -1801,7 +1801,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="60.96" y="29.21" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="60.96" y="29.21" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="60.96" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="60.706" y="30.099" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="60.706" y="30.099" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="59.563" y="29.21" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="U$2" library="logos" package="UMICH_SOLID_75MIL" value="" x="19.812" y="4.953" smashed="yes"/>
@@ -1810,13 +1810,13 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="ATSAM4LC8AA-MU-ND" x="44.45" y="31.75" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Microchip Technology" x="44.45" y="31.75" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="ATSAM4LC8AA-MU" x="44.45" y="31.75" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="41.91" y="35.742" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="41.91" y="35.742" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="U3" library="chips" package="DIP-8" value="MSGEQ7" x="49.276" y="11.176" smashed="yes" rot="R180">
 <attribute name="DIGIKEY" value="1568-1335-ND" x="49.276" y="11.176" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Sparkfun Electronics" x="49.276" y="11.176" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="COM-10468" x="49.276" y="11.176" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="42.418" y="12.573" size="0.889" layer="25" font="vector"/>
+<attribute name="NAME" x="42.418" y="12.573" size="0.889" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="52.451" y="11.811" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
 <element name="U4" library="microwave_radar" package="HB100" value="HB100" x="16.51" y="19.05" smashed="yes">
@@ -1824,7 +1824,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="SAM1067-02-ND" x="16.51" y="19.05" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Samtec" x="16.51" y="19.05" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="TSW-102-17-T-S" x="16.51" y="19.05" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="15.24" y="58.42" size="0.889" layer="25" font="vector"/>
+<attribute name="NAME" x="13.462" y="54.61" size="0.889" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="15.24" y="12.7" size="1.27" layer="27"/>
 </element>
 <element name="U5" library="microwave_radar" package="OP284E_SEPARATE" value="OP284E_SEPARATE" x="27.94" y="15.24" smashed="yes">
@@ -1832,27 +1832,27 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="OP284ESZ-ND" x="27.94" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Analog Devices" x="27.94" y="15.24" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="OP284ESZ" x="27.94" y="15.24" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="29.972" y="14.859" size="0.889" layer="25" font="vector"/>
+<attribute name="NAME" x="29.972" y="14.859" size="0.889" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="26.67" y="12.7" size="1.27" layer="27"/>
 </element>
 <element name="U7" library="chips" package="TQFN-16/3MM" value="TLV62130" x="32.258" y="48.514" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="296-35978-1-ND" x="32.258" y="48.514" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Texas Instruments" x="32.258" y="48.514" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="TLV62130RGTR" x="32.258" y="48.514" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="30.036" y="49.018" size="0.889" layer="25" font="vector" rot="R180"/>
+<attribute name="NAME" x="30.036" y="49.018" size="0.889" layer="25" font="vector" ratio="12" rot="R180"/>
 </element>
 <element name="X1" library="crystals" package="FHXXX" value="FH1600015" x="38.1" y="36.576" smashed="yes">
 <attribute name="DIGIKEY" value="FH1600015CT-ND" x="38.1" y="36.576" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="Diodes Incorporated" x="38.1" y="36.576" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="FH1600015" x="38.1" y="36.576" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="37.084" y="38.076" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="37.084" y="38.076" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="38.1" y="33.576" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R1" library="passives" package="0402_RES" value="DNP - 0" x="31.242" y="36.83" smashed="yes">
 <attribute name="DIGIKEY" value="311-0.0JRCT-ND" x="31.242" y="36.83" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="31.242" y="36.83" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC0402JR-070RL" x="31.242" y="36.83" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="31.242" y="37.211" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="31.242" y="37.211" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="31.242" y="35.433" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="J6" library="signpost" package="SIGNPOST_MODULE_HEADER" value="SIGNPOST_MODULE_HEADER" x="36.7538" y="63.3476" locked="yes">
@@ -1869,7 +1869,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="SIP32402ADNP-T1GE4CT-ND" x="23.368" y="55.626" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Vishay" x="23.368" y="55.626" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="SIP32402ADNP-T1GE4" x="23.368" y="55.626" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="25.4" y="55.118" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="25.4" y="55.118" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="20.828" y="55.626" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="C20" library="passives" package="0402_CAP" value="4.7uF" x="23.622" y="54.102" smashed="yes" rot="R180">
@@ -1877,21 +1877,21 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-1481-1-ND" x="23.622" y="54.102" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="23.622" y="54.102" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
 <attribute name="MPN" value="CL05A475KQ5NRNC" x="23.622" y="54.102" size="1.778" layer="27" font="vector" ratio="12" rot="R180" display="off"/>
-<attribute name="NAME" x="23.622" y="53.467" size="0.889" layer="25" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="23.622" y="53.467" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
 </element>
 <element name="R13" library="passives" package="0402_RES" value="100k" x="23.368" y="57.15" smashed="yes">
 <attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402" x="23.368" y="57.15" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="DIGIKEY" value="1276-3432-1-ND" x="23.368" y="57.15" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="23.368" y="57.15" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MPN" value="RC1005F104CS" x="23.368" y="57.15" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
-<attribute name="NAME" x="23.495" y="57.658" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="23.495" y="57.658" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="23.368" y="55.753" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="S2" library="signpost" package="TDFN4" value="SIP3240X" x="20.447" y="32.004" smashed="yes">
 <attribute name="DIGIKEY" value="SIP32402ADNP-T1GE4CT-ND" x="20.447" y="32.004" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MANUFACTURER" value="Vishay" x="20.447" y="32.004" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="SIP32402ADNP-T1GE4" x="20.447" y="32.004" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="20.447" y="33.274" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="20.447" y="33.274" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="20.447" y="29.464" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C21" library="passives" package="0402_CAP" value="4.7uF" x="21.717" y="32.258" smashed="yes" rot="R270">
@@ -1899,7 +1899,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="DIGIKEY" value="1276-1481-1-ND" x="21.717" y="29.718" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="21.717" y="29.718" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="CL05A475KQ5NRNC" x="21.717" y="29.718" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NAME" x="23.495" y="31.877" size="0.889" layer="25" font="vector" align="bottom-center"/>
+<attribute name="NAME" x="23.495" y="31.877" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 </elements>
 <signals>
@@ -2151,7 +2151,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="26.874" y1="48.056" x2="26.924" y2="48.006" width="0.762" layer="1"/>
 <wire x1="26.874" y1="52.02" x2="26.874" y2="48.056" width="0.762" layer="1"/>
 <wire x1="26.874" y1="52.02" x2="26.924" y2="51.054" width="0.762" layer="1"/>
-<wire x1="26.874" y1="53.594" x2="26.874" y2="52.02" width="0.762" layer="1"/>
+<wire x1="26.874" y1="52.02" x2="26.874" y2="53.594" width="0.762" layer="1"/>
 <wire x1="26.924" y1="48.006" x2="27.94" y2="48.006" width="0.762" layer="1"/>
 <wire x1="27.94" y1="49.276" x2="27.94" y2="48.514" width="0.254" layer="1"/>
 <wire x1="28.194" y1="49.53" x2="27.94" y2="49.276" width="0.254" layer="1"/>
@@ -2173,13 +2173,23 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="44.45" y1="62.0014" x2="44.45" y2="55.372" width="0.762" layer="1"/>
 <contactref element="S1" pad="3"/>
 <contactref element="C20" pad="1"/>
-<polygon width="0.254" layer="1" isolate="0.3048" thermals="no">
-<vertex x="23.876" y="53.848"/>
-<vertex x="23.876" y="55.372"/>
-<vertex x="27.178" y="55.372"/>
-<vertex x="27.178" y="53.086"/>
-<vertex x="23.876" y="53.086"/>
+<wire x1="26.874" y1="53.594" x2="26.874" y2="54.914" width="0.762" layer="1"/>
+<wire x1="26.874" y1="54.914" x2="26.416" y2="55.372" width="0.762" layer="1"/>
+<wire x1="25.019" y1="55.372" x2="26.416" y2="55.372" width="0.762" layer="1"/>
+<wire x1="24.05506875" y1="54.102" x2="24.05506875" y2="55.33806875" width="0.2032" layer="1"/>
+<wire x1="24.05506875" y1="55.33806875" x2="24.093" y2="55.376" width="0.2032" layer="1"/>
+<polygon width="0.2032" layer="1" isolate="0.3048" thermals="no">
+<vertex x="23.876" y="55.499"/>
+<vertex x="24.892" y="55.499"/>
+<vertex x="25.019" y="55.626"/>
+<vertex x="25.4" y="55.626"/>
+<vertex x="25.4" y="55.118"/>
+<vertex x="24.765" y="55.118"/>
+<vertex x="24.638" y="55.245"/>
+<vertex x="23.876" y="55.245"/>
 </polygon>
+<wire x1="24.093" y1="55.376" x2="25.015" y2="55.376" width="0.2032" layer="1"/>
+<wire x1="25.015" y1="55.376" x2="25.019" y2="55.372" width="0.2032" layer="1"/>
 </signal>
 <signal name="AMP_OUT">
 <contactref element="C4" pad="2"/>
@@ -3085,28 +3095,28 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="19,1,d66001901c0fcbff"/>
 <approved hash="19,1,d470038004e3d313"/>
 <approved hash="19,1,f56210921207f7f7"/>
-<approved hash="19,1,fa6011900c0be7fb"/>
 <approved hash="19,1,f870138014e7ff17"/>
-<approved hash="19,1,fb59b69bb039fdfb"/>
-<approved hash="19,1,fd2bb0e9b226ffe4"/>
+<approved hash="19,1,fa6011900c0be7fb"/>
 <approved hash="19,1,f459b99bba37f7f5"/>
+<approved hash="19,1,fb59b69bb039fdfb"/>
 <approved hash="19,1,fbfbb6398a26c7e4"/>
-<approved hash="19,1,faf8d83ae43cc6fe"/>
+<approved hash="19,1,fd2bb0e9b226ffe4"/>
 <approved hash="19,1,f55ad798d42df6ef"/>
-<approved hash="19,1,fa5ad898de23fce1"/>
 <approved hash="19,1,fc28deeadc3cfefe"/>
-<approved hash="19,1,0afa1838243f36fd"/>
-<approved hash="19,1,0558179a142e06ec"/>
+<approved hash="19,1,faf8d83ae43cc6fe"/>
+<approved hash="19,1,fa5ad898de23fce1"/>
 <approved hash="19,1,0c2a1ee81c3f0efd"/>
+<approved hash="19,1,0afa1838243f36fd"/>
 <approved hash="19,1,0a58189a1e200ce2"/>
+<approved hash="19,1,0558179a142e06ec"/>
+<approved hash="19,1,fb58869a8025fde7"/>
 <approved hash="19,1,fbfa8638ba3ac7f8"/>
 <approved hash="19,1,f458899a8a2bf7e9"/>
-<approved hash="19,1,fb58869a8025fde7"/>
 <approved hash="19,1,fd2a80e8823afff8"/>
-<approved hash="4,1,f7b01b8dcb52a987"/>
 <approved hash="4,1,b16c2de29b3a0dba"/>
-<approved hash="4,1,9345da3140d09d34"/>
+<approved hash="4,1,f7b01b8dcb52a987"/>
 <approved hash="4,1,afaf5fc8df649de3"/>
+<approved hash="4,1,9345da3140d09d34"/>
 <approved hash="4,1,69718f1444605c7e"/>
 <approved hash="4,1,494dd15de4699005"/>
 <approved hash="4,1,b316f34b62a22c3b"/>
@@ -3115,12 +3125,12 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="4,1,a366d92bca807a69"/>
 <approved hash="4,1,0cb156bd13ec8b20"/>
 <approved hash="4,1,e43cddfde9629b12"/>
-<approved hash="4,1,46458b814bbdb2b3"/>
 <approved hash="4,1,541f3aa0688abc33"/>
+<approved hash="4,1,46458b814bbdb2b3"/>
 <approved hash="4,1,7d09e26b99b57b5f"/>
+<approved hash="4,1,c0ec6f8b5795cc27"/>
 <approved hash="4,1,8aeabdd23a66ac97"/>
 <approved hash="4,1,d4e0b7ac81f3980e"/>
-<approved hash="4,1,c0ec6f8b5795cc27"/>
 <approved hash="4,1,b08a82d2b29ac0cc"/>
 </errors>
 </board>
