@@ -1780,118 +1780,6 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </library>
 <library name="signpost">
 <packages>
-<package name="MODULE_GENERIC_DEBUG">
-<wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
-<wire x1="-26.8351" y1="33.9852" x2="-25.6032" y2="35.2171" width="0.127" layer="49" curve="-90"/>
-<wire x1="-25.6032" y1="35.2171" x2="25.6032" y2="35.2171" width="0.127" layer="49"/>
-<wire x1="25.6032" y1="35.2171" x2="26.8351" y2="33.9852" width="0.127" layer="49" curve="-90"/>
-<wire x1="26.8351" y1="33.9852" x2="26.8351" y2="24.9936" width="0.127" layer="49"/>
-<wire x1="26.8351" y1="24.9936" x2="35.0012" y2="16.8275" width="0.127" layer="49" curve="90"/>
-<wire x1="35.0012" y1="16.8275" x2="36.2331" y2="15.5956" width="0.127" layer="49" curve="-90"/>
-<wire x1="36.2331" y1="15.5956" x2="36.2331" y2="-15.5956" width="0.127" layer="49"/>
-<wire x1="36.2331" y1="-15.5956" x2="35.0012" y2="-16.8275" width="0.127" layer="49" curve="-90"/>
-<wire x1="35.0012" y1="-16.8275" x2="26.8351" y2="-24.9936" width="0.127" layer="49" curve="90"/>
-<wire x1="26.8351" y1="-24.9936" x2="26.8351" y2="-33.9852" width="0.127" layer="49"/>
-<wire x1="26.8351" y1="-33.9852" x2="25.6032" y2="-35.2171" width="0.127" layer="49" curve="-90"/>
-<wire x1="25.6032" y1="-35.2171" x2="-25.6032" y2="-35.2171" width="0.127" layer="49"/>
-<wire x1="-25.6032" y1="-35.2171" x2="-26.8351" y2="-33.9852" width="0.127" layer="49" curve="-90"/>
-<wire x1="-26.8351" y1="-33.9852" x2="-26.8351" y2="-24.9936" width="0.127" layer="49"/>
-<wire x1="-26.8351" y1="-24.9936" x2="-35.0012" y2="-16.8275" width="0.127" layer="49" curve="90"/>
-<wire x1="-35.0012" y1="-16.8275" x2="-36.2331" y2="-15.5956" width="0.127" layer="49" curve="-90"/>
-<wire x1="-36.2331" y1="-15.5956" x2="-36.2331" y2="15.5956" width="0.127" layer="49"/>
-<wire x1="-36.2331" y1="15.5956" x2="-35.0012" y2="16.8275" width="0.127" layer="49" curve="-90"/>
-<wire x1="-35.0012" y1="16.8275" x2="-26.8351" y2="24.9936" width="0.127" layer="49" curve="90"/>
-<wire x1="-24.765" y1="33.02" x2="24.765" y2="33.02" width="0.127" layer="51"/>
-<wire x1="24.765" y1="33.02" x2="24.765" y2="20.955" width="0.127" layer="51"/>
-<wire x1="24.765" y1="20.955" x2="31.115" y2="14.605" width="0.127" layer="51" curve="90"/>
-<wire x1="31.115" y1="14.605" x2="34.036" y2="14.605" width="0.127" layer="51"/>
-<wire x1="34.036" y1="14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="24.765" y2="-20.955" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-20.955" x2="31.115" y2="-14.605" width="0.127" layer="51" curve="-90"/>
-<wire x1="31.115" y1="-14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="-14.605" x2="-31.115" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="-31.115" y1="-14.605" x2="-24.765" y2="-20.955" width="0.127" layer="51" curve="-90"/>
-<wire x1="-24.765" y1="-20.955" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="-14.605" x2="-34.036" y2="14.605" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="14.605" x2="-31.115" y2="14.605" width="0.127" layer="51"/>
-<wire x1="-31.115" y1="14.605" x2="-24.765" y2="20.955" width="0.127" layer="51" curve="90"/>
-<wire x1="-24.765" y1="20.955" x2="-24.765" y2="33.02" width="0.127" layer="51"/>
-<circle x="-20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="-20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="0" y="27.94" radius="0.254" width="0" layer="49"/>
-<pad name="1" x="7.62" y="29.21" drill="0.9906" shape="square" rot="R180"/>
-<pad name="2" x="7.62" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="3" x="5.08" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="4" x="5.08" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="5" x="2.54" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="6" x="2.54" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="7" x="0" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="8" x="0" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="9" x="-2.54" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="10" x="-2.54" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="11" x="-5.08" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="12" x="-5.08" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="13" x="-7.62" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="14" x="-7.62" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<text x="7.62" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">1</text>
-<text x="7.62" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">2</text>
-<text x="5.08" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">3</text>
-<text x="5.08" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">4</text>
-<text x="2.54" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">5</text>
-<text x="2.54" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">6</text>
-<text x="0" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">7</text>
-<text x="0" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">8</text>
-<text x="-2.54" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">9</text>
-<text x="-2.54" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">10</text>
-<text x="-5.08" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">11</text>
-<text x="-5.08" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">12</text>
-<text x="-7.62" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">13</text>
-<text x="-7.62" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">14</text>
-<text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
-<text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
-<wire x1="11.43" y1="24.9428" x2="11.43" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="11.43" y1="30.9372" x2="1.8542" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="1.8542" y1="30.9372" x2="1.8542" y2="31.9532" width="0.127" layer="51"/>
-<wire x1="1.8542" y1="31.9532" x2="-1.8542" y2="31.9532" width="0.127" layer="51"/>
-<wire x1="-1.8542" y1="31.9532" x2="-1.8542" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="-1.8542" y1="30.9372" x2="-11.43" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="-11.43" y1="30.9372" x2="-11.43" y2="24.9428" width="0.127" layer="51"/>
-<wire x1="-11.43" y1="24.9428" x2="11.43" y2="24.9428" width="0.127" layer="51"/>
-<wire x1="-2.2479" y1="32.3342" x2="-12.6365" y2="32.3342" width="0.127" layer="22"/>
-<wire x1="-12.6365" y1="32.3342" x2="-12.6365" y2="23.5458" width="0.127" layer="22"/>
-<wire x1="-12.6365" y1="23.5458" x2="12.6365" y2="23.5458" width="0.127" layer="22"/>
-<wire x1="12.6365" y1="23.5458" x2="12.6365" y2="32.3342" width="0.127" layer="22"/>
-<wire x1="12.6365" y1="32.3342" x2="2.2479" y2="32.3342" width="0.127" layer="22"/>
-<circle x="-20.955" y="29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="20.955" y="29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="-20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
-<text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
-<text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
-<text x="-20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, 1.15)</text>
-<text x="20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, 1.15)</text>
-<text x="20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, -1.15)</text>
-<text x="-20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, -1.15)</text>
-<pad name="20" x="1.27" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="19" x="1.27" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="17" x="-1.27" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="18" x="-1.27" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="16" x="-3.81" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="15" x="-3.81" y="-29.21" drill="0.9906" shape="square" rot="R180"/>
-<wire x1="-6.35" y1="-30.48" x2="-6.35" y2="-25.4" width="0.127" layer="22"/>
-<wire x1="-6.35" y1="-25.4" x2="6.35" y2="-25.4" width="0.127" layer="22"/>
-<wire x1="6.35" y1="-25.4" x2="6.35" y2="-30.48" width="0.127" layer="22"/>
-<wire x1="6.35" y1="-30.48" x2="-6.35" y2="-30.48" width="0.127" layer="22"/>
-<pad name="21" x="3.81" y="-29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="22" x="3.81" y="-26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<text x="-20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="-20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-</package>
 <package name="MWSUB3G">
 <smd name="1" x="4" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
 <smd name="2" x="7" y="0.2" dx="2.4" dy="1.3" layer="1" rot="R90"/>
@@ -1946,148 +1834,82 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <circle x="4" y="-3" radius="1" width="0.127" layer="21"/>
 <text x="2" y="45" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
 </package>
-<package name="MODULE_GENERIC_DEBUG_SMT">
-<wire x1="-26.8351" y1="24.9936" x2="-26.8351" y2="33.9852" width="0.127" layer="49"/>
-<wire x1="-26.8351" y1="33.9852" x2="-25.6032" y2="35.2171" width="0.127" layer="49" curve="-90"/>
-<wire x1="-25.6032" y1="35.2171" x2="25.6032" y2="35.2171" width="0.127" layer="49"/>
-<wire x1="25.6032" y1="35.2171" x2="26.8351" y2="33.9852" width="0.127" layer="49" curve="-90"/>
-<wire x1="26.8351" y1="33.9852" x2="26.8351" y2="24.9936" width="0.127" layer="49"/>
-<wire x1="26.8351" y1="24.9936" x2="35.0012" y2="16.8275" width="0.127" layer="49" curve="90"/>
-<wire x1="35.0012" y1="16.8275" x2="36.2331" y2="15.5956" width="0.127" layer="49" curve="-90"/>
-<wire x1="36.2331" y1="15.5956" x2="36.2331" y2="-15.5956" width="0.127" layer="49"/>
-<wire x1="36.2331" y1="-15.5956" x2="35.0012" y2="-16.8275" width="0.127" layer="49" curve="-90"/>
-<wire x1="35.0012" y1="-16.8275" x2="26.8351" y2="-24.9936" width="0.127" layer="49" curve="90"/>
-<wire x1="26.8351" y1="-24.9936" x2="26.8351" y2="-33.9852" width="0.127" layer="49"/>
-<wire x1="26.8351" y1="-33.9852" x2="25.6032" y2="-35.2171" width="0.127" layer="49" curve="-90"/>
-<wire x1="25.6032" y1="-35.2171" x2="-25.6032" y2="-35.2171" width="0.127" layer="49"/>
-<wire x1="-25.6032" y1="-35.2171" x2="-26.8351" y2="-33.9852" width="0.127" layer="49" curve="-90"/>
-<wire x1="-26.8351" y1="-33.9852" x2="-26.8351" y2="-24.9936" width="0.127" layer="49"/>
-<wire x1="-26.8351" y1="-24.9936" x2="-35.0012" y2="-16.8275" width="0.127" layer="49" curve="90"/>
-<wire x1="-35.0012" y1="-16.8275" x2="-36.2331" y2="-15.5956" width="0.127" layer="49" curve="-90"/>
-<wire x1="-36.2331" y1="-15.5956" x2="-36.2331" y2="15.5956" width="0.127" layer="49"/>
-<wire x1="-36.2331" y1="15.5956" x2="-35.0012" y2="16.8275" width="0.127" layer="49" curve="-90"/>
-<wire x1="-35.0012" y1="16.8275" x2="-26.8351" y2="24.9936" width="0.127" layer="49" curve="90"/>
-<wire x1="-24.765" y1="33.02" x2="24.765" y2="33.02" width="0.127" layer="51"/>
-<wire x1="24.765" y1="33.02" x2="24.765" y2="20.955" width="0.127" layer="51"/>
-<wire x1="24.765" y1="20.955" x2="31.115" y2="14.605" width="0.127" layer="51" curve="90"/>
-<wire x1="31.115" y1="14.605" x2="34.036" y2="14.605" width="0.127" layer="51"/>
-<wire x1="34.036" y1="14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="24.765" y2="-20.955" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-20.955" x2="31.115" y2="-14.605" width="0.127" layer="51" curve="-90"/>
-<wire x1="31.115" y1="-14.605" x2="34.036" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="24.765" y1="-33.02" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="-14.605" x2="-31.115" y2="-14.605" width="0.127" layer="51"/>
-<wire x1="-31.115" y1="-14.605" x2="-24.765" y2="-20.955" width="0.127" layer="51" curve="-90"/>
-<wire x1="-24.765" y1="-20.955" x2="-24.765" y2="-33.02" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="-14.605" x2="-34.036" y2="14.605" width="0.127" layer="51"/>
-<wire x1="-34.036" y1="14.605" x2="-31.115" y2="14.605" width="0.127" layer="51"/>
-<wire x1="-31.115" y1="14.605" x2="-24.765" y2="20.955" width="0.127" layer="51" curve="90"/>
-<wire x1="-24.765" y1="20.955" x2="-24.765" y2="33.02" width="0.127" layer="51"/>
-<circle x="-20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="20.955" y="29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="-20.955" y="-29.21" radius="3.175" width="0.127" layer="49"/>
-<circle x="0" y="27.94" radius="0.254" width="0" layer="49"/>
-<pad name="1" x="7.62" y="29.21" drill="0.9906" shape="square" rot="R180"/>
-<pad name="2" x="7.62" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="3" x="5.08" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="4" x="5.08" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="5" x="2.54" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="6" x="2.54" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="7" x="0" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="8" x="0" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="9" x="-2.54" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="10" x="-2.54" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="11" x="-5.08" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="12" x="-5.08" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="13" x="-7.62" y="29.21" drill="0.9906" shape="octagon" rot="R180"/>
-<pad name="14" x="-7.62" y="26.67" drill="0.9906" shape="octagon" rot="R180"/>
-<text x="7.62" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">1</text>
-<text x="7.62" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">2</text>
-<text x="5.08" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">3</text>
-<text x="5.08" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">4</text>
-<text x="2.54" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">5</text>
-<text x="2.54" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">6</text>
-<text x="0" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">7</text>
-<text x="0" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">8</text>
-<text x="-2.54" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">9</text>
-<text x="-2.54" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">10</text>
-<text x="-5.08" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">11</text>
-<text x="-5.08" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">12</text>
-<text x="-7.62" y="29.21" size="0.6096" layer="52" rot="MR0" align="center">13</text>
-<text x="-7.62" y="26.67" size="0.6096" layer="52" rot="MR0" align="center">14</text>
-<text x="-0.635" y="34.29" size="0.6096" layer="47" rot="R180">0.358 / 9.10 Below PCB</text>
-<text x="0.635" y="34.29" size="0.6096" layer="47" rot="R180" align="bottom-right">0.1 / 2.54 Above PCB</text>
-<wire x1="11.43" y1="24.9428" x2="11.43" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="11.43" y1="30.9372" x2="1.8542" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="1.8542" y1="30.9372" x2="1.8542" y2="31.9532" width="0.127" layer="51"/>
-<wire x1="1.8542" y1="31.9532" x2="-1.8542" y2="31.9532" width="0.127" layer="51"/>
-<wire x1="-1.8542" y1="31.9532" x2="-1.8542" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="-1.8542" y1="30.9372" x2="-11.43" y2="30.9372" width="0.127" layer="51"/>
-<wire x1="-11.43" y1="30.9372" x2="-11.43" y2="24.9428" width="0.127" layer="51"/>
-<wire x1="-11.43" y1="24.9428" x2="11.43" y2="24.9428" width="0.127" layer="51"/>
-<wire x1="-2.2479" y1="32.3342" x2="-12.6365" y2="32.3342" width="0.127" layer="22"/>
-<wire x1="-12.6365" y1="32.3342" x2="-12.6365" y2="23.5458" width="0.127" layer="22"/>
-<wire x1="-12.6365" y1="23.5458" x2="12.6365" y2="23.5458" width="0.127" layer="22"/>
-<wire x1="12.6365" y1="23.5458" x2="12.6365" y2="32.3342" width="0.127" layer="22"/>
-<wire x1="12.6365" y1="32.3342" x2="2.2479" y2="32.3342" width="0.127" layer="22"/>
-<circle x="-20.955" y="29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="20.955" y="29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
-<circle x="-20.955" y="-29.21" radius="1.4732" width="0" layer="49"/>
-<text x="5.08" y="29.21" size="1.27" layer="49" align="center">X</text>
-<text x="-2.54" y="29.21" size="1.27" layer="49" align="center">X</text>
-<text x="-20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, 1.15)</text>
-<text x="20.955" y="31.115" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, 1.15)</text>
-<text x="20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (0.825, -1.15)</text>
-<text x="-20.955" y="-27.305" size="0.254" layer="49" align="bottom-center">Drill 0.116 @ (-0.825, -1.15)</text>
-<wire x1="-5.334" y1="-32.258" x2="-5.334" y2="-23.368" width="0.127" layer="22"/>
-<wire x1="-5.334" y1="-23.368" x2="5.08" y2="-23.368" width="0.127" layer="22"/>
-<wire x1="5.08" y1="-23.368" x2="5.08" y2="-32.258" width="0.127" layer="22"/>
-<wire x1="5.08" y1="-32.258" x2="-5.334" y2="-32.258" width="0.127" layer="22"/>
-<text x="-20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="20.955" y="26.67" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<text x="-20.955" y="-31.75" size="0.762" layer="49" font="vector" ratio="12" align="bottom-center">GND</text>
-<smd name="16" x="-3.81" y="-25.654" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="18" x="-1.27" y="-25.654" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="20" x="1.27" y="-25.654" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="22" x="3.81" y="-25.654" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="21" x="3.81" y="-30.226" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="19" x="1.27" y="-30.226" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="17" x="-1.27" y="-30.226" dx="3.683" dy="1.27" layer="16" rot="R90"/>
-<smd name="15" x="-3.81" y="-30.226" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<package name="SIGNPOST_MODULE_HEADER">
+<circle x="0" y="0" radius="0.254" width="0" layer="49"/>
+<pad name="1" x="7.62" y="1.27" drill="0.9906" shape="square" rot="R180"/>
+<pad name="2" x="7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="4" x="5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="5" x="2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="6" x="2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="7" x="0" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="8" x="0" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="9" x="-2.54" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="10" x="-2.54" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="11" x="-5.08" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="12" x="-5.08" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="13" x="-7.62" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="14" x="-7.62" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<text x="7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">1</text>
+<text x="7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">2</text>
+<text x="5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">3</text>
+<text x="5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">4</text>
+<text x="2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">5</text>
+<text x="2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">6</text>
+<text x="0" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">7</text>
+<text x="0" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">8</text>
+<text x="-2.54" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">9</text>
+<text x="-2.54" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">10</text>
+<text x="-5.08" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">11</text>
+<text x="-5.08" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">12</text>
+<text x="-7.62" y="1.27" size="0.6096" layer="52" rot="MR0" align="center">13</text>
+<text x="-7.62" y="-1.27" size="0.6096" layer="52" rot="MR0" align="center">14</text>
+<wire x1="11.43" y1="-2.9972" x2="11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="11.43" y1="2.9972" x2="1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="2.9972" x2="1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="1.8542" y1="4.0132" x2="-1.8542" y2="4.0132" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="4.0132" x2="-1.8542" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-1.8542" y1="2.9972" x2="-11.43" y2="2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="2.9972" x2="-11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-11.43" y1="-2.9972" x2="11.43" y2="-2.9972" width="0.127" layer="51"/>
+<wire x1="-2.2479" y1="4.3942" x2="-12.6365" y2="4.3942" width="0.127" layer="22"/>
+<wire x1="-12.6365" y1="4.3942" x2="-12.6365" y2="-4.3942" width="0.127" layer="22"/>
+<wire x1="-12.6365" y1="-4.3942" x2="12.6365" y2="-4.3942" width="0.127" layer="22"/>
+<wire x1="12.6365" y1="-4.3942" x2="12.6365" y2="4.3942" width="0.127" layer="22"/>
+<wire x1="12.6365" y1="4.3942" x2="2.2479" y2="4.3942" width="0.127" layer="22"/>
+<text x="5.08" y="1.27" size="1.27" layer="49" align="center">X</text>
+<text x="-2.54" y="1.27" size="1.27" layer="49" align="center">X</text>
+</package>
+<package name="SIGNPOST_DEBUG_HEADER">
+<pad name="20" x="1.27" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="19" x="1.27" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="17" x="-1.27" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="18" x="-1.27" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="16" x="-3.81" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="15" x="-3.81" y="-1.27" drill="0.9906" shape="square" rot="R180"/>
+<wire x1="-6.35" y1="-2.54" x2="-6.35" y2="2.54" width="0.127" layer="22"/>
+<wire x1="-6.35" y1="2.54" x2="6.35" y2="2.54" width="0.127" layer="22"/>
+<wire x1="6.35" y1="2.54" x2="6.35" y2="-2.54" width="0.127" layer="22"/>
+<wire x1="6.35" y1="-2.54" x2="-6.35" y2="-2.54" width="0.127" layer="22"/>
+<pad name="21" x="3.81" y="-1.27" drill="0.9906" shape="octagon" rot="R180"/>
+<pad name="22" x="3.81" y="1.27" drill="0.9906" shape="octagon" rot="R180"/>
+</package>
+<package name="SIGNPOST_DEBUG_HEADER_SMT">
+<wire x1="-5.3594" y1="-4.37388125" x2="-5.3594" y2="4.51611875" width="0.127" layer="22"/>
+<wire x1="-5.3594" y1="4.51611875" x2="5.0546" y2="4.51611875" width="0.127" layer="22"/>
+<wire x1="5.0546" y1="4.51611875" x2="5.0546" y2="-4.37388125" width="0.127" layer="22"/>
+<wire x1="5.0546" y1="-4.37388125" x2="-5.3594" y2="-4.37388125" width="0.127" layer="22"/>
+<smd name="16" x="-3.8354" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="18" x="-1.2954" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="20" x="1.2446" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="22" x="3.7846" y="2.23011875" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="21" x="3.7846" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="19" x="1.2446" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="17" x="-1.2954" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
+<smd name="15" x="-3.8354" y="-2.34188125" dx="3.683" dy="1.27" layer="16" rot="R90"/>
 </package>
 </packages>
 <symbols>
-<symbol name="HEADER_MODULE_DEBUG">
-<pin name="5V" x="10.16" y="20.32" length="middle" rot="R180"/>
-<pin name="GND" x="10.16" y="-43.18" length="middle" rot="R180"/>
-<pin name="MOD_OUT" x="10.16" y="5.08" length="middle" rot="R180"/>
-<pin name="SDA" x="10.16" y="0" length="middle" rot="R180"/>
-<pin name="SCL" x="10.16" y="-2.54" length="middle" rot="R180"/>
-<pin name="USB_D+" x="10.16" y="-10.16" length="middle" rot="R180"/>
-<pin name="USB_D-" x="10.16" y="-12.7" length="middle" rot="R180"/>
-<pin name="PPS" x="10.16" y="12.7" length="middle" rot="R180"/>
-<wire x1="5.08" y1="22.86" x2="5.08" y2="-45.72" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-45.72" x2="-12.7" y2="-45.72" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-45.72" x2="-12.7" y2="22.86" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="22.86" x2="5.08" y2="22.86" width="0.254" layer="94"/>
-<text x="-12.7" y="25.4" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-<text x="-12.7" y="-48.26" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="USB_VBUS" x="10.16" y="-7.62" length="middle" rot="R180"/>
-<pin name="VCCIO" x="10.16" y="17.78" length="middle" rot="R180"/>
-<pin name="MOD_IN" x="10.16" y="7.62" length="middle" rot="R180"/>
-<text x="-11.684" y="17.526" size="0.8128" layer="98" align="top-left">VCCIO 3.3-5V
-**Supplied by module**</text>
-<pin name="DBG_TX" x="10.16" y="-17.78" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_RX" x="10.16" y="-20.32" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_GPIO1" x="10.16" y="-35.56" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_GPIO2" x="10.16" y="-38.1" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_!RESET" x="10.16" y="-30.48" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_SWDCLK" x="10.16" y="-27.94" visible="pin" length="middle" rot="R180"/>
-<pin name="DBG_SWDIO" x="10.16" y="-25.4" visible="pin" length="middle" rot="R180"/>
-</symbol>
 <symbol name="MWSUB3G">
 <wire x1="-15.24" y1="-22.86" x2="-15.24" y2="27.94" width="0.254" layer="94"/>
 <wire x1="-15.24" y1="27.94" x2="12.7" y2="27.94" width="0.254" layer="94"/>
@@ -2114,75 +1936,49 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <text x="-12.7" y="30.48" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="-7.62" y="-25.4" size="1.778" layer="95" ratio="12" align="bottom-center">MWSUB3G</text>
 </symbol>
+<symbol name="HEADER_MODULE">
+<pin name="5V" x="12.7" y="20.32" length="middle" rot="R180"/>
+<pin name="GND" x="12.7" y="-17.78" length="middle" rot="R180"/>
+<pin name="MOD_OUT" x="12.7" y="5.08" length="middle" rot="R180"/>
+<pin name="SDA" x="12.7" y="0" length="middle" rot="R180"/>
+<pin name="SCL" x="12.7" y="-2.54" length="middle" rot="R180"/>
+<pin name="USB_D+" x="12.7" y="-10.16" length="middle" rot="R180"/>
+<pin name="USB_D-" x="12.7" y="-12.7" length="middle" rot="R180"/>
+<pin name="PPS" x="12.7" y="12.7" length="middle" rot="R180"/>
+<wire x1="7.62" y1="22.86" x2="7.62" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-20.32" x2="-10.16" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-20.32" x2="-10.16" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="22.86" x2="7.62" y2="22.86" width="0.254" layer="94"/>
+<text x="-10.16" y="25.4" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-10.16" y="-22.86" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="USB_VBUS" x="12.7" y="-7.62" length="middle" rot="R180"/>
+<pin name="VCCIO" x="12.7" y="17.78" length="middle" rot="R180"/>
+<pin name="MOD_IN" x="12.7" y="7.62" length="middle" rot="R180"/>
+<text x="-9.144" y="17.526" size="0.8128" layer="98" align="top-left">VCCIO 3.3-5V
+**Supplied by module**</text>
+</symbol>
+<symbol name="HEADER_DEBUG">
+<wire x1="25.4" y1="30.48" x2="25.4" y2="0" width="0.254" layer="94"/>
+<wire x1="25.4" y1="0" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="5.08" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="30.48" width="0.254" layer="94"/>
+<wire x1="0" y1="30.48" x2="5.08" y2="30.48" width="0.254" layer="94"/>
+<text x="5.08" y="33.02" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="5.08" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<wire x1="5.08" y1="30.48" x2="25.4" y2="30.48" width="0.254" layer="94"/>
+<wire x1="5.08" y1="30.48" x2="5.08" y2="0" width="0.254" layer="94" style="shortdash"/>
+<text x="2.54" y="15.24" size="1.778" layer="97" ratio="12" rot="R90" align="center">DEBUG HEADER</text>
+<pin name="GND1" x="30.48" y="2.54" length="middle" rot="R180"/>
+<pin name="DBG_TX" x="30.48" y="27.94" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_RX" x="30.48" y="25.4" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO1" x="30.48" y="10.16" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_GPIO2" x="30.48" y="7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_!RESET" x="30.48" y="15.24" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDCLK" x="30.48" y="17.78" visible="pin" length="middle" rot="R180"/>
+<pin name="DBG_SWDIO" x="30.48" y="20.32" visible="pin" length="middle" rot="R180"/>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="MODULE_GENERIC_DEBUG" prefix="J">
-<description>The debug version of the signpost module header</description>
-<gates>
-<gate name="G$1" symbol="HEADER_MODULE_DEBUG" x="0" y="7.62"/>
-</gates>
-<devices>
-<device name="" package="MODULE_GENERIC_DEBUG">
-<connects>
-<connect gate="G$1" pin="5V" pad="2"/>
-<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
-<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
-<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
-<connect gate="G$1" pin="DBG_RX" pad="18"/>
-<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
-<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
-<connect gate="G$1" pin="DBG_TX" pad="17"/>
-<connect gate="G$1" pin="GND" pad="1 14 15"/>
-<connect gate="G$1" pin="MOD_IN" pad="10"/>
-<connect gate="G$1" pin="MOD_OUT" pad="8"/>
-<connect gate="G$1" pin="PPS" pad="7"/>
-<connect gate="G$1" pin="SCL" pad="5"/>
-<connect gate="G$1" pin="SDA" pad="6"/>
-<connect gate="G$1" pin="USB_D+" pad="11"/>
-<connect gate="G$1" pin="USB_D-" pad="12"/>
-<connect gate="G$1" pin="USB_VBUS" pad="13"/>
-<connect gate="G$1" pin="VCCIO" pad="4"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY" value="S9170-ND , S2221EC-04-ND" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="SMT" package="MODULE_GENERIC_DEBUG_SMT">
-<connects>
-<connect gate="G$1" pin="5V" pad="2"/>
-<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
-<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
-<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
-<connect gate="G$1" pin="DBG_RX" pad="18"/>
-<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
-<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
-<connect gate="G$1" pin="DBG_TX" pad="17"/>
-<connect gate="G$1" pin="GND" pad="1 14 15"/>
-<connect gate="G$1" pin="MOD_IN" pad="10"/>
-<connect gate="G$1" pin="MOD_OUT" pad="8"/>
-<connect gate="G$1" pin="PPS" pad="7"/>
-<connect gate="G$1" pin="SCL" pad="5"/>
-<connect gate="G$1" pin="SDA" pad="6"/>
-<connect gate="G$1" pin="USB_D+" pad="11"/>
-<connect gate="G$1" pin="USB_D-" pad="12"/>
-<connect gate="G$1" pin="USB_VBUS" pad="13"/>
-<connect gate="G$1" pin="VCCIO" pad="4"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DIGIKEY1" value="S9170-ND" constant="no"/>
-<attribute name="DIGIKEY2" value="WM17450-ND" constant="no"/>
-<attribute name="MF1" value="Sullins" constant="no"/>
-<attribute name="MF2" value="Molex" constant="no"/>
-<attribute name="MFN1" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
-<attribute name="MFN2" value="0015912080" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="MWSUB3G" prefix="U">
 <description>An RF Spectrum analyzer module</description>
 <gates>
@@ -2212,8 +2008,84 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 </connects>
 <technologies>
 <technology name="">
-<attribute name="MF" value="RFExplorer" constant="no"/>
-<attribute name="MFN" value="MWSUB3G" constant="no"/>
+<attribute name="MANUFACTURER" value="RFExplorer" constant="no"/>
+<attribute name="MPN" value="MWSUB3G" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SIGNPOST_MODULE_HEADER" prefix="J">
+<description>The 14 pin signpost module header</description>
+<gates>
+<gate name="G$1" symbol="HEADER_MODULE" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="SIGNPOST_MODULE_HEADER">
+<connects>
+<connect gate="G$1" pin="5V" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1 14"/>
+<connect gate="G$1" pin="MOD_IN" pad="10"/>
+<connect gate="G$1" pin="MOD_OUT" pad="8"/>
+<connect gate="G$1" pin="PPS" pad="7"/>
+<connect gate="G$1" pin="SCL" pad="5"/>
+<connect gate="G$1" pin="SDA" pad="6"/>
+<connect gate="G$1" pin="USB_D+" pad="11"/>
+<connect gate="G$1" pin="USB_D-" pad="12"/>
+<connect gate="G$1" pin="USB_VBUS" pad="13"/>
+<connect gate="G$1" pin="VCCIO" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="S9170-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Sullins Connector" constant="no"/>
+<attribute name="MPN" value="SBH11-PBPC-D07-ST-BK" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SIGNPOST_DEBUG_HEADER" prefix="J">
+<description>The 8 Pin signpost Debug Header</description>
+<gates>
+<gate name="G$1" symbol="HEADER_DEBUG" x="-10.16" y="-15.24"/>
+</gates>
+<devices>
+<device name="" package="SIGNPOST_DEBUG_HEADER">
+<connects>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
+<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
+<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
+<connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
+<connect gate="G$1" pin="DBG_TX" pad="17"/>
+<connect gate="G$1" pin="GND1" pad="15"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="S2221EC-04-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Sullins Connector" constant="no"/>
+<attribute name="MPN" value="PRPC004DFBN-RC" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="SMT" package="SIGNPOST_DEBUG_HEADER_SMT">
+<connects>
+<connect gate="G$1" pin="DBG_!RESET" pad="20"/>
+<connect gate="G$1" pin="DBG_GPIO1" pad="16"/>
+<connect gate="G$1" pin="DBG_GPIO2" pad="19"/>
+<connect gate="G$1" pin="DBG_RX" pad="18"/>
+<connect gate="G$1" pin="DBG_SWDCLK" pad="21"/>
+<connect gate="G$1" pin="DBG_SWDIO" pad="22"/>
+<connect gate="G$1" pin="DBG_TX" pad="17"/>
+<connect gate="G$1" pin="GND1" pad="15"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="WM17450-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Molex" constant="no"/>
+<attribute name="MPN" value="0015912080" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2255,7 +2127,7 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="0" y1="1.5" x2="1.5" y2="1.5" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="1.5" x2="1.5" y2="0" width="0.1016" layer="21"/>
 <wire x1="1.5" y1="0" x2="0" y2="0" width="0.1016" layer="21"/>
-<smd name="P$1" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
+<smd name="PAD" x="0.75" y="0.75" dx="1.2" dy="0.7" layer="1" rot="R90"/>
 <smd name="1" x="0.025" y="1.35" dx="0.35" dy="0.2" layer="1"/>
 <smd name="2" x="0.025" y="0.95" dx="0.35" dy="0.2" layer="1"/>
 <smd name="3" x="0.025" y="0.55" dx="0.35" dy="0.2" layer="1"/>
@@ -2339,14 +2211,14 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-5.08" y1="25.4" x2="15.24" y2="25.4" width="0.254" layer="94"/>
 <wire x1="15.24" y1="25.4" x2="15.24" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="15.24" y1="-2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
-<pin name="RFC" x="-10.16" y="17.78" visible="pin" length="middle"/>
-<pin name="V1" x="-10.16" y="12.7" visible="pin" length="middle"/>
-<pin name="V2" x="-10.16" y="10.16" visible="pin" length="middle"/>
-<pin name="V3" x="-10.16" y="7.62" visible="pin" length="middle"/>
-<pin name="RF1" x="5.08" y="30.48" visible="pin" length="middle" rot="R270"/>
-<pin name="RF2" x="20.32" y="10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="RF3" x="5.08" y="-7.62" visible="pin" length="middle" rot="R90"/>
-<pin name="GND" x="0" y="-7.62" visible="pin" length="middle" rot="R90"/>
+<pin name="RFC" x="-10.16" y="17.78" length="middle"/>
+<pin name="V1" x="-10.16" y="12.7" length="middle"/>
+<pin name="V2" x="-10.16" y="10.16" length="middle"/>
+<pin name="V3" x="-10.16" y="7.62" length="middle"/>
+<pin name="RF1" x="5.08" y="30.48" length="middle" rot="R270"/>
+<pin name="RF2" x="20.32" y="10.16" length="middle" rot="R180"/>
+<pin name="RF3" x="5.08" y="-7.62" length="middle" rot="R90"/>
+<pin name="GND" x="0" y="-7.62" length="middle" rot="R90"/>
 <text x="-5.08" y="27.94" size="1.778" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
 <text x="7.62" y="12.7" size="1.778" layer="95" ratio="12" align="bottom-center">SKY13317
 RF Switch</text>
@@ -2415,6 +2287,8 @@ RF Switch</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="296-35978-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Texas Instruments" constant="no"/>
+<attribute name="MPN" value="TLV62130RGTR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2428,7 +2302,7 @@ RF Switch</text>
 <devices>
 <device name="" package="XDFN-8">
 <connects>
-<connect gate="G$1" pin="GND" pad="P$1"/>
+<connect gate="G$1" pin="GND" pad="PAD"/>
 <connect gate="G$1" pin="RF1" pad="4"/>
 <connect gate="G$1" pin="RF2" pad="5"/>
 <connect gate="G$1" pin="RF3" pad="8"/>
@@ -2439,7 +2313,9 @@ RF Switch</text>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="863-1056-1-ND" value="" constant="no"/>
+<attribute name="DIGIKEY" value="863-1056-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Skworks Solutions" constant="no"/>
+<attribute name="MPN" value="SKY13317-373LF" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2487,7 +2363,8 @@ RF Switch</text>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="497-16578-ND" constant="no"/>
-<attribute name="MFN" value="STM32L432KCU6" constant="no"/>
+<attribute name="MANUFACTURER" value="STMicroelectronics" constant="no"/>
+<attribute name="MPN" value="STM32L432KCU6" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2733,6 +2610,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="WM9357-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Molex" constant="no"/>
+<attribute name="MPN" value="0732511350" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2752,6 +2631,8 @@ SMT</description>
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="H122041-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Hirose" constant="no"/>
+<attribute name="MPN" value="U.FL-R-SMT-1(01)" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2838,16 +2719,6 @@ SMT</description>
 <text x="0" y="-2" size="1.016" layer="27" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 <rectangle x1="-0.2" y1="-0.2" x2="0.2" y2="0.2" layer="21"/>
 </package>
-<package name="VLF3012A">
-<smd name="P$1" x="-1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
-<smd name="P$2" x="1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
-<wire x1="-1.4" y1="1.3" x2="-1.4" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-1.4" y1="-1.3" x2="1.4" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="1.4" y1="-1.3" x2="1.4" y2="1.3" width="0.127" layer="21"/>
-<wire x1="1.4" y1="1.3" x2="-1.4" y2="1.3" width="0.127" layer="21"/>
-<text x="-2.55" y="1.78" size="1.016" layer="25">&gt;NAME</text>
-<text x="-2.72" y="-2.77" size="1.016" layer="25">&gt;VALUE</text>
-</package>
 <package name="XFL4015">
 <description>Coilcraft XFL4015 series inductor package</description>
 <smd name="1" x="-1.1811" y="0" dx="0.9652" dy="3.4036" layer="1"/>
@@ -2889,6 +2760,16 @@ SMT</description>
 <wire x1="-3.2385" y1="-3.2385" x2="-3.2385" y2="3.2385" width="0.127" layer="21"/>
 <text x="-3.175" y="3.81" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.175" y="-5.08" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="VLF3012A">
+<smd name="P$1" x="-1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
+<smd name="P$2" x="1.38" y="0" dx="0.65" dy="1.2" layer="1"/>
+<wire x1="-1.4" y1="1.3" x2="-1.4" y2="-1.3" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="-1.3" x2="1.4" y2="-1.3" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-1.3" x2="1.4" y2="1.3" width="0.127" layer="21"/>
+<wire x1="1.4" y1="1.3" x2="-1.4" y2="1.3" width="0.127" layer="21"/>
+<text x="-0.01" y="1.78" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="0.074" y="-2.77" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -2932,7 +2813,7 @@ SMT</description>
 </symbols>
 <devicesets>
 <deviceset name="CAPACITOR" prefix="C" uservalue="yes">
-<description>0402 Capacitor</description>
+<description>SMD Capacitor</description>
 <gates>
 <gate name="G$1" symbol="CAPACITOR" x="0" y="0"/>
 </gates>
@@ -3061,6 +2942,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="445-3225-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="TDK Corporation" constant="no"/>
+<attribute name="MPN" value="VLF3012AT-4R7MR74" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3090,6 +2973,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="541-1322-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" constant="no"/>
+<attribute name="MPN" value="IHLP1212BZER2R2M11" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3126,7 +3011,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="GND" prefix="GND">
+<deviceset name="GND" prefix="SUPPLY">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
@@ -3185,6 +3070,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11899-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Abracon" constant="no"/>
+<attribute name="MPN" value="ABS05-32.768KHZ-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3196,6 +3083,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="535-11897-1-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Abracon" constant="no"/>
+<attribute name="MPN" value="ABS05-32.768KHZ-9-T" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3277,6 +3166,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="SW1020CT-ND" constant="no"/>
+<attribute name="MANUFACTURER" value="Omron" constant="no"/>
+<attribute name="MPN" value="B3U-1000P" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3376,7 +3267,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" shape="square" rot="R90"/>
 <pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="3" x="5.08" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.524" shape="octagon" rot="R90"/>
+<pad name="4" x="7.62" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
 <text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="7.366" y1="-0.254" x2="7.874" y2="0.254" layer="51"/>
@@ -3952,7 +3843,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Joshua Adkins"/>
-<attribute name="REV" value="A"/>
+<attribute name="REV" value="B"/>
 <attribute name="TITLE" value="RF Spectrum Module"/>
 </attributes>
 <variantdefs>
@@ -3963,47 +3854,46 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </classes>
 <parts>
 <part name="FRAME1" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
-<part name="J4" library="connector" deviceset="TC2030-JLINK" device="-L"/>
+<part name="J5" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="GND19" library="umich" deviceset="GND" device=""/>
-<part name="J3" library="signpost" deviceset="MODULE_GENERIC_DEBUG" device="SMT" value="MODULE_GENERIC_DEBUGSMT"/>
 <part name="FRAME2" library="lab11-frames" deviceset="LETTER_L_UMICH" device=""/>
 <part name="U4" library="chips" deviceset="TLV62130" device=""/>
 <part name="C14" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="10uF">
 <attribute name="DIGIKEY" value="490-6405-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM188R60J106ME47J"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM188R60J106ME47J"/>
 </part>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="0.1uF">
 <attribute name="DIGIKEY" value="490-1532-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM188R71C104KA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM188R71C104KA01D"/>
 </part>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="3.3nF">
 <attribute name="DIGIKEY" value="490-1503-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM188R71H332KA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM188R71H332KA01D"/>
 </part>
 <part name="C15" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="22uF">
 <attribute name="DIGIKEY" value="490-7611-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM188R60J226MEA0D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM188R60J226MEA0D"/>
 </part>
 <part name="GND18" library="umich" deviceset="GND" device=""/>
 <part name="GND21" library="umich" deviceset="GND" device=""/>
 <part name="R9" library="passives" deviceset="RESISTOR" device="0603_RES" value="750k">
 <attribute name="DIGIKEY" value="311-750KGRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="311-750KGRCT-ND"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="311-750KGRCT-ND"/>
 </part>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0603_RES" value="240k">
 <attribute name="DIGIKEY" value="311-240KGRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0603JR-07240KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0603JR-07240KL"/>
 </part>
 <part name="R5" library="passives" deviceset="RESISTOR" device="0603_RES" value="100k">
 <attribute name="DIGIKEY" value="311-100KGRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0603JR-07100KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0603JR-07100KL"/>
 </part>
 <part name="L1" library="passives" deviceset="INDUCTOR" device="IHL" value="2.2uH"/>
 <part name="GND12" library="umich" deviceset="GND" device=""/>
@@ -4014,132 +3904,133 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="U2" library="chips" deviceset="SKY13317" device=""/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
 <attribute name="DIGIKEY" value="490-6241-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H470FA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="220pF">
 <attribute name="DIGIKEY" value="490-1293-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H221JA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H221JA01D"/>
 </part>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
 <attribute name="DIGIKEY" value="490-6241-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H470FA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="47pF">
 <attribute name="DIGIKEY" value="490-6241-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H470FA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H470FA01D"/>
 </part>
 <part name="GND2" library="umich" deviceset="GND" device=""/>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="GND4" library="umich" deviceset="GND" device=""/>
-<part name="U3" library="chips" deviceset="STM32L432KC" device="">
-<attribute name="MF" value="STM"/>
-</part>
+<part name="U3" library="chips" deviceset="STM32L432KC" device=""/>
 <part name="C13" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7uF">
 <attribute name="DIGIKEY" value="490-5915-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R60J475ME47D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM155R60J475ME47D"/>
 </part>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R71C104KA88J"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM155R71C104KA88J"/>
 </part>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R71C104KA88J"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM155R71C104KA88J"/>
 </part>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="10nF">
 <attribute name="DIGIKEY" value="490-4516-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R71H103KA88D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM155R71H103KA88D"/>
 </part>
 <part name="GND5" library="umich" deviceset="GND" device=""/>
 <part name="C12" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="1uF">
 <attribute name="DIGIKEY" value="490-1320-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM155R60J105KE19D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM155R60J105KE19D"/>
 </part>
 <part name="GND6" library="umich" deviceset="GND" device=""/>
 <part name="X1" library="crystals" deviceset="ABS05-32.768KHZ" device="-T" value="ABS05-32.768KHZ-T"/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.3pF">
 <attribute name="DIGIKEY" value="490-6243-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H4R3BA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H4R3BA01D"/>
 </part>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.3pF">
 <attribute name="DIGIKEY" value="490-6243-1-ND"/>
-<attribute name="MF" value="Murata"/>
-<attribute name="MFN" value="GRM1555C1H4R3BA01D"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GRM1555C1H4R3BA01D"/>
 </part>
 <part name="GND7" library="umich" deviceset="GND" device=""/>
 <part name="D1" library="leds" deviceset="LED" device="0603" value="GREEN">
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
-<attribute name="MF" value="Lite-ON"/>
-<attribute name="MFN" value="LTST-C191KGKT"/>
+<attribute name="MANUFACTURER" value="Lite-ON"/>
+<attribute name="MPN" value="LTST-C191KGKT"/>
 </part>
 <part name="D2" library="leds" deviceset="LED" device="0603" value="RED">
 <attribute name="DIGIKEY" value="160-1447-1-ND"/>
-<attribute name="MF" value="Lite-On"/>
-<attribute name="MFN" value="LTST-C191KRKT"/>
+<attribute name="MANUFACTURER" value="Lite-On"/>
+<attribute name="MPN" value="LTST-C191KRKT"/>
 </part>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402JR-071KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402JR-071KL"/>
 </part>
 <part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402JR-071KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402JR-071KL"/>
 </part>
 <part name="GND9" library="umich" deviceset="GND" device=""/>
 <part name="A1" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="A2" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="A3" library="connector" deviceset="U.FL-R-SMT" device=""/>
 <part name="ADBG" library="connector" deviceset="MOLEX_73251-135X" device=""/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="0">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="DNP - 0">
 <attribute name="DIGIKEY" value="311-0.0JRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402JR-070RL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402JR-070RL"/>
 </part>
 <part name="GND10" library="umich" deviceset="GND" device=""/>
-<part name="J2" library="SparkFun-Connectors" deviceset="M04" device="PTH">
+<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH">
 <attribute name="DIGIKEY" value="WM8086-ND"/>
-<attribute name="MF" value="Molex"/>
-<attribute name="MFN" value="0901200764"/>
+<attribute name="MANUFACTURER" value="Molex"/>
+<attribute name="MPN" value="0901200764"/>
 </part>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402FR-07100KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402FR-07100KL"/>
 </part>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402JR-071KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402JR-071KL"/>
 </part>
 <part name="GND8" library="umich" deviceset="GND" device=""/>
-<part name="J1" library="SparkFun-Connectors" deviceset="M04" device="PTH">
+<part name="J2" library="SparkFun-Connectors" deviceset="M04" device="PTH">
 <attribute name="DIGIKEY" value="WM8086-ND"/>
-<attribute name="MF" value="Molex"/>
-<attribute name="MFN" value="0901200764"/>
+<attribute name="MANUFACTURER" value="Molex"/>
+<attribute name="MPN" value="0901200764"/>
 </part>
 <part name="Q1" library="fets" deviceset="SI223DDS" device=""/>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="100k">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402FR-07100KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402FR-07100KL"/>
 </part>
 <part name="R10" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
-<attribute name="MF" value="Yageo"/>
-<attribute name="MFN" value="RC0402FR-07100KL"/>
+<attribute name="MANUFACTURER" value="Yageo"/>
+<attribute name="MPN" value="RC0402FR-07100KL"/>
 </part>
+<part name="J4" library="signpost" deviceset="SIGNPOST_MODULE_HEADER" device=""/>
+<part name="J3" library="signpost" deviceset="SIGNPOST_DEBUG_HEADER" device="SMT"/>
+<part name="GND11" library="umich" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4151,127 +4042,127 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="152.4" y="0"/>
-<instance part="J4" gate="G$1" x="193.04" y="53.34"/>
+<instance part="J5" gate="G$1" x="193.04" y="53.34"/>
 <instance part="GND19" gate="1" x="175.26" y="43.18"/>
-<instance part="J3" gate="G$1" x="22.86" y="157.48"/>
 <instance part="U4" gate="G$1" x="50.8" y="30.48"/>
 <instance part="C14" gate="G$1" x="15.24" y="35.56">
 <attribute name="DIGIKEY" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="15.24" y="35.56" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C9" gate="G$1" x="22.86" y="33.02">
 <attribute name="DIGIKEY" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="22.86" y="33.02" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C7" gate="G$1" x="27.94" y="20.32" rot="R180">
 <attribute name="DIGIKEY" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MF" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MFN" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MPN" x="27.94" y="20.32" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
 <instance part="C15" gate="G$1" x="111.76" y="27.94" rot="R180">
 <attribute name="DIGIKEY" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MF" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MFN" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MPN" x="111.76" y="27.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND18" gate="1" x="25.4" y="10.16"/>
 <instance part="GND21" gate="1" x="73.66" y="10.16"/>
 <instance part="R9" gate="G$1" x="99.06" y="35.56" rot="R90">
 <attribute name="DIGIKEY" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="99.06" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R8" gate="G$1" x="99.06" y="22.86" rot="R90">
 <attribute name="DIGIKEY" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="99.06" y="22.86" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R5" gate="G$1" x="91.44" y="35.56" rot="R90">
 <attribute name="DIGIKEY" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="91.44" y="35.56" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="L1" gate="G$1" x="76.2" y="40.64" rot="R90"/>
-<instance part="GND12" gate="1" x="48.26" y="109.22"/>
+<instance part="GND12" gate="1" x="48.26" y="99.06"/>
 <instance part="GND16" gate="1" x="210.82" y="25.4"/>
 <instance part="S1" gate="G$1" x="210.82" y="38.1" rot="R90"/>
-<instance part="U3" gate="G$1" x="180.34" y="116.84">
-<attribute name="MF" x="180.34" y="116.84" size="1.016" layer="96" align="bottom-center" display="off"/>
-</instance>
+<instance part="U3" gate="G$1" x="180.34" y="116.84"/>
 <instance part="C13" gate="G$1" x="132.08" y="165.1">
 <attribute name="DIGIKEY" x="132.08" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="132.08" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C10" gate="G$1" x="139.7" y="165.1">
 <attribute name="DIGIKEY" x="139.7" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="139.7" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C11" gate="G$1" x="147.32" y="165.1">
 <attribute name="DIGIKEY" x="147.32" y="165.1" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="147.32" y="165.1" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="C8" gate="G$1" x="147.32" y="149.86">
 <attribute name="DIGIKEY" x="147.32" y="149.86" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="147.32" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND5" gate="1" x="132.08" y="137.16"/>
 <instance part="C12" gate="G$1" x="139.7" y="149.86">
 <attribute name="DIGIKEY" x="139.7" y="149.86" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="139.7" y="149.86" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND6" gate="1" x="149.86" y="88.9"/>
 <instance part="X1" gate="G$1" x="101.6" y="132.08" rot="R270"/>
 <instance part="C1" gate="G$1" x="96.52" y="121.92" rot="R270">
 <attribute name="DIGIKEY" x="96.52" y="121.92" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MF" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MFN" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MPN" x="96.52" y="121.92" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="C2" gate="G$1" x="96.52" y="142.24" rot="R270">
 <attribute name="DIGIKEY" x="96.52" y="142.24" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MF" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MFN" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MPN" x="96.52" y="142.24" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND7" gate="1" x="88.9" y="116.84"/>
 <instance part="D1" gate="G$1" x="127" y="101.6" rot="R270">
 <attribute name="DIGIKEY" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MF" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MFN" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MPN" x="127" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="D2" gate="G$1" x="134.62" y="101.6" rot="R270">
 <attribute name="DIGIKEY" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MF" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MFN" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MPN" x="134.62" y="101.6" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="R2" gate="G$1" x="127" y="111.76" rot="R90">
 <attribute name="DIGIKEY" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="127" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R3" gate="G$1" x="134.62" y="111.76" rot="R90">
 <attribute name="DIGIKEY" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="134.62" y="111.76" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND9" gate="1" x="127" y="91.44"/>
 <instance part="R4" gate="G$1" x="231.14" y="129.54" rot="R90">
 <attribute name="DIGIKEY" x="231.14" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="231.14" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="231.14" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="231.14" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="231.14" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND8" gate="1" x="231.14" y="119.38"/>
+<instance part="J4" gate="G$1" x="20.32" y="157.48"/>
+<instance part="J3" gate="G$1" x="2.54" y="101.6"/>
+<instance part="GND11" gate="1" x="50.8" y="137.16"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="GND"/>
+<pinref part="J5" gate="G$1" pin="GND"/>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="180.34" y1="48.26" x2="175.26" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="48.26" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
@@ -4318,10 +4209,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="99.06" y="17.78"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="GND"/>
-<wire x1="33.02" y1="114.3" x2="48.26" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="114.3" x2="48.26" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="104.14" x2="48.26" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="104.14" x2="48.26" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="GND12" gate="1" pin="GND"/>
+<pinref part="J3" gate="G$1" pin="GND1"/>
 </segment>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
@@ -4382,10 +4273,15 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="GND8" gate="1" pin="GND"/>
 <wire x1="231.14" y1="124.46" x2="231.14" y2="121.92" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="GND"/>
+<pinref part="GND11" gate="1" pin="GND"/>
+<wire x1="33.02" y1="139.7" x2="50.8" y2="139.7" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="3V3" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="VCC"/>
+<pinref part="J5" gate="G$1" pin="VCC"/>
 <wire x1="180.34" y1="58.42" x2="175.26" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="58.42" x2="175.26" y2="73.66" width="0.1524" layer="91"/>
 <label x="175.26" y="73.66" size="1.016" layer="95" rot="R90" xref="yes"/>
@@ -4413,9 +4309,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="111.76" y="43.18" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="VCCIO"/>
 <wire x1="33.02" y1="175.26" x2="40.64" y2="175.26" width="0.1524" layer="91"/>
 <label x="40.64" y="175.26" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="VCCIO"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="VDD"/>
@@ -4479,9 +4375,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="30.48" y="40.64"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="5V"/>
 <wire x1="33.02" y1="177.8" x2="40.64" y2="177.8" width="0.1524" layer="91"/>
 <label x="40.64" y="177.8" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="5V"/>
 </segment>
 </net>
 <net name="3VSWOUT" class="0">
@@ -4510,9 +4406,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="PPS" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="PPS"/>
 <wire x1="33.02" y1="170.18" x2="40.64" y2="170.18" width="0.1524" layer="91"/>
 <label x="40.64" y="170.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="PPS"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA0/CLKIN"/>
@@ -4522,9 +4418,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="MOD_IN" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="MOD_IN"/>
 <wire x1="33.02" y1="165.1" x2="40.64" y2="165.1" width="0.1524" layer="91"/>
 <label x="40.64" y="165.1" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="MOD_IN"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PB5"/>
@@ -4534,9 +4430,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="MOD_OUT" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="MOD_OUT"/>
 <wire x1="33.02" y1="162.56" x2="40.64" y2="162.56" width="0.1524" layer="91"/>
 <label x="40.64" y="162.56" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="MOD_OUT"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PB3/JTDO/SWO"/>
@@ -4546,9 +4442,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="SDA" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="SDA"/>
 <wire x1="33.02" y1="157.48" x2="40.64" y2="157.48" width="0.1524" layer="91"/>
 <label x="40.64" y="157.48" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="SDA"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA10"/>
@@ -4563,9 +4459,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="SCL" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="SCL"/>
 <wire x1="33.02" y1="154.94" x2="40.64" y2="154.94" width="0.1524" layer="91"/>
 <label x="40.64" y="154.94" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="SCL"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA7"/>
@@ -4580,9 +4476,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="USB+" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="USB_D+"/>
 <wire x1="33.02" y1="147.32" x2="40.64" y2="147.32" width="0.1524" layer="91"/>
 <label x="40.64" y="147.32" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="USB_D+"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA12"/>
@@ -4592,9 +4488,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="USB-" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="USB_D-"/>
 <wire x1="33.02" y1="144.78" x2="40.64" y2="144.78" width="0.1524" layer="91"/>
 <label x="40.64" y="144.78" size="1.27" layer="95" xref="yes"/>
+<pinref part="J4" gate="G$1" pin="USB_D-"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA11"/>
@@ -4653,7 +4549,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="!RST" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="!RESET"/>
+<pinref part="J5" gate="G$1" pin="!RESET"/>
 <wire x1="205.74" y1="48.26" x2="210.82" y2="48.26" width="0.1524" layer="91"/>
 <label x="218.44" y="48.26" size="1.27" layer="95" font="vector" xref="yes"/>
 <wire x1="210.82" y1="48.26" x2="218.44" y2="48.26" width="0.1524" layer="91"/>
@@ -4667,14 +4563,14 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="208.28" y="139.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
+<wire x1="33.02" y1="116.84" x2="40.64" y2="116.84" width="0.1524" layer="91"/>
+<label x="40.64" y="116.84" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_!RESET"/>
-<wire x1="33.02" y1="127" x2="40.64" y2="127" width="0.1524" layer="91"/>
-<label x="40.64" y="127" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SWDIO" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="SWDIO"/>
+<pinref part="J5" gate="G$1" pin="SWDIO"/>
 <label x="218.44" y="58.42" size="1.27" layer="95" font="vector" xref="yes"/>
 <wire x1="205.74" y1="58.42" x2="218.44" y2="58.42" width="0.1524" layer="91"/>
 </segment>
@@ -4684,14 +4580,14 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="208.28" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
+<wire x1="33.02" y1="121.92" x2="40.64" y2="121.92" width="0.1524" layer="91"/>
+<label x="40.64" y="121.92" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_SWDIO"/>
-<wire x1="33.02" y1="132.08" x2="40.64" y2="132.08" width="0.1524" layer="91"/>
-<label x="40.64" y="132.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SWDCLK" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="SWDCLK"/>
+<pinref part="J5" gate="G$1" pin="SWDCLK"/>
 <wire x1="205.74" y1="55.88" x2="218.44" y2="55.88" width="0.1524" layer="91"/>
 <label x="218.44" y="55.88" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
@@ -4701,9 +4597,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="208.28" y="96.52" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
+<wire x1="33.02" y1="119.38" x2="40.64" y2="119.38" width="0.1524" layer="91"/>
+<label x="40.64" y="119.38" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_SWDCLK"/>
-<wire x1="33.02" y1="129.54" x2="40.64" y2="129.54" width="0.1524" layer="91"/>
-<label x="40.64" y="129.54" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -4742,9 +4638,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="DBG_TX" class="0">
 <segment>
+<wire x1="33.02" y1="129.54" x2="40.64" y2="129.54" width="0.1524" layer="91"/>
+<label x="40.64" y="129.54" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_TX"/>
-<wire x1="33.02" y1="139.7" x2="40.64" y2="139.7" width="0.1524" layer="91"/>
-<label x="40.64" y="139.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA2"/>
@@ -4754,9 +4650,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="DBG_RX" class="0">
 <segment>
+<wire x1="33.02" y1="127" x2="40.64" y2="127" width="0.1524" layer="91"/>
+<label x="40.64" y="127" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_RX"/>
-<wire x1="33.02" y1="137.16" x2="40.64" y2="137.16" width="0.1524" layer="91"/>
-<label x="40.64" y="137.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PA3"/>
@@ -4766,9 +4662,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="DBG_GPIO1" class="0">
 <segment>
+<wire x1="33.02" y1="111.76" x2="40.64" y2="111.76" width="0.1524" layer="91"/>
+<label x="40.64" y="111.76" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_GPIO1"/>
-<wire x1="33.02" y1="121.92" x2="40.64" y2="121.92" width="0.1524" layer="91"/>
-<label x="40.64" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PB0"/>
@@ -4782,9 +4678,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="DBG_GPIO2" class="0">
 <segment>
+<wire x1="33.02" y1="109.22" x2="40.64" y2="109.22" width="0.1524" layer="91"/>
+<label x="40.64" y="109.22" size="1.27" layer="95" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="DBG_GPIO2"/>
-<wire x1="33.02" y1="119.38" x2="40.64" y2="119.38" width="0.1524" layer="91"/>
-<label x="40.64" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="PB1"/>
@@ -4831,23 +4727,23 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="U2" gate="G$1" x="157.48" y="116.84"/>
 <instance part="C3" gate="G$1" x="137.16" y="134.62" rot="R90">
 <attribute name="DIGIKEY" x="137.16" y="134.62" size="1.27" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="137.16" y="134.62" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="C6" gate="G$1" x="162.56" y="154.94" rot="R180">
 <attribute name="DIGIKEY" x="162.56" y="154.94" size="1.27" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MF" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MFN" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MPN" x="162.56" y="154.94" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
 <instance part="C4" gate="G$1" x="187.96" y="127" rot="R270">
 <attribute name="DIGIKEY" x="187.96" y="127" size="1.27" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MF" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
-<attribute name="MFN" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
+<attribute name="MPN" x="187.96" y="127" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
 <instance part="C5" gate="G$1" x="162.56" y="104.14">
 <attribute name="DIGIKEY" x="162.56" y="104.14" size="1.27" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="162.56" y="104.14" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND2" gate="1" x="149.86" y="83.82"/>
 <instance part="GND3" gate="1" x="203.2" y="114.3"/>
@@ -4858,35 +4754,35 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="ADBG" gate="G$1" x="134.62" y="152.4"/>
 <instance part="R1" gate="G$1" x="127" y="144.78" rot="R90">
 <attribute name="DIGIKEY" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="127" y="144.78" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="GND10" gate="1" x="134.62" y="142.24"/>
-<instance part="J2" gate="G$1" x="116.84" y="55.88">
+<instance part="J1" gate="G$1" x="116.84" y="55.88">
 <attribute name="DIGIKEY" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="116.84" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="R7" gate="G$1" x="53.34" y="129.54" rot="R90">
 <attribute name="DIGIKEY" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="53.34" y="129.54" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
-<instance part="J1" gate="G$1" x="78.74" y="55.88">
+<instance part="J2" gate="G$1" x="78.74" y="55.88">
 <attribute name="DIGIKEY" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MF" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
-<attribute name="MFN" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
+<attribute name="MPN" x="78.74" y="55.88" size="1.016" layer="96" align="bottom-center" display="off"/>
 </instance>
 <instance part="Q1" gate="G$1" x="76.2" y="162.56" rot="MR180"/>
 <instance part="R6" gate="G$1" x="66.04" y="172.72" rot="R90">
 <attribute name="DIGIKEY" x="66.04" y="172.72" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MF" x="66.04" y="172.72" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
-<attribute name="MFN" x="66.04" y="172.72" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="66.04" y="172.72" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
+<attribute name="MPN" x="66.04" y="172.72" size="1.016" layer="96" rot="R90" align="bottom-center" display="off"/>
 </instance>
 <instance part="R10" gate="G$1" x="58.42" y="162.56" rot="R180">
 <attribute name="DIGIKEY" x="58.42" y="162.56" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MF" x="58.42" y="162.56" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
-<attribute name="MFN" x="58.42" y="162.56" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MANUFACTURER" x="58.42" y="162.56" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
+<attribute name="MPN" x="58.42" y="162.56" size="1.016" layer="96" rot="R180" align="bottom-center" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -4957,7 +4853,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <wire x1="83.82" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
 <label x="86.36" y="58.42" size="1.27" layer="95" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="3"/>
+<pinref part="J2" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="RF_RX" class="0">
@@ -4969,7 +4865,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <wire x1="83.82" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <label x="86.36" y="55.88" size="1.27" layer="95" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="2"/>
+<pinref part="J2" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="!RF_RESET" class="0">
@@ -4981,7 +4877,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <wire x1="83.82" y1="60.96" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
 <label x="86.36" y="60.96" size="1.27" layer="95" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="4"/>
+<pinref part="J2" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="RF_GPIO2" class="0">
@@ -4997,12 +4893,12 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <wire x1="83.82" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
 <label x="86.36" y="53.34" size="1.27" layer="95" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="1"/>
+<pinref part="J2" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RF_GPIO3" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="121.92" y1="53.34" x2="124.46" y2="53.34" width="0.1524" layer="91"/>
 <label x="124.46" y="53.34" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -5064,7 +4960,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="144.78" y="129.54" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="4"/>
+<pinref part="J1" gate="G$1" pin="4"/>
 <wire x1="121.92" y1="60.96" x2="124.46" y2="60.96" width="0.1524" layer="91"/>
 <label x="124.46" y="60.96" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -5076,7 +4972,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="144.78" y="127" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="3"/>
 <wire x1="121.92" y1="58.42" x2="124.46" y2="58.42" width="0.1524" layer="91"/>
 <label x="124.46" y="58.42" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -5088,7 +4984,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="144.78" y="124.46" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="2"/>
 <wire x1="121.92" y1="55.88" x2="124.46" y2="55.88" width="0.1524" layer="91"/>
 <label x="124.46" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
