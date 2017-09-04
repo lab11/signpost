@@ -502,10 +502,6 @@ Text Label 8200 3950 0    60   ~ 0
 TSL_INT
 Text Label 10200 4200 0    60   ~ 0
 TSL_INT
-Text Label 10200 4100 0    60   ~ 0
-LPS_INT2
-Text Label 10200 4000 0    60   ~ 0
-LPS_INT1
 $Comp
 L GND #PWR3
 U 1 1 57F54934
@@ -723,8 +719,6 @@ Text Label 8200 3350 0    60   ~ 0
 LPS25_INT
 Text Label 10200 3800 0    60   ~ 0
 LPS25_INT
-Text Label 10200 3900 0    60   ~ 0
-LPS35_INT
 $Comp
 L BSU-1000P SW1
 U 1 1 5801FFE9
@@ -1150,10 +1144,6 @@ Wire Wire Line
 Wire Wire Line
 	10100 4200 10550 4200
 Wire Wire Line
-	10100 4100 10550 4100
-Wire Wire Line
-	10100 4000 10550 4000
-Wire Wire Line
 	1300 7600 1400 7600
 Wire Wire Line
 	1300 7500 1400 7500
@@ -1250,8 +1240,6 @@ Wire Wire Line
 Wire Wire Line
 	10100 3800 10650 3800
 Wire Wire Line
-	10100 3900 10650 3900
-Wire Wire Line
 	6150 6100 6700 6100
 Wire Wire Line
 	6150 6000 6700 6000
@@ -1286,4 +1274,16 @@ Wire Wire Line
 	5400 5250 6250 5250
 Wire Wire Line
 	5400 5350 6250 5350
+Wire Wire Line
+	10550 3900 10100 3900
+Wire Wire Line
+	10550 4000 10100 4000
+Wire Wire Line
+	10550 4100 10100 4100
+Text Label 10550 3900 2    60   ~ 0
+LED_3
+Text Label 10550 4000 2    60   ~ 0
+LED_2
+Text Label 10550 4100 2    60   ~ 0
+LED_1
 $EndSCHEMATC
