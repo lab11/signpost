@@ -6102,7 +6102,6 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="U$14" library="signpost" deviceset="VCC_LINUX_1V8" device=""/>
 <part name="GND22" library="umich" deviceset="GND" device=""/>
-<part name="U$15" library="signpost" deviceset="VCC_LINUX_3V3" device=""/>
 <part name="GND23" library="umich" deviceset="GND" device=""/>
 <part name="J14" library="connector" deviceset="TC2030-JLINK" device="-L"/>
 <part name="U$7" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
@@ -6358,6 +6357,7 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </part>
 <part name="GND42" library="umich" deviceset="GND" device=""/>
 <part name="J17" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device=""/>
+<part name="U$32" library="signpost" deviceset="VCC_CONTROLLER" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8519,7 +8519,6 @@ disabled by the Storage Master.</text>
 </instance>
 <instance part="U$14" gate="G$1" x="93.98" y="111.76"/>
 <instance part="GND22" gate="1" x="58.42" y="55.88" rot="MR0"/>
-<instance part="U$15" gate="G$1" x="58.42" y="111.76"/>
 <instance part="GND23" gate="1" x="30.48" y="35.56" rot="MR0"/>
 <instance part="VR1" gate="G$1" x="111.76" y="144.78"/>
 <instance part="GND15" gate="1" x="86.36" y="132.08" rot="MR0"/>
@@ -8561,6 +8560,7 @@ disabled by the Storage Master.</text>
 <attribute name="DIGIKEY" x="93.98" y="63.5" size="1.27" layer="96" font="vector" rot="MR270" display="off"/>
 </instance>
 <instance part="GND42" gate="1" x="93.98" y="55.88" rot="MR0"/>
+<instance part="U$32" gate="G$1" x="58.42" y="111.76"/>
 </instances>
 <busses>
 </busses>
@@ -8570,17 +8570,6 @@ disabled by the Storage Master.</text>
 <pinref part="D2" gate="G$1" pin="VDD"/>
 <pinref part="U$13" gate="G$1" pin="VCC_LINUX_3V3"/>
 <wire x1="10.16" y1="53.34" x2="10.16" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U10" gate="G$1" pin="VCCB"/>
-<pinref part="U$15" gate="G$1" pin="VCC_LINUX_3V3"/>
-<wire x1="60.96" y1="91.44" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="91.44" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="109.22" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="C21" gate="G$1" pin="2"/>
-<wire x1="53.34" y1="106.68" x2="53.34" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="109.22" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
-<junction x="58.42" y="109.22"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="VCC_LINUX_3V3"/>
@@ -8953,6 +8942,19 @@ disabled by the Storage Master.</text>
 <pinref part="U10" gate="G$1" pin="B8"/>
 <wire x1="60.96" y1="71.12" x2="58.42" y2="71.12" width="0.1524" layer="91"/>
 <label x="58.42" y="71.12" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="VCC_CONTROLLER" class="0">
+<segment>
+<pinref part="U10" gate="G$1" pin="VCCB"/>
+<wire x1="60.96" y1="91.44" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="91.44" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="C21" gate="G$1" pin="2"/>
+<wire x1="53.34" y1="106.68" x2="53.34" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="109.22" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="U$32" gate="G$1" pin="VCC_CONTROLLER"/>
+<wire x1="58.42" y1="109.22" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
+<junction x="58.42" y="109.22"/>
 </segment>
 </net>
 </nets>
