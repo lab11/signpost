@@ -29,6 +29,26 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:lab11_adc
+LIBS:lab11_battery_chargers
+LIBS:lab11_buffers
+LIBS:lab11_comparators
+LIBS:lab11_connectors
+LIBS:lab11_diodes
+LIBS:lab11_ldo
+LIBS:lab11_level_shifters
+LIBS:lab11_mcu
+LIBS:lab11_memory
+LIBS:lab11_microphones
+LIBS:lab11_nucleum
+LIBS:lab11_opamps
+LIBS:lab11_receptacles
+LIBS:lab11_rlc
+LIBS:lab11_switches
+LIBS:lab11_transistors
+LIBS:lab11_voltage_references
+LIBS:lab11_sensors
+LIBS:lab11_crystals
 LIBS:ambient-cache
 EELAYER 25 0
 EELAYER END

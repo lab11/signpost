@@ -29,6 +29,26 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:lab11_adc
+LIBS:lab11_battery_chargers
+LIBS:lab11_buffers
+LIBS:lab11_comparators
+LIBS:lab11_connectors
+LIBS:lab11_diodes
+LIBS:lab11_ldo
+LIBS:lab11_level_shifters
+LIBS:lab11_mcu
+LIBS:lab11_memory
+LIBS:lab11_microphones
+LIBS:lab11_nucleum
+LIBS:lab11_opamps
+LIBS:lab11_receptacles
+LIBS:lab11_rlc
+LIBS:lab11_switches
+LIBS:lab11_transistors
+LIBS:lab11_voltage_references
+LIBS:lab11_sensors
+LIBS:lab11_crystals
 LIBS:ambient-cache
 EELAYER 25 0
 EELAYER END
@@ -49,9 +69,9 @@ S 900  950  3150 2100
 U 57E97639
 F0 "sensors" 60
 F1 "sensors.sch" 60
-F3 "ISL29035_INT" I R 4050 1550 60 
-F4 "LPS25HB_INT" I R 4050 2550 60 
-F5 "EKMB_INT" I R 4050 2900 60 
+F2 "ISL29035_INT" I R 4050 1550 60 
+F3 "LPS25HB_INT" I R 4050 2550 60 
+F4 "EKMB_INT" I R 4050 2900 60 
 $EndSheet
 $Comp
 L SAM4LC8A U2
@@ -745,7 +765,7 @@ F 2 "Resistors_SMD:R_0402" H 5100 7700 50  0001 C CNN
 F 3 "" H 5200 7775 50  0001 C CNN
 F 4 "10" H 5100 7075 60  0000 C CNN "Resistance"
 F 5 "Digikey" H 5100 7600 60  0001 C CNN "Vendor 1"
-F 6 "P10KJCT-ND" H 5100 7500 60  0001 C CNN "Vendor 1 Part Number"
+F 6 "P10JCT-ND" H 5100 7500 60  0001 C CNN "Vendor 1 Part Number"
 	1    5100 7150
 	0    1    1    0   
 $EndComp
@@ -898,21 +918,6 @@ LED_2
 Text Label 3350 6850 0    60   ~ 0
 LED_3
 $Comp
-L CONN_01X02 P5
-U 1 1 5884775B
-P 5950 6050
-F 0 "P5" H 5950 6200 50  0000 C CNN
-F 1 "CONN_01X02" V 6050 6050 50  0000 C CNN
-F 2 "Connect:PINHEAD1-2" H 5950 6050 50  0001 C CNN
-F 3 "" H 5950 6050 50  0000 C CNN
-	1    5950 6050
-	-1   0    0    1   
-$EndComp
-Text Label 6250 6100 0    60   ~ 0
-EKMB_INT
-Text Label 6250 6000 0    60   ~ 0
-LED_1
-$Comp
 L GND #PWR022
 U 1 1 5885A92A
 P 9400 3050
@@ -1020,10 +1025,6 @@ Wire Wire Line
 	9400 3000 9400 3050
 Wire Wire Line
 	9400 2550 9400 2600
-Wire Wire Line
-	6150 6000 6700 6000
-Wire Wire Line
-	6150 6100 6700 6100
 Wire Wire Line
 	10100 3800 10650 3800
 Wire Wire Line

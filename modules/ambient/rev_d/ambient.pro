@@ -1,4 +1,4 @@
-update=Sunday, July 23, 2017 'PMt' 02:04:06 PM
+update=Monday, September 04, 2017 'PMt' 06:10:29 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -79,3 +79,14 @@ LibName47=lab11_transistors
 LibName48=lab11_voltage_references
 LibName49=lab11_sensors
 LibName50=lab11_crystals
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
+ERC_TestSimilarLabels=1
