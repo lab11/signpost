@@ -3848,8 +3848,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="R6" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
 <attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
-<attribute name="MPN" value="MCR03ERTJ152
-"/>
+<attribute name="MPN" value="MCR03ERTJ152 "/>
 </part>
 <part name="C30" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF">
 <attribute name="DIGIKEY" value="490-3297-1-ND"/>
@@ -3889,8 +3888,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="R7" library="passives" deviceset="RESISTOR" device="0603_RES" value="1.5k">
 <attribute name="DIGIKEY" value="RHM1.5KCGCT-ND"/>
 <attribute name="MANUFACTURER" value="Rohm"/>
-<attribute name="MPN" value="MCR03ERTJ152
-"/>
+<attribute name="MPN" value="MCR03ERTJ152 "/>
 </part>
 <part name="C31" library="passives" deviceset="CAPACITOR" device="0603_CAP" value="4.7uF">
 <attribute name="DIGIKEY" value="490-3297-1-ND"/>
@@ -4556,6 +4554,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="119.38" y1="142.24" x2="119.38" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="157.48" x2="91.44" y2="157.48" width="0.1524" layer="91"/>
 <junction x="91.44" y="157.48"/>
+<pinref part="U9" gate="U1" pin="ADVREFP"/>
+<wire x1="129.54" y1="139.7" x2="119.38" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="139.7" x2="119.38" y2="142.24" width="0.1524" layer="91"/>
+<junction x="119.38" y="142.24"/>
 </segment>
 </net>
 <net name="N$44" class="0">

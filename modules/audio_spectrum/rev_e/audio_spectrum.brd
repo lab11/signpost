@@ -7,10 +7,10 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -23,16 +23,16 @@
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -196,7 +196,7 @@ Analyzer</text>
 <text x="49.3268" y="46.5328" size="1.016" layer="21" font="vector" ratio="12" align="bottom-center">E</text>
 <text x="50.9016" y="42.7736" size="0.762" layer="25" font="vector" ratio="12" align="bottom-center">Samuel Rohrer
 Joshua Adkins</text>
-<text x="49.7078" y="45.0088" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center">7/2017</text>
+<text x="49.7078" y="45.0088" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center">9/2017</text>
 <text x="32.4358" y="41.8592" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">RESET</text>
 <text x="32.4358" y="39.0906" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">POWER</text>
 <text x="32.7152" y="36.4744" size="0.889" layer="21" font="vector" ratio="12" align="bottom-center">STROBE</text>
@@ -1730,8 +1730,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R6" library="passives" package="0603-RES" value="1.5k" x="18.3388" y="10.4648" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="RHM1.5KCGCT-ND" x="18.3388" y="10.4648" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Rohm" x="18.3388" y="10.4648" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MPN" value="MCR03ERTJ152
-" x="18.3388" y="10.4648" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="MCR03ERTJ152 " x="18.3388" y="10.4648" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="17.5514" y="11.557" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C30" library="passives" package="0603_CAP" value="4.7uF" x="23.5712" y="12.2428" smashed="yes" rot="R270">
@@ -1784,8 +1783,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <element name="R7" library="passives" package="0603-RES" value="1.5k" x="27.0256" y="54.5592" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="RHM1.5KCGCT-ND" x="27.0256" y="54.5592" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Rohm" x="27.0256" y="54.5592" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MPN" value="MCR03ERTJ152
-" x="27.0256" y="54.5592" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="MCR03ERTJ152 " x="27.0256" y="54.5592" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="27.0764" y="52.578" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="C31" library="passives" package="0603_CAP" value="4.7uF" x="28.9814" y="54.5592" smashed="yes" rot="R270">
@@ -2397,10 +2395,14 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="C21" pad="1"/>
 <contactref element="FB1" pad="1"/>
 <contactref element="U9" pad="25"/>
-<wire x1="53.3868" y1="24.6088" x2="53.3868" y2="23.0742" width="0.254" layer="1"/>
+<wire x1="53.3868" y1="23.456809375" x2="53.3868" y2="24.6088" width="0.254" layer="1"/>
+<wire x1="53.3868" y1="23.456809375" x2="53.3868" y2="23.0742" width="0.254" layer="1"/>
 <wire x1="53.3868" y1="23.0742" x2="52.8828" y2="22.5702" width="0.254" layer="1"/>
 <wire x1="50.4952" y1="21.10866875" x2="51.95673125" y2="22.5702" width="0.254" layer="1"/>
 <wire x1="51.95673125" y1="22.5702" x2="52.8828" y2="22.5702" width="0.254" layer="1"/>
+<contactref element="U9" pad="24"/>
+<wire x1="52.8868" y1="24.6088" x2="52.8868" y2="23.956809375" width="0.254" layer="1"/>
+<wire x1="52.8868" y1="23.956809375" x2="53.3868" y2="23.456809375" width="0.254" layer="1"/>
 </signal>
 <signal name="N$44">
 <contactref element="U9" pad="7"/>
