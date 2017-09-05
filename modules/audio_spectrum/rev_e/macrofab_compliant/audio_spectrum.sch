@@ -4015,7 +4015,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </part>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0603_RES" value="0">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP - 0">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F103CS"/>
@@ -4553,6 +4553,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="119.38" y1="142.24" x2="119.38" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="157.48" x2="91.44" y2="157.48" width="0.1524" layer="91"/>
 <junction x="91.44" y="157.48"/>
+<pinref part="U9" gate="U1" pin="ADVREFP"/>
+<wire x1="129.54" y1="139.7" x2="119.38" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="139.7" x2="119.38" y2="142.24" width="0.1524" layer="91"/>
+<junction x="119.38" y="142.24"/>
 </segment>
 </net>
 <net name="N$44" class="0">
