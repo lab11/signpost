@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -37,8 +37,8 @@
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -1347,7 +1347,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 
 &lt;p&gt;
 &lt;i&gt;Attention: Upon running the design check and making modifications, please remember to save any changes before closing the application and sending in your board file to Sunstone Circuits for conversion.&lt;i&gt;</description>
-<param name="layerSetup" value="(1+2*15+16)"/>
+<param name="layerSetup" value="(1*16)"/>
 <param name="mtCopper" value="0.0178mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0178mm"/>
 <param name="mtIsolate" value="12mil 28mil 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 12mil"/>
 <param name="mdWireWire" value="4mil"/>
@@ -1950,7 +1950,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MPN" value="MCR03ERTJ104" x="27.6098" y="21.1582" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="28.1686" y="21.2344" size="0.889" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
-<element name="R1" library="passives" package="0603-RES" value="0" x="42.164" y="37.084" smashed="yes">
+<element name="R1" library="passives" package="0603-RES" value="DNP - 0" x="42.164" y="37.084" smashed="yes">
 <attribute name="DIGIKEY" value="1276-3431-1-ND" x="42.164" y="37.084" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MANUFACTURER" value="Samsung" x="42.164" y="37.084" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="RC1005F103CS" x="42.164" y="37.084" size="1.778" layer="27" display="off"/>
@@ -2276,12 +2276,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="32.6644" y1="55.2704" x2="33.6804" y2="55.2704" width="0.254" layer="1"/>
 <wire x1="33.6804" y1="55.2704" x2="34.29" y2="54.6608" width="0.254" layer="1"/>
 <wire x1="34.29" y1="54.6608" x2="34.29" y2="53.9543" width="0.254" layer="1"/>
-<polygon width="0.254" layer="2" isolate="0.1524" rank="2">
-<vertex x="2.032" y="75.692"/>
-<vertex x="79.502" y="75.692"/>
-<vertex x="79.502" y="-3.302"/>
-<vertex x="2.032" y="-3.302"/>
-</polygon>
 <via x="57.531" y="6.3246" extent="1-16" drill="2.9464" diameter="6.35"/>
 <via x="15.621" y="6.3246" extent="1-16" drill="2.9464" diameter="6.35"/>
 <contactref element="J2" pad="15"/>
@@ -2768,12 +2762,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <wire x1="23.0378" y1="36.957" x2="24.3332" y2="38.2524" width="0.508" layer="16"/>
 <wire x1="24.3332" y1="38.2524" x2="32.893" y2="38.2524" width="0.508" layer="16"/>
 <wire x1="40.8432" y1="38.1762" x2="42.8244" y2="40.132" width="0.508" layer="16"/>
-<polygon width="0.254" layer="15" isolate="0.1524" rank="2">
-<vertex x="1.524" y="76.2"/>
-<vertex x="80.518" y="76.2"/>
-<vertex x="80.518" y="-4.064"/>
-<vertex x="1.524" y="-4.064"/>
-</polygon>
 <wire x1="69.4944" y1="27.686" x2="69.4944" y2="32.8676" width="0.254" layer="1"/>
 <wire x1="69.4944" y1="32.8676" x2="68.072" y2="34.29" width="0.254" layer="1"/>
 <wire x1="68.072" y1="34.29" x2="68.072" y2="35.052" width="0.254" layer="1"/>
@@ -3721,41 +3709,41 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <approved hash="4,1,4e4f6127636e810f"/>
 <approved hash="4,1,b376e5ac804b56b0"/>
 <approved hash="4,1,b10c5da378007e8e"/>
+<approved hash="19,1,3285c379c08d3171"/>
 <approved hash="19,1,3d3dccc1c89f3963"/>
 <approved hash="19,1,3dbbcc47cf423ebe"/>
 <approved hash="19,1,21e7d01bd086217a"/>
-<approved hash="19,1,3285c379c08d3171"/>
-<approved hash="19,1,b580457c4774b788"/>
-<approved hash="19,1,a6e2561e577fa783"/>
-<approved hash="19,1,ba384ac44f66bf9a"/>
 <approved hash="19,1,babe4a4248bbb847"/>
-<approved hash="19,1,7bbf6443674778bb"/>
+<approved hash="19,1,b580457c4774b788"/>
+<approved hash="19,1,ba384ac44f66bf9a"/>
+<approved hash="19,1,a6e2561e577fa783"/>
 <approved hash="19,1,67e3781f7883677f"/>
+<approved hash="19,1,74816b7d68887774"/>
 <approved hash="19,1,7b3964c5609a7f66"/>
 <approved hash="19,1,7bb964456886777a"/>
-<approved hash="19,1,74816b7d68887774"/>
-<approved hash="19,1,7280137c10957169"/>
+<approved hash="19,1,7bbf6443674778bb"/>
+<approved hash="19,1,7d381cc41887797b"/>
+<approved hash="19,1,61e2001e009e6162"/>
 <approved hash="19,1,7dbe1c421f5a7ea6"/>
 <approved hash="19,1,7db81c44109b7167"/>
-<approved hash="19,1,61e2001e009e6162"/>
-<approved hash="19,1,7d381cc41887797b"/>
+<approved hash="19,1,7280137c10957169"/>
+<approved hash="4,1,9b195699df01952d"/>
 <approved hash="4,1,fd3653b452a89c40"/>
 <approved hash="4,1,9654eea16372aa17"/>
-<approved hash="4,1,9b195699df01952d"/>
 <approved hash="4,1,0d7d85f6ee98acf7"/>
-<approved hash="4,1,d8bafc60be69df51"/>
-<approved hash="4,1,a2cd64475224f74c"/>
-<approved hash="4,1,fc2cbae5bbc3c50c"/>
 <approved hash="4,1,ee578f40c366c1b9"/>
 <approved hash="4,1,75291f19698745d2"/>
 <approved hash="4,1,c6484b095b4393ca"/>
 <approved hash="4,1,48ead13d1e97cce0"/>
+<approved hash="4,1,d8bafc60be69df51"/>
+<approved hash="4,1,a2cd64475224f74c"/>
+<approved hash="4,1,fc2cbae5bbc3c50c"/>
 <approved hash="4,1,c1183fe13c8afc65"/>
 <approved hash="4,1,3e45d1a430629a71"/>
 <approved hash="4,1,a7469798217a5196"/>
 <approved hash="4,1,437c33ecf500c5a2"/>
-<approved hash="4,1,533114ba9763e8eb"/>
 <approved hash="4,1,d029902c15fa6dfc"/>
+<approved hash="4,1,533114ba9763e8eb"/>
 </errors>
 </board>
 </drawing>

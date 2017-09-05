@@ -4016,7 +4016,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 </part>
 <part name="GND13" library="umich" deviceset="GND" device=""/>
 <part name="GND14" library="umich" deviceset="GND" device=""/>
-<part name="R1" library="passives" deviceset="RESISTOR" device="0603_RES" value="0">
+<part name="R1" library="passives" deviceset="RESISTOR" device="0603_RES" value="DNP - 0">
 <attribute name="DIGIKEY" value="1276-3431-1-ND"/>
 <attribute name="MANUFACTURER" value="Samsung"/>
 <attribute name="MPN" value="RC1005F103CS"/>
