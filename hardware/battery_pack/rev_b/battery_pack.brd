@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.1">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
-<setting/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1966,10 +1965,13 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 </packages>
 </library>
 </libraries>
-<attributes/>
-<variantdefs/>
+<attributes>
+</attributes>
+<variantdefs>
+</variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0"/>
+<class number="0" name="default" width="0" drill="0">
+</class>
 </classes>
 <designrules name="quickturn_co_kr_1oz">
 <description language="en">&lt;b&gt;EAGLE Design Rules for *2* Layer Designs (DS)&lt;/b&gt;
@@ -1978,91 +1980,78 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 
 &lt;p&gt;
 &lt;i&gt;Attention: Upon running the design check and making modifications, please remember to save any changes before closing the application and sending in your board file to Sunstone Circuits for conversion.&lt;i&gt;</description>
-<param name="checkAngle" value="0"/>
-<param name="checkFont" value="1"/>
-<param name="checkGrid" value="0"/>
-<param name="checkRestrict" value="1"/>
-<param name="dpGapFactor" value="2.5"/>
-<param name="dpMaxLengthDifference" value="10mm"/>
 <param name="layerSetup" value="(1*16)"/>
-<param name="maxErrors" value="500"/>
-<param name="mdCopperDimension" value="20mil"/>
-<param name="mdDrill" value="16mil"/>
-<param name="mdPadPad" value="4mil"/>
-<param name="mdPadVia" value="4mil"/>
-<param name="mdSmdPad" value="4mil"/>
-<param name="mdSmdSmd" value="4mil"/>
-<param name="mdSmdStop" value="0mil"/>
-<param name="mdSmdVia" value="4mil"/>
-<param name="mdViaVia" value="4mil"/>
-<param name="mdViaViaSameLayer" value="8mil"/>
-<param name="mdWirePad" value="4mil"/>
-<param name="mdWireVia" value="4mil"/>
-<param name="mdWireWire" value="4mil"/>
-<param name="mlMaxCreamFrame" value="0mil"/>
-<param name="mlMaxStopFrame" value="3mil"/>
-<param name="mlMinCreamFrame" value="0mil"/>
-<param name="mlMinStopFrame" value="3mil"/>
-<param name="mlViaStopLimit" value="50mil"/>
-<param name="mnLayersViaInSmd" value="2"/>
-<param name="msBlindViaRatio" value="0.5"/>
-<param name="msDrill" value="0.200659375mm"/>
-<param name="msMicroVia" value="9.9898mm"/>
-<param name="msWidth" value="4mil"/>
 <param name="mtCopper" value="0.0178mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0178mm"/>
 <param name="mtIsolate" value="59mil 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm"/>
-<param name="mvCreamFrame" value="0"/>
-<param name="mvStopFrame" value="1"/>
+<param name="mdWireWire" value="4mil"/>
+<param name="mdWirePad" value="4mil"/>
+<param name="mdWireVia" value="4mil"/>
+<param name="mdPadPad" value="4mil"/>
+<param name="mdPadVia" value="4mil"/>
+<param name="mdViaVia" value="4mil"/>
+<param name="mdSmdPad" value="4mil"/>
+<param name="mdSmdVia" value="4mil"/>
+<param name="mdSmdSmd" value="4mil"/>
+<param name="mdViaViaSameLayer" value="8mil"/>
+<param name="mnLayersViaInSmd" value="2"/>
+<param name="mdCopperDimension" value="20mil"/>
+<param name="mdDrill" value="16mil"/>
+<param name="mdSmdStop" value="0mil"/>
+<param name="msWidth" value="4mil"/>
+<param name="msDrill" value="0.200659375mm"/>
+<param name="msMicroVia" value="9.9898mm"/>
+<param name="msBlindViaRatio" value="0.5"/>
+<param name="rvPadTop" value="0.25"/>
+<param name="rvPadInner" value="0.25"/>
+<param name="rvPadBottom" value="0.25"/>
+<param name="rvViaOuter" value="0.25"/>
+<param name="rvViaInner" value="0.25"/>
+<param name="rvMicroViaOuter" value="0.25"/>
+<param name="rvMicroViaInner" value="0.25"/>
+<param name="rlMinPadTop" value="8mil"/>
+<param name="rlMaxPadTop" value="999mil"/>
+<param name="rlMinPadInner" value="0mil"/>
+<param name="rlMaxPadInner" value="0mil"/>
+<param name="rlMinPadBottom" value="8mil"/>
+<param name="rlMaxPadBottom" value="999mil"/>
+<param name="rlMinViaOuter" value="8mil"/>
+<param name="rlMaxViaOuter" value="999mil"/>
+<param name="rlMinViaInner" value="0mil"/>
+<param name="rlMaxViaInner" value="0mil"/>
+<param name="rlMinMicroViaOuter" value="8mil"/>
+<param name="rlMaxMicroViaOuter" value="999mil"/>
+<param name="rlMinMicroViaInner" value="0mil"/>
+<param name="rlMaxMicroViaInner" value="0mil"/>
+<param name="psTop" value="-1"/>
 <param name="psBottom" value="-1"/>
+<param name="psFirst" value="-1"/>
 <param name="psElongationLong" value="100"/>
 <param name="psElongationOffset" value="100"/>
-<param name="psFirst" value="-1"/>
-<param name="psTop" value="-1"/>
-<param name="rlMaxMicroViaInner" value="0mil"/>
-<param name="rlMaxMicroViaOuter" value="999mil"/>
-<param name="rlMaxPadBottom" value="999mil"/>
-<param name="rlMaxPadInner" value="0mil"/>
-<param name="rlMaxPadTop" value="999mil"/>
-<param name="rlMaxViaInner" value="0mil"/>
-<param name="rlMaxViaOuter" value="999mil"/>
-<param name="rlMinMicroViaInner" value="0mil"/>
-<param name="rlMinMicroViaOuter" value="8mil"/>
-<param name="rlMinPadBottom" value="8mil"/>
-<param name="rlMinPadInner" value="0mil"/>
-<param name="rlMinPadTop" value="8mil"/>
-<param name="rlMinViaInner" value="0mil"/>
-<param name="rlMinViaOuter" value="8mil"/>
-<param name="rvMicroViaInner" value="0.25"/>
-<param name="rvMicroViaOuter" value="0.25"/>
-<param name="rvPadBottom" value="0.25"/>
-<param name="rvPadInner" value="0.25"/>
-<param name="rvPadTop" value="0.25"/>
-<param name="rvViaInner" value="0.25"/>
-<param name="rvViaOuter" value="0.25"/>
+<param name="mvStopFrame" value="1"/>
+<param name="mvCreamFrame" value="0"/>
+<param name="mlMinStopFrame" value="3mil"/>
+<param name="mlMaxStopFrame" value="3mil"/>
+<param name="mlMinCreamFrame" value="0mil"/>
+<param name="mlMaxCreamFrame" value="0mil"/>
+<param name="mlViaStopLimit" value="50mil"/>
+<param name="srRoundness" value="0"/>
+<param name="srMinRoundness" value="0mil"/>
+<param name="srMaxRoundness" value="0mil"/>
 <param name="slThermalIsolate" value="10mil"/>
 <param name="slThermalsForVias" value="0"/>
-<param name="srMaxRoundness" value="0mil"/>
-<param name="srMinRoundness" value="0mil"/>
-<param name="srRoundness" value="0"/>
+<param name="dpMaxLengthDifference" value="10mm"/>
+<param name="dpGapFactor" value="2.5"/>
+<param name="checkGrid" value="0"/>
+<param name="checkAngle" value="0"/>
+<param name="checkFont" value="1"/>
+<param name="checkRestrict" value="1"/>
 <param name="useDiameter" value="13"/>
+<param name="maxErrors" value="500"/>
 </designrules>
 <autorouter>
-<pass name="Busses" refer="Default" active="yes">
-<param name="cfBusImpact" value="4"/>
-<param name="cfHugging" value="0"/>
-<param name="cfNonPref" value="4"/>
-<param name="mnVias" value="0"/>
-</pass>
 <pass name="Default">
-<param name="AutoGrid" value="1"/>
-<param name="Efforts" value="0"/>
-<param name="PrefDir.10" value="0"/>
-<param name="PrefDir.11" value="0"/>
-<param name="PrefDir.12" value="0"/>
-<param name="PrefDir.13" value="0"/>
-<param name="PrefDir.14" value="0"/>
-<param name="PrefDir.15" value="0"/>
-<param name="PrefDir.16" value="-"/>
+<param name="RoutingGrid" value="50mil"/>
+<param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
 <param name="PrefDir.3" value="0"/>
@@ -2072,17 +2061,28 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <param name="PrefDir.7" value="0"/>
 <param name="PrefDir.8" value="0"/>
 <param name="PrefDir.9" value="0"/>
-<param name="RoutingGrid" value="50mil"/>
-<param name="TopRouterVariant" value="1"/>
+<param name="PrefDir.10" value="0"/>
+<param name="PrefDir.11" value="0"/>
+<param name="PrefDir.12" value="0"/>
+<param name="PrefDir.13" value="0"/>
+<param name="PrefDir.14" value="0"/>
+<param name="PrefDir.15" value="0"/>
+<param name="PrefDir.16" value="-"/>
+<param name="cfVia" value="8"/>
+<param name="cfNonPref" value="5"/>
+<param name="cfChangeDir" value="2"/>
+<param name="cfOrthStep" value="2"/>
+<param name="cfDiagStep" value="3"/>
+<param name="cfExtdStep" value="0"/>
+<param name="cfBonusStep" value="1"/>
+<param name="cfMalusStep" value="1"/>
+<param name="cfPadImpact" value="4"/>
+<param name="cfSmdImpact" value="4"/>
+<param name="cfBusImpact" value="0"/>
+<param name="cfHugging" value="3"/>
 <param name="cfAvoid" value="4"/>
+<param name="cfPolygon" value="10"/>
 <param name="cfBase.1" value="0"/>
-<param name="cfBase.10" value="1"/>
-<param name="cfBase.11" value="1"/>
-<param name="cfBase.12" value="1"/>
-<param name="cfBase.13" value="1"/>
-<param name="cfBase.14" value="1"/>
-<param name="cfBase.15" value="1"/>
-<param name="cfBase.16" value="0"/>
 <param name="cfBase.2" value="1"/>
 <param name="cfBase.3" value="1"/>
 <param name="cfBase.4" value="1"/>
@@ -2091,44 +2091,46 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <param name="cfBase.7" value="1"/>
 <param name="cfBase.8" value="1"/>
 <param name="cfBase.9" value="1"/>
-<param name="cfBonusStep" value="1"/>
-<param name="cfBusImpact" value="0"/>
-<param name="cfChangeDir" value="2"/>
-<param name="cfDiagStep" value="3"/>
-<param name="cfExtdStep" value="0"/>
-<param name="cfHugging" value="3"/>
-<param name="cfMalusStep" value="1"/>
-<param name="cfNonPref" value="5"/>
-<param name="cfOrthStep" value="2"/>
-<param name="cfPadImpact" value="4"/>
-<param name="cfPolygon" value="10"/>
-<param name="cfSmdImpact" value="4"/>
-<param name="cfVia" value="8"/>
+<param name="cfBase.10" value="1"/>
+<param name="cfBase.11" value="1"/>
+<param name="cfBase.12" value="1"/>
+<param name="cfBase.13" value="1"/>
+<param name="cfBase.14" value="1"/>
+<param name="cfBase.15" value="1"/>
+<param name="cfBase.16" value="0"/>
+<param name="mnVias" value="20"/>
+<param name="mnSegments" value="9999"/>
 <param name="mnExtdSteps" value="9999"/>
 <param name="mnRipupLevel" value="10"/>
 <param name="mnRipupSteps" value="100"/>
 <param name="mnRipupTotal" value="100"/>
-<param name="mnSegments" value="9999"/>
-<param name="mnVias" value="20"/>
-<param name="tpViaShape" value="round"/>
 </pass>
-<pass name="Follow-me" refer="Default" active="yes"/>
+<pass name="Follow-me" refer="Default" active="yes">
+</pass>
+<pass name="Busses" refer="Default" active="yes">
+<param name="cfNonPref" value="4"/>
+<param name="cfBusImpact" value="4"/>
+<param name="cfHugging" value="0"/>
+<param name="mnVias" value="0"/>
+</pass>
+<pass name="Route" refer="Default" active="yes">
+</pass>
 <pass name="Optimize1" refer="Default" active="yes">
+<param name="cfVia" value="99"/>
 <param name="cfExtdStep" value="10"/>
 <param name="cfHugging" value="1"/>
-<param name="cfVia" value="99"/>
 <param name="mnExtdSteps" value="1"/>
 <param name="mnRipupLevel" value="0"/>
 </pass>
 <pass name="Optimize2" refer="Optimize1" active="yes">
-<param name="cfBonusStep" value="2"/>
+<param name="cfNonPref" value="0"/>
 <param name="cfChangeDir" value="6"/>
 <param name="cfExtdStep" value="0"/>
-<param name="cfHugging" value="0"/>
+<param name="cfBonusStep" value="2"/>
 <param name="cfMalusStep" value="2"/>
-<param name="cfNonPref" value="0"/>
 <param name="cfPadImpact" value="2"/>
 <param name="cfSmdImpact" value="2"/>
+<param name="cfHugging" value="0"/>
 </pass>
 <pass name="Optimize3" refer="Optimize2" active="yes">
 <param name="cfChangeDir" value="8"/>
@@ -2138,7 +2140,6 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <pass name="Optimize4" refer="Optimize3" active="yes">
 <param name="cfChangeDir" value="25"/>
 </pass>
-<pass name="Route" refer="Default" active="yes"/>
 </autorouter>
 <elements>
 <element name="BAT1" library="batteries" package="PL-809797-1C" value="3.7V" x="110.998" y="101.981" rot="R90"/>
@@ -2720,24 +2721,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </board>
 </drawing>
 <compatibility>
-<note minversion="6.2.2" version="6.3" severity="warning">
+<note version="6.3" minversion="6.2.2" severity="warning">
 Since Version 6.2.2 text objects can contain more than one line,
 which will not be processed correctly with this version.
-</note>
-<note minversion="" version="8.2" severity="warning">
-Since Version 8.2, EAGLE supports online libraries. The ids
-of those online libraries will not be understood (or retained)
-with this version.
-</note>
-<note minversion="" version="8.3" severity="warning">
-Since Version 8.3, EAGLE supports URNs for individual library
-assets (packages, symbols, and devices). The URNs of those assets
-will not be understood (or retained) with this version.
-</note>
-<note minversion="" version="8.3" severity="warning">
-Since Version 8.3, EAGLE supports the association of 3D packages
-with devices in libraries, schematics, and board files. Those 3D
-packages will not be understood (or retained) with this version.
 </note>
 </compatibility>
 </eagle>
