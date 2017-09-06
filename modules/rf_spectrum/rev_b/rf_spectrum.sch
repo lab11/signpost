@@ -4024,9 +4024,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attribute name="MPN" value="RC0402FR-07100KL"/>
 </part>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
-<attribute name="DIGIKEY" value="311-100KLRCT-ND"/>
+<attribute name="DIGIKEY" value="311-1.0KJRCT-ND"/>
 <attribute name="MANUFACTURER" value="Yageo"/>
-<attribute name="MPN" value="RC0402FR-07100KL"/>
+<attribute name="MPN" value="RC0402JR-071KL"/>
 </part>
 <part name="J4" library="signpost" deviceset="SIGNPOST_MODULE_HEADER" device=""/>
 <part name="J3" library="signpost" deviceset="SIGNPOST_DEBUG_HEADER" device="SMT"/>
