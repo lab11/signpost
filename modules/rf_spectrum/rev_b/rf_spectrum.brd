@@ -7,9 +7,9 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -1640,7 +1640,7 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="DIGIKEY" value="311-100KLRCT-ND" x="16.002" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="16.002" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MPN" value="RC0402FR-07100KL" x="16.002" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
-<attribute name="NAME" x="14.732" y="56.007" size="0.889" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="16.129" y="56.388" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="17.399" y="55.499" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="R5" library="passives" package="0402_RES" value="10k" x="8.763" y="39.497" smashed="yes" rot="R270">
@@ -1661,20 +1661,20 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="DIGIKEY" value="SI2333DDS-T1-GE3CT-ND" x="13.97" y="52.832" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Vishay Siliconix" x="13.97" y="52.832" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="SI2333DDS-T1-GE3" x="13.97" y="52.832" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NAME" x="16.129" y="53.848" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="13.97" y="50.546" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 </element>
 <element name="R7" library="passives" package="0402_RES" value="100k" x="11.176" y="51.308" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND" x="11.176" y="51.308" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="11.176" y="51.308" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
 <attribute name="MPN" value="RC0402FR-07100KL" x="11.176" y="51.308" size="1.778" layer="27" font="vector" ratio="12" rot="R270" display="off"/>
-<attribute name="NAME" x="11.176" y="49.657" size="0.889" layer="25" font="vector" ratio="12" align="bottom-center"/>
+<attribute name="NAME" x="11.176" y="49.784" size="0.6096" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="9.779" y="51.308" size="1.016" layer="27" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 </element>
 <element name="R4" library="passives" package="0402_RES" value="1k" x="12.954" y="55.626" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND" x="12.954" y="55.626" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="12.954" y="55.626" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MPN" value="RC0402FR-07100KL" x="12.954" y="55.626" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
-<attribute name="NAME" x="14.224" y="55.753" size="0.889" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
+<attribute name="NAME" x="12.954" y="56.515" size="0.635" layer="25" font="vector" ratio="12" align="bottom-center"/>
 <attribute name="VALUE" x="14.351" y="55.626" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 <element name="J4" library="signpost" package="SIGNPOST_MODULE_HEADER" value="SIGNPOST_MODULE_HEADER" x="36.576" y="63.4746" locked="yes">
@@ -1687,10 +1687,12 @@ Quickturn PCB 4 Layer .DRU</description>
 <attribute name="MANUFACTURER" value="Molex" x="36.6014" y="7.6454" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 <attribute name="MPN" value="0015912080" x="36.6014" y="7.6454" size="1.778" layer="27" font="vector" ratio="12" display="off"/>
 </element>
-<element name="R8" library="passives" package="0402_RES" value="100k" x="14.605" y="55.499" rot="R90">
+<element name="R8" library="passives" package="0402_RES" value="100k" x="14.605" y="55.499" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="311-100KLRCT-ND" x="14.605" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MANUFACTURER" value="Yageo" x="14.605" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
 <attribute name="MPN" value="RC0402FR-07100KL" x="14.605" y="55.499" size="1.778" layer="27" font="vector" ratio="12" rot="R90" display="off"/>
+<attribute name="NAME" x="14.605" y="57.023" size="0.635" layer="25" font="vector" ratio="12" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="16.002" y="55.499" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 </element>
 </elements>
 <signals>
@@ -2679,11 +2681,11 @@ Quickturn PCB 4 Layer .DRU</description>
 <wire x1="6.858" y1="47.752" x2="8.636" y2="49.53" width="0.2032" layer="2"/>
 <wire x1="8.636" y1="49.53" x2="11.938" y2="49.53" width="0.2032" layer="2"/>
 <wire x1="11.938" y1="49.53" x2="12.954" y2="50.546" width="0.2032" layer="2"/>
-<wire x1="12.954" y1="50.546" x2="12.954" y2="57.15" width="0.2032" layer="2"/>
-<via x="12.954" y="57.15" extent="1-16" drill="0.2032"/>
+<wire x1="12.954" y1="50.546" x2="12.954" y2="57.277" width="0.2032" layer="2"/>
+<via x="12.954" y="57.277" extent="1-16" drill="0.2032"/>
 <wire x1="6.858" y1="33.274" x2="6.858" y2="30.48" width="0.2032" layer="1"/>
 <contactref element="R4" pad="2"/>
-<wire x1="12.954" y1="57.15" x2="12.954" y2="56.05906875" width="0.2032" layer="1"/>
+<wire x1="12.954" y1="57.277" x2="12.954" y2="56.05906875" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$13">
 <contactref element="Q1" pad="1"/>
