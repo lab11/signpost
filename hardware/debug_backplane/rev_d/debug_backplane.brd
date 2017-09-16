@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.2">
+<eagle version="8.3.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -617,10 +618,10 @@ Radio</text>
 <circle x="88.9" y="190.5" radius="0.508" width="0" layer="49"/>
 <wire x1="88.9" y1="51.667221875" x2="88.9" y2="58.822778125" width="0.508" layer="21"/>
 <wire x1="88.9" y1="58.822778125" x2="88.032778125" y2="59.69" width="0.508" layer="21" curve="90"/>
-<text x="89.154" y="37.338" size="1.27" layer="21" font="vector" ratio="12" align="center-right">July 2017</text>
+<text x="89.154" y="37.338" size="1.27" layer="21" font="vector" ratio="12" align="center-right">Sept 2017</text>
 <wire x1="89.662" y1="35.179" x2="93.091" y2="35.179" width="0.254" layer="21"/>
 <wire x1="89.662" y1="39.751" x2="89.662" y2="35.179" width="0.254" layer="21"/>
-<text x="90.043" y="35.56" size="3.81" layer="21" font="vector" ratio="12">C</text>
+<text x="90.043" y="35.56" size="3.81" layer="21" font="vector" ratio="12">D</text>
 <text x="90.17" y="181.102" size="0.889" layer="21" font="vector" ratio="12" rot="R330" align="center-left">USB-</text>
 <text x="90.17" y="182.88" size="2.286" layer="21" ratio="12" align="center">X</text>
 <text x="90.17" y="185.42" size="2.286" layer="21" ratio="12" align="center">X</text>
