@@ -10408,13 +10408,6 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <label x="101.6" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FTDI_!RESET" class="0">
-<segment>
-<pinref part="D2" gate="C" pin="ANODE"/>
-<wire x1="101.6" y1="53.34" x2="104.14" y2="53.34" width="0.1524" layer="91"/>
-<label x="101.6" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND116" gate="1" pin="GND"/>
@@ -12407,9 +12400,9 @@ Translator</text>
 </plain>
 <instances>
 <instance part="C45" gate="G$1" x="45.72" y="116.84"/>
-<instance part="C46" gate="G$1" x="30.48" y="154.94"/>
+<instance part="C46" gate="G$1" x="30.48" y="149.86"/>
 <instance part="C47" gate="G$1" x="170.18" y="116.84"/>
-<instance part="C48" gate="G$1" x="154.94" y="154.94"/>
+<instance part="C48" gate="G$1" x="154.94" y="149.86"/>
 <instance part="D10" gate="G$1" x="76.2" y="78.74" rot="R270">
 <attribute name="DIGIKEY" x="76.2" y="78.74" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
@@ -12428,11 +12421,11 @@ Translator</text>
 <instance part="GND13" gate="1" x="205.74" y="33.02"/>
 <instance part="GND33" gate="1" x="45.72" y="106.68"/>
 <instance part="GND50" gate="1" x="53.34" y="106.68"/>
-<instance part="GND51" gate="1" x="30.48" y="144.78"/>
+<instance part="GND51" gate="1" x="30.48" y="139.7"/>
 <instance part="GND52" gate="1" x="177.8" y="106.68"/>
 <instance part="GND53" gate="1" x="91.44" y="106.68"/>
 <instance part="GND54" gate="1" x="170.18" y="106.68"/>
-<instance part="GND60" gate="1" x="154.94" y="144.78"/>
+<instance part="GND60" gate="1" x="154.94" y="139.7"/>
 <instance part="GND62" gate="1" x="215.9" y="106.68"/>
 <instance part="GND90" gate="1" x="53.34" y="27.94"/>
 <instance part="GND93" gate="1" x="175.26" y="27.94"/>
@@ -12491,19 +12484,27 @@ Translator</text>
 <pinref part="C46" gate="G$1" pin="1"/>
 <pinref part="U$31" gate="G$1" pin="5V_UNMETERED"/>
 <pinref part="U2" gate="1" pin="VCC"/>
-<wire x1="30.48" y1="157.48" x2="30.48" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="152.4" x2="30.48" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="154.94" x2="30.48" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="162.56" x2="30.48" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="162.56" x2="55.88" y2="162.56" width="0.1524" layer="91"/>
 <junction x="30.48" y="162.56"/>
+<pinref part="U2" gate="1" pin="!RESET"/>
+<wire x1="55.88" y1="154.94" x2="30.48" y2="154.94" width="0.1524" layer="91"/>
+<junction x="30.48" y="154.94"/>
 </segment>
 <segment>
 <pinref part="C48" gate="G$1" pin="1"/>
 <pinref part="U$34" gate="G$1" pin="5V_UNMETERED"/>
 <pinref part="U3" gate="1" pin="VCC"/>
-<wire x1="154.94" y1="157.48" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="152.4" x2="154.94" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="154.94" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="162.56" x2="180.34" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="165.1" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
 <junction x="154.94" y="162.56"/>
+<pinref part="U3" gate="1" pin="!RESET"/>
+<wire x1="180.34" y1="154.94" x2="154.94" y2="154.94" width="0.1524" layer="91"/>
+<junction x="154.94" y="154.94"/>
 </segment>
 </net>
 <net name="DBG_USB_DM6" class="0">
@@ -12534,23 +12535,11 @@ Translator</text>
 <label x="43.18" y="129.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FTDI_!RESET" class="0">
-<segment>
-<pinref part="U2" gate="1" pin="!RESET"/>
-<wire x1="53.34" y1="154.94" x2="55.88" y2="154.94" width="0.1524" layer="91"/>
-<label x="53.34" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U3" gate="1" pin="!RESET"/>
-<wire x1="177.8" y1="154.94" x2="180.34" y2="154.94" width="0.1524" layer="91"/>
-<label x="177.8" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
 <pinref part="C46" gate="G$1" pin="2"/>
 <pinref part="GND51" gate="1" pin="GND"/>
-<wire x1="30.48" y1="149.86" x2="30.48" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="144.78" x2="30.48" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C45" gate="G$1" pin="2"/>
@@ -12578,7 +12567,7 @@ Translator</text>
 <segment>
 <pinref part="C48" gate="G$1" pin="2"/>
 <pinref part="GND60" gate="1" pin="GND"/>
-<wire x1="154.94" y1="149.86" x2="154.94" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="144.78" x2="154.94" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C47" gate="G$1" pin="2"/>
@@ -12911,8 +12900,13 @@ Translator</text>
 <wire x1="50.8" y1="165.1" x2="50.8" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="121.92" x2="53.34" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="165.1" x2="50.8" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="165.1" x2="73.66" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="165.1" x2="71.12" y2="165.1" width="0.1524" layer="91"/>
 <junction x="53.34" y="165.1"/>
+<pinref part="U4" gate="1" pin="!RESET"/>
+<wire x1="71.12" y1="165.1" x2="73.66" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="157.48" x2="71.12" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="157.48" x2="71.12" y2="165.1" width="0.1524" layer="91"/>
+<junction x="71.12" y="165.1"/>
 </segment>
 <segment>
 <pinref part="C52" gate="G$1" pin="1"/>
@@ -12921,8 +12915,13 @@ Translator</text>
 <wire x1="180.34" y1="165.1" x2="180.34" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="121.92" x2="182.88" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="165.1" x2="180.34" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="165.1" x2="203.2" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="165.1" x2="200.66" y2="165.1" width="0.1524" layer="91"/>
 <junction x="182.88" y="165.1"/>
+<pinref part="U5" gate="1" pin="!RESET"/>
+<wire x1="200.66" y1="165.1" x2="203.2" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="157.48" x2="200.66" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="200.66" y1="157.48" x2="200.66" y2="165.1" width="0.1524" layer="91"/>
+<junction x="200.66" y="165.1"/>
 </segment>
 </net>
 <net name="CONT0_DBG_GPIO1" class="0">
@@ -13039,18 +13038,6 @@ Translator</text>
 <pinref part="U4" gate="1" pin="USBDP"/>
 <wire x1="50.8" y1="132.08" x2="73.66" y2="132.08" width="0.1524" layer="91"/>
 <label x="50.8" y="132.08" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="FTDI_!RESET" class="0">
-<segment>
-<pinref part="U4" gate="1" pin="!RESET"/>
-<wire x1="71.12" y1="157.48" x2="73.66" y2="157.48" width="0.1524" layer="91"/>
-<label x="71.12" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U5" gate="1" pin="!RESET"/>
-<wire x1="200.66" y1="157.48" x2="203.2" y2="157.48" width="0.1524" layer="91"/>
-<label x="200.66" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -16560,20 +16547,30 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U$65" gate="G$1" pin="5V_UNMETERED"/>
 <pinref part="U6" gate="1" pin="VCC"/>
 <wire x1="228.6" y1="40.64" x2="228.6" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="81.28" x2="205.74" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="81.28" x2="208.28" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="81.28" x2="205.74" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="228.6" y1="81.28" x2="233.68" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="81.28" x2="233.68" y2="83.82" width="0.1524" layer="91"/>
 <junction x="228.6" y="81.28"/>
+<pinref part="U6" gate="1" pin="!RESET"/>
+<wire x1="205.74" y1="73.66" x2="208.28" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="73.66" x2="208.28" y2="81.28" width="0.1524" layer="91"/>
+<junction x="208.28" y="81.28"/>
 </segment>
 <segment>
 <pinref part="C43" gate="G$1" pin="1"/>
 <pinref part="U$64" gate="G$1" pin="5V_UNMETERED"/>
 <pinref part="U1" gate="1" pin="VCC"/>
 <wire x1="228.6" y1="109.22" x2="228.6" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="149.86" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="149.86" x2="208.28" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="149.86" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="149.86" x2="228.6" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="149.86" x2="231.14" y2="152.4" width="0.1524" layer="91"/>
 <junction x="228.6" y="149.86"/>
+<pinref part="U1" gate="1" pin="!RESET"/>
+<wire x1="205.74" y1="142.24" x2="208.28" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="142.24" x2="208.28" y2="149.86" width="0.1524" layer="91"/>
+<junction x="208.28" y="149.86"/>
 </segment>
 </net>
 <net name="CONTROLLER_BUCK/LDO_N" class="0">
@@ -16657,18 +16654,6 @@ The second is the "debug" connection, which mirrors the serial of all other modu
 <pinref part="U23" gate="U1" pin="PA01"/>
 <wire x1="99.06" y1="157.48" x2="101.6" y2="157.48" width="0.1524" layer="91"/>
 <label x="101.6" y="157.48" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="FTDI_!RESET" class="0">
-<segment>
-<pinref part="U1" gate="1" pin="!RESET"/>
-<wire x1="208.28" y1="142.24" x2="205.74" y2="142.24" width="0.1524" layer="91"/>
-<label x="208.28" y="142.24" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U6" gate="1" pin="!RESET"/>
-<wire x1="208.28" y1="73.66" x2="205.74" y2="73.66" width="0.1524" layer="91"/>
-<label x="208.28" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
