@@ -8882,7 +8882,6 @@ S high: D = D2</text>
 </part>
 <part name="D35" library="signpost" deviceset="SN75240-TSSOP" device=""/>
 <part name="D36" library="signpost" deviceset="SN75240-TSSOP" device=""/>
-<part name="D3" library="passives" deviceset="DIODE_SCHOTTKY_ARRAY-4" device="HMD8"/>
 <part name="D4" library="leds" deviceset="LED" device="0603">
 <attribute name="DESCRIPTION" value="LED GREEN CLEAR 0603 SMD"/>
 <attribute name="DIGIKEY" value="160-1446-1-ND"/>
@@ -10323,7 +10322,6 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <instance part="D34" gate="G$1" x="170.18" y="170.18" rot="R270">
 <attribute name="DIGIKEY" x="170.18" y="170.18" size="1.016" layer="96" rot="R270" align="bottom-center" display="off"/>
 </instance>
-<instance part="D3" gate="A" x="109.22" y="43.18"/>
 <instance part="FRAME18" gate="G$1" x="0" y="0"/>
 <instance part="FRAME18" gate="G$2" x="152.4" y="0"/>
 <instance part="GND116" gate="1" x="152.4" y="55.88"/>
@@ -10355,16 +10353,9 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <nets>
 <net name="!BACKPLANE_RESET" class="0">
 <segment>
-<pinref part="D3" gate="A" pin="ANODE"/>
-<wire x1="101.6" y1="43.18" x2="104.14" y2="43.18" width="0.1524" layer="91"/>
-<label x="101.6" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="!POWER_ON_RESET" class="0">
-<segment>
+<label x="101.6" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="D2" gate="D" pin="ANODE"/>
 <wire x1="101.6" y1="48.26" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
-<label x="101.6" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="!WATCHDOG" class="0">
@@ -10482,9 +10473,7 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <pinref part="D2" gate="B" pin="CATHODE"/>
 <pinref part="D2" gate="C" pin="CATHODE"/>
 <pinref part="D2" gate="D" pin="CATHODE"/>
-<pinref part="D3" gate="A" pin="CATHODE"/>
 <pinref part="S7" gate="G$1" pin="P$1"/>
-<wire x1="114.3" y1="43.18" x2="116.84" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="48.26" x2="116.84" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="53.34" x2="116.84" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="58.42" x2="116.84" y2="58.42" width="0.1524" layer="91"/>
@@ -10492,7 +10481,6 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <wire x1="114.3" y1="73.66" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="78.74" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="83.82" x2="116.84" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="43.18" x2="116.84" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="48.26" x2="116.84" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="53.34" x2="116.84" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="58.42" x2="116.84" y2="63.5" width="0.1524" layer="91"/>
@@ -10502,7 +10490,6 @@ a pullup can be used to invert the watchdog's !RESET! control for the LED</text>
 <wire x1="116.84" y1="78.74" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="83.82" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="63.5" x2="116.84" y2="63.5" width="0.1524" layer="91"/>
-<junction x="116.84" y="48.26"/>
 <junction x="116.84" y="53.34"/>
 <junction x="116.84" y="58.42"/>
 <junction x="116.84" y="63.5"/>
