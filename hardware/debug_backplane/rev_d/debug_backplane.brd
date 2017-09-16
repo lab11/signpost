@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="10" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12995,9 +12995,7 @@ Master</text>
 <contactref element="S1" pad="PAD"/>
 <contactref element="S7" pad="3"/>
 <contactref element="S7" pad="4"/>
-<contactref element="S3" pad="A1"/>
 <contactref element="S2" pad="1"/>
-<contactref element="S4" pad="A1"/>
 <contactref element="S25" pad="1"/>
 <contactref element="S2" pad="PAD"/>
 <contactref element="S8" pad="1"/>
@@ -13440,14 +13438,13 @@ Master</text>
 <wire x1="162.306" y1="5.08" x2="160.02" y2="7.366" width="2.54" layer="1"/>
 <wire x1="166.34" y1="121.45" x2="166.34" y2="124.176" width="0.254" layer="1"/>
 <wire x1="166.37" y1="124.206" x2="166.34" y2="124.176" width="0.254" layer="1"/>
-<wire x1="166.37" y1="124.206" x2="166.878" y2="123.698" width="0.254" layer="1"/>
+<wire x1="166.37" y1="124.206" x2="167.24" y2="123.336" width="0.254" layer="1"/>
 <wire x1="166.37" y1="148.844" x2="166.37" y2="124.206" width="0.508" layer="1"/>
 <wire x1="166.37" y1="152.146" x2="166.37" y2="148.844" width="0.508" layer="16"/>
 <wire x1="166.37" y1="154.178" x2="166.37" y2="152.146" width="0.508" layer="1"/>
-<wire x1="166.39" y1="112.95" x2="166.39" y2="114.574" width="0.254" layer="1"/>
-<wire x1="166.39" y1="114.574" x2="168.148" y2="116.332" width="0.254" layer="1"/>
+<wire x1="166.39" y1="114.574" x2="168.148" y2="116.332" width="0" layer="19" extent="1-16"/>
 <wire x1="166.624" y1="74.93" x2="167.894" y2="76.2" width="0.508" layer="1"/>
-<wire x1="166.878" y1="123.698" x2="167.24" y2="123.336" width="0.254" layer="1"/>
+<wire x1="166.878" y1="123.698" x2="167.24" y2="123.336" width="0" layer="19" extent="1-16"/>
 <wire x1="166.878" y1="17.018" x2="160.274" y2="17.018" width="0.254" layer="16"/>
 <wire x1="167.24" y1="121.45" x2="167.24" y2="123.336" width="0.254" layer="1"/>
 <wire x1="167.64" y1="163.068" x2="157.988" y2="163.068" width="0.508" layer="16"/>
@@ -13455,8 +13452,8 @@ Master</text>
 <wire x1="167.894" y1="86.36" x2="160.655" y2="86.36" width="0.508" layer="16"/>
 <wire x1="168.04" y1="121.45" x2="168.04" y2="122.536" width="0.254" layer="1"/>
 <wire x1="168.04" y1="122.536" x2="167.24" y2="123.336" width="0.254" layer="1"/>
-<wire x1="168.148" y1="116.332" x2="168.148" y2="123.698" width="0.254" layer="16"/>
-<wire x1="168.148" y1="123.698" x2="166.878" y2="123.698" width="0.254" layer="1"/>
+<wire x1="168.148" y1="116.332" x2="168.148" y2="123.698" width="0" layer="19" extent="1-16"/>
+<wire x1="168.148" y1="123.698" x2="166.878" y2="123.698" width="0" layer="19" extent="1-16"/>
 <wire x1="168.656" y1="15.24" x2="166.878" y2="17.018" width="0.254" layer="1"/>
 <wire x1="168.783" y1="15.24" x2="168.656" y2="15.24" width="0.254" layer="1"/>
 <wire x1="168.91" y1="164.338" x2="167.64" y2="163.068" width="0.508" layer="16"/>
@@ -13494,18 +13491,14 @@ Master</text>
 <wire x1="22.46" y1="121.45" x2="22.46" y2="121.05" width="0.254" layer="1"/>
 <wire x1="22.606" y1="120.904" x2="22.46" y2="121.05" width="0.254" layer="1"/>
 <wire x1="22.606" y1="120.904" x2="23.622" y2="120.904" width="0.254" layer="1"/>
-<wire x1="22.86" y1="114.2" x2="21.61" y2="112.95" width="0.508" layer="16"/>
-<wire x1="22.86" y1="114.3" x2="22.86" y2="114.2" width="0.508" layer="16"/>
-<wire x1="22.86" y1="114.3" x2="25.4" y2="116.84" width="0.508" layer="16"/>
 <wire x1="23.26" y1="121.45" x2="23.26" y2="121.266" width="0.254" layer="1"/>
 <wire x1="23.622" y1="120.904" x2="23.26" y2="121.266" width="0.254" layer="1"/>
-<wire x1="23.622" y1="120.904" x2="25.4" y2="120.904" width="0.254" layer="1"/>
+<wire x1="25.4" y1="120.904" x2="23.622" y2="120.904" width="0.254" layer="1"/>
 <wire x1="23.876" y1="172.72" x2="25.781" y2="172.72" width="2.54" layer="16"/>
 <wire x1="24.13" y1="164.338" x2="24.13" y2="172.466" width="0.508" layer="16"/>
 <wire x1="24.13" y1="172.466" x2="23.876" y2="172.72" width="0.8128" layer="16"/>
 <wire x1="24.706" y1="120.904" x2="24.16" y2="121.45" width="0.254" layer="1"/>
 <wire x1="25.4" y1="120.904" x2="24.706" y2="120.904" width="0.254" layer="1"/>
-<wire x1="25.4" y1="120.904" x2="25.4" y2="116.84" width="0.508" layer="16"/>
 <wire x1="25.4" y1="120.904" x2="25.4" y2="125.476" width="0.508" layer="16"/>
 <wire x1="25.4" y1="125.476" x2="19.05" y2="131.826" width="0.508" layer="16"/>
 <wire x1="25.781" y1="172.72" x2="33.02" y2="165.481" width="2.54" layer="16"/>
@@ -13546,7 +13539,6 @@ Master</text>
 <wire x1="32.302" y1="66.53" x2="32.302" y2="65.068" width="0.254" layer="1"/>
 <wire x1="32.654" y1="70.612" x2="33.274" y2="70.612" width="0.254" layer="1"/>
 <wire x1="33.02" y1="104.14" x2="33.02" y2="114.3" width="0.508" layer="1"/>
-<wire x1="33.02" y1="114.3" x2="22.86" y2="114.3" width="0.508" layer="16"/>
 <wire x1="33.02" y1="165.481" x2="33.02" y2="162.56" width="2.54" layer="16"/>
 <wire x1="33.162" y1="81.28" x2="33.162" y2="82.154" width="0.254" layer="1"/>
 <wire x1="33.162" y1="82.154" x2="33.02" y2="82.296" width="0.254" layer="1"/>
@@ -13966,8 +13958,8 @@ Master</text>
 <via x="166.37" y="148.844" extent="1-16" drill="0.4064"/>
 <via x="166.37" y="152.146" extent="1-16" drill="0.3048"/>
 <via x="166.878" y="17.018" extent="1-16" drill="0.3048"/>
-<via x="168.148" y="116.332" extent="1-16" drill="0.3048"/>
-<via x="168.148" y="123.698" extent="1-16" drill="0.3048"/>
+<wire x1="168.148" y1="116.332" x2="168.148" y2="116.332" width="0" layer="19" extent="1-16"/>
+<wire x1="168.148" y1="123.698" x2="168.148" y2="123.698" width="0" layer="19" extent="1-16"/>
 <via x="177.546" y="28.448" extent="1-16" drill="1.2"/>
 <via x="185.42" y="28.448" extent="1-16" drill="1.2"/>
 <via x="2.286" y="20.066" extent="1-16" drill="0.3048"/>
@@ -13998,7 +13990,6 @@ Master</text>
 <via x="32.004" y="61.468" extent="1-16" drill="0.3048"/>
 <via x="32.004" y="62.992" extent="1-16" drill="0.3048"/>
 <via x="32.258" y="65.024" extent="1-16" drill="0.3048"/>
-<via x="33.02" y="114.3" extent="1-16" drill="0.3048"/>
 <via x="33.02" y="168.148" extent="1-16" drill="0.3048"/>
 <via x="33.02" y="82.296" extent="1-16" drill="0.3048"/>
 <via x="33.528" y="70.866" extent="1-16" drill="0.3048"/>
@@ -14257,6 +14248,8 @@ Master</text>
 <wire x1="121.666" y1="124.221" x2="120.411" y2="124.221" width="0.254" layer="1"/>
 <wire x1="120.411" y1="124.221" x2="120.396" y2="124.206" width="0.254" layer="1"/>
 <via x="120.396" y="124.206" extent="1-16" drill="0.3048"/>
+<wire x1="33.02" y1="114.3" x2="26.416" y2="120.904" width="0.508" layer="1"/>
+<wire x1="26.416" y1="120.904" x2="25.4" y2="120.904" width="0.508" layer="1"/>
 </signal>
 <signal name="HUB_!OVRCUR1">
 <contactref element="JP8" pad="2"/>

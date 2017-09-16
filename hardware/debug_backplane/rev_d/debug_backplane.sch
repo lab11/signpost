@@ -8959,14 +8959,12 @@ S high: D = D2</text>
 <part name="GND112" library="umich" deviceset="GND" device=""/>
 <part name="GND113" library="umich" deviceset="GND" device=""/>
 <part name="GND114" library="umich" deviceset="GND" device=""/>
-<part name="GND115" library="umich" deviceset="GND" device=""/>
 <part name="GND116" library="umich" deviceset="GND" device=""/>
 <part name="GND117" library="umich" deviceset="GND" device=""/>
 <part name="GND118" library="umich" deviceset="GND" device=""/>
 <part name="GND119" library="umich" deviceset="GND" device=""/>
 <part name="GND11" library="umich" deviceset="GND" device=""/>
 <part name="GND120" library="umich" deviceset="GND" device=""/>
-<part name="GND121" library="umich" deviceset="GND" device=""/>
 <part name="GND122" library="umich" deviceset="GND" device=""/>
 <part name="GND123" library="umich" deviceset="GND" device=""/>
 <part name="GND124" library="umich" deviceset="GND" device=""/>
@@ -13720,9 +13718,7 @@ port pwr grouped</text>
 <instance part="FRAME7" gate="G$2" x="152.4" y="0"/>
 <instance part="GND110" gate="1" x="15.24" y="121.92"/>
 <instance part="GND113" gate="1" x="139.7" y="121.92"/>
-<instance part="GND115" gate="1" x="76.2" y="96.52"/>
 <instance part="GND120" gate="1" x="116.84" y="71.12"/>
-<instance part="GND121" gate="1" x="200.66" y="96.52"/>
 <instance part="GND122" gate="1" x="243.84" y="71.12"/>
 <instance part="GND64" gate="1" x="63.5" y="86.36"/>
 <instance part="GND81" gate="1" x="187.96" y="86.36"/>
@@ -13902,12 +13898,6 @@ port pwr grouped</text>
 <junction x="193.04" y="91.44"/>
 </segment>
 <segment>
-<pinref part="GND115" gate="1" pin="GND"/>
-<pinref part="S3" gate="G$1" pin="1TA"/>
-<wire x1="76.2" y1="101.6" x2="76.2" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="101.6" x2="76.2" y2="101.6" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND120" gate="1" pin="GND"/>
 <pinref part="R25" gate="A" pin="2"/>
 <pinref part="R25" gate="B" pin="2"/>
@@ -13924,12 +13914,6 @@ port pwr grouped</text>
 <junction x="116.84" y="76.2"/>
 <junction x="116.84" y="83.82"/>
 <junction x="116.84" y="91.44"/>
-</segment>
-<segment>
-<pinref part="GND121" gate="1" pin="GND"/>
-<pinref part="S4" gate="G$1" pin="1TA"/>
-<wire x1="200.66" y1="101.6" x2="200.66" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="101.6" x2="200.66" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND122" gate="1" pin="GND"/>
