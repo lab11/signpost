@@ -6,12 +6,13 @@ Signpost
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_on_sign_full_666x1000.jpg" alt="Signpost" width="31%" align="left" />
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_close_up_662x1000.jpg" align="left" width="31%" />
 
-The Signpost project is a modular city-scale sensing platform that is installed on existing signposts, harvests
-energy to power itself, and provides six slots for general sensing modules that support
-a range of applications. This significantly reduces the barrier for city-scale sensing
-by not requiring a connection to AC mains power, providing shared resources (power, communication, location,
-time, storage, and computation) for sensing modules, and supporting a programming environment
-for building inter-signpost and inter-module applications.
+The Signpost project is a modular city-scale sensing platform that is designed 
+to be installed on existing signposts. It is powered through solar energy harvesting, 
+and provides six slots for generic sensing tasks. Modules have access to
+a set of shared platform resources including power, communication, gps-based
+location and time, storage, and higher-performance computation, and they
+use a Signpost-specific software API that enables not only use of these
+resources, but also supports the development of inter-module applications.
 
 The project is driven by several core applications, but also strives to be
 an upgradeable and adaptable platform that supports new applications
@@ -50,6 +51,7 @@ is a library that sits between the user's applications and the Signpost I2C bus.
 The API is easily ported, only requiring I2C master/slave, GPIO, and timers. It
 currently is ported [Tock](https://github.com/helena-project/tock) and [ARM MBed-OS](https://mbed.com),
 with a port coming soon for Arduino. 
+Please see the [Signpost API documentation](https://github.com/lab11/signpost-software/blob/master/ApiGuide.md).
 
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software_transparent.png" width="70%" />
 
@@ -87,6 +89,7 @@ Below are getting started guides for the Signpost platform.
  - [Creating a Sensor Module](https://github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
  - [Using your Signpost Development Kit](https://github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
  - [Writing City-Scale Sensing Applications](https://github.com/lab11/signpost-software/blob/master/docs/TutorialSession.md)
+ - [Signpost API Guide](https://github.com/lab11/signpost-software/blob/master/docs/ApiGuide.md)
 
 Roadmap
 -------
