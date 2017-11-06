@@ -43,15 +43,15 @@ Existing Hardware Libraries and References
 
 We have built sensor modules using both KiCAD and EAGLE. Generic
 module libraries that include a reference outline and header location
-are available in the [Signpost Eagle Library](github.com/lab11/signpost/blob/master/hardware/signpost.lbr).
+are available in the [Signpost Eagle Library](https://github.com/lab11/signpost/blob/master/hardware/signpost.lbr).
 
-All example sensor modules can be found in the [modules folder](github.com/lab11/signpost/tree/master/modules).
+All example sensor modules can be found in the [modules folder](https://github.com/lab11/signpost/tree/master/modules).
 
 Tips 
 ----
 
-We generally recommend using a processor supported by [Tock](github.com/helena-project/tock)
-or [ARM Mbed](mbed.com).
+We generally recommend using a processor supported by [Tock](https://github.com/helena-project/tock)
+or [ARM Mbed](https://mbed.com).
 
 Holes in the sensor modules that allow it to screw to the signpost
 backplane should be plated and tied to ground.

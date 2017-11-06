@@ -48,7 +48,7 @@ Software Architecture
 Signpost sensor modules access platform resources through the Signpost API, which
 is a library that sits between the user's applications and the Signpost I2C bus.
 The API is easily ported, only requiring I2C master/slave, GPIO, and timers. It
-currently is ported [Tock](github.com/helena-project/tock) and [ARM MBed-OS](mbed.com),
+currently is ported [Tock](https://github.com/helena-project/tock) and [ARM MBed-OS](https://mbed.com),
 with a port coming soon for Arduino. 
 
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software_transparent.png" width="70%" />
