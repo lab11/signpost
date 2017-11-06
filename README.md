@@ -7,10 +7,10 @@ Signpost
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_close_up_662x1000.jpg" align="left" width="31%" />
 
 The Signpost project is a modular city-scale sensing platform that is installed on existing signposts, harvests
-energy to power itself, and provides eight slots for diverse sensing modules that support
+energy to power itself, and provides six slots for general sensing modules that support
 a range of applications. This significantly reduces the barrier for city-scale sensing
-by not requiring a connection to AC mains power, providing shared resources (power, communication,
-storage, and computation) for sensing modules, and supporting a programming environment
+by not requiring a connection to AC mains power, providing shared resources (power, communication, location,
+time, storage, and computation) for sensing modules, and supporting a programming environment
 for building inter-signpost and inter-module applications.
 
 The project is driven by several core applications, but also strives to be
@@ -27,16 +27,8 @@ their projects.
 
 <br />
 
-Getting Started
----------------
-
-Clone this repo then run a `git submodule update --init --recursive`.
-
-After that, follow the instructions for [flashing individual modules](software/kernel/boards/).
-
-
-Architecture
-------------
+Hardware Architecture
+---------------------
 
 Each Signpost platform includes a power supply that also meters energy usage, a controller that provides
 storage and computation and manages the operation of the Signpost, and several module slots that support
@@ -50,6 +42,16 @@ powered off.
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_arch_1000x445.jpg" />
 
 
+Software Architecture
+--------------------
+
+Signpost sensor modules access platform resources through the Signpost API, which
+is a library that sits between the user's applications and the Signpost I2C bus.
+The API is easily ported, only requiring I2C master/slave, GPIO, and timers. It
+currently is ported [Tock](github.com/helena-project/tock) and [ARM MBed-OS](mbed.com),
+with a port coming soon for Arduino. 
+
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software.png" />
 
 Creating a Module
 -----------------
