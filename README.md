@@ -83,10 +83,10 @@ using Signpost, please email <signpost-admin@eecs.berkeley.edu>.
 
 Below are getting started guides for the Signpost platform.
 
-[Building a Signpost](github.com/lab11/signpost/blob/master/docs/Building-Signpost.md)
-[Creating a Sensor Module](github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
-[Using your Signpost Development Kit](github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
-[Writing City-Scale Sensing Applications] (github.com/lab11/signpost-software/blob/master/docs/TutorialSession.md)
+ - [Building a Signpost](https://github.com/lab11/signpost/blob/master/docs/Building-Signpost.md)
+ - [Creating a Sensor Module](https://github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
+ - [Using your Signpost Development Kit](https://github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
+ - [Writing City-Scale Sensing Applications](https://github.com/lab11/signpost-software/blob/master/docs/TutorialSession.md)
 
 Roadmap
 -------
