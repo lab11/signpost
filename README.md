@@ -51,7 +51,7 @@ The API is easily ported, only requiring I2C master/slave, GPIO, and timers. It
 currently is ported [Tock](github.com/helena-project/tock) and [ARM MBed-OS](mbed.com),
 with a port coming soon for Arduino. 
 
-<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software.png" />
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software_transparent.png" width="70%" />
 
 Creating a Module
 -----------------
