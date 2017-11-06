@@ -83,9 +83,9 @@ using Signpost, please email <signpost-admin@eecs.berkeley.edu>.
 
 Below are getting started guides for the Signpost platform.
 
-[Building a Signpost] (github.com/lab11/signpost/blob/master/docs/Building-Signpost.md)
-[Creating a Sensor Module] (github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
-[Using your Signpost Development Kit] (github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
+[Building a Signpost](github.com/lab11/signpost/blob/master/docs/Building-Signpost.md)
+[Creating a Sensor Module](github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
+[Using your Signpost Development Kit](github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
 [Writing City-Scale Sensing Applications] (github.com/lab11/signpost-software/blob/master/docs/TutorialSession.md)
 
 Roadmap
@@ -109,7 +109,7 @@ and wireless research.
 - **Fall 2017**: 20 Signposts were built and deployed for the TerraSwarm Annual Review! 5 of these are still deployed
 on UC Berkeley's campus, and we are awaiting approval to deploy the remaining 15 signposts. We successfully
 collaborated with researchers from UIUC and UC San Diego to demonstrate audio event detection on Signposts
-and high-fidelity data backhaul to a drone deployed upon event detection. Check out the [video] (https://www.youtube.com/watch?v=CGQCMqiHP2c).
+and high-fidelity data backhaul to a drone deployed upon event detection. Check out the [video](https://www.youtube.com/watch?v=CGQCMqiHP2c).
 - **August 2017**: Signpost presentation at the Intel Secure Internet of Things Retreat. A Signpost was transported
 and successfully deployed for the 48 hours of the retreat, becoming operational in less that five minutes.
 - **Summer 2017**: The first Signposts are being deployed on UC Berkeley's campus!
