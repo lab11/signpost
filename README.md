@@ -39,7 +39,7 @@ communication on the Signpost, each module is also attached to a USB 2.0 host.
 Each module can be individually disconnected from the USB host and/or the I2C bus, as well as entirely
 powered off.
 
-<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_arch_1000x445.jpg" />
+<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_arch_1000x445.jpg" width="70%" />
 
 
 Software Architecture
@@ -53,41 +53,40 @@ with a port coming soon for Arduino.
 
 <img src="https://raw.githubusercontent.com/lab11/signpost/master/media/signpost_software_transparent.png" width="70%" />
 
-Creating a Module
------------------
 
-To create a module for the signpost, it must conform to the module specification.
+Current Project Status
+----------------------
 
-### Physical Dimensions
+Signposts are currently being deployed on campus at UC Berkeley. We have 5 Signposts
+deployed and more than 20 built and awaiting deployment approval. On
+these signposts we have modules sensing audio amplitude on seven spectrum bands, 
+ambient environmental markers including temperature, pressure, and humidity, RF Spectrum
+monitoring from 15-2700 MHz, and a microwave-radar based motion sensor. We are 
+working to build applications such as distributed traffic monitoring on the
+deployed platforms.
 
-All in inches.
+Signpost development kits have been designed to facilitate sensor module
+and software development without requiring a full signpost platform. The
+development kits have the ability to fully emulate a signpost including
+energy metering and a Signpost radio module.
 
-<a href="https://raw.githubusercontent.com/lab11/signpost/master/media/module_pcb_dimensions.png">
-<img src="https://raw.githubusercontent.com/lab11/signpost/master/media/module_pcb_dimensions.png" width="50%" />
-</a>
+We are working to release version 1.0 of the Signpost Software API. 
 
-### Header Signals
+Getting Involved
+----------------
 
-| Description                                 | Signal   | Pin |   | Pin | Signal   | Description                                                                         |
-|---------------------------------------------|----------|-----|---|-----|----------|-------------------------------------------------------------------------------------|
-|                                             | GND      | 1   |   | 2   | 5V       |                                                                                     |
-|                                             | Reserved | 3   |   | 4   | VCCIO    | I/O voltage the module uses. This must be fed by the module to set the I/O voltage. |
-| I²C clock line.                             | SCL      | 5   |   | 6   | SDA      | I²C data line.                                                                      |
-| Pulse per second from GPS.                  | PPS      | 7   |   | 8   | MOD_OUT  | Interrupt line to the controller. Allows modules to signal the controller.          |
-|                                             | Reserved | 9   |   | 10  | MOD_IN   | GPIO from controller to module.                                                     |
-| USB Data+ signal.                           | USB_D+   | 11  |   | 12  | USB_D-   | USB Data- signal.                                                                   |
-| USB bus voltage (5 V).                      | USB_VBUS | 13  |   | 14  | GND      | USB GND.                                                                            |
+There are several ways to get involved with the Signpost Project! These
+include building and deploying full signpost platforms, deploying new
+sensor modules on our existing platforms, or deploying new applications on
+existing sensor modules. If you would like to deploy city-scale sensing applications
+using Signpost, please email <signpost-admin@eecs.berkeley.edu>.
 
-### Debug Header Signals
+Below are getting started guides for the Signpost platform.
 
-Modules may choose to implement a Debug header as well. The Debug header will allow for easier interactions with modules while they are connected to the development version of the backplane.
-
-| Description                                         | Signal   | Pin |   | Pin | Signal   | Description                                                                         |
-|-----------------------------------------------------|----------|-----|---|-----|----------|-------------------------------------------------------------------------------------|
-|                                                     | GND      | 1   |   | 2   | GPIO1    | Output line to control LED on development backplane                                 |
-| UART data from the module                           | TX       | 3   |   | 4   | RX       | UART data to the module                                                             |
-| Output line to control LED on development backplane | GPIO2    | 5   |   | 6   | !Reset   | Active-low reset for the module microcontroller                           |
-| JTAG line for the module microcontroller            | SWDCLK   | 7   |   | 8   | SWDIO    | JTAG line for the module microcontroller                                             |
+[Building a Signpost] (github.com/lab11/signpost/blob/master/docs/Building-Signpost.md)
+[Creating a Sensor Module] (github.com/lab11/signpost/blob/master/docs/Creating-Modules.md)
+[Using your Signpost Development Kit] (github.com/lab11/signpost/blob/master/docs/Signpost-Development-Kit.md)
+[Writing City-Scale Sensing Applications] (github.com/lab11/signpost-software/blob/master/docs/TutorialSession.md)
 
 Roadmap
 -------
@@ -98,14 +97,22 @@ goals:
 - Designing a programming model for running applications across a network of
 Signposts. This should truly simplify creating interesting and useful applications,
 and not discourage development by imposing unnecessary hurdles.
-- Developing the Signpost platform operation, including energy-sharing and
-reliability ensurance.
 - Creating a HW/SW test framework for accelerating module development.
-- A deployment on the order of 10 devices by October 2017.
+- Deploying several driving applications on the existing signpost deployment.
+- Collaborating with other researchers to serve as a foundation for city-scale sensing
+and wireless research.
 
 
 ### History
 
+- **November 2017**: Signpost demo at Sensys 2017!
+- **Fall 2017**: 20 Signposts were built and deployed for the TerraSwarm Annual Review! 5 of these are still deployed
+on UC Berkeley's campus, and we are awaiting approval to deploy the remaining 15 signposts. We successfully
+collaborated with researchers from UIUC and UC San Diego to demonstrate audio event detection on Signposts
+and high-fidelity data backhaul to a drone deployed upon event detection. Check out the [video] (https://www.youtube.com/watch?v=CGQCMqiHP2c).
+- **August 2017**: Signpost presentation at the Intel Secure Internet of Things Retreat. A Signpost was transported
+and successfully deployed for the 48 hours of the retreat, becoming operational in less that five minutes.
+- **Summer 2017**: The first Signposts are being deployed on UC Berkeley's campus!
 - **Winter 2017**: Signpost v0.2 released for the
 [TerraSwarm Signpost Workshop](https://www.terraswarm.org/urbanheartbeat/wiki/Main/SignpostWorkshop).
 This workshop featured the release of the Debug Backplane, initial API
@@ -118,7 +125,6 @@ over LoRa to a gateway, and a real-time UI.
 - **Summer 2016**: Discussions on physical design yield a prototype enclosure and module form factor.
 
 
-
 Related Projects
 ----------------
 
@@ -128,6 +134,12 @@ approaches:
 - Chicago's [Array of Things](https://arrayofthings.github.io/)
 - NYC's [SONYC](https://wp.nyu.edu/sonyc/)
 
+We see Signpost as one part of the city-scale sensing ecosystem, and
+we hope to eventually deploy dynamic applications that can be distributed
+across high granularity energy-harvesting nodes (Signposts) and
+powered nodes such as Array of Things. Hopefully applications
+such as SONYC can lower the cost of deployment by running on
+Signpost platforms.
 
 License
 -------
