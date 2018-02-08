@@ -52,6 +52,7 @@ MINUTE = 4
 DHI = 5
 DNI = 6
 GHI = 7
+CLEAR_DHI = 8
 ZENITH = 12
 
 input_fname = sys.argv[1]
@@ -83,27 +84,13 @@ with open(output_fname, 'w') as out:
             time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0, tzstring)
 
             #get the recorded zenith
-            zenith = float(row[ZENITH])
+            #zenith = float(row[ZENITH])
 
             #get the elevation and azimuth from pysolar
             elevation = pysolar.solar.get_altitude(lat, lon, time.in_timezone('utc'))
 
             #get azimuth from pysolar
             azimuth = pysolar.solar.get_azimuth(lat, lon, time.in_timezone('utc'))
-
-            if(abs(90-zenith-elevation) > 5):
-                #try with DST enabled
-                #get the elevation and azimuth from pysolar
-                elevation = pysolar.solar.get_altitude(lat, lon, time.in_timezone('utc').add(hours=1))
-                #get azimuth from pysolar
-                azimuth = pysolar.solar.get_azimuth(lat, lon, time.in_timezone('utc').add(hours=1))
-
-                if(abs(90-zenith-elevation) > 5):
-                    print("There might be a problem with the elevation data...")
-                    print("90-Zenith: " + str(90-zenith))
-                    print("elevation: " + str(elevation))
-                    print(time.strftime("%m/%d/%Y %H:%M"))
-                    print()
 
             #now transpose the elevation and azimuth calculations into a theta
             #angle for one of the cardinal directions
@@ -136,7 +123,8 @@ with open(output_fname, 'w') as out:
             factors = np.cos(np.deg2rad(angles))
             mask = factors < 0
             factors[mask] = 0
-            irradiances = dni*factors + dhi
+
+            irradiances = dni*factors
 
             #efficiency of our solar panel
             solar_eff = 0.17
@@ -148,11 +136,4 @@ with open(output_fname, 'w') as out:
             powers = irradiances*size*solar_eff
 
             #now we should print this to the output csv
-            print(time.strftime("%m/%d/%Y %H:%M"))
-            print(elevation)
-            print(azimuth)
-            print(angles)
-            print(factors)
-            print(powers)
-            print()
             out.write(time.strftime("%m/%d/%Y %H:%M") + ',' + str(powers[0]) + ',' + str(powers[1]) + ',' + str(powers[2]) + ',' + str(powers[3]) + '\n')
