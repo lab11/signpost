@@ -19,7 +19,7 @@ for dirpath,_,filenames in os.walk(input_folder):
         infiles.append(os.path.abspath(os.path.join(dirpath, f)))
 
 BINS = 5000
-RMAX = 5
+RMAX = 800
 
 #30,35,40,45,50
 counts30 = np.zeros((BINS,4,1))
@@ -33,6 +33,7 @@ sdcounts = np.zeros((BINS,4,1))
 sdmask = 0
 cmask = np.zeros((5))
 for f in infiles:
+    print(f)
     with open(f, 'r') as inp:
         reader = csv.reader(inp)
         line = next(reader)
@@ -47,6 +48,7 @@ for f in infiles:
             location_list.append([float(row[1]),float(row[2]),float(row[3]),float(row[4])])
 
         loc = np.array(location_list)
+        loc = (((loc - .016)/5)*1000)
         mask = loc < 0
         loc[mask] = 0
 
@@ -140,38 +142,36 @@ iseattlesums = np.flip(iseattlesums, axis=0)
 isdsums = np.flip(isdsums, axis=0)
 
 
-x = np.arange(0,5,1/(BINS/RMAX))
+x = np.arange(0,RMAX,1/(BINS/RMAX))
 
-#plt.figure(1)
-#plt.plot(x,sums[:,0,:])
-#plt.plot(x,seattlesums[:,0])
-#plt.plot(x,sdsums[:,0])
-#
-plt.figure(2)
+plt.figure()
+plt.grid(True, which='both', ls='-', alpha=0.5)
+plt.xlabel('Minimum Power per Module (mW)')
+plt.ylabel('Percent of Signposts')
 plt.plot(x,isums[:,0,:])
 plt.plot(x,iseattlesums[:,0])
 plt.plot(x,isdsums[:,0])
 
-plt.figure(6)
+plt.figure()
+plt.grid(True, which='both', ls='-', alpha=0.5)
+plt.xlabel('Minimum Power per Module (mW)')
+plt.ylabel('Percent of Signposts')
 plt.plot(x,isums[:,1,:])
 plt.plot(x,iseattlesums[:,1])
 plt.plot(x,isdsums[:,1])
-#plt.figure(3)
-#plt.plot(x,sums[:,2,:])
 
-plt.figure(4)
+plt.figure()
+plt.grid(True, which='both', ls='-', alpha=0.5)
+plt.xlabel('Minimum Power per Module (mW)')
+plt.ylabel('Percent of Signposts')
 plt.plot(x,isums[:,2,:])
 plt.plot(x,iseattlesums[:,2])
 plt.plot(x,isdsums[:,2])
 
-#plt.figure(5)
-#plt.plot(x,sums[:,1,:])
-
-
-#plt.figure(7)
-#plt.plot(x,sums[:,3,:])
-
-plt.figure(8)
+plt.figure()
+plt.grid(True, which='both', ls='-', alpha=0.5)
+plt.xlabel('Minimum Power per Module (mW)')
+plt.ylabel('Percent of Signposts')
 plt.plot(x,isums[:,3,:])
 plt.plot(x,iseattlesums[:,3])
 plt.plot(x,isdsums[:,3])

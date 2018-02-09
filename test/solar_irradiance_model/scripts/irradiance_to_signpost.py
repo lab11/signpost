@@ -6,8 +6,6 @@ import csv
 import numpy as np
 import pendulum
 import datetime
-from timezonefinder import TimezoneFinder
-tf = TimezoneFinder()
 
 try:
     import pysolar
@@ -72,8 +70,6 @@ with open(output_fname, 'w') as out:
         lat = float(head[5])
         lon = float(head[6])
 
-        tzstring = tf.timezone_at(lng=lon,lat=lat)
-
         out.write('Signpost power data at ' + str(lat) + ',' + str(lon) + '\n')
         out.write('Date, South Power, West Power, North Power, East Power\n')
         #skip the last header line
@@ -81,16 +77,16 @@ with open(output_fname, 'w') as out:
 
         for row in reader:
             #create a datetime
-            time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0, tzstring)
+            time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0)
 
             #get the recorded zenith
             #zenith = float(row[ZENITH])
 
             #get the elevation and azimuth from pysolar
-            elevation = pysolar.solar.get_altitude(lat, lon, time.in_timezone('utc'))
+            elevation = pysolar.solar.get_altitude(lat, lon, time)
 
             #get azimuth from pysolar
-            azimuth = pysolar.solar.get_azimuth(lat, lon, time.in_timezone('utc'))
+            azimuth = pysolar.solar.get_azimuth(lat, lon, time)
 
             #now transpose the elevation and azimuth calculations into a theta
             #angle for one of the cardinal directions

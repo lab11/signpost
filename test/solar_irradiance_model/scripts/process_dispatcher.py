@@ -6,8 +6,6 @@ from multiprocessing import Pool
 import pysolar
 import pendulum
 import numpy as np
-from tzwhere import tzwhere
-tzwhere = tzwhere.tzwhere()
 
 def irr_parser(inputs):
     print(inputs)
@@ -59,8 +57,6 @@ def irr_parser(inputs):
             lat = float(head[5])
             lon = float(head[6])
 
-            tzstring = tzwhere.tzNameAt(lat,lon)
-
             out.write('Signpost power data at ' + str(lat) + ',' + str(lon) + '\n')
             out.write('Date, South Power, West Power, North Power, East Power\n')
             #skip the last header line
@@ -68,16 +64,16 @@ def irr_parser(inputs):
 
             for row in reader:
                 #create a datetime
-                time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0, tzstring)
+                time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0)
 
                 #get the recorded zenith
                 #zenith = float(row[ZENITH])
 
                 #get the elevation and azimuth from pysolar
-                elevation = pysolar.solar.get_altitude(lat, lon, time.in_timezone('utc'))
+                elevation = pysolar.solar.get_altitude(lat, lon, time)
 
                 #get azimuth from pysolar
-                azimuth = pysolar.solar.get_azimuth(lat, lon, time.in_timezone('utc'))
+                azimuth = pysolar.solar.get_azimuth(lat, lon, time)
 
                 #now transpose the elevation and azimuth calculations into a theta
                 #angle for one of the cardinal directions
