@@ -111,7 +111,10 @@ def irr_parser(inputs):
                 mask = factors < 0
                 factors[mask] = 0
 
-                irradiances = dni*factors
+                if(dhi > dni):
+                    irradiances = dni*factors + dhi*factors
+                else:
+                    irradiances = dni*factors + dhi*0.5
 
                 #efficiency of our solar panel
                 solar_eff = 0.17
