@@ -74,65 +74,105 @@ with open(output_fname, 'w') as out:
         out.write('Date, South Power, West Power, North Power, East Power\n')
         #skip the last header line
         head = next(reader)
+        blist = []
+        lastel = -1
+        br = False
 
-        for row in reader:
-            #create a datetime
-            time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0)
+        while True:
+            rowlist = []
+            while True:
+                try:
+                    row = next(reader)
+                except:
+                    sys.exit(1)
 
-            #get the recorded zenith
-            #zenith = float(row[ZENITH])
+                #create a datetime
+                time = pendulum.create(int(row[YEAR]),int(row[MONTH]),int(row[DAY]),int(row[HOUR]),int(row[MINUTE]),0,0)
 
-            #get the elevation and azimuth from pysolar
-            elevation = pysolar.solar.get_altitude(lat, lon, time)
+                #get the recorded zenith
+                #zenith = float(row[ZENITH])
 
-            #get azimuth from pysolar
-            azimuth = pysolar.solar.get_azimuth(lat, lon, time)
+                #get the elevation and azimuth from pysolar
+                elevation = pysolar.solar.get_altitude(lat, lon, time)
 
-            #now transpose the elevation and azimuth calculations into a theta
-            #angle for one of the cardinal directions
-            #to do this flip around the azimuth (it is south referenced)
-            #if the angle is > 90, there is effectively zero direct sunlight
-            #so just cap it at 90 to make the cos(angle) calc easy
+                if (lastel > 0 and elevation < 0):
+                    br = True
 
-            #south
-            southangle, nop = azel_to_thetaphi(azimuth, elevation)
+                lastel = elevation
 
-            #east
-            eastangle, nop = azel_to_thetaphi(azimuth-90, elevation)
+                #get azimuth from pysolar
+                azimuth = pysolar.solar.get_azimuth(lat, lon, time)
 
-            #west
-            westangle, nop = azel_to_thetaphi(azimuth+90, elevation)
+                #now transpose the elevation and azimuth calculations into a theta
+                #angle for one of the cardinal directions
+                #to do this flip around the azimuth (it is south referenced)
+                #if the angle is > 90, there is effectively zero direct sunlight
+                #so just cap it at 90 to make the cos(angle) calc easy
 
-            #north
-            northangle, nop = azel_to_thetaphi(azimuth-180, elevation)
+                #south
+                southangle, nop = azel_to_thetaphi(azimuth, elevation)
 
-            #now we can calculate the predicted solar irradiation for signpost on that
-            #day
-            #then we can multiply that my size and efficiency for the final prediction
+                #east
+                eastangle, nop = azel_to_thetaphi(azimuth-90, elevation)
 
-            #predicted irradiation = DNI*cos(solar_angle) + DHI
-            dni = float(row[DNI])
-            dhi = float(row[DHI])
+                #west
+                westangle, nop = azel_to_thetaphi(azimuth+90, elevation)
 
-            angles = np.array([southangle, westangle, northangle, eastangle])
+                #north
+                northangle, nop = azel_to_thetaphi(azimuth-180, elevation)
 
-            factors = np.cos(np.deg2rad(angles))
-            mask = factors < 0
-            factors[mask] = 0
+                #now we can calculate the predicted solar irradiation for signpost on that
+                #day
+                #then we can multiply that my size and efficiency for the final prediction
 
-            if(dhi > dni):
-                irradiances = dni*factors + dhi*factors
-            else:
-                irradiances = dni*factors + dhi*0.5
+                #predicted irradiation = DNI*cos(solar_angle) + DHI
+                dni = float(row[DNI])
+                dhi = float(row[DHI])
 
-            #efficiency of our solar panel
-            solar_eff = 0.17
+                angles = np.array([southangle, westangle, northangle, eastangle])
 
-            #size in m^2
-            size = 0.096
+                factors = np.cos(np.deg2rad(angles))
+                mask = factors < 0
+                factors[mask] = 0
 
-            #predicted power output for signpost at this time in our input data
-            powers = irradiances*size*solar_eff
+                rowlist.append([time, factors, dni, dhi, elevation])
 
-            #now we should print this to the output csv
-            out.write(time.strftime("%m/%d/%Y %H:%M") + ',' + str(powers[0]) + ',' + str(powers[1]) + ',' + str(powers[2]) + ',' + str(powers[3]) + '\n')
+                if(br == True):
+                    br = False
+                    break
+
+
+            #calculate brightness
+            blist = []
+            lastelv = -1
+            for r in rowlist:
+                if(r[4] > 0):
+                    if(r[2] > 70):
+                        blist.append(1)
+                    else:
+                        blist.append(0)
+
+            brightness = np.mean(np.array(blist))
+
+            for r in rowlist:
+                dni = r[2]
+                dhi = r[3]
+                time = r[0]
+                factors = r[1]
+
+                if(dhi > dni):
+                    irradiances = dni*factors + dhi*0.5*brightness
+                else:
+                    irradiances = dni*factors + dhi*0.5
+
+                #efficiency of our solar panel
+                solar_eff = 0.17
+
+                #size in m^2
+                size = 0.096
+
+                #predicted power output for signpost at this time in our input data
+                powers = irradiances*size*solar_eff
+
+                #now we should print this to the output csv
+                out.write(time.strftime("%m/%d/%Y %H:%M") + ',' + str(powers[0]) + ',' + str(powers[1]) + ',' + str(powers[2]) + ',' + str(powers[3]) + '\n')
