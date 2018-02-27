@@ -69,49 +69,48 @@ PMS5003 sensors, and performs very well for this class of sensor
 in both 
 [field](http://www.aqmd.gov/docs/default-source/aq-spec/field-evaluations/purple-air-pa-ii---field-evaluation.pdf?sfvrsn=4) and 
 [lab](http://www.aqmd.gov/docs/default-source/aq-spec/laboratory-evaluations/purple-air-pa-ii---lab-evaluation.pdf?sfvrsn=4) testing.
-The first version of the PurpleAir used the PMS1003, and also performed well, but not as good as the updated version.
+The first version of the PurpleAir used the PMS1003, and also performed well, but not as well as the updated version.
 
-Luckily the PMS5003 is both small, can be ordered for a reasonable price from China, and has an integrated fan. It
-also streams data about many particulate classes over UART, which makes it easy to integrated with a module MCU.
+Luckily the PMS5003 is both small, can be ordered for a reasonable price, and has an integrated fan. It
+also streams data about many particulate classes over UART, which makes it easy to integrated with an MCU.
 This seems like the best option for a Signpost module. The inclusion of two sensors in the PurpleAir does make us
-question its reliability.
+question its reliability, and we may consider the option of stacking two sensors into a module box.
 
 ###Ozone
 
-- Metal Oxide
-    - Easy
-    - Accurate
-    - MIC-2610/MIC-2614
-    - No longer on the market
-    - May be available from China
+[Several reports](https://www.epa.gov/air-sensor-toolbox/evaluation-emerging-air-pollution-sensor-performance) show that the MICS-2614 and MICS-2610 Ozone sensor perform well
+under testing. Additionally, these Metal Oxide sensor are cheap, small and
+relatively easy to use because they have a resistive response.
 
-- Electrochemical
-    - More difficult
-    - No tested and open source designs
+Unfortunately the company that made these sensors, e2v scientific, was acquired
+by SGX Sensortech, and SGX stopped producing ozone sensors after the acquisition.
 
-###Nitrogen Dioxide
+You can find knock-off version of the same sensor from Chinese suppliers, however
+their performance is unclear, and after asking for quotes from many of these
+suppliers, only one has the sensors in stock.
 
-- Metal Oxide
-    - Easy
-    - Accurate
-    - MIC-2714
+While we could use an electrochemical ozone sensor, there are not very many
+on the market, and their ease of integration is questionable (electrochemical
+sensors require analog front ends to convert and amplify the signal). Prebuilt
+ozone detection modules that use semiconductor based technologies like the ones from [Aeroqual](http://www.gas-sensing.com/fixed-mount-monitors/aeroqual-sm-50.html?sel=2341&gclid=EAIaIQobChMIzcrMvo7F2QIVxF5-Ch20Bg3uEAQYAyABEgK2x_D_BwE) have [shown to be accurate](https://www.atmos-meas-tech.net/9/5281/2016/amt-9-5281-2016-discussion.html),
+however they are very expensive.
 
-    - MIC-4514
-        - Never shown to be accurate
+We don't have a good recommendation for an available and easy to integrate
+ozone sensor at this time.
 
-###Carbon Monoxide
 
-- Metal Oxide
-    - Easy
-    - MIC-4514
-    - Never shown to be accurate?
+###Nitrogen Dioxide and Carbon Monoxide
 
-- Electrochemical
-    - Spec w/ temp correction
-    - Alpha sense
-    - City tech
-    - All much more expensive and/or difficult
-    - Still sense we have done it before it might be worth it for the accuracy.
+Similar to Ozone, there are existing metal oxide sensors to measure both
+[Nitrogen Dioxide and Carbon Monoxide](https://sgx.cdistore.com/Manufacturers/e2v/FP/metaloxide-gas-sensor/?type=10420&manf=364&cate=364:5&NavType=2&sd=true#null). These have been shown to work pretty well, although not perfectly in 
+[several](https://www.epa.gov/air-sensor-toolbox/evaluation-emerging-air-pollution-sensor-performance) 
+[different](http://www.aqmd.gov/docs/default-source/aq-spec/field-evaluations/smart-citizen-kit---field-evaluation.pdf?sfvrsn=2),
+scenarios, but the sensors may need to individually calibrated and could drift over time.
+
+This seems like a reasonable choice for a low-cost gas sensor, however it's unclear the
+actual impact that these measurements may have due to the potentially
+for drifting baselines and low-reliability data.
+
 
 ###Sulfur Dioxide
 
@@ -119,3 +118,9 @@ The only cheaper SO~2~ sensor that we can find is the
 SPEC SO~2~ sensor. Given the poor performance of the other spec sensors and lack
 of testing we don't think it is worth trying to measure SO~2~ at this time.
 
+
+##Conclusions
+It seems that building a PM2.5 module out of the PMS5003 sensor could be a good
+start to deploying low-cost, medium-reliability particle sensors on the Signpost platform, however
+expanding to other sensors begins to go down a path of high difficulty for
+potentially limited impact due to unreliable and untrusted data.
