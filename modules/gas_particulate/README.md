@@ -21,7 +21,7 @@ an air quality module hasn't subsided, however, and what follows is a high level
 analysis of the potential sensors we can use to create an easy, cheap, and
 relatively accurate air quality monitor for the platform. 
 
-##What to Measure?
+## What to Measure?
 A survey of outdoor air quality sensors yielded:
  - Particulate (usually PM2.5)
  - Ozone (O~3)
@@ -36,7 +36,7 @@ choosing these gasses, but to effectively implement this module without
 too much effort, the sensor should be limited to those which have clear and 
 working examples.
 
-###PM2.5 and  Other Particulate
+### PM2.5 and  Other Particulate
 
 PM2.5 sensors found in most cheaper air quality monitors are produced by
 [Shinyei](http://www.shinyei.co.jp/stc/eng/optical/index.html). These
@@ -76,7 +76,7 @@ also streams data about many particulate classes over UART, which makes it easy 
 This seems like the best option for a Signpost module. The inclusion of two sensors in the PurpleAir does make us
 question its reliability, and we may consider the option of stacking two sensors into a module box.
 
-###Ozone
+### Ozone
 
 [Several reports](https://www.epa.gov/air-sensor-toolbox/evaluation-emerging-air-pollution-sensor-performance) show that the MICS-2614 and MICS-2610 Ozone sensor perform well
 under testing. Additionally, these Metal Oxide sensor are cheap, small and
@@ -99,7 +99,7 @@ We don't have a good recommendation for an available and easy to integrate
 ozone sensor at this time.
 
 
-###Nitrogen Dioxide and Carbon Monoxide
+### Nitrogen Dioxide and Carbon Monoxide
 
 Similar to Ozone, there are existing metal oxide sensors to measure both
 [Nitrogen Dioxide and Carbon Monoxide](https://sgx.cdistore.com/Manufacturers/e2v/FP/metaloxide-gas-sensor/?type=10420&manf=364&cate=364:5&NavType=2&sd=true#null). These have been shown to work pretty well, although not perfectly in 
@@ -112,7 +112,7 @@ actual impact that these measurements may have due to the potentially
 for drifting baselines and low-reliability data.
 
 
-###Sulfur Dioxide
+### Sulfur Dioxide
 
 The only cheaper SO~2~ sensor that we can find is the 
 SPEC SO~2~ sensor. Given the poor performance of the other spec sensors and lack
