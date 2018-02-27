@@ -24,10 +24,10 @@ relatively accurate air quality monitor for the platform.
 ## What to Measure?
 A survey of outdoor air quality sensors yielded:
  - Particulate (usually PM2.5)
- - Ozone (O~3)
- - Nitrogen Dioxide (NO~2)
+ - Ozone (O<sub>3</sub>)
+ - Nitrogen Dioxide (NO<sub>2</sub>)
  - Carbon Monoxide (CO)
- - Sulfur Dioxide (SO~2)
+ - Sulfur Dioxide (SO<sub>2</sub>)
 
 Of these, EPA reports most focus on particulate matter, 
 ozone, and nitrogen dioxide, with carbon monoxide and sulfur dioxide taking
@@ -114,12 +114,12 @@ for drifting baselines and low-reliability data.
 
 ### Sulfur Dioxide
 
-The only cheaper SO~2~ sensor that we can find is the 
-SPEC SO~2~ sensor. Given the poor performance of the other spec sensors and lack
-of testing we don't think it is worth trying to measure SO~2~ at this time.
+The only cheaper sulfur dioxide sensor that we can find is the 
+SPEC SO<sub>2</sub> sensor. Given the poor performance of the other spec sensors and lack
+of testing we don't think it is worth trying to measure sulfur dioxide at this time.
 
 
-##Conclusions
+## Conclusions
 It seems that building a PM2.5 module out of the PMS5003 sensor could be a good
 start to deploying low-cost, medium-reliability particle sensors on the Signpost platform, however
 expanding to other sensors begins to go down a path of high difficulty for
