@@ -108,6 +108,10 @@ and wireless research.
 
 ### History
 
+
+- **April 2018**: We are presenting the signpost paper and an associated demo at IPSN 2018 in Porto, Portugal.
+- **February 2018**: The [signpost paper](https://arxiv.org/pdf/1802.07805.pdf) is released on the arXiv.
+- **January 2018**: Signpost accepted to IPSN 2018!
 - **November 2017**: Signpost demo at Sensys 2017!
 - **Fall 2017**: 20 Signposts were built and deployed for the TerraSwarm Annual Review! 5 of these are still deployed
 on UC Berkeley's campus, and we are awaiting approval to deploy the remaining 15 signposts. We successfully
